@@ -1,0 +1,49 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+pkgname=projectname-devtools
+_pkgname=devtools
+pkgver=20141224
+pkgrel=5
+epoch=1
+pkgdesc='Tools for ArchAssault i686 & x86_64 package maintainers'
+arch=('i686' 'x86_64')
+license=('GPL')
+conflicts=('devtools')
+provides=('devtools')
+depends=('namcap' 'openssh' 'subversion' 'rsync' 'arch-install-scripts')
+source=("https://sources.archlinux.org/other/$_pkgname/$_pkgname-$pkgver.tar.gz"
+        'https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/alarm/devtools-alarm/0005-makechrootpkg-no-default-logging.patch'
+        'https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/alarm/devtools-alarm/0003-makechrootpkg-distcc.patch'
+        'https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/alarm/devtools-alarm/0001-makechrootpkg-cache-dir.patch'
+        'pacman-projectname-i686.conf' 'pacman-projectname-*x86_64.conf'
+        'noprogressbar_namcap.patch')
+sha512sums=('50c68414fe70bf5bdab5674b047173fb7bd042b25668602bc2937ac3a1fc43702e8e971e20881c42926b013e4c5550326f9cbd7ea9731fe94306f38adcf417b8'
+            '5bd22f3fbb1d368bc7c1bbf7efc30d30072c7eaea225072d23f329774c56e3f765ac7517d99f9927a2c7335589490b0802678189f7c8c8763d4129f0a97696ce'
+            'c7c5b74f6bf91df96d423b9596ddabd4a2fbd178c697b45fc9902b803663bdcfe368ab05b6d40afc1d2a8511ef4d72cc7eb27ba5e86c601a2aa2cf098dea5312'
+            '3ea99c21bf62df72084f457a9f037244521fa0b3c5fac61d8a92231c542d0b8c155f8ba077519a0eafcaa4f3701827c33c191dd6b8ae4151b4fd5a337b672260'
+            '328b7fc035842ff01161b36e51cdabc477e9a86add182ce0ca65938dc3f644029412774af964180670687f6b123c4ce7701d229d40fad5b0c0621d4421076bbb'
+            'e81ffe40661d0e8b25d4a5818493e8882950c2cc729e2c257105266b1bbc81469263ed78237782c8f3787bb30b12cf41dcf009a68a53db0a73de8128376b0fb3'
+            '7fc472f8a6d02cd92f73cb225e1965b6de61516bdb993113d23abfb821ec0d658e2c09902b8478538e2f58d0ecc77546951bfb3a163a494defd880f63982071b')
+
+prepare() {
+  cd "${_pkgname}-${pkgver}"
+  patch -p1 -i ../0001-makechrootpkg-cache-dir.patch
+  patch -p1 -i ../0003-makechrootpkg-distcc.patch
+  patch -p1 -i ../0005-makechrootpkg-no-default-logging.patch
+  patch -p1 -i ../noprogressbar_namcap.patch
+}
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  make PREFIX=/usr
+}
+
+package() {
+  cd "${_pkgname}-${pkgver}"
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
+  install -dm0755 "${pkgdir}"/usr/share/projectname-devtools/
+  install -Dm0644 "${srcdir}"/pacman-projectname-*.conf "${pkgdir}"/usr/share/projectname-*devtools/
+  
+}
+

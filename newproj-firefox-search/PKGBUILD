@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=projectname-firefox-search
+pkgver=0.8.2
+pkgrel=7
+pkgdesc="Firefox ArchAssault search engines (Pkgs, Wiki, Bugs etc.)"
+arch=('any')
+url="http://archlinux.org/"
+license=('GPL')
+depends=("firefox")
+group=('projectname')
+replaces=('arch-firefox3-search')
+source=(aa-bugs-fs.xml
+	aa-bugs-t.xml
+	aa-pkgs.xml)
+sha512sums=('68097c80412cdcbbc3ef47d53faddf25a4fff456a3dfdd34d99be51b6ae45ae518e57dafcc8071a56113eab346878fd7df033f35057f65371a17fb007577c2c4'
+            '50c17b8b09b286fffed47688fe2cbebbcdb3ed2699adc924b76442348c74dfde0cfda28a8cd33ec084318877fb714943aaaa7f2ddfd1f338222460bb5055966d'
+            'b060322e306e3718c4c528dfb8e96e822f7e58b85b324293ae1efaef90343e153a6622a7730a39c35940e049b0a4bd09e5b68a8d4bd7ecdfe989531d872bb253')
+
+package() {
+  cd "${srcdir}"
+  local _prefix="${pkgdir}"/usr/lib/firefox/browser/searchplugins
+
+  for i in ${source[@]}; do
+    install -D -m 0644 "${srcdir}"/$i ${_prefix}/$i
+  done
+}
