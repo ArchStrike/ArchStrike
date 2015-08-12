@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Oscanner
+Comment=An Oracle assessment framework developed in Java.
+Exec=oscanner
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultFuzzer;

@@ -1,0 +1,43 @@
+# Maintainer
+pkgname=praeda-git
+pkgver=r41.d52e216
+pkgrel=1
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="An automated data/information harvesting tool designed to gather critical information from various embedded devices. "
+arch=('any')
+url='https://github.com/percx/Praeda'
+license=('GPL2')
+depends=('perl' 'perl-io-socket' 'perl-net-ssleay' 'perl-net-snmp' 'perl-netaddr-ip' 'perl-html-tableextract' 'perl-http-cookies' 'perl-html-tagparser')
+makedepends=('git')
+provides=('praeda')
+conflicts=('praeda')
+replaces=('praeda')
+source=("praeda::git+https://github.com/percx/Praeda.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/praeda"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/praeda"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/praeda"
+  install -dm755 "$pkgdir/usr/share/praeda/data"
+  install -dm755 "$pkgdir/usr/share/praeda/jobs"
+  install -dm755 "$pkgdir/usr/bin"
+
+  install -Dm755 praeda.pl "$pkgdir/usr/share/praeda/praeda.pl"
+  install -Dm644 data/* "$pkgdir/usr/share/praeda/data/"
+  install -Dm644 jobs/* "$pkgdir/usr/share/praeda/jobs/"
+
+cat > "$pkgdir/usr/bin/praeda" <<EOF
+#!/bin/sh
+cd /usr/share/praeda
+perl praeda.pl "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/praeda"
+}

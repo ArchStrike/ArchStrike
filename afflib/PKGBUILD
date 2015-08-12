@@ -1,0 +1,27 @@
+# Maintainer
+pkgname=afflib
+pkgver=3.7.4
+pkgrel=4
+groups=('projectname' 'projectname-*forensics')
+pkgdesc="An extensible open format for the storage of disk images and related forensic information"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/simsong/AFFLIBv3'
+license=('custom')
+depends=('fuse' 'openssl' 'expat')
+source=("https://github.com/simsong/AFFLIBv3/archive/v$pkgver.tar.gz" "afflib.desktop")
+sha512sums=('58791388a05d614dd5f219a74173de2ff0938a1f93b21e2dd0731aca52ea544ba60cc4325f0d284937467ce600a4302b7a2f724d84710ecc7f12db1a22a8e41c'
+            '829891d27b94187afe3b6b0a5f923acdabaca0597759d2230e6bfcb114d8fcf8ce8e95229c1790c95ad7ca44f8cb5f9241a167ee04fcd0cc83bab7226c369876')
+
+build() {
+  cd "$srcdir/AFFLIBv3-$pkgver"
+  ./bootstrap.sh
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+}
+
+package() {
+  cd "$srcdir/AFFLIBv3-$pkgver"
+  make "DESTDIR=$pkgdir" install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 "$srcdir/afflib.desktop" "$pkgdir/usr/share/applications/afflib.desktop"
+}

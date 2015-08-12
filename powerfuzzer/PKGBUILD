@@ -1,0 +1,33 @@
+# Maintainer
+pkgname=powerfuzzer
+pkgver=1_beta
+pkgrel=1
+pkgdesc="Powerfuzzer is a highly automated web fuzzer based on many other Open Source fuzzers available (incl. cfuzzer, fuzzled, fuzzer.pl, jbrofuzz, webscarab, wapiti, Socket Fuzzer). It can detect XSS, Injections (SQL, LDAP, commands, code, XPATH) and others."
+url="http://www.powerfuzzer.com"
+arch=(any)
+depends=('python2' 'wxpython' 'python-utidylib')
+license=('GPL')
+groups=('projectname' 'projectname-*fuzzer')
+source=(http://downloads.sourceforge.net/powerfuzzer/${pkgname}_v${pkgver}_patched.zip)
+md5sums=('2c7fa861f7f17b68640f5ae5c75b781a')
+
+
+prepare(){
+  grep -iRl 'python' "$srcdir/${pkgname}_v${pkgver}_patched" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+
+package() {
+  cd "$srcdir/${pkgname}_v${pkgver}_patched"
+  chmod -x *
+  rm COPYING
+  chmod +x powerfuzzer.py
+
+  mkdir -p $pkgdir/usr/share/powerfuzzer/
+  cp * $pkgdir/usr/share/powerfuzzer/
+
+  mkdir $pkgdir/usr/bin
+  cd $pkgdir/usr/bin
+  ln -sf /usr/share/powerfuzzer/powerfuzzer.py powerfuzzer
+}

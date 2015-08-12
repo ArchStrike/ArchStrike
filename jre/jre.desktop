@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Jre
+Comment=Java Runtime Environment
+Exec=jre
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

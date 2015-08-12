@@ -1,0 +1,42 @@
+# Maintainer
+pkgname=skypefreak-git
+pkgver=r30.14a81cb
+pkgrel=2
+pkgdesc="A Forensic Framework for Skype"
+url="https://github.com/OsandaMalith/SkypeFreak"
+arch=('any')
+license=('custom')
+groups=('projectname')
+depends=('python2')
+makedepends=('git')
+provides=('skypefreak')
+conflicts=('skypefreak')
+replaces=('skypefreak')
+source=(skypefreak-git::git+https://github.com/OsandaMalith/SkypeFreak.git 'LICENSE')
+sha512sums=('SKIP'
+            '37c4ea8ec801c5b0782fedf532b6ed3dd6bc1d88dcd816af5fa83ce269d77a864ea31961a07f80773070ca5132ef1a79d5de10cf8b7bc396b709f0d1b324e2e2')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/skypefreak-git" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+pkgver() {
+  cd "$srcdir/skypefreak-git"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir"/skypefreak-git
+  install -dm755 "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/share/skypefreak-git
+  install -Dm644 $srcdir/LICENSE "$pkgdir"/usr/share/licenses/skypefreak-git/LICENSE
+  install -m755 source/SkypeFreak.py "$pkgdir"/usr/share/skypefreak-git/SkypeFreak.py 
+  cat > "$pkgdir"/usr/bin/skypefreak <<EOF
+#!/bin/sh
+cd /usr/share/skypefreak-git
+python2 SkypeFreak.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/skypefreak
+}
+
+

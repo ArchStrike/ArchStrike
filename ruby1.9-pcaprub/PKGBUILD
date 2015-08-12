@@ -1,0 +1,20 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=ruby1.9-pcaprub
+_gemname=pcaprub
+pkgver=0.11.3
+pkgrel=2
+pkgdesc="libpcap bindings for ruby"
+arch=('armv7h' 'armv6h' 'x86_64' 'i686')
+license=('GNU')
+depends=('libpcap' 'ruby1.9')
+url='http://github.com/shadowbq/pcaprub'
+source=("http://rubygems.org/downloads/pcaprub-$pkgver.gem")
+sha512sums=('0ac8b5b2be85a2e17dd9f253ae3705a9faca390cefbaeae737ba20a23a3e2d95a6d492d5f7b3ecac611361a264db43cc79fddfbab58056e7de8e075fb1d1ef4f')
+noextract=("pcaprub-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir="$(ruby-1.9 -rubygems -e'puts Gem.default_dir')"
+  HOME=/tmp GEM_HOME="$_gemdir" GEM_PATH="$_gemdir" gem-1.9 install --ignore-dependencies --no-user-install --no-rdoc --no-ri \
+  -i "${pkgdir}${_gemdir}" ${_gemname}-${pkgver}.gem
+}

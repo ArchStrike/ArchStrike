@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=MissionPlanner
+Comment=A GroundControl Station for Ardupilot
+Exec=missionplanner
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultDrone;

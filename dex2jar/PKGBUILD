@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=dex2jar
+pkgver=0.0.9.15
+_dlsuffix=
+pkgrel=2
+groups=('projectname' 'projectname-*hardware' 'archassault-reverse')
+pkgdesc="A tool for converting Android's .dex format to Java's .class format"
+arch=('any')
+url='http://code.google.com/p/dex2jar'
+license=('Apache')
+depends=('java-environment' 'bash')
+source=("http://dex2jar.googlecode.com/files/dex2jar-$pkgver${_dlsuffix}.zip")
+sha512sums=('250da1bc2aeda0b632b6bc4e925fdc1b283e3ff99f0d69d5c836cc3746f05b83d11a83209b203d14956112ab662b52641855a7cb0a718ac684929aad771a67a5')
+
+package() {
+  cd "$srcdir/dex2jar-$pkgver"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  # This package provides all of its own libraries.
+  install -dm755 "$pkgdir/usr/share/dex2jar/lib"
+
+  install -m644 lib/*.jar "$pkgdir/usr/share/dex2jar/lib"
+  install -m755 *.sh "$pkgdir/usr/share/dex2jar"
+
+  for bin in d2j-*.sh ; do
+    ln -s /usr/share/dex2jar/$bin "$pkgdir/usr/bin/${bin%.*}"
+  done
+}

@@ -1,0 +1,19 @@
+# Maintainer
+pkgname=python2-tldextract
+pkgver=1.6
+pkgrel=1
+pkgdesc="Accurately separates the gTLD or ccTLD (generic or country code top-level domain) from the registered domain and subdomains of a URL"
+arch=('any')
+url='https://github.com/john-kurkowski/tldextract'
+license=('BSD')
+depends=('python2')
+makedepends=('python2-distribute')
+source=("https://pypi.python.org/packages/source/t/tldextract/tldextract-$pkgver.tar.gz" "LICENSE")
+sha512sums=('bbbcd228f2264857ee675898d5999f0f9987909021f0b67bd312ff47b3465643dd5f96e10143bfdd9ac4ac12aed86827ef37fb0daeb6a953ff10a00febd52f3d'
+            'ccf77efa127b315ad6006ba8d59b1b8f395a14e4a04cd7e72e3ec81982bf788d164f67ebb50ac0fbc32056b8a1590597cb9874697317d6ad63542031968a2b1c')
+
+package() {
+  cd "$srcdir/tldextract-$pkgver"
+  python2 setup.py install --root=$pkgdir --prefix=/usr --optimize=1
+  install -Dm0644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}

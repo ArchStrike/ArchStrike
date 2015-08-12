@@ -1,0 +1,17 @@
+# Maintainer
+pkgname=python2-cluster
+pkgver=1.2.2
+pkgrel=1
+pkgdesc="Allows grouping a list of arbitrary objects into related groups (clusters)"
+arch=('any')
+url='http://python-cluster.sourceforge.net/'
+license=('LGPL')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/c/cluster/cluster-${pkgver}.tar.gz")
+sha512sums=('02600fa1fccdb07251bea83ab81908c22968fcfd4d6ccf382a75ab43117ee8ecc4385f7666f272d1e6cfc0634f7e15778635b50fde572773e564604c981e75cf')
+
+package() {
+  cd "$srcdir/cluster-$pkgver"
+  python2 setup.py install "--root=$pkgdir" --optimize=1
+}

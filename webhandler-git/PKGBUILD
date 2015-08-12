@@ -1,0 +1,44 @@
+# Maintainer
+pkgname=webhandler-git
+pkgver=r321.bcd2263
+pkgrel=1
+groups=('projectname' 'projectname-*webapp')
+pkgdesc="A handler for PHP system functions & also an alternative 'netcat' handler."
+url="https://github.com/lnxg33k/webhandler"
+license=('GPL3')
+arch=('any')
+depends=('python2' 'python2-argparse' 'readline' 'php')
+makedepends=('git')
+replaces=('webhandler')
+conflicts=('webhandler')
+provides=('webhandler')
+source=("git+https://github.com/lnxg33k/webhandler")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/webhandler"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}
+
+
+package() {
+  cd "$srcdir/webhandler"
+
+  # Base directories.
+  install -Dm755 webhandler.py "$pkgdir"/usr/share/webhandler-git/webhandler.py
+  install -dm755 "$pkgdir"/usr/bin
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/webhandler-git/LICENSE
+  install -m644 README.md "$pkgdir"/usr/share/webhandler-git/README.md
+  cp -a --no-preserve=ownership core modules "$pkgdir"/usr/share/webhandler-git
+
+  cat > "$pkgdir"/usr/bin/webhandler.py << EOF
+#!/bin/sh
+python2 /usr/share/webhandler-git/webhandler.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/webhandler.py
+}

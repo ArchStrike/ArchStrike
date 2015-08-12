@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Whatweb
+Comment=Next generation web scanner that identifies what websites are running.
+Exec=whatweb
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultRecon;

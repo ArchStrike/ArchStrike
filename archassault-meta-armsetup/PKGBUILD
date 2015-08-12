@@ -1,0 +1,26 @@
+# Maintainer: Jeremy Lynch <jl projectname org>
+pkgname=projectname-meta-armsetup
+pkgver=1
+pkgrel=7
+arch=('any')
+url='https://projectname.org/'
+license=('GPL')
+pkgdesc=('Meta package for ArchAssault arm setup')
+optdepends=('gnupg-largekeys' 'cryptsetup-nuke-keys')
+makedepends=('git')
+install=projectname-meta-arm.install
+provides=('projectname-keyring' 'projectname-*mirrorlist')
+conflicts=('projectname-keyring' 'projectname-*mirrorlist')
+source=('projectname-mirrorlist' "aa-keyring::git+https://bitbucket.org/projectname-*/archassault-keyring.git")
+sha512sums=('0c94a85da0f2d0ca4cf6c4bf9d5a2a0831e8d59630de1ab112ef810f0f73d11c17357e66e01745b824cb268fdd71b818badda18b57e5890768bcdd6b0379d757'
+            'SKIP')
+
+package() {
+  install -dm755 "$pkgdir/etc/pacman.d"
+  install -dm755 "$pkgdir/usr/share/licenses/projectname-meta-arm"
+  install -m644 projectname-mirrorlist "$pkgdir/etc/pacman.d/projectname-*mirrorlist"
+  cd "$srcdir"/aa-keyring
+  make PREFIX=/usr DESTDIR=${pkgdir} install
+}
+
+# vim:set ts=2 sw=2 et:

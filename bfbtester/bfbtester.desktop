@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Bfbtester
+Comment=Performs checks of single and multiple argument command line overflows and environment variable overflows
+Exec=bfbtester
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultExploitation;

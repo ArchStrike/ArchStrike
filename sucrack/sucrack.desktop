@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sucrack
+Comment=A multi-threaded Linux/UNIX tool for brute-force cracking local user accounts via su
+Exec=sucrack
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCracker;

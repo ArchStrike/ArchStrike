@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Byacc-noconflict
+Comment=Non-conflicting version of byacc not providing bison/yacc
+Exec=byacc-noconflict
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

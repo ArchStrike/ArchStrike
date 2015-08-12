@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=burst-git
+pkgver=20150611.r206
+pkgrel=1
+groups=('projectname' 'projectname-*misc')
+pkgdesc="An HTTP framework."
+arch=('any')
+url='https://github.com/tweksteen/burst'
+license=('BSD')
+depends=('python2')
+makedepends=('git' 'python2-setuptools')
+provides=('burst')
+source=("${pkgname}::git+https://github.com/tweksteen/burst.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}

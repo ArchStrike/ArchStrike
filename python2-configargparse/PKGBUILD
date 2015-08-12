@@ -1,0 +1,27 @@
+# Maintainer: ArchAssault <team projectname org>
+
+pkgname=python2-configargparse
+_pkgname=ConfigArgParse
+pkgver=0.9.3
+pkgrel=2
+pkgdesc="A drop-in replacement for argparse that allows options to also be set via config files and/or environment variables."
+url="https://pypi.python.org/pypi/ConfigArgParse"
+arch=('any')
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/C/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('27b5132e7a87a59e5bc650d6884859c5c9a2f2f3d8d05e123d00c726527db26e021b5413f8e6e54fb311696e6e30fc5c236e86b43a271a10362368818d2ea0a2')
+
+
+build() {
+  cd $_pkgname-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  cd $_pkgname-$pkgver  
+  python2 setup.py install -O1 --skip-build --root="$pkgdir"
+
+  install -Dm 644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

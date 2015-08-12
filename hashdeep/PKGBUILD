@@ -1,0 +1,38 @@
+# Maintainer
+# Contributor drathir <drathir87@gmail.com>
+pkgname=hashdeep
+pkgver=4.4
+pkgrel=1
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('projectname' 'projectname-*forensic')
+pkgdesc="Advanced checksum hashing tool"
+url="https://github.com/jessek/hashdeep"
+license=('Public Domain' 'GPL')
+provides=('md5deep')
+replaces=('md5deep')
+conflicts=('md5deep')
+if [[ $CARCH == 'x86_64' ]]; then
+     depends=('gcc-libs-multilib')
+else
+     depends=('gcc-libs')
+fi
+source=("https://github.com/jessek/hashdeep/archive/release-$pkgver.tar.gz")
+sha512sums=('c37ec85ed04d4452f9038f43434c02e064cf9e17c4eaa233867dba0236443922a14ccb8ec76c68820087751c2ca3db014d3f17dd8fcd2c2bde84d620aae50de1')
+
+
+build() {
+  cd "$srcdir/hashdeep-release-$pkgver"
+  
+  sh ./bootstrap.sh
+
+  ./configure --prefix=/usr
+
+  make
+}
+
+package() {
+  cd "$srcdir/hashdeep-release-$pkgver"
+
+  make DESTDIR=$pkgdir install
+  install -D -m644 "$srcdir/hashdeep-release-$pkgver/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+}

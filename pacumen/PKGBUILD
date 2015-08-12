@@ -1,0 +1,20 @@
+# Maintainer
+pkgname=pacumen
+pkgver=0.1a
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="Packet Acumen"
+arch=('any')
+url='https://github.com/bniemczyk/pacumen'
+license=('custom')
+depends=('python2' 'python2-scipy' 'python2-numpy' 'scapy' 'python2-symath' 'python2-pydot')
+makedepends=('python2-setuptools')
+source=("https://github.com/bniemczyk/pacumen/archive/v$pkgver.tar.gz")
+sha512sums=('3e4bf41f932e63be0c8a7bf36c815933b37ebb2d22e97f42d349d49c1ffc2a19ddaec75db0901bcc66cbad94f1793d5d12847c1f27c572eebec917b414d26146')
+
+
+package() {
+  cd "$srcdir/pacumen-$pkgver"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

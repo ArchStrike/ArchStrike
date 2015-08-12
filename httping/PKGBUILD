@@ -1,0 +1,26 @@
+# Maintainer
+pkgname='httping'
+pkgver='2.4'
+pkgrel=1
+pkgdesc="A 'ping'-like tool for http-requests."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('openssl' 'fftw')
+url=('http://www.vanheusden.com/httping/')
+license=('GPL')
+groups=('projectname' 'projectname-*networking' 'archassault-reconnaissance')
+source=("http://www.vanheusden.com/httping/httping-$pkgver.tgz")
+sha512sums=('11d9e9e3b222548c9754cc0e7bf947f1a55ccc9f1a2401681f95d21b7b7a56c07665955b558a56d07a5c98497ea3644758e4f85006c42fda2134556be8d9e804')
+
+build() {
+  cd "$srcdir"/httping-"$pkgver"
+  ./configure --with-tfo --with-ncurses --with-openssl --with-fftw3
+  make
+}
+
+package() {
+  cd "$srcdir"/httping-"$pkgver"
+  install -dm755 "$pkgdir"/usr/bin
+  install -dm755 "$pkgdir"/usr/share/man/nl/man1
+  install -dm755 "$pkgdir"/usr/share/locale/nl/LC_MESSAGES
+  make DESTDIR="$pkgdir" install
+}

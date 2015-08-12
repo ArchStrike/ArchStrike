@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Dirb
+Comment=A web content scanner, brute forceing for hidden files
+Exec=dirb
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultScanner;ArchAssaultWebapp;

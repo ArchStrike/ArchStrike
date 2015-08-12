@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=unicornscan
+pkgver=0.4.7
+pkgrel=5
+groups=('projectname' 'projectname-*scanners')
+pkgdesc='A new information gathering and correlation engine.'
+url='http://www.unicornscan.org/'
+depends=('libpcap' 'postgresql-libs' 'libdnet' 'libltdl')
+makedepends=('flex' 'bison')
+license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("http://www.unicornscan.org/releases/${pkgname}-${pkgver}-2.tar.bz2")
+sha512sums=('e952bad280b0f926cca2eb0dd960114f45da497f56c4a20a939b42eefb0c515c0613ca7271709778f83a8de5819a64c42616e38a73ef67fe08c44157c812d230')
+options=(!emptydirs)
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure CFLAGS="${CFLAGS} -D_GNU_SOURCE" --prefix=/usr --localstatedir=/var/lib --libexecdir=/usr/lib/${pkgname} --sysconfdir=/etc/${pkgname} --with-pgsql
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make "DESTDIR=${pkgdir}" install
+}

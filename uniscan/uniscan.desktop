@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Uniscan
+Comment=A simple Remote File Include, Local File Include and Remote Command Execution vulnerability scanner.
+Exec=uniscan
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultScanner;ArchAssaultFuzzer;

@@ -1,0 +1,30 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=svn-extractor-git
+pkgver=r28.3af00fb
+pkgrel=1
+groups=('projectname' 'projectname-*scanner')
+pkgdesc="A simple script to extract all web resources by means of .SVN folder exposed over network."
+arch=('any')
+url='https://github.com/anantshri/svn-extractor'
+license=('GPL3')
+depends=('python2')
+makedepends=('git')
+provides=('svn-extractor')
+source=("svn-extractor::git+https://github.com/anantshri/svn-extractor.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/svn-extractor"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  cd "$srcdir/svn-extractor"
+  sed -i 's|python$|python2|' svn_extractor.py
+}
+
+package() {
+  cd "$srcdir/svn-extractor"
+  install -Dm755 "svn_extractor.py" "$pkgdir/usr/bin/svn-extractor"
+
+}

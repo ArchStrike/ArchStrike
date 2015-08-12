@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Bluediving
+Comment=A Bluetooth penetration testing suite
+Exec=bluediving
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

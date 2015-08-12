@@ -1,0 +1,48 @@
+# Maintainer: ArchAssault <team projectname.rg>
+# Contributor: Eric Bélanger <eric@archlinux.org>
+
+pkgname=nvidia-projectname
+pkgver=343.22
+_extramodules=extramodules-3.16-projectname
+pkgrel=1
+pkgdesc="NVIDIA drivers for linux-projectname"
+arch=('i686' 'x86_64')
+url="http://www.nvidia.com/"
+depends=('linux-projectname>=3.16' "nvidia-utils=$pkgver" 'nvidia-libgl')
+makedepends=('linux-projectname-headers>=3.16')
+provides=('nvidia')
+license=('custom')
+install=nvidia-projectname.install
+options=(!strip)
+source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
+        "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+sha512sums=('9249ef93dfe963b13de2743b4144a15aca2fb3dcc6d1c4e78361bcd177a27428283a48fabc82891190ef8f1ead4292e613316f4534fac1387caa0acbff854478'
+            '632ca6deedb47dcd91bbfef9c2a85626aee1abee7e9d1a4e722fd1979f028945eb8dc902955bbfa90d7844f24d90a3da39ce1aa59653faf86b7f44b807837bdc')
+
+[[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
+[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+
+prepare() {
+    sh ${_pkg}.run --extract-only
+}
+
+build() {
+  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+  cd "${_pkg}/kernel"
+  make SYSSRC=/usr/lib/modules/${_kernver}/build module
+
+  cd uvm
+  make SYSSRC=/usr/lib/modules/${_kernver}/build module
+}
+
+package() {
+  install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
+    "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia.ko"
+  install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+    "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia-uvm.ko"
+  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/"*.ko
+  install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
+  echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-projectname.conf"
+  echo "blacklist nvidiafb" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-projectname.conf"
+  install -D -m644 "${srcdir}/${_pkg}/LICENSE" "${pkgdir}/usr/share/licenses/nvidia-projectname/LICENSE"
+}

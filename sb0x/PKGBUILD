@@ -1,0 +1,41 @@
+# Maintainer
+pkgname=sb0x
+pkgver=2.0.1rc3
+pkgrel=1
+pkgdesc="A simple and Lightweight framework for Penetration testing"
+url="https://github.com/levi0x0/sb0x-project"
+arch=('any')
+license=('GPL3')
+groups=('projectname')
+depends=('python2')
+source=("https://github.com/levi0x0/sb0x-project/archive/$pkgver.zip")
+sha512sums=('b54c3910780f67e60783913435519e5e3871315397c2b8f3a15c61117ea89f05757061966bcecf6c14a6089e81078180f656d6e57e829c7fb5e56daa93a4c528')
+
+package() {
+  cd "$srcdir"/sb0x-project-"$pkgver"
+  install -dm755 "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/share/sb0x
+  install -m644 README.md "$pkgdir"/usr/share/sb0x/README.md
+  install -m644 sb0x.py "$pkgdir"/usr/share/sb0x/sb0x.py
+  install -dm755 "$pkgdir"/usr/share/sb0x/tools
+  install -Dm755 tools/* "$pkgdir"/usr/share/sb0x/tools
+  install -dm755 "$pkgdir"/usr/share/sb0x/doc
+  install -Dm644 doc/* "$pkgdir"/usr/share/sb0x/doc/
+  install -dm755 "$pkgdir"/usr/share/sb0x/modules
+  install -Dm644 modules/* "$pkgdir"/usr/share/sb0x/modules/
+  install -dm755 "$pkgdir"/usr/share/sb0x/core
+  install -Dm644 core/* "$pkgdir"/usr/share/sb0x/core/
+  install -dm755 "$pkgdir"/usr/share/sb0x/api
+  install -dm755 "$pkgdir"/usr/share/sb0x/api/txt
+  install -Dm644 api/*.py "$pkgdir"/usr/share/sb0x/api/
+  install -Dm644 api/txt/* "$pkgdir"/usr/share/sb0x/api/txt/
+#  chmod u+rwX,g+rwX,o+rX -R "$pkgdir"/usr/share/sb0x
+  cat > "$pkgdir"/usr/bin/sb0x.py <<EOF
+#!/bin/sh
+cd /usr/share/sb0x
+python2 ./sb0x.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/sb0x.py
+}
+
+

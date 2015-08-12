@@ -1,0 +1,33 @@
+# Maintainer
+pkgname=checkpwd
+pkgver=1.23
+pkgrel=1
+pkgdesc="Oracle Password Checker (Cracker)"
+url="http://www.red-database-security.com/software/checkpwd.html"
+groups=('projectname' 'projectname-*cracker')
+license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('unixodbc' 'zlib' 'libstdc++5')
+source=(http://www.red-database-security.com/software/oracle_checkpwd_linux.tar.gz checkpwd.sh checkpwd_nopw.sh sqlplus.sh)
+noextract=(oracle_checkpwd_linux.tar.gz)
+md5sums=('aa05f5e7c8a20ec1094e68143085c3a7'
+         'd97923529c2cd6ad77b91bb5ce556328'
+         'e45bbc9424dd760c335640143e0d8730'
+         'ac3e0978fb385e7355dd2fcbf14c1d4c')
+
+package() {
+  cd "$srcdir"
+
+  install -dm755 "$pkgdir/usr/share/checkpwd"
+
+  tar xfz oracle_checkpwd_linux.tar.gz -C "$pkgdir/usr/share/checkpwd"
+  if [[ $CARCH = x86_64 ]] ; then
+  ln -s /usr/lib32/libcryptography.so "$pkgdir/usr/share/checkpwd/libcryptography.so.0"
+  else
+  ln -s /usr/lib/libcryptography.so "$pkgdir/usr/share/checkpwd/libcryptography.so.0"
+  fi
+
+  install -Dm755 checkpwd.sh "$pkgdir/usr/bin/checkpwd"
+  install -Dm755 checkpwd_nopw.sh "$pkgdir/usr/bin/checkpwd_nopw"
+  install -Dm755 sqlplus.sh "$pkgdir/usr/bin/sqlplus"
+}

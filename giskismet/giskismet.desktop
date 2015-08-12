@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Giskismet
+Comment=A program to visually represent the Kismet data in a flexible manner.
+Exec=giskismet
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWireless;

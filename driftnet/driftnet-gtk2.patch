@@ -1,0 +1,2030 @@
+diff -urN driftnet-0.1.6/CHANGES driftnet/CHANGES
+--- driftnet-0.1.6/CHANGES	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/CHANGES	2005-08-14 07:44:00.000000000 -0500
+@@ -1,5 +1,16 @@
+ Changelog for driftnet
+-$Id: CHANGES,v 1.16 2002/07/09 17:31:00 chris Exp $
++$Id: CHANGES,v 1.19 2004/04/26 14:42:36 chris Exp $
++
++Driftnet now uses GTK2, rather than GTK1.
++
++Added support for reading packets from a pcap dump file (thanks to Rob Timko
++and Joshua Wright for this); and for extracting URLs from HTTP requests (not
++yet exposed in the user interface).
++
++Driftnet will now discard connections after 8Mb of data has been transferred.
++
++Fixed adjunct mode so that stdout is line-buffered, following a suggestion by
++Jonas Jensen.
+ 
+ 0.1.6
+ 
+diff -urN driftnet-0.1.6/CREDITS driftnet/CREDITS
+--- driftnet-0.1.6/CREDITS	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/CREDITS	2005-08-14 07:44:00.000000000 -0500
+@@ -1,5 +1,5 @@
+ Credits and contributors for driftnet
+-$Id: CREDITS,v 1.6 2002/06/10 21:25:48 chris Exp $
++$Id: CREDITS,v 1.9 2004/04/26 14:42:36 chris Exp $
+ 
+ Thanks to the authors of EtherPEG, for a cool idea, and to Eric Richardson,
+ whose website brought it to my attention.
+@@ -12,3 +12,12 @@
+ Eric Dobbs for fixing some portability issues and getting driftnet running on
+ Solaris and BSD systems.
+ 
++Drew Roedersheimer for contributing PNG support.
++
++Joshua Wright for some 802.11 fixes.
++
++Rob Timko and Joshua Wright for getting Driftnet working on wireless networks
++and reading decrypted data from Kismet.
++
++Bastien Nocera for updating driftnet to use GTK2.
++
+diff -urN driftnet-0.1.6/CVS/Entries driftnet/CVS/Entries
+--- driftnet-0.1.6/CVS/Entries	1969-12-31 18:00:00.000000000 -0600
++++ driftnet/CVS/Entries	2005-08-14 07:44:00.000000000 -0500
+@@ -0,0 +1,26 @@
++/CHANGES/1.19/Mon Apr 26 14:42:36 2004//
++/COPYING/1.1/Mon Jul 16 00:09:41 2001//
++/CREDITS/1.9/Mon Apr 26 14:42:36 2004//
++/Makefile/1.41/Mon Apr 26 14:42:36 2004//
++/README/1.9/Tue Aug 12 14:03:24 2003//
++/TODO/1.12/Tue Aug 12 14:13:14 2003//
++/audio.c/1.3/Mon Jun 10 21:25:48 2002//
++/connection.c/1.7/Thu Oct 16 11:56:37 2003//
++/display.c/1.19/Mon Apr 26 14:42:36 2004//
++/driftnet.1.in/1.7/Mon Apr 26 14:42:36 2004//
++/driftnet.c/1.32/Thu Oct 16 11:56:37 2003//
++/driftnet.h/1.13/Thu Apr  8 23:06:29 2004//
++/endian.c/1.6/Mon Nov  3 10:40:23 2003//
++/gif.c/1.4/Mon Jul  8 20:57:17 2002//
++/http.c/1.1/Tue Aug 12 14:14:15 2003//
++/image.c/1.13/Mon Aug 25 12:23:43 2003//
++/img.c/1.11/Mon Aug 25 12:23:43 2003//
++/img.h/1.9/Mon Nov  3 10:40:23 2003//
++/jpeg.c/1.6/Tue Aug 12 14:09:57 2003//
++/media.c/1.9/Mon Aug 25 12:23:43 2003//
++/mpeghdr.c/1.4/Mon Jun 10 21:25:48 2002//
++/mpeghdr.h/1.4/Tue May 20 16:49:08 2003//
++/playaudio.c/1.5/Tue Aug 12 14:12:29 2003//
++/png.c/1.4/Mon Aug 25 12:23:43 2003//
++/util.c/1.2/Mon Aug 25 12:24:35 2003//
++D
+diff -urN driftnet-0.1.6/CVS/Repository driftnet/CVS/Repository
+--- driftnet-0.1.6/CVS/Repository	1969-12-31 18:00:00.000000000 -0600
++++ driftnet/CVS/Repository	2005-08-14 07:44:00.000000000 -0500
+@@ -0,0 +1 @@
++driftnet
+diff -urN driftnet-0.1.6/CVS/Root driftnet/CVS/Root
+--- driftnet-0.1.6/CVS/Root	1969-12-31 18:00:00.000000000 -0600
++++ driftnet/CVS/Root	2005-08-14 07:44:00.000000000 -0500
+@@ -0,0 +1 @@
++:pserver:anonymous@sphinx.mythic-beasts.com:/home/chris/vcvs/repos
+diff -urN driftnet-0.1.6/Makefile driftnet/Makefile
+--- driftnet-0.1.6/Makefile	2005-08-14 06:49:33.000000000 -0500
++++ driftnet/Makefile	2005-08-14 07:47:17.000000000 -0500
+@@ -5,7 +5,7 @@
+ # Copyright (c) 2001 Chris Lightfoot. All rights reserved.
+ # Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
+ #
+-# $Id: Makefile,v 1.34 2002/07/09 17:30:42 chris Exp $
++# $Id: Makefile,v 1.41 2004/04/26 14:42:36 chris Exp $
+ #
+ 
+ #
+@@ -22,17 +22,20 @@
+ # You might need these if libpcap is installed somewhere random.
+ CFLAGS += -I/usr/include/pcap
+ #LDFLAGS += -L/path/to/libpcap.so
++# On Mac OS X with Fink etc., try these:
++#CFLAGS += -I/usr/include/pcap -I/sw/include -I/opt/local/include
++#LDFLAGS += -L/opt/local/lib/
+ 
+ # Required on Linux to get BSDish definitions of the TCP/IP structs.
+ CFLAGS += -D_BSD_SOURCE
+ 
+ # We always need the pcap and pthread libraries.
+-LDLIBS += -lpcap -lpthread
++LDLIBS += -lpcap -lpthread #-lefence
+ 
+ # Optional C compiler and linker flags. Typical driftnet builds have support
+ # for displaying captured images in an X window, and need the following flags:
+-#CFLAGS  += `gtk-config --cflags`
+-#LDLIBS  += -ljpeg -lgif `gtk-config --libs`
++CFLAGS  += `pkg-config --cflags gtk+-2.0`
++LDLIBS  += -ljpeg -lungif -lpng `pkg-config --libs gtk+-2.0`
+ 
+ # Alternatively, you can build a version of driftnet which can only be used
+ # in `adjunct' mode as the back end for some other image-processing program. To
+@@ -49,7 +52,6 @@
+ # nanosleep; uncomment the below.
+ #LDLIBS  += -lposix4
+ 
+-# added 20020604 edobbs
+ # On BSD systems, may need to use /usr/local/include
+ #CFLAGS += -I/usr/local/include
+ 
+@@ -66,7 +68,7 @@
+ 
+ TXTS = README TODO COPYING CHANGES CREDITS driftnet.1 driftnet.1.in endian.c
+ SRCS = audio.c mpeghdr.c gif.c img.c jpeg.c png.c driftnet.c image.c \
+-       display.c playaudio.c connection.c media.c
++       display.c playaudio.c connection.c media.c util.c http.c
+ HDRS = img.h driftnet.h mpeghdr.h
+ BINS = driftnet
+ 
+@@ -80,17 +82,17 @@
+ driftnet.1: driftnet.1.in Makefile
+ 	( echo '.\" DO NOT EDIT THIS FILE-- edit driftnet.1.in instead' ; sed s/@@@VERSION@@@/$(VERSION)/ ) < driftnet.1.in > driftnet.1
+ 
+-endianness: endian
+-	./endian > endianness
++endianness.h: endian
++	./endian > endianness.h
+ 
+ endian: endian.c
+ 	$(CC) $(CFLAGS) -o endian endian.c
+ 
+-%.o:    %.c Makefile endianness
+-	$(CC) $(CFLAGS) `cat endianness` -c -o $@ $<
++%.o:    %.c Makefile endianness.h
++	$(CC) $(CFLAGS) -c -o $@ $<
+ 
+ clean:  nodepend
+-	rm -f *~ *.bak *.o core $(BINS) TAGS driftnet.1 endian endianness
++	rm -f *~ *.bak *.o core $(BINS) TAGS driftnet.1 endian endianness.h
+ 
+ tags:
+ 	etags *.c *.h
+@@ -102,7 +104,7 @@
+ 	rm -rf driftnet-$(VERSION)
+ 	mv driftnet-$(VERSION).tar.gz ..
+ 	
+-depend: endianness
++depend: endianness.h
+ 	makedepend -- $(CFLAGS) `cat endianness` -- $(SRCS)
+ 	touch depend
+ 	rm -f Makefile.bak
+diff -urN driftnet-0.1.6/README driftnet/README
+--- driftnet-0.1.6/README	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/README	2005-08-14 07:44:00.000000000 -0500
+@@ -1,5 +1,5 @@
+ README for driftnet
+-$Id: README,v 1.7 2002/06/10 21:25:48 chris Exp $
++$Id: README,v 1.9 2003/08/12 14:03:24 chris Exp $
+ 
+ Driftnet watches network traffic, and picks out and displays JPEG and GIF
+ images for display. It is an horrific invasion of privacy and shouldn't be used
+@@ -21,6 +21,18 @@
+ Driftnet needs to run with sufficient privilege to obtain raw packets from the
+ network. On most systems, this means running it as root.
+ 
++
++You can use Driftnet to sniff images passing over a wireless network. However,
++Driftnet does not understand the optional WEP encryption used with wireless
++ethernet. Instead, you can use Kismet, from
++  http://www.kismetwireless.net/
++to decrypt packets and pass them into a named pipe; the -f option can then be
++used to have Driftnet read the packets from the pipe. Thanks to Rob Timko and
++Joshua Wright for pointing this out; Rob's page,
++  http://68.38.68.127:81/writings/driftnet.html
++describes the process in greater detail.
++
++
+ If you find this program entertaining, you might want to help me develop it.
+ The TODO file contains a list of yet-to-be-done ideas.
+ 
+diff -urN driftnet-0.1.6/TODO driftnet/TODO
+--- driftnet-0.1.6/TODO	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/TODO	2005-08-14 07:44:00.000000000 -0500
+@@ -1,5 +1,5 @@
+ TODO for driftnet
+-$Id: TODO,v 1.10 2002/06/04 20:16:35 chris Exp $
++$Id: TODO,v 1.12 2003/08/12 14:13:14 chris Exp $
+ 
+ * PNG files.
+ 
+@@ -24,3 +24,7 @@
+ 
+ * Drop privileges after starting up pcap.
+ 
++* PID file?
++
++* Delay between reading packets from dump file?
++
+diff -urN driftnet-0.1.6/connection.c driftnet/connection.c
+--- driftnet-0.1.6/connection.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/connection.c	2005-08-14 07:44:00.000000000 -0500
+@@ -1,12 +1,15 @@
+ /*
+  * connection.c:
++ * Connection objects.
+  *
+  * Copyright (c) 2002 Chris Lightfoot. All rights reserved.
+  * Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
+  *
+  */
+ 
+-static const char rcsid[] = "$Id: connection.c,v 1.3 2002/07/08 23:32:33 chris Exp $";
++static const char rcsid[] = "$Id: connection.c,v 1.7 2003/10/16 11:56:37 chris Exp $";
++
++#include <sys/types.h>
+ 
+ #include <assert.h>
+ #include <stdio.h>
+@@ -16,52 +19,58 @@
+ 
+ #include "driftnet.h"
+ 
+-/* connection_new:
+- * Allocate a new connection structure between the given addresses. */
++/* connection_new SOURCE DEST SPORT DPORT
++ * Allocate a new connection structure for data sent from SOURCE:SPORT to
++ * DEST:DPORT. */
+ connection connection_new(const struct in_addr *src, const struct in_addr *dst, const short int sport, const short int dport) {
+-    connection c = (connection)calloc(1, sizeof(struct _connection));
++    connection c;
++    alloc_struct(_connection, c);
+     c->src = *src;
+     c->dst = *dst;
+     c->sport = sport;
+     c->dport = dport;
+     c->alloc = 16384;
+-    c->data = c->gif = c->jpeg = c->mpeg = malloc(c->alloc);
++    c->data = xmalloc(c->alloc);
+     c->last = time(NULL);
+     c->blocks = NULL;
+     return c;
+ }
+ 
+-/* connection_delete:
+- * Free the named connection structure. */
++/* connection_delete CONNECTION
++ * Free CONNECTION. */
+ void connection_delete(connection c) {
++    struct datablock *b;
++    for (b = c->blocks; b;) {
++        struct datablock *b2;
++        b2 = b->next;
++        free(b);
++        b = b2;
++    }
+     free(c->data);
+     free(c);
+ }
+ 
+-/* connection_push:
+- * Put some more data in a connection. */
++/* connection_push CONNECTION DATA OFFSET LENGTH
++ * Add LENGTH bytes of DATA received at OFFSET in the stream to CONNECTION. */
+ void connection_push(connection c, const unsigned char *data, unsigned int off, unsigned int len) {
+-    size_t goff = c->gif - c->data, joff = c->jpeg - c->data, moff = c->mpeg - c->data;
+     struct datablock *B, *b, *bl, BZ = {0};
+     int a;
+ 
+     assert(c->alloc > 0);
+     if (off + len > c->alloc) {
+         /* Allocate more memory. */
+-        while (off + len > c->alloc) {
++        do 
+             c->alloc *= 2;
+-            c->data = (unsigned char*)realloc(c->data, c->alloc);
+-        }
++        while (off + len > c->alloc);
++        c->data = (unsigned char*)xrealloc(c->data, c->alloc);
+     }
+-    c->gif = c->data + goff;
+-    c->jpeg = c->data + joff;
+-    c->mpeg = c->data + moff;
++
+     memcpy(c->data + off, data, len);
+ 
+     if (off + len > c->len) c->len = off + len;
+     c->last = time(NULL);
+     
+-    B = malloc(sizeof *B);
++    B = xmalloc(sizeof *B);
+     *B = BZ;
+     B->off = off;
+     B->len = len;
+@@ -95,13 +104,5 @@
+             }
+         }
+     } while (a);
+-/*
+-        {
+-            printf("%p: ", c);
+-            for (b = c->blocks; b; b = b->next)
+-                printf("[%d (%d) -> %d] ", b->off, b->len, b->off + b->len);
+-            printf("\n");
+-        }
+-*/
+ }
+ 
+diff -urN driftnet-0.1.6/display.c driftnet/display.c
+--- driftnet-0.1.6/display.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/display.c	2005-08-14 07:44:00.000000000 -0500
+@@ -9,17 +9,21 @@
+ 
+ #ifndef NO_DISPLAY_WINDOW
+ 
+-static const char rcsid[] = "$Id: display.c,v 1.15 2002/06/13 20:06:42 chris Exp $";
++static const char rcsid[] = "$Id: display.c,v 1.19 2004/04/26 14:42:36 chris Exp $";
+ 
+-#include <gtk/gtk.h>
+-#include <gdk/gdk.h>
+-#include <gdk/gdkx.h>
++#include <sys/types.h>
++
++#include <errno.h>
++#include <fcntl.h>
+ #include <stdio.h>
+ #include <stdlib.h>
+-#include <unistd.h>
+-#include <fcntl.h>
+ #include <string.h>
+-#include <errno.h>
++#include <time.h>
++#include <unistd.h>
++
++#include <gtk/gtk.h>
++#include <gdk/gdk.h>
++#include <gdk/gdkx.h>
+ 
+ #include <sys/stat.h>
+ 
+@@ -29,7 +33,7 @@
+ /* The border, in pixels, around images displayed in the window. */
+ #define BORDER  6
+ 
+-extern int verbose; /* in driftnet.c */
++extern int verbose, beep; /* in driftnet.c */
+ 
+ static GtkWidget *window, *darea;
+ static GdkWindow *drawable;
+@@ -80,7 +84,7 @@
+                 /* Possible it has scrolled off the window. */
+                 if (ir->x > width || ir->y + ir->h < 0) {
+                     unlink(ir->filename);
+-                    free(ir->filename);
++                    xfree(ir->filename);
+                     memset(ir, 0, sizeof *ir);
+                 }
+             }
+@@ -104,7 +108,7 @@
+         GdkGC *gc;
+         gc = gdk_gc_new(drawable);
+         gdk_draw_rgb_32_image(drawable, gc, 0, 0, width, height, GDK_RGB_DITHER_NORMAL, (guchar*)backing_image->flat, sizeof(pel) * width);
+-        gdk_gc_destroy(gc);
++        g_object_unref(gc);
+     }
+ }
+ 
+@@ -128,7 +132,7 @@
+             /* scrolled off bottom, no longer in use. */
+             if ((ir->y + ir->h) < 0) {
+                 unlink(ir->filename);
+-                free(ir->filename);
++                xfree(ir->filename);
+                 memset(ir, 0, sizeof *ir);
+             }
+         }
+@@ -145,7 +149,7 @@
+             break;
+     }
+     if (ir == imgrects + nimgrects) {
+-        imgrects = realloc(imgrects, 2 * nimgrects * sizeof *imgrects);
++        imgrects = xrealloc(imgrects, 2 * nimgrects * sizeof *imgrects);
+         memset(imgrects + nimgrects, 0, nimgrects * sizeof *imgrects);
+         ir = imgrects + nimgrects;
+         nimgrects *= 2;
+@@ -172,7 +176,7 @@
+  * React to an expose event, perhaps changing the backing image size. */
+ void expose_event(GtkWidget *widget, GdkEvent *event, gpointer data) {
+     if (darea) drawable = darea->window;
+-    gdk_window_get_size(drawable, &width, &height);
++    gdk_drawable_get_size(GDK_DRAWABLE(drawable), &width, &height);
+     if (!backing_image || backing_image->width != width || backing_image->height != height)
+         make_backing_image();
+ 
+@@ -183,7 +187,7 @@
+  * React to a configure event, perhaps changing the backing image size. */
+ void configure_event(GtkWidget *widget, GdkEvent *event, gpointer data) {
+     if (darea) drawable = darea->window;
+-    gdk_window_get_size(drawable, &width, &height);
++    gdk_drawable_get_size(GDK_DRAWABLE(drawable), &width, &height);
+     if (!backing_image || backing_image->width != width || backing_image->height != height)
+         make_backing_image();
+ 
+@@ -205,7 +209,7 @@
+     struct stat st;
+ 
+     if (!name)
+-        name = calloc(strlen(savedimgpfx) + 16, 1);
++        name = xcalloc(strlen(savedimgpfx) + 16, 1);
+ 
+     do
+         sprintf(name, "%s%d%s", savedimgpfx, num++, strrchr(ir->filename, '.'));
+@@ -301,10 +305,10 @@
+     int nimgs = 0;
+ 
+     if (!path)
+-        path = malloc(strlen(tmpdir) + 34);
++        path = xmalloc(strlen(tmpdir) + 34);
+ 
+-    /* We are sent messages continaing the length of the filename, then the
+-     * length of the file, then the filename. */
++    /* We are sent messages of size TMPNAMELEN containing a null-terminated
++     * file name. */
+     while (nimgs < 4 && (rr = xread(dpychld_fd, name, sizeof name)) == sizeof name) {
+         int saveimg = 0;
+         struct stat st;
+@@ -319,7 +323,7 @@
+         if (verbose)
+             fprintf(stderr, PROGNAME": received image %s of size %d\n", name, (int)st.st_size);
+         /* Check to see whether this looks like an image we're interested in. */
+-        if (st.st_size > 256) {
++        if (st.st_size > 100) {
+             /* Small images are probably bollocks. */
+             img i = img_new();
+             if (!img_load_file(i, path, header, unknown))
+@@ -350,6 +354,9 @@
+                         add_image_rectangle(path, wrx, wry - h, w, h);
+                         saveimg = 1;
+ 
++                        if (beep)
++                            write(1, "\a", 1);
++
+                         update_window();
+ 
+                         wrx += w + BORDER;
+@@ -383,32 +390,30 @@
+     fcntl(dpychld_fd, F_SETFL, O_NONBLOCK);
+ 
+     /* set up list of image rectangles. */
+-    imgrects = calloc(nimgrects = 16, sizeof *imgrects);
++    imgrects = xcalloc(nimgrects = 16, sizeof *imgrects);
+        
+     /* do some init thing */
+     gtk_init(&argc, &argv);
+-    gdk_rgb_init();
+ 
+-    gtk_widget_set_default_colormap(gdk_rgb_get_cmap());
+-    gtk_widget_set_default_visual(gdk_rgb_get_visual());
++    gtk_widget_push_colormap(gdk_rgb_get_colormap());
+ 
+     /* Make our own window. */
+     window = gtk_window_new(GTK_WINDOW_TOPLEVEL);
+-    gtk_widget_set_usize(window, 0, 0);
++    gtk_widget_set_size_request(window, 100, 100);
+ 
+     darea = gtk_drawing_area_new();
+     gtk_container_add(GTK_CONTAINER(window), darea);
+     gtk_widget_set_events(darea, GDK_EXPOSURE_MASK|GDK_BUTTON_PRESS_MASK|GDK_BUTTON_RELEASE_MASK);
+ 
+-    gtk_signal_connect(GTK_OBJECT(window), "delete_event", GTK_SIGNAL_FUNC(delete_event), NULL);
+-    gtk_signal_connect(GTK_OBJECT(window), "destroy", GTK_SIGNAL_FUNC(destroy), NULL);
++    g_signal_connect(G_OBJECT(window), "delete_event", GTK_SIGNAL_FUNC(delete_event), NULL);
++    g_signal_connect(G_OBJECT(window), "destroy", GTK_SIGNAL_FUNC(destroy), NULL);
+ 
+-    gtk_signal_connect(GTK_OBJECT(darea), "expose-event", GTK_SIGNAL_FUNC(expose_event), NULL);
+-    gtk_signal_connect(GTK_OBJECT(darea), "configure_event", GTK_SIGNAL_FUNC(expose_event), NULL);
++    g_signal_connect(G_OBJECT(darea), "expose-event", GTK_SIGNAL_FUNC(expose_event), NULL);
++    g_signal_connect(G_OBJECT(darea), "configure_event", GTK_SIGNAL_FUNC(expose_event), NULL);
+     
+     /* mouse button press/release for saving images */
+-    gtk_signal_connect(GTK_OBJECT(darea), "button_press_event", GTK_SIGNAL_FUNC(button_press_event), NULL);
+-    gtk_signal_connect(GTK_OBJECT(darea), "button_press_event", GTK_SIGNAL_FUNC(button_release_event), NULL);
++    g_signal_connect(G_OBJECT(darea), "button_press_event", GTK_SIGNAL_FUNC(button_press_event), NULL);
++    g_signal_connect(G_OBJECT(darea), "button_press_event", GTK_SIGNAL_FUNC(button_release_event), NULL);
+ 
+     gtk_widget_show_all(window);
+ 
+@@ -419,7 +424,11 @@
+         if (ir->filename)
+             unlink(ir->filename);
+ 
+-    return 0;
++    img_delete(backing_image);
++    
++    gtk_exit(0);
++
++    return 0; /* NOTREACHED */
+ }
+ 
+ #endif /* !NO_DISPLAY_WINDOW */
+diff -urN driftnet-0.1.6/driftnet.1 driftnet/driftnet.1
+--- driftnet-0.1.6/driftnet.1	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/driftnet.1	1969-12-31 18:00:00.000000000 -0600
+@@ -1,121 +0,0 @@
+-.\" DO NOT EDIT THIS FILE-- edit driftnet.1.in instead
+-.TH DRIFTNET 1
+-.\"
+-.\" driftnet.1.in:
+-.\" Manual page for driftnet.
+-.\"
+-.\" Copyright (c) 2002 Chris Lightfoot. All rights reserved.
+-.\" Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
+-.\"
+-.\" $Id: driftnet.1.in,v 1.5 2002/06/04 15:39:54 chris Exp $
+-.\"
+-
+-.SH NAME
+-driftnet - capture images from network traffic and display them in an X window;
+-optionally, capture audio streams and play them.
+-
+-.SH SYNOPSIS
+-\fBdriftnet\fP [\fIoptions\fP] [\fIfilter code\fP]
+-
+-.SH DESCRIPTION
+-\fBDriftnet\fP watches network traffic, and picks out and displays JPEG and GIF
+-images for display. It is an horrific invasion of privacy and shouldn't be
+-used by anyone anywhere. It has been described as `a graphical
+-.BR tcpdump (8)',
+-`\fIEtherPeg\fP for Unix', and called all sorts of nasty names by people on
+-\fIFreshmeat\fP. It is also possible to use \fBdriftnet\fP to capture MPEG
+-audio data from the network and play it through a player such as
+-.BR mpg123 (1).
+-
+-Images may be saved by clicking on them.
+-
+-.SH OPTIONS
+-
+-.TP
+-\fB-h\fP
+-Print a summary of usage.
+-.TP
+-\fB-v\fP
+-Print additional details of packets captured to the terminal.
+-.TP
+-\fB-i\fP \fIinterface\fP
+-Listen to packets on \fIinterface\fP. By default, \fBdriftnet\fP will try to
+-pick up traffic on all interfaces, but this does not work with all versions of
+-.BR pcap (3);
+-on such systems, an interface must be specified. On some systems, \fBdriftnet\fP
+-can only use promiscuous mode if an interface is specified.
+-.TP
+-\fB-p\fP
+-Do not put the interface into promiscuous mode.
+-.TP
+-\fB-a\fP
+-Operate in `adjunct mode', where \fBdriftnet\fP gathers images for use by
+-another program, such as Jamie Zawinski's \fBwebcollage\fP. In this mode, no
+-window is displayed; images are captured and saved in a temporary directory,
+-and their names written on standard output.
+-.TP
+-\fB-m\fP \fInumber\fP
+-In adjunct mode, silently drop images if there are more than \fInumber\fP in
+-the temporary directory. It is assumed that another process will delete images
+-which it has processed.
+-.TP
+-\fB-x\fP \fIprefix\fP
+-The filename prefix to use when saving images, by default `driftnet-'.
+-.TP
+-\fB-d\fP \fIdirectory\fP
+-Use \fIdirectory\fP to store temporary files. \fBDriftnet\fP will clear this
+-directory of its own temporary files on exit, but will not delete the directory
+-or any other files.
+-.TP
+-\fB-s\fP
+-Attempt to capture streamed audio data from the network, and either play it
+-or, in adjunct mode, save it in files. At present this only works with MPEG
+-data.
+-.TP
+-\fB-S\fP
+-Capture streamed audio data only, ignoring images.
+-.TP
+-\fB-M\fP \fIcommand\fP
+-Use the named \fIcommand\fP to play MPEG audio data. The \fIcommand\fP, which
+-is executed using the shell, should accept MPEG frames on standard input.
+-The default is `mpg123 -'.
+-.TP
+-\fIfilter code\fP
+-Additional filter code to restrict the packets captured, in the libpcap
+-syntax. User filter code is evaluated as `tcp and (\fIfilter code\fP)'.
+-
+-.SH SEE ALSO
+-.BR tcpdump (8),
+-.BR pcap (3),
+-.BR webcollage (1),
+-.BR mpg123 (1),
+-.br
+-.IR http://www.etherpeg.org/ ,
+-.br
+-.IR http://freshmeat.net/projects/driftnet/ ,
+-.br
+-.IR http://www.ex-parrot.com/~chris/driftnet/ .
+-
+-.SH AUTHOR
+-Chris Lightfoot <chris@ex-parrot.com>
+-
+-.SH VERSION
+-\fBDriftnet\fP, version 0.1.6.
+-.br
+-$Id: driftnet.1.in,v 1.5 2002/06/04 15:39:54 chris Exp $
+-
+-.SH COPYING
+-This program is free software; you can redistribute it and/or modify
+-it under the terms of the GNU General Public License as published by
+-the Free Software Foundation; either version 2 of the License, or
+-(at your option) any later version.
+-
+-This program is distributed in the hope that it will be useful,
+-but WITHOUT ANY WARRANTY; without even the implied warranty of
+-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+-GNU General Public License for more details.
+-
+-You should have received a copy of the GNU General Public License
+-along with this program; if not, write to the Free Software
+-Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+-
+diff -urN driftnet-0.1.6/driftnet.1.in driftnet/driftnet.1.in
+--- driftnet-0.1.6/driftnet.1.in	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/driftnet.1.in	2005-08-14 07:44:00.000000000 -0500
+@@ -6,7 +6,7 @@
+ .\" Copyright (c) 2002 Chris Lightfoot. All rights reserved.
+ .\" Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
+ .\"
+-.\" $Id: driftnet.1.in,v 1.5 2002/06/04 15:39:54 chris Exp $
++.\" $Id: driftnet.1.in,v 1.7 2004/04/26 14:42:36 chris Exp $
+ .\"
+ 
+ .SH NAME
+@@ -37,6 +37,9 @@
+ \fB-v\fP
+ Print additional details of packets captured to the terminal.
+ .TP
++\fB-b\fP
++Beep when a new image is displayed.
++.TP
+ \fB-i\fP \fIinterface\fP
+ Listen to packets on \fIinterface\fP. By default, \fBdriftnet\fP will try to
+ pick up traffic on all interfaces, but this does not work with all versions of
+@@ -101,7 +104,7 @@
+ .SH VERSION
+ \fBDriftnet\fP, version @@@VERSION@@@.
+ .br
+-$Id: driftnet.1.in,v 1.5 2002/06/04 15:39:54 chris Exp $
++$Id: driftnet.1.in,v 1.7 2004/04/26 14:42:36 chris Exp $
+ 
+ .SH COPYING
+ This program is free software; you can redistribute it and/or modify
+diff -urN driftnet-0.1.6/driftnet.c driftnet/driftnet.c
+--- driftnet-0.1.6/driftnet.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/driftnet.c	2005-08-14 07:44:00.000000000 -0500
+@@ -7,7 +7,7 @@
+  *
+  */
+ 
+-static const char rcsid[] = "$Id: driftnet.c,v 1.25 2002/07/08 20:57:17 chris Exp $";
++static const char rcsid[] = "$Id: driftnet.c,v 1.32 2003/10/16 11:56:37 chris Exp $";
+ 
+ #undef NDEBUG
+ 
+@@ -45,9 +45,10 @@
+ connection *slots;
+ unsigned int slotsused, slotsalloc;
+ 
+-/* flags: verbose, adjunct mode, temporary directory to use, media types to extract. */
++/* flags: verbose, adjunct mode, temporary directory to use, media types to
++ * extract, beep on image. */
+ int extract_images = 1;
+-int verbose, adjunct;
++int verbose, adjunct, beep;
+ int tmpdir_specified;
+ char *tmpdir;
+ int max_tmpfiles;
+@@ -85,14 +86,14 @@
+         char *buf;
+         size_t buflen;
+ 
+-        buf = malloc(buflen = strlen(tmpdir) + 64);
++        buf = xmalloc(buflen = strlen(tmpdir) + 64);
+ 
+         while ((de = readdir(d))) {
+             char *p;
+             p = strrchr(de->d_name, '.');
+             if (!tmpdir_specified || (p && strncmp(de->d_name, "driftnet-", 9) == 0 && (strcmp(p, ".jpeg") == 0 || strcmp(p, ".gif") == 0 || strcmp(p, ".mp3") == 0))) {
+                 if (buflen < strlen(tmpdir) + strlen(de->d_name) + 1)
+-                    buf = realloc(buf, buflen = strlen(tmpdir) + strlen(de->d_name) + 64);
++                    buf = xrealloc(buf, buflen = strlen(tmpdir) + strlen(de->d_name) + 64);
+                 
+                 sprintf(buf, "%s/%s", tmpdir, de->d_name);
+                 unlink(buf);
+@@ -100,7 +101,7 @@
+         }
+         closedir(d);
+ 
+-        free(buf);
++        xfree(buf);
+     }
+ 
+ 
+@@ -116,7 +117,7 @@
+         if (!*C) return C;
+     }
+     /* No connection slots left. */
+-    slots = (connection*)realloc(slots, slotsalloc * 2 * sizeof(connection));
++    slots = (connection*)xrealloc(slots, slotsalloc * 2 * sizeof(connection));
+     memset(slots + slotsalloc, 0, slotsalloc * sizeof(connection));
+     C = slots + slotsalloc;
+     slotsalloc *= 2;
+@@ -141,6 +142,7 @@
+ /* sweep_connections:
+  * Free finished connection slots. */
+ #define TIMEOUT 5
++#define MAXCONNECTIONDATA   (8 * 1024 * 1024)
+ 
+ void sweep_connections(void) {
+     time_t now;
+@@ -151,8 +153,11 @@
+             connection c = *C;
+             /* We discard connections which have seen no activity for TIMEOUT
+              * or for which a FIN has been seen and for which there are no
+-             * gaps in the stream. */
+-            if ((now - c->last) > TIMEOUT || (c->fin && (!c->blocks || !c->blocks->next))) {
++             * gaps in the stream, or where more than MAXCONNECTIONDATA have
++             * been captured. */
++            if ((now - c->last) > TIMEOUT
++                || (c->fin && (!c->blocks || !c->blocks->next))
++                || c->len > MAXCONNECTIONDATA) {
+                 connection_extract_media(c, extract_type);
+                 connection_delete(c);
+                 *C = NULL;
+@@ -212,10 +217,17 @@
+ 
+         case DLT_IEEE802:
+             return 22;
+-
++            
++#ifdef DLT_ATM_RFC1483
+         case DLT_ATM_RFC1483:
+             return 8;
++#endif
+ 
++#ifdef DLT_PRISM_HEADER
++        case DLT_PRISM_HEADER:
++            return 32;
++#endif
++            
+         case DLT_RAW:
+             return 0;
+ 
+@@ -229,6 +241,11 @@
+             return 16;
+ #endif
+ 
++#ifdef DLT_IEEE802_11           /* 802.11 wireless ethernet */
++        case DLT_IEEE802_11:
++            return 32; /* 20030606 email from Nikhil Bobb */ /*44; */
++#endif
++            
+         default:;
+     }
+     fprintf(stderr, PROGNAME": unknown data link type %d", type);
+@@ -254,8 +271,12 @@
+ "\n"
+ "  -h               Display this help message.\n"
+ "  -v               Verbose operation.\n"
++"  -b               Beep when a new image is captured.\n"
+ "  -i interface     Select the interface on which to listen (default: all\n"
+ "                   interfaces).\n"
++"  -f file          Instead of listening on an interface, read captured\n"
++"                   packets from a pcap dump file; file can be a named pipe\n"
++"                   for use with Kismet or similar.\n"
+ "  -p               Do not put the listening interface into promiscuous mode.\n""  -a               Adjunct mode: do not display images on screen, but save\n"
+ "                   them to a temporary directory and announce their names on\n"
+ "                   standard output.\n"
+@@ -294,9 +315,7 @@
+ }
+ 
+ /* terminate_on_signal:
+- * Terminate on receipt of an appropriate signal. This is really ugly, because
+- * the pcap_next call in the main loop may block, so it's best to just exit
+- * here. */
++ * Terminate on receipt of an appropriate signal. */
+ sig_atomic_t foad;
+ 
+ void terminate_on_signal(int s) {
+@@ -458,7 +477,7 @@
+ /* main:
+  * Entry point. Process command line options, start up pcap and enter capture
+  * loop. */
+-char optstring[] = "hi:psSMvam:d:x:";
++char optstring[] = "abd:f:hi:M:m:pSsvx:";
+ 
+ int main(int argc, char *argv[]) {
+     char *interface = NULL, *filterexpr;
+@@ -472,7 +491,10 @@
+     extern char *audio_mpeg_player; /* in playaudio.c */
+     int newpfx = 0;
+     int mpeg_player_specified = 0;
++    char *dumpfile = NULL;
++    
+     pthread_t packetth;
++    connection *C;
+ 
+     /* Handle command-line options. */
+     opterr = 0;
+@@ -483,6 +505,10 @@
+                 return 0;
+ 
+             case 'i':
++                if (dumpfile) {
++                    fprintf(stderr, PROGNAME": can't specify -i and -f\n");
++                    return -1;
++                }
+                 interface = optarg;
+                 break;
+ 
+@@ -490,6 +516,13 @@
+                 verbose = 1;
+                 break;
+ 
++            case 'b':
++                if (!isatty(1))
++                    fprintf(stderr, PROGNAME": can't beep unless standard output is a terminal\n");
++                else 
++                    beep = 1;
++                break;
++
+             case 'p':
+                 promisc = 0;
+                 break;
+@@ -524,6 +557,14 @@
+                 tmpdir_specified = 1; /* so we don't delete it. */
+                 break;
+ 
++            case 'f':
++                if (interface) {
++                    fprintf(stderr, PROGNAME": can't specify -i and -f\n");
++                    return -1;
++                }
++                dumpfile = optarg;
++                break;
++
+ #ifndef NO_DISPLAY_WINDOW
+             case 'x':
+                 savedimgpfx = optarg;
+@@ -568,6 +609,15 @@
+     if (max_tmpfiles && adjunct && verbose)
+         fprintf(stderr, PROGNAME": a maximum of %d images will be buffered\n", max_tmpfiles);
+ 
++    if (beep && adjunct)
++        fprintf(stderr, PROGNAME": can't beep in adjunct mode\n");
++
++    /* In adjunct mode, it's important that the attached program gets
++     * notification of images in a timely manner. Make stdout line-buffered
++     * for this reason. */
++    if (adjunct)
++        setvbuf(stdout, NULL, _IOLBF, 0);
++
+     /* If a directory name has not been specified, then we need to create one.
+      * Otherwise, check that it's a directory into which we may write files. */
+     if (tmpdir) {
+@@ -585,10 +635,10 @@
+     } else {
+         /* need to make a temporary directory. */
+         for (;;) {
+-            tmpdir = strdup(tmpnam(NULL));
++            tmpdir = strdup(tmpnam(NULL));  /* may generate a warning, but this is safe because we create a directory not a file */
+             if (mkdir(tmpdir, 0700) == 0)
+                 break;
+-            free(tmpdir);
++            xfree(tmpdir);
+         }
+     }
+ 
+@@ -606,16 +656,20 @@
+ 
+     /* Build up filter. */
+     if (optind < argc) {
+-        char **a;
+-        int l;
+-        for (a = argv + optind, l = sizeof("tcp and ()"); *a; l += strlen(*a) + 1, ++a);
+-        filterexpr = calloc(l, 1);
+-        strcpy(filterexpr, "tcp and (");
+-        for (a = argv + optind; *a; ++a) {
+-            strcat(filterexpr, *a);
+-            if (*(a + 1)) strcat(filterexpr, " ");
++        if (dumpfile)
++            fprintf(stderr, PROGNAME": filter code ignored with dump file\n");
++        else {
++            char **a;
++            int l;
++            for (a = argv + optind, l = sizeof("tcp and ()"); *a; l += strlen(*a) + 1, ++a);
++            filterexpr = calloc(l, 1);
++            strcpy(filterexpr, "tcp and (");
++            for (a = argv + optind; *a; ++a) {
++                strcat(filterexpr, *a);
++                if (*(a + 1)) strcat(filterexpr, " ");
++            }
++            strcat(filterexpr, ")");
+         }
+-        strcat(filterexpr, ")");
+     } else filterexpr = "tcp";
+ 
+     if (verbose)
+@@ -662,27 +716,33 @@
+ #endif /* !NO_DISPLAY_WINDOW */
+  
+     /* Start up pcap. */
++    if (dumpfile) {
++        if (!(pc = pcap_open_offline(dumpfile, ebuf))) {
++            fprintf(stderr, PROGNAME": pcap_open_offline: %s\n", ebuf);
++            return -1;
++        }   
++    } else {
++        if (!(pc = pcap_open_live(interface, SNAPLEN, promisc, 1000, ebuf))) {
++            fprintf(stderr, PROGNAME": pcap_open_live: %s\n", ebuf);
+ 
+-    pc = pcap_open_live(interface, SNAPLEN, promisc, 1000, ebuf);
+-    if (!pc) {
+-        fprintf(stderr, PROGNAME": pcap_open_live: %s\n", ebuf);
+-
+-        if (getuid() != 0)
+-            fprintf(stderr, PROGNAME": perhaps you need to be root?\n");
+-        else if (!interface)
+-            fprintf(stderr, PROGNAME": perhaps try selecting an interface with the -i option?\n");
+-            
+-        return -1;
+-    }
+-    
+-    if (pcap_compile(pc, &filter, (char*)filterexpr, 1, 0) == -1) {
+-        fprintf(stderr, PROGNAME": pcap_compile: %s\n", pcap_geterr(pc));
+-        return -1;
+-    }
++            if (getuid() != 0)
++                fprintf(stderr, PROGNAME": perhaps you need to be root?\n");
++            else if (!interface)
++                fprintf(stderr, PROGNAME": perhaps try selecting an interface with the -i option?\n");
++                
++            return -1;
++        }
+     
+-    if (pcap_setfilter(pc, &filter) == -1) {
+-        fprintf(stderr, PROGNAME": pcap_setfilter: %s\n", pcap_geterr(pc));
+-        return -1;
++        /* Only apply a filter to live packets. Is this right? */
++        if (pcap_compile(pc, &filter, (char*)filterexpr, 1, 0) == -1) {
++            fprintf(stderr, PROGNAME": pcap_compile: %s\n", pcap_geterr(pc));
++            return -1;
++        }
++        
++        if (pcap_setfilter(pc, &filter) == -1) {
++            fprintf(stderr, PROGNAME": pcap_setfilter: %s\n", pcap_geterr(pc));
++            return -1;
++        }
+     }
+ 
+     /* Figure out the offset from the start of a returned packet to the data in
+@@ -693,7 +753,7 @@
+ 
+     slotsused = 0;
+     slotsalloc = 64;
+-    slots = (connection*)calloc(slotsalloc, sizeof(connection));
++    slots = (connection*)xcalloc(slotsalloc, sizeof(connection));
+ 
+     /* Actually start the capture stuff up. Unfortunately, on many platforms,
+      * libpcap doesn't have read timeouts, so we start the thing up in a
+@@ -724,8 +784,15 @@
+     pthread_join(packetth, NULL);
+     
+     /* Clean up. */
++/*    pcap_freecode(pc, &filter);*/ /* not on some systems... */
+     pcap_close(pc);
+     clean_temporary_directory();
+ 
++    /* Easier for memory-leak debugging if we deallocate all this here.... */
++    for (C = slots; C < slots + slotsalloc; ++C)
++        if (*C) connection_delete(*C);
++    xfree(slots);
++    xfree(tmpdir);
++
+     return 0;
+ }
+diff -urN driftnet-0.1.6/driftnet.h driftnet/driftnet.h
+--- driftnet-0.1.6/driftnet.h	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/driftnet.h	2005-08-14 07:44:00.000000000 -0500
+@@ -5,7 +5,7 @@
+  * Copyright (c) 2001 Chris Lightfoot. All rights reserved.
+  * Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
+  *
+- * $Id: driftnet.h,v 1.9 2002/06/13 20:06:42 chris Exp $
++ * $Id: driftnet.h,v 1.13 2004/04/08 23:06:29 chris Exp $
+  *
+  */
+ 
+@@ -14,18 +14,27 @@
+ 
+ #define PROGNAME    "driftnet"
+ 
+-#include <sys/types.h> /* added 20020604 edobbs for OpenBSD */
++#include <sys/types.h>
++
+ #include <sys/socket.h>
+ #include <netinet/in.h>
+ #include <arpa/inet.h>
+ #include <sys/time.h>
+ #include <stdio.h>
++#ifndef USE_SYS_TYPES_H
++#   include <stdint.h>
++#endif
++
++/* alloc_struct S P
++ * Make P point to a new struct S, initialised as if in static storage (like
++ * = {0}). */
++#define alloc_struct(S, p)  do { struct S as__z = {0}; p = xmalloc(sizeof *p); *p = as__z; } while (0)
+ 
+ /* enum mediatype:
+- * Characterise types of media which we can extract. */
+-enum mediatype { m_image = 1, m_audio = 2 };
++ * Bit field to characterise types of media which we can extract. */
++enum mediatype { m_image = 1, m_audio = 2, m_text = 4 };
+ 
+-#define NMEDIATYPES     3       /* keep up to date with media.c */
++#define NMEDIATYPES     5       /* keep up to date with media.c */
+ 
+ /* struct datablock:
+  * Represents an extent in a captured stream. */
+@@ -35,15 +44,27 @@
+ };
+ 
+ /* connection:
+- * Object representing one half of a TCP stream connection. */
++ * Object representing one half of a TCP stream connection. Each connection
++ * maintains a record of the data which has been recovered from the network
++ * and a list of blocks of data which represent valid data in the buffer, so
++ * that if there is a gap in the received data, we don't search it for
++ * data. */
+ typedef struct _connection {
++    /* Source/destination address/port of this half-duplex connection. */
+     struct in_addr src, dst;
+     short int sport, dport;
++    /* The TCP initial-sequence-number of the connection. */
+     uint32_t isn;
+-    unsigned int len, off, alloc;
+-    unsigned char *data, *gif, *jpeg, *mpeg;
++    /* The highest offset and the buffer size allocated, and the buffer
++     * itself. */
++    unsigned int len, alloc;
++    unsigned char *data;
++    /* Flag indicating that we've seen a FIN-flagged segment for this stream,
++     * so that it is undergoing a shutdown. */
+     int fin;
++    /* The time at which we last received any data on this stream. */
+     time_t last;
++    /* A list of the extents in the buffer which contain valid data. */
+     struct datablock *blocks;
+ } *connection;
+ 
+@@ -61,6 +82,14 @@
+ /* media.c */
+ void connection_extract_media(connection c, const enum mediatype T);
+ 
++/* util.c */
++void *xmalloc(size_t n);
++void *xcalloc(size_t n, size_t m);
++void *xrealloc(void *w, size_t n);
++void xfree(void *v);
++char *xstrdup(const char *s);
++unsigned char *memstr(const unsigned char *haystack, const size_t hlen, const unsigned char *needle, const size_t nlen);
++
+ #define TMPNAMELEN      64
+ 
+ #endif /* __DRIFTNET_H_ */
+diff -urN driftnet-0.1.6/endian.c driftnet/endian.c
+--- driftnet-0.1.6/endian.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/endian.c	2005-08-14 07:44:00.000000000 -0500
+@@ -7,7 +7,7 @@
+  *
+  */
+ 
+-static const char rcsid[] = "$Id: endian.c,v 1.5 2002/06/10 21:25:48 chris Exp $";
++static const char rcsid[] = "$Id: endian.c,v 1.6 2003/11/03 10:40:23 chris Exp $";
+ 
+ #include <stdio.h>
+ #ifdef USE_SYS_TYPES_H
+@@ -18,18 +18,18 @@
+ 
+ int main(void) {
+ #if defined(LITTLE_ENDIAN) || defined(_LITTLE_ENDIAN)
+-    printf("-DDRIFTNET_LITTLE_ENDIAN\n");
++    printf("#define DRIFTNET_LITTLE_ENDIAN\n");
+ 	return 0;
+ #elif defined(BIG_ENDIAN) || defined(_BIG_ENDIAN)
+-    printf("-DDRIFTNET_BIG_ENDIAN\n");
++    printf("#define DRIFTNET_BIG_ENDIAN\n");
+ 	return 0;
+ #else
+     uint32_t a = 0;
+     *((uint8_t*)&a) = 0xff;
+     if (a == 0xff000000)
+-        printf("-DDRIFTNET_BIG_ENDIAN\n");
++        printf("#define DRIFTNET_BIG_ENDIAN\n");
+     else if (a == 0x000000ff)
+-        printf("-DDRIFTNET_LITTLE_ENDIAN\n");
++        printf("#define DRIFTNET_LITTLE_ENDIAN\n");
+     else
+         return -1; /* don't know. */
+ #endif  /* endianness test */
+diff -urN driftnet-0.1.6/http.c driftnet/http.c
+--- driftnet-0.1.6/http.c	1969-12-31 18:00:00.000000000 -0600
++++ driftnet/http.c	2005-08-14 07:44:00.000000000 -0500
+@@ -0,0 +1,124 @@
++/*
++ * http.c:
++ * Look for HTTP requests in buffers.
++ *
++ * We look for GET requests only, and only if the response is of type
++ * text/html.
++ *
++ * Copyright (c) 2003 Chris Lightfoot. All rights reserved.
++ * Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
++ *
++ */
++
++static const char rcsid[] = "$Id: http.c,v 1.1 2003/08/12 14:14:15 chris Exp $";
++
++#include <sys/types.h>
++
++#include <stdlib.h>
++#include <string.h>
++
++#include "driftnet.h"
++
++/* find_http_req DATA LEN FOUND FOUNDLEN
++ * Look for an HTTP request and response in buffer DATA of length LEN. The
++ * return value is a pointer into DATA suitable for a subsequent call to this
++ * function; *FOUND is either NULL, or a pointer to the start of an HTTP
++ * request; in the latter case, *FOUNDLEN is the length of the match
++ * containing enough information to obtain the URL. */
++unsigned char *find_http_req(const unsigned char *data, const size_t len, unsigned char **http, size_t *httplen) {
++    unsigned char *req, *le, *blankline, *hosthdr;
++    
++#define remaining(x)    (len - (data - (x)))
++#define MAX_REQ         16384
++    
++    /* HTTP requests look like:
++     *
++     *      GET {path} HTTP/1.(0|1)\r\n
++     *      header: value\r\n
++     *          ...
++     *      \r\n
++     *
++     * We may care about the Host: header in the request. */
++    if (len < 40)
++        return (unsigned char*)data;
++    
++    if (!(req = memstr(data, len, "GET ", 4)))
++        return (unsigned char*)(data + len - 4);
++
++    /* Find the end of the request line. */
++    if (!(le = memstr(req + 4, remaining(req + 4), "\r\n", 2))) {
++        if (remaining(req + 4) > MAX_REQ)
++            return (unsigned char*)(req + 4);
++        else
++            return (unsigned char*)req;
++    }
++
++    /* Not enough space for a path. */
++    if (le < req + 5)
++        return le + 2;
++
++    /* Not an HTTP request, just a line starting GET.... */
++    if (memcmp(le - 9, " HTTP/1.", 8) || !strchr("01", (int)*(le - 1)))
++        return le + 2;
++
++    /* Find the end of the request headers. */
++    if (!(blankline = memstr(le + 2, remaining(le + 2), "\r\n\r\n", 4))) {
++        if (remaining(le + 2) > MAX_REQ)
++            return (unsigned char*)(data + len - 4);
++        else
++            return req;
++    }
++
++    if (memcmp(req + 4, "http://", 7) == 0)
++        /* Probably a cache request; in any case, don't need to look for a Host:. */
++        goto found;
++
++    /* Is there a Host: header? */
++    if (!(hosthdr = memstr(le, blankline - le + 2, "\r\nHost: ", 8))) {
++        return blankline + 4;
++    }
++
++found:
++    
++    *http = req;
++    *httplen = blankline - req;
++
++    return blankline + 4;
++}
++
++void dispatch_http_req(const char *mname, const unsigned char *data, const size_t len) {
++    char *url;
++    const char *path, *host;
++    int pathlen, hostlen;
++    const unsigned char *p;
++    
++    if (!(p = memstr(data, len, "\r\n", 2)))
++        return;
++    
++    path = (const char*)(data + 4);
++    pathlen = (p - 9) - (unsigned char*)path;
++
++    if (memcmp(path, "http://", 7) == 0) {
++        url = malloc(pathlen + 1);
++        sprintf(url, "%.*s", pathlen, path);
++    } else {
++
++        if (!(p = memstr(p, len - (p - data), "\r\nHost: ", 8)))
++            return;
++
++        host = (const char*)(p + 8);
++    
++        if (!(p = memstr(p + 8, len - (p + 8 - data), "\r\n", 2)))
++            return;
++        hostlen = p - (const unsigned char*)host;
++
++        if (hostlen == 0)
++            return;
++   
++        url = malloc(hostlen + pathlen + 9);
++        sprintf(url, "http://%.*s%.*s", hostlen, host, pathlen, path);
++    }
++
++    fprintf(stderr, "\n\n  %s\n\n", url);
++    free(url);
++}
+diff -urN driftnet-0.1.6/image.c driftnet/image.c
+--- driftnet-0.1.6/image.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/image.c	2005-08-14 07:44:00.000000000 -0500
+@@ -7,40 +7,20 @@
+  *
+  */
+ 
+-static const char rcsid[] = "$Id: image.c,v 1.10 2002/07/02 22:17:25 chris Exp $";
++static const char rcsid[] = "$Id: image.c,v 1.13 2003/08/25 12:23:43 chris Exp $";
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <netinet/in.h>
+ 
+-/* memstr:
+- * Locate needle, of length n_len, in haystack, of length h_len, returning NULL.
+- * Uses the Boyer-Moore search algorithm. Cf.
+- *  http://www-igm.univ-mlv.fr/~lecroq/string/node14.html */
+-static unsigned char *memstr(const unsigned char *haystack, const size_t hlen,
+-                             const unsigned char *needle, const size_t nlen) {
+-    int skip[256], k;
+-
+-    if (nlen == 0) return (char*)haystack;
+-
+-    /* Set up the finite state machine we use. */
+-    for (k = 0; k < 255; ++k) skip[k] = nlen;
+-    for (k = 0; k < nlen - 1; ++k) skip[needle[k]] = nlen - k - 1;
+-
+-    /* Do the search. */
+-    for (k = nlen - 1; k < hlen; k += skip[haystack[k]]) {
+-        int i, j;
+-        for (j = nlen - 1, i = k; j >= 0 && haystack[i] == needle[j]; j--) i--;
+-        if (j == -1) return (unsigned char*)(haystack + i + 1);
+-    }
+-
+-    return NULL;
+-}
++#include "img.h"
+ 
++#include "driftnet.h"
+ 
+ /* If we run out of space, put us back to the last candidate GIF header. */
+ /*#define spaceleft       do { if (block > data + len) { printf("ran out of space\n"); return gifhdr; } } while (0)*/
+-#define spaceleft       if (block > data + len) return gifhdr
++#define spaceleft       if (block >= data + len) return gifhdr /* > ?? */
+ 
+ unsigned char *find_gif_image(const unsigned char *data, const size_t len, unsigned char **gifdata, size_t *giflen) {
+     unsigned char *gifhdr, *block;
+@@ -59,6 +39,7 @@
+     ncolours = (1 << ((gifhdr[10] & 0x7) + 1));
+     /* printf("gif header %d colours\n", ncolours); */
+     block = gifhdr + 13;
++    spaceleft;
+     if (gifhdr[10] & 0x80) block += 3 * ncolours; /* global colour table */
+     spaceleft;
+ 
+@@ -68,9 +49,12 @@
+             case 0x2c:
+                 /* image block */
+                 /* printf("image data\n"); */
+-                if (block[9] & 0x80)
++                if (block + 9 > data + len) return gifhdr;
++                if (block[9] & 0x80) {
+                     /* local colour table */
+                     block += 3 * ((1 << ((gifhdr[9] & 0x7) + 1)));
++                    spaceleft;
++                }
+                 block += 10;
+                 ++block;        /* lzw code size */
+                 do {
+@@ -195,7 +179,7 @@
+     if (!block || (block - data) >= len) return jpeghdr;
+ 
+     /* now we need to find the onward count from this place */
+-    while ((block = jpeg_skip_block(block + 1, len - (block - data)))) {
++    while ((block = jpeg_skip_block(block + 1, len - (block + 1 - data)))) {
+         /* printf("data = %p block = %p\n", data, block); */
+ 
+         block = jpeg_next_marker(block, len - (block - data));
+@@ -218,6 +202,64 @@
+     return jpeghdr;
+ }
+ 
++/* find_png_eoi BUFFER LEN
++ * Returns the first position in BUFFER of LEN bytes after the end of the image
++ * or NULL if end of image not found. */
++unsigned char *find_png_eoi(unsigned char *buffer, const size_t len) {
++    unsigned char *end_data, *data, chunk_code[PNG_CODE_LEN + 1];
++    struct png_chunk chunk;
++    u_int32_t datalen;
++
++    /* Move past the PNG header */
++    data = (buffer + PNG_SIG_LEN);
++    end_data = (buffer + len - (sizeof(struct png_chunk) + PNG_CRC_LEN));
++
++    while (data <= end_data) {
++        memcpy(&chunk, data, sizeof chunk);
++/*        chunk = (struct png_chunk *)data; */ /* can't do that. */
++        memset(chunk_code, '\0', PNG_CODE_LEN + 1);
++        memcpy(chunk_code, chunk.code, PNG_CODE_LEN);  
++        
++        datalen = ntohl(chunk.datalen);
++
++        if (!strncasecmp(chunk_code, "iend", PNG_CODE_LEN))
++            return (unsigned char *)(data + sizeof(struct png_chunk) + PNG_CRC_LEN);
++
++        /* Would this push us off the end of the buffer? */
++        if (datalen > (len - (data - buffer)))
++            return NULL;
++        
++        data += (sizeof(struct png_chunk) + datalen + PNG_CRC_LEN);        
++    }
++
++    return NULL;
++}
++
++/* find_png_image DATA LEN PNGDATA PNGLEN
++ * Look for PNG images in LEN bytes buffer DATA. */
++unsigned char *find_png_image(const unsigned char *data, const size_t len, unsigned char **pngdata, size_t *pnglen) {
++    unsigned char *pnghdr, *data_end, *png_eoi;
++
++    *pngdata = NULL;
++
++    if (len < PNG_SIG_LEN) 
++       return (unsigned char*)data;
++
++    pnghdr = memstr(data, len, "\x89\x50\x4e\x47\x0d\x0a\x1a\x0a", PNG_SIG_LEN);
++    if (!pnghdr)
++        return (unsigned char*)(data + len - PNG_SIG_LEN); 
++
++    data_end = (unsigned char *)(data + len);
++
++    if ((png_eoi = find_png_eoi(pnghdr, (data_end - pnghdr))) == NULL)
++        return pnghdr;
++
++    *pngdata = pnghdr;
++    *pnglen = (png_eoi - pnghdr);
++    return png_eoi;
++}
++
++
+ #if 0
+ #include <unistd.h>
+ #include <fcntl.h>
+diff -urN driftnet-0.1.6/img.c driftnet/img.c
+--- driftnet-0.1.6/img.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/img.c	2005-08-14 07:44:00.000000000 -0500
+@@ -9,12 +9,13 @@
+ 
+ #ifndef NO_DISPLAY_WINDOW
+ 
+-static const char rcsid[] = "$Id: img.c,v 1.9 2002/07/08 20:57:17 chris Exp $";
++static const char rcsid[] = "$Id: img.c,v 1.11 2003/08/25 12:23:43 chris Exp $";
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
+ 
++#include "driftnet.h"
+ #include "img.h"
+ 
+ #define INLINE  inline
+@@ -38,6 +39,12 @@
+ int jpeg_load_img(img I);
+ int jpeg_save_img(const img I, FILE *fp);
+ 
++/* png.c */
++int png_load_hdr(img I);
++/*int png_abort_load(img I);*/
++int png_load_img(img I);
++/*int png_save_img(const img I, FILE *fp);*/
++
+ #if 0
+ /* raw.c */
+ int raw_load_img(img I);
+@@ -59,8 +66,9 @@
+ */
+         {gif,       ".gif\0",                   gif_load_hdr,   gif_abort_load,     gif_load_img,   NULL},
+         {jpeg,      ".jpg\0.jpeg\0",            jpeg_load_hdr,  jpeg_abort_load,    jpeg_load_img,  jpeg_save_img},
++        {png,       ".png\0",                   png_load_hdr,   NULL /*png_abort_load*/,
++                                                                                    png_load_img,   NULL /*png_save_img*/},
+ /*
+-        {png,       ".png\0",                   png_load_hdr,   png_abort_load,     png_load_img,   png_save_img},
+         {raw,       "",                         NULL,           raw_load_img,       NULL,           raw_save_img},
+ */
+     };
+@@ -68,18 +76,16 @@
+ #define NUMFILEDRVS (sizeof(filedrvs) / sizeof(struct filedrv))
+ 
+ /* img_new:
+- * Create a new empty image object.
+- */
++ * Create a new empty image object. */
+ img img_new(void) {
+     img I;
+-    I = (img)malloc(sizeof(struct _img));
++    I = (img)xmalloc(sizeof(struct _img));
+     memset(I, 0, sizeof(struct _img));
+     return I;
+ }
+ 
+ /* img_new_blank:
+- * Create a new image object.
+- */
++ * Create a new image object. */
+ img img_new_blank(const unsigned int width, const unsigned int height) {
+     img I = img_new();
+     I->width = width;
+@@ -91,28 +97,26 @@
+ 
+ /* img_alloc:
+  * Allocate memory for an image object. The memory is allocated as a big
+- * block, with pointers fixed up at the beginning.
+- */
++ * block, with pointers fixed up at the beginning. */
+ void img_alloc(img I) {
+     pel **p, *q;
+-    I->data = (pel**)calloc(I->height * sizeof(pel*) + I->width * I->height * sizeof(pel), 1);
++    I->data = (pel**)xcalloc(I->height * sizeof(pel*) + I->width * I->height * sizeof(pel), 1);
+     I->flat = (pel*)(I->data + I->height);
+     for (p = I->data, q = I->flat; p < I->data + I->height; ++p, q += I->width)
+         *p = q;
+ }
+ 
+ /* img_delete:
+- * Free memory associated with an image object.
+- */
++ * Free memory associated with an image object. */
+ void img_delete(img I) {
+-    if (I->data) free(I->data);
+-    free(I);
++    if (I->data) xfree(I->data);
++    if (I->fp) fclose(I->fp);
++    xfree(I);
+ }
+ 
+ /* img_load:
+  * Load an image, or part of it, from the associated stream. Returns 1 on
+- * success or 0 on failure.
+- */
++ * success or 0 on failure. */
+ int img_load(img I, const imgstate howmuch, const imgtype type) {
+     int i;
+     if (type == unknown) {
+@@ -145,16 +149,14 @@
+ }
+ 
+ /* img_load_stream:
+- * Associate an image with a stream and load something from it.
+- */
++ * Associate an image with a stream and load something from it. */
+ int img_load_stream(img I, FILE *fp, const imgstate howmuch, const imgtype type) {
+     I->fp = fp;
+     return img_load(I, howmuch, type);
+ }
+ 
+ /* img_load_file:
+- * Load an image, or part of it, from a file.
+- */
++ * Load an image, or part of it, from a file. */
+ int img_load_file(img I, const char *name, const imgstate howmuch, const imgtype type) {
+     if (howmuch == none) return 1;
+     I->fp = fopen(name, "rb");
+@@ -183,8 +185,7 @@
+ }
+ 
+ /* img_save_file:
+- * Save an image in a file of the specified type.
+- */
++ * Save an image in a file of the specified type. */
+ int img_save(const img I, FILE *fp, const imgtype type) {
+     int i;
+     if (type == unknown) {
+@@ -201,8 +202,7 @@
+ /* img_clip_adj_x:
+  * img_clip_adj_y:
+  * Return an adjustment to the passed coordinate which will put it in the
+- * clipping region for the image.
+- */
++ * clipping region for the image. */
+ INLINE int img_clip_adj_x(const img I, const int x) {
+     if (x < 0) return -x;
+     if (x >= I->width) return I->width - x;
+@@ -216,16 +216,14 @@
+ }
+ 
+ /* img_clip:
+- * Clip coordinates against an image.
+- */
++ * Clip coordinates against an image. */
+ INLINE void img_clip(const img I, int *x, int *y) {
+     *x += img_clip_adj_x(I, *x);
+     *y += img_clip_adj_y(I, *y);
+ }
+ 
+ /* img_simple_blt:
+- * Copy a rectangle, ignoring clipping and overlapping regions.
+- */
++ * Copy a rectangle, ignoring clipping and overlapping regions. */
+ INLINE void img_simple_blt(img dest, const int dx, const int dy, img src, const int sx, const int sy, const int w, const int h) {
+     int y, y2;
+     for (y = sy, y2 = dy; y < sy + h; ++y, ++y2)
+diff -urN driftnet-0.1.6/img.h driftnet/img.h
+--- driftnet-0.1.6/img.h	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/img.h	2005-08-14 07:44:00.000000000 -0500
+@@ -5,7 +5,7 @@
+  * Copyright (c) 2001 Chris Lightfoot. All rights reserved.
+  * Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
+  *
+- * $Id: img.h,v 1.7 2002/07/08 20:57:17 chris Exp $
++ * $Id: img.h,v 1.9 2003/11/03 10:40:23 chris Exp $
+  *
+  */
+ 
+@@ -22,6 +22,8 @@
+ 
+ #include <stdio.h>
+ 
++#include "endianness.h"
++
+ typedef uint8_t chan;
+ typedef uint32_t pel;
+ 
+@@ -46,6 +48,10 @@
+ #   error "no endianness defined"
+ #endif
+ 
++#define PNG_CODE_LEN 4
++#define PNG_CRC_LEN  4
++#define PNG_SIG_LEN  8
++
+ typedef enum { unknown = 0, pnm = 1, gif = 2, jpeg = 3, png = 4, raw = 5 } imgtype;
+ typedef enum { none = 0, header = 1, full = 2 } imgstate;
+ 
+@@ -68,6 +74,11 @@
+     imgerr err;
+ } *img;
+ 
++struct png_chunk {
++   uint32_t datalen;
++   unsigned char code[PNG_CODE_LEN];
++};
++
+ img img_new(void);
+ img img_new_blank(const unsigned int width, const unsigned int height);
+ void img_alloc(img I);
+diff -urN driftnet-0.1.6/jpeg.c driftnet/jpeg.c
+--- driftnet-0.1.6/jpeg.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/jpeg.c	2005-08-14 07:44:00.000000000 -0500
+@@ -9,13 +9,14 @@
+ 
+ #ifndef NO_DISPLAY_WINDOW
+ 
+-static const char rcsid[] = "$Id: jpeg.c,v 1.5 2002/07/08 20:57:17 chris Exp $";
++static const char rcsid[] = "$Id: jpeg.c,v 1.6 2003/08/12 14:09:57 chris Exp $";
+ 
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <setjmp.h>
+ #include <jpeglib.h>
+ 
++#include "driftnet.h"
+ #include "img.h"
+ 
+ /* struct my_error_mgr:
+@@ -38,9 +39,9 @@
+ int jpeg_load_hdr(img I) {
+     struct jpeg_decompress_struct *cinfo;
+     struct my_error_mgr *jerr;
+-    cinfo = (struct jpeg_decompress_struct*)calloc(sizeof(struct jpeg_decompress_struct), 1);
++    alloc_struct(jpeg_decompress_struct, cinfo);
+     I->us = cinfo;
+-    jerr = (struct my_error_mgr*)calloc(sizeof(struct my_error_mgr), 1);
++    alloc_struct(my_error_mgr, jerr);
+     cinfo->err = jpeg_std_error(&jerr->pub);
+     jerr->pub.error_exit = my_error_exit;
+     if (setjmp(jerr->jb)) {
+diff -urN driftnet-0.1.6/media.c driftnet/media.c
+--- driftnet-0.1.6/media.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/media.c	2005-08-14 07:44:00.000000000 -0500
+@@ -7,7 +7,7 @@
+  *
+  */
+ 
+-static const char rcsid[] = "$Id: media.c,v 1.6 2002/07/08 23:32:33 chris Exp $";
++static const char rcsid[] = "$Id: media.c,v 1.9 2003/08/25 12:23:43 chris Exp $";
+ 
+ #include <assert.h>
+ #include <dirent.h>
+@@ -27,10 +27,15 @@
+ /* image.c */
+ unsigned char *find_gif_image(const unsigned char *data, const size_t len, unsigned char **gifdata, size_t *giflen);
+ unsigned char *find_jpeg_image(const unsigned char *data, const size_t len, unsigned char **jpegdata, size_t *jpeglen);
++unsigned char *find_png_image(const unsigned char *data, const size_t len, unsigned char **pngdata, size_t *pnglen);
+ 
+ /* audio.c */
+ unsigned char *find_mpeg_stream(const unsigned char *data, const size_t len, unsigned char **mpegdata, size_t *mpeglen);
+ 
++/* http.c */
++unsigned char *find_http_req(const unsigned char *data, const size_t len, unsigned char **http, size_t *httplen);
++void dispatch_http_req(const char *mname, const unsigned char *data, const size_t len);
++
+ /* playaudio.c */
+ void mpeg_submit_chunk(const unsigned char *data, const size_t len);
+ 
+@@ -49,7 +54,7 @@
+             while ((de = readdir(d))) {
+                 char *p;
+                 p = strrchr(de->d_name, '.');
+-                if (p && (strncmp(de->d_name, "driftnet-", 9) == 0 && (strcmp(p, ".jpeg") == 0 || strcmp(p, ".gif") == 0 || strcmp(p, ".mp3") == 0)))
++                if (p && (strncmp(de->d_name, "driftnet-", 9) == 0 && (strcmp(p, ".jpeg") == 0 || strcmp(p, ".gif") == 0 || strcmp(p, ".png") == 0 || strcmp(p, ".mp3") == 0)))
+                     ++num;
+             }
+             closedir(d);
+@@ -62,13 +67,14 @@
+ /* dispatch_image:
+  * Throw some image data at the display process. */
+ void dispatch_image(const char *mname, const unsigned char *data, const size_t len) {
+-    char *buf, name[TMPNAMELEN];
++    char *buf, name[TMPNAMELEN] = {0};
+     int fd;
+-    buf = malloc(strlen(tmpdir) + 64);
++    buf = xmalloc(strlen(tmpdir) + 64);
+     sprintf(name, "driftnet-%08x%08x.%s", (unsigned int)time(NULL), rand(), mname);
+     sprintf(buf, "%s/%s", tmpdir, name);
+     fd = open(buf, O_WRONLY | O_CREAT | O_EXCL, 0644);
+-    if (fd == -1) return;
++    if (fd == -1)
++        return;
+     write(fd, data, len);
+     close(fd);
+ 
+@@ -79,7 +85,7 @@
+         write(dpychld_fd, name, sizeof name);
+ #endif /* !NO_DISPLAY_WINDOW */
+ 
+-    free(buf);
++    xfree(buf);
+ }
+ 
+ /* dispatch_mpeg_audio:
+@@ -98,11 +104,13 @@
+ } driver[NMEDIATYPES] = {
+         { "gif",  m_image, find_gif_image,   dispatch_image },
+         { "jpeg", m_image, find_jpeg_image,  dispatch_image },
+-        { "mpeg", m_audio, find_mpeg_stream, dispatch_mpeg_audio }
++        { "png",  m_image, find_png_image,   dispatch_image },
++        { "mpeg", m_audio, find_mpeg_stream, dispatch_mpeg_audio },
++        { "HTTP", m_text,  find_http_req,    dispatch_http_req }
+     };
+ 
+-/* connection_extract_media:
+- * Attempt to extract media data of given type/s from the named connection. */
++/* connection_extract_media CONNECTION TYPE
++ * Attempt to extract media data of the given TYPE from CONNECTION. */
+ void connection_extract_media(connection c, const enum mediatype T) {
+     struct datablock *b;
+     extern int max_tmpfiles;  /* in driftnet.c */
+diff -urN driftnet-0.1.6/mpeghdr.h driftnet/mpeghdr.h
+--- driftnet-0.1.6/mpeghdr.h	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/mpeghdr.h	2005-08-14 07:44:00.000000000 -0500
+@@ -5,7 +5,7 @@
+  * Copyright (c) 2002 Chris Lightfoot. All rights reserved.
+  * Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
+  *
+- * $Id: mpeghdr.h,v 1.3 2002/06/10 21:25:48 chris Exp $
++ * $Id: mpeghdr.h,v 1.4 2003/05/20 16:49:08 chris Exp $
+  *
+  */
+ 
+@@ -15,7 +15,7 @@
+ #ifdef USE_SYS_TYPES_H
+ #	include <sys/types.h>  /* Solaris etc. */
+ #else
+-#	include <stdint.h>         /* C99 standard. */
++#	include <stdint.h>     /* C99 standard. */
+ #endif
+ 
+ #include <stdio.h>
+diff -urN driftnet-0.1.6/playaudio.c driftnet/playaudio.c
+--- driftnet-0.1.6/playaudio.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/playaudio.c	2005-08-14 07:44:00.000000000 -0500
+@@ -13,7 +13,7 @@
+  *
+  */
+ 
+-static const char rcsid[] = "$Id: playaudio.c,v 1.4 2002/06/04 19:09:02 chris Exp $";
++static const char rcsid[] = "$Id: playaudio.c,v 1.5 2003/08/12 14:12:29 chris Exp $";
+ 
+ #include <sys/types.h>
+ 
+@@ -57,10 +57,10 @@
+  * Allocate a buffer and copy some data into it. */
+ static audiochunk audiochunk_new(const unsigned char *data, const size_t len) {
+     audiochunk A;
+-    A = calloc(1, sizeof *A);
++    alloc_struct(_audiochunk, A);
+     A->len = len;
+     if (data) {
+-        A->data = malloc(len);
++        A->data = xmalloc(len);
+         memcpy(A->data, data, len);
+     }
+     return A;
+@@ -69,8 +69,8 @@
+ /* audiochunk_delete:
+  * Free memory from an audiochunk. */
+ static void audiochunk_delete(audiochunk A) {
+-    free(A->data);
+-    free(A);
++    xfree(A->data);
++    xfree(A);
+ }
+ 
+ /* audiochunk_write:
+diff -urN driftnet-0.1.6/png.c driftnet/png.c
+--- driftnet-0.1.6/png.c	2002-07-09 14:26:41.000000000 -0500
++++ driftnet/png.c	2005-08-14 07:44:00.000000000 -0500
+@@ -1,10 +1,161 @@
+ /*
+  * png.c:
++ * PNG image support.
+  *
+- * Copyright (c) 2001 Chris Lightfoot. All rights reserved.
++ * Copyright (c) 2003 Drew Roedersheimer, Chris Lightfoot. All rights reserved.
+  * Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
+  *
+  */
+ 
+-static const char rcsid[] = "$Id: png.c,v 1.3 2002/06/10 21:25:48 chris Exp $";
++#ifndef NO_DISPLAY_WINDOW
+ 
++#include <png.h>
++
++#include "img.h"
++
++static const char rcsid[] = "$Id: png.c,v 1.4 2003/08/25 12:23:43 chris Exp $";
++
++int png_load_hdr(img I) {
++    unsigned char sig[PNG_SIG_LEN];
++    png_structp png_ptr;
++    png_infop info_ptr;
++
++    rewind(I->fp);
++
++    if (fread(sig, sizeof(sig[0]), PNG_SIG_LEN, I->fp) != PNG_SIG_LEN) {
++        return(0);
++    }
++
++    /* Check the PNG signature of the file */
++    if (png_sig_cmp(sig, (png_size_t)0, PNG_SIG_LEN)) {
++        I->err = IE_HDRFORMAT;
++        return 0;
++    }
++
++    png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,
++        NULL, NULL, NULL);
++
++    if (png_ptr == NULL) {
++        I->err = IE_HDRFORMAT;
++        return 0;
++    }
++
++    info_ptr = png_create_info_struct(png_ptr);
++
++    if (info_ptr == NULL) {
++        png_destroy_read_struct(&png_ptr, (png_infopp)NULL, (png_infopp)NULL);
++        I->err = IE_HDRFORMAT;
++        return 0;
++    }
++    
++    rewind(I->fp);
++    png_init_io(png_ptr, I->fp);
++
++    png_read_info(png_ptr, info_ptr);
++
++    I->width = png_get_image_width(png_ptr, info_ptr);
++    I->height = png_get_image_height(png_ptr, info_ptr);
++    
++    png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
++
++    return(1);
++}
++
++int png_abort_load(img I) {
++    return 1;
++}
++
++int png_load_img(img I) {
++    unsigned char **p, **q;
++    png_structp png_ptr;
++    png_infop info_ptr;
++    png_uint_32 width, height;
++    int i, j, bit_depth, color_type, interlace_type;
++    png_bytepp row_pointers;
++
++    img_alloc(I);
++
++    png_ptr = png_create_read_struct(PNG_LIBPNG_VER_STRING,
++        NULL, NULL, NULL);
++
++    if (png_ptr == NULL) {
++        I->err = IE_HDRFORMAT;
++        return 0;
++    }
++
++    info_ptr = png_create_info_struct(png_ptr);
++
++    if (info_ptr == NULL) {
++        png_destroy_read_struct(&png_ptr, (png_infopp)NULL, (png_infopp)NULL);
++        I->err = IE_HDRFORMAT;
++        return 0;
++    }
++    
++    rewind(I->fp);
++    png_init_io(png_ptr, I->fp);
++
++    png_read_info(png_ptr, info_ptr);
++
++    /* Get image specific data */
++    png_get_IHDR(png_ptr, info_ptr, &width, &height, &bit_depth, &color_type,
++        &interlace_type, NULL, NULL);
++
++    /* Convert greyscale images to 8-bit RGB */
++    if (color_type == PNG_COLOR_TYPE_GRAY ||
++        color_type == PNG_COLOR_TYPE_GRAY_ALPHA) {
++        if (bit_depth < 8) {
++            png_set_gray_1_2_4_to_8(png_ptr);
++        }
++        png_set_gray_to_rgb(png_ptr);
++    }
++
++    /* Change paletted images to RGB */
++    if (color_type == PNG_COLOR_TYPE_PALETTE)
++        png_set_expand(png_ptr);
++
++    if (bit_depth < 8)
++        png_set_expand(png_ptr);
++
++    if (bit_depth == 16)
++        png_set_strip_16(png_ptr);
++
++    /* The gdk img widget appears to expect 8-bit RGB followed by a 
++     * filler byte. */
++    png_set_filler(png_ptr, 0, PNG_FILLER_AFTER);
++    
++    /* Update the info structure after the transforms */
++    png_read_update_info(png_ptr, info_ptr); 
++/*    png_set_rows(png_ptr, info_ptr, row_pointers)*/
++
++    /* Allocate space before reading the image */
++    row_pointers = png_malloc(png_ptr, height * sizeof(png_bytep));
++    for (i = 0; i < height; i++) {
++        row_pointers[i] = png_malloc(png_ptr, png_get_rowbytes(png_ptr, info_ptr));
++    }
++    
++    /* Read in the image and copy it to the gdk img structure */
++    png_read_image(png_ptr, row_pointers);
++    
++    p = (unsigned char **)I->data;
++    q = (unsigned char **)row_pointers;
++
++    for (i = 0; i < height; i++) {
++        for (j = 0; j < png_get_rowbytes(png_ptr, info_ptr); j++) {
++           p[i][j] = q[i][j];
++        }
++    }
++
++    png_read_end(png_ptr, info_ptr);
++
++    /* Clean up */
++    png_free(png_ptr, row_pointers);
++    png_destroy_read_struct(&png_ptr, &info_ptr, (png_infopp)NULL);
++
++    return 1;
++}
++
++int png_save_img(const img I, FILE *fp) {
++    return 1;
++}
++
++#endif /* !NO_DISPLAY_WINDOW */
+diff -urN driftnet-0.1.6/util.c driftnet/util.c
+--- driftnet-0.1.6/util.c	1969-12-31 18:00:00.000000000 -0600
++++ driftnet/util.c	2005-08-14 07:44:00.000000000 -0500
+@@ -0,0 +1,83 @@
++/*
++ * util.c:
++ * Various utility functions.
++ *
++ * Copyright (c) 2003 Chris Lightfoot. All rights reserved.
++ * Email: chris@ex-parrot.com; WWW: http://www.ex-parrot.com/~chris/
++ *
++ */
++
++static const char rcsid[] = "$Id: util.c,v 1.2 2003/08/25 12:24:35 chris Exp $";
++
++#include <stdlib.h>
++#include <string.h>
++
++#include "driftnet.h"
++
++/* xmalloc COUNT
++ * Malloc, and abort if malloc fails. */
++void *xmalloc(size_t n) {
++    void *v;
++    v = malloc(n);
++    if (!v) abort();
++    return v;
++}
++
++/* xcalloc NITEMS COUNT
++ * As above. */
++void *xcalloc(size_t n, size_t m) {
++    void *v;
++    v = calloc(n, m);
++    if (!v) abort();
++    return v;
++}
++
++/* xrealloc PTR COUNT
++ * As above. */
++void *xrealloc(void *w, size_t n) {
++    void *v;
++    v = realloc(w, n);
++    if (n != 0 && !v) abort();
++    return v;
++}
++
++/* xfree PTR
++ * Free, ignoring a passed NULL value. */
++void xfree(void *v) {
++    if (v) free(v);
++}
++
++/* xstrdup:
++ * Strdup, aborting on failure. */
++char *xstrdup(const char *s) {
++    char *t;
++    t = xmalloc(strlen(s) + 1);
++    strcpy(t, s);
++    return t;
++}
++
++/* memstr:
++ * Locate needle, of length n_len, in haystack, of length h_len, returning NULL.
++ * Uses the Boyer-Moore search algorithm. Cf.
++ *  http://www-igm.univ-mlv.fr/~lecroq/string/node14.html */
++unsigned char *memstr(const unsigned char *haystack, const size_t hlen,
++                             const unsigned char *needle, const size_t nlen) {
++    int skip[256], k;
++
++    if (nlen == 0) return (char*)haystack;
++
++    /* Set up the finite state machine we use. */
++    for (k = 0; k < 256; ++k) skip[k] = nlen;
++    for (k = 0; k < nlen - 1; ++k) skip[needle[k]] = nlen - k - 1;
++
++    /* Do the search. */
++    for (k = nlen - 1; k < hlen; k += skip[haystack[k]]) {
++        int i, j;
++        for (j = nlen - 1, i = k; j >= 0 && haystack[i] == needle[j]; j--) i--;
++        if (j == -1) return (unsigned char*)(haystack + i + 1);
++    }
++
++    return NULL;
++}
++
++

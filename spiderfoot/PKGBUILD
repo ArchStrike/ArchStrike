@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=spiderfoot
+pkgver=2.3.0
+pkgrel=1
+groups=('projectname' 'projectname-*reconnaissance')
+pkgdesc="The Open Source Footprinting Tool"
+url='http://spiderfoot.net'
+arch=('any')
+license=('GPL2')
+depends=('python2-lxml' 'python2-mako' 'python2-cherrypy' 'python2-m2crypto' 'python2-netaddr')
+source=("http://downloads.sourceforge.net/project/spiderfoot/spiderfoot-$pkgver-src.tar.gz")
+sha512sums=('9d13f08046ab17c087905c9335fef801db1c2e116abdab770684028a478597bbd7441d3a64a91930bbf90d52384d2b5662d32468510399c81b98583072cd6add')
+
+package() {
+  cd "$srcdir/spiderfoot-$pkgver"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/spiderfoot"
+
+  cp -a * "$pkgdir/usr/share/spiderfoot"
+  sed -i 's|python|python2|' $pkgdir/usr/share/spiderfoot/ext/metapdf/metapdf.py
+cat > "$pkgdir/usr/bin/spiderfoot" << EOF
+#!/bin/sh
+cd /usr/share/spiderfoot
+python2 sf.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/spiderfoot"
+}

@@ -1,0 +1,19 @@
+# Maintainer
+pkgname=cisco-router-config
+pkgver=1.0
+pkgrel=1
+pkgdesc="copy-router-config and merge-router-config to copy and merge Cisco Routers Configuration"
+groups=('projectname' 'projectname-*misc')
+license=('GPL')
+depends=('perl' 'perl-cisco-copyconfig')
+arch=(any)
+source=(copy-router-config.pl merge-router-config.pl)
+md5sums=('5b4fd4b7a591fc2852813fe950e93fa4'
+         '5f088d342510793e15fd2a8d31d196ed')
+
+package() {
+  cd "$srcdir"
+  install -d $pkgdir/usr/bin
+  install -m755 {copy,merge}-router-config.pl $pkgdir/usr/bin/
+}
+

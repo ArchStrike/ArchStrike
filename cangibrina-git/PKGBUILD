@@ -1,0 +1,37 @@
+# Maintainer
+# Contributor: Franco Colombino <franco.c.colombino@gmail.com>
+
+_pkgname=cangibrina
+pkgname=$_pkgname-git
+pkgver=20150322.r93.8744afe
+pkgrel=1
+groups=('projectname' 'projectname-*scanner' 'archassault-scanners' 'archassault-webapps')
+pkgdesc='Fast and powerfull dashboard (admin) finder'
+arch=('any')
+url='https://github.com/fnk0c/cangibrina'
+license=('GPL2')
+depends=('python2-mechanize' 'python2-pysocks' 'python2-beautifulsoup4')
+makedepends=('git')
+source=("git+$url")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $_pkgname
+  while read -r; do
+    sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
+}
+
+package() {
+  install -dm755 "$pkgdir"/usr/{bin,share/}
+  cp -r --no-preserve=ownership $_pkgname "$pkgdir/usr/share/"
+  rm -rf "$pkgdir/usr/share/$_pkgname/linux_install.sh" "$pkgdir/usr/share/$_pkgname/.git"
+  printf '%s\n\n%s\n%s\n' '#!/usr/bin/env bash' 'cd /usr/share/cangibrina' 'python2 cangibrina.py "$@"' \
+    > "$pkgdir/usr/bin/$_pkgname"
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+}

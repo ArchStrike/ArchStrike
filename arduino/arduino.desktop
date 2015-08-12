@@ -1,0 +1,13 @@
+[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Name=Arduino
+GenericName=Arduino IDE
+Comment=Open-source electronics prototyping platform
+Exec=arduino %U
+Icon=arduino
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=text/x-arduino;
+Categories=Java;Development;IDE;

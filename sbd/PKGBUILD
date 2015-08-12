@@ -1,0 +1,34 @@
+# Maintainer
+pkgname=sbd
+pkgver=1.36
+pkgrel=2
+groups=('projectname' 'projectname-*networking' 'archassault-cryptography')
+pkgdesc="Netcat-clone, portable, offers strong encryption - features AES-128-CBC + HMAC-SHA1 encryption, program execution (-e), choosing source port, continuous reconnaissancenection with delay + more"
+url='http://www2.packetstormsecurity.org/cgi-bin/search/search.cgi?searchvalue=sbd'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL2')
+source=("http://dl.packetstormsecurity.net/UNIX/netcat/sbd-$pkgver.tar.gz")
+sha512sums=('b980bcc492c112682a989780c9a362e95d50f7d1efd36eccbf5107409762f32b7d590f8d123da750ca091e0607bd4cd88a1124a17ff41c0615a4054aef53403b')
+
+build() {
+  cd "$srcdir/sbd-$pkgver"
+
+  make unix
+}
+
+package() {
+  cd "$srcdir/sbd-$pkgver"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/doc/sbd"
+  install -dm755 "$pkgdir/usr/share/licenses/sbd"
+
+  # Bin.
+  install -Dm755 "$srcdir/sbd-$pkgver/sbd" "$pkgdir/usr/bin/sbd"
+
+  # Docs.
+  install -Dm644 README "$pkgdir/usr/share/doc/sbd/README"
+  install -Dm644 CHANGES "$pkgdir/usr/share/doc/sbd/CHANGES"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/sbd/COPYING"
+}

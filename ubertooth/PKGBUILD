@@ -1,0 +1,43 @@
+# Maintainer
+# Contributor: Ari Mizrahi <codemunchies@debugsecurity.com>
+
+pkgname=ubertooth
+pkgver=2014.02.R2
+pkgrel=5
+groups=('projectname' 'projectname-*bluetooth')
+pkgdesc="A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only"
+url="https://greatscottgadgets.com/ubertoothone"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL')
+makedepends=('cmake' 'libpcap')
+depends=('libusbx' 'libbtbb' 'bluez-libs' 'python2-numpy' 'python2-pyusb' 'python2-pyside' 'libpcap')
+source=("https://github.com/greatscottgadgets/ubertooth/archive/2014-02-R2.tar.gz"
+	'ubertooth.desktop' 'specan_ui.patch' 'usb_dfu.patch')
+sha512sums=('4ca482c0e150503c08117cf09443be77715d7abaffacab3b444165db7cb98a686857e57e5f44cc483c60622c13e9fc2bad8800851c69dbabba241b81add80897'
+            '14936865aebf393e0a20e33533906c5675b6665dfa8707ec9af9568bebf9eb40e0d98b97042984418c9626fd72a49b2521719a7d8f3882127e98fd501c0eb293'
+            'c89cf605005d1fe5030d7e05f3cc9899294065699907b93d64c1adfa3b21d6ef337baa153f01b7ed4e208f3fd767554fe294610d36562e46bb7434f87c4ef47d'
+            '44d23094b42bbd16ed32cfd31ad2e6dbcb32e30f4aa68edd1254861eb6ee0d46d574bd6b64f32e3546635986d20a136d6af91e55aef28f3b89cb645e77cfce11')
+
+prepare(){
+  cd "$srcdir/ubertooth-${pkgver//./-}/host/python/specan_ui"
+  patch CMakeLists.txt < $srcdir/specan_ui.patch
+
+  cd "$srcdir/ubertooth-${pkgver//./-}/host/python/usb_dfu"
+  patch CMakeLists.txt < $srcdir/usb_dfu.patch
+}
+ 
+
+
+build() {
+  cd "$srcdir/ubertooth-${pkgver//./-}/host"
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DPYTHON_EXECUTABLE="/usr/bin/python2" ..
+  make
+}
+
+package() {
+  cd "$srcdir/ubertooth-${pkgver//./-}/host/build"
+  make clock_debug=true install
+  install -Dm644 "$srcdir/ubertooth.desktop" "$pkgdir/usr/share/applications/ubertooth.desktop"
+  sed -i 's|python$|python2|' $pkgdir/usr/bin/ubertooth-dfu $pkgdir/usr/bin/ubertooth-specan-ui
+}

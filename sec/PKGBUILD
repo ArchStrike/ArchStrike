@@ -1,0 +1,30 @@
+# Maintainer: ArchAssault <team at projectname dot org>
+# Contributor: Christian Hesse <mail@eworm.de>
+# Contributor: Ansuransax <ansuransax at hotmail dot com>
+
+pkgname=sec
+pkgver=2.7.7
+pkgrel=1
+pkgdesc="A logfile monitoring tool with support for event correlation, written in perl"
+arch=('any')
+url="http://simple-evcorr.sourceforge.net/"
+license=('GPL')
+depends=('perl')
+groups=('projectname' 'projectname-*misc')
+source=("http://downloads.sourceforge.net/simple-evcorr/${pkgname}-${pkgver}.tar.gz"
+	'sec.service')
+sha512sums=('18f960c19babb8068a46b9477f780e457c6b7b17bff0b16d8a7ca6df72d7fc849fadd04743ba3d3e1e5bef18d017c42fc2ef6f12a10ba90a0f2800183639286d'
+            '49ba9dfda023b615cb8c3312a2000eadbe5798deb4f7232ee3927ecd9ea5ee1751e35a430a135f52850336e9a02e3c309187d60b2db9b64e5ba84af5a17102d4')
+
+package() {
+	cd ${srcdir}/${pkgname}-${pkgver}
+	install -D -m0755 sec ${pkgdir}/usr/bin/sec
+	install -D -m0755 contrib/convert.pl ${pkgdir}/usr/share/${pkgname}/contrib/convert.pl
+	install -D -m0755 contrib/swatch2sec.pl ${pkgdir}/usr/share/${pkgname}/contrib/swatch2sec.pl
+	install -D -m0644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
+	install -D -m0644 sec.man ${pkgdir}/usr/share/man/man1/sec.1
+	install -D -m0644 ChangeLog ${pkgdir}/usr/share/${pkgname}/ChangeLog
+	install -D -m0644 README ${pkgdir}/usr/share/${pkgname}/README
+	install -D -m0644 ${srcdir}/sec.service ${pkgdir}/usr/lib/systemd/system/sec.service
+}
+

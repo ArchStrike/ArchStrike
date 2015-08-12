@@ -1,0 +1,19 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=chromedriver
+pkgver=2.15
+pkgrel=1
+pkgdesc="Standalone server which implements WebDriver's wire protocol"
+arch=('i686' 'x86_64')
+url="https://sites.google.com/a/chromium.org/chromedriver/"
+license=('Apache')
+depends=('libxi' 'gconf' 'nss')
+optdepends=('chromium' 'google-chrome')
+source_i686+=("http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_linux32.zip")
+source_x86_64+=("http://chromedriver.storage.googleapis.com/${pkgver}/${pkgname}_linux64.zip")
+sha512sums_i686=('70deffa2acf004b1fad691b03170d90f6b21b107f414b6768d68fe6d9e55e6336bd67e829ce69e338bb34a714e92d91793431e6a359165d18ad6574ec4c50c22')
+sha512sums_x86_64=('72e4710f5d55cbdf4dd6a2768d5b1ce51f8041ff25b650e9ab5b57f6d48b20f81880474d8d71586749e2a4ce3f28cf1ea62888f2755af39073a407ab81cd559e')
+
+package() {
+  mkdir -p "$pkgdir/usr/bin/"
+  install -D -m 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/"
+}

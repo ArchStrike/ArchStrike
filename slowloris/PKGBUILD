@@ -1,0 +1,16 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=slowloris
+pkgver=0.7
+pkgrel=2
+pkgdesc="A tool which is written in perl to test http-server vulnerabilites for connection exhaustion denial of service (DoS) attacks so you can enhance the security of your webserver."
+arch=('any')
+groups=('projectname')
+url='http://ha.ckers.org/slowloris/'
+depends=('perl-io-socket-ssl')
+license=('custom:unknown')
+source=("http://ha.ckers.org/slowloris/slowloris.pl")
+md5sums=('ba43c68709a67e8e233575641e3c7d17')
+
+package() {
+  install -Dm755 "$srcdir/slowloris.pl" "$pkgdir/usr/bin/slowloris"
+}

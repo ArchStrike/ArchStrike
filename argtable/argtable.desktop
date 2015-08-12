@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Argtable
+Comment=ANSI C command line parser
+Exec=argtable
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

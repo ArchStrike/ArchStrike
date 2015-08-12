@@ -1,0 +1,34 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=elite-proxy-finder-git
+pkgver=r44.29143ad
+pkgrel=2
+groups=('projectname' 'projectname-*miscellaneous')
+pkgdesc="Finds public elite anonymity proxies and concurrently tests them"
+arch=('any')
+url='https://github.com/DanMcInerney/elite-proxy-finder'
+license=('custom')
+depends=('python2' 'python2-gevent' 'python2-requests' 'python2-beautifulsoup3')
+makedepends=('git')
+provides=('elite-proxy-finder')
+conflicts=('elite-proxy-finder')
+replaces=('elite-proxy-finder')
+source=("eliteproxyfinder::git+https://github.com/DanMcInerney/elite-proxy-finder.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/eliteproxyfinder"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  cd "$srcdir/eliteproxyfinder"
+  sed -i 's|env python2|python2|' elite-proxy-finder.py
+}
+
+package() {
+  cd "$srcdir/eliteproxyfinder"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm755 elite-proxy-finder.py "$pkgdir/usr/bin/eliteproxyfinder"
+
+}

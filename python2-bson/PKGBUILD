@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=python2-bson
+pkgver=0.3.3
+pkgrel=1
+pkgdesc="BSON codec for Python"
+url="http://github.com/martinkou/bson"
+depends=('python2')
+makedepends=('python2-setuptools')
+license=('BSD')
+arch=('any')
+source=('https://pypi.python.org/packages/source/b/bson/bson-0.3.3.tar.gz')
+sha512sums=('9787d04ee6840edcf62627da3be692ee55a90ed41198d326cd46343def7d2789d2610912e5626c84ab6ac3ed49cd5ec1d9ee678b05241b7ae180e4211043d1bb')
+
+build() {
+  cd $srcdir/bson-0.3.3
+  python2 setup.py build
+}
+
+package() {
+  cd $srcdir/bson-0.3.3
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|' 
+  rm "$pkgdir"/usr/lib/python2.7/site-packages/bson/__init__*
+}

@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=kautilya
+pkgver=0.5.5
+pkgrel=1
+groups=('projectname' 'projectname-*hardware')
+pkgdesc="Pwnage with Human Interface Devices using Teensy++2.0 and Teensy 3.0 devices"
+arch=('any')
+url='https://github.com/samratashok/Kautilya'
+license=('GPL3')
+depends=('libpcap' 'ruby-bundler' 'ruby-colored' 'ruby-highline' 'ruby-artii')
+source=("https://github.com/samratashok/Kautilya/archive/v$pkgver.tar.gz")
+sha512sums=('090c9635f392596f00a7833a56f05ff399230bedebbaf8daca3586f49b6da483ca0ed7ffbfa49556aecc518eb0650ae0740b187556cc7f89517a87168a4a440b')
+
+package() {
+  cd "$srcdir/Kautilya-$pkgver"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/kautilya"
+
+  cp --no-preserve=ownership -R * "$pkgdir/usr/share/kautilya"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cat > "$pkgdir/usr/bin/kautilya" <<\EOF
+#!/bin/bash
+cd /usr/share/kautilya
+exec ruby kautilya.rb "$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/kautilya"
+}

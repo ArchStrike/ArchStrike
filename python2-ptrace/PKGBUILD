@@ -1,0 +1,44 @@
+# Maintainer
+pkgbase=python2-ptrace
+pkgname=(python2-ptrace python-ptrace)  
+_pkgname=python-ptrace
+pkgver=0.8.1
+pkgrel=2
+pkgdesc="A debugging using ptrace (Linux, BSD and Darwin system call to trace processes) written in Python."
+url="https://pypi.python.org/pypi/ptrace/"
+arch=('any')
+license=('GPL2')
+depends=('python2' 'python')
+makedepends=('python2-setuptools' 'python-setuptools')
+source=(http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz)
+sha512sums=('1c3dadf381ad0fe30374fe030fc3a81b5ec0885c31ac9be4ae561cf14ff891fc2e465555133b2efce6be0154b06768121aa068161bb3de10aca6df0eb181e25c')
+
+
+prepare() {
+  cp -a $_pkgname-$pkgver{,-py2}
+
+  cd $_pkgname-$pkgver-py2
+  find . -type f | xargs sed -i 's@^#!.*python$@#!/usr/bin/python2@'
+}
+
+build() {
+  cd $_pkgname-$pkgver
+  python setup.py build
+
+  cd ../$_pkgname-$pkgver-py2
+  python2 setup.py build
+}
+
+package_python-ptrace() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python setup.py install --root=$pkgdir/ --optimize=1
+  #Fixing for conflicts
+  mv $pkgdir/usr/bin/gdb.py $pkgdir/usr/bin/gdb3.py
+  mv $pkgdir/usr/bin/strace.py $pkgdir/usr/bin/strace3.py
+}
+
+package_python2-ptrace() {
+  cd "$srcdir/$_pkgname-$pkgver-py2"
+
+  python2 setup.py install --root=$pkgdir/ --optimize=1
+}

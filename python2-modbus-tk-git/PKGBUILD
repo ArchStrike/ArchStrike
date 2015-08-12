@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=python2-modbus-tk-git
+pkgver=20131111.r26
+pkgrel=1
+pkgdesc="Implementation of modbus protocol in python"
+url="https://github.com/glastopf/modbus-tk"
+depends=('python2')
+makedepends=('git' 'python2-distribute')
+license=('LGPL')
+arch=('any')
+provies=('modbus-tk' 'python2-modbus-tk')
+source=("${pkgname}::git+https://github.com/glastopf/modbus-tk.git")
+sha512sums=('SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+    printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build() {
+    cd "${pkgname}"
+    python2 setup.py build
+}
+
+package() {
+    cd "${pkgname}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1
+    find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}

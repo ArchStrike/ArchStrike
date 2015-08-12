@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=udptunnel
+pkgver=19
+pkgrel=1
+groups=('projectname' 'projectname-*tunneling' 'archassault-networking')
+pkgdesc="Tunnels TCP over UDP packets."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://code.google.com/p/udptunnel/'
+license=('GPL3')
+source=("https://udptunnel.googlecode.com/files/udptunnel-r$pkgver.tar.gz")
+md5sums=('277088842a092ac34977b371f9b24fc3')
+
+build() {
+  cd "$srcdir/udptunnel"
+  make
+}
+
+package() {
+  cd "$srcdir/udptunnel"
+
+  install -Dm 755 udptunnel "$pkgdir/usr/bin/udptunnel"
+}

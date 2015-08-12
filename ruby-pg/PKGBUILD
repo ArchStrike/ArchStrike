@@ -1,0 +1,23 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=ruby-pg
+_gemname=pg
+pkgver=0.17.0
+pkgrel=3
+pkgdesc="Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]"
+arch=('armv7h' 'armv6h' 'i686' 'x86_64')
+license=('BSD' 'GPL')
+depends=('postgresql-libs' 'ruby' 'ruby-rspec')
+url='https://bitbucket.org/ged/ruby-pg'
+source=("http://rubygems.org/downloads/pg-$pkgver.gem")
+sha512sums=('ab90ad6967a89406acecc4ae147b4d8977954eb42729c2e88aed555f72fc00247361b0e7e8dd49b1f26e8eb91198a5f07c2a7e1a51add93fa67959ff4bb200d8')
+noextract=("pg-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" pg-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" pg-$pkgver.gem
+  fi
+}

@@ -1,0 +1,26 @@
+# Maintainer: ArchAssault <team projectname org>
+
+pkgname=cookiejar
+pkgver=0.0.1
+pkgrel=2
+pkgdesc="Cookiecutter templates discovery and management."
+arch=('any')
+url="https://github.com/fcurella/cookiejar"
+groups=('projectname')
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/c/cookiejar/cookiejar-$pkgver.tar.gz")
+sha512sums=('5536a55f4b4bd8d43a61f79d9723bcdc6d681411616e54090aca3317f933d2d3c2133ce8a61d6ae0159491b784fb038003d6133b996f3a0ee8843de6fe8c98ba')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+      cd "$srcdir/${pkgname}-${pkgver}"
+      python2 setup.py install --root="$pkgdir/" --optimize=1
+      install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:

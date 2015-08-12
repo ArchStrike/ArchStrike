@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=parsero
+pkgver=0.75
+pkgrel=1
+groups=('projectname' 'projectname-*reconnaissance')
+pkgdesc="A Robots.txt audit tool"
+url='https://github.com/behindthefirewalls/Parsero'
+arch=('any')
+license=('GPL2')
+depends=('python' 'python-urllib3' 'python-beautifulsoup4')
+makedepends=('git')
+source=("git+https://github.com/behindthefirewalls/Parsero.git")
+md5sums=('SKIP')
+
+package() {
+  cd $srcdir/Parsero
+  install -Dm755 parsero.py $pkgdir/usr/bin/parsero
+}

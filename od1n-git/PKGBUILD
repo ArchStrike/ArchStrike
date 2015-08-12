@@ -1,0 +1,32 @@
+# Maintainer
+
+pkgname=od1n-git
+pkgver=20150404.r152
+pkgrel=1
+groups=('projectname' 'projectname-*fuzzers' 'archassault-webapps')
+pkgdesc="A Web security tool to make fuzzing at HTTP inputs, made in C with libCurl"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/CoolerVoid/0d1n'
+license=('GPL3')
+depends=('curl')
+makedepends=('git')
+provides=('od1n')
+source=("${pkgname}::git+https://github.com/CoolerVoid/0d1n.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build(){
+  cd "${pkgname}"
+  make
+}
+
+
+package() {
+  cd "${pkgname}"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -Dm755 0d1n "$pkgdir/usr/bin/"
+}

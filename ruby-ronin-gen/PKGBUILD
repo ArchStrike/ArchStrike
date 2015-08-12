@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=ruby-ronin-gen
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="A Ruby library for Ronin that provides various generators."
+arch=('any')
+license=('GPL3')
+depends=('ruby' 'ruby-open_namespace>=0.3' 'ruby-data_paths>=0.3' 'ruby-parameters>=0.4' 'ruby-ronin-support>=0.5' 'ruby-ronin>=1.5')
+url='http://ronin-ruby.github.io/'
+source=("http://rubygems.org/downloads/ronin-gen-$pkgver.gem")
+md5sums=('d3a3ea9c59f73abb274be8705160f1a2')
+noextract=("ronin-gen-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" ronin-gen-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" ronin-gen-$pkgver.gem
+  fi
+}

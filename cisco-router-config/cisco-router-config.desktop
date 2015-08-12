@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Cisco-router-config
+Comment=copy-router-config and merge-router-config to copy and merge Cisco Routers Configuration
+Exec=cisco-router-config
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;

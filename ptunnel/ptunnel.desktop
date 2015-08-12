@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Ptunnel
+Comment=A tool for reliably tunneling TCP connections over ICMP echo request and reply packets
+Exec=ptunnel
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultTunnel;ArchAssaultNetworking;

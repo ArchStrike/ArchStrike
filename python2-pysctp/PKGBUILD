@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=python2-pysctp
+pkgver=0.6
+pkgrel=1
+pkgdesc="A python module for the SCTP protocol stack and library."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://pypi.python.org/pypi/pysctp/0.6'
+license=('LGPL')
+depends=('python2' 'lksctp-tools')
+makedepends=('python2-setuptools')
+source=(https://pypi.python.org/packages/source/p/pysctp/pysctp-$pkgver.tar.gz)
+sha512sums=('620cd4ee38b46fc59297ba0a195d38f09abee73da35c1c09a45ef78bd4447dae1c7bddc0888416d3442d54a5575e8961cb10b23f242c3c8f68fe9d80ad131222')
+
+prepare(){
+ cd "$srcdir/pysctp-$pkgver/"
+ sed -i 's|env python$|env python2|' *.py
+}
+
+
+package() {
+  cd "${srcdir}/pysctp-${pkgver}/"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 $pkgdir/usr/_sctp.h $pkgdir/usr/include/$pkgname/_sctp.h
+  # clean up
+  rm -rf $pkgdir/usr/_sctp.h
+}

@@ -1,0 +1,40 @@
+# Maintainer: ArchAssault <team projectname org>
+
+pkgname=snmp-brute-git
+pkgver=20150218.r11
+pkgrel=2
+groups=('projectname' 'projectname-*bruteforce')
+pkgdesc="SNMP brute force, enumeration, CISCO config downloader and password cracking script."
+url="https://github.com/SECFORCE/SNMP-Brute"
+depends=('python2' 'john' 'metasploit-git' 'net-snmp')
+makedepends=('git')
+license=('GPL3')
+arch=('any')
+source=("$pkgname::git+https://github.com/SECFORCE/SNMP-Brute.git")
+sha512sums=('SKIP')
+
+pkgver() {
+cd "$pkgname"
+printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare(){
+grep -iRl 'python' "$srcdir/$pkgname" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+# Renaming LICENSE file due to git version is preceded with a hex character
+cd "$srcdir/$pkgname"
+mv ?LICENSE LICENSE
+}
+
+package() {
+cd "$srcdir/$pkgname"
+install -dm755 "$pkgdir/usr/share/$pkgname/"
+install -dm755 "$pkgdir/usr/bin/"
+cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+cat > "$pkgdir/usr/bin/snmpbrute" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 snmpbrute.py "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/snmpbrute"
+}

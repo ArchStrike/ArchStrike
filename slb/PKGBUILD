@@ -1,0 +1,46 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Prurigro
+
+pkgname=slb
+pkgver=0.1.24
+pkgrel=4
+pkgdesc="A set of tools that can help you to control a load-balancing system"
+url="http://kernel.embedromix.ro/us/"
+license=('GPL3')
+groups=('projectname' 'projectname-*networking')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('ipvsadm' 'conn')
+options=('!emptydirs')
+source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}m.service"
+        "${pkgname}c.service"
+        "${pkgname}cd.conf.sample"
+	'configure.patch')
+sha512sums=('1be4303de46e38f4b1c1f9231ae3b28dadda611c98c95fa03508ae5ae09ae9c238bc191f819cb4abcd4fe861ac5ba642c3bbed32e20ccb830cb763079a5b28d6'
+            '8d409a5f29cc7a655bd77014b1c95e6ef0ba8e0cca5ae22ee4a91b813f2d8a5de08c6dc68eca5b3c6f6b39fb03d2a1490d4cf57343d9b256cbe2c303fad9c7d2'
+            '4d329f1bcf1cfffc4a6edf573b6f41d84f01fca637ef77024000813a9c42795ab1769f08623044f370483bb7209673cb0235c1288c0b566ffeafc873e987ec35'
+            'e7708a96ca265647d9e51f1ec336fbfd0b818b6eff67665ef6a0c0b7b75674cc476fd4a1ad272171af6ff8a86b1ea6b0273267a71ee842e7a20f3d60ac64d455'
+            '26970b38edf0ae9e1f7e11b725961471624afb28073cd5df37ba68a5c928b9856776818800f5dd376ca53784fb85113bdf1aecb2cd123dd513340aa82a66eb8c')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    patch -p1 -i "${srcdir}"/configure.patch
+}
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr
+}
+
+package() {
+    # Install
+    pushd "${pkgname}-${pkgver}" > /dev/null 2>&1
+        make DESTDIR="${pkgdir}" install
+    popd > /dev/null 2>&1
+
+    # Clean up install
+    install -Dm644 "${pkgname}cd.conf.sample" "${pkgdir}/etc/${pkgname}/${pkgname}cd.conf.sample" # Create config sample with valid options included
+    rm -rf "${pkgdir}/etc/rc.d" # Remove sysvinit scripts and replace with systemd services
+    install -Dm644 "${pkgname}m.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}m.service"
+    install -Dm644 "${pkgname}c.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}c.service"
+}

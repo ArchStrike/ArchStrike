@@ -1,0 +1,10 @@
+pre_install(){
+  # fixing old symlink
+  rm -rf /usr/share/mitmf/libs/bdfactory > /dev/null
+  # symlink current build of bdf to mitmf dir
+  ln -sf /usr/share/backdoor-factory /usr/share/mitmf/libs/bdfactory
+}
+
+post_upgrade(){
+ pre_install
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Weevely
+Comment=Stealth tiny web shell
+Exec=weevely
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultBackdoor;

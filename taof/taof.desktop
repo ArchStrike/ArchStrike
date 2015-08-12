@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Taof
+Comment=Taof is a GUI cross-platform Python generic network protocol fuzzer.
+Exec=taof
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultFuzzer;

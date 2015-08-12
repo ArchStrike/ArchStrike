@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Httprint-win32
+Comment=A web server fingerprinting tool (Windows binaries).
+Exec=httprint-win32
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWindows;

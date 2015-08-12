@@ -1,0 +1,199 @@
+ArpON 2.7.2:
+============
+    ! Fixed src/arpon.c for the building on the Solaris like systems
+    ! Fixed CMake build environment on Solaris and DragonFly BSD operating systems supported
+
+ArpON 2.7.1:
+===========
+    ! Fixed src/arpon.c for the comparison of unsigned expression for sleep() and libnet_get_ipaddr4()
+    ! Fixed src/arpon.c for the building on the FreeBSD like systems
+    ! Fixed CMake build environment on all the operating systems supported
+    ! Fixed man8/arpon.c man page
+    ! Fixed img of the algorithms in the doc/ directory
+    ! Fixed INSTALL
+
+ArpON 2.7:
+==========
+    ! Fixed the segment error in timeline thread control
+
+ArpON 2.6:
+==========
+    + Added support of Gratuitous ARP request for Failover Cluster
+    + Added support of Gratuitous ARP request for Cluster with load-balancing
+    + Added support of Gratuitous ARP request for High-Availability (HA) Cluster
+
+ArpON 2.5:
+==========
+    ! Fixed new DARPI algorithm
+    ! Fixed new HARPI algorithm
+
+ArpON 2.4:
+==========
+    + Redesign new SARPI algorithm
+    + Redesign new DARPI algorithm
+    + Redesign new HARPI algorithm
+    + Added support of Gratuitous ARP reply for Failover Cluster
+    + Added support of Gratuitous ARP reply for Cluster with load-balancing
+    + Added support of Gratuitous ARP reply for High-Availability (HA) Cluster
+    - Removed man8/html/arpon.html and man8/html/ directory
+    ! Fixed help
+    ! Fixed CMake
+    ! Fixed man8/arpon.8 man page
+    ! Fixed algorithms in doc/ directory
+    
+ArpON 2.3:
+==========
+    + Added documentation section in doc/ with more examples
+    + Added algorithms section in doc/
+    ! Fixed CMake for many controls on platforms supported
+
+ArpON 2.2:
+==========
+    + Added HARPI new algorithm
+    + Added doc/HARPI.jpg
+    + Redesign general code
+    + Redesign general output
+    + Redesign SARPI, DARPI, HARPI policy for users
+    ! Fixed SARPI algorithm
+    ! Fixed DARPI algorithm and now it doesn't affect about race response time from attacks
+    ! Fixed thread handler of DARPI cache entries timeout
+    ! Fixed cmake_modules/FindPthread.cmake
+    ! Fixed doc/DARPI.jpg with new algorithm
+    ! Fixed doc/SARPI.jpg with new algorithm
+    ! Fixed help users
+    ! Fixed CMakeLists.txt
+    ! Fixed INSTALL
+    ! Fixed LICENSE
+    ! Fixed man8/arpon.8
+    ! Fixed man8/html/arpon.html
+
+ArpON 2.1:
+==========
+    + Redesign DARPI algorithm for arp request inbound and arp reply outbound
+    + Added delete arp cache to SARPI
+    ! Fixed aprintf()
+    ! Fixed INSTALL file
+    ! Fixed AUTHORS file
+    ! Fixed man page
+    ! Fixed html man page
+    ! Fixed DARPI and SARPI algorithms in doc directory
+    - Removed Makefile 
+
+ArpON 2.0:
+==========
+    + Redesign general code
+    + Redesign general output
+    + Added SARPI cache with rw locking
+    + Added SARPI cache from file option
+    + Added support unplug/boot/hibernation/suspension interface (OS' features too)
+    + Added pid file option
+    + Added cmake installation method
+    - Removed Arp sniffer, Arp ping
+    ! Fixed no options output
+    ! Fixed main with BSD option handler
+    ! Fixed getopt_long of missing and invalid option
+    ! Fixed several options names
+    ! Fixed aprintf with localtime integrated
+    ! Fixed device handler of auto and list
+    ! Fixed SIGINT, SIGTERM, SIGQUIT signals with POSIX signals
+    ! Fixed SIGHUP and SIGCONT POSIX signal for daemon reboot
+    ! Fixed sleep() with usleep() for thread suspend
+    ! Fixed rw locking in DARPI and SARPI
+    ! Fixed SARPI/DARPI soft real time for inbound/outbound packets
+    ! Fixed SARPI/DARPI Round Robin detached/joinabled scheduling threads
+    ! Fixed AUTHORS file
+    ! Fixed INSTALL file
+    ! Fixed Makefile file
+    ! Fixed man8/arpon.8 file
+    ! Fixed man8/html/arpon.html file
+    
+ArpON 1.90:
+===========
+    + Added Static linking guide in INSTALL file
+    ! Fixed date structures, device, arp_header, arp_cache, darpi_cache
+    ! Fixed dnet bug for Linux, it returned "No such process" in arp_add()
+    ! Fixed dnet bug for Linux, in arp_delete()
+    ! Fixed makefile
+
+ArpON 1.80:
+===========
+    ! Fixed bug multithreaded in Arp reply timeout (Arp out traffic)
+    ! Fixed bug in aprintf() with logging mode
+    ! Fixed check file type for pid_file and log_file 
+    ! Fixed bug in device automatically
+    ! Fixed arpon's output new style!
+    ! Fixed makefile
+
+ArpON 1.72:
+===========
+    + Added Linux Gentoo platform support
+    ! Fixed arp_cache_add(), now it works with array  
+    ! Fixed bug in darpi, it returned "Unknown error: 0", now it works well
+    ! Fixed bug and output of daemon mode, now it returned 0 to shell
+    ! Fixed global signal handler
+
+ArpON 1.70:
+===========
+    ! Fixed bug in arp_cache_add(), it returned "No such process" from errno, now arpon works very well, have fun! =)
+
+ArpON 1.60:
+===========
+    + Added support to multiplexing handle on multi interface
+    + Added DARPI Cache entry timeout 
+    + Added Linux Debian platform support 
+    ! Fixed arpon's code style, now it is bsd coding style
+    ! Fixed SARPI dyagram in doc/
+    ! Fixed DARPI dyagram in doc/
+    ! Fixed man page and html man page 
+
+ArpON 1.54:
+===========
+    ! Fixed makefile
+    ! Fixed network interface list errors
+
+ArpON 1.50:
+===========
+    ! Fixed Arp request Inbound bug in darpi_realtime_read_packets(), now it works very well :)
+
+ArpON 1.44:
+===========
+    + Added doc/ directory with SARPI and DARPI diagrams  
+    + Added pid file in /var/run/arpon.pid 
+    + Added LICENSE file
+    ! Adjusted man page
+
+ArpON 1.40: 
+===========
+    ! Fixed CPU usage, now arpon works well on many cpu architectures, 32 and 64 bit 
+
+ArpON 1.30: 
+===========
+    + Added support to pthreads for all platforms
+    + Added real time support for BSD platforms
+    + Added Sanitize environment from LD_PRELOAD attacks
+ 
+ArpON 1.20: 
+===========
+    ! Linux platform: timeout now works both for ping to host and ping to broadcast
+    ! Makefile now uses dynamic libraries linking
+
+ArpON 1.11: 
+===========
+    + Added NetBSD platform support
+    + Added OpenBSD platform support
+    + Added man page
+    + Added automatic device support in many features
+    + Added CPU priority (TASK MODE) for real time work with nice values (-n, --nice option) for many CPU architectures (little/big endian with 32/64 bits)
+    + Added Logging mode (LOG MODE) (-f, --log-file and -g, --log options)
+    ! Linux platform: changed poll() with select() 
+    ! Adjusted arp_ping_set_timeout()
+    ! Many define macro replaced by enum
+    ! Adjusted output style
+    ! Adjusted time with timezone in many features 
+    ! Adjusted help summary page
+ 
+ArpON 1.10: 
+===========
+  
+    ! First ArpON version !
+

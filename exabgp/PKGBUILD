@@ -1,0 +1,40 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Diogo Leal <estranho@diogoleal.com>
+
+pkgname=exabgp
+pkgver=3.4.11
+pkgrel=1
+pkgdesc='The BGP swiss army knife of networking'
+arch=('any')
+license=('custom')
+groups=('projectname' 'projectname-*networking')
+url='https://github.com/Exa-Networks/exabgp'
+depends=('python2')
+backup=('etc/exabgp.conf')
+makedepends=('python2-setuptools')
+source=("https://github.com/Exa-Networks/${pkgname}/archive/${pkgver}.zip"
+        'exabgp.service')
+sha512sums=('cc30225b011cf5e697bc364dabedb7d18ada0c103bc4afc4c2d3e136d2e743329cce23138ee46d4367e7b7db9a9fd3cbe8bbd8cabb8dac2f60c0538d26a123a0'
+            '225726cf424d9c2a23a2c0e9d3c7ed8c5cf03993f9518efd8e45079822b2d8cbc4d6fd18b49794beee522530478b57e5e3b268b3abd92442680cdd695504360d')
+
+build() {
+    # arch python2
+    find $pkgname-$pkgver -type f -exec \
+        sed -i '1s,^#!/usr/bin/\(env \|\)python$,#!/usr/bin/python2,' {} \; -print
+}
+
+package() {
+    pushd $pkgname-$pkgver
+    # upstream installer
+    python2 setup.py install --root="$pkgdir" --install-data=/
+    # install license
+    install -D -m 644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    popd
+    # systemd
+    install -D -m 644 $pkgname.service \
+        "$pkgdir/usr/lib/systemd/system/$pkgname.service"
+    # install empty config file
+    install -D -m 644 /dev/null "$pkgdir/etc/$pkgname.conf"
+    # move data in a more private directory
+    mv "$pkgdir/etc/$pkgname" "$pkgdir/usr/share/$pkgname"
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Evilmaid
+Comment=TrueCrypt loader backdoor to sniff volume password
+Exec=evilmaid
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCracker;

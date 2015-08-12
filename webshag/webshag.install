@@ -1,0 +1,9 @@
+post_install(){
+  echo "Before running webshag_cli or webshag_gui please run: (as root!)";
+  echo "cd /usr/share/webshag; ./setup.linux.py"
+  echo ""
+}
+
+post_upgrade(){
+  post_install
+}

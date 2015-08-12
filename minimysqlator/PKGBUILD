@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=minimysqlator
+pkgver=0.5
+pkgrel=1
+pkgdesc="Mini MySqlat0r is a multi-platform application used to audit web sites in order to discover and exploit SQL injection vulnerabilities."
+arch=(any)
+url="http://www.scrt.ch/pages_en/minimysqlator.html"
+license=('GPL')
+depends=('java-runtime')
+groups=('projectname' 'projectname-*database')
+source=(http://www.scrt.ch/outils/mms/mms_05.jar
+        http://www.scrt.ch/outils/mms/common_tables.txt)
+md5sums=('727350bcc40c05c40bae9a7c900600bb'
+         '58e55a5d090ea1a8509470433a7d659b')
+
+package() {
+  cd "$srcdir/"
+  install -Dm644 mms_05.jar $pkgdir/usr/share/minimysqlator/mms.jar
+  install -Dm644 common_tables.txt $pkgdir/usr/share/minimysqlator/common_tables.txt
+
+  mkdir -p $pkgdir/usr/bin/
+  cat > $pkgdir/usr/bin/minimysqlator << EOF
+#!/bin/sh
+cd /usr/share/minimysqlator/
+java -jar /usr/share/minimysqlator/mms.jar \$@
+EOF
+  chmod 755 $pkgdir/usr/bin/minimysqlator
+}
+

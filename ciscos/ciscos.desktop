@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Ciscos
+Comment=Scans class A, B, and C networks for cisco routers which have telnet open and have not changed the default password from cisco.
+Exec=ciscos
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultScanner;

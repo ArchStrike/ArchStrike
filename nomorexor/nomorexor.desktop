@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Nomorexor
+Comment=Tool to help guess a files 256 byte XOR key by using frequency analysis
+Exec=nomorexor
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCrypto;

@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=ruby-sdoc
+_gemname=${pkgname#ruby-}
+pkgver=0.3.20
+pkgrel=1
+pkgdesc="rdoc html with javascript search index."
+arch=('any')
+license=('custom')
+depends=('ruby' 'ruby-rdoc>=3.10')
+url='http://github.com/voloko/sdoc'
+source=("http://rubygems.org/downloads/sdoc-$pkgver.gem")
+md5sums=('93e0c7376f58f85097f260f79db73601')
+noextract=("sdoc-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" sdoc-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" sdoc-$pkgver.gem
+  fi
+  install -d ${pkgdir}/usr/share/licenses/${pkgname}
+  install -D -m644 ${pkgdir}/usr/lib/ruby/gems/*/gems/${_gemname}-${pkgver}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}

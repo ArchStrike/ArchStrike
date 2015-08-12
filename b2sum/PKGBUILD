@@ -1,0 +1,33 @@
+# Maintainer
+# Contributor: Michael DÃ¼ll <michael.duell@rub.de>
+# Contributor: Dalton Miller
+pkgname=b2sum
+pkgver=20150531
+pkgrel=1
+pkgdesc="BLAKE2 file hash sum check. Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file"
+_zipprefix="blake2_code"
+arch=('i686' 'x86_64')
+url="https://blake2.net/"
+groups=('projectname')
+license=('custom')
+makedepends=('unzip' 'gnuplot')
+source=("https://blake2.net/blake2_code_${pkgver}.zip")
+sha512sums=('2694c4341d74acf7d6ce193ad573635a96ab691237813e35a75e36e3af46d382dd20acb2987e373464f63981aa9c30ba81036c26e660fd7ca58a336d1c0ebc45')
+
+prepare() {
+  cd "${srcdir}/${_zipprefix}_${pkgver}/b2sum"
+    sed -i "s# -fopenmp##" makefile
+    make clean
+}
+
+build() {
+  cd "${srcdir}/${_zipprefix}_${pkgver}/b2sum"
+    make all
+}
+
+package() {
+  cd "${srcdir}/${_zipprefix}_${pkgver}/b2sum"
+    install -Dm755 b2sum "${pkgdir}"/usr/bin/b2sum
+    install -Dm644 ../COPYING "${pkgdir}"/usr/share/licenses/b2sum/COPYING
+    install -Dm644 ../README "${pkgdir}"/usr/share/b2sum/README
+}

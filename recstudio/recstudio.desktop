@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Recstudio
+Comment=Cross platform interactive decompiler
+Exec=recstudio
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultReversing;ArchAssaultDecompiler;

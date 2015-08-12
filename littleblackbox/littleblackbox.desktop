@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Littleblackbox
+Comment=security/penetration testing tool, search in a collection of thousands of private SSL keys extracted from various embedded devices
+Exec=littleblackbox
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCrypto;

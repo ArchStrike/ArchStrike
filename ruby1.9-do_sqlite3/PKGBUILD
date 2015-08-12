@@ -1,0 +1,21 @@
+# Maintainer
+_gemname=do_sqlite3
+pkgname=ruby1.9-$_gemname
+pkgver=0.10.13
+pkgrel=1
+pkgdesc='DataObjects Sqlite3 Driver'
+arch=(i686 x86_64)
+url=''
+license=()
+depends=('ruby1.9' 'ruby1.9-data_objects' 'sqlite3')
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('cb218a1183dcca4d858d081b3689ab3d023ef3b0')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

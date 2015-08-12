@@ -1,0 +1,30 @@
+# Maintainer: ArchAssualt <team projectname.org>
+# Contributor: Guenther Starnberger <gst@sysfrog.org>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
+
+pkgname=globalplatform
+pkgver=6.0.0
+pkgrel=1
+pkgdesc="Global Platform libraries"
+license=('GPL3')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://sourceforge.net/projects/globalplatform/"
+depends=('glibc' 'pcsclite' 'openssl')
+source=(http://downloads.sourceforge.net/globalplatform/globalplatform-${pkgver}.tar.gz)
+options=('!libtool')
+sha512sums=('cb2fc79052a073b5099da6c02ff9ca87bb966d42c1d8cf4f9ef2a39eb9772e1c5f656bc03f5e305885a9995856c0fbd3648a2c7ceb38ed194d007f3fc1219be4')
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr --sysconfdir=/etc
+
+  msg "Patching Makefiles"
+  sed -i 's/gnu-ldl/gnu/g' Makefile src/Makefile
+
+  make
+}
+
+package(){
+  cd $srcdir/$pkgname-$pkgver
+  make DESTDIR=$pkgdir install
+}

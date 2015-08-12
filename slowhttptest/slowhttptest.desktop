@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Slowhttptest
+Comment=A highly configurable tool that simulates application layer denial of service attacks
+Exec=slowhttptest
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultDos;

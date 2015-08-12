@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Rawr
+Comment=Web enumerator for the rapid Assessment of web resources
+Exec=sh -c '/usr/bin/rawr; ${SHELL:-bash}'
+Icon=projectname
+Terminal=true
+Categories=Archassault;ArchassaultWebapp;ArchassaultScanner;

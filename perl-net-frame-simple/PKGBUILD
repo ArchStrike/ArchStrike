@@ -1,0 +1,32 @@
+# Maintainer
+_author='GOMOR'
+_perlmod='Net-Frame-Simple'
+pkgname='perl-net-frame-simple'
+pkgver='1.06'
+pkgrel=1
+pkgdesc='Frame crafting made easy.'
+arch=('any')
+url='http://search.cpan.org/~gomor/Net-Frame-Simple-1.05/lib/Net/Frame/Simple.pm'
+license=('GPL' 'PerlArtistic')
+depends=('perl>=5.10.0')
+options=(!emptydirs)
+source=("http://search.cpan.org/CPAN/authors/id/G/GO/$_author/$_perlmod-$pkgver.tar.gz")
+sha512sums=('e0fc689781d8dae48224fdd25e7cd00877848b754d5f349bdf7d261bd1db22eb24a7d80d50cf3c7ebfa03e97c561a7a0d5ca8d12ab13a80d89efa5235c63dd53')
+
+prepare() {
+  cd "$srcdir/$_perlmod-$pkgver"
+  
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+}
+
+build() {
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  make
+}
+
+package() {
+  cd "$srcdir/$_perlmod-$pkgver"
+  
+  make install DESTDIR="$pkgdir/"
+}

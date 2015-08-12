@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=python2-tweepy
+pkgver=1.7.1
+pkgrel=1
+epoch=1
+pkgdesc="A python library for the Twitter API. OAuth, complete coverage, streaming API"
+url='http://github.com/m00n/tweepy'
+license=('custom')
+arch=('any')
+makedepends=('python2-setuptools')
+source=("https://github.com/m00n/tweepy/archive/$pkgver.tar.gz")
+md5sums=('66e523fb88cb5df3147b8256066c42f0')
+
+build() {
+  cd "$srcdir/tweepy-$pkgver"
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/tweepy-$pkgver"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+}

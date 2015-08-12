@@ -1,0 +1,25 @@
+# Maintainer
+
+_pkgname=pysocks
+pkgname=python2-$_pkgname
+pkgver=1.5.0
+pkgrel=1
+pkgdesc='A Python SOCKS client module'
+arch=('any')
+license=('BSD')
+url='https://github.com/Anorov/PySocks'
+depends=('python2')
+source=("$url/archive/$pkgver.tar.gz")
+sha512sums=('45b5f388f55b9fb74a0292dcdc2d058df4bd730784ecdee18633086f9db725125d3fd1b2d870d4e432157f755f619a694806955d23ab7de84e70f08e80c9fbbe')
+
+build() {
+  cd PySocks-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  export PYTHONPATH="$pkgdir/usr/lib/python2.7/site-packages/"
+  cd PySocks-$pkgver
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

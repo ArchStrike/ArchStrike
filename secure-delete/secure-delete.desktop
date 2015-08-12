@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Secure-delete
+Comment=Secure file, disk, swap, memory erasure utilities
+Exec=secure-delete
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultDefensive;ArchAssaultAntiForensic;

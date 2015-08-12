@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=ruby1.9-bcrypt
+pkgver=3.1.7
+pkgrel=1
+pkgdesc="OpenBSD's bcrypt() password hashing algorithm."
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('MIT')
+depends=('ruby1.9')
+replaces=('ruby1.9-bcrypt-ruby')
+url='http://bcrypt-ruby.rubyforge.org'
+source=("http://rubygems.org/downloads/bcrypt-$pkgver.gem")
+sha512sums=('27cd7fe8850cfcd0ff740a8afec936890b6adebfed0e86552785813739e2c9c50827ba822c88816c50cfa5e2ef90968aeb927577a0bd36d81cec3702f9fdec41')
+noextract=("bcrypt-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" bcrypt-$pkgver.gem
+  else
+    gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" bcrypt-$pkgver.gem
+  fi
+}

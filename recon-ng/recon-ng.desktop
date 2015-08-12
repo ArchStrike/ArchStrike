@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Recon-ng
+Comment=A full-featured Web Reconnaissance framework written in Python.
+Exec=recon-ng
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultRecon;

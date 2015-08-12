@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Aeskeyfind
+Comment=A tool to find AES key in RAM
+Exec=aeskeyfind
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultForensic;ArchAssaultCracker;

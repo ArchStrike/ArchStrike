@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=jbrofuzz
+pkgver=2.5
+pkgrel=1
+pkgdesc="Web application protocol fuzzer that emerged from the needs of penetration testing."
+url="http://sourceforge.net/projects/jbrofuzz/"
+groups=('projectname' 'projectname-*fuzzer')
+license=('GPL')
+depends=('java-environment' 'bash')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=(http://downloads.sourceforge.net/jbrofuzz/jbrofuzz-jar-${pkgver//./}.zip)
+md5sums=('3a861ee1681c8484d4c42385d30015ae')
+
+package() {
+  cd "$srcdir/jbrofuzz"
+  install -d $pkgdir/usr/bin
+  install -Dm644 JBroFuzz.jar $pkgdir/usr/share/jbrofuzz/JBroFuzz.jar
+  cp fuzzers examples $pkgdir/usr/share/jbrofuzz/ -r
+
+  cat > $pkgdir/usr/bin/jbrofuzz << EOF
+#!/bin/sh
+java -jar /usr/share/jbrofuzz/JBroFuzz.jar
+EOF
+  chmod 0755 $pkgdir/usr/bin/jbrofuzz
+}
+

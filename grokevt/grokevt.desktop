@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Grokevt
+Comment=A collection of scripts built for reading Windows® NT/2K/XP/2K eventlog files.
+Exec=grokevt
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultForensic;

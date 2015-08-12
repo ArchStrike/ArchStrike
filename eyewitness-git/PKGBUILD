@@ -1,0 +1,40 @@
+# Maintainer: ArchAssault <team AT projectname org>
+pkgname=eyewitness-git
+pkgver=r310.e0f3c85
+pkgrel=1
+pkgdesc="designed to take screenshots of websites, provide some server header info, and identify default credentials is possible"
+arch=('any')
+url="https://github.com/ChrisTruncer/EyeWitness"
+license=('GPL3')
+groups=('projectname')
+depends=('python2-pyqt4' 'ghost.py' 'python2-netaddr')
+makedepends=('git')
+provides=('eyewitness')
+replaces=('eyewitness')
+conflicts=('eyewitness')
+options=('!emptydirs')
+source=('git+https://github.com/ChrisTruncer/EyeWitness.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir"/EyeWitness
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir"/EyeWitness
+  install -dm755 "$pkgdir"/usr/bin
+  install -Dm755 EyeWitness.py "$pkgdir"/usr/share/eyewitness-git/EyeWitness.py
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/eyewitness-git/LICENSE
+  install -m644 CHANGELOG "$pkgdir"/usr/share/eyewitness-git/CHANGELOG
+  install -m644 README.md "$pkgdir"/usr/share/eyewitness-git/README.md
+  install -m644 signatures.txt "$pkgdir"/usr/share/eyewitness-git/signatures.txt
+  find "$pkgdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  cat > "$pkgdir"/usr/bin/EyeWitness.py <<EOF
+#!/bin/sh
+cd /usr/share/eyewitness-git/
+python2 ./EyeWitness.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/EyeWitness.py
+}
+

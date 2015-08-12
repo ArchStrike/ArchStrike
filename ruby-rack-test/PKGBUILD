@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=ruby-rack-test
+_gemname=${pkgname#ruby-}
+pkgver=0.6.2
+pkgrel=1
+pkgdesc="Is a small, simple testing API for Rack apps."
+arch=('any')
+url="http://github.com/brynary/rack-test"
+license=('MIT')
+depends=('ruby' 'rubygems')
+options=('!emptydirs')
+source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
+noextract=(${_gemname}-${pkgver}.gem)
+md5sums=('cfb89a03ea96b80d2c82ce88168a6ae3')
+
+package() {
+  cd "${srcdir}"
+  export HOME=/tmp
+  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" rack-test-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" rack-test-$pkgver.gem
+  fi
+}

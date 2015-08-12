@@ -1,0 +1,28 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Prurigro
+
+pkgname=khc
+pkgver=0.2
+pkgrel=1
+pkgdesc="Known Host Cracker (khc) is a small tool designed to recover hashed known_host files back to their plain-text equivalents"
+url="http://packetstormsecurity.com/files/87003"
+license=('BSD')
+groups=('projectname-cracker')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('openssl')
+source=("http://packetstorm.foofus.com/UNIX/utilities/${pkgname}_${pkgver}.tar.gz"
+        "${pkgname}.1.gz")
+sha512sums=('97d044b3b9dacc001ee224a62c769e387219382ce68ae037c730528e116511fa5873f42f46a635202d694103504dfb591335f604d3fb7d802dc9bc4c0b4181b3'
+            '249d7af9d844012d41eb639e04515284b1c8b87e441c3b86447c7d4dd1a5e14bb32a76abc87728eff85d854cd21432e6a3d320b237eabd3ff562c0c27b0b38a3')
+
+build() {
+    cd "${pkgname}"
+    make -f Makefile.gmake
+}
+
+package() {
+    install -Dm644 ${pkgname}.1.gz "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+    cd "${pkgname}"
+		install -Dm644 LICENSE "$pkgdir/usr/share/licenses/khc/LICENSE"
+    install -Dm755 $pkgname "${pkgdir}/usr/bin/${pkgname}"
+}

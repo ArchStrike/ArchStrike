@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Asp-audit
+Comment=An ASP fingerprinting tool and vulnerability scanner.
+Exec=asp-audit
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=projectname' 'projectname-*webapp' 'archassault-fingerprint;

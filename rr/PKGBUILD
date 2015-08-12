@@ -1,0 +1,31 @@
+# Maintainer
+pkgname=rr
+pkgver=1.5.0
+pkgrel=1
+groups=('projectname' 'projectname-*misc')
+pkgdesc="A Record and Replay Framework"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/mozilla/rr'
+license=('custom')
+if [[ $CARCH == 'x86_64' ]]; then
+      depends=('libpfm4' 'lib32-gcc-libs')
+else
+      depends=('libpfm4')
+fi
+source=("https://github.com/mozilla/rr/archive/$pkgver.tar.gz")
+sha512sums=('eca377223fbe5fb2c9ddd24c873e3e9d3bc8354ab21a258e2b6eabaf483bf14840cc83b00802c3477b0841c68701800aa389c3fdbcd6c792807b126c9a337c70')
+
+build(){
+  cd "$srcdir/rr-$pkgver"
+  export CFLAGS="$CFLAGS -fPIC"
+  mkdir build && cd build
+  cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
+}
+
+
+package() {
+  cd "$srcdir/rr-$pkgver/build"
+  make DESTDIR=$pkgdir install
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

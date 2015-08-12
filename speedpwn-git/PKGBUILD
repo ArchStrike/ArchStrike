@@ -1,0 +1,37 @@
+# Maintainer: ArchAssault <team projectname org>
+
+_pkgname=speedpwn
+pkgname=${_pkgname}-git
+pkgver=20111209.r8.3dd2793
+pkgrel=2
+_aircrackver="1.2-beta3"
+pkgdesc="An active WPA/2 Bruteforcer, original created to prove weak standard key generation in different ISP-labeled routers without a client connected"
+url="https://gitorious.org/${_pkgname}/${_pkgname}"
+license=('GPL')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+depends=('openssl' 'libnl')
+makedepends=('git')
+source=("${_pkgname}::git+https://gitorious.org/speedpwn/speedpwn.git"
+        "http://download.aircrack-ng.org/aircrack-ng-${_aircrackver}.tar.gz")
+sha512sums=('SKIP'
+            'f6d17be10b8277f08d8867b4ced5a89f9de13cc59767958a6c617e583724d0baaafdda6c14ef3c1671cada2a5abdf885b49728910fb64d70a41ace9043b3e372')
+
+pkgver() {
+    cd $_pkgname
+    printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cp ${_pkgname}/* aircrack-ng-${_aircrackver}/src/
+}
+
+build() {
+    cd aircrack-ng-${_aircrackver}/src/osdep; make; cd ..
+    gcc -o ${srcdir}/${_pkgname}/${_pkgname} ${_pkgname}.c common.c  osdep/libosdep.a crypto_branch.c -lssl -lcrypto -I./include/
+}
+
+package() {
+    cd ${_pkgname}
+    install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+    install -Dm755 speedport-arcadyan.pl "${pkgdir}/usr/bin/speedport-arcadyan"
+}

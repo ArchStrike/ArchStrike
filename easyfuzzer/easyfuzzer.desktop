@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Easyfuzzer
+Comment=A flexible fuzzer, not only for web, has a CSV output for efficient output analysis (platform independant).
+Exec=easyfuzzer
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultFuzzer;

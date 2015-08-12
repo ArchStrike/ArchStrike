@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Mkassaultiso
+Comment=Tools for creating ArchAssault Linux live and install iso images
+Exec=mkassaultiso
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

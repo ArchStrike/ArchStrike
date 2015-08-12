@@ -1,0 +1,42 @@
+# Maintainer
+_pkgname=rawr
+pkgname=${_pkgname}-git
+pkgver=57.5340a05
+pkgrel=1
+groups=('projectname' 'projectname-*webapp' 'archassault-scanners')
+pkgdesc="Web enumerator for the rapid Assessment of web resources"
+arch=('any')
+url="https://bitbucket.org/al14s/rawr/wiki/Home"
+license=('GPL3')
+makedepends=('git')
+depends=('nmap' 'graphviz' 'python2-pygraphviz' 'python2-lxml' 'phantomjs' 'python2-pillow' 'projectname-artwork')
+replaces=('rawr')
+conflicts=('rawr')
+provides=('rawr')
+source=("git+https://bitbucket.org/al14s/rawr.git#branch=dev" "${_pkgname}.desktop")
+sha512sums=('SKIP' '960e9a6d48e8eae6f5fc209e8a56d30640b9b1c47aa22435dd0d8a21ada00d6d247d5699d47d35e1b7192f32a65e444916fe88d1238300ccc2676e69737ce0fb')
+
+pkgver() {
+    cd $_pkgname
+    echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+    cd $_pkgname
+
+    sed -i '1s/env python/env python2/' rawr.py lib/requests/certs.py lib/requests/packages/chardet/chardetect.py
+    sed -i '1s|/usr/local/bin|/usr/bin|' lib/rawr_meta/OleFileIO_PL.py
+    sed -i '1s|/usr/bin/python|/usr/bin/python2|' lib/rawr_meta/rawr_meta.py lib/rawr_meta/OleFileIO_PL.py
+}
+
+package() {
+    install -Dm644 ${_pkgname}.desktop "$pkgdir"/usr/share/applications/${_pkgname}.desktop
+
+    cd $_pkgname
+    install -dm755 "$pkgdir"/usr/bin
+    install -dm755 "$pkgdir"/usr/share/${_pkgname}
+    cp -a --no-preserve=ownership * "$pkgdir"/usr/share/${_pkgname}/
+
+    echo -e '#!/usr/bin/env bash\n\ncd /usr/share/rawr\npython2 rawr.py' > "$pkgdir"/usr/bin/${_pkgname}
+    chmod a+x "$pkgdir"/usr/bin/${_pkgname}
+}

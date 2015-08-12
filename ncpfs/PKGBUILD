@@ -1,0 +1,78 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> 
+# Contributor: dsa <dsa@unilestemg.br>
+# Contributer: gerbra <gerbra@derbrauer.homelinux.net>
+# Contributer: Joker-jar <joker-jar@yandex.ru>   
+# Contributor: josephgbr <rafael.f.f1@gmail.com>
+pkgname=ncpfs
+pkgver=2.2.6
+pkgrel=7
+pkgdesc="Allows you to mount volumes of NetWare servers under Linux."
+url="http://www.novell.com/"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('GPL')
+groups=('projectname')
+depends=('pam')
+options=('!emptydirs')
+_url="http://ftp.de.debian.org/debian/pool/main/n/$pkgname"
+_with_php=1
+source=("${_url}/${pkgname}_${pkgver}.orig.tar.gz"
+        '01-linux3.0_uname.patch'
+        '02-legacy.patch'
+        '03-multiple_security_issues.patch'
+        '04-drop-mtab-support.patch'
+        '05-ldflags.patch'
+        '06-makefile-remove-generated.patch'
+	'configure.patch')
+sha512sums=('51f85eaae85deb66cea2ff434974699f6aa45ed1ed75217ef6176ac0b7d0f9f1c4fb186afc64c1b495474d5bad9ac7614033128c0bec39c05de723a9b29c8602'
+            '4b95f6b78a6b7851195f7353485b7a1e9bad2762f68e546292f46e8238e365dddb6de6eccfd6b5a461b58dc6599df0a1fd459e1447a4f73b126857f771af7127'
+            '09eef893388c731635ab4b991823faf116bda0287c16e2244bbde1726ef90cc9cf13657b65e14068d272f18535b27d452d7c0e4cf561e03fe4b698b2c898f38d'
+            '74d169fa14caaea28930bf24e72a020ecc44f79cdb89068538e923570f288ceb48e8e125fbef7b3f3d04b1ff84dc52e7e9a4fa74507b2f3a5e06cac6d6c9bbe5'
+            '3703fffd3327ad1a2af8a914b3911a7e8487b4563bd09e46ab99bc7a3730dbf7cc43e98b97c889c1bb3165f9611a0d50aed51a8fce9fa58cb90c68fd06fb9bdb'
+            'df831b44cf79ca5370efcd05e4ed18873b4635ebb85d78f0b5ca41cc242eb8a0bae805bb2d2a6802ed81608f10e31fd778f7ae69caed30f90572abeb44a79326'
+            '214c7464ca8d85abeac3e915a398839e24818618c871794564d0089d6d6558e1dccc0e4717b40262d2169cafd537de1622ff486da6bc384c4880145789377fce'
+            '783ce2f956e295d18631a3106ca9d7c15c53ca6e212c9529cf85746f691366bf19b9d6e348826b80d9be0b3d3d14daf01d6ca2f7cfb008571871cc896ae26229')
+if [ $_with_php -eq 1 ]; then
+  makedepends=('php')
+  optdepends=('php: PHP NCP authentication support')
+fi
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p1 -i "$srcdir"/01-linux3.0_uname.patch
+  patch -p1 -i "$srcdir"/02-legacy.patch
+  patch -p1 -i "$srcdir"/03-multiple_security_issues.patch
+  patch -p1 -i "$srcdir"/04-drop-mtab-support.patch
+  patch -p1 -i "$srcdir"/05-ldflags.patch
+  patch -p1 -i "$srcdir"/06-makefile-remove-generated.patch
+  patch -p1 -i "${srcdir}"/configure.patch
+  sed -i 's|sbin|usr/bin|' sutil/Makefile.in
+  
+}
+
+build() {
+  cd $pkgname-$pkgver
+  
+  # fix glibc 2.16.0-2
+  export ncp_cv_pam_directory='/usr/lib/security'
+
+  if [ $_with_php -eq 1 ]; then
+    ./configure --prefix=/usr --mandir=/usr/share
+    sed 's/function_entry/zend_function_entry/' -i contrib/php/php_auth_nds.c
+  else
+    ./configure --prefix=/usr --mandir=/usr/share --disable-php
+  fi
+  
+  make
+}
+
+package() {
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install install-dev
+  # fix libncp symlink
+  rm "$pkgdir"/usr/lib/libncp.so
+  ln -s libncp.so.2.3.0 "$pkgdir"/usr/lib/libncp.so
+  ln -s libncp.so.2.3.0 "$pkgdir"/usr/lib/libncp.so.2.3
+  # fix the sbin issue where even when set in configure you still get sbin dir populated
+  chmod -R 0755 "${pkgdir}"/usr/bin/
+}

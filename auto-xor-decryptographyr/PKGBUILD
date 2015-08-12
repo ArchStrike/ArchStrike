@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=auto-xor-decryptographyr
+pkgver=5.1f552be
+pkgrel=1
+groups=('projectname' 'projectname-*cryptography')
+pkgdesc="Automatic XOR decryptographyr tool."
+arch=('any')
+url="http://www.blog.mrg-effitas.com/publishing-of-mrg-effitas-automatic-xor-decryptographyr-tool/"
+license=('GPL')
+depends=('python')
+makedepends=('git')
+source=("git+https://github.com/MRGEffitas/scripts")
+md5sums=('SKIP')
+
+pkgver() {
+  cd scripts
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+package() {
+  cd "$srcdir/scripts"
+  install -Dm755 auto_xor_decryptor.py "$pkgdir/usr/bin/auto_xor_decrypter"
+}

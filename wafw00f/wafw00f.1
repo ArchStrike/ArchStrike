@@ -1,0 +1,113 @@
+.
+.TH "WAFW00F" "" "July 2014" "" "General Information Manual"
+.
+.SH "NAME"
+WAFW00F identifies and fingerprints Web Application Firewall (WAF) products\.
+.
+.SH "SYNOPSIS"
+.B wafw00f
+.RB \-l
+.br
+.B wafw00f
+.RI URL1\ [\ URL2\ [\ URL3\ ...\ ]]
+.
+.SH "HOW DOES IT WORK?"
+To do its magic, WAFW00F does the following:
+.
+.IP "\(bu" 4
+Sends a \fInormal\fR HTTP request and analyses the response; this identifies a number of WAF solutions
+.
+.IP "\(bu" 4
+If that is not successful, it sends a number of (potentially malicious) HTTP requests and uses simple logic to deduce which WAF it is
+.
+.IP "\(bu" 4
+If that is also not successful, it analyses the responses previously returned and uses another simple algorithm to guess if a WAF or security solution is actively responding to our attacks
+.
+.IP "" 0
+.
+.P
+For further details, check out the source code on the main site, github\.com/sandrogauci/wafw00f \fIhttps://github\.com/sandrogauci/wafw00f\fR\.
+.
+.SH "WHAT DOES IT DETECT?"
+It detects a number of WAFs\. To view which WAFs it is able to detect run WAFW00F with the \fB\-l\fR option\. At the time of writing the output is as follows:
+.
+.IP "" 4
+.
+.nf
+
+$ wafw00f \-l
+
+                                 ^     ^
+        _   __  _   ____ _   __  _    _   ____
+       ///7/ /\.\' \e / __////7/ /,\' \e ,\' \e / __/
+      | V V // o // _/ | V V // 0 // 0 // _/
+      |_n_,\'/_n_//_/   |_n_,\' \e_,\' \e_,\'/_/
+                                <
+                                 \.\.\.\'
+
+    WAFW00F \- Web Application Firewall Detection Tool
+
+    By Sandro Gauci && Wendel G\. Henrique
+
+Can test for these WAFs:
+
+Profense
+NetContinuum
+Incapsula
+Cloud Flare
+Secure Entry Server
+Cisco ACE XML Gateway
+Barracuda
+HyperGuard
+BinarySec
+Teros
+F5 Trafficshield
+F5 ASM
+Airlock
+Citrix NetScaler
+ModSecurity
+IBM Web Application Security
+IBM DataPower
+DenyALL
+dotDefender
+webApp\.secure
+BIG\-IP
+URLScan
+WebKnight
+SecureIIS
+Imperva
+ISA Server
+.
+.fi
+.
+.IP "" 0
+.
+.SH "HOW DO I USE IT?"
+For help please make use of the \fB\-\-help\fR option\. The basic usage is to pass it a URL as an argument\. Example:
+.
+.IP "" 4
+.
+.nf
+
+$ wafw00f https://www\.ibm\.com/
+
+                                 ^     ^
+        _   __  _   ____ _   __  _    _   ____
+       ///7/ /\.\' \e / __////7/ /,\' \e ,\' \e / __/
+      | V V // o // _/ | V V // 0 // 0 // _/
+      |_n_,\'/_n_//_/   |_n_,\' \e_,\' \e_,\'/_/
+                                <
+                                 \.\.\.\'
+
+    WAFW00F \- Web Application Firewall Detection Tool
+
+    By Sandro Gauci && Wendel G\. Henrique
+
+Checking https://www\.ibm\.com/
+The site https://www\.ibm\.com/ is behind a Citrix NetScaler
+Number of requests: 6
+.
+.fi
+.
+.IP "" 0
+

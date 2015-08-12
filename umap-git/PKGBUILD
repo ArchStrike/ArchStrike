@@ -1,0 +1,57 @@
+# Maintainer
+pkgname=umap-git
+pkgver=r25.3ad8121
+pkgrel=1
+pkgdesc="The USB host security assessment tool"
+url="https://github.com/nccgroup/umap"
+arch=('any')
+license=('AGPL')
+groups=('projectname')
+depends=('python2' 'python-pyserial')
+makedepends=('git')
+provides=('umap')
+conflicts=('umap')
+replaces=('umap')
+source=(umap-git::git+https://github.com/nccgroup/umap.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir"/umap-git
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir"/umap-git
+  install -dm755 "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/share/umap-git
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/umap-git/LICENSE
+  install -m644 README.md "$pkgdir"/usr/share/umap-git/README.md
+  install -m755 Facedancer.py "$pkgdir"/usr/share/umap-git/Facedancer.py
+  install -m755 MAXUSBApp.py "$pkgdir"/usr/share/umap-git/MAXUSBApp.py
+  install -m755 USB.py "$pkgdir"/usr/share/umap-git/USB.py
+  install -m755 USBCSEndpoint.py "$pkgdir"/usr/share/umap-git/USBCSEndpoint.py
+  install -m755 USBCSInterface.py "$pkgdir"/usr/share/umap-git/USBCSInterface.py
+  install -m755 USBClass.py "$pkgdir"/usr/share/umap-git/USBClass.py
+  install -m755 USBConfiguration.py "$pkgdir"/usr/share/umap-git/USBConfiguration.py
+  install -m755 USBDevice.py "$pkgdir"/usr/share/umap-git/USBDevice.py
+  install -m755 USBEndpoint.py "$pkgdir"/usr/share/umap-git/USBEndpoint.py
+  install -m755 USBInterface.py "$pkgdir"/usr/share/umap-git/USBInterface.py
+  install -m755 USBVendor.py "$pkgdir"/usr/share/umap-git/USBVendor.py
+  install -m644 umap-device-fingerprints.json "$pkgdir"/usr/share/umap-git/umap-device-fingerprints.json
+  install -m755 device_class_data.py "$pkgdir"/usr/share/umap-git/device_class_data.py
+  install -m644 ncc_group_logo.bin "$pkgdir"/usr/share/umap-git/ncc_group_logo.bin
+  install -m644 ncc_group_logo.jpg "$pkgdir"/usr/share/umap-git/ncc_group_logo.jpg
+  install -m755 testcases.py "$pkgdir"/usr/share/umap-git/testcases.py
+  install -m755 timeout.py "$pkgdir"/usr/share/umap-git/timeout.py
+  install -m755 umap.py "$pkgdir"/usr/share/umap-git/umap.py
+  install -m644 usb.ids "$pkgdir"/usr/share/umap-git/usb.ids
+  install -m755 util.py "$pkgdir"/usr/share/umap-git/util.py
+  cp --no-preserve=ownership -a devices "$pkgdir"/usr/share/umap-git
+  chmod u+rwX,g+rwX,o+rX -R "$pkgdir"/usr/share/umap-git/devices
+  cat > "$pkgdir"/usr/bin/umap.py <<EOF
+#!/bin/sh
+cd /usr/share/umap-git
+python2 umap.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/umap.py
+}

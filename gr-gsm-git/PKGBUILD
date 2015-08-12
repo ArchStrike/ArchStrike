@@ -1,0 +1,38 @@
+# Maintainer
+# Contributor: Yuval Adam <yuv dot adm at gmail dot com> PGP-Key: CC2115C12D99D2F0
+
+pkgname=gr-gsm-git
+pkgver=20141203.r154
+pkgrel=1
+pkgdesc="Gnuradio blocks and tools for receiving GSM transmissions"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url="https://github.com/ptrkrysik/gr-gsm"
+license=('GPL3')
+depends=('gnuradio' 'boost' 'swig' 'log4cpp' 'python2-scipy')
+makedepends=('git' 'cmake' 'doxygen')
+provides=('gr-gsm')
+source=("${pkgname}::git+https://github.com/ptrkrysik/gr-gsm")
+sha1sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build() {
+  cd "${pkgname}"
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
+}
+
+package() {
+  cd "${pkgname}"
+  cd build
+  make DESTDIR="${pkgdir}" install
+  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+   -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+   -e "s|#![ ]*/bin/python$|#!/usr/bin/python2|" \
+   -e "s|#![ ]*/usr/local/bin/python$|#!/usr/bin/python2|" \
+   $(find ${pkgdir} -name '*.py')
+}

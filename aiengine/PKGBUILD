@@ -1,0 +1,34 @@
+# Maintainer: ArchAssault <team projectname.org>
+pkgname=aiengine
+pkgver=1.2
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="A packet inspection engine with capabilities of learning without any human intervention."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://bitbucket.org/camp0/aiengine"
+license=('GPL3')
+if [[ $CARCH == 'x86_64' ]]; then
+     makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx' 'python2' 'gcc-libs-multilib')
+else 
+     makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx' 'python2' 'gcc-libs')
+fi
+depends=('libpcap' 'boost-libs' 'python2' 'log4cxx')
+source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-$pkgver.tar.gz")
+sha512sums=('30780b95c75bcec57c0460b7691c6e0c35f2ff7b15dafbaaa47dec2c657c7a7b30a6a95bcea0d95fd7c1cf9abeda2a4f4942067d4bfa27da3c74f9a62c67505d')
+
+prepare(){
+   grep -iRl 'python' "$srcdir/aiengine-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}  
+
+build() {
+  cd $srcdir/aiengine-$pkgver
+  ./autogen.sh
+  export PYTHON=/usr/bin/python2.7
+  ./configure --prefix=/usr --enable-adaptor --enable-bloomfilter --enable-fscompress --with-pic
+  make
+}
+
+package() {
+  cd $srcdir/aiengine-$pkgver
+  make DESTDIR=$pkgdir install
+}

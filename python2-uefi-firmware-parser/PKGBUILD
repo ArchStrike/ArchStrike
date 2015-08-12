@@ -1,0 +1,24 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=python2-uefi-firmware-parser
+pkgver=1.0
+pkgrel=1
+groups=('projectname' 'projectname-*hardware')
+pkgdesc="Parse BIOS/Intel ME/UEFI firmware related structures: Volumes, FileSystems, Files, etc"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/theopolis/uefi-firmware-parser'
+license=('custom')
+depends=('python2-pefile')
+makedepends=('python2-setuptools')
+source=("https://github.com/theopolis/uefi-firmware-parser/archive/v$pkgver.tar.gz")
+sha512sums=('eb8a81af558da94bda63c8264b378365b3dd2e0d5432f692f7d9284acdb583d19899223a7b400789bbd423a0eba3deb47c8fb13ec7bf9c973ffd89ad50b06168')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/uefi-firmware-parser-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/uefi-firmware-parser-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

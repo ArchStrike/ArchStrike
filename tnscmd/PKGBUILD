@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=tnscmd
+pkgver=1.3
+pkgrel=1
+pkgdesc="a lame tool to prod the oracle tnslsnr process (1521/tcp)"
+url="http://www.jammed.com/~jwa/hacks/security/tnscmd/"
+groups=('projectname' 'projectname-*misc')
+license=('GPL')
+arch=(any)
+depends=('perl')
+source=(http://www.jammed.com/~jwa/hacks/security/tnscmd/tnscmd)
+md5sums=('b8beb3f8a5689d3b3f326b3bda41b348')
+
+package() {
+  cd "$srcdir"
+  install -Dm755 tnscmd $pkgdir/usr/bin/tnscmd
+}
+

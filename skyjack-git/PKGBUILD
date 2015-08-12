@@ -1,0 +1,36 @@
+# Maintainer
+_pkgname=skyjack
+pkgname=$_pkgname-git
+pkgver=7.5f7a25e
+pkgrel=2
+groups=('projectname' 'projectname-*drone')
+pkgdesc='Takes over Parrot drones, deauthenticating their true owner and taking over control, turning them into zombie drones under your own control'
+arch=('any')
+url='https://github.com/samyk/skyjack'
+license=('GPL')
+depends=('node-ar-drone-git' 'dhclient' 'wireless_tools' 'net-tools' 'aircrack-ng')
+makedepends=('git')
+source=('git+https://github.com/samyk/skyjack')
+sha512sums=('SKIP')
+replaces=("$_pkgname")
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+
+pkgver() {
+  cd $_pkgname
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd $_pkgname
+  sed -i 's|drone_control|/usr/share/skyjack|' skyjack.pl
+}
+
+package() {
+  cd $_pkgname
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm755 $_pkgname.pl "$pkgdir/usr/share/$_pkgname/$_pkgname.pl"
+  install -m644 drone_control/* "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /usr/share/$_pkgname/$_pkgname.pl "$pkgdir/usr/bin/$_pkgname"
+}

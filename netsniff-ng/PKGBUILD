@@ -1,0 +1,28 @@
+# Maintainer
+pkgname=netsniff-ng
+pkgver=0.5.8
+pkgrel=2
+groups=('projectname' 'projectname-*sniffers')
+pkgdesc="A high performance Linux network sniffer for packet inspection."
+depends=('geoip' 'zlib' 'libnacl' 'libcap' 'liburcu' 'gnuplot' 'libcli' 'libnet' 'libnetfilter_conntrack' 'libpcap' 'libnl')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://netsniff-ng.org/'
+license=('GPL2')
+source=(http://pub.netsniff-ng.org/netsniff-ng/netsniff-ng-${pkgver}.tar.gz
+	netsniff-ng_configureForArch.patch)
+sha512sums=('fbbd9a48f2f4dc559c10dc3028cbefa881ef72177c993c57fdf09db84c5d7945ded75cec94fe216c6f7db3f2044aa46e7a15bd09b2ab41521416eee1bb464904'
+            '6125ac7d59163aa9519330ba296da5b014a709d5034b0718d2259db8952053a842305c8c99dd7224176094ffe315c99c8b5ad3aa59aaf2ef4f0e8fc8f81da24f')
+
+build() {
+  cd "$srcdir/netsniff-ng-${pkgver}"
+  ./configure
+  patch -p1 -i "$srcdir"/netsniff-ng_configureForArch.patch Makefile
+  make
+}
+
+package() {
+  cd "$srcdir/netsniff-ng-${pkgver}"
+  install -dm755 "$pkgdir"/usr/bin
+  install -dm755 "$pkgdir"/usr/share/man/man8/
+  make DESTDIR="${pkgdir}" install
+}

@@ -1,0 +1,27 @@
+# Maintainer
+pkgname=slowhttptest
+pkgver=1.6
+pkgrel=1
+groups=('projectname' 'projectname-*dos')
+pkgdesc="A highly configurable tool that simulates application layer denial of service attacks"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://code.google.com/p/slowhttptest'
+license=('Apache')
+if [[ $CARCH == 'x86_64' ]]; then
+      depends=('openssl' 'gcc-libs-multilib')
+else
+      depends=('openssl')
+fi
+source=("http://slowhttptest.googlecode.com/files/slowhttptest-$pkgver.tar.gz")
+sha512sums=('34360be27120f5922f68f25690d10d7c2e352c99cdc0224a5de5ad935d00b5e0b79ab9f80dd772fab098767acc1bdba41f7279470e75cd9dba9cf4f6aed28774')
+
+build() {
+  cd "$srcdir/slowhttptest-$pkgver"
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/slowhttptest-$pkgver"
+  make "DESTDIR=$pkgdir" install
+}

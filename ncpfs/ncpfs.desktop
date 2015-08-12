@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Ncpfs
+Comment=ncpfs allows you to mount volumes of NetWare servers under Linux.
+Exec=ncpfs
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

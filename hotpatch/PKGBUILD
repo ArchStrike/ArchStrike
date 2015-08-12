@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=hotpatch
+pkgver=0.2
+pkgrel=2
+groups=('projectname' 'projectname-*backdoors')
+pkgdesc="Hot patches executables on Linux using .so file injection"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://www.selectiveintellect.com/hotpatch.html'
+license=('BSD')
+depends=('glibc')
+makedepends=('cmake' 'git')
+source=("git+https://github.com/vikasnkumar/hotpatch")
+sha512sums=('SKIP')
+
+build() {
+  cd "$srcdir/hotpatch"
+  export PREFIX=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/hotpatch"
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+}

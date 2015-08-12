@@ -1,0 +1,35 @@
+# Maintainer
+pkgname=netdiscover
+_pkgver=0.3
+_betanum=7
+pkgver=${_pkgver}.beta${_betanum}
+pkgrel=1
+groups=('projectname' 'projectname-*reconnaissance' 'archassault-wireless')
+pkgdesc="An active/passive address reconnaissancenaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://nixgeneration.com/~jaime/${pkgname}/"
+license=('GPL')
+depends=('libpcap')
+source=("http://nixgeneration.com/~jaime/${pkgname}/releases/${pkgname}-${_pkgver}-pre-beta${_betanum}-LINUXONLY.tar.gz"
+        'misc.diff'
+        'oui.diff')
+sha512sums=('54240e4310980bc447461b78a6b658f87e0a632a8963d8b718dbf48fd95d61510e09dbf1b56de9d11e31499e0f4a9df7d79b9e8a996dcd6bae602b68b57f3d4c'
+            '3b00414c351b05a87301098cdef66bd119f9a156e04fffc3ce7a1a426e0a4e60a8c8a31bab552a9762646a76d094828e3da8f7cb3ab23585f937d623b28c4d82'
+            'c2fb66559a89e2bcc574ae7753f349c885b10871473d6fe9640b4ae286ffe84a0f7e688c2357c68803452ca9c5fafe1df6651c67051519ff2044f655c05e467f')
+
+prepare() {
+    cd ${pkgname}-${_pkgver}-pre-beta${_betanum}
+    #patch -p0 -i ../oui.diff
+    #patch -p0 -i ../misc.diff
+}
+
+build() {
+    cd ${pkgname}-${_pkgver}-pre-beta${_betanum}
+    ./configure --prefix=/usr/ --sysconfdir=/etc/ --sbindir=/usr/bin
+    make
+}
+
+package() {
+    cd ${pkgname}-${_pkgver}-pre-beta${_betanum}
+    make DESTDIR="$pkgdir" install
+}

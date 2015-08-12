@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Rarcrack
+Comment= This program uses bruteforce algorithm to find correct password (rar, 7z, zip)
+Exec=rarcrack
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCracker;

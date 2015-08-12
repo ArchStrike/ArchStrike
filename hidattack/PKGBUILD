@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=hidattack
+pkgver=0.1
+pkgrel=1
+groups=('projectname' 'projectname-*bluetooth')
+pkgdesc="HID Attack (attacking HID host implementations)"
+url='http://mulliner.org/bluetooth/hidattack.php'
+license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+makedepends=('gcc')
+depends=(bluez openobex)
+source=(http://www.mulliner.org/bluetooth/hidattack${pkgver//./}.tar.gz)
+md5sums=('0748ddd70ef23122687693b2bbaa6960')
+
+build() {
+  cd "$srcdir/hidattack${pkgver//./}"
+  make CFLAGS="$CFLAGS"
+}
+
+package() {
+  cd "$srcdir/hidattack${pkgver//./}"
+  install -Dm755 hidattack $pkgdir/usr/bin/hidattack
+  install -Dm644 README $pkgdir/usr/share/hidattack/README
+  install -Dm644 ha.inp $pkgdir/usr/share/hidattack/ha.inp
+}

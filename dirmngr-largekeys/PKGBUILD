@@ -1,0 +1,44 @@
+# Maintainer
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+
+_pkgname=dirmngr
+pkgname=$_pkgname-largekeys
+pkgver=1.1.1
+pkgrel=1
+pkgdesc='A daemon to handle CRL and certificate requests'
+arch=('i686' 'x86_64')
+license=('GPL')
+url='ftp://ftp.gnupg.org/gcrypt/dirmngr'
+depends=('libgcrypt' 'libldap' 'libksba' 'libgpg-error' 'libassuan' 'pth')
+source=(
+  "ftp://ftp.gnupg.org/gcrypt/$_pkgname/$_pkgname-$pkgver.tar.bz2"
+  'dirmngr-pth-fix.patch'
+)
+install="$pkgname.install"
+sha512sums=(
+  '922512f22853c49cf291207c81862c68ba51c89646036288592d6b2f57709d35ac53f9f550569986c04daec20403ab8ec85b08893443af417950916b869c8419'
+  '0f20d7231863c0ab7b7daadf1deac8b2b094365a28d56849dc6253a26217dd1b899c8ecc940f4bfeacbcf5cf8f0caf4ab3fd755abe4db8ece174ecafb87c8ff2'
+)
+conflicts=('dirmngr')
+provides=('dirmngr')
+
+prepare() {
+  cd $_pkgname-$pkgver
+  patch -Np0 -i ../dirmngr-pth-fix.patch
+}
+
+build() {
+  cd $_pkgname-$pkgver
+  # FIX for https://bugzilla.redhat.com/565131
+  # not sure how best to turn this into something more upstreamable
+  # patch configure to try this combo first? -- Rex
+  # https://bugs.archlinux.org/task/28606
+  export LDAPLIBS='-lldap -llber'
+  ./configure --prefix='/usr'  --libexecdir='/usr/lib'
+  make
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+}

@@ -1,0 +1,28 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Jipuf <jipuf@gmx.fr>
+
+pkgname=yaf
+pkgver=2.7.1
+pkgrel=3
+pkgdesc="Yet Another Flowmeter"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://tools.netsa.cert.org/yaf/'
+license=('GPL')
+depends=('libltdl' 'libpcap' 'libfixbuf>=1.0.0')
+makedepends=('p0f' 'doxygen' 'graphviz')
+source=("http://tools.netsa.cert.org/releases/yaf-$pkgver.tar.gz")
+sha512sums=('465bf7198a79ff6e11117b0cb0cb8265aa41e24b6cf3ba45edbd82bbb2e7eab7f99a85cb25447cfafcd1be26b13c45cdeea78f6485b0abd2de090c9ed8c54609')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  export LIBS="-lpthread"
+  ./configure --prefix=/usr --enable-applabel --enable-mpls --enable-plugins --enable-entropy --enable-localtime --enable-nonip --with-pic
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+  # fixing  /etc path
+  mv $pkgdir/usr/etc $pkgdir/etc
+}

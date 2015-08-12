@@ -1,0 +1,38 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=frisbeelite-git
+pkgver=r1.3ebce5c
+pkgrel=1
+groups=('projectname' 'projectname-*fuzzer')
+pkgdesc="A GUI-based USB device fuzzer"
+arch=('any')
+url='https://github.com/nccgroup/FrisbeeLite'
+license=('GPL3')
+depends=('python2' 'python2-pyusb' 'libusb' 'wxpython2.8')
+makedepends=('git')
+provides=('frisbeelite')
+source=("git+https://github.com/nccgroup/FrisbeeLite.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/FrisbeeLite"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/FrisbeeLite"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/frisbeelite"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/frisbeelite"
+  
+cat > "$pkgdir/usr/bin/frisbeelite" << EOF
+#!/bin/sh
+cd /usr/share/frisbeelite
+python2 FrisbeeLite_v1.2.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/frisbeelite"
+
+}

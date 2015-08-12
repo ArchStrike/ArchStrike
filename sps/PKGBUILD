@@ -1,0 +1,60 @@
+# Maintainer: ArchAssault <team projectname.org>
+pkgname=sps
+pkgver=4.2
+pkgrel=2
+groups=('projectname' 'projectname-*networking')
+pkgdesc="A Linux packet crafting tool. Supports IPv4, IPv6 including extension headers, and tunneling IPv6 over IPv4."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+if [[ $CARCH == 'x86_64' ]]; then
+     depends=('gtk3')
+else 
+     depends=('gtk2')
+fi
+url="https://sites.google.com/site/simplepacketsender/"
+license=('GPL3')
+source=("https://sites.google.com/site/simplepacketsender/sps-$pkgver.tar.gz")
+sha512sums=('b69b29f69be7dbf35e9d579caf5414f5ec4526492a19a4f44f4731e91d18e83e7b0f06639f492338b6a35d5a243acdffee5407214e6ce2ec49955abcdb50fc7a')
+
+build() {
+  cd $srcdir/sps-$pkgver
+  if [[ $CARCH == 'x86_64' ]]; then
+       cd src64
+       make
+  else 
+       cd src32
+       make
+  fi
+}
+
+package() {
+  cd $srcdir/sps-$pkgver
+  install -dm755 $pkgdir/usr/bin
+  install -dm755 $pkgdir/usr/share/$pkgname
+  install -dm755 $pkgdir/usr/share/licenses/$pkgname
+  if [[ $CARCH == 'x86_64' ]]; then
+       cd src64
+       install -Dm755 sps $pkgdir/usr/share/$pkgname
+       install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname
+       cd ../bin64
+       install -Dm644 UTF-8.csv $pkgdir/usr/share/$pkgname
+       for txt in *.txt; do install -Dm644 $txt $pkgdir/usr/share/$pkgname;done
+       for ui in *.ui; do install -Dm644 $ui $pkgdir/usr/share/$pkgname;done
+  else
+       cd src32
+       install -Dm755 sps $pkgdir/usr/share/$pkgname
+       install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname
+       cd ../bin32
+       install -Dm644 UTF-8.csv $pkgdir/usr/share/$pkgname
+       for txt in *.txt; do install -Dm644 $txt $pkgdir/usr/share/$pkgname;done
+       for ui in *.ui; do install -Dm644 $ui $pkgdir/usr/share/$pkgname;done
+  fi
+
+cat > $pkgdir/usr/bin/sps <<EOF
+#!/bin/sh
+cd /usr/share/sps/
+./sps "\$@"
+EOF
+
+chmod +x $pkgdir/usr/bin/sps
+
+}

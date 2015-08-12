@@ -1,0 +1,35 @@
+# Maintainer
+pkgname='perl-net-frame'
+pkgver='1.15'
+pkgrel='1'
+pkgdesc='The base framework for frame crafting.'
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-bit-vector' 'perl-class-gomor' 'perl-net-ipv6addr'
+'perl-socket6')
+url='http://search.cpan.org/dist/Net-Frame'
+source=("http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/Net-Frame-$pkgver.tar.gz")
+sha512sums=('8cd641bcb6a6451a6a2fce9a9ae0b25f5489d6e69c57ce0e411cf269d2aa4b3913769e0639ec176a46313fea17c0f4f041746410fe68f95b74934b9df971dfee')
+_distdir="Net-Frame-$pkgver"
+
+prepare() {
+  cd "$srcdir/$_distdir"
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
+    PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+  /usr/bin/perl Makefile.PL
+}
+
+build() {
+  cd "$srcdir/$_distdir"
+  make
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  make install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

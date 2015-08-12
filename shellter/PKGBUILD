@@ -1,0 +1,46 @@
+# Maintainer
+
+pkgname=shellter
+pkgver=1.7
+pkgrel=3
+pkgdesc="A Dynamic Shellcode Injector(wine version - beta)"
+arch=('i686' 'x86_64')
+url="https://www.shellterproject.com/"
+license=('custom')
+depends=('wine' 'bash')
+makedepends=('unrar' 'curl')
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+source=("https://www.shellterproject.com/Downloads/Shellter/Latest/Shellter_v1.7_Wine_Beta1.rar")
+noextract=('Shellter_v1.7_Wine_Beta1.rar')
+sha512sums=('a3e6e1ad9d46746482e89ad23610e39d88d1ab3908fa0d2066d52bf0d8ebf8364d9ccd5a5b6f4f28ef29bc9e5a8db8aac81b9a679ad2a5740a466582ce3493f2')
+
+build(){
+  unrar x Shellter_v1.7_Wine_Beta1.rar
+}
+
+package() {
+  cd "$srcdir/Shellter_v1.7_Wine_Beta1"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/shellter"
+  install -dm755 "$pkgdir/usr/share/shellter/ShellCode_Samples"
+  install -Dm644 ShellCode_Samples/* "$pkgdir/usr/share/shellter/ShellCode_Samples/"
+  install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 *.txt "$pkgdir/usr/share/shellter/"
+  install -Dm755 Shellter_v1.7_Wine_Beta1.exe "$pkgdir/usr/share/shellter/Shellter_v1.7_Wine_Beta1.exe"
+
+cat >"$pkgdir/usr/bin/shellter" <<EOF
+#!/bin/bash
+
+set -e
+
+if [ ! -d "$HOME/.shellter" ] ; then
+	mkdir -p "$HOME/.shellter/wine"
+	ln -s /usr/share/shellter/Shellter_v1.7_Wine_Beta1.exe "$HOME/.shellter/Shellter_v1.7_Wine_Beta1.exe"
+fi
+
+wine "$HOME/.shellter/Shellter_v1.7_Wine_Beta1.exe" "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/shellter"
+
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sidguesser
+Comment=Guesses sids/instances against an Oracle database according to a predefined dictionary file.
+Exec=sidguesser
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCracker;

@@ -1,0 +1,41 @@
+# Maintainer
+pkgname=smbbf
+pkgver=0.9.1
+pkgrel=1
+pkgdesc="SMB password bruteforcer."
+url="http://packetstormsecurity.com/files/25381/smbbf-0.9.1.tar.gz.html"
+groups=('projectname' 'projectname-*cracker')
+license=('GPL')
+depends=('openssl')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+options=('!makeflags')
+source=("http://packetstorm.igor.onlinedirect.bg/Crackers/smbbf-0.9.1.tar.gz")
+md5sums=('ddee38c0194ecef0bc0fe41aa6429ceb')
+
+prepare() {
+  cd "$srcdir/smbbf"
+
+  sed -i '/SMBBF_INCLUDE =/cSMBBF_INCLUDE = -Iinclude -I\/usr\/include\/openssl -DCLK_TCK=CLOCKS_PER_SEC' Makefile
+  sed -i '/LIBDES=/cLIBDES = -lcrypto' Makefile
+  sed -i "/^CC =/cCC = gcc $CFLAGS" Makefile
+}
+
+build() {
+  cd "$srcdir/smbbf"
+
+  make
+}
+
+package() {
+  cd "$srcdir/smbbf"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/doc/smbbf"
+
+  # Bin.
+  install -m755 nbdecode smbbf smbdumpusers smbgetserverinfo "$pkgdir/usr/bin"
+
+  # Doc.
+  install -m644 README *.txt "$pkgdir/usr/share/doc/smbbf"
+}

@@ -1,0 +1,44 @@
+# Maintainer
+# Contributor: Borja Ruiz <borja [at] libcrack [dot] so> 
+pkgname=sysdig-git
+pkgver=0.1.72.r1327.gf405060
+pkgrel=1
+pkgdesc="Open source system-level exploration and troubleshooting tool"
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+url="http://www.sysdig.org/"
+license=('GPL2')
+groups=('projectname')
+if [[ $CARCH == x86_64 ]] ; then
+  depends=('gcc-libs-multilib' 'dkms')
+else
+  depends=('dkms')
+fi
+makedepends=('git' 'cmake' 'linux-headers' 'lua')
+options=('!strip')
+replaces=('sysdig')
+conflicts=('sysdig')
+provides=('sysdig')
+source=("$pkgname"::'git+https://github.com/draios/sysdig.git')
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+  cd "$srcdir/$pkgname"
+  mkdir build
+  cd build
+  cmake -DSYSDIG_VERSION="$pkgver" -DCMAKE_INSTALL_PREFIX=/usr ..
+  make -j1
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  cd build
+  make -j1 DESTDIR="$pkgdir" install
+  install -Dm755 "$srcdir/$pkgname"/driver/sysdig-probe.ko "$pkgdir"/usr/share/sysdig-git/driver/sysdig-probe.ko
+  rm -rf "$pkgdir"/usr/src
+  mv "${pkgdir}"/usr/etc "${pkgdir}"/etc
+}

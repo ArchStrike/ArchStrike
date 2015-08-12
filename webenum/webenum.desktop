@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Webenum
+Comment=Tool to enumerate http responses using dynamically generated queries and more. Useful for penetration tests against web servers.
+Exec=webenum
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultScanner;

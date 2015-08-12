@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=dnsmap
+pkgver=0.30
+pkgrel=1
+groups=('projectname' 'projectname-*fingerprinting')
+pkgdesc="Passive DNS network mapper"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://dnsmap.googlecode.com'
+license=('GPL')
+makedepends=('make')
+install=dnsmap.install
+source=("http://dnsmap.googlecode.com/files/dnsmap-$pkgver.tar.gz")
+md5sums=('7f341361622db147906700d37af46e06')
+
+build() {
+  cd "$srcdir/dnsmap-$pkgver"
+  make
+}
+
+package() {
+  cd "$srcdir/dnsmap-$pkgver"
+
+  install -Dm755 dnsmap "$pkgdir/usr/bin/dnsmap"
+  install -Dm755 dnsmap-bulk.sh "$pkgdir/usr/bin/dnsmap-bulk"
+  install -Dm644 wordlist_TLAs.txt "$pkgdir/usr/share/dnsmap/wordlist_TLAs.txt"
+}

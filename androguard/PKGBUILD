@@ -1,0 +1,32 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: William Robertson <wkr@wkr.name>
+pkgname='androguard'
+pkgver='1.9'
+pkgrel='1'
+pkgdesc='Python framework for Android application analysis.'
+arch=('any')
+url='https://code.google.com/p/androguard/'
+license=('Apache')
+groups=('projectname')
+depends=('python2')
+makedepends=('python2-setuptools')
+optdepends=(
+    'ipython2: interactive analysis support'
+    'python2-pygments: color support'
+    'pydot: CFG support'
+    'python2-magic: file identification support'
+    'sparsehash: elsim support'
+    'muparser: elsim support'
+    'snappy: elsim support'
+    'bzip2: elsim support'
+    'zlib: elsim support'
+    'psyco2-svn: acceleration support'
+)
+source=("https://androguard.googlecode.com/files/androguard-$pkgver.tar.gz")
+sha512sums=('682cc56b0065fb481c95b82dd1150654bafab9eb2d1fd22de85de4d3bd3f8bde15a65c9c66d62e09f1c33731cc59f33f9d967d5050ebba3692c557d219e243fe')
+
+package() {
+    cd "$srcdir/androguard-$pkgver"
+    python2 setup.py install --root="$pkgdir" --optimize=1
+    sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/androguard/core/bytecodes/libdvm/test_dvm.py
+}

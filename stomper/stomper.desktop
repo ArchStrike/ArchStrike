@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Stomper
+Comment=A transport neutral client implementation of the STOMP protocol.
+Exec=stomper
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

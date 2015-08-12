@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Grabber
+Comment=A web application scanner. Basically it detects some kind of vulnerabilities in your website.
+Exec=grabber
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;

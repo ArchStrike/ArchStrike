@@ -1,0 +1,32 @@
+# Maintainer
+pkgname=dhcpig-git
+pkgver=r69.cc4109a
+pkgrel=1
+epoch=1
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="Enumerates hosts, subdomains, and emails from a given domain using google"
+url="https://github.com/kamorin/DHCPig"
+license=('GPL2')
+arch=('any')
+depends=('python2' 'scapy')
+makedepends=('git')
+provides=('dhcpig')
+conflicts=('dhcpig')
+replaces=('dhcpig')
+source=("git+https://github.com/kamorin/DHCPig")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd DHCPig
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/DHCPig"
+  sed -i 's/python/python2/' pig.py
+}
+
+package() {
+  cd "$srcdir/DHCPig"
+  install -Dm755 pig.py "$pkgdir/usr/bin/dhcpig"
+}

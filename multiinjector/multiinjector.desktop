@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Multiinjector
+Comment=Automatic SQL injection utility using a lsit of URI addresses to test parameter manipulation.
+Exec=multiinjector
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;

@@ -1,0 +1,38 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=beleth
+pkgver=0.r36.0963699
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="A Multi-threaded Dictionary based SSH cracker"
+url="https://github.com/chokepoint/Beleth"
+arch=('armv7h' 'armv6h' 'i686' 'x86_64')
+license=('custom')
+depends=('libssh2')
+makedepends=('git')
+source=("git+https://github.com/chokepoint/Beleth.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/Beleth"
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build(){
+  cd "$srcdir/Beleth"
+  make
+}
+
+package() {
+  cd "$srcdir/Beleth"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/share/beleth"
+  install -dm755 "$pkgdir/usr/bin/"
+
+  # Doc.
+  install -m644 wordlist.txt "$pkgdir/usr/share/beleth"
+  install -m644 README.md "$pkgdir/usr/share/beleth"
+
+  # Bin.
+  install -m755 beleth "$pkgdir/usr/bin/beleth"
+}

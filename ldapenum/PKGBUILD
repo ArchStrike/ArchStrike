@@ -1,0 +1,29 @@
+# Maintainer
+pkgname='ldapenum'
+pkgver=20140502
+pkgrel=1
+pkgdesc='Enumerate domain controllers using LDAP.'
+arch=('any')
+url='https://gobag.googlecode.com/svn-history/r2/trunk/ldap/ldapenum/'
+license=('GPL2')
+depends=('perl' 'perl-ldap' 'perl-net-nslookup')
+makedepends=('dos2unix')
+groups=('projectname' 'projectname-*reconnaissance' 'archassault-scanners')
+source=('https://gobag.googlecode.com/svn-history/r2/trunk/ldap/ldapenum/ldapenum.pl')
+sha512sums=('30800b9ec5293b23aa7843af87759fdf23110f2e9a318c6cc53fc81527beeee6433a7c318ff21ecd2eecbf4f2f58de6a1192d8078ca65b21088241567bf3c04a')
+
+pkgver() {
+  cd "$srcdir"
+  date +%Y%m%d
+}
+
+prepare() {
+  cd "$srcdir"
+  sed -i '1 s|^|#!/usr/bin/perl|' ldapenum.pl
+}
+
+package() {
+  cd "$srcdir"
+  install -Dm755 "ldapenum.pl" "$pkgdir/usr/bin/ldapenum.pl"
+  dos2unix "$pkgdir"/usr/bin/ldapenum.pl
+}

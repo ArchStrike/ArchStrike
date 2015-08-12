@@ -1,0 +1,24 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=rtpinsertsound
+pkgver=3.0
+pkgrel=1
+groups=('projectname' 'projectname-*voip')
+pkgdesc="A tool to insert audio into a specified audio (i.e. RTP) stream"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.hackingvoip.com/sec_tools.html"
+license=('GPL2')
+depends=('libfindrtp' 'libnet')
+makedepends=('g711conversions' 'hack_library')
+source=("http://www.hackingvoip.com/tools/rtpinsertsound_v3.0.tar.gz")
+sha512sums=('fa6feab76311f80d63d44e85bf6703cc81866b7bad3f57365eefd3e176965f97e105eac3d64df3498086fddddc2cbe102373d80ddb9a2e9c62e65cd1dbcfb638')
+
+build() {
+  cd $srcdir/rtpinsertsound_v$pkgver
+  gcc rtpinsertsound.c -lnet -lpcap -lfindrtp /usr/lib/hack_library.o /usr/lib/g711conversions.o -o rtpinsertsound
+}
+
+package() {
+  cd $srcdir/rtpinsertsound_v$pkgver
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm755 rtpinsertsound "$pkgdir/usr/bin/"
+}

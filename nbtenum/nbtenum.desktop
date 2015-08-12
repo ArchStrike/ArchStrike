@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Nbtenum
+Comment=A utility for Windows that can be used to enumerate NetBIOS information from one host or a range of hosts.
+Exec=nbtenum
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWindows;

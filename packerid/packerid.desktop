@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Packerid
+Comment=Script which uses a PEiD database to identify which packer (if any) is being used by a binary.
+Exec=packerid
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultReversing;ArchAssaultPacker;ArchAssaultBinary;

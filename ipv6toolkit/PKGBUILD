@@ -1,0 +1,31 @@
+# Maintainer
+pkgname=ipv6toolkit
+pkgver=2.0
+pkgrel=1
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="A security assessment and troubleshooting tool for the IPv6 protocols"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://www.si6networks.com/tools/ipv6toolkit/'
+license=('GPL3')
+provides=('ipv6toolkit')
+depends=('libpcap' 'perl')
+source=("http://www.si6networks.com/tools/ipv6toolkit/ipv6toolkit-v$pkgver.tar.gz")
+sha512sums=('d78d894afa7d3b2cec7de9f5a912fda94ab349891c96744dcec2e95dcb53d73decb7037ccff06b5db24f1347c116f397cb7ce5b7198da770880aaa55fac9be75')
+
+build(){
+ cd "$srcdir/ipv6toolkit-v$pkgver"
+ export PREFIX=/usr
+ export MANPREFIX=/usr/share
+ make 
+}
+
+
+package() {
+  cd "$srcdir/ipv6toolkit-v$pkgver"
+ 
+  #Base etc dir
+  install -dm755 "$pkgdir/etc/ipv6toolkit"
+  
+  make DESTDIR=$pkgdir SBINPATH=$pkgdir/usr/bin ETCPATH=$pkgdir/etc/ipv6toolkit install
+
+}

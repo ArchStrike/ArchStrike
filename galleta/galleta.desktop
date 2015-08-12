@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Galleta
+Comment=Examine the contents of the IE's cookie files for forensic purposes
+Exec=galleta
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultForensic;

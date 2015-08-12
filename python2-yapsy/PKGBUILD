@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=python2-yapsy
+_pyname=Yapsy
+pkgver=1.10.2
+pkgrel=1
+pkgdesc='Yet another plugin system'
+arch=('any')
+url='http://yapsy.sourceforge.net/'
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+options=(!emptydirs)
+source=("http://pypi.python.org/packages/source/$(echo ${_pyname} | cut -c1)/${_pyname}/${_pyname}-${pkgver}-pythons2n3.tar.gz")
+md5sums=('d905b574d4f55ff62e02603ec3dc89b3')
+
+prepare() {
+  cd "${srcdir}/${_pyname}-${pkgver}-pythons2n3"
+
+  # python2 shebang
+  sed -i 's|bin/python$|&2|' `grep -rl bin/python`
+}
+
+package() {
+  cd "${srcdir}/${_pyname}-${pkgver}-pythons2n3"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  install -D -m644 src2/package/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:

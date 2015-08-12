@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=libfindrtp
+pkgver=0.4b
+pkgrel=1
+groups=('projectname' 'projectname-*voip')
+pkgdesc="A library needed by rtpinsertsound and rtpmixsound."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.hackingvoip.com/sec_tools.html"
+license=('GPL2')
+depends=('libpcap')
+source=("http://www.hackingvoip.com/tools/libfindrtp-$pkgver.tar.gz")
+sha512sums=('eeaee0e1d2202748de9bb4cc326fab7a7154abc6c79075ce63c7015ee4e3c7f8262a07d6f08dec33bb1a699a339546a86f3aee5b7cb3c94d6347a13f190e1e9b')
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  make CFLAGS="$CFLAGS -fPIC"
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  install -dm755 $pkgdir/usr/lib
+  install -dm755 $pkgdir/usr/include
+  install -Dm644 libfindrtp.h "$pkgdir/usr/include/"
+  install -Dm755 libfindrtp.so "$pkgdir/usr/lib/"
+}

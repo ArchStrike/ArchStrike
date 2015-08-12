@@ -1,0 +1,37 @@
+# Maintainer: ArchAssault <team projectname org>
+
+pkgname=commix-git
+pkgver=20150626.r169
+pkgrel=1
+groups=('projectname' 'projectname-*webapps')
+pkgdesc="Find and exploit a command injection vulnerability in a certain vulnerable parameter or string."
+url="https://github.com/stasinopoulos/commix"
+depends=('python2-urllib3' 'python2-httplib2')
+makedepends=('git')
+license=('GPL3')
+arch=('any')
+source=("$pkgname::git+https://github.com/stasinopoulos/commix.git")
+sha512sums=('SKIP')
+
+pkgver() {
+cd "$pkgname"
+printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare(){
+grep -iRl 'python' "$srcdir/${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+cd "$srcdir/$pkgname"
+install -dm755 "$pkgdir/usr/share/$pkgname/"
+install -dm755 "$pkgdir/usr/bin/"
+cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+cat > "$pkgdir/usr/bin/commix" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 commix.py "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/commix"
+}

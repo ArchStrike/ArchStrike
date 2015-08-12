@@ -1,0 +1,82 @@
+# Maintainer
+pkgname=snoopy-ng-git
+_pkgname=snoopy-ng
+pkgver=r118.1ce0a3c
+pkgrel=1
+groups=('projectname' 'projectname-*drone' 'archassault-exploit')
+pkgdesc="A distributed, sensor, data collection, interception, analysis, and visualization framework."
+arch=('any')
+url='https://github.com/sensepost/snoopy-ng'
+license=('custom')
+depends=('python2' 'autossh' 'python2-psutil' 'libpcap' 'python2-sqlalchemy' 'ppp' 'python2-requests' 'mitmproxy' 'python2-smspdu' 'python2-httplib2' 'python2-pyinotify' 'python2-netifaces' 'python2-dnslib'
+         'python2-dpkt' 'python2-pylibpcap' 'python2-pyserial' 'aircrack-ng' 'tcpdump' 'sqlite3' 'iw' 'python2-pybluez' 'python2-flask' 'gpsd' 'python2-dateutil' 'python2-publicsuffix')
+makedepends=('git')
+provides=('snoopy-ng-server' 'snoopy-server' 'snoopy-ng-client' 'snoopy-client')
+replaces=('snoopy-ng-server' 'snoopy-server' 'snoopy-ng-client' 'snoopy-client')
+conflicts=('snoopy-ng-server' 'snoopy-client' 'snoopy-ng-client' 'snoopy-client')
+source=("snoopy-ng::git+https://github.com/sensepost/snoopy-ng.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/$_pkgname" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/$_pkgname"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$_pkgname/includes"
+  install -dm755 "$pkgdir/usr/share/$_pkgname/plugins"
+  install -dm755 "$pkgdir/usr/share/$_pkgname/transforms"
+  install -dm755 "$pkgdir/usr/share/$_pkgname/uat"
+  install -dm755 "$pkgdir/usr/share/$_pkgname/setup"
+  install -dm755 "$pkgdir/usr/share/sslstripSnoopy"
+ 
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 README.md "$pkgdir/usr/share/$_pkgname/README.md"
+  install -Dm644 TODO.txt "$pkgdir/usr/share/$_pkgname/TODO.txt"
+  install -Dm644 includes/* "$pkgdir/usr/share/$_pkgname/includes/"
+  cp -a --no-preserve=ownership setup/* "$pkgdir/usr/share/$_pkgname/setup/"
+  cp -a --no-preserve=ownership plugins/* "$pkgdir/usr/share/$_pkgname/plugins/"
+  install -Dm644 uat/* "$pkgdir/usr/share/$_pkgname/uat/"
+  install -Dm644 transforms/* "$pkgdir/usr/share/$_pkgname/transforms/"
+  install -Dm755 snoopy.py "$pkgdir/usr/share/$_pkgname/snoopy.py"
+  
+  # Setup path to DB
+  echo "sqlite:///usr/share/$_pkgname/snoopy.db" > "$pkgdir/usr/share/$_pkgname/transforms/db_path.conf"
+
+  cd setup/sslstripSnoopy/
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/sslstripSnoopy/"
+        
+cat > "$pkgdir/usr/bin/snoopy" << EOF
+#!/bin/sh
+cd /usr/share/snoopy-ng
+python2 snoopy.py "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/snoopy_auth" <<EOF
+#!/bin/sh
+cd /usr/share/snoopy-ng
+python2 includes/auth_handler.py "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/sslstrip_snoopy" <<EOF
+#!/bin/sh
+cd /usr/share/sslstripSnoopy
+python2 sslstrip.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/snoopy"
+chmod +x "$pkgdir/usr/bin/snoopy_auth"
+chmod +x "$pkgdir/usr/bin/sslstrip_snoopy"
+}
+
+

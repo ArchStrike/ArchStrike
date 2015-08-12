@@ -1,0 +1,31 @@
+# Maintainer
+pkgname=smali
+pkgver=1.4.1
+pkgrel=1
+groups=('projectname' 'projectname-*hardware')
+pkgdesc="An assembler/disassembler for Android's dex format"
+arch=('any')
+url='http://code.google.com/p/smali/'
+license=("BSD")
+depends=('java-runtime')
+source=("http://smali.googlecode.com/files/baksmali"
+        "http://smali.googlecode.com/files/baksmali-$pkgver.jar"
+        "http://smali.googlecode.com/files/smali"
+        "http://smali.googlecode.com/files/smali-$pkgver.jar")
+md5sums=('5346d9eefb6101dfa3fe672c6b82d1a0'
+         '34352203caccd5ddc7bea3eedd3bd403'
+         '53365fdad565e1abbdc2acac4cf2051a'
+         '3207354a23128a27850e3207a9a1dc4a')
+
+package() {
+  install -d -m755 "$pkgdir/usr/bin"
+  for file in baksmali smali; do
+    install -D -m755 "$srcdir/$file" "$pkgdir/usr/share/smali/$file"
+
+    # Prevent from printing path on launch.
+    sed '/echo ${newProg}/d' -i "$pkgdir/usr/share/smali/$file"
+
+    install -D -m644 "$srcdir/$file-$pkgver.jar" "$pkgdir/usr/share/smali/$file.jar"
+    ln -s /usr/share/smali/$file "$pkgdir/usr/bin/$file"
+  done
+}

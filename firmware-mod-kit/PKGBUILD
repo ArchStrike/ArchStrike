@@ -1,0 +1,30 @@
+# Maintainer
+pkgname=firmware-mod-kit
+pkgver=099
+pkgrel=2
+groups=('projectname' 'projectname-*misc')
+pkgdesc=" Modify firmware images without recompiling!"
+url="http://code.google.com/p/firmware-mod-kit"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('MIT')
+depends=('python-magic')
+source=("http://firmware-mod-kit.googlecode.com/files/fmk_${pkgver}.tar.gz")
+md5sums=('91bd2cb3803880368af369d07271b5b9')
+
+build(){
+ cd "$srcdir/fmk/src"
+ ./configure
+ make
+}
+
+package() {
+  cd "$srcdir/fmk"
+  install -dm0755 "$pkgdir/usr/share/$pkgname"
+  install -dm0755 "$pkgdir/usr/share/doc/$pkgname"
+  install -m0755 *.sh "$pkgdir/usr/share/firmware-mod-kit/"
+  install -m0644 *.inc "$pkgdir/usr/share/firmware-mod-kit/"
+  install -m0644 *.htm "$pkgdir/usr/share/doc/firmware-mod-kit/"
+  install -m0644 firmware_mod_kit_version.txt  "$pkgdir/usr/share/firmware-mod-kit/" 
+  for i in src ipk_template; do cp -a --no-preserve=ownership $i "$pkgdir/usr/share/firmware-mod-kit/"; done  
+}
+

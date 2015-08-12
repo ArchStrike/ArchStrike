@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname.org>
+# Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
+# Contributor: Dieter Plaetinck <dieter@plaetinck.be>
+
+pkgname=python2-meliae
+pkgver=0.4.0
+pkgrel=1
+pkgdesc="Meliae is a library meant to help people understand how their memory is being used in Python"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://launchpad.net/meliae"
+license=('GPL3')
+depends=('python2')
+makedepends=('cython2')
+source=(http://launchpad.net/meliae/trunk/0.4/+download/meliae-${pkgver}.tar.gz)
+sha512sums=('c4bc2e46b9cdf0db0bfacef159d13709da0cb84ce60caee3f1df04ee4012fc83f69c679f5787656c6c8740f943682f4d94ff270b98b3287c22319384c717f4db')
+
+prepare(){
+     grep -iRl 'python' "$srcdir/meliae-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+} 
+
+package() {
+    cd $srcdir/meliae-$pkgver
+    python2 ./setup.py install --root=$pkgdir --optimize=1
+}
+

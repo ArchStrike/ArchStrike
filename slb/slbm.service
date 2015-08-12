@@ -1,0 +1,10 @@
+[Unit]
+Description=Small load balancer master
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/slbmd
+GuessMainPID=yes
+
+[Install]
+WantedBy=multi-user.target

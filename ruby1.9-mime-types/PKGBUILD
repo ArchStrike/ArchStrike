@@ -1,0 +1,20 @@
+# Maintainer: ArchAssault <team projectname org> 
+_gemname=mime-types
+pkgname=ruby1.9-$_gemname
+pkgver=1.18
+pkgrel=3
+pkgdesc='The mime-types library provides a library and registry for information about MIME content type definitions'
+arch=(any)
+url='http://mime-types.rubyforge.org/'
+license=(MIT 'Artistic 2.0' GPL-2)
+depends=(ruby1.9)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('a5fee1d398b6ae0563113fa1493315136aeaa8c5')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+}

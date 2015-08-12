@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Kolkata
+Comment=A web application fingerprinting engine written in Perl that combines cryptography with IDS evasion.
+Exec=kolkata
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultFingerprint;

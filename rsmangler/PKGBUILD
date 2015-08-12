@@ -1,0 +1,21 @@
+# Maintainer
+pkgname=rsmangler
+pkgver=1.4
+pkgrel=2
+groups=('projectname' 'projectname-*autonomous')
+pkgdesc='Takes a wordlist and perform various manipulations on it similar to those done by John the Ripper with a few extras.'
+url=('http://www.randomstorm.com/rsmangler-security-tool.php')
+arch=('any')
+license=('CCPL')
+depends=('ruby')
+source=("http://www.randomstorm.com/tools/${pkgname}_${pkgver}.tar.bz2")
+sha512sums=('55148f2a4bdcdcf3f06414a16f84ae32436b12c05a26c993bd7d63f20a16c8aada36b1b2918a8d67fdfcff64e204f08b819d13a82a512be5e26f98ce87a88044')
+
+package() {
+  cd $srcdir/${pkgname}
+  install -dm755 $pkgdir//usr/share/rsmangler
+  install -dm755 $pkgdir/usr/bin
+  cp -r * $pkgdir/usr/share/rsmangler/
+  echo -e "#!/bin/bash\nruby /usr/share/rsmangler/rsmangler.rb \$@" > $pkgdir/usr/bin/rsmangler
+  chmod a+x $pkgdir/usr/bin/rsmangler
+}

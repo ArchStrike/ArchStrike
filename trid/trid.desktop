@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Trid
+Comment=Utility to identify file types using their binary signatures
+Exec=sh -c '/usr/bin/trid --help; ${SHELL:-bash}'
+Icon=projectname
+Terminal=true
+Categories=Archassault;

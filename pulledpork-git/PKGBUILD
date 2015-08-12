@@ -1,0 +1,37 @@
+# Maintainer
+
+_pkgname=pulledpork
+pkgname=$_pkgname-git
+pkgver=20150630.r246
+pkgrel=1
+pkgdesc="Snort rule management"
+arch=('any')
+url="https://github.com/shirkdog/pulledpork"
+license=('GPL2')
+groups=('projectname' 'projectname-*misc')
+depends=('perl')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/shirkdog/pulledpork.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "$pkgname"
+
+  install -dm755 "$pkgdir/usr/share/$pkgname/"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+
+cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+perl pulledpork.pl "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/$_pkgname"
+}
+

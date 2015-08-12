@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Masscan
+Comment=TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes
+Exec=masscan
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultScanner;ArchAssaultCracker;

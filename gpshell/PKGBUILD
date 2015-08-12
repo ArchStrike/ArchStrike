@@ -1,0 +1,26 @@
+# Maintainer: ArchAssault <team archassualt.org>
+# Contributor: Guenther Starnberger <gst@sysfrog.org>
+# Contributor: Moritz Lipp <mlq@pwmt.org>
+
+pkgname=gpshell
+pkgver=1.4.4
+pkgrel=1
+pkgdesc="GlobalPlatform command shell"
+groups=('projectname' 'projectname-*misc')
+license=('GPL3')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://sourceforge.net/projects/globalplatform/"
+depends=('glibc' 'globalplatform')
+source=(http://downloads.sourceforge.net/globalplatform/gpshell-${pkgver}.tar.gz)
+sha512sums=('612b1ebf637c00d1aa605820dab15ea94eed754e4a70162d333f0307289b92b81aa7156c6a0ae5ed5ecb2693dace45c17ca830420f2c5811505d712667ed7d86')
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  ./configure --prefix=/usr --sysconfdir=/etc
+  make
+}
+
+package(){
+  cd $srcdir/$pkgname-$pkgver
+  make DESTDIR=$pkgdir install
+}

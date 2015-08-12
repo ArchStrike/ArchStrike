@@ -1,0 +1,28 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Prurigro
+
+pkgname=cpublaster
+pkgver=0.10
+pkgrel=3
+pkgdesc="This library tries to intercept the memory allocations to skew the allocations to different offsets, so the performance penalty to disappear"
+url="http://kernel.embedromix.ro/us/"
+license=('GPL3')
+groups=('projectname')
+depends=('glibc')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.1.gz")
+sha512sums=('276a4f697d30c9279b17690fe4916652ac887d8e85995199816b5f413d7a90f154b255aea8dbc89cea2a413502a0d2a28d7068a7e40a9978eba49a08e5c9b926'
+            'fa7ca65956f3e74e5b5b9861fd411c332719505ee7793beeae2da3721490ab2e6ce60c1f12890f9530a4fe3cb58b89985eb972f143790ca0233b0c9a5b84995f')
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
+    install -Dm644 "${srcdir}/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+}

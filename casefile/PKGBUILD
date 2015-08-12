@@ -1,0 +1,45 @@
+# Maintainer
+pkgname=casefile
+pkgver=1.0.1
+pkgrel=1
+groups=('projectname' 'projectname-*forensic' 'archassault-reconnaissance' 'archassault-scanners')
+pkgdesc="The little brother to Maltego without transforms, but combines graph and link analyze to examine links between manually added data to mind map your information"
+arch=('any')
+url='http://www.paterva.com/web6/products/casefile.php'
+license=('GPL')
+depends=('java-environment' 'bash')
+install='casefile.install'
+source=("https://www.paterva.com/cf10/community/maltego-CF.${pkgver}_community-2012-03-14.zip"
+        'http://www.paterva.com/web6/products/casefile_entities.mtz'
+        'http://www.packetninjas.net/storage/socialnet/SocialNetEntityPackage.mtz'
+        'http://ctas.paterva.com/TDSTransforms/GraphAPI/facebookObject.mtz'
+        'http://ctas.paterva.com/TDSTransforms/BuiltWith/BuiltWithTechnology.mtz')
+sha512sums=('bdf5b392b70dbce929cacfde7c0daac4d689e4490246d2b7dccb4519e52ec3011489ecf581b7e425ac5a0fb294772cd4f929a259cd655a366dbf153f1d5ba95b'
+            'f3fe13c0ca402a0b5f4b9d14a803afd220440a6a94e33e64acf83fa77f2f243389b809772457ed26204c7a90b383f167fef99de0acd7db24b95b801854f2740c'
+            '8b2f7368fcd8307434d851af36b88e85d43bfa75e50a75a366afa33c76dabe6e6716b3b0b0c719b8740db6c29d966e14fa7f4ee2407bbe40e5de30a8fca690a0'
+            '6bb6562e4198c16c728915e2915ce23052f5361a9b75a7b8cbe45659818284daa00c2bb0742f3624c969b4ca8a0db73fe0d2af0c0f1306dee4c539f42310c17e'
+            '523e27fd2a9440089ee0c3f7d6ea69ac129ef04792babc068c2bbe9ec20d4c1383794aa8fd2679e2e1e35e7837a9c268f2af45e268c04ea031985dee06077e1c')
+
+package() {
+  cd "$srcdir/v3.0"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/share/casefile"
+  install -dm755 "$pkgdir/usr/share/casefile/entities"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a --no-preserve=ownership bin etc ide maltego maltego-core-platform maltego-ui platform \
+         "$pkgdir/usr/share/casefile"
+  install -Dm644 "$srcdir/casefile_entities.mtz" "$pkgdir/usr/share/casefile/entities/"
+  install -Dm644 "$srcdir/SocialNetEntityPackage.mtz" "$pkgdir/usr/share/casefile/entities/"
+  install -Dm644 "$srcdir/facebookObject.mtz" "$pkgdir/usr/share/casefile/entities/"
+  install -Dm644 "$srcdir/BuiltWithTechnology.mtz" "$pkgdir/usr/share/casefile/entities/"
+
+  # Create joint script.
+  cat > "$pkgdir/usr/bin/casefile" <<EOF
+#!/bin/sh
+cd /usr/share/casefile/bin
+./maltego "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/casefile"
+}

@@ -1,0 +1,77 @@
+# Maintainer
+pkgname=microchip-mplabx-bin
+pkgver=2.00
+pkgrel=1
+pkgdesc="IDE for Microchip PIC and dsPIC development"
+arch=(i686 x86_64)
+url=http://www.microchip.com/mplabx
+license=(custom)
+depends=(gtk2 alsa-lib libxslt libxtst desktop-file-utils)
+makedepends=(fakechroot)
+[[ $CARCH = x86_64 ]] && depends+=(lib32-glibc lib32-fakeroot)
+optdepends=('microchip-mplabxc8-bin: C compiler for PIC10 PIC12 PIC16 PIC18 MCUs'
+            'microchip-mplabxc16-bin: C compiler for PIC24 MCUs and dsPIC DSCs'
+            'microchip-mplabxc32-bin: C Compiler for PIC32 MCUs'
+            'microchip-mplabc18_bin: C compiler for PIC18 MCUs'
+            'sdcc: C compiler for PIC16/18 MCUs')
+provides=(mplab)
+conflicts=(mplab)
+options=(!strip docs libtool emptydirs !zipman)
+install=$pkgname.install
+instdir=/opt/microchip/mplabx
+installer=MPLABX-v$pkgver-linux-installer.run
+source=(http://ww1.microchip.com/downloads/en/DeviceDoc/$installer
+        LICENSE)
+[[ $CARCH = x86_64 ]] && source+=(fakechroot-i686.pkg.tar.xz::http://www.archlinux.org/packages/extra/i686/fakechroot/download/)
+
+md5sums=(59ec70cd4cc810fb8c873593c29ef51c
+         a34a85b2600a26f1c558bcd14c2444bd)
+[[ $CARCH = x86_64 ]] && md5sums+=(92b9a1dc8fa0534048790731a7bf2fc5)
+
+package() {
+  cd $srcdir
+
+  mkdir -p $pkgdir/{bin,etc,usr/{bin,lib,local/lib},tmp}
+
+  ln -s /bin/bash $pkgdir/bin/
+
+  echo "root:x:0:0:root:/root:/bin/bash" > $pkgdir/etc/passwd
+  echo "root:x:0:root" > $pkgdir/etc/group
+
+  cp $srcdir/$installer $pkgdir/
+  chmod 0755 $pkgdir/$installer
+
+  echo -e "\n\n\n\n\n\n\n\n\n\ny\n\ny\n\nn" > $pkgdir/inst_input
+
+  echo "#!/bin/bash
+  LD_LIBRARY_PATH=$srcdir/usr/lib/libfakeroot/fakechroot:\$LD_LIBRARY_PATH
+  ./$installer --mode text < inst_input &> /dev/null || true"> $pkgdir/chroot_input.sh
+  chmod 0755 $pkgdir/chroot_input.sh
+
+  echo -e "Creating the Package\n  Please wait..."
+
+  fakechroot chroot $pkgdir ./chroot_input.sh
+
+  cd $pkgdir$instdir/sys/java
+  if test "$CARCH" == x86_64; then
+    tar xzf jre-7u25-linux-x64.tar.gz
+    rm jre-7u25-linux-x64.tar.gz
+  else
+    tar xzf jre-7u25-linux-i586.tar.gz
+    rm jre-7u25-linux-i586.tar.gz
+  fi
+  sed -i 's|#jdkhome="/path/to/jdk"|jdkhome=/opt/microchip/mplabx/sys/java/jre1.7.0_25/|g' $pkgdir$instdir/mplab_ide/etc/mplab_ide.conf
+  sed -i 's|#jdkhome="/path/to/jdk"|jdkhome=/opt/microchip/mplabx/sys/java/jre1.7.0_25/|g' $pkgdir$instdir/mplab_ide/bin/mplab_ipe
+
+  rm $pkgdir/{chroot_input.sh,inst_input,$installer,etc/{group,passwd}}
+  rm -r $pkgdir/{bin,tmp}
+
+  ln -s $instdir/mplab_ide/bin/mplab_ide $pkgdir/usr/bin/mplab_ide
+  ln -s $instdir/mplab_ide/bin/mplab_ipe $pkgdir/usr/bin/mplab_ipe
+  ln -s $instdir/../mplabcomm1.0/libusb-1.0.so.0.0.0 $pkgdir/usr/local/lib/libmchpusb-1.0.so
+
+  rm $pkgdir$instdir/Uninstall*
+
+  install -Dm 644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
+

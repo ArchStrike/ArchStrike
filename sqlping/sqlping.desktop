@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sqlping
+Comment=SQL Server scanning tool that also checks for weak passwords using wordlists.
+Exec=sqlping
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWindows;

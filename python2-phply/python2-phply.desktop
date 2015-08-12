@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-phply
+Comment=PHP parser written in Python using PLY
+Exec=python2-phply
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

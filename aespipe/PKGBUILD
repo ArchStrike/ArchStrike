@@ -1,0 +1,42 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Prurigro
+
+pkgname=aespipe
+pkgver=2.4d
+pkgrel=1
+pkgdesc="Reads data from stdin and outputs encrypted or decrypted results to stdout"
+url="http://loop-aes.sourceforge.net/aespipe"
+license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('projectname' 'projectname-*encryption')
+depends=('bash')
+source=("http://loop-aes.sourceforge.net/${pkgname}/${pkgname}-v${pkgver}.tar.bz2")
+sha512sums=('3c48facedf2e57978e9762ca1bfaa7c435897d75ab127697e20fa935a4797fde1d88e31db1b46f35968626e1bda3f2d2251d1b3f171cd27ee3cfc7a3d0193248')
+
+prepare() {
+    cd ${pkgname}-v${pkgver}
+
+    patch -p0 < aes-GPL.diff
+}
+
+build() {
+    cd ${pkgname}-v${pkgver}
+
+    if [ "$CARCH" = "x86_64" ]; then
+        ./configure --prefix=/usr --enable-asm=amd64 --enable-padlock --enable-intelaes
+    elif [ "$CARCH" = "i686" ]; then
+        ./configure --prefix=/usr --enable-asm=x86 --enable-padlock --enable-intelaes
+    else
+        ./configure --prefix=/usr --disable-asm --disable-padlock --disable-intelaes
+    fi
+
+    make
+    make tests
+}
+
+package() {
+    cd ${pkgname}-v${pkgver}
+
+    make DESTDIR="${pkgdir}" install
+    install -Dm755 bz2aespipe "${pkgdir}/usr/bin/bz2aespipe"
+}

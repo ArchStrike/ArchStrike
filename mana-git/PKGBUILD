@@ -1,0 +1,89 @@
+# Maintainer
+pkgname=mana-git
+pkgver=20141024.r44
+pkgrel=1
+groups=('projectname' 'projectname-*wireless')
+pkgdesc="A toolkit for rogue access point (evilAP) attacks first presented at Defcon 22"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/sensepost/mana'
+license=('BSD' 'GPL3')
+depends=('libnl1' 'apache' 'dsniff'  'macchanger' 'metasploit' 'procps' 'iptables'
+         'python2-dnspython' 'python2-pcapy' 'scapy' 'sslsplit' 'stunnel' 'tinyproxy' 'asleap')
+makedepends=('git')
+options=('!emptydirs')
+provides=('mana')
+source=("${pkgname}::git+https://github.com/sensepost/mana.git"
+        "apache-fix.patch"
+        "archfixes.patch")
+sha512sums=('SKIP'
+            'f04e7831d449ef5ecce280f6952daf592417ea4fa2953e51b701bef4f07ae7e40f066a6ba887e624643c0d60a704e7007a23fdcd22af87c09ef587dad5f1948d'
+            'fded55c3c11beb41c4e6570c8fd014ff2660ee50425c9c0411d8fc1c0101649b5607658ee51cb111f5a68082621421551898c19733fe5dc756a8d921405726da')
+
+prepare(){
+  grep -iRl 'python' "${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  cd ${pkgname}
+  patch -i $srcdir/apache-fix.patch
+  cd run-mana
+  patch < $srcdir/archfixes.patch
+}
+
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build(){
+  cd "${srcdir/mana}"
+  make
+}
+
+package() {
+  cd "${pkgname}"
+  install -dm755 "$pkgdir/usr/bin/"
+  make DESTDIR=$pkgdir install
+  install -Dm644 hostapd-manna/COPYING "$pkgdir/usr/share/licenses/hostapd-manna/COPYING"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/mana-git/LICENSE"
+  # Fixing a sed mixup, if your going to py2 why not specify it in every file
+  sed -i 's|python22.6|python2|' $pkgdir/usr/share/mana-toolkit/sslstrip-hsts/dns2proxy.py
+  # Missing dirs, needed
+  install -dm755 "$pkgdir/var/lib/mana-toolkit/lamb_braai/"
+  install -dm755 "$pkgdir/var/lib/mana-toolkit/sslsplit/"
+
+cat > "$pkgdir/usr/bin/mana-firelamb-view" <<EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+./firelamb-view.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mana-nat-full" <<EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+./start-nat-full.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mana-nat-simple" <<EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+./start-nat-simple.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mana-noupstream-eap" <<EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+./start-noupstream-eap.sh "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mana-noupstream" <<EOF
+#!/bin/sh
+cd /usr/share/mana-toolkit/run-mana
+./start-noupstream.sh "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/mana-firelamb-view"
+chmod +x "$pkgdir/usr/bin/mana-nat-full"
+chmod +x "$pkgdir/usr/bin/mana-nat-simple"
+chmod +x "$pkgdir/usr/bin/mana-noupstream-eap"
+chmod +x "$pkgdir/usr/bin/mana-noupstream"
+
+}

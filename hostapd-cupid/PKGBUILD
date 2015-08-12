@@ -1,0 +1,73 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+
+pkgname=hostapd-cupid
+pkgver=2.1
+pkgrel=1
+pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator with cupid patch(https://github.com/lgrangeia/cupid/)"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://w1.fi/"
+license=('custom')
+groups=('projectname-wireless')
+depends=('openssl' 'libnl1')
+makedepends=('git')
+backup=('etc/hostapd-cupid/hostapd.conf'
+        'etc/hostapd-cupid/hlr_auc_gw.milenage_db'
+        'etc/hostapd-cupid/hostapd.accept'
+        'etc/hostapd-cupid/hostapd.deny'
+        'etc/hostapd-cupid/hostapd.eap_user'
+        'etc/hostapd-cupid/hostapd.radius_clients'
+        'etc/hostapd-cupid/hostapd.sim_db'
+        'etc/hostapd-cupid/hostapd.vlan'
+        'etc/hostapd-cupid/hostapd.wpa_psk'
+        'etc/hostapd-cupid/wired.conf')
+install=hostapd-cupid.install
+source=(http://w1.fi/releases/hostapd-$pkgver.tar.gz
+	hostapd-cupid.service
+        cupid::git+https://github.com/lgrangeia/cupid.git)
+sha512sums=('d39291fd7b7b886de54dbf64740b5404f6b154af35dc568c51dbd90584b352c2422d1f89ae25ca705ecd6a55ca011b1f3efad8eaa450e6077a322bf7f3551b7f'
+            '2fcd275679e336c62f6a81c274eaa70a094eb11d972c51072acc7b00df8dcf14ec01162fd794ca316747241f62cefc17d15f1c0a9441063595a4d6e01086243f'
+            'SKIP')
+
+prepare(){
+  cd "$srcdir/hostapd-$pkgver"
+  patch -p1 -i "$srcdir/cupid/patch-hostapd" 
+}
+
+build() {
+  cd "$srcdir/hostapd-$pkgver/hostapd"
+  sed -i 's#/etc/hostapd#/etc/hostapd-cupid/hostapd#' hostapd.conf
+  export CFLAGS="$CFLAGS $(pkg-config --cflags libnl-3.0)"
+  make
+}
+
+package() {
+  cd "$srcdir/hostapd-$pkgver"
+  # Systemd unit
+  install -Dm644 $srcdir/hostapd-cupid.service "$pkgdir/usr/lib/systemd/system/hostapd-cupid.service"
+
+  # License
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+  # Certs
+  install -dm755 "$pkgdir/etc/hostapd-cupid/certs"
+  install -dm755 "$pkgdir/etc/hostapd-cupid/certs/demoCA"
+  for f in `find $srcdir/cupid/testconfs/certs/* -type f`; do install -Dm644 $f "$pkgdir/etc/hostapd-cupid/certs/"; done
+  install -Dm644 $srcdir/cupid/testconfs/certs/demoCA/* "$pkgdir/etc/hostapd-cupid/certs/demoCA/"
+
+  cd hostapd
+ 
+  # Binaries
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm755 hostapd $pkgdir/usr/bin/hostapd-cupid
+  install -Dm755 hostapd_cli $pkgdir/usr/bin/hostapd_cupid_cli
+
+  # Configuration
+  install -d "$pkgdir/etc/hostapd-cupid"
+  install -m644 -t "$pkgdir/etc/hostapd-cupid" \
+    hostapd.{accept,deny,radius_clients,sim_db,vlan,wpa_psk} \
+    wired.conf hlr_auc_gw.milenage_db
+  install -Dm644 $srcdir/cupid/testconfs/hostapd.eap_user "$pkgdir/etc/hostapd-cupid/"
+  install -Dm644 $srcdir/cupid/testconfs/test_hostapd.conf "$pkgdir/etc/hostapd-cupid/hostapd.conf"
+
+}

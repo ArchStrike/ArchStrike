@@ -1,0 +1,40 @@
+# Maintainer
+pkgname=kacak
+pkgver=1.0
+pkgrel=1
+groups=('projectname' 'projectname-*enumeration')
+pkgdesc="Tools for penetration testers that can enumerate which users logged on windows system"
+arch=('any')
+url='https://github.com/galkan/kacak'
+license=('custom')
+depends=('python2' 'metasploit')
+source=("https://github.com/galkan/kacak/archive/v$pkgver.tar.gz")
+sha512sums=('ce3a18060685648c53667f1af201e05eed292fcd5f84878e4503d853c0197aa2a487b21eb8e0bc7fd2a934424742256bf2942900dc244879be53b03a02b13385')
+
+prepare(){
+  cd "$srcdir/kacak-$pkgver"
+  sed -i 's|python$|env python2|' *.py
+}
+
+package() {
+  cd "$srcdir/kacak-$pkgver"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/kacak"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+
+  for i in config lib scripts data images; do install -dm755 "$pkgdir/usr/share/$pkgname/$i"; cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/$pkgname/$i/";done
+  install -Dm755 kacak.py "$pkgdir/usr/share/$pkgname"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+ 
+ 
+cat > "$pkgdir/usr/bin/kacak" << EOF
+#!/bin/sh
+cd /usr/share/kacak
+python2 kacak.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/kacak"
+
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Kismet-earth
+Comment=Various scripts to convert kismet logs to kml file to be used in Google Earth.
+Exec=kismet-earth
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWireless;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sergio-proxy
+Comment=A multi-threaded transparent HTTP proxy for manipulating web traffic
+Exec=sergio-proxy
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultProxy;ArchAssaultSpoof;

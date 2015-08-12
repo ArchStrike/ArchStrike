@@ -1,0 +1,27 @@
+# Maintainer
+
+pkgname=perl-digest-crc
+pkgver=0.21
+pkgrel=1
+pkgdesc="Generic interface to CRC algorithms"
+arch=('any')
+license=('PerlArtistic')
+options=('!emptydirs')
+depends=('perl')
+url="http://search.cpan.org/dist/Digest-CRC/"
+source=("http://search.cpan.org/CPAN/authors/id/O/OL/OLIMAUL/Digest-CRC-$pkgver.tar.gz")
+sha512sums=('65f81c6903a6bc41d0a2aaad000ba4827e919c5b3312e4bbf8de21f77ba79955f6fa5ff3827c1d9bd74b2a931d224795a443303248bb5e5d67b6e71b79da8d03')
+_distdir="Digest-CRC-$pkgver"
+
+build() {
+  cd $srcdir/${_distdir}
+  perl Makefile.PL installdirs=vendor destdir=$pkgdir
+  make
+}
+
+package(){
+  cd $srcdir/${_distdir}
+  make install
+  find $pkgdir -name '.packlist' -delete
+  find $pkgdir -name '*.pod' -delete
+}

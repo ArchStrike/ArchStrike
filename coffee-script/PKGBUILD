@@ -1,0 +1,41 @@
+# Maintainer
+pkgname=coffee-script
+pkgver=1.9.0
+pkgrel=1
+pkgdesc='A little language that compiles into javascript'
+arch=('any')
+url='http://coffeescript.org'
+license=('MIT')
+depends=('nodejs')
+optdepends=('nodejs-profile: to load coffee-script in node')
+source=("https://github.com/jashkenas/$pkgname/archive/$pkgver.tar.gz"
+        "$pkgname.1")
+sha512sums=('5aa1508eb578cad348d40219d4bda6ccb15f601b5eba8df28b8c28e70ab03597b166682f67ac17501a846b9620fba4d1b090c9fc5e0d92a444641775162fad29'
+            'c6a86759df5695cd26f57ff98bea74f17f0f2e8d06b53dbd035841f0bff82524b8b018d5527fb78efa6d1463dd4a68779ee634fddd016b8cc7a4babade593a2e')
+
+prepare() {
+  cd ${pkgname/-/}-$pkgver
+  npm install 2>/dev/null
+}
+
+build() {
+  cd ${pkgname/-/}-$pkgver
+  MINIFY=false bin/cake build
+  MINIFY=false bin/cake build:parser
+  MINIFY=false bin/cake build:browser
+}
+
+package() {
+  install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/coffee.1"
+  cd ${pkgname/-/}-$pkgver
+  install -Dm644 README "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 CONTRIBUTING.md "$pkgdir/usr/share/doc/$pkgname/CONTRIBUTING.md"
+  cp -r --no-preserve=ownership {documentation,examples} "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 package.json "$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+  cp -r --no-preserve=ownership {bin,extras,lib,node_modules,src,test} "$pkgdir/usr/lib/node_modules/$pkgname/"
+  install -m644 *.js "$pkgdir/usr/lib/node_modules/$pkgname/"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /usr/lib/node_modules/$pkgname/bin/{cake,coffee} "$pkgdir/usr/bin/"
+}

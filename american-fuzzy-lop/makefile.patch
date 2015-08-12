@@ -1,0 +1,11 @@
+--- Makefile.orig	2014-12-10 09:37:42.791315186 -0500
++++ Makefile	2014-12-10 09:38:08.367510614 -0500
+@@ -16,7 +16,7 @@
+ PROGNAME    = afl
+ VERSION     = 0.89b
+ 
+-PREFIX     ?= /usr/local
++PREFIX     ?= /usr
+ BIN_PATH    = $(PREFIX)/bin
+ HELPER_PATH = $(PREFIX)/lib/afl
+ DOC_PATH    = $(PREFIX)/share/doc/afl

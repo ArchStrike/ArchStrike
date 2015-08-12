@@ -1,0 +1,38 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname='kippo'
+pkgver='0.9'
+pkgrel=1
+pkgdesc='A medium interaction SSH honeypot designed to log brute force attacks and most importantly, the entire shell interaction by the attacker.'
+arch=('any')
+url='http://code.google.com/p/kippo/'
+license=('GPL')
+groups=('projectname' 'projectname-*defensive')
+depends=('twisted' 'python2-crypto' 'python2-pyasn1')
+source=("https://github.com/desaster/kippo/archive/v$pkgver.tar.gz"
+				'kippo.desktop')
+sha512sums=('0e17c410ecb8e44ba3862f0bd6c2773d6fa768750d7917ba7f5fbfdec8ddfa63fbde0e0190bcd5361a6c5ea0bcb2017e24593c4181b5cb915a605723bce07a26'
+            '6806971ed59c0734800b81ad9c6de2088ac8af468562dffd7784b0e9fba79c21eaf230b7921423463d0b37d8d2fa4d18c9cdd3ce655d973c97f8deadee4f3f42')
+prepare(){
+ grep -iRl 'python' "$srcdir/kippo-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+ 
+
+package() {
+  cd "$srcdir/kippo-$pkgver"
+
+  install -dm755  "$pkgdir/usr/share/kippo/"
+  install -dm755  "$pkgdir/usr/bin/"
+  cp -r * "$pkgdir/usr/share/kippo/"
+  
+  cd "$pkgdir/usr/share/kippo"
+  ln -sf kippo.cfg.dist kippo.cfg
+  install -Dm644 "$srcdir/kippo.desktop" "$pkgdir/usr/share/applications/kippo.desktop"
+
+cat > "$pkgdir/usr/bin/kippo" <<EOF
+#!/bin/sh
+cd /usr/share/kippo
+./start.sh "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/kippo"
+}

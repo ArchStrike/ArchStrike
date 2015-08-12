@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Flamerobin
+Comment=A tool to handle Firebird database management
+Exec=flamerobin
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

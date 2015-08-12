@@ -1,0 +1,33 @@
+# Maintainer: ArchAssault <team projectname org>
+
+pkgname=codecrypt
+pkgver=1.6.1
+pkgrel=1
+pkgdesc="A GnuPG-like program for encryption and signing that uses only quantum-computer-resistant algorithms"
+url="https://github.com/exaexa/${pkgname}"
+license=('GPL3')
+groups=('projectname-crypto')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('crypto++' 'gmp')
+makedepends=('libtool' 'automake' 'autoconf')
+source=("https://github.com/exaexa/codecrypt/archive/v$pkgver.zip")
+sha512sums=('bbe945e599bdba32864e16d7f537cf91eb7fce531fa334baa2a448a3c516ecc4c2a084142c1cb55e7dad982defaae7ec4dcf05669f5603d31591dfffa3b45698')
+
+prepare() {
+    cd "${pkgname}-${pkgver}"
+    find . -type f -exec sed -i 's|crypto++|cryptopp|g' '{}' \;
+}
+
+build() {
+    LDFLAGS="$LDFLAGS -pthread"
+
+    cd "${pkgname}-${pkgver}"
+    ./autogen.sh
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
+}

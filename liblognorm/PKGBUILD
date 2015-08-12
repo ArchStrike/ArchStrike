@@ -1,0 +1,25 @@
+# Maintainer
+# Contributor: Limao Luo <luolimao+AUR@gmail.com>
+# Contributor: Brian Knox <taotetek@gmail.com>
+pkgname=liblognorm
+pkgver=1.1.1
+pkgrel=1
+pkgdesc="log normalization library for rsyslog"
+arch=(i686 x86_64 armv6h armv7h)
+url=http://www.liblognorm.com
+license=('GPL2')
+depends=('libee' 'json-c' 'python2-sphinx')
+source=("http://www.liblognorm.com/files/download/liblognorm-${pkgver}.tar.gz")
+sha256sums=('a75db38419356f8638c29e817806328db1a9edbef258c789a15b2aa88a4522f2')
+sha512sums=('1d3715c1314109e228d1f45dbb0a09cab32998613cd0a6bd1428143145847a4d066fc1abcdb4315d9c550f9cf2c00f44cc8f0541e6ef44c5f22eb810ca225411')
+
+build() {
+  cd "${pkgname}"-"${pkgver}"
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "${pkgname}"-"${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}

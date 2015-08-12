@@ -1,0 +1,39 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=beef-git
+pkgver=20150625.r2366
+pkgrel=1
+epoch=1
+groups=('projectname' 'projectname-*exploits')
+pkgdesc="Pentesting framework that focuses on web-browser exploitation"
+arch=('i686' 'x86_64')
+url='http://beefproject.com'
+license=('Apache')
+makedepends=('git' 'python2')
+options=('!emptydirs')
+provides=('beef')
+replaces=('beef')
+conflicts=('beef')
+depends=('ruby1.9' 'java-environment' 'python2' 'sqlite' 'ruby1.9-bundler' 'projectname-artwork')
+source=("${pkgname}::git+http://github.com/beefproject/beef.git" "beef.desktop")
+sha512sums=('SKIP' '8fc10b9cad8f7cd29bc97ff728f6e41cdaba833c52580ae636455e75a02b07797b4cbe33d8c1b10e1978235e9aaf2416571e1963179e96c54f4431a77e81660f')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}"/usr/share/"${pkgname}"
+  cd "${pkgdir}"/usr/share/"${pkgname}"
+  bundle-1.9 install --path vendor/bundle
+  install -dm755 "${pkgdir}"/usr/bin
+  install -Dm644 "${srcdir}"/beef.desktop "${pkgdir}"/usr/share/applications/beef.desktop
+  cat > "${pkgdir}"/usr/bin/beef <<EOF
+#!/usr/bin/env bash
+cd /usr/share/beef-git
+ruby-1.9 ./beef "\$@"
+EOF
+  chmod 755 "${pkgdir}"/usr/bin/beef
+}

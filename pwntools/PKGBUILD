@@ -1,0 +1,34 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname='pwntools'
+pkgver='2.1.3'
+pkgrel='1'
+pkgdesc='The CTF framework used by #Gallopsled in every CTF'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/Gallopsled/pwntools'
+license=('MIT')
+groups=('projectname' 'projectname-*misc')
+if [[ $CARCH == 'x86_64' ]]; then
+      depends=('python2-argparse' 'python2-pyelftools' 'python2-paramiko'  'python2-mako' 'lib32-glibc')
+else
+      depends=('python2-argparse' 'python2-pyelftools' 'python2-mako')
+fi
+
+makedepends=('python2-setuptools')
+source=("https://github.com/Gallopsled/pwntools/archive/${pkgver}.tar.gz")
+sha512sums=('8720ca980320a6de912f1a3156ce85495f534c9707f9f9f65f82e71a83b700ce2c6681341d2fd3a1dfe8c62eeea5c1d29ef7bf0465fbfc03815413fef3d18161')
+
+prepare(){
+    cd "$srcdir/$pkgname-$pkgver/bin"
+    mv disasm disasm-pwntools
+}
+
+build(){
+    cd "$srcdir/$pkgname-$pkgver"
+    python2 setup.py build
+}
+
+package() {
+    cd "$srcdir/$pkgname-$pkgver"
+    python2 setup.py install --root="$pkgdir/" --optimize=1
+    install -Dm644 LICENSE-pwntools.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

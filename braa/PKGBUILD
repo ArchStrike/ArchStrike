@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=braa
+pkgver=0.82
+pkgrel=2
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="A mass snmp scanner"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://s-tech.elsat.net.pl/braa/'
+license=('GPL')
+depends=('glibc')
+makedepends=('subversion' 'nasm')
+provides=('dnscat')
+source=("http://s-tech.elsat.net.pl/braa/braa-${pkgver}.tar.gz")
+sha512sums=('8c88d288287a12c19c8d49606c8d2b70531b7f2be1aa3c4ccc6b01739aead751c03c56dc3f1a346b3dd20730a8bd0d30e33167a5f7c676f629348195762e23d4')
+
+build() {
+  cd braa-"${pkgver}"
+  make
+}
+
+package() {
+  cd braa-"${pkgver}"
+  install -Dm0755 braa ${pkgdir}/usr/bin/braa
+  install -Dm0644 README ${pkgdir}/usr/share/doc/braa/README
+}

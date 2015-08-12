@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Obexstress
+Comment=Script for testing remote OBEX service for some potential vulnerabilities
+Exec=obexstress
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultBluetooth;

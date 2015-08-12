@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=padbuster
+pkgver=0.3.3
+pkgrel=1
+groups=('projectname' 'projectname-*exploit')
+pkgdesc="Automated script for performing Padding Oracle attacks"
+url="http://www.gdssecurity.com/l/t.php"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('RPLv1.5')
+depends=('perl' 'perl-crypt-ssleay')
+makedepends=('git')
+source=("git+https://github.com/GDSSecurity/PadBuster.git")
+md5sums=('SKIP')
+
+package(){
+   cd "$srcdir/PadBuster"
+   install -Dm755 padBuster.pl "$pkgdir/usr/bin/padbuster"
+}

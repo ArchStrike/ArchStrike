@@ -1,0 +1,43 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=sea-git
+pkgver=r103.9aca1c8
+pkgrel=1
+groups=('projectname' 'projectname-*malware')
+pkgdesc="A tool to help to create exploits of binary programs"
+arch=('any')
+url='https://github.com/neuromancer/SEA'
+license=('GPL3')
+depends=('python2' 'z3-codeplex')
+makedepends=('git')
+provides=('sea')
+source=("sea::git+https://github.com/neuromancer/SEA.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/sea"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+package() {
+  cd "$srcdir/sea"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/sea"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/sea/src"
+  install -Dm755 SEA.py "$pkgdir/usr/share/sea"
+  install -Dm644 README.md "$pkgdir/usr/share/sea"
+  install -Dm644 COPYING "$pkgdir/usr/share/sea"
+
+  cp -a --no-preserve=ownership src/* "$pkgdir/usr/share/sea/src/"
+  
+cat > "$pkgdir/usr/bin/sea" << EOF
+#!/bin/sh
+cd /usr/share/sea
+python2 SEA.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/sea"
+
+}

@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=ruby1.9-erubis
+pkgver=2.7.0
+pkgrel=1
+pkgdesc="a fast and extensible eRuby implementation which supports multi-language"
+arch=('any')
+license=('')
+makedepends=('ruby1.9')
+url='http://www.kuwata-lab.com/erubis/'
+source=("http://rubygems.org/downloads/erubis-$pkgver.gem")
+md5sums=('cca3cf13ef951d1fc8c124d2fde52565')
+noextract=("erubis-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" erubis-$pkgver.gem
+  else
+    gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" erubis-$pkgver.gem
+  fi
+}

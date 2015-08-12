@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Ratproxy
+Comment=A passive web application security assessment tool
+Exec=ratproxy
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultProxy;ArchAssaultScanner;ArchAssaultFuzzer;

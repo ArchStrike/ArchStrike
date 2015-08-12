@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=xorsearch
+pkgver=1.11.1
+pkgrel=2
+groups=('projectname' 'projectname-*cryptography' 'archassault-reverse')
+pkgdesc="Program to search for a given string in an XOR, ROL or ROT encoded binary file."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://blog.didierstevens.com/programs/xorsearch/"
+license=('custom')
+depends=('glibc')
+source=("http://www.didierstevens.com/files/software/XORSearch_V${pkgver//./_}.zip" "LICENSE")
+sha512sums=('9e51d7cbc7da90544dfadda32f9290dcbd674a7d9a6538f93f68d72ec41ebce5b29322227eef24f750fb6bc0d095312f4349a9ba41d6c79440e7343363a63a8d'
+            '81e6d14bdd683b15b7d4968cfcb89b7e770e29b9a72d8c82a471e1c7df6d91f80b469df9d497f04da45757d5f8b801cfd88c9085b69d0fda79b535f95c9c812b')
+
+build() {
+  cd "${srcdir}"
+  gcc -o xorsearch XORSearch.c
+}
+
+package() {
+  cd "${srcdir}"
+  install -Dm755 xorsearch "${pkgdir}/usr/bin/xorsearch"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

@@ -1,0 +1,37 @@
+# Maintainer
+pkgname=davoset
+pkgver=1.2.3
+pkgrel=1
+pkgdesc="A tool for using Abuse of Functionality and XML External Entities vulnerabilities on some websites to attack other websites"
+arch=('any')
+url="http://websecurity.com.ua/davoset/"
+license=('GPL2')
+groups=('projectname' 'projectname-*dos')
+depends=('perl')
+makedepends=('unrar' 'dos2unix')
+options=('!emptydirs')
+source=("davoset-$pkgver.rar::http://websecurity.com.ua/uploads/2014/DAVOSET_v.$pkgver.rar")
+sha512sums=('bba067a2047d35f2d55756339d56f3f92377d2b0df45761b6ae7a9a94857b69d975bcdd6fcb4675b6c6e89bbf15b3a2176a12049a4622f21e35f37efe3b271b2')
+noextract=("davoset-$pkgver.rar")
+install="davoset.install"
+
+prepare() {
+  cd "$srcdir"
+  unrar e -ad -o+ davoset-$pkgver.rar
+  cd davoset-$pkgver
+  dos2unix -- *
+}
+
+package() {
+  cd "$srcdir/davoset-$pkgver"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/davoset"
+  install -dm755 "$pkgdir/usr/share/licenses/davoset"
+  install -Dm755 davoset.pl "$pkgdir/usr/share/davoset"
+  install -Dm644 *.txt "$pkgdir/usr/share/davoset"
+  cat > "$pkgdir/usr/bin/davoset" <<EOF
+#!/bin/sh
+cd /usr/share/davoset
+./davoset.pl
+EOF
+}

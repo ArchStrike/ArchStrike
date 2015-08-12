@@ -1,0 +1,42 @@
+# Maintainer: ArchAssault <team at projectname org>
+
+_pkgname=utox
+pkgname=${_pkgname}-git
+_pkgver=c2e171c
+pkgver=r1339.c2e171c
+pkgrel=1
+pkgdesc="Lightweight Tox client"
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+url="https://github.com/notsecure/uTox"
+license=('GPL3')
+groups=('projectname')
+depends=('tox-git=1:r3156.4ad7649-1' 'openal' 'v4l-utils' 'libdbus' 'fontconfig' 'freetype2' 'filter_audio-git' 'libxrender' 'libxext' 'desktop-file-utils' 'hicolor-icon-theme')
+makedepends=('git' 'libxft')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+replaces=("$_pkgname")
+install=$pkgname.install
+
+source=("$_pkgname"::"git+$url.git#commit=$_pkgver")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd $_pkgname
+  make PREFIX=/usr
+}
+
+package() {
+  cd $_pkgname
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  cd icons
+  for _icon in *.png; do
+    _size=$(sed 's|^[^-]*-||;s|\.png||' <<< $_icon)
+    install -Dm644 $_icon "$pkgdir/usr/share/icons/hicolor/$_size/apps/$_pkgname.png"
+  done
+  install -Dm644 $_pkgname.svg "$pkgdir/usr/share/icons/hicolor/scalable/apps/$_pkgname.png"
+}

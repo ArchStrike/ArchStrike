@@ -1,0 +1,35 @@
+# Maintainer
+_pkgname=sipshock
+pkgname=sipshock-git
+pkgver=6.1d636ab
+pkgrel=1
+pkgdesc="A scanner for SIP proxies vulnerable to Shellshock"
+arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+_url="github.com/zaf/sipshock"
+url="https://$_url"
+license=("GPL3")
+depends=('glibc')
+makedepends=('go' 'git')
+source=("$_url::git://github.com/zaf/sipshock")
+sha512sums=('SKIP')
+
+pkgver() {
+	cd "$srcdir/$_pkgname"
+	echo "$(git rev-list --count HEAD).$(git describe --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g')"
+}
+
+build() {
+	cd "$srcdir"
+	# makepkg doesn't support extracting sources to a specific directory
+	mkdir -p src/$_url && rm -rf src/$_url && mv $_pkgname src/$_url && cd src/$_url
+	GOPATH="$srcdir" go get -d -t github.com/zaf/sipshock
+}
+
+package() {
+	cd "$srcdir"
+	GOPATH="$srcdir" go build -v github.com/zaf/sipshock
+
+	mkdir -p "$pkgdir/usr/bin"
+	cp "$srcdir/sipshock" "$pkgdir/usr/bin/sipshock"
+	install -Dm644 $srcdir/src/github.com/zaf/sipshock/LICENSE "$pkgdir"/usr/share/licenses/sipshock-git/LICENSE
+}

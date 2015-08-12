@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=statsprocessor
+pkgver=0.10
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="A high-performance word-generator based on per-position Markov-attack"
+arch=('i686' 'x86_64')
+url="http://hashcat.net/wiki/doku.php?id=statsprocessor"
+license=('unknown')
+makedepends=('p7zip')
+source=("http://hashcat.net/tools/statsprocessor/statsprocessor-$pkgver.7z")
+sha512sums=('df234f5cc25cd8e399a235dda775e110040a6c5b8a4770c272ae3c008559a51d4950ab636525f64a73fdda217905fdc268a963cd7b6e8b05dd4fdd10a5b9fb01')
+
+package() {
+  cd "$srcdir/statsprocessor-$pkgver"
+
+  case "$CARCH" in
+    i686) binary=sp32.bin ;;
+    x86_64) binary=sp64.bin ;;
+  esac
+
+  install -dm755 "$pkgdir/usr/share/statsprocessor"
+  install -Dm644 hashcat.hcstat "$pkgdir/usr/share/statsprocessor/hashcat.hcstat"
+  install -Dm755 $binary "$pkgdir/usr/bin/statsprocessor"
+}

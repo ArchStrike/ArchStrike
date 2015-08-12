@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Enum4linux
+Comment=A tool for enumerating information from Windows and Samba systems.
+Exec=enum4linux
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultScanner;ArchAssaultRecon;

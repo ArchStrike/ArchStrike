@@ -1,0 +1,26 @@
+# Maintainer
+
+_pkgname=stopit
+pkgname=python2-$_pkgname
+pkgver=1.1.1
+pkgrel=1
+arch=('any')
+pkgdesc='Timeout control decorator and context managers, raise any exception in another thread'
+license=('GPL3')
+url='http://pypi.python.org/pypi/stopit'
+depends=('python2')
+makedepends=('python2-distribute')
+source=("https://pypi.python.org/packages/source/s/$_pkgname/$_pkgname-$pkgver.tar.gz")
+md5sums=('dec60dae41bec73233e83db003390bdc')
+sha512sums=('bfa5e8e0a2e4f1682bfa7c4ce9b2793ce295b96dd4d0858b2415b7fa094d555472025ff859f6c9b8b0a427de0569f058430d70f29fe65afc3c3ebd0ed7359ec1')
+
+build() {
+  cd $_pkgname-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  export PYTHONPATH="$pkgdir/usr/lib/python2.7/site-packages"
+  cd $_pkgname-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}

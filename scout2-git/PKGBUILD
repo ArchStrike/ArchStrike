@@ -1,0 +1,46 @@
+# Maintainer
+pkgname=scout2-git
+pkgver=r287.e83e870
+pkgrel=1
+pkgdesc="Security auditing tool for AWS environments"
+url="http://isecpartners.github.io/Scout2/"
+arch=('any')
+license=('GPL2')
+groups=('projectname')
+depends=('python2-boto>=2.31.1' 'python2-dateutil>=2.2' 'python2-netaddr>=0.7.11' 'python2-requests>=2.4.0')
+makedepends=('git')
+provides=('scout2')
+conflicts=('scout2')
+replaces=('scout2')
+source=(scout2-git::git+https://github.com/iSECPartners/Scout2.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/scout2-git"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir/scout2-git"
+  git submodule init
+  git submodule update
+}
+
+package() {
+  cd "$srcdir"/scout2-git
+  install -dm755 "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/share/scout2-git
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/scout2-git/LICENSE
+  install -m644 README.md "$pkgdir"/usr/share/scout2-git/README.md
+  install -m644 Scout2.py "$pkgdir"/usr/share/scout2-git/Scout2.py
+  install -m644 report.html "$pkgdir"/usr/share/scout2-git/report.html
+  cp --no-preserve=ownership -r AWSUtils AWSScout2 inc-bootstrap inc-handlebars inc-jquery inc-scout2 rules "$pkgdir"/usr/share/scout2-git
+  cat > "$pkgdir"/usr/bin/Scout2.py <<EOF
+#!/bin/sh
+cd /usr/share/scout2-git
+python2 Scout2.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/Scout2.py
+}
+
+

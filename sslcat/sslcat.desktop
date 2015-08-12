@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sslcat
+Comment=SSLCat is a simple Unix utility that reads and writes data across an SSL enable network connection.
+Exec=sslcat
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;

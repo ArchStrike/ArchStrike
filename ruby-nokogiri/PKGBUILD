@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=ruby-nokogiri
+_gemname=nokogiri
+pkgver=1.6.1
+pkgrel=2
+pkgdesc="Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser"
+arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+license=('MIT')
+makedepends=('ruby')
+depends=('ruby-mini_portile')
+options=('!distcc' '!emptydirs')
+url='http://nokogiri.org'
+source=("http://rubygems.org/downloads/nokogiri-$pkgver.gem")
+sha512sums=('d700420c9ed58cee55c9f134db22ce2c4fa0e259fb3f98d7ffc0d8c7d4572017aa631abba9939cb5ba8080a066f051c9c2dfd38ad723afddc1c19c1e6a9fee2d')
+noextract=("nokogiri-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" nokogiri-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" nokogiri-$pkgver.gem
+  fi
+}

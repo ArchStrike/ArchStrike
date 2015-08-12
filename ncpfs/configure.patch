@@ -1,0 +1,12 @@
+diff -aur ncpfs-2.2.6.orig/configure ncpfs-2.2.6/configure
+--- ncpfs-2.2.6.orig/configure	2014-08-29 19:16:51.893333864 -0700
++++ ncpfs-2.2.6/configure	2014-08-29 19:17:53.015058779 -0700
+@@ -342,7 +342,7 @@
+ # by default will actually change.
+ # Use braces instead of parens because sh, perl, etc. also accept them.
+ bindir='${exec_prefix}/bin'
+-sbindir='${exec_prefix}/sbin'
++sbindir='${exec_prefix}/bin'
+ libexecdir='${exec_prefix}/libexec'
+ datadir='${prefix}/share'
+ sysconfdir='${prefix}/etc'

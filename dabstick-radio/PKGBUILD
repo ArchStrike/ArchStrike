@@ -1,0 +1,37 @@
+# Maintainer
+# Contributor: Swift Geek <swifgeek  google c m>
+# FindFFTW.cmake stolen from https://github.com/jedbrown/cmake-modules/blob/master/FindFFTW.cmake
+
+pkgname=dabstick-radio
+pkgver=0.96
+pkgrel=2
+pkgdesc="The DAB decoding software (SDR-J)"
+groups=('projectname' 'projectname-*hardware')
+arch=('x86_64')
+url="http://www.sdr-j.tk/"
+license=('GPL2')
+depends=('fftw' 'qwt' 'faad2' 'portaudio' 'rtl-sdr')
+makedepends=('cmake')
+source=("http://www.sdr-j.tk/dabstick-radio-${pkgver}.tgz" "https://gist.githubusercontent.com/swiftgeek/87668d6605cae068f703/raw/4c700ab8f36c07c73f892c63d5ccf5e2327ec0b0/dabstick-radio-0.96.patch")
+sha512sums=('8c96549d3671581971d1fe67c5d7daf5afcc5aabfc13b75559e8475d564f78874fdbc0b014b9ff8f844cf13a47fb3efdf009bfd08ee8d222b119c9863dd28d56'
+            '648c16d13399f7fe58b660c6082dcabb03cdcefec3533986b5a5c2ec297cc587d76ae295610c78646a2a603359c07014668ea546a7bd919a9cad83141f8d3855')
+
+prepare(){
+  cd $srcdir/dabstick-radio-${pkgver}/
+  patch -p1 < ${srcdir}/dabstick-radio-${pkgver}.patch
+}
+
+build() {
+  cd $srcdir/dabstick-radio-${pkgver}/dabreceiver-V2
+  mkdir build && cd build
+  export CFLAGS="${CFLAGS} -Wno-unused"
+  export CXXFLAGS="${CFLAGS}"
+  cmake ..
+  make
+}
+
+package () {
+  cd $srcdir/dabstick-radio-${pkgver}/dabreceiver-V2/build/
+  install -dm755 "$pkgdir/usr/bin"
+  install -m755 ./dabreceiver-V2 "$pkgdir/usr/bin/"
+}

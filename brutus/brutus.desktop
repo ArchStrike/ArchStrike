@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Brutus
+Comment=One of the fastest, most flexible remote password crackers you can get your hands on.
+Exec=brutus
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWindows;

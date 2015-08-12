@@ -1,0 +1,19 @@
+# Maintainer
+pkgname=heartbleed-honeypot-script
+pkgver=0.1
+pkgrel=1
+groups=('projectname')
+pkgdesc="script listens on TCP port 443 and responds with completely bogus SSL heartbeat responses, unless it detects the start of a byte pattern similar to that used in Jared Stafford's"
+arch=('any')
+url='http://packetstormsecurity.com/files/126068/hb_honeypot.pl.txt'
+license=('UNKNOWN')
+depends=('perl')
+source=(http://packetstormsecurity.com/files/download/126068/hb_honeypot.pl.txt)
+sha512sums=('b3b8e6ec288338dfa6a19af15ec7c720934d5c5d78a20a32e68316f73e7bea24883c82c5d9e013a71a8d84c96764598e7ec7f38a2a6ac6ab8d2677797368d11d')
+
+package() {
+  cd ${srcdir}
+  install -Dm755 hb_honeypot.pl.txt "$pkgdir"/usr/share/heartbleed-honeypot-script/hb_honeypot.pl
+  install -dm755 "$pkgdir"/usr/bin/
+  ln -s /usr/share/heartbleed-honeypot-script/hb_honeypot.pl "$pkgdir"/usr/bin/hb_honeypot.pl
+}

@@ -1,0 +1,40 @@
+# Maintainer
+pkgname=depdep
+pkgver=2.0
+pkgrel=1
+groups=('projectname' 'projectname-*malware')
+pkgdesc="A merciless sentinel which will seek sensitive files containing critical info leaking through your network "
+arch=('any')
+url='https://github.com/galkan/depdep'
+license=('custom')
+depends=('python2' 'smbclient' 'cifs-utils' 'java-environment' 'apache-tika')
+source=("https://github.com/galkan/depdep/archive/$pkgver.tar.gz" "https://github.com/galkan/depdep/blob/master/LICENSE.txt")
+sha512sums=('b7741b32af28708fc7547240449748729a491284d4559048104c5f37ea7102c6209730bdb5863643d518be8d1340617c63901f340b9e483518b6d3d065f4f01f'
+            '85f1154be79b6831ae0f58e378b1e3846a7477015221b980f6d50f4ac8e243537f2d89e61aa8e9ddf4da59ba5f4a65e188b40ac63f837216f0b708cc4d961e1a')
+prepare(){
+  cd "$srcdir/depdep-$pkgver"
+  sed -i 's|python$|env python2|' *.py
+}
+
+package() {
+  cd "$srcdir/depdep-$pkgver"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/depdep"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+
+  for i in config lib script; do install -dm755 "$pkgdir/usr/share/$pkgname/$i"; cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/$pkgname/$i/";done
+  install -Dm755 depdep.py "$pkgdir/usr/share/$pkgname"
+  install -Dm644 $srcdir/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
+ 
+ 
+cat > "$pkgdir/usr/bin/depdep" << EOF
+#!/bin/sh
+cd /usr/share/depdep
+python2 depdep.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/depdep"
+
+}

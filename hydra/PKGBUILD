@@ -1,0 +1,33 @@
+# Maintainer
+pkgname=hydra
+pkgver=8.1
+pkgrel=1
+groups=('projectname' 'projectname-*crackers')
+pkgdesc="A very fast network logon cracker which support many different services."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://www.thc.org/thc-hydra/'
+license=("GPL3")
+depends=('postgresql-libs' 'subversion' 'libssh' 'libmariadbclient' 'libidn' 'ncpfs' 'gtk2' 'libfbclient')
+source=("http://www.thc.org/releases/hydra-$pkgver.tar.gz")
+sha512sums=('7608dd365865e5976bea446faedaad9f0334e7572fd0ee47a601c471471fc7c8a922c7114f4df08705b34b29144d3a6552e66148adf6b0f92c67301119c94959')
+
+build() {
+  cd $srcdir/hydra-"${pkgver}"
+
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd $srcdir/hydra-"${pkgver}"
+
+  # Needed or else make install will not
+  # install sample default password files.
+  install -dm755 $pkgdir/usr/etc
+  make PREFIX=$pkgdir/usr install
+
+  # Conform to the FHS.
+  install -dm755 "$pkgdir/usr/share" "$pkgdir/etc"
+  mv "$pkgdir/usr/man" "$pkgdir/usr/share"
+  mv "$pkgdir/usr/etc" "$pkgdir/etc/hydra"
+}

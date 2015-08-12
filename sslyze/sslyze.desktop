@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sslyze
+Comment=Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations
+Exec=sslyze
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;

@@ -1,0 +1,20 @@
+# Maintainer
+_gemname=rkelly-remix
+pkgname=ruby1.9-$_gemname
+pkgver=0.0.6
+pkgrel=1
+pkgdesc='RKelly Remix is a fork of the RKelly[https://github.com/tenderlove/rkelly] JavaScript parser.'
+arch=(any)
+url='https://github.com/nene/rkelly-remix'
+license=(MIT)
+depends=(ruby1.9)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha512sums=('11c30cb4ba0edcb0470ceeeacadeb6cc02f4408a8fc4bcbdb47fcb1c46665c0ac800e16cadf172d64483ba13e2ae2a8c032b138391e3b6495f3c199a0967fa93')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+}

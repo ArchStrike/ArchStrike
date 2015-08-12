@@ -1,0 +1,68 @@
+# Maintainer
+
+pkgname=w3af
+pkgver=1.6.45
+pkgrel=1
+groups=('projectname' 'projectname-*webapp' 'archassault-fuzzer' 'archassault-scanners')
+pkgdesc="Web Application Attack and Audit Framework"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://w3af.sourceforge.net'
+license=('GPL')
+depends=(
+  'graphviz' 'gtk2' 'halberd' 'libxml2' 'libxslt' 'pdfminer'
+  'pygtk' 'pygtksourceview2' 'python2-beautifulsoup3' 'python2-chardet' 'python2-clamd'
+  'python2-cluster' 'python2-dartspylru-git' 'python2-esmre' 'python2-futures'
+  'python2-gitpython' 'python2-guess-language' 'python2-lxml' 'python2-msgpack'
+  'python2-nltk' 'python2-ntlm' 'python2-phply' 'python2-pip' 'python2-pybloomfiltermmap'
+  'python2-pygithub' 'python2-pyopenssl' 'python2-pysqlite' 'python2-stopit'
+  'python2-tblib' 'python2-xdot' 'scapy')
+depends_x86_64+=('lib32-glibc')
+makedepends=('git')
+options=('!strip')
+source=(
+  "https://github.com/andresriancho/w3af/archive/$pkgver.tar.gz"
+  "$pkgname.desktop"
+  "$pkgname-no-update.patch"
+)
+sha512sums=(
+  '54d0626291f591e1dfc29a5721ec1583e2d7a371a374fc6afd580d072328b4ff511dad782c3e5607ae955494934f1a1514ff60c2071bc11d8c4735fb48534aeb'
+  '48a878492fc1958af75686bcbec33868a9e977140b52234c6c1c70a9e105a9aa08a38fa5d23d4ad7407eb193efab016b74665d02a638f1adeb401c1350d78100'
+  '1cf6d9322bb21a3ca04641eb80ed38a5acae640bda6b28975667351e7debfa939ff51563e66e0508a33c5f9ac41f0bebb9944fef81886ed4f7f2cbf9d5d2d710'
+)
+
+prepare() {
+  # Delete some of the stuff from w3af-extlib (stuff that needs to be installed) -> dependencies
+  cd $pkgname-$pkgver
+  rm -rf $pkgname/extlib/fpconst-0.7.2
+  rm -rf $pkgname/extlib/SOAPpy
+
+  # Patchto remove the update and set the version
+  patch -Np1 -i ../$pkgname-no-update.patch
+
+  # Remove dependency checks.
+  sed -i 's/dependency_check()/#&/' ${pkgname}_{console,gui}
+
+  # Change the default metasploit location.
+  sed -i 's|/opt/metasploit3/bin/|/usr/share/metasploit/|' $pkgname/core/controllers/misc_settings.py
+
+  # Fix python2 hash-bang
+  sed -i 's|#!\s*/usr/bin.*python.*$|#!/usr/bin/env python2|g' $(egrep -rl '\s*#!\s*/usr/bin.*python')
+}
+
+package() {
+  # Install the XDG desktop file
+  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  # Install w3af
+  cd $pkgname-$pkgver
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp --no-preserve=ownership -a * "$pkgdir/usr/share/$pkgname"
+
+  # Install launch scripts for w3af_console and w3af_gui
+  install -dm755 "$pkgdir/usr/bin"
+  printf '%s\n\n%s\n' '#!/usr/bin/env bash' 'python2 /usr/share/w3af/w3af_console "$@"' \
+    > "$pkgdir/usr/bin/$pkgname"
+  printf '%s\n\n%s\n' '#!/usr/bin/env bash' 'python2 /usr/share/w3af/w3af_gui "$@"' \
+    > "$pkgdir/usr/bin/$pkgname-gui"
+  chmod 755 "$pkgdir"/usr/bin/$pkgname{,-gui}
+}

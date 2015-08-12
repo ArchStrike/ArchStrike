@@ -1,0 +1,59 @@
+# Maintainer
+pkgname=amap
+pkgver=5.4
+pkgrel=5
+pkgdesc="Next-generation tool for assisting network penetration testing."
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('GPL2' 'custom')
+groups=('projectname')
+depends=('pcre' 'openssl' 'ca-certificates')
+url="http://freeworld.thc.org/releases.php"
+makedepends=('git')
+source=("git+https://github.com/ArchAssault-Project/amap.git"
+        "pcre.patch"
+        'amap.desktop')
+sha512sums=('SKIP'
+            'd54886d9e612673e23edb5d9a82b264f68c3a77ff728ca3c1faff8a7f6ff1d17a1c9afb4e5b178783858896398987a9a8ab57b2fded6bc975bc51db0d6d59ee0'
+            '23ba3d73a36c7c0b932a9a6e3b1394a825c9618e3636eb4b6de859044d6105224d21a6272c355884dc83417b4e8a02bfe81ff298eed674e66710fecf4975d964')
+
+prepare(){
+  cd "$srcdir/amap"
+  sed -i -e "s:etc/:share/amap/:g" amap-lib.c
+  # Above change requires below change. See sources...
+  sed -i '/strlen(AMAP_PREFIX/s: 5 : 12 :' amap-lib.c
+  sed -i 's:/usr/local:/usr:' amap.h
+  # Files to be updated are at different location, bug 207839.
+  sed -i '/AMAP_RESOURCE/s:www:freeworld:' amap.h
+  sed -i '/DATADIR/s:/etc:/share/amap:' Makefile.am
+  patch -p1 < ../pcre.patch
+}
+
+build() {
+  cd "$srcdir/amap"
+  ./configure
+  sed -i \
+      -e '/^XDEFINES=/s:=.*:=:' \
+      -e '/^XLIBS=/s:=.*:=:' \
+      -e '/^XLIBPATHS/s:=.*:=:' \
+      -e '/^XIPATHS=/s:=.*:=:' \
+      -e "/^CC=/d" \
+      Makefile
+  sed -i \
+       -e '/^XDEFINES=/s:=:=-DOPENSSL:' \
+       -e '/^XLIBS=/s:=:=-lcrypto -lssl:' \
+       Makefile
+  export CFLAGS=$CFLAGS
+  make
+}
+
+package() {
+  cd "$srcdir/amap"
+  install -Dm755 amap "$pkgdir/usr/bin/amap"
+  ln -s "/usr/bin/amap" "$pkgdir/usr/bin/amap6"
+  install -Dm755 amapcrap "$pkgdir/usr/bin/amapcrap"
+  install -dm755 "$pkgdir/usr/share/amap"
+  install -Dm644 appdefs.* "$pkgdir/usr/share/amap/"
+  install -Dm644 amap.1 "$pkgdir/usr/share/man/man1/amap.1"
+  install -Dm644 LICENCE.AMAP "$pkgdir/usr/share/licenses/amap/LICENCE"
+  install -Dm644 "$srcdir/amap.desktop" "$pkgdir/usr/share/applications/amap.desktop"
+}

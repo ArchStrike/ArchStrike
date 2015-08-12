@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Xorsearch
+Comment=Program to search for a given string in an XOR, ROL or ROT encoded binary file.
+Exec=xorsearch
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCrypto;

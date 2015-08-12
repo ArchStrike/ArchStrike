@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Pymssql
+Comment=A fast MS SQL Server client library for Python directly using C API instead of ODBC. It is Python DB-API 2.0 compliant. Works on Linux, *BSD, Solaris, Mac OS X and Windows
+Exec=pymssql
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

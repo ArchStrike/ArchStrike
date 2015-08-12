@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=liburcu
+pkgver=0.8.6
+pkgrel=1
+pkgdesc="LGPLv2.1 userspace RCU (read-copy-update) library"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://lttng.org/urcu"
+license=('LGPL2.1')
+source=(http://lttng.org/files/urcu/userspace-rcu-${pkgver}.tar.bz2)
+depends=('glibc')
+options=('!libtool')
+sha512sums=('027c215570b1ff94d0b7dd66934aece525461ddc8b172000c72af5b2e76115da9d18a635bbfb81dbd749c52463c5f4dd27f5700a30f367a4fb5fe0db6c128a6d')
+
+build()
+{
+    cd ${srcdir}/userspace-rcu-${pkgver}
+    ./configure --prefix=/usr
+    make
+}
+
+package()
+{
+    cd ${srcdir}/userspace-rcu-${pkgver}
+    make install DESTDIR=${pkgdir}
+}

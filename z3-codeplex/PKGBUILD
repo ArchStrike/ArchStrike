@@ -1,0 +1,38 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Marat Akhin <Marat.Akhin@gmail.com>
+
+pkgname=z3-codeplex
+pkgver=4.3.1
+pkgrel=2
+pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research (built from Codeplex sources, libraries only)"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://z3.codeplex.com/"
+license=('custom')
+makedepends=('python2')
+if [[ "$CARCH" == 'x86_64' ]]; then
+      depends='gcc-libs-multilib'
+else  
+      depends='gcc-libs'
+fi
+source=("$pkgname-$pkgver.zip::http://download-codeplex.sec.s-msft.com/Download/SourceControlFileDownload.ashx?ProjectName=z3&changeSetId=89c1785b7322" "z3.patch")
+sha512sums=('193406c8d1e123132206e335647dd8b7355d0e80b8b898b59dadb7d3cb5eaba3d9454dafb9161f591e78a244ddc9f4a5bd3d46617c5142f903733674ad66e91a'
+            'b424fc8c70901bff230e277cc8fbae3e452a18ab0215472aa29750c867255700fa0c9aa037d411a61446d761762f59966dd1340cb6c3fa9435609a5a31489bbf')
+
+build() {
+  cd "$srcdir"
+
+  autoconf
+  ./configure --prefix=$pkgdir/usr --with-python=/usr/bin/python2
+  python2 scripts/mk_make.py --nodotnet
+
+  cd "$srcdir/build"
+  patch -i $srcdir/z3.patch
+  make
+}
+
+package() {
+  cd "$srcdir/build"
+  install -dm755 "$pkgdir/usr/lib/python2.7/site-packages"
+  make DESTDIR=$pkgdir install
+  install -Dm644 $srcdir/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

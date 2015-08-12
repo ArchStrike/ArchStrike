@@ -1,0 +1,23 @@
+# Maintainer: ArchAssault <team projectname.org>
+pkgname=python2-olefile
+pkgver=0.42.1
+pkgrel=1
+pkgdesc="A Python module to parse and read Microsoft OLE2 files (Structured Storage or Compound Document, Microsoft Office) - Improved version of the OleFileIO module from PIL, the Python Image Library."
+arch=('any')
+url="http://www.decalage.info/olefile"
+license=('custom')
+depends=('python2')
+provides=('python2-olefileio_pl')
+replaces=('python2-olefileio_pl')
+conflicts=('python2-olefileio_pl')
+makedepends=('python2-setuptools')
+source=("https://bitbucket.org/decalage/olefileio_pl/downloads/olefile-$pkgver.zip")
+sha512sums=('85daac386783cec4d7d725193c9f29a8ed384b2725a755c25f13ff11a36720094faa1c77769fdf93789e73dc50a4a4fd7cdd123cd3ed39f66038a77d6069deb9')
+
+
+package() {
+  cd "$srcdir/olefile-$pkgver"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
+  grep -iRl 'python' "$pkgdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python|#!/usr/bin/env python2|;s|#!.*/usr/local/bin/python|#!/usr/bin/env python2|'
+}

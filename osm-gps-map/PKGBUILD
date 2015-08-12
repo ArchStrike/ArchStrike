@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=osm-gps-map
+pkgver=0.7.3
+pkgrel=4
+pkgdesc="GTK+ library for showing OSM tiles"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://nzjrs.github.com/osm-gps-map/'
+license=('GPL')
+depends=('gtk2' 'libsoup')
+source=("http://www.johnstowers.co.nz/files/osm-gps-map/osm-gps-map-$pkgver.tar.gz")
+md5sums=('6e5396ef0f643f3d8b63a1f0d47431cd')
+
+build() {
+  cd $srcdir/osm-gps-map-$pkgver
+  ./configure --prefix=/usr --enable-introspection=no
+  make
+}
+
+package() {
+  cd $srcdir/osm-gps-map-$pkgver
+  make DESTDIR=$pkgdir install
+}

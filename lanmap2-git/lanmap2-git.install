@@ -1,0 +1,21 @@
+post_install() {
+
+  echo "
+1. Enable the PDO Sqlite driver in PHP by adding (or uncommenting) the following line in '/etc/php/php.ini' ::
+  extension=pdo_sqlite.so
+
+2. Start capturing:
+  cd /usr/share/lanmap2-git/; sudo ./cap
+
+  The application has to run as root, which is a potential security hazard.
+  This currently produces prodigious amounts of output.
+
+3. Generate a graph after letting the capture run for a while.
+
+  (at /usr/share/lanmap2-git/)
+  cd graph && ./graph.sh && cd -
+  This runs a bunch of php scripts and generate a graph at /usr/share/lanmap2-git/graph/net.png
+
+4. View the graph via the web/ folder
+  It is suggested that you map/symlink the web/ directory to your apache http directory, if you are capable."
+}

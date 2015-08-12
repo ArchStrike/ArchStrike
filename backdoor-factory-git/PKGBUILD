@@ -1,0 +1,34 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=backdoor-factory-git
+pkgver=0.r142.0bd3429
+pkgrel=1
+groups=('projectname' 'projectname-*backdoors')
+pkgdesc="Patch win32/64 binaries with shellcode"
+url="https://github.com/secretsquirrel/the-backdoor-factory"
+arch=('any')
+license=('GPL3')
+depends=('capstone' 'python2-pefile')
+makedepends=('git')
+replaces=('backdoor-factory')
+conflicts=('backdoor-factory')
+provides=('backdoor-factory' 'bdf')
+source=("${pkgname}::git+https://github.com/secretsquirrel/the-backdoor-factory.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  install -dm755 "$pkgdir/usr/share/backdoor-factory"
+  install -dm755 "$pkgdir/usr/bin/"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/backdoor-factory"
+  cat > "$pkgdir/usr/bin/backdoor-factory" <<EOF
+#!/bin/sh
+python2 /usr/share/backdoor-factory/backdoor.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/backdoor-factory"
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Reaver
+Comment=Implements a brute force attack against wifi protected setup WPS registrar PINs in order to recover WPA/WPA2 passphrases
+Exec=reaver
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCracker;

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Acccheck
+Comment=A password dictionary attack tool that targets windows authentication via the SMB protocol.
+Exec=acccheck
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCracker;

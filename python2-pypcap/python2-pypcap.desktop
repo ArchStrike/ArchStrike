@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-pypcap
+Comment=Python extension module for libpcap.
+Exec=python2-pypcap
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

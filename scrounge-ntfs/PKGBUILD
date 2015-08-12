@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=scrounge-ntfs
+pkgver=0.9
+pkgrel=1
+groups=('projectname' 'projectname-*forensic')
+pkgdesc="Data recovery program for NTFS file systems"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://memberwebs.com/stef/software/scrounge/'
+license=('BSD')
+makedepends=('autoconf' 'automake')
+source=(http://thewalter.net/stef/software/scrounge/scrounge-ntfs-${pkgver}.tar.gz)
+md5sums=('851cbb9a1ce417cf61f2612626a1bc58')
+
+build() {
+  cd "$srcdir/scrounge-ntfs-$pkgver"
+
+  ./configure --prefix=/usr --sbindir=/usr/bin
+  make
+}
+
+package() {
+  cd "$srcdir/scrounge-ntfs-$pkgver"
+
+  make DESTDIR="$pkgdir/" install
+}

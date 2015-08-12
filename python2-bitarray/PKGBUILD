@@ -1,0 +1,25 @@
+# Maintainer
+# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
+pkgname=python2-bitarray
+pkgver=0.8.1
+pkgrel=1
+pkgdesc="Efficient arrays of booleans for Python"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/ilanschnell/bitarray"
+license=('PSF')
+depends=('python2')
+makedepends=('python2-distribute')
+options=(!emptydirs)
+source=(http://pypi.python.org/packages/source/b/bitarray/bitarray-${pkgver}.tar.gz)
+sha512sums=('10f4872243b92cd5a1a77e1e2aca80135d31904e17cb3de4eb2c3f2c4d3f00ad0573b6bc4b9c9379594e2912cb0e5d5870fb4e59eb298e269ecb3778fbae7d1f')
+
+build() {
+  cd "$srcdir"/bitarray-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir"/bitarray-$pkgver
+  python2 setup.py install --root="$pkgdir"/ --optimize=1
+}
+

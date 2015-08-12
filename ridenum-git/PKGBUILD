@@ -1,0 +1,33 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=ridenum-git
+pkgver=r40.a50ea22
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="Rid_enum is a null session RID cycle attack for brute forcing domain controllers."
+url="https://github.com/trustedsec/ridenum"
+arch=('any')
+license=('custom')
+depends=('python2-pexpect')
+makedepends=('git')
+source=("git+https://github.com/trustedsec/ridenum.git")
+sha512sums=('SKIP')
+
+
+pkgver() {
+  cd "$srcdir/ridenum"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/ridenum" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/ridenum"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm755 rid_enum.py "$pkgdir/usr/bin/rid_enum"
+}

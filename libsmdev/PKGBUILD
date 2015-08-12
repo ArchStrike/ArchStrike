@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname="libsmdev"
+pkgver="20150105"
+pkgrel=1
+pkgdesc="Library to access to storage media devices"
+arch=("i686" "x86_64" "armv6h" "armv7h")
+url='https://github.com/libyal/libsmdev'
+license=('GPL3')
+depends=('libcsystem' 'python2')
+makedepends=('git')
+source=("https://github.com/libyal/libsmdev/archive/$pkgver.tar.gz")
+sha512sums=('525c28a43163ff6410ce15ff2fb77a41aa16bedc519aaab770b882d34ceffbd969d76b45c6b43a3d9f5c94c9f97371b7b1c8046c5b3ac7a56f3c65fe88dfa75b')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  ./synclibs.sh
+  ./autogen.sh
+  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}

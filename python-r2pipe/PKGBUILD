@@ -1,0 +1,46 @@
+# Maintainer: ArchAssault <team projectname org>
+
+_pkgname=r2pipe
+pkgbase=python-$_pkgname
+pkgname=(python-$_pkgname python2-$_pkgname)
+pkgver=0.6.5
+pkgrel=1
+pkgdesc="A Pipe interface for radare2"
+url="https://pypi.python.org/pypi/r2pipe/"
+arch=('any')
+license=('MIT')
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("https://pypi.python.org/packages/source/r/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('a912e1581964c8152c42d67a944620d72138ec821386cb64706d0a8c480b032b33edf69db7865533fef1658815d5ad68cea65032b6a636e44a3de2ce54fd0a58')
+
+
+prepare() {
+  cp -a $_pkgname-$pkgver{,-py2}
+}
+
+build() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python3 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver-py2"
+  python2 setup.py build
+}
+
+
+package_python-r2pipe() {
+  depends=('python')
+
+  cd "$srcdir/$_pkgname-$pkgver"
+  python3 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_python2-r2pipe() {
+  depends=('python2')
+
+  cd "$srcdir/$_pkgname-$pkgver-py2"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  sed -i 's|env python|env python2|' $pkgdir/usr/lib/python2.7/site-packages/r2pipe/__init__.py
+}
+

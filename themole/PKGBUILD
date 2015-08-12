@@ -1,0 +1,35 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=themole
+pkgver=0.3
+pkgrel=1
+groups=('projectname' 'projectname-*bruteforce')
+pkgdesc="Automatic SQL Injection Exploitation Tool"
+arch=('any')
+url='http://sourceforge.net/projects/themole/'
+license=('GPL3')
+depends=('python' 'python-lxml')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver-lin-src.tar.gz")
+sha512sums=('14ccfb90a3b8e9a2f14016a4a572851eb57e55f9140c1cb07ff3fe34514c8c4e3cafdb3a126bf91afacd42a656cb97a897e5e78304e7a62ea5cd81bd446d1c3f')
+
+prepare(){
+ cd "$srcdir/$pkgname-$pkgver"
+ sed -i 's|python3$|python|' *.py
+}
+
+package(){
+ cd "$srcdir/$pkgname-$pkgver"
+ install -dm755 "$pkgdir/usr/bin"
+ install -dm755 "$pkgdir/usr/share/$pkgname"
+
+ cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/themole" <<EOF
+#!/bin/sh
+cd /usr/share/themole
+./mole.py "$\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/themole"
+
+}
+

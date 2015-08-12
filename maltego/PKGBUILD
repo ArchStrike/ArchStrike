@@ -1,0 +1,40 @@
+# Maintainer
+pkgname=maltego
+pkgver=3.5.3
+pkgrel=1
+groups=('projectname' 'projectname-*forensics' 'archassault-reconnaissance' 'archassault-scanners')
+pkgdesc=("An open source intelligence and forensics application, enabling to easily gather information about DNS, domains, IP addresses, websites, persons, etc.")
+arch=('any')
+url=('http://www.paterva.com/web5')
+license=('GPL')
+depends=('java-environment' 'giflib' 'python2')
+source=("https://www.paterva.com/malv35/community/MaltegoCarbonCE.v${pkgver}.zip"
+        "http://www.paterva.com/malv3/303/M3GuideGUI.pdf")
+sha512sums=('eb44483a358186965b62a0676483d202972bf0ef67c10046857ab25a60cc53ccb54b9a19e01b5e091a54a963aa8c842d5b3e79dee27521953e9b1e355ea7be69'
+            '20dda5f7bbf211bb227ef740ae664037e33a0849b15a5e47f9ae4f39bd2b276ef116b492b9be57a44c89f3ffc23ee63d39c6f465136b917c6aeeb08dfe94c6e1')
+
+package() {
+  cd MaltegoCarbonCE
+
+  # Create base directories.
+  install -dm755 "$pkgdir/usr/share/maltego"
+  install -dm755 "$pkgdir/usr/share/doc/maltego"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a --no-preserve=ownership bin etc groovy ide java maltego maltego-core-platform maltego-ui \
+         platform "$pkgdir/usr/share/maltego"
+  install -Dm644 "$srcdir/M3GuideGUI.pdf" "$pkgdir/usr/share/doc/maltego/M3GuideGUI.pdf"
+
+  # Create joint script.
+  cat > $pkgdir/usr/bin/maltego <<EOF
+#!/bin/sh
+cd /usr/share/maltego/bin
+./maltego "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/maltego"
+  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+   -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+   -e "s|#![ ]*/bin/python$|#!/usr/bin/python2|" \
+   -e "s|#![ ]*/usr/local/bin/python$|#!/usr/bin/python2|" \
+   $(find ${pkgdir} -name '*.py')
+}

@@ -1,0 +1,72 @@
+# Maintainer
+pkgname=buttinsky-git
+pkgver=r138.1a2a1b2
+pkgrel=1
+pkgdesc="provide an open source framework for automated botnet monitoring"
+url="https://github.com/buttinsky/buttinsky"
+arch=('any')
+license=('GPL3')
+groups=('projectname')
+depends=('python2')
+makedepends=('git')
+provides=('buttinsky')
+conflicts=('buttinsky')
+replaces=('buttinsky')
+source=(buttinsky-git::git+https://github.com/buttinsky/buttinsky.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/buttinsky-git"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+   find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}
+
+package() {
+  cd "$srcdir"/buttinsky-git
+  install -dm755 "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/share/buttinsky-git
+  install -Dm644 COPYING "$pkgdir"/usr/share/licenses/buttinsky-git/LICENSE
+  install -m644 README.md "$pkgdir"/usr/share/buttinsky-git/README.md
+  install -m755 buttinsky.py "$pkgdir"/usr/share/buttinsky-git/buttinsky.py
+  install -m755 cli.py "$pkgdir"/usr/share/buttinsky-git/cli.py
+  install -m755 netzobparse.py "$pkgdir"/usr/share/buttinsky-git/netzobparse.py
+  install -m755 spawner.py "$pkgdir"/usr/share/buttinsky-git/spawner.py
+  install -m755 stack.py "$pkgdir"/usr/share/buttinsky-git/stack.py
+  cp --no-preserve=ownership -a behaviors conf docs event_loops logs modules protocols settings "$pkgdir"/usr/share/buttinsky-git
+  chmod u+rwX,g+rwX,o+rX -R "$pkgdir"/usr/share/buttinsky-git/{behaviors,conf,docs,event_loops,logs,modules,protocols,settings}
+  cat > "$pkgdir"/usr/bin/buttinsky.py <<EOF
+#!/bin/sh
+cd /usr/share/buttinsky-git
+python2 buttinsky.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/buttinsky.py
+  cat > "$pkgdir"/usr/bin/buttinsky-cli.py <<EOF
+#!/bin/sh
+cd /usr/share/buttinsky-git
+python2 cli.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/buttinsky-cli.py
+  cat > "$pkgdir"/usr/bin/netzobparse.py <<EOF
+#!/bin/sh
+cd /usr/share/buttinsky-git
+python2 netzobparse.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/netzobparse.py
+  cat > "$pkgdir"/usr/bin/spawner.py <<EOF
+#!/bin/sh
+cd /usr/share/buttinsky-git
+python2 spawner.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/spawner.py
+  cat > "$pkgdir"/usr/bin/stack.py <<EOF
+#!/bin/sh
+cd /usr/share/buttinsky-git
+python2 stack.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/stack.py
+}
+

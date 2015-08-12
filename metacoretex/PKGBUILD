@@ -1,0 +1,41 @@
+# Maintainer
+pkgname=metacoretex
+pkgver=0.8.0
+pkgrel=1
+pkgdesc="MetaCoretex is an entirely JAVA vulnerability scanning framework for databases."
+url="http://metacoretex.sourceforge.net/"
+groups=('projectname' 'projectname-*database')
+arch=(any)
+license=('custom')
+depends=('java-runtime')
+source=(http://downloads.sourceforge.net/metacoretex/${pkgname}-${pkgver}.tar.gz)
+md5sums=('0505b17ff98627f7a43663211e5c7a89')
+
+package() {
+  cd "$srcdir/metacoretex-$pkgver"
+
+  install -d $pkgdir/usr/bin/
+  install -d $pkgdir/usr/share/metacoretex/
+  install -d $pkgdir/usr/share/doc/metacoretex/
+
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/metacoretex/LICENSE
+  install -Dm644 README $pkgdir/usr/share/doc/metacoretex/README
+  install -Dm644 TODO $pkgdir/usr/share/doc/metacoretex/TODO
+
+  install -Dm755 mctx.sh $pkgdir/usr/share/metacoretex/mctx.sh
+
+  cp -r docs/* $pkgdir/usr/share/doc/metacoretex/
+
+  for dir in contrib schema conf dist probes; do
+    cp -r $dir $pkgdir/usr/share/metacoretex/
+  done
+
+  cat > $pkgdir/usr/bin/metacoretex << EOF
+#!/bin/sh
+cd /usr/share/metacoretex/
+./mctx.sh "\$*"
+EOF
+
+  chmod +x $pkgdir/usr/bin/metacoretex
+}
+

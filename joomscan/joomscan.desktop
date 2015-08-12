@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Joomscan
+Comment=Detects file inclusion, sql injection, command execution vulnerabilities of a target Joomla! web site.
+Exec=joomscan
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;

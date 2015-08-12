@@ -1,0 +1,37 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor : Marcos Heredia <chelqo@gmail.com>
+# Contributor: Joris Steyn <jorissteyn@gmail.com>
+# Contributor: speps <speps at aur dot archlinux dot org>
+# Contributor: Roman Kyrylych <roman@archlinux.org>
+# Contributor: orelien <aurelien.foret@wanadoo.fr>
+# Contributor: Muflone <webreg@vbsimple.net>
+
+pkgname=httrack
+pkgver=3.48.21
+pkgrel=2
+pkgdesc="An easy-to-use offline browser utility."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('projectname' 'projectname-*webapps')
+url="http://www.httrack.com/"
+license=('GPL')
+depends=('xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils')
+options=('!libtool')
+install="$pkgname.install"
+source=("http://mirror.httrack.com/historical/$pkgname-$pkgver.tar.gz")
+sha512sums=('1cf98225488e8d9570bb55c48ef1a04dcd48184f2285497c6fb4beaeb28d3ce4751c85783253baa73de1bd21c4bf01b0acd6beede77373c2f622a4124dc19246')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --prefix=/usr --enable-static=no
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+  _docdir=${pkgdir}/usr/share/doc/${pkgname}
+  _licdir=${pkgdir}/usr/share/licenses/${pkgname}
+  install -dpm755 ${_docdir} ${_licdir}
+  install -Dpm644 AUTHORS INSTALL* README ${_docdir}/
+  install -Dpm644 COPYING license.txt ${_licdir}/
+}

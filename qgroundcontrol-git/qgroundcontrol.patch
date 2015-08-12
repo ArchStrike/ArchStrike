@@ -1,0 +1,12 @@
+diff -aur qgroundcontrol.orig/Makefile qgroundcontrol/Makefile
+--- qgroundcontrol.orig/Makefile	2014-02-22 10:58:11.074353405 -0500
++++ qgroundcontrol/Makefile	2014-02-22 10:58:56.514652068 -0500
+@@ -16,7 +16,7 @@
+ INCPATH       = -I/usr/share/qt4/mkspecs/linux-g++ -I. -I/usr/include/qt4/QtCore -I/usr/include/qt4/QtNetwork -I/usr/include/qt4/QtGui -I/usr/include/qt4/QtOpenGL -I/usr/include/qt4/QtXml -I/usr/include/qt4/QtSql -I/usr/include/qt4/QtSvg -I/usr/include/qt4/QtTest -I/usr/include/qt4/phonon -I/usr/include/qt4/QtWebKit -I/usr/include/qt4/QtDeclarative -I/usr/include/qt4 -I/usr/include -I/usr/local/include -Iqupgrade/src/apps/qupgrade -Iqupgrade/libs/qextserialport/src -Ilibs/mavlink/include/mavlink/v1.0 -Ilibs/mavlink/include/mavlink/v1.0/ardupilotmega -Ilibs/eigen -I. -I.. -Isrc/core -Isrc/internals -Isrc/internals/projections -Isrc/mapwidget -Ilibs/utils -Ilibs -Ilibs/opmapcontrol -Ilibs/qwt -Ilibs/serialport -I. -Isrc -Isrc/ui -Isrc/ui/linechart -Isrc/ui/uas -Isrc/ui/map -Isrc/uas -Isrc/comm -Iinclude/ui -Isrc/input -Isrc/lib/qmapcontrol -Isrc/ui/mavlink -Isrc/ui/param -Isrc/ui/watchdog -Isrc/ui/map3D -Isrc/ui/mission -Isrc/ui/designer -Isrc/ui/configuration -Isrc/ui/main -I/usr/include/qt4/phonon_compat -I/usr/X11R6/include -Ibuild-release/moc -Ibuild-release/ui
+ LINK          = g++
+ LFLAGS        = -Wl,-O1,--sort-common,--as-needed,-z,relro -Wl,-O1
+-LIBS          = $(SUBLIBS)  -L/usr/lib -L/usr/X11R6/lib -L/usr/lib -losgQt -losg -losgViewer -losgGA -losgDB -losgText -lOpenThreads -lSDL -lSDLmain -lflite_cmu_us_kal -lflite_usenglish -lflite_cmulex -lflite -lasound -ludev -lpthread -lQtDeclarative -lQtWebKit -lphonon -lQtTest -lQtSvg -lQtSql -lQtXml -lQtOpenGL -lQtGui -lQtNetwork -lQtCore -lGL 
++LIBS          = $(SUBLIBS)  -L/usr/lib -L/usr/X11R6/lib -L/usr/lib -L/usr/include -losgQt -losg -losgViewer -losgGA -losgDB -losgText -lOpenThreads -lSDL -lSDLmain -lflite_cmu_us_kal -lflite_usenglish -lflite_cmulex -lflite -lasound -ludev -lpthread -lQtDeclarative -lQtWebKit -lphonon -lQtTest -lQtSvg -lQtSql -lQtXml -lQtOpenGL -lQtGui -lQtNetwork -lQtCore -lGL 
+ AR            = ar cqs
+ RANLIB        = 
+ QMAKE         = /usr/bin/qmake-qt4

@@ -1,0 +1,44 @@
+# Maintainer
+pkgname=clusterd-git
+pkgver=r129.0f04a49
+pkgrel=1
+pkgdesc="automates the fingerprinting, reconnaissance, and exploitation phases of an application server attack"
+url="https://github.com/hatRiot/clusterd"
+arch=('any')
+license=('MIT')
+groups=('projectname')
+depends=('python2' 'python2-requests' 'java-environment')
+makedepends=('git')
+provides=('clusterd')
+conflicts=('clusterd')
+replaces=('clusterd')
+source=(clusterd-git::git+https://github.com/hatRiot/clusterd.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/clusterd-git"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+   find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}
+
+package() {
+  cd "$srcdir"/clusterd-git
+  install -dm755 "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/share/clusterd-git
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/clusterd-git/LICENSE
+  install -m644 README.md "$pkgdir"/usr/share/clusterd-git/README.md
+  install -m755 clusterd.py "$pkgdir"/usr/share/clusterd-git/clusterd.py
+  cp --no-preserve=ownership -ar src "$pkgdir"/usr/share/clusterd-git
+  chmod u+rwX,g+rwX,o+rX -R "$pkgdir"/usr/share/clusterd-git/src
+  cat > "$pkgdir"/usr/bin/clusterd.py <<EOF
+#!/bin/sh
+cd /usr/share/clusterd-git
+python2 clusterd.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/clusterd.py
+}
+

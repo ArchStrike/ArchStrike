@@ -1,0 +1,44 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Cthulu201 <cthulu201@projectname.org>
+
+pkgname=sparta-git
+pkgver=20150331.r17
+pkgrel=1
+pkgdesc="A GUI application which simplifies network infrastructure penetration testing by aiding the penetration tester in the scanning and enumeration phase"
+arch=('any')
+url="https://github.com/SECFORCE/sparta"
+groups=('projectname' 'projectname-*scanners')
+license=('GPL3')
+depends=('python2' 'nmap' 'hydra' 'cutycapt') 
+makedepends=('git')
+provides=('sparta')
+replaces=('sparta')
+conflicts=('sparta')
+options=('emptydirs')
+source=("${pkgname}::git+https://github.com/SECFORCE/sparta.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "${pkgname}"
+
+  install -dm755 "$pkgdir/usr/share/sparta/"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/sparta/"
+
+cat > "${pkgdir}/usr/bin/sparta" <<EOF
+#!/bin/sh
+cd /usr/share/sparta
+python2 sparta.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/sparta"
+}

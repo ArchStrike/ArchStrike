@@ -1,0 +1,30 @@
+#Maintainer: ArchAssault <team projectname org>
+pkgname=powersploit-git
+pkgver=r251.2153a0a
+pkgrel=1
+groups=('projectname' 'projectname-*windowsapps' 'archassault-exploit')
+pkgdesc="A PowerShell Post-Exploitation Framework"
+url="https://github.com/mattifestation/PowerSploit"
+arch=(any)
+license=('custom')
+makedepends=('git')
+source=("git+https://github.com/mattifestation/PowerSploit.git")
+provides=('powersploit')
+replaces=('powersploit')
+conflicts=('powersploit')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/PowerSploit"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+package() {
+  cd "$srcdir/PowerSploit"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/share/powersploit"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/powersploit-git/LICENSE"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/powersploit"
+}

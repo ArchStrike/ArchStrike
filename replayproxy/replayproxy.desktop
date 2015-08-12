@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Replayproxy
+Comment=Forensic tool to replay web-based attacks (and also general HTTP traffic) that were captured in a pcap file
+Exec=replayproxy
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultForensics;

@@ -1,0 +1,22 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=windows-binaries
+pkgver=0.4
+pkgrel=1
+groups=('projectname' 'projectname-*windows-apps')
+pkgdesc="A colleciton of pentesting Windows binaries"
+arch=('any')
+license=('GPL2')
+url="http://ftp.cc.uoc.gr/mirrors/linux/kali/kali/pool/non-free/w/windows-binaries/"
+source=("http://ftp.cc.uoc.gr/mirrors/linux/kali/kali/pool/non-free/w/windows-binaries/windows-binaries_$pkgver.orig.tar.gz")
+options=('!strip')
+sha512sums=('846c7cc0da80e45c34d78fefe570ba60e7a6428ff6f17d0eadfcf27d0085ee1e7ca97a66d3a999ef016c8d5ab0d14f9bee27e9481840f81a1ef0eeb7886af861')
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/windows-binaries"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/windows-binaries"
+  # Removing debian crap
+  rm -rf "$pkgdir/usr/share/windows-binaries/debian"
+}  

@@ -1,0 +1,33 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Cthulu201 <cthulu201@projectname.org>
+
+pkgname=jadx
+pkgver=0.5.4
+pkgrel=1
+pkgdesc="Dex to Java command line and GUI decompiler tool that produces Java source code from Android Dex and APK files"
+arch=(any)
+url="https://github.com/skylot/jadx"
+groups=('projectname' 'projectname-*decompiler' 'archassault-reversing')
+license=('Apache')
+depends=('java-environment' 'bash')
+source=("https://github.com/skylot/jadx/releases/download/v$pkgver/$pkgname-$pkgver.zip")
+sha512sums=('b75d8e204a33624f34bed4c87d9e9e838a7c0749632fbcee3ddf765dd83ddf3662aaebdb425542f6cf8e1266d9d6eddfd4d46a9fb385d56024e6b2903f69099c')
+
+package() {
+cd "$srcdir"
+install -dm755 "$pkgdir/usr/share/$pkgname"
+install -dm755 "$pkgdir/usr/bin"
+install -dm755 "$pkgdir/usr/share/$pkgname/bin"
+install -dm755 "$pkgdir/usr/share/$pkgname/lib"
+
+# Libs
+install -Dm644 lib/* "$pkgdir/usr/share/jadx/lib/"
+
+# Bins
+install -Dm755 bin/jadx "$pkgdir/usr/share/jadx/bin/jadx"
+install -Dm755 bin/jadx-gui "$pkgdir/usr/share/jadx/bin/jadx-gui"
+
+ln -s /usr/share/${pkgname}/bin/jadx "$pkgdir/usr/bin/jadx"
+ln -s /usr/share/${pkgname}/bin/jadx-gui "$pkgdir/usr/bin/jadx-gui"
+
+}

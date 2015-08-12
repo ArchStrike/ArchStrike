@@ -1,0 +1,20 @@
+# Maintainer
+pkgname=ruby1.9-metasploit_data_models
+_gemname=metasploit_data_models
+pkgver=0.17.0
+pkgrel=1
+pkgdesc="Database code for MSF and Metasploit Pro"
+arch=('any')
+license=('')
+makedepends=('ruby1.9')
+depends=('ruby1.9-activerecord>=3.2.13')
+url=''
+source=("http://rubygems.org/downloads/metasploit_data_models-$pkgver.gem")
+sha512sums=('f1cb3e5379b26f83dabcd8307a50a843e1fbfd8a80ee70392167aa120171da390fe13bd9d951e7d3646b83a8cc8a51aa900b779bda3a7afd0740886102149850')
+noextract=("metasploit_data_models-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir="$(ruby-1.9 -rubygems -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install --no-rdoc --no-ri -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" metasploit_data_models-$pkgver.gem
+}

@@ -1,0 +1,26 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=ipaudit
+pkgver=1.0BETA2
+pkgrel=2
+pkgdesc="Monitors network activity on a network."
+url="http://ipaudit.sourceforge.net"
+depends=('libpcap')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('projectname' 'projectname-*networking')
+options=('!emptydirs')
+license=('GPL')
+source=("http://downloads.sourceforge.net/sourceforge/ipaudit/ipaudit-$pkgver.tar.gz" 'ipaudit.desktop')
+sha512sums=('3a8890821c515aea95762eeb2cc7a649533ff739984c944bcb26acb72434e1f2b453a98365719fce9e062d6262b9d76ac389f149ad2a19361422783bc0b55e09'
+            '8298ed38fba9bfac62b03c1fdb100568b7efd84e64cd27ce05197c6681d8ff94352194944d11b76e983d4ec2593686adf3c6d6a3ae85e714dc204c1823e90040')
+
+build() {
+  cd $srcdir/ipaudit-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man --sbindir=/usr/bin
+  make
+}
+
+package(){
+  cd $srcdir/ipaudit-$pkgver
+  make DESTDIR=$pkgdir install
+  install -Dm644 "$srcdir/ipaudit.desktop" "$pkgdir/usr/share/applications/ipaudit.desktop"
+}

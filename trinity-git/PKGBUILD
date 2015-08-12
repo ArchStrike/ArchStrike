@@ -1,0 +1,33 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=trinity-git
+pkgver=v1.4.775.g996e568
+pkgrel=1
+epoch=1
+pkgdesc="A Linux System call fuzzer"
+groups=('projectname' 'projectname-*fuzzer')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url="http://codemonkey.org.uk/projects/trinity/"
+license=('GPL')
+depends=('glibc')
+makedepends=('git' 'linux-headers')
+replaces=('trinity')
+conflicts=('trinity')
+provides=('trinity')
+source=('git+https://github.com/kernelslacker/trinity.git')
+md5sums=('SKIP')
+
+pkgver() {
+  cd trinity
+  git describe --always | sed 's/-/./g'
+}
+
+build() {
+  cd trinity
+  ./configure.sh
+  make
+}
+
+package() {
+  cd trinity
+  make DESTDIR="$pkgdir/usr" install
+}

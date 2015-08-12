@@ -1,0 +1,35 @@
+# Maintainer
+pkgname=scalpel
+pkgver=2.0
+pkgrel=1
+groups=('projectname' 'projectname-*forensic')
+pkgdesc='A frugal, high performance file carver'
+url="http://www.digitalforensicssolutions.com/Scalpel/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL2')
+depends=('tre')
+makedepends=('git')
+source=('git+http://github.com/ArchAssault-Project/Scalpel-2.0'
+        'conf-location.patch')
+md5sums=('SKIP'
+         '2a6d0cab099b10a599208ec1081bdab3')
+
+prepare() {
+  cd "$srcdir/Scalpel-$pkgver"
+
+  patch -Np1 -i $srcdir/conf-location.patch
+}
+
+build() {
+  cd "$srcdir/Scalpel-$pkgver"
+
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$srcdir/Scalpel-$pkgver"
+
+  make "DESTDIR=$pkgdir" install
+  install -Dm644 conf/scalpel.conf "$pkgdir/etc/scalpel/scalpel.conf"
+}

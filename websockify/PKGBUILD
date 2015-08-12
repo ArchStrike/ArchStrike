@@ -1,0 +1,23 @@
+# Maintainer: ArchAssualt <team at projectname org>
+# Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
+
+pkgname='websockify'
+pkgver=0.6.1
+pkgrel=1
+pkgdesc="WebSocket to TCP proxy/bridge."
+license=('LGPL3')
+arch=('any')
+url="http://github.com/kanaka/websockify"
+makedepends=('python2' 'python2-distribute')
+depends=('python2')
+groups=('projectname')
+source=("https://github.com/kanaka/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('72a34096ff8262cde78658e7b5727b5f0cac001916cf6c868ed1baf4cb4745e823d727f8decc1a244db22a3517a3616e25aad2d7ac9b1300d6f55571c4680bff')
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  # setting py2 instead of py3 
+  sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/websockify/websocket.py 
+  sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/websockify/websocketproxy.py 
+}

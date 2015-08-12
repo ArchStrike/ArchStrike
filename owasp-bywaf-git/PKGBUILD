@@ -1,0 +1,47 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=owasp-bywaf-git
+pkgver=r26.e730d1b
+pkgrel=2
+groups=('projectname' 'projectname-*webapps')
+pkgdesc="A web application penetration testing framework (WAPTF)."
+arch=('any')
+url='https://github.com/depasonico/OWASP-ByWaf'
+license=('custom')
+depends=('python2' 'python2-sqlalchemy')
+makedepends=('python2-setuptools' 'git')
+provides=('owasp-bywaf')
+replaces=('owasp-bywaf')
+conflicts=('owasp-bywaf')
+source=("owasp-bywaf::git+https://github.com/depasonico/OWASP-ByWaf.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/owasp-bywaf"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/owasp-bywaf"
+  install -dm755 "$pkgdir/usr/share/owasp-bywaf"
+  install -dm755 "$pkgdir/usr/share/owasp-bywaf/doc"
+  install -dm755 "$pkgdir/usr/bin"
+
+
+  for i  in *.py; do install -Dm755 $i "$pkgdir/usr/share/owasp-bywaf/$i" ;done
+  for i in *.txt; do install -Dm644 $i "$pkgdir/usr/share/owasp-bywaf/$i" ;done 
+  install -Dm644 doc/* "$pkgdir/usr/share/owasp-bywaf/doc/"
+
+  install -Dm644 copyright.txt "$pkgdir/usr/share/licenses/$pkgname/copyright.txt"
+
+  #fix one stray python error
+  sed -i 's|python$|python2|' "$pkgdir/usr/share/owasp-bywaf/hostdb.py"
+ 
+cat > "$pkgdir/usr/bin/owasp-bywaf" <<EOF
+#!/bin/sh
+cd /usr/share/owasp-bywaf/
+python2 ./bywaf.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/owasp-bywaf"
+  
+}

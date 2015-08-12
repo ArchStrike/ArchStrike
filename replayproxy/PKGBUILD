@@ -1,0 +1,35 @@
+# Maintainer
+pkgname=replayproxy
+pkgver=1.1
+pkgrel=1
+groups=('projectname' 'projectname-*forensics')
+pkgdesc="Forensic tool to replay web-based attacks (and also general HTTP traffic) that were captured in a pcap file"
+url="https://code.google.com/p/replayproxy/"
+arch=('any')
+license=('BSD')
+depends=('python2' 'python2-dpkt' 'python2-pynids')
+source=("https://replayproxy.googlecode.com/files/replayproxy%201.1.zip")
+md5sums=('ddb042fba5180656abd5151dbdc48713')
+
+prepare(){
+  grep -iRl 'python' "$srcdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package(){
+  cd "$srcdir"
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+ 
+  #Clean up before we copy
+  rm -rf "replayproxy%201.1.zip"
+ 
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/replayproxy" << EOF
+#!/bin/sh
+cd /usr/share/replayproxy
+python2 replayproxy.py "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/replayproxy"
+}

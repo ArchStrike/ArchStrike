@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Geoedge
+Comment=This little tools is designed to get geolocalization information of a host, it get the information from two sources (maxmind and geoiptool).
+Exec=geoedge
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;

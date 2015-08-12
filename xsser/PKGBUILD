@@ -1,0 +1,20 @@
+# Maintainer
+pkgname=xsser
+pkgver=1.6
+pkgrel=4
+groups=('projectname' 'projectname-*webapps' 'archassault-fuzzers' 'archassault-exploits')
+pkgdesc="A penetration testing tool for detecting and exploiting XSS vulnerabilites."
+arch=('any')
+url='http://xsser.sourceforge.net/'
+license=('GPL3')
+depends=('orbited' 'python2-beautifulsoup3' 'python2-pycurl' 'twisted' 'pygtk')
+makedepends=('subversion' 'python2-setuptools')
+optdepends=('pygtkmoz')
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}_${pkgver}-1.tar.gz")
+sha512sums=("6b076df0219dba8363a8ec436338837a8c57dfd0f7c4325e5dea987660b7a498bb38d9401952bd32c12f5c2070e1b40a67cf86ecaa8362c91a99186d6bb3eb03")
+
+package() {
+  cd "${srcdir}/${pkgname}-public"
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}

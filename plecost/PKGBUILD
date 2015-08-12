@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=plecost
+pkgver=1.0.1
+pkgrel=1
+epoch=1
+groups=('projectname' 'projectname-*fingerprinting' 'archassault-webapp')
+pkgdesc="Wordpress finger printer tool search and retrieve information about the plugins versions installed in Wordpress systems."
+arch=('any')
+url='https://github.com/iniqua/plecost'
+license=('BSD')
+depends=('python-chardet' 'python-aiohttp' 'python-termcolor' 'python-beautifulsoup4' 'python-sphinx_rtd_theme')
+makedepends=('python-setuptools')
+source=("https://github.com/iniqua/plecost/archive/v${pkgver}.tar.gz")
+sha512sums=('92e3fd659016bc09da55386a23ffa5f5abc02cc2334be850736704d31da5b27a2d76722472f7f165969bb9eda52bd697015257e61a7251cc871cd68f5aabbb12')
+
+build() {
+    cd $srcdir/${pkgname}-${pkgver}
+    python setup.py build
+}
+
+package() {
+    cd $srcdir/${pkgname}-${pkgver}
+    python setup.py install --root="$pkgdir" --optimize=1 
+    install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+}
+

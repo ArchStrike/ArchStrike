@@ -1,0 +1,25 @@
+# Maintainer
+pkgname='easyfuzzer'
+pkgver='3.6'
+pkgrel=4
+groups=('projectname' 'projectname-*webapp' 'archassault-fuzzer')
+pkgdesc='A flexible fuzzer, not only for web, has a CSV output for efficient output analyze (platform independant).'
+arch=('any')
+url='http://www.mh-sec.de/downloads.html.en'
+license=('custom:unknown')
+depends=('perl' 'perl-io-socket')
+source=("http://www.mh-sec.de/downloads/easyfuzzer-$pkgver.tar.gz")
+md5sums=('3acc241ca3ae89c49c93489a959d5789')
+
+package() {
+  cd "$srcdir/easyfuzzer"
+
+  for f in *.pl
+  do
+    install -Dm755 "$f" "$pkgdir/usr/bin/${f%.*}"
+  done
+
+  install -Dm644 "header.txt" "$pkgdir/usr/share/easyfuzzer/header.txt"
+
+  install -Dm644 "README.easyfuzzer" "$pkgdir/usr/share/doc/easyfuzzer/README.easyfuzzer"
+}

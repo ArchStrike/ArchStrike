@@ -1,0 +1,42 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=rebind
+pkgver=0.3.4
+pkgrel=2
+groups=('projectname' 'projectname-*exploit')
+pkgdesc="DNS Rebinding Tool"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://code.google.com/p/rebind/"
+license=('MIT')
+depends=('sqlite3' 'readline')
+makedepends=('python2' 'subversion')
+source=("https://rebind.googlecode.com/files/rebind_${pkgver//./-}.tar.gz")
+md5sums=('aadb50e55ebb25827c075949c3808276')
+
+prepare(){
+  cd "$srcdir/rebind/dev"
+  sed -i 's/env python/env python2/' *.py
+  chmod +x *.py
+}
+
+build(){
+  cd "$srcdir/rebind/src"
+  make
+}
+
+package(){
+  cd "$srcdir/rebind"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/rebind"
+  install -dm755 "$pkgdir/usr/share/doc/rebind"
+
+  # Clean up.
+  rm -rf bin/rebind_{i686,x86-64}
+
+  cp -a --no-preserve=ownership src/www "$pkgdir/usr/share/doc/rebind"
+  cp -a --no-preserve=ownership docs/* "$pkgdir/usr/share/doc/rebind"
+
+  # Renamed to fix conflict with community/elfkickers.
+  install -m755 src/rebind "$pkgdir/usr/bin/rebind_dns"
+}

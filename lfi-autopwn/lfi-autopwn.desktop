@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Lfi-autopwn
+Comment=A Perl script to try to gain code execution on a remote server via LFI
+Exec=lfi-autopwn
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultExploitation;ArchAssaultFuzzer;

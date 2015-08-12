@@ -1,0 +1,27 @@
+# Maintainer
+pkgname='hex2bin'
+pkgver='2.0'
+pkgrel=1
+pkgdesc='Converts Motorola and Intel hex files to binary.'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://hex2bin.sourceforge.net/'
+license=('GPL')
+depends=('glibc')
+groups=('projectname' 'projectname-*misc')
+source=("http://downloads.sourceforge.net/project/hex2bin/hex2bin/Hex2bin-$pkgver.tar.bz2")
+sha512sums=('2aced3259e9fc462c5fabdfec7e9113675f58e23c8deb85540c3af7f0244fddc842eed71df40528321c8b1a3fe991f2c14c6d621b11a1291dd979cb84e933501')
+
+build() {
+  cd "$srcdir/Hex2bin-$pkgver"
+  make 
+}
+
+package() {
+  cd "$srcdir/Hex2bin-$pkgver"
+  install -dm755 "$pkgdir/usr/share/man/man1"
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm644 hex2bin.1 "$pkgdir/usr/share/man/man1/"
+  install -Dm755 hex2bin "$pkgdir/usr/bin/"
+  install -Dm755 mot2bin "$pkgdir/usr/bin/"
+
+}

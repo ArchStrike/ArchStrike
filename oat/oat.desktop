@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Oat
+Comment=A toolkit that could be used to audit security within Oracle database servers.
+Exec=oat
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultFuzzer;

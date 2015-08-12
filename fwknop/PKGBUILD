@@ -1,0 +1,42 @@
+# Maintainer
+# Contributors:
+#   Florian Pritz <f-p@gmx.at> (Original)
+#   Xyne <xyne at archlinux dot us>
+#   thiagoc
+#   Chris <chris at christopherjones dot us>
+#   henning mueller <henning@orgizm.net>
+#   Fabiano Furtado <fusca14 at gmail dot com>
+pkgname=fwknop
+pkgver=2.6.5
+pkgrel=1
+pkgdesc='FireWall KNock OPerator: Single Packet Authorization and Port Knocking'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url=http://www.cipherdyne.org/fwknop
+license=(GPL)
+depends=(gpgme iptables libpcap)
+options=(!libtool)
+groups=('projectname')
+backup=(
+  etc/$pkgname/access.conf
+  etc/$pkgname/fwknopd.conf
+)
+install=fwknop.install
+source=(
+  http://www.cipherdyne.org/fwknop/download/$pkgname-$pkgver.tar.bz2
+  fwknopd.service
+)
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --sbindir=/usr/bin
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
+  install -D -m 755 "$srcdir/fwknopd.service" "$pkgdir/usr/lib/systemd/system/fwknopd.service"
+}
+
+sha512sums=('c72dffd50099a8c214036e7faa21213f301847ab80dc771c0dbbd9ecea8ab99d892670fe48e4e8cf0ae4031cf0dd23374a99ef1bd4e0d0760e0a99e700e0c7a6'
+            '32ac720dd5dedd373a932a2cd2799fcfc7fcc97eba6e1dfba69a25b138c136fe9cbe54e50f98fc055333f97fe99b3d0c2377d940e3168ca5347e088c8536afb8')

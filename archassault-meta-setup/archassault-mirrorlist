@@ -1,0 +1,50 @@
+##
+### ArchAssault repository mirrorlist
+### Generated on 2014-05-27
+#
+
+# Australia
+#Server = http://projectname.mirror.uber.com.au/$repo/os/$arch
+
+# Denmark
+#Server = http://mirrors.dotsrc.org/projectname/$repo/os/$arch
+
+# Germany
+#Server = http://mirror3.layerjet.com/projectname/$repo/os/$arch
+
+# Ireland
+#Server = http://ftp.heanet.ie/pub/projectname/$repo/os/$arch
+
+# Italy
+#Server = http://projectname.mirror.garr.it/mirrors/projectname-*/$repo/os/$arch
+
+# Netherlands
+#Server = http://mirror.i3d.net/pub/projectname/$repo/os/$arch
+
+# Russian Federation
+#Server = http://mirror.mephi.ru/projectname/$repo/os/$arch
+#Server = http://mirror.yandex.ru/mirrors/projectname/$repo/os/$arch
+
+# Singapore
+#Server = http://mirror.debugsecurity.com/projectname/$repo/os/$arch
+
+# Sweden
+#Server = http://mirror.zetup.net/projectname/$repo/os/$arch
+
+# United Kingdom
+#Server = http://mirror.bytemark.co.uk/projectname/$repo/os/$arch
+#Server = http://mirror.catn.com/pub/projectname/$repo/os/$arch
+#Server = http://www.mirrorservice.org/sites/repo.projectname.org/projectname-*/$repo/os/$arch
+
+# United States
+#Server = http://repo.projectname.org/projectname-*/$repo/os/$arch
+#Server = http://psg.mtu.edu/pub/projectname/$repo/os/$arch
+#Server = http://ftp-mirror.internap.com/pub/projectname/$repo/os/$arch
+Server = http://mirror.jmu.edu/pub/projectname/$repo/os/$arch
+#Server = http://mirror.keystealth.org/projectname/$repo/os/$arch
+#Server = http://mirror.nyi.net/pub/projectname/$repo/os/$arch
+#Server = http://mirror.team-cymru.org/projectname/$repo/os/$arch
+#Server = http://mirror.umd.edu/projectname/$repo/os/$arch
+#Server = http://mirrors.arsc.edu/projectname/$repo/os/$arch
+#Server = http://noodle.portalus.net/ArchAssault/$repo/os/$arch
+#Server = http://mirrors.syringanetworks.net/projectname/$repo/os/$arch

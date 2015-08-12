@@ -1,0 +1,36 @@
+# Maintainer <https://projectname.org>
+pkgname=hashpump-git
+pkgver=r43.484c538
+pkgrel=1
+pkgdesc="A tool to exploit the hash length extension attack in various hashing algorithms"
+arch=('armv6h' 'i686' 'armv7h' 'x86_64')
+url="https://github.com/bwall/HashPump"
+license=('MIT')
+groups=('projectname')
+depends=('openssl')
+makedepends=('git')
+provides=('hashpump')
+conflicts=('hashpump')
+replaces=('hashpump')
+source=(hashpump-git::git+https://github.com/bwall/HashPump.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  # Use the tag of the last commit
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+build() {
+  cd "$srcdir/$pkgname"
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -dm755 "$pkgdir"/usr/bin
+  make INSTALLLOCATION="$pkgdir/usr/bin" install
+  install -Dm644 LICENSE.TXT "$pkgdir"/usr/share/licenses/hashpump-git/LICENSE
+  install -Dm644 README.md "$pkgdir"/usr/share/hashpump-git/README.md
+}

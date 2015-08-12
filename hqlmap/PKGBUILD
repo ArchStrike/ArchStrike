@@ -1,0 +1,33 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=hqlmap
+pkgver=r35.081395e
+pkgrel=1
+pkgdesc="This project has been created to exploit HQL Injections"
+arch=('any')
+url="https://github.com/PaulSec/HQLmap"
+license=('MIT')
+depends=('python2')
+makedepends=('git')
+groups=('projectname')
+source=("$pkgname"::'git+https://github.com/PaulSec/HQLmap.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/hqlmap"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hqlmap/LICENSE"
+  cp -R --no-preserve=ownership db "$pkgdir/usr/share/hqlmap"
+  install -Dm644 HQLmap.py "$pkgdir/usr/share/hqlmap/hqlmap.py"
+  cat > $pkgdir/usr/bin/hqlmap<<EOF
+#!/bin/sh
+cd /usr/share/hqlmap
+python2 hqlmap.py
+EOF
+  chmod +x "$pkgdir/usr/bin/hqlmap"
+}

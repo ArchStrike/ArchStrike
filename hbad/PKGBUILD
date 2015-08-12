@@ -1,0 +1,30 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=hbad
+pkgver=1
+pkgrel=1
+pkgdesc="Heartbleed client side test tool"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.curesec.com/en/publications/tools.html"
+license=('custom')
+depends=('openssl')
+groups=('projectname')
+source=("http://www.curesec.com/data/$pkgname-release.tar.gz")
+sha512sums=('735a2ba2c40cd0799688e57e558ddb4ad4dd5f650d0436582765930ef458f14e17eafa0faaf1331f514c2451a73342a4f67ec980861b210f9bc4ec8491ff250a')
+
+build(){
+  cd $srcdir/$pkgname
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm644 README "$pkgdir/usr/share/$pkgname"
+  install -Dm644 server.crt "$pkgdir/usr/share/$pkgname"
+  install -Dm644 server.key "$pkgdir/usr/share/$pkgname"
+  install -Dm755 hbad "$pkgdir/usr/bin"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
+ 
+}

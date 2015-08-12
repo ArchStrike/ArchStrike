@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Creepy
+Comment=A geolocation information gatherer. Offers geolocation information gathering through social networking platforms.
+Exec=creepy
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultScanner;ArchAssaultSocial;

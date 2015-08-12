@@ -1,0 +1,20 @@
+# Maintainer
+_gemname=rubyzip
+pkgname=ruby1.9-$_gemname
+pkgver=1.1.0
+pkgrel=1
+pkgdesc='rubyzip is a ruby module for reading and writing zip files'
+arch=(any)
+url='http://github.com/rubyzip/rubyzip'
+license=()
+depends=(ruby1.9)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('849465fe8ba2032e1764dd877383e6268c78e9ad')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+}

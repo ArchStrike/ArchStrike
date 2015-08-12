@@ -1,0 +1,46 @@
+# Maintainer
+
+pkgname=nsia
+pkgver=1.0.6
+pkgrel=5
+pkgdesc="A website scanner that monitors websites in realtime in order to detect defacements, compliance violations, exploits, sensitive information disclosure and other issues."
+url="http://threatfactor.com/Products/"
+arch=('any')
+license=("custom:${pkgname}")
+depends=('java-environment' 'swt' 'systemd')
+makedepends=('hd2u')
+source=("http://threatfactor.com/Support/Files/ThreatFactor%20NSIA.zip"
+        "http://threatfactor.com/Support/Files/NSIA.Definitions"
+        "${pkgname}.tmpfiles.conf"
+        "rhino.jar")
+sha512sums=('241a295e4b8db635c730d510f0fab786d8075a858b5b2ac9c0209ce4e5c415cabaee906b1b07d2596453578c0606ffbf3cbe1a412f7fb0ba7205cef17c1371ae'
+            '0661e777bb5cabb45637fa07cadcb8d1cb09bd2d4c24b56dbde077f0ebc8a0807d7328a8eeeec749e7e31dd12fbcc9360028aede1bf454b307f3d690740b04f6'
+            '525021f021ae662d0a49f27e62dcbbbe69fe441e9388414c9be4cd15c3dfac42f7bfa9aa7941eba7a466a1e6dc5ad79661d1f83362127657796c1e4749bb4666'
+            '7992576848b8eb9805c7be36e368832929150453f77bf96bc9e4a60906763228e0aaed5028e702697ba5274eb2aa4a04a38d7c26c8776bc2810a7c52f89a5c7a')
+noextract=('rhino.jar')
+install=${pkgname}.install
+
+prepare(){
+    dos2unix etc/config.ini
+    rm lib/swt.jar
+}
+
+package() {
+    unset _JAVA_OPTIONS
+    install -Dm644 ${pkgname}.tmpfiles.conf "${pkgdir}"/usr/lib/tmpfiles.d/${pkgname}.conf
+
+    install -Dm644 doc/"Quick Start Guide.pdf" "$pkgdir"/usr/share/${pkgname}/doc/QuickStartGuide.pdf
+    install -Dm644 NSIA.Definitions "$pkgdir"/usr/share/${pkgname}/doc/NSIA.Definitions
+    install -Dm644 doc/LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 doc/AUTHORS "$pkgdir"/usr/share/licenses/${pkgname}/AUTHORS
+    install -Dm644 bin/${pkgname}.jar "$pkgdir"/usr/share/${pkgname}/bin/${pkgname}.jar
+    install -Dm644 etc/config.ini "$pkgdir"/usr/share/${pkgname}/etc/config.ini
+    install -Dm644 etc/mime.types "$pkgdir"/usr/share/${pkgname}/etc/mime.types
+    find lib -type f -exec install -Dm644 '{}' "$pkgdir"/usr/share/${pkgname}/'{}' \;
+    ln -s /usr/share/java/swt.jar "$pkgdir"/usr/share/${pkgname}/lib/swt.jar
+    install -Dm644 rhino.jar "$pkgdir"/usr/share/${pkgname}/lib/rhino.jar
+
+    install -dm755 "$pkgdir"/usr/bin
+    echo -e '#!/usr/bin/env bash\n\nunset _JAVA_OPTIONS\n\ncd /var/lib/'$pkgname'/var\njava -Xbootclasspath/p:../lib/rhino.jar -jar /usr/share/'$pkgname'/bin/'$pkgname'.jar "$@"' > "$pkgdir"/usr/bin/${pkgname}
+    chmod 755 "$pkgdir"/usr/bin/${pkgname}
+}

@@ -1,0 +1,33 @@
+# Maintainer
+pkgname=viproy-voipkit
+pkgver=2.0
+pkgrel=1
+epoch=1
+groups=('projectname' 'projectname-*exploit' 'archassault-fuzzer' 'archassault-scanners')
+pkgdesc="VIPROY - VoIP Pen-Test Kit for Metasploit Framework"
+depends=('ruby1.9' 'metasploit' 'ruby1.9-pcaprub')
+arch=('any')
+url='http://viproy.com/'
+license=('custom')
+options=('!strip')
+install=viproy-voipkit.install
+source=("http://viproy.com/files/viproy-$pkgver.tgz")
+sha512sums=('8d9dcfc8b62fd990002afc1918e629b514b8b27b75f0bf750e4dddee1c6de1c0ab0ce3fd3b5e049fec9b0ae2d11e10df497d348e214f3b73d90a365a8977e2c4')
+
+package() {
+  cd "$srcdir/viproy-$pkgver"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname/modules/auxiliary/spoof/cisco"
+  install -dm755 "$pkgdir/usr/share/$pkgname/lib/msf/core/auxiliary"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname/modules/auxiliary/voip"
+
+  # Documentation + License
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Source
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+}

@@ -1,0 +1,29 @@
+From: Ben Hutchings <ben@decadent.org.uk>
+Date: Mon, 24 Jun 2013 05:28:00 +0100
+Subject: misc/bmp085: Enable building as a module
+Forwarded: http://thread.gmane.org/gmane.linux.kernel/1514281
+
+Commit 985087dbcb02 'misc: add support for bmp18x chips to the bmp085
+driver' changed the BMP085 config symbol to a boolean.  I see no
+reason why the shared code cannot be built as a module, so change it
+back to tristate.
+
+Cc: Eric Andersson <eric.andersson@unixphere.com>
+Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
+---
+ drivers/misc/Kconfig |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/drivers/misc/Kconfig b/drivers/misc/Kconfig
+index c002d86..7a68184 100644
+--- a/drivers/misc/Kconfig
++++ b/drivers/misc/Kconfig
+@@ -451,7 +451,7 @@ config ARM_CHARLCD
+ 	  still useful.
+ 
+ config BMP085
+-	bool
++	tristate
+ 	depends on SYSFS
+ 
+ config BMP085_I2C

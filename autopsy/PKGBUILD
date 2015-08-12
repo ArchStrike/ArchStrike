@@ -1,0 +1,48 @@
+# Maintainer
+pkgname=autopsy
+pkgver=2.24
+pkgrel=5
+groups=('projectname' 'projectname-*forensic')
+pkgdesc="A GUI for The Sleuth Kit."
+arch=('any')
+url='http://www.sleuthkit.org/autopsy'
+license=("GPL2")
+depends=("perl" "sleuthkit")
+options=(!emptydirs)
+source=("http://downloads.sourceforge.net/autopsy/autopsy-$pkgver.tar.gz"
+        "autopsy.pl")
+sha512sums=('09cd337c2c6e095c533cba449684b36e4a926cbe5736be6da4f644e733525069984550b5b76a902a32d797ac311218a2ec88626603f1dd4381d52f3f94d3cedb'
+            'e95674c4dd3fd66fdfcf7a74c5eb5a6c822b18425662167afd2ec4d451740973f1974a39c9fd7f46c91d004e68b1c8e9af7b0d8a14716a1f1bfd0c84bf3054ed')
+
+prepare() {
+  cd "$srcdir/autopsy-$pkgver"
+
+  cat > autopsy <<EOF
+#!/usr/bin/perl -wT
+use lib '/usr/lib/autopsy/';
+use lib '/usr/lib/autopsy/lib/';
+EOF
+  cat base/autopsy.base >> autopsy
+
+  sed -i 's:conf.pl:/etc/autopsy.pl:' autopsy lib/Main.pm
+}
+
+package() {
+  cd "$srcdir/autopsy-$pkgver"
+
+  install -dm755 "$pkgdir/etc"
+  install -dm755 "$pkgdir/usr/lib/autopsy/help"
+  install -dm755 "$pkgdir/usr/lib/autopsy/lib"
+  install -dm755 "$pkgdir/usr/lib/autopsy/pict"
+  install -dm755 "$pkgdir/usr/share/man/man1"
+  install -dm755 "$pkgdir/usr/bin"
+
+  install -m755 autopsy "$pkgdir/usr/lib/autopsy/"
+  chmod +x "$pkgdir/usr/lib/autopsy/autopsy"
+
+  install -m644 "$srcdir/autopsy.pl" "$pkgdir/etc"
+  cp --no-preserve=ownership -r help lib pict "$pkgdir/usr/lib/autopsy/"
+  cp --no-preserve=ownership -r man "$pkgdir/usr/share"
+
+  ln -s ../lib/autopsy/autopsy "$pkgdir/usr/bin/autopsy"
+}

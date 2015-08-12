@@ -1,0 +1,18 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=python2-pyqtgraph
+_pkgname=pyqtgraph
+pkgver=0.9.10
+pkgrel=1
+pkgdesc="Scientific Graphics and GUI Library for Python"
+arch=('any')
+license=('MIT')
+url="http://www.pyqtgraph.org/"
+depends=('python2-pyqt4' 'python2-numpy' 'python2-scipy')
+optdepends=('python2-opengl')
+source=("http://www.pyqtgraph.org/downloads/pyqtgraph-${pkgver}.tar.gz")
+sha512sums=('c947bf69116b8b0a61a1db6ec70d51741667387f98320ce581733a306bea704754b7bb0abf94d6f01ce74dfc218b3c573db017a5e189cde76d00f85bc6b23a3d')
+
+package() {
+  cd "$srcdir/$_pkgname-$pkgver"
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+}

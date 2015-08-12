@@ -1,0 +1,31 @@
+# Maintainer
+pkgname=libsoc
+pkgver=0.5
+pkgrel=1
+pkgdesc="a C library for interfacing with common SoC peripherals through generic kernel interfaces"
+arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+url="https://github.com/jackmitch/libsoc"
+depends=('glibc')
+makedepends=('git')
+license=(LGPLv2.1)
+_gitname='libsoc'
+source=("git+http://github.com/jackmitch/libsoc.git#commit=e5846ca199316603f0fec0748c57a781ced46950")
+sha256sums=("SKIP")
+
+pkgver() {
+  cd $_gitname
+}
+
+build() {
+  cd $_gitname
+  ./autogen.sh 
+  ./configure --prefix=/usr --enable-debug 
+  make
+}
+
+package() {
+  cd $_gitname
+  make DESTDIR="$pkgdir/" install
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}
+

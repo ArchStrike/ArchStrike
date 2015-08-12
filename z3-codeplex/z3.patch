@@ -1,0 +1,25 @@
+--- Makefile.orig	2014-03-31 11:56:58.915692299 -0400
++++ Makefile	2014-03-31 11:57:55.628128389 -0400
+@@ -3170,9 +3170,9 @@
+ 	@cp ../src/api/z3_macros.h $(PREFIX)/include/z3_macros.h
+ 	@cp z3$(EXE_EXT) $(PREFIX)/bin/z3$(EXE_EXT)
+ 	@cp libz3$(SO_EXT) $(PREFIX)/lib/libz3$(SO_EXT)
+-	@cp libz3$(SO_EXT) /usr/lib/python2.7/site-packages/libz3$(SO_EXT)
++	@cp libz3$(SO_EXT) $(PREFIX)/lib/python2.7/site-packages/libz3$(SO_EXT)
+ 	@cp ../src/api/c++/z3++.h $(PREFIX)/include/z3++.h
+-	@cp z3*.pyc /usr/lib/python2.7/site-packages
++	@cp z3*.pyc $(PREFIX)/lib/python2.7/site-packages
+ 	@echo Z3 was successfully installed.
+ 
+ uninstall:
+@@ -3182,8 +3182,8 @@
+ 	@rm -f $(PREFIX)/include/z3_macros.h
+ 	@rm -f $(PREFIX)/bin/z3$(EXE_EXT)
+ 	@rm -f $(PREFIX)/lib/libz3$(SO_EXT)
+-	@rm -f /usr/lib/python2.7/site-packages/libz3$(SO_EXT)
++	@rm -f $(PREFIX)/lib/python2.7/site-packages/libz3$(SO_EXT)
+ 	@rm -f $(PREFIX)/include/z3++.h
+-	@rm -f /usr/lib/python2.7/site-packages/z3*.pyc
++	@rm -f $(PREFIX)/lib/python2.7/site-packages/z3*.pyc
+ 	@echo Z3 was successfully uninstalled.
+ 

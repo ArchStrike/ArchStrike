@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=tftp-bruteforce
+pkgver=0.1
+pkgrel=3
+pkgdesc="TFTP-bruteforcer is a fast TFTP filename bruteforcer written in perl."
+url="http://www.hackingexposedcisco.com/"
+groups=('projectname' 'projectname-*cracker')
+license=('LGPL')
+depends=('perl')
+arch=(any)
+source=(http://dl.packetstormsecurity.net/UNIX/audit/TFTP-bruteforce.tar.gz)
+md5sums=('e4b8103d5eae2ff3a0df51acffdc7a6c')
+
+package() {
+  cd "$srcdir/TFTP-bruteforce"
+  install -dm755 $pkgdir/usr/bin
+  install -dm755 $pkgdir/usr/share/tftp-bruteforce
+  install -m644 README.txt brutefile.txt "$pkgdir/usr/share/tftp-bruteforce"
+  install -m755 tftpbrute.pl "$pkgdir/usr/share/tftp-bruteforce"
+  chmod +x $pkgdir/usr/share/tftp-bruteforce/tftpbrute.pl
+  ln -sf /usr/share/tftp-bruteforce/tftpbrute.pl $pkgdir/usr/bin/tftpbrute
+}
+

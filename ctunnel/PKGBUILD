@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=ctunnel
+pkgver=0.7
+pkgrel=1
+pkgdesc="Tunnel and/or proxy TCP or UDP connections via a cryptographygraphic tunnel compiled with Openssl."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://nardcore.org/ctunnel"
+license=('GPL')
+depends=('openssl')
+groups=('projectname' 'projectname-*tunneling')
+source=(http://nardcore.org/ctunnel/latest/ctunnel-$pkgver.tar.gz)
+sha512sums=('a6be2b4d107f6f5a3566c9ee658e95668e450f3402b4f24d1c6edac6c155182a3c3122824ff41bfe427fddf7b34d278b0627c8541c42bb2141a30e43fe92789c')
+
+build() {
+  cd $srcdir/ctunnel-$pkgver
+  make
+}
+
+package(){
+  cd "$srcdir/ctunnel-$pkgver"
+  install -m755 -D src/ctunnel $pkgdir/usr/bin/ctunnel
+  install -m644 -D ctunnel.1 $pkgdir/usr/share/man/man1/ctunnel.1
+}

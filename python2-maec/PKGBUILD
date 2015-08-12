@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=python2-maec
+pkgver=4.1.0.12
+pkgrel=1
+pkgdesc="An API for parsing and creating MAEC content."
+url="http://maec.mitre.org"
+depends=('python2' 'python2-cybox' 'python2-lxml')
+makedepends=('python2-setuptools')
+license=('BSD')
+arch=('any')
+source=("https://pypi.python.org/packages/source/m/maec/maec-$pkgver.tar.gz")
+sha512sums=('0ebb9b9343308924bca7477a58f9b772f4587f84b57822fca663ecc5ad7592585ddf617ceb12796aa45bc0fae2b904e53e497e634c92d6f4877fafdfc3a488cd')
+
+build() {
+  cd $srcdir/maec-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  cd $srcdir/maec-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+}

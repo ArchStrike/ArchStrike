@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=dc3dd
+pkgver=7.2.641
+pkgrel=1
+groups=('projectname' 'projectname-*forensic')
+pkgdesc="A patched version of dd that includes a number of features useful for computer forensics"
+url='http://sourceforge.net/projects/dc3dd'
+license=("GPL3")
+depends=('glibc')
+makedepends=('perl-locale-gettext')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=(http://downloads.sf.net/sourceforge/dc3dd/dc3dd-$pkgver.tar.bz2)
+sha512sums=('9afa57bfbfce00778130eb75b4add915f132ad2b19d9271faed87f807bb646d2083e1bd5b09acfa378a50e894c57d65472263cd7966acf45c30d174754cdf6c8')
+
+build() {
+  cd $srcdir/dc3dd-$pkgver
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd $srcdir/dc3dd-$pkgver
+  make DESTDIR=$pkgdir install
+}

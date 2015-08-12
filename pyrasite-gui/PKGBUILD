@@ -1,0 +1,24 @@
+# Maintainer: ArchAssault <team archassualt.org>
+# Contributor: Nathaniel Case <qalthos@gmail.com>
+pkgname=python2-pyrasite-gui
+pkgver=2.0beta7
+pkgrel=1
+pkgdesc="Code injection and introspection of running Python processes"
+groups=('projectname' 'projectname-*misc')
+arch=('any')
+url="http://pyrasite.com"
+license=('GPL3')
+depends=('python2-pyrasite' 'python2-meliae' 'python2-psutil' 'libwebkit3' 'graphviz' 'python2-gobject' 'python2-pycallgraph')
+makedepends=('python2-setuptools')
+source=(http://pypi.python.org/packages/source/p/pyrasite-gui/pyrasite-gui-$pkgver.tar.gz)
+sha512sums=('72df3e2c0071a324b2a42b73e3413af109d0ad991da742fa9846a602b96673f13b8611389c9080e28efa8ca5670bf3ab297c834804e002103ad54d5e226d0bec')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/pyrasite-gui-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd $srcdir/pyrasite-gui-$pkgver
+  python2 ./setup.py install --root=$pkgdir --optimize=1
+}
+

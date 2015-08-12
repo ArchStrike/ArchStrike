@@ -1,0 +1,31 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: N3mes1s <n3mes1s.oxoo@gmail.com>
+pkgname=netzob
+pkgver=0.4.1
+pkgrel=1
+pkgdesc="An opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.netzob.org"
+license=('GPL3')
+depends=('python2' 'strace' 'lsof' 'python2-matplotlib' 'python2-lxml' 'python2-sphinx' 'python2-distribute' 'graphviz' 'python2-ptrace' 'python2-pcapy' 'python2-bitarray' 'impacket' 'python2-gobject' 'python2-babel' 'python2-httplib2')
+source=(http://www.netzob.org/repository/$pkgver/Netzob-$pkgver.tar.gz)
+sha512sums=('315d651072b984520949a161169108503969c32db118f292e6a6c09d68e354add37201a9fb783f11141e7f70ba90ab00b30f5a014f4935d08da96e02d2ece29e')
+
+build() {
+  cd "$srcdir/Netzob-$pkgver"
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/Netzob-$pkgver"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  # fixing perms on all of the files below 
+  chmod 644 $pkgdir/usr/share/applications/netzob.desktop
+  chmod 644 $pkgdir/usr/lib/python2.7/site-packages/Netzob-0.4.1-py2.7.egg-info/PKG-INFO
+  for f in `find $pkgdir/usr/share/netzob/ -type f -iname "*.png" -or -type f -iname "*.xsd" \
+  -or -type f -iname "*.glade" -or -type f -iname "*.ui" \
+  -or -type f -iname "*.default"`; do chmod 644 $f; done
+  for a in `find $pkgdir/usr/lib/python2.7/site-packages/Netzob-0.4.1-py2.7.egg-info/ -type f -iname "*.txt"`; do chmod 644 $a;done
+  sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/netzob/ExternalLibs/xdot.py
+}
+

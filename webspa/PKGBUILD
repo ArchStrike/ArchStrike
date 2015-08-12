@@ -1,0 +1,38 @@
+# Maintainer
+
+pkgname=webspa
+pkgver=0.8
+pkgrel=1
+pkgdesc="A web knocking tool, sending a single HTTP/S to run O/S commands"
+arch=('any')
+url="http://sourceforge.net/projects/webspa/"
+license=('GPL3')
+depends=('java-environment' 'bash')
+source=("http://downloads.sourceforge.net/project/webspa/webspa-${pkgver/./}.zip")
+sha512sums=('8dd008eb04017c9faf3b282a5bf4ddb1c925ccfa945f471ef75c3933558981d1f6e6a648e032268f45a47d3744b7a461356cb9b2e384da608afada13654c1d53')
+
+prepare() {
+  cd "$srcdir/$pkgname-${pkgver/./}"
+  sed -i 's|webspa-0.8.jar|webspa-08.jar|' webspa.sh
+}
+
+package() {
+  cd "$srcdir/$pkgname-${pkgver/./}"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/docs/$pkgname"
+  install -Dm644 INSTALL "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 README "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 webspa-${pkgver/./}.jar "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 docs/* "$pkgdir/usr/share/docs/$pkgname/"
+  install -Dm755 webspa.sh "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/sh
+cd /usr/share/webspa
+./webspa.sh "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/$pkgname"
+}

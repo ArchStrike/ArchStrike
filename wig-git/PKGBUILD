@@ -1,0 +1,40 @@
+# Maintainer: ArchAssault <team archassautl org>
+pkgname=wig-git
+pkgver=r439.fa9f62b
+pkgrel=1
+groups=('projectname' 'projectname-*webapps' 'archassault-scanners')
+pkgdesc="WebApp Information Gatherer"
+arch=('any')
+url='https://github.com/jekyc/wig'
+license=('custom')
+provides=('wig')
+depends=('python-requests')
+makedepends=('git')
+options=('!emptydirs')
+source=("wig::git+https://github.com/jekyc/wig.git")
+sha512sums=('SKIP')
+
+
+pkgver() {
+  cd "$srcdir/wig"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/wig"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/wig"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/share/wig/cache"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/wig"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+
+cat > "$pkgdir/usr/bin/wig" <<EOF
+#!/bin/sh
+cd /usr/share/wig
+python wig.py "\$@"
+EOF
+
+chmod +x $pkgdir/usr/bin/wig
+}

@@ -1,0 +1,41 @@
+# Maintainer
+pkgname=secure-delete
+pkgver=3.1
+pkgrel=2
+groups=('projectname' 'projectname-*defense' 'archassault-forensics')
+pkgdesc="Secure file, disk, swap, memory erasure utilities"
+url='http://www.thc.org/'
+conflicts=('srm')
+license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+makedepends=('git')
+source=("git+https://github.com/ArchAssault-Project/secure-delete.git")
+md5sums=('SKIP')
+
+build() {
+  cd "$srcdir/secure-delete"
+
+  sed -i -e 's/mktemp/mkstemp/g' sfill.c
+  sed -i -e "s/sswap smem sdel-mod.o/sswap smem/" -e '/test.*sdel-mod/d' \
+         -e "s/^srm: /srm: sdel-lib.o /" -e "s/^sfill: /sfill: sdel-lib.o /" \
+         -e "s/^sswap: /sswap: sdel-lib.o /" -e "s/^smem: /smem: sdel-lib.o /" \
+         Makefile
+
+  make
+}
+
+package() {
+  cd "$srcdir/secure-delete"
+
+  make INSTALL_DIR="$pkgdir/usr/bin" \
+       MAN_DIR="$pkgdir/usr/share/man" \
+       DOC_DIR="$pkgdir/usr/share/doc/secure_delete" \
+       install
+  chmod a+r "$pkgdir/usr/bin"/*
+
+  # Fix a conflict with community/smem.
+  mv "$pkgdir/usr/bin/smem" "$pkgdir/usr/bin/smem-secure-delete"
+
+  # Fix a conflict with community/srm.
+  mv "$pkgdir/usr/share/man/man1/srm.1" "$pkgdir/usr/share/man/man1/srm_secure-delete.1"
+}

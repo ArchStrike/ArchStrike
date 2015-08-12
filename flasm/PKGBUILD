@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=flasm
+pkgver=1.62
+pkgrel=1
+groups=('projectname' 'projectname-*reversing' 'archassault-decompile')
+pkgdesc="Disassembler tool for SWF bytecode"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://www.nowrap.de/flasm.html'
+license=('custom')
+depends=('zlib')
+makedepends=('gperf')
+source=("http://www.nowrap.de/download/flasm16src.zip")
+md5sums=('28a4586409061b385d1cd27d3f120c0b')
+
+build() {
+  cd "$srcdir"
+  make
+}
+
+package() {
+  cd "$srcdir"
+  install -Dm755 flasm "$pkgdir/usr/bin/flasm"
+  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/flasm/LICENSE"
+}

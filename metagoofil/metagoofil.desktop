@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Metagoofil
+Comment=An information gathering tool designed for extracting metadata of public documents
+Exec=metagoofil
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultRecon;

@@ -1,0 +1,30 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=mboxgrep
+pkgver=0.7.9
+pkgrel=3
+pkgdesc="A small, non-interactive utility that scans mail folders for messages matching regular expressions. It does matching against basic and extended POSIX regular expressions, and reads and writes a variety of mailbox formats."
+url="http://mboxgrep.sourceforge.net"
+groups=('projectname' 'projectname-*forensics')
+license=('GPL')
+depends=('pcre')
+install="mboxgrep.install"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("http://downloads.sourceforge.net/mboxgrep/mboxgrep-$pkgver.tar.gz"
+	'mboxgrep.desktop')
+sha512sums=('d7e768a0ad11bc3df8619f2a888d2943c68ef72dd036c2fe58268686efb50cb1f62ba379571b6cd6efa8493c5ea0d7c09a29520eae6c68f66d9453710eeeba11'
+            '0ec6b7b327f6c87cd35398662a8f3be12d8d1fa637fbf21573760a130e9afd735e802caa3f4e03c7faf56d710809b74ec28f6d7c05c1a0c656f595d1cd6239c9')
+
+build() {
+  cd "$srcdir/mboxgrep-$pkgver"
+  ./configure --prefix=/usr --mandir=$pkgdir/usr/share/man --infodir=$pkgdir/usr/share/info
+  make
+}
+package(){
+  cd "$srcdir/mboxgrep-$pkgver"
+
+  #Binaries
+  make prefix="$pkgdir" install
+  install -Dm644 "$srcdir/mboxgrep.desktop" "$pkgdir/usr/share/applications/mbox.grep"
+  mv "$pkgdir/bin" "$pkgdir/usr/bin"
+}
+

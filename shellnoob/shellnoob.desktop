@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Shellnoob
+Comment=A toolkit that eases the writing and debugging of shellcode
+Exec=shellnoob
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultExploitation;ArchAssaultDebugger;

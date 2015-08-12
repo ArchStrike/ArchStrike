@@ -1,0 +1,19 @@
+# Maintainer
+pkgname=ruby1.9-mini_portile
+_gemname=mini_portile
+pkgver=0.5.1
+pkgrel=1
+pkgdesc="Simplistic port-like solution for developers"
+arch=('any')
+license=('')
+makedepends=('ruby1.9')
+url='http://github.com/luislavena/mini_portile'
+source=("http://rubygems.org/downloads/mini_portile-$pkgver.gem")
+md5sums=('cb8c0f8e9f3777289613198d0abef699')
+noextract=("mini_portile-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir="$(ruby-1.9 -rubygems -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install --no-rdoc --no-ri -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+}

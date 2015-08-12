@@ -1,0 +1,37 @@
+# Maintainer
+pkgname=starttls-mitm-git
+pkgver=r7.b257756
+pkgrel=1
+pkgdesc="A starttls-capable transparent man-in-the-middle proxy"
+arch=('any')
+url="https://github.com/ipopov/starttls-mitm"
+license=('Apache')
+depends=('python2')
+makedepends=('git')
+groups=('projectname')
+provides=('starttls-mitm')
+conflicts=('starttls-mitm')
+replaces=('starttls-mitm')
+source=("$pkgname"::'git+https://github.com/ipopov/starttls-mitm.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/starttls-mitm"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/starttls-mitm/LICENSE"
+  install -Dm644 mitm_listener.py "$pkgdir/usr/share/starttls-mitm/mitm_listener.py"
+  install -m644 README "$pkgdir/usr/share/starttls-mitm/README"
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  cat > "$pkgdir"/usr/bin/starttls-mitm<<EOF
+#!/bin/sh
+cd /usr/share/starttls-mitm
+python2 mitm_listener.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/starttls-mitm
+}

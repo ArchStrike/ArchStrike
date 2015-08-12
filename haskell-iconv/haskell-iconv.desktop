@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Haskell-iconv
+Comment=Provides an interface to the POSIX iconv library functions for string encoding conversion
+Exec=haskell-iconv
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

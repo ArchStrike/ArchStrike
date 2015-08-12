@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Nikto
+Comment=A web server scanner which performs comprehensive tests against web servers for multiple items
+Exec=nikto
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultScanner;ArchAssaultFuzzer;

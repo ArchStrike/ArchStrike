@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Hackersh
+Comment=A shell for with Pythonect-like syntax, including wrappers for commonly used security tools
+Exec=hackersh
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;ArchAssaultAutomation;

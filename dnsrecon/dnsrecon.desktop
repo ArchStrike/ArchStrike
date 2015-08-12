@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Dnsrecon
+Comment=Python script for enumeration of hosts, subdomains and emails from a given domain using google.
+Exec=dnsrecon
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultRecon;

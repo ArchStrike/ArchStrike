@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=ruby1.9-diff-lcs
+pkgver=1.2.4
+pkgrel=2
+pkgdesc="Diff::LCS computes the difference between two Enumerable sequences using the McIlroy-Hunt longest common subsequence (LCS) algorithm"
+arch=('any')
+license=('custom')
+makedepends=('ruby1.9')
+url='http://diff-lcs.rubyforge.org/'
+source=("http://rubygems.org/downloads/diff-lcs-$pkgver.gem")
+md5sums=('59d7816d12337dba78a728cbcd6a0207')
+noextract=("diff-lcs-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  #local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  local _gemdir=$(ruby-1.9 -rubygems -e 'puts Gem.default_dir')
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" diff-lcs-$pkgver.gem
+  install -d ${pkgdir}/usr/share/licenses/ruby1.9-diff-lcs
+  install -D -m644 ${pkgdir}/usr/share/ruby1.9/lib/ruby/gems/*/gems/diff-lcs-${pkgver}/License.rdoc ${pkgdir}/usr/share/licenses/ruby1.9-diff-lcs/LICENSE
+  install -D -m644 ${pkgdir}/usr/share/ruby1.9/lib/ruby/gems/*/gems/diff-lcs-${pkgver}/docs/artistic.txt ${pkgdir}/usr/share/licenses/ruby1.9-diff-lcs/artistic.txt
+  install -D -m644 ${pkgdir}/usr/share/ruby1.9/lib/ruby/gems/*/gems/diff-lcs-${pkgver}/docs/COPYING.txt ${pkgdir}/usr/share/licenses/ruby1.9-diff-lcs/COPYING.txt
+}

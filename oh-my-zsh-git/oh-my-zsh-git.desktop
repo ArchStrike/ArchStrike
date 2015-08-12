@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Oh-my-zsh-git
+Comment=A community-driven framework for managing your zsh configuration.
+Exec=oh-my-zsh-git
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;

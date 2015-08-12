@@ -1,0 +1,18 @@
+# Maintainer
+pkgname="python2-symath"
+pkgver="0.1.22"
+pkgrel="1"
+pkgdesc="symbolic mathematics for python"
+arch=("any")
+url="http://github.com/bniemczyk/symbolic"
+license=("custom")
+depends=('python2')
+makedepends=("python2-setuptools")
+source=("https://pypi.python.org/packages/source/s/symath/symath-$pkgver.tar.gz")
+sha256sums=('369124c09afbe0511f2876f1858288ed29ed0ab94bd8381db5e41e47745a7604')
+
+package() {
+   cd ${srcdir}/symath-${pkgver}
+   python2 setup.py install --root=${pkgdir} --optimize=1
+   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"     
+}

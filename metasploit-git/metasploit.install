@@ -1,0 +1,55 @@
+#!/bin/sh
+
+pre_install() {
+ rm -rf /usr/share/metasploit/modules/* >/dev/null
+}
+
+post_install() {
+    echo "
+:: HOWTO: Setup PostgreSQL Database for operation with Metastploit ::
+
+1) Create \"volatile and temporary files and directories\" for PostgreSQL:
+    # systemd-tmpfiles --create postgresql.conf
+
+2) Initialize the database cluster:
+    # sudo su - postgres -c \"initdb --locale en_US.UTF-8 -E UTF8 -D '/var/lib/postgres/data'\"
+
+3) Start PostgreSQL and, optionally, add it to the list of daemons that start on system startup:
+    # systemctl start postgresql
+    # systemctl enable postgresql
+
+4) Configure PostgreSQL server:
+4.a) Become the 'postgres' user
+    # sudo -i -u postgres
+
+4.b) As the 'postgres' user: Create a PostgreSQL user = 'msf', and database = 'msf', then exit:
+    $ createuser msfdbuser -P -S -R -D
+    $ createdb -O msfdbuser msfdb
+    $ exit
+
+5) Create '/usr/share/metasploit/database.yml' (make sure password is equal to 'msf' user):
+production:
+  adapter: \"postgresql\"
+  database: \"msfdb\"
+  username: \"msfdbuser\"
+  password: \"CHANGEME\"
+  port: 55553
+  host: \"localhost\"
+  pool: 256
+  timeout: 5
+
+6) Set environment variable MSF_DATABASE_CONFIG points to 'database.yml':
+    # sudo echo 'export MSF_DATABASE_CONFIG=/opt/framework/database.yml' > /etc/profile.d/msf.sh
+    # chmod +x /etc/profile.d/msf.sh
+
+6.a) Source '/etc/profile.d/msf.sh' or Logout and Log back into the system:
+    # source /etc/profile.d/msf.sh
+
+7) Start '/usr/bin/msfconsole', it will detect if '/usr/share/metasploit/database.yml' exists and connect to the PostgreSQL database.
+    # /usr/bin/msfconsole
+"
+}
+
+post_upgrade() {
+  pre_install
+}

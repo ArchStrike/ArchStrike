@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Ms-sys
+Comment=A tool to write Win9x-.. master boot records (mbr) under linux - RTM!
+Exec=ms-sys
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=projectname' 'projectname-*binary' 'archassault-backdoor;

@@ -1,0 +1,45 @@
+# Maintainer
+# Contributor: James An <james@jamesan.ca>
+
+pkgname=subbrute-git
+_gitname=subbrute
+pkgver=20150424.r85
+pkgrel=2
+pkgdesc="A (fast) multi-threaded python tool for enumerating subdomains"
+arch=('any')
+url="https://github.com/TheRook/subbrute"
+license=('GPL3')
+depends=('python-dnspython')
+makedepends=('git')
+provides=($_gitname)
+conflicts=($_gitname)
+options=(!emptydirs)
+source=("git+https://github.com/TheRook/${_gitname}.git")
+
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${_gitname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd $_gitname
+  # install upstream files
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${_gitname}"
+  install -dm755 "${pkgdir}/usr/share/${_gitname}/windows"
+  install -Dm644 windows/* "${pkgdir}/usr/share/${_gitname}/windows/"
+  install -m755 -t "${pkgdir}/usr/share/${_gitname}" resolvers.txt subbrute.py names.txt names_small.txt
+  install -Dm755 README.md "${pkgdir}/usr/share/doc/${_gitname}/README.md"
+
+cat > "$pkgdir/usr/bin/subbrute" << EOF
+#!/bin/sh
+cd /usr/share/${_gitname}
+python ${_gitname}.py "\$@"
+EOF
+
+chmod +x $pkgdir/usr/bin/${_gitname}
+
+}
+

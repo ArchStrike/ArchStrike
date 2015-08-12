@@ -1,0 +1,39 @@
+# Maintainer
+# Contributor: Anatol Pomozov <anatol@google.com>
+pkgname=google-coredumper
+pkgver=1.2.1
+pkgrel=2
+groups=('projectname' 'projectname-*debugging')
+pkgdesc='Library can be compiled into applications to create core dumps of the running program -- without terminating.'
+url='https://code.google.com/p/google-coredumper/'
+license=(GPL)
+arch=('i686' 'x86_64')
+depends=('glibc')
+# Upstream is currently broken.
+# Here are fixs for upstream https://github.com/anatol/google-coredumper
+source=(https://google-coredumper.googlecode.com/files/coredumper-$pkgver.tar.gz
+        fixes.diff)
+sha512sums=('8270f6727b4be3b08d9bef943491cbc21a220c9795d8d0d08765f9a22098b0134cb5f95b6e862636f202c1308fe9f035a731cf9f961f0e64bf677dad8dbb216b'
+            'f064eeb362fd9bf97c951eed7bf79a1837f766f11717422635aa62de06260b9b8d4fdb11d399960f992affaeef6d05265f9459f2e166cc6279f7611ceb0423e0')
+
+prepare() {
+  cd coredumper-$pkgver
+  patch -p1 < "$srcdir/fixes.diff"
+}
+
+build() {
+  cd coredumper-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
+}
+
+check() {
+  cd coredumper-$pkgver
+#  The tests are broken because they expect binaries with debug symbols. Fix the tests.
+#  make check
+}
+
+package() {
+  cd coredumper-$pkgver
+  make install DESTDIR="$pkgdir"
+}

@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=perl-iptables-parse
+pkgver=1.1
+pkgrel=2
+pkgdesc="IPTables::Parse - Perl extension for parsing iptables and ip6tables firewall rulesets"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url="http://search.cpan.org/~mrash/IPTables-Parse/"
+license=('GPL' 'PerlArtistic')
+depends=('perl' 'iptables')
+options=('!emptydirs')
+source=("http://search.cpan.org/CPAN/authors/id/M/MR/MRASH/IPTables-Parse-$pkgver.tar.gz")
+md5sums=('e258a32c73f99697a6f52276bda15878')
+
+build() {
+  cd  "$srcdir/IPTables-Parse-$pkgver"
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+package(){
+  cd "$srcdir/IPTables-Parse-$pkgver"
+  make install DESTDIR="$pkgdir"
+  find "$pkgdir" -name '.packlist' -delete
+  find "$pkgdir" -name '*.pod' -delete
+}

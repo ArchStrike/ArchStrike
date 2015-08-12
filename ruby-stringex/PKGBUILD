@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=ruby-stringex
+pkgver=1.4.0
+pkgrel=1
+pkgdesc="Some [hopefully] useful extensions to Ruby's String class"
+arch=('any')
+license=('MIT')
+makedepends=('ruby')
+url='http://github.com/rsl/stringex'
+source=("http://rubygems.org/downloads/stringex-$pkgver.gem")
+md5sums=('5f73820843b34286b13b26f9cd656275')
+noextract=("stringex-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" stringex-$pkgver.gem
+  else
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" stringex-$pkgver.gem
+  fi
+}

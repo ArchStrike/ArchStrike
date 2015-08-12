@@ -1,0 +1,31 @@
+# Maintainer
+pkgname=perl-net-whois-ip
+pkgver=1.15
+pkgrel=1
+pkgdesc="Perl extension for looking up the whois information for ip addresses"
+arch=('any')
+url='http://search.cpan.org/dist/Net-Whois-IP'
+license=('GPL' 'PerlArtistic')
+depends=('perl')
+options=('!emptydirs')
+source=(http://search.cpan.org/CPAN/authors/id/B/BS/BSCHMITZ/Net-Whois-IP-$pkgver.tar.gz)
+sha512sums=('5a574f14c72d9c49646128a41dc31a9b37cedfdc0f26cd871739a108aeca1c11e3685dc4a74f15ac2c520401d8593c443fec7598be10a1131aa7e70ef7b5b3d8')
+
+build() {
+  cd  ${srcdir}/Net-Whois-IP-${pkgver}
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+
+  perl Makefile.PL
+  make
+}
+
+package() {
+  cd  ${srcdir}/Net-Whois-IP-${pkgver}
+  make install
+
+  find ${pkgdir} -name '.packlist' -delete
+  find ${pkgdir} -name '*.pod' -delete
+}

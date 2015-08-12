@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=unicorn
+pkgver=1.1
+pkgrel=1
+groups=('projectname' 'projectname-*exploits')
+pkgdesc="A simple tool for using a PowerShell downgrade attack and inject shellcode straight into memory."
+arch=('any')
+url='https://github.com/trustedsec/unicorn'
+license=('custom')
+depends=('python2' 'metasploit')
+source=("https://github.com/trustedsec/unicorn/archive/$pkgver.tar.gz")
+sha512sums=('53d2423fd0b5d2d562142d73f6205a031c924caa3e0bfa82518ed85832dbf147f07b49e7c5547ca6cc11ad10bf7376ddaad887e8814eeb07c589d4cfdefa585b')
+
+prepare(){
+  cd "$srcdir/$pkgname-$pkgver"
+  sed -i 's|python|python2|' ${pkgname}.py
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 CHANGELOG.txt "$pkgdir/usr/share/doc/$pkgname/CHANGELOG.txt"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm755 unicorn.py "$pkgdir/usr/bin/unicorn"
+}

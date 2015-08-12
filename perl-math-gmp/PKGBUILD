@@ -1,0 +1,28 @@
+# Maintainer
+_author=TURNSTEP
+_perlmod=Math-GMP
+pkgname=perl-math-gmp
+pkgver=2.07
+pkgrel=1
+pkgdesc="High speed arbitrary size integer math "
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url='http://search.cpan.org/~TURNSTEP/Math-GMP-2.06/'
+license=('GPL' 'PerlArtistic')
+depends=('perl' 'gmp')
+options=(!emptydirs)
+source=(http://cpan.perl.org/modules/by-authors/id/T/TU/$_author/$_perlmod-$pkgver.tar.gz)
+sha512sums=('10c704a04c82b5f4e76223601ad6c97a3c7510f08e63683abac8bf60dd10ed937efbb09d0ac46fd310145696c665b6a97bc7e1adfc410380b58867acd8868e7f')
+
+build() {
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  # Install module in vendor directories.
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
+}
+
+package() {
+  cd "$srcdir/$_perlmod-$pkgver"
+  make install DESTDIR="$pkgdir/"
+}
+

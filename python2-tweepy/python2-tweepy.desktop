@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-tweepy
+Comment=Twitter api library for python. (forked but 100% compatible)
+Exec=python2-tweepy
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

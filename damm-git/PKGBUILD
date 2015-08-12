@@ -1,0 +1,38 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=damm-git
+pkgver=20150120.r28
+pkgrel=1
+groups=('projectname' 'projectname-*malware')
+pkgdesc="Differential Analysis of Malware in Memory"
+arch=('any')
+url='https://github.com/504ensicsLabs/DAMM'
+license=('GPL2')
+depends=('python2')
+makedepends=('git')
+provides=('damm')
+source=("${pkgname}::git+https://github.com/504ensicsLabs/DAMM.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/damm"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/damm"
+  
+cat > "$pkgdir/usr/bin/damm" << EOF
+#!/bin/sh
+cd /usr/share/damm
+python2 damm.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/damm"
+
+}

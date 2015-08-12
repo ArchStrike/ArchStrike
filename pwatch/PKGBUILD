@@ -1,0 +1,26 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Prurigro
+
+pkgname=pwatch
+pkgver=0.0.6
+pkgrel=2
+pkgdesc="An ncurses tool that can be run by root to give information about processes"
+url="http://kernel.embedromix.ro/us/"
+license=('GPL')
+groups=('projectname' 'projectname-*analysis')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('ncurses')
+makedepends=('linux-api-headers')
+source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('890b6e54184f5408c0f91f9e9c2414ac2aa5e0e9b73190541e7d3377ad70fd63f54d327fb5f38d00363a85a018f17f51961ad6a3d78035834529a44c8353c928')
+
+build() {
+    cd "${pkgname}-${pkgver}"
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
+}

@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=vncrack
+pkgver=1.21
+pkgrel=1
+pkgdesc="What it looks like: crack VNC."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://phenoelit-us.org/vncrack"
+license=('GPL')
+makedepends=('gcc' 'make')
+depends=('glibc')
+groups=('projectname' 'projectname-*cracker')
+source=(http://www.ph33rinc.net/phenoelit/phenoelit-us.org/vncrack/${pkgname}_src-${pkgver}.tar.gz)
+md5sums=('4e19a6f4311b1fd99274f587ca51e920')
+
+build() {
+  cd $srcdir
+  make -C libvncauth clean
+  make CC="gcc"
+}
+
+package(){
+  cd $srcdir
+  install -Dm755 vncrack $pkgdir/usr/bin/vncrack
+}

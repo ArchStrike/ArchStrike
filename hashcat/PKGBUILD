@@ -1,0 +1,43 @@
+# Maintainer
+pkgname=hashcat
+pkgver=0.50
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="A multithreaded cross platform hash cracker."
+arch=('i686' 'x86_64')
+url='http://hashcat.net/hashcat/'
+license=('custom')
+makedepends=('p7zip')
+depends=('gmp')
+source=("https://hashcat.net/files/hashcat-${pkgver}.7z")
+sha512sums=('cf3895046bcd42344e8f9fc7867905873d73e56cfdb9853d37e25c0b88a0250b0a3f361fb73a5a65ecdc33a39b3925611d6325b63e86e733b293a3aa76c5d7b4')
+
+prepare() {
+  cd "${srcdir}/hashcat-${pkgver}"
+
+  if [[ "$CARCH" == 'x86_64' ]]; then
+    mv hashcat-cli64.bin hashcat
+  else
+    mv hashcat-cli32.bin hashcat
+  fi
+}
+
+package() {
+  cd "${srcdir}/hashcat-${pkgver}"
+
+  rm *.{exe,bin,app}
+
+  install -dm755 "${pkgdir}/usr/share/doc/hashcat"
+  install -dm755 "${pkgdir}/etc/hashcat"
+
+  install -Dm755 hashcat "${pkgdir}/usr/bin/hashcat"
+
+  cp -dpr --no-preserve=ownership "${srcdir}/hashcat-${pkgver}"/{charsets,rules,salts,tables} "${pkgdir}"/etc/"hashcat"/
+  cp -dpr --no-preserve=ownership "${srcdir}/hashcat-${pkgver}"/examples "${pkgdir}"/usr/share/doc/"hashcat"/
+
+  # Fix permissions.
+  cd "${pkgdir}"
+  find . -type d -exec chmod 755 {} \+
+  find . -type f -exec chmod 644 {} \+
+  chmod a+x "${pkgdir}/usr/bin/hashcat"
+}

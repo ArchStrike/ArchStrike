@@ -1,0 +1,32 @@
+# Maintainer
+_author='GOMOR'
+_perlmod='Net-Libdnet6'
+pkgname='perl-net-libdnet6'
+pkgver='0.27'
+pkgrel=1
+pkgdesc='Adds IPv6 support to Net::Libdnet.'
+arch=('any')
+url='http://search.cpan.org/~gomor/Net-Libdnet6-0.26/lib/Net/Libdnet6.pm'
+license=('GPL' 'PerlArtistic')
+depends=('perl>=5.10.0')
+options=(!emptydirs)
+source=("http://search.cpan.org/CPAN/authors/id/G/GO/$_author/$_perlmod-$pkgver.tar.gz")
+sha512sums=('28376d8a7eb60a27a1b81cdf57b2fdb0481a9b5a782965242bb1ef5f4f307c1a8e0e06ca85d3b871771f482877cc88bab3417b4f1586e1a83954807b40d62b62')
+
+prepare() {
+  cd "$srcdir/$_perlmod-$pkgver"
+  
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+}
+
+build() {
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  make
+}
+
+package() {
+  cd "$srcdir/$_perlmod-$pkgver"
+  
+  make install DESTDIR="$pkgdir/"
+}

@@ -1,0 +1,41 @@
+# Maintainer
+_pkgname=wifite
+pkgname=${_pkgname}-git
+pkgver=20150525.r138.edbdedd
+pkgrel=1
+groups=('projectname' 'projectname-*wireless' 'archassault-cracker')
+pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
+arch=('any')
+groups=('projectname')
+url="https://github.com/derv82/${_pkgname}"
+license=('GPL')
+depends=('python2' 'aircrack-ng' 'net-tools' 'wireless_tools' 'which' 'iw')
+makedepends=('git')
+optdepends=('reaver: scan and attack WPS-enabled routers'
+            'wireshark-cli: packet sniffing support'
+            'cowpatty: handshake detection support')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+replaces=("$_pkgname")
+
+source=("git+https://github.com/derv82/${_pkgname}.git"
+        "${_pkgname}.desktop"
+        "${_pkgname}.svg")
+sha512sums=('SKIP'
+            '465243916e4cf375bc164ddf408f6085466ff1bb49d8a99716dbd68265e80e0cfdfe95ee1eb65c216ddcac46235beccbf0229f8f24a777229de758662217b67b'
+            '8697bcbb3f8e38916ce084aa7d9e0b72237712cd74baa745dcdb00e3a0988d3231aa80ebf095c53f81d16b28d51fe95dcf35877f57a663222c6996006f3bdf30')
+
+pkgver() {
+    cd $_pkgname
+    printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    sed -i 's|/usr/bin/python|/usr/bin/env python2|g' ${_pkgname}/${_pkgname}.py
+}
+
+package() {
+    install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${_pkgname}.desktop"
+    install -Dm644 ${_pkgname}.svg "${pkgdir}/usr/share/pixmaps/${_pkgname}.svg"
+    install -Dm755 ${_pkgname}/${_pkgname}.py "${pkgdir}/usr/bin/${_pkgname}"
+}

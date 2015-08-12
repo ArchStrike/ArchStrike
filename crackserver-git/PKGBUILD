@@ -1,0 +1,62 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=crackserver-git
+pkgver=r33.e5763ab
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="An XMLRPC server for password cracking"
+arch=('i686' 'x86_64')
+url='https://github.com/averagesecurityguy/crack'
+license=('custom')
+depends=('python2' 'rcracki_mt' 'john' 'hashcat' 'ike-scan' 'pyrit')
+makedepends=('git')
+provides=('crackserver')
+replaces=('crackserver')
+conflicts=('crackserver')
+source=("crack::git+https://github.com/averagesecurityguy/crack.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/crack"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/crack" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/crack"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/crackserver/modules"
+  install -dm755 "$pkgdir/usr/share/crackserver/config"
+  install -Dm755 crackserver.py "$pkgdir/usr/share/crackserver/crackserver.py"
+  install -Dm755 crackclient.py "$pkgdir/usr/share/crackserver/crackclient.py"
+  install -Dm755 crack.py "$pkgdir/usr/share/crackserver/crack.py"
+  install -Dm644 config/* "$pkgdir/usr/share/crackserver/config/"
+  install -Dm644 modules/* "$pkgdir/usr/share/crackserver/modules/"
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+cat > "$pkgdir/usr/bin/crackserver" <<EOF
+#!/bin/sh
+cd /usr/share/crackserver
+python2 crackserver.py "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/crackclient" <<EOF
+#!/bin/sh
+cd /usr/share/crackserver
+python2 crackclient.py "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/crack-standalone" <<EOF
+#!/bin/sh
+cd /usr/share/crackserver
+python2 crack.py "\$@"
+EOF
+
+chmod +x $pkgdir/usr/bin/crackserver
+chmod +x $pkgdir/usr/bin/crackclient
+chmod +x $pkgdir/usr/bin/crack-standalone
+
+}

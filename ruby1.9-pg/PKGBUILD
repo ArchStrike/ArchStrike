@@ -1,0 +1,18 @@
+# Maintainer: ArchAssault <team at projectname org>
+pkgname=ruby1.9-pg
+_gemname=pg
+pkgver=0.16.0
+pkgrel=2
+pkgdesc="Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/]"
+arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+license=('BSD' 'GPL')
+makedepends=('ruby1.9' 'postgresql-libs')
+url='https://bitbucket.org/ged/ruby-pg'
+source=("http://rubygems.org/downloads/pg-$pkgver.gem")
+sha512sums=('e382ab7eb51177b8848597f7d8c860b38b8c6f53d9d620f07ff4ca09489582e4b55fab15812e465434fc3b744d6e46e00c8c140ec0da3f255247cf7f4ee07584')
+
+package() {
+  cd "$srcdir"
+  local _gemdir="$(ruby-1.9 -rubygems -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install --no-rdoc --no-ri -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+}

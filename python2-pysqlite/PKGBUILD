@@ -1,0 +1,37 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=python2-pysqlite
+pkgver=2.6.3
+pkgrel=5
+pkgdesc="A Python DB-API 2.0 interface for the SQLite embedded relational database engine"
+license=('custom')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://pypi.python.org/pypi/pysqlite"
+depends=('python2')
+conflicts=('python2-pysqlite<=2.6.3-2')
+replaces=('python2-pysqlite<=2.6.3-2')
+makedepends=('python2-setuptools')
+source=(https://pypi.python.org/packages/source/p/pysqlite/pysqlite-${pkgver}.tar.gz
+        setup.cfg)
+sha512sums=('1b8ce3b5300c1d8568ef59d4967ccd06c5e80ea45c2ffdb9d6744712f12b0b2649ade646f926562bf59b660d6d56bfc478780f22577c96cb758f1de7259570a2'
+            '4c765bacbc722390b76e0550da5938c7d531ede107074389b388b7033f49ca24a79c7a9f6fb1a417331040779063d9a7d75e306187f8614e4359661823df212f')
+
+prepare() {
+  cp "${srcdir}/setup.cfg" pysqlite-${pkgver}
+}
+
+build() {
+  cd pysqlite-${pkgver}
+  python2 setup.py build
+}
+
+check() {
+  cd pysqlite-${pkgver}/build/lib.*/
+  python2 -c "from pysqlite2 import test; test.test()"
+}
+
+package_python2-pysqlite() {
+  cd pysqlite-${pkgver}
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm -r "${pkgdir}/usr/pysqlite2-doc"
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Osm-gps-map
+Comment=GTK+ library for showing OSM tiles
+Exec=osm-gps-map
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

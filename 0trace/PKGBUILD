@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=0trace
+pkgver=1.5
+pkgrel=1
+pkgrel=1
+groups=('projectname' 'projectname-*scanner')
+pkgdesc="A hop enumeration tool"
+url="http://jon.oberheide.org/0trace/"
+arch=('any')
+license=('GPL3')
+depends=('libdnet' 'python2-dpkt' 'python2-pypcap')
+source=("0trace.py")
+sha512sums=('f3b34fc94a8f41b3c1d770fc63501c690d146bb5f563901f94895d1ec4b98493ff4e57a600864d446d21ded3e47a1a64b88f60ed917a6b06097c5e1740024f24')
+
+package() {
+  cd "$srcdir"
+  install -Dm755 "$srcdir/0trace.py" "$pkgdir/usr/bin/0trace"
+}

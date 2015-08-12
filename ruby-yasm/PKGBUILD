@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=ruby-yasm
+pkgver=0.2.1
+pkgrel=1
+pkgdesc="A Ruby interface to YASM."
+arch=('any')
+license=('GPL3')
+depends=('ruby' 'ruby-rprogram>=0.3')
+url='https://github.com/sophsec/ruby-yasm#readme'
+source=("http://rubygems.org/downloads/ruby-yasm-$pkgver.gem")
+md5sums=('d003f4e0737c1298f496ef64334b45fa')
+noextract=("ruby-yasm-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" ruby-yasm-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" ruby-yasm-$pkgver.gem
+  fi
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Binwally
+Comment=Binary and Directory tree comparison tool using the Fuzzy Hashing concept (ssdeep)
+Exec=binwally
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultBinary;

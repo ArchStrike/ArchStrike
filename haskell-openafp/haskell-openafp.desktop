@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Haskell-openafp
+Comment=IBM AFP document format parser and generator
+Exec=haskell-openafp
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

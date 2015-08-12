@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=flare
+pkgver=0.6
+pkgrel=2
+pkgdesc="Flare processes an SWF and extracts all scripts from it."
+url="http://www.nowrap.de/flare.html"
+groups=('projectname' 'projectname-*misc')
+license=('custom')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+depends=('zlib')
+if [[ ${CARCH} == 'i686' ]]; then
+      source=("http://www.nowrap.de/download/${pkgname}${pkgver//./}linux.tgz")
+      sha256sums=('715b6af2e3fd3a95f94f79959072144fc89584fbd51a9e7ce81843183062609f')
+else
+      source=("http://www.nowrap.de/download/${pkgname}${pkgver//./}linux64.tgz")
+      sha256sums=('c83ecd7836298e4f6a3258c2a8428f78d91ef58f142b0251f013a2746ede50e6')
+fi
+package() {
+  cd "$srcdir"
+  install -Dm755 flare $pkgdir/usr/bin/flare
+
+  mkdir -p $pkgdir/usr/share/doc/flare
+  install -Dm644 classic.css flare.html logo.gif $pkgdir/usr/share/doc/flare/
+
+  install -Dm644 LICENSE.TXT $pkgdir/usr/share/licenses/flare/LICENSE.TXT
+}

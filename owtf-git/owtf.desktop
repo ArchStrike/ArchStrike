@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Owtf
+Comment=The Offensive (Web) Testing Framework
+Exec=owtf
+Icon=projectname-menu.png
+Terminal=true
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;

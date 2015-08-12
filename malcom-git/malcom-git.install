@@ -1,0 +1,5 @@
+pre-remove() {
+  echo "Deleting virtual env for malcom-git"
+  rm -rf /usr/share/malcom-git/env-malcom
+  rm -rf /usr/share/malcom-git/Malcom/{analytics,auxillary,feeds,__init.pyc__,model,networking,web}
+}

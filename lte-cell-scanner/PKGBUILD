@@ -1,0 +1,37 @@
+# Maintainer: ArchAssault <team@archassualt.org>
+pkgname=lte-cell-scanner
+_pkgname=LTE-Cell-Scanner
+pkgver=0.1.1
+pkgrel=1
+groups=('projectname' 'projectname-*scanner' 'archassault-hardware')
+pkgdesc="An OpenCL, TD-LTE and external LNB supports to LTE SDR cell scanner (optimized to work with RTL-SDR dongle and HACKRF board)"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/JiaoXianjun/LTE-Cell-Scanner"
+license=('GPL3')
+makedepends=('cmake')
+if [[ $CARCH == 'x86_64' ]]; then
+      depends=('itpp' 'boost' 'gcc-libs-multilib' 'rtl-sdr' 'hackrf')
+else  
+      depends=('itpp' 'boost' 'gcc-libs' 'rtl-sdr' 'hackrf')
+fi
+
+source=("https://github.com/JiaoXianjun/LTE-Cell-Scanner/archive/v$pkgver.tar.gz" "findhackrf.patch")
+sha512sums=('f3b83e51e43b0d7c58de4bf9ad50634ae9fdacb97e6b32b39b3af40150870bb7a87f7fd656021f5f8cbfd2a2f99970fc47fb6456393149df237e3122320c6cf3'
+            '106602b4e5632ab59318e44d4d046a4d9735d03a161223eb971f88822441bc0f876008ee71dda391ed0c26fc3d28ecf3f11a323fd89eb3198b430da0f1578014')
+
+prepare(){
+  cd "$srcdir/$_pkgname-$pkgver/cmake/Modules"
+  patch -i $srcdir/findhackrf.patch
+}
+
+build() {
+  cd $srcdir/$_pkgname-$pkgver
+  mkdir -p build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
+}
+
+package() {
+  cd $srcdir/$_pkgname-$pkgver/build
+  make DESTDIR=$pkgdir install 
+}

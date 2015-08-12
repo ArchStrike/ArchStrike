@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=ruby-bacon-bits
+_gemname=${pkgname#ruby-}
+pkgver=0.1.0
+pkgrel=1
+pkgdesc="Making bacon a little tastier."
+arch=('any')
+license=('custom')
+depends=('ruby' 'ruby-bacon>=1.1.0')
+url='http://github.com/cldwalker/bacon-bits'
+source=("http://rubygems.org/downloads/bacon-bits-$pkgver.gem")
+md5sums=('7150e28f3c900e7f2dfe61fa1949891b')
+noextract=("bacon-bits-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --ignore-dependencies --no-user-install --no-rdoc --no-ri -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" bacon-bits-$pkgver.gem
+  else
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" bacon-bits-$pkgver.gem
+  fi
+}

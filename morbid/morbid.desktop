@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Morbid
+Comment=A Twisted-based publish/subscribe messaging server that uses the STOMP protocol
+Exec=morbid
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

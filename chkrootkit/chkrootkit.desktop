@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Chkrootkit
+Comment=Checks for rootkits on a system
+Exec=chkrootkit
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultDefensive;ArchAssaultForensic;

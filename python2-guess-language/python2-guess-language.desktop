@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-guess-language
+Comment=Attempts to determine the natural language of a selection of Unicode (utf-8) text
+Exec=python2-guess-language
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

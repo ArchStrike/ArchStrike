@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Hash-identifier
+Comment=Identifies the different types of hashes used to encrypt data, especially passwords
+Exec=hash-identifier
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCrypto;

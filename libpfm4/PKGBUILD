@@ -1,0 +1,42 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Benjamin Chretien <chretien at lirmm dot fr>
+# Contributor: Håvard Espeland <espeland@acm.org>
+pkgname=libpfm4
+pkgver=4.6.0
+pkgrel=1
+pkgdesc="The hardware-based performance monitoring interface for Linux."
+arch=('x86_64' 'i686')
+url="http://perfmon2.sourceforge.net/"
+license=('MIT')
+if [[ $CARCH == 'x86_64' ]]; then
+      depends=('lib32-glibc')
+else
+      depends=('glibc')
+fi
+source=("http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-$pkgver.tar.gz"
+        'config.mk')
+sha512sums=('73bd11bd0c11c0ec2fa71935c967f36431a00b548b8b47575e00e8cc3e1f8ef3fc2d449d493f51a198eaba5b1629cdf79330cbe2a8ca8867e15fddbfdbf571dc'
+            '5639f98d9e5821d1bf9304c8c799353412c07b66e070cc37220c08242a6c72f07392a93ca3c41e000363809f57a93843cea7a2f377fc46de998a3eee15d0a57c')
+
+build() {
+  cd "$srcdir/libpfm-$pkgver"
+  cp "${srcdir}/config.mk" .
+  make OPTIM="-m32 -O3"
+}
+
+check () {
+  cd "$srcdir/libpfm-$pkgver/tests"
+  ./validate
+}
+
+package() {
+  cd "$srcdir/libpfm-$pkgver"
+
+  # Install libraries
+  make DESTDIR="$pkgdir/" install
+
+  # Install license
+  install -D -m0644 COPYING "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+}
+
+# vim:set ts=2 sw=2 et:

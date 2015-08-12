@@ -1,0 +1,34 @@
+# Maintainer
+# Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
+pkgname=gephi
+pkgver=0.8.2beta
+pkgrel=1
+pkgdesc="An interactive graph visualization and exploration platform"
+arch=('i686' 'armv6h' 'armv7h' 'x86_64')
+url="http://gephi.org"
+license=('CDDL' 'GPL3')
+if [[ "${CARCH}" == x86_64 ]] ; then
+  depends=('java-environment' 'bash' 'libxxf86vm' 'lib32-libx11')
+else
+  depends=('java-environment' 'bash' 'libxxf86vm' 'libx11')
+fi
+makedepends=()
+options=('!emptydirs' '!strip')
+source=("http://launchpad.net/gephi/0.8/0.8.2beta/+download/gephi-0.8.2-beta.tar.gz")
+sha512sums=('b2e3b2de51fb76e94db8710d142badd7b872539ed58d8cf5aaa2d65cffcb79ecb7ce3fe124d9e038ad59cebf473919e23cd148968731678ec80644a450229ee4')
+
+package() {
+  cd "$srcdir/$pkgname"
+  find . -name "*.exe" -exec rm {} +
+  find . -name "*.dll" -exec rm {} +
+  find . -name "*.jnilib" -exec rm {} +
+  rm -rf gephi/modules/lib/windows-amd64
+  rm -rf gephi/modules/lib/windows-i586
+  rm -rf gephi/modules/lib/macosx-universal
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s "/usr/share/$pkgname/bin/gephi" "$pkgdir/usr/bin"
+}
+
+# vim:set ts=2 sw=2 et:

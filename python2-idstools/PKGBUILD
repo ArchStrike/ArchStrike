@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=python2-idstools
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="A collection of Python libraries for working with IDS systems (typically Snort and Suricata)."
+arch=('any')
+url='https://pypi.python.org/pypi/idstools'
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+groups=('projectname' 'projectname-*networking')
+source=("https://pypi.python.org/packages/source/i/idstools/idstools-$pkgver.tar.gz" "LICENSE")
+sha512sums=('46bf96c4c2e39539cb76f522e0a4c10d229978eaa42989bc8d8fab3a0aeb6723a15067ef41f72860ed33d733e7075cd2ace23d6cbb7446b22968ee2dc7e355c2'
+            'f5df92f91db41a289c34387ccc13c05eb0073a21763061464e303a6f25b10abe998bb7c9a6afb660414b30eb78c69abb6a32d5f46d53b0bcddc49309e565abbd')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/idstools-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|' 
+}
+
+
+package() {
+  cd "${srcdir}/idstools-${pkgver}" 
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

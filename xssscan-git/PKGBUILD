@@ -1,0 +1,38 @@
+# Maintainer
+pkgname=xssscan-git
+pkgver=r17.7f1ea90
+pkgrel=1
+groups=('projectname' 'projectname-*webapps')
+pkgdesc="Command line tool for detection of XSS attacks in URLs. Based on ModSecurity rules from OWASP CRS."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/gwroblew/detectXSSlib"
+license=('custom')
+provides=('xssscan')
+conflicts=('xssscan')
+replaces=('xssscan')
+if [[ $CARCH == 'x86_64' ]]; then
+      depends=('gcc-libs-multilib')
+else
+      depends=('gcc-libs')
+fi
+makedepends=('git')
+source=("git+https://github.com/gwroblew/detectXSSlib.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/detectXSSlib"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir/detectXSSlib/tools/xssscan"
+  g++ -Wno-multichar -I../../detectxsslib -o xssscan xssscan.cpp ../../detectxsslib/detectxsslib.c
+  
+}
+
+package() {
+  cd "$srcdir/detectXSSlib/tools/xssscan"
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm644 $srcdir/detectXSSlib/license.txt  "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+  install -Dm755 xssscan "$pkgdir/usr/bin/xssscan"
+}

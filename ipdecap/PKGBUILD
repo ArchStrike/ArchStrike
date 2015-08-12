@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname.org>
+pkgname=ipdecap
+pkgver=0.7
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="Decapsulate traffic encapsulated within GRE, IPIP, 6in4, ESP (ipsec) protocols, can also remove IEEE 802.1Q (virtual lan) header"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/lpefferkorn/ipdecap"
+license=('GPL3')
+depends=('openssl' 'libpcap')
+source=("https://github.com/lpefferkorn/ipdecap/archive/v$pkgver.tar.gz")
+md5sums=('b7800e5247ac77db4229d793515bb30b')
+
+build() {
+  cd $srcdir/ipdecap-$pkgver
+  chmod +x autogen.sh
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd $srcdir/ipdecap-$pkgver
+  make DESTDIR=$pkgdir install
+}

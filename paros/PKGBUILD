@@ -1,0 +1,38 @@
+# Maintainer
+pkgname=paros
+pkgver=3.2.13
+pkgrel=1
+groups=('projectname' 'projectname-*webapp')
+pkgdesc="Java-based HTTP/HTTPS proxy for assessing web app vulnerabilities. Supports editing/viewing HTTP messages on-the-fly, spiders, client certificates, proxy-chaining, intelligent scanning for XSS and SQLi, etc."
+arch=('any')
+url='http://www.parosproxy.org'
+license=('GPL2')
+depends=('java-runtime')
+source=("http://downloads.sourceforge.net/sourceforge/paros/paros-${pkgver}-unix.zip")
+md5sums=('41233a331b9f951ee40fc140074d30c0')
+
+package() {
+
+  # Make base directories.
+  install -d ${pkgdir}/usr/share/paros
+  install -d ${pkgdir}/usr/share/doc/paros
+  install -d ${pkgdir}/usr/share/licenses/paros
+  install -d ${pkgdir}/usr/bin
+
+  #Removing the users guide as we dont have a link for it
+  #install -m644 paros_user_guide.pdf "$pkgdir/usr/share/doc/paros"
+
+  cd "${srcdir}/paros"
+  install -m644 release.txt "$pkgdir/usr/share/doc/paros"
+  cp -pR * $pkgdir/usr/share/paros/
+  cp -p $pkgdir/usr/share/paros/license/* $pkgdir/usr/share/licenses/paros/
+
+  # Create joint script.
+  cat > $pkgdir/usr/bin/paros <<EOF
+#!/bin/sh
+cd /usr/share/paros
+\$JAVA_HOME/bin/java -jar '/usr/share/paros/paros.jar' "\$@"
+EOF
+  chmod +x $pkgdir/usr/bin/paros
+}
+

@@ -1,0 +1,29 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: gosella <gosella@gmail.com>
+# Contributor: OK100 <ok100.ok100.ok100@gmail.com>
+
+pkgname=python2-pager
+pkgver=3.3
+pkgrel=1
+pkgdesc="Terminal/console pager module for Python"
+arch=('any')
+url="http://pypi.python.org/pypi/pager"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("http://pypi.python.org/packages/source/p/pager/pager-$pkgver.tar.gz" "LICENSE")
+sha512sums=('2c0b0cc4ce3c290f6892cbad1107019249458a27276ed6f41026f16af1a8cb42570c2757ec32bed6603d9ceea3098ea1bba951efe9bf92dd17e2078305dd5dda'
+            '354e7001a9339befb9ed0767f1ef3d7b76f30eb66293e34db5b08c265ee7db47e8872418cca1da3c457191f0f39a134cb4708e427fb5c98b8a8a22bc227933d1')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/pager-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/pager-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+# vim:set ts=2 sw=2 et:

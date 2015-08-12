@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=pyvirtualdisplay
+pkgver=0.1.5
+pkgrel=1
+pkgdesc="python wrapper for Xvfb, Xephyr and Xvnc"
+url="https://github.com/ponty/pyvirtualdisplay"
+depends=('python2' )
+makedepends=('python2-distribute' )
+license=('BSD')
+arch=('any')
+source=("https://pypi.python.org/packages/source/P/PyVirtualDisplay/PyVirtualDisplay-${pkgver}.tar.gz")
+sha512sums=('68726a24d61e5eb1d84ba3c2add7367f9c3bf6e0a663862cb05762b4e83eddb3ae59309b202d10ee0fd034b2005bfb01dd088fa3cdc474b6756036684b86a234')
+
+build() {
+    cd $srcdir/PyVirtualDisplay-${pkgver}
+    python2 setup.py build
+}
+
+package() {
+    cd $srcdir/PyVirtualDisplay-${pkgver}
+    python2 setup.py install --root="$pkgdir" --optimize=1 
+}

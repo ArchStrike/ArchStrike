@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=canari
+pkgver=1.1
+pkgrel=1
+groups=('projectname' 'projectname-*forensic' 'archassault-reconnaissance' 'archassault-scanners')
+pkgdesc="A transform framework for maltego"
+url="http://www.canariproject.com"
+arch=('any')
+license=('GPL2')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("http://pypi.canariproject.com/canari/canari-latest.tar.gz")
+sha512sums=('124afe8fbd1e1bbc96d95d6f6b61296cc4aa6e1911be0d2aa1410eb32fb92d8e4560b8134197e111d3929f2fe55565a060fc8a3b571422b066e33db42069dd5a')
+
+build(){
+  cd "$srcdir/canari-$pkgver"
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/canari-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  find "${pkgdir}" -type f -name '*.plate' -o -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}

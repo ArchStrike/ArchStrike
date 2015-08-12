@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Btcrack
+Comment=The world's first Bluetooth Pass phrase (PIN) bruteforce tool, BTCrack will bruteforce the Passkey and the Link key from captured Pairing* exchanges.
+Exec=btcrack
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultBluetooth;ArchAssaultCracker;

@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=ruby-rspec-core
+_gemname=rspec-core
+pkgver=2.99.0
+pkgrel=1
+pkgdesc="rspec-core-2.14.7"
+arch=('any')
+license=('Runner and formatters')
+depends=('ruby')
+options=('!emptydirs')
+url='http://github.com/rspec/rspec-core'
+source=("http://rubygems.org/downloads/rspec-core-$pkgver.gem")
+sha512sums=('89fd59f1d01d276d25e6a7bddfd1796d40c12022c18fe2727dbb1e393c13e603e8bcd56925159ca5f7bcd592f14668182f65a8f628efa911448551033928b575')
+noextract=("rspec-core-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" rspec-core-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" rspec-core-$pkgver.gem
+  fi
+}

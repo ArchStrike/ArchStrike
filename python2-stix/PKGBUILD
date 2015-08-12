@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=python2-stix
+pkgver=1.2.0.0
+pkgrel=1
+pkgdesc="An API for parsing and generating STIX content."
+url="http://stix.mitre.org"
+depends=('python2')
+makedepends=('python2-distribute')
+license=('custom')
+arch=('any')
+source=("https://pypi.python.org/packages/source/s/stix/stix-${pkgver}.zip")
+sha512sums=('470915dc940b747aa8e464dba69dd14a4cb74ee04851eaa26c307aa3500550744633b95e1a3e5b25bc23ce9aec95ffa432e05c33f8999f844d11130d53e7e28c')
+
+build() {
+  cd stix-"${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd stix-"${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm0644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+}

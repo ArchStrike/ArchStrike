@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Suricata
+Comment=An Open Source Next Generation Intrusion Detection and Prevention Engine
+Exec=suricata
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

@@ -1,0 +1,32 @@
+# Maintainer
+pkgname=thc-ssl-dos
+pkgver=1.4
+pkgrel=2
+groups=('projectname' 'projectname-*dos')
+pkgdesc="A tool to verify the performance of SSL. To be used in your authorized and legitimate area ONLY. You need to accept this to make use of it, no use for bad intentions, you have been warned!"
+url='http://www.thc.org/thc-ssl-dos/'
+arch=('any')
+license=('unknown')
+depends=('openssl' 'glibc' 'zlib')
+makedepends=('git')
+source=("git+https://github.com/ArchAssault-Project/thc-ssl-dos.git"
+        remove-skiddie-check.diff)
+md5sums=('SKIP'
+         '57cd6d567af13c7601bf1a042f227a25')
+
+prepare() {
+  cd "$srcdir/thc-ssl-dos/src"
+  patch < "$srcdir/remove-skiddie-check.diff"
+}
+
+build() {
+  cd "$srcdir/thc-ssl-dos"
+  ./configure --prefix=/usr
+  make all
+}
+
+package() {
+  cd "$srcdir/thc-ssl-dos"
+  install -d "${pkgdir}/usr/bin"
+  install -Dm755 "src/thc-ssl-dos" "${pkgdir}/usr/bin/"
+}

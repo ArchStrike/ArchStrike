@@ -1,0 +1,28 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=packetsender
+pkgver=4.1
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="A utility to allow sending and receiving TCP and UDP packets."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://packetsender.com/'
+license=('GPL2')
+depends=('qt5-base')
+source=("https://github.com/dannagle/PacketSender/archive/v$pkgver.tar.gz")
+sha512sums=('df16b3a65be2764ec6563fc748a2a3102876cec20a2e2a9ac8c2662f762062e495fc96578cc8a5a7b8d0ea50417a604ad220453f2927927c44be289ec6154089')
+
+build(){
+  cd "$srcdir/PacketSender-$pkgver/src"
+  qmake PacketSender.pro
+  make
+}
+
+
+package() {
+  cd "$srcdir/PacketSender-$pkgver/"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname/screenshots"
+  install -Dm644 screenshots/* "$pkgdir/usr/share/$pkgname/screenshots/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 src/PacketSender "$pkgdir/usr/bin/$pkgname"
+}

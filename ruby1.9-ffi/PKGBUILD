@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=ruby1.9-ffi
+pkgver=1.9.3
+pkgrel=2
+pkgdesc="Ruby FFI"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('ruby1.9')
+makedepends=('ruby1.9')
+license=('BSD')
+url='http://wiki.github.com/ffi/ffi'
+source=("http://rubygems.org/downloads/ffi-$pkgver.gem")
+sha512sums=('4619d12325503843410921abd461efd7da7febe8b015522581f8ea6f986af285812c94216e053bd737d8f7b6201cbc793d16d59208f46968b252ba6590fefbb2')
+noextract=("ffi-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" ffi-$pkgver.gem
+  else
+    gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" ffi-$pkgver.gem
+  fi
+}

@@ -1,0 +1,37 @@
+# Maintainer
+pkgname=zarp
+pkgver=0.1.7
+pkgrel=1
+groups=('projectname' 'projectname-*networking' 'archassault-exploits')
+pkgdesc="A network attack tool centered around the exploit of local networks."
+url="https://github.com/hatRiot/zarp"
+arch=('any')
+license=('GPL')
+depends=('python2-paramiko' 'python2-netlib' 'python2-pyasn1' 'python2-flask')
+optdepends=('aircrack-ng: aiding wireless attacks')
+source=("https://github.com/hatRiot/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('91fa389c6665f97e5721ab415d22e9ce7899ee0cfba29db559553298ff39de4341b7e18c9d9baa436a4b0ae6825477cde6f48db8f6d66272bd117bab62017ebb')
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Update to use python2
+  grep '#!/usr/bin/python' * -Rl | xargs -I{} sed -i 's/#!\/usr\/bin\/python/#!\/usr\/bin\/python2/g' {}
+  grep '#! /usr/bin/python' * -Rl | xargs -I{} sed -i 's/#! \/usr\/bin\/python/#!\/usr\/bin\/python2/g' {}
+  grep '#!/usr/bin/env python' * -Rl | xargs -I{} sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python2/g' {}
+  grep '#! /usr/bin/env python' * -Rl | xargs -I{} sed -i 's/#! \/usr\/bin\/env python/#!\/usr\/bin\/python2/g' {}
+
+
+  # Base directories.
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/zarp"
+
+  cp -a * "${pkgdir}/usr/share/zarp"
+
+  cat > "${pkgdir}/usr/bin/zarp" << EOF
+#!/bin/sh
+cd /usr/share/zarp
+python2 zarp.py "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/zarp"
+}

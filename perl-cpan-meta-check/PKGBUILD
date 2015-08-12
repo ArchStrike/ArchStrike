@@ -1,0 +1,27 @@
+# Maintainer
+
+pkgname='perl-cpan-meta-check'
+pkgver='0.012'
+pkgrel=1
+pkgdesc="Verify requirements in a CPAN::Meta object"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl' 'perl-cpan-meta')
+url='http://search.cpan.org/dist/CPAN-Meta-Check'
+source=("http://search.cpan.org/CPAN/authors/id/L/LE/LEONT/CPAN-Meta-Check-$pkgver.tar.gz")
+sha512sums=('99ec6721dfb6be8fae7e5a4f6418d4d12d8d093df11f0596480ecc19a46ef3af3fc3da91ccdd7110f974e8f4d04e33166d76804b673a019bc4994f96b7078e7d')
+_distdir="CPAN-Meta-Check-$pkgver"
+
+build() {
+  cd $srcdir/${_distdir}
+  perl Makefile.PL installdirs=vendor destdir=$pkgdir
+  make
+}
+
+package(){
+  cd $srcdir/${_distdir}
+  make install
+  find $pkgdir -name '.packlist' -delete
+  find $pkgdir -name '*.pod' -delete
+}

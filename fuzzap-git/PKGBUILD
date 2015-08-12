@@ -1,0 +1,49 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=fuzzap-git
+pkgver=r14.f13932c
+pkgrel=1
+groups=('projectname' 'projectname-*wireless')
+pkgdesc="A python script for obfuscating wireless networks"
+arch=('any')
+url='https://github.com/lostincynicism/FuzzAP'
+license=('custom')
+depends=('python2' 'scapy') 
+makedepends=('git')
+provides=('fuzzap')
+conflicts=('fuzzap')
+replaces=('fuzzap')
+source=("fuzzap::git+https://github.com/lostincynicism/FuzzAP.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/fuzzap"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  cd "$srcdir/fuzzap"
+  sed -i 's|python$|python2|' *.py
+}
+
+package() {
+  cd "$srcdir/fuzzap"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/fuzzap"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/licenses/fuzzap-git"
+
+  install -Dm755 fuzzap.py "$pkgdir/usr/share/fuzzap/fuzzap.py"
+  install -Dm644 common.txt "$pkgdir/usr/share/fuzzap/"
+  install -Dm644 ssid.txt "$pkgdir/usr/share/fuzzap/"
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/fuzzap-git/"
+  
+cat > "$pkgdir/usr/bin/fuzzap" << EOF
+#!/bin/sh
+cd /usr/share/fuzzap
+python2 fuzzap.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/fuzzap"
+
+}

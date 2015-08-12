@@ -1,0 +1,27 @@
+# Maintainer
+
+pkgname=pixiewps
+pkgver=1.1
+pkgrel=1
+pkgdesc="A tool written in C used to bruteforce offline the WPS pin"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/wiire/pixiewps"
+license=('GPL3')
+depends=('openssl')
+source=("https://github.com/wiire/pixiewps/archive/v${pkgver}.tar.gz")
+sha512sums=('781c72c78cf12850afadb968d12b6c11965d373cedc0eddffeae7e3b279cdc77fee08cb031fb7716725294a3fde24ecd1e4ce91a327709d6d9378668a5559d50')
+
+prepare(){
+  cd "$srcdir/$pkgname-$pkgver/src"
+  sed -i 's|/usr/local|/usr|' Makefile
+}
+
+build(){
+  cd "$srcdir/$pkgname-$pkgver/src"
+  make 
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver/src"
+  make DESTDIR=$pkgdir install
+}

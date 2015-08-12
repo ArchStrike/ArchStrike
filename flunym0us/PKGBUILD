@@ -1,0 +1,29 @@
+# Maintainer: ArchAssault <team archassautl org>
+pkgname=flunym0us
+pkgver=2.0
+pkgrel=2
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="a Python-based tool that searches Twitter for keywords and then parses any tweets that are found."
+arch=('any')
+url='https://code.google.com/p/flunym0us/'
+license=('GPL3')
+depends=('python2')
+source=("https://flunym0us.googlecode.com/files/flunym0us$pkgver.tar.gz")
+sha512sums=('99ed23f2a9b5833ed64582ebad5cbd1198b29a49427efb90044198436248d49e290eb1b46b66d84dda2a8bae84c129819e9970300ad3bf0e137ac78c7a8903bc')
+
+package(){
+  cd "$srcdir"
+  install -dm755 $pkgdir/usr/share/$pkgname
+  install -dm755 $pkgdir/usr/bin
+
+  for py in *.py; do install -Dm755 $py $pkgdir/usr/share/$pkgname;done
+  for lst in *.lst; do install -Dm644 $lst $pkgdir/usr/share/$pkgname;done
+
+cat >$pkgdir/usr/bin/flunym0us <<EOF
+#!/bin/sh
+cd /usr/share/flunym0us
+python2 ./flunym0us.py "\$@"
+EOF
+
+chmod +x $pkgdir/usr/bin/flunym0us
+}

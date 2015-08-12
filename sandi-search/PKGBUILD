@@ -1,0 +1,62 @@
+#Maintainer: ArchAssault <team projectname org>
+pkgname=sandi-search
+pkgver=13
+pkgrel=2
+groups=('projectname' 'projectname-*exploit')
+pkgdesc="An open source project for search the exploits from exploit databases ..."
+arch=('any')
+url='https://sourceforge.net/projects/sandisearch/'
+license=('GPL')
+depends=('python2-simplejson' 'python2-requests')
+makedepends=('python2')
+source=("https://downloads.sourceforge.net/project/sandisearch/src/Sandi-v$pkgver-src.tar.gz")
+sha512sums=('f3360b8359994d6ab02749b7a837e41087b697fff9f9066676846f043ef1bb62f61f91a0fa235469ad083bc32c70058cf6a17d2e15bfe82a3f65763f4828c58a')
+
+
+prepare(){
+  grep -iRl 'python' "$srcdir/Sandi-v$pkgver-src" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+
+package() {
+  cd "${srcdir}/Sandi-v$pkgver-src"
+  
+  #Base dirs
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/sandi/"
+  install -dm755 "$pkgdir/usr/share/sandi/config"
+  install -dm755 "$pkgdir/usr/share/sandi/lib"
+  install -dm755 "$pkgdir/usr/share/sandi/shodan"
+  
+  #Docs
+  install -Dm644 README "$pkgdir/usr/share/sandi/README"
+  install -Dm644 require.txt "$pkgdir/usr/share/sandi/require.txt"
+  install -Dm644 sandi-icon.png "$pkgdir/usr/share/sandi/sandi-icon.png"
+
+  #Bin
+  install -Dm755 sandi-gui.py "$pkgdir/usr/share/sandi/sandi-gui.py"
+  install -Dm755 sandi.py "$pkgdir/usr/share/sandi/sandi.py"
+  cp -a --no-preserve=ownership config/* "$pkgdir/usr/share/sandi/config/"
+  cp -a --no-preserve=ownership lib/* "$pkgdir/usr/share/sandi/lib/"
+  cp -a --no-preserve=ownership shodan/* "$pkgdir/usr/share/sandi/shodan/"
+  for i in $(find $pkgdir/usr/share/sandi/lib/ -type f -name "*.py"); do chmod 644 $i;done
+  for i in $(find $pkgdir/usr/share/sandi/shodan/ -type f -name "*.py"); do chmod 644 $i;done
+  
+cat > "$pkgdir/usr/bin/sandi" <<EOF
+#!/bin/sh
+cd /usr/share/sandi
+python2 ./sandi.py "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/sandi-gui" <<EOF
+#!/bin/sh
+cd /usr/share/sandi
+python2 ./sandi-gui.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/sandi-gui"
+chmod +x "$pkgdir/usr/bin/sandi"
+   
+}
+

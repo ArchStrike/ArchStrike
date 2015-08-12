@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=python2-socketpool
+pkgver=0.5.3
+pkgrel=2
+pkgdesc="Socket pool is a simple socket pool that suports multiple factories and backends. It can easily be used by gevent, eventlet or any other library."
+arch=('any')
+url="https://github.com/benoitc/socketpool"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-distribute')
+options=(!emptydirs)
+source=("https://github.com/benoitc/socketpool/archive/$pkgver.tar.gz"
+  "doc.patch")
+md5sums=('844b08b018c11f53d8f08a5c052c4e8f'
+         'b647167a37276f6dce2b9dc427a46dcc')
+
+package() {
+  cd "$srcdir/socketpool-$pkgver"
+
+  # Install doc at the proper location
+  patch -p1 < "$srcdir/doc.patch"
+
+  python2 setup.py install --prefix=/usr --root=$pkgdir/ --optimize=1
+}
+
+# vim:set ts=2 sw=2 et:

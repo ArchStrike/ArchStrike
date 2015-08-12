@@ -1,0 +1,14 @@
+[Unit]
+   Description=Arp handler inspectiON – a portable Arp handler
+   After=network.target
+
+
+[Service]
+   EnvironmentFile=/etc/conf.d/arpon
+   PIDFile=/var/run/arpon.pid
+   ExecStart=/sbin/arpon  -q -i $INTERFACE $OPTIONS
+   ExecReload=/usr/bin/kill -HUP $MAINPID
+
+[Install]
+   WantedBy=multi-user.target
+

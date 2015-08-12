@@ -1,0 +1,33 @@
+# Maintainer
+pkgname=perl-math-pari
+pkgver=2.01080607
+pkgrel=1
+pkgdesc="Perl interface to PARI"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://search.cpan.org/~ilyaz/Math-Pari-2.01080605/Pari.pm'
+license=('GPL Artistic')
+depends=('perl')
+options=('!emptydirs' '!distcc')
+source=("http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/Math-Pari-$pkgver.tar.gz")
+sha512sums=('4190d7463befd58721007e225bb6603bafe4219df565f3469f080ac2ce47d2ddaed112cc038af09961e0bed5302cb890657b7dcc935c9e8206c932f894b6a407')
+
+build() {
+  cd "$srcdir/Math-Pari-$pkgver"
+
+  echo -e "y\n" | perl Makefile.PL installdirs=vendor
+  make
+}
+
+check() {
+  cd "$srcdir/Math-Pari-$pkgver"
+  make test
+}
+
+package() {
+  cd "$srcdir/Math-Pari-$pkgver"
+
+  make install "DESTDIR=$pkgdir"
+
+  find "$pkgdir" -name '.packlist' -delete
+  find "$pkgdir" -name '*.pod' -delete
+}

@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=nfspy
+pkgver=1.0
+pkgrel=2
+groups=('projectname' 'projectname-*autonomous')
+pkgdesc="A Python library for automating the falsification of NFS credentials when mounting an NFS share"
+url="https://github.com/bonsaiviking/NfSpy"
+license=('MIT')
+arch=('any')
+depends=('python2' 'python2-fuse')
+source=("https://github.com/bonsaiviking/NfSpy/archive/v$pkgver.tar.gz")
+md5sums=('c8437ae053001efabb871a69e81d92d8')
+
+package() {
+  cd "$srcdir/NfSpy-$pkgver"
+
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+}

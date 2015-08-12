@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Creddump
+Comment=A python tool to extract various credentials and secrets from Windows registry hives.
+Exec=creddump
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCracker;ArchAssaultWindows;

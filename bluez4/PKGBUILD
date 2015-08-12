@@ -1,0 +1,93 @@
+# Maintainer
+# Contributor: Felix Yan <felixonmars@gmail.com>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
+
+pkgname=bluez4
+pkgver=4.101
+pkgrel=6
+pkgdesc="Deprecated daemon and tools for the Bluetooth protocol stack"
+url="http://www.bluez.org/"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('GPL2')
+depends=('dbus' 'bluez-utils' 'python2')
+conflicts=('bluez' 'bluez-cups')
+replaces=("bluez<=$pkgver")
+provides=('bluez')
+makedepends=('gstreamer0.10-base' 'libusb-compat' 'libsndfile' 'libusbx')
+optdepends=("gstreamer0.10-base: bluetooth GStreamer support"
+            "alsa-lib: Audio bluetooth devices support"
+            "python2: to run bluez-simple-agent"
+            "python2-dbus: to run bluez-simple-agent"
+            "python2-gobject2: to run bluez-simple-agent"
+            "libusb-compat: USB adapters support"
+            "cups: CUPS backend")
+options=('!emptydirs')
+backup=(etc/bluetooth/{main,rfcomm,audio,network,input,serial}.conf
+        etc/dbus-1/system.d/bluetooth.conf)
+source=("http://www.kernel.org/pub/linux/bluetooth/bluez-${pkgver}.tar.bz2")
+
+build() {
+  cd bluez-"${pkgver}"
+
+  ./configure --prefix=/usr \
+    --sysconfdir=/etc \
+    --localstatedir=/var \
+    --libexecdir=/usr/lib \
+    --sbindir=/usr/lib/bluetooth \
+    --enable-gstreamer \
+    --enable-alsa \
+    --enable-usb \
+    --enable-dfutool \
+    --enable-dund \
+    --enable-hidd \
+    --enable-pand \
+    --enable-gatt \
+    --enable-cups \
+    --enable-wiimote \
+    --disable-test \
+    --with-systemdunitdir=/usr/lib/systemd/system
+
+  make
+}
+
+package() {
+  cd bluez-"${pkgver}"
+  make DESTDIR=${pkgdir} install
+
+  # adjust systemd service file
+  sed -i 's#/usr/sbin/#/usr/lib/bluetooth/#' \
+    "${pkgdir}"/usr/lib/systemd/system/bluetooth.service
+
+  install -d ${pkgdir}/etc/bluetooth
+  install -m644 network/network.conf \
+                input/input.conf \
+                audio/audio.conf \
+                serial/serial.conf \
+    ${pkgdir}/etc/bluetooth/
+  
+  # FS#27630
+  install -Dm755 test/simple-agent "${pkgdir}"/usr/bin/bluez-simple-agent
+  install -Dm755 test/test-device "${pkgdir}"/usr/bin/bluez-test-device
+  install -Dm755 test/test-input "${pkgdir}"/usr/bin/bluez-test-input
+  sed -i 's#/usr/bin/python#/usr/bin/python2#' \
+    "${pkgdir}"/usr/bin/bluez-simple-agent \
+    "${pkgdir}"/usr/bin/bluez-test-device \
+    "${pkgdir}"/usr/bin/bluez-test-input
+
+  # drop files that are in bluez-libs
+  rm -rf "${pkgdir}"/usr/{include,lib/pkgconfig}
+  rm "${pkgdir}"/usr/lib/libbluetooth*
+
+  # drop files that are in bluez-utils
+  rm -rf "${pkgdir}"/lib
+  rm "${pkgdir}"/usr/bin/{ciptool,hcitool,l2ping,rfcomm,sdptool}
+  rm "${pkgdir}"/usr/share/man/man1/{ciptool,hcitool,rfcomm,sdptool}.1
+  rm "${pkgdir}"/usr/lib/bluetooth/{hciattach,hciconfig}
+  rm "${pkgdir}"/usr/share/man/man8/{hciattach,hciconfig}.8
+
+  # rename binaries that are in bluez-utils
+  mv "$pkgdir"/usr/bin/gatttool{,4}
+}
+sha512sums=('a47c3e0943ae50adbcc78b00b4f170f0de8ff12672468e5e09897a669df061b97d99a13b3871f8ec9a85785c3e2839ea2c64e304cb9dd632e33244c222684e1a')

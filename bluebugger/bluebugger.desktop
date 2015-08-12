@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Bluebugger
+Comment=bluebugger is an implementation of the bluebug technique which was discovered by Martin Herfurt.
+Exec=bluebugger
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultBluetooth;

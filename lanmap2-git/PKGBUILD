@@ -1,0 +1,33 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname='lanmap2-git'
+pkgver=r127.1197999
+pkgrel=1
+epoch=1
+pkgdesc="Builds database/visualizations of LAN structure from passively sifted information."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://github.com/pizza/lanmap2'
+license=('GPL')
+groups=('projectname' 'projectname-*networking' 'archassault-misc')
+depends=('php' 'libpcap' 'graphviz' 'sqlite3' 'readline' 'php-sqlite')
+makedepends=('git')
+source=('git+https://github.com/rflynn/lanmap2')
+md5sums=('SKIP')
+install='lanmap2-git.install'
+replaces=('lanmap2')
+provides=('lanmap2')
+
+pkgver() {
+  cd "$srcdir/lanmap2"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+}
+
+build() {
+  cd "$srcdir/lanmap2"
+  CPPFLAGS="$CFLAGS -O -Wcpp" make
+}
+
+package() {
+  cd "$srcdir/lanmap2"
+  install -dm755 "$pkgdir/usr/share/lanmap2"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/lanmap2/"
+}

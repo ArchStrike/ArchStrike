@@ -1,0 +1,21 @@
+# Maintainer
+_gemname=ref
+pkgname=ruby1.9-$_gemname
+pkgver=1.0.5
+pkgrel=1
+pkgdesc='Library that implements weak, soft, and strong references in Ruby.'
+arch=(any)
+url='http://github.com/bdurand/ref'
+license=(MIT)
+depends=(ruby1.9)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('1fbc1c4552a04e5543dc65e41c94be0a7773fc40')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/MIT_LICENSE" "$pkgdir/usr/share/licenses/$pkgname/MIT_LICENSE"
+}

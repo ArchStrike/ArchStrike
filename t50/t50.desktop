@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=T50
+Comment=Experimental Multi-protocol Packet Injector Tool
+Exec=t50
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultNetworking;ArchAssaultDos;

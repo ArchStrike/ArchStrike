@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=ptp
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Ranks the discoveries listed in security tool reports."
+url="http://owtf.github.io/ptp"
+depends=('python2')
+makedepends=('python2-distribute')
+license=('BSD')
+arch=('any')
+source=("https://pypi.python.org/packages/source/P/PTP/PTP-${pkgver}.tar.gz"
+        'LICENSE')
+sha512sums=('e6f78a19dd999cb2880a9cecc53dbd66db940055fa8b3f3a73c88f2f6cd7ff06ad182fbe510ca5226b9d7eb675fa624d896546856498688ddab09e1fef0db08d'
+            '42e5bbd8115b16d6153cea57898870729f5a6fa0a177544b873f15333311c8ea5de950a076a2031233a292da0e08861b8678784ba6f055021f3d2ae6ae5305bd')
+
+build() {
+  cd $srcdir/PTP-${pkgver}
+  python2 setup.py build
+}
+
+package() {
+  cd $srcdir/PTP-${pkgver}
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  rm -rf "${pkgdir}"/usr/lib/python2.7/tests
+  install -Dm0644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}

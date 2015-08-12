@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Miranda-upnp
+Comment=A Python-based Universal Plug-N-Play client application designed to discover, query and interact with UPNP devices
+Exec=miranda-upnp
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultScanner;ArchAssaultExploitation;

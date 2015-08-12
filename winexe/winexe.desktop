@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Winexe
+Comment=Remotely execute commands on Windows NT/2000/XP/2003 systems.
+Exec=winexe
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;ArchAssaultWindows;

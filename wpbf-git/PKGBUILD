@@ -1,0 +1,42 @@
+# Maintainer
+pkgname=wpbf-git
+pkgver=r7.11b6ac1
+pkgrel=1
+pkgdesc="Multithreaded WordPress brute forcer"
+url="https://github.com/dejanlevaja/wpbf"
+arch=('any')
+license=('GPL2')
+groups=('projectname')
+depends=('python2')
+makedepends=('git')
+provides=('wpbf')
+conflicts=('wpbf')
+replaces=('wpbf')
+source=(wpbf::git+https://github.com/dejanlevaja/wpbf.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir"/wpbf
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+   find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$srcdir"/wpbf
+  install -dm755 "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/share/wpbf-git
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/wpbf-git/LICENSE
+  install -m644 README.md "$pkgdir"/usr/share/wpbf-git/README.md
+  install -m644 wpbf.py "$pkgdir"/usr/share/wpbf-git/wpbf.py
+  cat > "$pkgdir"/usr/bin/wpbf.py <<EOF
+#!/bin/sh
+cd /usr/share/wpbf-git
+python2 ./wpbf.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/wpbf.py
+}
+
+

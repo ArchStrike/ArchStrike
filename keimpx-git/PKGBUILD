@@ -1,0 +1,56 @@
+# Maintainer
+pkgname=keimpx-git
+pkgver=20140804.r163
+pkgrel=1
+groups=('projectname' 'projectname-*crackers')
+pkgdesc="Tool to verify the usefulness of credentials across a network over SMB"
+url='https://github.com/inquisb/keimpx'
+license=("Apache")
+depends=('impacket' 'python2-crypto')
+makedepends=('git' 'python2-distribute')
+arch=('any')
+source=("${pkgname}::git+https://github.com/inquisb/keimpx.git"
+        "setup.py-remove_py2exe.patch"
+        "keimpx-git.desktop")
+sha512sums=('SKIP'
+	    'aec4d1650df3dbf7442c803c7cb7f08739c0a71c7c504cfce09781621cf84a5c8447b2126bde895d8de909dbed3cb9c30c1266bc7c4a647d8a95afbc2e9c5b36'
+	    '90df0299d78d2063f8c39e8607004c4726db39d50aacec4be8ea8d64c0fd37230ffebd707948cb143af9e652073411f8f4db18d687f1a1b979c7aee80406e671')
+provides=('keimpx')
+conflicts=('keimpx')
+replaces=('keimpx')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+
+  find ./ -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python2.5|#!/usr/bin/python2|'
+  find ./ -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  sed -i 's/keimpx_path =/keimpx_path = \"\/usr\/share\/keimpx-git\" #/' keimpx.py
+
+  patch setup.py < ${srcdir}/setup.py-remove_py2exe.patch
+}
+
+package() {
+  cd ${pkgname}
+
+  python2 setup.py install --root=${pkgdir}/ --optimize=1
+
+  install -dm 755 "${pkgdir}/usr/bin/"
+  install -dm 755 "${pkgdir}/usr/share/${pkgname}/"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  install -Dm 644 "${srcdir}/keimpx-git.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+  cp -a --no-preserve=ownership * ${pkgdir}/usr/share/${pkgname}/
+  rm -rf ${pkgdir}/usr/contrib/
+
+cat > "${pkgdir}/usr/bin/keimpx" <<EOF
+#!/bin/sh
+cd /usr/share/keimpx-git
+python2 keimpx.py "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/keimpx"
+}

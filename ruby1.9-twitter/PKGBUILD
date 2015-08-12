@@ -1,0 +1,21 @@
+# Maintainer
+_gemname=twitter
+pkgname=ruby1.9-$_gemname
+pkgver=5.5.1
+pkgrel=2
+pkgdesc='A Ruby interface to the Twitter API.'
+arch=(any)
+url='http://sferik.github.com/twitter/'
+license=(MIT)
+depends=(ruby1.9 ruby1.9-addressable ruby1.9-buftok ruby1.9-descendants_tracker ruby1.9-equalizer ruby1.9-faraday ruby1.9-memoizable ruby1.9-simple_oauth ruby1.9-http ruby1.9-http_parser)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('02fac777ca27048a8d1f5a0d518437f9d87b1f14')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+}

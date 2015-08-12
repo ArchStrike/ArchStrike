@@ -1,0 +1,73 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=ruby1.8
+_pkgname='ruby'
+pkgver=1.8.7_p374
+_pkgver="${pkgver/_/-}"
+pkgrel=2
+pkgdesc='An object-oriented language for quick and easy programming'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('custom')
+url='http://www.ruby-lang.org/en/'
+options=('!emptydirs')
+makedepends=('tk')
+depends=('gdbm' 'db' 'openssl' 'zlib' 'readline')
+optdepends=('tk: for Ruby/TK')
+source=("ftp://ftp.ruby-lang.org/pub/ruby/1.8/$_pkgname-$_pkgver.tar.bz2" "fix.patch")
+sha512sums=('c6859aec9a796c71bb30c18236bd5548826655b08312181376b8dae4a006575f711065f15a002329c5e62c1e1ee44bb86723138abb3b658c8958920f13a5adea'
+            '89bcb333ab1a09bfab496146d8b725e3e576e2051d9dcf053720449711476a8abccc1382074a4e1ed4b1f21ad9550a084e60591815dbebf13b5006b90b5e4179')
+
+_optimal_make_jobs() {
+	if [ -r /proc/cpuinfo ]; then
+		local core_count=$(grep -Fc processor /proc/cpuinfo)
+	else
+		local core_count=0
+	fi
+
+	if [ $core_count -gt 1 ]; then
+		echo -n $[$core_count-1]
+	else
+		echo -n 1
+	fi
+}
+
+build() {
+	cd "${srcdir}/${_pkgname}-${_pkgver}"
+
+if [[ $CARCH == arm* ]] ; then
+  ./configure \
+    --prefix=/usr/share/ruby1.8 \
+    --disable-rpath \
+    --enable-shared \
+    --disable-install-doc \
+    --enable-pthread \
+    CFLAGS="-O3 -fno-tree-dce -fno-optimize-sibling-calls"
+
+else
+  ./configure \
+    --prefix=/usr/share/ruby1.8 \
+    --disable-rpath \
+    --enable-shared \
+    --enable-pthread \
+    CFLAGS="-O2 -fno-tree-dce -fno-optimize-sibling-calls"
+fi
+    msg 'Applying patch...'
+	patch -Np1 < ${srcdir}/fix.patch
+
+	msg 'Running make...'
+	make -j$(_optimal_make_jobs)
+}
+
+package() {
+	cd "${srcdir}/${_pkgname}-${_pkgver}"
+
+	make DESTDIR="$pkgdir" install
+
+	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+	install -dm755 $pkgdir/usr/bin
+	install -dm755 $pkgdir/usr/lib
+	for i in erb irb rdoc ri ruby testrb; do
+		ln -s /usr/share/ruby1.8/bin/$i $pkgdir/usr/bin/$i-1.8
+	done
+	ln -s /usr/share/ruby1.8/lib/libruby.so.1.8 $pkgdir/usr/lib/libruby.so.1.8
+}

@@ -1,0 +1,21 @@
+# Maintainer
+pkgname=python2-couchdbkit
+pkgver=0.6.5
+pkgrel=1
+pkgdesc="A framework to allow python applications to use CouchDB"
+arch=('any')
+url="http://couchdbkit.org"
+license=('CUSTOM')
+optdepends=('couchdb: for setting up a local couchdb server'
+            "django: for couchdbkit's django extension")
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/c/couchdbkit/couchdbkit-$pkgver.tar.gz")
+md5sums=('d5f6382665697b0f126f68a211c1a5a2')
+
+package() {
+    cd "$srcdir"/couchdbkit-$pkgver
+
+    python2 setup.py install --root=$pkgdir --optimize=1
+    install -m 644 -D LICENSE $pkgdir/usr/share/licenses/python2-couchdbkit/LICENSE
+}
+

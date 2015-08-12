@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname="libesedb"
+pkgver="20141110"
+pkgrel=1
+pkgdesc="Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format."
+arch=("i686" "x86_64" "armv6h" "armv7h")
+url='https://github.com/libyal/libesedb'
+license=('GPL3')
+depends=('libcsystem' 'libbfio' 'python2')
+makedepends=('git')
+source=("https://github.com/libyal/libesedb/archive/$pkgver.tar.gz")
+sha512sums=('d9b17bbb40f659cb3e008c42f3fe13213632a7c014611e2102835896d6ea35e08c79234a959c7c1845c560854ae7917d26fdfcbf24df03b7d8a618809bd75d7c')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  ./synclibs.sh
+  ./autogen.sh
+  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}

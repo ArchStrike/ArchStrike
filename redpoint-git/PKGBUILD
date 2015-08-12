@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=redpoint-git
+pkgver=20150213.r109
+pkgrel=1
+groups=('projectname' 'projectname-*scanners' 'archassault-reconnaissance')
+pkgdesc="Digital Bond's ICS Enumeration Tools"
+url="https://github.com/digitalbond/Redpoint"
+arch=('any')
+license=('GPL')
+depends=('nmap')
+makedepends=('git')
+source=("${pkgname}::git+https://github.com/digitalbond/Redpoint.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package(){
+  cd "${pkgname}"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/share/nmap/scripts/${pkgname}"
+  install -dm755 "$pkgdir/usr/share/${pkgname}"
+  install -Dm644 README.md "$pkgdir/usr/share/$pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 *.nse "$pkgdir/usr/share/nmap/scripts/${pkgname}/"
+}

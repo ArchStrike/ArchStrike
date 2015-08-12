@@ -1,0 +1,37 @@
+# Maintainer
+pkgname=shellnoob
+pkgver=2.1
+pkgrel=1
+groups=('projectname' 'projectname-*exploit' 'archassault-debugging')
+pkgdesc="A toolkit that eases the writing and debugging of shellcode"
+url="https://github.com/reyammer/shellnoob"
+arch=('any')
+license=('MIT')
+depends=('python2')
+source=("https://github.com/reyammer/shellnoob/archive/v$pkgver.tar.gz")
+md5sums=('5628a3197cfed3238f818a3badddda69')
+
+prepare() {
+  cd "shellnoob-$pkgver"
+
+  sed -e 's/env python$/env python2/g' -i shellnoob.py
+  sed -e "s|README|/usr/share/doc/shellnoob/README.md|g" -i shellnoob.py
+}
+
+package() {
+  cd "shellnoob-$pkgver"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/lib/python2.7/site-packages"
+  install -dm755 "$pkgdir/usr/share/doc/shellnoob/samples/x86-linux"
+
+  # Bin.
+  install -m755 shellnoob.py "$pkgdir/usr/lib/python2.7/site-packages/shellnoob.py"
+  ln -s "/usr/lib/python2.7/site-packages/shellnoob.py" "$pkgdir/usr/bin/shellnoob"
+
+  # Docs.
+  install -m644 README.md "$pkgdir/usr/share/doc/shellnoob/README.md"
+  install -d "$pkgdir/usr/share/doc/shellnoob/samples/x86-linux"
+  install -m644 samples/x86-linux/* "$pkgdir/usr/share/doc/shellnoob/samples/x86-linux"
+}

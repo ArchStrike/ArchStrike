@@ -1,0 +1,32 @@
+# Maintainer
+# Contributor : Sebastien Duquette <ekse.0x@gmail.com>
+pkgname=sagan
+pkgver=1.0.0RC4
+pkgrel=1
+pkgdesc="a snort-like log analysis engine"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('projectname' 'projectname-*analysis')
+url="http://sagan.softwink.com"
+license=('GPL')
+depends=('pcre' 'libdnet' 'libesmtp' 'liblognorm' 'geoip')
+optdepends=('sagan-rules: rules for sagan')
+options=('!makeflags' '!emptydirs')
+provides=('sagan-git')
+conflicts=('sagan-git' 'sagan-svn')
+replaces=('sagan-git')
+source=("https://github.com/beave/sagan/archive/$pkgver.tar.gz")
+sha512sums=('203e8303fdab7a0f7158c8fd0d6786ed5084f10f084530db8850720e59e22a414d3c4f75e0715fc402e96901ba8090b7e69e8f15c13e7586ece4a9f651cdbc08')
+
+build() {
+  cd "$srcdir/${pkgname}-${pkgver}"
+  ./configure --enable-esmtp --enable-geoip --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
+  make
+  sed "s:^var RULE_PATH.*$:var RULE_PATH /usr/share/sagan-git/rules/:" etc/sagan.conf > etc/sagan.conf.new
+  mv etc/sagan.conf.new etc/sagan.conf 
+
+}
+
+package() {
+  cd "$srcdir/${pkgname}-$pkgver"
+  make DESTDIR="${pkgdir}" install
+}

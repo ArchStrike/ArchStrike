@@ -1,0 +1,23 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Rafał Michalski <plum.michalski at gmail dot com>
+pkgname=pcapfix
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="A repair tool for corrupted pcap files. "
+arch=("i686" "x86_64" "armv6h" "armv7h")
+license=("GPL3")
+url='http://f00l.de/pcapfix/'
+depends=('glibc')
+source=("http://f00l.de/pcapfix/$pkgname-$pkgver.tar.gz")
+sha512sums=('da175dfcb7b8dce14a67fa5acd530ebfacae8b7f8b65afc585d8a8fb4b339dc3a17450da4e1f5317d468a82cccc5002ac12d37d9a06508ceee3138ee76ac3427')
+
+
+build() {
+  cd $srcdir/$pkgname-$pkgver
+  make
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+}

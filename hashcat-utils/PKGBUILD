@@ -1,0 +1,44 @@
+# Maintainer
+pkgname=hashcat-utils
+pkgver=1.1
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="Utilites for Hashcat"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://hashcat.net/wiki/doku.php?id=hashcat_utils'
+license=('custom')
+if [[ ${CARCH} == "x86_64" ]]; then
+      depends=('lib32-glibc')
+else
+      depends=('glibc')
+fi
+makedepends=('p7zip')
+source=("http://hashcat.net/tools/hashcat-utils/hashcat-utils-$pkgver.7z")
+sha512sums=('ed4208b673857496fde6b0ae725bdb04dfb8ecaf7d4097ca4e922848b537d0590fb439b35410170f0e12094d11c6699c14a0df734a7850703c99e8cb3fedc6de')
+
+prepare() {
+  cd "$srcdir/hashcat-utils-$pkgver"
+  sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-gcc|gcc|' Makefile
+  sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-strip|strip|' Makefile  
+  sed -i 's/release: posix windows/release: posix/' Makefile
+  sed -i '/WINDOWS/d' Makefile
+  sed -i '/*.exe/d' Makefile
+}
+
+build() {
+  cd "$srcdir/hashcat-utils-$pkgver"
+  make
+}
+
+package() {
+  cd "$srcdir/hashcat-utils-$pkgver"
+
+  # Base directory.
+  install -dm755 "$pkgdir/usr/bin"
+
+  # Bin.
+  for bin in $(ls *.bin)
+  do
+    install -m755 "$bin" "$pkgdir/usr/bin/hashcat-${bin%.bin}"
+  done
+}

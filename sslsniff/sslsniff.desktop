@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sslsniff
+Comment=A tool to MITM all SSL connections on a LAN and dynamically generate certs for the domains that are being accessed on the fly
+Exec=sslsniff
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultSniffer;

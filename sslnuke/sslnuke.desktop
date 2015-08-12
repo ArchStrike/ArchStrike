@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sslnuke
+Comment=Transparent proxy that decrypts SSL traffic and prints out IRC messages.
+Exec=sslnuke
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultProxy;ArchAssaultCracker;

@@ -1,0 +1,48 @@
+# Maintainer
+# Contributor: Alfredo Palhares <masterkorp@masterkorp.net>
+
+pkgname=xsscrapy-git
+pkgver=20150212.r126.4ec3e7d
+pkgrel=1
+pkgdesc="xss spider"
+arch=('any')
+groups=('projectname' 'projectname-*webapps' 'archassault-scanners')
+url="https://github.com/DanMcInerney/xsscrapy"
+license=('BSD')
+depends=('python2-beautifulsoup3' 'python2-pybloom' 'python2-requests' 'scrapy')
+makedepends=('git')
+options=('staticlibs' '!strip')
+provides=('xsscrapy')
+conflicts=('xsscrapy')
+replaces=('xsscrapy')
+source=("${pkgname}::git+https://github.com/DanMcInerney/xsscrapy.git" 'LICENSE')
+sha512sums=('SKIP'
+            'e1a31da9906b07891085900f3e4b17b1b8a5274b5f12068f8dd7ff80fe8682dc9011c3c26b0e2716092ebf938bbc3d6dc6891036009a8122d34dfb1536ea1093')
+
+prepare() {
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  install -dm755 "${pkgdir}"/usr/share/${pkgname}
+  cp -a --no-preserve=ownership tests "${pkgdir}"/usr/share/${pkgname}/
+  cp -a --no-preserve=ownership xsscrapy "${pkgdir}"/usr/share/${pkgname}/
+  install -Dm644 README.md "${pkgdir}"/usr/share/${pkgname}/README.md
+  install -Dm644 scrapy.cfg "${pkgdir}"/usr/share/${pkgname}/scrapy.cfg
+  install -Dm755 xsscrapy.py "${pkgdir}"/usr/share/${pkgname}/xsscrapy.py
+  install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  ##easy xsscrapy script
+  install -dm755 "${pkgdir}"/usr/bin/
+  cat > "${pkgdir}"/usr/bin/"${pkgname}" <<EOF
+#!/bin/bash
+cd /usr/share/${pkgname};
+python2 xsscrapy.py "\$@"
+EOF
+  chmod +x "${pkgdir}"/usr/bin/"${pkgname}"
+}

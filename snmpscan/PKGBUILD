@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=snmpscan
+pkgver=0.1
+pkgrel=1
+pkgdesc="A free, multi-processes SNMP scanner"
+url="http://www.nothink.org/perl/snmpscan/index.php"
+groups=('projectname' 'projectname-*scanners')
+license=('GPL')
+arch=('any')
+depends=('perl' 'perl-net-snmp' 'perl-net-ip' 'perl-uniq')
+source=("http://www.nothink.org/codes/snmpscan/snmpscan-0.1.pl")
+md5sums=('6a7c93cb63aa25333327879d02bb0c7c')
+
+package() {
+  cd "$srcdir"
+
+  install -Dm755 snmpscan-$pkgver.pl "$pkgdir/usr/bin/snmpscan"
+}

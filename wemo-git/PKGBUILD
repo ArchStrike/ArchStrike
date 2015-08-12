@@ -1,0 +1,47 @@
+#Maintainer: ArchAssault <team projectname org>
+pkgname=wemo-git
+pkgver=r5.d6c1f50
+pkgrel=1
+groups=('projectname' 'projectname-*fuzzer')
+pkgdesc="A POC for UPnP WeMo hacking"
+arch=('any')
+url='https://github.com/issackelly/wemo'
+license=('custom')
+depends=('python2')
+makedepends=('git')
+provides=('wemo')
+source=("git+https://github.com/issackelly/wemo.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/wemo"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/wemo" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$srcdir/wemo"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/wemo"
+  install -dm755 "$pkgdir/usr/bin"
+
+  #License
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/wemo/LICENSE"
+
+  #Bin
+  install -Dm755 "miranda.py" "$pkgdir/usr/share/wemo/miranda.py"
+  install -Dm755 "wemo.py" "$pkgdir/usr/share/wemo/wemo.py"
+  
+cat > "$pkgdir/usr/bin/wemo" << EOF
+#!/bin/sh
+cd /usr/share/wemo
+python2 wemo.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/wemo"
+
+}

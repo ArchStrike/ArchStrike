@@ -1,0 +1,32 @@
+# Maintainer
+pkgname=tcpjunk
+pkgver=2.9.03
+pkgrel=3
+groups=('projectname' 'projectname-*fuzzer' 'archassault-exploit')
+pkgdesc="A general tcp protocols testing and hacking utility"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://code.google.com/p/${pkgname}'
+license=('GPL2')
+source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
+depends=('gtksourceview2')
+sha512sums=('25005242b55d1741686fd7368e2722760a137af54374b8d8e756d11af7d27a573450a38e619b4d4b68f153265abad972d2add9faa9eba4976da7212130164c35')
+
+prepare() {
+    cd ${pkgname}-${pkgver}
+    while read -r file; do
+        sed -i 's|\$(DATADIRNAME)/||g' "$file"
+    done < <(grep -ir '$(DATADIRNAME)/' | sed 's|:.*$||g')
+}
+
+build() {
+    cd ${pkgname}-${pkgver}
+    ./configure --prefix=/usr --datarootdir=/usr/share
+    make
+}
+
+package() {
+    cd ${pkgname}-${pkgver}
+    make DESTDIR="$pkgdir" install
+    mv "${pkgdir}/usr/man" "${pkgdir}/usr/share/man"
+    mv "${pkgdir}/usr/doc" "${pkgdir}/usr/share/doc"
+}

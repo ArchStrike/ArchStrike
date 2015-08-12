@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=bamfdetect
+pkgver=1.6.8
+pkgrel=1
+pkgdesc="Identifies and extracts information from bots and other malware"
+url="https://github.com/bwall/bamfdetect"
+arch=('any')
+license=('MIT')
+groups=('projectname' 'projectname-*malware')
+depends=('python2')
+makedepends=('python2-setuptools')
+conflicts=('bamf-git')
+replaces=('bamf-git')
+source=("https://github.com/bwall/bamfdetect/archive/v$pkgver.tar.gz")
+sha512sums=('5678b70c9ab7f7978092142ea004441e12a4274ab98bfea42a799b876e47ccd83a08e3626f934f304f0873d92ce9ee958f69ebb60ca2468b371810b16974f0a7')
+
+prepare() {
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}
+
+package() {
+  cd "$srcdir/bamfdetect-$pkgver"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  
+}
+
+

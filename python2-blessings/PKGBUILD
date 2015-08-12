@@ -1,0 +1,20 @@
+# Maintainer
+# Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
+_distname=blessings
+pkgname=python2-$_distname
+pkgver=1.6
+pkgrel=1
+pkgdesc="A thin, practical wrapper around terminal coloring, styling, and positioning"
+arch=(any)
+url="https://github.com/erikrose/blessings"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("http://pypi.python.org/packages/source/${_distname:0:1}/$_distname/$_distname-$pkgver.tar.gz")
+sha512sums=('5d0fc365416bf2b36b6de72f6b8c01bf0ab8df4a0148f492c80056a9ebd5d569e9c01966481e0d70a25add16da2bc3e73be933226369abca533ce019f97479f2')
+
+package() {
+  cd "$srcdir/$_distname-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=ruby1.9-mini_exiftool
+_gemname=mini_exiftool
+pkgver=2.3.0
+pkgrel=2
+pkgdesc="This library is wrapper for the Exiftool command-line application (http://www.sno.phy.queensu.ca/~phil/exiftool)."
+arch=('any')
+license=('')
+makedepends=('ruby1.9')
+url='http://gitorious.org/mini_exiftool'
+source=("http://rubygems.org/downloads/mini_exiftool-$pkgver.gem")
+sha512sums=('cbbf7121de520a897deabac862049cfa1c0278057bd982ecd169abea3a8b66c053804aff5b8c72b56a98fc03616616742556ce96c8d4471dc968b6ca3bc5988c')
+noextract=("mini_exiftool-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" mini_exiftool-$pkgver.gem
+  else
+    gem-1.9 install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" mini_exiftool-$pkgver.gem
+  fi
+}

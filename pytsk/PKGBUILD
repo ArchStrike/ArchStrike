@@ -1,0 +1,24 @@
+# Maintainer: ArchAssault <team projectname org>
+
+pkgname=pytsk
+pkgver=20140506
+pkgrel=2
+pkgdesc="A library for support of the Expert Witness Compression Format (EWF)"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/libyal/libewf/"
+license=('LGPL3')
+depends=('sleuthkit-projectname' 'python2')
+makedepends=('python2-setuptools')
+options=('!libtool')
+source=(https://4a014e8976bcea5c2cd7bfa3cac120c3dd10a2f1.googledrive.com/host/0B3fBvzttpiiScUxsUm54cG02RDA/$pkgname-$pkgver.tgz)
+sha256sums=('e4cecc8b138a88150376fa7cac12b4accf1b2e9e911703eb14bd4d5371560846')
+
+build() {
+  cd "${srcdir}"/$pkgname
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}"/$pkgname
+  python2 setup.py install --root=$pkgdir --optimize=1
+}

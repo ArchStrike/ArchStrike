@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Gnupg-largekeys
+Comment=Complete and free implementation of the OpenPGP standard
+Exec=gnupg-largekeys
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

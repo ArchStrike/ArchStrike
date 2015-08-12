@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Bluelog
+Comment=A Bluetooth scanner and sniffer written to do a single task, log devices that are in discoverable mode
+Exec=bluelog
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultBluetooth;ArchAssaultScanner;

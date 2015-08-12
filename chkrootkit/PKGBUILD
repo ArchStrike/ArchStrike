@@ -1,0 +1,33 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Prurigro
+
+pkgname=chkrootkit
+pkgver=0.50
+pkgrel=1
+groups=('projectname' 'projectname-*defense' 'archassault-forensic')
+pkgdesc="Checks for rootkits on a system"
+url="http://www.chkrootkit.org/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL2')
+depends=('bash')
+source=("ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz")
+sha512sums=('9f26fd34e85b58b13dedc5f38a889ae258bb2c0f1ff40e99c149e23f93890e956f94204b1bb2241584454e99168c53b583f52777083454237f3ba343424dba1c')
+
+
+build(){
+  cd "chkrootkit-${pkgver}"
+  make
+}
+
+package() {
+  cd "chkrootkit-${pkgver}"
+
+  install -Dm755 chkdirs "${pkgdir}/usr/bin/chkdirs"
+  install -Dm755 chklastlog "${pkgdir}/usr/bin/chklastlog"
+  install -Dm755 chkproc "${pkgdir}/usr/bin/chkproc"
+  install -Dm755 chkrootkit "${pkgdir}/usr/bin/chkrootkit"
+  install -Dm755 chkutmp "${pkgdir}/usr/bin/chkutmp"
+  install -Dm755 chkwtmp "${pkgdir}/usr/bin/chkwtmp"
+  install -Dm755 ifpromisc "${pkgdir}/usr/bin/ifpromisc"
+  install -Dm755 strings-static "${pkgdir}/usr/bin/strings-static"
+}

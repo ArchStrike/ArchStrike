@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=python2-xdot
+pkgver=0.6
+pkgrel=1
+pkgdesc="Interactive viewer for Graphviz dot files"
+arch=('any')
+url="https://github.com/jrfonseca/xdot.py"
+license=('LGPL')
+depends=('graphviz' 'pygtk')
+makedepends=('python2-distribute')
+conflicts=('xdot')
+provides=('xdot')
+source=("https://pypi.python.org/packages/source/x/xdot/xdot-$pkgver.tar.gz")
+sha512sums=('7490ba913852443ca69c1ad9abbf2708e8f6d79e1beddfb6ff96afc0d3480a92e1c533ab7dee87d04072dbd397bd9cbbace559ab199fd4b273a8caeb696a2196')
+
+package() {
+  cd "$srcdir/xdot-$pkgver"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+   -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+   -e "s|#![ ]*/bin/python$|#!/usr/bin/python2|" \
+   $(find $pkgdir -name '*.py')
+}

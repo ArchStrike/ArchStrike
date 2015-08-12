@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Wifi-monitor
+Comment=Prints the IPs on your local network that're sending the most packets
+Exec=wifi-monitor
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultSniffer;

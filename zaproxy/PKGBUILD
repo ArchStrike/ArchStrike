@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=zaproxy
+pkgver=2.4.0
+pkgrel=1
+groups=('projectname' 'projectname-*webapp' 'archassault-fuzzer')
+pkgdesc="An integrated penetration testing tool for finding vulnerabilities in web applications"
+arch=('any')
+url='http://code.google.com/p/zaproxy/'
+license=('Apache')
+depends=('bash' 'java-environment')
+source=("http://downloads.sourceforge.net/sourceforge/zaproxy/${pkgver}/ZAP_${pkgver}_Linux.tar.gz")
+sha512sums=('7b61ac7ebaf6bd98bfe647b4583da5e1d488b1eea093dd4174c45a0ad51268ce7d6f5ea10d3e3ac27aaa299bf94980e78cc6ccb538d186b96612764e1161fbb1')
+
+package() {
+  cd "$srcdir/ZAP_$pkgver"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/zaproxy"
+  cp --no-preserve=ownership -R * "$pkgdir/usr/share/zaproxy"
+cat >"$pkgdir/usr/bin/zaproxy"<<EOF
+#!/bin/sh
+cd /usr/share/zaproxy
+./zap.sh "\$@"
+EOF
+
+chmod +x $pkgdir/usr/bin/zaproxy
+}

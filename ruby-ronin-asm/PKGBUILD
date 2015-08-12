@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=ruby-ronin-asm
+_gemname=ronin-asm
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="A Ruby DSL for crafting Assembly programs and Shellcode."
+arch=('any')
+license=('GPL3')
+depends=('ruby' 'ruby-data_paths' 'yasm' 'ruby-yasm')
+url='http://ronin-ruby.github.io/'
+source=("http://rubygems.org/downloads/ronin-asm-$pkgver.gem")
+md5sums=('56258f501f55728e5384cedeffa7ff2e')
+noextract=("ronin-asm-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" ronin-asm-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" ronin-asm-$pkgver.gem
+  fi
+}

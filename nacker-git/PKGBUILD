@@ -1,0 +1,50 @@
+# Maintainer
+pkgname=nacker-git
+pkgver=r23.b67bb39
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="A tool to circumvent 802.1x Network Access Control (NAC) on a wired LAN."
+arch=('any')
+url='https://github.com/carmaa/nacker'
+license=('GPL2')
+depends=('python2' 'python2-netifaces' 'python2-netaddr' 'scapy')
+makedepends=('git')
+provides=('nacker')
+source=("git+https://github.com/carmaa/nacker.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/nacker"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+prepare(){
+  grep -iRl 'python' "$srcdir/nacker" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$srcdir/nacker"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/nacker"
+  install -dm755 "$pkgdir/usr/bin"
+
+  # Licenes and docs
+  install -dm755 "$pkgdir/usr/share/nacker/caravan"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/nacker/"
+  install -Dm644 "README.md" "$pkgdir/usr/share/nacker/"
+  cp -a --no-preserve=ownership caravan/* "$pkgdir/usr/share/nacker/caravan/"
+
+  #Bin
+  install -m755 "nacker" "$pkgdir/usr/share/nacker/"
+ 
+cat > "$pkgdir/usr/bin/nacker" << EOF
+#!/bin/sh
+cd /usr/share/nacker
+python2 nacker "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/nacker"
+
+}

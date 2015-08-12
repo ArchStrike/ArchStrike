@@ -1,0 +1,36 @@
+# Maintainer
+pkgname='air'
+pkgver='2.0.0'
+pkgrel=5
+pkgdesc='A GUI front-end to dd/dc3dd designed for easily creating forensic images.'
+url='http://air-imager.sourceforge.net/'
+groups=('projectname' 'projectname-*forensic')
+license=('GPL')
+arch=('any')
+depends=('perl-tk' 'sharutils')
+install='air.install'
+options=('!emptydirs')
+source=("http://downloads.sourceforge.net/air-imager/air-$pkgver.tar.gz" "air.install" "air.desktop")
+sha512sums=('3b22b0b2f07fd5bf89b576bb1d96d9bc372534f2063e99c7a9c4931fd927b0cc5c3fe832f0c0d51ceb95fe242fd0d3e4fe6bf59339dd2971b6afcd00106ea92c'
+            '1bda2442efdd5bbfe2ac83618b3ef2a551809a0481afbb93c6d4e796bd42b3a6f70ddb169cdeb4cdea4bd114343a293bdf7466b106fb302aa131fc33ee969299'
+            '91ade8c4cef8385d808b55272dfba494acb8e08a08fda8eeea39e09cdc4776b95add23c987e24e85121a416f0875c649388e04fa028441d908f55168b0e92968')
+
+package() {
+  cd "$srcdir/air-$pkgver"
+  install -Dm644 "${srcdir}/air.desktop" "${pkgdir}/usr/share/applications/air.desktop"
+  install -d -m755 "$pkgdir/var/log"
+  export PERLTK_VER=$(pacman -Q perl-tk | awk -F' ' '{ print $2 }' |
+  sed -e 's/-.*//' -e 's/_//')
+
+  INTERACTIVE="no" INSTALL_DIR="$pkgdir/usr" TEMP_DIR="$srcdir/" \
+    FINAL_INSTALL_DIR=/usr ./install-air-$pkgver
+
+  chown -R root:root $pkgdir/*
+  mv "$pkgdir/usr/share/air/logs" "$pkgdir/var/log/air"
+  ln -s "/var/log/air" "$pkgdir/usr/share/air/logs"
+  chmod ug+rwx "$pkgdir/var/log/air"
+  if [[ -p "$pkgdir/usr/share/air/air-fifo" ]]; then
+    chmod ug+rw "$pkgdir/usr/share/air/air-fifo"
+  fi
+  chmod a+xr "$pkgdir/usr/bin/air"
+}

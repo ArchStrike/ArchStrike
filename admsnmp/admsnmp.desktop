@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Admsnmp
+Comment=ADM SNMP audit scanner.
+Exec=admsnmp
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

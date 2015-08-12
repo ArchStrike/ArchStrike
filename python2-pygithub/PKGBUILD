@@ -1,0 +1,17 @@
+# Maintainer
+pkgname=python2-pygithub
+pkgver=1.25.2
+pkgrel=1
+pkgdesc="Provides access to the full Github API v3"
+arch=('any')
+url='https://pypi.python.org/pypi/PyGithub'
+license=('LGPL')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/P/PyGithub/PyGithub-$pkgver.tar.gz")
+sha512sums=('6d1f7e3b1e446c4f9ba8047d7c35b24dab5dab08ea46e6054df45b4bc12e55cfcffa3f68c763cdaa148f2bce932b3e0209221345c6dc4d18df86596d1658848a')
+
+package() {
+  cd "$srcdir/PyGithub-$pkgver"
+  python2 setup.py install "--root=$pkgdir" --optimize=1
+}

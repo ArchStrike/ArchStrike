@@ -1,0 +1,40 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=cecster-git
+_pkgname=CECster
+pkgver=r5.15544cb
+pkgrel=1
+groups=('projectname' 'projectname-*fuzzer')
+pkgdesc="A GUI-based tool to perform security testing against the HDMI CEC (Consumer Electronics Control) and HEC (HDMI Ethernet Channel) protocols"
+arch=('any')
+url='https://github.com/nccgroup/CECster'
+license=('GPL3')
+depends=('python2' 'python2-pyserial' 'wxpython2.8')
+makedepends=('git' 'dos2unix')
+provides=('cecster')
+source=("cecster::git+https://github.com/nccgroup/$_pkgname.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/cecster"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  cd "$srcdir/cecster"
+  grep -iRl 'python' "$srcdir/cecster" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  dos2unix CECSTeR.py
+}
+
+package() {
+  cd "$srcdir/cecster"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/CECster"
+  install -dm755 "$pkgdir/usr/share/CECster/images"
+  install -dm755 "$pkgdir/usr/bin"
+
+  install -Dm644 "HDMI_Ethernet_Channel_whitepaper.pdf" "$pkgdir/usr/share/CECster/HDMI_Ethernet_Channel_whitepaper.pdf"
+  cp -a --no-preserve=ownership images/* "$pkgdir/usr/share/CECster/images"
+  install -Dm755 CECSTeR.py "$pkgdir/usr/bin/cecster"
+
+}

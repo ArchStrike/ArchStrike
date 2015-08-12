@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Bios_memimage
+Comment=A tool to dump RAM contents to disk (aka cold boot attack).
+Exec=bios_memimage
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultCracker;ArchAssaultForensic;

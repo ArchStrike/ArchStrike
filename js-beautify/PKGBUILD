@@ -1,0 +1,39 @@
+# Maintainer
+pkgname=js-beautify
+pkgver=1.5.5
+pkgrel=1
+groups=('projectname' 'projectname-*reversing')
+pkgdesc="Beautify, unpack or deobfuscate JavaScript and HTML, make JSON/JSONP readable"
+arch=('any')
+url="https://github.com/beautify-web/js-beautify"
+license=('MIT')
+depends=('rhino' 'coffee-script')
+source=("$url/archive/v$pkgver.tar.gz")
+sha512sums=('9d34fcee38617ca8f676ae1b60cbb5d4a9c93fc8025fd19c418d81e747293af76b4c1ac8974c37ae367cbaddc8f2796af61c908a0cf660f4782588531b0a1a72')
+
+prepare() {
+  # Install node dependencies
+  cd $pkgname-$pkgver
+  npm install 2>/dev/null
+}
+
+package() {
+  # Install the js-beautify directory
+  cd $pkgname-$pkgver
+  install -Dm644 package.json "$pkgdir/usr/share/$pkgname/package.json"
+  cp -r --no-preserve=ownership node_modules "$pkgdir/usr/share/$pkgname/"
+  cp -r --no-preserve=ownership js "$pkgdir/usr/share/$pkgname/"
+  rm -rf "$pkgdir/usr/share/$pkgname/js/test"
+
+  # Create a symlinks to the executables in /usr/bin
+  install -dm755 "$pkgdir/usr/bin/"
+  ln -s "/usr/share/$pkgname/js/bin/$pkgname.js" "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/share/$pkgname/js/bin/css-beautify.js" "$pkgdir/usr/bin/css-beautify"
+  ln -s "/usr/share/$pkgname/js/bin/html-beautify.js" "$pkgdir/usr/bin/html-beautify"
+
+  # Install the README.md to /usr/share/doc/$pkgname
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+
+  # Install the LICENSE to /usr/share/licenses/$pkgname
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

@@ -1,0 +1,28 @@
+# Maintainer
+pkgname=urlcrazy
+pkgver=0.5
+pkgrel=2
+groups=('projectname' 'projectname-*webapps' 'archassault-dns' 'archassault-reconnaissance')
+pkgdesc="Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage."
+arch=('any')
+url='http://www.morningstarsecurity.com/research/urlcrazy'
+license=('custom')
+depends=('ruby1.8')
+source=("http://www.morningstarsecurity.com/downloads/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('157ad3ce675fff67faba61be8332985a9e90bb3308cf8629f91aff5d5940af6bbd71c44f6719d08fc01216c7ea7b8b1f57891d689dcaaf523ad240865776e1f0')
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  mkdir -p "${pkgdir}/usr/bin"
+  mkdir -p "${pkgdir}/usr/share"
+  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  sed -i 's|#!/usr/bin/env ruby|#!/usr/bin/env ruby-1.8|g' ${pkgname}
+
+  cp -r ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/share/${pkgname}
+  ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+
+  grep 'License:' README > "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  chmod 644 "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}

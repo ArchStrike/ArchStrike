@@ -1,0 +1,31 @@
+# Maintainer
+pkgname=arpwner
+pkgver=20120106.r26.f300fdf
+pkgrel=1
+epoch=1
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="A tool for arp posioning and dns poisoning attacks, written in python."
+url="https://github.com/ntrippar/ARPwner"
+arch=('any')
+license=('GPL3')
+depends=('python2' 'python2-pypcap')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/ntrippar/ARPwner.git")
+md5sums=('SKIP')
+
+pkgver() {
+    cd $pkgname
+    printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$pkgname"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+cat > "$pkgdir/usr/bin/arpwner" << EOF
+#!/bin/sh
+python2 /usr/share/arpwner/./main.py "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/arpwner"
+}

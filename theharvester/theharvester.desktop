@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Theharvester
+Comment=Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers)
+Exec=theharvester
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultRecon;

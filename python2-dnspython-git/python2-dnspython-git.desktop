@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-dnspython-git
+Comment=A DNS toolkit for python
+Exec=python2-dnspython-git
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

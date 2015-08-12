@@ -1,0 +1,45 @@
+diff --git a/chkrootkit b/chkrootkit
+index 4478f1b..ed5d5f9 100755
+--- a/chkrootkit
++++ b/chkrootkit
+@@ -1,4 +1,4 @@
+-#! /bin/sh
++#!/usr/bin/env bash
+ # -*- Shell-script -*-
+ 
+ # $Id: chkrootkit, v 0.49 2009/07/30
+@@ -525,11 +525,6 @@ ${ROOTDIR}usr/include/syslogs.h"
+       ## HKRK rootkit
+       ${egrep} "\.hk" ${ROOTDIR}etc/rc.d/init.d/network 2>/dev/null
+ 
+-      ## Suckit rootkit
+-      expertmode_output "${strings} ${ROOTDIR}sbin/init | ${egrep} HOME"
+-      expertmode_output "cat ${ROOTDIR}proc/1/maps | ${egrep} init."
+-      expertmode_output "cat ${ROOTDIR}dev/.golf"
+-
+       ## Volc rootkit
+       expertmode_output "${ls} ${ROOTDIR}usr/bin/volc"
+       expertmode_output "${find} ${ROOTDIR}usr/lib/volc"
+@@ -977,22 +972,6 @@ ${find} ${ROOTDIR}usr/sbin -name in.slogind`
+       fi
+    fi
+ 
+-   ### Suckit
+-   if [ -f ${ROOTDIR}sbin/init ]; then
+-      if [ "${QUIET}" != "t" ];then printn "Searching for Suckit rootkit... "; fi
+-      if [ ${SYSTEM} != "HP-UX" ] && ( ${strings} ${ROOTDIR}sbin/init | ${egrep} HOME  || \
+-	      cat ${ROOTDIR}/proc/1/maps | ${egrep} "init." ) >/dev/null 2>&1
+-        then
+-        echo "Warning: ${ROOTDIR}sbin/init INFECTED"
+-      else
+-         if [ -d ${ROOTDIR}/dev/.golf ]; then
+-            echo "Warning: Suspect directory ${ROOTDIR}dev/.golf"
+-	 else
+-            if [ "${QUIET}" != "t" ]; then echo "nothing found"; fi
+-	 fi
+-      fi
+-   fi
+-
+    ### Volc
+    if [ "${QUIET}" != "t" ];then printn "Searching for Volc rootkit... "; fi
+    if [ -f ${ROOTDIR}usr/bin/volc -o -f ${ROOTDIR}usr/lib/volc ] ; then

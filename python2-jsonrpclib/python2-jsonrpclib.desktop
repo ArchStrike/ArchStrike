@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-jsonrpclib
+Comment=An implementation of the JSON-RPC v2.0 specification (backwards-compatible) as a client library
+Exec=python2-jsonrpclib
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

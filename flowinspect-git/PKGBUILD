@@ -1,0 +1,46 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=flowinspect-git
+pkgver=r96.1f62b3b
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="A network traffic inspection tool"
+arch=('any')
+url='https://github.com/7h3rAm/flowinspect'
+license=('custom')
+depends=('python2' 'python2-pylibemu' 'python2-re2' 'python2-pynids' 'python2-yara' 'python2-fuzzywuzzy-git')
+makedepends=('git')
+source=("git+https://github.com/7h3rAm/flowinspect.git" "LICENSE")
+sha512sums=('SKIP'
+            '5ba00ca8f3dfa88fd2c5b2af7e5911bb3e962971f2089c6dd3ac0f304fae45b49c6b5e2a8ab2a7ca3ee7308ec99a581c8a20ee6cb4352408cdc29057d6118111')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/flowinspect" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+pkgver() {
+  cd "$srcdir/flowinspect"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+
+package() {
+  cd "$srcdir/flowinspect"
+  install -dm755 "$pkgdir/usr/share/flowinspect"
+  install -dm755 "$pkgdir/usr/share/flowinspect/core"
+  install -dm755 "$pkgdir/usr/bin"
+  
+  install -Dm644 core/*.py "$pkgdir/usr/share/flowinspect/core/"
+  install -Dm755 flowinspect.py "$pkgdir/usr/share/flowinspect/flowinspect.py"
+  install -Dm644 issues "$pkgdir/usr/share/flowinspect/issues"
+  install -Dm644 todo "$pkgdir/usr/share/flowinspect/todo"
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+cat > "$pkgdir/usr/bin/flowinspect" <<EOF
+#!/bin/sh
+cd /usr/share/flowinspect
+python2 flowinspect.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/flowinspect"
+}

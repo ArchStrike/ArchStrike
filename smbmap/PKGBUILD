@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=smbmap
+pkgver=1.0.5
+pkgrel=1
+groups=('projectname' 'projectname-*enmumeration')
+pkgdesc="A handy SMB enumeration tool"
+url='https://github.com/ShawnDEvans/smbmap'
+license=("GPL3")
+depends=('python2' 'impacket')
+arch=('any')
+source=("https://github.com/ShawnDEvans/smbmap/archive/$pkgver.tar.gz")
+sha512sums=('59cab68339b0c09e1f559f669c74ad72cc1d5dc67f2ff4044b43ea3e86229ccdc2dbe893f692abda0392c60a8aebd5f96d8b537e570e4554c915fe02a9d8ba77')
+
+prepare(){
+  cd $srcdir/$pkgname-$pkgver
+  sed -i 's|#pwi! /usr/bin/env python2|#!/usr/bin/env python2|' smbmap.py
+}
+
+package() {
+  cd $srcdir/$pkgname-$pkgver
+  install -Dm755 smbmap.py "$pkgdir/usr/bin/smbmap"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/smbmap/README.md"
+}

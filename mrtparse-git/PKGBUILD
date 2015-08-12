@@ -1,0 +1,32 @@
+# Maintainer: ArchAssault <team archassautl org>
+pkgname=mrtparse-git
+pkgver=r309.a508cc3
+pkgrel=1
+groups=('projectname')
+pkgdesc="a module to read and analyze the MRT format data."
+arch=('any')
+url='https://github.com/YoshiyukiYamauchi/mrtparse'
+license=('APACHE')
+provides=('mrtparse')
+conflicts=('mrtparse')
+replaces=('mrtparse')
+depends=('python2')
+makedepends=('git')
+source=("mrtparse::git+https://github.com/YoshiyukiYamauchi/mrtparse.git")
+sha512sums=('SKIP')
+
+build() {
+  cd "$srcdir/mrtparse"
+  sed -i 's|env python$|env python2|' *.py
+	python2 setup.py build
+}
+
+pkgver() {
+  cd "$srcdir/mrtparse"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/mrtparse"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+}

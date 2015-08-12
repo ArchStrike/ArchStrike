@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Cirt-fuzzer
+Comment=A simple TCP/UDP protocol fuzzer.
+Exec=cirt-fuzzer
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultFuzzer;

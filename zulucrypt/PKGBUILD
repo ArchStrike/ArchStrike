@@ -1,0 +1,40 @@
+# Maintainer
+# Contributor: Salan54 <salan at fremenil dot com>
+
+pkgname=zulucrypt
+pkgver=4.7.6
+pkgrel=1
+pkgdesc="a cli and gui frontend to cryptsetup."
+arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+url="https://github.com/mhogomchungu/zuluCrypt/"
+license=('GPL')
+depends=('cryptsetup' 'qt4' 'libpwquality' 'libsecret' 'tcplay' 'gtk-update-icon-cache')
+makedepends=('cmake' 'git' 'automoc4')
+optdepends=('kdeutils-kwallet: retrieve volume keys from kde kwallet')
+options=('!strip' '!buildflags' '!distcc')
+source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/$pkgver/zuluCrypt-$pkgver.tar.xz")
+sha512sums=('d8c6d3117fbf28641b05a387c4b5a90be5ad4d6dca0f7df3bda6a12c1b1aaf43d4d44e1d19e5932fe686411c73143d6ad00ad8f6a9ca3e45010aa371cd40df1e')
+install=${pkgname}.install
+
+build() {
+    cd $srcdir/zuluCrypt-"${pkgver}"
+    mkdir -p "${srcdir}"/zuluCrypt-"${pkgver}"/build && cd build
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/ \
+    -DNOKDE=true -DUDEVSUPPORT=true \
+    -DCMAKE_BUILD_TYPE=release \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DCMAKE_LIB_SUFFIX=/usr/lib . ..
+    make
+}
+ 
+package() {
+  cd "zuluCrypt-${pkgver}/build"
+  make DESTDIR="${pkgdir}" install
+  chown root:root "${pkgdir}/usr/bin/zuluCrypt-cli"
+  chown root:root "${pkgdir}/usr/bin/zuluMount-cli"
+  chmod 0755 "${pkgdir}/usr/bin/zuluMount-cli"
+  chmod 0755 "${pkgdir}/usr/bin/zuluCrypt-cli"
+  if [[ -d "${pkgdir}"/usr/lib64 ]] ; then
+    mv "${pkgdir}"/usr/lib64 "${pkgdir}"/usr/lib
+  fi
+}

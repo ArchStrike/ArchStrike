@@ -1,0 +1,21 @@
+From: Ben Hutchings <ben@decadent.org.uk>
+Subject: mgag200: Disable autoload
+Date: Mon, 24 Dec 2012 00:10:05 +0000
+Forwarded: not-needed
+
+This kernel driver is incompatible with older versions of
+xserver-xorg-video-mga, so do not autoload it yet.  It will have to be
+loaded either by local configuration or as part of a package of a
+compatible X driver.
+
+--- a/drivers/gpu/drm/mgag200/mgag200_drv.c
++++ b/drivers/gpu/drm/mgag200/mgag200_drv.c
+@@ -38,7 +38,7 @@ static DEFINE_PCI_DEVICE_TABLE(pciidlist
+ 	{0,}
+ };
+ 
+-MODULE_DEVICE_TABLE(pci, pciidlist);
++/*MODULE_DEVICE_TABLE(pci, pciidlist);*/
+ 
+ static void mgag200_kick_out_firmware_fb(struct pci_dev *pdev)
+ {

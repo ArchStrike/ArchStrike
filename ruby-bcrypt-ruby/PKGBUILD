@@ -1,0 +1,22 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=ruby-bcrypt-ruby
+pkgver=3.1.2
+pkgrel=2
+pkgdesc="OpenBSD's bcrypt() password hashing algorithm."
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('MIT')
+makedepends=('ruby')
+url='http://bcrypt-ruby.rubyforge.org'
+source=("http://rubygems.org/downloads/bcrypt-ruby-$pkgver.gem")
+sha512sums=('a7adb1535892042213f515153f0381cdec39c68ba767e363b9073890451e3e86073f49557f1a63d29a681792fd43f25c12d7e87047190dde278bf0313af948fd')
+noextract=("bcrypt-ruby-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" bcrypt-ruby-$pkgver.gem
+  else
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" bcrypt-ruby-$pkgver.gem
+  fi
+}

@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=recoverjpeg
+pkgver=2.3
+pkgrel=1
+groups=('projectname' 'projectname-*forensic')
+pkgdesc="Recover jpegs from damaged devices"
+url='http://www.rfc1149.net/devel/recoverjpeg'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL')
+depends=('bash' 'python')
+optdepends=('libexif: needed for sort-pictures'
+'imagemagick: needed for sort-pictures')
+source=(http://www.rfc1149.net/download/recoverjpeg/recoverjpeg-$pkgver.tar.gz)
+sha512sums=('063c2bab1a5d1fa31f15c1a3b8d631564c5deecb6505d2154915997a6d111b8a056e3a76ff50dc0548d4d2ce1ccee9b10bd51d856e4d12a0807c59044c9f8fa0')
+
+build() {
+  cd $srcdir/recoverjpeg-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
+}
+
+package() {
+  cd $srcdir/recoverjpeg-$pkgver
+  make DESTDIR=$pkgdir install
+}

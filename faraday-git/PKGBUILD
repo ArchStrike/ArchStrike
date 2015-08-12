@@ -1,0 +1,44 @@
+# Maintainer
+pkgname=faraday-git
+pkgver=20150507.r1187
+pkgrel=1
+pkgdesc="A new concept (IPE) Integrated Penetration-Test Environment a multiuser Penetration test IDE. Designed for distribution, indexation and analyze of the generated data during the process of a security audit."
+groups=('projectname' 'projectname-*miscellaneous')
+url="http://www.faradaysec.com/"
+if [[ $CARCH = 'x86_64' ]]; then
+       depends=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'pyqt3' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2'
+                'python2-restkit' 'python2-mockito' 'lib32-glibc' 'ruby1.9' 'python2-ipy')
+else
+      depends=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'pyqt3' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2'
+                'python2-restkit' 'python2-mockito' 'ruby1.9' 'python2-ipy')
+fi
+makedepends=('git')
+options=('!strip')
+license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("${pkgname}::git+https://github.com/infobyte/faraday.git")
+replaces=('faraday')
+conflicts=('faraday')
+provides=('faraday')
+sha512sums=('SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+    printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  
+cat > "$pkgdir/usr/bin/faraday" << EOF
+#!/bin/sh
+cd /usr/share/faraday-git/
+./faraday.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/faraday"
+}
+

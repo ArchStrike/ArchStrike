@@ -1,0 +1,30 @@
+# Maintainer
+pkgname=driftnet
+pkgver=1.1.5
+pkgrel=2
+groups=('projectname' 'projectname-*scanners' 'archassault-sniffers')
+pkgdesc="Listens to network traffic and picks out images from TCP streams it observes"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/deiv/driftnet'
+license=('GPL')
+depends=('libpcap' 'gtk2' 'giflib')
+makedepends=('imake')
+source=("https://github.com/deiv/driftnet/archive/upstream/$pkgver.tar.gz" "gif.patch")
+sha512sums=('82b21d8f4192c06f8076e90fc63833fcc874de124e8d58cccb0d729ed48d40e5c916966ff74d213ccf22fbf6f5798827d18fae172d6353208eb2f5383d2a6385'
+            '8162706c80b63296888b8bfebf2357793191a568d151a535f799b0e97ce577b4d7d90da11e6a0446928fb95a9710d55704f39898c84641bfbddadb839c49dfe4')
+
+prepare(){
+  cd "$srcdir/driftnet-upstream-$pkgver/src/display"
+  patch -i $srcdir/gif.patch
+}
+
+build() {
+  cd "$srcdir/driftnet-upstream-$pkgver"
+  ./configure --prefix=/usr
+  make 
+}
+
+package() {
+  cd "$srcdir/driftnet-upstream-$pkgver"
+  make DESTDIR=$pkgdir install
+}

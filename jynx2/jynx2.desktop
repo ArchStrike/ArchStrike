@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Jynx2
+Comment=An expansion of the original Jynx LD_PRELOAD rootkit
+Exec=jynx2
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultBackdoor;

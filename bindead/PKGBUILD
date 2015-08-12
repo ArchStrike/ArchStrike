@@ -1,0 +1,48 @@
+# Maintainer
+
+_pkgname=bindead
+pkgname=$_pkgname-git
+pkgver=20150210.r4453.6a9b5e3
+pkgrel=1
+pkgdesc='A static analysis tool for binaries'
+url='https://bitbucket.org/mihaila/bindead'
+license=('GPL3')
+arch=('any')
+groups=('projectname' 'projectname-*analysis')
+depends=('bash' 'java-runtime')
+makedepends=('java-environment' 'maven' 'git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+replaces=("$_pkgname")
+source=("git+https://bitbucket.org/mihaila/$_pkgname")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd $_pkgname
+  unset _JAVA_OPTIONS
+  export MAVEN_OPTS="-Dmaven.repo.local=$srcdir -Xms256m -Xmx512m"
+  bash build.sh
+}
+
+package() {
+  cd $_pkgname
+  # Documentation
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm644 Changelog.md "$pkgdir/usr/share/doc/$_pkgname/Changelog.md"
+  install -Dm644 AUTHORS.txt "$pkgdir/usr/share/doc/$_pkgname/AUTHORS.txt"
+
+  # Jar file and executable script
+  install -Dm644 $_pkgname.jar "$pkgdir/usr/share/$_pkgname/$_pkgname.jar"
+  install -dm755 "$pkgdir/usr/bin"
+  printf '%s\n\n%s %s' \
+    '#!/usr/bin/env bash' \
+    "java -jar /usr/share/$_pkgname/$_pkgname.jar" '$@' \
+      > "$pkgdir/usr/bin/$_pkgname"
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+}
+

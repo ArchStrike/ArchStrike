@@ -1,0 +1,24 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Prurigro
+
+_pkgname=checkIBAN
+pkgname=checkiban
+pkgver=0.2
+pkgrel=2
+pkgdesc="Checks an the validity of an International Bank Account Number (IBAN)"
+url="http://kernel.embedromix.ro/us/"
+license=('LGPL')
+groups=('projectname')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("http://kernel.embedromix.ro/us/IBAN/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('dd336b44da3d6b641a66a0b42844122ea0a9fe8d7e33803f628584cdf91445413572a7962406ac5bc418b45d63ff1a8e0a77ef90f829e665c4c8f76ecd856119')
+
+build() {
+    cd "${_pkgname}-${pkgver}"
+    make
+}
+
+package() {
+    cd "${_pkgname}-${pkgver}"
+    install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
+}

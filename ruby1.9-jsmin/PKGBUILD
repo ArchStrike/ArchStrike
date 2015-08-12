@@ -1,0 +1,20 @@
+# Maintainer
+_gemname=jsmin
+pkgname=ruby1.9-$_gemname
+pkgver=1.0.1
+pkgrel=1
+pkgdesc='Ruby implementation of Douglas Crockford'\''s JSMin JavaScript minifier.'
+arch=(any)
+url='http://github.com/rgrove/jsmin/'
+license=()
+depends=(ruby1.9)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('2c6a48920a9902ebb8b46c08550a26df9c682eb5')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+}

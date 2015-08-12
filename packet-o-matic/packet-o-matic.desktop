@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Packet-o-matic
+Comment=A real time packet processor. Reads the packet from an input module, match the packet using rules and connection tracking information and then send it to a target module.
+Exec=packet-o-matic
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultNetworking;ArchAssaultTunnel;

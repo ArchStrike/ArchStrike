@@ -1,0 +1,5 @@
+# debug level
+#debug = 3
+
+# 1 = become daemon
+#daemon = 1

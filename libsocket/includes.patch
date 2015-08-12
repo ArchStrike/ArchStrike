@@ -1,0 +1,13 @@
+diff -rupN libsocket-1.8.old/src/socket.hh libsocket-1.8/src/socket.hh
+--- libsocket-1.8.old/src/socket.hh	2013-11-02 14:19:27.027151213 -0400
++++ libsocket-1.8/src/socket.hh	2013-11-02 14:22:09.662371081 -0400
+@@ -25,7 +25,8 @@
+ 
+ #include <iostream>
+ #include <list>
+-#include <string>
++#include <cstring>
++#include <cstddef>
+ 
+ #if defined(_MSC_VER) || defined(__MINGW32__) || defined(__CYGWIN__)
+ # define LIBSOCKET_WIN

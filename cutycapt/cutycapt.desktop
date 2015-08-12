@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Cutycapt
+Comment=A Qt and WebKit based command-line utility that captures WebKit's rendering of a web page.
+Exec=cutycapt
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultRecon;

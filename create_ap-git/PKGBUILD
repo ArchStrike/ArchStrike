@@ -1,0 +1,33 @@
+# Maintainer
+# Contributor:  Shaw <puxx@mail.ustc.edu.cn>
+pkgname=create_ap-git
+pkgver=r160.0f5a503
+pkgrel=1
+pkgdesc="A shell script to create a NATed/Bridged Software Access Point(aka WiFi)"
+arch=('any')
+url="https://github.com/oblique/create_ap"
+license=('BSD')
+depends=('hostapd' 'iproute2' 'iw' 'dnsmasq' 'iptables' 'bridge-utils' 'dhclient')
+makedepends=('git')
+optdepends=('haveged')
+groups=('projectname' 'projectname-*wifi')
+provides=('create_ap')
+conflicts=('create_ap')
+replaces=('create_ap')
+install=create_ap.install
+source=(${pkgname}::git+https://github.com/oblique/create_ap.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  install -Dm755 "create_ap" "${pkgdir}/usr/bin/create_ap"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/create_ap-git/LICENSE"
+  install -Dm644 "create_ap.service" "${pkgdir}/usr/share/create_ap-git/create_ap.service.example"
+  install -m644 README.md "$pkgdir"/usr/share/create_ap-git/README.md
+}
+

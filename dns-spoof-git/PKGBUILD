@@ -1,0 +1,30 @@
+# Maintainer
+pkgname=dns-spoof-git
+pkgver=r12.3918a10
+pkgrel=1
+groups=('projectname' 'projectname-*dns')
+pkgdesc="DNS Spoof"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/maurotfilho/dns-spoof'
+license=('GPL')
+depends=('libpcap')
+makedepends=('git')
+provides=('dnsspoof')
+source=("git+https://github.com/maurotfilho/dns-spoof.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/dns-spoof"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build(){
+  cd "$srcdir/dns-spoof"
+  make
+}
+
+package() {
+  cd "$srcdir/dns-spoof"
+
+  install -Dm755 dns-spoof $pkgdir/usr/bin/dns-spoof
+}

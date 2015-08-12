@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=orbited
+pkgver=0.7.10
+pkgrel=7
+pkgdesc="A browser(javascript)->tcp bridge; Comet is used to emulate TCP connections in the browser; Allows you to connect a web browser directly to an IRC or XMPP server, for instance."
+groups=('projectname')
+arch=('any')
+url='http://www.orbited.org'
+license=('MIT')
+depends=('python2' 'python2-simplejson' 'morbid' 'stomper' 'twisted' 'python2-demjson')
+makedepends=('python2-distribute')
+md5sums=('4f4e85d197466c141b1af466782445c1')
+source=(http://pypi.python.org/packages/source/o/orbited/orbited-$pkgver.tar.gz)
+
+prepare() {
+  cd $srcdir/orbited-$pkgver
+  sed -i 's/python2\.5/python2/' start.py
+}
+
+package() {
+  cd $srcdir/orbited-$pkgver
+  python2 setup.py install --root=$pkgdir --prefix=/usr --optimize=1
+}

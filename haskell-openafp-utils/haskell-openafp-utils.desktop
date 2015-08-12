@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Haskell-openafp-utils
+Comment=Assorted utilities to work with AFP data streams
+Exec=haskell-openafp-utils
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

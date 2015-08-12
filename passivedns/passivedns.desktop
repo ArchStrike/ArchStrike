@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Passivedns
+Comment=A network sniffer that logs all DNS server replies for use in a passive DNS setup.
+Exec=passivedns
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultSniffer;

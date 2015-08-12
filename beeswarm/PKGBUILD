@@ -1,0 +1,27 @@
+# Maintainer: ArchAssault <team projectname org>
+
+pkgname=beeswarm
+pkgver=0.7.14
+pkgrel=1
+groups=('projectname' 'projectname-*honeypots')
+pkgdesc="A honeypot project which provides easy configuration, deployment and managment of honeypots."
+url="http://www.beeswarm-ids.org/"
+depends=('python2' 'python2-pyzmq' 'python2-crypto' 'python2-ecdsa' 'python2-cssselect' 'python2-nose'
+         'python2-gevent' 'python2-requests' 'python2-telnetsrv' 'python2-paramiko' 'python2-ntplib'
+         'python2-pysendfile' 'python2-pydes' 'python2-flask' 'python2-flask-login' 'python2-sqlalchemy'
+         'python2-pyopenssl' 'python2-lxml' 'python2-flask-wtf' 'python2-mock' 'python2-enum34' 'python2-netifaces'
+         'fs')
+license=('GPL3')
+arch=('any')
+source=("$pkgname-$pkgver::https://github.com/honeynet/beeswarm/archive/Release_$pkgver.tar.gz")
+sha512sums=('5e222809a32bafa90b37c6ef925979ede2bb3f5edf488b0109f00f787501896907ce8ef1e3233e9ac33d18f93d2a68008f89b3d3a0c72764c18adfabb5ba7279')
+
+build() {
+  cd "$srcdir/$pkgname-Release_$pkgver"
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/$pkgname-Release_$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}

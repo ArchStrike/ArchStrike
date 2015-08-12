@@ -1,0 +1,31 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=jigsaw
+pkgver=1.3
+pkgrel=5
+groups=('projectname' 'projectname-*socialengineering' 'archassault-scanners')
+pkgdesc="A simple ruby script for enumerating information about a company's employees. It is useful for Social Engineering or Email Phishing. Source no long on GitHub available as tarball in ours."
+arch=('any')
+url="https://github.com/pentestgeek/jigsaw"
+license=('GPL3')
+depends=('ruby' 'ruby-record')
+source=('jigsawsource-3-14-2014.tar.xz' 'jigsaw.desktop')
+sha512sums=('0a467ba89cf54a5e78532e1322f716ad407a9400d3a1c9244fcd1a19d0003344c8e9647d666ade77ac6afe4955e426b1f91905630fb71dc96b1709cf5572f483'
+            '3737a5aa291190f8e07f2365d24e6888a9287ea480ae199855e0e27f036880db333e4360ab994632ebe20594e1fb9d4052c9aa868bef62f04964a0f5584717ac')
+
+package() {
+  cd "$srcdir/source"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/jigsaw"
+  install -dm755 "$pkgdir/usr/share/jigsaw/lib"
+  install -dm755 "$pkgdir/usr/share/jigsaw/doc"
+  install -dm755 "$pkgdir/usr/share/applications"
+  install -m644 "$srcdir/jigsaw.desktop" "$pkgdir/usr/share/applications"
+  cp -a --no-preserve=ownership lib jigsaw.rb "$pkgdir/usr/share/jigsaw"
+  install -m644 README.markdown "$pkgdir/usr/share/jigsaw/doc"
+  cat > "$pkgdir/usr/bin/jigsaw" <<EOF
+#!/bin/sh
+cd /usr/share/jigsaw
+ruby jigsaw.rb "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/jigsaw"
+}

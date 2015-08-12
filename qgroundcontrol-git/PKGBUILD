@@ -1,0 +1,54 @@
+# Maintainer
+pkgname=qgroundcontrol-git
+pkgver=r3643.812348f
+pkgrel=1
+pkgdesc="Micro air vehicle ground control station."
+arch=('any')
+url="http://qgroundcontrol.org/"
+license=('GPL3')
+depends=('qt4')
+optdepends=()
+makedepends=('git' 'flite-full' 'phonon-qt4' 'openscenegraph' 'python-xbee')
+sha256sums=('SKIP'
+            '229e857a366a2eb717d402644282f54a414af15883c4969824faad5389ce6717')
+source=("git+https://github.com/mavlink/qgroundcontrol.git"
+        "qgroundcontrol.patch")
+
+pkgver() {
+  cd "$srcdir/qgroundcontrol"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+    cd "$srcdir/qgroundcontrol"
+    git submodule init
+    git submodule update
+}
+
+build() {
+  cd "$srcdir/qgroundcontrol/libs/thirdParty/libxbee"
+  make PREFIX=/usr
+  cd "$srcdir/qgroundcontrol"
+  qmake-qt4 -o Makefile qgroundcontrol.pro
+  patch -p1 -i $srcdir/qgroundcontrol.patch
+  make PREFIX=/usr
+}
+
+package() {
+  cd "$srcdir/qgroundcontrol/libs/thirdParty/libxbee"
+  install -dm755 "$pkgdir/usr/share/qgroundcontrol"
+  install -dm755 "$pkgdir/usr/bin" 
+  make DESTDIR="$pkdir" install
+  cd "$srcdir/qgroundcontrol"
+  cp -a --no-preserve=ownership release/* "$pkgdir/usr/share/qgroundcontrol/"
+
+cat > "$pkgdir/usr/bin/qgroundcontrol" << EOF
+#!/bin/sh
+cd /usr/share/qgroundcontrol
+./qgroundcontrol "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/qgroundcontrol"
+}
+
+# vim:set ts=2 sw=2 et:

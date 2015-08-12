@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Dhcdrop
+Comment=Remove illegal dhcp servers with IP-pool underflow. Stable version
+Exec=dhcdrop
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;

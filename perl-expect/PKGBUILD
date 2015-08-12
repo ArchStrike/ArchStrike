@@ -1,0 +1,28 @@
+# Maintainer
+# Contributor drathir <drathir87@gmail.com>
+pkgname='perl-expect'
+_pkgname=Expect
+pkgver='1.32'
+pkgrel='1'
+pkgdesc="Automate interactions with command line programs that expose a text terminal interface."
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl-io-tty')
+url='http://search.cpan.org/dist/Expect'
+source=("https://cpan.metacpan.org/authors/id/S/SZ/SZABGAB/$_pkgname-$pkgver.tar.gz")
+sha512sums=('0281d1662a902b99b5131c017b50b0456c3461c176bf4485b4bb383cab009973605514256540c5ddc2e274b5dd92ece5555719f5527d3fb8c35e83f8dc038147')
+_distdir="${_pkgname}-${pkgver}"
+
+build() {
+  cd "${srcdir}/${_distdir}"
+    PERL_MM_USE_DEFAULT=1 /usr/bin/perl Makefile.PL INSTALLDIRS=vendor
+    make
+}
+
+package() {
+  cd "${srcdir}/${_distdir}"
+    make install DESTDIR="${pkgdir}"
+    find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
+}
+

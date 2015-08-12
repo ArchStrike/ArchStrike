@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Hexinject
+Comment=A very versatile packet injector and sniffer that provides a command-line framework for raw network access
+Exec=hexinject
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultSniffer;

@@ -1,0 +1,42 @@
+# Maintainer
+pkgname=ssldump
+pkgver=0.9b3
+pkgrel=1
+groups=('projectname' 'projectname-*sniffers')
+pkgdesc="an SSLv3/TLS network protocol analyzer"
+url='http://www.rtfm.com/ssldump/'
+license=('custom')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('libpcap>=1.0.0' 'openssl')
+source=(http://www.rtfm.com/ssldump/ssldump-$pkgver.tar.gz
+        openssl-0.9.8.patch)
+md5sums=('ac8c28fe87508d6bfb06344ec496b1dd'
+         '5757ee10663a6ded190537f3599453eb')
+#http://www.rtfm.com/ssldump/ssldump-0.9b3.tar.gz
+
+prepare() {
+  cd $srcdir/ssldump-$pkgver
+  patch -Np0 -i ../openssl-0.9.8.patch
+  sed -in 's/libpcap.a/libpcap.so/g' configure
+}
+
+build() {
+  cd $srcdir/ssldump-$pkgver
+
+  # Arch64 fixes.
+  ./configure --prefix=/usr \
+              --build=i686-pc-linux-gnu \
+              --host=i686-pc-linux-gnu \
+              "--sbindir=$pkgdir/usr/bin"
+
+  make
+}
+
+package() {
+  cd $srcdir/ssldump-$pkgver
+
+  make "prefix=$pkgdir/usr" install
+
+  # Install license.
+  install -D -m644 COPYRIGHT $pkgdir/usr/share/licenses/ssldump/LICENSE
+}

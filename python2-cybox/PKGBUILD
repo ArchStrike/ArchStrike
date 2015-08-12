@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=python2-cybox
+pkgver=2.1.0.11
+pkgrel=1
+pkgdesc="A Python library for parsing and generating CybOX 2.1.0 content."
+url="http://cybox.mitre.org"
+depends=('python2')
+makedepends=('python2-distribute')
+license=('custom')
+arch=('any')
+source=("https://pypi.python.org/packages/source/c/cybox/cybox-${pkgver}.zip")
+sha512sums=('147eec9aad90e1def1d53b0a0901252712135b85c0ed05a99484c13cb8bcd97f927511fb579f6c6ff0d2a81d7e86f27a345428f1c2adc0282885ba44d19f33b3')
+
+build() {
+  cd cybox-"${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd cybox-"${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm0644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}

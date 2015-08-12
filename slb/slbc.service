@@ -1,0 +1,10 @@
+[Unit]
+Description=Small load balancer slave
+
+[Service]
+Type=forking
+ExecStart=/usr/sbin/slbcd
+GuessMainPID=yes
+
+[Install]
+WantedBy=multi-user.target

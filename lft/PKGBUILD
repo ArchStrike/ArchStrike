@@ -1,0 +1,28 @@
+# Maintainer
+pkgname=lft
+pkgver=3.73
+pkgrel=1
+groups=('projectname' 'projectname-*reconnaissance')
+pkgdesc="A layer four traceroute implementing numerous other features"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('custom')
+url="http://pwhois.org/lft/"
+depends=('libpcap')
+source=("http://pwhois.org/dl/index.who?file=lft-$pkgver.tar.gz")
+sha512sums=('ae0fac196aa4cee7a4f9832c1d4ee9e6bb012513b95e73f7818bd0d66c9347c8ee776532defdcd7425cc4866c95b37a93f8117c53cdbe22d229bbb4453dc552b')
+
+build() {
+  cd "$srcdir/lft-$pkgver"
+  ./configure --prefix=/usr
+  make 
+}  
+
+package() {
+  cd "$srcdir/lft-$pkgver"
+  make "prefix=$pkgdir/usr" install
+  install -Dm644 "$srcdir/lft-$pkgver"/COPYING \
+    "$pkgdir"/usr/share/licenses/lft/LICENSE
+
+  # Removing setuid on bin
+  chmod 755 $pkgdir/usr/bin/lft
+}

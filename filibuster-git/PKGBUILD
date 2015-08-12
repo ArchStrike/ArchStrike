@@ -1,0 +1,45 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=filibuster-git
+pkgver=r161.37b7f9c
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="A Egress filter mapping application with additional functionality"
+arch=('any')
+url='https://github.com/subinacls/Filibuster'
+license=('GPL3')
+depends=('python2' 'python2-matplotlib' 'python2-numpy' 'python2-configparser' 'python2-dnspython' 'python2-pyliblzma' 'python2-crypto')
+makedepends=('git')
+provides=('filibuster')
+replaces=('filibuster')
+conflicts=('filibuster')
+source=("filibuster::git+https://github.com/subinacls/Filibuster.git")
+sha512sums=('SKIP')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/filibuster" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+pkgver() {
+  cd "$srcdir/filibuster"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/filibuster"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/filibuster"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/filibuster"
+  
+cat > "$pkgdir/usr/bin/filibuster" << EOF
+#!/bin/sh
+cd /usr/share/filibuster
+python2 filterbuster.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/filibuster"
+
+}

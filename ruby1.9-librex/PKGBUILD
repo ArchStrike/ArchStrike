@@ -1,0 +1,20 @@
+# Maintainer: ArchAssault <team projectname org>
+_gemname=librex
+pkgname=ruby1.9-$_gemname
+pkgver=0.0.68
+pkgrel=4
+pkgdesc='Ruby Exploitation Library'
+arch=(any)
+url='http://www.metasploit.com/'
+license=(BSD)
+depends=('ruby1.9' 'perl')
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha512sums=('cdcd1cd88051c9634cf6a4d9e11843baf87c26c2e1de84a4caeb68f240e81172508ca69d5d847ac8c182f908bf0579ca5fbac23ae2fa7e5466b35bc0253b9101')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+}

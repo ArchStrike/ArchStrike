@@ -1,0 +1,40 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Cthulu201 <cthulu201@projectname.org>
+
+pkgname=linset-git
+pkgver=20140616.r9
+pkgrel=1
+pkgdesc="A WPA/WPA2 hack"
+arch=(any)
+url="https://github.com/vk496/linset"
+groups=('projectname' 'projectname-*crackers' 'archassault-wifi')
+license=('GPL3')
+depends=('aircrack-ng' 'gawk' 'curl' 'dhcp' 'hostapd' 'wireless_tools' 'lighttpd' 'macchanger' 'mdk3' 'php-cgi' 'pyrit' 'python' 'unzip' 'xterm')
+makedepends=('git')
+provides=('linset')
+replaces=('linset')
+conflicts=('linset')
+source=("${pkgname}::git+https://github.com/vk496/linset.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+
+  install -dm755 "$pkgdir/usr/share/linset/"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/linset"
+
+  cat > "$pkgdir/usr/bin/linset" << EOF
+#!/bin/sh
+cd /usr/share/linset
+bash linset "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/linset"
+}

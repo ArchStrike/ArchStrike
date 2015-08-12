@@ -1,0 +1,31 @@
+# Maintainer
+pkgname=ufonet
+pkgver=0.3b
+pkgrel=1
+pkgdesc="A tool designed to launch DDoS attacks against a target, using 'Open Redirect' vectors on third party web applications, like botnet."
+arch=('any')
+url="http://ufonet.sourceforge.net/"
+license=('GPL3')
+groups=('projectname' 'projectname-*ddos')
+depends=('python2-pycurl')
+source=("http://downloads.sourceforge.net/project/ufonet/ufonet-$pkgver.zip")
+sha512sums=('85965e285cf58a80203d5a425ab548a7ecd912638ad9385fa892f07cf787a8092c391d17e161ad7071703ef72f8264683df623fd30a33f707d607c06f82cb533')
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver/$pkgname"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -Dm755 *.py "$pkgdir/usr/share/$pkgname/"
+  install -Dm755 ufonet "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 README "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 zombies.txt "$pkgdir/usr/share/$pkgname/"
+  sed -i 's|env python|env python2|' $pkgdir/usr/share/ufonet/ufonet $pkgdir/usr/share/ufonet/main.py $pkgdir/usr/share/ufonet/update.py $pkgdir/usr/share/ufonet/options.py
+
+cat >"$pkgdir/usr/bin/ufonet" <<EOF
+#!/bin/sh
+cd /usr/share/ufonet
+python2 ufonet "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/ufonet"
+}

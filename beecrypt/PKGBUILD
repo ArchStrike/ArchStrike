@@ -1,0 +1,27 @@
+# Maintainer
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+
+pkgname=beecrypt
+pkgver=4.2.1
+pkgrel=6
+pkgdesc="A strong and fast cryptography toolkit"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://beecrypt.sourceforge.net/"
+license=('LGPL')
+depends=('icu')
+makedepends=('automake' 'python2')
+options=('!libtool')
+source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
+sha512sums=('59995d53c024efe6344a21ac0d6d55fbe652488a4a22cc6719f9fc3851d56697fa8738937d48aa1e6f9ebe749de61ac3c79a5f0cea793872213c3bdf922e71bc')
+
+build() {
+  cd ${srcdir}/$pkgname-$pkgver
+  CXXFLAGS="$CXXFLAGS -fpermissive"
+  ./configure --prefix=/usr --sysconfdir=/etc --with-python=python2
+  make
+}
+
+package() {
+  cd ${srcdir}/$pkgname-$pkgver
+  make DESTDIR=${pkgdir} install
+}

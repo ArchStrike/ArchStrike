@@ -1,0 +1,41 @@
+# Maintainer
+
+_pkgname=i2pd
+pkgname=$_pkgname-git
+pkgver=20150319.r1685
+pkgrel=1
+pkgdesc='I2P router written in C++'
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url="https://github.com/PrivacySolutions/i2pd"
+license=('GPL2')
+groups=('projectname' 'projectname-*encryption')
+depends=('crypto++' 'boost-libs' 'systemd')
+makedepends=('git' 'boost')
+backup=("etc/default/$_pkgname.conf")
+install=$pkgname.install
+source=("git+$url"
+        "$_pkgname.service"
+        "$_pkgname.tmpfiles.conf"
+        "$_pkgname.conf")
+sha512sums=('SKIP'
+            '268f9405491c521b1385dd103d242c96f4a78c5c33414d350b0e4cb6099bb5ef6b86485799fb3ad5701a6e7ad52f08d1fa08257d757b709afe0433cb07827817'
+            '1129068d9788ea0abc2966ce563c094aae554c58d0a4726a7892bc6966f119b8a86fc45018748106a9a706124daa678c5fd0613db9ec32b3b09f03ba840592c9'
+            '2e816538c766ae15ee405ac751c64e7512765e81f7e7b56dab1c96fe8efd2969c688e5545d2672c97d4f09612089762ca45dd27cb9676aca512cd7b22448e4af')
+
+pkgver() {
+  cd $_pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build() {
+  cd $_pkgname
+  make
+}
+
+package(){
+  install -Dm755 $_pkgname/i2p "$pkgdir/usr/bin/i2p"
+  install -Dm644 $_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 $_pkgname.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+  install -Dm644 $_pkgname.conf "$pkgdir/etc/default/$_pkgname.conf"
+}
+

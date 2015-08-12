@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=ghettotooth
+pkgver=1.0
+pkgrel=1
+pkgdesc="Ghettodriving for bluetooth"
+url="http://www.oldskoolphreak.com/tfiles/ghettotooth.txt"
+groups=('projectname' 'projectname-*bluetooth')
+license=('GPL')
+depends=('perl')
+arch=(any)
+source=(http://www.oldskoolphreak.com/tfiles/ghettotooth.txt)
+md5sums=('ce96e17ad45938fd03cbad8aa8fcb133')
+
+package() {
+  cd "$srcdir/"
+  install -Dm755 ghettotooth.txt $pkgdir/usr/bin/ghettotooth
+}
+

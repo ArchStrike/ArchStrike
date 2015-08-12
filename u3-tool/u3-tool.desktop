@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=U3-tool
+Comment=Tool for controlling USB flash devices that confirm to the U3 specifications
+Exec=u3-tool
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

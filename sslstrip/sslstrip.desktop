@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Sslstrip
+Comment=Transparently hijack http traffic on a network, watch for https links and redirects, then map those links
+Exec=sslstrip
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultNetworking;

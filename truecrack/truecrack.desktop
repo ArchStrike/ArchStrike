@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Truecrack
+Comment=Password cracking for truecrypt(c) volumes.
+Exec=truecrack
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

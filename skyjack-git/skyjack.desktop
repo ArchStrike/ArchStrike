@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Skyjack
+Comment=Takes over Parrot drones, deauthenticating their true owner and taking over control, turning them into zombie drones under your own control
+Exec=skyjack
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultDrone;

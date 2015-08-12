@@ -1,0 +1,50 @@
+# Maintainer
+pkgname=malcom-git
+pkgver=20150518.r534
+pkgrel=1
+pkgdesc="Analyze a system's network communication using graphical representations of network traffic"
+url="https://github.com/tomchop/malcom"
+arch=('any')
+groups=('projectname' 'projectname-*networking')
+license=('CUSTOM')
+depends=('python2-virtualenv' 'scapy' 'mongodb' 'libxml2' 'libxslt' 'python2-flask' 'python2-pymongo' 'python2-pygeoip' 'python2-gevent-websocket' 'python2-dateutil' 'python2-netifaces' 'python2-lxml' 'python2-twisted' 'python2-pyopenssl')
+optdepends=('python2-celery')
+makedepends=('git')
+install=malcom-git.install
+conflicts=('malcom')
+replaces=('malcom')
+provides=('malcom')
+source=("${pkgname}::git+https://github.com/tomchop/malcom.git")
+sha512sums=('SKIP')
+
+prepare() {
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/env python2|'
+}
+
+pkgver() {
+    cd "${pkgname}"
+    printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  install -dm0755 "${pkgdir}"/usr/share/"${pkgname}" 
+  install -dm0755 "${pkgdir}"/usr/bin
+  cp -a --no-preserve=ownership * "${pkgdir}"/usr/share/"${pkgname}"
+  install -Dm0644 LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.md
+  
+
+  cat > "${pkgdir}/usr/bin/malcom" << EOF
+#!/bin/sh
+cd /usr/share/malcom-git
+if [[ ! -d "/usr/share/malcom-git/env-malcom" ]] ; then
+  virtualenv2 --system-site-packages env-malcom
+fi
+source env-malcom/bin/activate
+env-malcom/bin/python2 ./malcom.py "\$@"
+EOF
+  chmod 0755 "${pkgdir}"/usr/bin/malcom
+}
+
+

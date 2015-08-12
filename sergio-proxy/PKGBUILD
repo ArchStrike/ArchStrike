@@ -1,0 +1,28 @@
+# Maintainer
+pkgname=sergio-proxy
+pkgver=0.2.1
+pkgrel=1
+groups=('projectname' 'projectname-*proxy' 'archassault-spoof')
+pkgdesc="A multi-threaded transparent HTTP proxy for manipulating web traffic"
+url="https://github.com/darkoperator/dnsreconnaissance"
+license=('GPL3')
+arch=('any')
+depends=('python2')
+source=("https://sergio-proxy.googlecode.com/files/sergio-proxy-v$pkgver.tar.gz")
+md5sums=('5cd74bf96c65140d2a25375bc067ec36')
+
+package() {
+  cd "$srcdir/sergio-proxy"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/sergio-proxy"
+
+  cp -a * "$pkgdir/usr/share/sergio-proxy"
+
+  cat > "$pkgdir/usr/bin/sergio-proxy" <<EOF
+#!/bin/sh
+python2 /usr/share/sergio-proxy/sergio-proxy.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/sergio-proxy"
+}

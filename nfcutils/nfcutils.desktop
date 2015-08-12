@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Nfcutils
+Comment=Provides a simple 'lsnfc' command that list tags which are in your NFC device field
+Exec=nfcutils
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultNfc;

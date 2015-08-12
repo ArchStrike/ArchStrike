@@ -1,0 +1,20 @@
+# Maintainer
+pkgname=python2-gitpython
+pkgver=0.3.5
+pkgrel=1
+pkgdesc="A python library used to interact with Git repositories"
+arch=('any')
+url="http://gitorious.org/git-python"
+license=('BSD')
+depends=('python2' 'git' 'python2-gitdb>=0.6.4')
+makedepends=('python2' 'python2-distribute')
+conflicts=('gitpython-git' 'gitpython')
+source=("http://pypi.python.org/packages/source/G/GitPython/GitPython-$pkgver.tar.gz")
+sha512sums=('09eb1d3057623aa4a97e5aff56722d8f877e43529868b4f1ad736fa4bc1d46e5dcacc6ff58326a0f18056e4aab070dff704723c93ab29b1af0db12011276316f')
+
+package() {
+  cd "$srcdir/GitPython-$pkgver"
+
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}

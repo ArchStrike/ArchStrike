@@ -1,0 +1,48 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=mosquito-git
+pkgver=r39.fe54831
+pkgrel=1
+groups=('projectname' 'projectname-*mitm')
+pkgdesc="A XSS exploitation tool allowing an attacker to set up a HTTP proxy and leverage XSS to issue arbitrary HTTP requests through victim browser (and victim cookies)."
+arch=('any')
+url='https://github.com/koto/mosquito'
+license=('custom')
+depends=('python2-pyopenssl' 'python2-pyasn1' 'python2-flask' 'ruby' 'nodejs')
+makedepends=('git')
+provides=('mosquito')
+source=("mosquito::git+https://github.com/koto/mosquito.git" "run.sh")
+sha512sums=('SKIP'
+            '930874c768841f5e91a6e54e16958f8da4dd8d10c25b8988f992b766d0a87dc26c9cbb7a0c8b622f00d59a9376da4378f6dce0fd66bee93753ff3ceb32df14cb')
+
+pkgver() {
+    cd "${pkgname}"
+    printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare(){
+  cd "$srcdir/mosquito"
+  git submodule update --init --recursive
+  find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/ usr/bin/python2|'
+  for i in getcertnames proxapp mitmdump run mitmproxy flowbasic getcert iframe_injector stickycookies; do 
+      find . -type f -name $i | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+      find . -type f -name $i | xargs sed -i 's|#!/usr/bin/python|#!/ usr/bin/python2|';
+  done
+}
+
+package() {
+  cd "$srcdir/mosquito"
+  install -dm755 "$pkgdir/usr/share/mosquito"
+  install -dm755 "$pkgdir/usr/share/mosquito/mosquito"
+  install -dm755 "$pkgdir/usr/share/mosquito/externals"
+  install -dm755 "$pkgdir/usr/share/mosquito/webroot"
+  install -dm755 "$pkgdir/usr/share/licenses/mosquito-git"
+  install -Dm644 README.md "$pkgdir/usr/share/mosquito/README.md"
+  for i in externals webroot mosquito; do 
+        cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/mosquito/$i"; done
+
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/mosquito-git/LICENSE"
+  install -Dm755 $srcdir/run.sh "$pkgdir/usr/bin/mosquito"
+}
+
+#README.md  externals  mosquito  run.bat  run.sh  webroot

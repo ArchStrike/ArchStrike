@@ -1,0 +1,31 @@
+# Maintainer
+pkgname=kismet-earth
+pkgver=20131215
+pkgrel=1
+pkgdesc="Various scripts to convert kismet logs to kml file to be used in Google Earth."
+url="http://"
+groups=('projectname' 'projectname-*wireless')
+license=('GPL')
+depends=('perl' 'python')
+arch=('any')
+source=('pykismetearth.py'
+        'kismetearth.pl')
+md5sums=('e9acafce7dcecbda36ad2c0357eb92e6'
+         'ae7f759841e3807a3c37d5029a7314d9')
+
+pkgver() {
+  date +%Y%m%d
+}
+
+prepare() {
+  cd "$srcdir"
+
+  sed -i '1s|/usr/env/python|/usr/bin/env python2|' *.py
+}
+
+package() {
+  cd "$srcdir"
+
+  install -Dm755 pykismetearth.py "$pkgdir/usr/share/kismet-earth/pykismetearth.py"
+  install -Dm755 kismetearth.pl "$pkgdir/usr/share/kismet-earth/kismetearth.pl"
+}

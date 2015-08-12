@@ -1,0 +1,22 @@
+# Maintainer
+
+_gemname=faker
+pkgname=ruby-$_gemname
+pkgver=1.4.3
+pkgrel=1
+pkgdesc='Easily generate fake data'
+arch=(any)
+url='https://github.com/stympy/faker'
+license=(MIT)
+depends=(ruby ruby-i18n)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha512sums=('f225412270bc5071d9aeb864efd5c8a49675f32a1a880bb6476cbd7bb5415229b658353a9b74eba8f14e1e07a720d5c31e0e4e4efbd964481d8812ff07de5491')
+
+package() {
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/License.txt" "$pkgdir/usr/share/licenses/$pkgname/License.txt"
+}

@@ -1,0 +1,48 @@
+# Maintainer
+pkgname=pack
+_pkgname=PACK
+pkgver=0.0.4
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="Password Analysis and Cracking Kit"
+url='http://thesprawl.org/projects/pack/'
+arch=('any')
+license=('unknown')
+depends=('python2' 'aspell' 'aspell-en')
+source=("http://thesprawl.org/media/projects/PACK-0.0.4.tar.gz"
+        "fix-all-the-things.patch")
+md5sums=('710963e952e71a889a97624994400219'
+         'e024f3f5dd9889cb41c794f4730055e5')
+
+prepare() {
+  cd "$srcdir/PACK-$pkgver"
+
+  patch -Np1 -i ../fix-all-the-things.patch
+}
+
+package() {
+  cd "$srcdir/PACK-$pkgver"
+
+  install -dm755 pack
+  touch pack/__init__.py
+
+  install -Dm755 statsgen.py "$pkgdir/usr/bin/statsgen"
+  install -Dm755 maskgen.py "$pkgdir/usr/bin/maskgen"
+  install -Dm755 policygen.py "$pkgdir/usr/bin/policygen"
+  install -Dm755 rulegen.py "$pkgdir/usr/bin/rulegen"
+  install -Dm644 README "$pkgdir/usr/share/doc/pack/README"
+
+  install -Dm644 pack/__init__.py "$pkgdir/usr/lib/python2.7/pack/__init__.py"
+
+  install -dm755 "$pkgdir/usr/lib/python2.7/pack/enchant/checker"
+  install -m644 enchant/*.py "$pkgdir/usr/lib/python2.7/pack/enchant"
+  install -m644 enchant/checker/*.py "$pkgdir/usr/lib/python2.7/pack/enchant/checker"
+  install -Dm644 enchant/lib/enchant/README.txt "$pkgdir/usr/lib/python2.7/pack/enchant/lib/enchant/README.txt"
+
+  install -Dm644 enchant/share/enchant/README.txt "$pkgdir/usr/lib/python2.7/pack/enchant/share/enchant/README.txt"
+  install -Dm644 enchant/share/enchant/ispell/README.txt "$pkgdir/usr/lib/python2.7/pack/enchant/share/enchant/ispell/README.txt"
+  install -Dm644 enchant/share/enchant/myspell/README.txt "$pkgdir/usr/lib/python2.7/pack/enchant/share/enchant/myspell/README.txt"
+
+  install -dm755 "$pkgdir/usr/lib/python2.7/pack/enchant/tokenize"
+  install -m644 enchant/tokenize/*.py "$pkgdir/usr/lib/python2.7/pack/enchant/tokenize"
+}

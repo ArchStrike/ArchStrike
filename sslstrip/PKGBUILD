@@ -1,0 +1,17 @@
+# Maintainer
+pkgname=sslstrip
+pkgver=0.9
+pkgrel=3
+groups=('projectname' 'projectname-*networking')
+pkgdesc="Transparently hijack http traffic on a network, watch for https links and redirects, then map those links"
+arch=('any')
+url='http://www.thoughtcrime.org/software/sslstrip'
+license=('GPL3')
+source=("http://www.thoughtcrime.org/software/sslstrip/sslstrip-${pkgver}.tar.gz")
+depends=('openssl' 'python2' 'twisted' 'python2-pyopenssl' 'python2-service-identity')
+sha512sums=('f6e24db0dcb0c4e137b5828d043db17f5d59e46181f51b1814cf66466b55d6a11a95e7ee8748e59faacfc6176689d030af5fa5c99dedce47e8f9ca6cc7316abc')
+
+package() {
+  cd "${srcdir}"/sslstrip-${pkgver}
+  python2 setup.py install --prefix=/usr --root=$pkgdir --optimize=1
+}

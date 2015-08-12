@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Ubertooth
+Comment=A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only
+Exec=ubertooth
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultBluetooth;

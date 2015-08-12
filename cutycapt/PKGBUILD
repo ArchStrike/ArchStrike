@@ -1,0 +1,40 @@
+# Maintainer
+pkgname=cutycapt
+pkgver=10
+pkgrel=3
+groups=('projectname' 'projectname-*reconnaissance')
+pkgdesc="A Qt and WebKit based command-line utility that captures WebKit's rendering of a web page."
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url='http://cutycapt.sourceforge.net/'
+license=('GPL')
+depends=('qtwebkit')
+makedepends=('subversion' 'dos2unix')
+provides=('cutycapt-svn')
+conflicts=('cutycapt-svn')
+source=('svn+svn://svn.code.sf.net/p/cutycapt/code'
+        'cutycapt.patch')
+sha512sums=('SKIP'
+            'd20481fd6269af6ef791f5ade07dd646f3455e9d494d165c695037deb99e51a379ed4bfc5cb3000b129ae3a2fc11fc9b61c8f0e74339e79a2790de3351cb6b29')
+
+pkgver() {
+  cd code
+  svnversion | tr -d [A-z]
+}
+
+prepare() {
+  cd "$srcdir/code/CutyCapt"
+  dos2unix *
+  patch -Np0 -i "${srcdir}/cutycapt.patch"
+}
+
+build() {
+  cd "$srcdir/code/CutyCapt"
+  qmake-qt4
+  make
+}
+
+package() {
+  cd "$srcdir/code/CutyCapt"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -m755 "CutyCapt" "${pkgdir}/usr/bin"
+}

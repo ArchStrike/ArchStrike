@@ -1,0 +1,45 @@
+# Maintainer: ArchAssault <team at projectname org>
+# Contributor: GI_Jack <iamjacksemail@hackermail.com>
+# Contributor: Jan Alexander Steffens (heftig) <jan.steffens@gmail.com>
+# Contributor: Allan McRae <allan@archlinux.org>
+# Contributor: Jason Chu <jchu@xentac.net>
+
+# NOTE: Tox developers think this might break other openal installs, use with caution
+# adds echo cancelation and a few other tox specific features.
+# Contact NikolaiToryzin on Freenode IRC for questions
+
+_pkgname=openal
+pkgname=$_pkgname-soft-tox-git
+pkgver=r3453.b80570b
+pkgrel=2
+pkgdesc='A cross-platform 3D audio library (patched for tox.im)'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/irungentoo/openal-soft-tox'
+license=('LGPL')
+depends=('gcc-libs')
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+makedepends=('alsa-lib' 'pkgconfig' 'cmake' 'libpulse' 'qt4' 'fluidsynth' 'portaudio' 'git')
+optdepends=('qt4: alsoft-config graphical configurator'
+            'fluidsynth: MIDI rendering')
+source=("$_pkgname::git+$url")
+sha512sums=('SKIP')
+provides=("$_pkgname" "$_pkgname-git" "$_pkgname-soft-tox")
+conflicts=("$_pkgname" "$_pkgname-git" "$_pkgname-soft-tox")
+
+pkgver() {
+  cd $_pkgname
+  printf 'r%s.%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd $_pkgname/build
+  cmake -D CMAKE_INSTALL_PREFIX=/usr -D CMAKE_BUILD_TYPE=Release ..
+  make
+}
+
+package() {
+  cd $_pkgname
+  make -C build DESTDIR="$pkgdir" install
+  install -m644 -t "$pkgdir/usr/share/openal" {env-vars,hrtf}.txt
+}

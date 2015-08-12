@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Killerbee
+Comment=Framework and tools for exploiting ZigBee and IEEE 802.15.4 networks.
+Exec=killerbee
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWireless;ArchAssaultExploitation;

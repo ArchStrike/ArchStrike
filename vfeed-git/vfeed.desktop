@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Vfeed
+Comment=Open Source Cross Linked and Aggregated Local Vulnerability Database main repository
+Exec=vfeed
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultMisc;

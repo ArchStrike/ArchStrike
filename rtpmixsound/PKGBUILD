@@ -1,0 +1,24 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=rtpmixsound
+pkgver=3.0
+pkgrel=1
+groups=('projectname' 'projectname-*voip')
+pkgdesc="A tool to mix pre-recorded audio in real-time with the audio (i.e. RTP) in the specified target audio stream."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.hackingvoip.com/sec_tools.html"
+license=('GPL2')
+depends=('libfindrtp' 'libnet')
+makedepends=('g711conversions' 'hack_library')
+source=("http://www.hackingvoip.com/tools/rtpmixsound_v3.0.tar.gz")
+sha512sums=('f10720cee073d4782f6805c491e904130c35440178787529f48c4bdf34b8af40ab0fcbb998d91a5b80bcb96ca5710b12cb40ee1d8018c5ab7e5c40577e9e8957')
+
+build() {
+  cd $srcdir/rtpmixsound_v$pkgver
+  gcc rtpmixsound.c -lnet -lpcap -lfindrtp /usr/lib/g711conversions.o /usr/lib/hack_library.o -o rtpmixsound
+}
+
+package() {
+  cd $srcdir/rtpmixsound_v$pkgver
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm755 rtpmixsound "$pkgdir/usr/bin/"
+}

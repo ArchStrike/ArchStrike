@@ -1,0 +1,42 @@
+# Maintainer
+pkgname=webpwn3r-git
+pkgver=0.r35.3fb27bb
+pkgrel=1
+groups=('projectname' 'projectname-*scanner')
+pkgdesc="A python based Web Applications Security Scanner"
+url='https://github.com/zigoo0/webpwn3r'
+arch=('any')
+license=('GPL2')
+depends=('python2')
+makedepends=('git')
+provides=('webpwn3r')
+replaces=('webpwn3r')
+conflicts=('webpwn3r')
+source=("webpwn3r::git+https://github.com/zigoo0/webpwn3r.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/webpwn3r"
+  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/webpwn3r" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd $srcdir/webpwn3r
+  install -dm755 "$pkgdir/usr/share/webpwn3r"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/webpwn3r"
+
+cat > "$pkgdir/usr/bin/webpwn3r" <<EOF
+#!/bin/sh
+cd /usr/share/webpwn3r
+python2 scan.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/webpwn3r"
+}

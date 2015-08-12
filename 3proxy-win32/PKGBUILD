@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=3proxy-win32
+pkgver=0.7.1.1
+pkgrel=1
+groups=('projectname' 'projectname-*windows')
+pkgdesc="3proxy tiny free proxy server"
+url="http://3proxy.ru/"
+license=('GPL')
+arch=('any')
+depends=('3proxy')
+source=("http://3proxy.ru/$pkgver/3proxy-$pkgver.zip" "3proxy-win32.desktop")
+sha512sums=('22b2f6cea1b38c7620d3f629d7d307dc6648e5f02eaaf2896fbc90e050605dd8ee3eecd7991aab849dbd6ea737d4f1bbe114b96378be42f49723302f6ef77bce'
+            'c74588c07f1dfc0b3af2e6f4157813bf2db900726807af6bb2ba6a548af602e0aea0d4ad712d99e90f612e6d2c45bb2047095e79a3c0c3d48661501ea922ede0')
+
+package() {
+  cd "$srcdir"
+  rm *.zip # Remove symlinks
+  install -dm755 "$pkgdir/usr/share/windows/3proxy-win32"
+  install -Dm644 "$srcdir"/3proxy-win32.desktop "$pkgdir"/usr/share/applications/3proxy-win32.desktop
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/windows/3proxy-win32"
+  #clean up
+  rm $pkgdir/usr/share/windows/3proxy-win32/3proxy-win32.desktop
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Ctunnel
+Comment=Tunnel and/or proxy TCP or UDP connections via a cryptographic tunnel.
+Exec=ctunnel
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultTunnel;

@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=gengetopt
+pkgver=2.22.6
+pkgrel=3
+pkgdesc="A tool to write command line option parsing code for C programs."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.gnu.org/software/gengetopt/gengetopt.html"
+groups=('projectname')
+license=('GPL')
+options=('!docs' '!makeflags')
+source=("ftp://ftp.gnu.org/gnu/gengetopt/gengetopt-$pkgver.tar.gz")
+sha512sums=('dad5baf1b6c4c76ae7f532dd63c6aecdc30f31d68a259b6a26a10197f1fe42dc9147a52ac12a0c3fc4b7cd61d288a343a9223f967a5a9a15a0614330b41f68dc')
+
+build() {
+  cd "$srcdir/gengetopt-$pkgver"
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+  cd "$srcdir/gengetopt-$pkgver"
+    make "DESTDIR=$pkgdir" install
+}

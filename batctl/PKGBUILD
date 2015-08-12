@@ -1,0 +1,21 @@
+# Maintainer
+pkgname=batctl
+pkgver=2015.0
+pkgrel=1
+groups=('projectname' 'projectname-*wifi')
+pkgdesc="B.A.T.M.A.N. advanced control and management tool"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.open-mesh.net/"
+depends=('libnl')
+license=('GPL')
+source=("http://downloads.open-mesh.net/batman/releases/batman-adv-$pkgver/batctl-$pkgver.tar.gz")
+sha512sums=('07539b7ba68a1dc660f729850701b703344085a0361a294ba9feb1a89c38c0bec5774625508df307f28f3562d50bf1cd185e221673fc1d0a8c420e0953f579ea')
+
+build(){
+  cd "$srcdir/batctl-$pkgver"
+  make
+}
+package() {
+  cd "$srcdir/batctl-$pkgver"
+  make DESTDIR="$pkgdir"  PREFIX=/usr SBINDIR=/usr/bin install
+}

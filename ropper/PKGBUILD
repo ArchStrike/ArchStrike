@@ -1,0 +1,35 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net> 
+
+pkgname=ropper
+_pkgname=Ropper
+pkgver=1.6.3
+pkgrel=2
+pkgdesc="Show information about binary files and find gadgets to build rop chains for different architectures"
+arch=('any')
+url="https://github.com/sashs/Ropper"
+license=('GPL2')
+depends=('capstone')
+makedepends=('python2-setuptools')
+source=(https://github.com/sashs/${_pkgname}/archive/v${pkgver}.tar.gz)
+sha512sums=('90933d52b171e4fbf9f1ffc8cf073215bf5f05469b48135f1120a480c2c3a23a5432421600b142acf76d84222c0bf3f486962f2e30edc79cf5161c498a976de3')
+
+prepare() {
+  cd ${_pkgname}-${pkgver}
+  grep -iRl 'python' "$srcdir/${_pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  sed -ri 's/(ropper)\.py/\1/g' ropperapp/options.py
+}
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py build
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install -O1 --root="${pkgdir}"
+  install -Dm 644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+# vim:set ts=2 sw=2 et:

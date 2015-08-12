@@ -1,0 +1,33 @@
+# Maintainer
+# Contributor: Prurigro
+pkgname=fern-wifi-cracker
+pkgver=221
+pkgrel=1
+groups=('projectname' 'projectname-*wireless' 'archassault-cracker')
+pkgdesc="WEP, WPA wifi cracker for wireless penetration testing"
+arch=('any')
+url="http://code.google.com/p/${pkgname}/"
+license=('GPL2')
+depends=('python2-pyqt4' 'macchanger' 'xterm' 'aircrack-ng' 'scapy' 'gksu')
+makedepends=('subversion')
+source=("svn+http://${pkgname}.googlecode.com/svn/Fern-Wifi-Cracker#revision=${pkgver}" "${pkgname}-remove-update.patch" "${pkgname}.desktop")
+sha512sums=('SKIP'
+            '7780157fefd6805b9be0516660d6e5de1fe166594fcf7abf8be2b32c47a8db39eb8592547f94845758a029bcea40d9874585279906ae6b37f9386f2535953231'
+            '786000d5f7c59eb89d43d6f6ce57ea00091d7a2aa654b3f02c67854c8862879e807ea9a60462bea6ea62340374e535563a00a353df7b004bf121eec989e9f26c')
+
+prepare() {
+    sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' Fern-Wifi-Cracker/execute.py
+    cd Fern-Wifi-Cracker
+    patch -p1 < ../fern-wifi-cracker-remove-update.patch
+}
+
+package() {
+    install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+
+    install -d "${pkgdir}/usr/bin"
+    echo -e '#!/usr/bin/env bash\n\ncd /usr/share/fern-wifi-cracker\npython2 ./execute.py "\$@"' > "${pkgdir}/usr/bin/${pkgname}"
+    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+
+    install -d "${pkgdir}/usr/share/${pkgname}"
+    cp -R --no-preserve=ownership Fern-Wifi-Cracker/* "${pkgdir}/usr/share/${pkgname}/"
+}

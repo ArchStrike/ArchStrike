@@ -1,0 +1,75 @@
+# Maintainer
+pkgname=webshag
+pkgver=1.10
+pkgrel=6
+groups=('projectname' 'projectname-*webapps' 'archassault-scanners' 'archassault-fuzzers')
+pkgdesc="A multi-threaded, multi-platform web server audit tool."
+url="http://www.scrt.ch/en/attack/downloads/webshag"
+arch=('any')
+license=('GPL3')
+depends=('python2' 'wxpython2.8' 'nmap' 'nikto')
+makedepends=('dos2unix')
+source=("http://www.scrt.ch/outils/webshag/ws110.tar.gz"
+        "webshag.install"
+        "core_file.patch"
+        "wxversion_fix.patch")
+install='webshag.install'
+sha512sums=('35a2af786dda2e02dae8e0edbec0e2f3ddd595fb062fb3317501e2627ceec373835ec60a769176a2b4b14df1ef2eec0a4b1acd92b5d6e59fe301c6a88832fab8'
+            '9cf0ae31b1e39a95a6441747059520aa417529da7244f974abbee280cefabb9706f390fb7fbaaec85d27b5104aea2781361c19f3e4683f4408807ba5535d6d96'
+            '13e6248ac12a73a3003652e671e18d7d75b636af0f3ee645759e286815447e44db7ef772810255b6cc16d2ab5f49d0b2fcc8459e485858a25c62b0fe33ad1c9b'
+            '21c4e65f68f4b85fd429a03ea8768fb4baba9e736d357113b3417b5ddfb2566c3f51f98325aa054b618f34fb179f58334f5109e51e60e9bdae5452b60402bed3')
+
+prepare(){
+  cd "${srcdir}"
+
+  find . -type f -iname "*" |
+  while read i ; do
+    dos2unix $i
+  done
+
+  grep -iRl python "${srcdir}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+
+  patch < "${srcdir}/wxversion_fix.patch"
+
+  cd "webshag/core"
+  patch < "${srcdir}/core_file.patch"
+}
+
+package() {
+  cd "${srcdir}"
+
+  # Base directories.
+  install -dm755 "${pkgdir}/usr/share/webshag"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -m755 webshag_gui.py "${pkgdir}"/usr/share/webshag/webshag_gui.py
+  install -m755 webshag_cli.py "${pkgdir}"/usr/share/webshag/webshag_cli.py
+  install -m755 setup.linux.py "${pkgdir}"/usr/share/webshag/setup.linux.py
+  cp -a --no-preserve=ownership webshag database config "${pkgdir}/usr/share/webshag"
+
+  # Bin.
+  cat > "${pkgdir}/usr/bin/webshag_cli" << EOF
+#!/bin/bash
+hash=\$(sha512sum /usr/share/webshag/config/webshag.conf | cut -d' ' -f1)
+if [ "\$hash" == "ecbca2ce55652ff196353c0281d9aa59241deced785a74fa512af6d111b2d4add468ca24516b831e921e5963f1f48146b0b0421d1ce404fd7992162cfcd0414e" ]
+  then
+    echo "run 'cd /usr/share/webshag; ./setup.linux.py' (as root) to finish Webshag's configuration."
+    exit
+fi
+cd /usr/share/webshag
+python2 webshag_cli.py "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/webshag_cli"
+
+cat > "${pkgdir}/usr/bin/webshag_gui" << EOF
+#!/bin/bash
+hash=\$(sha512sum /usr/share/webshag/config/webshag.conf | cut -d' ' -f1)
+if [ "\$hash" == "ecbca2ce55652ff196353c0281d9aa59241deced785a74fa512af6d111b2d4add468ca24516b831e921e5963f1f48146b0b0421d1ce404fd7992162cfcd0414e" ]
+  then
+    echo "run 'cd /usr/share/webshag; ./setup.linux.py' (as root) to finish Webshag's configuration."
+    exit
+fi
+cd /usr/share/webshag
+python2 webshag_gui.py "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/webshag_gui"
+}

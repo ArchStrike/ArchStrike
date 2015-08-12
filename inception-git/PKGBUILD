@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=inception-git
+pkgver=r431.34f207d
+pkgrel=1
+groups=('projectname' 'projectname-*fuzzer')
+pkgdesc="A FireWire physical memory manipulation and hacking tool exploiting IEEE 1394 SBP-2 DMA. "
+arch=('any')
+url='https://github.com/carmaa/inception'
+license=('custom')
+depends=('python' 'libforensic1394')
+makedepends=('git' 'gcc' 'cmake' 'python-setuptools')
+provides=('inception')
+source=("git+https://github.com/carmaa/inception.git")
+options=('!strip')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/inception"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/inception"
+  python setup.py install --root=$pkgdir/ --optimize=1
+}

@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=ohrwurm
+pkgver=0.1
+pkgrel=1
+groups=('projectname' 'projectname-*fuzzer')
+pkgdesc="A small and simple RTP fuzzer"
+url='http://mazzoo.de/'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('glibc' 'libpcap')
+makedepends=('git')
+license=('GPL')
+source=("git+https://github.com/mazzoo/ohrwurm")
+md5sums=('SKIP')
+
+prepare() {
+  cd "$srcdir/ohrwurm"
+  sed -i "s|-Wall|$CFLAGS|g" Makefile
+}
+
+build() {
+  cd "$srcdir/ohrwurm"
+  make
+}
+
+package() {
+  cd "$srcdir/ohrwurm"
+  install -Dm755 ohrwurm "$pkgdir/usr/bin/ohrwurm"
+  install -Dm644 README "$pkgdir/usr/share/doc/ohrwurm/README"
+}

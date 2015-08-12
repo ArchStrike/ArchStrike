@@ -1,0 +1,44 @@
+# Maintainer
+pkgname=tuxcut
+pkgver=5.1
+pkgrel=1
+groups=('projectname' 'projectname-*sniffing')
+pkgdesc="Netcut-like program for Linux written in PyQt"
+url='http://bitbucket.org/a_atalla/tuxcut/'
+arch=('any')
+license=('GPL2')
+depends=('python2-pyqt4' 'iproute2' 'dsniff' 'arp-scan' 'arptables')
+source=(https://bitbucket.org/a_atalla/$pkgname/downloads/$pkgname-$pkgver-src.tar.gz)
+sha512sums=('c4b8bbed69e599e3b03f25a4bf0c99a4f7eaaa8e25cd07026d031d2619b076382a0099033013b36f90ecb12fe2e7d44eb962aea735d16877e6e47f98711c9f15')
+
+prepare() {
+    grep -iRl 'python' "$srcdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+package() {
+  cd "$srcdir"
+  # Base directories.
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname/i18n"
+  install -dm755 "$pkgdir/usr/share/$pkgname/pix"
+  install -dm755 "$pkgdir/usr/share/$pkgname/pix/ScreenShots"
+  install -dm755 "$pkgdir/usr/share/$pkgname/ui"
+  install -Dm644 *.py "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 pix.qrc "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 tuxcut.kdev4 "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 tuxcut.pro "$pkgdir/usr/share/$pkgname/"
+  install -Dm644 i18n/* "$pkgdir/usr/share/$pkgname/i18n/"
+  install -Dm644 ui/* "$pkgdir/usr/share/$pkgname/ui/"
+  install -Dm644 pix/*.png "$pkgdir/usr/share/$pkgname/pix/"
+  install -Dm644 pix/ScreenShots/* "$pkgdir/usr/share/$pkgname/pix/ScreenShots/"
+
+cat >"$pkgdir/usr/bin/tuxcut" <<EOF
+#!/bin/sh
+cd /usr/share/tuxcut
+python2 tuxcut.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/tuxcut"
+
+}

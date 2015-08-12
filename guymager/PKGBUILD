@@ -1,0 +1,28 @@
+# Maintainer
+pkgname=guymager
+pkgver=0.7.3
+pkgrel=1
+groups=('projectname' 'projectname-*forensic')
+pkgdesc="A forensic imager for media acquisition"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://guymager.sourceforge.net/'
+license=('GPL')
+depends=('qt4' 'gksu')
+options=('!strip')
+
+if [[ "${CARCH}" == "x86_64" ]] ; then
+   _ar=amd64
+   sha512sums=('3eae2499f018c3eb8ae66e0d7bb5503ebb26f1b86c7c1aeffaef9519ded3b32ba01d0aa506c3ca48d7242cb30c12afd7f173a2ff2ccdbc1003d6b50d2bb1f917')
+else
+   _ar=i386
+   sha512sums=('78f4b577a8ae4d35ac027e477016a410107b6f3062a35bd5e3fc9f9c945f599cfffbb29a31efb6f6269dcc3f5cb66e82aafa3d7d5d5d9b4103d8adbfa04ac567')
+fi
+
+source=("guymager-beta_${pkgver}-1_${_ar}.deb::\
+http://sourceforge.net/projects/guymager/files/guymager/\
+guymager-0.7.x/guymager-beta_${pkgver}-1_${_ar}.deb/download")
+
+package() {
+  cd "${srcdir}"
+  tar xf data.tar.gz -C "$pkgdir"
+}

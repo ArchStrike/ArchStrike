@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Voiper
+Comment=A VoIP security testing toolkit incorporating several VoIP fuzzers and auxilliary tools to assist the auditor.
+Exec=voiper
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultVoip;

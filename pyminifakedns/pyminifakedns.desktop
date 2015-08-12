@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Pyminifakedns
+Comment=Minimal DNS server written in Python; it always replies with a 127.0.0.1 A-record
+Exec=pyminifakedns
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultSpoof;ArchAssaultNetworking;

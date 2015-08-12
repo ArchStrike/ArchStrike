@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Orakelcrackert
+Comment=This tool can crack passwords which are encrypted using Oracle's latest SHA1 based password protection algorithm.
+Exec=orakelcrackert
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWindows;

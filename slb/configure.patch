@@ -1,0 +1,66 @@
+diff -aur slb-0.1.24.orig/duilder slb-0.1.24/duilder
+--- slb-0.1.24.orig/duilder	2014-08-29 20:17:52.246746777 -0700
++++ slb-0.1.24/duilder	2014-08-29 20:25:01.318793310 -0700
+@@ -319,12 +319,12 @@
+ ETC="/etc"
+ BIN="/bin"
+ USR_BIN="/usr/bin"
+-USR_SBIN="/usr/sbin"
++USR_SBIN="/usr/bin"
+ USR_INCLUDE="/usr/include"
+ USR_LIB="/usr/lib"
+ USR_SHARE="/usr/share"
+ USR_SHARE_DOC="/usr/share/doc/${PRJ}-${VER}"
+-SBIN="/usr/sbin"
++SBIN="/usr/bin"
+ VAR="/var"
+ VAR_LOG="/var/log/${PRJ}"
+ 
+diff -aur slb-0.1.24.orig/Makefile.in slb-0.1.24/Makefile.in
+--- slb-0.1.24.orig/Makefile.in	2014-08-29 20:17:52.246746777 -0700
++++ slb-0.1.24/Makefile.in	2014-08-29 20:24:37.711463650 -0700
+@@ -28,5 +28,5 @@
+ dinouml:
+ 	mkdir -p dinouml/overlay/etc/slb
+ 	cp etc/slb/slbmd.conf.sample dinouml/overlay/etc/slb/slbmd.conf
+-	mkdir -p dinouml/overlay/usr/sbin
+-	cp src/slbcd src/slbmd dinouml/overlay/usr/sbin/
++	mkdir -p dinouml/overlay/usr/bin
++	cp src/slbcd src/slbmd dinouml/overlay/usr/bin/
+diff -aur slb-0.1.24.orig/src/slbmd.c slb-0.1.24/src/slbmd.c
+--- slb-0.1.24.orig/src/slbmd.c	2014-08-29 20:17:52.246746777 -0700
++++ slb-0.1.24/src/slbmd.c	2014-08-29 20:26:02.237170926 -0700
+@@ -68,7 +68,7 @@
+ 	else
+ 		protocol = "-t";
+ 
+-	snprintf(cmd, sizeof(cmd), "/sbin/ipvsadm -e %s %s%s%s:%d"
++	snprintf(cmd, sizeof(cmd), "/bin/ipvsadm -e %s %s%s%s:%d"
+ 		" -r %s%s%s:%d -m -w %u",
+ 		protocol,
+ 		p->before, p->service_ip, p->after,
+@@ -102,13 +102,13 @@
+ 	}
+ 
+ 	/* Remove first */
+-	snprintf(cmd, sizeof(cmd), "/sbin/ipvsadm -D %s %s%s%s:%d",
++	snprintf(cmd, sizeof(cmd), "/bin/ipvsadm -D %s %s%s%s:%d",
+ 		cmd_protocol, before, ip, after, port);
+ 	slb_run(cmd);
+ 
+ 	/* Add */
+ 	/* TODO: add -p? */
+-	snprintf(cmd, sizeof(cmd), "/sbin/ipvsadm -A %s %s%s%s:%d -s wlc",
++	snprintf(cmd, sizeof(cmd), "/bin/ipvsadm -A %s %s%s%s:%d -s wlc",
+ 		cmd_protocol, before, ip, after, port);
+ 	slb_run(cmd);
+ }
+@@ -136,7 +136,7 @@
+ 			protocol = "-u";
+ 		else
+ 			protocol = "-t";
+-		snprintf(cmd, sizeof(cmd), "/sbin/ipvsadm -a %s %s%s%s:%d"
++		snprintf(cmd, sizeof(cmd), "/bin/ipvsadm -a %s %s%s%s:%d"
+ 			" -r %s%s%s:%d -m -w 1",
+ 			protocol,
+ 			p->before, p->service_ip, p->after,

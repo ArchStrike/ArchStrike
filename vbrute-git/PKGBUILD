@@ -1,0 +1,32 @@
+# Maintainer
+pkgname=vbrute-git
+pkgver=r1.11dda8b
+pkgrel=1
+pkgdesc="Virtual hosts brute forcer. Specify file containing domains and file containing IPs and will attempt to connect to IP with specific domain."
+url="https://github.com/nccgroup/vbrute"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('GPL3')
+groups=('projectname')
+depends=('libevent')
+makedepends=('git')
+provides=('vbrute')
+conflicts=('vbrute')
+replaces=('vbrute')
+source=(vbrute-git::git+https://github.com/nccgroup/vbrute.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir"/vbrute-git
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$srcdir"/vbrute-git
+  autoreconf
+  ./configure --prefix=/usr
+}
+
+package() {
+  cd "$srcdir"/vbrute-git
+  make DESTDIR="$pkgdir" install
+}

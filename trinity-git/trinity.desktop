@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Trinity
+Comment=A Linux System call fuzzer
+Exec=trinity
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

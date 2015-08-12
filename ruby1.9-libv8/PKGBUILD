@@ -1,0 +1,26 @@
+# Maintainer: ArchAssault <team projectname org>
+_gemname=libv8
+pkgname=ruby1.9-$_gemname
+pkgver=3.16.14.3
+pkgrel=4
+pkgdesc='Distribution of the V8 JavaScript engine'
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url='http://github.com/cowboyd/libv8'
+license=('MIT')
+if [[ "$CARCH" == x86_64 ]] ; then
+  depends=('ruby1.9' 'python2' 'bash' 'lib32-gcc-libs')
+else
+  depends=('ruby1.9' 'python2' 'bash')
+fi
+options=('!emptydirs' '!distcc')
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha512sums=('e592f2085964eb8ed2d19a95d56eadeefb24ff7d0b3e056652f13c628a1a15900487580769bbf0257f6cb8b2e78573f62498692643908110e6f9ada9160d3b7e')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  #find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  #find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}

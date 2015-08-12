@@ -1,0 +1,56 @@
+# Maintainer
+# Contributor: Javier Torres <javitonino [at] gmail [dot] com>
+pkgname=opendnssec
+pkgver=1.4.7
+pkgrel=1
+pkgdesc="Turn-key solution for DNSSEC (sqlite3)"
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+url="http://www.opendnssec.org/"
+license=('BSD')
+groups=('projectname')
+depends=('libxml2' 'ldns' 'sqlite3' 'softhsm')
+makedepends=('doxygen' 'dot2tex' 'automake' 'java-environment')
+options=('!emptydirs')
+backup=("etc/opendnssec/conf.xml"
+        "etc/opendnssec/kasp.xml"
+        "etc/opendnssec/zonelist.xml")
+install="opendnssec.install"
+source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz"
+	"pid-path.patch"
+        "ods-signer.service"
+        "ods-enforcer.service")
+sha512sums=('def2a8e41331bd70f287ea3081a7368144ada92ad5cc9f62d28d3064e34f7c0c84998422d515f5ec9c7e668757e796df8c5446839e24e4a9e2af1357c342c0b2'
+            '74f386ec8db1ff3a1dd4faf8e1d7eaa6e04f1ab0f89d5289f440ed1c2fe7040d8688ce27796d04d8152c235369297ce829f5dec0aa205c3e62263ae759e15d4a'
+            '28d868feedbee8251b0000556705ee094707782dad2072f4e37ebff3ac1658d09c884488dd6852e9734fa859218048daff50b66fe25930f6445619e3c89ca877'
+            'a3700c82e6577bdacbce9cfd749e71e3c749814884ad4e9a1359e97105f9c045dc1472ba231ecb52c23855cacf67874623c8eef715955bfd41239b199d03a0db')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  # /var/lib/run -> /var/run
+  patch -p0 < "${srcdir}/pid-path.patch"
+#  aclocal
+#  autoconf
+#  automake --add-missing
+  ./configure --prefix=/usr --datarootdir=/usr/share --localstatedir=/var/lib --sysconfdir=/etc --with-pkcs11-softhsm=/usr/lib/libsofthsm.so --sbindir=/usr/bin
+  # Create the correct (/var/run/opendnssec) directory
+  sed -i \
+  -e "s/\$(INSTALL) -d \$(DESTDIR)\$(localstatedir)\/run\/opendnssec/#Removed/" \
+  -e "s/\$(INSTALL) -d \$(DESTDIR)\$(localstatedir)\/run/\$(INSTALL) -d \$(DESTDIR)\$(OPENDNSSEC_PID_DIR)/" \
+  Makefile
+  CFLAGS='$CFLAGS -fuse-ld=gold' make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/var/run/opendnssec"
+  install -dm755 "${pkgdir}/var/lib/opendnssec"
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/opendnssec/LICENSE
+  install -Dm644 "${srcdir}/ods-signer.service" \
+        "${pkgdir}/usr/lib/systemd/system/ods-signer.service"
+  install -Dm644 "${srcdir}/ods-enforcer.service" \
+        "${pkgdir}/usr/lib/systemd/system/ods-enforcer.service"
+  install -Dm644 "enforcer/utils/migrate_adapters_1.sqlite3" \
+        "${pkgdir}/usr/share/opendnssec"
+  chmod 644 ${pkgdir}/etc/opendnssec/{conf.xml.sample,conf.xml}
+}

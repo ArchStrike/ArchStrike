@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Set-git
+Comment=Social-engineer toolkit. Aimed at penetration testing around Social-Engineering
+Exec=set-git
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultSocial;ArchAssaultExploitation;

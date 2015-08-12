@@ -1,0 +1,21 @@
+# Maintainer
+_gemname=tins
+pkgname=ruby1.9-$_gemname
+pkgver=0.13.2
+pkgrel=1
+pkgdesc='Useful stuff.'
+arch=(any)
+url='http://flori.github.com/tins'
+license=(MIT)
+depends=(ruby1.9)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha512sums=('87ca02f7c0610506d45cc7889f13f97597ed3b5218e63888b55f1d9516729b85b3800aa68965dbbcd992ac1c062a47c299dfcbcca161a48ea41d908a9435ec81')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+}

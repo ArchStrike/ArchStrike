@@ -1,0 +1,37 @@
+# Maintainer
+_pkgname=hyperfox
+pkgname=hyperfox-git
+pkgver=20150113.r45
+pkgrel=1
+groups=('projectname' 'projectname-*proxies')
+pkgdesc="A security tool for proxying and recording HTTP and HTTPs traffic."
+arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+_url="github.com/xiam/hyperfox"
+url="https://$_url"
+license=("custom")
+depends=('glibc')
+makedepends=('go' 'git')
+source=("$_url::git://github.com/xiam/hyperfox.git" "https://raw.githubusercontent.com/xiam/hyperfox/master/LICENSE")
+sha512sums=('SKIP'
+            '79ba530d4a0929d024a88f8923bd210ddb98dce3ac1b73f02bff25dc644cff8ab02bf70db04463fc2293fd90df471c283d4dd1fe71a4218b6fc6d902cf601fa2')
+
+pkgver() {
+	cd "$srcdir/$_pkgname"
+        printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build() {
+	cd "$srcdir"
+	# makepkg doesn't support extracting sources to a specific directory
+	mkdir -p src/$_url && rm -rf src/$_url && mv $_pkgname src/$_url && cd src/$_url
+	GOPATH="$srcdir" go get -d -t github.com/xiam/hyperfox
+}
+
+package() {
+	cd "$srcdir"
+	GOPATH="$srcdir" go build -v github.com/xiam/hyperfox
+
+	mkdir -p "$pkgdir/usr/bin"
+	cp "$srcdir/hyperfox" "$pkgdir/usr/bin/hyperfox"
+	install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/hyperfox-git/LICENSE
+}

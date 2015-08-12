@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-xdot
+Comment=Interactive viewer for Graphviz dot files
+Exec=python2-xdot
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

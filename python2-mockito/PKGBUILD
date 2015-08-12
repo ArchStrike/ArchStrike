@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=python2-mockito
+pkgver=0.5.2  
+pkgrel=1
+pkgdesc="A spying framework based on Java library with the same name."
+arch=('any')
+url="http://code.google.com/p/mockito-python"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-distribute')
+source=("https://pypi.python.org/packages/source/m/mockito/mockito-$pkgver.tar.gz")
+md5sums=('b18d93fe67bb8fa1de6bb9d2b519df70')
+
+package() {
+  cd "$srcdir/mockito-$pkgver"
+
+  # Remove tests directory (conflicts with other python packages)
+  rm -rf tests
+
+  python2 setup.py install --prefix=/usr --root=$pkgdir/ --optimize=1
+
+}
+
+# vim:set ts=2 sw=2 et:

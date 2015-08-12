@@ -1,0 +1,46 @@
+# Maintainer
+pkgname=wmi-client
+pkgver=1.3.14
+pkgrel=2
+pkgdesc="Linux WMI client"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('projectname' 'projectname-*reconnaissance')
+url="https://bitbucket.org/instarch/wmi-client/"
+license=("GPL2")
+depends=('python2' 'pam' 'gnutls')
+provides=('winexe')
+conflicts=('winexe')
+
+source=(
+  "http://www.openvas.org/download/wmi/wmi-${pkgver}.tar.bz2"
+  "python3.patch"
+  "gnutls.patch"
+  "pyinclude.patch"
+  "samba-pidl.patch"
+)
+
+sha512sums=('060dbb8ff0405cbe2196a8232898a3deca6c133ebbec8d03bc9e9c1a3e5ca6956e1b3a7d1d4476921a7e334fa5c9d5ddf53e83d195377fc4b03f228e51a37d89'
+            '7f9f6021c94c3b76dbfd7c1e4d4ae04e0bcadd93f250537892412f473c8cf59745f01b85edb944cc17da7fe94fdbee263470f6f926fcc0a1ff2dca67bd1d6b89'
+            '140fd92e5ae39f2e36ae8c5a28aa8964029a55c226e78a4cad23890f131e04956955c248113a79046b4c4e1d0ae466e0bff553375c106a19eb752b0bc7659356'
+            '5d2073fe0313e92c10fdaee7fd65d2d26e1a2ac1ec70955b2009c8aaad33a4944a2a8f354d416ac346cc0c43b04b1ffe95ee012cd77ddb74a7459d67f44aec4b'
+            'cc0bbeb6805bb38898ced7956ed313c6cf67c11316eb2906a353fc227d1dc538fc8ce689035fee865f42e7bd13d4f74b5f12b925399f64cb22ea110da4ae9f9a')
+
+build() {
+  export ZENHOME="${pkgdir}/usr"
+  cd "${srcdir}/wmi-${pkgver}"
+
+  patch -Np0 -i ../gnutls.patch
+  patch -Np0 -i ../python3.patch
+  patch -p1 -i ../pyinclude.patch
+  patch -p1 -i ../samba-pidl.patch
+
+  grep '^#!/usr/bin/python$' * -Rl | xargs -I{} sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|g' {}
+  sed -i '/^pywmi-installed:/s/pywmi-build//' GNUmakefile
+
+  make build
+}
+
+package() {
+  cd "${srcdir}/wmi-${pkgver}"
+  make install
+}

@@ -1,0 +1,43 @@
+From: Ben Hutchings <ben@decadent.org.uk>
+Date: Mon, 16 Sep 2013 03:26:32 +0100
+Subject: mvsas: Recognise device/subsystem 9485/9485 as 88SE9485
+Forwarded: http://mid.gmane.org/1379298957.23881.10.camel@deadeye.wl.decadent.org.uk
+
+Matt Taggart reported that mvsas didn't bind to the Marvell
+SAS controller on a Supermicro AOC-SAS2LP-MV8 board.
+
+lspci reports it as:
+
+01:00.0 RAID bus controller [0104]: Marvell Technology Group Ltd. Device [1b4b:9485] (rev 03)
+        Subsystem: Marvell Technology Group Ltd. Device [1b4b:9485]
+[...]
+
+Add it to the device table as chip_9485.
+
+Reported-by: Matt Taggart <taggart@debian.org>
+Tested-by: Matt Taggart <taggart@debian.org>
+Signed-off-by: Ben Hutchings <ben@decadent.org.uk>
+---
+ drivers/scsi/mvsas/mv_init.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/drivers/scsi/mvsas/mv_init.c b/drivers/scsi/mvsas/mv_init.c
+index 7b7381d..83fa5f8 100644
+--- a/drivers/scsi/mvsas/mv_init.c
++++ b/drivers/scsi/mvsas/mv_init.c
+@@ -729,6 +729,15 @@ static struct pci_device_id mvs_pci_table[] = {
+ 		.class_mask	= 0,
+ 		.driver_data	= chip_9485,
+ 	},
++	{
++		.vendor		= PCI_VENDOR_ID_MARVELL_EXT,
++		.device		= 0x9485,
++		.subvendor	= PCI_ANY_ID,
++		.subdevice	= 0x9485,
++		.class		= 0,
++		.class_mask	= 0,
++		.driver_data	= chip_9485,
++	},
+ 	{ PCI_VDEVICE(OCZ, 0x1021), chip_9485}, /* OCZ RevoDrive3 */
+ 	{ PCI_VDEVICE(OCZ, 0x1022), chip_9485}, /* OCZ RevoDrive3/zDriveR4 (exact model unknown) */
+ 	{ PCI_VDEVICE(OCZ, 0x1040), chip_9485}, /* OCZ RevoDrive3/zDriveR4 (exact model unknown) */

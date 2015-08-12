@@ -1,0 +1,36 @@
+# Maintainer
+# Contributor: Mike Sampson <mike at sambodata dot com>
+# Contributor: Andrea Benazzo <andy@qitty.net>
+
+pkgname=cryptmount
+pkgver=5.1
+pkgrel=1
+pkgdesc='Utility which allows an ordinary user to mount an encrypted file system'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('projectname' 'projectname-*cryptography')
+url="http://cryptmount.sourceforge.net/"
+license=('GPL')
+depends=('cryptsetup')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
+backup=('etc/cryptmount/cmtab')
+sha512sums=('f9e46b365dae10cd70baa5f89de3c964690d51a6be0cd66392fccbac2b4b3634cc69cf61efa8a08533879ba6231ee74a597aad2c9f3b53200ece3d947fde461c')
+
+build() {
+  cd $pkgname-$pkgver
+  ./configure \
+    --prefix=/usr \
+    --sbindir=/usr/bin \
+    --sysconfdir=/etc \
+    --with-libgcrypt \
+    --with-systemd
+  make
+}
+
+package() {
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  # fixing perms
+  chmod 644 $pkgdir/usr/lib/cryptmount/cm-gcry.so $pkgdir/usr/lib/cryptmount/cm-luks.so
+  chmod 2755 $pkgdir/usr/bin/cryptmount
+}
+

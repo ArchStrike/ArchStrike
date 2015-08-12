@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Wavemon
+Comment=Ncurses-based monitoring application for wireless network devices
+Exec=wavemon
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;Network;

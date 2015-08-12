@@ -1,0 +1,22 @@
+# Maintainer
+pkgname='webenum'
+pkgver='0.1'
+pkgrel=2
+pkgdesc='Tool to enumerate http responses using dynamically generated queries and more. Useful for penetration tests against web servers.'
+depends=('python2')
+url='http://code.google.com/p/webenum/'
+groups=('projectname' 'projectname-*webapps' 'archassault-scanners')
+license=('GPL')
+arch=('any')
+source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.py.gz")
+sha512sums=('36294e8916bb989f594938cfe0923528a7635245ee63d14e81711dfadaa535249e5e983e64977fd0d99d943c0b4d687a9081cddfcccfa4b3d1e70c686e04d49b')
+
+prepare() {
+  cd "${srcdir}"
+  sed -i 's|env python|env python2|' "${pkgname}-${pkgver}.py"
+}
+
+package() {
+  cd "${srcdir}"
+  install -D -m755 "${pkgname}-${pkgver}.py" "${pkgdir}/usr/bin/${pkgname}"
+}

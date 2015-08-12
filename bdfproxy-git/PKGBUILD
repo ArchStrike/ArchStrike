@@ -1,0 +1,37 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=bdfproxy-git
+pkgver=20150420.r62
+pkgrel=1
+groups=('projectname' 'projectname-*proxy')
+pkgdesc="Patch Binaries via MITM: BackdoorFactory + mitmProxy."
+url="https://github.com/secretsquirrel/BDFProxy"
+arch=('any')
+license=('GPL3')
+depends=('capstone' 'python2-pefile' 'mitmproxy')
+makedepends=('git')
+source=("${pkgname}::git+https://github.com/secretsquirrel/BDFProxy.git")
+sha512sums=('SKIP')
+
+pkgver() {
+    cd "${pkgname}"
+    printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare(){
+  cd "${pkgname}"
+  git submodule init
+  git submodule update
+}
+
+package() {
+  cd "${pkgname}"
+  install -dm755 "$pkgdir/usr/share/bdfproxy"
+  install -dm755 "$pkgdir/usr/bin/"
+  cp -ar --no-preserve=ownership * "$pkgdir/usr/share/bdfproxy"
+  cat > "$pkgdir/usr/bin/bdfproxy" <<EOF
+#!/bin/sh
+python2 /usr/share/bdfproxy/bdf_proxy.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/bdfproxy"
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}

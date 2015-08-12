@@ -1,0 +1,34 @@
+# Maintainer
+pkgname='malwasm'
+pkgver='0.2'
+pkgrel=2
+pkgdesc="Offline debugging for malware's reverse engineering."
+url='https://code.google.com/p/malwasm/'
+license=('GPL2')
+arch=('any')
+groups=('projectname' 'projectname-*reverseing' 'archassault-debugging')
+depends=('python2' 'python2-psycopg2' 'python2-flask' 'python2-progressbar' 'cuckoo' 'postgresql')
+install='malwasm.install'
+optdepends=('pintool')
+source=("https://malwasm.googlecode.com/files/malwasm-v$pkgver.tar.gz"
+        "malwasm.install")
+sha512sums=('f994cf198f4663366fb8933457da18af37b7c946dff575accf9e1ba2b9d2fbae721ded1bd0776c068d0af23bbecc0bc7c26411c2b9ba0c8753cc80f3b5f632f3'
+            '0903da445d02578ff3e8ec1dbd8d69e9ea13c88f8ddaf4d327ce4ebad4c3a4ca9dc93ccb4bdda10237d7841026a345c34c5eb253fce15abaf69f87f33e6267b8')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/malwasm-v$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/malwasm-v$pkgver"
+  install -dm755 "$pkgdir/usr/share/malwasm"
+  install -dm755 "$pkgdir/usr/bin"
+  cp -a * "$pkgdir/usr/share/malwasm"
+  cat > "$pkgdir/usr/bin/malwasm" << EOF
+  #!/bin/sh
+  cd /usr/share/malwasm
+  python2 web/malwasm_web.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/malwasm"
+}

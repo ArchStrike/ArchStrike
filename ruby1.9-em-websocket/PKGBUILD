@@ -1,0 +1,20 @@
+# Maintainer
+_gemname=em-websocket
+pkgname=ruby1.9-$_gemname
+pkgver=0.5.0
+pkgrel=1
+pkgdesc='EventMachine based WebSocket server'
+arch=(any)
+url='http://github.com/igrigorik/em-websocket'
+license=()
+depends=(ruby1.9 ruby1.9-eventmachine ruby1.9-http_parser)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('637e9f123cee57b0f47c1e7286f1941ef90a6d43')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+}

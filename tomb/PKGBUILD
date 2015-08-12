@@ -1,0 +1,49 @@
+# Maintainer: ArchAssault <team at projectname org>
+# Contributor: Prurigro
+
+pkgname=tomb
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="A system for easy encryption and backup of personal files"
+url="http://www.dyne.org/software/${pkgname}"
+groups=('projectname' 'projectname-*encryption')
+license=('GPL3')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('cryptsetup' 'pinentry' 'sudo' 'gnupg' 'zsh' 'gtk2' 'libnotify')
+optdepends=('dcfldd: Replacement for dd with hashing support'
+            'wipe: Secure file wiping utility'
+            'e2fsprogs: Create and manipulate ext3 and ext4 filesystems'
+            'coreutils: Create temp image files in shared memory'
+            'steghide: Hide data in various kinds of image and audio files'
+            'swish-e: Support file content indexing'
+            'qrencode: Create paper backups of keys as QR codes')
+
+source=("https://releases.dyne.org/tomb/Tomb-${pkgver}.tar.gz")
+sha512sums=('339f534d5382954048853ebf5eecd2082eae41ce158353142c40a594d9c76b3e7fd81262e1bc0482d18a4ed0e7c385f05c7481a93f0aad49a819084256679a20')
+
+prepare() {
+    sed -i 's/^#!\/bin\/zsh/#!\/usr\/bin\/env\ zsh/g' Tomb-${pkgver}/${pkgname}
+}
+
+build() {
+    cd Tomb-${pkgver}/extras/gtk-tray
+    make
+
+    cd ../kdf-keys
+    make
+}
+
+package() {
+    cd Tomb-${pkgver}
+
+    # Install tomb
+    make DESTDIR="${pkgdir}" PREFIX="/usr" install
+    chmod 644 "${pkgdir}/usr/share/man/man1/tomb.1"
+
+    # Install the gtk tray icon
+    install -Dm755 extras/gtk-tray/tomb-gtk-tray "${pkgdir}/usr/bin/tomb-gtk-tray"
+
+    # Install kdf-keys
+    cd extras/kdf-keys
+    make DESTDIR="${pkgdir}" PREFIX="/usr" install
+}

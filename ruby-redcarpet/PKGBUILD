@@ -1,0 +1,21 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=ruby-redcarpet
+_gemname=redcarpet
+pkgver=3.0.0
+pkgrel=2
+pkgdesc="Markdown that smells nice"
+arch=('armv7h' 'armv6h' 'i686' 'x86_64')
+license=('MIT')
+depends=('ruby')
+options=('!emptydirs')
+url='http://github.com/vmg/redcarpet'
+source=("http://rubygems.org/downloads/redcarpet-$pkgver.gem")
+sha512sums=('4da43f7e5fcf3cc0be23491878f5805378782d7ad08ce6a93777a8f8d87e9becbdf6f15a5df43b2654fea5eb10f04f31f43fc050609a10ecafbdc6589478ab7d')
+noextract=("redcarpet-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  HOME=/tmp GEM_HOME="$_gemdir" GEM_PATH="$_gemdir" gem install --ignore-dependencies --no-user-install --no-rdoc --no-ri \
+  -i "${pkgdir}${_gemdir}" ${_gemname}-${pkgver}.gem
+}

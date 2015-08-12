@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=nassl
+pkgver=0.9
+pkgrel=1
+groups=('projectname' 'projectname-*misc')
+pkgdesc="Experimental Python wrapper for OpenSSL"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url='https://github.com/nabla-c0d3/nassl'
+license=('GPL2')
+depends=('python2')
+makedepends=('openssl')
+source=("https://github.com/nabla-c0d3/nassl/archive/v$pkgver.tar.gz")
+sha512sums=('b3705c06fed5a9e59260c941a18cafab392d6297791b41e6522de9c7db77dd94c3091a8475bb2763ff704ef48ce67dd447bac968e84e81e182da5c328a32abd1')
+
+prepare() {
+   find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/ usr/bin/python2|'
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python2 setup_unix.py install --root=$pkgdir --optimize=1 
+}

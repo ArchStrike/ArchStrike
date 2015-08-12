@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=halberd
+pkgver=0.2.4
+pkgrel=1
+pkgdesc="HTTP load balancer detector"
+url="http://halberd.superadditive.com/"
+depends=('python2')
+license=('GPL2')
+arch=('any')
+source=('https://pypi.python.org/packages/source/h/halberd/halberd-0.2.4.tar.gz')
+sha512sums=('80563f9a903a034163ede3319e88305bce8d2de9541aa1fc4d42dff6dd55516d000b0e50af6a053e3c894d6f30bb9d0d27461d0b353ff246b281def8ce6dfd80')
+
+build() {
+    cd $srcdir/halberd-0.2.4
+    python2 setup.py build
+}
+
+package() {
+    cd $srcdir/halberd-0.2.4
+    python2 setup.py install --root="$pkgdir" --optimize=1
+    install -dm755 "$pkgdir"/usr/share/man
+    mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man 
+}
+

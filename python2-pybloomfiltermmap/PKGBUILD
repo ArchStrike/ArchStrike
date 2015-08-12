@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=python2-pybloomfiltermmap
+_modname='pybloomfiltermmap'
+pkgver=0.3.14
+pkgrel=1
+pkgdesc="A Bloom filter (bloomfilter) for Python built on mmap"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+url='http://github.com/axiak/pybloomfiltermmap/'
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+options=('!emptydirs')
+conflicts=('python2-pybloomfiltermmap-git')
+provides=('python2-pybloomfiltermmap')
+source=("http://pypi.python.org/packages/source/p/${_modname}/${_modname}-${pkgver}.tar.gz" "LICENSE")
+sha512sums=('c2b7414464ffd7feb31b74ad576716554b79ebe59675cb61cd241c270628ce821d97ddef1be7fea9f0b5f2019a7fa009d21e9f14e7f7e514aa6446ca23702cb3'
+            '6e79ab6f628b840b0c54096a54e5032598449194fd7328f1eb408ce2fa08050e4ad270f8179ffd4d3de7e9c0f8d04c98d47ec781262aa7921f25eeb6a0454a0a')
+
+package() {
+  cd "${srcdir}/${_modname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm0644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+}

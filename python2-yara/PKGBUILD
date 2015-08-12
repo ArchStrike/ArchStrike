@@ -1,0 +1,31 @@
+# Maintainer: ArchAssault <team archassautl org>
+# Contributor: Théophile Studer
+
+_pkgname=yara
+pkgname=python2-${_pkgname}
+pkgver=3.4.0
+pkgrel=1
+groups=('projectname' 'projectname-*malware')
+pkgdesc="A malware identification and classification tool"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://plusvic.github.io/${_pkgname}"
+license=('APACHE')
+replaces=("${_pkgname}-python")
+depends=("python2" "${_pkgname}")
+source=("https://github.com/plusvic/${_pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('27286107882c70de6f2c227d5307fbaa97437f8bbb221d4f0fcb17c4935f65ef01e772c18a14eb814727ca1854f5e3f9f219771706d9f4a748ae9433f475d669')
+
+prepare() {
+    cd ${_pkgname}-${pkgver}/${_pkgname}-python
+    sed -i 's|env python$|env python2|' *.py
+}
+
+build() {
+    cd ${_pkgname}-${pkgver}/${_pkgname}-python
+    python2 setup.py build
+}
+
+package() {
+    cd ${_pkgname}-${pkgver}/${_pkgname}-python
+    python2 setup.py install --root="$pkgdir" --optimize=1
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Kautilya
+Comment=Pwnage with Human Interface Devices using Teensy++2.0 and Teensy 3.0 devices
+Exec=kautilya
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultHardware;

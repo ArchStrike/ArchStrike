@@ -1,0 +1,11 @@
+--- CMakeListsA.txt	2014-02-20 05:33:53.000000000 -0500
++++ CMakeListsB.txt	2014-03-18 01:05:10.595330190 -0400
+@@ -31,7 +31,7 @@
+                    DEPENDS ${DEPS})
+ 
+ add_custom_target(dfu ALL DEPENDS ${OUTPUT}/timestamp)
+-install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} build -b ${OUTPUT} install)")
++install(CODE "execute_process(COMMAND ${PYTHON_EXECUTABLE} ${SETUP_PY} build -b ${OUTPUT} install --prefix=${CMAKE_INSTALL_PREFIX})")
+ 
+ add_custom_target(ubertooth-dfu ALL DEPENDS ${CMAKE_CURRENT_SOURCE_DIR}/ubertooth-dfu)
+ install(PROGRAMS ubertooth-dfu DESTINATION ${INSTALL_DEFAULT_BINDIR})

@@ -1,0 +1,37 @@
+# Maintainer
+pkgname=sandy
+pkgver=20140930.r6.531ab16
+pkgrel=2
+epoch=1
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="An open-source Samsung phone encryption assessment framework."
+url="https://github.com/donctl/sandy"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('GPL2')
+makedepends=('git')
+depends=('python2-pexpect' 'python2-pbkdf2' 'python2-crypto')
+source=("git+https://github.com/donctl/sandy.git")
+options=('!strip')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//  g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/sandy" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$srcdir/sandy"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+cat > "$pkgdir/usr/bin/sandy" << EOF
+#!/bin/sh
+cd /usr/share/sandy
+python2 ./main.py "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/sandy"
+}

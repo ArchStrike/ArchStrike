@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Cookie-cadger
+Comment=An auditing tool for Wi-Fi or wired Ethernet connections
+Exec=cookie-cadger
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultScanner;ArchAssaultFuzzer;

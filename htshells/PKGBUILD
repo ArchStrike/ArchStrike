@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=htshells
+pkgver=760b5e9
+pkgrel=1
+groups=('projectname' 'projectname-*exploit')
+pkgdesc="Self contained web shells and other attacks via .htaccess files."
+url="https://github.com/wireghoul/htshells"
+depends=('bash' 'perl')
+makedepends=('git')
+options=('!emptydirs')
+arch=('any')
+license=('GPL3')
+source=("git+https://github.com/wireghoul/htshells.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd htshells
+  git describe --always | sed 's|-|.|g'
+}
+
+package() {
+  cd "$srcdir/htshells"
+
+  # Base directory.
+  install -dm755 "$pkgdir/usr/share/htshells"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/htshells"
+  install -dm755 "$pkgdir"/usr/share/info/htshells
+  mv "$pkgdir"/usr/share/htshells/info/* "$pkgdir"/usr/share/info/htshells
+}

@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
+# Contributor: Emiliano Vavassori <syntaxerrormmm@gmail.com>
+
+pkgname=ruby-highline
+_gemname=highline
+pkgver=1.7.0
+pkgrel=1
+pkgdesc="A high-level text user interface toolkit for Ruby"
+arch=('any')
+url="http://rubygems.org/gems/highline"
+license=('GPL2' 'RUBY')
+depends=('ruby')
+options=(!emptydirs)
+source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
+noextract=(${_gemname}-${pkgver}.gem)
+sha512sums=('8d51372ddfe1a66ea0e9973433f84b08dce013db5aa5fc2f5724b097939bfb3e8adbba8f5facf9400e927d33f1dce48024ed59868ddcb466f1a5b5d1c27fe42e')
+
+package() {
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

@@ -1,0 +1,47 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=wpscan-git
+pkgver=20150524.r1917
+pkgrel=2
+epoch=1
+groups=('projectname' 'projectname-*webapps' 'archassault-scanners')
+pkgdesc='A vulnerability scanner which checks the security of WordPress installations using a black box approach'
+arch=(armv6h armv7h i686 x86_64)
+url="http://wpscan.org"
+license=('custom')
+depends=('ruby1.9' 'ruby1.9-bundler' 'java-environment' 'libxslt')
+makedepends=('git' 'unzip')
+options=(!strip)
+replaces=('wpscan')
+conflicts=('wpscan')
+provides=('wpscan')
+source=("${pkgname}::git+http://github.com/wpscanteam/wpscan")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  cp -a --no-preserve=owner * "${pkgdir}/usr/share/${pkgname}"
+  cd ${pkgdir}/usr/share/"${pkgname}"
+  bundle-1.9 config build.nokogiri --use-system-libraries 
+  bundle-1.9 install --path vendor/bundle
+  unzip data.zip
+  rm "${pkgdir}"/usr/share/"${pkgname}"/data.zip
+  rm "${pkgdir}"/usr/share/"${pkgname}"/data/LICENSE
+  for i in $(find "${pkgdir}" -type d -iname ext); do rm -rf ${i}; done
+  install -Dm0644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  cat > "${pkgdir}/usr/bin/wpscan" <<EOF
+#!/bin/sh
+cd /usr/share/wpscan-git
+ruby-1.9 ./wpscan.rb "\$@"
+EOF
+  sed -i "s/ROOT_DIR + '\/log.txt/'\/home\/' + ENV['USER'] + '\/wpscan.log/" "${pkgdir}/usr/share/wpscan-git/lib/common/common_helper.rb"
+  sed -i "s/ROOT_DIR + '\/cache/'\/home\/' + ENV['USER'] + '\/cache/" "${pkgdir}/usr/share/wpscan-git/lib/common/common_helper.rb"
+  chmod 0755 "${pkgdir}/usr/bin/wpscan"
+}

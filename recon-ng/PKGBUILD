@@ -1,0 +1,43 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname='recon-ng'
+pkgver=891.f311646
+pkgrel=1
+groups=('projectname' 'projectname-*reconnaissance')
+pkgdesc='A full-featured Web Reconnaissance framework written in Python.'
+arch=('any')
+url='https://bitbucket.org/LaNMaSteR53/recon-ng'
+license=('GPL3')
+depends=('python2' 'python2-lxml' 'python2-slowaes' 'python2-dnspython' 'python2-jsonrpclib' 'python2-xlsxwriter')
+makedepends=('git')
+source=("git+https://bitbucket.org/LaNMaSteR53/recon-ng.git"
+        "recon-ng.sh"
+        "recon-cli.sh"
+        "recon-rpc.sh")
+sha512sums=('SKIP'
+            '0db687f52bdb306990ee51a4a07822685f8468a6acd2b4447ab57efe3b2aa09d6d2e74ffbf32f66d3ab8bec0dfd76a694399a4907fc5eb812f9ec01e5d8de2b0'
+            'ca78c0d7a46b0ad2677e6b59a65fbf3e9457c7387e5bbcfd0ac468e4d6aebd18929d07467cd74f8b4087dff681a436c642000675d59ef383c0d75ab50f55196b'
+            'fc67b96e456fcf2b18d07674143e7a012191900676e570fb8394ef4eff2f8db6fbb3d23c8c5db12a70ab2ecdc9cdfc64c972efcf84a4f26086b1850d42a512c5')
+
+pkgver() {
+  cd "$srcdir/recon-ng"
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd "$srcdir/recon-ng"
+  sed -i '1s/env python/env python2/' "recon-ng"
+  sed -i '1s/env python/env python2/' "recon-cli"
+  sed -i '1s/env python/env python2/' "recon-rpc"
+}
+
+package() {
+  cd "$srcdir/recon-ng"
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm755 "$srcdir/recon-ng.sh" "$pkgdir/usr/bin/recon-ng"
+  install -Dm755 "$srcdir/recon-cli.sh" "$pkgdir/usr/bin/recon-cli"
+  install -Dm755 "$srcdir/recon-rpc.sh" "$pkgdir/usr/bin/recon-rpc"
+  install -dm755 "$pkgdir/usr/share/recon-ng"
+  cp -R * "$pkgdir/usr/share/recon-ng"
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}

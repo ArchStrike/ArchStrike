@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Wyd
+Comment=Gets keywords from personal files. IT security/forensic tool.
+Exec=wyd
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultForensic;ArchAssaultCracker;

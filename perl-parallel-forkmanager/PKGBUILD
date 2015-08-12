@@ -1,0 +1,37 @@
+# Maintainer
+pkgname='perl-parallel-forkmanager'
+_lastauthor='S/SZ/SZABGAB'
+_pkgname='Parallel-ForkManager'
+pkgver=1.07
+pkgrel=1
+pkgdesc='A simple parallel processing fork manager.'
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+makedepends=('perl-extutils-makemaker')
+url="http://search.cpan.org/dist/${_pkgname}/"
+source=("http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('535b50f03fc9ba01d5337b129eaa7b93affdb40c47f246a057dc8345323ebdc48d376d302bd2c4c478f419c2bd13f6a88de7244c3745a1fe8a2972dc2add84ca')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  export PERL_MM_USE_DEFAULT=1 PERL_AUTOINSTALL="--skipdeps" \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+
+  perl Makefile.PL
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  make
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  make DESTDIR="$pkgdir" install
+}

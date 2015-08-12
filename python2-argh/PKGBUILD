@@ -1,0 +1,26 @@
+# Maintainer
+
+_pkgname=argh
+pkgname=python2-$_pkgname
+pkgver=0.26.1
+pkgrel=1
+arch=('any')
+pkgdesc="An unobtrusive argparse wrapper with natural syntax"
+license=('LGPL3')
+url="http://github.com/neithere/argh/"
+depends=('python2')
+makedepends=('python2-distribute')
+source=("https://pypi.python.org/packages/source/a/$_pkgname/$_pkgname-$pkgver.tar.gz")
+md5sums=('5a97ce2ae74bbe3b63194906213f1184')
+sha512sums=('8c286434b13fe72eca7c35313581921f49ab8934e0c791bd230ed775067507dc492b73b76c9ec521161395aeb8d1cfedc71e3251bba8f68d2227c3cf56c326bf')
+
+build() {
+  cd $_pkgname-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  export PYTHONPATH="$pkgdir/usr/lib/python2.7/site-packages/"
+  cd $_pkgname-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}

@@ -1,0 +1,49 @@
+# Maintainer
+pkgname=liffy-git
+pkgver=r63.238ce6d
+pkgrel=1
+groups=('projectname' 'projectname-*webapps')
+pkgdesc="A Local File Inclusion Exploitation tool."
+arch=('any')
+url='https://github.com/rotlogix/liffy'
+license=('GPL2')
+depends=('python2' 'python2-blessings' 'python2-requests' 'python2-daemon')
+makedepends=('git')
+provides=('liffy')
+replaces=('liffy')
+conflicts=('liffy')
+source=("git+https://github.com/rotlogix/liffy.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/liffy"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/liffy" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  sed -i 's|/usr/local/share/metasploit-framework/msfpayload|/usr/bin/msfpayload|' $srcdir/liffy/core.py
+  sed -i 's|python http_server.py|python2 http_server.py|' $srcdir/liffy/core.py
+}
+
+
+package() {
+  cd "$srcdir/liffy"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/liffy"
+  install -dm755 "$pkgdir/usr/bin"
+
+  install -Dm755 *.py "$pkgdir/usr/share/liffy/"
+  install -Dm644 README.md "$pkgdir/usr/share/liffy/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+ 
+cat > "$pkgdir/usr/bin/liffy" << EOF
+#!/bin/sh
+cd /usr/share/liffy
+python2 liffy.py "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/liffy"
+
+}

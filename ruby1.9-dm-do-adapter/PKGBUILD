@@ -1,0 +1,21 @@
+# Maintainer
+_gemname=dm-do-adapter
+pkgname=ruby1.9-$_gemname
+pkgver=1.2.0
+pkgrel=1
+pkgdesc='DataObjects Adapter for DataMapper'
+arch=(any)
+url='http://github.com/datamapper/dm-do-adapter'
+license=()
+depends=(ruby1.9 ruby1.9-data_objects ruby1.9-dm-core)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('791317bc80bdfe616ea1bb91d618baf92d2eadbf')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

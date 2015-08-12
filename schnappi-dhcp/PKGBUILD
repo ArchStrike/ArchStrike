@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=schnappi-dhcp
+pkgver=0.1
+pkgrel=1
+pkgdesc="schnappi can fuck network with no DHCP"
+url="http://www.emanuelegentili.eu/"
+license=('GPL')
+depends=('bash')
+groups=('projectname' 'projectname-*misc')
+arch=(any)
+source=(schnappi-dhcp.sh)
+md5sums=('25befb3dcf81abb4c59fc45e81531e91')
+
+package() {
+  cd "$srcdir/"
+  install -Dm755 schnappi-dhcp.sh $pkgdir/usr/bin/schnappi-dhcp
+}
+

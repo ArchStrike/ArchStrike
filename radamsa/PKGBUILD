@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=radamsa
+pkgver=0.4
+pkgrel=1
+groups=('projectname' 'projectname-*fuzzer')
+pkgdesc="General purpose data fuzzer."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://code.google.com/p/ouspg/wiki/Radamsa"
+license=("MIT")
+depends=('glibc')
+source=("http://haltp.org/download/radamsa-$pkgver.tar.gz")
+sha512sums=('ee90cda52b8d1e8ce50a3a6089943d36c5943ab5dcbf424b15f2d9315498dd1021105218a0c6b11d7da56f095978dd173e46b085453fb212a6bdfaa7d4a0c708')
+
+build() {
+  cd "$srcdir/radamsa-$pkgver"
+  make
+}
+
+package() {
+  cd "$srcdir/radamsa-$pkgver"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
+}

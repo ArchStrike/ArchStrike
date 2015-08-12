@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=seclists-git
+pkgver=r141.c8f9315
+pkgrel=1
+pkgdesc="A collection of multiple types of lists used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more."
+arch=('any')
+license=('GPL2' 'custom')
+groups=('projectname')
+depends=('bash')
+makedepends=('git')
+replaces=('seclists')
+conflicts=('seclists')
+provides=('seclists')
+url=('https://github.com/danielmiessler/SecLists')
+source=("${pkgname}::git+https://github.com/danielmiessler/SecLists")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+package() {
+  cd "${pkgname}"
+  install -dm0755 "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  
+}

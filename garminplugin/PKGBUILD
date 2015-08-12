@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=garminplugin
+pkgrel=1
+pkgver=0.3.26
+pkgdesc="Garmin Communicator Plugin for Linux"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.andreas-diesner.de/garminplugin/doku.php"
+license=('GPL')
+#makedepends=("xulrunner")
+depends=('garmintools' 'tinyxml')
+source=(https://github.com/adiesner/GarminPlugin/archive/V${pkgver}.zip)
+sha256sums=('318e4a42122747a4beca848a21dcffebaeccfef2b5abb5fbebc1667a03202d66')
+
+build() {
+  cd ${srcdir}/GarminPlugin-${pkgver}/src
+  ./configure CXXFLAGS="-fPIC -g -O2" CFLAGS="-g -O2 -fPIC"
+  make
+}
+
+package() {
+  mkdir -p "$pkgdir/usr/lib/mozilla/plugins/"
+  mv -v "${srcdir}/GarminPlugin-${pkgver}/src/npGarminPlugin.so" "$pkgdir/usr/lib/mozilla/plugins/"
+}
+

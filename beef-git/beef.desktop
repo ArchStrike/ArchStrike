@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Beef
+Comment=Pentesting framework that focuses on web-browser exploitation
+Exec=sh -c '/usr/bin/beef -h; ${SHELL:-bash}'
+Icon=projectname
+Terminal=true
+Categories=Archassault;ArchassaultExploitation;

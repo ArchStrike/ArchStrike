@@ -1,0 +1,41 @@
+# Maintainer
+pkgname=sees-git
+pkgver=r67.cd741aa
+pkgrel=1
+pkgdesc="Increase the success rate of phishing attacks by sending emails to company users as if they are coming from the very same company’s domain"
+url="https://github.com/galkan/sees/"
+arch=('any')
+license=('custom')
+groups=('projectname' 'projectname-*socialengineering')
+depends=('python2' 'postfix' 'python2-argparse')
+makedepends=('git')
+install=sees.install
+source=("git+https://github.com/galkan/sees.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir"/sees
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd "$srcdir"/sees
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}
+
+package() {
+  cd "$srcdir"/sees
+  install -dm755 "$pkgdir"/usr/bin
+  install -dm755 "$pkgdir"/usr/share/sees
+  cp --no-preserve=ownership -a lib data config README.md "$pkgdir"/usr/share/sees
+  install -Dm755 sees.py "$pkgdir/usr/share/sees/"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  cat > "$pkgdir"/usr/bin/sees <<EOF
+#!/bin/sh
+cd /usr/share/sees
+python2 sees.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/sees
+}
+

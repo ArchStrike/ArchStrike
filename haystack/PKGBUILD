@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=haystack
+pkgver=0.18
+pkgrel=2
+pkgdesc="A Python framework for Finding C Structures from process memory - heap analysis - Memory structures forensics"
+arch=('any')
+url="https://github.com/trolldbois/python-haystack"
+license=('GPL3')
+depends=('python2-levenshtein' 'python2-ptrace' 'python2-argparse' 'python2-networkx')
+makedepends=('python2-setuptools')
+source=("https://github.com/trolldbois/python-haystack/archive/v$pkgver.tar.gz")
+sha512sums=('d53e7f5822e952abb47580a8917f9750796f03271cf0a577d1e3582bcb076d8072537cb6e73e02d763123dd298546cb485b2b1018c7001fd38258e89063d4dc1')
+
+package() {
+  cd "$srcdir/python-haystack-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}

@@ -1,0 +1,25 @@
+# Maintainer:  ArchAssault <team@projectname.org>
+
+pkgname=python2-ua-parser
+pkgver=0.3.6
+pkgrel=2
+pkgdesc="Python port of Browserscope's user agent parser"
+url="https://github.com/tobie/ua-parser"
+depends=('python2' )
+makedepends=('python2-distribute' )
+license=('APACHE')
+arch=('any')
+source=("https://pypi.python.org/packages/source/u/ua-parser/ua-parser-${pkgver}.tar.gz")
+sha512sums=('4becb7212d90d9290f0aa041237546894eeb55dac7f4583299ac93ad16b480cbf17e6bb09bcb569107a598d121d6d9d6026ac80547da31a736d634db99bb99ea')
+
+build() {
+    cd $srcdir/ua-parser-${pkgver}
+    python2 setup.py build
+}
+
+package() {
+    cd $srcdir/ua-parser-${pkgver}
+    python2 setup.py install --root="$pkgdir" --optimize=1 
+    find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python2.5|#!/usr/bin/python2|'    
+    find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}

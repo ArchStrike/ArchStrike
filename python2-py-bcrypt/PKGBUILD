@@ -1,0 +1,18 @@
+# Maintainer
+pkgname=python2-py-bcrypt
+pkgver=0.4
+pkgrel=3
+pkgdesc="py-bcrypt is an implementation the OpenBSD Blowfish password hashing algorithm"
+arch=('armv7h' 'armv6h' 'x86_64' 'i686')
+url="https://code.google.com/p/py-bcrypt/"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://py-bcrypt.googlecode.com/files/py-bcrypt-${pkgver}.tar.gz")
+sha512sums=('0e43212c9928dc842f93b18a19805d7e0a12dad1032ee6949efba4afee95922bb4046d052c817c09c09fcdc6bcc3b92512fad8d6571bb8983a4ae94e287bb49e')
+
+package() {
+  cd py-bcrypt-${pkgver}
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/python2-py-bcrypt/LICENSE
+}

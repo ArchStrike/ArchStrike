@@ -1,0 +1,37 @@
+# Maintainer
+pkgname=topera
+pkgver=20140105.r19.3e230fd
+pkgrel=1
+epoch=1
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="A new security tools for IPv6, with the particularity that their attacks can't be detected by Snort."
+url="https://github.com/toperaproject/topera"
+arch=('any')
+license=('GPL2')
+depends=('python2' 'scapy')
+makedepends=('git')
+source=("git+https://github.com/toperaproject/topera.git")
+sha512sums=('SKIP')
+
+pkgver() {
+    cd $pkgname
+    printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/topera" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/topera"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/topera" << EOF
+#!/bin/sh
+python2 /usr/share/topera/./topera.py "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/topera"
+}

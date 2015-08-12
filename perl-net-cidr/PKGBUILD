@@ -1,0 +1,44 @@
+# Maintainer
+pkgname=perl-net-cidr
+_cpanname="Net-CIDR"
+pkgver=0.18
+pkgrel=1
+pkgdesc="Manipulate IPv4/IPv6 netblocks in CIDR notation"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=5.5.0')
+url='http://search.cpan.org/dist/Net-CIDR'
+source=("http://search.cpan.org/CPAN/authors/id/M/MR/MRSAM/$_cpanname-$pkgver.tar.gz")
+sha512sums=('26a8fd1fdb16b03f72c456edbd7dd0f158e6fcd76847be7634c470049eeabd1d41bf328d32e528aa26b7f34179b38904c65ba511ca3347acb0442fe93748bc63')
+
+# Function to change to the working directory and set
+# environment variables to override undesired options.
+_enviro() {
+  cd "$srcdir/$_cpanname-$pkgver"
+  export \
+    PERL_MM_USE_DEFAULT=1 \
+    PERL_AUTOINSTALL=--skipdeps \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
+    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+    MODULEBUILDRC=/dev/null
+}
+
+build() {
+  _enviro
+  /usr/bin/perl Makefile.PL
+  make
+}
+
+check() {
+  _enviro
+  make test
+}
+
+package() {
+  _enviro
+  make install
+
+  # Remove "perllocal.pod" and ".packlist".
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

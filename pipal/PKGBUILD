@@ -1,0 +1,35 @@
+# Maintainer
+pkgname=pipal
+pkgver=1.1
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="A password analyser"
+url="http://www.digininja.org/projects/pipal.php"
+arch=('any')
+license=('GPL3')
+depends=('ruby1.9')
+source=("http://www.digininja.org/files/pipal_$pkgver.tar.bz2"
+        require.patch)
+md5sums=('9611ea004e612900c6a40e069c9669f4'
+         '228d9c75822474b92523cc01f4911e59')
+
+prepare() {
+  cd "$srcdir/pipal"
+  patch < "$srcdir/require.patch"
+}
+
+package() {
+  cd "$srcdir/pipal"
+
+  # Base directories.
+  install -dm755 "$pkgdir/usr/share/pipal"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a * "$pkgdir/usr/share/pipal"
+
+  cat > "$pkgdir/usr/bin/pipal" << EOF
+#!/bin/sh
+ruby-1.9 /usr/share/pipal/pipal.rb "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/pipal"
+}

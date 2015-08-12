@@ -1,0 +1,46 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Maxime Gauduin <alucryd@gmail.com>
+# Contributor: mortzu <me@mortzu.de>
+# Contributor: fnord0 <fnord0@riseup.net>
+
+pkgname=acpi_call-projectname
+pkgver=1.1.0
+pkgrel=2
+_extramodules=extramodules-3.18-projectname
+pkgdesc='A linux kernel module that enables calls to ACPI methods through /proc/acpi/call'
+arch=('i686' 'x86_64')
+url="http://github.com/mkottman/${pkgname%-*}"
+license=('GPL')
+depends=('linux-projectname>=3.18')
+makedepends=('linux-projectname-headers>=3.18')
+provides=("${pkgname%-*}")
+install="${pkgname%-*}.install"
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('d5cf13c15f9057e3a27aaacfee6dcdb17b6a79194bdc8fd57b8140c07a532e2e58151bea881aa158c1183ac3bbe89f83fcfc2279ffd9e945a72331b6ddbf2c70')
+
+prepare() {
+  cd ${pkgname%-*}-${pkgver}
+  sed -i 's|acpi/acpi.h|linux/acpi.h|' acpi_call.c
+}
+
+build() {
+  cd ${pkgname%-*}-${pkgver}
+
+  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+
+  make KVERSION="${_kernver}"
+}
+
+package() {
+  cd ${pkgname%-*}-${pkgver}
+
+  install -dm 755 "${pkgdir}"/usr/lib/{modules/${_extramodules},modules-load.d}
+  install -m 644 ${pkgname%-*}.ko "${pkgdir}"/usr/lib/modules/${_extramodules}/
+  gzip "${pkgdir}"/usr/lib/modules/${_extramodules}/${pkgname%-*}.ko
+  echo ${pkgname%-*} > "${pkgdir}"/usr/lib/modules-load.d/${pkgname}.conf
+
+  install -dm 755 "${pkgdir}"/usr/share/${pkgname}
+  cp -dr --no-preserve='ownership' {examples,support} "${pkgdir}"/usr/share/${pkgname}/
+}
+
+# vim: ts=2 sw=2 et:

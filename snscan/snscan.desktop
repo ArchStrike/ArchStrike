@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Snscan
+Comment=A Windows based SNMP detection utility that can quickly and accurately identify SNMP enabled devices on a network.
+Exec=snscan
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWindows;

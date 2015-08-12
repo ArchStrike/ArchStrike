@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-nfqueue
+Comment=Python bindings for libnetfilter_queue by Pierre Chifflier
+Exec=python2-nfqueue
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

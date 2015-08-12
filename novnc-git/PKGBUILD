@@ -1,0 +1,55 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=novnc-git
+pkgver=r877.b098afc
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="VNC client using HTML5 (Web Sockets, Canvas) with encryption (wss://) support."
+arch=('any')
+url='https://github.com/kanaka/noVNC'
+license=('custom')
+makedepends=('git')
+depends=('bash' 'python2')
+provides=('novnc')
+source=("novnc::git+https://github.com/kanaka/noVNC.git" "LICENSE")
+sha512sums=('SKIP'
+            'ee977c7e1fcd131b5c42b97fd384920b7ec5afb28aff5da024c1bd6c13b60406789cf7568d5c8f915eed7a573d7354decc3dac0ad0e93eb5c181931a21af2742')
+
+pkgver() {
+  cd "$srcdir/novnc"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+prepare(){
+  grep -iRl 'python' "$srcdir/novnc" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  cd $srcdir/novnc/include
+  git submodule init
+  git submodule update
+}
+
+package() {
+  cd "$srcdir/novnc"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/novnc"
+  install -dm755 "$pkgdir/usr/share/licenses/novnc-git"
+  install -dm755 "$pkgdir/usr/bin"
+  for i in include utils images docs; do 
+	install -dm755 $pkgdir/usr/share/novnc/$i
+        cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/novnc/$i/";
+  done
+  install -Dm644 vnc.html "$pkgdir/usr/share/novnc"
+  install -Dm644 vnc_auto.html "$pkgdir/usr/share/novnc"
+
+  #docs
+  install -Dm644 README.md "$pkgdir/usr/share/doc/novnc/README"
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/novnc-git/LICENSE"
+
+  cat >$pkgdir/usr/bin/novnc <<EOF
+#!/bin/sh
+cd /usr/share/novnc
+exec ./utils/launch.sh \$*
+EOF
+  chmod +x  $pkgdir/usr/bin/novnc
+
+}

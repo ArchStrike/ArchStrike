@@ -1,0 +1,46 @@
+# Maintainer
+# Generator  : CPANPLUS::Dist::Arch 1.28
+pkgname='perl-string-random'
+pkgver='0.28'
+pkgrel='1'
+pkgdesc="Perl module to generate random strings based on a pattern"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl')
+url='http://search.cpan.org/dist/String-Random'
+source=("http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/String-Random-$pkgver.tar.gz")
+sha512sums=('d2ab5820b5dde8c9a270a8fa852ad07ddf2f108c242ec756802979802bf599fe2004dd1b1caab48458f5f4e9521f7acedaadc72f96b9d6bb708cc5072a896a01')
+_distdir="String-Random-$pkgver"
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Build.PL
+    /usr/bin/perl Build
+  )
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    /usr/bin/perl Build test
+  )
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  /usr/bin/perl Build install
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}
+
+# Local Variables:
+# mode: shell-script
+# sh-basic-offset: 2
+# End:
+# vim:set ts=2 sw=2 et:

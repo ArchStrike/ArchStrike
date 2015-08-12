@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Jondo
+Comment=Redirects internet traffic trough a mix of proxy servers to hide the origin of the requests.
+Exec=jondo
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

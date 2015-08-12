@@ -1,0 +1,34 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contriibutor: Gagou <gagou@rez-gif.supelec.fr>
+pkgname=libemu
+pkgver=r571.ab48695
+pkgrel=1
+pkgdesc="A small library written in c offering basic x86 emulation and shellcode detection"
+url="http://libemu.carnivore.it/"
+license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('glibc')
+makedepends=('git')
+source=("libemu::git://git.carnivore.it/libemu.git")
+sha512sums=('SKIP')
+
+
+pkgver() {
+  cd "$srcdir/$pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+build() {
+  cd "$srcdir/$pkgname"
+
+  sed -i s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g ./configure.ac
+  autoreconf -i
+  CFLAGS="${CFLAGS} -Wno-unused-local-typedefs" ./configure --prefix=/usr
+  make
+}
+package() {
+  cd "$srcdir/$pkgname"
+  make DESTDIR=$pkgdir install
+}
+

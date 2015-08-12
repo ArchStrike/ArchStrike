@@ -1,0 +1,32 @@
+# Maintainer
+pkgname=deblaze
+pkgver=0.3
+pkgrel=1
+groups=('projectname' 'projectname-*scanners')
+pkgdesc="A remote method enumeration tool for flex servers"
+url="http://deblaze-tool.appspot.com/"
+arch=('any')
+license=('GPL3')
+depends=('python2' 'python2-pillow')
+source=("http://deblaze-tool.appspot.com/download")
+md5sums=('f20acbd15915089aae5647e0131cff16')
+
+prepare() {
+  sed -i 's/import\ Image/from\ PIL\ import\ Image/' $srcdir/deblaze-$pkgver/outputManager.py
+}
+
+package() {
+  cd "$srcdir/deblaze-$pkgver"
+
+  install -dm755 "$pkgdir/usr/share/deblaze"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a * "$pkgdir/usr/share/deblaze"
+
+  cat > "$pkgdir/usr/bin/deblaze" <<EOF
+#!/bin/sh
+cd /usr/share/deblaze
+python2 deblaze-$pkgver.py
+EOF
+  chmod +x "$pkgdir/usr/bin/deblaze"
+}

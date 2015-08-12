@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=python2-modbus_tk
+pkgver=0.4.3
+pkgrel=1
+pkgdesc="Implementation of modbus protocol in python"
+url="http://code.google.com/p/modbus-tk/"
+depends=('python2')
+makedepends=('python2-distribute')
+license=('LGPL')
+arch=('any')
+source=("https://pypi.python.org/packages/source/m/modbus_tk/modbus_tk-${pkgver}.tar.gz")
+sha512sums=('3511c128a0fa8473fa3c0d2966f44a3ef115911995cd8f23cf66d638f89b6f8b1c635d1a9fc2f30358e09fa1b73292775a4e6631bf259cf122c56a8097b8ef5c')
+
+build() {
+    cd modbus_tk-"${pkgver}"
+    python2 setup.py build
+}
+
+package() {
+    cd modbus_tk-"${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1
+    find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}

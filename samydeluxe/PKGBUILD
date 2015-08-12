@@ -1,0 +1,28 @@
+# Maintainer
+pkgname='samydeluxe'
+pkgver=20090216.r2.2ed1bac
+pkgrel=1
+epoch=1
+pkgdesc='Automatic samdump creation script.'
+arch=('any')
+url='http://github.com/jensp/samydeluxe'
+groups=('projectname' 'projectname-*cracker')
+license=('UNKNOWN')
+makedepends=('git')
+depends=('bash' 'samdump2')
+md5sums=('SKIP')
+source=('git+https://github.com/jensp/samydeluxe.git')
+_gitname='samydeluxe'
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//  g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir"
+  rm -rf "$srcdir/$_gitname-build"
+  cp -r "$srcdir/$_gitname" "$srcdir/$_gitname-build"
+  cd "$srcdir/$_gitname-build"
+  install -D -m755 "samydeluxe" "$pkgdir/usr/bin/samydeluxe"
+}

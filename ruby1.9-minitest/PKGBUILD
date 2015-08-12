@@ -1,0 +1,20 @@
+# Maintainer
+pkgname=ruby1.9-minitest
+pkgver=4.7.5
+pkgrel=2
+pkgdesc="Provides a complete suite of testing facilities supporting TDD, BDD, mocking and benchmarking."
+arch=(any)
+url="https://github.com/seattlerb/minitest"
+license=("MIT")
+depends=('ruby1.9')
+makedepends=('rubygems')
+source=(http://gems.rubyforge.org/gems/minitest-${pkgver}.gem)
+noextract=(minitest-${pkgver}.gem)
+md5sums=('be309582bddb3eb5be9d4fe34bb63a0f')
+
+package() {
+  cd "$srcdir"
+  local _gemdir="$(ruby-1.9 -rubygems -e'puts Gem.default_dir')"
+
+  gem-1.9 install --ignore-dependencies --no-user-install --no-rdoc --no-ri -i "${pkgdir}${_gemdir}" "minitest-${pkgver}.gem"
+}

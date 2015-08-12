@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-pcapy
+Comment=Python module for the libpcap packet capture library.
+Exec=python2-pcapy
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

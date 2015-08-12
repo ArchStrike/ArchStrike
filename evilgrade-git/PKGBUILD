@@ -1,0 +1,40 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=evilgrade-git
+pkgver=r7.22dc742
+pkgrel=1
+groups=('projectname' 'projectname-*misc')
+pkgdesc="Modular framework that takes advantage of poor upgrade implementations by injecting fake updates"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/infobyte/evilgrade'
+license=('GPL')
+depends=('perl' 'perl-data-dump' 'perl-io-socket-ssl' 'perl-digest-sha1' 'perl-rpc-xml' 'java-environment')
+makedepends=('git')
+provides=('evilgrade')
+replaces=('evilgrade')
+conflicts=('evilgrade')
+source=("git+https://github.com/infobyte/evilgrade.git"
+        "evilgrade.sh"
+				'evilgrade.desktop')
+sha512sums=('SKIP'
+            'f2ec4ba6fe5692a90b1ce53f4ede65ffb7dbd4b41ed660cd1a08b0e39ab978b33707c4fc349c156d128f07ebc24c29ff3e7eb83782a8be98fb2061d7dcd07272'
+            '4a6bf26c1f4e75583df5d2ed76712bdaf190ddee223f73903ddfe6cacf84449dd3b19c1acc54c976c1961ca80955eab9f89621c38b4ab0df671bd788a2bd5dc9')
+
+pkgver() {
+  cd "$srcdir/evilgrade"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/evilgrade"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/evilgrade"
+  install -dm755 "$pkgdir/usr/share/doc/evilgrade"
+  install -Dm644 "$srcdir/evilgrade.desktop" "$pkgdir/usr/share/applications/evilgrade.desktop"
+
+  cp --no-preserve=ownership -r agent evilgrade include isrcore modules \
+     "$pkgdir/usr/share/evilgrade"
+
+  install -m644 docs/{AUTHOR,CHANGES,CONTRIBUTORS,FILES,README} "$pkgdir/usr/share/doc/evilgrade"
+  install -Dm755 "$srcdir/evilgrade.sh" "$pkgdir/usr/bin/evilgrade"
+}

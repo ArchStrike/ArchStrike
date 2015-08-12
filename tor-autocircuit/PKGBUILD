@@ -1,0 +1,21 @@
+# Maintainer
+pkgname=tor-autocircuit
+pkgver=0.2
+pkgrel=1
+groups=('projectname' 'projectname-*defense')
+pkgdesc="Tor Autocircuit was developed to give users a finer control over Tor circuit creation. The tool exposes the functionality of TorCtl library which allows its users to control circuit length, speed, geolocation, and other parameters."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://www.thesprawl.org/projects/tor-autocircuit/'
+license=('custom')
+depends=('tor' 'python2-pytorctl' 'python2-elixir' 'python2-geoip')
+source=("http://www.thesprawl.org/media/projects/tor-autocircuit-$pkgver.tar.gz")
+md5sums=('a84cb021b1d67976380a319f5863fca5')
+
+build() {
+  sed 's/usr\/bin\/python/usr\/bin\/env python2/g' -i $srcdir/tor-autocircuit/tor-autocircuit.py
+}
+
+package() {
+  cd $srcdir/tor-autocircuit
+  install -Dm755 $srcdir/tor-autocircuit/tor-autocircuit.py $pkgdir/usr/bin/tor-autocircuit
+}

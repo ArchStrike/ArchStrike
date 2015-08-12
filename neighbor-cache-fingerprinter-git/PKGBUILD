@@ -1,0 +1,36 @@
+#Maintainer: ArchAssault <team at projectname dot org>
+pkgname=neighbor-cache-fingerprinter-git
+pkgver=r83.f1e596f
+pkgrel=2
+groups=('projectname' 'projectname-*scanner')
+pkgdesc="A mechanism for remote operating system detection by
+extrapolating characteristics of the target system's underlying Neighbor Cache
+and general ARP behavior."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/PherricOxide/Neighbor-Cache-Fingerprinter'
+license=('GPL2')
+if [[ $CARCH == 'x86_64' ]]; then
+      depends=('libpcap' 'libdnet' 'boost' 'gcc-libs-multilib')
+else
+      depends=('libpcap' 'libdnet' 'boost' 'gcc-libs')
+fi
+makedepends=('automake-1.11' 'git' 'libpcap' 'libdnet' 'boost-libs')
+provides=('neighborhood-cache-fingerprinter')
+source=("git+https://github.com/PherricOxide/Neighbor-Cache-Fingerprinter.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/Neighbor-Cache-Fingerprinter"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build(){
+ cd "$srcdir/Neighbor-Cache-Fingerprinter"
+ ./configure --prefix=/usr --with-boost
+ make
+}
+
+package() {
+  cd "$srcdir/Neighbor-Cache-Fingerprinter"
+  make DESTDIR=$pkgdir install
+}

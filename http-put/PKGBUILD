@@ -1,0 +1,17 @@
+# Maintainer
+pkgname=http-put
+pkgver=1.0
+pkgrel=1
+pkgdesc="Simple http put perl script"
+groups=('projectname' 'projectname-*misc')
+arch=(any)
+license=('GPL')
+depends=('perl' 'perl-net-ssleay')
+source=(http://examples.oreilly.com/networksa/tools/put.pl)
+md5sums=('c0fff1a0e030783937a820d6645c3f1b')
+
+package() {
+  cd "$srcdir"
+  install -Dm755 put.pl $pkgdir/usr/bin/http-put
+}
+

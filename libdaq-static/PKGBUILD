@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=libdaq-static
+pkgver=2.0.4
+pkgrel=1
+pkgdesc='Data Acquisition library for packet I/O.'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://www.snort.org/'
+license=('GPL')
+depends=('libpcap')
+makedepends=('ca-certificates')
+options=('staticlibs' '!makeflags')
+provides=('libdaq')
+conflicts=('libdaq')
+source=("http://www.snort.org/downloads/snort/daq-${pkgver}.tar.gz")
+sha512sums=('b284ece7dec9e246f14d162d3a7e87582d490c0f6ff895279f66dfad406b7892f5b286ac86633f30aa090b6a89f1fc77ff637323a3add16c67f695bd8486a0a0')
+
+build() {
+  cd "${srcdir}/daq-${pkgver}"
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "${srcdir}/daq-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}

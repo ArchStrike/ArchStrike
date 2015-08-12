@@ -1,0 +1,24 @@
+# Maintainer
+pkgname='perl-term-ansicolor'
+pkgver='4.03'
+pkgrel='1'
+pkgdesc="Term::ANSIColor - Color screen output using ANSI escape sequences for perl"
+arch=('any')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl')
+makedepends=()
+url="http://search.cpan.org/~rra/Term-ANSIColor-4.02/ANSIColor.pm"
+source=("http://search.cpan.org/CPAN/authors/id/R/RR/RRA/Term-ANSIColor-4.02.tar.gz")
+sha512sums=('46e5237b1db1a9d8c74e1039849e4cd0c3b9c5a1c860f00473f6690c632de9c8e4afb7e390a6da537afbd7780cdd3cc04a00c6a38d5b033bdceb88c9d5312353')
+
+build() {
+    cd "$srcdir/Term-ANSIColor-4.02"
+    perl Makefile.PL INSTALLDIRS=vendor
+    make
+}
+
+package(){
+    cd "$srcdir/Term-ANSIColor-4.02"
+    make DESTDIR=$pkgdir install
+}

@@ -1,0 +1,40 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=xssless
+pkgver=r35.9eee648
+pkgrel=1
+pkgdesc="An automated XSS payload generator written in python."
+url="https://github.com/mandatoryprogrammer/xssless"
+arch=('any')
+license=('GPL2')
+groups=('projectname')
+depends=('python2' 'python2-beautifulsoup4')
+makedepends=('git')
+source=("git+https://github.com/mandatoryprogrammer/xssless.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/xssless"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "$srcdir/xssless" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$srcdir/xssless"
+  
+  # Base directories.
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin/"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/xssless" << EOF
+#!/bin/sh
+cd /usr/share/xssless
+python2 xssless.py "\$@"
+EOF
+ chmod +x "$pkgdir/usr/bin/xssless"
+}
+

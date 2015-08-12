@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Javasnoop
+Comment=A tool that lets you intercept methods, alter data and otherwise hack Java applications running on your computer
+Exec=javasnoop
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultReversing;

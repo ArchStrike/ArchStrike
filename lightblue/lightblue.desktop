@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Lightblue
+Comment=A cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations
+Exec=lightblue
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

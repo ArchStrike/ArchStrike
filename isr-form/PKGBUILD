@@ -1,0 +1,21 @@
+# Maintainer
+pkgname='isr-form'
+_pkgname='ISR-form'
+pkgver='1.0'
+pkgrel=1
+pkgdesc='Simple html parsing tool that extracts all form related information and generates reports of the data. Allows for quick analyzing of data.'
+url='http://www.infobyte.com.ar/'
+groups=('projectname' 'projectname-*webapp' 'archassault-reconnaissance')
+license=('custom')
+arch=('any')
+depends=('perl' 'perl-data-dump')
+source=("http://packetstorm.igor.onlinedirect.bg/UNIX/audit/ISR-form-v$pkgver.tar.gz")
+md5sums=('9d91c42fdb01b52d9e341115a9adafe2')
+
+package() {
+  cd "$srcdir/ISR-form-v$pkgver"
+  
+  install -Dm755 "ISR-form.pl" "$pkgdir/usr/bin/isr-form"
+  install -Dm644 "README" "$pkgdir/usr/share/doc/isr-form/README"
+  install -Dm644 "ChangeLog.txt" "$pkgdir/usr/share/doc/isr-form/CHANGELOG"
+}

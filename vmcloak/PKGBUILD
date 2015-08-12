@@ -1,0 +1,28 @@
+# Maintainer
+pkgname=vmcloak
+pkgver=0.2.6
+pkgrel=1
+pkgdesc="Automated Virtual Machine Generation and Cloaking for Cuckoo Sandbox."
+url="https://github.com/jbremer/vmcloak"
+arch=('i686' 'x86_64')
+license=('GPL3')
+groups=('projectname' 'projectname-*malware')
+depends=('cdrtools' 'virtualbox' 'dmidecode' 'lshw' 'python2-lockfile' 'python2-sphinx')
+makedepends=('python2-setuptools' 'unzip')
+conflicts=('vmcloak-git')
+replaces=('vmcloak-git')
+source=("https://github.com/jbremer/vmcloak/archive/${pkgver}.zip")
+sha512sums=('75dd1a5d0a6b28b5bc49a768955af48e2c3e9c96971347ab900829664fc8874c29029b9680f2bc1376d8128f339dd68297bfbc7747af08795c75913bc4cfe40a')
+
+prepare() {
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}
+
+package() {
+  cd vmcloak-"${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 docs/LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt" 
+}
+
+

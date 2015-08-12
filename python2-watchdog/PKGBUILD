@@ -1,0 +1,28 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Francois Boulogne <fboulogne at april dot org>
+
+pkgname=python2-watchdog
+pkgver=0.8.3
+pkgrel=2
+pkgdesc="This decorator will turn your normal python functions into proper shell commands"
+arch=('any')
+url="https://pypi.python.org/pypi/watchdog"
+license=('Apache')
+depends=('python2-yaml' 'python2-argh' 'python2-pathtools')
+makedepends=('python2-setuptools')
+source=(https://pypi.python.org/packages/source/w/watchdog/watchdog-${pkgver}.tar.gz)
+sha512sums=('61f1db886e8e9a6d78b569329f4d5944c296778a5a34f94fbf115a748fb4c3be422bf4d3cc828e22fcdcd380fdf9009f5bd91a8a5edc87089afc58297a0b946f')
+
+build() {
+  cd "$srcdir/watchdog-$pkgver"
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/watchdog-$pkgver"
+  python2 setup.py install --root="${pkgdir}"
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # fixing python refs
+  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/event_backport.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/platform.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/unicode_paths.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/dirsnapshot.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/echo.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/fsevents.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/watchmedo.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/tricks/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/inotify.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/bricks.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/decorators.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/kqueue.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/version.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/read_directory_changes.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/polling.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/api.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/events.py  $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/winapi.py 
+}
+

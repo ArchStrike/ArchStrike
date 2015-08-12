@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=snapception-git
+pkgver=20141017.r8
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="Intercept and decrypt all snapchats received over your network"
+arch=('any')
+url='https://github.com/thebradbain/snapception'
+license=('MIT')
+depends=('python2-requests' 'python2-sortedcontainers' 'python2-click' 'mitmproxy')
+makedepends=('git')
+provides=('snapception')
+source=("${pkgname}::git+https://github.com/thebradbain/snapception.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Blindelephant
+Comment=A web application fingerprinter. Attempts to discover the version of a (known) web application by comparing static files at known locations 
+Exec=blindelephant
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultFingerprint;

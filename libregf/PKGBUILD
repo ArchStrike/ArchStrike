@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname="libregf"
+pkgver="20150315"
+pkgrel=1
+pkgdesc="Library and tools to access the Windows NT Registry File (REGF) format"
+arch=("i686" "x86_64" "armv6h" "armv7h")
+url='https://github.com/libyal/libregf'
+license=('GPL3')
+depends=('fuse' 'libcsystem' 'libbfio' 'python2')
+makedepends=('git')
+source=("https://github.com/libyal/libregf/archive/$pkgver.tar.gz")
+sha512sums=('37815dcef9befa2c710c6f5b39fee635ae8754c2fda6f287cc7c2a0d6c58818ee43d666cad38dfc8d11d23b23a048ac1b7268f3924941c9b0646e54695972b9a')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  ./synclibs.sh
+  ./autogen.sh
+  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}

@@ -1,0 +1,28 @@
+# Maintainer
+pkgname=bully
+pkgver=1.0.22
+pkgrel=2
+groups=('projectname' 'projectname-*crackers' 'archassault-wifi')
+pkgdesc="A wifi-protected-setup (WPS) brute force attack tool."
+url="http://code.google.com/p/bully/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL3')
+depends=('libpcap' 'openssl')
+makedepends=('git' 'python2-setuptools')
+source=("git+https://github.com/bdpurcell/bully.git")
+sha512sums=('SKIP')
+
+build(){
+  cd "$srcdir/bully/src"
+  make
+}
+
+package() {
+  cd "$srcdir/bully/src"
+
+  # Base directory.
+  install -dm755 "$pkgdir/usr/bin"
+
+  # Bin.
+  install -m755 bully "$pkgdir/usr/bin/bully"
+}

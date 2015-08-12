@@ -1,0 +1,29 @@
+# Maintainer
+pkgname=powershell-payload-excel-delivery
+pkgver=r37.35a2d03
+pkgrel=2
+groups=('projectname' 'projectname-*windowsapps' 'archassault-exploit')
+pkgdesc="A VBA macro that uses invoke-shellcode to execute a powershell payload in memory."
+arch=('any')
+url='https://github.com/enigma0x3/Powershell-Payload-Excel-Delivery'
+license=('MIT')
+makedepends=('git')
+provides=('powershell-payload-excel-delivery')
+source=("git+https://github.com/enigma0x3/Powershell-Payload-Excel-Delivery.git")
+md5sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/Powershell-Payload-Excel-Delivery"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir/Powershell-Payload-Excel-Delivery"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/powershell-payload-excel-delivery"
+  install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/License.txt"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/powershell-payload-excel-delivery"
+  
+
+}

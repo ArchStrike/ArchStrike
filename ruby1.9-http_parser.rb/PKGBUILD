@@ -1,0 +1,26 @@
+# Maintainer
+pkgname=ruby1.9-http_parser.rb
+pkgver=0.5.3
+pkgrel=1
+epoch=1
+pkgdesc="Simple callback-based HTTP request/response parser"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('MIT')
+depends=('ruby1.9' 'java-environment')
+url='http://github.com/tmm1/http_parser.rb'
+source=("http://rubygems.org/downloads/http_parser.rb-$pkgver.gem" 
+       'LICENSE-MIT')
+sha512sums=('3596a9344b28a4a03ae12f4df61595b7477ef4ec687a092213f94bb2ae2181780a055eefa9e54b59938e0d15822e7c75a2cb3b37a2b112058ee307b40dc1a1b2'
+            'fa5c1d3cbf5e5578b16f71481519b501228b346f4c99dea4f0877fdac239e30fd377431193f4f869de9eb27453c50c1c79ed963275435f0d33b5c19bf3d7b4a2')
+noextract=("http_parser.rb-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" http_parser.rb-$pkgver.gem
+  else
+    gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" http_parser.rb-$pkgver.gem
+  fi
+  install -Dm644 "$srcdir"/LICENSE-MIT "$pkgdir"/usr/share/licenses/ruby1.9-http_parser.rb/LICENSE-MIT
+}

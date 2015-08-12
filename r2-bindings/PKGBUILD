@@ -1,0 +1,55 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
+
+pkgname=r2-bindings
+_pkgname=radare2-bindings
+pkgver=0.9.8
+pkgrel=2
+pkgdesc="Language bindings of the radare2 api for Valabind and friends"
+url="http://radare.org"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('projectname')
+license=('GPL3')
+depends=('radare2' 'gawk' 'ruby1.8' 'ruby1.9' 'lua' 'python2')
+makedepends=('valabind' 'swig')
+options=(!emptydirs)
+provides=('radare2-bindings')
+source=(http://www.radare.org/get/${_pkgname}-${pkgver}.tar.xz)
+sha512sums=('e2541340cb180ec87aacbf507ad66b73322bb5b558b2ffdc71c085f2dc767160150b3bbf52ac6590936c5244705b191217b1b2d7ea051d6a78c94988ab684cd8')
+
+prepare() {
+  cd ${_pkgname}-${pkgver}
+  ./configure --prefix=/usr --enable=awk,ctypes,cxx,go,duktape,guile,lua,perl,php5,python,valac,newlisp,dlang,ocaml,r2pipe,vapi
+}
+ 
+build() {
+  cd ${_pkgname}-${pkgver}
+  make
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  install -dm755 "$pkgdir/usr/lib/perl5/site_perl/r2"
+  install -dm755 "$pkgdir/usr/bin"
+  make DESTDIR="${pkgdir}" install-plugins
+  make DESTDIR="${pkgdir}" install-python
+  make DESTDIR="${pkgdir}" install-ctypes
+  #GOROOT="${pkgdir}" make DESTDIR="${pkgdir}" install-go
+  #make DESTDIR="${pkgdir}" install-cxx # Not configured in makefile
+  make DESTDIR="${pkgdir}" install-awk
+  # Fixing awkdir in r2awk
+  sed -i "s|$pkgdir/usr/lib/radare2/0.9.8/awk|/usr/lib/radare2/0.9.8/awk|" "$pkgdir/usr/bin/r2awk"
+  # Installl perl bindings by hand as its messed up in installer
+  cp -rf perl/*.so "$pkgdir/usr/lib/perl5/site_perl/r2"
+  cp -rf perl/*.pm "$pkgdir/usr/lib/perl5/site_perl/r2"  
+  make DESTDIR="${pkgdir}" install-vapi
+  make DESTDIR="${pkgdir}" install-ruby
+  make DESTDIR="${pkgdir}" lua-install
+  #make DESTDIR="${pkgdir}" install-php5 # Not configured in makefile
+  #make DESTDIR="${pkgdir}" install-gir # Not configured in makefile
+  #make EXAMPLEDIR="${pkgdir}" install-examples
+  #make EXAMPLEDIR="${pkgdir}" install-python-examples
+  #make DESTDIR="${pkgdir}" install-valac # Not configured in makefile
+}
+ 
+# vim: ts=2 sw=2 et:

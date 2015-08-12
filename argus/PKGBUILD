@@ -1,0 +1,26 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=argus
+pkgver=3.0.8.1
+pkgrel=1
+groups=('projectname' 'projectname-*networking' 'archassault-defensive')
+pkgdesc="Network monitoring tool with flow control"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://qosient.com/argus/"
+depends=('bash' 'libpcap' 'libsasl')
+license=('GPL3')
+options=('!emptydirs')
+source=("http://qosient.com/argus/src/argus-$pkgver.tar.gz")
+sha512sums=('d96332849df7ce2297aa0d81a9f22c12763d04b2936ffaffc0e4b1942535846cfbc41dadf28791eb88d1ffd0429bdc280d16dff44369c415c713064849b158f7')
+
+build() {
+  cd $srcdir/argus-$pkgver
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --docdir=/usr/share/doc/argus --pdfdir=/usr/share/argus/pdf --with-sasl
+  make
+}
+
+package() {
+  cd $srcdir/argus-$pkgver
+  make DESTDIR=$pkgdir install
+  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  mv $pkgdir/usr/argus $pkgdir/usr/share/
+}

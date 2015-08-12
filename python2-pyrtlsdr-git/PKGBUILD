@@ -1,0 +1,27 @@
+# Maintainer: ArchAssualt <team@archassualt.org>
+# Contributor: Gergely Imreh <imrehg(at)gmail(dot)com>
+pkgname=python2-pyrtlsdr-git
+pkgver=r54.0bc0ad7
+pkgrel=1
+pkgdesc="A Python wrapper for librtlsdr (a driver for Realtek RTL2832U based SDR's)"
+depends=('python2')
+makedepends=('git' 'python2-setuptools')
+arch=('any')
+url="https://github.com/roger-/pyrtlsdr"
+license=('GPL3')
+provides=('python2-pyrtlsdr')
+replaces=('python2-pyrtlsdr')
+conflicts=('python2-pyrtlsdr')
+source=('pyrtlsdr::git+https://github.com/roger-/pyrtlsdr.git')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/pyrtlsdr"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+
+package(){
+  cd "$srcdir/pyrtlsdr"
+  python2 setup.py install --root=$pkgdir --optimize=1
+}

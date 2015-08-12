@@ -1,0 +1,23 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Prurigro
+pkgname=dupdump
+pkgver=0.3
+pkgrel=1
+pkgdesc="Finds duplicat files and directories and outputs a parsable list that can be used to delete them"
+url="http://kernel.embedromix.ro/us/"
+depends=('openssl')
+license=('GPL3')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('31e8fe5263e62679ef63f177c3d6012fea15315b023d7fc219ea2f863b263cf49e61d0e758171a4eb48bc32089dfdbeb9392ebfc19ed595b9f80f129a1cf87df')
+
+build() {
+    cd ${pkgname}-${pkgver}
+    ./configure --prefix=/usr
+    make
+}
+
+package() {
+    cd ${pkgname}-${pkgver}
+    make DESTDIR="${pkgdir}" install
+}

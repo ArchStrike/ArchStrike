@@ -1,0 +1,25 @@
+# Maintainer: ArchAssault <team projectname.org>
+pkgname=ssdc
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Python API for cross-platform colored terminal text."
+arch=('any')
+url="https://github.com/bwall/ssdc"
+license=('MIT')
+depends=('python2' 'python2-pydeep')
+makedepends=('python2-setuptools')
+source=(https://github.com/bwall/ssdc/archive/v$pkgver.tar.gz)
+sha512sums=('89550c87a63ed06e76b1df9cb03a73ed1cf40e9540019ba0a44a658d353fc42d1a861415fdf4b48ab38c93d2359f51188bdfadc043ed58ec7b1ee73776da4792')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 LICENSE  "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+

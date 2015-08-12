@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Siparmyknife
+Comment=A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications. 
+Exec=siparmyknife
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultVoip;

@@ -1,0 +1,38 @@
+# Maintainer: ArchAssault <team projectname.org>
+# Contributor : SpepS <dreamspepser at yahoo dot it>
+# Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
+
+pkgname=dissy
+pkgver=10
+pkgrel=1
+pkgdesc="A graphical frontend to the objdump disassembler for compiler-generated code"
+groups=('projectname' 'projectname-*malware')
+arch=('any')
+url="http://dissy.googlecode.com/"
+license=('GPL')
+depends=('pygtk' 'pywebkitgtk' 'desktop-file-utils')
+install="$pkgname.install"
+source=("https://dissy.googlecode.com/files/$pkgname-$pkgver.tar.gz"
+        "$pkgname.desktop")
+sha512sums=('6eaf9c1a442b27793d5fa4df00173930902e33fbd284886a3170b169a6db6727cd586620ad99eb104e404c361ec6f12855114003bdc8fd612fcef7f38769b96b'
+            '77e5f209b49e1b171e8a566f548d48e7f563409fe93d3ee0694c15b39fc0b5b3940ebefb9937c8cb1fa7ca4b8bf0a498946d90ef02555b58a0a461de4817e19c')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+
+  python2 setup.py install --root="$pkgdir" --optimize=1
+
+  # desktop file and pixmap
+  install -Dm644 ../$pkgname.desktop \
+    "$pkgdir/usr/share/applications/$pkgname.desktop"
+
+  install -Dm644 gfx/icon.svg \
+    "$pkgdir/usr/share/pixmaps/$pkgname.svg"
+}
+

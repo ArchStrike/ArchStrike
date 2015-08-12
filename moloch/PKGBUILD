@@ -1,0 +1,77 @@
+# Maintainer
+pkgname=moloch
+pkgver=0.11.2
+pkgrel=1
+pkgdesc="An open source large scale IPv4 full PCAP capturing, indexing and database system"
+url="https://github.com/aol/moloch"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('APACHE')
+depends=('curl' 'file' 'util-linux' 'perl-json' 'perl-libwww' 'libpng' 'python2' 'elasticsearch' 'geoip' 'libnids' 'nodejs')
+makedepends=('glib2')
+groups=('projectname')
+options=('!strip')
+backup=("etc/$pkgname/config.ini")
+_dataroot="/usr/share/$pkgname"
+_yaraver='2.1.0'
+source=("moloch-$pkgver.tar.gz::https://github.com/aol/moloch/archive/v$pkgver.tar.gz"
+        "yara-$_yaraver.tar.gz::https://github.com/plusvic/yara/archive/v$_yaraver.tar.gz")
+sha512sums=('ca6e7405fb9917b52a037e1563f1627c3076cc6046646d8d39516e8fa9b2419d8aad20d4c5a43bfef93e87c2b0c3bd9f497a5420de483a1e2a048f0efcb14a9d'
+            '082a603ea648e4d83d45d6e30937c60eb0bf2092fb1c6845103380be12f9b72a05e439403cd08cbccdc598ba1d5cd51d394db3d989d154e95a91317d6d4ff8e5')
+
+prepare() {
+  # Change the config location from /data/moloch/etc/ to /etc/moloch/
+  cd $pkgname-$pkgver
+  sed -i 's|/data/moloch/etc/|/etc/moloch/|g' $(grep -rl '/data/moloch/etc/')
+
+  # Change the location files expect the moloch data root to be from /data/moloch to $_dataroot
+  sed -i 's|/data/moloch|'"$_dataroot"'|g' $(grep -rl '/data/moloch')
+
+  # Add $pkgdir prefix to data files
+  sed -i 's|^PARSERSDIR\s*=\s*|PARSERSDIR = '"$pkgdir"'|' capture/parsers/Makefile.in
+  sed -i 's|^PLUGINDIR\s*=\s*|PLUGINDIR = '"$pkgdir"'|' capture/plugins/Makefile.in
+  sed -i 's|^DBDIR\s*=\s*|DBDIR = '"$pkgdir"'|' db/Makefile.in
+  sed -i 's|^VIEWERDIR\s*=\s*|VIEWERDIR = '"$pkgdir"'|;/npm update/d' viewer/Makefile.in
+
+  # Add $pkgdir prefix to binary files and specify /usr as the install prefix
+  sed -i 's|^bindir\s*=\s*@prefix@|bindir = '"$pkgdir"'/usr/|' capture/Makefile.in
+}
+
+build(){
+  # Build the static version of yara
+  cd yara-$_yaraver
+  ./bootstrap.sh
+  ./configure --enable-static --enable-magic --enable-cuckoo
+  make
+
+  # Build moloch
+  cd ../$pkgname-$pkgver
+  ./configure \
+    --prefix=$_dataroot \
+    --bindir=/usr/bin \
+    --with-yara="$srcdir/yara-$_yaraver"
+  make
+}
+
+package() {
+  # Install moloch
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+
+  # Install documentation
+  install -Dm644 README.rst "$pkgdir/usr/share/doc/$pkgname/README.rst"
+
+  # Install the default config and move the elasticsearch example to the config dir
+  install -Dm644 config.ini "$pkgdir/etc/$pkgname/config.ini"
+  cd "$pkgdir"
+  mv ./$_dataroot/db/elasticsearch.yml.sample etc/$pkgname/
+
+  # Install node modules for the viewer
+  cd "./$_dataroot/viewer"
+  npm --python=/usr/bin/python2 update
+
+  # Fix the node module permissions and their python2 path
+  cd node_modules
+  chmod 644 png/gyp/lib/*.a
+  sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' $(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
+}
+

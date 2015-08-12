@@ -1,0 +1,37 @@
+# Maintainer
+pkgname=shellme-git
+pkgver=r3.8c7919d
+pkgrel=1
+pkgdesc="Because sometimes you just need shellcode and opcodes quickly"
+url="https://github.com/hatRiot/shellme"
+arch=('any')
+license=('MIT')
+groups=('projectname')
+depends=('python2')
+makedepends=('git')
+provides=('shellme')
+conflicts=('shellme')
+replaces=('shellme')
+source=(shellme-git::git+https://github.com/hatRiot/shellme.git)
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$srcdir/shellme-git"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "$srcdir"/shellme-git
+  install -dm755 "$pkgdir"/usr/bin/
+  install -dm755 "$pkgdir"/usr/share/shellme-git
+  install -Dm644 LICENSE.md "$pkgdir"/usr/share/licenses/shellme-git/LICENSE.md
+  install -m644 README.md "$pkgdir"/usr/share/shellme-git/README.md
+  install -m755 shellme.py "$pkgdir"/usr/share/shellme-git/shellme.py
+  cat > "$pkgdir"/usr/bin/shellme.py <<EOF
+#!/bin/sh
+cd /usr/share/shellme-git
+python2 shellme.py "\$@"
+EOF
+  chmod +x "$pkgdir"/usr/bin/shellme.py
+}
+

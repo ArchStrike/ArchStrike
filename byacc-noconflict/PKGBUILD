@@ -1,0 +1,37 @@
+# Maintainer
+_pkgname=byacc
+pkgname=${_pkgname}-noconflict
+pkgver=20141128
+pkgrel=1
+pkgdesc="Non-conflicting version of byacc not providing bison/yacc"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://invisible-island.net/byacc/"
+license=('custom')
+depends=('glibc')
+makedepends=('gnupg')
+source=("ftp://invisible-island.net/${_pkgname}/${_pkgname}-${pkgver}.tgz"
+        "ftp://invisible-island.net/${_pkgname}/${_pkgname}-${pkgver}.tgz.asc")
+sha512sums=('a41debde13d489e47c635bd61ce691e7b0a1470a91df3d16e43bd7c0985064708c4d69b8fabe2134ac4d06b17e484ea9c0b7efc7a624e7d8b7ed850e89afd71c'
+            'SKIP')
+
+build() {
+    cd ${_pkgname}-${pkgver}
+    ./configure --prefix=/usr --mandir=/usr/share/man
+    make
+}
+
+package() {
+    cd ${_pkgname}-${pkgver}
+    make DESTDIR="$pkgdir" install
+
+    # License
+    sed -n "/is distributed/,/distributed freely/p" README > COPYING
+    install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+
+    # Rename (to avoid conflicting with yacc)
+    cd "$pkgdir"/usr/bin
+    mv yacc $_pkgname
+
+    cd "$pkgdir"/usr/share/man/man1
+    mv yacc.1 ${_pkgname}.1
+}

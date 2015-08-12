@@ -1,0 +1,48 @@
+# Maintainer
+pkgname=sqlmap-git
+pkgver=20150519.r6681
+pkgrel=1
+epoch=1
+groups=('projectname' 'projectname-*webapps' 'archassault-exploits' 'archassault-fuzzers')
+pkgdesc="An automatic SQL injection tool developed in Python"
+url='https://github.com/sqlmapproject/sqlmap'
+license=('GPL')
+arch=('any')
+depends=('python2')
+makedepends=('git')
+options=(!strip)
+provides=('sqlmap')
+conflicts=('sqlmap')
+replaces=('sqlmap')
+source=("${pkgname}::git+https://github.com/sqlmapproject/sqlmap")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${pkgname}"
+
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+
+  cp --no-preserve=ownership -R * "${pkgdir}/usr/share/${pkgname}"
+
+  if [[ ${CARCH} == i686 ]]; then
+    rm -rf "${pkgdir}/usr/share/${pkgname}/udf/mysql/linux/64/"
+  fi
+
+  cat > "${pkgdir}/usr/bin/sqlmap" << EOF
+#!/bin/bash
+cd /usr/share/sqlmap-git
+python2 ./sqlmap.py "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/sqlmap"
+  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
+   -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
+   -e "s|#![ ]*/bin/python$|#!/usr/bin/python2|" \
+   -e "s|#![ ]*/usr/local/bin/python$|#!/usr/bin/python2|" \
+   $(find ${pkgdir} -name '*.py')
+}

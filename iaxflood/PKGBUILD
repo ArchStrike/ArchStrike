@@ -1,0 +1,30 @@
+# Maintainer
+pkgname='iaxflood'
+pkgver=20131208
+pkgrel=1
+groups=('projectname' 'projectname-*dos' 'archassault-voip')
+pkgdesc='IAX flooder.'
+url='http://www.hackingexposedvoip.com/'
+makedepends=('gcc' 'make')
+depends=('glibc')
+license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=(http://www.hackingexposedvoip.com/tools/iaxflood.tar.gz)
+md5sums=('39d557dcfdcab7c668ba321f4de82664')
+
+pkgver() {
+  date +%Y%m%d
+}
+
+build() {
+  cd "$srcdir/iaxflood"
+  
+  sed -i "s:gcc :gcc $CFLAGS :" makefile
+  make
+}
+
+package() {
+  cd "$srcdir/iaxflood"
+  
+  install -D -m755 "iaxflood" "$pkgdir/usr/bin/iaxflood"
+}

@@ -1,0 +1,37 @@
+# Maintainer
+pkgname=nfex-svn
+pkgver=r20
+pkgrel=1
+groups=('projectname' 'projectname-*forensic' 'archassault-networking')
+pkgdesc="A tool for extracting files from the network in real-time or post-capture from an offline tcpdump pcap savefile. It is based off of the code-base from the apparently defunct project tcpxtract. "
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://code.google.com/p/nfex/"
+license=('GPL2')
+replaces=('nfex')
+conflicts=('nfex')
+provides=('nfex')
+depends=('flex' 'libpcap' 'libevent' 'libnet' 'geoip')
+makedepends=('subversion')
+source=("${pkgname}::svn+http://nfex.googlecode.com/svn/trunk/")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  local ver="$(svnversion)"
+  printf "r%s" "${ver//[[:alpha:]]}"
+}
+
+build() {
+  cd "$pkgname"
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "$pkgname"
+  install -Dm755 src/nfex "$pkgdir/usr/bin/nfex"
+  install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
+  install -Dm644 {AUTHORS,INSTALL} "${pkgdir}"/usr/share/"${pkgname}"
+  install -dm755 "${pkgdir}"/usr/share/licenses
+  install -Dm644 COPYING "${pkgdir}"/usr/share/licenses/COPYING
+}

@@ -1,0 +1,19 @@
+# Maintainer: ArchAssault <team projectname.org>
+pkgname=proxyp
+pkgver=0.1
+pkgrel=1
+groups=('projectname' 'projectname-*scanner')
+pkgdesc="A fork of the Bruteforce Exploit Detector Tool (BED)."
+arch=('any')
+url='http://sourceforge.net/projects/proxyp/'
+license=('GPL3')
+depends=('perl')
+source=("http://downloads.sourceforge.net/project/proxyp/proxyp.pl")
+md5sums=('164fe5fab528ceeac5a3e0197884c3cc')
+
+package() {
+  cd "$srcdir"
+  install -dm755 "$pkgdir/usr/bin"
+
+  install -Dm755 proxyp.pl "$pkgdir/usr/bin/proxyp"
+}

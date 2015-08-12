@@ -1,0 +1,65 @@
+# Maintainer
+# Contributor: Ido Rosen <ido@kernel.org>
+# Contributor: Gaetan Bisson <bisson@archlinux.org>
+# Contributor: Tobias Powalowski <tpowa@archlinux.org>
+# Contributor: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Judd Vinet <jvinet@zeroflux.org>
+
+pkgname=gnupg-largekeys
+pkgver=2.0.26
+pkgrel=3
+pkgdesc='Complete and free implementation of the OpenPGP standard'
+url='http://www.gnupg.org'
+license=('GPL')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+optdepends=('curl: gpg2keys_curl'
+            'libldap: gpg2keys_ldap'
+            'libusb-compat: scdaemon')
+makedepends=('curl' 'libldap' 'libusb-compat')
+depends=('bzip2' 'libksba' 'libgcrypt' 'pth' 'libassuan' 'readline' 'pinentry' 'dirmngr-largekeys')
+source=(
+  "ftp://ftp.gnupg.org/gcrypt/${pkgname%%-largekeys}/${pkgname%%-largekeys}-$pkgver.tar.bz2"
+  'gnupg2-large-keys.patch'
+)
+sha512sums=(
+  '5dd23baaac764fd48abd235ed52a85a2c7fd68b98fcde45c0f294ddb3b5629e8b1bd894585fbed4e6a6cb2bc4a5552c098c3cf1a849fffa469424fd0a4fee726'
+  '55c74a248b60ad5781c13ac3c7cdbe6f8587e4031febdc9a99838f231aae5b87bbe20dd8b9d88ee91bf5825f787ddf890a294d0df54ac9d5835214a9dd911bc5'
+)
+install="$pkgname.install"
+
+conflicts=('gnupg2' 'gnupg')
+provides=("gnupg2=$pkgver" "gnupg=$pkgver")
+replaces=('gnupg2' 'gnupg')
+
+prepare() {
+  cd ${pkgname%%-largekeys}-$pkgver
+  patch -p1 -i ../gnupg2-large-keys.patch
+}
+
+build() {
+  cd ${pkgname%%-largekeys}-$pkgver
+  ./configure \
+    --prefix=/usr \
+    --sysconfdir=/etc \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib/gnupg \
+    --enable-maintainer-mode \
+    --enable-standard-socket \
+    --enable-symcryptrun \
+    --enable-gpgtar
+  make
+}
+
+check() {
+  cd ${pkgname%%-largekeys}-$pkgver
+  make check
+}
+
+package() {
+  cd ${pkgname%%-largekeys}-$pkgver
+  make DESTDIR="$pkgdir" install
+  ln -s gpg2 "$pkgdir/usr/bin/gpg"
+  ln -s gpgv2 "$pkgdir/usr/bin/gpgv"
+  ln -s gpg2.1.gz "$pkgdir/usr/share/man/man1/gpg.1.gz"
+  rm "$pkgdir/usr/share/gnupg/com-certs.pem"
+}

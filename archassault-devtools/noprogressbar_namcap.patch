@@ -1,0 +1,12 @@
+diff -aur devtools-20141224/makechrootpkg.in devtools-mod/makechrootpkg.in
+--- devtools-20141224/makechrootpkg.in	2014-12-24 07:56:41.000000000 -0800
++++ devtools-mod/makechrootpkg.in	2015-02-04 14:56:55.747455408 -0800
+@@ -273,7 +273,7 @@
+ 
+ 		if $run_namcap; then
+ 			cat <<'EOF'
+-pacman -S --needed --noconfirm namcap
++pacman -S --needed --noconfirm --noprogressbar --color never namcap
+ for pkgfile in /startdir/PKGBUILD /pkgdest/*; do
+ 	echo "Checking ${pkgfile##*/}"
+ 	sudo -u builduser namcap "$pkgfile" 2>&1 | tee "/logdest/${pkgfile##*/}-namcap.log"

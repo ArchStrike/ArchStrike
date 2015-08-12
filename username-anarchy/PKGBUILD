@@ -1,0 +1,28 @@
+# Maintainer
+pkgname=username-anarchy
+pkgver=0.2
+pkgrel=1
+groups=('projectname' 'projectname-*autonomous')
+pkgdesc="Tools for generating usernames when penetration testing"
+url="http://www.morningstarsecurity.com/research/username-anarchy"
+arch=('any')
+license=('GPL3')
+depends=('ruby1.9')
+source=("https://github.com/urbanadventurer/username-anarchy/archive/master.zip")
+md5sums=('8b726be53831c49c5117b4bdd1817858')
+
+package() {
+  cd "$srcdir/username-anarchy-master"
+
+  install -dm755 "$pkgdir/usr/share/username-anarchy"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a * "$pkgdir/usr/share/username-anarchy"
+
+cat > "$pkgdir/usr/bin/username-anarchy" << EOF
+#!/bin/sh
+cd /usr/share/username-anarchy
+ruby-1.9 username-anarchy "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/username-anarchy"
+}

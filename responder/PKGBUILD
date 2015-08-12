@@ -1,0 +1,61 @@
+# Maintainer
+pkgname=responder
+pkgver=2.1.4
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="A LLMNR and NBT-NS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication."
+url="https://github.com/SpiderLabs/Responder"
+license=('custom')
+arch=('any')
+depends=('python2')
+makedepends=('unzip')
+source=("https://github.com/SpiderLabs/Responder/archive/v$pkgver.zip" 'responder.desktop' 'LICENSE')
+sha512sums=('a7eb38117999051a60db1b768df3a2def3f7b9808372ac2e395cfe33c9b9b0493807f91caf548c8363a4f5b3b799fa2984b28b3e0dcdb0d6a05d26efed299b32'
+            'da830751eea5dd3ca6bc9a80892daf4c21b3e96ef9b309cacb65a82f10b6da7e4c6613c78ebb8c6825304bb9a8ca8d705d645db9bf47e742b8541030df8a7e10'
+            '49254b769f161d19ade5858a4eb4eba7ce791051cb04bdabba4184ee8409e7bb83e3ec0941dfe3fc71d09fe5abff6d6d8b22b4ec8ffaa82f63a3dd91cc979551')
+
+prepare() {
+  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#! /usr/bin/env python|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$srcdir"/Responder-"$pkgver"
+  install -dm755 "$pkgdir/usr/share/responder"
+  install -dm755 "$pkgdir/usr/bin"
+  cp -r Certs HTTPCookies "$pkgdir/usr/share/responder"
+  install -m644 Denied.html "$pkgdir"/usr/share/responder/Denied.html
+  install -m755 DHCP.py "$pkgdir"/usr/share/responder/DHCP.py
+  install -m755 Fingerprint.py "$pkgdir"/usr/share/responder/Fingerprint.py
+  install -m755 FingerprintRelay.py "$pkgdir"/usr/share/responder/FingerprintRelay.py
+  install -m755 FixInternet.exe "$pkgdir"/usr/share/responder/FixInternet.exe
+  install -m755 HTTPPackets.py "$pkgdir"/usr/share/responder/HTTPPackets.py
+  install -m755 HTTPProxy.py "$pkgdir"/usr/share/responder/HTTPProxy.py
+  install -m755 Icmp-Redirect.py "$pkgdir"/usr/share/responder/Icmp-Redirect.py
+  install -m755 IMAPPackets.py "$pkgdir"/usr/share/responder/IMAPPackets.py
+  install -m755 LDAPPackets.py "$pkgdir"/usr/share/responder/LDAPPackets.py
+  install -m755 odict.py "$pkgdir"/usr/share/responder/odict.py
+  install -m755 RAPLANMANPackets.py "$pkgdir"/usr/share/responder/RAPLANMANPackets.py
+  install -m644 README.md "$pkgdir"/usr/share/responder/README.md
+  install -m755 RelayPackets.py "$pkgdir"/usr/share/responder/RelayPackets.py
+  install -m644 Responder.conf "$pkgdir"/usr/share/responder/Responder.conf
+  install -m755 Responder.py "$pkgdir"/usr/share/responder/Responder.py
+  install -m755 SMBPackets.py "$pkgdir"/usr/share/responder/SMBPackets.py
+  install -m755 SMBRelay.py "$pkgdir"/usr/share/responder/SMBRelay.py
+  install -m755 SMTPPackets.py "$pkgdir"/usr/share/responder/SMTPPackets.py
+  install -m755 SQLPackets.py "$pkgdir"/usr/share/responder/SQLPackets.py
+  install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/responder/LICENSE
+  cat > "$pkgdir/usr/bin/responder" <<EOF
+#!/bin/sh
+cd /usr/share/responder
+python2 Responder.py "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/responder"
+
+  cat > "$pkgdir/usr/bin/dhcp-responder" <<EOF
+#!/bin/sh
+cd /usr/share/responder
+python2 DHCP.py "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/dhcp-responder"
+}

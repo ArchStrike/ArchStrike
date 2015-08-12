@@ -1,0 +1,46 @@
+# Maintainer: ArchAssault <team projectname.org>
+pkgname=mptcp-abuse-git
+pkgver=20140812.r6
+pkgrel=1
+groups=('projectname' 'projectname-*networking')
+pkgdesc="A collection of tools and resources to explore MPTCP on your network. Initially released at Black Hat USA 2014."
+arch=('any')
+url='https://github.com/Neohapsis/mptcp-abuse'
+license=('GPL2')
+depends=('python2')
+makedepends=('git')
+provides=('mptcp-abuse')
+source=(${pkgname}::"git+https://github.com/Neohapsis/mptcp-abuse.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "$srcdir/mptcp-abuse-git"
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/mptcp-abuse-git"
+  install -dm755 "$pkgdir/usr/bin"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/mptcp-abuse-git"
+  sed -i 's|python|python2|' $pkgdir/usr/share/mptcp-abuse-git/scapy/layers/inet6.py $pkgdir/usr/share/mptcp-abuse-git/scapy/tools/check_asdis.py 
+cat > "$pkgdir/usr/bin/mptcp-scanner" << EOF
+#!/bin/sh
+cd /usr/share/mptcp-abuse-git
+python2 mptcp_scanner.py "\$@"
+EOF
+
+cat > "$pkgdir/usr/bin/mptcp-fragmenter" << EOF
+#!/bin/sh
+cd /usr/share/mptcp-abuse-git
+python2 mptcp_fragmenter.py "\$@"
+EOF
+
+
+chmod +x "$pkgdir/usr/bin/mptcp-scanner"
+chmod +x "$pkgdir/usr/bin/mptcp-fragmenter"
+
+}

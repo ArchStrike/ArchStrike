@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Python2-clamd
+Comment=A python interface to Clamd (an anti-virus engine)
+Exec=python2-clamd
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

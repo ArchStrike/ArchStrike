@@ -1,0 +1,19 @@
+# Maintainer
+pkgname=blindelephant
+pkgver=7
+pkgrel=1
+groups=('projectname' 'projectname-*webapp' 'archassault-fingerprinting')
+pkgdesc="A web application fingerprintinger. Attempts to discover the version of a (known) web application by comparing static files at known locations "
+url='http://blindelephant.sourceforge.net/'
+arch=('any')
+makedepends=('svn' 'python2-setuptools')
+depends=('python2')
+license=(LGPL)
+source=("svn+https://blindelephant.svn.sourceforge.net/svnroot/blindelephant/trunk")
+md5sums=('SKIP')
+
+package() {
+  cd $srcdir/trunk/src
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  find "${pkgdir}"/usr/lib -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}

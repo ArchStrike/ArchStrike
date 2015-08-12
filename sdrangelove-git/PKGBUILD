@@ -1,0 +1,35 @@
+# Maintainer
+pkgname=sdrangelove-git
+pkgver=20140824.r172
+pkgrel=1
+groups=('projectname' 'projectname-*hardware')
+pkgdesc="A project that allows you to control all the process inside a GNSS receiver, from the raw bits at the output of an analog-to-digital converter to the computation of the navigation solution, that is, obtaining receiver's position and time "
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://sdr.osmocom.org/trac/wiki/sdrangelove'
+license=('GPL3')
+depends=('gnuradio' 'qt5-multimedia' 'libusb' 'desktop-file-utils')
+makedepends=('git' 'cmake')
+provides=('sdrangelove')
+conflicts=('sdrangelove')
+replaces=('sdrangelove')
+source=("${pkgname}::git+git://git.osmocom.org/sdrangelove.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build(){
+  cd "${pkgname}"
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2 -DCMAKE_SKIP_RPATH=TRUE ../
+  make
+}
+  
+
+package() {
+  cd "${pkgname}/build"
+  install -Dm755 libsdrbase.so "$pkgdir/usr/lib/libsdrbase.so"
+  install -Dm755 sdrangelove "$pkgdir/usr/bin/sdrangelove"
+}

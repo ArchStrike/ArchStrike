@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=ruby1.9-buftok
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="BufferedTokenizer extracts token delimited entities from a sequence of arbitrary inputs"
+arch=('any')
+license=('')
+makedepends=('ruby1.9')
+url='https://github.com/sferik/buftok'
+source=("http://rubygems.org/downloads/buftok-$pkgver.gem")
+md5sums=('86a3291cfdaec13ce2cc11d26b1773f6')
+noextract=("buftok-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" buftok-$pkgver.gem
+  else
+    gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" buftok-$pkgver.gem
+  fi
+}

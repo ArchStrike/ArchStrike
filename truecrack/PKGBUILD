@@ -1,0 +1,26 @@
+# Maintainer: ArchAssault <team projectname org>
+pkgname=truecrack
+pkgver=35
+pkgrel=3
+groups=('projectname' 'projectname-*cuda-cracker')
+pkgdesc="Password cracking for truecrypt(c) volumes."
+url="http://code.google.com/p/truecrack/"
+arch=('x86_64')
+license=('GPL3')
+depends=('cuda')
+source=("http://truecrack.googlecode.com/files/truecrack_v$pkgver.tar.gz")
+sha512sums=('888a5ceb159b7874975107e8820692321799a2f8c78bdd8e158ed19b647edb13fd90d2fb4e48ccdd433f7141fb4d192636cfb5a0dce76252f646b5ccca6268e7')
+
+build() {
+  cd "$srcdir/truecrack"
+
+  export PATH=$PATH:/opt/cuda/bin
+
+  ./configure
+  make
+}
+
+package() {
+  cd "$srcdir/truecrack"
+  make DESTDIR="$pkgdir" install
+}

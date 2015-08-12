@@ -1,0 +1,20 @@
+From: Ben Hutchings <ben@decadent.org.uk>
+Subject: cirrus: Disable by default
+Forwarded: not-needed
+
+Current Debian userland is not compatible with this driver, so set
+modeset=0 by default (making module init fail).
+xserver-xorg-video-cirrus will need to override this once it is
+compatible, by installing a modprobe config file.
+
+--- a/drivers/gpu/drm/cirrus/cirrus_drv.c
++++ b/drivers/gpu/drm/cirrus/cirrus_drv.c
+@@ -15,7 +15,7 @@
+ 
+ #include "cirrus_drv.h"
+ 
+-int cirrus_modeset = -1;
++int cirrus_modeset = 0;
+ 
+ MODULE_PARM_DESC(modeset, "Disable/Enable modesetting");
+ module_param_named(modeset, cirrus_modeset, int, 0400);

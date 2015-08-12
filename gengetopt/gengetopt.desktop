@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Gengetopt
+Comment=A tool to write command line option parsing code for C programs.
+Exec=gengetopt
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;Development;

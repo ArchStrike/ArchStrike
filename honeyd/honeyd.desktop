@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Honeyd
+Comment=A small daemon that creates virtual hosts on a network.
+Exec=honeyd
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultHoneypot;

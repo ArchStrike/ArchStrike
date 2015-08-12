@@ -1,0 +1,21 @@
+# Maintainer
+_gemname=faraday
+pkgname=ruby1.9-$_gemname
+pkgver=0.8.9
+pkgrel=2
+pkgdesc='HTTP/REST API client library.'
+arch=(any)
+url='https://github.com/lostisland/faraday'
+license=(MIT)
+depends=('ruby1.9' 'ruby1.9-multipart-post')
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('ff14a9daea42ec7d68571ddc3eab922d857efc9e')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE.md" "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
+}

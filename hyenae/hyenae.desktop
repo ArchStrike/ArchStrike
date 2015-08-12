@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Hyenae
+Comment=flexible platform independent packet generator
+Exec=hyenae
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault" "ArchAssaultNetworking;

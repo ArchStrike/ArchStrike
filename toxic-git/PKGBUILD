@@ -1,0 +1,46 @@
+# Maintainer: ArchAssault <team at projectname org>
+# Contributor: Kevin MacMartin <prurigro at gmail dot com>
+# Contributor: Florian Hahn <flo@fhahn.com>
+
+_pkgname=toxic
+pkgname=${_pkgname}-git
+_pkgver=442d9e2
+pkgver=r1479.442d9e2
+pkgrel=1
+pkgdesc='An ncurses-based commandline client for Tox'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/Tox/toxic'
+license=('GPL3')
+groups=('projectname')
+depends=('tox-git=1:r3156.4ad7649-1' 'desktop-file-utils' 'libconfig' 'freealut' 'libnotify')
+makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+replaces=("$_pkgname")
+install="$pkgname.install"
+
+source=("$_pkgname::git+$url.git#commit=$_pkgver"
+        "$_pkgname.png")
+sha512sums=('SKIP'
+            '13034bbb3b02beb4ac2bdbf27ab2d42a12e00d526367a4bfeec14f1bd561e8148493d562dd91ec03db963e104bb3ea640187840ba6aa856053a7bc3796b41eb6')
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd $_pkgname
+  sed -i 's|^Icon=.*$|Icon=toxic|' misc/$_pkgname.desktop
+}
+
+build() {
+  cd $_pkgname/build
+  make
+}
+
+package() {
+  install -Dm644 $_pkgname.png "$pkgdir/usr/share/pixmaps/$_pkgname.png"
+  cd $_pkgname/build
+  make PREFIX=/usr MANDIR=/usr/share/man DESTDIR="$pkgdir" install
+}

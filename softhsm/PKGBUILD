@@ -1,0 +1,35 @@
+# Maintainer
+# Contributor: Javier Torres <javitonino [at] gmail [dot] com>
+
+pkgname=softhsm
+pkgver=1.3.7
+pkgrel=1
+pkgdesc="Software PKCS11 store"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.opendnssec.org/softhsm/"
+license=('BSD')
+depends=('botan>=1.8.5' 'sqlite3>=3.3.9')
+backup=("etc/softhsm.conf")
+options=('!emptydirs')
+source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('287400b981b7b420a300593129696e4739afe085a8106047ef429bc741d205bed214386b422572327c3bda63f0fb1b7558bb4d30d184ca3ec2ba9900153f075d')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # /usr/lib/softhsm -> /usr/bin (no subdirectory)
+  sed -i \
+  -e "s/full_libdir=\"\$full_libdir\/softhsm\"/#full_libdir=\"\$full_libdir\/softhsm\"/" \
+  -e "s/libdir=\$full_libdir/#libdir=\$full_libdir/" \
+  configure
+
+  ./configure --prefix=/usr --datarootdir=/usr/share --localstatedir=/var --sysconfdir=/etc --with-botan=/usr
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  chmod 755 "$pkgdir/var/lib/$pkgname"
+}

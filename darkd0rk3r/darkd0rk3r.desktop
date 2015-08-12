@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Darkd0rk3r
+Comment=Python script that performs dork searching and searches for local file inclusion and SQL injection errors.
+Exec=darkd0rk3r
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultWebapp;ArchAssaultExploitation;

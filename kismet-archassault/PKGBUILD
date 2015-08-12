@@ -1,0 +1,68 @@
+# Maintainer: ArchAssault <team projectname org>
+# Contributor: Angel Velasquez <angvp@archlinux.org> 
+# Contributor: Jason Chu <jason@archlinux.org>
+# Contributor: Juergen Hoetzel <jason@archlinux.org>
+
+pkgname=kismet-projectname
+_pkgname=kismet
+pkgver=2013_03_R1b
+_realver="${pkgver//_/-}"
+pkgrel=2
+pkgdesc="802.11 layer2 wireless network detector, sniffer, and intrusion detection system patched with ubertooth plugin"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://www.kismetwireless.net/"
+license=('GPL')
+groups=('projectname' 'projectname-*wifi' 'archassault-bluetooth')
+depends=('libpcap' 'pcre' 'bluez-libs' 'libcap' 'ubertooth')
+optdepends=('gpsd: log coordinates of detected networks'
+            'wireshark-cli: provide OUI files used to determine device manufacturer'
+            'wireshark-cli: mergecap, to merge multiple capture files'
+            'sox: provide the default kismet sound playback binary'
+            'festival: text-to-speech support'
+            'flite:  alternative/lightweight text-to-speech support'
+            'ruby: ruby interface')
+backup=('etc/kismet.conf' 'etc/kismet_drone.conf')
+install=kismet.install
+changelog=kismet.changelog
+conflicts=('kismet')
+provides=('kismet')
+source=("http://www.kismetwireless.net/code/${_pkgname}-${_realver}.tar.gz" "https://github.com/greatscottgadgets/ubertooth/archive/2014-04-R1.tar.gz")
+sha512sums=('9a6a04f1d6da5ba5aee17806e318b3a7b5ce72c4493e7e4d2f23ed33c4d4190f4bfde97070d58cbde4e4c7c548dc7d6c7cad13d0f15119e2b0f961cdd67d08fd'
+            '83a86763ffe47424cc598433de41c6804aeccd36642dc844b0f9ab71d1f299ed504a315d034398961ec7c61b402145a596430113afe67bad4bc9bf322dd821ba')
+
+prepare(){
+   cd "${srcdir}/ubertooth-2014-04-R1/host/kismet"
+   cp -r plugin-ubertooth "$srcdir/${_pkgname}-${_realver}/"
+}
+
+
+build() {
+    cd "${srcdir}/${_pkgname}-${_realver}"
+
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc \
+                --localstatedir=/var
+    make dep
+    make
+
+    # Include plugins bundled with kismet
+    make plugins
+}
+
+package() {
+    cd "${srcdir}/${_pkgname}-${_realver}"
+
+    # Install kismet
+    make DESTDIR="$pkgdir" install
+
+    # Install plugins
+    make plugins-install DESTDIR="$pkgdir"
+
+    # the README is very comprehensive, a good idea to include it
+    install -D -m 644 "${srcdir}/kismet-${_realver}/README" "${pkgdir}/usr/share/kismet/README"
+
+    # Our own suid-install, first half (see kismet.install)
+    install -o "root" -g "root" -m 4550 kismet_capture "${pkgdir}/usr/bin/"
+    # Adding in ubertooth support to kismet.conf
+    sed -i 's|logtypes=pcapdump,gpsxml,netxml,nettxt,alert|logtypes=pcapdump,gpsxml,netxml,nettxt,alert,pcapbtbb|' $pkgdir/etc/kismet.conf
+}

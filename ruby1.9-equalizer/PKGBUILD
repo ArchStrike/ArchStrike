@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=ruby1.9-equalizer
+pkgver=0.0.9
+pkgrel=1
+pkgdesc="Module to define equality, equivalence and inspection methods"
+arch=('any')
+license=('')
+makedepends=('ruby1.9')
+url='https://github.com/dkubb/equalizer'
+source=("http://rubygems.org/downloads/equalizer-$pkgver.gem")
+md5sums=('ec7f58604075a40545809e7996585bef')
+noextract=("equalizer-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" equalizer-$pkgver.gem
+  else
+    gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" equalizer-$pkgver.gem
+  fi
+}

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Polenum
+Comment=a python script to extract the password policy information from a windows machine.
+Exec=polenum
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=Application;

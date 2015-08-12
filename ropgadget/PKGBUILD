@@ -1,0 +1,23 @@
+# Maintainer
+pkgname=ropgadget
+pkgver=5.4
+pkgrel=1
+groups=('projectname' 'projectname-*exploit')
+pkgdesc="Lets you search your gadgets on your binaries (ELF format) to facilitate your ROP exploit."
+url='https://github.com/JonathanSalwan/ROPgadget'
+arch=('any')
+license=('GPL')
+depends=('python2' 'capstone')
+makedepends=('python2-setuptools')
+source=("https://github.com/JonathanSalwan/ROPgadget/archive/v$pkgver.tar.gz")
+sha512sums=('7b3777ccce10000e1cf1fadedd4010f05ae21d5794c45994d380eebecb8876c203899cc30716a677e3c31b575898d7fad763d66c502432f3a4dc4493ad4ae0da')
+
+package(){
+  cd "$srcdir/ROPgadget-$pkgver"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  python2 setup.py install --root=$pkgdir --optimize=1  
+
+  cp -r --no-preserve=ownership AUTHORS COPYING README.md \
+    "$pkgdir/usr/share/doc/ropgadget"
+ 
+}

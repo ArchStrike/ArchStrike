@@ -1,0 +1,25 @@
+#Maintainer: ArchAssault <team@projectname.org>
+
+pkgname=python2-fake-factory
+pkgver=0.4.2
+pkgrel=1
+pkgdesc="Faker is a Python package that generates fake data for you."
+url="http://github.com/joke2k/faker"
+depends=('python2' )
+makedepends=('python2-distribute' )
+license=('CUSTOM')
+arch=('any')
+provides=('faker' 'python2-faker')
+source=("https://pypi.python.org/packages/source/f/fake-factory/fake-factory-${pkgver}.tar.gz")
+sha512sums=('73b66a168dc330c1a2f16241695ac68cedac45567d856ee8b5afbf508b4bd2b1c227b7637164261aec09dcdf7bc5365572f25e63715821ca79957f0b57f377e8')
+
+build() {
+    cd ${pkgname#python2-}"-${pkgver}"
+    python2 setup.py build
+}
+
+package() {
+    cd ${pkgname#python2-}"-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1 
+    install -Dm0644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+}

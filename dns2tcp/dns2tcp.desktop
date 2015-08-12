@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Dns2tcp
+Comment=A tool for relaying TCP connections over DNS
+Exec=dns2tcp
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultTunnel;

@@ -1,0 +1,62 @@
+# Maintainer
+pkgname=rainbowcrack
+pkgver=1.6
+pkgrel=1
+groups=('projectname' 'projectname-*cracker')
+pkgdesc="Password cracker based on the faster time-memory trade-off. With MySQL and Cisco PIX Algorithm patches"
+arch=('i686' 'x86_64')
+url="http://project-rainbowcrack.com/"
+license=('custom')
+if [[ $CARCH == 'x86_64' ]]; then
+        depends=('gcc-libs-multilib')
+        source=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux64.zip" "rainbowcrack.desktop")
+        sha512sums=('1bd4043b1a766e6ade0c9787f921d74eeefbb08c3ab7b93d63f9ccc19b9ab4d4000abd118419a26e7c19e8e7f816f414b097e139434b4312063f5a3cc8f2dc6f'
+                    '3e8624602d5d37ff8ae4eb0dd8f6813f4573460f69ec3d8e21ca404979b8448109197cefa239302627eddfab277a347f842f81c0f1ea7c9f9de2dd7c1b847527')
+else
+        depends=('gcc-libs')
+        source=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux32.zip" "rainbowcrack.desktop")
+        sha512sums=('c33fd82c72b0eac43ffd509424bc5c05d92a52c6c1fe89cb8c640abc4690bb149d162c1c58be80c3d666d400f485b83783da72b701eb446a4357ed017b51903a'
+                    '3e8624602d5d37ff8ae4eb0dd8f6813f4573460f69ec3d8e21ca404979b8448109197cefa239302627eddfab277a347f842f81c0f1ea7c9f9de2dd7c1b847527')
+fi
+
+
+package() {
+  if [[ $CARCH == 'x86_64' ]]; then
+        cd "$srcdir/rainbowcrack-$pkgver-linux64"
+
+        # bin
+        install -dm755 "$pkgdir/usr/bin"
+        install -Dm755 r{t,c}* "$pkgdir/usr/bin"
+
+        # data
+        install -dm755 $pkgdir/usr/share/$pkgname
+        install -Dm644 charset.txt readme.txt "$pkgdir/usr/share/rainbowcrack"
+        install -Dm644 "$srcdir/rainbowcrack.desktop" "$pkgdir/usr/share/applications/rainbowcrack.desktop"
+
+        #lib
+        install -Dm755 alglib0.so "$pkgdir/usr/lib/alglib0.so"
+          
+
+        # license
+        install -Dm644 readme.txt "$pkgdir/usr/share/licenses/rainbowcrack/LICENSE"
+
+  else
+        cd "$srcdir/rainbowcrack-$pkgver-linux32"
+
+        # bin
+        install -dm755 "$pkgdir/usr/bin"
+        install -Dm755 r{t,c}* "$pkgdir/usr/bin"
+
+        # data
+        install -dm755 $pkgdir/usr/share/$pkgname
+        install -Dm644 charset.txt readme.txt "$pkgdir/usr/share/rainbowcrack"
+        install -Dm644 "$srcdir/rainbowcrack.desktop" "$pkgdir/usr/share/applications/rainbowcrack.desktop"
+
+        #lib
+        install -Dm755 alglib0.so "$pkgdir/usr/lib/alglib0.so"
+
+        # license
+        install -Dm644 readme.txt "$pkgdir/usr/share/licenses/rainbowcrack/LICENSE"
+  fi
+}
+

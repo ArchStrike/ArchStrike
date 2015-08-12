@@ -1,0 +1,17 @@
+# Maintainer
+pkgname=python2-msgpack
+pkgver=0.4.4
+pkgrel=1
+pkgdesc="MessagePack (de)serializer"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://pypi.python.org/pypi/msgpack-python/'
+license=('Apache')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/m/msgpack-python/msgpack-python-$pkgver.tar.gz")
+sha512sums=('f661ed3830c2e1286de829ed736f07217193377b4065c056b3db28e208d09ee8a875e2356e7e8b97392def581d3a51f176d83899ddb5d56e459cd1095f68ca0d')
+
+package() {
+  cd "$srcdir/msgpack-python-$pkgver"
+  python2 setup.py install "--root=$pkgdir" --optimize=1
+}

@@ -1,0 +1,20 @@
+# Maintainer
+pkgname=python2-py3270
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="A Python interface to x3270, an IBM 3270 terminal emulator"
+arch=('any')
+url='https://pypi.python.org/pypi/py3270/0.2.0'
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=(https://pypi.python.org/packages/source/p/py3270/py3270-$pkgver.tar.gz LICENSE)
+sha512sums=('fb0178940081bf452af5384f8892e73f86ee6c75d9920837105ac9cf937b0cf0d7b3a992f14505d7f46164847edb6b0d49a7ee23bf1910b8b7c4f1329a5cd4a0'
+            '0d1540a2077131cdd882ddb6b792ff78d99b8345f5eb7851544cd357c31a0045bc91a16434b067e9c64c7e9cca7855c5896d70d1741928a8e265a3a95d156d49')
+
+package() {
+  cd "${srcdir}/py3270-${pkgver}"
+  
+  python2 setup.py install --root=$pkgdir --optimize=1
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

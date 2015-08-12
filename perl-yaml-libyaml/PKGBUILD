@@ -1,0 +1,41 @@
+# Maintainer
+pkgname='perl-yaml-libyaml'
+pkgver='0.59'
+pkgrel=1
+pkgdesc="YAML module wrapping libyaml"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+depends=('perl>=5.8.1')
+makedepends=()
+url='http://search.cpan.org/dist/YAML-LibYAML'
+source=("http://search.cpan.org/CPAN/authors/id/I/IN/INGY/YAML-LibYAML-$pkgver.tar.gz")
+sha512sums=('0c0bdbd7d93352b1e60f41f185f2947b163a9ea7074945c933850a3d165f75dd202403406f9e355e78535ae7d1726f2328dc006af7a01a6f30c48999013da3bc')
+_distdir="YAML-LibYAML-$pkgver"
+
+build() {
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
+      PERL_AUTOINSTALL=--skipdeps                            \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
+      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      MODULEBUILDRC=/dev/null
+
+    cd "$srcdir/$_distdir"
+    /usr/bin/perl Makefile.PL
+    make
+  )
+}
+
+check() {
+  cd "$srcdir/$_distdir"
+  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
+    make test
+  )
+}
+
+package() {
+  cd "$srcdir/$_distdir"
+  make install
+
+  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+}

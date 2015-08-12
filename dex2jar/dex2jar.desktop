@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Dex2jar
+Comment=A tool for converting Android's .dex format to Java's .class format
+Exec=dex2jar
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultHardware;ArchAssaultReversing;

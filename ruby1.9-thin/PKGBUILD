@@ -1,0 +1,20 @@
+# Maintainer
+_gemname=thin
+pkgname=ruby1.9-$_gemname
+pkgver=1.6.1
+pkgrel=1
+pkgdesc='A thin and fast web server'
+arch=('any')
+url='http://code.macournoyer.com/thin/'
+license=(Ruby)
+depends=(ruby1.9 ruby1.9-rack ruby1.9-eventmachine ruby1.9-daemons)
+options=(!emptydirs)
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha1sums=('48ca71cdc585713ddee673caf2d972a386d1c879')
+
+package() {
+  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
+  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+}

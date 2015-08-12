@@ -1,0 +1,22 @@
+# Maintainer
+pkgname='braces'
+pkgver='0.4'
+pkgrel=2
+pkgdesc='A Bluetooth Tracking Utility.'
+url='http://braces.shmoo.com/'
+groups=('projectname' 'projectname-*bluetooth')
+license=('GPL')
+depends=('php' 'mysql')
+arch=('any')
+source=("http://braces.shmoo.com/blackhat-${pkgver//./}.tar.gz")
+md5sums=('69433035ba0ef57d9ae15ea070a19567')
+
+package() {
+  cd "$srcdir/blackhat-${pkgver//./}"
+
+  install -Dm755 "braces/braces.pl" "$pkgdir/usr/bin/braces"
+  install -Dm644 "braces/README" "pkgdir/usr/share/braces/README2"
+  install -Dm644 "README" "$pkgdir/usr/share/braces/README"
+  install -Dm644 "data.txt" "$pkgdir/usr/share/braces/data.txt"
+  cp -r "html" "maps" "$pkgdir/usr/share/braces/"
+}

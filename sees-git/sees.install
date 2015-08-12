@@ -1,0 +1,3 @@
+post_install() {
+  echo "Please visit http://wiki.projectname.org/#!tools/sees.md for example configs"
+}

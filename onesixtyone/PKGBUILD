@@ -1,0 +1,25 @@
+# Maintainer
+pkgname=onesixtyone
+pkgver=0.7
+pkgrel=1
+groups=('projectname' 'projectname-*cracker' 'archassault-scanners')
+pkgdesc="An SNMP scanner that sends multiple SNMP requests to multiple IP addresses"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://labs.portcullis.co.uk/application/onesixtyone/'
+license=('GPL')
+depends=('glibc')
+source=("http://labs.portcullis.co.uk/download/onesixtyone-${pkgver}.tar.gz")
+sha1sums=('fd4cb35151d57df1ef357f4ca8f69a99d85862b0')
+
+build() {
+  cd "${srcdir}/onesixtyone-${pkgver}"
+  make
+}
+
+package() {
+  cd "${srcdir}/onesixtyone-${pkgver}"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/onesixtyone"
+  make BINDIR=$pkgdir/usr/bin/ install
+  install -m644 dict.txt "$pkgdir/usr/share/onesixtyone/"
+}

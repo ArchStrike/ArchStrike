@@ -1,0 +1,14 @@
+--- cutycapt/cutycapt-code/CutyCapt/CutyCapt.hpp  2013-07-06 16:04:16.028585091 +0200
++++ CutyCapt.hpp  2013-07-06 15:59:06.000000000 +0200
+@@ -1,4 +1,6 @@
+ #include <QtWebKit>
+
++#include <QNetworkReply>
+
++#include <QSslError>
+
+ 
+
+ #if QT_VERSION >= 0x050000
+
+ #include <QtWebKitWidgets>

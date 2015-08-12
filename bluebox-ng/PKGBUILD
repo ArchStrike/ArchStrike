@@ -1,0 +1,34 @@
+# Maintainer
+pkgname=bluebox-ng
+pkgver=0.1.8
+pkgrel=1
+epoch=2
+groups=('projectname' 'projectname-*scanners')
+pkgdesc='A GPL VoIP/UC vulnerability scanner written using Node.js powers'
+url='https://github.com/jesusprubio/bluebox-ng'
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('GPL3')
+depends=('coffee-script' 'python2' 'nmap')
+makedepends=('git')
+source=("$url/archive/$pkgver.tar.gz")
+sha512sums=('c3fc0b41b92c70cbd0abe80de9d50fc6769a15e4997b7b3186a231d2644d634fc4948db4817925c44186b9246d79f8847bef8e93c041396dfcf80d8a0b967898')
+
+prepare() {
+  cd $pkgname-$pkgver
+  npm --python=/usr/bin/python2 install 2>/dev/null
+  sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' $(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
+}
+
+package() {
+  cd $pkgname-$pkgver
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  install -Dm644 package.json "$pkgdir/usr/lib/node_modules/$pkgname/package.json"
+  install -m755 *.js "$pkgdir/usr/lib/node_modules/$pkgname/"
+  cp -r --no-preserve=ownership {artifacts,bin,examples,modules,node_modules,utils} "$pkgdir/usr/lib/node_modules/$pkgname/"
+  install -dm755 "$pkgdir/usr/bin"
+  printf '%s\n\n%s\n' \
+    '#!/usr/bin/env bash' \
+    "node /usr/lib/node_modules/$pkgname/bin/blueboxClient.js" \
+      > "$pkgdir/usr/bin/$pkgname"
+  chmod 755 "$pkgdir/usr/bin/$pkgname"
+}

@@ -1,0 +1,22 @@
+# Maintainer
+pkgname=ruby1.9-therubyracer
+pkgver=0.12.1
+pkgrel=1
+pkgdesc="Embed the V8 Javascript interpreter into Ruby"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+license=('MIT')
+depends=('ruby1.9' 'ruby1.9-libv8' 'ruby1.9-ref')
+url='http://github.com/cowboyd/therubyracer'
+source=("http://rubygems.org/downloads/therubyracer-$pkgver.gem")
+sha512sums=('c77f732bd0543411d33714b168ce9e28453c99f878796244d5a7dec6787211e6965b4ca058b2a2e451d1b74106e4731e75f8cb108978b28a86a4ee27cad43553')
+noextract=("therubyracer-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby-1.9 -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" therubyracer-$pkgver.gem
+  else
+    gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" therubyracer-$pkgver.gem
+  fi
+}

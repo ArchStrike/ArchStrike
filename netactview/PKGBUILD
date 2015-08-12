@@ -1,0 +1,24 @@
+# Maintainer
+pkgname=netactview
+pkgver=0.6.3
+pkgrel=1
+pkgdesc="A graphical network connections viewer for Linux similar in functionality with Netstat"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="http://netactview.sourceforge.net/index.html"
+license=('GPL')
+groups=('projectname' 'projectname-*misc')
+depends=('libgnome' 'libglade' 'gksu')
+makedepends=('intltool')
+source=(http://downloads.sourceforge.net/netactview/netactview-$pkgver.tar.bz2)
+sha512sums=('050b3b50421d2fea3ce0505392f0c569319de85bc191529eec10f2fac88c2da7b345bb28483fe1aafd889e884037ca246623d1a08a4b960dc9850ee24240e2ea')
+
+build() {
+  cd $srcdir/netactview-$pkgver
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
+}
+
+package(){
+  cd $srcdir/netactview-$pkgver
+  make DESTDIR=$pkgdir install
+}

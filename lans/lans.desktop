@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Lans
+Comment=A Multithreaded asynchronous packet parsing/injecting arp spoofer.
+Exec=lans
+Icon=projectname-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchAssault;ArchAssaultSpoof;

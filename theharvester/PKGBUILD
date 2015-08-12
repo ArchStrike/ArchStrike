@@ -1,0 +1,39 @@
+# Maintainer
+pkgname=theharvester
+_pkgname=theHarvester
+pkgver=2.2a
+pkgrel=1
+groups=('projectname' 'projectname-*reconnaissance')
+pkgdesc="Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers)"
+url='http://www.edge-security.com/theHarvester.php'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL2')
+depends=('python')
+source=("https://theharvester.googlecode.com/files/${_pkgname}-${pkgver}.tar.gz")
+md5sums=('5b1d9f3e71c801dfb109e8c35ec32f27')
+
+prepare() {
+  cd ${srcdir}/${_pkgname}-$pkgver
+
+  sed -i 's|env python$|env python2|' ${_pkgname}.py
+}
+
+package() {
+  cd ${srcdir}/${_pkgname}-$pkgver
+
+  # Make base directories.
+  install -d $pkgdir/usr/bin
+  install -d $pkgdir/usr/share/theharvester
+  install -d $pkgdir/usr/share/doc/theharvester
+  install -d $pkgdir/usr/share/licenses/theharvester
+
+  # Install docs.
+  install -m644 README ${pkgdir}/usr/share/doc/theharvester/README
+
+  # Install sharable.
+  cp --no-preserve=ownership -r discovery lib *.txt $pkgdir/usr/share/theharvester
+  install -m755 *.py $pkgdir/usr/share/theharvester
+
+  # Link to bin.
+  ln -s ../share/theharvester/theHarvester.py $pkgdir/usr/bin/theharvester
+}
