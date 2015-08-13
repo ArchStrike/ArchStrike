@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=batctl
 pkgver=2015.0
 pkgrel=1
-groups=('projectname' 'projectname-*wifi')
+groups=('archstrike' 'archstrike-wifi')
 pkgdesc="B.A.T.M.A.N. advanced control and management tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.open-mesh.net/"

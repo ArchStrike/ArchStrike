@@ -1,8 +1,8 @@
-#Maintainer: ArchAssault <team at projectname dot org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=creds.py-git
 pkgver=r17.1ec8297
 pkgrel=1
-groups=('projectname' 'projectname-*bruteforce')
+groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc="Harvest FTP/POP/IMAP/HTTP/IRC credentials along with interesting data from each of the protocols."
 arch=('any')
 url='https://github.com/DanMcInerney/creds.py'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=guymager
 pkgver=0.7.3
 pkgrel=1
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="A forensic imager for media acquisition"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://guymager.sourceforge.net/'

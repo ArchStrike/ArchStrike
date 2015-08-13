@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=fuzzap-git
 pkgver=r14.f13932c
 pkgrel=1
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A python script for obfuscating wireless networks"
 arch=('any')
 url='https://github.com/lostincynicism/FuzzAP'

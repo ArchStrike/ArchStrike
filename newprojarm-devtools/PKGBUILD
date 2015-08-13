@@ -2,7 +2,7 @@
 pkgname=projectnamearm-devtools
 pkgver=20140108
 pkgrel=1
-pkgdesc='Tools for ArchAssault ARM package maintainers'
+pkgdesc='Tools for ArchStrike ARM package maintainers'
 arch=('armv6h' 'armv7h')
 groups=('projectname-dev')
 license=('GPL')

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=liffy-git
 pkgver=r63.238ce6d
 pkgrel=1
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Local File Inclusion Exploitation tool."
 arch=('any')
 url='https://github.com/rotlogix/liffy'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=kolkata
 pkgver=3.0
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-fingerprinting')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-fingerprinting')
 pkgdesc="A web application fingerprintinging engine written in Perl that combines cryptographygraphy with IDS evasion."
 url="http://www.blackhatlibrary.net/Kolkata"
 arch=('any')

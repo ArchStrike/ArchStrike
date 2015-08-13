@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=osm-gps-map
 pkgver=0.7.3
 pkgrel=4

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=paketto
 pkgver=1.10
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Advanced TCP/IP Toolkit.'
 url='http://www.doxpara.com/paketto'
 license=('GPL')

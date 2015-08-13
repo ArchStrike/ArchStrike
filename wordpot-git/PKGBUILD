@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wordpot-git
 pkgver=r38.ca12cb5
 pkgrel=1
-groups=('projectname' 'projectname-*defense')
+groups=('archstrike' 'archstrike-defense')
 pkgdesc="A Wordpress Honeypot"
 arch=('any')
 url='https://github.com/gbrindisi/wordpot'

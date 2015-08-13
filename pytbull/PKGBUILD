@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pytbull
 pkgver=2.0
 pkgrel=2
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A python based flexible IDS/IPS testing framework shipped with more than 300 tests"
 arch=('any')
 url='http://pytbull.sourceforge.net/'

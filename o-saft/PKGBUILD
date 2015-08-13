@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=o-saft
 pkgver=15.05.15
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="an easy to use tool to show informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations."
 arch=('any')
 url='https://www.owasp.org/index.php/O-Saft'

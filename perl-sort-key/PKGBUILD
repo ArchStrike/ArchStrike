@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=perl-sort-key
 pkgver=1.33
 pkgrel=1

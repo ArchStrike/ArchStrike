@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=afflib
 pkgver=3.7.4
 pkgrel=4
-groups=('projectname' 'projectname-*forensics')
+groups=('archstrike' 'archstrike-forensics')
 pkgdesc="An extensible open format for the storage of disk images and related forensic information"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/simsong/AFFLIBv3'

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=perl-math-pari
 pkgver=2.01080607
 pkgrel=1

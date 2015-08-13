@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=binwally
 pkgver=0.r4.0aabd8b
 pkgrel=2
-groups=('projectname' 'projectname-*analysis' 'archassault-forensics' 'archassault-source-audit')
+groups=('archstrike' 'archstrike-analysis' 'archstrike-forensics' 'archstrike-source-audit')
 pkgdesc="Binary and Directory tree comparison tool using the Fuzzy Hashing concept (pydeep)"
 url="https://github.com/bmaia/binwally"
 arch=(any)

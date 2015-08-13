@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-progressbar
 pkgver=0.21.0
 pkgrel=1

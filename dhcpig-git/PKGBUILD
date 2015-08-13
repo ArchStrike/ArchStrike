@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dhcpig-git
 pkgver=r69.cc4109a
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Enumerates hosts, subdomains, and emails from a given domain using google"
 url="https://github.com/kamorin/DHCPig"
 license=('GPL2')

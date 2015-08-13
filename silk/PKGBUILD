@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: William Robertson <nullptr@gmail.com>
 pkgname=silk
 pkgver=3.10.1
@@ -7,7 +7,7 @@ pkgdesc='CERT netflow tools.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://tools.netsa.cert.org/silk'
 license=('GPL')
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 depends=('libfixbuf' 'lzo2' 'libpcap' 'python2' 'gnutls' 'c-ares' 'adns')
 makedepends=('perl' 'flex' 'bison')
 install="$pkgname.install"

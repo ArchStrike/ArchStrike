@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='malwasm'
 pkgver='0.2'
 pkgrel=2
@@ -6,7 +6,7 @@ pkgdesc="Offline debugging for malware's reverse engineering."
 url='https://code.google.com/p/malwasm/'
 license=('GPL2')
 arch=('any')
-groups=('projectname' 'projectname-*reverseing' 'archassault-debugging')
+groups=('archstrike' 'archstrike-reverseing' 'archstrike-debugging')
 depends=('python2' 'python2-psycopg2' 'python2-flask' 'python2-progressbar' 'cuckoo' 'postgresql')
 install='malwasm.install'
 optdepends=('pintool')

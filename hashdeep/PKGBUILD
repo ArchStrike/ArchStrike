@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor drathir <drathir87@gmail.com>
 pkgname=hashdeep
 pkgver=4.4
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="Advanced checksum hashing tool"
 url="https://github.com/jessek/hashdeep"
 license=('Public Domain' 'GPL')

@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=0trace
 pkgver=1.5
 pkgrel=1
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A hop enumeration tool"
 url="http://jon.oberheide.org/0trace/"
 arch=('any')

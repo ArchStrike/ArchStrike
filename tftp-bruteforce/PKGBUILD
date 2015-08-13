@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=tftp-bruteforce
 pkgver=0.1
 pkgrel=3
 pkgdesc="TFTP-bruteforcer is a fast TFTP filename bruteforcer written in perl."
 url="http://www.hackingexposedcisco.com/"
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 license=('LGPL')
 depends=('perl')
 arch=(any)

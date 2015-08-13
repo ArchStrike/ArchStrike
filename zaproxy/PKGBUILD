@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=zaproxy
 pkgver=2.4.0
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-fuzzer')
 pkgdesc="An integrated penetration testing tool for finding vulnerabilities in web applications"
 arch=('any')
 url='http://code.google.com/p/zaproxy/'

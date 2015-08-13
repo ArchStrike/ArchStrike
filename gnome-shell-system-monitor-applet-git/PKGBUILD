@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=gnome-shell-system-monitor-applet-git
 pkgver=695.d04c136
 _gitname=gnome-shell-system-monitor-applet

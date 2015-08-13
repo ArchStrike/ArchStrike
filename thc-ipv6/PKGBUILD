@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=thc-ipv6
 pkgver=2.7
 pkgrel=1
-groups=('projectname' 'projectname-*exploits' 'archassault-ddos' 'archassault-networking')
+groups=('archstrike' 'archstrike-exploits' 'archstrike-ddos' 'archstrike-networking')
 pkgdesc="A complete tool set to attack the inherent protocol weaknesses of IPv6 and ICMP6, and includes an easy to use packet factory library."
 url='http://thc.org/thc-ipv6/'
 depends=('libpcap' 'openssl')

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-nokogiri
 _gemname=nokogiri
 pkgver=1.6.1

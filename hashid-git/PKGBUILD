@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=hashid-git
 pkgver=r397.7e8473a
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="dentify the different types of hashes used to encrypt data and especial
 url="https://github.com/psypanda/hashID"
 arch=('any')
 license=('GPL3')
-groups=('projectname')
+groups=('archstrike')
 depends=('python')
 makedepends=('git')
 provides=('hashid')

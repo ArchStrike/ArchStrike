@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=tilt-git
 pkgver=90.2bc2ef2
 pkgrel=1
-groups=('projectname')
+groups=('archstrike')
 pkgdesc="Terminal Ip Lookup Tool"
 arch=('any')
 url='https://github.com/AeonDave/tilt'

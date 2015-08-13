@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=radare2
 pkgver=0.9.8
 pkgrel=1
-groups=('projectname' 'projectname-*reversing' 'archassault-disassembler' 'archassault-debugging')
+groups=('archstrike' 'archstrike-reversing' 'archstrike-disassembler' 'archstrike-debugging')
 pkgdesc="Open-source tools to disasm, debug, analyze and manipulate binary files"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://radare.org"

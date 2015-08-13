@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=relay-scanner
 pkgver=1.7
 pkgrel=1
 pkgdesc="SMTP relay scanner"
 url="http://www.cirt.dk"
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 makedepends=('unzip')
 license=('custom:unkown')
 depends=('perl')

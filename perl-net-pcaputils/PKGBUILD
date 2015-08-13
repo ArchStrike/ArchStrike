@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Alessandro Nakamuta <alessandro dot nakamuta at archlinux dot com dot br>
 pkgname=perl-net-pcaputils
 pkgver=0.01

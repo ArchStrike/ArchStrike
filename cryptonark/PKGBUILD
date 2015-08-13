@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cryptonark
 _pkgname=cnark
 pkgver=0.5.6
@@ -7,7 +7,7 @@ pkgdesc="SSL security checker"
 arch=('any')
 url="http://blog.techstacks.com/cryptonark.html"
 license=('GPL')
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 depends=('perl-io-socket-ssl'
          'perl-tie-hash-indexed'
 	 'perl-modern-perl'

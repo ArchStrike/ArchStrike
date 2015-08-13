@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=crypthook-git
 pkgver=r17.0728cd1
 pkgrel=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="A TCP/UDP symmetric encryption tunnel wrapper"
 arch=('any')
 url='https://github.com/chokepoint/CryptHook'

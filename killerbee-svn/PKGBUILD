@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=killerbee-svn
 pkgrel=1
 pkgver=92
-groups=('projectname' 'projectname-*wireless' 'archassault-exploit')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-exploit')
 pkgdesc="Framework and tools for exploiting ZigBee and IEEE 802.15.4 networks."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://code.google.com/p/killerbee/'

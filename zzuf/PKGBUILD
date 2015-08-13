@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=zzuf
 pkgver=0.13
 pkgrel=3
 pkgdesc='Transparent application input fuzzer.'
 url='http://sam.zoy.org/zzuf/'
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 depends=('glibc')
 source=("http://caca.zoy.org/files/zzuf/zzuf-${pkgver}.tar.gz" "LICENSE")
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

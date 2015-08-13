@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # TODO: check license
 pkgname=honeyd
 pkgver=1.6.7
 pkgrel=2
-groups=('projectname')
+groups=('archstrike')
 pkgdesc="A small daemon that creates virtual hosts on a network."
 url="https://github.com/DataSoft/Honeyd/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

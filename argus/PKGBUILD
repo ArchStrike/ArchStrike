@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=argus
 pkgver=3.0.8.1
 pkgrel=1
-groups=('projectname' 'projectname-*networking' 'archassault-defensive')
+groups=('archstrike' 'archstrike-networking' 'archstrike-defensive')
 pkgdesc="Network monitoring tool with flow control"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://qosient.com/argus/"

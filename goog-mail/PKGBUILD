@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='goog-mail'
 pkgver=1.0
 pkgrel=1
 pkgdesc='Enumerate domain emails from google.'
 url='http://www.darkc0de.com/others/goog-mail.py'
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 arch=('any')
 license=('unknown')
 depends=('python2')

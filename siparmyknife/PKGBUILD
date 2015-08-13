@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=siparmyknife
 pkgver=11232011
 pkgrel=2
-groups=('projectname' 'projectname-*voip')
+groups=('archstrike' 'archstrike-voip')
 pkgdesc="A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications. "
 arch=('any')
 url="http://packetstormsecurity.com/files/107301/sipArmyKnife_11232011.pl.txt"

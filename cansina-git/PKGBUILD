@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cansina-git
 pkgver=r133.e7deee9
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A python-based Web Content Discovery Tool"
 arch=('any')
 url='https://github.com/deibit/cansina'

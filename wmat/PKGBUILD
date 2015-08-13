@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wmat
 pkgver=0.1
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-cracker')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-cracker')
 pkgdesc="Automatic tool for testing webmail accounts"
 arch=('any')
 url="http://netsec.rs/70/tools.html"

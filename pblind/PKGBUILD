@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='pblind'
 pkgver='1.0'
 pkgrel=1
 pkgdesc='Little utility to help exploiting blind sql injection vulnerabilities.'
 url='http://www.edge-security.com/pblind.php'
-groups=('projectname' 'projectname-*webapp' 'archassault-exploit')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-exploit')
 license=('GPL')
 depends=('python2')
 arch=('any')

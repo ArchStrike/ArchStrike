@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=VIPUL
 _perlmod=Crypt-Random
 pkgname=perl-crypt-random

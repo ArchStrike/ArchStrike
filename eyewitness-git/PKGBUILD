@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team AT projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=eyewitness-git
 pkgver=r310.e0f3c85
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="designed to take screenshots of websites, provide some server header in
 arch=('any')
 url="https://github.com/ChrisTruncer/EyeWitness"
 license=('GPL3')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2-pyqt4' 'ghost.py' 'python2-netaddr')
 makedepends=('git')
 provides=('eyewitness')

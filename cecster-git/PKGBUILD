@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cecster-git
 _pkgname=CECster
 pkgver=r5.15544cb
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="A GUI-based tool to perform security testing against the HDMI CEC (Consumer Electronics Control) and HEC (HDMI Ethernet Channel) protocols"
 arch=('any')
 url='https://github.com/nccgroup/CECster'

@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=weevely
 _pkgname=weevely3
 pkgver=3.1.0
 pkgrel=1
-groups=('projectname' 'projectname-*webapps' 'archassault-backdoors')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="A Stealth tiny web shell that provides a telnet-like console."
 arch=('any')
 url='http://epinna.github.io/Weevely3'

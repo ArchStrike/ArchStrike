@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=matahari
 pkgver=0.1.30
 pkgrel=1
@@ -7,7 +7,7 @@ arch=(any)
 url="http://matahari.sourceforge.net"
 license=('GPL')
 depends=('python2')
-groups=('projectname' 'projectname-*tunneling')
+groups=('archstrike' 'archstrike-tunneling')
 source=(http://downloads.sourceforge.net/matahari/matahari-$pkgver.tgz)
 md5sums=('3598f8c33d6f38c1c08d83ecbf15eab2')
 

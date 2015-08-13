@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-ripl-auto_indent
 pkgver=0.2.0
 pkgrel=1

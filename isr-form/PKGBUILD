@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='isr-form'
 _pkgname='ISR-form'
 pkgver='1.0'
 pkgrel=1
 pkgdesc='Simple html parsing tool that extracts all form related information and generates reports of the data. Allows for quick analyzing of data.'
 url='http://www.infobyte.com.ar/'
-groups=('projectname' 'projectname-*webapp' 'archassault-reconnaissance')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-reconnaissance')
 license=('custom')
 arch=('any')
 depends=('perl' 'perl-data-dump')

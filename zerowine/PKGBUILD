@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='zerowine'
 pkgver='0.0.2'
 pkgrel=1
 pkgdesc='Malware Analysis Tool - research project to dynamically analyze the behavior of malware'
 url='http://zerowine.sf.net/'
-groups=('projectname' 'projectname-*malware' 'archassault-reversing')
+groups=('archstrike' 'archstrike-malware' 'archstrike-reversing')
 license=('GPL')
 depends=('python2')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=bmon
 pkgver=3.7
@@ -9,7 +9,7 @@ license=('BSD' 'MIT')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('confuse' 'libnl')
 makedepends=('git')
-groups=('projectname')
+groups=('archstrike')
 source=("git+${url}.git#tag=tags/v${pkgver}")
 sha512sums=('SKIP')
 

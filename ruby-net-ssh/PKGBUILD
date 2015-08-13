@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-net-ssh
 pkgver=2.7.0
 pkgrel=0

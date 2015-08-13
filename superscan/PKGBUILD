@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='superscan'
 pkgver='4'
 pkgrel=1
 pkgdesc='Powerful TCP port scanner, pinger, resolver.'
 url='http://www.foundstone.com/us/resources/proddesc/superscan.htm'
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 license=('FOUNDSTONE')
 arch=('any')
 source=("http://securitylab.ru/_tools/superscan$pkgver.zip")

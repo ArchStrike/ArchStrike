@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 # Contributor: Scott Hansen (firecat53) firecat4153 at gmail
 
@@ -9,7 +9,7 @@ pkgdesc="Interactively browse and open URLs contained in HTML passed from stdin"
 url="https://github.com/firecat53/${pkgname}"
 license=('GPL')
 arch=('any')
-groups=('projectname')
+groups=('archstrike')
 depends=('python-urwid')
 makedepends=('git' 'python-setuptools')
 conflicts=("urlscan")

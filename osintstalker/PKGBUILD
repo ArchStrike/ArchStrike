@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=osintstalker
 pkgver=2014.1.4
 pkgrel=2
 pkgdesc="fbStalker - OSINT tool for Facebook - Based on Facebook Graph and other stuff
 geoStalker - OSINT tool for Geolocation related sources - Flickr, Instagram, Twitter, Wigle. The userIDs found is used to find social media accounts across other networks like Facebook, Youtube, Instagram, Google+, Linkedin and Google Search"
 arch=('any')
-groups=('projectname')
+groups=('archstrike')
 url='https://github.com/milo2012/osintstalker/'
 depends=('python2-google' 'python2-instagram' 'python2-pygoogle' 'python2-geopy' 'python2-oauth2' 'python2-python-linkedin' 'python2-pygeocoder' 'python2-pysqlite' 'python2-twittersearch' 'python2-foursquare' 'python2-gdata' 'python2-setuptools' 'chrome' 'chromedriver' 'python2-pytz' 'python2-tzlocal' 'python2-termcolor' 'python2-selenium' 'python2-beautifulsoup4')
 license=('custom:unknown')

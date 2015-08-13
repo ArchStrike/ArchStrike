@@ -1,14 +1,14 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=webshells
 pkgver=0.r2.4e96370
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-backdoor')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-backdoor')
 pkgdesc="Web Backdoors"
-url="https://github.com/ArchAssault-Project/webshells"
+url="https://github.com/ArchStrike-Project/webshells"
 arch=('any')
 makedepends=('git')
 license=('custom')
-source=("git+https://github.com/ArchAssault-Project/webshells.git")
+source=("git+https://github.com/ArchStrike-Project/webshells.git")
 md5sums=('SKIP')
 
 pkgver() {

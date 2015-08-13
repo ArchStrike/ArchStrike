@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=argtable
 pkgver=2.13
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="ANSI C command line parser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://argtable.sourceforge.net/"
 license=('GPL')
-groups=('projectname')
+groups=('archstrike')
 source=("http://downloads.sourceforge.net/argtable/argtable${pkgver/./-}.tar.gz"
         'argtable.desktop')
 sha512sums=('3d8303f3ba529e3241d918c0127a16402ece951efb964d14a06a3a7d29a252812ad3c44e96da28798871e9923e73a2cfe7ebc84139c1397817d632cae25c4585'

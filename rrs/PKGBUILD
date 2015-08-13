@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='rrs'
 pkgver='1.70'
 pkgrel=2
-groups=('projectname' 'projectname-*backdoors')
+groups=('archstrike' 'archstrike-backdoors')
 pkgdesc='A reverse (connecting) remote shell. Instead of listening for incoming connections it will connect out to a listener (rrs in listen mode). With tty support and more.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.cycom.se/dl/rrs'

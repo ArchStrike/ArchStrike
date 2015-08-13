@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='sinfp'
 _distname='Net-SinFP3'
 pkgver='1.21'
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc='A full operating system stack fingerprintinging suite.'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url='http://www.networeconnaissance.com/tools/sinfp/'
-groups=('projectname' 'projectname-*fingerprinting')
+groups=('archstrike' 'archstrike-fingerprinting')
 license=('PerlArtistic')
 depends=('perl' 'perl-class-gomor' 'perl-data-dumper' 'perl-dbd-sqlite'
         'perl-dbi' 'perl-digest-perl-md5' 'perl-net-frame' 'perl-net-libdnet6'

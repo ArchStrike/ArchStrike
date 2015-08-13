@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=udis86
 pkgver=1.7.2
 pkgrel=2
@@ -6,7 +6,7 @@ pkgdesc="A minimalistic disassembler library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://udis86.sourceforge.net/"
 license=('BSD')
-groups=('projectname' 'projectname-*reversing')
+groups=('archstrike' 'archstrike-reversing')
 depends=('glibc')
 makedepends=('python')
 options=('!staticlibs')

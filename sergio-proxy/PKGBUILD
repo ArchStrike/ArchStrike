@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sergio-proxy
 pkgver=0.2.1
 pkgrel=1
-groups=('projectname' 'projectname-*proxy' 'archassault-spoof')
+groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
 pkgdesc="A multi-threaded transparent HTTP proxy for manipulating web traffic"
 url="https://github.com/darkoperator/dnsreconnaissance"
 license=('GPL3')

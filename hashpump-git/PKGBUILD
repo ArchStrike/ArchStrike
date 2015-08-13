@@ -1,4 +1,4 @@
-# Maintainer <https://projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=hashpump-git
 pkgver=r43.484c538
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="A tool to exploit the hash length extension attack in various hashing a
 arch=('armv6h' 'i686' 'armv7h' 'x86_64')
 url="https://github.com/bwall/HashPump"
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=('openssl')
 makedepends=('git')
 provides=('hashpump')

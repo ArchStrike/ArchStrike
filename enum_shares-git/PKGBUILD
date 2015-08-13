@@ -1,4 +1,4 @@
-# Maintainer <https://projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=enum_shares-git
 pkgver=r7.97cba5a
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="Shared folders enumeration tool"
 arch=('any')
 url="https://github.com/bwall/HashPump"
 license=('GPL2')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2')
 makedepends=('git')
 provides=('enum_shares')

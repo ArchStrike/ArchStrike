@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-packetfu
 _gemname=packetfu
 pkgver=1.1.9

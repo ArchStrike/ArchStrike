@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=jynx2
 pkgver=2.0
 pkgrel=1
-groups=('projectname' 'projectname-*backdoor')
+groups=('archstrike' 'archstrike-backdoor')
 pkgdesc="An expansion of the original Jynx LD_PRELOAD rootkit"
 arch=('any')
 url="http://www.blackhatlibrary.net/Jynx2"

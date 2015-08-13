@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pytinydns-git
 pkgver=r16.d8b53c4
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A tiny DNS server that resolves A records to IPs."
 arch=('any')
 url='https://github.com/chokepoint/pytinydns'

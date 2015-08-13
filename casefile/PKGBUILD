@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=casefile
 pkgver=1.0.1
 pkgrel=1
-groups=('projectname' 'projectname-*forensic' 'archassault-reconnaissance' 'archassault-scanners')
+groups=('archstrike' 'archstrike-forensic' 'archstrike-reconnaissance' 'archstrike-scanners')
 pkgdesc="The little brother to Maltego without transforms, but combines graph and link analyze to examine links between manually added data to mind map your information"
 arch=('any')
 url='http://www.paterva.com/web6/products/casefile.php'

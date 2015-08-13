@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sqlninja
 pkgver=0.2.999
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-exploit' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-exploit' 'archstrike-fuzzer')
 pkgdesc="A tool targeted to exploit SQL Injection vulnerabilities on a web application that uses Microsoft SQL Server as its back-end"
 arch=('any')
 url='http://sqlninja.sourceforge.net/'

@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=smtp-vrfy
 pkgver=1.0
 pkgrel=1
 pkgdesc="An SMTP Protocol Hacker."
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 depends=('perl')
 license=(custom:unknown)
 arch=(any)

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Borja Ruiz <borja [at] libcrack [dot] so> 
 pkgname=sysdig-git
 pkgver=0.1.72.r1327.gf405060
@@ -7,7 +7,7 @@ pkgdesc="Open source system-level exploration and troubleshooting tool"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://www.sysdig.org/"
 license=('GPL2')
-groups=('projectname')
+groups=('archstrike')
 if [[ $CARCH == x86_64 ]] ; then
   depends=('gcc-libs-multilib' 'dkms')
 else

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=airflood
 pkgver=0.1
 pkgrel=3
@@ -11,7 +11,7 @@ if [[ $CARCH == x86_64 ]] ; then
 else
     depends=('glibc')
 fi
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 source=("http://dl.packetstormsecurity.net/wireless/airflood-$pkgver.tar.gz" 'airflood.desktop')
 sha512sums=('48409661f963a6eafbd2ef325dcf9f20f31c382b26d176a5272b1800c732242ae3f612436c9238fce33dac266d59c0f2971a15463623495d93c1f50c85fb0691'
             '20876d437fd8aab17502865128830378c57d9bd46c52a179024136caa6e47f239980ebb64a24d19f4564766f03903bce7643ed3e1a17bf8b263a35348d187a0c')

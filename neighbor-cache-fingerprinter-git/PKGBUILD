@@ -1,8 +1,8 @@
-#Maintainer: ArchAssault <team at projectname dot org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=neighbor-cache-fingerprinter-git
 pkgver=r83.f1e596f
 pkgrel=2
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A mechanism for remote operating system detection by
 extrapolating characteristics of the target system's underlying Neighbor Cache
 and general ARP behavior."

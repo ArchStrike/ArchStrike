@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-net-http-digest_auth
 _gemname=net-http-digest_auth
 pkgver=1.4

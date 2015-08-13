@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=rubygems1.8
 pkgver=1.3.7
 pkgrel=1

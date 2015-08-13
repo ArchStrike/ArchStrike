@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=spectools
 pkgver=2010_04_R1
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.kismetwireless.net/spectools/"
 license=('GPL2')
 depends=('libusb-compat' 'gtk2')
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 source=(http://www.kismetwireless.net/code/spectools-${pkgver//_/-}.tar.gz)
 md5sums=('1574813385fbe652736b439accec7120')
 

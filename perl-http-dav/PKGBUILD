@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=perl-http-dav
 pkgver=0.47
 pkgrel=3

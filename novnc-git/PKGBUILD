@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=novnc-git
 pkgver=r877.b098afc
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="VNC client using HTML5 (Web Sockets, Canvas) with encryption (wss://) support."
 arch=('any')
 url='https://github.com/kanaka/noVNC'

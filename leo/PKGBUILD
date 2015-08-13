@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=leo
 pkgver=5.1
 pkgrel=1
@@ -9,7 +9,7 @@ license=('custom')
 depends=('python-pyqt4')
 optdepends=('python-pyenchant: For Spelling support')
 makedepends=('unzip' 'python-setuptools')
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 source=(http://downloads.sourceforge.net/sourceforge/leo/Leo-$pkgver-final.zip)
 sha512sums=('a8e1d42c0b7c8f6aa4465295515ef19965a03142997a1b65304fd72a2c541248b7dba66d7be295465fd6dbdd7fcd5c6e6542d222edb71ddcab093c0c360340b1')
 

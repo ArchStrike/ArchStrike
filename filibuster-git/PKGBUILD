@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=filibuster-git
 pkgver=r161.37b7f9c
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A Egress filter mapping application with additional functionality"
 arch=('any')
 url='https://github.com/subinacls/Filibuster'

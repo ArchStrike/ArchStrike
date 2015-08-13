@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=rifiuti2
 pkgver=0.6.1
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance' 'archassault-forensic')
+groups=('archstrike' 'archstrike-reconnaissance' 'archstrike-forensic')
 pkgdesc="A rewrite of rifiuti, a great tool from Foundstone folks for analyzing Windows Recycle Bin INFO2 file."
 url="https://github.com/abelcheung/rifiuti2"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

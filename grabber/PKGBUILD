@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=grabber
 pkgver=0.1
 pkgrel=1
-groups=('projectname' 'projectname-*webapp')
+groups=('archstrike' 'archstrike-webapp')
 pkgdesc="A web application scanner. Basically it detects some kind of vulnerabilities in your website."
 arch=('any')
 url='http://rgaucher.info/beta/grabber/'

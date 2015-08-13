@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=arpwner
 pkgver=20120106.r26.f300fdf
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A tool for arp posioning and dns poisoning attacks, written in python."
 url="https://github.com/ntrippar/ARPwner"
 arch=('any')

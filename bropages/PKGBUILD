@@ -1,11 +1,11 @@
-# Maintainer: ArchAssault <team at projectname com>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=bropages
 pkgname=bropages
 pkgver=0.1.0
 pkgrel=4
 pkgdesc="Highly readable supplement to man pages. Shows simple, concise examples for unix commands."
 arch=(any)
-groups=('projectname')
+groups=('archstrike')
 url="http://bropages.org/"
 license=('custom')
 options=('!emptydirs')

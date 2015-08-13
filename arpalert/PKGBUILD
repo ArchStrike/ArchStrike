@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='arpalert'
 pkgver='2.0.11'
 pkgrel=1
@@ -9,7 +9,7 @@ url='http://www.arpalert.org/'
 license=('GPL')
 depends=('libpcap')
 options=('!emptydirs')
-groups=('projectname' 'projectname-*defense')
+groups=('archstrike' 'archstrike-defense')
 source=("http://www.arpalert.org/src/arpalert-$pkgver.tar.gz"
         'arpalert.desktop')
 sha512sums=('8593b5f87c8435bc0dfb6b1d48b72705a109425410039341fddb49beddacb30c87e2b30a1f86cca17bb64aa407060ee5b9437ff2801b9869261ed91f6f5e141f'

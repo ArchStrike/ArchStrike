@@ -1,5 +1,5 @@
-# Maintainer: ArchAssault <team projectname org>
-# Contributor: Cthulu201 <cthulu201@projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+# Contributor: Cthulu201 <cthulu201@archstrike.org>
 
 pkgname=sparta-git
 pkgver=20150331.r17
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A GUI application which simplifies network infrastructure penetration testing by aiding the penetration tester in the scanning and enumeration phase"
 arch=('any')
 url="https://github.com/SECFORCE/sparta"
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 license=('GPL3')
 depends=('python2' 'nmap' 'hydra' 'cutycapt') 
 makedepends=('git')

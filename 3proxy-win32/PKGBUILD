@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=3proxy-win32
 pkgver=0.7.1.1
 pkgrel=1
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 pkgdesc="3proxy tiny free proxy server"
 url="http://3proxy.ru/"
 license=('GPL')

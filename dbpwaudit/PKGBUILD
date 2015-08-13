@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dbpwaudit
 pkgver=0.8
 pkgrel=1
-groups=('projectname' 'projectname-*defense' 'archassault-cracker')
+groups=('archstrike' 'archstrike-defense' 'archstrike-cracker')
 pkgdesc="A Java tool that allows you to perform online audits of password quality for several database engines"
 url='http://www.cqure.net/wp/dbpwaudit/'
 license=('GPL')

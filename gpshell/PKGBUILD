@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team archassualt.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Guenther Starnberger <gst@sysfrog.org>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
@@ -6,7 +6,7 @@ pkgname=gpshell
 pkgver=1.4.4
 pkgrel=1
 pkgdesc="GlobalPlatform command shell"
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 license=('GPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://sourceforge.net/projects/globalplatform/"

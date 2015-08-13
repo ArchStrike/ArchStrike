@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sea-git
 pkgver=r103.9aca1c8
 pkgrel=1
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 pkgdesc="A tool to help to create exploits of binary programs"
 arch=('any')
 url='https://github.com/neuromancer/SEA'

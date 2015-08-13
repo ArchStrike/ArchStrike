@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=snapception-git
 pkgver=20141017.r8
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="Intercept and decrypt all snapchats received over your network"
 arch=('any')
 url='https://github.com/thebradbain/snapception'

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=coffee-script
 pkgver=1.9.0
 pkgrel=1

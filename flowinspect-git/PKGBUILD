@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=flowinspect-git
 pkgver=r96.1f62b3b
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A network traffic inspection tool"
 arch=('any')
 url='https://github.com/7h3rAm/flowinspect'

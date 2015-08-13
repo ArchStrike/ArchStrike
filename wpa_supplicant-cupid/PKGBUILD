@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
 pkgname=wpa_supplicant-cupid
@@ -9,7 +9,7 @@ url="http://hostap.epitest.fi/wpa_supplicant"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('openssl' 'libdbus' 'readline' 'libnl')
 makedepends=('git')
-groups=('projectname-wireless')
+groups=('archstrike-wireless')
 license=('GPL')
 backup=('etc/wpa_supplicant-cupid/wpa_supplicant.conf')
 source=("http://w1.fi/releases/wpa_supplicant-${pkgver}.tar.gz"

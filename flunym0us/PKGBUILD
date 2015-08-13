@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=flunym0us
 pkgver=2.0
 pkgrel=2
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="a Python-based tool that searches Twitter for keywords and then parses any tweets that are found."
 arch=('any')
 url='https://code.google.com/p/flunym0us/'

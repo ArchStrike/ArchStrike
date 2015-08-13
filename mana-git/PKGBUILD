@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mana-git
 pkgver=20141024.r44
 pkgrel=1
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A toolkit for rogue access point (evilAP) attacks first presented at Defcon 22"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/sensepost/mana'

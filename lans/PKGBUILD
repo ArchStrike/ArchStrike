@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=lans
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*spoof')
+groups=('archstrike' 'archstrike-spoof')
 pkgdesc="A Multithreaded asynchronous packet parsing/injecting arp spoofer."
 url="https://github.com/DanMcInerney/LANs.py"
 arch=('any')

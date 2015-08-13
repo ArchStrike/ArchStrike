@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=erase-registrations
 pkgver=1.0
 pkgrel=3
 epoch=1
 pkgdesc="IAX flooder"
 url="http://www.hackingexposedvoip.com/"
-groups=('projectname' 'projectname-*voip')
+groups=('archstrike' 'archstrike-voip')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('libnet')

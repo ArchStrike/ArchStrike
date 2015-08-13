@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=libv8
 pkgname=ruby1.9-$_gemname
 pkgver=3.16.14.3

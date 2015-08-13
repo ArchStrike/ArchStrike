@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pdf-parser
 pkgver=0.6.3
 pkgrel=1
-groups=('projectname' 'projectname-*forensics')
+groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Parses a PDF document to identify the fundamental elements used in the analyzed file"
 arch=('any')
 url='http://blog.didierstevens.com/programs/pdf-tools/'

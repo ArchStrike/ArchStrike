@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Diogo Leal <estranho@diogoleal.com>
 
 pkgname=exabgp
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc='The BGP swiss army knife of networking'
 arch=('any')
 license=('custom')
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 url='https://github.com/Exa-Networks/exabgp'
 depends=('python2')
 backup=('etc/exabgp.conf')

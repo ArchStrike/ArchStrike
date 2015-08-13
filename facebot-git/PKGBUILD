@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=facebot-git
 pkgver=r23.57f6025
 pkgrel=2
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="A facebook profile and reconnaissance system "
 arch=('any')
 url='https://github.com/pun1sh3r/facebot'

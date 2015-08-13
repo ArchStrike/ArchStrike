@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='pirana'
 pkgver='0.3.1'
 pkgrel=1
 pkgdesc='Exploitation framework that tests the security of a email content filter.'
 url='http://www.guay-leroux.com/projects.html'
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('perl')

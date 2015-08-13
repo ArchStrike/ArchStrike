@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=nomorexor
 pkgver=0.1
 pkgrel=1
-groups=('projectname' 'projectname-*cryptography')
+groups=('archstrike' 'archstrike-cryptography')
 pkgdesc="Tool to help guess a files 256 byte XOR key by using frequency analyze"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/hiddenillusion/NoMoreXOR"

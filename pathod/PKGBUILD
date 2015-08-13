@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pathod
 pkgver=0.11.1
 pkgrel=2
-groups=('projectname' 'projectname-*proxy')
+groups=('archstrike' 'archstrike-proxy')
 pkgdesc="Crafted malice for tormenting HTTP clients and servers"
 arch=('any')
 url="http://pathod.net/"

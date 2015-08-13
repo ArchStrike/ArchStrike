@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=clusterd-git
 pkgver=r129.0f04a49
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="automates the fingerprinting, reconnaissance, and exploitation phases o
 url="https://github.com/hatRiot/clusterd"
 arch=('any')
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2' 'python2-requests' 'java-environment')
 makedepends=('git')
 provides=('clusterd')

@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=capstone
 pkgver=3.0.3
 pkgrel=1
-groups=('projectname' 'projectname-*reversing')
+groups=('archstrike' 'archstrike-reversing')
 pkgdesc="A lightweight multi-platform, multi-architecture disassembly framework."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.capstone-engine.org/index.html'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dirbuster
 pkgver=1.0_RC1
 pkgrel=3
-groups=('projectname' 'projectname-*scanners' 'archassault-webapp')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-webapp')
 pkgdesc="An application designed to brute force directories and files names on web/application servers"
 url='http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project'
 license=('LGPL')

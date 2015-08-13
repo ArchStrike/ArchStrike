@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=webpwn3r-git
 pkgver=0.r35.3fb27bb
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A python based Web Applications Security Scanner"
 url='https://github.com/zigoo0/webpwn3r'
 arch=('any')

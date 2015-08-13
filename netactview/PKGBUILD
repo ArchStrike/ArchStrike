@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=netactview
 pkgver=0.6.3
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="A graphical network connections viewer for Linux similar in functionali
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://netactview.sourceforge.net/index.html"
 license=('GPL')
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 depends=('libgnome' 'libglade' 'gksu')
 makedepends=('intltool')
 source=(http://downloads.sourceforge.net/netactview/netactview-$pkgver.tar.bz2)

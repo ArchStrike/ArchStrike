@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=metacoretex
 pkgver=0.8.0
 pkgrel=1
 pkgdesc="MetaCoretex is an entirely JAVA vulnerability scanning framework for databases."
 url="http://metacoretex.sourceforge.net/"
-groups=('projectname' 'projectname-*database')
+groups=('archstrike' 'archstrike-database')
 arch=(any)
 license=('custom')
 depends=('java-runtime')

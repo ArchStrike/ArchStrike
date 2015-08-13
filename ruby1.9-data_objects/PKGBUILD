@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=data_objects
 pkgname=ruby1.9-$_gemname
 pkgver=0.10.13

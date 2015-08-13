@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=argus-clients
 pkgver=3.0.8
 pkgrel=3
-groups=('projectname' 'projectname-*networking' 'archassault-defensive')
+groups=('archstrike' 'archstrike-networking' 'archstrike-defensive')
 pkgdesc="Network monitoring client for Argus"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://qosient.com/argus/"

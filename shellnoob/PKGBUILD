@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=shellnoob
 pkgver=2.1
 pkgrel=1
-groups=('projectname' 'projectname-*exploit' 'archassault-debugging')
+groups=('archstrike' 'archstrike-exploit' 'archstrike-debugging')
 pkgdesc="A toolkit that eases the writing and debugging of shellcode"
 url="https://github.com/reyammer/shellnoob"
 arch=('any')

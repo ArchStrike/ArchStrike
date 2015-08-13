@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Andreas Krinke <andreas dot krinke at gmx dot de>
 pkgname=gephi
 pkgver=0.8.2beta

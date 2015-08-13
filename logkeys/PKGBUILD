@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=logkeys
 pkgver=0.1.1a
 pkgrel=13
 pkgdesc="Simple keylogger supporting also USB keyboards."
 license=('GPLv3')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-groups=('projectname')
+groups=('archstrike')
 depends=('procps-ng' 'kbd')
 optdepends=('logkeys-keymaps: for additional keymaps')
 url="http://logkeys.googlecode.com/"

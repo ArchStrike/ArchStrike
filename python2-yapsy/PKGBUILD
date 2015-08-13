@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-yapsy
 _pyname=Yapsy
 pkgver=1.10.2

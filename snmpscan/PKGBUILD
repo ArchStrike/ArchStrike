@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=snmpscan
 pkgver=0.1
 pkgrel=1
 pkgdesc="A free, multi-processes SNMP scanner"
 url="http://www.nothink.org/perl/snmpscan/index.php"
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 license=('GPL')
 arch=('any')
 depends=('perl' 'perl-net-snmp' 'perl-net-ip' 'perl-uniq')

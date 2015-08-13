@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=powerfuzzer
 pkgver=1_beta
 pkgrel=1
@@ -7,7 +7,7 @@ url="http://www.powerfuzzer.com"
 arch=(any)
 depends=('python2' 'wxpython' 'python-utidylib')
 license=('GPL')
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 source=(http://downloads.sourceforge.net/powerfuzzer/${pkgname}_v${pkgver}_patched.zip)
 md5sums=('2c7fa861f7f17b68640f5ae5c75b781a')
 

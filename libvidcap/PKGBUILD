@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=libvidcap
 pkgver=0.2.1
 pkgrel=1

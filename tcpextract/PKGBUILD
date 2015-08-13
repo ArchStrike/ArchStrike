@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=tcpextract
 pkgver=1.1
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="Extracts files from captured TCP sessions. Support live streams and pcap files."
 arch=('any')
 url="https://pypi.python.org/pypi/tcpextract/1.1"

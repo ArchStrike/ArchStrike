@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnsmap
 pkgver=0.30
 pkgrel=1
-groups=('projectname' 'projectname-*fingerprinting')
+groups=('archstrike' 'archstrike-fingerprinting')
 pkgdesc="Passive DNS network mapper"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://dnsmap.googlecode.com'

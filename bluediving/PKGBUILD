@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bluediving
 pkgver=0.9
 pkgrel=9
@@ -6,7 +6,7 @@ pkgdesc="A Bluetooth penetration testing suite"
 url='http://bluediving.sourceforge.net/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*bluetooth')
+groups=('archstrike' 'archstrike-bluetooth')
 depends=('bluez-utils' 'sox' 'obexftp' 'readline' 'expat' 'perl-xml-simple' 'openobex' 'libxml2')
 install=bluediving.install
 source=("http://downloads.sourceforge.net/sourceforge/bluediving/bluediving-$pkgver.tgz"

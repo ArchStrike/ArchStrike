@@ -1,10 +1,10 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mboxgrep
 pkgver=0.7.9
 pkgrel=3
 pkgdesc="A small, non-interactive utility that scans mail folders for messages matching regular expressions. It does matching against basic and extended POSIX regular expressions, and reads and writes a variety of mailbox formats."
 url="http://mboxgrep.sourceforge.net"
-groups=('projectname' 'projectname-*forensics')
+groups=('archstrike' 'archstrike-forensics')
 license=('GPL')
 depends=('pcre')
 install="mboxgrep.install"

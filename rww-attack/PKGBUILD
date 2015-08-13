@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=rww-attack
 pkgver=0.9.2
 pkgrel=1
@@ -8,7 +8,7 @@ url="http://packetstormsecurity.com/files/79021/Remote-Web-Workplace-Attack-Tool
 license=('GPL')
 makedepends=("unzip")
 depends=('python2' 'python2-pycurl')
-groups=('projectname' 'projectname-*webapp')
+groups=('archstrike' 'archstrike-webapp')
 source=(http://packetstorm.foofus.com/Crackers/RWW-Attack-$pkgver.zip)
 md5sums=('af4972bde80f3bceb5d375f14a63e1f5')
 

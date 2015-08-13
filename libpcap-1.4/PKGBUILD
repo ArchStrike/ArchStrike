@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=libpcap-1.4
 pkgver=1.4.0
 pkgrel=1

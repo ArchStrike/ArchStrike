@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=whatweb
 pkgver=0.4.7
 pkgrel=3
-groups=('projectname' 'projectname-*webapps' 'archassault-reconnaissance')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-reconnaissance')
 pkgdesc="Next generation web scanner that identifies what websites are running."
 arch=('any')
 url='http://www.morningstarsecurity.com/research/${pkgname}'

@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=faraday-git
 pkgver=20150507.r1187
 pkgrel=1
 pkgdesc="A new concept (IPE) Integrated Penetration-Test Environment a multiuser Penetration test IDE. Designed for distribution, indexation and analyze of the generated data during the process of a security audit."
-groups=('projectname' 'projectname-*miscellaneous')
+groups=('archstrike' 'archstrike-miscellaneous')
 url="http://www.faradaysec.com/"
 if [[ $CARCH = 'x86_64' ]]; then
        depends=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'pyqt3' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2'

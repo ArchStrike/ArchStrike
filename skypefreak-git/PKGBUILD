@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=skypefreak-git
 pkgver=r30.14a81cb
 pkgrel=2
@@ -6,7 +6,7 @@ pkgdesc="A Forensic Framework for Skype"
 url="https://github.com/OsandaMalith/SkypeFreak"
 arch=('any')
 license=('custom')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2')
 makedepends=('git')
 provides=('skypefreak')

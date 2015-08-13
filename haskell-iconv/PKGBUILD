@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=haskell-iconv
 pkgver=0.4.1.1
 pkgrel=3

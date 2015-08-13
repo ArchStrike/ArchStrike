@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='lanmap2-git'
 pkgver=r127.1197999
 pkgrel=1
@@ -7,7 +7,7 @@ pkgdesc="Builds database/visualizations of LAN structure from passively sifted i
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://github.com/pizza/lanmap2'
 license=('GPL')
-groups=('projectname' 'projectname-*networking' 'archassault-misc')
+groups=('archstrike' 'archstrike-networking' 'archstrike-misc')
 depends=('php' 'libpcap' 'graphviz' 'sqlite3' 'readline' 'php-sqlite')
 makedepends=('git')
 source=('git+https://github.com/rflynn/lanmap2')

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=btcrack
 pkgver=1.1
 pkgrel=1
-groups=('projectname' 'projectname-*bluetooth' 'archassault-cracker')
+groups=('archstrike' 'archstrike-bluetooth' 'archstrike-cracker')
 pkgdesc="The world's first Bluetooth Pass phrase (PIN) bruteforce tool, BTCrack will bruteforce the Passkey and the Link key from captured Pairing* exchanges."
 arch=('any')
 url="http://www.nruns.com/_en/security_tools_btcrack.php"

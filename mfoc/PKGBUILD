@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mfoc
 pkgver=0.10.7
 pkgrel=1
-groups=('projectname' 'projectname-*wireless' 'archassault-cracker')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-cracker')
 pkgdesc="Mifare Classic Offline Cracker"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://code.google.com/p/mfoc/'

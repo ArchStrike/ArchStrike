@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname="slowloris6"
 _pkgname="slowloris"
 pkgver="0.7.1"
 pkgrel="1"
 pkgdesc="IPv6 version - Slowloris HTTP DoS is a tool which is written in perl to test http-server vulnerabilites for connection exhaustion denial of service (DoS) attacks so you can enhance the security of your webserver."
 arch=('any')
-groups=('projectname')
+groups=('archstrike')
 url='http://ha.ckers.org/slowloris/'
 install='slowloris.install'
 depends=('perl-io-socket-ssl' 'perl-io-socket-inet6')

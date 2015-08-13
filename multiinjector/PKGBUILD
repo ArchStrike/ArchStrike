@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='multiinjector'
 pkgver='0.3'
 pkgrel=2
-groups=('projectname' 'projectname-*webapp')
+groups=('archstrike' 'archstrike-webapp')
 pkgdesc='Automatic SQL injection utility using a lsit of URI addresses to test parameter manipulation.'
 arch=('any')
 url='http://chaptersinwebsecurity.blogspot.de/2008/11/multiinjector-v03-released.html'

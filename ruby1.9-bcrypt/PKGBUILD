@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-bcrypt
 pkgver=3.1.7
 pkgrel=1

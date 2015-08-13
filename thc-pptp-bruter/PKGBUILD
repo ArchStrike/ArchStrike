@@ -1,15 +1,15 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=thc-pptp-bruter
 pkgver=0.1.4
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="pptp-bruter is a brute force program that works against pptp vpn endpoints (tcp port 1723)."
 url='http://www.thc.org'
 license=('GPL')
 makedepends=('git')
 depends=('openssl')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=("git+https://github.com/ArchAssault-Project/thc-pptp-bruter.git")
+source=("git+https://github.com/ArchStrike-Project/thc-pptp-bruter.git")
 md5sums=('SKIP')
 
 build() {

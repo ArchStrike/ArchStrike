@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> 
 # Contributor: dsa <dsa@unilestemg.br>
 # Contributer: gerbra <gerbra@derbrauer.homelinux.net>
@@ -11,7 +11,7 @@ pkgdesc="Allows you to mount volumes of NetWare servers under Linux."
 url="http://www.novell.com/"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL')
-groups=('projectname')
+groups=('archstrike')
 depends=('pam')
 options=('!emptydirs')
 _url="http://ftp.de.debian.org/debian/pool/main/n/$pkgname"

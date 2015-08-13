@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=unicorn
 pkgver=1.1
 pkgrel=1
-groups=('projectname' 'projectname-*exploits')
+groups=('archstrike' 'archstrike-exploits')
 pkgdesc="A simple tool for using a PowerShell downgrade attack and inject shellcode straight into memory."
 arch=('any')
 url='https://github.com/trustedsec/unicorn'

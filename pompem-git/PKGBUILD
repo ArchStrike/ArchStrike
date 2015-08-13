@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pompem-git
 pkgver=r81.6224498
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A python exploit tool finder"
 arch=('any')
 url='https://github.com/rfunix/Pompem'

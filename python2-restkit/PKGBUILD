@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-restkit
 pkgver=4.2.2
 pkgrel=1

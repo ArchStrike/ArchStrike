@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Swift Geek <swifgeek  google c m>
 # FindFFTW.cmake stolen from https://github.com/jedbrown/cmake-modules/blob/master/FindFFTW.cmake
 
@@ -6,7 +6,7 @@ pkgname=dabstick-radio
 pkgver=0.96
 pkgrel=2
 pkgdesc="The DAB decoding software (SDR-J)"
-groups=('projectname' 'projectname-*hardware')
+groups=('archstrike' 'archstrike-hardware')
 arch=('x86_64')
 url="http://www.sdr-j.tk/"
 license=('GPL2')

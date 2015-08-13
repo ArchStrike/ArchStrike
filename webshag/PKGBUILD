@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=webshag
 pkgver=1.10
 pkgrel=6
-groups=('projectname' 'projectname-*webapps' 'archassault-scanners' 'archassault-fuzzers')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="A multi-threaded, multi-platform web server audit tool."
 url="http://www.scrt.ch/en/attack/downloads/webshag"
 arch=('any')

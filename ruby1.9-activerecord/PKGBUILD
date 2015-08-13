@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-activerecord
 _gemname=activerecord
 pkgver=3.2.14

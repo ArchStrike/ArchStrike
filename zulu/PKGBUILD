@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=zulu
 pkgver=0.1
 pkgrel=1
@@ -7,7 +7,7 @@ url="http://sourceforge.net/projects/zulu-wireless/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
 depends=('glibc')
-groups=('projectname' 'projectname-*wireless' 'archassault-cracker')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-cracker')
 source=(http://downloads.sourceforge.net/sourceforge/zulu-wireless/zulu-$pkgver.tgz)
 md5sums=('03d97185978c2f31533d0aa735f8f630')
 

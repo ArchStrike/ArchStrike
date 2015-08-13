@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=crackle
 pkgver=39.3e93196
 pkgrel=1
-groups=('projectname' 'projectname-*cracker' 'archassault-bluetooth')
+groups=('archstrike' 'archstrike-cracker' 'archstrike-bluetooth')
 pkgdesc="Crack and decrypt BLE encryption"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/mikeryan/crackle/'

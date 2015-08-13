@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=malcom-git
 pkgver=20150518.r534
 pkgrel=1
 pkgdesc="Analyze a system's network communication using graphical representations of network traffic"
 url="https://github.com/tomchop/malcom"
 arch=('any')
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 license=('CUSTOM')
 depends=('python2-virtualenv' 'scapy' 'mongodb' 'libxml2' 'libxslt' 'python2-flask' 'python2-pymongo' 'python2-pygeoip' 'python2-gevent-websocket' 'python2-dateutil' 'python2-netifaces' 'python2-lxml' 'python2-twisted' 'python2-pyopenssl')
 optdepends=('python2-celery')

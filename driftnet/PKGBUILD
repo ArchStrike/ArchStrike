@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=driftnet
 pkgver=1.1.5
 pkgrel=2
-groups=('projectname' 'projectname-*scanners' 'archassault-sniffers')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-sniffers')
 pkgdesc="Listens to network traffic and picks out images from TCP streams it observes"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/deiv/driftnet'

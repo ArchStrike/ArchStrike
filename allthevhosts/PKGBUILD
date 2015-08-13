@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=allthevhosts
 pkgver=1.0
 pkgrel=3
-groups=('projectname' 'projectname-*scanners' 'archassault-reconnaissance' 'archassault-webapps')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-reconnaissance' 'archstrike-webapps')
 pkgdesc="A vhost discovery tool that scrapes various web applications"
 arch=('any')
 url="http://labs.portcullis.co.uk/tools/finding-all-the-vhosts/"

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team AT projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ircsnapshot
 pkgver=r94.cb02a85
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="Tool to gather information from IRC servers"
 arch=('any')
 url="https://github.com/bwall/ircsnapshot"
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2' 'python2-simplejson')
 makedepends=('git')
 options=(!emptydirs)

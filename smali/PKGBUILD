@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=smali
 pkgver=1.4.1
 pkgrel=1
-groups=('projectname' 'projectname-*hardware')
+groups=('archstrike' 'archstrike-hardware')
 pkgdesc="An assembler/disassembler for Android's dex format"
 arch=('any')
 url='http://code.google.com/p/smali/'

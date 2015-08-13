@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dumpzilla
 pkgver=03152013
 pkgrel=1
-groups=('projectname' 'projectname-*forensics')
+groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A forensic tool for firefox"
 arch=('any')
 url='http://www.dumpzilla.org/'

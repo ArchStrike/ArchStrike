@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-pcapy
 pkgver=0.10.9
 pkgrel=1

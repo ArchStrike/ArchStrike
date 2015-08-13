@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=aiengine
 pkgver=1.2
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A packet inspection engine with capabilities of learning without any human intervention."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://bitbucket.org/camp0/aiengine"

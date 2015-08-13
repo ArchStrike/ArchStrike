@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=snmpenum
 pkgver=1.7
 pkgrel=1
 pkgdesc="snmp enumerator"
 url="http://www.filip.waeytens.easynet.be/"
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 license=('GPL')
 arch=(any)
 depends=('perl' 'perl-net-snmp')

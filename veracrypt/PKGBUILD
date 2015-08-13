@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: Eric Ozwigh <ozwigh at gmail dot com>
 
@@ -8,7 +8,7 @@ pkgver=${_pkgver/\-/_}
 pkgrel=1
 pkgdesc='Free disk encryption software based on TrueCrypt'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*cryptography')
+groups=('archstrike' 'archstrike-cryptography')
 url='http://veracrypt.codeplex.com'
 license=('custom')
 depends=('fuse' 'wxgtk' 'device-mapper')

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=chownat
 pkgver=0.08b
 pkgrel=1
-groups=('projectname' 'projectname-*tunneling')
+groups=('archstrike' 'archstrike-tunneling')
 pkgdesc="Allows two peers behind two separate NATs with no port forwarding and no DMZ setup on their routers to directly communicate with each other"
 arch=('any')
 url='http://samy.pl/chownat/'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=metagoofil
 pkgver=1.4b
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="An information gathering tool designed for extracting metadata of public documents"
 url='http://www.edge-security.com/metagoofil.php'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

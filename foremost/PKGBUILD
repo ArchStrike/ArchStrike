@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=foremost
 pkgver=1.5.7
 pkgrel=2
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="A console program to recover files based on their headers, footers, and internal data structures"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://foremost.sourceforge.net/'

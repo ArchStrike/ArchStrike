@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-clamd
 pkgver=1.0.2
 pkgrel=1

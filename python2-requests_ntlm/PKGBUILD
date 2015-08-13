@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-requests_ntlm
 pkgver=0.1.0
 pkgrel=1

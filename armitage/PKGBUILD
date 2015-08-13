@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org> 
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=armitage
 pkgver=141120
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A graphical cyber attack management tool for Metasploit"
 url='http://www.fastandeasyhacking.com/'
 arch=('any')

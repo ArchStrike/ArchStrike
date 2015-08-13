@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=valabind
 pkgver=296.1c87219
 pkgrel=1
@@ -9,7 +9,7 @@ url="http://hg.youterm.com/valabind"
 license=('GPL3')
 makedepends=('git')
 depends=('vala')
-groups=('projectname')
+groups=('archstrike')
 conflicts=('valabind' 'valabind-hg')
 provides=('valabind')
 source=('git://github.com/radare/valabind.git')

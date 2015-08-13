@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=uatester
 pkgver=1.06
 pkgrel=1
-groups=('projectname' 'projectname-*misc' 'archassault-webapp')
+groups=('archstrike' 'archstrike-misc' 'archstrike-webapp')
 pkgdesc="User Agent String Tester"
 url="http://code.google.com/p/ua-tester/"
 arch=('any')

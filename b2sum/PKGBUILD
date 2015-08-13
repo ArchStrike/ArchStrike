@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Michael DÃ¼ll <michael.duell@rub.de>
 # Contributor: Dalton Miller
 pkgname=b2sum
@@ -8,7 +8,7 @@ pkgdesc="BLAKE2 file hash sum check. Computes the BLAKE2 (BLAKE2b or -s, -bp, -s
 _zipprefix="blake2_code"
 arch=('i686' 'x86_64')
 url="https://blake2.net/"
-groups=('projectname')
+groups=('archstrike')
 license=('custom')
 makedepends=('unzip' 'gnuplot')
 source=("https://blake2.net/blake2_code_${pkgver}.zip")

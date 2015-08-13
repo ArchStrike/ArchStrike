@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=prometheus-git
 pkgver=r176.a316d66
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A Firewall analyzer written in ruby"
 arch=('any')
 url='https://github.com/averagesecurityguy/prometheus'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xprobe2
 pkgver=0.3
 pkgrel=2
-groups=('projectname' 'projectname-*fingerprinting')
+groups=('archstrike' 'archstrike-fingerprinting')
 pkgdesc="An active OS fingerprintinging tool"
 url='http://sourceforge.net/projects/xprobe'
 license=('GPL2')

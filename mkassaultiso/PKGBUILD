@@ -1,14 +1,14 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mkassaultiso
 pkgver=14
 pkgrel=1
-pkgdesc="Tools for creating ArchAssault Linux live and install iso images"
+pkgdesc="Tools for creating ArchStrike Linux live and install iso images"
 arch=('any')
-url="https://github.com/ArchAssault-Project/mkassaultiso"
+url="https://github.com/ArchStrike-Project/mkassaultiso"
 license=('GPL3')
 depends=('archiso')
 makedepends=('git')
-source=("git+https://gitlab.com/projectname-project/mkassaultiso.git")
+source=("git+https://gitlab.com/archstrike-project/mkassaultiso.git")
 sha512sums=('SKIP')
 
 package() {

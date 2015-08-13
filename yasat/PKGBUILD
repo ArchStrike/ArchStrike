@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
 
 
@@ -10,7 +10,7 @@ arch=('any')
 license=('GPL3')
 depends=('bash')
 backup=('etc/yasat/yasat.conf')
-groups=('projectname')
+groups=('archstrike')
 url="http://yasat.sourceforge.net/"
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz"
         'yasat.conf')

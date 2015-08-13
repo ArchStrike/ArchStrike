@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Franco Colombino <franco.c.colombino@gmail.com>
 
 _pkgname=cangibrina
 pkgname=$_pkgname-git
 pkgver=20150322.r93.8744afe
 pkgrel=1
-groups=('projectname' 'projectname-*scanner' 'archassault-scanners' 'archassault-webapps')
+groups=('archstrike' 'archstrike-scanner' 'archstrike-scanners' 'archstrike-webapps')
 pkgdesc='Fast and powerfull dashboard (admin) finder'
 arch=('any')
 url='https://github.com/fnk0c/cangibrina'

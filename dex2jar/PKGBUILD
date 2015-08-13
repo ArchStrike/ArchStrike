@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dex2jar
 pkgver=0.0.9.15
 _dlsuffix=
 pkgrel=2
-groups=('projectname' 'projectname-*hardware' 'archassault-reverse')
+groups=('archstrike' 'archstrike-hardware' 'archstrike-reverse')
 pkgdesc="A tool for converting Android's .dex format to Java's .class format"
 arch=('any')
 url='http://code.google.com/p/dex2jar'

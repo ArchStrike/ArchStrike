@@ -1,4 +1,4 @@
-# Maintainer: ArchAssualt <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Matthew Sharpe <matt.sharpe@gmail.com>
 
@@ -7,7 +7,7 @@ pkgver=1.1.1
 pkgrel=1
 pkgdesc="Program for dumping the syskey bootkey from a Windows NT/2K/XP system hive"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*crackers')
+groups=('archstrike' 'archstrike-crackers')
 url="http://sourceforge.net/projects/ophcrack"
 license=('GPL')
 depends=('glibc')

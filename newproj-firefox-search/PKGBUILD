@@ -2,7 +2,7 @@
 pkgname=projectname-firefox-search
 pkgver=0.8.2
 pkgrel=7
-pkgdesc="Firefox ArchAssault search engines (Pkgs, Wiki, Bugs etc.)"
+pkgdesc="Firefox ArchStrike search engines (Pkgs, Wiki, Bugs etc.)"
 arch=('any')
 url="http://archlinux.org/"
 license=('GPL')

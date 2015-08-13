@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=panoptic
 pkgver=0.r179.770bc70
 pkgrel=1
-groups=('projectname' 'projectname-*autonomous')
+groups=('archstrike' 'archstrike-autonomous')
 pkgdesc="A tool that automates the process of search and retrieval of content for common log and config files through LFI vulnerability"
 url="https://github.com/lightos/Panoptic"
 arch=('any')

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=statsprocessor
 pkgver=0.10
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="A high-performance word-generator based on per-position Markov-attack"
 arch=('i686' 'x86_64')
 url="http://hashcat.net/wiki/doku.php?id=statsprocessor"

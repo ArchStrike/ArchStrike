@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=impacket
 pkgver=0.9.13
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('any')
 url='http://oss.coresecurity.com/projects/impacket.html'
 license=('Apache')
 depends=('python2-crypto' 'python2-pcapy' 'python2-pyopenssl' 'python2-pyasn1')
-groups=('projectname')
+groups=('archstrike')
 source=("https://pypi.python.org/packages/source/i/impacket/impacket-$pkgver.tar.gz")
 sha512sums=('9c9ba1ea12776b023a4fec4b0f6f60cfed33d337da948111951f452548fd213a5f48698126a9c8735706ae5d05111f0de3f20b17c221567ca98d2c84bb22ccef')
 

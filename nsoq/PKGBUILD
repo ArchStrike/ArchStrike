@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=nsoq
 _pkgname=Nsoq
 pkgver=1.9.5
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A Network Security Tool for packet manipulation that allows a large number of options."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.nsoq.org/'

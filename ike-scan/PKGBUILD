@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ike-scan
 pkgver=1.9
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A tool that uses IKE protocol to discover, fingerprinting and test IPSec VPN servers"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.nta-monitor.com/tools/ike-scan/'

@@ -1,11 +1,11 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Théophile Studer
 
 _pkgname=yara
 pkgname=python-${_pkgname}
 pkgver=3.1.0
 pkgrel=1
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 pkgdesc="A malware identification and classification tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://plusvic.github.io/${_pkgname}"

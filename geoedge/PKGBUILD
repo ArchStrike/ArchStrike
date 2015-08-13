@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=geoedge
 pkgver=0.2
 pkgrel=1
 pkgdesc="This little tools is designed to get geolocalization information of a host, it get the information from two sources (maxmind and geoiptool)."
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 url="http://www.edge-security.com/geoedge.php"
 depends=('python2')
 license=('GPL')

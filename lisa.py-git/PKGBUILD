@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=lisa.py-git
 pkgver=20150203.r28
 pkgrel=1
-groups=('projectname' 'projectname-*exploits' 'archassault-debugging')
+groups=('archstrike' 'archstrike-exploits' 'archstrike-debugging')
 pkgdesc="An Exploit Dev Swiss Army Knife."
 arch=('any')
 url='https://github.com/ant4g0nist/lisa.py'

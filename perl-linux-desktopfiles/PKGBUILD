@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=perl-linux-desktopfiles
 _pkgname=Linux-DesktopFiles
 pkgver=0.08

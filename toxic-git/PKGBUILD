@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 # Contributor: Florian Hahn <flo@fhahn.com>
 
@@ -11,7 +11,7 @@ pkgdesc='An ncurses-based commandline client for Tox'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/Tox/toxic'
 license=('GPL3')
-groups=('projectname')
+groups=('archstrike')
 depends=('tox-git=1:r3156.4ad7649-1' 'desktop-file-utils' 'libconfig' 'freealut' 'libnotify')
 makedepends=('git')
 provides=("$_pkgname")

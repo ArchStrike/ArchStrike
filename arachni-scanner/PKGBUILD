@@ -1,16 +1,16 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=arachni-scanner
 pkgver=1.1
 pkgrel=1
-groups=('projectname' 'projectname-*webapps' 'archassault-scanners' 'archassault-fuzzers')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc='A feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications.'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('Apache2')
 url="https://www.arachni-scanner.com"
 if [[ "${CARCH}" = 'x86_64' ]] ; then
-  depends=('ruby' 'ruby-bundler' 'lib32-libxslt' 'projectname-artwork')
+  depends=('ruby' 'ruby-bundler' 'lib32-libxslt' 'archstrike-artwork')
 else
-  depends=('ruby' 'ruby-bundler' 'libxslt' 'projectname-artwork')
+  depends=('ruby' 'ruby-bundler' 'libxslt' 'archstrike-artwork')
 fi
 replaces=('arachni')
 conflicts=('arachni')

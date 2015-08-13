@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=zarp
 pkgver=0.1.7
 pkgrel=1
-groups=('projectname' 'projectname-*networking' 'archassault-exploits')
+groups=('archstrike' 'archstrike-networking' 'archstrike-exploits')
 pkgdesc="A network attack tool centered around the exploit of local networks."
 url="https://github.com/hatRiot/zarp"
 arch=('any')

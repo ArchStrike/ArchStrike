@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=flare
 pkgver=0.6
 pkgrel=2
 pkgdesc="Flare processes an SWF and extracts all scripts from it."
 url="http://www.nowrap.de/flare.html"
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 license=('custom')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 depends=('zlib')

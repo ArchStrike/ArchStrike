@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-ronin-support
 _gemname=${pkgname#ruby-}
 pkgver=0.5.1
 pkgrel=1
 pkgdesc="A support library for Ronin."
 arch=('any')
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 license=('LGPL3')
 depends=('ruby' 'ruby-chars>=0.2' 'ruby-hexdump>=0.1' 'ruby-combinatorics>=0.4' 'ruby-uri-query_params>=0.6' 'ruby-data_paths>=0.3' 'ruby-parameters>=0.4')
 url='http://ronin-ruby.github.io/'

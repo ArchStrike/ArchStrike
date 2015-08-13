@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-ntlm-http
 _gemname=ntlm-http
 pkgver=0.1.1

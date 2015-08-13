@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=jboss-autopwn
 pkgver=0.r1.3bc2d29
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A JBoss script for obtaining remote shell access"
 url="https://github.com/SpiderLabs/jboss-autopwn"
 arch=('any')

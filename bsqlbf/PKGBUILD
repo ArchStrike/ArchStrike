@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bsqlbf
 pkgver=2.7
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc='Blind SQL Injection Brute Forcer'
 arch=('any')
 url='http://code.google.com/p/bsqlbf-v2/'
 license=('GPL')
-groups=('projectname' 'projectname-*webapp')
+groups=('archstrike' 'archstrike-webapp')
 depends=('perl')
 source=("https://bsqlbf-v2.googlecode.com/files/bsqlbf-v${pkgver/./-}.pl"
         "${pkgname}.1")

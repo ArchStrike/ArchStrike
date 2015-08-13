@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=svn-extractor-git
 pkgver=r28.3af00fb
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A simple script to extract all web resources by means of .SVN folder exposed over network."
 arch=('any')
 url='https://github.com/anantshri/svn-extractor'

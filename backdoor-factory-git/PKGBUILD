@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=backdoor-factory-git
 pkgver=0.r142.0bd3429
 pkgrel=1
-groups=('projectname' 'projectname-*backdoors')
+groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
 url="https://github.com/secretsquirrel/the-backdoor-factory"
 arch=('any')

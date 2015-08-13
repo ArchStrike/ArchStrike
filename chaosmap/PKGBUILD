@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=chaosmap
 pkgver=1.3
 pkgrel=1
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="An information gathering tool and dns / whois / web server scanner"
 arch=('any')
 url='http://freecode.com/projects/chaosmap'

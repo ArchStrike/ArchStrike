@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=backfuzz
 pkgver=20130611.r36.8e54ed6
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="A protocol fuzzing toolkit."
 url="https://github.com/localh0t/backfuzz"
 arch=('any')

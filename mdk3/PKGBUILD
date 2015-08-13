@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mdk3
 pkgver=6
 pkgrel=1
-groups=('projectname' 'projectname-*wireless' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-fuzzer')
 pkgdesc="WLAN penetration tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')

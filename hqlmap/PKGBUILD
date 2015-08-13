@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=hqlmap
 pkgver=r35.081395e
 pkgrel=1
@@ -8,7 +8,7 @@ url="https://github.com/PaulSec/HQLmap"
 license=('MIT')
 depends=('python2')
 makedepends=('git')
-groups=('projectname')
+groups=('archstrike')
 source=("$pkgname"::'git+https://github.com/PaulSec/HQLmap.git')
 sha512sums=('SKIP')
 

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=blindelephant
 pkgver=7
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-fingerprinting')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-fingerprinting')
 pkgdesc="A web application fingerprintinger. Attempts to discover the version of a (known) web application by comparing static files at known locations "
 url='http://blindelephant.sourceforge.net/'
 arch=('any')

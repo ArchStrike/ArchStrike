@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-equalizer
 pkgver=0.0.9
 pkgrel=1

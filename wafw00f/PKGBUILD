@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wafw00f
 pkgver=0.9.1
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-scanners')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-scanners')
 pkgdesc="Identify and fingerprint Web Application Firewall (WAF) products protecting a website"
 arch=('any')
 url="https://github.com/sandrogauci/${pkgname}"

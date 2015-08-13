@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=rfidiot
 _gitname=RFIDIOt
 pkgver=82ef9e0
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 pkgdesc="An open source python library for exploring RFID devices."
 url='http://rfidiot.org'
 license=('GPL')

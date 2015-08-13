@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sqlmap-git
 pkgver=20150519.r6681
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*webapps' 'archassault-exploits' 'archassault-fuzzers')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-exploits' 'archstrike-fuzzers')
 pkgdesc="An automatic SQL injection tool developed in Python"
 url='https://github.com/sqlmapproject/sqlmap'
 license=('GPL')

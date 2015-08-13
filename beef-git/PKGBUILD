@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=beef-git
 pkgver=20150625.r2366
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*exploits')
+groups=('archstrike' 'archstrike-exploits')
 pkgdesc="Pentesting framework that focuses on web-browser exploitation"
 arch=('i686' 'x86_64')
 url='http://beefproject.com'
@@ -13,7 +13,7 @@ options=('!emptydirs')
 provides=('beef')
 replaces=('beef')
 conflicts=('beef')
-depends=('ruby1.9' 'java-environment' 'python2' 'sqlite' 'ruby1.9-bundler' 'projectname-artwork')
+depends=('ruby1.9' 'java-environment' 'python2' 'sqlite' 'ruby1.9-bundler' 'archstrike-artwork')
 source=("${pkgname}::git+http://github.com/beefproject/beef.git" "beef.desktop")
 sha512sums=('SKIP' '8fc10b9cad8f7cd29bc97ff728f6e41cdaba833c52580ae636455e75a02b07797b4cbe33d8c1b10e1978235e9aaf2416571e1963179e96c54f4431a77e81660f')
 

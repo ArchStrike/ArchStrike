@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=snmp-brute-git
 pkgver=20150218.r11
 pkgrel=2
-groups=('projectname' 'projectname-*bruteforce')
+groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc="SNMP brute force, enumeration, CISCO config downloader and password cracking script."
 url="https://github.com/SECFORCE/SNMP-Brute"
 depends=('python2' 'john' 'metasploit-git' 'net-snmp')

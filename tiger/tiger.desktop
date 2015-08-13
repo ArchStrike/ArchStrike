@@ -6,4 +6,4 @@ Comment=A security scanner that checks computer for known problems
 Exec=su -c '/usr/bin/tiger -h; ${SHELL:-bash}'
 Icon=tiger
 Terminal=true
-Categories=Archassault;ArchassaultScanners;ArchassaultAutonomous;
+Categories=ArchStrike;ArchStrikeScanners;ArchStrikeAutonomous;

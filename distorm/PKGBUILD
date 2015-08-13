@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=distorm
 pkgver=3.3.0
 pkgrel=3
@@ -6,7 +6,7 @@ pkgdesc="The ultimate disassembler (for AMD64, X86-64)"
 url="http://code.google.com/p/distorm/"
 license=('GPL')
 depends=('python2')
-groups=('projectname')
+groups=('archstrike')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(http://distorm.googlecode.com/files/distorm3.zip)
 sha512sums=('9a7ec47377607522b47be08fc4dad13f80d526378d1842facea997854de3893bea1002ec6786250c67fd5c78fc1606b1d09feb8aca9c0eec835d65f1c6c2d434')

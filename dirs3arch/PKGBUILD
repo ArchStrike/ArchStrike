@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dirs3arch
 pkgver=0.3.0
 pkgrel=1
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A HTTP(S) directory/file brute forcer"
 arch=('any')
 url='https://github.com/maurosoria/dirs3arch'

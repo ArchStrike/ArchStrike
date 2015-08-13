@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cookie-cadger
 pkgver=1.08
 pkgrel=1
-groups=('projectname' 'projectname-*scanners' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-fuzzer')
 pkgdesc="An auditing tool for Wi-Fi or wired Ethernet connections"
 url="https://cookiecadger.com/"
 arch=('any')

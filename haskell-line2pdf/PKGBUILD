@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=haskell-line2pdf
 pkgver=0.0.7
 pkgrel=3

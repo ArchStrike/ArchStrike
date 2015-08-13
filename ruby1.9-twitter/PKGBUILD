@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=twitter
 pkgname=ruby1.9-$_gemname
 pkgver=5.5.1

@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sshatter
 pkgver=1.2
 pkgrel=1
 pkgdesc="Password bruteforcer for SSH"
 url="http://www.nth-dimension.org.uk/downloads.php?id=34"
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 license=('GPL')
 arch=(any)
 depends=('perl' 'perl-parallel-forkmanager' 'perl-net-ssh-perl')

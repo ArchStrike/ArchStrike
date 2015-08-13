@@ -1,7 +1,7 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=protos-sip
 pkgver=2
-groups=('projectname' 'projectname-*voip')
+groups=('archstrike' 'archstrike-voip')
 pkgrel=2
 pkgdesc="SIP test suite"
 arch=('any')

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cdpsnarf
 pkgver=0.1.6
 pkgrel=1
-groups=('projectname' 'projectname-*sniffers')
+groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="Cisco discovery protocol sniffer"
 url="https://github.com/Zapotek/cdpsnarf"
 license=('GPL2')

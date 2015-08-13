@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=oh-my-zsh-git
 pkgver=2184.9819349
 pkgrel=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="A community-driven framework for managing your zsh configuration."
 arch=('any')
 url="https://github.com/robbyrussell/oh-my-zsh"
@@ -13,7 +13,7 @@ optdepends=('ruby: for some plugin functionality')
 install='oh-my-zsh-git.install'
 conflicts=('oh-my-zsh-git')
 provides=('oh-my-zsh-git')
-source=("git+https://github.com/ArchAssault-Project/oh-my-zsh.git")
+source=("git+https://github.com/ArchStrike-Project/oh-my-zsh.git")
 md5sums=('SKIP')
  
 pkgver() {

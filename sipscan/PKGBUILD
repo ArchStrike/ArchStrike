@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='sipscan'
 pkgver=20131221
 pkgrel=1
 pkgdesc='A sip scanner.'
 url='http://www.hackingvoip.com/sec_tools.html'
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 license=('custom')
 arch=('any')
 source=('http://www.hackingvoip.com/tools/sipscan.msi')

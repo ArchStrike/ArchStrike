@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=stopit
 pkgname=python2-$_pkgname

@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dumb0-git
 pkgver=r19.1493e74
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A simple tool to dump users in popular forums and CMS :)"
 arch=('any')
 url='https://github.com/0verl0ad/Dumb0'

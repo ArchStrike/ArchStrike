@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=jbrute
 pkgver=99
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="Open Source Security tool to audit hashed passwords."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url=("http://sourceforge.net/projects/jbrute/")

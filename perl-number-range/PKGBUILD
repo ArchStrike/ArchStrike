@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='perl-number-range'
 pkgver='0.12'
 pkgrel='1'

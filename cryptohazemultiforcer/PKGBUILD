@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cryptohazemultiforcer
 pkgver=1.31
 pkgrel=2
@@ -7,7 +7,7 @@ url="http://www.cryptohaze.com/multiforcer.php"
 license=('custom')
 arch=('x86_64')
 optdepends=('cuda: cuda support')
-groups=('projectname')
+groups=('archstrike')
 source=("http://downloads.sourceforge.net/project/cryptohaze/Cryptohaze-Linux_x64_${pkgver/./_}.tar.bz2"
         "cryptohazemultiforcer")
 md5sums=('79a829997eb170a7eafd86bc5983b41a'

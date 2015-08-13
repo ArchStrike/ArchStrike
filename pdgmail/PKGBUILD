@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pdgmail
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="A password dictionary attack tool that targets windows authentication via the SMB protocol"
 url="http://www.jeffbryner.com/code/pdgmail"
 arch=('any')

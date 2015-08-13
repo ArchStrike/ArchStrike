@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='mssqlscan'
 pkgver='0.8.4'
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('any')
 url='http://www.cqure.net/wp/mssqlscan/'
 license=('GPL')
 depends=('java-runtime')
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 source=("http://www.cqure.net/tools/mssqlscan-bin-${pkgver//./_}.zip")
 md5sums=('7d089524d6a889d68a8d004b977695ff')
 

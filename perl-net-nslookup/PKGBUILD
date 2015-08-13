@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=DARREN
 _perlmod=Net-Nslookup
 pkgname=perl-net-nslookup

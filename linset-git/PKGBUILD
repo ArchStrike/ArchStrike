@@ -1,5 +1,5 @@
-# Maintainer: ArchAssault <team projectname org>
-# Contributor: Cthulu201 <cthulu201@projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+# Contributor: Cthulu201 <cthulu201@archstrike.org>
 
 pkgname=linset-git
 pkgver=20140616.r9
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="A WPA/WPA2 hack"
 arch=(any)
 url="https://github.com/vk496/linset"
-groups=('projectname' 'projectname-*crackers' 'archassault-wifi')
+groups=('archstrike' 'archstrike-crackers' 'archstrike-wifi')
 license=('GPL3')
 depends=('aircrack-ng' 'gawk' 'curl' 'dhcp' 'hostapd' 'wireless_tools' 'lighttpd' 'macchanger' 'mdk3' 'php-cgi' 'pyrit' 'python' 'unzip' 'xterm')
 makedepends=('git')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
 pkgname=backports-patched

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=burpsuite
 pkgver=1.6
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-scanners' 'archassault-fuzzer' 'archassault-proxy')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-scanners' 'archstrike-fuzzer' 'archstrike-proxy')
 pkgdesc="An integrated platform for attacking web applications (free edition)."
 url='http://portswigger.net/burp/'
 depends=('java-environment' 'giflib' 'bash')

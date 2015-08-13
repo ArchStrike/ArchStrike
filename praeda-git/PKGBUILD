@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=praeda-git
 pkgver=r41.d52e216
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="An automated data/information harvesting tool designed to gather critical information from various embedded devices. "
 arch=('any')
 url='https://github.com/percx/Praeda'

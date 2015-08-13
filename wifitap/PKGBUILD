@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gitname="GDSSecurity"
 pkgname=wifitap
 pkgver=2b16088
 pkgrel=1
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 pkgdesc="WiFi injection tool through tun/tap device"
 arch=('any')
 url='https://github.com/GDSSecurity/wifitap'

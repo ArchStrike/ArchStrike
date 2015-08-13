@@ -2,9 +2,9 @@
 Encoding=UTF-8
 Type=Application
 Name=Mkassaultiso
-Comment=Tools for creating ArchAssault Linux live and install iso images
+Comment=Tools for creating ArchStrike Linux live and install iso images
 Exec=mkassaultiso
-Icon=projectname-menu.png
+Icon=archstrike-menu.png
 Terminal=false
 StartupNotify=false
 Categories=Application;

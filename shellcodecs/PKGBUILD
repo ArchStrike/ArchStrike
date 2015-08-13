@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=shellcodecs
 pkgver=0.1
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A collection of shellcode, loaders, sources, and generators provided with documentation designed to ease the exploit and shellcode programming process."
 url="http://www.blackhatlibrary.net/Shellcodecs"
 arch=('any')

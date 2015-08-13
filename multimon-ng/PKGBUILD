@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
 pkgname=multimon-ng
 pkgver=1.0.0
@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="An sdr decoder, supports pocsag, ufsk, clipfsk, afsk, hapn, fsk, dtmf, zvei."
 url="http://dekar.wc3edit.net/2012/05/24/multimonng/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname')
+groups=('archstrike')
 license=("GPL2")
 depends=('libpulse')
 makedepends=('qt4')

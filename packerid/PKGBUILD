@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=packerid
 pkgver=1.4
 pkgrel=1
-groups=('projectname' 'projectname-*reversing')
+groups=('archstrike' 'archstrike-reversing')
 pkgdesc="Script which uses a PEiD database to identify which packer (if any) is being used by a binary."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('unknown')

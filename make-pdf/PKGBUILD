@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=make-pdf
 pkgver=0.1.6
 pkgrel=1
 pkgdesc="This tool will embed javascript inside a PDF document"
 arch=('any')
 url="http://blog.didierstevens.com/programs/pdf-tools/"
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 depends=('python2')
 makedepends=('hd2u')
 license=('GPL')

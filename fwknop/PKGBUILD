@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributors:
 #   Florian Pritz <f-p@gmx.at> (Original)
 #   Xyne <xyne at archlinux dot us>
@@ -15,7 +15,7 @@ url=http://www.cipherdyne.org/fwknop
 license=(GPL)
 depends=(gpgme iptables libpcap)
 options=(!libtool)
-groups=('projectname')
+groups=('archstrike')
 backup=(
   etc/$pkgname/access.conf
   etc/$pkgname/fwknopd.conf

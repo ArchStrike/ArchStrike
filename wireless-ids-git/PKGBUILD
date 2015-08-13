@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wireless-ids-git
 pkgver=r24.b132071
 pkgrel=1
-groups=('projectname' 'projectname-*defensive')
+groups=('archstrike' 'archstrike-defensive')
 pkgdesc="Ability to detect suspicious activity such as (WEP/WPA/WPS) attack by sniffing the air for wireless packets."
 arch=('any')
 url='https://github.com/SYWorks/wireless-ids'

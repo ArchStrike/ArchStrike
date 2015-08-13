@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author='GOMOR'
 _perlmod='Net-Frame-Layer-IPv6'
 pkgname='perl-net-frame-layer-ipv6'

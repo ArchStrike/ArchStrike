@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=leroy-jenkins
 pkgver=0.r3.bdc3965
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A python tool that will allow remote execution of commands on a Jenkins server and its nodes."
 url="https://github.com/captainhooligan/Leroy-Jenkins"
 arch=('any')

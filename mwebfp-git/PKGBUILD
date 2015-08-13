@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault < team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mwebfp-git
 pkgver=20140928.r16
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A LNHG - Mass Web Fingerprinter"
 arch=('any')
 url='https://github.com/falcon-lnhg/mwebfp'

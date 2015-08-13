@@ -1,5 +1,5 @@
-# Maintainer: ArchAssault <team projectname org>
-# Contributor: Cthulu201 <cthulu201@projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+# Contributor: Cthulu201 <cthulu201@archstrike.org>
 
 pkgname=jadx
 pkgver=0.5.4
@@ -7,7 +7,7 @@ pkgrel=1
 pkgdesc="Dex to Java command line and GUI decompiler tool that produces Java source code from Android Dex and APK files"
 arch=(any)
 url="https://github.com/skylot/jadx"
-groups=('projectname' 'projectname-*decompiler' 'archassault-reversing')
+groups=('archstrike' 'archstrike-decompiler' 'archstrike-reversing')
 license=('Apache')
 depends=('java-environment' 'bash')
 source=("https://github.com/skylot/jadx/releases/download/v$pkgver/$pkgname-$pkgver.zip")

@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-bowcaster-git
 pkgver=0.5
 pkgrel=1
-groups=('projectname')
+groups=('archstrike')
 pkgdesc="An open-source forensic framework written in Python/GTK that manages cases and case items, providing an abstract interface for developing extensions."
 arch=('any')
 url='https://github.com/zcutlip/bowcaster'

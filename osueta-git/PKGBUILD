@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team at projectname dot org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=osueta-git
 pkgver=r65.90323e2
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A simple Python script to exploit the OpenSSH User Enumeration Timing Attack."
 arch=('any')
 url='https://github.com/c0r3dump3d/osueta'

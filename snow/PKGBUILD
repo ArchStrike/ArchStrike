@@ -1,10 +1,10 @@
-# Maintainer: ArchAssault <team archassualt org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: nil0x42 <http://goo.gl/kb2wf>
 pkgname=snow
 pkgver=20130616
 pkgrel=4
 pkgdesc="Steganography program for concealing messages in text files"
-groups=('projectname' 'projectname-*steganography')
+groups=('archstrike' 'archstrike-steganography')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://darkside.com.au/snow/index.html"
 license=('APACHE')

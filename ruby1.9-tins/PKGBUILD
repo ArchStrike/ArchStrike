@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=tins
 pkgname=ruby1.9-$_gemname
 pkgver=0.13.2

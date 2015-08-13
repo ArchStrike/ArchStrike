@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=icmptx
 pkgver=0.01
 pkgrel=1
 pkgdesc="IP over ICMP"
 url="http://thomer.com/icmptx/"
-groups=('projectname' 'projectname-*tunneling')
+groups=('archstrike' 'archstrike-tunneling')
 license=('GPL')
 makedepends=('make' 'gcc')
 depends=('glibc')

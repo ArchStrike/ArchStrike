@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='cirt-fuzzer'
 pkgver='1.0'
 pkgrel=1
 pkgdesc='A simple TCP/UDP protocol fuzzer.'
 url='http://www.cirt.dk/'
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 license=('GPL')
 arch=('any')
 depends=('perl' 'perl-algorithm-generatesequence')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: blackleg <blackleg@openmailbox.org>
 
 pkgname=kalibrate-rtl-git
@@ -6,7 +6,7 @@ pkgver=20131214.r11
 pkgrel=2
 pkgdesc='Fork of http://thre.at/kalibrate/ for use with rtl-sdr devices'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h') 
-groups=('projectname')
+groups=('archstrike')
 license=('custom')
 url='https://github.com/steve-m/kalibrate-rtl'
 provides=('kalibrate-rtl')

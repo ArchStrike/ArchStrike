@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='perl-net-libdnet'
 _cpanname="Net-Libdnet"
 pkgver=0.98

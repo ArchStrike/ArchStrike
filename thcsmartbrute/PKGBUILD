@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=thcsmartbrute
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*crackers')
+groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A tool that finds undocumented and secret commands implemented in a smartcard."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.thc.org/thc-smartbrute/"

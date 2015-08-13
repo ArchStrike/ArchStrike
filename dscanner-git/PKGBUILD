@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dscanner-git
 pkgver=20150611.r815
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/Dscanner"
 license=('custom')
 depends=('glibc')
-groups=('projectname' 'projectname-*debugging')
+groups=('archstrike' 'archstrike-debugging')
 makedepends=('git' 'libphobos-devel' 'dmd')
 provides=('dscanner')
 conflicts=('dscanner')

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-librex
 _gemname=${pkgname#ruby-}
 pkgver=0.0.68

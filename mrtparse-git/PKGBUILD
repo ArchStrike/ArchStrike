@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mrtparse-git
 pkgver=r309.a508cc3
 pkgrel=1
-groups=('projectname')
+groups=('archstrike')
 pkgdesc="a module to read and analyze the MRT format data."
 arch=('any')
 url='https://github.com/YoshiyukiYamauchi/mrtparse'

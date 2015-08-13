@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-thor
 _gemname=${pkgname#ruby-}
 pkgver=0.18.1

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='rsakeyfind'
 pkgver='1.0'
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://citp.princeton.edu/memory/code/'
 license=('BSD')
 makedepends=('make')
-groups=('projectname' 'projectname-*forensic' 'archassault-cracker')
+groups=('archstrike' 'archstrike-forensic' 'archstrike-cracker')
 source=("http://citp.princeton.edu/memory-content/src/rsakeyfind-$pkgver.tar.gz"
         "rsakeyfind.patch")
 md5sums=('f9b44701baf001d1fea62c66edba8772'

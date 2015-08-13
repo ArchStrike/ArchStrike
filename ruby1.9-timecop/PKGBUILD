@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-timecop
 _gemname=timecop
 pkgver=0.6.3

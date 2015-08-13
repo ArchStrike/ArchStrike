@@ -7,7 +7,7 @@ Description=Create AP Service
 [Service]
 Type=simple
 ExecStart=/usr/bin/bash create_ap $(ls /sys/class/net | grep '\bwlp.*[0-9]\b') \
-$(ls /sys/class/net | grep '\benp.*[0-9]\b') projectname_ap projectname-*AP
+$(ls /sys/class/net | grep '\benp.*[0-9]\b') archstrike_ap archstrikeAP
 KillSignal=SIGINT
 Restart=on-failure
 RestartSec=5
@@ -16,8 +16,8 @@ RestartSec=5
 WantedBy=multi-user.target
 EOF
 		echo "Created systemd service file '/usr/lib/systemd/system/wifi.service'"
-		echo "    SSID: projectname_ap"
-		echo "    Password: projectnameAP"
+		echo "    SSID: archstrike_ap"
+		echo "    Password: archstrikeAP"
 	fi
 	echo "See https://wiki.archlinux.org/index.php/Software_Access_Point for more infomation."
 }

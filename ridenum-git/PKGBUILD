@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ridenum-git
 pkgver=r40.a50ea22
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="Rid_enum is a null session RID cycle attack for brute forcing domain controllers."
 url="https://github.com/trustedsec/ridenum"
 arch=('any')

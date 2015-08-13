@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='smbrelay'
 pkgver='3'
 pkgrel=1
 pkgdesc='SMB / HTTP to SMB replay attack toolkit.'
 url='http://www.tarasco.org/security/smbrelay/'
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 license=('GPL')
 arch=('any')
 depends=('wine')

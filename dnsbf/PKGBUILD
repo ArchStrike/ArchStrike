@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnsbf
 pkgver=0.2
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="search for available domain names in an IP range"
 arch=('any')
 url='http://code.google.com/p/dnsbf'

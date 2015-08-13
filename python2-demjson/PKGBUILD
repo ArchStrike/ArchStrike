@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=demjson
 pkgname=python2-demjson
 pkgver=2.2.3

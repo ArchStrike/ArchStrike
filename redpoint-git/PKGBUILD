@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=redpoint-git
 pkgver=20150213.r109
 pkgrel=1
-groups=('projectname' 'projectname-*scanners' 'archassault-reconnaissance')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-reconnaissance')
 pkgdesc="Digital Bond's ICS Enumeration Tools"
 url="https://github.com/digitalbond/Redpoint"
 arch=('any')

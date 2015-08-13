@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='webenum'
 pkgver='0.1'
 pkgrel=2
 pkgdesc='Tool to enumerate http responses using dynamically generated queries and more. Useful for penetration tests against web servers.'
 depends=('python2')
 url='http://code.google.com/p/webenum/'
-groups=('projectname' 'projectname-*webapps' 'archassault-scanners')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 license=('GPL')
 arch=('any')
 source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.py.gz")

@@ -7,4 +7,4 @@ Exec=w3af-gui
 Icon=/usr/share/w3af/doc/sphinx/images/w3af-logo.png
 Terminal=false
 StartupNotify=false
-Categories=ArchAssault;ArchAssaultWebApp;ArchAssaultFuzzer;ArchAssaultScanners;Network;Security;
+Categories=ArchStrike;ArchStrikeWebApp;ArchStrikeFuzzer;ArchStrikeScanners;Network;Security;

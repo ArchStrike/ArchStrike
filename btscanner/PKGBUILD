@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=btscanner
 pkgver=2.1
 pkgrel=1
-groups=('projectname' 'projectname-*bluetooth' 'archassault-scanners')
+groups=('archstrike' 'archstrike-bluetooth' 'archstrike-scanners')
 pkgdesc="Bluetooth device scanner."
 url='http://www.pentest.co.uk'
 depends=('bluez-libs' 'bluez-utils' 'libxml2' 'ncurses')

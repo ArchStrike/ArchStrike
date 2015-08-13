@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-pty-shells-git
 pkgver=20140728.r17
 pkgrel=1

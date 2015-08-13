@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dotdotpwn
 pkgver=3.0
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer' 'archassault-exploit')
+groups=('archstrike' 'archstrike-fuzzer' 'archstrike-exploit')
 pkgdesc="The Transversal Directory Fuzzer"
 url="http://dotdotpwn.blogspot.com"
 arch=('any')

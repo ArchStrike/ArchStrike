@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='ms-sys'
 pkgver='2.5.0'
 pkgrel=1
@@ -6,8 +6,8 @@ pkgdesc='A tool to write Win9x-.. master boot records (mbr) under linux - RTM!'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://ms-sys.sourceforge.net/'
 license=('GPL2')
-groups=('projectname' 'projectname-*backdoors'
-        'projectname-forensics')
+groups=('archstrike' 'archstrike-backdoors'
+        'archstrike-forensics')
 source=("http://downloads.sourceforge.net/sourceforge/ms-sys/ms-sys-$pkgver.tar.gz")
 depends=('glibc')
 sha512sums=('306c39ed8c3c77047d3c0aaa2ce07edd00d8e6d358923910325d3c81252ac0f48ff64b87309c21197c063b7b4f67339af476bb3b6ae0bd5ac759ef26b3f74ea4')

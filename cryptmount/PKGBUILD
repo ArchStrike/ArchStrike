@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Mike Sampson <mike at sambodata dot com>
 # Contributor: Andrea Benazzo <andy@qitty.net>
 
@@ -7,7 +7,7 @@ pkgver=5.1
 pkgrel=1
 pkgdesc='Utility which allows an ordinary user to mount an encrypted file system'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*cryptography')
+groups=('archstrike' 'archstrike-cryptography')
 url="http://cryptmount.sourceforge.net/"
 license=('GPL')
 depends=('cryptsetup')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='perl-net-write'
 _cpanname='Net-Write'
 _module='Net::Write'

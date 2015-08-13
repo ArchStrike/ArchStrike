@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wsfuzzer
 pkgver=1.9.5
 pkgrel=4
-groups=('projectname' 'projectname-*webapps' 'archassault-fuzzers')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
 pkgdesc="A Python tool written to automate SOAP pentesting of web services"
 url="https://www.owasp.org/index.php/Category:OWASP_WSFuzzer_Project"
 arch=('any')

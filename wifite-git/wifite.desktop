@@ -6,4 +6,4 @@ Comment=Automated wireless auditor
 Exec=su -c '/usr/bin/wifite; ${SHELL:-bash}'
 Icon=wifite
 Terminal=true
-Categories=Archassault;ArchassaultWireless;ArchassaultCracker;
+Categories=ArchStrike;ArchStrikeWireless;ArchStrikeCracker;

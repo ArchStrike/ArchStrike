@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=kacak
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*enumeration')
+groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="Tools for penetration testers that can enumerate which users logged on windows system"
 arch=('any')
 url='https://github.com/galkan/kacak'

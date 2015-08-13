@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=damm-git
 pkgver=20150120.r28
 pkgrel=1
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 pkgdesc="Differential Analysis of Malware in Memory"
 arch=('any')
 url='https://github.com/504ensicsLabs/DAMM'

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=airoscript
 pkgver=45.0a122ee
 pkgrel=1
@@ -6,7 +6,7 @@ epoch=1
 pkgdesc="Script to simplify the use of aircrack-ng tools"
 arch=('any')
 url="http://midnightresearch.com/projects/wicrawl/"
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 license=('GPL')
 depends=('mdk3' 'aircrack-ng' 'dhclient' 'perl-yaml-syck')
 options=(!makeflags)

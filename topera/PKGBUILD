@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=topera
 pkgver=20140105.r19.3e230fd
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A new security tools for IPv6, with the particularity that their attacks can't be detected by Snort."
 url="https://github.com/toperaproject/topera"
 arch=('any')

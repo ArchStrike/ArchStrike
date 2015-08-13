@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bro
 pkgver=20140418
 pkgrel=1
@@ -9,7 +9,7 @@ backup=(etc/bro/{broccoli.conf,broctl.cfg,networks.cfg,node.cfg})
 license=('BSD')
 depends=('libpcap' 'curl' 'ruby' 'file' 'geoip' 'python2')
 makedepends=('cmake' 'swig' 'git')
-groups=('projectname')
+groups=('archstrike')
 options=('emptydirs')
 optdepends=('gperftools: Faster malloc() and useful diagnostic utilites (recompile after installing)')
 _gitroot="git://git.bro-ids.org/bro.git"

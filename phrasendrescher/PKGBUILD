@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=phrasendrescher
 pkgver=1.2.2
 pkgrel=2
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="A modular and multi processing pass phrase cracking tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.leidecker.info/projects/phrasendrescher/'

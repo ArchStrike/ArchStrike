@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=spiderpig-pdffuzzer
 pkgver=0.1
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="A javascript pdf fuzzer"
 url="https://code.google.com/p/spiderpig-pdffuzzer/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

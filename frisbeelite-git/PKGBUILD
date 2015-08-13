@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=frisbeelite-git
 pkgver=r1.3ebce5c
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="A GUI-based USB device fuzzer"
 arch=('any')
 url='https://github.com/nccgroup/FrisbeeLite'

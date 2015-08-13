@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ropgadget
 pkgver=5.4
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Lets you search your gadgets on your binaries (ELF format) to facilitate your ROP exploit."
 url='https://github.com/JonathanSalwan/ROPgadget'
 arch=('any')

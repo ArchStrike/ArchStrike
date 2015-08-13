@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ipba2
 pkgver=032013
 pkgrel=1
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="IOS Backup Analyzer"
 url="http://www.ipbackupanalyzer.com/"
 arch=(any)

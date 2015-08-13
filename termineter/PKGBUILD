@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=termineter
 pkgver=0.1.0
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="Smart meter testing framework"
 url="https://code.google.com/p/termineter/"
 arch=('any')

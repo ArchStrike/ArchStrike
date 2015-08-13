@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pack
 _pkgname=PACK
 pkgver=0.0.4
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="Password Analysis and Cracking Kit"
 url='http://thesprawl.org/projects/pack/'
 arch=('any')

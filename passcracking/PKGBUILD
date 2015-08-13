@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=passcracking
 pkgver=20090322.r2.5958a87
 pkgrel=1
@@ -9,7 +9,7 @@ url="http://github.com/jensp/${pkgname}"
 license=('custom:unkown')
 depends=('python2')
 makedepends=('git')
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 source=("git+https://github.com/jensp/${pkgname}.git")
 sha512sums=('SKIP')
 

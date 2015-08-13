@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-activemodel
 _gemname=${pkgname#ruby-}
 pkgver=4.0.1

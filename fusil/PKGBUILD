@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=fusil
 pkgver=1.5
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="A Python library used to write fuzzing programs. It helps to start proc
 url="https://pypi.python.org/pypi/fusil"
 arch=('any')
 license=('GPL2')
-groups=('projectname' 'projectname-*fuzzers')
+groups=('archstrike' 'archstrike-fuzzers')
 depends=('python-ptrace')
 source=(http://pypi.python.org/packages/source/f/fusil/fusil-$pkgver.tar.gz)
 sha512sums=('0d84bfd2d9b8e509989723de26b30c3ec2824612dbdcc097ff3e998fd4efa6b1293cb78743e098ad5012d4981b8e8036f3ad3f9c6acf2dc30e3ff1f707c7d1c0')

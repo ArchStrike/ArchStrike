@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-erubis
 _gemname=${pkgname#ruby-}
 pkgver=2.7.0

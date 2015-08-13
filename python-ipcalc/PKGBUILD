@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='python-ipcalc'
 pkgver='1.1.3'
 pkgrel=1

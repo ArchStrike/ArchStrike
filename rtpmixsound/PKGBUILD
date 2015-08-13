@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=rtpmixsound
 pkgver=3.0
 pkgrel=1
-groups=('projectname' 'projectname-*voip')
+groups=('archstrike' 'archstrike-voip')
 pkgdesc="A tool to mix pre-recorded audio in real-time with the audio (i.e. RTP) in the specified target audio stream."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.hackingvoip.com/sec_tools.html"

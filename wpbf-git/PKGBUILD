@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wpbf-git
 pkgver=r7.11b6ac1
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="Multithreaded WordPress brute forcer"
 url="https://github.com/dejanlevaja/wpbf"
 arch=('any')
 license=('GPL2')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2')
 makedepends=('git')
 provides=('wpbf')

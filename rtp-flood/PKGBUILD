@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='rtp-flood'
 pkgver='1.0'
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="RTP flooder"
 url='http://www.hackingexposedvoip.com/'
 license=('GPL2')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*voip')
+groups=('archstrike' 'archstrike-voip')
 source=("http://www.hackingexposedvoip.com/tools/rtpflood.tar.gz")
 md5sums=('3e8491d113e668a4ec055355d7330def')
 

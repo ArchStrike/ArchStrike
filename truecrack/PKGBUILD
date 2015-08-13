@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=truecrack
 pkgver=35
 pkgrel=3
-groups=('projectname' 'projectname-*cuda-cracker')
+groups=('archstrike' 'archstrike-cuda-cracker')
 pkgdesc="Password cracking for truecrypt(c) volumes."
 url="http://code.google.com/p/truecrack/"
 arch=('x86_64')

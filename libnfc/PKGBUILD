@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=libnfc
 pkgver=1.7.0_rc7
 pkgrel=4

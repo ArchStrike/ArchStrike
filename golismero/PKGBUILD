@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=golismero
 pkgver=2.0
 pkgrel=1
-groups=('projectname' 'projectname-*webapp')
+groups=('archstrike' 'archstrike-webapp')
 pkgdesc="Opensource web security testing framework"
 url="https://github.com/golismero/golismero"
 license=('custom')

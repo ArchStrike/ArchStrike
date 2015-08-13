@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=phpstress-git
 pkgver=r5.f987a7e
 pkgrel=1
-groups=('projectname' 'projectname-*dos')
+groups=('archstrike' 'archstrike-dos')
 pkgdesc="A PHP denial of service / stress test for Web Servers running PHP-FPM or PHP-CGI"
 arch=('any')
 url='https://github.com/nightlionsecurity/phpstress'

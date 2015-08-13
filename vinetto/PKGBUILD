@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=vinetto
 pkgver=0.07beta
 pkgrel=2
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="A forensics tool to examine Thumbs.db files"
 url='http://vinetto.sourceforge.net'
 license=('GPL2')

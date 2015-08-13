@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Beej Jorgensen <beej@beej.us>
 pkgname=wavemon
 pkgver=0.7.6
@@ -8,7 +8,7 @@ arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://eden-feed.erg.abdn.ac.uk/wavemon/"
 license=('GPL')
 depends=('ncurses' 'libcap')
-groups=('projectname')
+groups=('archstrike')
 source=("https://github.com/uoaerg/wavemon/archive/v$pkgver.tar.gz"
 				'wavemon.desktop')
 sha512sums=('d5863bd5ea4ead763b07eb723a2017d1ad53708f5a92cd90522aa508e144f02b60a7ad1123291e635e83b2e88d03be09f54e1ea7e2c2831bd07dc907d2d621af'

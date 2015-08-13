@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: PyroPeter <googlemail.com@abi1789>
 # Contributor: darkapex <me@jailuthra.in>
@@ -7,7 +7,7 @@
 pkgname=arduino
 pkgver=1.0.6
 pkgrel=1
-groups=('projectname' 'projectname-*hardware')
+groups=('archstrike' 'archstrike-hardware')
 pkgdesc="Open-source electronics prototyping platform"
 arch=('i686' 'x86_64')
 url="http://arduino.cc"

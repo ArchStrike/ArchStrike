@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor : Sebastien Duquette <ekse.0x@gmail.com>
 pkgname=sagan
 pkgver=1.0.0RC4
 pkgrel=1
 pkgdesc="a snort-like log analysis engine"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*analysis')
+groups=('archstrike' 'archstrike-analysis')
 url="http://sagan.softwink.com"
 license=('GPL')
 depends=('pcre' 'libdnet' 'libesmtp' 'liblognorm' 'geoip')

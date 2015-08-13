@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-journey
 _gemname=${pkgname#ruby-}
 pkgver=1.0.4

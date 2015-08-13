@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ipscan
 pkgver=3.2.1
 pkgrel=1
 pkgdesc="Angry IP scanner is a very fast IP address and port scanner."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 license=('GPL2')
 url="http://www.angryziber.com"
 depends=('java-runtime')

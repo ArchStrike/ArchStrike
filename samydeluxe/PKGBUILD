@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='samydeluxe'
 pkgver=20090216.r2.2ed1bac
 pkgrel=1
@@ -6,7 +6,7 @@ epoch=1
 pkgdesc='Automatic samdump creation script.'
 arch=('any')
 url='http://github.com/jensp/samydeluxe'
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 license=('UNKNOWN')
 makedepends=('git')
 depends=('bash' 'samdump2')

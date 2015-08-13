@@ -1,10 +1,10 @@
-# Maintainer: ArchAssault <team archassualt.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Nathaniel Case <qalthos@gmail.com>
 pkgname=python2-pyrasite-gui
 pkgver=2.0beta7
 pkgrel=1
 pkgdesc="Code injection and introspection of running Python processes"
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 arch=('any')
 url="http://pyrasite.com"
 license=('GPL3')

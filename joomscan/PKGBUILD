@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=joomscan
 pkgver=2012.03.10
 pkgrel=1
-groups=('projectname' 'projectname-*webapp')
+groups=('archstrike' 'archstrike-webapp')
 pkgdesc="Detects file inclusion, sql injection, command execution vulnerabilities of a target Joomla! web site."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('perl-switch' 'perl-www-mechanize')

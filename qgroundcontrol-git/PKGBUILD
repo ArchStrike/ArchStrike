@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=qgroundcontrol-git
 pkgver=r3643.812348f
 pkgrel=1

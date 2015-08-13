@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=umit
 pkgver=1.0
 pkgrel=2
@@ -6,7 +6,7 @@ pkgdesc="A powerful nmap frontend."
 arch=('any')
 url="http://www.umitproject.org/"
 license=('GPL')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2' 'pygtk' 'nmap' 'python2-pysqlite')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.bz2"
         'setup.patch')

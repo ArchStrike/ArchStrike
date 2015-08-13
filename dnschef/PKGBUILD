@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnschef
 pkgver=0.3
 pkgrel=1
-groups=('projectname' 'projectname-*proxy')
+groups=('archstrike' 'archstrike-proxy')
 pkgdesc="A highly configurable DNS proxy for pentesters"
 url="http://thesprawl.org/projects/dnschef/"
 arch=('any')

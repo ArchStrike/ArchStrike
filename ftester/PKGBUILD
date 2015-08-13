@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ftester
 pkgver=1.0
 pkgrel=2
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="A tool designed for testing firewall filtering policies and Intrusion Detection System (IDS) capabilities."
 url="http://www.inversepath.com/ftester.html"
 arch=('any')

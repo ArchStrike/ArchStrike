@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-multi_json
 _gemname=${pkgname#ruby-}
 pkgver=1.7.2

@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=kismet-earth
 pkgver=20131215
 pkgrel=1
 pkgdesc="Various scripts to convert kismet logs to kml file to be used in Google Earth."
 url="http://"
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 license=('GPL')
 depends=('perl' 'python')
 arch=('any')

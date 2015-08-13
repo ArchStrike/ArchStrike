@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xsssniper
 pkgver=0.9
 pkgrel=1
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 pkgdesc="An automatic XSS discovery tool"
 arch=('any')
 url='https://github.com/gbrindisi/xsssniper'

@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='pwdump'
 pkgver='7.1'
 pkgrel=1
 pkgdesc='Extracts the binary SAM and SYSTEM file from the filesystem and then
 the hashes.'
 url='http://www.tarasco.org/security/pwdump_7/index.html'
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 license=('custom')
 arch=('any')
 source=('http://www.tarasco.org/security/pwdump_7/pwdump7.zip')

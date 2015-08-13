@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wpscan-git
 pkgver=20150524.r1917
 pkgrel=2
 epoch=1
-groups=('projectname' 'projectname-*webapps' 'archassault-scanners')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc='A vulnerability scanner which checks the security of WordPress installations using a black box approach'
 arch=(armv6h armv7h i686 x86_64)
 url="http://wpscan.org"

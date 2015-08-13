@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bully
 pkgver=1.0.22
 pkgrel=2
-groups=('projectname' 'projectname-*crackers' 'archassault-wifi')
+groups=('archstrike' 'archstrike-crackers' 'archstrike-wifi')
 pkgdesc="A wifi-protected-setup (WPS) brute force attack tool."
 url="http://code.google.com/p/bully/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

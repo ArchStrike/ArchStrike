@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='kippo'
 pkgver='0.9'
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc='A medium interaction SSH honeypot designed to log brute force attacks a
 arch=('any')
 url='http://code.google.com/p/kippo/'
 license=('GPL')
-groups=('projectname' 'projectname-*defensive')
+groups=('archstrike' 'archstrike-defensive')
 depends=('twisted' 'python2-crypto' 'python2-pyasn1')
 source=("https://github.com/desaster/kippo/archive/v$pkgver.tar.gz"
 				'kippo.desktop')

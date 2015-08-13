@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pastenum
 pkgver=0.4.1
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="Search Pastebins for content, fork from nullthreat corelan pastenum2"
 arch=('any')
 license=('')

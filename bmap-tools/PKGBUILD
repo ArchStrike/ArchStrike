@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bmap-tools
 pkgver=3.2
 pkgrel=1
@@ -8,7 +8,7 @@ url="http://git.infradead.org/users/dedekind/bmap-tools.git"
 license=('GPL2')
 depends=('python2')
 makedepends=('git' 'python2-setuptools')
-groups=('projectname')
+groups=('archstrike')
 source=(git://git.infradead.org/users/dedekind/bmap-tools.git)
 sha256sums=('SKIP')
 

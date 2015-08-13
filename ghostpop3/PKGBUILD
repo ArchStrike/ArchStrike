@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
 pkgname=ghostpop3
@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="A program that simulates an 'always no messages' POP3 server"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL')
-groups=('projectname' 'projectname-*honeypot')
+groups=('archstrike' 'archstrike-honeypot')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 options=('!emptydirs')

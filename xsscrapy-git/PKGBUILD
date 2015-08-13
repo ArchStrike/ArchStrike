@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Alfredo Palhares <masterkorp@masterkorp.net>
 
 pkgname=xsscrapy-git
@@ -6,7 +6,7 @@ pkgver=20150212.r126.4ec3e7d
 pkgrel=1
 pkgdesc="xss spider"
 arch=('any')
-groups=('projectname' 'projectname-*webapps' 'archassault-scanners')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 url="https://github.com/DanMcInerney/xsscrapy"
 license=('BSD')
 depends=('python2-beautifulsoup3' 'python2-pybloom' 'python2-requests' 'scrapy')

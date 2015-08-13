@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=orbited
 pkgver=0.7.10
 pkgrel=7
 pkgdesc="A browser(javascript)->tcp bridge; Comet is used to emulate TCP connections in the browser; Allows you to connect a web browser directly to an IRC or XMPP server, for instance."
-groups=('projectname')
+groups=('archstrike')
 arch=('any')
 url='http://www.orbited.org'
 license=('MIT')

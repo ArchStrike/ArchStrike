@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=edb
 pkgver=0.9.20
 pkgrel=2
-groups=('projectname' 'projectname-*reversing' 'archassault-debugging')
+groups=('archstrike' 'archstrike-reversing' 'archstrike-debugging')
 pkgdesc="A QT4-based binary mode debugging with the goal of having usability on par with OllyDbg."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.codef00.com/projects.php#Debugger'

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-fuzzywuzzy-git
 pkgver=r180.5f0eb1b
 pkgrel=1

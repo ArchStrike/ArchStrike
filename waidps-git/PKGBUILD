@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=waidps-git
 pkgver=20141225.r16
 pkgrel=1
-groups=('projectname' 'projectname-*defensive')
+groups=('archstrike' 'archstrike-defensive')
 pkgdesc="Wireless Auditing, Intrusion Detection & Prevention System"
 arch=('any')
 url='https://github.com/SYWorks/waidps'

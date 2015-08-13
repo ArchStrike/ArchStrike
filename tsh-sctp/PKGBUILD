@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=tsh-sctp
 pkgver=r2.850a2da
 pkgrel=1
 pkgdesc="An open-source UNIX backdoor"
 url="https://github.com/infodox/tsh-sctp"
 arch=(any)
-groups=('projectname')
+groups=('archstrike')
 license=('GPL')
 makedepends=('git')
 source=("git+https://github.com/infodox/tsh-sctp.git")

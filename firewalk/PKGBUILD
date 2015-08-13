@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=firewalk
 pkgver=5.0
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer' 'archassault-scanners')
+groups=('archstrike' 'archstrike-fuzzer' 'archstrike-scanners')
 pkgdesc="An active reconnaissancenaissance network security tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('BSD')

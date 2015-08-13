@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=reglookup
 pkgver=1.0.1
 pkgrel=2
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="Command line utility for reading and querying Windows NT registries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://projects.sentinelchicken.org/reglookup'

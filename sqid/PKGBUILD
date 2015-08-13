@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='sqid'
 pkgver='0.3'
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('any')
 url='http://sqid.rubyforge.org/'
 license=('GPL')
 depends=('ruby')
-groups=('projectname' 'projectname-*webapp')
+groups=('archstrike' 'archstrike-webapp')
 source=("http://packetstorm.igor.onlinedirect.bg/UNIX/scanners/sqid-$pkgver.tar.gz")
 md5sums=('f09d8bd83176f2e4fbdd3d81bb3e712c')
 

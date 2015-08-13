@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor : Marcos Heredia <chelqo@gmail.com>
 # Contributor: Joris Steyn <jorissteyn@gmail.com>
 # Contributor: speps <speps at aur dot archlinux dot org>
@@ -11,7 +11,7 @@ pkgver=3.48.21
 pkgrel=2
 pkgdesc="An easy-to-use offline browser utility."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 url="http://www.httrack.com/"
 license=('GPL')
 depends=('xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils')

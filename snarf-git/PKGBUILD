@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=snarf-git
 pkgver=20150205.r40
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="man-in-the-middle / relay suite"
 url="https://github.com/purpleteam/snarf"
 arch=('any')
 license=('GPL2')
-groups=('projectname')
+groups=('archstrike')
 depends=('nodejs')
 makedepends=('git')
 conflicts=('snarf')

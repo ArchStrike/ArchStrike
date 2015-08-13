@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python-utidylib
 pkgver=0.2
 pkgrel=2
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python2 bindings for Tidy HTML parser/cleaner."
 arch=('any')
 url='http://utidylib.berlios.de'

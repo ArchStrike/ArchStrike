@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='gwtenum'
 pkgver=20120831.r7.f27a5aa
 pkgrel=1
 epoch=1
 pkgdesc='Enumeration of GWT-RCP method calls.'
 url='http://www.gdssecurity.com/l/t/d.php?k=GwtEnum'
-groups=('projectname' 'projectname-*webapp' 'archassault-reconnaissance')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-reconnaissance')
 license=('CCPL')
 arch=('any')
 depends=('python2')

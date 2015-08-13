@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pacumen
 pkgver=0.1a
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="Packet Acumen"
 arch=('any')
 url='https://github.com/bniemczyk/pacumen'

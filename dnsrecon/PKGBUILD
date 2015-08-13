@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnsrecon
 pkgver=0.8.8
 pkgrel=7
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="Python script for enumeration of hosts, subdomains and emails from a given domain using google."
 url="https://github.com/darkoperator/dnsrecon"
 license=('GPL2')

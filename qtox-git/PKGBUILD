@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 _pkgname=qtox
@@ -21,7 +21,7 @@ depends=(
   'openal-soft-tox-git'
   'qrencode'
 )
-groups=('projectname')
+groups=('archstrike')
 makedepends=('git' 'qt5-tools')
 provides=("$_pkgname")
 conflicts=("$_pkgname")

@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pshitt-git
 pkgver=20150623.r22
 pkgrel=1
-groups=('projectname')
+groups=('archstrike')
 pkgdesc="A lightweight fake SSH server designed to collect authentication data sent by intruders. "
 arch=('any')
 url='https://github.com/regit/pshitt'

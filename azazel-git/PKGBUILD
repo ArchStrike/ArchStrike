@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=azazel-git
 pkgver=r10.401e3aa
 pkgrel=1
-groups=('projectname' 'projectname-*backdoors')
+groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="A userland rootkit based off of the original LD_PRELOAD technique from Jynx rootkit."
 arch=('any')
 url="https://github.com/chokepoint/azazel"

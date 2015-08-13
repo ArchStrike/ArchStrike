@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cuckoo
 pkgver=1.2
 pkgrel=1
@@ -8,7 +8,7 @@ arch=('any')
 license=('GPL3')
 install='cuckoo.install'
 options=('!emptydirs')
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 depends=('python2-sqlalchemy' 'python2-bson' 'python2-dpkt' 
 	 'python2-jinja' 'python2-django' 'volatility' 'python2-maec'
          'python2-magic' 'libvirt' 'python2-bottle'

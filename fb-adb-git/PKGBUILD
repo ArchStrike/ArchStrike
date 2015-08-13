@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=fb-adb
 pkgname=$_pkgname-git

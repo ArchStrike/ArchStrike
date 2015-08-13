@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=nsdtool
 pkgver=1
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="toolset of scripts used to detect netgear switches in local networks. T
 arch=('any')
 url="http://www.curesec.com/en/publications/tools.html"
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=('python')
 source=("http://www.curesec.com/data/tools/$pkgname.tar.bz2")
 sha512sums=('1430e68644d91b1bb7b89ca28ef851fd81955696b62feacd184c48ecafc7008e312fca987f9a187bb5943749730590ce473e99bbe2de0e7fd6c89ff004e8f7de')

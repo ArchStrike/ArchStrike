@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=javasnoop
 pkgver=1.1
 pkgrel=1
-groups=('projectname' 'projectname-*reversing')
+groups=('archstrike' 'archstrike-reversing')
 pkgdesc="A tool that lets you intercept methods, alter data and otherwise hack Java applications running on your computer"
 url="https://code.google.com/p/javasnoop/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

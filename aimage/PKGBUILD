@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='aimage'
 pkgver='3.2.5'
 pkgrel=3
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.afflib.org'
 license=('custom')
 depends=('afflib')
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 source=("http://pkgs.fedoraproject.org/repo/pkgs/aimage/aimage-$pkgver.tar.gz/07a11d653cdd1d7a5aefe4d99cdbd408/aimage-$pkgver.tar.gz" "aimage.desktop")
 sha512sums=('dc26f0e4ce1d336390aa0cc3ebeeb3388435ff2992b2f25217ad7fe61e05231f51359d5f8917b8a157fdaf6294903bb6c7e019ab3e116703c210ab93907a76db'
             'c3b1c838c800d1c9777ea09b035e5bf0d85ca980adb8af42bae8271407fd685170abe5f09494cf01399f014961ee6a15bc95716dca8c3c6d9e863ba0e91ee119')

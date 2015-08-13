@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=udptunnel
 pkgver=19
 pkgrel=1
-groups=('projectname' 'projectname-*tunneling' 'archassault-networking')
+groups=('archstrike' 'archstrike-tunneling' 'archstrike-networking')
 pkgdesc="Tunnels TCP over UDP packets."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://code.google.com/p/udptunnel/'

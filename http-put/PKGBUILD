@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=http-put
 pkgver=1.0
 pkgrel=1
 pkgdesc="Simple http put perl script"
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 arch=(any)
 license=('GPL')
 depends=('perl' 'perl-net-ssleay')

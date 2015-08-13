@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=smbbf
 pkgver=0.9.1
 pkgrel=1
 pkgdesc="SMB password bruteforcer."
 url="http://packetstormsecurity.com/files/25381/smbbf-0.9.1.tar.gz.html"
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 license=('GPL')
 depends=('openssl')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=wpsnitch
 pkgname=${_pkgname}-git
 pkgver=r1.aa3ca3b
 pkgrel=1
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A wordpress scraper"
 arch=('any')
 url="https://code.google.com/p/${_pkgname}/"

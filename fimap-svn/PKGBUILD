@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=fimap-svn
 pkgver=20150325.r334
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer' 'archassault-exploit')
+groups=('archstrike' 'archstrike-fuzzer' 'archstrike-exploit')
 pkgdesc="A little tool for local and remote file inclusion auditing and exploitation"
 arch=('any')
 url='http://code.google.com/p/fimap/'

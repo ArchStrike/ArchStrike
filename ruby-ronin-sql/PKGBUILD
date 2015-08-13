@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-ronin-sql
 _gemname=ronin-sql
 pkgver=1.1.0

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=miranda-upnp
 pkgver=1.3
 pkgrel=1
-groups=('projectname' 'projectname-*scanners' 'archassault-exploit')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-exploit')
 pkgdesc="A Python-based Universal Plug-N-Play client application designed to discover, query and interact with UPNP devices"
 url='http://code.google.com/p/miranda-upnp/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

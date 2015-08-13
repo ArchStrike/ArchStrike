@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wifi-monitor
 pkgver=0.r22.71340a3
 pkgrel=1
-groups=('projectname' 'projectname-*sniffers')
+groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="Prints the IPs on your local network that're sending the most packets"
 url="https://github.com/DanMcInerney/wifi-monitor"
 arch=(any)

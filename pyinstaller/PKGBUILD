@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pyinstaller
 pkgver=2.1
 pkgrel=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="A program that converts (packages) Python programs into stand-alone executables, under Windows, Linux, Mac OS X, Solaris and AIX."
 arch=('any')
 url="http://www.pyinstaller.org/"

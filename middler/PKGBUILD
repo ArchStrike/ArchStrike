@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='middler'
 pkgver='1.0'
 pkgrel=1
@@ -8,7 +8,7 @@ url='http://code.google.com/p/middler/'
 license=('GPL')
 depends=('libpcap' 'python2' 'scapy' 'libdnet')
 makedepends=('python2')
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 source=("http://middler.googlecode.com/files/middler-$pkgver.tgz")
 md5sums=('8ff27f81fdb03bac532bef6fcb4d155d')
 

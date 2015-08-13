@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Simon Perry <aur [at] sanxion [dot] net>
 # Contributor: Nicolas Pouillard http://nicolaspouillard.fr
 
@@ -9,7 +9,7 @@ pkgdesc="A utility for creating symmetrically encrypted and authenticated pipes 
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(http://www.tarsnap.com/$pkgname/$pkgname-$pkgver.tgz)
 url="http://www.tarsnap.com/spiped.html"
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 license=('BSD')
 depends=('openssl')
 sha512sums=('55e9f18fc82415d28f44af538c6dd8c222798f6ac719a9ad43772357c0f05f281a883cf1189552deeb4b646abe3d060089d66b5f2ba66b5a2a82627dc62513cc')

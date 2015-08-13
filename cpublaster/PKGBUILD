@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
 pkgname=cpublaster
@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="This library tries to intercept the memory allocations to skew the allocations to different offsets, so the performance penalty to disappear"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL3')
-groups=('projectname')
+groups=('archstrike')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz"

@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='mbenum'
 pkgver='1.5.0'
 pkgrel=1
 pkgdesc='Queries the master browser for whatever information it has registered.'
 url='http://www.cqure.net/wp/mbenum/'
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 arch=('any')
 license=('GPL')
 source=("http://www.cqure.net/tools/mbenum-win32-1_5_0.zip")

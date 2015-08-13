@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-factory_girl
 _gemname=factory_girl
 pkgver=4.3.0

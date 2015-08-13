@@ -1,4 +1,4 @@
-#Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bokken-hg
 pkgver=r421.5e63448608c0
 pkgrel=1
@@ -10,7 +10,7 @@ depends=('python2'
          'pygtksourceview2'
          'graphviz'
          'r2-bindings')
-groups=('projectname')
+groups=('archstrike')
 optdepends=('pyew: For pyew backend support'
             'radare2-bindings-git: For r2 backend support (devel)')
 makedepends=('mercurial')

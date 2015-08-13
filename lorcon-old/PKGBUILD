@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=lorcon-old
 pkgrel=2
 makedepends=('subversion')
@@ -7,7 +7,7 @@ pkgver=197
 pkgdesc="Create what libradiate could have been: A generic library for injecting 802.11 frames, capable of injection via multiple driver frameworks, without forcing modification of the application code, old API version"
 url="http://802.11ninja.net/lorcon/"
 license="GPL"
-groups=('projectname')
+groups=('archstrike')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 provides=("lorcon=199")
 _svntrunk=http://802.11ninja.net/svn/lorcon/branch/lorcon-old

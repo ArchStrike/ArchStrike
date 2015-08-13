@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=lodowep
 pkgver=1.2.1
 pkgrel=1
 pkgdesc="Lodowep is a tool for analyzing password strength of accounts on a Lotus Domino webserver system."
 url="http://www.cqure.net/wp/lodowep/"
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 license=('GPL')
 depends=('java-runtime')
 arch=(any)

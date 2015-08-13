@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=redirectpoison
 pkgver=1.1
 pkgrel=1
 pkgdesc="A tool to poison a targeted issuer of SIP INVITE requests with 301 (i.e. Moved Permanently) redirection responses."
 url="http://www.hackingexposedvoip.com/"
-groups=('projectname' 'projectname-*voip')
+groups=('archstrike' 'archstrike-voip')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('libnet' 'libpcap')

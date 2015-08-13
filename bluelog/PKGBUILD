@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bluelog
 pkgver=1.1.2
 pkgrel=1
-groups=('projectname' 'projectname-*bluetooth' 'archassault-scanners')
+groups=('archstrike' 'archstrike-bluetooth' 'archstrike-scanners')
 pkgdesc="A Bluetooth scanner and sniffer written to do a single task, log devices that are in discoverable mode"
 url='http://www.digifail.com/software/bluelog.shtml'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

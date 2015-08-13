@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xssya-git
 pkgver=20140613.r13
 pkgrel=1
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Cross Site Scripting Scanner & Vulnerability Confirmation (Working in two Methods)"
 arch=('any')
 url='https://github.com/yehia-mamdouh/XSSYA'

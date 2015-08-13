@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wol-e
 pkgver=2.0
 pkgrel=4
-groups=('projectname' 'projectname-*networking' 'archassault-misc')
+groups=('archstrike' 'archstrike-networking' 'archstrike-misc')
 pkgdesc="A suite of tools for the Wake on LAN feature of network attached computers"
 arch=('any')
 url='http://code.google.com/p/wol-e/'

@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
 pkgname=tiger
 pkgver=3.2.3
 pkgrel=6
-groups=('projectname' 'projectname-*scanners' 'archassault-autonomous')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-autonomous')
 pkgdesc="A security scanner that checks computer for known problems"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.nongnu.org/${pkgname}/"

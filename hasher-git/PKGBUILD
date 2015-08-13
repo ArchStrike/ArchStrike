@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=hasher-git
 pkgver=r42.0de1936
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="A tool that allows you to quickly hash plaintext strings, or compare hashed values with a plaintext locally."
 arch=('any')
 url='https://github.com/ChrisTruncer/Hasher'

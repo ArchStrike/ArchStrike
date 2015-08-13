@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=spiderfoot
 pkgver=2.3.0
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="The Open Source Footprinting Tool"
 url='http://spiderfoot.net'
 arch=('any')

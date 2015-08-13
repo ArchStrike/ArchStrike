@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: prurigro
 pkgname=lxc-projectname
 pkgver=1
 pkgrel=1
-pkgdesc="An LXC template for ArchAssault"
+pkgdesc="An LXC template for ArchStrike"
 url="https://bitbucket.org/projectname"
 license=('GPL2')
 arch=('any')

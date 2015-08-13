@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=suricata
 pkgver=2.0.8
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engin
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://openinfosecfoundation.org/index.php/download-suricata"
 license=('GPL2')
-groups=('projectname')
+groups=('archstrike')
 depends=('nss' 'jansson' 'libcap-ng' 'libnetfilter_queue' 'libnet' 'libpcap' 'libyaml' 'python2-magic' 'file' 'lua' 'luajit' 'geoip' 'libnetfilter_log')
 optdepends=('snort: suricata can use rulesets provided by snort')
 options=('!emptydirs')

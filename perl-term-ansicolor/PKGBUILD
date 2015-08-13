@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='perl-term-ansicolor'
 pkgver='4.03'
 pkgrel='1'

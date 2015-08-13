@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=tcpxtract
 pkgver=1.0.1
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="tcpxtract is a tool for extracting files from network traffic"
 url="http://tcpxtract.sourceforge.net"
 depends=('libpcap')
 license=('GPL')
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(http://downloads.sourceforge.net/tcpxtract/tcpxtract-$pkgver.tar.gz
         conf_default_path.patch)

@@ -7,4 +7,4 @@ Exec=veracrypt
 Icon=veracrypt
 Terminal=false
 StartupNotify=true
-Categories=ArchAssault;ArchAssaultCryptography;
+Categories=ArchStrike;ArchStrikeCryptography;

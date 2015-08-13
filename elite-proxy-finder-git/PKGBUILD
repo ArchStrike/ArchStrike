@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=elite-proxy-finder-git
 pkgver=r44.29143ad
 pkgrel=2
-groups=('projectname' 'projectname-*miscellaneous')
+groups=('archstrike' 'archstrike-miscellaneous')
 pkgdesc="Finds public elite anonymity proxies and concurrently tests them"
 arch=('any')
 url='https://github.com/DanMcInerney/elite-proxy-finder'

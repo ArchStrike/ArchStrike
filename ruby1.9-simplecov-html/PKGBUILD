@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-simplecov-html
 _gemname=simplecov-html
 pkgver=0.5.3

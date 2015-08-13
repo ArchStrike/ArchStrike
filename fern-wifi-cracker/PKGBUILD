@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 pkgname=fern-wifi-cracker
 pkgver=221
 pkgrel=1
-groups=('projectname' 'projectname-*wireless' 'archassault-cracker')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-cracker')
 pkgdesc="WEP, WPA wifi cracker for wireless penetration testing"
 arch=('any')
 url="http://code.google.com/p/${pkgname}/"

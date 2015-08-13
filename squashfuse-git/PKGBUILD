@@ -1,10 +1,10 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Tim Jester-Pfadt <t.jp@gmx.de>
 
 pkgname=squashfuse-git
 pkgver=20140605.r293
 pkgrel=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="FUSE filesystem to mount squashfs archives"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h') 
 url="https://github.com/vasi/squashfuse"

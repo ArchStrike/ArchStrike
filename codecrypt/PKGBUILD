@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=codecrypt
 pkgver=1.6.1
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A GnuPG-like program for encryption and signing that uses only quantum-computer-resistant algorithms"
 url="https://github.com/exaexa/${pkgname}"
 license=('GPL3')
-groups=('projectname-crypto')
+groups=('archstrike-crypto')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('crypto++' 'gmp')
 makedepends=('libtool' 'automake' 'autoconf')

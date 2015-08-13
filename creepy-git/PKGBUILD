@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=creepy-git
 pkgver=r137.9f60449
 pkgrel=4
-groups=('projectname' 'projectname-*scanners' 'archassault-socialengineering')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-socialengineering')
 pkgdesc="A geolocation information gatherer. Offers geolocation information gathering through social networking platforms."
 arch=('any')
 url='http://github.com/ilektrojohn/creepy'

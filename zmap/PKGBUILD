@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=zmap
 pkgver=1.2.1
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Fast network scanner designed for Internet-wide network surveys'
 url='https://zmap.io/'
 license=('Apache')

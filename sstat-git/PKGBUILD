@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sstat-git
 pkgver=20141023.r8
 pkgrel=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="Check the status of a server while fuzzing or DDoSing"
 arch=('any')
 url='https://bitbucket.org/R4v3N/sstat.sh/'

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 # Contributor: John Schoenick <john@pointysoftware.net>
 # Contributor: Taesoo Kim <taesoo@mit.edu> (in-tree PKGBUILD)
@@ -10,7 +10,7 @@ pkgver=20140526.r274.a131424
 pkgrel=2
 pkgdesc="A lightweight sandbox tool for non-root users"
 arch=('x86_64')
-groups=('projectname')
+groups=('archstrike')
 url="http://pdos.csail.mit.edu/${_pkgname}"
 license=('MIT')
 depends=('openssl')

@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=proxyp
 pkgver=0.1
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A fork of the Bruteforce Exploit Detector Tool (BED)."
 arch=('any')
 url='http://sourceforge.net/projects/proxyp/'

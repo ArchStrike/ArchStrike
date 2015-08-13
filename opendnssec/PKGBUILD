@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Javier Torres <javitonino [at] gmail [dot] com>
 pkgname=opendnssec
 pkgver=1.4.7
@@ -7,7 +7,7 @@ pkgdesc="Turn-key solution for DNSSEC (sqlite3)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
 url="http://www.opendnssec.org/"
 license=('BSD')
-groups=('projectname')
+groups=('archstrike')
 depends=('libxml2' 'ldns' 'sqlite3' 'softhsm')
 makedepends=('doxygen' 'dot2tex' 'automake' 'java-environment')
 options=('!emptydirs')

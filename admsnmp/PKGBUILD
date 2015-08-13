@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=admsnmp
 pkgver=0.1
 pkgrel=3
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc='ADM SNMP audit scanner.'
 url=('http://packetstorm.wowhacker.com/groups/ADM/')
 license=('GPL')

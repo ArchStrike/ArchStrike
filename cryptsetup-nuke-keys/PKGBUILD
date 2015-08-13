@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cryptsetup-nuke-keys
 pkgver=1.6.6
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="cryptsetup patched to nuke all keyslots given a certain passphrase"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
 url="https://github.com/offensive-security/cryptsetup-nuke-keys"
-groups=('projectname-encryption')
+groups=('archstrike-encryption')
 depends=('device-mapper' 'libgcrypt' 'popt' 'util-linux')
 options=('!emptydirs')
 source=(https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/cryptsetup-$pkgver.tar.xz

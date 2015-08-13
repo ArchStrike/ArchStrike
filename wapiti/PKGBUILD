@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wapiti
 pkgver=2.3.0
 pkgrel=4
-groups=('projectname' 'projectname-*webapp' 'archassault-scanners' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-scanners' 'archstrike-fuzzer')
 pkgdesc="A vulnerability scanner for web applications. It currently search vulnerabilities like XSS, SQL and XPath injections, file inclusions, command execution, LDAP injections, CRLF injections..."
 url='http://wapiti.sourceforge.net/'
 license=('GPL')

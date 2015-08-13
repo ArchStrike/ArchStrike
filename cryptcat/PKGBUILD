@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cryptcat
 pkgver=1.2.1
 pkgrel=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="A lightweight version of netcat with integrated transport encryption capabilities."
 arch=('any')
 url='http://sourceforge.net/projects/cryptcat'

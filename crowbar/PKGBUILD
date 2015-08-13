@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=crowbar
 pkgver=3.3
 pkgrel=1
 pkgdesc="A brute forcing tool that can be used during penetration tests. It is developed to support protocols that are not currently supported by thc-hydra and other popular brute forcing tools."
 arch=('any')
-groups=('projectname' 'projectname-*bruteforce')
+groups=('archstrike' 'archstrike-bruteforce')
 url="https://github.com/galkan/crowbar"
 license=('custom')
 depends=('python2' 'openvpn' 'freerdp' 'tigervnc')

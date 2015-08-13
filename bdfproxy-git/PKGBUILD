@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bdfproxy-git
 pkgver=20150420.r62
 pkgrel=1
-groups=('projectname' 'projectname-*proxy')
+groups=('archstrike' 'archstrike-proxy')
 pkgdesc="Patch Binaries via MITM: BackdoorFactory + mitmProxy."
 url="https://github.com/secretsquirrel/BDFProxy"
 arch=('any')

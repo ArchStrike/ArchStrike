@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=imagejs-git
 pkgver=20141209.r48
 pkgrel=1
-groups=('projectname' 'projectname-*miscellaneous')
+groups=('archstrike' 'archstrike-miscellaneous')
 pkgdesc="A Small tool to package javascript into a valid image file."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/jklmnn/imagejs'

@@ -1,11 +1,11 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=trid
 pkgver=2.11
 pkgrel=5
 pkgdesc="Utility to identify file types using their binary signatures"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://mark0.net/soft-trid-e.html"
-groups=('projectname')
+groups=('archstrike')
 license=('CUSTOM')
 depends=('trid-defs' 'bash')
 depends_i686+=('ncurses')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 __upstream_name=flite
 pkgname=${__upstream_name}-full
 pkgver=1.4

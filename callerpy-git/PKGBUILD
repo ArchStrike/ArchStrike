@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=callerpy-git
 pkgver=20140518.r40
 pkgrel=3
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Truecaller Name Retriever"
 arch=('any')
 url='https://github.com/Logic-gate/callerpy'

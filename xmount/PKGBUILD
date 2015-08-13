@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: kfgz <kfgz at interia pl>
 
 pkgname=xmount
@@ -6,7 +6,7 @@ pkgver=0.7.3
 pkgrel=1
 pkgdesc="Tool to crossmount between multiple input and output harddisk image files"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname')
+groups=('archstrike')
 license=('GPL')
 url="https://www.pinguin.lu"
 depends=('libewf' 'afflib')

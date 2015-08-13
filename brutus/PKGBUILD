@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='brutus'
 pkgver='2'
 pkgrel=1
 pkgdesc='One of the fastest, most flexible remote password crackers you can get your hands on.'
 url='http://www.hoobie.net/brutus/'
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 license=('custom')
 arch=('any')
 source=('http://www.hoobie.net/brutus/brutus-aet2.zip')

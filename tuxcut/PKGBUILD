@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=tuxcut
 pkgver=5.1
 pkgrel=1
-groups=('projectname' 'projectname-*sniffing')
+groups=('archstrike' 'archstrike-sniffing')
 pkgdesc="Netcut-like program for Linux written in PyQt"
 url='http://bitbucket.org/a_atalla/tuxcut/'
 arch=('any')

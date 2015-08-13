@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=secscan-py
 pkgver=1.5
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="Web Apps Scanner and Much more utilities"
 arch=('any')
 url='http://code.google.com/p/secscan-py/'

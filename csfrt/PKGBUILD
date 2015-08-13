@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=csfrt
 pkgver=r32.17146bb
 pkgrel=1
@@ -8,7 +8,7 @@ url="https://github.com/PaulSec/CSRFT"
 license=('GPL3')
 depends=('nodejs')
 makedepends=('git')
-groups=('projectname')
+groups=('archstrike')
 source=("$pkgname"::'git+https://github.com/PaulSec/CSRFT.git')
 sha512sums=('SKIP')
 

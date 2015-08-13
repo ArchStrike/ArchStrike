@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=american-fuzzy-lop
 pkgver=1.80b
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzers')
+groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A practical, instrumentation-driven fuzzer for binary formats"
 arch=('i686' 'x86_64')
 url="http://lcamtuf.coredump.cx/afl/"

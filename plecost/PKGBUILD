@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=plecost
 pkgver=1.0.1
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*fingerprinting' 'archassault-webapp')
+groups=('archstrike' 'archstrike-fingerprinting' 'archstrike-webapp')
 pkgdesc="Wordpress finger printer tool search and retrieve information about the plugins versions installed in Wordpress systems."
 arch=('any')
 url='https://github.com/iniqua/plecost'

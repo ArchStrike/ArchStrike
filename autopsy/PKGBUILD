@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=autopsy
 pkgver=2.24
 pkgrel=5
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="A GUI for The Sleuth Kit."
 arch=('any')
 url='http://www.sleuthkit.org/autopsy'

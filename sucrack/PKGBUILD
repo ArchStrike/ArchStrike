@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sucrack
 pkgver=1.2.3
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="A multi-threaded Linux/UNIX tool for brute-force cracking local user accounts via su"
 url='http://labs.portcullis.co.uk/application/sucrack'
 license=('custom')

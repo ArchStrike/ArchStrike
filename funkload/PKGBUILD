@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=funkload
 pkgver=1.16.1
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A functional and load web tester, written in Python"
 arch=('any')
 url="http://funkload.nuxeo.org/"

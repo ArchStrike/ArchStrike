@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sslyze
 pkgver=0.9
 pkgrel=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations"
 arch=('any')
 url='https://github.com/iSECPartners/sslyze'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ufo-wardriving
 pkgver=4
 pkgrel=1
-groups=('projectname' 'projectname-*wireless' 'archassault-cracker')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-cracker')
 pkgdesc="Allows you to test the security of wireless networks by detecting their passwords based on the router model"
 url="http://www.ufo-wardriving.com/"
 arch=('any')

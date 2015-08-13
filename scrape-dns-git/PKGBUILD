@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=scrape-dns-git
 pkgver=r58.3df392f
 pkgrel=1
-groups=('projectname' 'projectname-*scanner' 'archassault-dns')
+groups=('archstrike' 'archstrike-scanner' 'archstrike-dns')
 pkgdesc='Searches for interesting cached DNS entries.'
 arch=('any')
 url='https://github.com/304GEEK/Scrape-DNS'

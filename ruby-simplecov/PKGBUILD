@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-simplecov
 _gemname=simplecov
 pkgver=0.8.2

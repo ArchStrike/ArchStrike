@@ -1,7 +1,7 @@
 pkgname=doona-git
 pkgver=r132.1a4d409
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="A fork of the Bruteforce Exploit Detector Tool (BED)."
 arch=('any')
 url='https://github.com/wireghoul/doona'

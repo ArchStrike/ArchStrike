@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pytacle
 pkgver=alpha2
 pkgrel=1
 pkgdesc="Automates the task of sniffing GSM frames"
-groups=('projectname' 'projectname-*sniffers')
+groups=('archstrike' 'archstrike-sniffers')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url='http://packetstormsecurity.com/files/124299/pytacle-alpha2.tar.gz'
 license=('GPL3')

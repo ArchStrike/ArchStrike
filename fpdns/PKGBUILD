@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=fpdns
 pkgver=0.9.3
 pkgrel=1
@@ -8,7 +8,7 @@ depends=('perl')
 license=('BSD')
 options=('!emptydirs')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*analyze')
+groups=('archstrike' 'archstrike-analyze')
 source=("http://fpdns.googlecode.com/files/Net-DNS-Fingerprint-$pkgver.tar.gz")
 md5sums=('16f1fbc9e5c8b935a0a48a509dc58899')
 

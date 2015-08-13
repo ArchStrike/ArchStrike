@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xssf
 pkgver=3.0
 pkgrel=1
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Cross-Site Scripting Framework for metasploit"
 arch=('any')
 url='https://code.google.com/p/xssf/'

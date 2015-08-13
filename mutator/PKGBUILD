@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mutator
 pkgver=0.2.2
 pkgrel=2
-groups=('projectname' 'projectname-*wordlists')
+groups=('archstrike' 'archstrike-wordlists')
 pkgdesc="This project aims to be a wordlist mutation with hormones"
 url="https://bitbucket.org/alone/mutator"
 arch=('x86_64' 'i686' 'arm6vh' 'arm7vh')

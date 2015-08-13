@@ -1,4 +1,4 @@
-# Maintainer:  ArchAssault <team@projectname.org>
+# Maintainer:  ArchStrike <team@archstrike.org>
  
 pkgname=onetwopunch-git
 pkgver=20150408.r8
@@ -7,7 +7,7 @@ pkgdesc='Script combining the speed of unicornscan w/ the versitility of nmap'
 arch=('any')
 url='https://github.com/superkojiman/onetwopunch'
 license=('mit')
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 depends=('nmap' 'unicornscan')
 makedepends=('git')
 install="${pkgname}.install"

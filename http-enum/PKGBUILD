@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='http-enum'
 pkgver='0.3'
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('any')
 url='https://www.thexero.co.uk/tools/http-enum/'
 license=('unknown')
 depends=('python2')
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 source=('https://www.thexero.co.uk/downloads/http-enum.tar')
 md5sums=('23d3cb5be831bc84a55a3117445f4afc')
 

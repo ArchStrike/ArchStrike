@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-mocha-on-bacon
 _gemname=${pkgname#ruby-}
 pkgver=0.2.2

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor:  Shaw <puxx@mail.ustc.edu.cn>
 pkgname=create_ap-git
 pkgver=r160.0f5a503
@@ -10,7 +10,7 @@ license=('BSD')
 depends=('hostapd' 'iproute2' 'iw' 'dnsmasq' 'iptables' 'bridge-utils' 'dhclient')
 makedepends=('git')
 optdepends=('haveged')
-groups=('projectname' 'projectname-*wifi')
+groups=('archstrike' 'archstrike-wifi')
 provides=('create_ap')
 conflicts=('create_ap')
 replaces=('create_ap')

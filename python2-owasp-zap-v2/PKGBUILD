@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-python-owasp-zap-v2
 pkgver=0.0.9
 pkgrel=1

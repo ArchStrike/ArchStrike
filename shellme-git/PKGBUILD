@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=shellme-git
 pkgver=r3.8c7919d
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="Because sometimes you just need shellcode and opcodes quickly"
 url="https://github.com/hatRiot/shellme"
 arch=('any')
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2')
 makedepends=('git')
 provides=('shellme')

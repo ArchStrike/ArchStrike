@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=commix-git
 pkgver=20150626.r169
 pkgrel=1
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Find and exploit a command injection vulnerability in a certain vulnerable parameter or string."
 url="https://github.com/stasinopoulos/commix"
 depends=('python2-urllib3' 'python2-httplib2')

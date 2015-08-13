@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=perl-task-weaken
 _cpanname="Task-Weaken"
 pkgver=1.04

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: quaker4lyf <quaker4lyf(at)yahoo(dot)com>
 pkgname=chaosreader
 pkgver=0.94
@@ -7,7 +7,7 @@ pkgdesc="Fetch application data from snoop or tcpdump logs"
 arch=('any')
 url="http://www.brendangregg.com/chaosreader.html"
 license=('GPL')
-groups=('projectname')
+groups=('archstrike')
 depends=(perl)
 source=("http://download.sourceforge.net/sourceforge/chaosreader/$pkgname$pkgver")
 noextract=($pkgname$pkgver)

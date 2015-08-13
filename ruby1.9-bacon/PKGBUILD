@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-bacon
 _gemname=${pkgname#ruby-}
 pkgver=1.2.0

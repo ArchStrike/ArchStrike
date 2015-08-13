@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnsa
 pkgver=0.5
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://packetfactory.openwall.net/projects/dnsa/index.html"
 license=('GPL')
 depends=('libnet' 'libpcap')
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 source=(http://packetfactory.openwall.net/projects/dnsa/dnsa-current.tar.gz)
 md5sums=('af7f29d576b041318aa04e67e2837a23')
 

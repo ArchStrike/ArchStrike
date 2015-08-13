@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=google-breakpad
 pkgname=${_pkgname}-svn

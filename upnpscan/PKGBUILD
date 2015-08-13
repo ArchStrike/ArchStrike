@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=upnpscan
 pkgver=0.4
 pkgrel=2
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Scans the LAN or a given address range for UPnP capable devices.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.cqure.net/wp/tools/network/upnpscan/'

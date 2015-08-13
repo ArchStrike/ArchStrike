@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bletchley
 pkgver=0.0.1
 pkgrel=3
-groups=('projectname' 'projectname-*cryptography')
+groups=('archstrike' 'archstrike-cryptography')
 pkgdesc="A collection of practical application cryptanalyze tools."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://code.google.com/p/bletchley/"

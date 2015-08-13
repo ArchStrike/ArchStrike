@@ -1,8 +1,8 @@
-#Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wemo-git
 pkgver=r5.d6c1f50
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="A POC for UPnP WeMo hacking"
 arch=('any')
 url='https://github.com/issackelly/wemo'

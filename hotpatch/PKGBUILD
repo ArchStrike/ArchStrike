@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=hotpatch
 pkgver=0.2
 pkgrel=2
-groups=('projectname' 'projectname-*backdoors')
+groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Hot patches executables on Linux using .so file injection"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.selectiveintellect.com/hotpatch.html'

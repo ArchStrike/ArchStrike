@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=device-pharmer-git
 pkgver=r35.c1d449e
 pkgrel=2
@@ -6,7 +6,7 @@ pkgdesc="Opens 1K+ IPs or Shodan search results and attempts to login"
 url="https://github.com/DanMcInerney/device-pharmer"
 arch=('any')
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2-mechanize' 'python2-beautifulsoup4' 'python2-gevent')
 makedepends=('git')
 provides=('device-pharmer')

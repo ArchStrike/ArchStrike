@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=samdump2
 pkgver=3.0.0
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="Dump password hashes from a Windows NT/2k/XP installation"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://sourceforge.net/projects/ophcrack/files/samdump2/'

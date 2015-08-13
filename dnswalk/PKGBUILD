@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnswalk
 pkgver=2.0.2
 pkgrel=1
-groups=('projectname' 'projectname-*scanners' 'archassault-reconnaissance')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-reconnaissance')
 pkgdesc="A DNS debugging"
 url='http://sourceforge.net/projects/dnswalk/'
 license=('GPL')

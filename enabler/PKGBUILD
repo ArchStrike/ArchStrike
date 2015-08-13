@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=enabler
 pkgver=1
 pkgrel=1
 pkgdesc="attempts to find the enable password on a cisco system via brute force."
 url="http://packetstormsecurity.org/cisco/enabler.c"
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 license=('custom')
 makedepends=('gcc')
 depends=('glibc')

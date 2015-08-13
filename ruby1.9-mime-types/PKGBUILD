@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org> 
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=mime-types
 pkgname=ruby1.9-$_gemname
 pkgver=1.18

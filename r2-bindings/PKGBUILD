@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 
 pkgname=r2-bindings
@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="Language bindings of the radare2 api for Valabind and friends"
 url="http://radare.org"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname')
+groups=('archstrike')
 license=('GPL3')
 depends=('radare2' 'gawk' 'ruby1.8' 'ruby1.9' 'lua' 'python2')
 makedepends=('valabind' 'swig')

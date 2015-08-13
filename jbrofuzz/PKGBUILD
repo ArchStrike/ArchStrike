@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=jbrofuzz
 pkgver=2.5
 pkgrel=1
 pkgdesc="Web application protocol fuzzer that emerged from the needs of penetration testing."
 url="http://sourceforge.net/projects/jbrofuzz/"
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 license=('GPL')
 depends=('java-environment' 'bash')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

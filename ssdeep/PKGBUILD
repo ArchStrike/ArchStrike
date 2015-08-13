@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ssdeep
 pkgver=2.13
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://ssdeep.sourceforge.net/"
 license=('GPL')
 depends=('gcc-libs')
-groups=('projectname')
+groups=('archstrike')
 options=('!libtool')
 source=("http://downloads.sourceforge.net/ssdeep/ssdeep-$pkgver.tar.gz")
 sha512sums=('26473f1b8801398534c674d7fdd6e87cf4d7862ed91454bb22865f8b6cf885c777250d0d1cdf2c20a28fdf4961c3b21e505e82f37fb75486a9442902d96f5186')

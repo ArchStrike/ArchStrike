@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wepbuster
 _pkgver=1.0
 _betanum=0.7
@@ -9,7 +9,7 @@ arch=('any')
 url="http://code.google.com/p/${pkgname}/"
 license=('BSD')
 depends=("aircrack-ng" "perl-term-readkey" "perl-expect" "perl-file-slurp" "perl-number-range" "perl-algorithm-permute")
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 source=("http://${pkgname}.googlecode.com/files/${pkgname}-${_pkgver}_beta-${_betanum}.tgz"
         "${pkgname}.1"
         "LICENSE")

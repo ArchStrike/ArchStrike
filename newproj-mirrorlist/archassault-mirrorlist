@@ -1,5 +1,5 @@
 ##
-## ArchAssault repository mirrorlist
+## ArchStrike repository mirrorlist
 ## Generated on 2015-04-14
 ##
 
@@ -84,8 +84,8 @@
 #Server = http://mirror.umd.edu/projectname/$repo/os/$arch
 #Server = ftp://mirrors.arsc.edu/projectname/$repo/os/$arch
 #Server = http://mirrors.arsc.edu/projectname/$repo/os/$arch
-#Server = ftp://noodle.portalus.net/ArchAssault/$repo/os/$arch
-#Server = https://noodle.portalus.net/ArchAssault/$repo/os/$arch
+#Server = ftp://noodle.portalus.net/ArchStrike/$repo/os/$arch
+#Server = https://noodle.portalus.net/ArchStrike/$repo/os/$arch
 #Server = ftp://mirrors.syringanetworks.net/projectname/$repo/os/$arch
 #Server = http://mirrors.syringanetworks.net/projectname/$repo/os/$arch
 

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-dm-do-adapter
 _gemname=${pkgname#ruby-}
 pkgver=1.2.0

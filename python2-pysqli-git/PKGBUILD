@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-pysqli-git
 pkgver=r21.37418c9
 pkgrel=1
-groups=('projectname')
+groups=('archstrike')
 pkgdesc="Python SQL injection framework"
 arch=('any')
 url='https://github.com/sysdream/pysqli'

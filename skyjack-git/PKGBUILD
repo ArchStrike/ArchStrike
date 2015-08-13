@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=skyjack
 pkgname=$_pkgname-git
 pkgver=7.5f7a25e
 pkgrel=2
-groups=('projectname' 'projectname-*drone')
+groups=('archstrike' 'archstrike-drone')
 pkgdesc='Takes over Parrot drones, deauthenticating their true owner and taking over control, turning them into zombie drones under your own control'
 arch=('any')
 url='https://github.com/samyk/skyjack'

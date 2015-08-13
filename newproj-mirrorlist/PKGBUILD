@@ -4,7 +4,7 @@
 pkgname=projectname-mirrorlist
 pkgver=20150414
 pkgrel=1
-pkgdesc="ArchAssault Project mirror list for use by pacman"
+pkgdesc="ArchStrike Project mirror list for use by pacman"
 arch=('any')
 url="http://projectname.org/mirrorlist/"
 license=('GPL')

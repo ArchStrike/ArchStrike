@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=websploit
 pkgver=3.0.0
 pkgrel=1
-groups=('projectname' 'projectname-*exploits' 'archassault-socialengineering' 'archassault-scanners' 'archassault-fuzzers')
+groups=('archstrike' 'archstrike-exploits' 'archstrike-socialengineering' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="An Open Source Project For, Social Engineering Works, Scan, Crawler & Analysis Web, Automatic Exploiter, Support Network Attacks"
 arch=('any')
 url='http://code.google.com/p/websploit/'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cisco-ocs
 pkgver=0.2
 pkgrel=2
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="Cisco Router Default Password Scanner"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.question-defense.com/2013/01/11/ocs-version-0-2-release-ocs-cisco-router-default-password-scanner'
@@ -10,7 +10,7 @@ license=('GPL2')
 makedepends=('git')
 # The true source is "http://www.question-defense.com/wp-content/uploads/OCS-0.2.c"
 #  but it will not download due to a User-agent string issue
-source=("git+https://github.com/ArchAssault-Project/cisco-ocs.git")
+source=("git+https://github.com/ArchStrike-Project/cisco-ocs.git")
 md5sums=('SKIP')
 
 build() {

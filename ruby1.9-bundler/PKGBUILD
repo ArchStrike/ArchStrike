@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-bundler
 _gemname=${pkgname#ruby1.9-}
 pkgver=1.7.12

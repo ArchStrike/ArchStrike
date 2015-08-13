@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=memfetch
 pkgver=0.05b
 pkgrel=1
 pkgdesc="dumps any userspace process memory without affecting its execution"
 url="http://lcamtuf.coredump.cx/"
 license="GPL"
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 makedepends=('make')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='ent'
 pkgver='1.0'
 pkgrel=1
@@ -8,7 +8,7 @@ license=('Public Domain')
 source=('http://www.fourmilab.ch/random/random.zip')
 md5sums=('8104a83af1ea5b280da96c92da18eae4')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 
 build() {
   cd "$srcdir"

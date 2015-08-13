@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bamfdetect
 pkgver=1.6.8
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="Identifies and extracts information from bots and other malware"
 url="https://github.com/bwall/bamfdetect"
 arch=('any')
 license=('MIT')
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 depends=('python2')
 makedepends=('python2-setuptools')
 conflicts=('bamf-git')

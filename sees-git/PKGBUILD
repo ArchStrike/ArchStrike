@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sees-git
 pkgver=r67.cd741aa
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="Increase the success rate of phishing attacks by sending emails to comp
 url="https://github.com/galkan/sees/"
 arch=('any')
 license=('custom')
-groups=('projectname' 'projectname-*socialengineering')
+groups=('archstrike' 'archstrike-socialengineering')
 depends=('python2' 'postfix' 'python2-argparse')
 makedepends=('git')
 install=sees.install

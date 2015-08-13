@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='browser-fuzzer'
 pkgver='3'
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc='Browser Fuzzer 3'
 url='http://www.krakowlabs.com/dev.html'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 source=("http://packetstorm.igor.onlinedirect.bg/fuzzer/bf3.tar.gz")
 md5sums=('901fa6e63c9a092053d85b4032b4d8e3')
 

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wikigen
 pkgver=1.0
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="A script to generate wordlists out of wikipedia pages."
 url="https://github.com/zombiesam/wikigen"
 arch=('any')
 license=('custom')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2')
 source=("https://github.com/zombiesam/wikigen/archive/v${pkgver}.tar.gz")
 sha512sums=('eab16383231eb18e52dfaa1249ae30f82ef6bb1d0f309e8851203a75534a1b07b43daa3170e1b2b2ce20be58484057399070361266ee02be602ceab1d0a11fd2')

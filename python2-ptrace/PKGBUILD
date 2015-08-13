@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgbase=python2-ptrace
 pkgname=(python2-ptrace python-ptrace)  
 _pkgname=python-ptrace

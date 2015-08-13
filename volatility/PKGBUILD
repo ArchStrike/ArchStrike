@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=volatility
 pkgver=2.4.1
 pkgrel=2
-groups=('projectname' 'projectname-*forensics')
+groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A memory forensics toolkit"
 arch=('any')
 url='https://www.volatilesystems.com/default/volatility'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=webhandler-git
 pkgver=r321.bcd2263
 pkgrel=1
-groups=('projectname' 'projectname-*webapp')
+groups=('archstrike' 'archstrike-webapp')
 pkgdesc="A handler for PHP system functions & also an alternative 'netcat' handler."
 url="https://github.com/lnxg33k/webhandler"
 license=('GPL3')

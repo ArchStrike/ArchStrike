@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-exscript-git
 pkgver=0.r1465.4b61cce
 pkgrel=1

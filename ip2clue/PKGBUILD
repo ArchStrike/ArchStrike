@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
 pkgname=ip2clue
@@ -7,7 +7,7 @@ pkgrel=3
 pkgdesc="A mall memory/CPU footprint daemon to lookup country (and other info) based on IP (v4 and v6)"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL3')
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('bash' 'conn')
 options=('!emptydirs')

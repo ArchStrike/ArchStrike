@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Michael Goehler <somebody.here@gmx.de>
 # Contributor: Mike Sampson <mike at sambodata dot com>
 # Contriburor: Steven <steven at stebalien dot com>
@@ -13,7 +13,7 @@ pkgdesc="A simple port-knocking daemon and client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.zeroflux.org/projects/knock"
 license=(GPL)
-groups=('projectname')
+groups=('archstrike')
 depends=('libpcap')
 conflicts=('knockd')
 makedepends=(git)

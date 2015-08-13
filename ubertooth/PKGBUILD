@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Ari Mizrahi <codemunchies@debugsecurity.com>
 
 pkgname=ubertooth
 pkgver=2014.02.R2
 pkgrel=5
-groups=('projectname' 'projectname-*bluetooth')
+groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc="A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only"
 url="https://greatscottgadgets.com/ubertoothone"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

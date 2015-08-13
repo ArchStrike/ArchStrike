@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='recon-ng'
 pkgver=891.f311646
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc='A full-featured Web Reconnaissance framework written in Python.'
 arch=('any')
 url='https://bitbucket.org/LaNMaSteR53/recon-ng'

@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=snoopy-ng-git
 _pkgname=snoopy-ng
 pkgver=r118.1ce0a3c
 pkgrel=1
-groups=('projectname' 'projectname-*drone' 'archassault-exploit')
+groups=('archstrike' 'archstrike-drone' 'archstrike-exploit')
 pkgdesc="A distributed, sensor, data collection, interception, analysis, and visualization framework."
 arch=('any')
 url='https://github.com/sensepost/snoopy-ng'

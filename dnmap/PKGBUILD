@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnmap
 pkgver=0.6
 pkgrel=2
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="The distributed nmap framwork"
 url="http://sourceforge.net/projects/dnmap/"
 license=('GPL3')

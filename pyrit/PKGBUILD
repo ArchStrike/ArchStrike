@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pyrit
 pkgver=0.4.0
 pkgrel=1
-groups=('projectname' 'projectname-*cracker' 'archassault-wireless')
+groups=('archstrike' 'archstrike-cracker' 'archstrike-wireless')
 pkgdesc="WPA/WPA2-PSK attacking with gpu and cluster"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://code.google.com/p/pyrit'

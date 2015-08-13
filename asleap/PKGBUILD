@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=asleap
 pkgver=2.2
 pkgrel=2
-groups=('projectname' 'projectname-*crackers')
+groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Actively recover LEAP/PPTP passwords."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=(GPL)

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=spike
 pkgver=2.9
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="IMMUNITYsec's fuzzer creation kit in C"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.immunitysec.com/resources-freesoftware.shtml'

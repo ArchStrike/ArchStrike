@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=keimpx-git
 pkgver=20140804.r163
 pkgrel=1
-groups=('projectname' 'projectname-*crackers')
+groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Tool to verify the usefulness of credentials across a network over SMB"
 url='https://github.com/inquisb/keimpx'
 license=("Apache")

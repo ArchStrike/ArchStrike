@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=icmpquery
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Send and receive ICMP queries for address mask and current time.'
 arch=('any')
 url='http://www.angio.net/security/'

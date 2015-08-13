@@ -20,7 +20,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
 # Detect use under userns (unsupported)
 #
-# Tweaked for ArchAssault use: 
+# Tweaked for ArchStrike use: 
 # Jeremy <jl AT projectname d0t org> 
 # Tyler <arch3y AT archassualt dot org>
 # prurigro
@@ -284,13 +284,13 @@ fi
 mkdir -p "${rootfs_path}"
 install_arch
 if [ ${?} -ne 0 ]; then
-    echo "failed to install ArchAssault"
+    echo "failed to install ArchStrike"
     rm -rf "${config_path}" "${path}"
     exit 1
 fi
 configure_arch
 if [ ${?} -ne 0 ]; then
-    echo "failed to configure ArchAssault for a container"
+    echo "failed to configure ArchStrike for a container"
     rm -rf "${config_path}" "${path}"
     exit 1
 fi

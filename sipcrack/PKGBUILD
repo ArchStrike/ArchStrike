@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sipcrack
 pkgver=0.2
 pkgrel=2
-groups=('projectname' 'projectname-*cracker' 'archassault-voip')
+groups=('archstrike' 'archstrike-cracker' 'archstrike-voip')
 pkgdesc="A SIP protocol login cracker."
 depends=('libpcap' 'openssl')
 license=('custom')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=qscintilla-qt3
 pkgver=1.7.1
 pkgrel=6

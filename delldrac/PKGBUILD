@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=delldrac
 pkgver=0.1
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="Rid_enum is a null session RID cycle attack for brute forcing domain controllers."
 url="https://www.trustedsec.com/september-2012/owning-dell-drac-awesome-hack/"
 arch=('any')

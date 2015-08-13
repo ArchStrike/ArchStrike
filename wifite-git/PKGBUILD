@@ -1,12 +1,12 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=wifite
 pkgname=${_pkgname}-git
 pkgver=20150525.r138.edbdedd
 pkgrel=1
-groups=('projectname' 'projectname-*wireless' 'archassault-cracker')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-cracker')
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
 arch=('any')
-groups=('projectname')
+groups=('archstrike')
 url="https://github.com/derv82/${_pkgname}"
 license=('GPL')
 depends=('python2' 'aircrack-ng' 'net-tools' 'wireless_tools' 'which' 'iw')

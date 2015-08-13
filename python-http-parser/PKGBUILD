@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python-http-parser
 pkgver=0.8.3
 pkgrel=1

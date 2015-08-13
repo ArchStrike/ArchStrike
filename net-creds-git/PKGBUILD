@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=net-creds-git
 pkgver=20150416.r59
 pkgrel=1
-groups=('projectname' 'projectname-*proxies')
+groups=('archstrike' 'archstrike-proxies')
 pkgdesc="Sniffs sensitive data from interface or pcap"
 arch=('any')
 url='https://github.com/DanMcInerney/net-creds'

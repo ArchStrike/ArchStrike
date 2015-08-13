@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='blueprint'
 pkgver='0.1_3'
 pkgrel=1
 pkgdesc='A perl tool to identify Bluetooth devices.'
 url='http://trifinite.org/trifinite_stuff_blueprinting.html'
-groups=('projectname' 'projectname-*bluetooth')
+groups=('archstrike' 'archstrike-bluetooth')
 license=('GPL')
 depends=('perl')
 arch=('any')

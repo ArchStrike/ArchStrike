@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='httprint-win32'
 pkgver='301'
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc='A web server fingerprintinging tool (Windows binaries).'
 arch=('any')
 url='http://net-square.com/httprint'
 license=('custom')
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 source=("http://www.net-square.com/zip%20folders/httprint_win32_$pkgver.zip")
 md5sums=('a66408308c3f540030bbb0d59716b032')
 

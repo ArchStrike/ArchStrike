@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=fiked
 pkgver=0.0.5
 pkgrel=1
-groups=('projectname')
+groups=('archstrike')
 pkgdesc="Fake IDE daemon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.roe.ch/FakeIKEd'

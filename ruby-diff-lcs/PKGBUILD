@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-diff-lcs
 _gemname=diff-lcs
 pkgver=1.2.5

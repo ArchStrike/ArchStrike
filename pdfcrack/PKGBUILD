@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='pdfcrack'
 pkgver='0.14'
 pkgrel=1
@@ -8,7 +8,7 @@ url="http://pdfcrack.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
 source=("http://downloads.sourceforge.net/pdfcrack/pdfcrack-$pkgver.tar.gz")
-groups=('projectname' 'projectname-*crackers')
+groups=('archstrike' 'archstrike-crackers')
 sha512sums=('2da2b7bc37db49f55c6cdd45f837bc509b217fcd36cd57212c2508618996038e21bf391a20f5adece312e9a5f7d892fe254dac8438222f158e4ce7019cbac3f2')
 
 build() {

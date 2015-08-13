@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=indxparse-git
 pkgver=r164.86c89a8
 pkgrel=1
-groups=('projectname' 'projectname-*forensics')
+groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A Tool suite for inspecting NTFS artifacts."
 arch=('any')
 url='http://www.williballenthin.com/forensics/mft/indxparse/'

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Alexander Duscheleit <jinks@archlinux.us>
 pkgname=python2-colorama
 pkgver=0.3.3

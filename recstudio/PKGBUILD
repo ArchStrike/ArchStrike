@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=recstudio
 pkgver=4.0_20130717
 pkgrel=2
-groups=('projectname' 'projectname-*reversing' 'archassault-decompile')
+groups=('archstrike' 'archstrike-reversing' 'archstrike-decompile')
 pkgdesc="Cross platform interactive decompile"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.backerstreet.com/rec/rec.htm'

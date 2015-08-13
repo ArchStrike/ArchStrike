@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=htshells
 pkgver=760b5e9
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Self contained web shells and other attacks via .htaccess files."
 url="https://github.com/wireghoul/htshells"
 depends=('bash' 'perl')

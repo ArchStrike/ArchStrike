@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=nessus-report-git
 pkgver=r11.6ac321f
 pkgrel=1

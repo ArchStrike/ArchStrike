@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=w3af
 pkgver=1.6.45
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-fuzzer' 'archassault-scanners')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-fuzzer' 'archstrike-scanners')
 pkgdesc="Web Application Attack and Audit Framework"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://w3af.sourceforge.net'

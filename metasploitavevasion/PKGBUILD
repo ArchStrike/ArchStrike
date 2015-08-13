@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
 pkgname=metasploitavevasion
@@ -8,7 +8,7 @@ pkgdesc="Metasploit payload generator that avoids most Anti-Virus products."
 url="https://github.com/nccgroup/${pkgname}"
 license=('AGPL3')
 arch=('any')
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 depends=('metasploit' 'mingw-w64-gcc' 'wget')
 source=("git+https://github.com/nccgroup/${pkgname}.git#branch=master"
         "${pkgname}.sh"

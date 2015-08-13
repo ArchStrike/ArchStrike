@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=spipscan-git
 pkgver=r69.4ad3235
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="SPIP (CMS) Scanner for penetration testing purpose written in Python"
 arch=('any')
 url='https://github.com/PaulSec/SPIPScan'

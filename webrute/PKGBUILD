@@ -1,14 +1,14 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=webrute
 pkgver=3.3
 pkgrel=2
-groups=('projectname' 'projectname-*webapp' 'archassault-scanners')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-scanners')
 pkgdesc='Web server directory brute forcer.'
 arch=('any')
-url='https://github.com/ArchAssault-Project/webrute'
+url='https://github.com/ArchStrike-Project/webrute'
 license=('unknown')
 depends=('perl' 'perl-net-ssleay' 'perl-io-socket' 'perl-term-ansicolor')
-source=("https://raw.github.com/ArchAssault-Project/webrute/master/webrute.pl")
+source=("https://raw.github.com/ArchStrike-Project/webrute/master/webrute.pl")
 md5sums=('a59b75b38105395e4e0eb0bb79581fcf')
 
 package() {

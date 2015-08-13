@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=meterssh-git
 pkgver=20150119.r10
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="a way to take shellcode, inject it into memory then tunnel whatever por
 url="https://github.com/trustedsec/meterssh"
 arch=('any')
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2')
 makedepends=('python2-setuptools' 'git')
 provides=('meterssh')

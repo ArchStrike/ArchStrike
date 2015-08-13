@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Generator  : CPANPLUS::Dist::Arch 1.28
 pkgname='perl-string-random'
 pkgver='0.28'

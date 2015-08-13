@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team at projectname dot org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=maltrieve
 pkgname=$_pkgname-git
 pkgver=r342.b9e7560
 pkgrel=1
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 pkgdesc='A tool to retrieve malware directly from the source for security researchers.'
 arch=('any')
 url='https://github.com/technoskald/maltrieve'

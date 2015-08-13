@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xsser
 pkgver=1.6
 pkgrel=4
-groups=('projectname' 'projectname-*webapps' 'archassault-fuzzers' 'archassault-exploits')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-exploits')
 pkgdesc="A penetration testing tool for detecting and exploiting XSS vulnerabilites."
 arch=('any')
 url='http://xsser.sourceforge.net/'

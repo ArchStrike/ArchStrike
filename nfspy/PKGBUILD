@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=nfspy
 pkgver=1.0
 pkgrel=2
-groups=('projectname' 'projectname-*autonomous')
+groups=('archstrike' 'archstrike-autonomous')
 pkgdesc="A Python library for automating the falsification of NFS credentials when mounting an NFS share"
 url="https://github.com/bonsaiviking/NfSpy"
 license=('MIT')

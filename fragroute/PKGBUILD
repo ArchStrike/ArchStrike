@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=fragroute
 pkgver=1.2
 pkgrel=1
-groups=('projectname' 'projectname-*intellegence')
+groups=('archstrike' 'archstrike-intellegence')
 pkgdesc="A network intrusion detection evasion toolkit"
 url='http://www.monkey.org/~dugsong/fragroute/'
 depends=('libpcap' 'libdnet' 'libevent')

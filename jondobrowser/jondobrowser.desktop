@@ -9,6 +9,6 @@ Exec=/usr/bin/jondobrowser
 Terminal=false
 X-MultipleArgs=false
 Type=Application
-Icon=projectname-menu.png
+Icon=archstrike-menu.png
 Categories=Network;WebBrowser;
 StartupNotify=true

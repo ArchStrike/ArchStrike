@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=perl-algorithm-c3
 _cpanname=Algorithm-C3
 pkgver=0.08

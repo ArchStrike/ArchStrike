@@ -1,11 +1,11 @@
-#Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=torshammer
 pkgver=1.0
 pkgrel=1
 pkgdesc="A slow post dos testing tool written in Python."
 url="https://sourceforge.net/projects/torshammer/"
-groups=('projectname' 'projectname-*ddos')
+groups=('archstrike' 'archstrike-ddos')
 license=('custom')
 depends=('python2')
 makedepends=('unzip')

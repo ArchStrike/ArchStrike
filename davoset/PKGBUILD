@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=davoset
 pkgver=1.2.3
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="A tool for using Abuse of Functionality and XML External Entities vulne
 arch=('any')
 url="http://websecurity.com.ua/davoset/"
 license=('GPL2')
-groups=('projectname' 'projectname-*dos')
+groups=('archstrike' 'archstrike-dos')
 depends=('perl')
 makedepends=('unrar' 'dos2unix')
 options=('!emptydirs')

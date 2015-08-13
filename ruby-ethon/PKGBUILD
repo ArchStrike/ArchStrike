@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=ethon
 pkgname=ruby-$_gemname
 pkgver=0.7.1

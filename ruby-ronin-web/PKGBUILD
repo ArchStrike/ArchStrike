@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-ronin-web
 _gemname=ronin-web
 pkgver=0.2.1

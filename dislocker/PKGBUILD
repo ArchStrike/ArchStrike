@@ -1,4 +1,4 @@
-# Maintainer <https://projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dislocker
 pkgver=0.3
 pkgrel=2
@@ -6,7 +6,7 @@ pkgdesc="A tool to exploit the hash length extension attack in various hashing a
 arch=('armv6h' 'i686' 'armv7h' 'x86_64')
 url="http://www.hsc.fr/ressources/outils/dislocker/"
 license=('GPL2')
-groups=('projectname')
+groups=('archstrike')
 depends=('fuse')
 source=(http://www.hsc.fr/ressources/outils/dislocker/download/dislocker.tar.gz)
 sha512sums=('e2273793c03493c9ac29ca4763b0e28f0e3d6fc65bf2b2f5d61f9d36070a0d0136ffed8eb1f32508c9adc3e54667b8b16693a658cfc5ff5e3da3569720a0fb85')

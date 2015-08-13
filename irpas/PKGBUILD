@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=irpas
 pkgver=0.10
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Internetwork Routing Protocol Attack Suite."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://phenoelit-us.org/irpas'

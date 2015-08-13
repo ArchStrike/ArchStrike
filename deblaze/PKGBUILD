@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=deblaze
 pkgver=0.3
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A remote method enumeration tool for flex servers"
 url="http://deblaze-tool.appspot.com/"
 arch=('any')

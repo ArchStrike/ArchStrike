@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=peda-git
 pkgver=r63.152e635
 pkgrel=1
-groups=('projectname' 'projectname-*exploits')
+groups=('archstrike' 'archstrike-exploits')
 pkgdesc="A Python Exploit Development Assistant for GDB"
 arch=('any')
 url='https://github.com/longld/peda'

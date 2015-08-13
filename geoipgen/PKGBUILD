@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=geoipgen
 pkgver=0.4
 pkgrel=1
 pkgdesc="GeoIPgen is a country to IP addresses generator."
 url="http://code.google.com/p/geoipgen/"
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 license=('GPL')
 depends=('ruby')
 arch=('any')

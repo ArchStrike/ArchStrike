@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sploitego
 pkgver=r153.d9568dc
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*scanners' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-fuzzer')
 pkgdesc="Maltego Penetration Testing Transforms"
 url="https://github.com/allfro/sploitego"
 arch=('any')

@@ -7,4 +7,4 @@ Exec=gksu fern-wifi-cracker
 Icon=/usr/share/fern-wifi-cracker/resources/screen_splash.png
 Terminal=false
 StartupNotify=false
-Categories=ArchAssault;ArchAssaultWireless;ArchAssaultCracker;Utility;Security;
+Categories=ArchStrike;ArchStrikeWireless;ArchStrikeCracker;Utility;Security;

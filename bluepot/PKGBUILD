@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bluepot
 pkgver=0.1
 pkgrel=2
-groups=('projectname' 'projectname-*bluetooth')
+groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc="A Bluetooth Honeypot written in Java, it runs on Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('java-environment')

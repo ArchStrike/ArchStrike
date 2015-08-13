@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=hyperfox
 pkgname=hyperfox-git
 pkgver=20150113.r45
 pkgrel=1
-groups=('projectname' 'projectname-*proxies')
+groups=('archstrike' 'archstrike-proxies')
 pkgdesc="A security tool for proxying and recording HTTP and HTTPs traffic."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686')
 _url="github.com/xiam/hyperfox"

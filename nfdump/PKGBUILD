@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Rudy Matela <rudy@matela.com.br>
 pkgname=nfdump
 pkgver=1.6.13
@@ -6,7 +6,7 @@ pkgrel=1
 pkgdesc="A set of tools to collect and process netflow data."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://nfdump.sourceforge.net/"
-groups=('archassualt' 'projectname-networking')
+groups=('archassualt' 'archstrike-networking')
 license=('BSD')
 depends=('glibc')
 makedepends=('flex' 'bison')

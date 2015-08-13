@@ -1,7 +1,7 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pdfbook-analyzer
 pkgver=2014220
-groups=('projectname' 'projectname-*forensics')
+groups=('archstrike' 'archstrike-forensics')
 pkgrel=1
 pkgdesc="Utility for facebook memory forensics."
 arch=('x86_64' 'i686' 'armv7h')

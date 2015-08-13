@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wfuzz
 pkgver=2.1.3
 pkgrel=1
-groups=('projectname' 'projectname-*webapps' 'archassault-fuzzers')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
 pkgdesc="Utility to bruteforce web applications to find their not linked resources"
 url='https://github.com/xmendez/${pkgname}'
 arch=('any')

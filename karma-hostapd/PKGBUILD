@@ -1,11 +1,11 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=karma-hostapd
 pkgver=1.0
 pkgrel=1
 pkgdesc="a set of patches to access point software to get it to respond to probe requests not just for itself but for any ESSID requested"
 url="http://www.digininja.org/karma/"
 license=('GPL')
-groups=('projectname')
+groups=('archstrike')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('libnl1' 'openssl')
 source=("http://www.digininja.org/files/hostapd-$pkgver-karma.tar.bz2"

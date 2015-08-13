@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=fang
 pkgver=1.2
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="A multi service threaded MD5 cracker"
 arch=('any')
 url='https://github.com/evilsocket/fang'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=radamsa
 pkgver=0.4
 pkgrel=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="General purpose data fuzzer."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://code.google.com/p/ouspg/wiki/Radamsa"

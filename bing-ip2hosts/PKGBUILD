@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=bing-ip2hosts
 pkgver=0.4
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc='Enumerates all hostnames which Bing has indexed for a specific IP address.'
 arch=('any')
 url='http://www.morningstarsecurity.com/research/bing-ip2hosts'

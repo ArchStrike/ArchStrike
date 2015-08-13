@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=themole
 pkgver=0.3
 pkgrel=1
-groups=('projectname' 'projectname-*bruteforce')
+groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc="Automatic SQL Injection Exploitation Tool"
 arch=('any')
 url='http://sourceforge.net/projects/themole/'

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 _distname=blessings
 pkgname=python2-$_distname

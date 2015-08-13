@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=hbad
 pkgver=1
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.curesec.com/en/publications/tools.html"
 license=('custom')
 depends=('openssl')
-groups=('projectname')
+groups=('archstrike')
 source=("http://www.curesec.com/data/$pkgname-release.tar.gz")
 sha512sums=('735a2ba2c40cd0799688e57e558ddb4ad4dd5f650d0436582765930ef458f14e17eafa0faaf1331f514c2451a73342a4f67ec980861b210f9bc4ec8491ff250a')
 

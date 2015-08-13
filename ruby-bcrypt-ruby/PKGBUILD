@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-bcrypt-ruby
 pkgver=3.1.2
 pkgrel=2

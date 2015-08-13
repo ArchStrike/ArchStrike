@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-pyqtgraph
 _pkgname=pyqtgraph
 pkgver=0.9.10

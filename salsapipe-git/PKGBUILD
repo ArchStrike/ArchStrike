@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 _pkgname=salsapipe
@@ -9,7 +9,7 @@ pkgdesc="Encrypted network tunneling using salsa20 from libnettle and GPG from l
 url="https://github.com/0xcaca0/${_pkgname}"
 license=('GPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 depends=('gpgme' 'nettle')
 makedepends=('git')
 

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=smart_colored
 pkgname=ruby-${_gemname}
 pkgver=1.1.1

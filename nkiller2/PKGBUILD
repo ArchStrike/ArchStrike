@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='nkiller2'
 pkgver='2.0'
 pkgrel=1
-groups=('projectname' 'projectname-*dos' 'archassault-networking')
+groups=('archstrike' 'archstrike-dos' 'archstrike-networking')
 pkgdesc='A TCP exhaustion/stressing tool.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://sock-raw.org/projects.html'

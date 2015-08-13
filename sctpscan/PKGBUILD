@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sctpscan
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*scanners' 'archassault-reconnaissance')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-reconnaissance')
 pkgdesc="A network scanner for discovery and security"
 url="http://www.p1sec.com/"
 arch=('any')

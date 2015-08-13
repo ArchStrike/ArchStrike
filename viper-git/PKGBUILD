@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgbase=viper-git
 pkgname=(viper-git viper-git-docs)
 pkgver=r715.05b6c15
 pkgrel=1
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 pkgdesc="A Binary analysis framework"
 arch=('any')
 url='https://github.com/botherder/viper'

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: William Robertson <wkr@wkr.name>
 pkgname='androguard'
 pkgver='1.9'
@@ -7,7 +7,7 @@ pkgdesc='Python framework for Android application analysis.'
 arch=('any')
 url='https://code.google.com/p/androguard/'
 license=('Apache')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2')
 makedepends=('python2-setuptools')
 optdepends=(

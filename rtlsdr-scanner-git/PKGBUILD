@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=rtlsdr-scanner-git
 pkgver=0.r874.6f9928d
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A cross platform Python frequency scanning GUI for the OsmoSDR rtl-sdr library"
 url='https://github.com/EarToEarOak/RTLSDR-Scanner'
 arch=('any')

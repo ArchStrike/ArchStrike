@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=intrace
 pkgver=1.5
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="Traceroute-like application piggybacking on existing TCP connections"
 url='http://intrace.googlecode.com'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

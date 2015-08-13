@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pentbox
 pkgver=1.8
 pkgrel=1
-groups=('projectname' 'projectname-*scanners' 'archassault-fuzzers')
+groups=('archstrike' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="A security suite that packs security and stability testing oriented tools for networks and systems"
 arch=('any')
 url='http://www.pentbox.net'

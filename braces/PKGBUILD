@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='braces'
 pkgver='0.4'
 pkgrel=2
 pkgdesc='A Bluetooth Tracking Utility.'
 url='http://braces.shmoo.com/'
-groups=('projectname' 'projectname-*bluetooth')
+groups=('archstrike' 'archstrike-bluetooth')
 license=('GPL')
 depends=('php' 'mysql')
 arch=('any')

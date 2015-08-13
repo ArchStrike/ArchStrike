@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='perl-io-socket-ip'
 pkgver='0.36'
 _distdir="IO-Socket-IP-${pkgver}"

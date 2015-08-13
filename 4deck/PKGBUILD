@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=4deck
 pkgver=0.1
-groups=('projectname' 'projectname-*drone' 'archassault-meta-thedeck')
+groups=('archstrike' 'archstrike-drone' 'archstrike-meta-thedeck')
 pkgrel=3
 pkgdesc="An addon from The Deck Project. Create a magic hub. ARM ONLY SUPPORT"
 arch=('armv6h' 'armv7h')

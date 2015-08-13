@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sslstrip
 pkgver=0.9
 pkgrel=3
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="Transparently hijack http traffic on a network, watch for https links and redirects, then map those links"
 arch=('any')
 url='http://www.thoughtcrime.org/software/sslstrip'

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 pkgname=projectname-devtools
@@ -6,7 +6,7 @@ _pkgname=devtools
 pkgver=20141224
 pkgrel=5
 epoch=1
-pkgdesc='Tools for ArchAssault i686 & x86_64 package maintainers'
+pkgdesc='Tools for ArchStrike i686 & x86_64 package maintainers'
 arch=('i686' 'x86_64')
 license=('GPL')
 conflicts=('devtools')

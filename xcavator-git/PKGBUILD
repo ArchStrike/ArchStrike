@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team AT projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xcavator-git
 pkgver=r5.bd9e2d8
 pkgrel=2
@@ -6,7 +6,7 @@ pkgdesc="man-in-the-middle and phishing attack tool that steals the victim's cre
 arch=('any')
 url="https://github.com/nccgroup/xcavator"
 license=('GPL3')
-groups=('projectname')
+groups=('archstrike')
 depends=('pysmb')
 makedepends=('git')
 options=(!emptydirs)

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor : SpepS <dreamspepser at yahoo dot it>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
@@ -6,7 +6,7 @@ pkgname=dissy
 pkgver=10
 pkgrel=1
 pkgdesc="A graphical frontend to the objdump disassembler for compiler-generated code"
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 arch=('any')
 url="http://dissy.googlecode.com/"
 license=('GPL')

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=stomper
 pkgver=0.2.4
 pkgrel=4
@@ -7,7 +7,7 @@ arch=('any')
 url='http://code.google.com/p/stomper/'
 license=('apache')
 depends=('python2')
-groups=('projectname')
+groups=('archstrike')
 makedepends=('python2-distribute')
 source=("http://stomper.googlecode.com/files/stomper-$pkgver.tar.gz")
 sha512sums=('61ffe4b4bc163be6370ebf52e79e2e93ad8f3b85787468968ae1d841f675d55fad281f3db12bcae6176d6921e86131cb1f1bab32045bda1a872a4e51badeff0b')

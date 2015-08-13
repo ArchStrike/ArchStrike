@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=magicrescue
 pkgver=1.1.9
 pkgrel=2
-groups=('projectname' 'projectname-*forensic')
+groups=('archstrike' 'archstrike-forensic')
 pkgdesc="Find and recover deleted files on block devices"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://freshmeat.net/projects/magicrescue/'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sysinternals-suite
 pkgver=20131208
 pkgrel=2
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 pkgdesc="Sysinternals tools suite"
 url="http://sysinternals.com"
 license=('sysinternals')

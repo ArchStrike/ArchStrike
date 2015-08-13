@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=thread_safe
 pkgname=ruby-thread_safe
 pkgver=0.1.3

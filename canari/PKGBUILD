@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=canari
 pkgver=1.1
 pkgrel=1
-groups=('projectname' 'projectname-*forensic' 'archassault-reconnaissance' 'archassault-scanners')
+groups=('archstrike' 'archstrike-forensic' 'archstrike-reconnaissance' 'archstrike-scanners')
 pkgdesc="A transform framework for maltego"
 url="http://www.canariproject.com"
 arch=('any')

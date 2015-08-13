@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby1.9-metasploit_data_models
 _gemname=metasploit_data_models
 pkgver=0.17.0

@@ -1,9 +1,9 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=beeswarm
 pkgver=0.7.14
 pkgrel=1
-groups=('projectname' 'projectname-*honeypots')
+groups=('archstrike' 'archstrike-honeypots')
 pkgdesc="A honeypot project which provides easy configuration, deployment and managment of honeypots."
 url="http://www.beeswarm-ids.org/"
 depends=('python2' 'python2-pyzmq' 'python2-crypto' 'python2-ecdsa' 'python2-cssselect' 'python2-nose'

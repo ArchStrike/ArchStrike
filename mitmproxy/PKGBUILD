@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mitmproxy
 pkgver=0.11.3
 pkgrel=1
-groups=('projectname' 'projectname-*proxies' 'archassault-exploits')
+groups=('archstrike' 'archstrike-proxies' 'archstrike-exploits')
 pkgdesc="SSL-capable man-in-the-middle HTTP proxy"
 arch=('any')
 license=('GPL')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-i18n
 _gemname=${pkgname#ruby-}
 pkgver=0.6.4

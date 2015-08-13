@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=luksipc
 pkgver=0.01
 pkgrel=2
-groups=('projectname' 'projectname-*encryption')
+groups=('archstrike' 'archstrike-encryption')
 pkgdesc="A tool to convert unencrypted block devices to encrypted LUKS devices in-place"
 arch=(any)
 url="http://www.johannes-bauer.com/linux/luksipc"

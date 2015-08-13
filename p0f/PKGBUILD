@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=p0f
 pkgver=3.08b
 pkgrel=1
-groups=('projectname' 'projectname-*sniffers' 'archassault-fingerprinting')
+groups=('archstrike' 'archstrike-sniffers' 'archstrike-fingerprinting')
 pkgdesc="Purely passive TCP/IP traffic fingerprintinging tool "
 url='http://lcamtuf.coredump.cx/p0f3/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

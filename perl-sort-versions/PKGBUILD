@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=E/ED/EDAVIS
 _perlmod=Sort-Versions
 pkgname=perl-sort-versions

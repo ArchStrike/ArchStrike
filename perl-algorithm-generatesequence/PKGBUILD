@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author='RCLAMP'
 _perlmod='Algorithm-GenerateSequence'
 pkgname='perl-algorithm-generatesequence'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ciphertest
 pkgver=20.3224858
 pkgrel=1
-groups=('projectname' 'projectname-*cryptography')
+groups=('archstrike' 'archstrike-cryptography')
 pkgdesc="A better SSL cipher checker using gnutls"
 arch=('any')
 url="https://github.com/OpenSecurityResearch/ciphertest"

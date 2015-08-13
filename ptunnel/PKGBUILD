@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ptunnel
 pkgver=0.72
 pkgrel=2
-groups=('projectname' 'projectname-*proxies' 'archassault-networking')
+groups=('archstrike' 'archstrike-proxies' 'archstrike-networking')
 pkgdesc="A tool for reliably tunneling TCP connections over ICMP echo request and reply packets"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('libpcap')

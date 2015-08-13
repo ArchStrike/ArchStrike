@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=DPARIS
 _perlmod=Crypt-IDEA
 pkgname=perl-crypt-idea

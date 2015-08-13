@@ -1,4 +1,4 @@
-# Maintainer: Arch3y <arch3y projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgbase=projectname-meta
 pkgname=('projectname-meta-iso-all')
 pkgver=0.6
@@ -9,7 +9,7 @@ license=('GPL')
 groups=('projectname' 'projectname-*meta')
 
 package_projectname-meta-iso-all() {
-  pkgdesc=('Meta package for ArchAssault')
+  pkgdesc=('Meta package for ArchStrike')
     depends=(gnu-netcat
         ltrace
         strace

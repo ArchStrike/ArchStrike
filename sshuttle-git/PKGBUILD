@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sshuttle-git
 pkgver=20120810.r198.9ce2fa0
 pkgrel=1
@@ -7,7 +7,7 @@ pkgdesc="Transparent proxy server that works as a poor man's VPN. Forwards all T
 arch=('any')
 url="https://github.com/apenwarr/sshuttle"
 license=('GPL')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2' 'iptables')
 makedepends=('git')
 provides=('sshuttle')

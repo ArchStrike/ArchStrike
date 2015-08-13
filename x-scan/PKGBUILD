@@ -1,13 +1,13 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='x-scan'
 pkgver='3.3'
 pkgrel=2
 pkgdesc='A general network vulnerabilities scanner for scanning network vulnerabilities for specific IP address scope or stand-alone computer by multi-threading method, plug-ins are supportable.'
 url='http://www.xfocus.org/'
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 license=('custom')
 arch=('any')
-source=("https://github.com/ArchAssault-Project/x-scan/raw/master/X-Scan-v$pkgver.zip")
+source=("https://github.com/ArchStrike-Project/x-scan/raw/master/X-Scan-v$pkgver.zip")
 md5sums=('5cb7b849f16580b431d16700b343b9f6')
 
 package() {

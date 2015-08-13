@@ -1,18 +1,18 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Jeremy Lynch <jl projectname org>
 # Contributor: Tyler Bennett <arch3y projectname org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 pkgname=projectname-keyring
 pkgver=20140202
 pkgrel=3
-pkgdesc='The ArchAssault Projects PGP keyring'
+pkgdesc='The ArchStrike Projects PGP keyring'
 arch=('any')
 url='https://bitbucket.org/projectname/projectname-*keyring.git'
 depends=('projectname-mirrorlist')
 makedepends=('git')
 optdepends=('gnupg-largekeys')
 license=('GPL')
-groups=('projectname' 'projectname-*base' 'archassault-dev')
+groups=('projectname' 'projectname-*base' 'archstrike-dev')
 replaces=('projectname-meta-armsetup')
 install="${pkgname}.install"
 source=("aa-keyring::git+https://bitbucket.org/projectname/projectname-*keyring.git")

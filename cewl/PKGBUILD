@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cewl
 pkgver=4.3
 pkgrel=1
-groups=('projectname' 'projectname-*autonomous' 'archassault-cracker')
+groups=('archstrike' 'archstrike-autonomous' 'archstrike-cracker')
 pkgdesc='A custom word list generator'
 arch=('any')
 url="http://www.digininja.org/projects/cewl.php"

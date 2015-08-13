@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Théophile Studer
 pkgname=yara
 pkgver=3.4.0
 pkgrel=1
-groups=('projectname' 'projectname-*malware')
+groups=('archstrike' 'archstrike-malware')
 pkgdesc="A malware identification and classification tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://plusvic.github.io/${pkgname}"

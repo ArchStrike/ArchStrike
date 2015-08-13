@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=hasere
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*enumeration')
+groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="Discovery the vhosts using google and bing"
 arch=('any')
 url='https://github.com/galkan/hasere'

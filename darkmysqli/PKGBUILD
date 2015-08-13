@@ -1,14 +1,14 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='darkmysqli'
 pkgver='1.6'
 pkgrel=1
 pkgdesc='Multi-Purpose MySQL Injection Tool'
 arch=('any')
-url='https://github.com/ArchAssault-Project/darkmysqli'
+url='https://github.com/ArchStrike-Project/darkmysqli'
 license=('unknown')
 depends=('python2')
-groups=('projectname' 'projectname-*webapp' 'archassault-exploit')
-source=("https://github.com/ArchAssault-Project/darkmysqli/raw/master/darkmysqli${pkgver//./}.tar.gz")
+groups=('archstrike' 'archstrike-webapp' 'archstrike-exploit')
+source=("https://github.com/ArchStrike-Project/darkmysqli/raw/master/darkmysqli${pkgver//./}.tar.gz")
 md5sums=('321de32771d631f1d9b3aa281302add0')
 
 prepare() {

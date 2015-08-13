@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ssldump
 pkgver=0.9b3
 pkgrel=1
-groups=('projectname' 'projectname-*sniffers')
+groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="an SSLv3/TLS network protocol analyzer"
 url='http://www.rtfm.com/ssldump/'
 license=('custom')

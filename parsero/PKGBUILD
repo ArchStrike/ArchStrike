@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=parsero
 pkgver=0.75
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="A Robots.txt audit tool"
 url='https://github.com/behindthefirewalls/Parsero'
 arch=('any')

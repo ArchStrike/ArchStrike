@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xspy
 pkgver=1.0c
 pkgrel=2
-groups=('projectname' 'projectname-*sniffers')
+groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A utility for monitoring keypresses on remote X servers"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.freshports.org/security/xspy/'

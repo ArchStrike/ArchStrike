@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-metaclass
 _gemname=metaclass
 pkgver=0.0.1

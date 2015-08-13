@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wifijammer-git
 pkgver=20150330.r57
 pkgrel=1
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A python script to continuosly jam all wifi clients within range"
 arch=('any')
 url='https://github.com/DanMcInerney/wifijammer'

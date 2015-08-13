@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author='AHICOX'
 _perlmod='Time-Interval'
 pkgname='perl-time-interval'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=aesfix
 pkgver=1.0.1
 pkgrel=3
-groups=('projectname' 'projectname-*forensics' 'archassault-crackers')
+groups=('archstrike' 'archstrike-forensics' 'archstrike-crackers')
 pkgdesc="A tool to find AES key in RAM"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://citp.princeton.edu/memory/code/"

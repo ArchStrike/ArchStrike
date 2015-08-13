@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=arpon
 pkgver=2.7.2
 pkgrel=1
@@ -9,7 +9,7 @@ license=('MIT')
 depends=('libdnet' 'libnet' 'libpcap')
 makedepends=('cmake' 'libdnet')
 backup=('etc/conf.d/arpon')
-groups=('projectname' 'projectname-*defense')
+groups=('archstrike' 'archstrike-defense')
 source=("http://downloads.sourceforge.net/sourceforge/arpon/ArpON-$pkgver.tar.gz"
         "arpon"
         "arpon.conf.d"

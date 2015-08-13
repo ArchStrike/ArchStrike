@@ -1,11 +1,11 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=seclists-git
 pkgver=r141.c8f9315
 pkgrel=1
 pkgdesc="A collection of multiple types of lists used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more."
 arch=('any')
 license=('GPL2' 'custom')
-groups=('projectname')
+groups=('archstrike')
 depends=('bash')
 makedepends=('git')
 replaces=('seclists')

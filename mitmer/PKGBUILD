@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team AT projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mitmer
 pkgver=r22.b01c7fe
 pkgrel=1
@@ -7,7 +7,7 @@ pkgdesc="man-in-the-middle and phishing attack tool that steals the victim's cre
 arch=('any')
 url="https://github.com/husam212/MITMer"
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2' 'scapy' 'python2-nfqueue')
 makedepends=('git')
 options=(!emptydirs)

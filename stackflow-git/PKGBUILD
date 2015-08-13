@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=stackflow-git
 pkgver=0.r2.2af525d
 pkgrel=3
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Universal stack-based buffer overfow exploitation tool"
 arch=('any')
 url='https://github.com/d4rkcat/stackflow'

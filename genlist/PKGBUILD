@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='genlist'
 pkgver=20131216
 pkgrel=1
 pkgdesc="Generates lists of IP addresses."
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("http://packetstorm.igor.onlinedirect.bg/UNIX/scanners/genlist.c")

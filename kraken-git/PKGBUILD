@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: onny <onny@project-insanity.org>
 
 pkgname=kraken-git
@@ -6,7 +6,7 @@ _pkgname=kraken
 pkgver=r32.368a837
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*hardware')
+groups=('archstrike' 'archstrike-hardware')
 pkgdesc="A project to encrypt A5/1 GSM signaling using a Time/Memory Tradeoff Attack."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://opensource.srlabs.de/projects/a51-decrypt"

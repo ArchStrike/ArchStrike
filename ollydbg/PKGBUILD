@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ollydbg
 pkgver=201g
 pkgrel=3
-groups=('projectname' 'projectname-*debugging' 'archassault-windows')
+groups=('archstrike' 'archstrike-debugging' 'archstrike-windows')
 pkgdesc="A 32-bit assembler-level analysing debugging"
 arch=('i686' 'x86_64')
 url='http://www.ollydbg.de'

@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sipp
 pkgver=3.4.1
 pkgrel=1
-groups=('projectname' 'projectname-*voip')
+groups=('archstrike' 'archstrike-voip')
 pkgdesc="A free Open Source test tool / traffic generator for the SIP protocol."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://sipp.sourceforge.net/'

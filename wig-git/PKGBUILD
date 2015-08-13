@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wig-git
 pkgver=r439.fa9f62b
 pkgrel=1
-groups=('projectname' 'projectname-*webapps' 'archassault-scanners')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc="WebApp Information Gatherer"
 arch=('any')
 url='https://github.com/jekyc/wig'

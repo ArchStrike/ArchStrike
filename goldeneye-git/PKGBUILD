@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=goldeneye-git
 pkgver=r16.7a38fe9
 pkgrel=1
-groups=('projectname' 'projectname-*networking' 'archassault-dos')
+groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Modular framework that takes advantage of poor upgrade implementations by injecting fake updates"
 arch=('any')
 url='https://github.com/jseidl/GoldenEye'

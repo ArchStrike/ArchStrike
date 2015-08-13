@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='sqlping'
 pkgver='3'
 pkgrel=1
 pkgdesc='SQL Server scanning tool that also checks for weak passwords using wordlists.'
 url='http://www.sqlsecurity.com/downloads'
-groups=('projectname' 'projectname-*windows')
+groups=('archstrike' 'archstrike-windows')
 license=('custom')
 arch=('any')
 source=("${pkgname}-${pkgver}.zip::http://www.sqlsecurity.com/downloads/SQLPing${pkgver}.zip?attredirects=0&d=1")

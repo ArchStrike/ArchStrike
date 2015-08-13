@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=unicornscan
 pkgver=0.4.7
 pkgrel=5
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc='A new information gathering and correlation engine.'
 url='http://www.unicornscan.org/'
 depends=('libpcap' 'postgresql-libs' 'libdnet' 'libltdl')

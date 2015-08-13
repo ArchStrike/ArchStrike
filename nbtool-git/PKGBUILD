@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=nbtool-git
 pkgver=20140415.r2
 pkgrel=2
@@ -8,8 +8,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://wiki.skullsecurity.org/Nbtool'
 source=("${pkgname}::git+https://github.com/iagox86/nbtool.git")
 license=('CUSTOM')
-groups=('projectname' 'projectname-*networking' 'archassault-scanners'
-        'projectname-reconnaissance')
+groups=('archstrike' 'archstrike-networking' 'archstrike-scanners'
+        'archstrike-reconnaissance')
 depends=('libpcap')
 makedepends=('git' 'nasm')
 provides=('nbtool' 'dnscat')

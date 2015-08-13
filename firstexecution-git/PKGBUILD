@@ -1,8 +1,8 @@
-#Maintainer: ArchAssault <team at projectname dot org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=firstexecution-git
 pkgver=r6.a275793
 pkgrel=2
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A Collection of different ways to execute code outside of the expected entry points"
 arch=('any')
 url='https://github.com/nccgroup/firstexecution'

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='voipong'
 pkgver='2.0'
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc='A utility which detects all Voice Over IP calls on a pipeline, and for 
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.enderunix.org/voipong/'
 license=('GPL')
-groups=('projectname' 'projectname-*voip')
+groups=('archstrike' 'archstrike-voip')
 depends=('libpcap')
 source=("http://www.enderunix.org/voipong/voipong-$pkgver.tar.gz")
 md5sums=('4b3e16c5d8399bba86b3caf1887550ff')

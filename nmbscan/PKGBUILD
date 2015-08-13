@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=nmbscan
 pkgver=1.2.6
 pkgrel=1
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Tool to scan the shares of a SMB/NetBIOS network, using the NMB/SMB/NetBIOS protocols.'
 url='http://nmbscan.gbarbier.org/'
 depends=('samba')

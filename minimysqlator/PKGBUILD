@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=minimysqlator
 pkgver=0.5
 pkgrel=1
@@ -7,7 +7,7 @@ arch=(any)
 url="http://www.scrt.ch/pages_en/minimysqlator.html"
 license=('GPL')
 depends=('java-runtime')
-groups=('projectname' 'projectname-*database')
+groups=('archstrike' 'archstrike-database')
 source=(http://www.scrt.ch/outils/mms/mms_05.jar
         http://www.scrt.ch/outils/mms/common_tables.txt)
 md5sums=('727350bcc40c05c40bae9a7c900600bb'

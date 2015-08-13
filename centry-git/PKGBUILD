@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=centry-git
 pkgver=r72.6de2868
 pkgrel=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="A Panic button for protection against cold boot attacks"
 arch=('any')
 url='https://github.com/0xPoly/Centry'

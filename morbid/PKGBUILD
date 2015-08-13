@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=morbid
 pkgver=0.8.7.3
 pkgrel=6
@@ -6,7 +6,7 @@ pkgdesc="A Twisted-based publish/subscribe messaging server that uses the STOMP 
 arch=('any')
 url='http://pypi.python.org/pypi/morbid/'
 license=('MIT')
-groups=('projectname')
+groups=('archstrike')
 depends=(python2)
 makedepends=(python2-distribute)
 source=(http://pypi.python.org/packages/source/m/morbid/morbid-$pkgver.tar.gz)

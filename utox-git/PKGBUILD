@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team at projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=utox
 pkgname=${_pkgname}-git
@@ -9,7 +9,7 @@ pkgdesc="Lightweight Tox client"
 arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
 url="https://github.com/notsecure/uTox"
 license=('GPL3')
-groups=('projectname')
+groups=('archstrike')
 depends=('tox-git=1:r3156.4ad7649-1' 'openal' 'v4l-utils' 'libdbus' 'fontconfig' 'freetype2' 'filter_audio-git' 'libxrender' 'libxext' 'desktop-file-utils' 'hicolor-icon-theme')
 makedepends=('git' 'libxft')
 provides=("$_pkgname")

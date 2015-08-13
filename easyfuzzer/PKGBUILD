@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='easyfuzzer'
 pkgver='3.6'
 pkgrel=4
-groups=('projectname' 'projectname-*webapp' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-fuzzer')
 pkgdesc='A flexible fuzzer, not only for web, has a CSV output for efficient output analyze (platform independant).'
 arch=('any')
 url='http://www.mh-sec.de/downloads.html.en'

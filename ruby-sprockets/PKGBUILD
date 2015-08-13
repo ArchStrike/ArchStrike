@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=ruby-sprockets
 _gemname=${pkgname#ruby-}
 pkgver=2.8.2

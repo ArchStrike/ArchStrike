@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wifi-honey
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A management tool for wifi honeypots"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.digininja.org/projects/wifi_honey.php"

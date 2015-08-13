@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=hamster
 pkgver=2.0.0
 pkgrel=1
-groups=('projectname' 'projectname-*exploit')
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Tool for HTTP session sidejacking."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://hamster.erratasec.com/'

@@ -1,10 +1,10 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnspredict
 pkgver=0.0.2
 pkgrel=1
 pkgdesc="DNS prediction"
 url="http://johnny.ihackstuff.com"
-groups=('projectname' 'projectname-*scanners')
+groups=('archstrike' 'archstrike-scanners')
 arch=(any)
 license=('GPL')
 depends=('perl' 'perl-libwww')

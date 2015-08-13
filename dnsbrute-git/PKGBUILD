@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team archassautl org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=dnsbrute-git
 pkgver=0.r2.b1dc84a
 pkgrel=1
-groups=('projectname' 'projectname-*dns')
+groups=('archstrike' 'archstrike-dns')
 pkgdesc="Multi theaded DNS bruteforcing"
 arch=('any')
 url='https://github.com/d4rkcat/dnsbrute'

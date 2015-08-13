@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=perl-net-socks
 _cpanname=SOCKS
 pkgver=0.03

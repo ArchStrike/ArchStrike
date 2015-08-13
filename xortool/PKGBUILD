@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xortool
 pkgver=0.96
 pkgrel=2
-groups=('projectname' 'projectname-*cryptography' 'archassault-bruteforce' 'archassault-forensics')
+groups=('archstrike' 'archstrike-cryptography' 'archstrike-bruteforce' 'archstrike-forensics')
 pkgdesc="A tool to analyze multi-byte xor cipher."
 arch=('any')
 url="https://github.com/hellman/xortool/"

@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sslsplit-git
 pkgver=r321.22b4d3c
 pkgrel=1
-groups=('projectname' 'projectname-*networking')
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A tool for man-in-the-middle attacks against SSL/TLS encrypted network connections."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/droe/sslsplit'

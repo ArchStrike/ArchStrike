@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=webscarab
 pkgver=20120422.001828
 pkgrel=2
-groups=('projectname' 'projectname-*webapp' 'archassault-proxy' 'archassault-scanners' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-proxy' 'archstrike-scanners' 'archstrike-fuzzer')
 pkgdesc="Framework for analysing applications that communicate using the HTTP and HTTPS protocols"
 arch=('any')
 url='http://www.owasp.org/index.php/Category:OWASP_WebScarab_Project'

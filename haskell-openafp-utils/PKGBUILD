@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=haskell-openafp-utils
 pkgver=1.3.1.2
 pkgrel=3

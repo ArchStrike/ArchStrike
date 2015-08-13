@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=gggooglescan
 pkgver=0.4
 pkgrel=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="A Google scraper which performs automated searches and returns results of search queries in the form of URLs or hostnames."
 arch=('any')
 url='http://www.morningstarsecurity.com/research/gggooglescan'

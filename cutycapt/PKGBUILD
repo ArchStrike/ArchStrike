@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cutycapt
 pkgver=10
 pkgrel=3
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="A Qt and WebKit based command-line utility that captures WebKit's rendering of a web page."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url='http://cutycapt.sourceforge.net/'

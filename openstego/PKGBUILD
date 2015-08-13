@@ -1,11 +1,11 @@
-# Maintainer: ArchAssault <team projectname.org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
 pkgname=openstego
 pkgver=0.6.1
 pkgrel=1
 pkgdesc="Plugin based tool for steganography, with encrytion support."
 arch=('any')
-groups=('projectname' 'projectname-*steganography')
+groups=('archstrike' 'archstrike-steganography')
 url="http://openstego.sourceforge.net"
 license=('GPL2')
 depends=('java-environment')

@@ -1,15 +1,15 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=amap
 pkgver=5.4
 pkgrel=5
 pkgdesc="Next-generation tool for assisting network penetration testing."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL2' 'custom')
-groups=('projectname')
+groups=('archstrike')
 depends=('pcre' 'openssl' 'ca-certificates')
 url="http://freeworld.thc.org/releases.php"
 makedepends=('git')
-source=("git+https://github.com/ArchAssault-Project/amap.git"
+source=("git+https://github.com/ArchStrike-Project/amap.git"
         "pcre.patch"
         'amap.desktop')
 sha512sums=('SKIP'

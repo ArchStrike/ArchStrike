@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=skipfish
 pkgver=2.10b
 pkgrel=1
-groups=('projectname' 'projectname-*webapp' 'archassault-scanners' 'archassault-fuzzer')
+groups=('archstrike' 'archstrike-webapp' 'archstrike-scanners' 'archstrike-fuzzer')
 pkgdesc="A fully automated, active web application security reconnaissancenaissance tool"
 arch=('any')
 license=('Apache')

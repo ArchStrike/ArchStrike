@@ -5,13 +5,13 @@ pkgrel=1
 arch=('any')
 url='https://projectname.org/'
 license=('GPL')
-pkgdesc=('Meta package for ArchAssault i686/x86 setup')
+pkgdesc=('Meta package for ArchStrike i686/x86 setup')
 optdepends=('gnupg-largekeys' 'cryptsetup-nuke-keys' 'projectname-meta')
 groups=('projectname')
 install=projectname-meta.install
 provides=('projectname-keyring' 'projectname-*mirrorlist')
 conflicts=('projectname-keyring' 'projectname-*mirrorlist')
-source=('projectname-mirrorlist' "aa-keyring::git+https://bitbucket.org/projectname-*/archassault-keyring.git")
+source=('projectname-mirrorlist' "aa-keyring::git+https://bitbucket.org/projectname-*/archstrike-keyring.git")
 sha512sums=('70f459e940c320f8e924047d23230d971d6f49d4b747c2370922204e0b4b62ff633e06ea3ddd4f47d70241c60abb0dc134dc7d32d8cc79dfe60c8d94d52bc6e2'
             'SKIP')
 

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
 pkgname=aespipe
@@ -8,7 +8,7 @@ pkgdesc="Reads data from stdin and outputs encrypted or decrypted results to std
 url="http://loop-aes.sourceforge.net/aespipe"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-groups=('projectname' 'projectname-*encryption')
+groups=('archstrike' 'archstrike-encryption')
 depends=('bash')
 source=("http://loop-aes.sourceforge.net/${pkgname}/${pkgname}-v${pkgver}.tar.bz2")
 sha512sums=('3c48facedf2e57978e9762ca1bfaa7c435897d75ab127697e20fa935a4797fde1d88e31db1b46f35968626e1bda3f2d2251d1b3f171cd27ee3cfc7a3d0193248')

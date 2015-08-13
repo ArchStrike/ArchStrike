@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=auto-xor-decryptographyr
 pkgver=5.1f552be
 pkgrel=1
-groups=('projectname' 'projectname-*cryptography')
+groups=('archstrike' 'archstrike-cryptography')
 pkgdesc="Automatic XOR decryptographyr tool."
 arch=('any')
 url="http://www.blog.mrg-effitas.com/publishing-of-mrg-effitas-automatic-xor-decryptographyr-tool/"

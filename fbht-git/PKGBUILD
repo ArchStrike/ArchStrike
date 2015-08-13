@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=fbht-git
 pkgver=r53.9e515ef
 pkgrel=1
-groups=('projectname' 'projectname-*webapps')
+groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Facebook Hacking Tool"
 arch=('any')
 url='https://github.com/chinoogawa/fbht'

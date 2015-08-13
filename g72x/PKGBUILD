@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname='g72x'
 pkgver='1'
 pkgrel=1
@@ -7,7 +7,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.ps-auxw.de/'
 license=('GPL2')
 provides=('g72x++' 'g72x')
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 source=('http://www.ps-auxw.de/g72x++.tar.bz2')
 md5sums=('1375aa2313b5b23744538876d2d9da7a')
 

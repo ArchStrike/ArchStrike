@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=wiffy
 pkgver=0.2.1aa
 pkgrel=1
-groups=('projectname' 'projectname-*wireless' 'archassault-autonomous')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-autonomous')
 pkgdesc="Automated wifi hacking script"
 url="https://code.google.com/p/g0tmi1k/"
 arch=('any')

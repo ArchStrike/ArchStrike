@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=scanmem
 pkgver=0.15.2
 pkgrel=1
-groups=('projectname' 'projectname-*reverse')
+groups=('archstrike' 'archstrike-reverse')
 pkgdesc="A utility used to locate the address of a variable in an executing process."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/scanmem'

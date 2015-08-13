@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=python2-jsonrpclib
 _realname=jsonrpclib
 pkgver=0.5.1

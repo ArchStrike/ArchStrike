@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=pyvirtualdisplay
 pkgver=0.1.5
 pkgrel=1

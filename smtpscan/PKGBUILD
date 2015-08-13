@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=smtpscan
 pkgver=0.5
 pkgrel=1
-groups=('projectname' 'projectname-*fingerprinting')
+groups=('archstrike' 'archstrike-fingerprinting')
 pkgdesc="An SMTP scanner"
 arch=('any')
 url="http://packetstormsecurity.com/files/31102/smtpscan-$pkgver.tar.gz.html"

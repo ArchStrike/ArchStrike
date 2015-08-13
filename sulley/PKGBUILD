@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=sulley
 pkgver=1.0.cb5e62c
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*fuzzer')
+groups=('archstrike' 'archstrike-fuzzer')
 pkgdesc="A pure-python fully automated and unattended fuzzing framework"
 arch=('any')
 url=('https://github.com/OpenRCE/sulley/')

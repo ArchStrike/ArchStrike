@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=rfidtool
 pkgver=0.01
 pkgrel=1
-groups=('projectname' 'projectname-*wireless')
+groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A opensource tool to read / write rfid tags"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')

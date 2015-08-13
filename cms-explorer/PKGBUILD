@@ -1,8 +1,8 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=cms-explorer
 pkgver=1.0
 pkgrel=1
-groups=('projectname' 'projectname-*fingerprinting' 'archassault-webapp')
+groups=('archstrike' 'archstrike-fingerprinting' 'archstrike-webapp')
 pkgdesc="Designed to reveal the specific modules, plugins, components and themes that various cms driven websites are running"
 arch=('any')
 url='http://code.google.com/p/cms-explorer'

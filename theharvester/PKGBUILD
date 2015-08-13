@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=theharvester
 _pkgname=theHarvester
 pkgver=2.2a
 pkgrel=1
-groups=('projectname' 'projectname-*reconnaissance')
+groups=('archstrike' 'archstrike-reconnaissance')
 pkgdesc="Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers)"
 url='http://www.edge-security.com/theHarvester.php'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

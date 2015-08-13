@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=beleth
 pkgver=0.r36.0963699
 pkgrel=1
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc="A Multi-threaded Dictionary based SSH cracker"
 url="https://github.com/chokepoint/Beleth"
 arch=('armv7h' 'armv6h' 'i686' 'x86_64')

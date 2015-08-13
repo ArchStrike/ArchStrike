@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=rarcrack
 pkgver=0.2
 pkgrel=1
 url="http://rarcrack.sourceforge.net/"
-groups=('projectname' 'projectname-*cracker')
+groups=('archstrike' 'archstrike-cracker')
 pkgdesc=" This program uses bruteforce algorithm to find correct password (rar, 7z, zip)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL2')

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: qs9rx < that nick at enjoys dot it>
 # Contributor: David Manouchehri <d@32t.ca>
 
@@ -9,7 +9,7 @@ pkgdesc="Dump1090 is a simple Mode S decoder for RTLSDR devices. MalcolmRobb for
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/MalcolmRobb/dump1090"
 license=('BSD')
-groups=('projectname')
+groups=('archstrike')
 depends=('rtl-sdr')
 makedepends=('git')
 provides=('dump1090')

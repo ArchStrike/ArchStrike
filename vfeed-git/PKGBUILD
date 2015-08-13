@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=vfeed-git
 pkgver=20150511.r41
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*misc')
+groups=('archstrike' 'archstrike-misc')
 pkgdesc="Open Source Cross Linked and Aggregated Local Vulnerability Database main repository"
 url="http://www.toolswatch.org/vfeed"
 arch=('any')

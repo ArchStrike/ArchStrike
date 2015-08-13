@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
 pkgname=pwatch
@@ -7,7 +7,7 @@ pkgrel=2
 pkgdesc="An ncurses tool that can be run by root to give information about processes"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL')
-groups=('projectname' 'projectname-*analysis')
+groups=('archstrike' 'archstrike-analysis')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('ncurses')
 makedepends=('linux-api-headers')

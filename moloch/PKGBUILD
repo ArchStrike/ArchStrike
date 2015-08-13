@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=moloch
 pkgver=0.11.2
 pkgrel=1
@@ -8,7 +8,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('APACHE')
 depends=('curl' 'file' 'util-linux' 'perl-json' 'perl-libwww' 'libpng' 'python2' 'elasticsearch' 'geoip' 'libnids' 'nodejs')
 makedepends=('glib2')
-groups=('projectname')
+groups=('archstrike')
 options=('!strip')
 backup=("etc/$pkgname/config.ini")
 _dataroot="/usr/share/$pkgname"

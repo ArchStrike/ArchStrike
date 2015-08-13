@@ -1,5 +1,5 @@
 ##
-### ArchAssault repository mirrorlist
+### ArchStrike repository mirrorlist
 ### Generated on 2014-05-27
 #
 
@@ -46,5 +46,5 @@ Server = http://mirror.jmu.edu/pub/projectname/$repo/os/$arch
 #Server = http://mirror.team-cymru.org/projectname/$repo/os/$arch
 #Server = http://mirror.umd.edu/projectname/$repo/os/$arch
 #Server = http://mirrors.arsc.edu/projectname/$repo/os/$arch
-#Server = http://noodle.portalus.net/ArchAssault/$repo/os/$arch
+#Server = http://noodle.portalus.net/ArchStrike/$repo/os/$arch
 #Server = http://mirrors.syringanetworks.net/projectname/$repo/os/$arch

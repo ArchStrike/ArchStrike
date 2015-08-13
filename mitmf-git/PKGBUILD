@@ -1,8 +1,8 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=mitmf-git
 pkgver=20150528.r291
 pkgrel=1
-groups=('projectname' 'projectname-*proxy' 'archassault-spoof')
+groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
 pkgdesc="A Framework for Man-In-The-Middle attacks written in Python."
 arch=('any')
 url='https://github.com/byt3bl33d3r/MITMf'

@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
  
 pkgname=princeprocessor
 pkgver=0.21
@@ -6,7 +6,7 @@ pkgrel=2
 pkgdesc="Standalone password candidate generator using the PRINCE algorithm"
 arch=('x86_64')
 url="https://github.com/jsteube/princeprocessor"
-groups=('projectname')
+groups=('archstrike')
 license=('MIT')
 depends=('gmp')
 source=("https://github.com/jsteube/princeprocessor/archive/v${pkgver}.tar.gz")

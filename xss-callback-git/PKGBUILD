@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=xss-callback-git
 pkgver=r14.6a2bb85
 pkgrel=1
@@ -8,7 +8,7 @@ url="https://github.com/PaulSec/XSS-Callback"
 license=('MIT')
 depends=('nodejs')
 makedepends=('git')
-groups=('projectname')
+groups=('archstrike')
 conflicts=('xss-callback')
 provides=('xss-callback')
 source=("$pkgname"::'git+https://github.com/PaulSec/XSS-Callback.git' 'LICENSE')

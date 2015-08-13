@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=bindead
 pkgname=$_pkgname-git
@@ -8,7 +8,7 @@ pkgdesc='A static analysis tool for binaries'
 url='https://bitbucket.org/mihaila/bindead'
 license=('GPL3')
 arch=('any')
-groups=('projectname' 'projectname-*analysis')
+groups=('archstrike' 'archstrike-analysis')
 depends=('bash' 'java-runtime')
 makedepends=('java-environment' 'maven' 'git')
 provides=("$_pkgname")

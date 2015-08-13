@@ -11,7 +11,7 @@ arch=('i686' 'x86_64')
 url="http://www.nvidia.com/"
 depends=('linux-projectname>=3.16' 'nvidia-304xx-libgl' "nvidia-304xx-utils=${pkgver}")
 makedepends=('linux-projectname-headers>=3.16')
-conflicts=('nvidia-projectname' 'nvidia-96xx-projectname-*' 'nvidia-173xx-archassault')
+conflicts=('nvidia-projectname' 'nvidia-96xx-projectname-*' 'nvidia-173xx-archstrike')
 provides=('nvidia-304xx')
 license=('custom')
 install=nvidia-304xx-projectname.install

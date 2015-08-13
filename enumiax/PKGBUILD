@@ -1,9 +1,9 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=enumiax
 pkgver=0.4a
 pkgrel=1
 epoch=1
-groups=('projectname' 'projectname-*scanner')
+groups=('archstrike' 'archstrike-scanner')
 pkgdesc="IAX enumerator"
 url='http://sourceforge.net/projects/enumiax/'
 license=('GPL')

@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=umap-git
 pkgver=r25.3ad8121
 pkgrel=1
@@ -6,7 +6,7 @@ pkgdesc="The USB host security assessment tool"
 url="https://github.com/nccgroup/umap"
 arch=('any')
 license=('AGPL')
-groups=('projectname')
+groups=('archstrike')
 depends=('python2' 'python-pyserial')
 makedepends=('git')
 provides=('umap')

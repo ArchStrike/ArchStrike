@@ -1,4 +1,4 @@
-# Maintainer
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=faraday
 pkgname=ruby1.9-$_gemname
 pkgver=0.8.9

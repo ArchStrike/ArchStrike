@@ -1,4 +1,4 @@
-# Maintainer: ArchAssault <team projectname org>
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgname=jondobrowser
 pkgver=0.12
 pkgrel=2
@@ -8,7 +8,7 @@ url='https://anonymous-proxy-servers.net/en/jondobrowser.html'
 arch=('x86_64' 'i686')
 license=('GPL')
 depends=('java-environment')
-groups=('projectname')
+groups=('archstrike')
 optdepends=('zenity: simple dialog boxes'
       'kdialog: KDE dialog boxes'
       'notify-send: Gnome dialog boxes'
