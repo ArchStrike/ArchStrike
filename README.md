@@ -1,5 +1,7 @@
 # ArchStrike
 
-ArchStrike is an Arch flavored Linux distro built for security professionals.
+###An Arch Linux repository for security professionals and enthusiasts.
 
-### more details soon...
+Done the Arch Way and optimized for i686, x86_64, ARMv6, and ARMv7.
+
+more details soon...
