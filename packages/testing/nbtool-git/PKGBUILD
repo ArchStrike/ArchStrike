@@ -11,8 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://wiki.skullsecurity.org/Nbtool'
 source=("${pkgname}::git+https://github.com/iagox86/nbtool.git")
 license=('CUSTOM')
-groups=('archstrike' 'archstrike-networking' 'archstrike-scanners'
-        'archstrike-reconnaissance')
+groups=('archstrike' 'archstrike-networking' 'archstrike-scanners' 'archstrike-reconnaissance')
 depends=('libpcap')
 makedepends=('git' 'nasm')
 provides=('nbtool' 'dnscat')
