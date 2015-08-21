@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=stomper
 pkgver=0.2.4
 pkgrel=4

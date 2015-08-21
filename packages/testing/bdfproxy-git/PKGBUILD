@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=bdfproxy-git
 pkgver=20150420.r62
 pkgrel=1

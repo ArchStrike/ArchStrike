@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=spiderfoot
 pkgver=2.3.0
 pkgrel=1

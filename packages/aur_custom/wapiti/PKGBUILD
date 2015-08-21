@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=wapiti
 pkgver=2.3.0
 pkgrel=4

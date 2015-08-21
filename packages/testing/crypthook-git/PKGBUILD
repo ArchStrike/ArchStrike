@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=crypthook-git
 pkgver=r17.0728cd1
 pkgrel=1
@@ -21,10 +24,9 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 package() {
   cd "$srcdir/crypthook"
   install -Dm644 Makefile "$pkgdir/usr/share/crypthook/Makefile"
   install -Dm644 README.md "$pkgdir/usr/share/crypthook/README.md"
-  install -Dm644 crypthook.c "$pkgdir/usr/share/crypthoo/crypthook.c" 
+  install -Dm644 crypthook.c "$pkgdir/usr/share/crypthoo/crypthook.c"
 }

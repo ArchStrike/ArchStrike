@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname="slowloris6"
 _pkgname="slowloris"
 pkgver="0.7.1"

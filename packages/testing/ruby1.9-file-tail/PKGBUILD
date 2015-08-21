@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=file-tail
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=1.0.12
 pkgrel=1

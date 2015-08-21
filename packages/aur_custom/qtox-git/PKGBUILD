@@ -2,6 +2,9 @@
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 _pkgname=qtox
+
+buildarch=212
+
 pkgname=$_pkgname-git
 _pkgver=9079b33
 pkgver=r2606.9079b33

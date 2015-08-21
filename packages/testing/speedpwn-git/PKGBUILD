@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=speedpwn
+
+buildarch=212
+
 pkgname=${_pkgname}-git
 pkgver=20111209.r8.3dd2793
 pkgrel=2

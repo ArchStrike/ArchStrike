@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Trizen <echo dHJpemVueEBnbWFpbC5jb20K | base64 -d>
+
+buildarch=1
+
 pkgname=obmenu-generator
 pkgver=0.59
 pkgrel=1

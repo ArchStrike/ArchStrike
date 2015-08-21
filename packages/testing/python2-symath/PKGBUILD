@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname="python2-symath"
 pkgver="0.1.22"
 pkgrel="1"
@@ -14,5 +17,5 @@ sha256sums=('369124c09afbe0511f2876f1858288ed29ed0ab94bd8381db5e41e47745a7604')
 package() {
    cd ${srcdir}/symath-${pkgver}
    python2 setup.py install --root=${pkgdir} --optimize=1
-   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"     
+   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

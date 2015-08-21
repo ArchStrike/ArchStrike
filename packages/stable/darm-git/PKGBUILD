@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Nicolas Hureau <archlinux@kalenz.fr>
 
+buildarch=212
+
 pkgname=darm-git
 pkgver=414.f42b509
 pkgrel=1

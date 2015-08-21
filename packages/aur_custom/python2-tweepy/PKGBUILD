@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-tweepy
 pkgver=1.7.1
 pkgrel=1

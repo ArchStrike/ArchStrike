@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='httping'
 pkgver='2.4'
 pkgrel=1

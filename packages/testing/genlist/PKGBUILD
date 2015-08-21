@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='genlist'
 pkgver=20131216
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=kacak
 pkgver=1.0
 pkgrel=1
@@ -27,8 +30,8 @@ package() {
   for i in config lib scripts data images; do install -dm755 "$pkgdir/usr/share/$pkgname/$i"; cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/$pkgname/$i/";done
   install -Dm755 kacak.py "$pkgdir/usr/share/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
- 
- 
+
+
 cat > "$pkgdir/usr/bin/kacak" << EOF
 #!/bin/sh
 cd /usr/share/kacak

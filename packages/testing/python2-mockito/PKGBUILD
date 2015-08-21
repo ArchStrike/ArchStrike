@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-mockito
-pkgver=0.5.2  
+pkgver=0.5.2
 pkgrel=1
 pkgdesc="A spying framework based on Java library with the same name."
 arch=('any')

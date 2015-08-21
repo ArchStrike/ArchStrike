@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-curb
 _gemname=curb
 pkgver=0.8.5

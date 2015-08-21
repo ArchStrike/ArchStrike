@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=python2-gitdb
 pkgver=0.6.4
 pkgrel=1

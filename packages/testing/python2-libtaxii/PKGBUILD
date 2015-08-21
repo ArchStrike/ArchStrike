@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-libtaxii
 pkgver=1.1.106
 pkgrel=1

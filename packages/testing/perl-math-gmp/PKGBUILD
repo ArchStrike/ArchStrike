@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=TURNSTEP
 _perlmod=Math-GMP
+
+buildarch=212
+
 pkgname=perl-math-gmp
 pkgver=2.07
 pkgrel=1

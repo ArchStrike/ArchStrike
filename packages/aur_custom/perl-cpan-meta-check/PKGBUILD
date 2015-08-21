@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname='perl-cpan-meta-check'
 pkgver='0.012'
 pkgrel=1

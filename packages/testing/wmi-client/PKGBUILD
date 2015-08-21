@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=wmi-client
 pkgver=1.3.14
 pkgrel=2

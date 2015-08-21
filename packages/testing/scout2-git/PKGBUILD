@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=scout2-git
 pkgver=r287.e83e870
 pkgrel=1
@@ -42,5 +45,4 @@ python2 Scout2.py "\$@"
 EOF
   chmod +x "$pkgdir"/usr/bin/Scout2.py
 }
-
 

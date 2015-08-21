@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-timecop
 _gemname=timecop
 pkgver=0.6.3

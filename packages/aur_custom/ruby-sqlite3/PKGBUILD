@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=ruby-sqlite3
 _gemname=sqlite3
 pkgver=1.3.7

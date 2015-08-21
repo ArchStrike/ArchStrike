@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=eh
 pkgver=1.3.1
 pkgrel=1
@@ -12,7 +15,6 @@ makedepends=('python2-setuptools')
 provides=('extracthosts')
 source=("https://github.com/bwall/ExtractHosts/archive/v$pkgver.tar.gz")
 sha512sums=('a462892edf93cd97b3bc207f72cb5af6411e9c27054744008139ee40d56d05816e552ec113eec97d02eee6fb97735debe1311fe92b5cfc37530eced27e6e9adc')
-
 
 package() {
   cd "$srcdir/ExtractHosts-$pkgver"

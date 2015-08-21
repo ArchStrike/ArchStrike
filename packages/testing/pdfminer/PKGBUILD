@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=pdfminer
 pkgver=20140328
 pkgrel=1

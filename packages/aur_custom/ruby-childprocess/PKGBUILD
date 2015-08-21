@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=childprocess
+
+buildarch=1
+
 pkgname=ruby-$_gemname
 pkgver=0.5.3
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sstat-git
 pkgver=20141023.r8
 pkgrel=1

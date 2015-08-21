@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Credits: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 # Contributor: Dominik Richter <dominik.richter@gmail.com>
+
+buildarch=212
+
 pkgname=mac-robber
 pkgver=1.02
 pkgrel=2
@@ -20,7 +23,7 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   mkdir -p $pkgdir/usr/bin
-  install -Dm755 mac-robber $pkgdir/usr/bin/mac-robber 
+  install -Dm755 mac-robber $pkgdir/usr/bin/mac-robber
   mkdir -p $pkgdir/usr/share/licenses/$pkgname
   install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
   install -Dm644 README $pkgdir/usr/share/licenses/$pkgname/README

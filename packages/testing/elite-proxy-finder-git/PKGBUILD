@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=elite-proxy-finder-git
 pkgver=r44.29143ad
 pkgrel=2

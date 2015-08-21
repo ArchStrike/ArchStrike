@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby1.9-arel
 pkgver=3.0.2
 pkgrel=1

@@ -5,6 +5,8 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
+buildarch=212
+
 pkgname=knockd-git
 _pkgname=knock
 pkgver=r35.e566d49

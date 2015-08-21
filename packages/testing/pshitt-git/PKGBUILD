@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=pshitt-git
 pkgver=20150623.r22
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=haskell-openafp
 pkgver=1.3.2
 pkgrel=3

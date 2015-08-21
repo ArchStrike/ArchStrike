@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Théophile Studer
+
+buildarch=212
+
 pkgname=yara
 pkgver=3.4.0
 pkgrel=1

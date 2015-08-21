@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=jondobrowser
 pkgver=0.12
 pkgrel=2

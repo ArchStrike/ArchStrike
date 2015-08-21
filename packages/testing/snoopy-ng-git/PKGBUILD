@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=snoopy-ng-git
 _pkgname=snoopy-ng
 pkgver=r118.1ce0a3c
@@ -26,7 +29,6 @@ prepare(){
   grep -iRl 'python' "$srcdir/$_pkgname" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
-
 package() {
   cd "$srcdir/$_pkgname"
 
@@ -39,7 +41,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/$_pkgname/uat"
   install -dm755 "$pkgdir/usr/share/$_pkgname/setup"
   install -dm755 "$pkgdir/usr/share/sslstripSnoopy"
- 
+
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
   install -Dm644 README.md "$pkgdir/usr/share/$_pkgname/README.md"
   install -Dm644 TODO.txt "$pkgdir/usr/share/$_pkgname/TODO.txt"
@@ -49,13 +51,13 @@ package() {
   install -Dm644 uat/* "$pkgdir/usr/share/$_pkgname/uat/"
   install -Dm644 transforms/* "$pkgdir/usr/share/$_pkgname/transforms/"
   install -Dm755 snoopy.py "$pkgdir/usr/share/$_pkgname/snoopy.py"
-  
+
   # Setup path to DB
   echo "sqlite:///usr/share/$_pkgname/snoopy.db" > "$pkgdir/usr/share/$_pkgname/transforms/db_path.conf"
 
   cd setup/sslstripSnoopy/
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/sslstripSnoopy/"
-        
+
 cat > "$pkgdir/usr/bin/snoopy" << EOF
 #!/bin/sh
 cd /usr/share/snoopy-ng
@@ -78,5 +80,4 @@ chmod +x "$pkgdir/usr/bin/snoopy"
 chmod +x "$pkgdir/usr/bin/snoopy_auth"
 chmod +x "$pkgdir/usr/bin/sslstrip_snoopy"
 }
-
 

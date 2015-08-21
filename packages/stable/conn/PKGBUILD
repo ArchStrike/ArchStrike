@@ -2,6 +2,9 @@
 # Contributor: Prurigro
 
 _pkgname=Conn
+
+buildarch=212
+
 pkgname=conn
 pkgver=1.0.32
 pkgrel=2

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=mkbrutus
 pkgver=1.0.2
 pkgrel=1
@@ -11,7 +14,6 @@ license=('GPL3')
 depends=('python')
 source=("https://github.com/mkbrutusproject/MKBRUTUS/archive/v$pkgver.tar.gz")
 sha512sums=('4e135b90360448eb743a83c3008d58834048cbe46cc5cacb394bde0a4bebc0a98ef996adf0020634043c26f6e9a07bdf0077fc8632f6529a55d6f7b7fc191869')
-
 
 package() {
   cd "$srcdir/MKBRUTUS-$pkgver"

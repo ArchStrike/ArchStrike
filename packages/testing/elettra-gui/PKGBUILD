@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='elettra-gui'
 pkgver='1.0'
 pkgrel=1
@@ -20,6 +23,6 @@ build() {
 
 package() {
   cd "$srcdir/elettra_gui"
-  
+
   install -D -m755 "elettra_gui" "$pkgdir/usr/bin/elettra_gui"
 }

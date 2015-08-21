@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=rubyzip
+
+buildarch=1
+
 pkgname=ruby-$_gemname-arachni
 pkgver=1.1.6
 pkgrel=1

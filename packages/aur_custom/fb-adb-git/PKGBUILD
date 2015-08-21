@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=fb-adb
+
+buildarch=192
+
 pkgname=$_pkgname-git
 pkgver=20150316.r100.1930e1a
 pkgrel=1

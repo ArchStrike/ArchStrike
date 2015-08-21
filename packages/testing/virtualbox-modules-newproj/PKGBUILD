@@ -4,6 +4,9 @@
 # Contributor: Sébastien Luttringer
 
 pkgbase=virtualbox-modules-projectname
+
+buildarch=192
+
 pkgname=('virtualbox-host-modules-projectname' 'virtualbox-guest-modules-projectname-*')
 pkgver=4.3.20
 pkgrel=4

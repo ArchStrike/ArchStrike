@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=umit
 pkgver=1.0
 pkgrel=2
@@ -17,7 +20,7 @@ build() {
   cd $srcdir/umit-$pkgver
 
   patch -p0 < $srcdir/setup.patch
-} 
+}
 
 package() {
   cd $srcdir/umit-$pkgver

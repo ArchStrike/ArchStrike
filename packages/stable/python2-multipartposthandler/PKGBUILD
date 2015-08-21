@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=MultipartPostHandler
+
+buildarch=1
+
 pkgname=python2-multipartposthandler
 pkgver=0.1.0
 pkgrel=1

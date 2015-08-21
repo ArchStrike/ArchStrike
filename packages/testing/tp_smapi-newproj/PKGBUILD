@@ -8,6 +8,8 @@
 # Contributor: Stefan Rupp <archlinux ð stefanrupp đ de>
 # Contributor: Ignas Anikevicius <anikevicius ð gmail đ com>
 
+buildarch=192
+
 pkgname=tp_smapi-projectname
 _pkgname=tp_smapi
 pkgver=0.41

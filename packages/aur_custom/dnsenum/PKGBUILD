@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=dnsenum
 pkgver=1.2.4.2
 pkgrel=1

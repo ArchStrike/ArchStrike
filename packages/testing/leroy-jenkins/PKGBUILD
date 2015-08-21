@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=leroy-jenkins
 pkgver=0.r3.bdc3965
 pkgrel=1

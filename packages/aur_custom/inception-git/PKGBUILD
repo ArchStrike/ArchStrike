@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=inception-git
 pkgver=r431.34f207d
 pkgrel=1

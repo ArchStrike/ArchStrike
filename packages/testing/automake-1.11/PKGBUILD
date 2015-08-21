@@ -5,6 +5,8 @@
 # Contributor: Allan McRae <allan@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
+buildarch=1
+
 pkgname=automake-1.11
 _realname=automake
 pkgver=1.11.6

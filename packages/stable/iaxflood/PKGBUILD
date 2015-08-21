@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='iaxflood'
 pkgver=20131208
 pkgrel=1
@@ -18,13 +21,13 @@ pkgver() {
 
 build() {
   cd "$srcdir/iaxflood"
-  
+
   sed -i "s:gcc :gcc $CFLAGS :" makefile
   make
 }
 
 package() {
   cd "$srcdir/iaxflood"
-  
+
   install -D -m755 "iaxflood" "$pkgdir/usr/bin/iaxflood"
 }

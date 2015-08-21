@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
+buildarch=212
+
 pkgname=wpa_supplicant-cupid
 pkgver=2.1
 pkgrel=1
@@ -37,10 +39,9 @@ build() {
 
 package() {
   cd "${srcdir}/wpa_supplicant-${pkgver}/wpa_supplicant"
-  
+
   install -dm755 "$pkgdir/usr/bin"
   install -Dm755 wpa_supplicant "$pkgdir/usr/bin/wpa_supplicant-cupid"
-
 
   install -d -m755 "${pkgdir}/etc/wpa_supplicant-cupid"
   install -m644 $srcdir/cupid/testconfs/test_wpasupplicant.conf "${pkgdir}/etc/wpa_supplicant-cupid/wpa_supplicant.conf"

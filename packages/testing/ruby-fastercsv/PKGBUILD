@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-fastercsv
 pkgver=1.5.5
 pkgrel=0

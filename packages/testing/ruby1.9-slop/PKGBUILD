@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=slop
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=3.5.0
 pkgrel=1

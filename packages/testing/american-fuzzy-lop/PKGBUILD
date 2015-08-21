@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=192
+
 pkgname=american-fuzzy-lop
 pkgver=1.80b
 pkgrel=1

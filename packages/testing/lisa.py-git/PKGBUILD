@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=lisa.py-git
 pkgver=20150203.r28
 pkgrel=1
@@ -29,7 +32,7 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/$kpkgname/"
   # Fixing python version
   sed -i 's|/usr/bin/env python|/usr/bin/env python2|' "$pkgdir/usr/share/$pkgname/lisa.py"
- 
+
 
 cat > "$pkgdir/usr/share/$pkgname/lldbinit" <<EOF
 settings set prompt "(lisa)"

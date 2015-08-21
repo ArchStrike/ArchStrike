@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby1.9-msfrpc-client
 _gemname=${pkgname#ruby1.9-}
 pkgver=1.0.1

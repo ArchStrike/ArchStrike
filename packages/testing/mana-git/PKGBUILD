@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=mana-git
 pkgver=20141024.r44
 pkgrel=1
@@ -26,7 +29,6 @@ prepare(){
   cd run-mana
   patch < $srcdir/archfixes.patch
 }
-
 
 pkgver() {
   cd "${pkgname}"

@@ -1,4 +1,7 @@
 # Maintainer
+
+buildarch=20
+
 pkgname=projectnamearm-devtools
 pkgver=20140108
 pkgrel=1
@@ -7,9 +10,9 @@ arch=('armv6h' 'armv7h')
 groups=('projectname-dev')
 license=('GPL')
 depends=('devtools-alarm')
-source=('pacman-projectname-armv6h.conf' 
-		'pacman-projectname-armv7h.conf' 
-		'makepkg.armv6h.conf' 
+source=('pacman-projectname-armv6h.conf'
+		'pacman-projectname-armv7h.conf'
+		'makepkg.armv6h.conf'
 		'makepkg.armv7h.conf'
 		)
 sha256sums=('3da5a2a0b024f7e558765e4eb7bad9821652069c14403d80569dc3473be13403'

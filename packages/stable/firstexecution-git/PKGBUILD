@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=firstexecution-git
 pkgver=r6.a275793
 pkgrel=2
@@ -23,7 +26,7 @@ package() {
   # Make base directories.
   install -dm755 "$pkgdir/usr/share/firstexecution"
   install -dm755 "$pkgdir/usr/share/firstexecution/WindowsPENative"
-  
+
   cp -a --no-preserve=ownership WindowsPENative/* "$pkgdir/usr/share/firstexecution/WindowsPENative"
   install -Dm644 README.md "$pkgdir/usr/share/firstexecution"
 

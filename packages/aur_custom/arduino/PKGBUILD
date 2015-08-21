@@ -4,6 +4,8 @@
 # Contributor: darkapex <me@jailuthra.in>
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
+buildarch=192
+
 pkgname=arduino
 pkgver=1.0.6
 pkgrel=1

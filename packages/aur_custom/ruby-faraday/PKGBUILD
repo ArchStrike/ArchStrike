@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=faraday
+
+buildarch=1
+
 pkgname=ruby-$_gemname
 pkgver=0.8.7
 pkgrel=2

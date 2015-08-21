@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
-# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net> 
+# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
+
+buildarch=1
 
 pkgname=ropper
 _pkgname=Ropper

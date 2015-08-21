@@ -3,6 +3,8 @@
 # Contributor: Maxime de Roucy <maxime.deroucy@gmail.com>
 # Contributor: Joel Schaerer <joel.schaerer@laposte.net>
 
+buildarch=212
+
 pkgname=itpp
 pkgver=4.3.1
 pkgrel=1
@@ -14,7 +16,6 @@ depends=('blas' 'lapack' 'fftw' 'perl')
 makedepends=('cmake')
 source=("http://downloads.sourceforge.net/project/itpp/itpp/${pkgver}/itpp-${pkgver}.tar.bz2")
 md5sums=('94f3dac6df2bb829819d0aa99b501933')
-
 
 build() {
   cd itpp-$pkgver

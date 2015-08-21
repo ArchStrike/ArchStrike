@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Dominik Heidler <dheidler@gmail.com>
+
+buildarch=212
+
 pkgname=bladerf
 pkgver=0.14.0
 pkgrel=3

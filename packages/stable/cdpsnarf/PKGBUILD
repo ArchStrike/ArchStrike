@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=cdpsnarf
 pkgver=0.1.6
 pkgrel=1

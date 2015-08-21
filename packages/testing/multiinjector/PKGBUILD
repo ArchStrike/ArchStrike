@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='multiinjector'
 pkgver='0.3'
 pkgrel=2

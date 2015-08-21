@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=20
+
 pkgname=4deck
 pkgver=0.1
 groups=('archstrike' 'archstrike-drone' 'archstrike-meta-thedeck')

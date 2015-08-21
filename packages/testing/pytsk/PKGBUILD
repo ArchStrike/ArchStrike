@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=212
+
 pkgname=pytsk
 pkgver=20140506
 pkgrel=2

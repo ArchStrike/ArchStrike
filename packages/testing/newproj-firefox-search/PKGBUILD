@@ -1,4 +1,7 @@
 # Maintainer
+
+buildarch=1
+
 pkgname=projectname-firefox-search
 pkgver=0.8.2
 pkgrel=7

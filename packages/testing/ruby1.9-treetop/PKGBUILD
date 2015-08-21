@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=treetop
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=1.4.8
 pkgrel=2

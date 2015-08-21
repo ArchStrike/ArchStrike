@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=beef-git
 pkgver=20150625.r2366
 pkgrel=1

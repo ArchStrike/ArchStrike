@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=i2pd
+
+buildarch=212
+
 pkgname=$_pkgname-git
 pkgver=20150319.r1685
 pkgrel=1

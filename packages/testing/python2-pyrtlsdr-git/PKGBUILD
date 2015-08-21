@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Gergely Imreh <imrehg(at)gmail(dot)com>
+
+buildarch=1
+
 pkgname=python2-pyrtlsdr-git
 pkgver=r54.0bc0ad7
 pkgrel=1
@@ -19,7 +22,6 @@ pkgver() {
   cd "$srcdir/pyrtlsdr"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 package(){
   cd "$srcdir/pyrtlsdr"

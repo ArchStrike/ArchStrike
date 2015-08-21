@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=rr
 pkgver=1.5.0
 pkgrel=1
@@ -22,7 +25,6 @@ build(){
   cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr ..
   make
 }
-
 
 package() {
   cd "$srcdir/rr-$pkgver/build"

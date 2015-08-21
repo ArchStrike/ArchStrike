@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=argh
+
+buildarch=1
+
 pkgname=python2-$_pkgname
 pkgver=0.26.1
 pkgrel=1

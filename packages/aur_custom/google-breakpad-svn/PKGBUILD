@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=google-breakpad
+
+buildarch=212
+
 pkgname=${_pkgname}-svn
 pkgver=20150210.r1426
 pkgrel=1

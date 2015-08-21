@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
+buildarch=212
+
 pkgname=slb
 pkgver=0.1.24
 pkgrel=4

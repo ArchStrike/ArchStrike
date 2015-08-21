@@ -2,6 +2,8 @@
 # Contributor:  Windel Bouwman <windel at windel dot nl>
 # Contributor: Jakub Klinkovský <kuba.klinkovsky@gmail.com>
 
+buildarch=1
+
 pkgname=python-pyqtgraph
 _pkgname=pyqtgraph
 pkgver=0.9.10

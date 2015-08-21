@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-elixir
 pkgver=0.7.1
 pkgrel=9
@@ -6,7 +9,7 @@ pkgdesc="A declarative layer on top of SQLAlchemy. It is a fairly thin wrapper, 
 url='http://elixir.ematia.de/'
 license=('MIT')
 arch=('any')
-depends=('python2' 'python2-sqlalchemy') 
+depends=('python2' 'python2-sqlalchemy')
 makedepends=('python2-distribute')
 source=(http://pypi.python.org/packages/source/E/Elixir/Elixir-$pkgver.tar.gz)
 md5sums=('5615ec9693e3a8e44f69623d58f54116')

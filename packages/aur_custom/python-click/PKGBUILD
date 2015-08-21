@@ -2,6 +2,9 @@
 # Contributor:  Carl George <carl@cgtx.us>
 
 _module="click"
+
+buildarch=1
+
 pkgname=("python-click" "python2-click")
 pkgver=4.0
 pkgrel=1
@@ -26,7 +29,6 @@ build() {
         cd "${srcdir}/${_module}-${pkgver}-python2"
         python2 setup.py build
 }
-
 
 package_python-click() {
         depends=("python>=3.3")

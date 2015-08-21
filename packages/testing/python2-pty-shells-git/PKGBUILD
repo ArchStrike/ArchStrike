@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-pty-shells-git
 pkgver=20140728.r17
 pkgrel=1
@@ -14,12 +17,10 @@ conflicts=('python2-pty-shells' 'pty-shells-git')
 source=("${pkgname}::git+https://github.com/infodox/python-pty-shells.git")
 sha512sums=('SKIP')
 
-
 pkgver() {
   cd "${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
-
 
 package() {
   cd "${pkgname}"

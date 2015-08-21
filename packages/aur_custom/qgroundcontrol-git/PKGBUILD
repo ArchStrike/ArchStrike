@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=qgroundcontrol-git
 pkgver=r3643.812348f
 pkgrel=1
@@ -37,7 +40,7 @@ build() {
 package() {
   cd "$srcdir/qgroundcontrol/libs/thirdParty/libxbee"
   install -dm755 "$pkgdir/usr/share/qgroundcontrol"
-  install -dm755 "$pkgdir/usr/bin" 
+  install -dm755 "$pkgdir/usr/bin"
   make DESTDIR="$pkdir" install
   cd "$srcdir/qgroundcontrol"
   cp -a --no-preserve=ownership release/* "$pkgdir/usr/share/qgroundcontrol/"

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=arpwner
 pkgver=20120106.r26.f300fdf
 pkgrel=1

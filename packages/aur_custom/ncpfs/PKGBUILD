@@ -1,9 +1,12 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
-# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com> 
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: dsa <dsa@unilestemg.br>
 # Contributer: gerbra <gerbra@derbrauer.homelinux.net>
-# Contributer: Joker-jar <joker-jar@yandex.ru>   
+# Contributer: Joker-jar <joker-jar@yandex.ru>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
+
+buildarch=212
+
 pkgname=ncpfs
 pkgver=2.2.6
 pkgrel=7
@@ -47,12 +50,12 @@ prepare() {
   patch -p1 -i "$srcdir"/06-makefile-remove-generated.patch
   patch -p1 -i "${srcdir}"/configure.patch
   sed -i 's|sbin|usr/bin|' sutil/Makefile.in
-  
+
 }
 
 build() {
   cd $pkgname-$pkgver
-  
+
   # fix glibc 2.16.0-2
   export ncp_cv_pam_directory='/usr/lib/security'
 
@@ -62,7 +65,7 @@ build() {
   else
     ./configure --prefix=/usr --mandir=/usr/share --disable-php
   fi
-  
+
   make
 }
 

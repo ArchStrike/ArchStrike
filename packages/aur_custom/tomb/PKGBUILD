@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
+buildarch=212
+
 pkgname=tomb
 pkgver=2.0.1
 pkgrel=1

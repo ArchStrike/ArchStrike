@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=DARREN
 _perlmod=Net-Nslookup
+
+buildarch=1
+
 pkgname=perl-net-nslookup
 pkgver=2.04
 pkgrel=1
@@ -23,6 +26,6 @@ build() {
 
 package() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   make install DESTDIR="$pkgdir/"
 }

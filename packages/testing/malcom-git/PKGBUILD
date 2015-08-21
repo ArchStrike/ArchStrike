@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=malcom-git
 pkgver=20150518.r534
 pkgrel=1
@@ -29,11 +32,11 @@ pkgver() {
 
 package() {
   cd "${pkgname}"
-  install -dm0755 "${pkgdir}"/usr/share/"${pkgname}" 
+  install -dm0755 "${pkgdir}"/usr/share/"${pkgname}"
   install -dm0755 "${pkgdir}"/usr/bin
   cp -a --no-preserve=ownership * "${pkgdir}"/usr/share/"${pkgname}"
   install -Dm0644 LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.md
-  
+
 
   cat > "${pkgdir}/usr/bin/malcom" << EOF
 #!/bin/sh
@@ -46,5 +49,4 @@ env-malcom/bin/python2 ./malcom.py "\$@"
 EOF
   chmod 0755 "${pkgdir}"/usr/bin/malcom
 }
-
 

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=vfeed-git
 pkgver=20150511.r41
 pkgrel=1

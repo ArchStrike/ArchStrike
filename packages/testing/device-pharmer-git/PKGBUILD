@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=device-pharmer-git
 pkgver=r35.c1d449e
 pkgrel=2

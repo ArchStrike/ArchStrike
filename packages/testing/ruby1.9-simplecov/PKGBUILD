@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby1.9-simplecov
 _gemname=simplecov
 pkgver=0.5.4

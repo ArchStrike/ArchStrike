@@ -2,6 +2,9 @@
 # Mainrainer: Alfredo Palhares <masterkorp@masterkorp.net>
 
 _gemname=simple_oauth
+
+buildarch=1
+
 pkgname=ruby-$_gemname
 pkgver=0.2.0
 pkgrel=2

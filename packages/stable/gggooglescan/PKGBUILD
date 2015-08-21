@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=gggooglescan
 pkgver=0.4
 pkgrel=1
@@ -17,5 +20,5 @@ package() {
   install -Dm644 README $pkgdir/usr/share/$pkgname/README
   install -Dm644 wordlist $pkgdir/usr/share/$pkgname/wordlist
   install -Dm755 gggooglescan $pkgdir/usr/bin/gggooglescan
-  
+
 }

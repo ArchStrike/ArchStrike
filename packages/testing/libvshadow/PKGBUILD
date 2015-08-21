@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=libvshadow
 pkgver=20150106
 pkgrel=1
@@ -10,7 +13,6 @@ depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 makedepends=('git')
 source=("https://github.com/libyal/libvshadow/archive/$pkgver.tar.gz")
 sha512sums=('e190da3fe9d0faffa48a9f703622790479eb7e9a400dd27f41d5d1ceb477da048a3f3031b99edab94a718044da471bff455a2d678b6cf22ae4168c5d15d9dab3')
-
 
 build(){
   cd $srcdir/$pkgname-$pkgver

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=dns2tcp
 pkgver=0.5.2
 pkgrel=2

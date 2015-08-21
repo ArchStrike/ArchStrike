@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-modbus-tk-git
 pkgver=20131111.r26
 pkgrel=1

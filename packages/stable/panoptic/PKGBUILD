@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=panoptic
 pkgver=0.r179.770bc70
 pkgrel=1

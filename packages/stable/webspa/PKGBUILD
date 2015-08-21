@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=webspa
 pkgver=0.8
 pkgrel=1

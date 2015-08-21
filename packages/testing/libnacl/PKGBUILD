@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor drathir <drathir87@gmail.com>
+
+buildarch=212
+
 pkgname=libnacl
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgver=20110221
@@ -52,7 +55,7 @@ package() {
   cd "$srcdir/nacl-${pkgver}"
 
   shost=`uname -n`
-  
+
   install -D -m 644 build/$shost/lib/*/libnacl.a "${pkgdir}/usr/lib/libnacl.a"
   install -D -m 644 build/$shost/lib/*/randombytes.o "${pkgdir}/usr/lib/randombytes.o"
 

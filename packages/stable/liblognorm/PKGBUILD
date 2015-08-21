@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Brian Knox <taotetek@gmail.com>
+
+buildarch=212
+
 pkgname=liblognorm
 pkgver=1.1.1
 pkgrel=1

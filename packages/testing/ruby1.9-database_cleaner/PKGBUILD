@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby1.9-database_cleaner
 _gemname=database_cleaner
 pkgver=1.1.1

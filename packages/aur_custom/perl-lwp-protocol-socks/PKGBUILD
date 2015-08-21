@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=perl-lwp-protocol-socks
 pkgver=1.7
 pkgrel=1

@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=crowbar
 pkgver=3.3
 pkgrel=1
@@ -28,7 +30,7 @@ package() {
   install -Dm644 lib/core/*.py "$pkgdir/usr/share/$pkgname/lib/core/"
   install -Dm644 README.md "$pkgdir/usr/share/$pkgname/README.md"
   install -Dm755 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-  install -Dm755 crowbar.py  "$pkgdir/usr/share/$pkgname/crowbar.py" 
+  install -Dm755 crowbar.py  "$pkgdir/usr/share/$pkgname/crowbar.py"
 
 cat >"$pkgdir/usr/bin/crowbar" <<EOF
 #!/bin/sh

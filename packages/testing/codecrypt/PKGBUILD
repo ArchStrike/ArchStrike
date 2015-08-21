@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=212
+
 pkgname=codecrypt
 pkgver=1.6.1
 pkgrel=1

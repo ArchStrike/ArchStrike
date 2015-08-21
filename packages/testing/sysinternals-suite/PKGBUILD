@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sysinternals-suite
 pkgver=20131208
 pkgrel=2

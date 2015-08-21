@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=csfrt
 pkgver=r32.17146bb
 pkgrel=1

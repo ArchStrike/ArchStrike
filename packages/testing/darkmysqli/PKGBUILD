@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='darkmysqli'
 pkgver='1.6'
 pkgrel=1
@@ -15,7 +18,7 @@ prepare() {
   cd "$srcdir/darkmysqli16"
 
   patch -p0 < darkmysqli.patch
-  
+
   sed -i '1s|bin/python|bin/env python2|' *.py
 }
 

@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Ari Mizrahi <codemunchies@debugsecurity.com>
 
+buildarch=1
+
 pkgname=python-pyside-common
 pkgver=1.2.2
 pkgrel=1
@@ -18,7 +20,7 @@ build(){
     mkdir -p build_py3 && cd build_py3
 
     _pyverflags=$(python -c 'import sysconfig; print(sysconfig.get_config_var("SOABI"))')
-    
+
     cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DBUILD_TESTS=OFF \
       -DQT_PHONON_INCLUDE_DIR=/usr/include/qt4/phonon -DQT_QMAKE_EXECUTABLE=qmake-qt4 \
       -DPYTHON_SUFFIX=.${_pyverflags}

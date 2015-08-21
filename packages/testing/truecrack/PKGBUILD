@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=128
+
 pkgname=truecrack
 pkgver=35
 pkgrel=3

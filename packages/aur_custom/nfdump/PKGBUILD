@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Rudy Matela <rudy@matela.com.br>
+
+buildarch=212
+
 pkgname=nfdump
 pkgver=1.6.13
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=libsoc
 pkgver=0.5
 pkgrel=1
@@ -18,8 +21,8 @@ pkgver() {
 
 build() {
   cd $_gitname
-  ./autogen.sh 
-  ./configure --prefix=/usr --enable-debug 
+  ./autogen.sh
+  ./configure --prefix=/usr --enable-debug
   make
 }
 

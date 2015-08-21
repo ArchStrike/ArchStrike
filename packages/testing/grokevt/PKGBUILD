@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='grokevt'
 pkgver='0.5.0'
 pkgrel=2
@@ -21,10 +24,10 @@ package() {
   cd "$srcdir/grokevt-$pkgver"
   #fix python2 bindings
   sed -i 's|'grokevt-distutils.py\ install'|'grokevt-distutils.py\ install\ --root=\"$pkgdir\"\ --optimize=1'|' Makefile
-    
+
   make PREFIX="$pkgdir/usr" ETC_PREFIX="$pkgdir/etc/grokevt" \
     MAN_PREFIX="$pkgdir/usr/share/man" install
-   
+
   rm -rf "$pkgdir/usr/share/man"
   mv "$pkgdir/usr/share/doc/grokevt/man" "$pkgdir/usr/share/"
   rm -rf "$pkgdir/usr/share/doc"

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=sandy
 pkgver=20140930.r6.531ab16
 pkgrel=2

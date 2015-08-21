@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=statsprocessor
 pkgver=0.10
 pkgrel=1

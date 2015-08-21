@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=wifijammer-git
 pkgver=20150330.r57
 pkgrel=1
@@ -12,7 +15,6 @@ makedepends=('git')
 provides=('wifijammer')
 source=("${pkgname}::git+https://github.com/DanMcInerney/wifijammer.git")
 md5sums=('SKIP')
-
 
 pkgver() {
   cd "${pkgname}"
@@ -35,7 +37,7 @@ package() {
 
   #License
   install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
-  
+
 
   #Bin
   install -Dm755 wifijammer.py "$pkgdir/usr/bin/wifijammer"

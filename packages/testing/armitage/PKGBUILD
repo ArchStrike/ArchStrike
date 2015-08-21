@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=armitage
 pkgver=141120
 pkgrel=1
@@ -16,8 +19,6 @@ sha512sums=('06e4a95f02f354545ebeff3258a1fbd8bb4d787a90548cd35fcf85c312ada6460d3
             'f9664591f31bf4dc5fd262e3e59d435a022887a6f5b76e2db64b987bc0f3b5dd168796b80bf7e755a5b28673ead3b52968ece60c572a9c460d727d12d4cb2863'
             '514baf2b71846878fdbf230eb87ff47f73dbc43bc1d3b61ee76bb3fb6aa25895139bb291c8bb99bd010527a8e991080236f2031221b7e360d9a8d81614ccff97')
 
-
-
 package() {
   cd "$srcdir/$pkgname"
   install -dm755 "$pkgdir/usr/share/$pkgname"
@@ -26,7 +27,7 @@ package() {
   install -Dm755 teamserver "$pkgdir/usr/share/armitage/teamserver"
   install -Dm755 armitage.jar "$pkgdir/usr/share/armitage/armitage.jar"
   install -Dm755 cortana.jar "$pkgdir/usr/share/armitage/cortana.jar"
-  install -Dm644 readme.txt whatsnew.txt "$pkgdir/usr/share/armitage/" 
+  install -Dm644 readme.txt whatsnew.txt "$pkgdir/usr/share/armitage/"
   install -Dm644 "$srcdir/armitage.desktop" "$pkgdir/usr/share/applications/armitage.desktop"
 
 cat > "$pkgdir/usr/bin/armitage" <<EOF

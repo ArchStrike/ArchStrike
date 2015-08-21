@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=pacemaker-git
 pkgver=r75.15ee2e1
 pkgrel=1

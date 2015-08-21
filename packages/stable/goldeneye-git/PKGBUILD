@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=goldeneye-git
 pkgver=r16.7a38fe9
 pkgrel=1

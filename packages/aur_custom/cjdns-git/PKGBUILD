@@ -4,6 +4,9 @@
 # Contributor: Xyne
 
 _pkgname=cjdns
+
+buildarch=212
+
 pkgname=$_pkgname-git
 pkgver=0.3.3327
 pkgrel=1

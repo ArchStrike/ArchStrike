@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=facebrute
 pkgver=0.3
 pkgrel=2

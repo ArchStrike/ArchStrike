@@ -2,6 +2,9 @@
 # Contributor: Jeremy Lynch <jl projectname org>
 # Contributor: Tyler Bennett <arch3y projectname org>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
+
+buildarch=1
+
 pkgname=projectname-keyring
 pkgver=20140202
 pkgrel=3

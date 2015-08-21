@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sulley
 pkgver=1.0.cb5e62c
 pkgrel=1

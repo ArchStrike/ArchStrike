@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-cssmin
 _gemname=${pkgname#ruby-}
 pkgver=1.0.3

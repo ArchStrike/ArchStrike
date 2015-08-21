@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=trinity-git
 pkgver=v1.4.775.g996e568
 pkgrel=1

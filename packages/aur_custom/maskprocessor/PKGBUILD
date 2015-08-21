@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=maskprocessor
 pkgver=0.73
 pkgrel=1

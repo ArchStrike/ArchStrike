@@ -8,6 +8,9 @@ _gembuilder=("install"
              "fix")
 _ruby="/usr/bin/ruby"
 _gem="/usr/bin/gem"
+
+buildarch=1
+
 pkgname="ruby-uri-query_params"
 pkgver="0.7.0"
 pkgrel=2

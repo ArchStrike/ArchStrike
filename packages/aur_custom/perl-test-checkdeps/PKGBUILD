@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor drathir <drathir87@gmail.com>
+
+buildarch=1
+
 pkgname='perl-test-checkdeps'
 _pkgname='Test-CheckDeps'
 pkgver='0.010'

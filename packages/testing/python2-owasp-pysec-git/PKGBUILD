@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=python2-owasp-pysec-git
 pkgver=r266.163e10a
 pkgrel=1

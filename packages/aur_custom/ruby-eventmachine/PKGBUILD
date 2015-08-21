@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=ruby-eventmachine
 pkgver=1.0.3
 pkgrel=2

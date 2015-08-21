@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Alexander Duscheleit <jinks@archlinux.us>
+
+buildarch=212
+
 pkgname=kyotocabinet-python2
 _pkgname=kyotocabinet-python-legacy
 pkgver=1.18

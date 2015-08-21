@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='http-fuzz'
 pkgver=20131215
 pkgrel=1
@@ -13,12 +16,12 @@ md5sums=('399883f034a505b8b157649e7870a0ff')
 
 pkgver() {
   cd "$srcdir"
-  
+
   date +%Y%m%d
 }
 
 package() {
   cd "$srcdir"
-  
+
   install -D -m755 "http-fuzz.pl" "$pkgdir/usr/bin/http-fuzz"
 }

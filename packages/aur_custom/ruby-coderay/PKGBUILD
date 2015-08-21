@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=coderay
+
+buildarch=1
+
 pkgname=ruby-$_gemname
 pkgver=1.1.0
 pkgrel=1

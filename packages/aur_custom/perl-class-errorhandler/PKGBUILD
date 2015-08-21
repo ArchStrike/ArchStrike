@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=perl-class-errorhandler
 pkgver=0.04
 pkgrel=1

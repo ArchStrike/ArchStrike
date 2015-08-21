@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=googlesub
 pkgver=1.3
 pkgrel=1
@@ -14,7 +17,7 @@ sha512sums=('3a0bfec5233d3b22377e39d78935f40a65d470a91d3fc7403c34f816371a4ef07b5
 package() {
   cd "$srcdir"/$pkgname-$pkgver
   install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -dm755 "$pkgdir/usr/bin" 
+  install -dm755 "$pkgdir/usr/bin"
   install -Dm755 googlesub.py "$pkgdir/usr/share/googlesub"
   install -Dm644 README.md "$pkgdir/usr/share/googlesub"
   install -Dm644 useragent_list.txt "$pkgdir/usr/share/googlesub"
@@ -27,5 +30,4 @@ python2 googlesub.py "\$@"
 EOF
 chmod +x "$pkgdir/usr/bin/googlesub"
 }
-
 

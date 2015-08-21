@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Bence Balint <balintbence1337@gmail.com>
 
+buildarch=1
+
 pkgname=python2-w3lib
 pkgver=1.11.0
 pkgrel=1

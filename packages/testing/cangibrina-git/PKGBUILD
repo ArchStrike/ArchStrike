@@ -2,6 +2,9 @@
 # Contributor: Franco Colombino <franco.c.colombino@gmail.com>
 
 _pkgname=cangibrina
+
+buildarch=1
+
 pkgname=$_pkgname-git
 pkgver=20150322.r93.8744afe
 pkgrel=1

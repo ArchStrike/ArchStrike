@@ -2,6 +2,8 @@
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Philipp Schmidt <philschmidt@gmx.net>
 
+buildarch=1
+
 pkgname=python2-wsgiref
 pkgver=0.1.2
 pkgrel=3

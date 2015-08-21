@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=wpbf-git
 pkgver=r7.11b6ac1
 pkgrel=1
@@ -38,5 +41,4 @@ python2 ./wpbf.py "\$@"
 EOF
   chmod +x "$pkgdir"/usr/bin/wpbf.py
 }
-
 

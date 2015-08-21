@@ -3,6 +3,8 @@
 # Contributor: mortzu <me@mortzu.de>
 # Contributor: fnord0 <fnord0@riseup.net>
 
+buildarch=192
+
 pkgname=acpi_call-projectname
 pkgver=1.1.0
 pkgrel=2

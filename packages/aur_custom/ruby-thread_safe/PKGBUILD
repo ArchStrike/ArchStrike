@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=thread_safe
+
+buildarch=1
+
 pkgname=ruby-thread_safe
 pkgver=0.1.3
 pkgrel=2

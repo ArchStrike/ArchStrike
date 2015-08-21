@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='bios_memimage'
 pkgver='1.2'
 pkgrel=2
@@ -26,7 +29,7 @@ build() {
 
 package() {
   cd "$srcdir/bios_memimage"
-  
+
   install -D -m755 "pxedump/pxedump" \
     "$pkgdir/usr/bin/pxedump"
   install -D -m755 "usbdump/usbdump" \

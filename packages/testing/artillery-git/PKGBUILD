@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=artillery-git
 pkgver=20150211.r113
 pkgrel=1

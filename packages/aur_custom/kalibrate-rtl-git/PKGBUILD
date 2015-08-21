@@ -1,11 +1,13 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: blackleg <blackleg@openmailbox.org>
 
+buildarch=212
+
 pkgname=kalibrate-rtl-git
 pkgver=20131214.r11
 pkgrel=2
 pkgdesc='Fork of http://thre.at/kalibrate/ for use with rtl-sdr devices'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h') 
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike')
 license=('custom')
 url='https://github.com/steve-m/kalibrate-rtl'
@@ -20,13 +22,12 @@ pkgver() {
     printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
-
 build() {
   cd "${srcdir}/${pkgname}"
 	./bootstrap
 	./configure --prefix=/usr
 	make
-  
+
 }
 
 package() {

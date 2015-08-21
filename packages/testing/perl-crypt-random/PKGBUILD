@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=VIPUL
 _perlmod=Crypt-Random
+
+buildarch=1
+
 pkgname=perl-crypt-random
 pkgver=1.25
 pkgrel=3

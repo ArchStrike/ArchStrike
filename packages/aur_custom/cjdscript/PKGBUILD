@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
+buildarch=1
+
 pkgname=cjdscript
 pkgver=10.2
 pkgrel=1

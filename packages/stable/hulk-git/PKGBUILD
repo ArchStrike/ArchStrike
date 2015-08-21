@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=hulk-git
 pkgver=r11.a9b9ad4
 pkgrel=1
@@ -10,7 +13,6 @@ depends=('glibc')
 makedepends=('go' 'git')
 source=("hulk::git+https://github.com/grafov/hulk.git")
 sha512sums=('SKIP')
-
 
 pkgver() {
   cd "$srcdir/hulk"
@@ -35,14 +37,12 @@ build() {
   elif [ "$CARCH" == 'armv6h' ] || [ "$CARCH" == 'armv7h' ];then
     export GOARCH=arm
   fi
-  
+
   GOPATH="$srcdir" go build -v -o "hulk"
 }
-
 
 package() {
   cd "$srcdir/hulk"
   install -Dm755 "hulk" "$pkgdir/usr/bin/hulk"
 }
-
 

@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Jerome Leclanche <jerome@leclan.ch>
 _pkgname=Heartbleed
+
+buildarch=212
+
 pkgname=heartbleed-git
 pkgver=119.v0.2.0.r48.g4a3332c
 pkgrel=1

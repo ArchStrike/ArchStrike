@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=masscan-git
 pkgver=20141103.r391
 pkgrel=1

@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=PJACKLAM
 _perlmod=Math-BigInt-GMP
+
+buildarch=212
+
 pkgname=perl-math-bigint-gmp
 pkgver=1.38
 pkgrel=1

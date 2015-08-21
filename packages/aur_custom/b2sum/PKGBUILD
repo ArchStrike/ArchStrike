@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Michael DÃ¼ll <michael.duell@rub.de>
 # Contributor: Dalton Miller
+
+buildarch=192
+
 pkgname=b2sum
 pkgver=20150531
 pkgrel=1

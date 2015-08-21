@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Sebastien Duquette <ekse.0x@gmail.com>
+
+buildarch=1
+
 pkgname=sagan-rules
 pkgver=06172014
 pkgrel=1

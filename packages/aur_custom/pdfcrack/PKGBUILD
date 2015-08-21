@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='pdfcrack'
 pkgver='0.14'
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=dirbuster
 pkgver=1.0_RC1
 pkgrel=3

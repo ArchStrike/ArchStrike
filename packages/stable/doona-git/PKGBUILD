@@ -1,3 +1,6 @@
+
+buildarch=1
+
 pkgname=doona-git
 pkgver=r132.1a4d409
 pkgrel=1
@@ -25,7 +28,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/doona"
-  
+
 cat > "$pkgdir/usr/bin/doona" << EOF
 #!/bin/sh
 cd /usr/share/doona

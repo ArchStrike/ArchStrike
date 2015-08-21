@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=delldrac
 pkgver=0.1
 pkgrel=1
@@ -11,14 +14,11 @@ depends=('python2')
 source=("https://www.trustedsec.com/files/delldrac.py" "LICENSE")
 sha512sums=('8d588f7234028194b8fb7d4bf467e656be6b962c625cfdc5a94b2ffd347f28f31a9dc1f1789e319cdadecea423370d5dc9987490d413aa365cfbe72bc8c9580c'
             '67cd6bd32087e8040fb4d663d23c1c1eefacfeed44deb3ea76db8a9b2b982a192464fb2f8202bbbe1ef6f9add79d0efd407b6ddeb0606d0a8c48eba02ac5e985')
-          
-
 
 
 prepare(){
   grep -iRl 'python' "$srcdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
-
 
 package() {
   cd "$srcdir"

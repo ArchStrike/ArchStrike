@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby1.9-rspec-expectations
 _gemname=rspec-expectations
 pkgver=2.14.2

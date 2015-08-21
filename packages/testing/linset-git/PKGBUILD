@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Cthulu201 <cthulu201@archstrike.org>
 
+buildarch=1
+
 pkgname=linset-git
 pkgver=20140616.r9
 pkgrel=1

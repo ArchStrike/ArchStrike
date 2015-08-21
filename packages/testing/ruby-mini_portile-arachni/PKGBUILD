@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=mini_portile
+
+buildarch=1
+
 pkgname=ruby-$_gemname-arachni
 pkgver=0.6.0
 pkgrel=1

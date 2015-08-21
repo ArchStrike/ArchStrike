@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Meir Kriheli <mkriheli@gmail.com>
 
+buildarch=1
+
 pkgname=python2-cookiecutter
 _pkgname=cookiecutter
 pkgver=1.0.0

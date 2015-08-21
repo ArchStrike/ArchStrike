@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=xssscan-git
 pkgver=r17.7f1ea90
 pkgrel=1
@@ -27,7 +30,7 @@ pkgver() {
 build() {
   cd "$srcdir/detectXSSlib/tools/xssscan"
   g++ -Wno-multichar -I../../detectxsslib -o xssscan xssscan.cpp ../../detectxsslib/detectxsslib.c
-  
+
 }
 
 package() {

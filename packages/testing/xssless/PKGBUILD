@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=xssless
 pkgver=r35.9eee648
 pkgrel=1
@@ -23,7 +26,7 @@ prepare(){
 
 package() {
   cd "$srcdir/xssless"
-  
+
   # Base directories.
   install -dm755 "$pkgdir/usr/share/$pkgname"
   install -dm755 "$pkgdir/usr/bin/"

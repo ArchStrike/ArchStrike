@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Andrey Mikhaylenko <neithere at gmail dot com>
 _distname=blessings
+
+buildarch=1
+
 pkgname=python2-$_distname
 pkgver=1.6
 pkgrel=1

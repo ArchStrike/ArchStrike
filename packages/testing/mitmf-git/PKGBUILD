@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=mitmf-git
 pkgver=20150528.r291
 pkgrel=1
@@ -8,7 +11,7 @@ arch=('any')
 url='https://github.com/byt3bl33d3r/MITMf'
 license=('GPL3')
 depends=('python2-configobj' 'python2-pillow' 'python2-user-agents' 'python2-service-identity' 'python2-ipy'
-         'python2-twisted' 'python2-netfilterqueue' 'python2-msgpack' 'python2-requests' 'python2-pyopenssl' 
+         'python2-twisted' 'python2-netfilterqueue' 'python2-msgpack' 'python2-requests' 'python2-pyopenssl'
          'scapy' 'capstone' 'python2-pefile' 'python2-dnspython' 'systemd' 'backdoor-factory-git' 'python2-pypcap'
          'python2-yaml' 'python2-watchdog' 'python2-dnslib' 'impacket')
 makedepends=('git')
@@ -27,7 +30,7 @@ pkgver() {
 
 prepare(){
   cd "${pkgname}"
-  #git submodule 
+  #git submodule
   grep -iRl 'python' "$srcdir/${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
@@ -43,7 +46,7 @@ package() {
   cd ${pkgdir}
   find ./ -type d -exec chmod 755 {} \+
   find ./ -type f -exec chmod 644 {} \+
-  
+
 cat > "${pkgdir}/usr/bin/mitmf" <<EOF
 #!/bin/sh
 cd /usr/share/mitmf

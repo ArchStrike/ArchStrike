@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=212
+
 pkgname=bmon
 pkgver=3.7
 pkgrel=1

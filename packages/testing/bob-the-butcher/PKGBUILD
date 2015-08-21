@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='bob-the-butcher'
 pkgver='0.7.1'
 pkgrel=2

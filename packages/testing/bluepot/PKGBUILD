@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=bluepot
 pkgver=0.1
 pkgrel=2
@@ -15,7 +18,6 @@ prepare() {
   cd "$srcdir/bluepot"
   sed -i 's/BluePot.jar/\/usr\/share\/bluepot\/BluePot-0.1.jar/' run.sh
 }
-
 
 package() {
   cd "$srcdir/bluepot"

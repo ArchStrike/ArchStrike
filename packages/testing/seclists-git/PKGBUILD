@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=seclists-git
 pkgver=r141.c8f9315
 pkgrel=1
@@ -20,10 +23,9 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 package() {
   cd "${pkgname}"
   install -dm0755 "${pkgdir}/usr/share/${pkgname}"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
-  
+
 }

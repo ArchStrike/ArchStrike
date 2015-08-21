@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Simon Hanna <simon dot hanna at serve-me dot info>
+
+buildarch=1
+
 pkgname=onionshare
 pkgver=0.7.1
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=196
+
 pkgname=pdfbook-analyzer
 pkgver=2014220
 groups=('archstrike' 'archstrike-forensics')

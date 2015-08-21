@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=creds.py-git
 pkgver=r17.1ec8297
 pkgrel=1

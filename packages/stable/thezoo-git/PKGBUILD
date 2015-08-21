@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=thezoo
+
+buildarch=1
+
 pkgname=${_pkgname}-git
 pkgver=20150617.r82
 pkgrel=1

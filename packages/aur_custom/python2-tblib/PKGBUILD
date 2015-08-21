@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=tblib
+
+buildarch=1
+
 pkgname=python2-$_pkgname
 pkgver=1.0.1
 pkgrel=1

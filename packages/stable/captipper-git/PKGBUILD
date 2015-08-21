@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=captipper-git
 pkgver=20150419.r31
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=crackhor-git
 pkgver=r9.5cfc8f8
 pkgrel=2

@@ -65,8 +65,6 @@ sha512sums=('2f0b72466e9bc538a675738aa416573d41bbbd7e3e2ffd5b5b127afde609ebc278c
             '6c58fea1f11b23a074a26ea62c92b645b2c829292574a55fb6f5cb7ed4227ba7f6d1b369fc4360fcf396dbf48f8f964c168f119be5263e62ed081606a34b0e6a'
             '940368779b28c325585257a4775938d08e6923acad7ffe38bd56b2534f6f905adab6c3cd5b8749ff4f6bd5969493509a043e3e1a998b0d00c208fbd5f545a3fe')
 
-
-
 _kernelname=${pkgbase#linux}
 
 prepare() {
@@ -203,7 +201,7 @@ _package() {
   mv "${pkgdir}/lib" "${pkgdir}/usr/"
 
   # add vmlinux
-  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux" 
+  install -D -m644 vmlinux "${pkgdir}/usr/lib/modules/${_kernver}/build/vmlinux"
 }
 
 _package-headers() {
@@ -342,6 +340,8 @@ _package-docs() {
   # remove a file already in linux package
   rm -f "${pkgdir}/usr/lib/modules/${_kernver}/build/Documentation/DocBook/Makefile"
 }
+
+buildarch=192
 
 pkgname=("${pkgbase}" "${pkgbase}-headers" "${pkgbase}-docs")
 for _p in ${pkgname[@]}; do

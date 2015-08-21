@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=perl-digest-perl-md5
 pkgver=1.9
 pkgrel=1
@@ -25,7 +28,7 @@ build() {
 
 package() {
   cd  "$srcdir/Digest-Perl-MD5-$pkgver"
-  
+
   make DESTDIR="$pkgdir" install
 
   find "$pkgdir" -name '.packlist' -delete

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=hashcat-utils
 pkgver=1.1
 pkgrel=1
@@ -19,7 +22,7 @@ sha512sums=('ed4208b673857496fde6b0ae725bdb04dfb8ecaf7d4097ca4e922848b537d0590fb
 prepare() {
   cd "$srcdir/hashcat-utils-$pkgver"
   sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-gcc|gcc|' Makefile
-  sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-strip|strip|' Makefile  
+  sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-strip|strip|' Makefile
   sed -i 's/release: posix windows/release: posix/' Makefile
   sed -i '/WINDOWS/d' Makefile
   sed -i '/*.exe/d' Makefile

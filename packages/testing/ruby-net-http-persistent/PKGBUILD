@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-net-http-persistent
 _gemname=net-http-persistent
 pkgver=2.9

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=bulk-extractor
 pkgver=1.5.5
 pkgrel=1

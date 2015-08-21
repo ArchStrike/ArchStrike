@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=VIPUL
 _perlmod=Class-Loader
+
+buildarch=1
+
 pkgname=perl-class-loader
 pkgver=2.03
 pkgrel=3

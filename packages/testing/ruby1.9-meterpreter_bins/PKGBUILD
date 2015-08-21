@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=meterpreter_bins
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=0.0.6
 pkgrel=1

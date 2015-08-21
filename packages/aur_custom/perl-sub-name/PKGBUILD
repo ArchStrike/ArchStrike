@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=perl-sub-name
 _cpanname="Sub-Name"
 pkgver=0.05

@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgbase=projectname-meta
+
+buildarch=192
+
 pkgname=('projectname-meta-iso-all')
 pkgver=0.6
 pkgrel=1
@@ -14,7 +17,7 @@ package_projectname-meta-iso-all() {
         ltrace
         strace
         valgrind
-        jhead 
+        jhead
         audit
         fcrackzip
         nmap

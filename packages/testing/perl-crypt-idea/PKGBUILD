@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=DPARIS
 _perlmod=Crypt-IDEA
+
+buildarch=212
+
 pkgname=perl-crypt-idea
 pkgver=1.10
 pkgrel=4

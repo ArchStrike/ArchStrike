@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=ruby-pg
 _gemname=pg
 pkgver=0.17.0

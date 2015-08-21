@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=keimpx-git
 pkgver=20140804.r163
 pkgrel=1

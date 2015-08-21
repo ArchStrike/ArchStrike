@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=xss-callback-git
 pkgver=r14.6a2bb85
 pkgrel=1

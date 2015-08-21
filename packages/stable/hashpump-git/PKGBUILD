@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=hashpump-git
 pkgver=r43.484c538
 pkgrel=1
@@ -20,7 +23,6 @@ pkgver() {
   # Use the tag of the last commit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 build() {
   cd "$srcdir/$pkgname"

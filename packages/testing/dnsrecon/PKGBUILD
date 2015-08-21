@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=dnsrecon
 pkgver=0.8.8
 pkgrel=7

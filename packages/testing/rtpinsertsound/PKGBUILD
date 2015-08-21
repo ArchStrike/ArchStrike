@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=rtpinsertsound
 pkgver=3.0
 pkgrel=1

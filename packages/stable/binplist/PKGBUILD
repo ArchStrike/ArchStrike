@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=binplist
 pkgver=0.1.4
 pkgrel=1
@@ -11,7 +13,6 @@ depends=('python2')
 makedepends=('python2-setuptools')
 source=(https://pypi.python.org/packages/source/b/$pkgname/$pkgname-$pkgver.tar.gz)
 sha512sums=('ea2a3836fe25df028030446119224d1fe2d5edfd8b98601c0482bfd680f35e1888c0a8bce0a4d421d3e7e25aa658e633f6248ffbe5e11217068de1cb65507b74')
-
 
 package(){
   cd "$srcdir/$pkgname-$pkgver"

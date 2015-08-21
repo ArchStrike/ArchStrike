@@ -1,5 +1,7 @@
 # Maintainer:  ArchStrike <team@archstrike.org>
 
+buildarch=1
+
 pkgname=python2-ua-parser
 pkgver=0.3.6
 pkgrel=2
@@ -19,7 +21,7 @@ build() {
 
 package() {
     cd $srcdir/ua-parser-${pkgver}
-    python2 setup.py install --root="$pkgdir" --optimize=1 
-    find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python2.5|#!/usr/bin/python2|'    
+    python2 setup.py install --root="$pkgdir" --optimize=1
+    find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python2.5|#!/usr/bin/python2|'
     find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
 }

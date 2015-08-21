@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributer: fnord0 <fnord0 AT riseup DOT net>
+
+buildarch=212
+
 pkgname=ghostpdl
 pkgver=9.10
 pkgrel=1

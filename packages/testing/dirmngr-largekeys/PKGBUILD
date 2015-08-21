@@ -2,6 +2,9 @@
 # Contributor: Tobias Powalowski <tpowa@archlinux.org>
 
 _pkgname=dirmngr
+
+buildarch=192
+
 pkgname=$_pkgname-largekeys
 pkgver=1.1.1
 pkgrel=1

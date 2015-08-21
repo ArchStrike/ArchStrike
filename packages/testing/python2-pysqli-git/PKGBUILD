@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-pysqli-git
 pkgver=r21.37418c9
 pkgrel=1
@@ -20,8 +23,6 @@ pkgver() {
   cd "$srcdir/pysqli"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
-
 
 package() {
   cd "$srcdir/pysqli"

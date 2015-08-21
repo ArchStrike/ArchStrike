@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='set-git'
 pkgver=6.1.2.r882.gee71b31
 pkgrel=1
@@ -9,7 +12,7 @@ arch=('any')
 url='https://www.trustedsec.com/downloads/social-engineer-toolkit'
 license=('BSD')
 makedepends=('git')
-depends=('python2' 'python2-beautifulsoup3' 'python2-pexpect' 
+depends=('python2' 'python2-beautifulsoup3' 'python2-pexpect'
 	'java-environment')
 optdepends=('ettercap: DNS spoofing and ARP cache poisoning capabilities'
             'sendmail: email address spoofing'

@@ -2,6 +2,9 @@
 # Contributor: Théophile Studer
 
 _pkgname=yara
+
+buildarch=212
+
 pkgname=python2-${_pkgname}
 pkgver=3.4.0
 pkgrel=1

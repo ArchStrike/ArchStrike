@@ -2,6 +2,8 @@
 # Contributor: Stefan Tatschner <stefan.tatschner at gmail dot com>
 # Contributor: Yeison Cardona <yeison.eng@gmail.com>
 
+buildarch=1
+
 pkgname=python2-hgapi
 _pkgname=hgapi
 pkgver=1.7.2

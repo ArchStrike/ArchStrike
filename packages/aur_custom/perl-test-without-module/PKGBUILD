@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=C/CO/CORION
 _perlmod=Test-Without-Module
+
+buildarch=1
+
 pkgname=perl-test-without-module
 pkgver=0.18
 pkgrel=1

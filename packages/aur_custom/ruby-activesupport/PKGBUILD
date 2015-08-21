@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=activesupport
+
+buildarch=1
+
 pkgname=ruby-activesupport
 pkgver=4.0.0
 pkgrel=4

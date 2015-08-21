@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=hpfeeds-git
 pkgver=20150522.r164
 pkgrel=1

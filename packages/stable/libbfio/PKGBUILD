@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=libbfio
 pkgver=20150102
 pkgrel=1
@@ -10,7 +13,6 @@ depends=('glibc')
 makedepends=('git')
 source=("https://github.com/libyal/libbfio/archive/$pkgver.tar.gz")
 sha512sums=('f72d5de1e9efe855231633fa47858c131660188501bf514bd0dd028601e64869fe0d429f941f24a0b449c4746fd0d94e3d0cb4dc770c15407bc18eba0b4f0c0b')
-
 
 build(){
   cd $srcdir/$pkgname-$pkgver

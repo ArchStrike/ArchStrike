@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=replayproxy
 pkgver=1.1
 pkgrel=1
@@ -20,10 +23,10 @@ package(){
   # Base directories.
   install -dm755 "$pkgdir/usr/bin/"
   install -dm755 "$pkgdir/usr/share/$pkgname"
- 
+
   #Clean up before we copy
   rm -rf "replayproxy%201.1.zip"
- 
+
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
 
 cat > "$pkgdir/usr/bin/replayproxy" << EOF

@@ -2,6 +2,8 @@
 # Contributor: Prurigro
 # Contributor: Scott Hansen (firecat53) firecat4153 at gmail
 
+buildarch=1
+
 pkgname=urlscan-git
 pkgver=20141218.r49
 pkgrel=1

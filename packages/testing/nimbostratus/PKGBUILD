@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=nimbostratus
 pkgver=20140204.r54.c7c206f
 pkgrel=1

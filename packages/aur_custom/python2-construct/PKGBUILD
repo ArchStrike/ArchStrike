@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: David Scholl <djscholl at gmail dot com>
+
+buildarch=1
+
 pkgname=python2-construct
 pkgver=2.5.2
 pkgrel=1

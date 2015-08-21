@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=liffy-git
 pkgver=r63.238ce6d
 pkgrel=1
@@ -26,7 +29,6 @@ prepare(){
   sed -i 's|python http_server.py|python2 http_server.py|' $srcdir/liffy/core.py
 }
 
-
 package() {
   cd "$srcdir/liffy"
 
@@ -37,7 +39,7 @@ package() {
   install -Dm755 *.py "$pkgdir/usr/share/liffy/"
   install -Dm644 README.md "$pkgdir/usr/share/liffy/README.md"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
- 
+
 cat > "$pkgdir/usr/bin/liffy" << EOF
 #!/bin/sh
 cd /usr/share/liffy

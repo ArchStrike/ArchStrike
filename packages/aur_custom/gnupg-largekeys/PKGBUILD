@@ -5,6 +5,8 @@
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 # Contributor: Judd Vinet <jvinet@zeroflux.org>
 
+buildarch=212
+
 pkgname=gnupg-largekeys
 pkgver=2.0.26
 pkgrel=3

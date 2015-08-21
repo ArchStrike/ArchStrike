@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='subdomainer'
 pkgver='1.2'
 pkgrel=1
@@ -19,6 +22,6 @@ prepare() {
 
 package() {
   cd "$srcdir"
-  
+
   install -D -m755 "subdomainer.py" "$pkgdir/usr/bin/subdomainer.py"
 }

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=protos-sip
 pkgver=2
 groups=('archstrike' 'archstrike-voip')

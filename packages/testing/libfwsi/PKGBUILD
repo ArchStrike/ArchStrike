@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname="libfwsi"
 pkgver="20150124"
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='pblind'
 pkgver='1.0'
 pkgrel=1
@@ -20,6 +23,6 @@ prepare() {
 
 package() {
   cd "$srcdir"
-  
+
   install -D -m755 "pblind.py" "$pkgdir/usr/bin/pblind.py"
 }

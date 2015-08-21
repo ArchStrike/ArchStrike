@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=3proxy
 pkgver=0.7.1.1
 pkgrel=2
@@ -30,7 +33,7 @@ build() {
 package() {
   cd "$srcdir/3proxy"
   make -f Makefile.Linux install "DESTDIR=$pkgdir"
-  find $pkgdir/etc/3proxy -type f |xargs chmod 644 
+  find $pkgdir/etc/3proxy -type f |xargs chmod 644
   install -Dm644 $srcdir/3proxy.desktop "$pkgdir"/usr/share/applications/3proxy.desktop
   # Fix conflict with extra/libproxy.
   mv "$pkgdir/usr/bin/proxy" "$pkgdir/usr/bin/3proxy"

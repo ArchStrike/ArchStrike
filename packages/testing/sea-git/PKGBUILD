@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sea-git
 pkgver=r103.9aca1c8
 pkgrel=1
@@ -18,7 +21,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 package() {
   cd "$srcdir/sea"
 
@@ -31,7 +33,7 @@ package() {
   install -Dm644 COPYING "$pkgdir/usr/share/sea"
 
   cp -a --no-preserve=ownership src/* "$pkgdir/usr/share/sea/src/"
-  
+
 cat > "$pkgdir/usr/bin/sea" << EOF
 #!/bin/sh
 cd /usr/share/sea

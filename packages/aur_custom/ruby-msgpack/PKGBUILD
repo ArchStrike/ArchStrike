@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=msgpack
+
+buildarch=212
+
 pkgname=ruby-$_gemname
 pkgver=0.5.8
 pkgrel=1

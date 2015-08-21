@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: kfgz <kfgz at interia pl>
 
+buildarch=212
+
 pkgname=xmount
 pkgver=0.7.3
 pkgrel=1
@@ -17,7 +19,7 @@ sha512sums=('c14422c4097039c3b47204f761ced23ad6493efbcf5e2089b9fd9c32bdc2e9a5ef8
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .. #CFLAGS+="-lewf" 
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .. #CFLAGS+="-lewf"
   make
 }
 

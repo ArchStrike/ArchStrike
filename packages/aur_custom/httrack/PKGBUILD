@@ -6,6 +6,8 @@
 # Contributor: orelien <aurelien.foret@wanadoo.fr>
 # Contributor: Muflone <webreg@vbsimple.net>
 
+buildarch=212
+
 pkgname=httrack
 pkgver=3.48.21
 pkgrel=2

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='hex2bin'
 pkgver='2.0'
 pkgrel=1
@@ -13,7 +16,7 @@ sha512sums=('2aced3259e9fc462c5fabdfec7e9113675f58e23c8deb85540c3af7f0244fddc842
 
 build() {
   cd "$srcdir/Hex2bin-$pkgver"
-  make 
+  make
 }
 
 package() {

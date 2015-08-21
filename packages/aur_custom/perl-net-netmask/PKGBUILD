@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=perl-net-netmask
 pkgver=1.9021
 pkgrel=1

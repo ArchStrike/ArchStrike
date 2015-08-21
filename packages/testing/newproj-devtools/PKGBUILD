@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Pierre Schmitz <pierre@archlinux.de>
 # Contributor ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+
+buildarch=192
+
 pkgname=projectname-devtools
 _pkgname=devtools
 pkgver=20141224
@@ -44,6 +47,6 @@ package() {
   make PREFIX=/usr DESTDIR="${pkgdir}" install
   install -dm0755 "${pkgdir}"/usr/share/projectname-devtools/
   install -Dm0644 "${srcdir}"/pacman-projectname-*.conf "${pkgdir}"/usr/share/projectname-*devtools/
-  
+
 }
 

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=perl-digest-md4
 pkgver=1.9
 pkgrel=1

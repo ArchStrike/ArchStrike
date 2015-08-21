@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=osintstalker
 pkgver=2014.1.4
 pkgrel=2

@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Tocer Deng <tocer.deng@gmail.com>
+
+buildarch=1
+
 pkgname=python2-pycallgraph
 pkgver=1.0.1
 pkgrel=1
@@ -12,7 +15,7 @@ makedepends=('git' 'python2-setuptools')
 source=("git+https://github.com/gak/pycallgraph.git")
 sha512sums=('SKIP')
 
-package() { 
+package() {
     cd $srcdir/pycallgraph
     python2 setup.py install --root=$pkgdir --optimize=1
     install -D -m644 man/pycallgraph.1 $pkgdir/usr/share/man/man1/pycallgraph.1

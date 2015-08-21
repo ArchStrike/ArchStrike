@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=perl-class-gomor
 pkgver=1.03
 pkgrel=1

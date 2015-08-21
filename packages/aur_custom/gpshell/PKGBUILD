@@ -2,6 +2,8 @@
 # Contributor: Guenther Starnberger <gst@sysfrog.org>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
+buildarch=212
+
 pkgname=gpshell
 pkgver=1.4.4
 pkgrel=1

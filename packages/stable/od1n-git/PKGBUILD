@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=212
+
 pkgname=od1n-git
 pkgver=20150404.r152
 pkgrel=1
@@ -23,7 +25,6 @@ build(){
   cd "${pkgname}"
   make
 }
-
 
 package() {
   cd "${pkgname}"

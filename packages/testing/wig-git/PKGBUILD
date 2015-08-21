@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=wig-git
 pkgver=r439.fa9f62b
 pkgrel=1
@@ -13,7 +16,6 @@ makedepends=('git')
 options=('!emptydirs')
 source=("wig::git+https://github.com/jekyc/wig.git")
 sha512sums=('SKIP')
-
 
 pkgver() {
   cd "$srcdir/wig"

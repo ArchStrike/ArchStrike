@@ -2,6 +2,9 @@
 # Maintainer: Tyler Bennett <tylerb@trix2voip.com>
 
 _gemname=rainbow
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=2.0.0
 pkgrel=1

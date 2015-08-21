@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=bamfdetect
 pkgver=1.6.8
 pkgrel=1
@@ -23,7 +26,6 @@ package() {
   cd "$srcdir/bamfdetect-$pkgver"
   python2 setup.py install --root=$pkgdir --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  
-}
 
+}
 

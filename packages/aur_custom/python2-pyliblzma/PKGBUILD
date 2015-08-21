@@ -4,6 +4,9 @@
 # Contributor: Daniel Strandberg <esodax!nospam!@gmail.com>
 
 _relname=pyliblzma
+
+buildarch=212
+
 pkgname=python2-${_relname}
 pkgver=0.5.3
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=oclhashcat
 _pkgname=oclHashcat
 pkgver=1.33

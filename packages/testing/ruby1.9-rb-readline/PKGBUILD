@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=rb-readline
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=0.5.1
 pkgrel=1

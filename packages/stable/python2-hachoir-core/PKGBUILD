@@ -4,6 +4,9 @@
 # Contributor: ianux <ianux AT free DOT fr>
 
 _pkgname=hachoir-core
+
+buildarch=1
+
 pkgname=python2-hachoir-core
 pkgver=1.3.3
 pkgrel=1

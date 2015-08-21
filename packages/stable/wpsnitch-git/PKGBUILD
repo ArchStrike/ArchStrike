@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=wpsnitch
+
+buildarch=1
+
 pkgname=${_pkgname}-git
 pkgver=r1.aa3ca3b
 pkgrel=1

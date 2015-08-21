@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor : Sebastien Duquette <ekse.0x@gmail.com>
+
+buildarch=212
+
 pkgname=sagan
 pkgver=1.0.0RC4
 pkgrel=1
@@ -22,7 +25,7 @@ build() {
   ./configure --enable-esmtp --enable-geoip --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
   make
   sed "s:^var RULE_PATH.*$:var RULE_PATH /usr/share/sagan-git/rules/:" etc/sagan.conf > etc/sagan.conf.new
-  mv etc/sagan.conf.new etc/sagan.conf 
+  mv etc/sagan.conf.new etc/sagan.conf
 
 }
 

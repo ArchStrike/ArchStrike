@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=rtlamr
+
+buildarch=212
+
 pkgname=rtlamr-git
 pkgver=236.ae0364d
 pkgrel=1

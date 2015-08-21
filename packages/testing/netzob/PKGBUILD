@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: N3mes1s <n3mes1s.oxoo@gmail.com>
+
+buildarch=212
+
 pkgname=netzob
 pkgver=0.4.1
 pkgrel=1
@@ -19,7 +22,7 @@ build() {
 package() {
   cd "$srcdir/Netzob-$pkgver"
   python2 setup.py install --root=$pkgdir --optimize=1
-  # fixing perms on all of the files below 
+  # fixing perms on all of the files below
   chmod 644 $pkgdir/usr/share/applications/netzob.desktop
   chmod 644 $pkgdir/usr/lib/python2.7/site-packages/Netzob-0.4.1-py2.7.egg-info/PKG-INFO
   for f in `find $pkgdir/usr/share/netzob/ -type f -iname "*.png" -or -type f -iname "*.xsd" \

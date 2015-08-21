@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Nathaniel Case <qalthos@gmail.com>
+
+buildarch=1
+
 pkgname=python2-pyrasite-gui
 pkgver=2.0beta7
 pkgrel=1

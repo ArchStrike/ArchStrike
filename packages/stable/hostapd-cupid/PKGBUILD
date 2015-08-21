@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
+buildarch=212
+
 pkgname=hostapd-cupid
 pkgver=2.1
 pkgrel=1
@@ -31,7 +33,7 @@ sha512sums=('d39291fd7b7b886de54dbf64740b5404f6b154af35dc568c51dbd90584b352c2422
 
 prepare(){
   cd "$srcdir/hostapd-$pkgver"
-  patch -p1 -i "$srcdir/cupid/patch-hostapd" 
+  patch -p1 -i "$srcdir/cupid/patch-hostapd"
 }
 
 build() {
@@ -56,7 +58,7 @@ package() {
   install -Dm644 $srcdir/cupid/testconfs/certs/demoCA/* "$pkgdir/etc/hostapd-cupid/certs/demoCA/"
 
   cd hostapd
- 
+
   # Binaries
   install -dm755 "$pkgdir/usr/bin"
   install -Dm755 hostapd $pkgdir/usr/bin/hostapd-cupid

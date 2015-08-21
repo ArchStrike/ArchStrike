@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author='GOMOR'
 _perlmod='Net-Frame-Layer-IPv6'
+
+buildarch=1
+
 pkgname='perl-net-frame-layer-ipv6'
 pkgver='1.07'
 pkgrel=1
@@ -15,7 +18,7 @@ sha512sums=('89a74d4124a32361c9434286b21fb20338d5d8331eb78f132c22f9ab55db6413fcb
 
 prepare() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
@@ -27,6 +30,6 @@ build() {
 
 package() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   make install DESTDIR="$pkgdir/"
 }

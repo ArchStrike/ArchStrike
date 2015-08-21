@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=hyperfox
+
+buildarch=212
+
 pkgname=hyperfox-git
 pkgver=20150113.r45
 pkgrel=1

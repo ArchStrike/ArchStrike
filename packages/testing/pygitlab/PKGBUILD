@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=pygitlab
 pkgver=0.9
 pkgrel=1
@@ -11,7 +13,6 @@ depends=('python2-requests' 'python2-six')
 makedepends=('python2-setuptools' 'python2-sphinx')
 source=(https://github.com/gpocentek/python-gitlab/archive/$pkgver.tar.gz)
 sha512sums=('aa9eebc87afac207fb21c3a930eb5b905fdb06ba55810d13dad328db711e335b756aa2e0aa6d706d06af85103555422cd4f2a7b7362e636353e439c1b84856f3')
-
 
 package(){
   cd "$srcdir/python-gitlab-$pkgver"

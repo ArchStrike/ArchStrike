@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=wiffy
 pkgver=0.2.1aa
 pkgrel=1

@@ -4,6 +4,9 @@
 # Contributor: Josh Cartwright <joshc@eso.teric.us>
 _subarchs=(armv6h armv7h)
 pkgbase='distccd-projectname'
+
+buildarch=128
+
 pkgname=("${_subarchs[@]/#/$pkgbase-}")
 pkgver=4.9.2
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='rdesktop-brute'
 _pkgname='rdesktop'
 pkgver='1.5.0'
@@ -23,7 +26,7 @@ prepare() {
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
-  
+
   ./configure --prefix=/usr
   make
 }

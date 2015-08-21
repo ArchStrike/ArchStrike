@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='gwtenum'
 pkgver=20120831.r7.f27a5aa
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=libcsystem
 pkgver=20150101
 pkgrel=1
@@ -10,7 +13,6 @@ depends=('glibc')
 makedepends=('git')
 source=("https://github.com/libyal/libcsystem/archive/$pkgver.tar.gz")
 sha512sums=('3963bfb326006383863009e63f15511344b6bcfcdb5a0f814764d8069deaddd135afdfe4b4dc8066ed6aff55a975ef3e42e646b99c557b9863764e2ffe9005f6')
-
 
 build(){
   cd $srcdir/$pkgname-$pkgver

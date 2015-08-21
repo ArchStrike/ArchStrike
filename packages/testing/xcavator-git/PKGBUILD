@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=xcavator-git
 pkgver=r5.bd9e2d8
 pkgrel=2
@@ -21,7 +24,6 @@ pkgver() {
 prepare(){
   grep -iRl 'python' "$srcdir/xcavator" | xargs sed -i 's|#!.*/usr/bin/python3.3|#!/usr/bin/python|;s|#!.*/usr/bin/env python3.3$|#!/usr/bin/env python|'
 }
-
 
 package() {
   cd "$srcdir/xcavator"

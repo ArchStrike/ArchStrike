@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Diogo Leal <estranho@diogoleal.com>
 
+buildarch=1
+
 pkgname=exabgp
 pkgver=3.4.11
 pkgrel=1

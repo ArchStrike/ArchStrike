@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # TODO: check license
+
+buildarch=212
+
 pkgname=honeyd
 pkgver=1.6.7
 pkgrel=2

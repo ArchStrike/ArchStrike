@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=hqlmap
 pkgver=r35.081395e
 pkgrel=1

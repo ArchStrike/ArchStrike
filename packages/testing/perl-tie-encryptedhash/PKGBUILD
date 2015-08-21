@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=VIPUL
 _perlmod=Tie-EncryptedHash
+
+buildarch=1
+
 pkgname=perl-tie-encryptedhash
 pkgver=1.24
 pkgrel=3

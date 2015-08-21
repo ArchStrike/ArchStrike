@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=artii
+
+buildarch=1
+
 pkgname=ruby-$_gemname
 pkgver=2.0.4
 pkgrel=2

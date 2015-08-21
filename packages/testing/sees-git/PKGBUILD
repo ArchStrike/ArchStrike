@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sees-git
 pkgver=r67.cd741aa
 pkgrel=1

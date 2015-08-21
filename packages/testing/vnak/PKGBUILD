@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='vnak'
 pkgver=20131227.r3.f7e462d
 pkgrel=1

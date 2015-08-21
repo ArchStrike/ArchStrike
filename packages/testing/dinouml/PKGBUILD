@@ -2,6 +2,9 @@
 # Contributor: Prurigro
 
 _pkgname=DinoUML
+
+buildarch=212
+
 pkgname=dinouml
 pkgver=0.9.5
 pkgrel=1

@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=yararules-git
 pkgver=20150625.r148
 pkgrel=1

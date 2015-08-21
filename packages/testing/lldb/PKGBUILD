@@ -6,6 +6,8 @@
 # Contributor: Xavier de Gaye <xdegaye@gmail.com>
 # Contributor: Michael Hansen <zrax0111 gmail com>
 
+buildarch=212
+
 pkgname=lldb
 pkgver=3.5.1
 pkgrel=1

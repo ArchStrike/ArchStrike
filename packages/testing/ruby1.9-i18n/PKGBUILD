@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby1.9-i18n
 _gemname=${pkgname#ruby-}
 pkgver=0.6.5

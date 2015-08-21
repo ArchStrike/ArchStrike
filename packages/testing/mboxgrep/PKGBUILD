@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=mboxgrep
 pkgver=0.7.9
 pkgrel=3

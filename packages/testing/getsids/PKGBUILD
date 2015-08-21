@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=getsids
 pkgver=0.0.1
 pkgrel=1
@@ -20,7 +23,7 @@ build() {
 
 package(){
   cd "$srcdir/getsids"
-  
+
   # Base directories
   install -d $pkgdir/usr/bin
   install -d $pkgdir/usr/share/doc/getsids/

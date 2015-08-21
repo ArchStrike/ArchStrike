@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=httpry
 pkgver=0.1.8
 pkgrel=1
@@ -21,7 +24,6 @@ build() {
   make
 }
 
-
 package() {
   cd $srcdir/httpry-$pkgver
   install -dm755 $pkgdir/usr/share/licenses/$pkgname
@@ -29,7 +31,7 @@ package() {
   install -dm755 $pkgdir/usr/share/$pkgname/plugins
   install -dm755 $pkgdir/usr/share/$pkgname
   install -dm755 $pkgdir/usr/share/man/man1
-  
+
   #Bins
   install -Dm755 httpry "$pkgdir/usr/bin/"
   install -Dm755 scripts/parse_log.pl "$pkgdir/usr/bin/httpry-log-parse"
@@ -37,9 +39,9 @@ package() {
   #Docs
   install -Dm644 doc/* "$pkgdir/usr/share/$pkgname/"
   install -Dm644 httpry.1 "$pkgdir/usr/share/man/man1/"
-  install -Dm644 doc/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"  
+  install -Dm644 doc/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
   #Plugins
   install -Dm644 scripts/plugins/* "$pkgdir/usr/share/$pkgname/plugins/"
-  
+
 }

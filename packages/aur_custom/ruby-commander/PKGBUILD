@@ -1,5 +1,8 @@
 # Maintainer:  <plewis@aur.archlinux.org>
 _gemname=commander
+
+buildarch=1
+
 pkgname=ruby-$_gemname
 pkgver=4.1.5
 pkgrel=1

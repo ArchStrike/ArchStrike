@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=shellme-git
 pkgver=r3.8c7919d
 pkgrel=1

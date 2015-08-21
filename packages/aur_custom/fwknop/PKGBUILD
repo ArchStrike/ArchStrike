@@ -6,6 +6,9 @@
 #   Chris <chris at christopherjones dot us>
 #   henning mueller <henning@orgizm.net>
 #   Fabiano Furtado <fusca14 at gmail dot com>
+
+buildarch=212
+
 pkgname=fwknop
 pkgver=2.6.5
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=smtp-user-enum
 pkgver=1.2
 pkgrel=1

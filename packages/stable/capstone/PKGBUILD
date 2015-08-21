@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=capstone
 pkgver=3.0.3
 pkgrel=1
@@ -24,7 +27,6 @@ prepare(){
   sed -i 's|python|python2|' Makefile
 }
 
-
 build() {
   cd "$srcdir/capstone-$pkgver"
   ./make.sh
@@ -33,7 +35,7 @@ build() {
   #cd $srcdir/$pkgname-$pkgver/bindings/java
   #make
   #cd $srcdir/$pkgname-$pkgver/bindings/ocaml
-  #make  
+  #make
 }
 
 package() {

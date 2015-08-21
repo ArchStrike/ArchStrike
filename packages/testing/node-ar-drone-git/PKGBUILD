@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=ar-drone
+
+buildarch=1
+
 pkgname=node-$_pkgname-git
 pkgver=v0.3.3.2.g228bd45
 pkgrel=2

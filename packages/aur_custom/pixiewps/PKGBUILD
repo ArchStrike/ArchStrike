@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=212
+
 pkgname=pixiewps
 pkgver=1.1
 pkgrel=1
@@ -18,7 +20,7 @@ prepare(){
 
 build(){
   cd "$srcdir/$pkgname-$pkgver/src"
-  make 
+  make
 }
 
 package() {

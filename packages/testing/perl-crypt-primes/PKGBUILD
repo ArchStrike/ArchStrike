@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=VIPUL
 _perlmod=Crypt-Primes
+
+buildarch=1
+
 pkgname=perl-crypt-primes
 pkgver=0.50
 pkgrel=3

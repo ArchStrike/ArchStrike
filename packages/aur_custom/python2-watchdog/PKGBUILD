@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
+buildarch=1
+
 pkgname=python2-watchdog
 pkgver=0.8.3
 pkgrel=2
@@ -23,6 +25,6 @@ package() {
   python2 setup.py install --root="${pkgdir}"
   install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   # fixing python refs
-  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/event_backport.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/platform.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/unicode_paths.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/dirsnapshot.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/echo.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/fsevents.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/watchmedo.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/tricks/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/inotify.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/bricks.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/decorators.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/kqueue.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/version.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/read_directory_changes.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/polling.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/api.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/events.py  $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/winapi.py 
+  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/event_backport.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/platform.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/unicode_paths.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/dirsnapshot.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/echo.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/fsevents.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/watchmedo.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/tricks/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/__init__.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/inotify.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/bricks.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/utils/decorators.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/kqueue.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/version.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/read_directory_changes.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/polling.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/api.py $pkgdir/usr/lib/python2.7/site-packages/watchdog/events.py  $pkgdir/usr/lib/python2.7/site-packages/watchdog/observers/winapi.py
 }
 

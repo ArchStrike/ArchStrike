@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=sdrangelove-git
 pkgver=20140824.r172
 pkgrel=1
@@ -26,7 +29,7 @@ build(){
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2 -DCMAKE_SKIP_RPATH=TRUE ../
   make
 }
-  
+
 
 package() {
   cd "${pkgname}/build"

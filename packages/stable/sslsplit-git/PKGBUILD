@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=sslsplit-git
 pkgver=r321.22b4d3c
 pkgrel=1
@@ -25,7 +28,6 @@ build(){
   export PREFIX=$pkgdir/usr
   make
 }
-
 
 package() {
   cd "$srcdir/sslsplit"

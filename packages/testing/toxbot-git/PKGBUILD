@@ -2,6 +2,9 @@
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 _pkgname=toxbot
+
+buildarch=212
+
 pkgname=$_pkgname-git
 _pkgver=acfabb8
 pkgver=r32.acfabb8

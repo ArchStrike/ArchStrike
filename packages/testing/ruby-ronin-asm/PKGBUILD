@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-ronin-asm
 _gemname=ronin-asm
 pkgver=0.2.0

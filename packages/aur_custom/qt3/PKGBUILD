@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
+
+buildarch=212
+
 pkgname=qt3
 pkgver=3.3.8b
 pkgrel=8
@@ -18,7 +21,7 @@ optdepends=('qtchooser: set the default Qt toolkit'
 options=('!docs')
 source=(ftp://ftp.qt-project.org/qt/source/qt-x11-free-${pkgver}.tar.gz
         qt3-png15.patch qt-copy-kde-patches.tar.bz2 qt-patches.tar.bz2
-        eastern_asian_languagues.diff qt-odbc.patch gcc-4.6.patch 
+        eastern_asian_languagues.diff qt-odbc.patch gcc-4.6.patch
         qt-x11-free-3.3.5-makelibshared.patch)
 sha512sums=('09b5179d6fb6ff1fa63c44150200436c195e45bb9620cd64e9182db79dfdf758ac734c8aac9c668932efb27ecaa9bfbfe11835736335a35c9423eab2ca83efd2'
             'a9ebb35b6ca11d6e8712a33b0a4dc63b1a8038b09ec282f97e909d2a60bc83d93210df8f45c91b504f29eb0b760faa54b2a30e82e96298090033ed8e3882681b'
@@ -36,20 +39,20 @@ prepare() {
   cd qt-x11-free-${pkgver}
   # apply qt patches from kde.org
   for i in ../qt-copy-kde-patches/*; do
-    patch -p0 -i $i 
+    patch -p0 -i $i
   done
   # apply other qt patches and one security fix from debian/gentoo
   for i in ../qt-patches/*; do
-    patch -p1 -i $i 
+    patch -p1 -i $i
   done
   # fix CJK font/chars select error (FS#11245)
-  patch -p1 -i "${srcdir}"/eastern_asian_languagues.diff 
+  patch -p1 -i "${srcdir}"/eastern_asian_languagues.diff
   # fix build problem against new unixODBC
-  patch -p1 -i "${srcdir}"/qt-odbc.patch 
+  patch -p1 -i "${srcdir}"/qt-odbc.patch
   # fix build with gcc 4.6.0
   patch -p1 -i "${srcdir}"/gcc-4.6.patch
-  patch -p0 -i "${srcdir}"/qt3-png15.patch 
- 
+  patch -p0 -i "${srcdir}"/qt3-png15.patch
+
   patch -p1 -i "${srcdir}"/qt-x11-free-3.3.5-makelibshared.patch
 
   sed -i "s|-O2|$CXXFLAGS|" mkspecs/linux-g++{,-32,-64}/qmake.conf
@@ -98,7 +101,7 @@ package() {
   make INSTALL_ROOT="${pkgdir}" install
   sed -i -e "s|-L${srcdir}/qt-x11-free-${pkgver}/lib ||g" -e "s|${srcdir}/||g" "${pkgdir}"/usr/lib/*.prl
   rm -rf "${pkgdir}"/usr/share/qt3/{phrasebooks,templates,translations}
-  rm -rf "${pkgdir}"/usr/share/qt3/mkspecs/{aix*,*bsd*,cygwin*,dgux*,darwin*,hpux*,hurd*,irix*,linux-g++$ARCH/linux-g++$ARCH,lynxos*,macx*,qnx*,reliant*,sco*,solaris*,tru64*,unixware*,win32*} 
+  rm -rf "${pkgdir}"/usr/share/qt3/mkspecs/{aix*,*bsd*,cygwin*,dgux*,darwin*,hpux*,hurd*,irix*,linux-g++$ARCH/linux-g++$ARCH,lynxos*,macx*,qnx*,reliant*,sco*,solaris*,tru64*,unixware*,win32*}
 
 # install man pages
   install -d -m755 "${pkgdir}"/usr/share/man

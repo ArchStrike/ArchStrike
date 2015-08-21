@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=pompem-git
 pkgver=r81.6224498
 pkgrel=1
@@ -29,9 +32,9 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/pompem"
- 
+
   install -Dm644 README.markdown "$pkgdir/usr/share/licenses/$pkgname/"
-  
+
 cat > "$pkgdir/usr/bin/pompem" << EOF
 #!/bin/sh
 cd /usr/share/pompem

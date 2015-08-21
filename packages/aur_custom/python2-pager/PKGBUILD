@@ -2,6 +2,8 @@
 # Contributor: gosella <gosella@gmail.com>
 # Contributor: OK100 <ok100.ok100.ok100@gmail.com>
 
+buildarch=1
+
 pkgname=python2-pager
 pkgver=3.3
 pkgrel=1
@@ -18,7 +20,6 @@ sha512sums=('2c0b0cc4ce3c290f6892cbad1107019249458a27276ed6f41026f16af1a8cb42570
 prepare(){
   grep -iRl 'python' "$srcdir/pager-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
-
 
 package() {
   cd "$srcdir/pager-$pkgver"

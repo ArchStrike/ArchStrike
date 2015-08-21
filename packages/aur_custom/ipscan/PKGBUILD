@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=ipscan
 pkgver=3.2.1
 pkgrel=1
@@ -10,10 +13,10 @@ url="http://www.angryziber.com"
 depends=('java-runtime')
 if [[ $CARCH == "i686" ]]; then
 source=("http://downloads.sourceforge.net/project/ipscan/ipscan3-binary/3.2.1/ipscan-linux-$pkgver.jar"
-      "ipscan" 
+      "ipscan"
       "ipscan.desktop")
 elif [[ $CARCH == "x86_64" ]]; then
-     source=("http://downloads.sourceforge.net/project/ipscan/ipscan3-binary/3.2.1/ipscan-linux64-$pkgver.jar" 
+     source=("http://downloads.sourceforge.net/project/ipscan/ipscan3-binary/3.2.1/ipscan-linux64-$pkgver.jar"
              "ipscan64"
              "ipscan.desktop")
 fi
@@ -33,5 +36,5 @@ package() {
           install -Dm644 ipscan.desktop $pkgdir/usr/share/applications/ipscan.desktop
           install -Dm644 ipscan-linux64-$pkgver.jar $pkgdir/usr/share/java/ipscan/ipscan-linux64-$pkgver.jar
   fi
-       
+
 }

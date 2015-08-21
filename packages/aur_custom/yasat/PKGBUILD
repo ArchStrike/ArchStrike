@@ -1,6 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Phillip Smith <fukawi2@NO-SPAM.gmail.com>
 
+buildarch=1
 
 pkgname=yasat
 pkgver=839

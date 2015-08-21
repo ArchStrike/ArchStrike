@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=maltrieve
+
+buildarch=1
+
 pkgname=$_pkgname-git
 pkgver=r342.b9e7560
 pkgrel=1

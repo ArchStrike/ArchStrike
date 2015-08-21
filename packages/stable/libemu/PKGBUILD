@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contriibutor: Gagou <gagou@rez-gif.supelec.fr>
+
+buildarch=212
+
 pkgname=libemu
 pkgver=r571.ab48695
 pkgrel=1
@@ -12,12 +15,10 @@ makedepends=('git')
 source=("libemu::git://git.carnivore.it/libemu.git")
 sha512sums=('SKIP')
 
-
 pkgver() {
   cd "$srcdir/$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 build() {
   cd "$srcdir/$pkgname"

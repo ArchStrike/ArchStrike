@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Yuval Adam <yuv dot adm at gmail dot com> PGP-Key: CC2115C12D99D2F0
 
+buildarch=212
+
 pkgname=gr-gsm-git
 pkgver=20141203.r154
 pkgrel=1

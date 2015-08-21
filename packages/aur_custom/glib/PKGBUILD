@@ -2,6 +2,8 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
+buildarch=212
+
 pkgname=glib
 pkgver=1.2.10
 pkgrel=13

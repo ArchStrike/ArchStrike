@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='perl-text-csv-xs'
 pkgver='1.16'
 pkgrel='1'

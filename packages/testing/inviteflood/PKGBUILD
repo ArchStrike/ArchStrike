@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=196
+
 pkgname=inviteflood
 pkgver=2.0
 groups=('archstrike' 'archstrike-dos')

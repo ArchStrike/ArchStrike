@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=peda-git
 pkgver=r63.152e635
 pkgrel=1
@@ -26,7 +29,6 @@ prepare(){
   patch -Np1 -i "${srcdir}"/peda.py.patch
 }
 
-
 package() {
   cd "${pkgname}"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
@@ -38,5 +40,5 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   #Fixing import error on utils
   mv $pkgdir/usr/share/${pkgname}/lib/utils.py $pkgdir/usr/share/${pkgname}/lib/peda_utils.py
-  sed -e 's/^from util/from peda_util/' -i $pkgdir/usr/share/${pkgname}/peda.py $pkgdir/usr/share/${pkgname}/lib/nasm.py $pkgdir/usr/share/${pkgname}/lib/shellcode.py 
+  sed -e 's/^from util/from peda_util/' -i $pkgdir/usr/share/${pkgname}/peda.py $pkgdir/usr/share/${pkgname}/lib/nasm.py $pkgdir/usr/share/${pkgname}/lib/shellcode.py
 }

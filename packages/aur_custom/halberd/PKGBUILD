@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=halberd
 pkgver=0.2.4
 pkgrel=1
@@ -19,6 +22,6 @@ package() {
     cd $srcdir/halberd-0.2.4
     python2 setup.py install --root="$pkgdir" --optimize=1
     install -dm755 "$pkgdir"/usr/share/man
-    mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man 
+    mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man
 }
 

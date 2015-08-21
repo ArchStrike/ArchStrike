@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=filter_audio
+
+buildarch=212
+
 pkgname=${_pkgname}-git
 _pkgver=dd59d99
 pkgver=r30.6b4db1b

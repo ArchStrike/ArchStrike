@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: William Robertson <wkr@wkr.name>
+
+buildarch=1
+
 pkgname='androguard'
 pkgver='1.9'
 pkgrel='1'

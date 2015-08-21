@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
+buildarch=212
+
 pkgname=cpublaster
 pkgver=0.10
 pkgrel=3

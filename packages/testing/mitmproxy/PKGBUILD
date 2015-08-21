@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=mitmproxy
 pkgver=0.11.3
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=mrtparse-git
 pkgver=r309.a508cc3
 pkgrel=1

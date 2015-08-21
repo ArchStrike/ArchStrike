@@ -1,6 +1,9 @@
 # Maintainer
 # Contributor: Jeremy Lynch <jl@projectname.org>
 # Contributor: Dan McGee <dan@archlinux.org>
+
+buildarch=1
+
 pkgname=projectname-mirrorlist
 pkgver=20150414
 pkgrel=1

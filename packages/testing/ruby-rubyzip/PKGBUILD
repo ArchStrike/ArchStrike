@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-rubyzip
 _gemname=rubyzip
 pkgver=1.0.0

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=libvhdi
 pkgver=20150110
 pkgrel=1
@@ -10,7 +13,6 @@ depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 makedepends=('git')
 source=("https://github.com/libyal/libvhdi/archive/$pkgver.tar.gz")
 sha512sums=('5d4254b1ff3e003b41f9e1713a9e5a8ed7f4a981f64fd691144136322b2c85712e2859df1b6b0ab39e7b2def8fe94249cfbd55219d72de81843d3c49a1eaad62')
-
 
 build(){
   cd $srcdir/$pkgname-$pkgver

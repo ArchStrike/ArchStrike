@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='blueprint'
 pkgver='0.1_3'
 pkgrel=1

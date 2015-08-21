@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=awesome_print
+
+buildarch=1
+
 pkgname=ruby-$_gemname
 pkgver=1.2.0
 pkgrel=1

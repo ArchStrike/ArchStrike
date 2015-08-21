@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=tcpjunk
 pkgver=2.9.03
 pkgrel=3

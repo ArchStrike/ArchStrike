@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Mantas M. <grawity@gmail.com>
+
+buildarch=192
+
 pkgname=ding-libs-git
 pkgver=0.5.0
 pkgrel=1
@@ -32,6 +35,6 @@ build() {
 package() {
   cd "$srcdir/ding-libs"
   make DESTDIR="$pkgdir" install
-} 
+}
 
 # vim: ts=2:sw=2:et

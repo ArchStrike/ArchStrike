@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=fimap-svn
 pkgver=20150325.r334
 pkgrel=1

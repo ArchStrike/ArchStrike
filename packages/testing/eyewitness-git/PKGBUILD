@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=eyewitness-git
 pkgver=r310.e0f3c85
 pkgrel=1

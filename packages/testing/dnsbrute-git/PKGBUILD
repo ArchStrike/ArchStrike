@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=dnsbrute-git
 pkgver=0.r2.b1dc84a
 pkgrel=1
@@ -32,7 +35,6 @@ package() {
   install -dm755 "$pkgdir/usr/bin/"
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/dnsbrute/"
-
 
 cat > "$pkgdir/usr/bin/dnsbrute" << EOF
 #!/bin/sh

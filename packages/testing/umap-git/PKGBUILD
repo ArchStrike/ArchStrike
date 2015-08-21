@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=umap-git
 pkgver=r25.3ad8121
 pkgrel=1

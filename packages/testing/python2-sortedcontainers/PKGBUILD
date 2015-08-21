@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=python2-sortedcontainers
 _realname=sortedcontainers
 pkgver=0.9.6
@@ -12,8 +14,6 @@ depends=('python2')
 makedepends=('python2-setuptools')
 source=(https://pypi.python.org/packages/source/s/$_realname/$_realname-$pkgver.tar.gz)
 sha512sums=('7194c5848dc0291fad31a4caa467cbb9c8da2f20873fd1ab3b36847b9e8ebd9ee4036275cfb049fddca3c274c2e24f68c8f032067aa574aab651d41c711e7b6c')
-
-
 
 package(){
   cd "$srcdir/$_realname-$pkgver"

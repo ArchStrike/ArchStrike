@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 __upstream_name=flite
+
+buildarch=192
+
 pkgname=${__upstream_name}-full
 pkgver=1.4
 pkgrel=3

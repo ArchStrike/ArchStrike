@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=unix-privesc-check
 pkgver=1.4
 pkgrel=1

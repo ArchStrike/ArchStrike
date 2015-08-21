@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=utox
+
+buildarch=212
+
 pkgname=${_pkgname}-git
 _pkgver=c2e171c
 pkgver=r1339.c2e171c

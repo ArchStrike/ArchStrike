@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=sps
 pkgver=4.2
 pkgrel=2
@@ -7,7 +10,7 @@ pkgdesc="A Linux packet crafting tool. Supports IPv4, IPv6 including extension h
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 if [[ $CARCH == 'x86_64' ]]; then
      depends=('gtk3')
-else 
+else
      depends=('gtk2')
 fi
 url="https://sites.google.com/site/simplepacketsender/"
@@ -20,7 +23,7 @@ build() {
   if [[ $CARCH == 'x86_64' ]]; then
        cd src64
        make
-  else 
+  else
        cd src32
        make
   fi

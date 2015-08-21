@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Mikkel Oscar Lyderik <mikkeloscar at gmail dot com>
 
+buildarch=1
+
 pkgname='websockify'
 pkgver=0.6.1
 pkgrel=1
@@ -17,7 +19,7 @@ sha512sums=('72a34096ff8262cde78658e7b5727b5f0cac001916cf6c868ed1baf4cb4745e823d
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
-  # setting py2 instead of py3 
-  sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/websockify/websocket.py 
-  sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/websockify/websocketproxy.py 
+  # setting py2 instead of py3
+  sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/websockify/websocket.py
+  sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/websockify/websocketproxy.py
 }

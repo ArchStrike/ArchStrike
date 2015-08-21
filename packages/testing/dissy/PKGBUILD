@@ -2,6 +2,8 @@
 # Contributor : SpepS <dreamspepser at yahoo dot it>
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 
+buildarch=1
+
 pkgname=dissy
 pkgver=10
 pkgrel=1

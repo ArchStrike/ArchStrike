@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kyle Keen <keenerd@gmail.com>
+
+buildarch=212
+
 pkgname=multimon-ng
 pkgver=1.0.0
 pkgrel=2

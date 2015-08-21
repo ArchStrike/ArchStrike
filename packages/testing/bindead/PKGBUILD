@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=bindead
+
+buildarch=1
+
 pkgname=$_pkgname-git
 pkgver=20150210.r4453.6a9b5e3
 pkgrel=1

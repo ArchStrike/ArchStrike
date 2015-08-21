@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
+buildarch=212
+
 pkgname=chkrootkit
 pkgver=0.50
 pkgrel=1
@@ -12,7 +14,6 @@ license=('GPL2')
 depends=('bash')
 source=("ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz")
 sha512sums=('9f26fd34e85b58b13dedc5f38a889ae258bb2c0f1ff40e99c149e23f93890e956f94204b1bb2241584454e99168c53b583f52777083454237f3ba343424dba1c')
-
 
 build(){
   cd "chkrootkit-${pkgver}"

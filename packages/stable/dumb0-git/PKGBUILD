@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=dumb0-git
 pkgver=r19.1493e74
 pkgrel=1

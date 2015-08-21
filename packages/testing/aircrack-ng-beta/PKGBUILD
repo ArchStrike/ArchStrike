@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=aircrack-ng-beta
 pkgver=1.2.rc2
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sslyze
 pkgver=0.9
 pkgrel=1
@@ -26,12 +29,11 @@ build(){
   python2 setup.py build
 }
 
-
 package() {
   cd "$srcdir/$pkgname-release-$pkgver"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   python2 setup.py install --root=$pkgdir --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/sslyze/LICENSE.txt"
   install -Dm644 AUTHORS.txt "$pkgdir/usr/share/sslyze/AUTHORS.txt"
-  mv $pkgdir/usr/bin/sslyze.py $pkgdir/usr/bin/sslyze   
+  mv $pkgdir/usr/bin/sslyze.py $pkgdir/usr/bin/sslyze
 }

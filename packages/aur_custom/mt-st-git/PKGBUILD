@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _name='mt-st'
+
+buildarch=192
+
 pkgname="${_name}-git"
 pkgver=6.ece9c03
 pkgrel=1

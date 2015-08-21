@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=pymssql
 pkgver=2.0.0b1_dev_20111019
 pkgrel=3

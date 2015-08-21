@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=ruby1.9-network_interface
 _gemname=network_interface
 pkgver=0.0.1

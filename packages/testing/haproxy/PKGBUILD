@@ -2,6 +2,9 @@
 # Contributor: Srijan Choudhary <srijan4@gmail.com>
 # Contributor: Jeffrey Gelens <jgelens@gmail.com>
 # Contributor: warheadsse
+
+buildarch=212
+
 pkgname=haproxy
 pkgver=1.4.25
 pkgrel=1

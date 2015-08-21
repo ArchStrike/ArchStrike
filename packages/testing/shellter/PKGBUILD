@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=192
+
 pkgname=shellter
 pkgver=1.7
 pkgrel=3

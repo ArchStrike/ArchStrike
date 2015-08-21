@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=praeda-git
 pkgver=r41.d52e216
 pkgrel=1

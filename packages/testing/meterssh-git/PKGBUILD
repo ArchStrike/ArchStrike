@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=meterssh-git
 pkgver=20150119.r10
 pkgrel=1
@@ -43,7 +46,6 @@ EOF
 cd /usr/share/meterssh-git
 /usr/bin/python2 meterssh-monitor "\$@"
 EOF
-  chmod +x "${pkgdir}"/usr/bin/*  
+  chmod +x "${pkgdir}"/usr/bin/*
 }
-
 

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=tilt-git
 pkgver=90.2bc2ef2
 pkgrel=1

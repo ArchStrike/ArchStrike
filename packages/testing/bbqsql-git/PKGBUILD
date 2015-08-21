@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=bbqsql
+
+buildarch=1
+
 pkgname=$_pkgname-git
 pkgver=v1.1.r15.g4f7c086
 pkgrel=1

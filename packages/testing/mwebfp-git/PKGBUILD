@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=mwebfp-git
 pkgver=20140928.r16
 pkgrel=1
@@ -28,4 +31,4 @@ package() {
   install -dm755 "$pkgdir/usr/share/mwebfp"
   install -Dm755 mwebfp.py "$pkgdir/usr/bin/mwebfp"
   install -Dm644 README.md "$pkgdir/usr/share/mwebfp/README.md"
-}  
+}

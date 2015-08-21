@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor drathir <drathir87@gmail.com>
+
+buildarch=1
+
 pkgname='perl-expect'
 _pkgname=Expect
 pkgver='1.32'

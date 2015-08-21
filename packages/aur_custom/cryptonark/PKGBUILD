@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=cryptonark
 _pkgname=cnark
 pkgver=0.5.6

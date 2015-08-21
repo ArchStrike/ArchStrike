@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=aiengine
 pkgver=1.2
 pkgrel=1
@@ -9,7 +12,7 @@ url="https://bitbucket.org/camp0/aiengine"
 license=('GPL3')
 if [[ $CARCH == 'x86_64' ]]; then
      makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx' 'python2' 'gcc-libs-multilib')
-else 
+else
      makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx' 'python2' 'gcc-libs')
 fi
 depends=('libpcap' 'boost-libs' 'python2' 'log4cxx')
@@ -18,7 +21,7 @@ sha512sums=('30780b95c75bcec57c0460b7691c6e0c35f2ff7b15dafbaaa47dec2c657c7a7b30a
 
 prepare(){
    grep -iRl 'python' "$srcdir/aiengine-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
-}  
+}
 
 build() {
   cd $srcdir/aiengine-$pkgver

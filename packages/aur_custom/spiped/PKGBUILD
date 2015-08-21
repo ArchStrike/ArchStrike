@@ -2,6 +2,8 @@
 # Contributor: Simon Perry <aur [at] sanxion [dot] net>
 # Contributor: Nicolas Pouillard http://nicolaspouillard.fr
 
+buildarch=212
+
 pkgname=spiped
 pkgver=1.5.0
 pkgrel=1

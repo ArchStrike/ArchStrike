@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Jonathan Liu <net147@gmail.com>
+
+buildarch=212
+
 pkgname=ddrutility
 pkgver=2.7
 pkgrel=1

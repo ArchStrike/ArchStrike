@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=atomic
+
+buildarch=1
+
 pkgname=ruby-atomic
 pkgver=1.1.14
 pkgrel=2

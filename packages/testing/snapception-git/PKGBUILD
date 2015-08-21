@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=snapception-git
 pkgver=20141017.r8
 pkgrel=1

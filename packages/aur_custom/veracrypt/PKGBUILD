@@ -2,6 +2,8 @@
 # Contributor: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: Eric Ozwigh <ozwigh at gmail dot com>
 
+buildarch=212
+
 pkgname=veracrypt
 _pkgver=1.0f-1
 pkgver=${_pkgver/\-/_}

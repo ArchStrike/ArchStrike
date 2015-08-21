@@ -2,6 +2,9 @@
 # Contributor: Prurigro
 
 _pkgname=checkIBAN
+
+buildarch=212
+
 pkgname=checkiban
 pkgver=0.2
 pkgrel=2

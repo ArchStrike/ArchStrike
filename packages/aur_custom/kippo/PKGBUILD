@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='kippo'
 pkgver='0.9'
 pkgrel=1
@@ -15,7 +18,7 @@ sha512sums=('0e17c410ecb8e44ba3862f0bd6c2773d6fa768750d7917ba7f5fbfdec8ddfa63fbd
 prepare(){
  grep -iRl 'python' "$srcdir/kippo-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
- 
+
 
 package() {
   cd "$srcdir/kippo-$pkgver"
@@ -23,7 +26,7 @@ package() {
   install -dm755  "$pkgdir/usr/share/kippo/"
   install -dm755  "$pkgdir/usr/bin/"
   cp -r * "$pkgdir/usr/share/kippo/"
-  
+
   cd "$pkgdir/usr/share/kippo"
   ln -sf kippo.cfg.dist kippo.cfg
   install -Dm644 "$srcdir/kippo.desktop" "$pkgdir/usr/share/applications/kippo.desktop"

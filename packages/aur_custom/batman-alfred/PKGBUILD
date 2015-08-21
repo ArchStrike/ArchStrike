@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=alfred
+
+buildarch=212
+
 pkgname=batman-${_pkgname}
 groups=('archstrike' 'archstrike-wireless')
 pkgver=2015.0

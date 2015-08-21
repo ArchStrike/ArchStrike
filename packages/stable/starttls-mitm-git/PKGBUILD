@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=starttls-mitm-git
 pkgver=r7.b257756
 pkgrel=1

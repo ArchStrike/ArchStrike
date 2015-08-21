@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-rspec-core
 _gemname=rspec-core
 pkgver=2.99.0

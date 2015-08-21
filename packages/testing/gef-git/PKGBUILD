@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=gef-git
 _pkgname=gef
 pkgver=r67.92e8efc

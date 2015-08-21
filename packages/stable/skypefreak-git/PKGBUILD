@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=skypefreak-git
 pkgver=r30.14a81cb
 pkgrel=2
@@ -30,7 +33,7 @@ package() {
   install -dm755 "$pkgdir"/usr/bin/
   install -dm755 "$pkgdir"/usr/share/skypefreak-git
   install -Dm644 $srcdir/LICENSE "$pkgdir"/usr/share/licenses/skypefreak-git/LICENSE
-  install -m755 source/SkypeFreak.py "$pkgdir"/usr/share/skypefreak-git/SkypeFreak.py 
+  install -m755 source/SkypeFreak.py "$pkgdir"/usr/share/skypefreak-git/SkypeFreak.py
   cat > "$pkgdir"/usr/bin/skypefreak <<EOF
 #!/bin/sh
 cd /usr/share/skypefreak-git
@@ -38,5 +41,4 @@ python2 SkypeFreak.py "\$@"
 EOF
   chmod +x "$pkgdir"/usr/bin/skypefreak
 }
-
 

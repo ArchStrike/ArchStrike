@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=dex2jar
 pkgver=0.0.9.15
 _dlsuffix=

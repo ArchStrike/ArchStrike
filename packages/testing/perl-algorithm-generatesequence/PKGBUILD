@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author='RCLAMP'
 _perlmod='Algorithm-GenerateSequence'
+
+buildarch=1
+
 pkgname='perl-algorithm-generatesequence'
 pkgver='0.02'
 pkgrel=1
@@ -15,7 +18,7 @@ md5sums=('2abf3378195a7d1c056f113eab1476b6')
 
 prepare() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
@@ -27,6 +30,6 @@ build() {
 
 package() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   make install DESTDIR="$pkgdir/"
 }

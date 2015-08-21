@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=snmp-brute-git
 pkgver=20150218.r11
 pkgrel=2

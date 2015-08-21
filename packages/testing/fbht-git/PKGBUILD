@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=fbht-git
 pkgver=r53.9e515ef
 pkgrel=1
@@ -17,7 +20,6 @@ pkgver() {
   cd "$srcdir/fbht"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 prepare(){
   grep -iRl 'python' "$srcdir/fbht" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
@@ -41,7 +43,7 @@ package() {
   #Bin
   install -m755 {MyParser,community,database,handlers,main,mainFunc,mainLib}.py "$pkgdir/usr/share/fbht/"
   install -m644 "fb_db.db" "$pkgdir/usr/share/fbht/"
- 
+
 cat > "$pkgdir/usr/bin/fbht" << EOF
 #!/bin/sh
 cd /usr/share/fbht

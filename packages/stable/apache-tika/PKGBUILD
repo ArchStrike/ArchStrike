@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Filip Gralinski <filipg@amu.edu.pl>
+
+buildarch=1
+
 pkgname=apache-tika
 pkgver=1.9
 pkgrel=1

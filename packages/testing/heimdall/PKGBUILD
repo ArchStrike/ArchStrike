@@ -5,6 +5,8 @@
 # Contributor: Victor Noel
 # Contributor: ngoonee
 
+buildarch=192
+
 pkgname="heimdall"
 pkgver=1.4.1
 pkgrel=1
@@ -24,7 +26,6 @@ sha512sums=('SKIP'
             '457a5f6ec1ebf3e4c5b82e5d781ad47b4e3cfb3cadad6e6791cadc467a42a1a38c4684d424485d358d534536b76a82ee16b33c658f38fb5072f5a24f80ffcb92'
             '0f8cc17e5948cc57f457f178d443e0c2e2f54efcf9e1ac6981885fee8778d0de56ad50b8fbedb70c0e3fd86dc5beff69d759722253262270dcb7016136f1cca9'
             '9c0b6db2baf88d8eb4d80207ea80dba20933976f864f50cdd5337620b051eb72664530d6f67f4ed8b0aee61b5b12adf80eeca09071520848e4e2797df392cc77')
-
 
 prepare() {
     cd $pkgname

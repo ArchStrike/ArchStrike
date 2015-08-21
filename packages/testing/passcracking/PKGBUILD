@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=passcracking
 pkgver=20090322.r2.5958a87
 pkgrel=1

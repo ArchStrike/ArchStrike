@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-ref
 _gemname=${pkgname#ruby-}
 pkgver=1.0.4

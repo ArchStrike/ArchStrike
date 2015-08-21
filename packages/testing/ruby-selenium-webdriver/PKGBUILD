@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=selenium-webdriver
+
+buildarch=212
+
 pkgname=ruby-$_gemname
 pkgver=2.42.0
 pkgrel=1

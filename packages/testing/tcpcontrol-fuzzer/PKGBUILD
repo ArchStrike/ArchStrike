@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='tcpcontrol-fuzzer'
 pkgver=20131216
 pkgrel=1

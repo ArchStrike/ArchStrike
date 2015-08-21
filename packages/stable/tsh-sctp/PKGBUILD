@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=tsh-sctp
 pkgver=r2.850a2da
 pkgrel=1
@@ -11,7 +14,6 @@ makedepends=('git')
 source=("git+https://github.com/infodox/tsh-sctp.git")
 md5sums=('SKIP')
 
-
 pkgver() {
   cd "$srcdir/tsh-sctp"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -19,7 +21,7 @@ pkgver() {
 
 package() {
   cd "$srcdir/tsh-sctp"
-  
+
   # Base directories.
   install -dm755 "$pkgdir/usr/share/$pkgname"
 

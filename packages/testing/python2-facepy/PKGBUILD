@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=python2-facepy
 pkgver=1.0.6
 pkgrel=1

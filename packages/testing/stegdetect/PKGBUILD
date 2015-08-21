@@ -3,6 +3,9 @@
 # Contributor: Jaroslaw Swierczynski <swiergot@juvepoland.com>
 # Contributor: Jason Chu <jason@archlinux.org>
 # Contributor: Tom Newsom <Jeepster@gmx.co.uk>
+
+buildarch=212
+
 pkgname=stegdetect
 pkgver=0.6
 pkgrel=5

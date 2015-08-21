@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=owasp-bywaf-git
 pkgver=r26.e730d1b
 pkgrel=2
@@ -26,16 +29,15 @@ package() {
   install -dm755 "$pkgdir/usr/share/owasp-bywaf/doc"
   install -dm755 "$pkgdir/usr/bin"
 
-
   for i  in *.py; do install -Dm755 $i "$pkgdir/usr/share/owasp-bywaf/$i" ;done
-  for i in *.txt; do install -Dm644 $i "$pkgdir/usr/share/owasp-bywaf/$i" ;done 
+  for i in *.txt; do install -Dm644 $i "$pkgdir/usr/share/owasp-bywaf/$i" ;done
   install -Dm644 doc/* "$pkgdir/usr/share/owasp-bywaf/doc/"
 
   install -Dm644 copyright.txt "$pkgdir/usr/share/licenses/$pkgname/copyright.txt"
 
   #fix one stray python error
   sed -i 's|python$|python2|' "$pkgdir/usr/share/owasp-bywaf/hostdb.py"
- 
+
 cat > "$pkgdir/usr/bin/owasp-bywaf" <<EOF
 #!/bin/sh
 cd /usr/share/owasp-bywaf/
@@ -43,5 +45,5 @@ python2 ./bywaf.py "\$@"
 EOF
 
 chmod +x "$pkgdir/usr/bin/owasp-bywaf"
-  
+
 }

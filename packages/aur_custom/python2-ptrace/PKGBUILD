@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 pkgbase=python2-ptrace
-pkgname=(python2-ptrace python-ptrace)  
+
+buildarch=1
+
+pkgname=(python2-ptrace python-ptrace)
 _pkgname=python-ptrace
 pkgver=0.8.1
 pkgrel=2
@@ -12,7 +15,6 @@ depends=('python2' 'python')
 makedepends=('python2-setuptools' 'python-setuptools')
 source=(http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz)
 sha512sums=('1c3dadf381ad0fe30374fe030fc3a81b5ec0885c31ac9be4ae561cf14ff891fc2e465555133b2efce6be0154b06768121aa068161bb3de10aca6df0eb181e25c')
-
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}

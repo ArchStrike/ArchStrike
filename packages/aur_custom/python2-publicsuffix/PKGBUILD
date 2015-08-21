@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Thomas Haider <t.haider@deprecate.de>
+
+buildarch=1
+
 pkgname=python2-publicsuffix
 pkgver=1.0.5
 pkgrel=1
@@ -11,10 +14,10 @@ depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/publicsuffix/publicsuffix-${pkgver}.tar.gz")
 sha512sums=('19a6fab4dc5f9d5a1b4b6cd8e1e2dd4f032de0102f5032a78805ad045f5ad88db0bf9d9263f92ee4de7d04612e9906d7f9e8aa6dc6bea549250b72a38b4e03a0')
- 
+
 build() {
   cd "publicsuffix-${pkgver}"
-  python2 setup.py build 
+  python2 setup.py build
 }
 
 package() {

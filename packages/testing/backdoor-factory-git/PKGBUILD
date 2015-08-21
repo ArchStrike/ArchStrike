@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=backdoor-factory-git
 pkgver=0.r142.0bd3429
 pkgrel=1

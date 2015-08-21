@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Jipuf <jipuf@gmx.fr>
 
+buildarch=212
+
 pkgname=yaf
 pkgver=2.7.1
 pkgrel=3

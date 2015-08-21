@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ropgadget
 pkgver=5.4
 pkgrel=1
@@ -15,9 +18,9 @@ sha512sums=('7b3777ccce10000e1cf1fadedd4010f05ae21d5794c45994d380eebecb8876c2038
 package(){
   cd "$srcdir/ROPgadget-$pkgver"
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  python2 setup.py install --root=$pkgdir --optimize=1  
+  python2 setup.py install --root=$pkgdir --optimize=1
 
   cp -r --no-preserve=ownership AUTHORS COPYING README.md \
     "$pkgdir/usr/share/doc/ropgadget"
- 
+
 }

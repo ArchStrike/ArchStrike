@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='sqlpat'
 _pkgname='sqlbf'
 pkgver='1.0.1'

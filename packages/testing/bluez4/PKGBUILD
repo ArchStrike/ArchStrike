@@ -4,6 +4,8 @@
 # Contributor: Andrea Scarpino <andrea@archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
 
+buildarch=212
+
 pkgname=bluez4
 pkgver=4.101
 pkgrel=6
@@ -66,7 +68,7 @@ package() {
                 audio/audio.conf \
                 serial/serial.conf \
     ${pkgdir}/etc/bluetooth/
-  
+
   # FS#27630
   install -Dm755 test/simple-agent "${pkgdir}"/usr/bin/bluez-simple-agent
   install -Dm755 test/test-device "${pkgdir}"/usr/bin/bluez-test-device

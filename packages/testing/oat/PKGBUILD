@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='oat'
 pkgver='1.3.1'
 pkgrel=1
@@ -21,7 +24,7 @@ prepare() {
 
 package() {
   cd "$srcdir/oat"
-  
+
   mkdir -p $pkgdir/usr/share/oat/
   cp -r tftproot $pkgdir/usr/share/oat/
   cp ork.jar accounts.default $pkgdir/usr/share/oat/

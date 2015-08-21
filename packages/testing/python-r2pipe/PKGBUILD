@@ -2,6 +2,9 @@
 
 _pkgname=r2pipe
 pkgbase=python-$_pkgname
+
+buildarch=1
+
 pkgname=(python-$_pkgname python2-$_pkgname)
 pkgver=0.6.5
 pkgrel=1
@@ -12,7 +15,6 @@ license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://pypi.python.org/packages/source/r/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('a912e1581964c8152c42d67a944620d72138ec821386cb64706d0a8c480b032b33edf69db7865533fef1658815d5ad68cea65032b6a636e44a3de2ce54fd0a58')
-
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
@@ -25,7 +27,6 @@ build() {
   cd "$srcdir/$_pkgname-$pkgver-py2"
   python2 setup.py build
 }
-
 
 package_python-r2pipe() {
   depends=('python')

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=binwally
 pkgver=0.r4.0aabd8b
 pkgrel=2

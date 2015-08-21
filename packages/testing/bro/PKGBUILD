@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=bro
 pkgver=20140418
 pkgrel=1
@@ -17,7 +20,7 @@ _gitname="bro"
 
 build() {
   cd $srcdir
-  if [ -d "$srcdir/$_gitname" ] ; then 
+  if [ -d "$srcdir/$_gitname" ] ; then
       cd $_gitname && git pull origin && git submodule update --recursive --init
       msg "Local files are up-to-date"
   else

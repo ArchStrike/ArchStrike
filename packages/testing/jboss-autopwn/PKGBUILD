@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=jboss-autopwn
 pkgver=0.r1.3bc2d29
 pkgrel=1

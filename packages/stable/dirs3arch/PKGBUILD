@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=dirs3arch
 pkgver=0.3.0
 pkgrel=1
@@ -23,8 +26,8 @@ package() {
   install -Dm755 dirs3arch.py "$pkgdir/usr/share/$pkgname"
   install -Dm755 default.conf "$pkgdir/usr/share/$pkgname"
   install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
- 
- 
+
+
 cat > "$pkgdir/usr/bin/dirs3arch" << EOF
 #!/bin/sh
 cd /usr/share/dirs3arch

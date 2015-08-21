@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=nsoq
 _pkgname=Nsoq
 pkgver=1.9.5

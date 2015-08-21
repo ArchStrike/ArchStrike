@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=canto-daemon
 pkgver=0.9.1
 pkgrel=1

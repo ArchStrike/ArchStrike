@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: prurigro
+
+buildarch=1
+
 pkgname=lxc-projectname
 pkgver=1
 pkgrel=1

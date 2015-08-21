@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _runkernver=$(uname -r)
 _shortkernver=${_runkernver%.*}
+
+buildarch=212
+
 pkgname=backports-patched
 pkgver=3.12.1_1
 _upver="${pkgver//_/-}"

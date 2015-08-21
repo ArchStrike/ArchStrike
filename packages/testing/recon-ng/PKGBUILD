@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='recon-ng'
 pkgver=891.f311646
 pkgrel=1

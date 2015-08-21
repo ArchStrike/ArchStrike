@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-py3270
 pkgver=0.2.0
 pkgrel=1
@@ -14,7 +17,7 @@ sha512sums=('fb0178940081bf452af5384f8892e73f86ee6c75d9920837105ac9cf937b0cf0d7b
 
 package() {
   cd "${srcdir}/py3270-${pkgver}"
-  
+
   python2 setup.py install --root=$pkgdir --optimize=1
   install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

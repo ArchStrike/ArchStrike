@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=zarp
 pkgver=0.1.7
 pkgrel=1
@@ -20,7 +23,6 @@ package() {
   grep '#! /usr/bin/python' * -Rl | xargs -I{} sed -i 's/#! \/usr\/bin\/python/#!\/usr\/bin\/python2/g' {}
   grep '#!/usr/bin/env python' * -Rl | xargs -I{} sed -i 's/#!\/usr\/bin\/env python/#!\/usr\/bin\/python2/g' {}
   grep '#! /usr/bin/env python' * -Rl | xargs -I{} sed -i 's/#! \/usr\/bin\/env python/#!\/usr\/bin\/python2/g' {}
-
 
   # Base directories.
   install -dm755 "${pkgdir}/usr/bin"

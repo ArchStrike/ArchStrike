@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=elettra
 pkgver=1.0
 pkgrel=2
@@ -21,7 +24,7 @@ build(){
 }
 package() {
     cd $srcdir/elettra
- 
+
     #base directories
     install -dm755 $pkgdir/usr/bin
     install -dm755 $pkgdir/usr/share/doc/elettra

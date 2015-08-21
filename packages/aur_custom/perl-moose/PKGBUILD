@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=perl-moose
 _cpanname=Moose
 pkgver='2.1403'
@@ -25,7 +28,6 @@ build() {
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
-
 
 package() {
   cd "$srcdir/$_cpanname-$pkgver"

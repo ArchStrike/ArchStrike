@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Salan54 <salan at fremenil dot com>
 
+buildarch=212
+
 pkgname=zulucrypt
 pkgver=4.7.6
 pkgrel=1
@@ -26,7 +28,7 @@ build() {
     -DCMAKE_LIB_SUFFIX=/usr/lib . ..
     make
 }
- 
+
 package() {
   cd "zuluCrypt-${pkgver}/build"
   make DESTDIR="${pkgdir}" install

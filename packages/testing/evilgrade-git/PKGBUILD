@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=evilgrade-git
 pkgver=r7.22dc742
 pkgrel=1

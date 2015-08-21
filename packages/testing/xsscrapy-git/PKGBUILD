@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Alfredo Palhares <masterkorp@masterkorp.net>
 
+buildarch=1
+
 pkgname=xsscrapy-git
 pkgver=20150212.r126.4ec3e7d
 pkgrel=1

@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor:  Shaw <puxx@mail.ustc.edu.cn>
+
+buildarch=1
+
 pkgname=create_ap-git
 pkgver=r160.0f5a503
 pkgrel=1

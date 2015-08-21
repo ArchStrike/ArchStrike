@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: nil0x42 <http://goo.gl/kb2wf>
+
+buildarch=212
+
 pkgname=snow
 pkgver=20130616
 pkgrel=4

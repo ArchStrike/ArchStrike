@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-ronin-php
 _gemname=ronin-php
 pkgver=0.0.9

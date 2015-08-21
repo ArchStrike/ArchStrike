@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=net-creds-git
 pkgver=20150416.r59
 pkgrel=1
@@ -23,5 +26,5 @@ package() {
 
   install -Dm755 net-creds.py "$pkgdir/usr/bin/net-creds"
   install -Dm644 README.md "$pkgdir/usr/share/$pkgname/README.md"
- 
+
 }

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=hashid-git
 pkgver=r397.7e8473a
 pkgrel=1

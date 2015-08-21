@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author='AHICOX'
 _perlmod='Time-Interval'
+
+buildarch=1
+
 pkgname='perl-time-interval'
 pkgver='1.233'
 pkgrel=1
@@ -15,7 +18,7 @@ md5sums=('2dd5591f82137278d37d487fafa76219')
 
 prepare() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
@@ -27,6 +30,6 @@ build() {
 
 package() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   make install DESTDIR="$pkgdir/"
 }

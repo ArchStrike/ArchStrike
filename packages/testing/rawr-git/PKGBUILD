@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=rawr
+
+buildarch=1
+
 pkgname=${_pkgname}-git
 pkgver=57.5340a05
 pkgrel=1

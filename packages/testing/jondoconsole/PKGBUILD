@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=jondoconsole
 pkgver=00.00.163
 pkgrel=4

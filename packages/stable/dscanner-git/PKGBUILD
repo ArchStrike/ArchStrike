@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=dscanner-git
 pkgver=20150611.r815
 pkgrel=1

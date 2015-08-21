@@ -3,6 +3,9 @@
 # Contributor: Florian Hahn <flo@fhahn.com>
 
 _pkgname=toxic
+
+buildarch=212
+
 pkgname=${_pkgname}-git
 _pkgver=442d9e2
 pkgver=r1479.442d9e2

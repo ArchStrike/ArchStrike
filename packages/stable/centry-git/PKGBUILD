@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=centry-git
 pkgver=r72.6de2868
 pkgrel=1
@@ -7,7 +10,7 @@ pkgdesc="A Panic button for protection against cold boot attacks"
 arch=('any')
 url='https://github.com/0xPoly/Centry'
 license=('GPL3')
-depends=('python') 
+depends=('python')
 optdepends=('secure-delete')
 makedepends=('git')
 provides=('centry')
@@ -32,7 +35,7 @@ package() {
   install -Dm644 icon.xbm "$pkgdir/usr/share/centry/"
   install -Dm644 screenshot.png "$pkgdir/usr/share/centry/"
   install -Dm644 settings.gif "$pkgdir/usr/share/centry/"
-  
+
 cat > "$pkgdir/usr/bin/centry" << EOF
 #!/bin/sh
 cd /usr/share/centry

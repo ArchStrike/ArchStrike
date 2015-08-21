@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=E/ED/EDAVIS
 _perlmod=Sort-Versions
+
+buildarch=1
+
 pkgname=perl-sort-versions
 pkgver=1.5
 pkgrel=4

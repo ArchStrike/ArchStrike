@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='middler'
 pkgver='1.0'
 pkgrel=1
@@ -22,7 +25,7 @@ prepare() {
 
 package() {
   cd "$srcdir/TheMiddler"
-  
+
   install -d "$pkgdir/usr/share/middler"
   install -d "$pkgdir/usr/bin"
   cp -r * "$pkgdir/usr/share/middler"

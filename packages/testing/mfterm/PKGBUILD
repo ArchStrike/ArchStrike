@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=208
+
 pkgname=mfterm
 pkgver=1.0.4
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=lte-cell-scanner
 _pkgname=LTE-Cell-Scanner
 pkgver=0.1.1
@@ -11,7 +14,7 @@ license=('GPL3')
 makedepends=('cmake')
 if [[ $CARCH == 'x86_64' ]]; then
       depends=('itpp' 'boost' 'gcc-libs-multilib' 'rtl-sdr' 'hackrf')
-else  
+else
       depends=('itpp' 'boost' 'gcc-libs' 'rtl-sdr' 'hackrf')
 fi
 
@@ -33,5 +36,5 @@ build() {
 
 package() {
   cd $srcdir/$_pkgname-$pkgver/build
-  make DESTDIR=$pkgdir install 
+  make DESTDIR=$pkgdir install
 }

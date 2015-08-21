@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=SYAMAL
 _perlmod=Uniq
+
+buildarch=1
+
 pkgname=perl-uniq
 pkgver=0.01
 pkgrel=1

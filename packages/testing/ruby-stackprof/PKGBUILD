@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=stackprof
+
+buildarch=212
+
 pkgname=ruby-$_gemname
 pkgver=0.2.3
 pkgrel=1

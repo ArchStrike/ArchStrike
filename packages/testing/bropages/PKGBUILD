@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=bropages
+
+buildarch=1
+
 pkgname=bropages
 pkgver=0.1.0
 pkgrel=4

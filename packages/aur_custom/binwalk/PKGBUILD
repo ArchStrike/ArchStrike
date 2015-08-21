@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=binwalk
 pkgver=2.0.1
 pkgrel=3
@@ -15,7 +18,6 @@ optdepends=('firmware-mod-kit: Firmware extract rules helper'
 source=(https://github.com/devttys0/${pkgname}/archive/v${pkgver}.tar.gz binwalk.patch)
 sha512sums=('de223f61a0a212469c21b8e36d02cadc83f1cdb96a0f6114490d15d8dc12c93a86b46ef74379acb96b32b305e75ca66e940d7a18a8dc3b5036ebe8946dcca0f3'
             'ac0c5b6291a64fda48f2964d29c466eee3af5bdc041992956c1248073cbf217b7fb89717f7f0c6571804dae20548e146f3db64f47ac20473ad1ada6c45453268')
-
 
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=scanmem
 pkgver=0.15.2
 pkgrel=1
@@ -7,7 +10,7 @@ pkgdesc="A utility used to locate the address of a variable in an executing proc
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/scanmem'
 license=('GPL3')
-depends=('pygtk' 'desktop-file-utils') 
+depends=('pygtk' 'desktop-file-utils')
 makedepends=('intltool')
 optdepends=('gksu: for the GameConqueror GUI.')
 install=${pkgname}.install

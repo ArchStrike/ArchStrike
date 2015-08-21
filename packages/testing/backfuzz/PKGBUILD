@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=backfuzz
 pkgver=20130611.r36.8e54ed6
 pkgrel=1

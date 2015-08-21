@@ -2,6 +2,8 @@
 # Contributor: Felix Yan <felixonmars@gmail.com>
 # Contributor: Andreas Radke <andyrtr@archlinux.org>
 
+buildarch=192
+
 pkgname=nvidia-304xx-projectname
 pkgver=304.123
 _extramodules=extramodules-3.16-projectname

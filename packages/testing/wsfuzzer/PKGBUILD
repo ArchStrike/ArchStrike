@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=wsfuzzer
 pkgver=1.9.5
 pkgrel=4
@@ -16,10 +19,10 @@ prepare() {
 
   # replace placeholders and python env strings
   sed -i 's|/your/java/home_path|/usr|g' parseWsdl.sh
-  grep '#!/usr/pkg/bin/python' * -Rl | xargs -I{} sed -i 's|#!/usr/pkg/bin/python|#!/usr/bin/python2|g' {} 
-  grep '#!/bin/env python' * -Rl | xargs -I{} sed -i 's|#!/bin/env python|#!/usr/bin/python2|g' {} 
-  grep '#!/usr/bin/env python' * -Rl | xargs -I{} sed -i 's|#!/usr/bin/env python|#!/usr/bin/python2|g' {} 
-  grep '#! /usr/bin/env python' * -Rl | xargs -I{} sed -i 's|#! /usr/bin/env python|#!/usr/bin/python2|g' {} 
+  grep '#!/usr/pkg/bin/python' * -Rl | xargs -I{} sed -i 's|#!/usr/pkg/bin/python|#!/usr/bin/python2|g' {}
+  grep '#!/bin/env python' * -Rl | xargs -I{} sed -i 's|#!/bin/env python|#!/usr/bin/python2|g' {}
+  grep '#!/usr/bin/env python' * -Rl | xargs -I{} sed -i 's|#!/usr/bin/env python|#!/usr/bin/python2|g' {}
+  grep '#! /usr/bin/env python' * -Rl | xargs -I{} sed -i 's|#! /usr/bin/env python|#!/usr/bin/python2|g' {}
 }
 
 package() {

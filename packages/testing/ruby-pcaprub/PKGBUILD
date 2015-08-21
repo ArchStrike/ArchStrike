@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=ruby-pcaprub
 _gemname=pcaprub
 pkgver=0.11.3

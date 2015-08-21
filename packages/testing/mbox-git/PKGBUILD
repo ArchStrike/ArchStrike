@@ -4,7 +4,13 @@
 # Contributor: Taesoo Kim <taesoo@mit.edu> (in-tree PKGBUILD)
 
 _pkgname=mbox
+
+buildarch=128
+
 pkgname=${_pkgname}-git
+
+buildarch=128
+
 pkgname=mbox-git
 pkgver=20140526.r274.a131424
 pkgrel=2

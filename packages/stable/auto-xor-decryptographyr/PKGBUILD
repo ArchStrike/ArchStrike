@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=auto-xor-decryptographyr
 pkgver=5.1f552be
 pkgrel=1

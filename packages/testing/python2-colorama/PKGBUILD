@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Alexander Duscheleit <jinks@archlinux.us>
+
+buildarch=1
+
 pkgname=python2-colorama
 pkgver=0.3.3
 pkgrel=1

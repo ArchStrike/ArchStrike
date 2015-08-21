@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=facebot-git
 pkgver=r23.57f6025
 pkgrel=2
@@ -7,7 +10,7 @@ pkgdesc="A facebook profile and reconnaissance system "
 arch=('any')
 url='https://github.com/pun1sh3r/facebot'
 license=('GPL2')
-depends=('python2' 'python2-beautifulsoup4' 'python2-configparser' 'python2-facepy' 'python2-binaryornot' 'python2-wsgiref' 'python2-cookiecutter' 'python2-jinja' 'python2-yaml' 
+depends=('python2' 'python2-beautifulsoup4' 'python2-configparser' 'python2-facepy' 'python2-binaryornot' 'python2-wsgiref' 'python2-cookiecutter' 'python2-jinja' 'python2-yaml'
          'python2-multipartposthandler' 'mysql-python' 'python2-gdata' 'python2-markupsafe' 'python2-six' 'python2-pager' 'cookiejar' 'python2-argparse' 'python2-setuptools')
 makedepends=('git')
 provides=('facebot')
@@ -17,7 +20,6 @@ sha512sums=('SKIP')
 prepare(){
   grep -iRl 'python' "$srcdir/facebot" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
-
 
 pkgver() {
   cd "$srcdir/facebot"
@@ -32,7 +34,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/facebot"
-  
+
 cat > "$pkgdir/usr/bin/facebot" << EOF
 #!/bin/sh
 cd /usr/share/facebot

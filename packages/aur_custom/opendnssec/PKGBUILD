@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Javier Torres <javitonino [at] gmail [dot] com>
+
+buildarch=212
+
 pkgname=opendnssec
 pkgver=1.4.7
 pkgrel=1

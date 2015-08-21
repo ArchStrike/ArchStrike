@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
-# Contributor: Borja Ruiz <borja [at] libcrack [dot] so> 
+# Contributor: Borja Ruiz <borja [at] libcrack [dot] so>
+
+buildarch=212
+
 pkgname=sysdig-git
 pkgver=0.1.72.r1327.gf405060
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='mbenum'
 pkgver='1.5.0'
 pkgrel=1

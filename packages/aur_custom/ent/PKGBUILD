@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='ent'
 pkgver='1.0'
 pkgrel=1
@@ -12,7 +15,7 @@ groups=('archstrike' 'archstrike-misc')
 
 build() {
   cd "$srcdir"
-  
+
   make
 }
 

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=crackserver-git
 pkgver=r33.e5763ab
 pkgrel=1
@@ -23,7 +26,6 @@ pkgver() {
 prepare(){
   grep -iRl 'python' "$srcdir/crack" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
-
 
 package() {
   cd "$srcdir/crack"

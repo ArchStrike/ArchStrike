@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=pytinydns-git
 pkgver=r16.d8b53c4
 pkgrel=1
@@ -24,8 +27,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-
 package() {
   cd "$srcdir/pytinydns"
   install -dm755 "$pkgdir/usr/bin"
@@ -35,7 +36,6 @@ package() {
   install -Dm644 pytinydns.host "$pkgdir/usr/share/pytinydns/pytinydns.host"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 README "$pkgdir/usr/share/pytinydns/README"
-
 
 cat > "$pkgdir/usr/bin/pytinydns" <<EOF
 #!/bin/sh

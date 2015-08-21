@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
+buildarch=192
+
 pkgname=nvidia-340xx-projectname
 pkgver=340.46
 _extramodules=extramodules-3.16-projectname

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=libsmraw
 pkgver=20150105
 pkgrel=1
@@ -10,7 +13,6 @@ depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 makedepends=('git')
 source=("https://github.com/libyal/libsmraw/archive/$pkgver.tar.gz")
 sha512sums=('49325b467822dea433297c04ef2d32042cd4b23c35ccf0d0c6012a65b2b453ffe2207aa9e25efa6b7cbc112115d5f692582dfac550c81b61459412f493aca513')
-
 
 build(){
   cd $srcdir/$pkgname-$pkgver

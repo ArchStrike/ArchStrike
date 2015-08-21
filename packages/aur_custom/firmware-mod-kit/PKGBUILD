@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=firmware-mod-kit
 pkgver=099
 pkgrel=2
@@ -24,7 +27,7 @@ package() {
   install -m0755 *.sh "$pkgdir/usr/share/firmware-mod-kit/"
   install -m0644 *.inc "$pkgdir/usr/share/firmware-mod-kit/"
   install -m0644 *.htm "$pkgdir/usr/share/doc/firmware-mod-kit/"
-  install -m0644 firmware_mod_kit_version.txt  "$pkgdir/usr/share/firmware-mod-kit/" 
-  for i in src ipk_template; do cp -a --no-preserve=ownership $i "$pkgdir/usr/share/firmware-mod-kit/"; done  
+  install -m0644 firmware_mod_kit_version.txt  "$pkgdir/usr/share/firmware-mod-kit/"
+  for i in src ipk_template; do cp -a --no-preserve=ownership $i "$pkgdir/usr/share/firmware-mod-kit/"; done
 }
 

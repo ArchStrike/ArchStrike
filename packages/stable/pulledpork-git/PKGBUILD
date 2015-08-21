@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=pulledpork
+
+buildarch=1
+
 pkgname=$_pkgname-git
 pkgver=20150630.r246
 pkgrel=1

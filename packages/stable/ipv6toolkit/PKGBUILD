@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=ipv6toolkit
 pkgver=2.0
 pkgrel=1
@@ -16,16 +19,15 @@ build(){
  cd "$srcdir/ipv6toolkit-v$pkgver"
  export PREFIX=/usr
  export MANPREFIX=/usr/share
- make 
+ make
 }
-
 
 package() {
   cd "$srcdir/ipv6toolkit-v$pkgver"
- 
+
   #Base etc dir
   install -dm755 "$pkgdir/etc/ipv6toolkit"
-  
+
   make DESTDIR=$pkgdir SBINPATH=$pkgdir/usr/bin ETCPATH=$pkgdir/etc/ipv6toolkit install
 
 }

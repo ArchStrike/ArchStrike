@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=sexp_processor
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=4.4.3
 pkgrel=1

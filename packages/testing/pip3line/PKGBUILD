@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=pip3line
 pkgver=2.6.0
 pkgrel=3
@@ -13,7 +16,7 @@ else
      depends=('qt4' 'python' 'gcc-libs' 'distorm')
 fi
 makedepends=('cmake')
-source=("https://github.com/nccgroup/pip3line/archive/v$pkgver.tar.gz" "libdir.patch") 
+source=("https://github.com/nccgroup/pip3line/archive/v$pkgver.tar.gz" "libdir.patch")
 sha512sums=('48880e4b0b83cbe39cc3fbbf2453bc416a560a5ba83ceca3b384d3a03f9fdfc98fa9bbdc9197315422dc9edd0b20b329df395135203956a4920a733262cc6a20'
             '4227439561a034e0d4bbe7999f2133517cd116a44dac6ad4d58dc9defe8c5fbe2e49a916b5d9a6b5f719341b82d50e760d4321379f3033b796768cd66e891f7c')
 install='pip3line.install'

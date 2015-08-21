@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=bokken-hg
 pkgver=r421.5e63448608c0
 pkgrel=1
@@ -39,9 +42,9 @@ package() {
         install -dm755 "$pkgdir/usr/share/bokken/$i"
         cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/bokken/$i/";
   done
-  install -Dm755 bokken "$pkgdir/usr/share/bokken/" 
+  install -Dm755 bokken "$pkgdir/usr/share/bokken/"
   install -Dm755 bokken.py "$pkgdir/usr/share/bokken/"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/bokken/" 
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/bokken/"
 
   cat > "$pkgdir/usr/bin/bokken" << 'EOF'
 #!/bin/bash

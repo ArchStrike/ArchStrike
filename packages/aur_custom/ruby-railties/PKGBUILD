@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-railties
 _gemname=${pkgname#ruby-}
 pkgver=3.2.11

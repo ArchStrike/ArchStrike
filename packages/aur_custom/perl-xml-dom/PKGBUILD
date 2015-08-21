@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=perl-xml-dom
 pkgver=1.44
 pkgrel=9

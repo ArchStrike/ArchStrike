@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
 
+buildarch=192
+
 pkgname=r8168-projectname
 _pkgname=r8168
 pkgver=8.039.00

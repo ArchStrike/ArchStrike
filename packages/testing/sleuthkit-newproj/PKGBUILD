@@ -2,6 +2,8 @@
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 # Contributor: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 
+buildarch=212
+
 pkgname=sleuthkit-projectname
 _pkgname=sleuthkit
 pkgver=4.1.3

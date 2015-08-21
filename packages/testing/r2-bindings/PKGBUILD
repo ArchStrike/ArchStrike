@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 
+buildarch=212
+
 pkgname=r2-bindings
 _pkgname=radare2-bindings
 pkgver=0.9.8
@@ -21,7 +23,7 @@ prepare() {
   cd ${_pkgname}-${pkgver}
   ./configure --prefix=/usr --enable=awk,ctypes,cxx,go,duktape,guile,lua,perl,php5,python,valac,newlisp,dlang,ocaml,r2pipe,vapi
 }
- 
+
 build() {
   cd ${_pkgname}-${pkgver}
   make
@@ -41,7 +43,7 @@ package() {
   sed -i "s|$pkgdir/usr/lib/radare2/0.9.8/awk|/usr/lib/radare2/0.9.8/awk|" "$pkgdir/usr/bin/r2awk"
   # Installl perl bindings by hand as its messed up in installer
   cp -rf perl/*.so "$pkgdir/usr/lib/perl5/site_perl/r2"
-  cp -rf perl/*.pm "$pkgdir/usr/lib/perl5/site_perl/r2"  
+  cp -rf perl/*.pm "$pkgdir/usr/lib/perl5/site_perl/r2"
   make DESTDIR="${pkgdir}" install-vapi
   make DESTDIR="${pkgdir}" install-ruby
   make DESTDIR="${pkgdir}" lua-install
@@ -51,5 +53,5 @@ package() {
   #make EXAMPLEDIR="${pkgdir}" install-python-examples
   #make DESTDIR="${pkgdir}" install-valac # Not configured in makefile
 }
- 
+
 # vim: ts=2 sw=2 et:

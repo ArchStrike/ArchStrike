@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=buttinsky-git
 pkgver=r138.1a2a1b2
 pkgrel=1

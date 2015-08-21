@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
- 
+
+
+buildarch=128
+
 pkgname=princeprocessor
 pkgver=0.21
 pkgrel=2
@@ -11,7 +14,7 @@ license=('MIT')
 depends=('gmp')
 source=("https://github.com/jsteube/princeprocessor/archive/v${pkgver}.tar.gz")
 sha512sums=('1cd3a1640fd0d8f8373596fc9c54d6bdf48ba074205f4a070b39dc00a25700b85972d4e71950ffecba332202f060530afeb645483f0231cb6cba6de9bf0e8850')
- 
+
 build(){
    cd "$srcdir/$pkgname-$pkgver/src"
    make
@@ -26,7 +29,7 @@ package() {
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     install -Dm644 README.md "$pkgdir/usr/share/$pkgname/"
     install -Dm644 CHANGES "$pkgdir/usr/share/$pkgname/"
-   
+
     # Bin
     install -Dm755 src/pp64.bin "$pkgdir/usr/bin/$pkgname"
 }

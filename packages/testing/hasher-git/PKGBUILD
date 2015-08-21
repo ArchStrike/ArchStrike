@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=hasher-git
 pkgver=r42.0de1936
 pkgrel=1
@@ -17,7 +20,6 @@ pkgver() {
   cd "$srcdir/Hasher"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 prepare(){
   cd "$srcdir/Hasher"

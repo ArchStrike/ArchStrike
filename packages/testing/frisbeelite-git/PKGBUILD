@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=frisbeelite-git
 pkgver=r1.3ebce5c
 pkgrel=1
@@ -26,7 +29,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/frisbeelite"
-  
+
 cat > "$pkgdir/usr/bin/frisbeelite" << EOF
 #!/bin/sh
 cd /usr/share/frisbeelite

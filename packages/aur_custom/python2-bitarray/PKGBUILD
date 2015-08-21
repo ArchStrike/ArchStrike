@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Andrzej Giniewicz <gginiu@gmail.com>
+
+buildarch=212
+
 pkgname=python2-bitarray
 pkgver=0.8.1
 pkgrel=1

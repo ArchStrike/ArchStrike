@@ -2,6 +2,8 @@
 # Contributor: qs9rx < that nick at enjoys dot it>
 # Contributor: David Manouchehri <d@32t.ca>
 
+buildarch=212
+
 pkgname=dump1090-git
 pkgver=20141031.r386
 pkgrel=1
@@ -15,17 +17,17 @@ makedepends=('git')
 provides=('dump1090')
 source=("${pkgname}::git+https://github.com/MalcolmRobb/dump1090.git")
 sha512sums=('SKIP')
- 
+
 pkgver() {
   cd "${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
- 
+
 build() {
   cd "${pkgname}"
   make
 }
- 
+
 package() {
   cd "${pkgname}"
 

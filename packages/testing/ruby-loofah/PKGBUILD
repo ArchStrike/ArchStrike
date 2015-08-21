@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=loofah
+
+buildarch=1
+
 pkgname=ruby-$_gemname
 pkgver=2.0.0
 pkgrel=2

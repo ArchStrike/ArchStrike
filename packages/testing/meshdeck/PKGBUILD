@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=20
+
 pkgname=meshdeck
 pkgver=2.04
 groups=('archstrike-drone' 'archstrike-meta-thedeck' 'archstrike-plug')

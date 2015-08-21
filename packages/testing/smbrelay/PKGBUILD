@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='smbrelay'
 pkgver='3'
 pkgrel=1
@@ -15,7 +18,7 @@ package() {
   cd "$srcdir"
 
   install -d -m755 "$pkgdir/usr/share/windows/smbrelay"
-  
+
   rm -rf *.zip src
   cp * "$pkgdir/usr/share/windows/smbrelay"
 }

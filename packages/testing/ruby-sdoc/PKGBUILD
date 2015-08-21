@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-sdoc
 _gemname=${pkgname#ruby-}
 pkgver=0.3.20

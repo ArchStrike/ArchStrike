@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gitname="GDSSecurity"
+
+buildarch=1
+
 pkgname=wifitap
 pkgver=2b16088
 pkgrel=1

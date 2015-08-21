@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=pyew
 pkgver=2.3.0.0.17bb704fc6d5a.
 pkgrel=1

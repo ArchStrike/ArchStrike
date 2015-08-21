@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=thin
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=1.6.1
 pkgrel=1

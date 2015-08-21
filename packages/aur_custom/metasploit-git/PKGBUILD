@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=metasploit-git
 pkgver=20150524.r33578
 pkgrel=1
@@ -51,7 +54,7 @@ package() {
   install -m644 .gitmodules "${pkgdir}/usr/share/metasploit"
   install -m644 .mailmap "${pkgdir}"/usr/share/metasploit
   # Commenting out the .git dir to shrink size. This will cause
-  # a warning when starting about not being a git dir. 
+  # a warning when starting about not being a git dir.
   #cp -a --no-preserve=ownership .git "${pkgdir}/usr/share/metasploit"
   # Conform to the FHS.
   mv "${pkgdir}/usr/share/metasploit/config" "${pkgdir}/etc/metasploit"
@@ -62,7 +65,7 @@ package() {
   bundle install --deployment
   rm msfupdate
   #chmod 0644 vendor/bundle/ruby/1.9.1/gems/robots-0.10.1/lib/robots.rb
-  chmod 0644 vendor/bundle/ruby/2.2.0/gems/robots-0.10.1/lib/robots.rb 
+  chmod 0644 vendor/bundle/ruby/2.2.0/gems/robots-0.10.1/lib/robots.rb
   chmod 0644 vendor/bundle/ruby/2.2.0/gems/*/*/*.rb
   install -Dm0666 /dev/null "${pkgdir}"/usr/share/metasploit/log/production.log
 

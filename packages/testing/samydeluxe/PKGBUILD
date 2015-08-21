@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='samydeluxe'
 pkgver=20090216.r2.2ed1bac
 pkgrel=1

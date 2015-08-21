@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: James An <james@jamesan.ca>
 
+buildarch=1
+
 pkgname=subbrute-git
 _gitname=subbrute
 pkgver=20150424.r85

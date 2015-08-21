@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='lanmap2-git'
 pkgver=r127.1197999
 pkgrel=1
@@ -18,7 +21,7 @@ provides=('lanmap2')
 
 pkgver() {
   cd "$srcdir/lanmap2"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)" 
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {

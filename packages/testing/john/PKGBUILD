@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=20
+
 pkgname=john
 pkgver=1.7.9
 pkgrel=2

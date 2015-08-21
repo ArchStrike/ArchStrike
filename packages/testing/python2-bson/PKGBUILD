@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=python2-bson
 pkgver=0.3.3
 pkgrel=1
@@ -20,6 +23,6 @@ package() {
   cd $srcdir/bson-0.3.3
   python2 setup.py install --root="$pkgdir" --optimize=1
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|' 
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
   rm "$pkgdir"/usr/lib/python2.7/site-packages/bson/__init__*
 }

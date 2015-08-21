@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby1.9-mini_exiftool
 _gemname=mini_exiftool
 pkgver=2.3.0

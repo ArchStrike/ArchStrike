@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=impacket
 pkgver=0.9.13
 pkgrel=1
@@ -15,13 +18,12 @@ prepare(){
   grep -iRl 'python' "$srcdir/impacket-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
-
 package() {
   cd "${srcdir}/impacket-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   chmod 644 $pkgdir/usr/share/doc/impacket/LICENSE
   chmod 644 $pkgdir/usr/share/doc/impacket/README
-  find  $pkgdir/usr/share/doc/impacket/testcases -type f  |xargs chmod 755 
+  find  $pkgdir/usr/share/doc/impacket/testcases -type f  |xargs chmod 755
   chmod 755 $pkgdir/usr/share/doc/impacket/testcases
   chmod 755 $pkgdir/usr/share/doc/impacket/testcases/ImpactPacket
   chmod 755 $pkgdir/usr/share/doc/impacket/testcases/dot11

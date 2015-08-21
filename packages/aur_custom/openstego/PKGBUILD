@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: G_Syme <demichan(at)mail(dot)upb(dot)de>
+
+buildarch=1
+
 pkgname=openstego
 pkgver=0.6.1
 pkgrel=1

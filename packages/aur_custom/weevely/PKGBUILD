@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=weevely
 _pkgname=weevely3
 pkgver=3.1.0
@@ -15,7 +18,6 @@ sha512sums=('16bb1e4d2f58198f72411e46f8f650b40471c51b10b9911002b37991ee000f5603e
 prepare(){
   grep -iRl 'python' "$srcdir/${_pkgname}-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
-
 
 package() {
   cd "$srcdir/${_pkgname}-$pkgver"

@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author='GOMOR'
 _perlmod='Net-Frame-Simple'
+
+buildarch=1
+
 pkgname='perl-net-frame-simple'
 pkgver='1.06'
 pkgrel=1
@@ -15,7 +18,7 @@ sha512sums=('e0fc689781d8dae48224fdd25e7cd00877848b754d5f349bdf7d261bd1db22eb24a
 
 prepare() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
@@ -27,6 +30,6 @@ build() {
 
 package() {
   cd "$srcdir/$_perlmod-$pkgver"
-  
+
   make install DESTDIR="$pkgdir/"
 }

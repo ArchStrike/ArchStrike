@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Jipuf <jipuf@gmx.fr>
 
+buildarch=212
+
 pkgname="libfixbuf"
 pkgver="1.6.2"
 pkgrel=1

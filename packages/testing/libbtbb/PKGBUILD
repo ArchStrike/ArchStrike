@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Ari Mizrahi <codemunchies@debugsecurity.com>
 
+buildarch=212
+
 pkgname=libbtbb
 pkgver=2014.02.R2
 pkgrel=4

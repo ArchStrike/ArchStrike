@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=sipshock
+
+buildarch=212
+
 pkgname=sipshock-git
 pkgver=6.1d636ab
 pkgrel=1

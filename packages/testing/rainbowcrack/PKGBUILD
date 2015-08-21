@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=192
+
 pkgname=rainbowcrack
 pkgver=1.6
 pkgrel=1
@@ -19,7 +22,6 @@ else
                     '3e8624602d5d37ff8ae4eb0dd8f6813f4573460f69ec3d8e21ca404979b8448109197cefa239302627eddfab277a347f842f81c0f1ea7c9f9de2dd7c1b847527')
 fi
 
-
 package() {
   if [[ $CARCH == 'x86_64' ]]; then
         cd "$srcdir/rainbowcrack-$pkgver-linux64"
@@ -35,7 +37,7 @@ package() {
 
         #lib
         install -Dm755 alglib0.so "$pkgdir/usr/lib/alglib0.so"
-          
+
 
         # license
         install -Dm644 readme.txt "$pkgdir/usr/share/licenses/rainbowcrack/LICENSE"

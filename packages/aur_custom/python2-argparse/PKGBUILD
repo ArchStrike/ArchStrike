@@ -5,6 +5,8 @@
 # Contributor: Nicolas Pouillard <nicolas.pouillard@gmail.com>
 # Contributor: James Bulmer <nekinie@gmail.com>
 
+buildarch=1
+
 pkgname="python2-argparse"
 pkgver=1.2.1
 pkgrel=2

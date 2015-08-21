@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=prometheus-git
 pkgver=r176.a316d66
 pkgrel=1
@@ -36,7 +39,7 @@ package() {
   cp -a --no-preserve=ownership lib/* "$pkgdir/usr/share/prometheus/lib/"
   install -Dm644 sample_configs/* "$pkgdir/usr/share/prometheus/sample_configs/"
 
-  
+
 cat > "$pkgdir/usr/bin/prometheus" << EOF
 #!/bin/sh
 cd /usr/share/prometheus

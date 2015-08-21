@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=cryptsetup-nuke-keys
 pkgver=1.6.6
 pkgrel=1

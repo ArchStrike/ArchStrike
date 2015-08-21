@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=flowinspect-git
 pkgver=r96.1f62b3b
 pkgrel=1
@@ -22,14 +25,12 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
-
 package() {
   cd "$srcdir/flowinspect"
   install -dm755 "$pkgdir/usr/share/flowinspect"
   install -dm755 "$pkgdir/usr/share/flowinspect/core"
   install -dm755 "$pkgdir/usr/bin"
-  
+
   install -Dm644 core/*.py "$pkgdir/usr/share/flowinspect/core/"
   install -Dm755 flowinspect.py "$pkgdir/usr/share/flowinspect/flowinspect.py"
   install -Dm644 issues "$pkgdir/usr/share/flowinspect/issues"

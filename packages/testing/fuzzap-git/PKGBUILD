@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=fuzzap-git
 pkgver=r14.f13932c
 pkgrel=1
@@ -7,7 +10,7 @@ pkgdesc="A python script for obfuscating wireless networks"
 arch=('any')
 url='https://github.com/lostincynicism/FuzzAP'
 license=('custom')
-depends=('python2' 'scapy') 
+depends=('python2' 'scapy')
 makedepends=('git')
 provides=('fuzzap')
 conflicts=('fuzzap')
@@ -37,7 +40,7 @@ package() {
   install -Dm644 common.txt "$pkgdir/usr/share/fuzzap/"
   install -Dm644 ssid.txt "$pkgdir/usr/share/fuzzap/"
   install -Dm644 README.md "$pkgdir/usr/share/licenses/fuzzap-git/"
-  
+
 cat > "$pkgdir/usr/bin/fuzzap" << EOF
 #!/bin/sh
 cd /usr/share/fuzzap

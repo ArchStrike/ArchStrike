@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=dhcpig-git
 pkgver=r69.cc4109a
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=damm-git
 pkgver=20150120.r28
 pkgrel=1
@@ -26,7 +29,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/damm"
-  
+
 cat > "$pkgdir/usr/bin/damm" << EOF
 #!/bin/sh
 cd /usr/share/damm

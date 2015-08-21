@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-uglifier
 _gemname=${pkgname#ruby-}
 pkgver=2.3.0

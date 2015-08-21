@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
+
+buildarch=1
+
 pkgname=fern-wifi-cracker
 pkgver=221
 pkgrel=1

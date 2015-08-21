@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=fakedns-git
 pkgver=20150219.r36.90bd7e1
 pkgrel=1

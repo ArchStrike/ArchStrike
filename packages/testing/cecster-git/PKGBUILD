@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=cecster-git
 _pkgname=CECster
 pkgver=r5.15544cb

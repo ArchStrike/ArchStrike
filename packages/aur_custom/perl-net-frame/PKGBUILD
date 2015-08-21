@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='perl-net-frame'
 pkgver='1.15'
 pkgrel='1'

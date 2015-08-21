@@ -1,4 +1,7 @@
 # Maintainer: Tyler Bennett <arch3y projectname org>
+
+buildarch=1
+
 pkgname=projectname-meta-setup
 pkgver=1
 pkgrel=1

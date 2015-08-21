@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=wpscan-git
 pkgver=20150524.r1917
 pkgrel=2
@@ -29,7 +32,7 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
   cp -a --no-preserve=owner * "${pkgdir}/usr/share/${pkgname}"
   cd ${pkgdir}/usr/share/"${pkgname}"
-  bundle-1.9 config build.nokogiri --use-system-libraries 
+  bundle-1.9 config build.nokogiri --use-system-libraries
   bundle-1.9 install --path vendor/bundle
   unzip data.zip
   rm "${pkgdir}"/usr/share/"${pkgname}"/data.zip

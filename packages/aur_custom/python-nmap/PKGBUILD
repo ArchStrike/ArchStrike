@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Erik Johnson <palehose at gmail dot com>
+
+buildarch=1
+
 pkgname=python-nmap
 pkgver=0.3.7
 pkgrel=1
@@ -15,6 +18,6 @@ changelog=CHANGELOG
 sha512sums=('ecab7f024f1bd6c9bce04d64d27d69b9f90bf21a72bfab6d023a6858bfa486eaf978d81419433a115d94001dc179ee23cf002814f2063e6294cc404d5ad8d43f')
 
 package(){
-  cd "$srcdir/${pkgname}-${pkgver}"  
+  cd "$srcdir/${pkgname}-${pkgver}"
   python setup.py install --root=${pkgdir} --optimize=1
 }

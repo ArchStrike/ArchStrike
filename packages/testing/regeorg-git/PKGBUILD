@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=regeorg-git
 pkgver=r26.22fb8a9
 pkgrel=1
@@ -25,7 +27,6 @@ prepare(){
   grep -iRl 'python' "$srcdir/regeorg" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
-
 package() {
   cd "$srcdir/regeorg"
 
@@ -36,7 +37,7 @@ package() {
   install -Dm644 tunnel.* "$pkgdir/usr/share/regeorg/"
   install -Dm755 reGeorgSocksProxy.py "$pkgdir/usr/share/regeorg/"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  
+
 cat > "$pkgdir/usr/bin/regeorg" << EOF
 #!/bin/sh
 cd /usr/share/regeorg

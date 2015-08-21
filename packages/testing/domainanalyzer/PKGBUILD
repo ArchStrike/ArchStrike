@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=domainanalyzer
 pkgver=0.8.1
 pkgrel=1
@@ -20,8 +22,8 @@ package() {
   install -dm755 "$pkgdir/usr/bin/"
   install -Dm644 domain_analyzerREADME "$pkgdir/usr/share/$pkgname/README"
   install -Dm755 domain_analyzeransistrm.py "$pkgdir/usr/share/$pkgname/ansistrm.py"
-  install -Dm755 domain_analyzercrawler.py  "$pkgdir/usr/share/$pkgname/crawler.py" 
-  install -Dm755 domain_analyzerdomain_analyzer.py "$pkgdir/usr/share/$pkgname/analyzer.py" 
+  install -Dm755 domain_analyzercrawler.py  "$pkgdir/usr/share/$pkgname/crawler.py"
+  install -Dm755 domain_analyzerdomain_analyzer.py "$pkgdir/usr/share/$pkgname/analyzer.py"
   install -Dm755 domain_analyzerpyText2pdf.py "$pkgdir/usr/share/$pkgname/pyText2pdf.py"
 
 cat >"$pkgdir/usr/bin/domainanalyzer" <<EOF

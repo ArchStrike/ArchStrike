@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=wemo-git
 pkgver=r5.d6c1f50
 pkgrel=1
@@ -35,7 +38,7 @@ package() {
   #Bin
   install -Dm755 "miranda.py" "$pkgdir/usr/share/wemo/miranda.py"
   install -Dm755 "wemo.py" "$pkgdir/usr/share/wemo/wemo.py"
-  
+
 cat > "$pkgdir/usr/bin/wemo" << EOF
 #!/bin/sh
 cd /usr/share/wemo

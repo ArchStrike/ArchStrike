@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-mini_portile
 _gemname=mini_portile
 pkgver=0.5.2

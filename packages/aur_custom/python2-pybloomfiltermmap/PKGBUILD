@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=python2-pybloomfiltermmap
 _modname='pybloomfiltermmap'
 pkgver=0.3.14

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=packetsender
 pkgver=4.1
 pkgrel=1
@@ -16,7 +19,6 @@ build(){
   qmake PacketSender.pro
   make
 }
-
 
 package() {
   cd "$srcdir/PacketSender-$pkgver/"

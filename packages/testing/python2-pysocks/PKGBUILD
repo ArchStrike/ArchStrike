@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=pysocks
+
+buildarch=1
+
 pkgname=python2-$_pkgname
 pkgver=1.5.0
 pkgrel=1

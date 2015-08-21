@@ -2,6 +2,8 @@
 # Contributor: Connor Behan <connor.behan@gmail.com>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
+buildarch=212
+
 pkgname=gtk
 pkgver=1.2.10
 pkgrel=14
@@ -16,7 +18,6 @@ source=(ftp://ftp.gnome.org/pub/gnome/sources/gtk+/1.2/gtk+-${pkgver}.tar.gz
         aclocal-fixes.patch)
 sha512sums=('6a05062520954287b0e24a95169d18c216145ee79d1fa7f54222db32c8e39e011e3dc49886d3bc4de1cc1ebd71f5744e41891cde8d5c2759f637e71c390a235f'
             'bfe3bbf3498cf2fa094fd7525e507cc81f916d1172df450a421fbe23ddae7d207b1c77f1d0db6bbd7e36c870002ec9aa06916a089f773f8e8470b26d2137c6f4')
-
 
 prepare() {
   cd gtk+-${pkgver}

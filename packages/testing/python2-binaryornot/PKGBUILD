@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Meir Kriheli <mkriheli@gmail.com>
 
+buildarch=1
+
 pkgname=python2-binaryornot
 _pkgname=binaryornot
 pkgver=0.3.0
@@ -18,7 +20,7 @@ sha512sums=('3a0b66df39d7aa9bc805a482cbd8fae8a6e892d1a4050a051d3017635f557f1306e
 package() {
       cd "$srcdir/${_pkgname}-${pkgver}"
       python2 setup.py install --root="$pkgdir" --optimize=1
-      install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 
+      install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 # vim:set ts=2 sw=2 et:

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='swfintruder'
 pkgver='0.9.1'
 pkgrel=1
@@ -14,6 +17,6 @@ package() {
   cd "$srcdir/${pkgname}_$pkgver"
 
   install -d "$pkgdir/usr/share/swfintruder"
-  
+
   cp -r * "$pkgdir/usr/share/swfintruder/"
 }

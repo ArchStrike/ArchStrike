@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-activerecord-deprecated_finders
 _gemname=activerecord-deprecated_finders
 pkgver=1.0.3

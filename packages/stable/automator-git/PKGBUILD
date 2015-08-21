@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=automator-git
 pkgver=r58.a034193
 pkgrel=1
@@ -21,10 +24,9 @@ prepare(){
   grep -iRl 'python' "$srcdir/TekDefense-Automater" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
-
 package() {
   cd "$srcdir/TekDefense-Automater"
-  
+
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/automator"
   install -dm755 "$pkgdir/usr/share/automator/docs"
@@ -48,7 +50,7 @@ cd /usr/share/automator
 python2 Automater.py "\$@"
 EOF
 
-chmod +x "$pkgdir/usr/bin/automater"  
-  
+chmod +x "$pkgdir/usr/bin/automater"
+
 }
 

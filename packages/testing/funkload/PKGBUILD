@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=1
+
 pkgname=funkload
 pkgver=1.16.1
 pkgrel=1
@@ -14,9 +16,6 @@ optdepends=('tcpwatch: to use recorder'
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/f/funkload/funkload-1.16.1.tar.gz")
 sha512sums=('e59a3c968c545029d80a34dd65ee2c95ce54d8d03b475f6798f1f377a38168b736aeeea022395c64dd3bf723f76aa59cb531126af940cba720a69720ead9d141')
-
-
-
 
 package() {
 	cd "$srcdir/${pkgname}-$pkgver"

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=perl-net-rawip
 pkgver=0.25
 pkgrel=3

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sb0x
 pkgver=2.0.1rc3
 pkgrel=1
@@ -37,5 +40,4 @@ python2 ./sb0x.py "\$@"
 EOF
   chmod +x "$pkgdir"/usr/bin/sb0x.py
 }
-
 

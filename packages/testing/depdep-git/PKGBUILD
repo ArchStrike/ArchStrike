@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=depdep
 pkgver=2.0
 pkgrel=1
@@ -27,8 +30,8 @@ package() {
   for i in config lib script; do install -dm755 "$pkgdir/usr/share/$pkgname/$i"; cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/$pkgname/$i/";done
   install -Dm755 depdep.py "$pkgdir/usr/share/$pkgname"
   install -Dm644 $srcdir/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
- 
- 
+
+
 cat > "$pkgdir/usr/bin/depdep" << EOF
 #!/bin/sh
 cd /usr/share/depdep

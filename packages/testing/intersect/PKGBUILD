@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=196
+
 pkgname=intersect
 pkgver=2.5
 pkgrel=1

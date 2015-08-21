@@ -3,6 +3,8 @@
 # Contributor: kfgz <kfgz at interia pl>
 # Contributor: Adam Wolk <netprobe at gmail dot com>
 
+buildarch=212
+
 pkgname=libewf
 pkgver=20140608
 pkgrel=3

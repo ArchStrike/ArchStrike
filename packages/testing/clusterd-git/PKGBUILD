@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=clusterd-git
 pkgver=r129.0f04a49
 pkgrel=1

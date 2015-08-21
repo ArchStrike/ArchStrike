@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=boost-bloom-filters-git
 pkgver=20130409.r190
 pkgrel=1

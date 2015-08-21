@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=windows-binaries
 pkgver=0.4
 pkgrel=1
@@ -19,4 +22,4 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/windows-binaries"
   # Removing debian crap
   rm -rf "$pkgdir/usr/share/windows-binaries/debian"
-}  
+}

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=dns-spoof-git
 pkgver=r12.3918a10
 pkgrel=1

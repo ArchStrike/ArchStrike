@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-ronin-support
 _gemname=${pkgname#ruby-}
 pkgver=0.5.1

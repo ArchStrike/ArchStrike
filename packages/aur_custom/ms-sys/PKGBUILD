@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='ms-sys'
 pkgver='2.5.0'
 pkgrel=1
@@ -14,7 +17,7 @@ sha512sums=('306c39ed8c3c77047d3c0aaa2ce07edd00d8e6d358923910325d3c81252ac0f48ff
 
 prepare() {
   cd "$srcdir/ms-sys-$pkgver"
-  
+
   mkdir -p "$pkgdir/usr/{bin,share/man/man1}"
   sed -i "s|MANDIR =.*|MANDIR = /usr/share/man|g" Makefile
 }
@@ -27,7 +30,7 @@ build() {
 
 package() {
   cd "$srcdir/ms-sys-$pkgver"
-  
+
   make PREFIX="/usr" DESTDIR="$pkgdir" install
 
   install -D -m644 "COPYING" "$pkgdir/usr/share/licenses/ms-sys/COPYING"

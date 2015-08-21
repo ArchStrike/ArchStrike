@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: Håvard Espeland <espeland@acm.org>
+
+buildarch=192
+
 pkgname=libpfm4
 pkgver=4.6.0
 pkgrel=1

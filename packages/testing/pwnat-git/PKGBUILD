@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _pkgname=pwnat
+
+buildarch=212
+
 pkgname=$_pkgname-git
 pkgver=20140907.r9.1d07c2e
 pkgrel=2

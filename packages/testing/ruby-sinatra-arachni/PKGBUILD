@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=sinatra
+
+buildarch=1
+
 pkgname=ruby-$_gemname-arachni
 pkgver=1.3.2
 pkgrel=1

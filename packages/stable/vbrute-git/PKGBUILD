@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=vbrute-git
 pkgver=r1.11dda8b
 pkgrel=1

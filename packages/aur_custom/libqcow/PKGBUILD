@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: David McIlwraith <archaios at archaios dot net>
+
+buildarch=212
+
 pkgname=libqcow
 pkgver=20150105
 pkgrel=1
@@ -11,7 +14,6 @@ depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 makedepends=('git')
 source=("https://github.com/libyal/libqcow/archive/$pkgver.tar.gz")
 sha512sums=('5b0b386c114d68b17f1c730468a5271f0ac06f54d5bdd95e3a2b4ee425f2ea5768465664029fdbe889e9daa49c048dc476286354893bc2b36e884ff4dcf20f3f')
-
 
 build(){
   cd $srcdir/$pkgname-$pkgver

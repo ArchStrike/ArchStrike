@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Wade Carpenter <archwade NOSPAM 20 NOSPAM apex3 AT xoxy NOSPAM net> / NOSPAM /./
+
+buildarch=212
+
 pkgname=bittwist
 pkgver=2.0
 pkgrel=1

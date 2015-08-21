@@ -2,6 +2,8 @@
 # Contributor: Peter Richard Lewis <plewis@aur.archlinux.org>
 # Contributor: Emiliano Vavassori <syntaxerrormmm@gmail.com>
 
+buildarch=1
+
 pkgname=ruby-highline
 _gemname=highline
 pkgver=1.7.0

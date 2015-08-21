@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=python2-osmgpsmap
 _pkgname=python-osmgpsmap
 pkgver=0.7.3

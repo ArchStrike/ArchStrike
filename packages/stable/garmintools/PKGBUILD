@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=garmintools
 pkgver=0.10
 pkgrel=5
@@ -18,7 +21,7 @@ build() {
   cd "$srcdir/$pkgname-$pkgver"
   patch -p0 -i "$srcdir/array-size.patch"
   ./configure --prefix=/usr
-  make 
+  make
 }
 
 package() {

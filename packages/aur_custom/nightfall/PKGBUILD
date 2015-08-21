@@ -1,5 +1,7 @@
 # Maintainer: Kevin MacMartin <prurigro@gmail.com>
 
+buildarch=1
+
 pkgname=nightfall
 pkgver=1.1
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: Jeremy Lynch <jl projectname org>
+
+buildarch=1
+
 pkgname=projectname-meta-armsetup
 pkgver=1
 pkgrel=7

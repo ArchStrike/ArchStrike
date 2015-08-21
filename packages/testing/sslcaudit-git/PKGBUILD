@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sslcaudit-git
 pkgver=r522.5b6be3e
 pkgrel=1
@@ -19,7 +22,6 @@ pkgver() {
   cd "$srcdir/sslcaudit"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
-
 
 build() {
   cd "$srcdir/sslcaudit"

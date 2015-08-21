@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sslnuke
 pkgver=0.r5.c5faeaa
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=thc-pptp-bruter
 pkgver=0.1.4
 pkgrel=1

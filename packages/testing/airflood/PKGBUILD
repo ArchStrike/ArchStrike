@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=airflood
 pkgver=0.1
 pkgrel=3
@@ -6,7 +9,7 @@ pkgdesc="A modification of aireplay that allows for a DOS in the AP. This progra
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://packetstormsecurity.com/files/51127/airflood-0.1.tar.gz.html"
 license=('GPL')
-if [[ $CARCH == x86_64 ]] ; then 
+if [[ $CARCH == x86_64 ]] ; then
     depends=('lib32-glibc')
 else
     depends=('glibc')

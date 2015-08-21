@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname='sqid'
 pkgver='0.3'
 pkgrel=1
@@ -13,7 +16,7 @@ md5sums=('f09d8bd83176f2e4fbdd3d81bb3e712c')
 
 prepare() {
   cd "$srcdir/sqid-$pkgver"
-  
+
   sed -i -e 's|sqid.db|/usr/share/sqid/sqid.db|g' "sqid.rb"
 }
 
@@ -22,7 +25,7 @@ package() {
 
   install -d -m755 "$pkgdir/usr/bin"
   install -d -m755 "$pkgdir/usr/share/sqid"
-  
+
   install -m755 "sqid.rb" "$pkgdir/usr/share/sqid"
   install -m644 "readme" "sqid.db" "$pkgdir/usr/share/sqid"
 

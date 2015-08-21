@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Prurigro
 
+buildarch=212
+
 pkgname=pwatch
 pkgver=0.0.6
 pkgrel=2

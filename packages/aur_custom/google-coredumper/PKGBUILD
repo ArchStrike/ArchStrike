@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Anatol Pomozov <anatol@google.com>
+
+buildarch=192
+
 pkgname=google-coredumper
 pkgver=1.2.1
 pkgrel=2

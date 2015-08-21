@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
+buildarch=1
+
 pkgname=cjdnsify
 pkgver=20140717.r6.bc354af
 pkgrel=1

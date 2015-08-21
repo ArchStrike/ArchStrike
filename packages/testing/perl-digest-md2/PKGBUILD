@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _author=GAAS
 _perlmod=Digest-MD2
+
+buildarch=212
+
 pkgname=perl-digest-md2
 pkgver=2.04
 pkgrel=1

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=wikigen
 pkgver=1.0
 pkgrel=1
@@ -14,10 +17,9 @@ sha512sums=('eab16383231eb18e52dfaa1249ae30f82ef6bb1d0f309e8851203a75534a1b07b43
 package() {
   cd "$srcdir"/$pkgname-$pkgver
   install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -dm755 "$pkgdir/usr/bin" 
+  install -dm755 "$pkgdir/usr/bin"
   install -Dm755 wwg.py "$pkgdir/usr/bin/wikigen"
   install -Dm644 README.md "$pkgdir/usr/share/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
-
 

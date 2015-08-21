@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+buildarch=212
+
 pkgname=python2-netfilterqueue
 pkgver=0.6
 pkgrel=1
@@ -11,7 +13,6 @@ depends=('python2' 'libnetfilter_queue')
 makedepends=('python2-setuptools')
 source=(https://github.com/fqrouter/python-netfilterqueue/archive/v$pkgver.tar.gz)
 sha512sums=('6e69bd43a45499ba6b50c71ac5f44a04d06e64ab8a3e591da04b8ac8c7321793b2c4fa32aa0cb27c7d45f665ebc59e02bcea13a1420c7abfe73fdde5bc7ff991')
-
 
 package(){
   cd "$srcdir/${pkgname/2/}-$pkgver"

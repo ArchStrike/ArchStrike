@@ -2,6 +2,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 _gemname=puma
+
+buildarch=212
+
 pkgname=ruby-$_gemname
 pkgver=2.9.0
 pkgrel=1

@@ -2,6 +2,8 @@
 # Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 # Contributor: Rémy Oudompheng <remy@archlinux.org>
 
+buildarch=212
+
 pkgname=python2-pyelftools
 _pkgname=pyelftools
 pkgver=0.23

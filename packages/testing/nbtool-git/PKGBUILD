@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=nbtool-git
 pkgver=20140415.r2
 pkgrel=2
@@ -23,13 +26,13 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname}" 
+  cd "${pkgname}"
   make CFLAGS="$CFLAGS"
   sed -i "s|/usr/local/|${pkgdir}/usr/|g" "Makefile"
 }
 
 package() {
-  cd "${pkgname}" 
+  cd "${pkgname}"
   make DESTDIR="${pkgdir}" install
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }

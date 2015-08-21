@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=sshuttle-git
 pkgver=20120810.r198.9ce2fa0
 pkgrel=1
@@ -46,6 +49,6 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/sshuttle"
 
   install -Dm755 $srcdir/sshuttle/sshuttle $pkgdir/usr/bin/sshuttle
- 
-   
+
+
 }

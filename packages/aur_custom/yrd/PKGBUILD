@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Kevin MacMartin <prurigro@gmail.com>
 
+buildarch=1
+
 pkgname=yrd
 pkgver=0.2
 pkgrel=3

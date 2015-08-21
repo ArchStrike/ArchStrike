@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=lft
 pkgver=3.73
 pkgrel=1
@@ -14,8 +17,8 @@ sha512sums=('ae0fac196aa4cee7a4f9832c1d4ee9e6bb012513b95e73f7818bd0d66c9347c8ee7
 build() {
   cd "$srcdir/lft-$pkgver"
   ./configure --prefix=/usr
-  make 
-}  
+  make
+}
 
 package() {
   cd "$srcdir/lft-$pkgver"

@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=uglifier
+
+buildarch=1
+
 pkgname=ruby1.9-$_gemname
 pkgver=2.4.0
 pkgrel=1

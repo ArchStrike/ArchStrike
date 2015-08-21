@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=sasm
 pkgver=3.2.0
 pkgrel=1
@@ -25,12 +28,12 @@ package() {
   install -dm755 "$pkgdir/usr/share/sasm/NASM"
   install -dm755 "$pkgdir/usr/share/sasm/Projects"
   install -dm755 "$pkgdir/usr/share/sasm/include"
- 
+
   # Bins
   install -Dm755 Linux/bin/fasm "$pkgdir/usr/bin/fasm"
   install -Dm755 Linux/bin/listing "$pkgdir/usr/bin/listing"
   install -Dm755 sasm "$pkgdir/usr/bin/sasm"
-  
+
   # Docs & License
   install -Dm644 Linux/share/doc/sasm/* "$pkgdir/usr/share/doc/sasm/"
   install -Dm644 Linux/share/doc/sasm/copyright "$pkgdir/usr/share/licenses/$pkgname/copyright"
@@ -41,7 +44,7 @@ package() {
   install -Dm644 Linux/share/sasm/NASM/* "$pkgdir/usr/share/sasm/NASM/"
   install -Dm644 Linux/share/sasm/Projects/* "$pkgdir/usr/share/sasm/Projects/"
   install -Dm644 Linux/share/sasm/include/* "$pkgdir/usr/share/sasm/include/"
-  
+
 }
 
 # vim:set ts=2 sw=2 et:

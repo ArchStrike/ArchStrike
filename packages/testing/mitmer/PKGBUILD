@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=mitmer
 pkgver=r22.b01c7fe
 pkgrel=1

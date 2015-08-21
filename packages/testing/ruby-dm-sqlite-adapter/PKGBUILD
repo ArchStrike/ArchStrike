@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # TODO: make package function
 
+buildarch=1
+
 pkgname=ruby-dm-sqlite-adapter
 _gemname=${pkgname#ruby-}
 pkgver=1.2.0

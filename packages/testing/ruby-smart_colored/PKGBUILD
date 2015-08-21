@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _gemname=smart_colored
+
+buildarch=1
+
 pkgname=ruby-${_gemname}
 pkgver=1.1.1
 pkgrel=1

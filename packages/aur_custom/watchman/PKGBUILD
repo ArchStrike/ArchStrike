@@ -1,6 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: José Luis Lafuente <jl@lafuente.me>
 # Contributor: Michael Louis Thaler <michael.louis.thaler@gmail.com>
+
+buildarch=212
+
 pkgname=watchman
 pkgver=3.0.0
 pkgrel=2

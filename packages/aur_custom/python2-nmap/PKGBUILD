@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Erik Johnson <palehose at gmail dot com>
+
+buildarch=1
+
 pkgname=python2-nmap
 _realname=python-nmap
 pkgver=0.1.4

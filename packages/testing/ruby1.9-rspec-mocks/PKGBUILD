@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby1.9-rspec-mocks
 _gemname=rspec-mocks
 pkgver=2.14.3

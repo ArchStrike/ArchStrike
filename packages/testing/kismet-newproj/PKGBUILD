@@ -1,7 +1,9 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
-# Contributor: Angel Velasquez <angvp@archlinux.org> 
+# Contributor: Angel Velasquez <angvp@archlinux.org>
 # Contributor: Jason Chu <jason@archlinux.org>
 # Contributor: Juergen Hoetzel <jason@archlinux.org>
+
+buildarch=212
 
 pkgname=kismet-projectname
 _pkgname=kismet
@@ -34,7 +36,6 @@ prepare(){
    cd "${srcdir}/ubertooth-2014-04-R1/host/kismet"
    cp -r plugin-ubertooth "$srcdir/${_pkgname}-${_realver}/"
 }
-
 
 build() {
     cd "${srcdir}/${_pkgname}-${_realver}"

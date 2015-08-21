@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=qscintilla-qt3
 pkgver=1.7.1
 pkgrel=6
@@ -27,18 +30,18 @@ build() {
 
 package() {
   cd "$_dir"
-  # These need to be copied by hand, 
+  # These need to be copied by hand,
   # because make install doesn't
   # do it.
   dlib=`grep 'TARGETD\s=' Makefile | sed 's/.*=\s*\(.*\)/\1/'`
   sym0=`grep 'TARGET0\s=' Makefile | sed 's/.*=\s*\(.*\)/\1/'`
   sym1=`grep 'TARGET1\s=' Makefile | sed 's/.*=\s*\(.*\)/\1/'`
   sym2=`grep 'TARGET2\s=' Makefile | sed 's/.*=\s*\(.*\)/\1/'`
-  
+
   install -Dm755 "$dlib" "$pkgdir"/usr/lib/"$dlib"
   ln -sr "$pkgdir"/usr/lib/"$dlib" "$pkgdir"/usr/lib/"$sym0"
   ln -sr "$pkgdir"/usr/lib/"$dlib" "$pkgdir"/usr/lib/"$sym1"
   ln -sr "$pkgdir"/usr/lib/"$dlib" "$pkgdir"/usr/lib/"$sym2"
-  
+
   make INSTALL_ROOT="$pkgdir" MOC=/usr/bin/moc-qt3 UIC=/usr/bin/uic-qt3 install
 }

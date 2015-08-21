@@ -4,6 +4,9 @@
 # Contributor: naxuroqa <naxuroqa at gmail.com>
 
 _pkgname=tox
+
+buildarch=212
+
 pkgname=$_pkgname-git
 _pkgver=4ad7649
 pkgver=r3156.4ad7649

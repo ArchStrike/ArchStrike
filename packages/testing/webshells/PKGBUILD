@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=webshells
 pkgver=0.r2.4e96370
 pkgrel=1

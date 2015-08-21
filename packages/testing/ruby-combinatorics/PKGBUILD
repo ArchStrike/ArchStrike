@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=ruby-combinatorics
 _gemname=${pkgname#ruby-}
 pkgver=0.4.3

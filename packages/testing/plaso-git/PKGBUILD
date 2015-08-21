@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=plaso-git
 pkgver=20150526.r983
 pkgrel=1

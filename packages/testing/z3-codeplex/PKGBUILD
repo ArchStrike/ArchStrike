@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Marat Akhin <Marat.Akhin@gmail.com>
 
+buildarch=212
+
 pkgname=z3-codeplex
 pkgver=4.3.1
 pkgrel=2
@@ -11,7 +13,7 @@ license=('custom')
 makedepends=('python2')
 if [[ "$CARCH" == 'x86_64' ]]; then
       depends='gcc-libs-multilib'
-else  
+else
       depends='gcc-libs'
 fi
 source=("$pkgname-$pkgver.zip::http://download-codeplex.sec.s-msft.com/Download/SourceControlFileDownload.ashx?ProjectName=z3&changeSetId=89c1785b7322" "z3.patch")

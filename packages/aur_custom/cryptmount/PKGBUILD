@@ -2,6 +2,8 @@
 # Contributor: Mike Sampson <mike at sambodata dot com>
 # Contributor: Andrea Benazzo <andy@qitty.net>
 
+buildarch=212
+
 pkgname=cryptmount
 pkgver=5.1
 pkgrel=1

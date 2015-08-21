@@ -2,6 +2,8 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Matthew Sharpe <matt.sharpe@gmail.com>
 
+buildarch=212
+
 pkgname=bkhive
 pkgver=1.1.1
 pkgrel=1

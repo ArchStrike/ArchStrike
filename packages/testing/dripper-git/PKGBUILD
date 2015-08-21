@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 _pkgname=dripper
+
+buildarch=212
+
 pkgname=${_pkgname}-git
 pkgver=20130912.r3.2430d65
 pkgrel=1

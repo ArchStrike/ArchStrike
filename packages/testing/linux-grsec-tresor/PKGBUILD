@@ -14,6 +14,8 @@
 #   https://github.com/nning/linux-grsec
 #
 
+buildarch=128
+
 pkgname=linux-grsec-tresor
 true && pkgname=(linux-grsec-tresor linux-grsec-tresor-headers)
 _kernelname=${pkgname#linux}

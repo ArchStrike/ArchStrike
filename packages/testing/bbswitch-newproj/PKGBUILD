@@ -3,6 +3,8 @@
 # Contributor: M0Rf30
 # Contributor: Samsagax <samsagax@gmail.com>
 
+buildarch=192
+
 pkgname=bbswitch-projectname
 _basename=bbswitch
 pkgver=0.8
@@ -28,7 +30,7 @@ build() {
 
 package() {
   cd ${srcdir}/${_basename}-${pkgver}
-   
+
   install -Dm644 bbswitch.ko "${pkgdir}"/usr/lib/modules/${_extramodules}/bbswitch.ko
-  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/bbswitch.ko"                      
+  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/bbswitch.ko"
 }

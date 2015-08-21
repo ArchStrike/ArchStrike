@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname='voipong'
 pkgver='2.0'
 pkgrel=1
@@ -22,6 +25,6 @@ package() {
     -i Makefile.linux
 
   make CFLAGS="$CFLAGS -Iinclude" -f Makefile.linux
-  
+
   make install -f Makefile.linux
 }

@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=212
+
 pkgname=owasp-mantra-firefox
 pkgver=0.92b
 pkgrel=1
@@ -33,7 +36,7 @@ package(){
   elif [[ "$CARCH" == 'x86_64' ]]; then
       './OWASP Mantra-0.92-Linux-x86_64-Install' --mode silent --prefix "./"
   fi
-  
+
   # Install Bins
   install -Dm755 "$srcdir/OWASP Mantra" "$pkgdir/usr/share/owasp-mantra-firefox/"
   cp -a --no-preserve=ownership -R Mantra "$pkgdir/usr/share/owasp-mantra-firefox/"

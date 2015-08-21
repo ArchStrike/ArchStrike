@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=redpoint-git
 pkgver=20150213.r109
 pkgrel=1

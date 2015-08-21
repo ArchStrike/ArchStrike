@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 # Contributor: Francois Boulogne <fboulogne at april dot org>
 
+buildarch=1
+
 pkgname=python2-pathtools
 pkgver=0.1.2
 pkgrel=2

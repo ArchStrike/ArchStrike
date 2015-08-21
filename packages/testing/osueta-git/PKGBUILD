@@ -1,4 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+buildarch=1
+
 pkgname=osueta-git
 pkgver=r65.90323e2
 pkgrel=1
@@ -33,8 +36,8 @@ package() {
   install -Dm644 osufunc.py  "$pkgdir/usr/share/osueta/"
   install -Dm755 osueta.py  "$pkgdir/usr/share/osueta/"
   install -Dm644 osumain.py "$pkgdir/usr/share/osueta/"
-  install -Dm644 README     "$pkgdir/usr/share/osueta/" 
- 
+  install -Dm644 README     "$pkgdir/usr/share/osueta/"
+
 cat > "$pkgdir/usr/bin/osueta" << EOF
 #!/bin/sh
 cd /usr/share/osueta

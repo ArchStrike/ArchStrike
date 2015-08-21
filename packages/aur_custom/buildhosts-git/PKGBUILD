@@ -2,6 +2,9 @@
 # Contributor: Kevin MacMartin <prurigro at gmail dot com>
 
 _pkgname=buildhosts
+
+buildarch=1
+
 pkgname=$_pkgname-git
 pkgver=20150202.r9.719a8e7
 pkgrel=1
