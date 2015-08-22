@@ -10,7 +10,7 @@ url='none'
 arch=('any')
 depends=('perl')
 license=('GPL')
-groups=('archstrike' 'archstrike-fuzzer')
+groups=('archstrike' 'archstrike-fuzzers')
 source=('http://data.gpo.zugaina.org/pentoo/app-fuzz/http-fuzz/files/http-fuzz.pl')
 md5sums=('399883f034a505b8b157649e7870a0ff')
 

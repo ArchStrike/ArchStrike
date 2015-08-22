@@ -10,7 +10,7 @@ arch=('any')
 url='http://packetstormsecurity.com/files/117403/Dark-D0rk3r-1.0.html'
 license=('unknown')
 depends=('python2')
-groups=('archstrike' 'archstrike-webapp' 'archstrike-exploit')
+groups=('archstrike' 'archstrike-webapps''archstrike-exploit')
 source=("darkd0rk3r.py::http://packetstorm.igor.onlinedirect.bg/UNIX/scanners/darkd0rk3r-$pkgver.py.txt")
 md5sums=('babde1e29abe6812508e8834031c7749')
 

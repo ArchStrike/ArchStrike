@@ -10,7 +10,7 @@ url='http://code.google.com/p/grokevt/'
 license=('GPL')
 depends=('python2' 'reglookup' 'cpio')
 arch=('any')
-groups=('archstrike' 'archstrike-forensic')
+groups=('archstrike' 'archstrike-forensics')
 source=("http://grokevt.googlecode.com/files/grokevt-$pkgver.tar.gz")
 sha512sums=('67a6034810cdc77d50776bc8e9b203137ae0d1aa399d7618ada409fba23cd46541927ef1d6087c6d68f182b14911a820d3020748b35d13dc741e12defd65b4fa')
 

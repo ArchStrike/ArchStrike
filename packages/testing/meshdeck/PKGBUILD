@@ -4,7 +4,7 @@ buildarch=20
 
 pkgname=meshdeck
 pkgver=2.04
-groups=('archstrike-drone' 'archstrike-meta-thedeck' 'archstrike-plug')
+groups=('archstrike-drone' 'archstrike-meta')
 pkgrel=1
 pkgdesc="An addon to The Deck which allows multiple devices running The Deck to communicate via 802.15.4 Xbee and/or \
 ZigBee mesh networking.  This allows coordinated attacks to be performed. A centralized command console is used to coordinate with the drones."

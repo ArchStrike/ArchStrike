@@ -11,7 +11,7 @@ url='http://sourceforge.net/projects/winexe/'
 license=('GPL3')
 depends=('gnutls' 'libsasl' 'popt' 'talloc' 'tdb')
 makedepends=('python2')
-groups=('archstrike' 'archstrike-misc' 'archstrike-windows')
+groups=('archstrike' 'archstrike-misc')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz"
         "getopts.patch"
         "gnutls.patch"

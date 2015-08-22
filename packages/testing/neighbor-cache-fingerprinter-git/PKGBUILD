@@ -5,7 +5,7 @@ buildarch=212
 pkgname=neighbor-cache-fingerprinter-git
 pkgver=r83.f1e596f
 pkgrel=2
-groups=('archstrike' 'archstrike-scanner')
+groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A mechanism for remote operating system detection by
 extrapolating characteristics of the target system's underlying Neighbor Cache
 and general ARP behavior."

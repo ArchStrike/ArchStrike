@@ -12,7 +12,7 @@ url="http://github.com/jensp/${pkgname}"
 license=('custom:unkown')
 depends=('python2')
 makedepends=('git')
-groups=('archstrike' 'archstrike-cracker')
+groups=('archstrike' 'archstrike-crackers')
 source=("git+https://github.com/jensp/${pkgname}.git")
 sha512sums=('SKIP')
 

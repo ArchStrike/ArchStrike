@@ -10,7 +10,7 @@ arch=('any')
 url='http://www.cqure.net/wp/test/'
 license=('GPL')
 depends=('java-runtime')
-groups=('archstrike' 'archstrike-fuzzer')
+groups=('archstrike' 'archstrike-fuzzers')
 source=("http://www.cqure.net/tools/oat-source-$pkgver.zip"
         'oat-path.patch')
 md5sums=('e9775501019bbc118e429c85cca249c7'

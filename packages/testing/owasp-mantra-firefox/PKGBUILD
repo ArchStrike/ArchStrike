@@ -9,7 +9,7 @@ pkgdesc="Free and Open Source Browser based Security Framework"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://sourceforge.net/projects/getmantra/"
 license=('GPL')
-groups=("archstrike" "archstrike-webapp" "archstrike-scanners")
+groups=('archstrike' 'archstrike-webapps''archstrike-scanners')
 
 if [[ "$CARCH" == 'i686' ]] || [[ "$CARCH" == 'armv6h' ]] || [[ "$CARCH" == 'armv7h' ]]; then
     source=("http://downloads.sourceforge.net/getmantra/OWASP%20Mantra%20Janus%20Linux%2032.tar.gz"

@@ -9,7 +9,7 @@ pkgdesc='Browser Fuzzer 3'
 url='http://www.krakowlabs.com/dev.html'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
-groups=('archstrike' 'archstrike-fuzzer')
+groups=('archstrike' 'archstrike-fuzzers')
 source=("http://packetstorm.igor.onlinedirect.bg/fuzzer/bf3.tar.gz")
 md5sums=('901fa6e63c9a092053d85b4032b4d8e3')
 

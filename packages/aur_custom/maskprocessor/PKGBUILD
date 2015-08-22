@@ -5,7 +5,7 @@ buildarch=192
 pkgname=maskprocessor
 pkgver=0.73
 pkgrel=1
-groups=('archstrike' 'archstrike-cracker')
+groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A High-Performance word generator with a per-position configurable charset"
 arch=('i686' 'x86_64')
 url='http://hashcat.net/wiki/doku.php?id=maskprocessor'

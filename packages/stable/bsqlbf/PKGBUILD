@@ -9,7 +9,7 @@ pkgdesc='Blind SQL Injection Brute Forcer'
 arch=('any')
 url='http://code.google.com/p/bsqlbf-v2/'
 license=('GPL')
-groups=('archstrike' 'archstrike-webapp')
+groups=('archstrike' 'archstrike-webapps')
 depends=('perl')
 source=("https://bsqlbf-v2.googlecode.com/files/bsqlbf-v${pkgver/./-}.pl"
         "${pkgname}.1")

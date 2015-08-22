@@ -7,7 +7,7 @@ pkgver='3.0'
 pkgrel=2
 pkgdesc='Common User Password Profiler'
 url='http://www.remote-exploit.org/?page_id=418'
-groups=('archstrike' 'archstrike-cracker')
+groups=('archstrike' 'archstrike-crackers')
 license=('GPL3')
 depends=('python2')
 arch=('any')

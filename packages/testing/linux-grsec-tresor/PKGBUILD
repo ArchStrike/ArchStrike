@@ -116,7 +116,7 @@ build() {
 
 package_linux-grsec-tresor() {
   pkgdesc="The Linux Kernel and modules with grsecurity/PaX patches integrated with TRESOR"
-  groups=('base')
+groups=()
   depends=('gradm' 'linux-pax-flags' 'coreutils' 'linux-firmware' 'kmod' 'mkinitcpio>=0.7')
   optdepends=('crda: to set the correct wireless channels of your country')
   provides=('kernel26-grsec-tresor')

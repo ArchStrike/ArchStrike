@@ -10,7 +10,7 @@ url="http://sourceforge.net/projects/zulu-wireless/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
 depends=('glibc')
-groups=('archstrike' 'archstrike-wireless' 'archstrike-cracker')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 source=(http://downloads.sourceforge.net/sourceforge/zulu-wireless/zulu-$pkgver.tgz)
 md5sums=('03d97185978c2f31533d0aa735f8f630')
 

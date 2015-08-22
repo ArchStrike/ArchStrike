@@ -5,7 +5,7 @@ buildarch=212
 pkgname=medusa
 pkgver=2.1.1
 pkgrel=2
-groups=('archstrike' 'archstrike-cracker')
+groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A speedy, massively parallel, modular, login brute-forcer for network "
 depends=('pcre' 'openssl' 'libssh2' 'libpqxx' 'ncp'
          'subversion' 'afpfs-ng')

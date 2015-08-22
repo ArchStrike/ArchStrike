@@ -11,7 +11,7 @@ url="http://phenoelit-us.org/vncrack"
 license=('GPL')
 makedepends=('gcc' 'make')
 depends=('glibc')
-groups=('archstrike' 'archstrike-cracker')
+groups=('archstrike' 'archstrike-crackers')
 source=(http://www.ph33rinc.net/phenoelit/phenoelit-us.org/vncrack/${pkgname}_src-${pkgver}.tar.gz)
 md5sums=('4e19a6f4311b1fd99274f587ca51e920')
 

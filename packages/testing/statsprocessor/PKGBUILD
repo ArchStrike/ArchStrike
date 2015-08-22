@@ -5,7 +5,7 @@ buildarch=192
 pkgname=statsprocessor
 pkgver=0.10
 pkgrel=1
-groups=('archstrike' 'archstrike-cracker')
+groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A high-performance word-generator based on per-position Markov-attack"
 arch=('i686' 'x86_64')
 url="http://hashcat.net/wiki/doku.php?id=statsprocessor"

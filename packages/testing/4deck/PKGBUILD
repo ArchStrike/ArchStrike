@@ -4,7 +4,7 @@ buildarch=20
 
 pkgname=4deck
 pkgver=0.1
-groups=('archstrike' 'archstrike-drone' 'archstrike-meta-thedeck')
+groups=('archstrike' 'archstrike-drone' 'archstrike-meta')
 pkgrel=3
 pkgdesc="An addon from The Deck Project. Create a magic hub. ARM ONLY SUPPORT"
 arch=('armv6h' 'armv7h')

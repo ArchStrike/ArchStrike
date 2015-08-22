@@ -10,7 +10,7 @@ pkgdesc="A PowerShell framework and collection of scripts and payloads for offen
 url="https://github.com/samratashok/${pkgname}"
 license=('GPL3')
 arch=('any')
-groups=('archstrike' 'archstrike-windows')
+groups=('archstrike')
 source=("https://github.com/samratashok/${pkgname}/archive/v${pkgver}.zip"
         "${pkgname}.7")
 sha512sums=('aa79fc4cdcf9b3b44d493248b74da8b291d0f93084eaba8bd8c08a699bef6371ea717e2fe4d34836931d6661d876b4bd48ae8560203e2ddbb278670f2bfbb389'

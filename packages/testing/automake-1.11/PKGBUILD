@@ -15,7 +15,7 @@ pkgdesc="A GNU tool for automatically creating Makefiles"
 arch=('any')
 license=('GPL')
 url="http://www.gnu.org/software/automake"
-groups=('base-devel')
+groups=()
 depends=('perl' 'bash')
 provides=('automake=1.11')
 install=automake.install
