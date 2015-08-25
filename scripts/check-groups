@@ -1,0 +1,93 @@
+#!/usr/bin/env bash
+
+curr_dir="$(readlink -f "$0")"
+curr_dir="${curr_dir%\/*}"
+cd "$curr_dir"
+
+# Colourscheme
+[[ -t 1 ]] && {
+    c_d=$'\e[1;30m' # DARK GREY
+    c_r=$'\e[1;31m' # RED
+    c_g=$'\e[1;32m' # GREEN
+    c_y=$'\e[1;33m' # YELLOW
+    c_b=$'\e[1;34m' # BLUE
+    c_m=$'\e[1;35m' # VIOLET
+    c_t=$'\e[1;36m' # TEAL
+    c_w=$'\e[1;37m' # WHITE
+    c_c=$'\e[0m'    # DISABLES COLOUR
+}
+
+# The set of valid groups
+valid_groups=(
+    'archstrike'
+    'archstrike-analysis'
+    'archstrike-autonomous'
+    'archstrike-backdoors'
+    'archstrike-base'
+    'archstrike-bluetooth'
+    'archstrike-bruteforce'
+    'archstrike-crackers'
+    'archstrike-crypto'
+    'archstrike-database'
+    'archstrike-ddos'
+    'archstrike-debugging'
+    'archstrike-decompile'
+    'archstrike-defense'
+    'archstrike-dev'
+    'archstrike-dns'
+    'archstrike-dos'
+    'archstrike-drone'
+    'archstrike-enumeration'
+    'archstrike-exploit'
+    'archstrike-fingerprinting'
+    'archstrike-forensics'
+    'archstrike-fuzzers'
+    'archstrike-hardware'
+    'archstrike-honeypots'
+    'archstrike-intel'
+    'archstrike-malware'
+    'archstrike-meta'
+    'archstrike-misc'
+    'archstrike-mitm'
+    'archstrike-nearfield'
+    'archstrike-networking'
+    'archstrike-proxy'
+    'archstrike-recon'
+    'archstrike-reverse'
+    'archstrike-scanners'
+    'archstrike-sniffers'
+    'archstrike-social-engineering'
+    'archstrike-source-audit'
+    'archstrike-spoof'
+    'archstrike-tunnel'
+    'archstrike-voip'
+    'archstrike-webapps'
+    'archstrike-wireless'
+    'archstrike-wordlists'
+)
+
+while read -r; do
+    unset groups
+    eval "$(egrep '^\ *groups\ *=' "$REPLY")"
+    if [[ -n "$groups" ]]; then
+        # Determine the package name
+        pkgname="${REPLY/\/PKGBUILD}"
+        pkgname="${pkgname/*\/}"
+
+        # Check that each group is in the list of valid groups and fail if one isn't
+        for group in "${groups[@]}"; do
+            group_check=0
+            for valid_group in "${valid_groups[@]}"; do
+                if [[ "$group" = "$valid_group" ]]; then
+                    group_check=1
+                    break
+                fi
+            done
+            (( group_check == 0 )) && {
+                printf '%s\n' "The group $c_m$group$c_c in the package $c_y$pkgname$c_c is not valid" >&2
+                exit 1
+            }
+        done
+    fi
+done < <(find .. -type f -name 'PKGBUILD')
+
