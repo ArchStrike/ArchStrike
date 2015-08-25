@@ -1,0 +1,78 @@
+#!/usr/bin/env bash
+
+# Colourscheme
+[[ -t 1 ]] && {
+    c_d=$'\e[1;30m' # DARK GREY
+    c_r=$'\e[1;31m' # RED
+    c_g=$'\e[1;32m' # GREEN
+    c_y=$'\e[1;33m' # YELLOW
+    c_b=$'\e[1;34m' # BLUE
+    c_m=$'\e[1;35m' # VIOLET
+    c_t=$'\e[1;36m' # TEAL
+    c_w=$'\e[1;37m' # WHITE
+    c_c=$'\e[0m'    # DISABLES COLOUR
+}
+
+# Send an error to stderr and exit unsuccessfully
+function error {
+    printf "%s %s\n" "$c_r==> ERROR:" "$c_w$1$c_c" >&2
+    exit 1
+}
+
+# Exit with an error if no arguments are provided
+[[ -n "$1" ]] \
+    || error 'Supply a PKGBUILD file as an argument'
+
+# Exit with an error if the first argument is not a file
+[[ -f "$1" ]] \
+    || error "$1 does not exist"
+
+pkgbuild="$1"
+
+# Exit with an reror if the file provided does not contain an arch variable
+egrep -q '^\ *arch\ *=' "$pkgbuild" \
+    || error "$1 does not contain an arch variable"
+
+# Don't edit this PKGBUILD if a buildarch variable is already set
+egrep -q '^\ *buildarch\ *=' "$pkgbuild" \
+    && error "$1 already contains a buildarch variable"
+
+buildarch=0
+eval "$(egrep '^\ *arch\ *=' "$pkgbuild")"
+
+# Determine the buildarch value
+for currarch in "${arch[@]}"; do
+    case "$currarch" in
+        any)
+            buildarch=1
+            break
+        ;;
+        armv5)
+            buildarch=$(( buildarch + 2 ))
+        ;;
+        armv7h)
+            buildarch=$(( buildarch + 4 ))
+        ;;
+        armv8)
+            buildarch=$(( buildarch + 8 ))
+        ;;
+        armv6h)
+            buildarch=$(( buildarch + 16 ))
+        ;;
+        i686)
+            buildarch=$(( buildarch + 64 ))
+        ;;
+        x86_64)
+            buildarch=$(( buildarch + 128 ))
+        ;;
+    esac
+done
+
+# Add buildarch to the PKGBUILD
+sed -i 's|^\(\ *pkgname=.*\)$|\nbuildarch='"$buildarch"'\n\n\1|' "$pkgbuild"
+
+# Replace multiple blank lines with a single blank line
+sed -i '/^$/N;/^\n$/D' "$pkgbuild"
+
+# Remove trailing whitespace
+sed -i 's|\ \ *$||' "$pkgbuild"
