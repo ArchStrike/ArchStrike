@@ -4,6 +4,10 @@ curr_dir="$(readlink -f "$0")"
 curr_dir="${curr_dir%\/*}"
 cd "$curr_dir"
 
+unset exit_on_fail
+[[ -n "$1" && "$1" = '-f' ]] \
+    && exit_on_fail=1
+
 # Colourscheme
 [[ -t 1 ]] && {
     c_d=$'\e[1;30m' # DARK GREY
@@ -85,7 +89,7 @@ while read -r; do
             done
             (( group_check == 0 )) && {
                 printf '%s\n' "The group $c_m$group$c_c in the package $c_y$pkgname$c_c is not valid" >&2
-                exit 1
+                (( exit_on_fail == 1 )) && exit 1
             }
         done
     fi
