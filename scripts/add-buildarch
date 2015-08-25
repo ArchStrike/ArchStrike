@@ -33,10 +33,6 @@ pkgbuild="$1"
 egrep -q '^\ *arch\ *=' "$pkgbuild" \
     || error "$1 does not contain an arch variable"
 
-# Don't edit this PKGBUILD if a buildarch variable is already set
-egrep -q '^\ *buildarch\ *=' "$pkgbuild" \
-    && error "$1 already contains a buildarch variable"
-
 buildarch=0
 eval "$(egrep '^\ *arch\ *=' "$pkgbuild")"
 
@@ -68,8 +64,14 @@ for currarch in "${arch[@]}"; do
     esac
 done
 
-# Add buildarch to the PKGBUILD
-sed -i 's|^\(\ *pkgname=.*\)$|\nbuildarch='"$buildarch"'\n\n\1|' "$pkgbuild"
+# Add or update the buildarch variable
+if egrep -q '^\ *buildarch\ *=' "$pkgbuild"; then
+    # Update the buildarch defined in the PKGBUILD
+    sed -i 's|^\ *buildarch=.*$|\nbuildarch='"$buildarch"'|' "$pkgbuild"
+else
+    # Add buildarch to the PKGBUILD above the pkgname variable
+    sed -i 's|^\(\ *pkgname=.*\)$|\nbuildarch='"$buildarch"'\n\n\1|' "$pkgbuild"
+fi
 
 # Replace multiple blank lines with a single blank line
 sed -i '/^$/N;/^\n$/D' "$pkgbuild"
