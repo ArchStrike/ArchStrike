@@ -11,7 +11,7 @@ url='https://gobag.googlecode.com/svn-history/r2/trunk/ldap/ldapenum/'
 license=('GPL2')
 depends=('perl' 'perl-ldap' 'perl-net-nslookup')
 makedepends=('dos2unix')
-groups=('archstrike' 'archstrike-recon''archstrike-scanners')
+groups=('archstrike' 'archstrike-recon' 'archstrike-scanners')
 source=('https://gobag.googlecode.com/svn-history/r2/trunk/ldap/ldapenum/ldapenum.pl')
 sha512sums=('30800b9ec5293b23aa7843af87759fdf23110f2e9a318c6cc53fc81527beeee6433a7c318ff21ecd2eecbf4f2f58de6a1192d8078ca65b21088241567bf3c04a')
 

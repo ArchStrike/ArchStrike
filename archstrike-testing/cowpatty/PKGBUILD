@@ -5,7 +5,7 @@ buildarch=212
 pkgname=cowpatty
 pkgver=4.6
 pkgrel=2
-groups=('archstrike' 'archstrike-wireless''archstrike-crackers')
+groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc="Wireless WPA/WPA2 PSK handshake cracking utility"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.willhackforsushi.com/?page_id=50'

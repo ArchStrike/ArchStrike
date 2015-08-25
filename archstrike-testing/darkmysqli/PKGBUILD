@@ -10,7 +10,7 @@ arch=('any')
 url='https://github.com/ArchStrike-Project/darkmysqli'
 license=('unknown')
 depends=('python2')
-groups=('archstrike' 'archstrike-webapps''archstrike-exploit')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-exploit')
 source=("https://github.com/ArchStrike-Project/darkmysqli/raw/master/darkmysqli${pkgver//./}.tar.gz")
 md5sums=('321de32771d631f1d9b3aa281302add0')
 
