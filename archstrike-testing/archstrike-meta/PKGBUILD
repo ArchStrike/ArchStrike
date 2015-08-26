@@ -9,7 +9,7 @@ pkgrel=1
 arch=('i686' 'x86_64')
 url='https://www.archstrike.org/'
 license=('GPL')
-groups=('archstrike' 'archstrike-*meta')
+groups=('archstrike')
 
 package_archstrike-meta-iso-all() {
   pkgdesc=('Meta package for ArchStrike')
