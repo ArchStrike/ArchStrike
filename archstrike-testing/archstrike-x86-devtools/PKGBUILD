@@ -1,0 +1,63 @@
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+# Contributor: Pierre Schmitz <pierre@archlinux.de>
+# Contributor ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+
+buildarch=192
+
+_pkgname=devtools
+pkgname=archstrike-x86-$_pkgname
+pkgver=20150606
+pkgrel=1
+epoch=1
+pkgdesc='Tools for ArchStrike i686 & x86_64 package maintainers'
+arch=('i686' 'x86_64')
+groups=('archstrike-dev')
+license=('GPL')
+conflicts=('devtools')
+provides=('devtools')
+depends=('namcap' 'openssh' 'subversion' 'rsync' 'arch-install-scripts')
+source=(
+  "https://sources.archlinux.org/other/$_pkgname/$_pkgname-$pkgver.tar.gz"
+  'https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/alarm/devtools-alarm/0005-makechrootpkg-no-default-logging.patch'
+  'https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/alarm/devtools-alarm/0003-makechrootpkg-distcc.patch'
+  'https://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/master/alarm/devtools-alarm/0001-makechrootpkg-cache-dir.patch'
+  'pacman-archstrike-i686.conf'
+  'pacman-archstrike-x86_64.conf'
+  'makepkg.i686.conf'
+  'makepkg.x86_64.conf'
+  'noprogressbar_namcap.patch'
+)
+sha512sums=(
+  'ce25118e4d1d053d330bb03cf8c938f9dbef91f0432fa3991701f6712481b49244efebc3f8ed56327dd068d2c88c1a9dd7d78949503ebfaf0cf39039d4aa4a20'
+  '444028c7d6b336166308c3e1c5e61784ed651433846abf3a1bd4f5f70b9ac6f834b7f817fc15c4ecba2eab5bcc29c7a0e65f62b64fd77052fc257ce293f68b95'
+  '16d63bb2eb48e5fad245862675240115e254992e79091f7bfdd246bcbff8af48d285c38d102041d48ad9b96ff4563b06305504327875bc2fcf600b49f96b883e'
+  '9191c896c4b6e09ca1b619c49c5a0c8b30742acfa8611e7e3ac01fc25fb20529593ccc27d3448019ca77a1f44f64c0bf1c15674a9b603881bd4e78c907d5580f'
+  '7321f5332c3af6c11e183b554ac7fed0b7c671e93f7fdbbbd6c7e018473205f8306b6af49ce2ee99e42802105f3af7b79cd5c9af7c756c838ca9eec30bcd90bf'
+  'fad01f620f90fc2cf9a9d98bc37dbb8c86bcddc6846110e2113769a5048befe9ce3b6e2779fb4f4917c01e68b52d730bfbc7c35a70f7e715dad91beda97f265f'
+  'a830e91160d0cf80ae651af4dbedd66c38c8358d144a3a44d6186c38122f750633258fc8c9ad08850006fe86545a2c65e8bf0879d039873c413eeec6d2ae61d9'
+  '48988d6e7646deefe015af8770acc1e4f616c8c618dd47d07f6d8f15ca8307db0b56c117671ea87a63ee2ad44759cc853b09e886dd2f10dd5bb846d9a16bfe8b'
+  '7fc472f8a6d02cd92f73cb225e1965b6de61516bdb993113d23abfb821ec0d658e2c09902b8478538e2f58d0ecc77546951bfb3a163a494defd880f63982071b'
+)
+
+prepare() {
+  cd $_pkgname-$pkgver
+  patch -p1 -i ../0001-makechrootpkg-cache-dir.patch
+  patch -p1 -i ../0003-makechrootpkg-distcc.patch
+  patch -p1 -i ../0005-makechrootpkg-no-default-logging.patch
+  patch -p1 -i ../noprogressbar_namcap.patch
+}
+
+build() {
+  cd $_pkgname-$pkgver
+  make PREFIX=/usr
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+  install -dm0755 "$pkgdir"/usr/share/archstrike-devtools/
+  install -Dm0644 "$srcdir"/pacman-archstrike-*.conf "$pkgdir"/usr/share/archstrike-*devtools/
+  install -m644 "$srcdir/makepkg.i686.conf" "$pkgdir/usr/share/devtools/"
+  install -m644 "$srcdir/makepkg.x86_64.conf" "$pkgdir/usr/share/devtools/"
+}
+
