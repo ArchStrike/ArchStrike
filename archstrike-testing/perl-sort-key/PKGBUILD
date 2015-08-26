@@ -15,17 +15,17 @@ source=(http://search.cpan.org/CPAN/authors/id/S/SA/SALVA/Sort-Key-$pkgver.tar.g
 sha512sums=('cf87cd2f5c0eea662dbdaf7faed5646ebd63925c71a093a79a9980d6de290b1128443954675893f263961e68d1db0e9e4ca1412a2734ce8dcdd271bcf4f1be17')
 
 build() {
-	cd "$srcdir/Sort-Key-$pkgver"
+  cd "$srcdir/Sort-Key-$pkgver"
 
-	# install module in vendor directories.
-	PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
-	make
+  # install module in vendor directories.
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 package() {
-	cd "$srcdir/Sort-Key-$pkgver"
-	make install DESTDIR=${pkgdir}
-	# remove perllocal.pod and .packlist
-	find "$pkgdir" -name perllocal.pod -delete
-	find "$pkgdir" -name .packlist -delete
+  cd "$srcdir/Sort-Key-$pkgver"
+  make install DESTDIR=${pkgdir}
+  # remove perllocal.pod and .packlist
+  find "$pkgdir" -name perllocal.pod -delete
+  find "$pkgdir" -name .packlist -delete
 }

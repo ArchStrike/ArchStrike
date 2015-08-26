@@ -18,7 +18,7 @@ provides=('masscan')
 replaces=('masscan')
 backup=('etc/masscan/masscan.conf' 'etc/masscan/exclude.conf')
 source=("${pkgname}::git+http://github.com/robertdavidgraham/masscan.git"
-	'masscan.desktop' 'masscan.conf')
+  'masscan.desktop' 'masscan.conf')
 sha512sums=('SKIP'
             '634257335408b2ad1f3135660fa51b72d4a8363d53db36778a23157e06ac793dc5ef52aeae04d9d4925d9e2de24f0a61be7e888cd96d2a7aba70c9d081e5908a'
             'f9b2f81091f27509c0148bcee13630c26cfd26836c8b29f06afe6c4f83e871976a4e594e6c8499a13224ad44a1b04ed47a303ffec1d8656164804e9527d16e6b')

@@ -13,8 +13,8 @@ license=('custom')
 depends=('libpcap')
 makedepends=('make' 'gcc')
 source=("http://www.phenoelit.org/phoss/PHoss_src.tar.gz"
-	"http://www.phenoelit.org/phoss/PHoss.diff"
-	"phoss.desktop"
+  "http://www.phenoelit.org/phoss/PHoss.diff"
+  "phoss.desktop"
         "LICENSE")
 sha512sums=('2616d573495d0bcc0f510ee4fdabd80c21ba3a0d6dd858c42a8e3c51bb074afb389a4d3466c3a5351949287b842ff874ffd2d261cc84204c5a021bd04cd274ed'
             '959c08b9cf5643615241cab954c309773e3f00bf23576a169fe7a06018430abe96201d4994224a1a30e28255a0962dbd7b42bbe49a918325f9ac454773151b95'
@@ -22,20 +22,20 @@ sha512sums=('2616d573495d0bcc0f510ee4fdabd80c21ba3a0d6dd858c42a8e3c51bb074afb389
             '6cc70d1b1119ca0afd30551465ef92b02e1c8478bdb22985ff1e8ec61eb1ebc44c2b786178481e773389d7f2c6518595ac4762238d38a78afb7b05e2e5a1ba21')
 
 prepare() {
-	cd "$srcdir/PHoss"
+  cd "$srcdir/PHoss"
 
-	patch -Np1 < "$srcdir/PHoss.diff"
+  patch -Np1 < "$srcdir/PHoss.diff"
 }
 
 build() {
-	cd "$srcdir/PHoss"
-	
-	make OPTIMI="$CFLAGS"
+  cd "$srcdir/PHoss"
+
+  make OPTIMI="$CFLAGS"
 }
 
 package() {
-	cd "$srcdir/PHoss"
-	install -Dm755 PHoss "$pkgdir/usr/bin/PHoss"
+  cd "$srcdir/PHoss"
+  install -Dm755 PHoss "$pkgdir/usr/bin/PHoss"
         install -Dm644 "$srcdir/phoss.desktop" "$pkgdir/usr/share/applications/phoss.desktop"
         install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

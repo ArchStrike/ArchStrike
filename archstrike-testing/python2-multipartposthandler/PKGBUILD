@@ -21,7 +21,7 @@ prepare(){
 }
 
 package() {
-	cd "$srcdir/$_pkgname-$pkgver"
-	python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "$srcdir/$_pkgname-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }
 

@@ -13,7 +13,7 @@ depends=('libpcap')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("http://downloads.sourceforge.net/ucsniff/ace-$pkgver.tar.gz" "ace.desktop")
 sha512sums=('bb6a57aa0ee4fff309b41b352436793888470924478bfa828771b173d4f697b30e3b9afa144f25ed8bd79c5045af6b5973d47abc2040d932a898f8f3dfe3ddaf'
-	    'dd8c61a8781b15c8731e433de7b55c021747b5d13798a5639aa39d637d982982c2b74b6762c0b2170350e9e78da6d9fe57ff76f75fdff76a9fb16329216deb91')
+      'dd8c61a8781b15c8731e433de7b55c021747b5d13798a5639aa39d637d982982c2b74b6762c0b2170350e9e78da6d9fe57ff76f75fdff76a9fb16329216deb91')
 
 prepare() {
   cd "$srcdir/ace-$pkgver"

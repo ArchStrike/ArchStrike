@@ -17,7 +17,7 @@ source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}m.service"
         "${pkgname}c.service"
         "${pkgname}cd.conf.sample"
-	'configure.patch')
+  'configure.patch')
 sha512sums=('1be4303de46e38f4b1c1f9231ae3b28dadda611c98c95fa03508ae5ae09ae9c238bc191f819cb4abcd4fe861ac5ba642c3bbed32e20ccb830cb763079a5b28d6'
             '8d409a5f29cc7a655bd77014b1c95e6ef0ba8e0cca5ae22ee4a91b813f2d8a5de08c6dc68eca5b3c6f6b39fb03d2a1490d4cf57343d9b256cbe2c303fad9c7d2'
             '4d329f1bcf1cfffc4a6edf573b6f41d84f01fca637ef77024000813a9c42795ab1769f08623044f370483bb7209673cb0235c1288c0b566ffeafc873e987ec35'

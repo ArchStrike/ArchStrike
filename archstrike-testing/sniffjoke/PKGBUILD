@@ -13,7 +13,7 @@ url='http://www.delirandom.net/sniffjoke/'
 depends=('iptables' 'tcpdump')
 makedepends=('cmake' 'git')
 source=('git+https://github.com/vecna/sniffjoke'
-	 CMake.patch)
+   CMake.patch)
 md5sums=('SKIP'
          '3684e50ae4a6c0f31cccd76aee54abc1')
 

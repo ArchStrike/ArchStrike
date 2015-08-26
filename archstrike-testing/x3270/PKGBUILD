@@ -16,7 +16,7 @@ makedepends=('xorg-xset' 'xorg-bdftopcf' 'fontconfig' 'xorg-mkfontdir' 'imake' '
 backup=(etc/x3270/ibm_hosts)
 install=x3270.install
 source=(http://downloads.sourceforge.net/sourceforge/x3270/suite3270-$pkgver-src.tgz
-	x3270.desktop
+  x3270.desktop
         x3270-hack-full.patch)
 
 

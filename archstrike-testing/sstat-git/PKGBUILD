@@ -18,13 +18,13 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-	printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-	cd ${pkgname}
-	install -dm755 "${pkgdir}"/usr/bin/
-	install -Dm755 sstat.sh "${pkgdir}"/usr/bin/
-	install -Dm755 sstat-parser.sh "${pkgdir}"/usr/bin/
+  cd ${pkgname}
+  install -dm755 "${pkgdir}"/usr/bin/
+  install -Dm755 sstat.sh "${pkgdir}"/usr/bin/
+  install -Dm755 sstat-parser.sh "${pkgdir}"/usr/bin/
 }
 

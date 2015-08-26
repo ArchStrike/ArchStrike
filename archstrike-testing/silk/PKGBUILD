@@ -22,16 +22,16 @@ prepare(){
 }
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
         export LIBS="-lpthread"
         ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --enable-ipv6 --with-python=$(which python2) --with-pcap \
         --with-pic --with-libfixbuf --with-gnutls --enable-output-compression --enable-localtime
-	make
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir" install
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir" install
         # Fixing python
         sed -i 's|python$|python2|' $pkgdir/usr/bin/rwidsquery $pkgdir/usr/bin/rwpcut
 }

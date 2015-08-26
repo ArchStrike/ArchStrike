@@ -15,7 +15,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/c/click/click-${pkgver}.tar.gz"
-	'LICENSE')
+  'LICENSE')
 sha512sums=('7b3b3e3b57fe74e8d2e3be79c59476fe7830c04068f0e31b39dfee28d879d8a96eed311fbe789bfc6d12c898052ea1c901c3b6f4c995cd4e0ede61b62fe0a39a'
             '1c98cceb8a193e9337a3f35cba7d1c0503a32f2efba66f2a11671520a05d6b38dcf7cc1ec2e359ecca50c7fc826a8d64bd086c682e2e58e8ac120ea462e5967e')
 

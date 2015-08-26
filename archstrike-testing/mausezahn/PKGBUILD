@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python2' 'libnet' 'libpcap' 'libcli')
 makedepends=('cmake')
 source=("http://www.perihel.at/sec/mz/mz-$pkgver.tar.gz"
-	'mausezahn.desktop')
+  'mausezahn.desktop')
 groups=('archstrike' 'archstrike-networking' 'archstrike-ddos')
 sha512sums=('2a77a7b2c2a0558e07434d95881d6b70d6af30d42d939af8f5270fd594b2210b3ba76c56fba1790dd0584398381ccca7bbdfe72e633433e9f273fe5e26f9e689'
             '7c64fb51f08bb66e04bc93968c8302c696075910993bee418bef480e890918b4bcc802171260337ff451a932c04be923039fc62ba68af21d9497e3dc383af7d5')

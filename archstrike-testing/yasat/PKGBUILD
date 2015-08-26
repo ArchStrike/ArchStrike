@@ -19,11 +19,11 @@ sha512sums=('daf500a6f71a41d5f29501b0e449b711aea151d39b553c0ec356a8986b58a60ab96
             '5e5403dad904128782216431c8c55a59fac02a8bb0b4df92649e1dc89e679a0648cbaaf593cee91fbdb60dbfcd62ecfa020d65894b4ad45d7e541b40cf854d11')
 
 package() {
-	cd $srcdir/$pkgname
+  cd $srcdir/$pkgname
 
-	install -D -m0755 yasat "$pkgdir"/usr/bin/yasat
+  install -D -m0755 yasat "$pkgdir"/usr/bin/yasat
 
-	install -d -m0755 "$pkgdir"/usr/share/yasat/
+  install -d -m0755 "$pkgdir"/usr/share/yasat/
 
   # plugins
   cp -R plugins/ "$pkgdir"/usr/share/yasat/
@@ -32,15 +32,15 @@ package() {
   chmod 755 "$pkgdir"/usr/share/yasat/plugins/*.test  # add execute to *.test
 
   # common
-	install -D -m0644 yasat.css "$pkgdir"/usr/share/yasat/
+  install -D -m0644 yasat.css "$pkgdir"/usr/share/yasat/
   install -m0644 common "$pkgdir"/usr/share/yasat/common
-	install -m0644 osdetection "$pkgdir"/usr/share/yasat/osdetection
+  install -m0644 osdetection "$pkgdir"/usr/share/yasat/osdetection
 
   # default/sample config file
   install -D -m0755 "$srcdir"/yasat.conf "$pkgdir"/etc/yasat/yasat.conf
 
   # man pages
-	install -D -m0644 man/yasat.8 "$pkgdir"/usr/share/man/man8/yasat.8
+  install -D -m0644 man/yasat.8 "$pkgdir"/usr/share/man/man8/yasat.8
 
   # the script attempts to build this file dynamically at run time.
   # this means this file needs loose permissions if you want to run

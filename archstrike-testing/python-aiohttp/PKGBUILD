@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("https://pypi.python.org/packages/source/a/aiohttp/aiohttp-${pkgver}.tar.gz"
-	'LICENSE')
+  'LICENSE')
 sha512sums=('d22d25bcf8d40a38c6b8d6483d9c1c7db01edd8ed10112490a412974a3e6dfc0f498dc957d9b820f5ab911789eb38f3be293c642349ea003b567c0f1407cb376'
             '1a306b212a69701ff569509f4c8e9169233edc4d32076ce416062e5d20dc34ec0e85c130c94f19041ac3c1e928ebef579ddff409e111254a7ddff3b655aa2dcd')
 

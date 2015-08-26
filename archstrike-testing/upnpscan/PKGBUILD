@@ -16,20 +16,20 @@ makedepends=('libtool' 'autoconf')
 sha512sums=('d7791afdc6d3f318a1a29486485ab5f71a1a32159a2212164c763748a047c8243e3017afc887e9394ae78ffc2412091ed590a714c4a482b44792ae8a835e095e')
 
 build() {
-	cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
 
-	libtoolize --copy --force -i
-	aclocal
-	autoconf
-	automake --add-missing
+  libtoolize --copy --force -i
+  aclocal
+  autoconf
+  automake --add-missing
 
-	./configure --prefix=/usr
-	make
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}"
 
-	install -Dm755 "src/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-	install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
+  install -Dm755 "src/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }

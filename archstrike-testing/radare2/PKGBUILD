@@ -15,14 +15,14 @@ source=("http://radare.org/get/radare2-$pkgver.tar.xz")
 sha512sums=('8a3b1811c994a520eb5758a11eceffdaa999bb69b5252e45148813a7c36d11e0afd8c83d6f03bc2282c526b630979edc20bed050cb119300dc353ee039a99355')
 
 build() {
-	cd "$srcdir/radare2-$pkgver"
-	export LDFLAGS="${LDFLAGS//-Wl,--as-needed}"
-	./configure --prefix=/usr
-	make
+  cd "$srcdir/radare2-$pkgver"
+  export LDFLAGS="${LDFLAGS//-Wl,--as-needed}"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$srcdir/radare2-$pkgver"
-	make DESTDIR=$pkgdir install
-	install -D -m644 man/* "$pkgdir/usr/share/man/man1"
+  cd "$srcdir/radare2-$pkgver"
+  make DESTDIR=$pkgdir install
+  install -D -m644 man/* "$pkgdir/usr/share/man/man1"
 }

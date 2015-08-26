@@ -18,11 +18,11 @@ source=(https://github.com/micahflee/onionshare/archive/$pkgver.tar.gz)
 sha512sums=('189590422d0ad6642bbf5951a2b4017d35f25900139360cee0f4560f76d42f4e61df13493c80e4b96f5cd00b4ccdd0f51e41cfcb2fb3009753dd87a67d5d7be8')
 
 package() {
-	cd "$srcdir/onionshare-$pkgver"
-	python2 setup.py install --root="$pkgdir/" --optimize=1
-	install -Dm644 install/onionshare.desktop "${pkgdir}/usr/share/applications/"
-	install -Dm644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/"
-	chmod +x $pkgdir/usr/bin/onionshare $pkgdir/usr/bin/onionshare-gui
+  cd "$srcdir/onionshare-$pkgver"
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+  install -Dm644 install/onionshare.desktop "${pkgdir}/usr/share/applications/"
+  install -Dm644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/"
+  chmod +x $pkgdir/usr/bin/onionshare $pkgdir/usr/bin/onionshare-gui
 }
 
 # vim:set ts=2 sw=2 et:

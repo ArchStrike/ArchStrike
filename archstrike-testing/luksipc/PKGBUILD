@@ -15,12 +15,12 @@ md5sums=('8a61e207dfd020f634ede641bc57fe63'
          '53bc909090376e830c3de70136b2e29c')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	patch -p1 < $srcdir/return_code.patch
-	make all
+  cd "$srcdir/$pkgname-$pkgver"
+  patch -p1 < $srcdir/return_code.patch
+  make all
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
+  cd "$srcdir/$pkgname-$pkgver"
+  install -Dm 755 $pkgname $pkgdir/usr/bin/$pkgname
 }

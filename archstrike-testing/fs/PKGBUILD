@@ -16,9 +16,9 @@ source=("https://pypi.python.org/packages/source/f/$pkgname/$pkgname-$pkgver.tar
 sha512sums=('59c59dcd81696cd5f70b139a8112fe348845eaf73cc866876bd4dd7208ffaef57affab22f81483f2f64e154708872c85e50a934b8224e308b7f231b1ddfa3a20')
 
 prepare() {
-	cd "$srcdir/$pkgname-$pkgver"
-	find "$srcdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
-	find "$srcdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  cd "$srcdir/$pkgname-$pkgver"
+  find "$srcdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+  find "$srcdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
 }
 
 build() {

@@ -20,21 +20,21 @@ sha512sums=('c6859aec9a796c71bb30c18236bd5548826655b08312181376b8dae4a006575f711
             '89bcb333ab1a09bfab496146d8b725e3e576e2051d9dcf053720449711476a8abccc1382074a4e1ed4b1f21ad9550a084e60591815dbebf13b5006b90b5e4179')
 
 _optimal_make_jobs() {
-	if [ -r /proc/cpuinfo ]; then
-		local core_count=$(grep -Fc processor /proc/cpuinfo)
-	else
-		local core_count=0
-	fi
+  if [ -r /proc/cpuinfo ]; then
+    local core_count=$(grep -Fc processor /proc/cpuinfo)
+  else
+    local core_count=0
+  fi
 
-	if [ $core_count -gt 1 ]; then
-		echo -n $[$core_count-1]
-	else
-		echo -n 1
-	fi
+  if [ $core_count -gt 1 ]; then
+    echo -n $[$core_count-1]
+  else
+    echo -n 1
+  fi
 }
 
 build() {
-	cd "${srcdir}/${_pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
 
 if [[ $CARCH == arm* ]] ; then
   ./configure \
@@ -54,23 +54,23 @@ else
     CFLAGS="-O2 -fno-tree-dce -fno-optimize-sibling-calls"
 fi
     msg 'Applying patch...'
-	patch -Np1 < ${srcdir}/fix.patch
+  patch -Np1 < ${srcdir}/fix.patch
 
-	msg 'Running make...'
-	make -j$(_optimal_make_jobs)
+  msg 'Running make...'
+  make -j$(_optimal_make_jobs)
 }
 
 package() {
-	cd "${srcdir}/${_pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}"
 
-	make DESTDIR="$pkgdir" install
+  make DESTDIR="$pkgdir" install
 
-	install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 
-	install -dm755 $pkgdir/usr/bin
-	install -dm755 $pkgdir/usr/lib
-	for i in erb irb rdoc ri ruby testrb; do
-		ln -s /usr/share/ruby1.8/bin/$i $pkgdir/usr/bin/$i-1.8
-	done
-	ln -s /usr/share/ruby1.8/lib/libruby.so.1.8 $pkgdir/usr/lib/libruby.so.1.8
+  install -dm755 $pkgdir/usr/bin
+  install -dm755 $pkgdir/usr/lib
+  for i in erb irb rdoc ri ruby testrb; do
+    ln -s /usr/share/ruby1.8/bin/$i $pkgdir/usr/bin/$i-1.8
+  done
+  ln -s /usr/share/ruby1.8/lib/libruby.so.1.8 $pkgdir/usr/lib/libruby.so.1.8
 }

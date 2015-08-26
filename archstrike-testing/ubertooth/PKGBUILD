@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('cmake' 'libpcap')
 depends=('libusbx' 'libbtbb' 'bluez-libs' 'python2-numpy' 'python2-pyusb' 'python2-pyside' 'libpcap')
 source=("https://github.com/greatscottgadgets/ubertooth/archive/2014-02-R2.tar.gz"
-	'ubertooth.desktop' 'specan_ui.patch' 'usb_dfu.patch')
+  'ubertooth.desktop' 'specan_ui.patch' 'usb_dfu.patch')
 sha512sums=('4ca482c0e150503c08117cf09443be77715d7abaffacab3b444165db7cb98a686857e57e5f44cc483c60622c13e9fc2bad8800851c69dbabba241b81add80897'
             '14936865aebf393e0a20e33533906c5675b6665dfa8707ec9af9568bebf9eb40e0d98b97042984418c9626fd72a49b2521719a7d8f3882127e98fd501c0eb293'
             'c89cf605005d1fe5030d7e05f3cc9899294065699907b93d64c1adfa3b21d6ef337baa153f01b7ed4e208f3fd767554fe294610d36562e46bb7434f87c4ef47d'

@@ -15,7 +15,7 @@ groups=('archstrike-wireless')
 license=('GPL')
 backup=('etc/wpa_supplicant-cupid/wpa_supplicant.conf')
 source=("http://w1.fi/releases/wpa_supplicant-${pkgver}.tar.gz"
-	config
+  config
         cupid::git+https://github.com/lgrangeia/cupid.git)
 sha512sums=('eb1075623502d3e8f02c803ce31487fe5efce172e30d6b818ac835f7bbfe0140a225f95573ba4557f29e54d4623be2eb4a6ee18675ae6a676ccd46c33b0b3843'
             '0cf92a6538e428fac55212794e13d1e123da3c4708ac4928a3be443108aa1a215c9a384bf941ecd43ef0c04bfc9d77f78760f0398ba5eb7a2dd93f9b7e691bc0'

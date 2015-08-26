@@ -13,7 +13,7 @@ license=('custom')
 depends=('python2' 'gdb' 'nasm')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/longld/peda.git"
-	"peda.py.patch")
+  "peda.py.patch")
 install='peda-git.install'
 sha512sums=('SKIP'
             '8991761c04c05cec56c01553954f53037f9276a24f7d9e3dad5e0092f08cb683b96c727f7829ad51b3d85ab0a53e6e3a2b805af49517b113ccce838f65346f08')

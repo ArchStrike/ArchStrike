@@ -17,22 +17,22 @@ source=("$_url::git://github.com/zaf/sipshock")
 sha512sums=('SKIP')
 
 pkgver() {
-	cd "$srcdir/$_pkgname"
-	echo "$(git rev-list --count HEAD).$(git describe --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g')"
+  cd "$srcdir/$_pkgname"
+  echo "$(git rev-list --count HEAD).$(git describe --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g')"
 }
 
 build() {
-	cd "$srcdir"
-	# makepkg doesn't support extracting sources to a specific directory
-	mkdir -p src/$_url && rm -rf src/$_url && mv $_pkgname src/$_url && cd src/$_url
-	GOPATH="$srcdir" go get -d -t github.com/zaf/sipshock
+  cd "$srcdir"
+  # makepkg doesn't support extracting sources to a specific directory
+  mkdir -p src/$_url && rm -rf src/$_url && mv $_pkgname src/$_url && cd src/$_url
+  GOPATH="$srcdir" go get -d -t github.com/zaf/sipshock
 }
 
 package() {
-	cd "$srcdir"
-	GOPATH="$srcdir" go build -v github.com/zaf/sipshock
+  cd "$srcdir"
+  GOPATH="$srcdir" go build -v github.com/zaf/sipshock
 
-	mkdir -p "$pkgdir/usr/bin"
-	cp "$srcdir/sipshock" "$pkgdir/usr/bin/sipshock"
-	install -Dm644 $srcdir/src/github.com/zaf/sipshock/LICENSE "$pkgdir"/usr/share/licenses/sipshock-git/LICENSE
+  mkdir -p "$pkgdir/usr/bin"
+  cp "$srcdir/sipshock" "$pkgdir/usr/bin/sipshock"
+  install -Dm644 $srcdir/src/github.com/zaf/sipshock/LICENSE "$pkgdir"/usr/share/licenses/sipshock-git/LICENSE
 }

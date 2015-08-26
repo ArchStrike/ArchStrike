@@ -25,7 +25,7 @@ backup=('etc/hostapd-cupid/hostapd.conf'
         'etc/hostapd-cupid/wired.conf')
 install=hostapd-cupid.install
 source=(http://w1.fi/releases/hostapd-$pkgver.tar.gz
-	hostapd-cupid.service
+  hostapd-cupid.service
         cupid::git+https://github.com/lgrangeia/cupid.git)
 sha512sums=('d39291fd7b7b886de54dbf64740b5404f6b154af35dc568c51dbd90584b352c2422d1f89ae25ca705ecd6a55ca011b1f3efad8eaa450e6077a322bf7f3551b7f'
             '2fcd275679e336c62f6a81c274eaa70a094eb11d972c51072acc7b00df8dcf14ec01162fd794ca316747241f62cefc17d15f1c0a9441063595a4d6e01086243f'

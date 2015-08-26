@@ -15,8 +15,8 @@ source=("https://github.com/jgorset/facepy/archive/v$pkgver.tar.gz")
 sha512sums=('26ac6935e2b53fc431077b9875a1c6c96cd634a1d639210ff4d3ebb1fb6eefbf6da930e7b867d00b920b204daab9db5ca4e3d1cb3752df4ccde2aa00a7dde1da')
 
 package() {
-	cd "$srcdir/facepy-$pkgver"
-	python2 setup.py install --root="$pkgdir" --optimize=1
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "$srcdir/facepy-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 

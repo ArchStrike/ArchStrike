@@ -16,20 +16,20 @@ sha1sums=('410c48dc97a9508cf87d5bafb32eec3e4b1f68f1'
           'bd71bfe775f3d6ca714f0abcf23aacc97452eddf')
 
 build() {
-	cd $srcdir/$pkgname-$pkgver
-	# Fix includes
-	patch -Np1 -i $srcdir/${source[1]}
-	# Fix the paths; another subdir might be handy for their own
-	# projects but not for external software
-	sed -i 's|happycoders/||' $srcdir/$pkgname-$pkgver/src/Makefile.in
-	./configure --prefix=/usr #LIBS=-lsocket
-	make
+  cd $srcdir/$pkgname-$pkgver
+  # Fix includes
+  patch -Np1 -i $srcdir/${source[1]}
+  # Fix the paths; another subdir might be handy for their own
+  # projects but not for external software
+  sed -i 's|happycoders/||' $srcdir/$pkgname-$pkgver/src/Makefile.in
+  ./configure --prefix=/usr #LIBS=-lsocket
+  make
 }
 
 package() {
-	cd $srcdir/$pkgname-$pkgver
-	make install DESTDIR=$pkgdir
-	# License file
-	install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  cd $srcdir/$pkgname-$pkgver
+  make install DESTDIR=$pkgdir
+  # License file
+  install -D -m644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
 }
 

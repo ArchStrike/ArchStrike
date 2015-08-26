@@ -36,8 +36,8 @@ cat >"$pkgdir/usr/bin/shellter" <<EOF
 set -e
 
 if [ ! -d "$HOME/.shellter" ] ; then
-	mkdir -p "$HOME/.shellter/wine"
-	ln -s /usr/share/shellter/Shellter_v1.7_Wine_Beta1.exe "$HOME/.shellter/Shellter_v1.7_Wine_Beta1.exe"
+  mkdir -p "$HOME/.shellter/wine"
+  ln -s /usr/share/shellter/Shellter_v1.7_Wine_Beta1.exe "$HOME/.shellter/Shellter_v1.7_Wine_Beta1.exe"
 fi
 
 wine "$HOME/.shellter/Shellter_v1.7_Wine_Beta1.exe" "\$@"

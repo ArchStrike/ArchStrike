@@ -67,7 +67,7 @@ build() {
   export QMAKESPEC=$QTDIR/mkspecs/linux-g++
 
   if [ "$CARCH" = "x86_64" ]; then
-      export ARCH="-64"	
+      export ARCH="-64"
     else unset ARCH
   fi
 

@@ -37,7 +37,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/novnc-git"
   install -dm755 "$pkgdir/usr/bin"
   for i in include utils images docs; do
-	install -dm755 $pkgdir/usr/share/novnc/$i
+  install -dm755 $pkgdir/usr/share/novnc/$i
         cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/novnc/$i/";
   done
   install -Dm644 vnc.html "$pkgdir/usr/share/novnc"

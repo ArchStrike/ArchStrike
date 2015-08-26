@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 source=("https://pypi.python.org/packages/source/L/Logbook/Logbook-${pkgver}.tar.gz"
-	'LICENSE')
+  'LICENSE')
 sha512sums=('e3e15fb858333ed2d2134bbea1bc5e32bc564eff6dffb93742986dff35e0c4054aafb5effd401eefca948d32ecf77d23ae5c2252c955dcae5d9ceb1dbc04b52f'
             '968d4a66df7e003db89d739f757a1d9c9f2a56b458b147a81e5148d8f8b89e5e80c0cd6df1e7cec0d9fe2a8e7d55cb33090a698e3c365ca77f132a26c30fcf59')
 

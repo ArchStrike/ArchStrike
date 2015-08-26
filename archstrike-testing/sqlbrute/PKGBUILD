@@ -19,7 +19,7 @@ prepare(){
 }
 
 package() {
-	cd "$srcdir"
+  cd "$srcdir"
 
-	install -Dm755 sqlbrute.py "$pkgdir/usr/bin/sqlbrute"
+  install -Dm755 sqlbrute.py "$pkgdir/usr/bin/sqlbrute"
 }

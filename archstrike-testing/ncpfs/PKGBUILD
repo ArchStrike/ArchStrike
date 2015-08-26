@@ -26,7 +26,7 @@ source=("${_url}/${pkgname}_${pkgver}.orig.tar.gz"
         '04-drop-mtab-support.patch'
         '05-ldflags.patch'
         '06-makefile-remove-generated.patch'
-	'configure.patch')
+  'configure.patch')
 sha512sums=('51f85eaae85deb66cea2ff434974699f6aa45ed1ed75217ef6176ac0b7d0f9f1c4fb186afc64c1b495474d5bad9ac7614033128c0bec39c05de723a9b29c8602'
             '4b95f6b78a6b7851195f7353485b7a1e9bad2762f68e546292f46e8238e365dddb6de6eccfd6b5a461b58dc6599df0a1fd459e1447a4f73b126857f771af7127'
             '09eef893388c731635ab4b991823faf116bda0287c16e2244bbde1726ef90cc9cf13657b65e14068d272f18535b27d452d7c0e4cf561e03fe4b698b2c898f38d'

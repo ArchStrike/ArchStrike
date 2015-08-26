@@ -17,7 +17,7 @@ replaces=('evilgrade')
 conflicts=('evilgrade')
 source=("git+https://github.com/infobyte/evilgrade.git"
         "evilgrade.sh"
-				'evilgrade.desktop')
+        'evilgrade.desktop')
 sha512sums=('SKIP'
             'f2ec4ba6fe5692a90b1ce53f4ede65ffb7dbd4b41ed660cd1a08b0e39ab978b33707c4fc349c156d128f07ebc24c29ff3e7eb83782a8be98fb2061d7dcd07272'
             '4a6bf26c1f4e75583df5d2ed76712bdaf190ddee223f73903ddfe6cacf84449dd3b19c1acc54c976c1961ca80955eab9f89621c38b4ab0df671bd788a2bd5dc9')

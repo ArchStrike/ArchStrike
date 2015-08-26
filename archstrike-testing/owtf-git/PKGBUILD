@@ -13,12 +13,12 @@ arch=('armv7h' 'armv6h' 'i686' 'x86_64')
 depends=('python2-jinja' 'python2-markdown' 'pyvirtualdisplay'
          'python2-tornado' 'python2-pycurl' 'python2-rdflib' 'python2-selenium'
          'python2-pexpect' 'python2-lxml' 'java-environment' 'ptp'
-	       'python2-pyopenssl' 'python2-beautifulsoup4' 'python2-python-owasp-zap-v2'
+         'python2-pyopenssl' 'python2-beautifulsoup4' 'python2-python-owasp-zap-v2'
          'python2-sqlalchemy' 'python2-six' 'python2-psycopg2')
 optdepends=('tor' 'proxychains-ng' 'skipfish' 'metagoofil' 'set' 'wpscan' 'theharvester'
-	    'metasploit' 'whatweb' 'cms-explorer' 'whapiti' 'arachini'
-	    'dnsrecon' 'dirbuster' 'w3af' 'lbd' 'nikto' 'tlssled'
-	    'httprint' 'hydra' 'wafw00f' 'websecurify' 'hoppy')
+      'metasploit' 'whatweb' 'cms-explorer' 'whapiti' 'arachini'
+      'dnsrecon' 'dirbuster' 'w3af' 'lbd' 'nikto' 'tlssled'
+      'httprint' 'hydra' 'wafw00f' 'websecurify' 'hoppy')
 makedepends=('git')
 options=('!strip')
 provides=('owtf')

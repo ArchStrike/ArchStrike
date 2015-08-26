@@ -13,7 +13,7 @@ url='https://www.trustedsec.com/downloads/social-engineer-toolkit'
 license=('BSD')
 makedepends=('git')
 depends=('python2' 'python2-beautifulsoup3' 'python2-pexpect'
-	'java-environment')
+  'java-environment')
 optdepends=('ettercap: DNS spoofing and ARP cache poisoning capabilities'
             'sendmail: email address spoofing'
             'python2-pefile: advanced AV evasion via hijacking a legit digital certificate'

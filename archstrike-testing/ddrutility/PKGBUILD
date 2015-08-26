@@ -17,13 +17,13 @@ source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.
 sha512sums=('502d2dca54648f0df480ffd141b707ef89d06d66435f02321b13c08c9a2807557f0909a044b8b67f778d71e168362cef1c7bb16cdfa88c57d0505b9e203a6468')
 
 build() {
-	cd "$srcdir/$pkgname-$pkgver"
-	./configure --prefix=/usr
-	make
+  cd "$srcdir/$pkgname-$pkgver"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-	cd "$srcdir/$pkgname-$pkgver"
-	make DESTDIR="$pkgdir/" install
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
         rmdir "$pkgdir/usr/share/aclocal"
 }

@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 build() {
   cd "$srcdir/owasp-pysec"
   sed -i 's|env python$|env python2|' *.py
-	python2 setup.py build
+  python2 setup.py build
 }
 
 pkgver() {

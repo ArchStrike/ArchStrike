@@ -12,7 +12,7 @@ depends=('python')
 license=('WTFPL')
 arch=('any')
 source=("https://pypi.python.org/packages/source/i/ipgetter/ipgetter-${pkgver}.tar.gz"
-	'LICENSE')
+  'LICENSE')
 sha512sums=('d1ced4c65e0e59a0dec37cb55856bb5406b65d0c769e9a5a89d3e4471166385e5d253a4d6c4c8affeed48b38dea9cc648af0203444e11d46f46711ca98527f7a'
             '2c9e4db534550a6073d70ca09f44ffabab6a1c078e8663558ba8958dedd90f291ccd81b0a78e1dc21a5fd0cc9a1d2107a74e84ecdb23795b291326abd3d5c498')
 

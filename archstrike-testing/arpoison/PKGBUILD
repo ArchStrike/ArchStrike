@@ -17,13 +17,13 @@ sha512sums=('d5af078c8e2c64eb721da75b5d6659ca017267f146d0dca7e0f1ba77bfd93a0f563
             '236eb874faea4b3dd39a8206dfe5613e623887dff93593e7fb76e8880d1b88059a52adfc6e1a4f915e03e9e0ac2938164672e88de84e174e525f437c46ceef9b')
 
 build() {
-	cd "$srcdir/arpoison-$pkgver"
-	make
+  cd "$srcdir/arpoison-$pkgver"
+  make
 }
 
 package() {
-	cd "$srcdir/arpoison-$pkgver"
+  cd "$srcdir/arpoison-$pkgver"
         install -Dm644 "$srcdir/arpoison.desktop" "$pkgdir/usr/share/applications/arpoison.desktop"
-	install -Dm755 "arpoison" "$pkgdir/usr/bin/arpoison"
-	install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/arpoison/LICENSE"
+  install -Dm755 "arpoison" "$pkgdir/usr/bin/arpoison"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/arpoison/LICENSE"
 }

@@ -13,13 +13,13 @@ install='cuckoo.install'
 options=('!emptydirs')
 groups=('archstrike' 'archstrike-malware')
 depends=('python2-sqlalchemy' 'python2-bson' 'python2-dpkt'
-	 'python2-jinja' 'python2-django' 'volatility' 'python2-maec'
+   'python2-jinja' 'python2-django' 'volatility' 'python2-maec'
          'python2-magic' 'libvirt' 'python2-bottle'
          'python2-pefile' 'python2-pymongo' 'tcpdump' 'yara' 'python2-yara'
-	 'python2-chardet')
+   'python2-chardet')
 optdepends=('python2-pydeep')
 source=("http://downloads.cuckoosandbox.org/$pkgver/cuckoo_$pkgver.tar.gz"
-	'cuckoo.desktop')
+  'cuckoo.desktop')
 sha512sums=('fe523a1aca99e01ce93d1e4e888a9b00bb042c65630f02966dffab09c3e1fcff47dfea55527bfa57efef5a305b6fe93821b26a1f2dd28f4eaa36ebd860c25696'
             'fde1e6d9c4bea273d848b9dbee09027f6eb7e8b48116ee4bcaddef314c7c22f8bca5a3e7e9dabe06d007fe603fe7c1cd518b2c707b41866945b0adf83dcc42a4')
 
@@ -36,7 +36,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin/"
   install -dm755 "$pkgdir/usr/share/cuckoo"
   install -Dm644 docs/LICENSE "$pkgdir/usr/share/licenses/cuckoo/LICENSE"
-	install -Dm644 "$srcdir/cuckoo.desktop" "$pkgdir/usr/share/applications/cuckoo.desktop"
+  install -Dm644 "$srcdir/cuckoo.desktop" "$pkgdir/usr/share/applications/cuckoo.desktop"
   cp --no-preserve=ownership -a * "$pkgdir/usr/share/cuckoo"
   chmod u+rwX,g+rwX,o+rX -R "$pkgdir/usr/share/cuckoo"
   cat > "$pkgdir/usr/bin/cuckoo" <<EOF

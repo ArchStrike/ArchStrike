@@ -19,7 +19,7 @@ backup=("etc/opendnssec/conf.xml"
         "etc/opendnssec/zonelist.xml")
 install="opendnssec.install"
 source=("http://www.opendnssec.org/files/source/${pkgname}-${pkgver}.tar.gz"
-	"pid-path.patch"
+  "pid-path.patch"
         "ods-signer.service"
         "ods-enforcer.service")
 sha512sums=('def2a8e41331bd70f287ea3081a7368144ada92ad5cc9f62d28d3064e34f7c0c84998422d515f5ec9c7e668757e796df8c5446839e24e4a9e2af1357c342c0b2'
