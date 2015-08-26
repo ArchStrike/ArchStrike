@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=projectname-firefox-search
+pkgname=archstrike-firefox-search
 pkgver=0.8.2
 pkgrel=7
 pkgdesc="Firefox ArchStrike search engines (Pkgs, Wiki, Bugs etc.)"
@@ -10,7 +10,7 @@ arch=('any')
 url="http://archlinux.org/"
 license=('GPL')
 depends=("firefox")
-group=('projectname')
+group=('archstrike')
 replaces=('arch-firefox3-search')
 source=(aa-bugs-fs.xml
 	aa-bugs-t.xml
