@@ -1,17 +1,17 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
-pkgbase=projectname-meta
 
 buildarch=192
 
-pkgname=('projectname-meta-iso-all')
+pkgbase=archstrike-meta
+pkgname=('archstrike-meta-iso-all')
 pkgver=0.6
 pkgrel=1
 arch=('i686' 'x86_64')
-url='https://www.projectname.org/'
+url='https://www.archstrike.org/'
 license=('GPL')
-groups=('projectname' 'projectname-*meta')
+groups=('archstrike' 'archstrike-*meta')
 
-package_projectname-meta-iso-all() {
+package_archstrike-meta-iso-all() {
   pkgdesc=('Meta package for ArchStrike')
     depends=(gnu-netcat
         ltrace
