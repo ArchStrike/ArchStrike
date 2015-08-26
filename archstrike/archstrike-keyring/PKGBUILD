@@ -11,6 +11,11 @@ source=('git+https://github.com/ArchStrike/archstrike-keyring.git')
 sha512sums=('SKIP')
 install=$pkgname.install
 
+pkgver() {
+    cd $pkgname
+    printf '%s' "$(git show -s --format=%ci master | egrep -o '^[^\ ]*' | sed 's|-||g')"
+}
+
 package() {
   cd $pkgname
   make PREFIX=/usr DESTDIR="$pkgdir" install
