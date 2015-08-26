@@ -1,14 +1,14 @@
 pre_install() {
 	if [[ ! -f /etc/pacman.d/keyrings/archlinuxarm.gpg ]] ; then
 		sed -i '/# An example of a custom package repository./i \
-[projectname] \
+[archstrike] \
 SigLevel = Required DatabaseOptional \
-Include =\/etc\/pacman.d\/projectname-mirrorlist \
+Include =\/etc\/pacman.d\/archstrike-mirrorlist \
 			' /etc/pacman.conf
 	else
 		sed -i '/# An example of a custom package repository./i \
-[projectname] \
-Include =\/etc\/pacman.d\/projectname-mirrorlist \
+[archstrike] \
+Include =\/etc\/pacman.d\/archstrike-mirrorlist \
       ' /etc/pacman.conf
 ############ Leaving this for now ###########################################
 #		sed -i -e 's/^#SigLevel\s*= Required DatabaseOptional/SigLevel = Required DatabaseOptional/' \
@@ -18,9 +18,9 @@ Include =\/etc\/pacman.d\/projectname-mirrorlist \
 }
 post_upgrade() {
 	if usr/bin/pacman-key -l >/dev/null 2>&1; then
-		usr/bin/pacman-key --populate projectname
+		usr/bin/pacman-key --populate archstrike
 	else
-		usr/bin/pacman-key --init && usr/bin/pacman-key --populate projectname
+		usr/bin/pacman-key --init && usr/bin/pacman-key --populate archstrike
 	fi
 }
 post_install() {

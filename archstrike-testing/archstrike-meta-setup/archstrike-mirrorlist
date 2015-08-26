@@ -1,0 +1,50 @@
+##
+### ArchStrike repository mirrorlist
+### Generated on 2014-05-27
+#
+
+# Australia
+#Server = http://archstrike.mirror.uber.com.au/$repo/os/$arch
+
+# Denmark
+#Server = http://mirrors.dotsrc.org/archstrike/$repo/os/$arch
+
+# Germany
+#Server = http://mirror3.layerjet.com/archstrike/$repo/os/$arch
+
+# Ireland
+#Server = http://ftp.heanet.ie/pub/archstrike/$repo/os/$arch
+
+# Italy
+#Server = http://archstrike.mirror.garr.it/mirrors/archstrike-*/$repo/os/$arch
+
+# Netherlands
+#Server = http://mirror.i3d.net/pub/archstrike/$repo/os/$arch
+
+# Russian Federation
+#Server = http://mirror.mephi.ru/archstrike/$repo/os/$arch
+#Server = http://mirror.yandex.ru/mirrors/archstrike/$repo/os/$arch
+
+# Singapore
+#Server = http://mirror.debugsecurity.com/archstrike/$repo/os/$arch
+
+# Sweden
+#Server = http://mirror.zetup.net/archstrike/$repo/os/$arch
+
+# United Kingdom
+#Server = http://mirror.bytemark.co.uk/archstrike/$repo/os/$arch
+#Server = http://mirror.catn.com/pub/archstrike/$repo/os/$arch
+#Server = http://www.mirrorservice.org/sites/repo.archstrike.org/archstrike-*/$repo/os/$arch
+
+# United States
+#Server = http://repo.archstrike.org/archstrike-*/$repo/os/$arch
+#Server = http://psg.mtu.edu/pub/archstrike/$repo/os/$arch
+#Server = http://ftp-mirror.internap.com/pub/archstrike/$repo/os/$arch
+Server = http://mirror.jmu.edu/pub/archstrike/$repo/os/$arch
+#Server = http://mirror.keystealth.org/archstrike/$repo/os/$arch
+#Server = http://mirror.nyi.net/pub/archstrike/$repo/os/$arch
+#Server = http://mirror.team-cymru.org/archstrike/$repo/os/$arch
+#Server = http://mirror.umd.edu/archstrike/$repo/os/$arch
+#Server = http://mirrors.arsc.edu/archstrike/$repo/os/$arch
+#Server = http://noodle.portalus.net/ArchStrike/$repo/os/$arch
+#Server = http://mirrors.syringanetworks.net/archstrike/$repo/os/$arch

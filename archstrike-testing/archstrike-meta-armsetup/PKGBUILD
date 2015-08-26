@@ -1,0 +1,29 @@
+# Maintainer: Jeremy Lynch <jl archstrike org>
+
+buildarch=1
+
+pkgname=archstrike-meta-armsetup
+pkgver=1
+pkgrel=7
+arch=('any')
+url='https://archstrike.org/'
+license=('GPL')
+pkgdesc=('Meta package for ArchStrike arm setup')
+optdepends=('gnupg-largekeys' 'cryptsetup-nuke-keys')
+makedepends=('git')
+install=archstrike-meta-arm.install
+provides=('archstrike-keyring' 'archstrike-*mirrorlist')
+conflicts=('archstrike-keyring' 'archstrike-*mirrorlist')
+source=('archstrike-mirrorlist' "aa-keyring::git+https://bitbucket.org/archstrike-*/archstrike-keyring.git")
+sha512sums=('0c94a85da0f2d0ca4cf6c4bf9d5a2a0831e8d59630de1ab112ef810f0f73d11c17357e66e01745b824cb268fdd71b818badda18b57e5890768bcdd6b0379d757'
+            'SKIP')
+
+package() {
+  install -dm755 "$pkgdir/etc/pacman.d"
+  install -dm755 "$pkgdir/usr/share/licenses/archstrike-meta-arm"
+  install -m644 archstrike-mirrorlist "$pkgdir/etc/pacman.d/archstrike-*mirrorlist"
+  cd "$srcdir"/aa-keyring
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+}
+
+# vim:set ts=2 sw=2 et:
