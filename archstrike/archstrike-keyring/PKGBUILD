@@ -1,0 +1,18 @@
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+
+pkgname=archstrike-keyring
+pkgver=20150825
+pkgrel=1
+pkgdesc='ArchStrike PGP keyring'
+url='https://archstrike.org'
+license=('GPL3')
+arch=('any')
+source=('git+https://github.com/ArchStrike/archstrike-keyring.git')
+sha512sums=('SKIP')
+install=$pkgname.install
+
+package() {
+  cd $pkgname
+  make PREFIX=/usr DESTDIR="$pkgdir" install
+}
+
