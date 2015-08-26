@@ -12,8 +12,8 @@ sha512sums=('SKIP')
 install=$pkgname.install
 
 pkgver() {
-    cd $pkgname
-    printf '%s' "$(git show -s --format=%ci master | egrep -o '^[^\ ]*' | sed 's|-||g')"
+  cd $pkgname
+  head -n 1 Makefile | sed 's|^V=||'
 }
 
 package() {
