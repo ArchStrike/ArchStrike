@@ -1,0 +1,67 @@
+# Maintainer
+# Contributor: Bartłomiej Piotrowski <bpiotrowski@archlinux.org>
+# Contributor: Ionut Biru <ibiru@archlinux.org>
+# Contributor: Sébastien Luttringer
+
+pkgbase=virtualbox-modules-archstrike
+
+buildarch=192
+
+pkgname=('virtualbox-host-modules-archstrike' 'virtualbox-guest-modules-archstrike-*')
+pkgver=4.3.20
+pkgrel=4
+arch=('i686' 'x86_64')
+url='http://virtualbox.org'
+license=('GPL')
+makedepends=('linux-archstrike>=3.18' 'linux-archstrike-*<3.19'
+             'linux-archstrike-headers>=3.18' 'linux-archstrike-*headers<3.19'
+             "virtualbox-host-dkms>=$pkgver"
+             "virtualbox-guest-dkms>=$pkgver")
+
+# remember to also adjust the .install files and the package deps below
+_extramodules=extramodules-3.18-archstrike
+
+build() {
+  _kernver=$(cat /usr/lib/modules/$_extramodules/version)
+  # dkms need modification to be run as user
+  cp -r /var/lib/dkms .
+  echo "dkms_tree='$srcdir/dkms'" > dkms.conf
+  # build host modules
+  msg2 'Host modules'
+  dkms --dkmsframework dkms.conf build "vboxhost/$pkgver" -k "$_kernver"
+  # build guest modules
+  msg2 'Guest modules'
+  dkms --dkmsframework dkms.conf build "vboxguest/$pkgver" -k "$_kernver"
+}
+
+package_virtualbox-host-modules-archstrike(){
+  _kernver=$(cat /usr/lib/modules/$_extramodules/version)
+  pkgdesc='Host kernel modules for VirtualBox'
+  depends=('linux-archstrike>=3.18' 'linux-archstrike-*<3.19')
+  replaces=('virtualbox-modules-archstrike')
+  conflicts=('virtualbox-modules-archstrike')
+  install=virtualbox-host-modules-archstrike.install
+
+  cd "dkms/vboxhost/$pkgver/$_kernver/$CARCH/module"
+  install -dm755 "$pkgdir/usr/lib/modules/$_extramodules/"
+  install -m644 * "$pkgdir/usr/lib/modules/$_extramodules/"
+  find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
+}
+
+package_virtualbox-guest-modules-archstrike(){
+  _kernver=$(cat /usr/lib/modules/$_extramodules/version)
+  pkgdesc='Guest kernel modules for VirtualBox'
+  license=('GPL')
+  depends=('linux-archstrike>=3.18' 'linux-archstrike-*<3.19')
+  replaces=('virtualbox-archlinux-modules-archstrike')
+  conflicts=('virtualbox-archlinux-modules-archstrike')
+  install=virtualbox-guest-modules-archstrike.install
+
+  cd "dkms/vboxguest/$pkgver/$_kernver/$CARCH/module"
+  install -dm755 "$pkgdir/usr/lib/modules/$_extramodules/"
+  install -m644 * "$pkgdir/usr/lib/modules/$_extramodules/"
+  find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
+}
+
+# vim:set ts=2 sw=2 et:
+md5sums=()

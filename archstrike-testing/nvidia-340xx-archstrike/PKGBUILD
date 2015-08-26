@@ -1,0 +1,51 @@
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+# Contributor: Eric Bélanger <eric@archlinux.org>
+
+buildarch=192
+
+pkgname=nvidia-340xx-archstrike
+pkgver=340.46
+_extramodules=extramodules-3.16-archstrike
+pkgrel=1
+pkgdesc="NVIDIA drivers for linux-archstrike"
+arch=('i686' 'x86_64')
+url="http://www.nvidia.com/"
+depends=('linux-archstrike>=3.16' "nvidia-340xx-utils=$pkgver" 'nvidia-340xx-libgl')
+makedepends=('linux-archstrike-headers>=3.16')
+provides=('nvidia-340xx')
+conflicts=('nvidia-archstrike')
+license=('custom')
+install=${pkgname}.install
+options=(!strip)
+source=("ftp://download.nvidia.com/XFree86/Linux-x86/${pkgver}/NVIDIA-Linux-x86-${pkgver}.run"
+        "ftp://download.nvidia.com/XFree86/Linux-x86_64/${pkgver}/NVIDIA-Linux-x86_64-${pkgver}-no-compat32.run")
+sha512sums=('3d90a73fbe07eb25ec80a485c3827bebaf64a941331d6f28fb9b925678d74d66421dfecf6fe9637fb57b4aece268e987bfa8f29c06567243ae998d7ddac25f98'
+            '61fdf4debc39306fec7d020e3c6cdbe1f1b73cf3a531f2c6a8e24cc14abcf8f2001d2cad1efbd3a4735b5bc15f590a60811bcc52c061ada574b7edd6d7f70f87')
+
+[[ "$CARCH" = "i686" ]] && _pkg="NVIDIA-Linux-x86-${pkgver}"
+[[ "$CARCH" = "x86_64" ]] && _pkg="NVIDIA-Linux-x86_64-${pkgver}-no-compat32"
+
+prepare() {
+    sh ${_pkg}.run --extract-only
+}
+
+build() {
+  _kernver="$(cat /usr/lib/modules/${_extramodules}/version)"
+  cd "${_pkg}/kernel"
+  make SYSSRC=/usr/lib/modules/${_kernver}/build module
+
+  cd uvm
+  make SYSSRC=/usr/lib/modules/${_kernver}/build module
+}
+
+package() {
+  install -D -m644 "${srcdir}/${_pkg}/kernel/nvidia.ko" \
+    "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia.ko"
+  install -D -m644 "${srcdir}/${_pkg}/kernel/uvm/nvidia-uvm.ko" \
+    "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/nvidia-uvm.ko"
+  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/kernel/drivers/video/"*.ko
+  install -d -m755 "${pkgdir}/usr/lib/modprobe.d"
+  echo "blacklist nouveau" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-archstrike.conf"
+  echo "blacklist nvidiafb" >> "${pkgdir}/usr/lib/modprobe.d/nvidia-archstrike.conf"
+  install -D -m644 "${srcdir}/${_pkg}/LICENSE" "${pkgdir}/usr/share/licenses/nvidia-archstrike/LICENSE"
+}

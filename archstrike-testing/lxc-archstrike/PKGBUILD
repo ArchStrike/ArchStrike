@@ -1,0 +1,23 @@
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+# Contributor: prurigro
+
+buildarch=1
+
+pkgname=lxc-archstrike
+pkgver=1
+pkgrel=1
+pkgdesc="An LXC template for ArchStrike"
+url="https://bitbucket.org/archstrike"
+license=('GPL2')
+arch=('any')
+depends=('lxc')
+source=("$pkgname" 'pacman-i686.conf' 'pacman-x86_64.conf')
+sha512sums=('6bf099e8e4035590eb0f6d007c7f4b7035e3a6ae2ec5a172b3a7dc69d9a042318b03f51e80fe69f54da81930979567e6329466476eda29e075b9ce70190cc829'
+            '39bab0a3e36e336c0caa133e7204b8d3c51254d1ab613f739214286250398f4a85df4fb93f10a0866eab6b0e73842885f9c7fffc2c467e827b4e32216974f071'
+            'ab3280c81f075b8e71d0e3b886a2c4f5b96c2adf1086a28e2f87b5bbc974ac7a425e75a1b55336d697680f75826494065eea62d931ca5dde40c765c7c391ad93')
+
+package() {
+    install -Dm755 "${pkgname}" "${pkgdir}/usr/share/lxc/templates/${pkgname}"
+    install -Dm644 pacman-i686.conf "${pkgdir}/usr/share/lxc/contrib/lxc-archstrike-pacman-i686.conf"
+    install -Dm644 pacman-x86_64.conf "${pkgdir}/usr/share/lxc/contrib/lxc-archstrike-pacman-x86_64.conf"
+}

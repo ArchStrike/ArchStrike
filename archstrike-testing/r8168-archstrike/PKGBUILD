@@ -1,0 +1,37 @@
+# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+# Contributor: Massimiliano Torromeo <massimiliano.torromeo@gmail.com>
+
+buildarch=192
+
+pkgname=r8168-archstrike
+_pkgname=r8168
+pkgver=8.039.00
+pkgrel=2
+pkgdesc="A kernel module for Realtek 8168 network cards for linux-lts"
+#url="http://www.realtek.com.tw"
+url="https://code.google.com/p/r8168/"
+license=("GPL")
+arch=('i686' 'x86_64')
+depends=('glibc' "linux-archstrike>=3.18" "linux-archstrike-*<3.19")
+makedepends=("linux-archstrike-headers>=3.18" "linux-archstrike-*headers<3.19")
+install=$pkgname.install
+source=(#"ftp://WebUser:wK9xBuD5@95.130.192.218/cn/nic/r8168-$pkgver.tar.bz2"
+       http://r8168dl.appspot.com/files/r8168-$pkgver.tar.bz2)
+sha512sums=('30c1d7a96b048518f0755cd616e1b1f5c3c7d1343a903dd8169e6bcb145c0a3ac0d7bbcdee6d2a2dd8b76c69f807a56e4678c5e19a10da3f46fe70e0aa5f10d2')
+
+_extramodules=extramodules-3.18-archstrike
+
+build() {
+	cd "$_pkgname-$pkgver"
+	local _kernver="$(cat /usr/lib/modules/$_extramodules/version)"
+	make -C /usr/lib/modules/$_kernver/build \
+			SUBDIRS="$srcdir/$_pkgname-$pkgver/src" \
+			EXTRA_CFLAGS="-DCONFIG_R8168_NAPI -DCONFIG_R8168_VLAN" \
+			modules
+}
+
+package() {
+	cd "$_pkgname-$pkgver"
+	install -Dm644 src/$_pkgname.ko "$pkgdir/usr/lib/modules/$_extramodules/$_pkgname.ko"
+	find "$pkgdir" -name '*.ko' -exec gzip -9 {} +
+}
