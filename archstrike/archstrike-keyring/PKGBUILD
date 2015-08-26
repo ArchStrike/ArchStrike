@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
 pkgname=archstrike-keyring
-pkgver=20150825
+pkgver=20150826
 pkgrel=1
 pkgdesc='ArchStrike PGP keyring'
 url='https://archstrike.org'
