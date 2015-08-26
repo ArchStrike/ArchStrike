@@ -24,6 +24,7 @@ unset exit_on_fail
 # The set of valid groups
 valid_groups=(
     'archstrike'
+    'archstrike-dev'
     'archstrike-analysis'
     'archstrike-autonomous'
     'archstrike-backdoors'
