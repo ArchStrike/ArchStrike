@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
-# Contributor: Kevin MacMartin <prurigro at gmail dot com>
+# Contributor: Kevin MacMartin <prurigro@gmail.com>
+# Contributor: openfbt
 # Contributor: Werecat
 # Contributor: Xyne
 
-_pkgname=cjdns
-
 buildarch=212
 
+_pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=0.3.3327
+pkgver=0.3.3445
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -18,8 +18,12 @@ options=('!distcc' '!strip' '!buildflags')
 groups=('archstrike' 'archstrike-networking')
 depends=('glibc')
 makedepends=('git' 'nodejs' 'python2')
-optdepends=('cjdnsify: allows you to run some programs bound to your cjdns address'
-            'cjdns-git-sysvinit: support for sysvinit (rc.d)')
+optdepends=(
+  'cjdnsify: allows you to run some programs bound to your cjdns address'
+  'cjdns-git-sysvinit: support for sysvinit (rc.d)'
+)
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 source=("git+$url#branch=crashey")
 sha512sums=('SKIP')
 
@@ -35,7 +39,8 @@ build() {
 
 package() {
   cd $_pkgname
-  install -Dm644 'doc/man/cjdroute.conf.5' "$pkgdir/usr/share/man/man5/cjdroute.conf.5"
-  install -Dm755 'cjdroute' "$pkgdir/usr/bin/cjdroute"
-  install -Dm644 "contrib/systemd/$_pkgname.service" "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm755 cjdroute "$pkgdir/usr/bin/cjdroute"
+  install -Dm755 contrib/sh/run-cjdroute.sh "$pkgdir/usr/bin/run-cjdroute"
+  install -Dm644 contrib/systemd/$_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 doc/man/cjdroute.conf.5 "$pkgdir/usr/share/man/man5/cjdroute.conf.5"
 }
