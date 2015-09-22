@@ -4,19 +4,18 @@ buildarch=1
 
 pkgname=cms-explorer
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fingerprinting' 'archstrike-webapps')
 pkgdesc="Designed to reveal the specific modules, plugins, components and themes that various cms driven websites are running"
 arch=('any')
 url='http://code.google.com/p/cms-explorer'
 license=('GPL3')
-makedepends=('subversion')
 depends=('perl')
-source=('svn+http://cms-explorer.googlecode.com/svn/trunk/')
-md5sums=('SKIP')
+source=("https://cms-explorer.googlecode.com/files/cms-explorer-$pkgver.tar.bz2")
+sha512sums=('095c780565446d723c7c3f6ae18eaf5d7cce66ad25f8421483d35c187f41150c3d82c2a4762dc0e0529fe9f1d173fa34b5c902d4e4eb9ab51ce8481fc38b5628')
 
 package() {
-  cd "$srcdir/trunk"
+  cd "$srcdir/$pkgname-$pkgver"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/share/cms-explorer"
