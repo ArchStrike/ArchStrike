@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
-buildarch=212
+buildarch=1
 
 pkgname=spike-proxy
 pkgver=148
