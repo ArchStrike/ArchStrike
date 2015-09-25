@@ -8,11 +8,11 @@ pkgrel=1
 groups=('archstrike' 'archstrike-voip')
 pkgdesc="A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://sipsak.org'
+url='http://sourceforge.net/projects/sipsak.berlios/'
 license=('GPL')
 depends=('gnutls' 'openssl')
-source=(http://download.berlios.de/sipsak/sipsak-$pkgver-1.tar.gz)
-md5sums=('c4eb8e282902e75f4f040f09ea9d99d5')
+source=("http://downloads.sourceforge.net/project/sipsak.berlios/sipsak-$pkgver-1.tar.gz")
+sha512sums=('c2d62ddaf2ecc9616941cf002a0494d2f9c43747e6b527f8b1542e9b5ae143fc69b18fc140bd3f255896b0e8eb02f7d198cc1799a4041e2d0c95d90b653591fe')
 
 build() {
   cd $srcdir/sipsak-$pkgver
