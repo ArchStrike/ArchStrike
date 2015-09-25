@@ -13,11 +13,11 @@ arch=(any)
 url='http://xael.org/norman/python/python-nmap'
 license=('GPL3')
 depends=('python2' 'nmap')
-source=("http://xael.org/norman/python/python-nmap/python-nmap-${pkgver}.tar.gz")
+source=("http://xael.org/pages/python-nmap-${pkgver}.tar.gz")
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 changelog=CHANGELOG
-sha512sums=('c3d72cb91a61b970a72969ed1697de59a5f0a26b16625ca6605ff562a13f0502b48cb4490720f55b5c24bfe512d4c1eed9436f5b6483d296a3d89c36899fa1cd')
+sha512sums=('575f5f4e2b0c1ef3cad557dab5c4524f513c8545d682b6dbd0c0ea5fcad3e48e0dd6c522f532657941bd3d69892c335cce10a5749956cf4c199dc0b67d27fdeb')
 
 prepare(){
   grep -iRl 'python' "$srcdir/${_realname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'

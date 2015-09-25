@@ -1,5 +1,7 @@
 Changelog
 =========
+2015/09/24
+Python2 url has changed and been updated in pkgbuild
 
 2014/11/23
 Python2 version is locked per upstream author. The preceding was adding by ArchStrike.
