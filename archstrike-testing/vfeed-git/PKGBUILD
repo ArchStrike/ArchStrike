@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=vfeed-git
-pkgver=20150511.r41
+pkgver=20150811.r1
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-misc')
@@ -34,7 +34,7 @@ package() {
   cd "${pkgname}"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin/"
-  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.md
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
   ln -s "/usr/share/${pkgname}/vfeedcli.py" "${pkgdir}/usr/bin/vfeed"
 }
