@@ -10,11 +10,11 @@ pkgdesc="Command line based tool for PE32/PE32+ file analyze"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://pev.sourceforge.net'
 license=('GPL')
-depends=('openssl' 'pcre' 'archstrike-artwork')
+depends=('openssl' 'pcre')
 source=("http://sourceforge.net/projects/pev/files/pev-${pkgver}/pev-${pkgver}.tar.gz"
         "${pkgname}.desktop")
 sha512sums=('c98ea778b05b514ef26d87627484b5942247fb4190ad6a166ee2a01fc185dd4663848ca9b5ba3a26be5c8a40eaf42f476bec58ddea0565ac4c6fe0710c9575aa'
-            '39b5cb750f5f1efbf24d2d9a08fa0a85ef8b4f1b8ecc8d8f82a14c597e4b4db703d9456107737835e6d8c75056e078959c3c183c4bbbbceae4077b9c4194a8f6')
+            '4230418ddafca1a859c9ca954fa11156eca1d1f6d65eca4dd97c0c80aba3f77b94d926c091dbe1b5068fd897ace2ecb3de7dec400d07fcad8342175df87f29db')
 
 prepare() {
     cd pev
