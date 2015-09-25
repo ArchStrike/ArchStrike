@@ -6,15 +6,16 @@ pkgname=spike-proxy
 pkgver=148
 pkgrel=1
 pkgdesc="A Proxy for detecting vulnerabilities in web applications"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('any')
 url="http://www.immunitysec.com/resources-freesoftware.shtml"
 license=('GPL')
 groups=('archstrike' 'archstrike-webapps')
-depends=("python2" "python2-pyopenssl" "bash")
-source=(http://www.immunitysec.com/downloads/SP148.tgz
+depends=("python2-pyopenssl" "bash")
+options=("!emptydirs")
+source=(http://www.immunitysec.com/downloads/SP${pkgver}.tgz
         fix-encoding.patch)
-md5sums=('e5851a07067945eb2b0475dbdb4adf1c'
-         '788dfce53e4df9591dbfaa47f97dba97')
+sha512sums=('dd420dbd0287f1f238da1af53289f46acf98be64fdac0f481f27d24b8e0109ee406c6edfd3fa2af2fa90e247c200bffa3de5dc550c6720ff13b39d88ef9dce5a'
+            'b9c9b881112987c77fe6253b4608a8ffccd1fb4c760ea056f2dfff20a7ec2844f3bf9ef81e8ec7e520badb0e972864e26e0ac0e98c4f4a797b00f476524a5f57')
 
 prepare(){
   cd "$srcdir/spkproxy"
@@ -31,6 +32,7 @@ package() {
 
   mv *.txt $pkgdir/usr/share/doc/spike-proxy/
   cp -a --no-preserve=ownership * $pkgdir/usr/share/spike-proxy/
+  grep -iRl 'python' "$pkgdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
   cat > $pkgdir/usr/bin/spike-proxy << EOF
 #!/bin/bash
 cd /usr/share/spike-proxy

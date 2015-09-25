@@ -1,14 +1,14 @@
-diff -ru a/ntlm/des_c.py b/ntlm/des_c.py
---- a/ntlm/des_c.py	2009-08-28 15:12:48.000000000 +0200
-+++ b/ntlm/des_c.py	2009-08-28 15:13:16.000000000 +0200
+diff -aur spkproxy.orig/ntlm/des_c.py spkproxy/ntlm/des_c.py
+--- spkproxy.orig/ntlm/des_c.py	2015-09-24 21:27:46.933795670 -0400
++++ spkproxy/ntlm/des_c.py	2015-09-24 21:28:28.853187817 -0400
 @@ -1,3 +1,4 @@
 +# -*- coding: latin-1 -*-
  # This file is part of 'NTLM Authorization Proxy Server'
  # Copyright 2001 Dmitry A. Rozmanov <dima@xenon.spb.ru>
  #
-diff -ru a/ntlm/md4.py b/ntlm/md4.py
---- a/ntlm/md4.py	2009-08-28 15:12:48.000000000 +0200
-+++ b/ntlm/md4.py	2009-08-28 15:13:37.000000000 +0200
+diff -aur spkproxy.orig/ntlm/md4.py spkproxy/ntlm/md4.py
+--- spkproxy.orig/ntlm/md4.py	2015-09-24 21:27:46.933795670 -0400
++++ spkproxy/ntlm/md4.py	2015-09-24 21:28:43.939635565 -0400
 @@ -1,3 +1,4 @@
 +# -*- coding: latin-1 -*-
  # This file is part of 'NTLM Authorization Proxy Server'
