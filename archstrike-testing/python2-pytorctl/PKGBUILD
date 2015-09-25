@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-pytorctl
 _pkgname=pytorctl
-pkgver=20131016
+pkgver=201310164gc8fcb25
 pkgrel=1
 epoch=1
 pkgdesc="A Python Tor controller with extensions to support path building and various constraints on node and path selection, as well as statistics gathering."
@@ -17,7 +17,8 @@ optdepends=('python2-elixir: SQL Support')
 conflicts=('pytorctl')
 provides=('pytorctl')
 source=("git+http://git.torproject.org/${_pkgname}.git" "setup.py")
-sha512sums=('SKIP' '0f925e62308bc450198e927bb6c07f836b923d83227790012ae43217a365057b4399ec94206ed5246671a104ba9c4acee5052dd088b34f6040c844a703d13255')
+sha512sums=('SKIP'
+            '66342fa49e3bb0023c2fe0b78a774364ef15b834196685496758e0fef78d002bd5c6009bd6f4a6d5d2f1efba3d56792beb7b98e8c70bc6d6f33ae0d8bc552181')
 
 pkgver() {
     cd ${_pkgname}
