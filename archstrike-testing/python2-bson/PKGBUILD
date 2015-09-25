@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-bson
-pkgver=0.3.3
+pkgver=0.4.1
 pkgrel=1
 pkgdesc="BSON codec for Python"
 url="http://github.com/martinkou/bson"
@@ -11,18 +11,20 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
-source=('https://pypi.python.org/packages/source/b/bson/bson-0.3.3.tar.gz')
-sha512sums=('9787d04ee6840edcf62627da3be692ee55a90ed41198d326cd46343def7d2789d2610912e5626c84ab6ac3ed49cd5ec1d9ee678b05241b7ae180e4211043d1bb')
+source=("https://pypi.python.org/packages/source/b/bson/bson-$pkgver.tar.gz" "https://raw.githubusercontent.com/py-bson/bson/master/LICENSE")
+sha512sums=('6af655466e4e567d5cce6266895c9060574a0896ffba48c745c7f78331f78f4c33cd8008332e9421f4c2565f2e57e9f40762ef40d9ec4e7bf244b2488ee0dd26'
+            'ed947f051a6cace4a5fc051a31db39a8385d7ccf17de69ec6c41c2fac9d4b5af5e599ffb9eed51bb3cdcf8fc44bc94c80d595929aafcd7526e64f329db330c8d')
 
 build() {
-  cd $srcdir/bson-0.3.3
+  cd $srcdir/bson-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd $srcdir/bson-0.3.3
+  cd $srcdir/bson-$pkgver
   python2 setup.py install --root="$pkgdir" --optimize=1
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   rm "$pkgdir"/usr/lib/python2.7/site-packages/bson/__init__*
 }
