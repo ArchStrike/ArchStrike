@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=windows-binaries
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 groups=('archstrike')
 pkgdesc="A colleciton of pentesting Windows binaries"
@@ -12,7 +12,7 @@ license=('GPL2')
 url="http://ftp.cc.uoc.gr/mirrors/linux/kali/kali/pool/non-free/w/windows-binaries/"
 source=("http://ftp.cc.uoc.gr/mirrors/linux/kali/kali/pool/non-free/w/windows-binaries/windows-binaries_$pkgver.orig.tar.gz")
 options=('!strip')
-sha512sums=('846c7cc0da80e45c34d78fefe570ba60e7a6428ff6f17d0eadfcf27d0085ee1e7ca97a66d3a999ef016c8d5ab0d14f9bee27e9481840f81a1ef0eeb7886af861')
+sha512sums=('a0e6bda2ee96b3a9bd682d48383eaf4fc067d41c645a1b26c321f23574051806d3aaa727b749ce42acc1f1a831aa0152d359db85e15185856365d49ab6022f2b')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
