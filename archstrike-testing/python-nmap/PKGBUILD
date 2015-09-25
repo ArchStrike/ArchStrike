@@ -4,18 +4,18 @@
 buildarch=1
 
 pkgname=python-nmap
-pkgver=0.3.7
+pkgver=0.4.3
 pkgrel=1
 pkgdesc='Python3 library which helps in using the nmap port scanner.'
 arch=(any)
-url='http://xael.org/norman/python/python-nmap'
+url='http://xael.org/pages/python-nmap-en.html'
 license=('GPL3')
 depends=('python' 'nmap')
 makedepends=('python-setuptools')
 options=(!emptydirs)
-source=("http://xael.org/norman/python/python-nmap/python-nmap-${pkgver}.tar.gz")
+source=("http://xael.org/pages/python-nmap-$pkgver.tar.gz")
 changelog=CHANGELOG
-sha512sums=('ecab7f024f1bd6c9bce04d64d27d69b9f90bf21a72bfab6d023a6858bfa486eaf978d81419433a115d94001dc179ee23cf002814f2063e6294cc404d5ad8d43f')
+sha512sums=('a3772d79502ee2e6a35c8bd0d73f9b445be35291a4e454f2867ae63ef199610c4f1769c8d0aeaead0f5296dfee240db824fdd8f16c1dacbaca65f8af12d860db')
 
 package(){
   cd "$srcdir/${pkgname}-${pkgver}"
