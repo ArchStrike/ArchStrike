@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=peda-git
-pkgver=r63.152e635
+pkgver=r71.1e62125
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A Python Exploit Development Assistant for GDB"
@@ -12,11 +12,9 @@ url='https://github.com/longld/peda'
 license=('custom')
 depends=('python2' 'gdb' 'nasm')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/longld/peda.git"
-  "peda.py.patch")
+source=("${pkgname}::git+https://github.com/longld/peda.git")
 install='peda-git.install'
-sha512sums=('SKIP'
-            '8991761c04c05cec56c01553954f53037f9276a24f7d9e3dad5e0092f08cb683b96c727f7829ad51b3d85ab0a53e6e3a2b805af49517b113ccce838f65346f08')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
@@ -25,8 +23,6 @@ pkgver() {
 
 prepare(){
   grep -iRl 'python' "${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
-  cd "${pkgname}"
-  patch -Np1 -i "${srcdir}"/peda.py.patch
 }
 
 package() {
