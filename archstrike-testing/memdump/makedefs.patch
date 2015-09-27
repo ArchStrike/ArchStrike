@@ -4,7 +4,7 @@
  		;;
      Linux.2*)   DEFS="-DLINUX2"
  		;;
-+    Linux.3*)   DEFS="-DLINUX2"
++    Linux.4*)   DEFS="-DLINUX2"
 +        ;;
             *)   echo unsupported system: $SYSTEM.$RELEASE 1>&2; exit 1
  		;;
