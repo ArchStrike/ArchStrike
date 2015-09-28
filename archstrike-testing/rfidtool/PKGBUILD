@@ -9,9 +9,10 @@ groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A opensource tool to read / write rfid tags"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
+depends=("glibc")
 url='http://www.bindshell.net/tools/rfidtool.html'
-source=("http://www.bindshell.net/tools/rfidtool/rfidtool-v${pkgver}.tar.bz2")
-md5sums=('de95d6855e2f29ed38e986602c9299e7')
+source=("http://www.pkgbuild.com/~giovanni/${pkgname}-v${pkgver}.tar.bz2")
+sha512sums=('54a7d3ef33f457e9d69c68469eff40b5abd5d2e66986ad51d20b6520c73999a32c7af2245c2229e8703a962d6fa5a31547d10314de03ace51578dc673d3f1041')
 
 build() {
   cd $srcdir/rfidtool-v$pkgver
