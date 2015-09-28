@@ -9,10 +9,11 @@ groups=('archstrike' 'archstrike-wireless' 'archstrike-fuzzers')
 pkgdesc="WLAN penetration tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
-url='http://homepages.tu-darmstadt.de/~p_larbig/wlan/'
+url='http://aspj.aircrack-ng.org/#mdk3'
 makedepends=('sed')
-source=("http://homepages.tu-darmstadt.de/~p_larbig/wlan/mdk3-v$pkgver.tar.bz2")
-md5sums=('67705a814ded2a2e6f70522ca0dc6da9')
+depends=('glibc')
+source=("http://aspj.aircrack-ng.org/mdk3-v$pkgver.tar.bz2")
+sha512sums=('a5180fc231c2e041064467b9415d2d238ea680f19c88b2320983dd6dbe91a62af1a37da0fc548c1b0860ede046e1f9976dec729c919d8e6c0ab98231990dfec4')
 
 prepare() {
   cd "$srcdir/mdk3-v$pkgver"
