@@ -9,15 +9,14 @@ pkgdesc="Restkit is an HTTP resource kit for Python. It allows you to easily acc
 arch=('any')
 url="http://benoitc.github.com/restkit/index.html"
 license=('MIT')
-depends=('python2' 'python-http-parser' 'python2-socketpool')
-makedepends=('python2-distribute')
-provides=()
+depends=('python-http-parser' 'python2-socketpool')
+makedepends=('python-setuptools')
 conflicts=('python-restkit' 'restkit-git' 'python2-restkit-git')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/r/restkit/restkit-$pkgver.tar.gz"
   "doc.patch")
-md5sums=('99fb4e1af6e1b25c488dace620b4676f'
-         '87fa9d990c28e3f328b31e322343b157')
+sha512sums=('5ed08535e1a54b5594d97b059d8662ab4bc19c68e71a30719c4a533cba0f2d0e18872119752c62136563a32281e8f747414fbf843fd97dba138107ffcb5d1e4b'
+            'c540f8155523813611fdb11a6dd09b1936969c9dd3fda1c1ced9c84260b21446617dfb755d1c64fb1a6aad0040b01ce14a8ef9e80fe0ab586dcce5f45f0594d6')
 
 package() {
   cd "$srcdir/restkit-$pkgver"
