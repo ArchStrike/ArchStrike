@@ -18,12 +18,12 @@ source=(
 )
 sha512sums=(
   '46d013f812b0a5807c7ba38d6c3940e105057ba8e64b4f45b75a0800cab212d164caf881efbc1958d5c5c239236fdcb61f6fe093886ff3e28bc0b70791aaee3e'
-  '5967ee881a95bc7e7772b3c92d60a96407a42ecf0f0ec0e3a132b4147a3c5a5d5665092c2f5009bedbcd5f636e1fa4ac6d086e5ae21f33d0d9307a5c08e5182b'
+  '962da103168334d5623d1a294aefe3564ad291d0247cd44d4c2aea16c891fce89e01365c73c454f6261e5b149aba81694d24c5f7cad8492aaddd0a75bd6923d5'
 )
 
 prepare() {
   cd $pkgname-$pkgver
-  patch -p0 < ../makedefs.patch
+  patch -p1 < ../makedefs.patch
 }
 
 build() {
