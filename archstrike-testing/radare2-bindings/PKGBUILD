@@ -3,34 +3,33 @@
 
 buildarch=212
 
-pkgname=r2-bindings
-_pkgname=radare2-bindings
-pkgver=0.9.8
-pkgrel=2
+pkgname=radare2-bindings
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="Language bindings of the radare2 api for Valabind and friends"
 url="http://radare.org"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike')
 license=('GPL3')
-depends=('radare2' 'gawk' 'ruby1.8' 'ruby1.9' 'lua' 'python2')
+depends=('radare2' 'gawk' 'ruby' 'lua' 'python2')
 makedepends=('valabind' 'swig')
 options=(!emptydirs)
-provides=('radare2-bindings')
-source=(http://www.radare.org/get/${_pkgname}-${pkgver}.tar.xz)
-sha512sums=('e2541340cb180ec87aacbf507ad66b73322bb5b558b2ffdc71c085f2dc767160150b3bbf52ac6590936c5244705b191217b1b2d7ea051d6a78c94988ab684cd8')
+provides=('r2-bindings')
+source=(http://www.radare.org/get/${pkgname}-${pkgver}.tar.xz)
+sha512sums=('3b8da49cb765369f5887d33f7b29241332e768a701121bae421dad86ca7edd5a45acadf6f46d5fe3b654b57abe8f598871fa36f1deb3a2205ec66e59f80f6053')
 
 prepare() {
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr --enable=awk,ctypes,cxx,go,duktape,guile,lua,perl,php5,python,valac,newlisp,dlang,ocaml,r2pipe,vapi
 }
 
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   make
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver}
   install -dm755 "$pkgdir/usr/lib/perl5/site_perl/r2"
   install -dm755 "$pkgdir/usr/bin"
   make DESTDIR="${pkgdir}" install-plugins
@@ -40,7 +39,7 @@ package() {
   #make DESTDIR="${pkgdir}" install-cxx # Not configured in makefile
   make DESTDIR="${pkgdir}" install-awk
   # Fixing awkdir in r2awk
-  sed -i "s|$pkgdir/usr/lib/radare2/0.9.8/awk|/usr/lib/radare2/0.9.8/awk|" "$pkgdir/usr/bin/r2awk"
+  sed -i "s|$pkgdir/usr/lib/radare2/$pkgver/awk|/usr/lib/radare2/$pkgver/awk|" "$pkgdir/usr/bin/r2awk"
   # Installl perl bindings by hand as its messed up in installer
   cp -rf perl/*.so "$pkgdir/usr/lib/perl5/site_perl/r2"
   cp -rf perl/*.pm "$pkgdir/usr/lib/perl5/site_perl/r2"
