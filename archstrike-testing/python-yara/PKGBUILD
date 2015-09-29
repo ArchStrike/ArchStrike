@@ -6,7 +6,7 @@ _pkgname=yara
 buildarch=212
 
 pkgname=python-${_pkgname}
-pkgver=3.1.0
+pkgver=3.4.0
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="A malware identification and classification tool"
@@ -15,7 +15,7 @@ url="http://plusvic.github.io/${_pkgname}"
 license=('APACHE')
 depends=("python" "${_pkgname}")
 source=("https://github.com/plusvic/${_pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('ebebe4971d07946b5a435f0aef0784fad02e0a844b6e0add3c613528c033042e3304cef2b972d9c02307f6a5d5124cf85cb355fd666d6c0f24ab60f8d037273d')
+sha512sums=('27286107882c70de6f2c227d5307fbaa97437f8bbb221d4f0fcb17c4935f65ef01e772c18a14eb814727ca1854f5e3f9f219771706d9f4a748ae9433f475d669')
 
 build() {
     cd ${_pkgname}-${pkgver}/${_pkgname}-python
