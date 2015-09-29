@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=ridenum-git
-pkgver=r40.a50ea22
+pkgver=r43.e86c25b
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Rid_enum is a null session RID cycle attack for brute forcing domain controllers."
@@ -30,5 +30,5 @@ package() {
   # Base directories.
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/"
-  install -Dm755 rid_enum.py "$pkgdir/usr/bin/rid_enum"
+  install -Dm755 ridenum.py "$pkgdir/usr/bin/rid_enum"
 }
