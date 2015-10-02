@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=fimap-svn
 pkgver=20150325.r334
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A little tool for local and remote file inclusion auditing and exploitation"
 arch=('any')

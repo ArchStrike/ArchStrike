@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=("python-click" "python2-click")
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple wrapper around optparse for powerful command line utilities."
 url="http://github.com/mitsuhiko/click"
 depends=('python' 'python2')

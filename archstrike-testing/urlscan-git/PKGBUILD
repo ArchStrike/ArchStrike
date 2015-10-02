@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=urlscan-git
 pkgver=20141218.r49
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactively browse and open URLs contained in HTML passed from stdin"
 url="https://github.com/firecat53/${pkgname}"
 license=('GPL')

@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=ghostpdl
 pkgver=9.10
-pkgrel=1
+pkgrel=2
 pkgdesc="An interpreter for the Postscript language and for PDF - GhostPCL (PCL-5, and PCL-XL), GhostXPS (XPS), GhostPDF and ghostscript"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.artifex.com"

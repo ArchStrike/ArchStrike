@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=bletchley
 pkgver=0.0.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="A collection of practical application cryptanalyze tools."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')

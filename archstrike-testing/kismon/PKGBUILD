@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=kismon
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A PyGTK client that creates a map of a network"
 arch=('any')
 groups=('archstrike')

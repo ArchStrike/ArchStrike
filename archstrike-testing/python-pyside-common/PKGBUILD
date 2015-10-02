@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python-pyside-common
 pkgver=1.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides LGPL Qt bindings for Python and related tools for binding generation. Will build for both Python 2 and 3 versions."
 arch=('any')
 license=('LGPL')

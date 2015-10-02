@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=hashid-git
 pkgver=r397.7e8473a
-pkgrel=1
+pkgrel=2
 pkgdesc="dentify the different types of hashes used to encrypt data and especially passwords."
 url="https://github.com/psypanda/hashID"
 arch=('any')

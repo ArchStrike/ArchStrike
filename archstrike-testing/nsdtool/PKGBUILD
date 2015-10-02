@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=nsdtool
 pkgver=1
-pkgrel=1
+pkgrel=2
 pkgdesc="toolset of scripts used to detect netgear switches in local networks. The tool contains some extra features like bruteforce and setting a new password"
 arch=('any')
 url="http://www.curesec.com/en/publications/tools.html"

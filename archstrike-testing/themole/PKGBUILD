@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=themole
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc="Automatic SQL Injection Exploitation Tool"
 arch=('any')

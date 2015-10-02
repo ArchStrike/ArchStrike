@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=binwalk
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool for searching a given binary image for embedded files"
 arch=('armv6h' 'i686' 'armv7h' 'x86_64')
 url="http://binwalk.org"

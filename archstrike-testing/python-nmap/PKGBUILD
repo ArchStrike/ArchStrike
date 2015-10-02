@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python-nmap
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Python3 library which helps in using the nmap port scanner.'
 arch=(any)
 url='http://xael.org/pages/python-nmap-en.html'

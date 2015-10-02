@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=tilt-git
 pkgver=90.2bc2ef2
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="Terminal Ip Lookup Tool"
 arch=('any')

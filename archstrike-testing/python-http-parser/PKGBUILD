@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python-http-parser
 pkgver=0.8.3
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP request/response parser for Python compatible with Python 2, Python 3 and Pypy."
 arch=('any')
 url="https://github.com/benoitc/http-parser"

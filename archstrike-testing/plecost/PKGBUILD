@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=plecost
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-fingerprinting' 'archstrike-webapps')
 pkgdesc="Wordpress finger printer tool search and retrieve information about the plugins versions installed in Wordpress systems."

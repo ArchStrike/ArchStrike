@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=hackersh
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc' 'archstrike-autonomous')
 pkgdesc="A shell for with Pythonect-like syntax, including wrappers for commonly used security tools"
 arch=('any')

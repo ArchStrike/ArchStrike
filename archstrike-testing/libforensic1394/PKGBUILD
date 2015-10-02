@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=libforensic1394
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="An open source library for performing live memory forensics over the IEEE 1394 (“FireWire”) interface."
 url="https://freddie.witherden.org/tools/libforensic1394/"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')

@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=linset-git
 pkgver=20140616.r9
-pkgrel=1
+pkgrel=2
 pkgdesc="A WPA/WPA2 hack"
 arch=(any)
 url="https://github.com/vk496/linset"

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pdfid
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="scan a file to look for certain PDF keywords"
 arch=('any')

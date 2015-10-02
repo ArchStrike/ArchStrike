@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='owabf'
 pkgver='1.3'
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc='Outlook Web Access bruteforcer tool.'
 arch=('any')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=centry-git
 pkgver=r72.6de2868
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="A Panic button for protection against cold boot attacks"
 arch=('any')

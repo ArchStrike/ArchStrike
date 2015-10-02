@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=auto-xor-decryptographyr
 pkgver=5.1f552be
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="Automatic XOR decryptographyr tool."
 arch=('any')

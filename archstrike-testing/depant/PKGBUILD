@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname='depant'
 pkgver='0.3a'
-pkgrel=1
+pkgrel=2
 pkgdesc='Check network for services with default passwords.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://midnightresearch.com/projects/depant/'

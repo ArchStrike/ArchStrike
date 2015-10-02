@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=metagoofil
 pkgver=1.4b
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="An information gathering tool designed for extracting metadata of public documents"
 url='http://www.edge-security.com/metagoofil.php'

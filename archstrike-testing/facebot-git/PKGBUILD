@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=facebot-git
 pkgver=r23.57f6025
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A facebook profile and reconnaissance system "
 arch=('any')
