@@ -9,6 +9,7 @@ pkgrel=2
 pkgdesc="Makes working with XML feel like you are working with JSON"
 url="https://github.com/martinblech/xmltodict"
 depends=('python')
+makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://pypi.python.org/packages/source/x/xmltodict/xmltodict-${pkgver}.tar.gz"
