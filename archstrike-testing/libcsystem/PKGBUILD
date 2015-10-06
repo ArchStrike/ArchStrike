@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=libcsystem
-pkgver=20150101
+pkgver=20150629
 pkgrel=1
 pkgdesc="Library for cross-platform C system functions"
 url="https://github.com/libyal/libcsystem"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('glibc')
 makedepends=('git')
 source=("https://github.com/libyal/libcsystem/archive/$pkgver.tar.gz")
-sha512sums=('3963bfb326006383863009e63f15511344b6bcfcdb5a0f814764d8069deaddd135afdfe4b4dc8066ed6aff55a975ef3e42e646b99c557b9863764e2ffe9005f6')
+sha512sums=('78f25590995f710f678f591756f1c89bd8b0db0257e913de525a3e00e92c363dcc65a670d7490de45b8238a95c622a2961f0624bdf40f085d0cabee735ba6a5d')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
