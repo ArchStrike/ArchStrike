@@ -2,7 +2,7 @@
 
 buildarch=212
 
-pkgname=hotpatch
+pkgname=hotpatch-git
 pkgver=0.2
 pkgrel=2
 groups=('archstrike' 'archstrike-backdoors')
@@ -12,17 +12,17 @@ url='http://www.selectiveintellect.com/hotpatch.html'
 license=('BSD')
 depends=('glibc')
 makedepends=('cmake' 'git')
-source=("git+https://github.com/vikasnkumar/hotpatch")
+source=("${pkgname}::git+https://github.com/vikasnkumar/hotpatch")
 sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/hotpatch"
+  cd "$srcdir/${pkgname}"
   export PREFIX=/usr
   make
 }
 
 package() {
-  cd "$srcdir/hotpatch"
+  cd "$srcdir/${pkgname}"
   make DESTDIR="$pkgdir/" install
   install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
 }
