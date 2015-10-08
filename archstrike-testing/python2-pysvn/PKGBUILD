@@ -1,25 +1,32 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
-buildarch=1
+buildarch=212
 
 pkgname=python2-pysvn
 pkgver=1.7.10
 pkgrel=1
 pkgdesc="Python2 SVN Extension."
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://pysvn.tigris.org"
 license=('APACHE')
 makedepends=('python2-setuptools')
-depends=('python2>=2.7' 'subversion' 'apr' 'expat' 'neon' 'openssl')
+depends=('subversion')
 conflicts=('pysvn<=1.7.4-3' 'pysvn-py2')
 replaces=('pysvn-py2')
 provides=('pysvn-py2')
-source=("http://pysvn.barrys-emacs.org/source_kits/pysvn-$pkgver.tar.gz")
-sha512sums=('3404ce53f974ff91a7eecea29176f6b71f1dbb37a716880dfd3d2961d4c6e0c81f87aa46308994d4f7ed6a6cbca7f7451753e1de43ce95fef4443fc5f70ff3aa')
+source=("http://pysvn.barrys-emacs.org/source_kits/pysvn-$pkgver.tar.gz" "svn1.9.patch")
+sha512sums=('3404ce53f974ff91a7eecea29176f6b71f1dbb37a716880dfd3d2961d4c6e0c81f87aa46308994d4f7ed6a6cbca7f7451753e1de43ce95fef4443fc5f70ff3aa'
+            '7a631a1aed259b539b98e26503278e810dd75250edc56aa613b424797a7dbe38bad4379b7f51ea1a410d82306141b9f5b383f92ee4de2bfbcf89614c823fac5c')
+
+prepare(){
+ cd $srcdir/pysvn-$pkgver/Source
+ patch -p1 -i $srcdir/svn1.9.patch
+}
+
 
 build() {
   cd $srcdir/pysvn-$pkgver/Source
-  python2 setup.py configure
+  python2 setup.py configure --norpath
   make
 }
 
