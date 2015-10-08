@@ -5,7 +5,7 @@ _pkgname=i2pd
 buildarch=212
 
 pkgname=$_pkgname-git
-pkgver=20150319.r1685
+pkgver=20151005.r2087
 pkgrel=1
 pkgdesc='I2P router written in C++'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -13,7 +13,7 @@ url="https://github.com/PrivacySolutions/i2pd"
 license=('GPL2')
 groups=('archstrike')
 depends=('crypto++' 'boost-libs' 'systemd')
-makedepends=('git' 'boost')
+makedepends=('cmake' 'git' 'boost' 'miniupnpc')
 backup=("etc/default/$_pkgname.conf")
 install=$pkgname.install
 source=("git+$url"
@@ -30,15 +30,20 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
+
+
 build() {
-  cd $_pkgname
+  cd $_pkgname/build
+  cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release"  -DWITH_HARDENING="on" \
+  -DWITH_AESNI="on" -DWITH_UPNP="on" -DWITH_OPTIMIZE="on"  ..
   make
 }
 
 package(){
-  install -Dm755 $_pkgname/i2p "$pkgdir/usr/bin/i2p"
-  install -Dm644 $_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  install -Dm644 $_pkgname.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
-  install -Dm644 $_pkgname.conf "$pkgdir/etc/default/$_pkgname.conf"
+  cd $_pkgname/build
+  make DESTDIR=${pkgdir} install
+  install -Dm644 $srcdir/$_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
+  install -Dm644 $srcdir/$_pkgname.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
+  install -Dm644 $srcdir/$_pkgname.conf "$pkgdir/etc/default/$_pkgname.conf"
 }
 
