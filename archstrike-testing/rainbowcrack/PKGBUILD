@@ -3,24 +3,21 @@
 buildarch=192
 
 pkgname=rainbowcrack
-pkgver=1.6
+pkgver=1.6.1
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Password cracker based on the faster time-memory trade-off. With MySQL and Cisco PIX Algorithm patches"
 arch=('i686' 'x86_64')
 url="http://project-rainbowcrack.com/"
 license=('custom')
-if [[ $CARCH == 'x86_64' ]]; then
-        depends=('gcc-libs-multilib')
-        source=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux64.zip" "rainbowcrack.desktop")
-        sha512sums=('1bd4043b1a766e6ade0c9787f921d74eeefbb08c3ab7b93d63f9ccc19b9ab4d4000abd118419a26e7c19e8e7f816f414b097e139434b4312063f5a3cc8f2dc6f'
-                    '3e8624602d5d37ff8ae4eb0dd8f6813f4573460f69ec3d8e21ca404979b8448109197cefa239302627eddfab277a347f842f81c0f1ea7c9f9de2dd7c1b847527')
-else
-        depends=('gcc-libs')
-        source=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux32.zip" "rainbowcrack.desktop")
-        sha512sums=('c33fd82c72b0eac43ffd509424bc5c05d92a52c6c1fe89cb8c640abc4690bb149d162c1c58be80c3d666d400f485b83783da72b701eb446a4357ed017b51903a'
-                    '3e8624602d5d37ff8ae4eb0dd8f6813f4573460f69ec3d8e21ca404979b8448109197cefa239302627eddfab277a347f842f81c0f1ea7c9f9de2dd7c1b847527')
-fi
+depends_x86_64+=('gcc-libs-multilib')
+source_x86_64+=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux64.zip" "rainbowcrack.desktop")
+sha512sums_i686=('0fc163c4a8a875149b479d74fbabbfbb5247b9e621e5362a27a8fb6d5dd64263ce89213b5f5a578ce09018cb2c93f2af51eae954e19fd448c490bcd0524612dd'
+                 '3082d1952f321a3e07a938f2abd2fb1acea536ceecd8d494406bbcda2810be62ca226d924887fd70a37db19425b33c626cbaffc506e428d1770f77c13fd12558')
+sha512sums_x86_64=('6fd5a0356b76ed5e8062888aeb26755588d11aa5dab7fbb54ea92dbeac02e606b082e00b93a44203c158ee620d61c0f9051ecf62b60d8a83c4fca852af22144d'
+                   '3082d1952f321a3e07a938f2abd2fb1acea536ceecd8d494406bbcda2810be62ca226d924887fd70a37db19425b33c626cbaffc506e428d1770f77c13fd12558')
+depends_i686+=('gcc-libs')
+source_i686+=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux32.zip" "rainbowcrack.desktop")
 
 package() {
   if [[ $CARCH == 'x86_64' ]]; then
