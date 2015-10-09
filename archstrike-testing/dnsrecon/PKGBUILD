@@ -3,47 +3,40 @@
 buildarch=1
 
 pkgname=dnsrecon
-pkgver=0.8.8
-pkgrel=7
+pkgver=0.8.9
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
-pkgdesc="Python script for enumeration of hosts, subdomains and emails from a given domain using google."
-url="https://github.com/darkoperator/dnsrecon"
+pkgdesc='DNS Enumeration Script '
+url='https://github.com/darkoperator/dnsrecon'
 license=('GPL2')
 arch=('any')
 depends=('python2-netaddr' 'python2-dnspython')
-makedepends=('git')
-source=("git+https://github.com/darkoperator/dnsrecon")
+source=("https://github.com/darkoperator/$pkgname/archive/v$pkgver.tar.gz")
 sha512sums=('SKIP')
 
-pkgver() {
-  cd "${srcdir}/${pkgname}"
+prepare() {
+  cd $pkgname-$pkgver
 
-  # We have to get the version number from the README file. It's better than nothing.
-  grep -m1 'Version ' README.md | sed 's/.* //'
+  while read -r; do
+      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
 }
 
 package() {
-  cd "${srcdir}"
+  cd $pkgname-$pkgver
 
-  install -dm755 "${pkgdir}/usr/share"
-  install -dm755 "${pkgdir}/usr/share/licenses"
-  install -dm755 "${pkgdir}/usr/bin"
+  # create required directories
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
 
-  cp -a * "${pkgdir}/usr/share/${pkgname}"
+  # copy package files to the shared folder
+  cp -r --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+  cp -r --no-preserve=ownership .idea "$pkgdir/usr/share/$pkgname/"
 
-  # extract license from source file
-  sed '1,3d;/^$/q' "${pkgname}/${pkgname}.py" | cut -d'#' -f2 > "${pkgdir}/usr/share/licenses/${pkgname}"
-
-cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
-#!/bin/sh
-cd /usr/share/${pkgname}
-python2 ${pkgname}.py "\$@"
-EOF
-  chmod +x "${pkgdir}/usr/bin/${pkgname}"
-  rm -rf "${pkgdir}"/usr/share/${pkgname}/.git
-  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-   -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-   -e "s|#![ ]*/bin/python$|#!/usr/bin/python2|" \
-   -e "s|#![ ]*/usr/local/bin/python$|#!/usr/bin/python2|" \
-   $(find ${pkgdir} -name '*.py')
+  printf '%s\n\n%s\n%s\n' \
+    '#!/usr/bin/env bash' \
+    'cd /usr/share/dnsrecon' \
+    'python2 dnsrecon.py "$@"' \
+       > "$pkgdir/usr/bin/$pkgname"
+  chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
