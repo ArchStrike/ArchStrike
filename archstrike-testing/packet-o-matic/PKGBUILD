@@ -12,6 +12,7 @@ url='http://www.packet-o-matic.org/'
 license=('GPL')
 groups=('archstrike' 'archstrike-networking' 'archstrike-tunnel')
 depends=('libpcap' 'libjpeg-turbo' 'libmicrohttpd' 'postgresql-libs' 'file' 'sqlite' 'lua51' 'libexif' 'xmlrpc-c')
+makedepends=('uthash')
 source=("https://github.com/gmsoft-tuxicoman/pom-ng/archive/v$pkgver.tar.gz")
 sha512sums=('446471405c59210ac4839fc8f6ec8ab23a07a9176c40fc55a274ebfe8c68f3e905aa67bceecc0ed16895dfd01bca2b9f6e0023e6bc1685fd1c0a98a929479ec9')
 
