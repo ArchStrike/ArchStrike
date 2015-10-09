@@ -12,7 +12,7 @@ license=('GPL2')
 arch=('any')
 depends=('python2-netaddr' 'python2-dnspython')
 source=("https://github.com/darkoperator/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('SKIP')
+sha512sums=('f014500e3950c001e0fe79782ff37f82ef562aec9475a7287dc2461bf53297eaf277d7395efb84a34e239e4517d6cc407d4846d1e988d79649ac376fa09572ef')
 
 prepare() {
   cd $pkgname-$pkgver
