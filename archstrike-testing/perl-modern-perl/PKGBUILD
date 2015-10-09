@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=(http://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-$pkgver.tar.gz)
-md5sums=('729cab81b61576e2b62850117397ff48')
+sha512sums=('fe10097531b0ef4983bb13f9ad840d9fe1f5fc92f8195408086fc9ee352cf08c5589cb2aedd56374225016175eb0d4ceeb68e6b88aaf65f5cb8fbcdcd89f28e1')
 
 build() {
   cd "$srcdir/Modern-Perl-$pkgver"
@@ -20,6 +20,10 @@ build() {
   # for packages with Build.PL, do this instead:
    perl Build.PL installdirs=vendor destdir="$pkgdir/"
    perl Build
+}
+
+package() {
+   cd "$srcdir/Modern-Perl-$pkgver"
    perl Build install
 
   # remove perllocal.pod and .packlist
