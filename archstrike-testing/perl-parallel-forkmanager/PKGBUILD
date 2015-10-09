@@ -3,9 +3,9 @@
 buildarch=1
 
 pkgname='perl-parallel-forkmanager'
-_lastauthor='S/SZ/SZABGAB'
+_lastauthor='Y/YA/YANICK'
 _pkgname='Parallel-ForkManager'
-pkgver=1.07
+pkgver=1.16
 pkgrel=1
 pkgdesc='A simple parallel processing fork manager.'
 arch=('any')
@@ -14,7 +14,7 @@ options=('!emptydirs')
 makedepends=('perl-extutils-makemaker')
 url="http://search.cpan.org/dist/${_pkgname}/"
 source=("http://search.cpan.org/CPAN/authors/id/${_lastauthor}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('535b50f03fc9ba01d5337b129eaa7b93affdb40c47f246a057dc8345323ebdc48d376d302bd2c4c478f419c2bd13f6a88de7244c3745a1fe8a2972dc2add84ca')
+sha512sums=('67d166a4967186e34142ee98d0284a507688d101e718b67bf2fc285f718f54be86d7d0e910bb7a404d62d47e3a4fca03ede00fe6e9d3d6fc28a530398277cfe4')
 
 prepare() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
