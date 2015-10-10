@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=libdaq-static
-pkgver=2.0.4
+pkgver=2.0.6
 pkgrel=1
 pkgdesc='Data Acquisition library for packet I/O.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,8 +14,9 @@ makedepends=('ca-certificates')
 options=('staticlibs' '!makeflags')
 provides=('libdaq')
 conflicts=('libdaq')
+install="$pkgname.install"
 source=("http://www.snort.org/downloads/snort/daq-${pkgver}.tar.gz")
-sha512sums=('b284ece7dec9e246f14d162d3a7e87582d490c0f6ff895279f66dfad406b7892f5b286ac86633f30aa090b6a89f1fc77ff637323a3add16c67f695bd8486a0a0')
+sha512sums=('65d779651e6b193309159113f620dc843be4b5e142455a3b530b88ce7ca12c318935affa45f54e56427c9d5eb1239a47dc7a323325ccb394d1a888619c580f9e')
 
 build() {
   cd "${srcdir}/daq-${pkgver}"
