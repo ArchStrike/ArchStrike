@@ -2,8 +2,8 @@
 
 buildarch=1
 
-pkgname=plaso-git
-pkgver=20150526.r983
+pkgname=plaso
+pkgver=1.3.0
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A Python-based backend engine for the tool log2timeline."
@@ -15,19 +15,19 @@ depends=('python2-six' 'python2-psutil' 'python2-dpkt' 'python2-dateutil' 'binpl
          'liblnk' 'libmsiecf' 'libolecf' 'libqcow' 'libregf' 'libsmdev' 'libsmraw' 'libvhdi' 'libvmdk' 'libvshadow')
 makedepends=('git' 'python2-setuptools')
 provides=('plaso' 'log2timeline')
-source=("${pkgname}::git+https://github.com/log2timeline/plaso.git")
-sha512sums=('SKIP')
+source=("https://github.com/log2timeline/plaso/archive/$pkgver.tar.gz")
+sha512sums=('e18a7462b33f7acd0edd27588d6eb3d7ca5a279abecd939604653dd7f95cf32749e59fb17eefbbf8aaf29b0601fcf85703202cc331255609054cf0d8416a22e7')
 
 prepare(){
   grep -iRl 'python' "$pkgname" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 pkgver() {
-    cd "${pkgname}"
+    cd "${pkgname}-${pkgver}"
     printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}-${pkgver}"
   python2 setup.py install --root=$pkgdir --optimize=1
 }
