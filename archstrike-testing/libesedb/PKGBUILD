@@ -3,16 +3,17 @@
 buildarch=212
 
 pkgname="libesedb"
-pkgver="20141110"
+pkgver="20150409"
 pkgrel=1
 pkgdesc="Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format."
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libesedb'
 license=('GPL3')
 depends=('libcsystem' 'libbfio' 'python2')
+install="$pkgname.install"
 makedepends=('git')
 source=("https://github.com/libyal/libesedb/archive/$pkgver.tar.gz")
-sha512sums=('d9b17bbb40f659cb3e008c42f3fe13213632a7c014611e2102835896d6ea35e08c79234a959c7c1845c560854ae7917d26fdfcbf24df03b7d8a618809bd75d7c')
+sha512sums=('bb3819280798dba6ae1a0aa4571594d8e5f23f1e5218a648d8bdec3768cc1a27d73b6d3e462f1a9d8b29ac25d012661daf159700d03318f09642c3fa1d6a1ec5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
