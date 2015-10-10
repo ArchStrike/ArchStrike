@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=libolecf
-pkgver=20150106
+pkgver=20150630
 pkgrel=1
 pkgdesc="Library and tools to access the OLE 2 Compound File (OLECF) format"
 url="https://github.com/libyal/libolecf"
@@ -11,7 +11,7 @@ license=('LGPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('fuse' 'python2' 'libcsystem' 'libbfio')
 source=(https://github.com/libyal/libolecf/releases/download/$pkgver/libolecf-alpha-$pkgver.tar.gz)
-sha512sums=('3f5f917ed383a6662e65bd457370221e14bc2a47c2c3c7b96141eab42a6cd70a2d92587524db0fda8df9be426e3195e630d25e6016e5c6c1c39dd213da32522f')
+sha512sums=('1c7cbde40692ad37d80e0acffbe88861b9fd105ffb2f832b281828d57cbdbcf0261609852d0a9acad2fee6a38fd8f670bb0ce6a128d20667fcda54f80562e5b3')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
