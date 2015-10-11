@@ -2,22 +2,24 @@
 
 buildarch=1
 
-pkgname=pyew
-pkgver=2.3.0.0.17bb704fc6d5a.
+pkgname=pyew-git
+pkgver=20140827.r100
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="a (command line) python tool to analyse malware."
 arch=('any')
-url="https://code.google.com/p/${pkgname}"
+url="https://github.com/joxeankoret/pyew"
 license=('GPL2')
 depends=('distorm')
-makedepends=('mercurial')
-source=("pyew::hg+https://code.google.com/p/pyew/")
+makedepends=('git')
+conflicts=('pyew')
+provides=('pyew')
+source=("${pkgname}::git+https://github.com/joxeankoret/pyew.git")
 sha512sums=('SKIP')
 
-pkgver(){
-    cd $pkgname
-    printf %s.%s $(grep -e ^HUMAN_VERSION= pyew.py | sed 's|HUMAN_VERSION="||;s|"$||') $(hg identify | sed 's|\ .*||')
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci VERSION_3X | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
@@ -31,7 +33,7 @@ prepare(){
 package(){
     cd $pkgname
 
-    install -Dm755 ${pkgname} "${pkgdir}"/usr/share/${pkgname}/${pkgname}
+    install -Dm755 pyew "${pkgdir}"/usr/share/${pkgname}/pyew
     for i in *.py; do
         install -Dm755 $i "${pkgdir}"/usr/share/${pkgname}/${i}
     done
@@ -44,6 +46,6 @@ package(){
     install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 
     install -dm755 "${pkgdir}"/usr/bin
-    echo -e '#!/usr/bin/env bash\n\ncd /usr/share/pyew/\n./pyew.py "$@"' > "${pkgdir}/usr/bin/${pkgname}"
-    chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+    echo -e '#!/usr/bin/env bash\n\ncd /usr/share/pyew/\n./pyew.py "$@"' > "${pkgdir}/usr/bin/pyew"
+    chmod 755 "${pkgdir}/usr/bin/pyew"
 }
