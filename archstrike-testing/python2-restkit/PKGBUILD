@@ -21,7 +21,7 @@ prepare() {
         cd $srcdir/restkit-$pkgver
         # Install doc at the proper location
         patch -p1 < "$srcdir/doc.patch"
-        cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
+        cp -a "${srcdir}/reskit-${pkgver}"{,-python2}
 }
 
 build() {
@@ -33,7 +33,7 @@ build() {
 
 package_python-restkit() {
        depends=('python-http-parser' 'python-socketpool')
-       cd "${srcdir}/${_module}-${pkgver}"
+       cd "${srcdir}/restkit-${pkgver}"
        # Remove tests directory (conflicts with other python packages)
        rm -rf tests
        python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
