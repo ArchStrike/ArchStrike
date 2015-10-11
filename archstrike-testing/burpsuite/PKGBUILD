@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=burpsuite
-pkgver=1.6
+pkgver=1.6.28
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers' 'archstrike-proxy')
 pkgdesc="An integrated platform for attacking web applications (free edition)."
 url='http://portswigger.net/burp/'
-depends=('java-environment' 'giflib' 'bash')
+depends=('java-environment' 'bash')
 arch=('any')
 license=('custom')
 noextract=("burpsuite.jar")
-source=("burpsuite.jar::http://portswigger.net/burp/burpsuite_free_v${pkgver}.jar" LICENSE)
-sha512sums=('d453c40680ac4f9bfd5443139f2e046e156285987bc2ee0daa65c3377cecbc63d902f660a79ab3c7b1e6a0deb3d8128efd3ff547eb3222522c2e468cc9ff2fcd'
+source=("burpsuite.jar::https://portswigger.net/DownloadUpdate.ashx?Product=Free" LICENSE)
+sha512sums=('5fb04c4b8fce97c6fa8a00422d0f35a5cddd65e36e2c4e43468d82ac42fbd00df7009f49c9d0e28f870e12a5525ee3febd900108cc004079a6ec5f9454509abd'
             '37abc24b19571bfd2941e3dd7aa8a8a330bd3bbbafb3d1f813035ab0313e189c1f4a43a68f820a32656b86dd29cca94afcaefc6a4bfb4219ef18dc0fc4923b86')
 
 package() {
