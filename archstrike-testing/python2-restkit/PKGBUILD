@@ -2,33 +2,54 @@
 
 buildarch=1
 
-pkgname=python2-restkit
+pkgname=("python2-restkit" "python-restkit")
 pkgver=4.2.2
 pkgrel=2
 pkgdesc="Restkit is an HTTP resource kit for Python. It allows you to easily access to HTTP resource and build objects around it."
 arch=('any')
 url="http://benoitc.github.com/restkit/index.html"
 license=('MIT')
-depends=('python-http-parser' 'python2-socketpool')
-makedepends=('python-setuptools')
-conflicts=('python-restkit' 'restkit-git' 'python2-restkit-git')
+depends=('python2-http-parser' 'python2-socketpool')
+makedepends=('python-setuptools' 'python2-setuptools')
 options=(!emptydirs)
 source=("http://pypi.python.org/packages/source/r/restkit/restkit-$pkgver.tar.gz"
   "doc.patch")
 sha512sums=('5ed08535e1a54b5594d97b059d8662ab4bc19c68e71a30719c4a533cba0f2d0e18872119752c62136563a32281e8f747414fbf843fd97dba138107ffcb5d1e4b'
             'c540f8155523813611fdb11a6dd09b1936969c9dd3fda1c1ced9c84260b21446617dfb755d1c64fb1a6aad0040b01ce14a8ef9e80fe0ab586dcce5f45f0594d6')
 
-package() {
-  cd "$srcdir/restkit-$pkgver"
+prepare() {
+        cd $srcdir/restkit-$pkgver
+        # Install doc at the proper location
+        patch -p1 < "$srcdir/doc.patch"
+        cp -a "${srcdir}/${_module}-${pkgver}"{,-python2}
+}
 
-  # Install doc at the proper location
-  patch -p1 < "$srcdir/doc.patch"
+build() {
+        cd "${srcdir}/${_module}-${pkgver}"
+        python setup.py build
+        cd "${srcdir}/${_module}-${pkgver}-python2"
+        python2 setup.py build
+}
+
+package_python-restkit() {
+       depends=('python-http-parser' 'python-socketpool')
+       cd "${srcdir}/${_module}-${pkgver}"
+       # Remove tests directory (conflicts with other python packages)
+       rm -rf tests
+       python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+       install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+}
+
+
+
+package_python2-restkit() {
+  depends=('python2-http-parser' 'python2-socketpool')
+  cd "$srcdir/restkit-$pkgver"
 
   # Remove tests directory (conflicts with other python packages)
   rm -rf tests
-
-  python2 setup.py install --prefix=/usr --root=$pkgdir/ --optimize=1
-
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python2 setup.py install --prefix=/usr --root=$pkgdir/ --optimize=1 --skip-build
 }
 
 # vim:set ts=2 sw=2 et:
