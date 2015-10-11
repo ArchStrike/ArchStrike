@@ -11,10 +11,10 @@ url='http://sourceforge.net/projects/whisker/'
 license=('BSD')
 depends=('perl>=5.10.0' 'perl-net-ssleay')
 options=('!emptydirs')
-source=("http://hivelocity.dl.sourceforge.net/project/whisker/libwhisker/$pkgver/libwhisker2-$pkgver.tar.gz"
+source=("http://downloads.sourceforge.net/project/whisker/libwhisker/$pkgver/libwhisker2-$pkgver.tar.gz"
         'Makefiles.patch')
-sha1sums=('e5810210ed6adefadac028700d3e18b451215b3b'
-          'e0593a0e032a07b0304da25ac04dd62309a556d5')
+sha512sums=('ea3cfa7658048b23d4fd773db9ee7fde32758096cf7491d309390247648b7635952d734a0918f53109de37cdd87b675843320539db727fd107e81647b13bce10'
+            '8c2ef217e1caf9f18c5db12030b08fce3051a301e7d75ab4cb4a420806c273ee2982e0100b2373fc24e048fa7afa7651646589ee47016bf0ea07ae50dd867264')
 
 build() {
   cd "$srcdir/libwhisker2-$pkgver"
