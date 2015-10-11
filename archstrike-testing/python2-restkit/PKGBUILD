@@ -22,7 +22,7 @@ prepare() {
         # Install doc at the proper location
         patch -p1 < "$srcdir/doc.patch"
         cd ${srcdir}
-        cp -a "reskit-${pkgver}"{,-python2}
+        cp -a "restkit-${pkgver}"{,-python2}
 }
 
 build() {
