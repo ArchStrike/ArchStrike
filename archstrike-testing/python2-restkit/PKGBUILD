@@ -22,13 +22,13 @@ prepare() {
         # Install doc at the proper location
         patch -p1 < "$srcdir/doc.patch"
         cd ${srcdir}
-        cp -a "${srcdir}/reskit-${pkgver}"{,-python2}
+        cp -a "reskit-${pkgver}"{,-python2}
 }
 
 build() {
-        cd "${srcdir}/${_module}-${pkgver}"
+        cd "${srcdir}/restkit-${pkgver}"
         python setup.py build
-        cd "${srcdir}/${_module}-${pkgver}-python2"
+        cd "${srcdir}/restkit-${pkgver}-python2"
         python2 setup.py build
 }
 
@@ -45,8 +45,7 @@ package_python-restkit() {
 
 package_python2-restkit() {
   depends=('python2-http-parser' 'python2-socketpool')
-  cd "$srcdir/restkit-$pkgver"
-
+  cd "$srcdir/restkit-$pkgver-python2"
   # Remove tests directory (conflicts with other python packages)
   rm -rf tests
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
