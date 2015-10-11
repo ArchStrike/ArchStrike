@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=perl-net-ssh-perl
-pkgver=1.37
+pkgver=1.42
 pkgrel=1
 pkgdesc="Perl client interface to SSH"
 arch=('any')
@@ -15,9 +15,9 @@ depends=('perl-convert-pem>=0.05' 'perl-crypt-dh>=0.01' 'perl-crypt-dsa>=0.11'
          'perl-digest-sha1>=2.10' 'perl-math-gmp>=1.04'
          'perl-string-crc32>=1.2')
 url='http://search.cpan.org/dist/Net-SSH-Perl'
-source=('http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/Net-SSH-Perl-1.35.tar.gz')
-sha512sums=('5b934b63111ea23fa62228192482d84811fbe6be80701b5a67a486ae84795f5bc031ceb0e7b31f1bc1b031aaf26f5f90d6bab1fdd355949de2d5f423041dd06d')
-_distdir="Net-SSH-Perl-1.35"
+source=("http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/Net-SSH-Perl-$pkgver.tar.gz")
+sha512sums=('67275e99890948376c7f6feb5be1979f45b5fda2afe440108b3819db192fd41b43e9ee94e7e643671384b37972842f40ce3519cbeef98b6ee796a68e4bfe20dd')
+_distdir="Net-SSH-Perl-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
