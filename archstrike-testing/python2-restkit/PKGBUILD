@@ -21,6 +21,7 @@ prepare() {
         cd $srcdir/restkit-$pkgver
         # Install doc at the proper location
         patch -p1 < "$srcdir/doc.patch"
+        cd ${srcdir}
         cp -a "${srcdir}/reskit-${pkgver}"{,-python2}
 }
 
