@@ -13,8 +13,8 @@ license=('APACHE')
 depends=('python2-six' 'python2-psutil' 'python2-dpkt' 'python2-dateutil' 'binplist' 'python2-bencode' 'python2-pyparsing' 'python2-pytz' 'python2-protobuf' 'python2-hachoir-core'
          'python2-hachoir-metadata' 'python2-hachoir-parser' 'dfvfs' 'sqlite3' 'python2-yaml' 'sleuthkit-archstrike' 'ipython2' 'pytsk' 'libbde' 'libesedb' 'libevt' 'libevtx' 'libewf' 'libfwsi'
          'liblnk' 'libmsiecf' 'libolecf' 'libqcow' 'libregf' 'libsmdev' 'libsmraw' 'libvhdi' 'libvmdk' 'libvshadow')
-makedepends=('git' 'python2-setuptools')
-provides=('plaso' 'log2timeline')
+makedepends=('python2-setuptools')
+provides=('log2timeline')
 source=("https://github.com/log2timeline/plaso/archive/$pkgver.tar.gz")
 sha512sums=('e18a7462b33f7acd0edd27588d6eb3d7ca5a279abecd939604653dd7f95cf32749e59fb17eefbbf8aaf29b0601fcf85703202cc331255609054cf0d8416a22e7')
 
