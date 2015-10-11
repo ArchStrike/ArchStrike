@@ -3,17 +3,29 @@
 buildarch=212
 
 pkgname=pymssql
-pkgver=2.0.0b1_dev_20111019
-pkgrel=3
+pkgver=2.1.1
+pkgrel=1
 pkgdesc="A fast MS SQL Server client library for Python directly using C API instead of ODBC. It is Python DB-API 2.0 compliant. Works on Linux, *BSD, Solaris, Mac OS X and Windows"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://code.google.com/p/pymssql/"
+url="http://pymssql.org/en/latest/"
 license=('LGPL')
 depends=('python2>=2.5' 'cython2>=0.13' 'freetds>=0.82')
-source=("http://pymssql.googlecode.com/files/pymssql-${pkgver//_/-}.tar.gz")
-md5sums=('3da2dce8231f77591746671c757b5ac4')
+makedepends=('python2-setuptools')
+source=("https://github.com/pymssql/pymssql/archive/v$pkgver.tar.gz")
+sha512sums=('3218e7ad1fa11e127a85b1b49ccd3de82840422f4dd5c9fdd555f07ea6759483c24887ae65c7f0dc75ead14bcb1d556add4b41e54e95381806dbfa1abb434457')
+
+prepare(){
+  cd "$srcdir/pymssql-${pkgver}"
+  sed -i 's|/usr/local|/usr/|' setup.py
+}
+
+
+build(){
+  cd "$srcdir/pymssql-${pkgver}"
+  python2 setup.py build
+}
 
 package() {
-  cd "$srcdir/pymssql-${pkgver//_/-}"
+  cd "$srcdir/pymssql-${pkgver}"
   python2 setup.py install --root="$pkgdir" --optimize=1
 }
