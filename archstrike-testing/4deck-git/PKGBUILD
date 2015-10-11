@@ -2,7 +2,7 @@
 
 buildarch=20
 
-pkgname=4deck
+pkgname=4deck-git
 pkgver=0.1
 groups=('archstrike' 'archstrike-drone' 'archstrike-meta')
 pkgrel=3
@@ -11,8 +11,14 @@ arch=('armv6h' 'armv7h')
 url="https://github.com/adminempire/${pkgname}/"
 license=('CCPL')
 depends=('bash')
+makedepends("git")
 source=("4deck::git+https://github.com/adminempire/${pkgname}.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
 
 package() {
     cd ${pkgname}/code
