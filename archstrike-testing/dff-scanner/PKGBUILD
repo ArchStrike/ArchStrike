@@ -7,16 +7,16 @@ pkgver=1.1
 pkgrel=1
 pkgdesc='Tool for finding path of predictable resource locations.'
 arch=('any')
-url='http://netsec.rs/70/tools.html'
-license=('custom')
+url='http://security-net.biz/70/tools.html'
+license=('gpl3')
 depends=('php')
 groups=('archstrike' 'archstrike-webapps')
-source=("http://netsec.rs/UserFiles/File/DFF.zip")
-md5sums=('abdc4c5680b3935b4f290be331530858')
+source=("http://security-net.biz/files/dff/DFF.zip")
+sha512sums=('34d5298e3d32f1562982a6706bb56969319790822d9fa2a1f32e158a6da3ce3f07f4aee7b6440852e42b114a243d318cc11f727c879adf163a4ca81124e0c301')
 
 package() {
   cd "$srcdir/DFF"
-
-  mkdir -p $pkgdir/usr/share/dff-scanner/
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -dm755 $pkgdir/usr/share/dff-scanner/
   cp -r * $pkgdir/usr/share/dff-scanner/
 }
