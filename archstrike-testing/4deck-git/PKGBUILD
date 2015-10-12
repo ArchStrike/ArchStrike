@@ -12,7 +12,7 @@ url="https://github.com/adminempire/${pkgname}/"
 license=('CCPL')
 depends=('bash')
 makedepends=("git")
-source=("4deck::git+https://github.com/adminempire/${pkgname}.git")
+source=("${pkgname}::git+https://github.com/adminempire/4deck.git")
 sha512sums=('SKIP')
 
 pkgver() {
