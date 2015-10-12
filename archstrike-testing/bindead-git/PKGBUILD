@@ -36,7 +36,7 @@ package() {
   cd $_pkgname
   # Documentation
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-  install -Dm644 Changelog.md "$pkgdir/usr/share/doc/$_pkgname/Changelog.md"
+  install -Dm644 CHANGELOG.md "$pkgdir/usr/share/doc/$_pkgname/CHANGELOG.md"
   install -Dm644 AUTHORS.txt "$pkgdir/usr/share/doc/$_pkgname/AUTHORS.txt"
 
   # Jar file and executable script
