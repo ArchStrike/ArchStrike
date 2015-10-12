@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=blindelephant
+pkgname=blindelephant-svn
 pkgver=7
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fingerprinting')
@@ -11,6 +11,7 @@ url='http://blindelephant.sourceforge.net/'
 arch=('any')
 makedepends=('svn' 'python2-setuptools')
 depends=('python2')
+provides=("blindelephant")
 license=(LGPL)
 source=("svn+https://blindelephant.svn.sourceforge.net/svnroot/blindelephant/trunk")
 md5sums=('SKIP')
