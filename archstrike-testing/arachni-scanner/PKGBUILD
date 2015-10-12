@@ -11,9 +11,9 @@ arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('Apache2')
 url="https://www.arachni-scanner.com"
 if [[ "${CARCH}" = 'x86_64' ]] ; then
-  depends=('ruby' 'ruby-bundler' 'lib32-libxslt' 'archstrike-artwork')
+  depends=('ruby' 'ruby-bundler' 'lib32-libxslt')
 else
-  depends=('ruby' 'ruby-bundler' 'libxslt' 'archstrike-artwork')
+  depends=('ruby' 'ruby-bundler' 'libxslt')
 fi
 replaces=('arachni')
 conflicts=('arachni')
