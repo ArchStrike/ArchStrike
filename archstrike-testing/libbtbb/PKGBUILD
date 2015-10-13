@@ -4,16 +4,16 @@
 buildarch=212
 
 pkgname=libbtbb
-pkgver=2014.02.R2
-pkgrel=5
+pkgver=2015.10.R1
+pkgrel=1
 pkgdesc="A library to decode Bluetooth baseband packets, as produced by the Ubertooth and GR-Bluetooth projects."
 url="https://greatscottgadgets.com/ubertoothone"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
-depends=('glibc' 'python')
+depends=('libpcap' 'python')
 makedepends=('cmake' 'libpcap')
-source=("https://github.com/greatscottgadgets/libbtbb/archive/2014-02-R2.tar.gz")
-sha512sums=('4696f043061b15455be6c6aab8b4b1ee3823cb736014237eadbf60fca0ae54457aab160b23a1a067192b8c811d363586ac7f4b45cfa55e54f6fac24967dccfd2')
+source=("https://github.com/greatscottgadgets/libbtbb/archive/2015-10-R1.tar.gz")
+sha512sums=('550d793326cfb4d31ed00d46faf3521ccafc133614f866961ba6226dff41d3deda428b45f01178e0dea7925635a64e843f0510049408c3f299ad427f2c0832ac')
 
 prepare() {
   mkdir "$srcdir/libbtbb-${pkgver//./-}/build"
