@@ -4,24 +4,21 @@
 buildarch=212
 
 pkgname=libemu
-pkgver=r571.ab48695
+_pkgver="0.2.0+git20120122+564"
+pkgver=20120122
 pkgrel=1
 pkgdesc="A small library written in c offering basic x86 emulation and shellcode detection"
 url="http://libemu.carnivore.it/"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+install=${pkgname}.install
 depends=('glibc')
-makedepends=('git')
-source=("libemu::git://git.carnivore.it/libemu.git")
-sha512sums=('SKIP')
+source=("http://http.debian.net/debian/pool/main/libe/libemu/libemu_0.2.0+git20120122.orig.tar.gz")
+sha512sums=('3e0f22c9d3aa215efc7aed148b77d891618fe43d0f0ce9f837fea7add7f2f57a47f12875d065b006a72a8d35299f155886e028983c4ff0c849f29569f5a5d042')
 
-pkgver() {
-  cd "$srcdir/$pkgname"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
 
 build() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-${_pkgver}"
 
   sed -i s/AM_CONFIG_HEADER/AC_CONFIG_HEADERS/g ./configure.ac
   autoreconf -i
@@ -29,7 +26,7 @@ build() {
   make
 }
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname-${_pkgver}"
   make DESTDIR=$pkgdir install
 }
 
