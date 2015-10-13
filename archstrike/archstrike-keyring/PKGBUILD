@@ -2,10 +2,11 @@
 
 pkgname=archstrike-keyring
 pkgver=20150826
-pkgrel=2
+pkgrel=3
 pkgdesc='ArchStrike PGP keyring'
 url='https://archstrike.org'
 license=('GPL3')
+groups=('archstrike')
 arch=('any')
 depends=('gnupg')
 makedepends=('git')
