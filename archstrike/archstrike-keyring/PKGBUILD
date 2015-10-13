@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
+noautobuild=1
+
 pkgname=archstrike-keyring
 pkgver=20150826
 pkgrel=3
