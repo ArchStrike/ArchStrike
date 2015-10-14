@@ -3,14 +3,14 @@
 buildarch=212
 
 pkgname=snort
-pkgver=2.9.7.0
+pkgver=2.9.7.6
 pkgrel=1
 pkgdesc="A lightweight network intrusion detection system."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.snort.org'
 license=('GPL')
 groups=('archstrike' 'archstrike-networking' 'archstrike-scanners' 'archstrike-autonomous')
-depends=('libpcap' 'libdaq-static' 'pcre' 'libdnet' 'libutil-linux' 'openssl')
+depends=('xz' 'libdaq-static' 'pcre' 'libdnet' 'libutil-linux' 'openssl')
 makedepends=('ca-certificates' 'tcpdump' 'bison' 'flex')
 backup=('etc/conf.d/snort'
     'etc/snort/snort.conf'
@@ -31,12 +31,12 @@ source=("http://www.snort.org/downloads/snort/snort-${pkgver}.tar.gz"
     'local.rules'
     'white_list.rules'
     'black_list.rules')
-sha512sums=('f2cbdd2cf2ad15bd4cf3f8658c2a4880ee2069589db89c11aaea637984dde270ef6242c6dd43d5e12f829ed2464388950ee791dbbfa8df796843942c415fbc2f'
-            '446d99123889b23c38fd9cdac1471968398ea996a8fa76906c149ef9bb2e528867f5f161c62d09194e51405cceac0a526753131d4ddec3ecfb8494cb2cd67d53'
+sha512sums=('4459b920ddc1f885ad5fd3a576533d05f03dc2dd59e2a7f65473e8328a5f494e53f9a2bcd728376d14409b9eef9fb69d2c223e469ee2de63e17df0d3c50541db'
+            '6f882da312fe5138b32192d7f3d7f56a614e1782688e5e8a132950e25f40ce844a67dfcae766365459d4244fc151a87310a4a109b730313b460e664e29cd59ab'
             '96d3a27752c60cec9b188cdc358f3a38c0f6f0a179e16f3778abaf6385cc82169cdf0b41ea9bf39cfa64455e6ca5e484c2d952c72ced0901512b4750343ec5d9'
             '08341de9f302622b40917914e5e67c0f79c1800c463be7675bb019a3c033c3302a1be522ffd7a5b4759211f962ce4557557ea2653c4c89843dbd33b95a2e2e35'
             '8cd77b2046e5efd069aa4e236caa701391b2e3a91eac2e4ba21a60157c6f7b618d6552b831d5a4f7a2ba77612cf203ba7da1b672dade19c3396594e29aa7706f'
-            '35cf16f21fc9553ba36493190395ae0786d9e7380f37e9cae4265483041166dc9c78ebe04c87db43c86deb9fb1c812139dbc6fc62f290a7cae492100022d135d'
+            '84ca023e34fc3f1631c9bf68c0c6404dda45babd8bc41a23d35cee37422e39141ec3ee9c12259b689a07dc828561b63665da32b5230d823b30b34ca36aa0ba0d'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e'
             'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
