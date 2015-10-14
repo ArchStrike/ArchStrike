@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=$_pkgname-git
 pkgver=20151005.r2087
-pkgrel=2
+pkgrel=3
 pkgdesc='I2P router written in C++'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/PrivacySolutions/i2pd"
@@ -35,7 +35,7 @@ pkgver() {
 build() {
   cd $_pkgname/build
   if [[ $CARCH == "x86_64" ]] || [[ $CARCH == "i686" ]]; then
-     cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release"  -DWITH_HARDENING="on" \
+     cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="/usr/lib" -DCMAKE_BUILD_TYPE="Release"  -DWITH_HARDENING="on" \
      -DWITH_AESNI="on" -DWITH_UPNP="on" -DWITH_OPTIMIZE="on"  ..
   else
      cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release"  -DWITH_HARDENING="on" \
