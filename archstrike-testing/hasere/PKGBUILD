@@ -32,7 +32,6 @@ package() {
   install -Dm755 hasere.py "$pkgdir/usr/share/$pkgname"
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 
-
 cat > "$pkgdir/usr/bin/hasere" << EOF
 #!/bin/sh
 cd /usr/share/hasere

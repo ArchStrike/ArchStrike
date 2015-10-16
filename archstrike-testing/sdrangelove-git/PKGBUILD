@@ -30,7 +30,6 @@ build(){
   make
 }
 
-
 package() {
   cd "${pkgname}/build"
   install -Dm755 libsdrbase.so "$pkgdir/usr/lib/libsdrbase.so"

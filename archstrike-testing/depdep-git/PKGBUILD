@@ -31,7 +31,6 @@ package() {
   install -Dm755 depdep.py "$pkgdir/usr/share/$pkgname"
   install -Dm644 $srcdir/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname"
 
-
 cat > "$pkgdir/usr/bin/depdep" << EOF
 #!/bin/sh
 cd /usr/share/depdep

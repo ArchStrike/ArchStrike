@@ -50,5 +50,4 @@ package() {
 
   install -Dm755 $srcdir/sshuttle/sshuttle $pkgdir/usr/bin/sshuttle
 
-
 }

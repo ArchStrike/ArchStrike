@@ -1,6 +1,5 @@
 # Maintainer: ArchStrike <archstrikelinux@gmail.com>
 
-
 buildarch=128
 
 pkgname=princeprocessor

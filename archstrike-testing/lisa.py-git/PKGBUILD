@@ -33,7 +33,6 @@ package() {
   # Fixing python version
   sed -i 's|/usr/bin/env python|/usr/bin/env python2|' "$pkgdir/usr/share/$pkgname/lisa.py"
 
-
 cat > "$pkgdir/usr/share/$pkgname/lldbinit" <<EOF
 settings set prompt "(lisa)"
 settings set target.x86-disassembly-flavor intel

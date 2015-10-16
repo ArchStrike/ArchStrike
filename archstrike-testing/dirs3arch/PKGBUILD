@@ -27,7 +27,6 @@ package() {
   install -Dm755 default.conf "$pkgdir/usr/share/$pkgname"
   install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-
 cat > "$pkgdir/usr/bin/dirs3arch" << EOF
 #!/bin/sh
 cd /usr/share/dirs3arch

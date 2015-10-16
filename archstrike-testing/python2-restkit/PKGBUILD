@@ -41,8 +41,6 @@ package_python-restkit() {
        install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
 }
 
-
-
 package_python2-restkit() {
   depends=('python2-http-parser' 'python2-socketpool')
   cd "$srcdir/restkit-$pkgver-python2"

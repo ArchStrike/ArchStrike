@@ -35,7 +35,6 @@ package() {
         #lib
         install -Dm755 alglib0.so "$pkgdir/usr/lib/alglib0.so"
 
-
         # license
         install -Dm644 readme.txt "$pkgdir/usr/share/licenses/rainbowcrack/LICENSE"
 

@@ -38,7 +38,6 @@ package() {
   #License
   install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
 
-
   #Bin
   install -Dm755 wifijammer.py "$pkgdir/usr/bin/wifijammer"
 

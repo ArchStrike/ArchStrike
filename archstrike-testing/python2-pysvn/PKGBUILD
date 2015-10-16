@@ -23,7 +23,6 @@ prepare(){
  patch -p1 -i $srcdir/svn1.9.patch
 }
 
-
 build() {
   cd $srcdir/pysvn-$pkgver/Source
   python2 setup.py configure --norpath

@@ -27,7 +27,6 @@ prepare(){
   #patch CMakeLists.txt < $srcdir/usb_dfu.patch
 }
 
-
 build() {
   cd "$srcdir/ubertooth-${pkgver//./-}/host"
   mkdir build && cd build

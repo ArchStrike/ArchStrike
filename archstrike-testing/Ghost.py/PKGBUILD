@@ -1,4 +1,7 @@
 # Maintainer: ArchAssault <team archassault org>
+
+buildarch=1
+
 pkgname=ghost.py
 _uc_pkg=Ghost.py
 pkgver=0.2.3

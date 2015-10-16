@@ -37,7 +37,6 @@ package() {
   cp -a --no-preserve=ownership * "${pkgdir}"/usr/share/"${pkgname}"
   install -Dm0644 LICENSE.md "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.md
 
-
   cat > "${pkgdir}/usr/bin/malcom" << EOF
 #!/bin/sh
 cd /usr/share/malcom-git

@@ -30,8 +30,6 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
-
-
 build() {
   cd $_pkgname/build
   if [[ $CARCH == "x86_64" ]] || [[ $CARCH == "i686" ]]; then

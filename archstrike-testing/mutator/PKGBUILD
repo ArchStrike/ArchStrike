@@ -33,5 +33,4 @@ package() {
   #Bin
   install -m755 mutator "$pkgdir/usr/bin/mutator"
 
-
 }

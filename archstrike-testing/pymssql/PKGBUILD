@@ -19,7 +19,6 @@ prepare(){
   sed -i 's|/usr/local|/usr/|' setup.py
 }
 
-
 build(){
   cd "$srcdir/pymssql-${pkgver}"
   python2 setup.py build

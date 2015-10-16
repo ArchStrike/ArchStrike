@@ -28,5 +28,4 @@ package() {
   install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/License.txt"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/powershell-payload-excel-delivery"
 
-
 }

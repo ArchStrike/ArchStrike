@@ -39,7 +39,6 @@ package() {
   cp -a --no-preserve=ownership lib/* "$pkgdir/usr/share/prometheus/lib/"
   install -Dm644 sample_configs/* "$pkgdir/usr/share/prometheus/sample_configs/"
 
-
 cat > "$pkgdir/usr/bin/prometheus" << EOF
 #!/bin/sh
 cd /usr/share/prometheus

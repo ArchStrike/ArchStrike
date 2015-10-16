@@ -16,7 +16,6 @@ depends=('glibc')
 source=("http://http.debian.net/debian/pool/main/libe/libemu/libemu_0.2.0+git20120122.orig.tar.gz")
 sha512sums=('3e0f22c9d3aa215efc7aed148b77d891618fe43d0f0ce9f837fea7add7f2f57a47f12875d065b006a72a8d35299f155886e028983c4ff0c849f29569f5a5d042')
 
-
 build() {
   cd "$srcdir/$pkgname-${_pkgver}"
 
