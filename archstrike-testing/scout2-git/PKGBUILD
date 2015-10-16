@@ -10,7 +10,7 @@ url="http://isecpartners.github.io/Scout2/"
 arch=('any')
 license=('GPL2')
 groups=('archstrike')
-depends=('python2-boto>=2.31.1' 'python2-dateutil>=2.2' 'python2-netaddr>=0.7.11' 'python2-requests>=2.4.0')
+depends=('python2-boto>=2.31.1' 'python2-dateutil>=2.2' 'python2-netaddr>=0.7.11' 'python2-requests>=2.4.0' 'python2-opinel')
 makedepends=('git')
 provides=('scout2')
 conflicts=('scout2')
