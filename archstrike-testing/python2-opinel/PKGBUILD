@@ -1,0 +1,21 @@
+# Maintainer: Archstrike <team archstrike org>
+
+pkgname='python2-opinel'
+_name='opinel'
+pkgver=0.18.0
+pkgrel=1
+pkgdesc='A Python package used by Scout2 and AWS-Recipes.'
+arch=('any')
+url='https://github.com/iSECPartners/opinel'
+license=('GPL3')
+depends=("python2-requests" "python2-boto")
+makedepends=('python2-setuptools')
+source=("https://github.com/iSECPartners/opinel/archive/v$pkgver.tar.gz")
+sha256sums=('3f8868070f3de2006aa12a6e0a12a002b4450ee743fc9b48d81252cf5ab28f8d')
+
+package() {
+    cd ${srcdir}/${_name}-${pkgver}
+    python2 setup.py install --root=${pkgdir}
+    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
