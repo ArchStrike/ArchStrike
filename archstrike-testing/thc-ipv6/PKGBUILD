@@ -2,6 +2,8 @@
 
 buildarch=212
 
+DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
+
 pkgname=thc-ipv6
 pkgver=2.7
 pkgrel=1
@@ -11,7 +13,7 @@ url='http://thc.org/thc-ipv6/'
 depends=('libpcap' 'openssl')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=(GPL)
-source=("http://www.thc.org/releases/$pkgname-$pkgver.tar.gz")
+source=("https://www.thc.org/releases/$pkgname-$pkgver.tar.gz")
 sha512sums=('0863ff36109e048a45ec220b98f0e2cf62b7214edcab4afa27a89fc5c0e41469f7e5733efeb56ed0d00cffcf57ceed3d7d32d813e8081d39f1a21e2646e0a0f3')
 
 prepare() {
