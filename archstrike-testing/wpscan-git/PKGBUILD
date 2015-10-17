@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=wpscan-git
-pkgver=20150524.r1917
-pkgrel=2
+pkgver=20151015.r1989
+pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc='A vulnerability scanner which checks the security of WordPress installations using a black box approach'
@@ -34,7 +34,7 @@ package() {
   cd ${pkgdir}/usr/share/"${pkgname}"
   bundle-1.9 config build.nokogiri --use-system-libraries
   bundle-1.9 install --path vendor/bundle
-  unzip data.zip
+  unzip -o data.zip
   rm "${pkgdir}"/usr/share/"${pkgname}"/data.zip
   rm "${pkgdir}"/usr/share/"${pkgname}"/data/LICENSE
   for i in $(find "${pkgdir}" -type d -iname ext); do rm -rf ${i}; done
