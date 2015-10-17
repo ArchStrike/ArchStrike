@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=hasher-git
-pkgver=r42.0de1936
+pkgver=r48.40173c5
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A tool that allows you to quickly hash plaintext strings, or compare hashed values with a plaintext locally."
@@ -14,7 +14,7 @@ depends=('python2-passlib' 'python2-py-bcrypt' 'python2-wsgiref')
 makedepends=('git')
 provides=('hasher')
 source=("git+https://github.com/ChrisTruncer/Hasher.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/Hasher"
@@ -29,12 +29,8 @@ prepare(){
 package() {
   cd "$srcdir/Hasher"
 
-  # Make base directories.
-  install -dm755 "$pkgdir/usr/bin"
-
-  #Bin
-  install -Dm755 Hasher.py "$pkgdir/usr/bin/hasher"
-
+  python2 setup.py install --root=$pkgdir --optimize=1
+  
   #License
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
