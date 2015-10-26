@@ -4,24 +4,24 @@ buildarch=1
 
 pkgname=shodan
 pkgver=1.3.7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
-pkgdesc="A Python2 library for Shodan.io (https://developer.shodan.io)"
-url="http://github.com/achillean/shodan-python/tree/master"
+pkgdesc='A Python2 library for Shodan.io'
+url='http://github.com/achillean/shodan-python'
 depends=('python2-click' 'python2-colorama' 'python2-requests' 'python2-simplejson')
 license=('MIT')
 arch=('any')
-makedepends=("python2-setuptools")
-source=("https://pypi.python.org/packages/source/s/shodan/shodan-${pkgver}.tar.gz")
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/s/shodan/shodan-$pkgver.tar.gz")
 sha512sums=('5842dc6dcf6339df7e875862e87afa923e1d43e48947d507f8ae52d798f858de2ff705de6ac1755d61c0a51865e185999092d4db40a50537894a60eb7c189ab7')
 
 build() {
-  cd ${srcdir}/shodan-${pkgver}
+  cd $pkgname-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd ${srcdir}/shodan-${pkgver}
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm0644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  cd $pkgname-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
