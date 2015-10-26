@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby1.9-bundler
 _gemname=${pkgname#ruby1.9-}
-pkgver=1.7.12
+pkgver=1.10.6
 pkgrel=1
 pkgdesc="Manages an application's dependencies through its entire life, across many machines, systematically and repeatably."
 arch=('any')
@@ -17,7 +17,7 @@ source=(
 )
 noextract=("$_gemname-$pkgver.gem")
 sha512sums=(
-  '1ed8d4c587aeb6720034957326f2ac04484704e5fd5435cb8d8a9474563f78b6e0e0794a8eff1ce86e8946aebc9a175b192ec40d7c3c140d149cfe8f435edc6c'
+  '8b6abcaa53f6d7e5f7728fde4120bda79e6aa849e27ae5df589076c66828b7dfac16106d079a3430504c3bd42b63a8ba1ae1de0901608bc661c9dc399c70c1e7'
   'fa43908bb0e9af7b5f2efd785e052749276671c1af46df762df337b24312f0b157d291484a5a0299a644a3d1455e6465a57d120defb859aaa26b158a4a02677a'
 )
 
