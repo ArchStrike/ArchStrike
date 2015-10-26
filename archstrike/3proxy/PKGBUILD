@@ -3,38 +3,35 @@
 buildarch=212
 
 pkgname=3proxy
-pkgver=0.7.1.1
-pkgrel=2
+pkgver=0.7.1.3
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Tiny free proxy server"
-url="http://3proxy.ru/"
+url="http://3proxy.ru"
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc')
 options=('!makeflags')
-source=("http://3proxy.ru/$pkgver/3proxy-$pkgver.tgz" "3proxy.desktop")
-sha512sums=('6c4c3861b2ea37947b162b9b41d4ed5b2a626d82ce2477ba2fb026003e6a63aef2489ad2d1ec03f90a680b7344deaa8660a5b13a03a1a86d619570d45fbbd63d'
-            'ce2b3c35f74daa895ce49b2a4a50556f3972e35b110d954da02a08e418a468e7baddb1ba37aa57f71de2f5ec8a7ea7859ecbd429761bdbf6f4bbe6bfc2c2d4d1')
+source=("http://$pkgname.ru/$pkgver/$pkgname-$pkgver.tgz")
+sha512sums=('944160c8c9f5eda6b85f2d92260bf465a65ee42620d921a17d90203aac1fd8879fd69d471ad73a8c87cbe4d75cf88add5f584b85cb6f190420a6684d0097d20e')
 
 prepare() {
-  cd "$srcdir/3proxy"
-  sed -i "s|/usr/bin/install|/bin/install|g" Makefile.Linux
-  sed -i "s|/usr/local|/usr|g" Makefile.Linux
-  sed -i "s|-s ||g" Makefile.Linux
+  cd $pkgname
+  sed -i 's|/usr/bin/install|/bin/install|g' Makefile.Linux
+  sed -i 's|/usr/local|/usr|g' Makefile.Linux
+  sed -i 's|-s ||g' Makefile.Linux
   sed -i "s|-Wall -g -O2|$CFLAGS|g" Makefile.Linux
-  sed -i "s|\$(prefix)/etc/|/etc/|g" Makefile.Linux
+  sed -i 's|\$(prefix)/etc/|/etc/|g' Makefile.Linux
 }
 
 build() {
-  cd "$srcdir/3proxy"
+  cd $pkgname
   make -f Makefile.Linux prefix=/usr
 }
 
 package() {
-  cd "$srcdir/3proxy"
-  make -f Makefile.Linux install "DESTDIR=$pkgdir"
-  find $pkgdir/etc/3proxy -type f |xargs chmod 644
-  install -Dm644 $srcdir/3proxy.desktop "$pkgdir"/usr/share/applications/3proxy.desktop
-  # Fix conflict with extra/libproxy.
-  mv "$pkgdir/usr/bin/proxy" "$pkgdir/usr/bin/3proxy"
+  cd $pkgname
+  make -f Makefile.Linux install DESTDIR="$pkgdir"
+  find "$pkgdir/etc/$pkgname" -type f | xargs chmod 644
+  mv "$pkgdir/usr/bin/proxy" "$pkgdir/usr/bin/$pkgname"
 }
