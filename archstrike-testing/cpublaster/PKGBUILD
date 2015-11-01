@@ -5,26 +5,30 @@ buildarch=212
 
 pkgname=cpublaster
 pkgver=0.10
-pkgrel=3
-pkgdesc="This library tries to intercept the memory allocations to skew the allocations to different offsets, so the performance penalty to disappear"
-url="http://kernel.embedromix.ro/us/"
+pkgrel=4
+pkgdesc='This library tries to intercept the memory allocations to skew the allocations to different offsets, so the performance penalty to disappear'
+url='http://kernel.embedromix.ro/us/'
 license=('GPL3')
 groups=('archstrike')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz"
-        "${pkgname}.1.gz")
-sha512sums=('276a4f697d30c9279b17690fe4916652ac887d8e85995199816b5f413d7a90f154b255aea8dbc89cea2a413502a0d2a28d7068a7e40a9978eba49a08e5c9b926'
-            'fa7ca65956f3e74e5b5b9861fd411c332719505ee7793beeae2da3721490ab2e6ce60c1f12890f9530a4fe3cb58b89985eb972f143790ca0233b0c9a5b84995f')
+source=(
+  "http://kernel.embedromix.ro/us/$pkgname/$pkgname-$pkgver.tar.gz"
+  "$pkgname.1"
+)
+sha512sums=(
+  '66d70c6e8df9f536f041a1f4cf2a37b4ab06090c9ecd5e492b45703c7a71ec2dfe8312533c23d8dd4df897ee696c6a802f0502c8218ba1ecbb6499c295f09047'
+  '8432cb0c3f4a0782bad9ac80fbb8e81010274faca10d94704cb70a98bd95cd6e776f0fc48a17a1b30761ddd3d8b7244bd395755947415a9d08aceafec4ef94e5'
+)
 
 build() {
-    cd "${pkgname}-${pkgver}"
-    ./configure --prefix=/usr
-    make
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd "${pkgname}-${pkgver}"
-    make DESTDIR="${pkgdir}" install
-    install -Dm644 "${srcdir}/${pkgname}.1.gz" "${pkgdir}/usr/share/man/man1/${pkgname}.1.gz"
+  install -Dm644 $pkgname.1 "$pkgdir/usr/share/man/man1/$pkgname.1"
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
