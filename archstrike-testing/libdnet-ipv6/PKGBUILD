@@ -1,42 +1,52 @@
 # Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
+# Contributor: James Fryman <jfryman@gmail.com>
 
 buildarch=212
 
-pkgname=libdnet-ipv6
+_pkgname=libdnet
+pkgname=$_pkgname-ipv6
 pkgver=1.12
-pkgrel=4
-pkgdesc="A simplified, portable interface to several low-level networking routines"
+pkgrel=9
+pkgdesc='A simplified, portable interface to several low-level networking routines (with ipv6 support)'
+url='http://code.google.com/p/libdnet/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-makedepends=('python2')
-optdepends=('python2')
-provides=('libdnet')
-conflicts=('libdnet')
+depends=('python2' 'bash')
+makedepends=('python2' 'pyrex')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
 license=('BSD')
-url="http://code.google.com/p/libdnet/"
-source=("http://libdnet.googlecode.com/files/libdnet-$pkgver.tgz" "ipv6.patch")
-md5sums=('9253ef6de1b5e28e9c9a62b882e44cc9'
-         '02c56065af3091eacf65983b7dc841e5')
+source=(
+  "http://libdnet.googlecode.com/files/$_pkgname-$pkgver.tgz"
+  "$_pkgname-1.12.pyrex2.7.patch"
+  "$_pkgname-ipv6.patch"
+)
+sha512sums=(
+  'b763d2caa77b8d16b531142a5bce3b862ed20198406a00e1fe7f3b45ce308b97d638b0c7f03bd8593fdd206cc1645952839bc340b77537298a3df88599835bf3'
+  'ac5fecf1c7028b469965cddc92ed8e8b87605282ae14417274fcf685e57485f89d05583e2573d86611043f5bbfdc924fc5f5bb761a43cc18a2bcd6b5c10f0821'
+  '3f9eb49a54172bae25ab6f137020c9babcb6fdb888d8b27050bfbdb87986de83df7fe81d783068d61fa33cd803fecd74d0f9acaf26c4991585609787e783b3be'
+)
 
 prepare() {
-  cd "$srcdir/libdnet-$pkgver"
-
-  patch -p1 -i "$srcdir/ipv6.patch"
+  cd $_pkgname-$pkgver
+  patch -p0 < ../$_pkgname-1.12.pyrex2.7.patch
+  patch -p1 < ../$_pkgname-ipv6.patch
+  rm -f python/dnet.c
 }
 
 build() {
-  cd "$srcdir/libdnet-$pkgver"
-
-  autoreconnaissancef -I config --force --install
+  cd $_pkgname-$pkgver
+  autoreconf -I config --force --install
   ./configure --prefix=/usr --sbindir=/usr/bin
+  pyrexc python/dnet.pyx
   make
 }
 
 package() {
-  cd "$srcdir/libdnet-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/license"
 
   cd python
-  python2 setup.py install --root=$pkgdir
-
-  install -D -m0644 ../LICENSE $pkgdir/usr/share/licenses/libdnet/LICENSE
+  python2 setup.py install --root="$pkgdir"
 }

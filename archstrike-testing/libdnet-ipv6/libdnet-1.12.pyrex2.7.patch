@@ -1,0 +1,74 @@
+--- python/dnet.pyx	2007-01-20 12:39:21.000000000 +0100
++++ python/dnet.pyx	2014-10-21 17:23:52.719665497 +0200
+@@ -24,7 +24,7 @@
+ cdef extern from "Python.h":
+     object  PyString_FromStringAndSize(char *s, int len)
+     int     PyString_Size(object o)
+-    int     PyObject_AsReadBuffer(object o, char **pp, int *lenp)
++    int     PyObject_AsReadBuffer(object o, char **pp, Py_ssize_t *lenp)
+     int     PyInt_Check(object o)
+     int     PyLong_Check(object o)
+     long    PyInt_AsLong(object o)
+@@ -160,7 +160,7 @@
+     return PyString_FromStringAndSize(ea.data, 6)
+ 
+ def eth_pack_hdr(dst=ETH_ADDR_BROADCAST, src=ETH_ADDR_BROADCAST,
+-                 type=ETH_TYPE_IP):
++                 type_=ETH_TYPE_IP):
+     """Return a packed binary string representing an Ethernet header.
+ 	
+     Keyword arguments:
+@@ -172,7 +172,7 @@
+     cdef eth_addr_t s, d
+     __memcpy(s.data, src, 6)
+     __memcpy(d.data, dst, 6)
+-    __eth_pack_hdr(hdr, d, s, type)
++    __eth_pack_hdr(hdr, d, s, type_)
+     return PyString_FromStringAndSize(hdr, 14)
+ 
+ #
+@@ -292,7 +292,7 @@
+     """
+     cdef char buf[2048]
+     cdef char *p
+-    cdef int n
++    cdef Py_ssize_t n
+     if PyObject_AsReadBuffer(pkt, &p, &n) == 0:
+         if n < 2048:
+             memcpy(buf, p, n)
+@@ -308,7 +308,7 @@
+ 
+ def ip_cksum_add(buf, int sum):
+     cdef char *p
+-    cdef int n
++    cdef Py_ssize_t n
+     if PyObject_AsReadBuffer(buf, &p, &n) == 0:
+         return __ip_cksum_add(p, n, sum)
+     else:
+@@ -441,7 +441,7 @@
+     """
+     cdef addr_t _addr
+     
+-    def __init__(self, addrtxt=None, type=ADDR_TYPE_NONE):
++    def __init__(self, addrtxt=None, type_=ADDR_TYPE_NONE):
+         if addrtxt != None and addr_aton(addrtxt, &self._addr) < 0:
+             if PyString_Size(addrtxt) == 4:
+                 self._addr.addr_type = ADDR_TYPE_IP
+@@ -785,7 +785,7 @@
+ cdef extern from *:
+     void __icmp_pack_hdr "icmp_pack_hdr" (char *hdr, int type, int code)
+     
+-def icmp_pack_hdr(type, code):
++def icmp_pack_hdr(type_, code):
+     """Return a packed binary string representing an ICMP header.
+ 
+     Keyword arguments:
+@@ -793,7 +793,7 @@
+     code -- ICMP code		(8-bit integer)
+     """
+     cdef char buf[4]
+-    __icmp_pack_hdr(buf, type, code)
++    __icmp_pack_hdr(buf, type_, code)
+     return PyString_FromStringAndSize(buf, sizeof(buf))
+ 
+ #
