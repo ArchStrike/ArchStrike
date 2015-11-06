@@ -4,24 +4,26 @@ buildarch=212
 
 pkgname=python-pydeep
 pkgver=0.2
-pkgrel=3
-pkgdesc="This is the Python interface to ssdeep."
+pkgrel=4
+pkgdesc='This is the Python interface to ssdeep'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://pypi.python.org/pypi/pydeep/'
+url='http://pypi.python.org/pypi/pydeep'
 license=('custom:PSF')
 depends=('python' 'ssdeep')
 makedepends=('python-setuptools' 'ssdeep')
-source=("http://pypi.python.org/packages/source/p/pydeep/pydeep-$pkgver.tar.gz" "LICENSE")
-sha512sums=('78bcf181d35bb7a1ab3f1eefae9cc03408f96dcbb36aeec78f4437d6b90f3f20d623e427c0f57047dff4b5b087539a3f056167e4c9f9da688ed8a6ca737aff98'
-            '88330e6f805b5e8522f6da8610816c58d8d147d9fe6825819a70147e6ef1966d67439d0f695e3212bdf28d00385755e20184baffd981c2a0ae77feb71c18a6fe')
+source=("http://pypi.python.org/packages/source/p/pydeep/pydeep-$pkgver.tar.gz" 'LICENSE')
+sha512sums=(
+  '78bcf181d35bb7a1ab3f1eefae9cc03408f96dcbb36aeec78f4437d6b90f3f20d623e427c0f57047dff4b5b087539a3f056167e4c9f9da688ed8a6ca737aff98'
+  '88330e6f805b5e8522f6da8610816c58d8d147d9fe6825819a70147e6ef1966d67439d0f695e3212bdf28d00385755e20184baffd981c2a0ae77feb71c18a6fe'
+)
 
 build() {
-  cd "$srcdir/pydeep-$pkgver"
+  cd pydeep-$pkgver
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/pydeep-$pkgver"
+  cd pydeep-$pkgver
   python setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
