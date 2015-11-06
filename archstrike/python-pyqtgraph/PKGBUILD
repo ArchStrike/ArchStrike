@@ -4,22 +4,22 @@
 
 buildarch=1
 
-pkgname=python-pyqtgraph
 _pkgname=pyqtgraph
+pkgname=python-$_pkgname
 pkgver=0.9.10
-pkgrel=2
-pkgdesc="Scientific Graphics and GUI Library for Python"
+pkgrel=3
+pkgdesc='Scientific Graphics and GUI Library for Python'
 arch=('any')
 license=('MIT')
-url="http://www.pyqtgraph.org/"
+url='http://www.pyqtgraph.org'
 depends=('python-pyqt4' 'python-numpy' 'python-scipy')
 optdepends=('python-opengl')
 makedepends=('python-setuptools')
-source=("http://www.pyqtgraph.org/downloads/pyqtgraph-${pkgver}.tar.gz")
+source=("http://www.pyqtgraph.org/downloads/$_pkgname-$pkgver.tar.gz")
 sha512sums=('c947bf69116b8b0a61a1db6ec70d51741667387f98320ce581733a306bea704754b7bb0abf94d6f01ce74dfc218b3c573db017a5e189cde76d00f85bc6b23a3d')
 
 package() {
-  cd "$srcdir/$_pkgname-$pkgver"
+  cd $_pkgname-$pkgver
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize 1
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
