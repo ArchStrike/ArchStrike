@@ -23,35 +23,40 @@ source=("http://cache.ruby-lang.org/pub/ruby/1.9/ruby-${pkgver//_/-}.tar.bz2")
 sha512sums=('5ea40f8c40cf116030ffdedbe436c1fdbf9a50b7bb44bc890845c9c2a885c34da711bc1a9e9694788c2f4710f7e6e0adc4410aec1ab18a25a27168f25ac3d68c')
 
 build() {
-  cd "ruby-${pkgver//_/-}"
+  cd ruby-${pkgver//_/-}
   PKG_CONFIG=/usr/bin/pkg-config ./configure \
     --prefix=/usr/share/$pkgname \
     --enable-shared \
     --enable-pthread \
     --disable-rpath \
     --program-suffix=-1.9
+
   make
 }
 
 check() {
-  cd "ruby-${pkgver//_/-}"
+  cd ruby-${pkgver//_/-}
   make test
 }
 
 package() {
-  cd "ruby-${pkgver//_/-}"
+  cd ruby-${pkgver//_/-}
   make DESTDIR="$pkgdir" install-nodoc
+
   # Base directories.
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/lib"
+
   # Bin.
   for i in erb irb rdoc ri ruby testrb rake gem; do
     ln -s "/usr/share/ruby1.9/bin/$i-1.9" "$pkgdir/usr/bin/$i-1.9"
     ln -s "/usr/share/ruby1.9/bin/$i-1.9" "$pkgdir/usr/share/$pkgname/bin/$i"
   done
+
   # Lib.
   ln -s "/usr/share/ruby1.9/lib/libruby.so.1.9" "$pkgdir/usr/lib/libruby.so.1.9"
+
   # License.
-  install -D -m644 COPYING "$pkgdir/usr/share/licenses/ruby1.9/LICENSE"
-  install -D -m644 BSDL "$pkgdir/usr/share/licenses/ruby1.9/BSDL"
+  install -D -m644 COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -D -m644 BSDL "$pkgdir/usr/share/licenses/$pkgname/BSDL"
 }
