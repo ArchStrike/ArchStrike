@@ -12,16 +12,17 @@ arch=('any')
 url='http://click.pocoo.org/5'
 makedepends=('python-setuptools' 'python2-setuptools')
 license=('BSD')
-source=("https://pypi.python.org/packages/source/c/click/click-${pkgver}.tar.gz")
+source=("https://pypi.python.org/packages/source/c/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('b860b0227644f5d1cc24d41e66985421ec971f11f3f596fb46508fdc787200b949e7ef29b2035421ebb0115384688da03c3c95a0d6acc58dd3b566b32a2b7c6a')
 
 prepare() {
-  cp -a ${_pkgname}-${pkgver} ${_pkgname}-${pkgver}-python2
+  cp -a $_pkgname-$pkgver $_pkgname-$pkgver-python2
 }
 
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd $_pkgname-$pkgver
   python setup.py build
+
   cd ../$_pkgname-$pkgver-python2
   python2 setup.py build
 }
