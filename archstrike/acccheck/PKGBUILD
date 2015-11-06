@@ -4,22 +4,18 @@ buildarch=1
 
 pkgname=acccheck
 pkgver=0.2.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-crackers')
-pkgdesc="A password dictionary attack tool that targets windows authentication via the SMB protocol."
+pkgdesc='A password dictionary attack tool that targets windows authentication via the SMB protocol'
 url='http://labs.portcullis.co.uk/tools/acccheck/'
 arch=('any')
 license=('GPL2')
-depends=('perl' 'smbclient')
-source=("http://labs.portcullis.co.uk/download/acccheck-${pkgver//./-}.tar.gz" "acccheck.desktop")
-sha512sums=('28c1c5fa465e14d5447c42f539b95d436f303de801f6687d4cf22bd9f77371c68f84ad7b655c845bc42b6bdab851c379a72081feea2e1860e6619c089447238b'
-            '548ba309e814796b1c1b6dadf2be24679533fb48444045367e6cce8c28a5350e67b60b2a38ac0ee49c1e28d140c0976573f8afb4a9932fba5ff6382244bc4915')
+depends=('smbclient')
+source=("http://labs.portcullis.co.uk/download/$pkgname-${pkgver//./-}.tar.gz")
+sha512sums=('28c1c5fa465e14d5447c42f539b95d436f303de801f6687d4cf22bd9f77371c68f84ad7b655c845bc42b6bdab851c379a72081feea2e1860e6619c089447238b')
 
 package() {
-  cd "$srcdir/acccheck-${pkgver//./-}"
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/doc/acccheck"
-  install -m644 README.TXT "$pkgdir/usr/share/doc/acccheck"
-  install -Dm644 "$srcdir"/acccheck.desktop "$pkgdir"/usr/share/applications/acccheck.desktop
-  install -m755 acccheck.pl "$pkgdir/usr/bin/acccheck"
+  cd $pkgname-${pkgver//./-}
+  install -Dm644 README.TXT "$pkgdir/usr/share/doc/$pkgname/README"
+  install -Dm755 $pkgname.pl "$pkgdir/usr/bin/$pkgname"
 }
