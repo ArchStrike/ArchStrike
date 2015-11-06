@@ -4,27 +4,23 @@ buildarch=212
 
 pkgname=aeskeyfind
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-forensics' 'archstrike-crackers')
-pkgdesc="A tool to find AES key in RAM"
+pkgdesc='A tool to find AES key in RAM'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://citp.princeton.edu/memory/code/"
+url='http://citp.princeton.edu/memory/code'
 license=('BSD')
 depends=('glibc')
-source=("http://citp.princeton.edu/memory-content/src/aeskeyfind-$pkgver.tar.gz" "aeskeyfind.desktop")
-sha512sums=('a523e0edb47c4f0386fc692c5ba7a858e6bf79e870980c7e7338f41fbdd29ecd9855269801c8581047a039d014d242652632676650c3b859c2d23f47bc231713'
-            'e5228912e73372a56a432a8e98810b3604834c70ad88c60224fe9699b38132ca3d38cfcbaadf081b47b14c73ca576e140e8b9e8b7ee4d6a17b46363598e00ba7')
+source=("http://citp.princeton.edu/memory-content/src/$pkgname-$pkgver.tar.gz")
+sha512sums=('a523e0edb47c4f0386fc692c5ba7a858e6bf79e870980c7e7338f41fbdd29ecd9855269801c8581047a039d014d242652632676650c3b859c2d23f47bc231713')
 
 build() {
-  cd $srcdir/aeskeyfind
+  cd $pkgname
   make
 }
 
 package() {
-  cd $srcdir/aeskeyfind
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/licenses/aeskeyfind"
-  cp LICENSE "$pkgdir/usr/share/licenses/aeskeyfind/"
-  install -m755 aeskeyfind "$pkgdir/usr/bin/aeskeyfind"
-  install -Dm644 "$srcdir/aeskeyfind.desktop" "$pkgdir/usr/share/applications/aeskeyfind.desktop"
+  cd $pkgname
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
 }
