@@ -6,13 +6,13 @@ pkgname=3proxy
 pkgver=0.7.1.3
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
-pkgdesc="Tiny free proxy server"
-url="http://3proxy.ru"
+pkgdesc='Tiny free proxy server'
+url='http://3proxy.ru'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc')
 options=('!makeflags')
-source=("http://$pkgname.ru/$pkgver/$pkgname-$pkgver.tgz")
+source=("$url/$pkgver/$pkgname-$pkgver.tgz")
 sha512sums=('944160c8c9f5eda6b85f2d92260bf465a65ee42620d921a17d90203aac1fd8879fd69d471ad73a8c87cbe4d75cf88add5f584b85cb6f190420a6684d0097d20e')
 
 prepare() {
