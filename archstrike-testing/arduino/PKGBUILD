@@ -8,15 +8,15 @@ buildarch=192
 
 pkgname=arduino
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc='Open-source electronics prototyping platform'
 arch=('i686' 'x86_64')
 url='http://arduino.cc'
 options=('!strip' 'staticlibs')
 license=('GPL')
-depends=('avr-libc' 'libusb-compat' 'jre8-openjdk' 'java-rxtx' 'desktop-file-utils' 'shared-mime-info')
-makedepends=('jdk8-openjdk' 'avr-gcc' 'apache-ant' 'unzip' 'zip')
+depends=('avr-libc' 'libusb-compat' 'java-runtime=8' 'java-rxtx' 'desktop-file-utils' 'shared-mime-info')
+makedepends=('java-environment=8' 'avr-gcc' 'apache-ant' 'unzip' 'zip')
 install=$pkgname.install
 
 source=(
