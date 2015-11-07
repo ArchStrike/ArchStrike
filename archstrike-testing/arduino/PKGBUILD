@@ -7,40 +7,38 @@
 buildarch=192
 
 pkgname=arduino
-pkgver=1.0.6
+pkgver=1.6.6
 pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
-pkgdesc="Open-source electronics prototyping platform"
+pkgdesc='Open-source electronics prototyping platform'
 arch=('i686' 'x86_64')
-url="http://arduino.cc"
+url='http://arduino.cc'
 options=('!strip' 'staticlibs')
 license=('GPL')
-depends=('avr-libc' 'libusb-compat' 'java-runtime' 'java-rxtx' 'desktop-file-utils' 'shared-mime-info')
-makedepends=('java-environment' 'avr-gcc' 'apache-ant' 'git' 'zip')
-install="${pkgname}.install"
+depends=('avr-libc' 'libusb-compat' 'jre8-openjdk' 'java-rxtx' 'desktop-file-utils' 'shared-mime-info')
+makedepends=('jdk8-openjdk' 'avr-gcc' 'apache-ant' 'unzip' 'zip')
+install=$pkgname.install
 
-source=("${pkgname}::git+https://github.com/arduino/Arduino.git#tag=tags/${pkgver}"
-        "${pkgname}.desktop"
-        "${pkgname}.mime.xml")
-sha512sums=('SKIP'
-            '1f4ce6c4dcd868a805f1270d91ae80e933a7aef576daa4ae14ab21c1249548f36c77ddf5f7fc2faa88517b0503511dbff0c738d2c02f312e2eb77eaa6c5c6109'
-            '910f1f5f9c9861a0b010d25e9c3579c78cb2f0b31c94fc79ed4e55b0bc65535d8ce4c54fb5cdf8a90ee589c7f1bb432bb62136ca48be1829fc001fe5acc0f0f3')
+source=(
+  "https://github.com/arduino/Arduino/archive/$pkgver.tar.gz"
+  "$pkgname.desktop"
+  "$pkgname.mime.xml"
+)
+sha512sums=(
+  '9532d5d4b52457baa6a89233662e4d647352f49875ecab3abb059222583229c34b80994eb3445eb93145cf126222f473bb6583bd023637f64585caf17f00dfd2'
+  'dd0c5929a051e1c0303d6921fc85fe4ddf01a66230985a1834a0af11c5e040f2ee7b4622c7d31c57c5e45e420b36e3cf2ad0eb00c1c230e5bb26b533858ff2b9'
+  '910f1f5f9c9861a0b010d25e9c3579c78cb2f0b31c94fc79ed4e55b0bc65535d8ce4c54fb5cdf8a90ee589c7f1bb432bb62136ca48be1829fc001fe5acc0f0f3'
+)
 
 prepare(){
     # remove the username/password check for updating reference documentation
     sed -i '/^print "username: "/d;/^print "password: "/d;
             s|--silent --show-error -u \$user:\$pass|--silent --show-error|' \
-        ${pkgname}/build/create_reference.pl
-
-    # modify the launcher script to use absolute paths for referenced files
-    sed -i 's|#!/bin/sh|#!/usr/bin/env bash|;
-            s|processing.app.Base "$@"|processing.app.Base "${args[@]}"|;
-            s%cd "$APPDIR"%args=()\nfor arg in "$@"; do\n    [[ "$arg" = -* ]] \\\n        \&\& args+=("$arg") \\\n        || args+=("$(realpath "$arg")")\ndone\n\ncd "$APPDIR"%' \
-        ${pkgname}/build/linux/dist/${pkgname}
+        Arduino-$pkgver/build/create_reference.pl
 }
 
 build(){
-    cd ${pkgname}/build
+    cd Arduino-$pkgver/build
 
     # pull updated reference documentation from the website
     ./fetch.sh
@@ -52,28 +50,28 @@ build(){
 
 package() {
     # create any directories we might need
-    install -d "$pkgdir"/usr/bin "$pkgdir"/usr/share/doc/${pkgname} "$pkgdir"/opt/${pkgname}
+    install -dm755 "$pkgdir/usr/bin" "$pkgdir/usr/share/doc/$pkgname" "$pkgdir/opt/$pkgname"
 
     # install the xdg-desktop related files
-    install -Dm644 ${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
-    install -Dm644 ${pkgname}.mime.xml "$pkgdir"/usr/share/mime/packages/${pkgname}.xml
-    install -Dm644 ${pkgname}/build/shared/lib/arduino_icon.ico "$pkgdir"/usr/share/pixmaps/${pkgname}.ico
+    install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+    install -Dm644 $pkgname.mime.xml "$pkgdir/usr/share/mime/packages/$pkgname.xml"
+    install -Dm644 Arduino-$pkgver/build/shared/lib/arduino_icon.ico "$pkgdir/usr/share/pixmaps/$pkgname.ico"
 
     # extract our distribution package in /opt/arduino
-    tar zxf ${pkgname}/build/linux/${pkgname}-${pkgver}-linux.tgz \
+    tar Jxf Arduino-$pkgver/build/linux/$pkgname-$pkgver-linux*.tar.xz \
         --no-same-owner \
         --preserve-permissions \
         --strip-components=1 \
-        -C "$pkgdir"/opt/${pkgname}
+        -C "$pkgdir/opt/$pkgname"
 
     # create a link to the launch script
-    ln -s /opt/${pkgname}/${pkgname} "$pkgdir"/usr/bin/${pkgname}
+    ln -s /opt/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
 
     # use system java-rxtx instead of the included one, which lacks permissions
-    ln -sf /usr/lib/librxtxSerial.so "$pkgdir"/opt/arduino/lib/librxtxSerial.so
-    ln -sf /usr/lib/librxtxSerial.so "$pkgdir"/opt/arduino/lib/librxtxSerial64.so
-    ln -sf /usr/share/java/rxtx/RXTXcomm.jar "$pkgdir"/opt/arduino/lib/RXTXcomm.jar
+    ln -sf /usr/lib/librxtxSerial.so "$pkgdir/opt/arduino/lib/librxtxSerial.so"
+    ln -sf /usr/lib/librxtxSerial.so "$pkgdir/opt/arduino/lib/librxtxSerial64.so"
+    ln -sf /usr/share/java/rxtx/RXTXcomm.jar "$pkgdir/opt/arduino/lib/RXTXcomm.jar"
 
     # create a link to the documentation in /usr/share/doc/arduino
-    ln -s /opt/${pkgname}/reference "$pkgdir"/usr/share/doc/${pkgname}/
+    ln -s /opt/$pkgname/reference "$pkgdir/usr/share/doc/$pkgname/reference"
 }
