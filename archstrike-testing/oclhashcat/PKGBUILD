@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=oclhashcat
 _pkgname=oclHashcat
-pkgver=1.33
+pkgver=1.37
 pkgrel=1
 pkgdesc="Worlds fastest WPA cracker with dictionary mutation engine"
 url=('http://hashcat.net/oclhashcat/')
@@ -15,7 +15,7 @@ optdepends=('nvidia-utils>=319.37: For for gpu support via Nvidia CUDA'
             'catalyst-utils>=13.4: For gpu support via ATI Stream'
             'opencl-catalyst: For gpu support via ATI Stream')
 source=("http://hashcat.net/files/$_pkgname-$pkgver.7z")
-sha512sums=('0a15b8ad0b1bd670f157d8144c87e53370563f343268ad133a9af508485f5611d4b679bf43c8cc9ed907d0d0b9bcc86e777f140b118d0cad06fe4ca8a2a0ff98')
+sha512sums=('74d5ef5be20357e706bfbff496a60e8c2d90b33e93981bca398d04099645bef0ec8df9b77f179bb770312966f788a2fe7a486abdf9a3e7bee7b0204d2d900902')
 options=('!strip')
 
 prepare() {
