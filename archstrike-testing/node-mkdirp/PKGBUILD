@@ -11,6 +11,7 @@ arch=('any')
 url='https://github.com/substack/node-mkdirp'
 license=('MIT')
 depends=('nodejs')
+makedepends=('npm')
 source=("$url/archive/$pkgver.tar.gz")
 sha512sums=('1ddf96c96b60501d4b60a1ce0b943cc48942e04b8ba493cd06486328e51a4930e3e1323f1ba7d3e2ddf92e2b82acb2a34307c47e00da7bfbb5d516fa00dc57c7')
 
