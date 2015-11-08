@@ -2,9 +2,11 @@
 
 buildarch=1
 
+DLAGENTS=("http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
 pkgname=urlcrazy
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps' 'archstrike-dns' 'archstrike-recon')
 pkgdesc="Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage."
 arch=('any')
