@@ -10,17 +10,25 @@ pkgdesc="Perl module to get and parse the Linux .desktop files"
 arch=('any')
 url="https://metacpan.org/module/Linux::DesktopFiles"
 source="http://cpan.metacpan.org/authors/id/T/TR/TRIZEN/${_pkgname}-${pkgver}.tar.gz"
-md5sums=('4a33c485af671bdf878cef417db8ceac')
-license=('GPLv3')
-
+sha512sums=('76e66b4dde39e9b59399362ea83368806206af74077b59f167a0344ed84262240b7120928b8cb46418f1de0bfaeaca6dc4b968b34bdedb40cbc29f9a61497eda')
+options=('!emptydirs')
+license=('GPL3')
 depends=('perl>=5.14.0')
-makedepends=() # 'perl-module-build'
-optdepends=()
+makedepends=('perl-module-build') # 'perl-module-build'
+
+build() {
+   cd "${_pkgname}-$pkgver"
+   perl Build.PL --destdir "$pkgdir" --installdirs vendor
+   ./Build
+}
+
+check() {
+   cd "${_pkgname}-$pkgver"
+   ./Build test
+}
+
 
 package() {
     cd "${_pkgname}-$pkgver"
-    perl Build.PL --destdir "$pkgdir" --installdirs vendor
-    ./Build
-    ./Build test
     ./Build install
 }
