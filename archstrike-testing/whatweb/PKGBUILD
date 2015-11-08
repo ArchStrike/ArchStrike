@@ -2,9 +2,11 @@
 
 buildarch=1
 
+DLAGENTS=("http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
 pkgname=whatweb
 pkgver=0.4.7
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-webapps' 'archstrike-recon')
 pkgdesc="Next generation web scanner that identifies what websites are running."
 arch=('any')
