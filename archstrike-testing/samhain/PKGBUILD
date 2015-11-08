@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=samhain
-pkgver=4.1.0
+pkgver=4.1.1
 pkgrel=1
 pkgdesc="File integrity / intrusion detection system"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,17 +14,17 @@ makedepends=('procps-ng')
 backup=("etc/${pkgname}rc")
 install="${pkgname}.install"
 options=('!emptydirs')
-source=("http://la-samhna.de/${pkgname}/${pkgname}-current.tar.gz"
+source=("$pkgname-$pkgver::http://la-samhna.de/${pkgname}/${pkgname}-current.tar.gz"
         "${pkgname}rc.linux.patch"
         "${pkgname}.tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('ec43208be7254f9d7296fac22e1de96bb29b6effad452eb1d38bbd36661c47a8f58564c596909140f37540c3158be24e4e24fcb27590addd11e533736a7a9720'
+sha512sums=('ed42f440ae73c11b047e676435022cdf7018631380362a5b89526f5f2f8c31dcc0f5ddce51990e18f94fdfd35f3c4ae521c007f805431416e2f3d342a7307a2c'
             '60711b05211aebe4a12368ca54e4a5516a0a04bbae838b95811bb5823ad6d307d2b8bc9e5b36f23b0a3cae8919712dfac2ba7acf5b27238a23b9f8f5dce6e8fd'
             '7b173400586412f08d5f55a1eeaf2454d19fbb9df5b5958e22e336d6e9daec09a694af6242d5f84a506d7f143180aa30cca7c53af3021638778e64851e6ac428'
             'ddc65ab92cc9acc5be43603bfbfaf5ad58aedf345164c2cb86be61d2d75ae0c6e231d56be88f1ce195d30ce01fb6f3d8094d7adb46deb4f2ed45890e89a9b0c0')
 
 prepare() {
-    tar zxf ${pkgname}-${pkgver}.tar.gz
+    tar zxvf ${pkgname}-${pkgver}.tar.gz
     cd ${pkgname}-${pkgver}
     patch -p1 < ../${pkgname}rc.linux.patch
 }
