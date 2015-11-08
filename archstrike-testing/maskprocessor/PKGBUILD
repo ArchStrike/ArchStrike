@@ -9,24 +9,17 @@ groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A High-Performance word generator with a per-position configurable charset"
 arch=('i686' 'x86_64')
 url='http://hashcat.net/wiki/doku.php?id=maskprocessor'
-license=('custom')
+license=('MIT')
+depends=('glibc')
 makedepends=('p7zip')
-source=("http://hashcat.net/tools/maskprocessor/maskprocessor-$pkgver.7z")
-sha512sums=('79da3253b8608df498ae420d09aa5ec9f5a7dff5071eeef70ebb2deb1a24ba9b903fca1bb03655b6a85d4c6fdd853bebe9fe55cec56447b6d5774e15ff83c434')
-
-prepare() {
-  cd "$srcdir/maskprocessor-$pkgver"
-
-  sed -i 's|dicts/|"$1"/|' generate.sh
-  sed -i 's|./mp64.bin|/usr/bin/maskprocessor|' generate.sh
-}
+source=("https://github.com/jsteube/maskprocessor/releases/download/v0.73/maskprocessor-$pkgver.7z")
+sha512sums=('f8428b6b331d833b2266f7d7aa47c5cad6831758dfce5905efc6bd049a57bedc432283165be6716204d74ce0dded7bcb4a96085cbf01877fecdbbb3da555677a')
 
 package() {
   cd "$srcdir/maskprocessor-$pkgver"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/maskprocessor"
 
   # Bin.
   if [[ "$CARCH" == 'x86_64' ]]; then
@@ -36,5 +29,5 @@ package() {
     install -m755 mp32.bin "$pkgdir/usr/bin/mp32"
     ln -s mp32 "$pkgdir/usr/bin/maskprocessor"
   fi
-  install -m755 generate.sh "$pkgdir/usr/share/maskprocessor"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/maskprocessor/LICENSE"
 }
