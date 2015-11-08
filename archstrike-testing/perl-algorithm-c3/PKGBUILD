@@ -11,9 +11,10 @@ arch=('any')
 url="http://search.cpan.org/~FLORA/${_cpanname}"
 license=('GPL' 'PerlArtistic')
 depends=('perl')
+makedepends=('perl-module-build')
 options=('!emptydirs')
 source=(http://www.cpan.org/authors/id/F/FL/FLORA/${_cpanname}-${pkgver}.tar.gz)
-md5sums=('07afb08682125c875b80c315d99f6f95')
+sha512sums=('feaf8b49ff9382eb0415536a1b384b690b33956705ebc3889c0f27dbae77eaec8e0179c1d103ed2ec53158de26c7e33ac7e6dfc920c64415f16baa360ab7b9b2')
 
 build() {
   cd $srcdir/${_cpanname}-${pkgver}
