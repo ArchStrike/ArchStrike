@@ -2,34 +2,35 @@
 
 buildarch=1
 
+DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
+
 pkgname=thc-ssl-dos
 pkgver=1.4
 pkgrel=2
 groups=('archstrike' 'archstrike-dos')
 pkgdesc="A tool to verify the performance of SSL. To be used in your authorized and legitimate area ONLY. You need to accept this to make use of it, no use for bad intentions, you have been warned!"
 url='http://www.thc.org/thc-ssl-dos/'
-arch=('any')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 license=('unknown')
-depends=('openssl' 'glibc' 'zlib')
-makedepends=('git')
-source=("git+https://github.com/ArchStrike-Project/thc-ssl-dos.git"
+depends=('openssl')
+source=("https://thc.org/thc-ssl-dos/thc-ssl-dos-$pkgver.tar.gz"
         remove-skiddie-check.diff)
-md5sums=('SKIP'
-         '57cd6d567af13c7601bf1a042f227a25')
+sha512sums=('f450aebe7d3bc40ef2bdd8d53a24fbff3efd4adf32caee4e650a28b9ecbdafa95fd3b89ad1744be8544369fd696cb36942e55cbdf29e875b281cb8ac390ee499'
+            '5914b19d77b71d731e997d9d8160c1b1ea63712828c1a4360ff4c80fef29b5c493ff25ff69ff8055b1a1c14dbf3334970940bd719df8cf8cc83fbafd63321a80')
 
 prepare() {
-  cd "$srcdir/thc-ssl-dos/src"
+  cd "${pkgname}-${pkgver}/src"
   patch < "$srcdir/remove-skiddie-check.diff"
 }
 
 build() {
-  cd "$srcdir/thc-ssl-dos"
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make all
 }
 
 package() {
-  cd "$srcdir/thc-ssl-dos"
+  cd "${pkgname}-${pkgver}"
   install -d "${pkgdir}/usr/bin"
   install -Dm755 "src/thc-ssl-dos" "${pkgdir}/usr/bin/"
 }
