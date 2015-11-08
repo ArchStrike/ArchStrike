@@ -4,14 +4,14 @@ buildarch=212
 
 pkgname=python2-pynids
 pkgver=0.6.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python wrapper for libnids."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://jon.oberheide.org/pynids/"
 license=('GPL')
 depends=('glib2' 'python2' 'libpcap' 'libnet')
-source=("http://jon.oberheide.org/pynids/downloads/pynids-$pkgver.tar.gz")
-md5sums=('6ce600d0130b0feec9a3797a27825d15')
+source=("http://jon.oberheide.org/files/pynids-$pkgver.tar.gz")
+sha512sums=('ae78bc024cde3d708f1d173c6a4e3f483dfa6d4bae3aae73d4daa0c0179cadd36107df7af6ba97d81c59a9658c0b252234f96e9aa7506c97244cfdaee5185a97')
 
 build() {
   cd "$srcdir/pynids-$pkgver"
