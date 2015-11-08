@@ -17,13 +17,13 @@ depends_x86_64+=('lib32-ncurses' 'gcc-multilib')
 source=("http://mark0.net/download/trid_linux.zip"
         "${pkgname}.sh"
         "${pkgname}.desktop")
-sha512sums=('9220edb29765e3e45353ae27a7e44e664e9c78397eaab03d435a0775201e041fcf1a73948f658684ab714f115156d66760e07621b7ad22ef55995598e9df67c5'
+sha512sums=('95f067c7da02a5a753f6f213a015da7f498be38ac682db4565c3a198fc626d5195dd88c3079f9c742a44249e81a4431057812d79733b84633333604a77f10b4f'
             '4a5484cb0b47436dc58a3132d76ff2ec2c4f3c564af5c827854571bafce5b82bb2ef023b387b465cbb114cfaf1b47d54666da7bd2a954a9160e95a41a74930a8'
-            '42cc77e3daaf0f4c4d2a074e00cccb14de17c2cc9da8dc925378a8ee9048401eee37f26a5855cb728e1eef8e306ff9c39b009eb04b032e56dca6c29659492203')
+            '4162bdc2462ffa0b408bde13aed495c6c9aa39f292d27316a36c1e7816bebcf0a71190f313468a09198b6e8b84b72d113624392631d2276353ca805c7b985f9d')
 
 package() {
     install -Dm755 $pkgname "${pkgdir}/usr/share/${pkgname}/${pkgname}"
     install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
     install -Dm755 ${pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 readme_e.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 readme.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
