@@ -1,0 +1,26 @@
+# Maintainer: Archstrike <team archstrike org>
+# Contributor: Benjamin A. Shelton <zancarius@gmail.com>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+# Source: https://github.com/zancarius/archlinux-pkgbuilds
+
+_pkgname=gevent-websocket
+pkgname=python2-${_pkgname}
+pkgver=0.9.5
+pkgrel=1
+pkgdesc="Websocket handler for the gevent pywsgi server, a Python network library."
+arch=(any)
+url="http://pypi.python.org/pypi/gevent-websocket"
+license=('Apache')
+depends=('python2-gevent' 'python2-ujson')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/g/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('fdaa8c704e1d0869700cf67c3a1c04246bfd816f98beac9c755b723a2074aa26344991c924ebdd7de5661065cde48ad412685014c53fdb92df12401cad3c358c')
+
+package () {
+    
+    cd "${_pkgname}-${pkgver}"
+    python2 setup.py install --root="${pkgdir}/" --optimize=1
+
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+}
