@@ -2,16 +2,22 @@
 
 buildarch=212
 
-pkgname=ssh-privkey-crack
+pkgname=ssh-privkey-crack-svn
 pkgver=0.3
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A SSH private key cracker"
 url='https://code.google.com/p/lusas/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-license=('custom')
+license=('GPL')
+makedepends=("subversion")
 source=('svn+https://lusas.googlecode.com/svn')
-md5sums=('SKIP')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/trunk"
+  svnversion | tr -d [A-z]
+}
 
 build() {
   cd "$srcdir/svn/trunk/ssh-key-crack"
