@@ -3,6 +3,8 @@
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 # Source: https://github.com/zancarius/archlinux-pkgbuilds
 
+buildarch=1
+
 _pkgname=gevent-websocket
 pkgname=python2-${_pkgname}
 pkgver=0.9.5
