@@ -3,16 +3,17 @@
 buildarch=192
 
 pkgname=statsprocessor
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A high-performance word-generator based on per-position Markov-attack"
 arch=('i686' 'x86_64')
-url="http://hashcat.net/wiki/doku.php?id=statsprocessor"
-license=('unknown')
+url="https://github.com/jsteube/statsprocessor"
+license=('MIT')
+depends=*("glibc")
 makedepends=('p7zip')
-source=("http://hashcat.net/tools/statsprocessor/statsprocessor-$pkgver.7z")
-sha512sums=('df234f5cc25cd8e399a235dda775e110040a6c5b8a4770c272ae3c008559a51d4950ab636525f64a73fdda217905fdc268a963cd7b6e8b05dd4fdd10a5b9fb01')
+source=("https://github.com/jsteube/statsprocessor/releases/download/v$pkgver/$pkgname-$pkgver.7z")
+sha512sums=('b98bd6a35916da611160b536836163e0af887b58ddc489120396081b18e7fb6f5ba2a3fe51f0e9304df75ebc3e3f7f9608bfa5a79d2ce517ac8322eb63c7c4a6')
 
 package() {
   cd "$srcdir/statsprocessor-$pkgver"
@@ -25,4 +26,5 @@ package() {
   install -dm755 "$pkgdir/usr/share/statsprocessor"
   install -Dm644 hashcat.hcstat "$pkgdir/usr/share/statsprocessor/hashcat.hcstat"
   install -Dm755 $binary "$pkgdir/usr/bin/statsprocessor"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
