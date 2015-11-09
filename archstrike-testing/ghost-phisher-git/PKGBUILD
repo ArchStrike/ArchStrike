@@ -1,27 +1,35 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=1
 
-pkgname=ghost-phisher
-pkgver=1.62
+pkgname=ghost-phisher-git
+pkgver=r125.1778290
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="GUI suite for phishing and penetration attacks"
-url="http://code.google.com/p/ghost-phisher"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/savio-code/ghost-phisher"
+arch=('any')
 license=('GPL3')
-source=("svn+http://ghost-phisher.googlecode.com/svn/Ghost-Phisher/")
-depends=('aircrack-ng' 'python2-pyqt4' 'scapy' 'xterm' 'python2')
+conflicts="ghost-phisher"
+provides="ghost-phisher"
+source=("$pkgname::git+https://github.com/savio-code/ghost-phisher.git")
+depends=('aircrack-ng' 'python2-pyqt4' 'scapy' 'xterm')
 optdepends=('metasploit')
-md5sums=('SKIP')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname/Ghost-Phisher"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 
 prepare(){
-   cd "$srcdir/Ghost-Phisher"
+   cd "$pkgname/Ghost-Phisher"
    sed -i 's/python/python2/' *.py
 }
 
 package() {
-  cd "$srcdir/Ghost-Phisher"
+  cd "$pkgname/Ghost-Phisher"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/share/ghostphisher"
@@ -30,7 +38,7 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/ghostphisher"
 
   chmod +x "$pkgdir/usr/share/ghostphisher/ghost.py"
-
+  sed -i 's|env python$|env python2|' $pkgdir/usr/share/ghostphisher/core/bottle.py
 cat > "$pkgdir/usr/bin/ghostphisher" << EOF
 #!/bin/sh
 /usr/share/ghostphisher/ghost.py
