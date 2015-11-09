@@ -9,16 +9,23 @@ pkgdesc='A shared library for including a Cisco-like command-line interface into
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/dparrish/libcli'
 license=('GPL')
+depends=('glibc')
 source=("https://github.com/dparrish/libcli/archive/v${pkgver}.tar.gz")
-md5sums=('f33e0fdb8ae8e14e66036424704b201b')
+sha512sums=('b2dacfd40bc068ddcc0dc3d60576ef2f7d7e2af80b93c6e7ae899d654afca6f0f8d2df2b33c9c8e760bdbea9aa2eaf757029d46032dcf307341f78f1a8f4f66f')
+
+prepare() {
+  # patch for gcc 5.2
+  cd "$pkgname-$pkgver"
+  sed -i 's|__FUNCTION__|__func__|' clitest.c
+}
 
 build() {
-  cd "$srcdir/libcli-$pkgver"
+  cd "$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/libcli-$pkgver"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" PREFIX='/usr' install
 }
 
