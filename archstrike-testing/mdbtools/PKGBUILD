@@ -12,15 +12,28 @@ url="http://sourceforge.net/projects/mdbtools/"
 license=('LGPL' 'GPL')
 depends=('libgnomeui' 'unixodbc')
 makedepends=('bison' 'flex' 'txt2man' 'autoconf' 'rarian')
-options=('!libtool' '!makeflags')
+options=('!libtool' '!emptydirs')
+install="${pkgname}.install"
 source=("https://github.com/brianb/mdbtools/archive/$pkgver.tar.gz"
+        "https://github.com/brianb/mdbtools/commit/2892d519f3323cd3aa2b33690fe6f68504f0e516.patch"
+        "https://github.com/brianb/mdbtools/commit/2f4b2d12fece5a046ccece256f73728604516326.patch"
         'gmdb2.desktop')
-md5sums=('477c7af98e75f8e6c987b020d6a822d8'
-         '289f236ca91d73510e842922b5776999')
+sha512sums=('bbad415c59a3f54c11bcd04971220b1370046c5dfd7300d1f23e597615a1df6af850c6f767e78033676d486d87a11c72dfdb141abbee8378337c3fda9a450b75'
+            '52c721a99fb254a1f0c6972038276608af20f364c079178e246a28a99fb8554cdc54ffbf3cb0fdc4fe1cd375300eccc37defd91b0764846bd7773f6fc8f4eb2b'
+            '18c23dff3aa1b5c3f89f3669358c5b65bd9c0293c952883eec6e973b7be7247b70c75d3553620f27fa978888d4a34200f92766791a10462e937bd56623605333'
+            'f7f75936ce0fd385884cc4d15766b70a08f45a9fa1ed79553c898856f144b28839c6c3c0b7aab8227c996222ff5281287fda5c7039e6b47c48104e46e0232d50')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  for patch in ../*.patch; do
+    patch -Np1 -i "$patch"
+  done
+  autoreconf -i -f
+  sed -i 's/@LEXLIB@//' src/*/Makefile.am
+}  
 
 build() {
   cd "$srcdir/mdbtools-$pkgver"
-  autoreconf -i -f
   ./configure --prefix=/usr --sysconfdir=/etc --mandir=/usr/share/man --with-unixodbc=/usr
   make
 }
