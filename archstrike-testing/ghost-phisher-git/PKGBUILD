@@ -13,6 +13,7 @@ license=('GPL3')
 conflicts="ghost-phisher"
 provides="ghost-phisher"
 source=("$pkgname::git+https://github.com/savio-code/ghost-phisher.git")
+makedepends=("git")
 depends=('aircrack-ng' 'python2-pyqt4' 'scapy' 'xterm')
 optdepends=('metasploit')
 sha512sums=('SKIP')
