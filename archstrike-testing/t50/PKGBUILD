@@ -4,6 +4,7 @@ buildarch=212
 
 pkgname=t50
 pkgver=5.4.1
+_pkgver=5.4.1-rc1
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
@@ -11,16 +12,23 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/project/t50/t50-$pkgver/t50-$pkgver-rc1.tgz")
-md5sums=('26db475b41459e4397f674776caf0f53')
+source=("http://downloads.sourceforge.net/project/t50/t50-$pkgver/t50-${_pkgver}.tgz")
+sha512sums=('26db475b41459e4397f674776caf0f53')
 
+prepare() {
+  cd "${pkgname}-${_pkgver}/src"
+  if [[ CARCH == "armv6h" ]] || [[ CARCH == "armv7h" ]]; then
+        sed -i 's|$(USE_SSE)||' Makefile
+  fi
+}
+ 
 build() {
-  cd "$srcdir/t50-$pkgver-rc1/src"
+  cd "${pkgname}-${_pkgver}/src"
   make
 }
 
 package() {
-  cd "$srcdir/t50-$pkgver-rc1/src"
+  cd "${pkgname}-${_pkgver}/src"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/bin"
