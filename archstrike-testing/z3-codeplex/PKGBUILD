@@ -16,9 +16,10 @@ if [[ "$CARCH" == 'x86_64' ]]; then
 else
       depends='gcc-libs'
 fi
-source=("$pkgname-$pkgver.zip::http://download-codeplex.sec.s-msft.com/Download/SourceControlFileDownload.ashx?ProjectName=z3&changeSetId=89c1785b7322" "z3.patch")
+source=("$pkgname-$pkgver.zip::http://download-codeplex.sec.s-msft.com/Download/SourceControlFileDownload.ashx?ProjectName=z3&changeSetId=89c1785b7322" "z3.patch" "remove_sse_arm.patch")
 sha512sums=('193406c8d1e123132206e335647dd8b7355d0e80b8b898b59dadb7d3cb5eaba3d9454dafb9161f591e78a244ddc9f4a5bd3d46617c5142f903733674ad66e91a'
-            'b424fc8c70901bff230e277cc8fbae3e452a18ab0215472aa29750c867255700fa0c9aa037d411a61446d761762f59966dd1340cb6c3fa9435609a5a31489bbf')
+            'b424fc8c70901bff230e277cc8fbae3e452a18ab0215472aa29750c867255700fa0c9aa037d411a61446d761762f59966dd1340cb6c3fa9435609a5a31489bbf'
+            '37599bb4ad31cb26e6e2d3b3ab33dd26d186ce952a7b99047e9d46efa23a0dc07372b6b8002be07ef129f38f3df315e5ff755dad714ad39c2d386f62b2cd0b8e')
 
 build() {
   cd "$srcdir"
@@ -29,6 +30,9 @@ build() {
 
   cd "$srcdir/build"
   patch -i $srcdir/z3.patch
+  if [[ ${CARCH} == "armv6h" ]] || [[ ${CARCH} == "armv7h" ]]; then
+     patch -i $srcdir/remove_sse_arm.patch
+  fi
   make
 }
 
