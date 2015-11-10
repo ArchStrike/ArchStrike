@@ -26,9 +26,7 @@ build() {
 
   autoconf
   if [[ ${CARCH} == "armv6h" ]] || [[ ${CARCH} == "armv7h" ]]; then
-     cd scripts
-     patch -i $srcdir/remove_sse_arm.patch
-     cd "$srcdir"
+     patch -p1 -i $srcdir/remove_sse_arm.patch
   fi
   ./configure --prefix=$pkgdir/usr --with-python=/usr/bin/python2
   python2 scripts/mk_make.py --nodotnet
