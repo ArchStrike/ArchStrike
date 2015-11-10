@@ -25,14 +25,16 @@ build() {
   cd "$srcdir"
 
   autoconf
+  if [[ ${CARCH} == "armv6h" ]] || [[ ${CARCH} == "armv7h" ]]; then
+     cd scripts
+     patch -i $srcdir/remove_sse_arm.patch
+     cd "$srcdir"
+  fi
   ./configure --prefix=$pkgdir/usr --with-python=/usr/bin/python2
   python2 scripts/mk_make.py --nodotnet
 
   cd "$srcdir/build"
   patch -i $srcdir/z3.patch
-  if [[ ${CARCH} == "armv6h" ]] || [[ ${CARCH} == "armv7h" ]]; then
-     patch -i $srcdir/remove_sse_arm.patch
-  fi
   make
 }
 
