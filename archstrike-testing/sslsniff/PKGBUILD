@@ -10,22 +10,31 @@ pkgdesc="A tool to MITM all SSL connections on a LAN and dynamically generate ce
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.thoughtcrime.org/software/sslsniff/'
 license=('custom')
-depends=('boost' 'log4cpp' 'dsniff')
+depends=('openssl' 'boost-libs' 'log4cpp')
+makedepends=('boost')
 source=("http://www.thoughtcrime.org/software/sslsniff/sslsniff-${pkgver}.tar.gz"
         "boost-1.47.patch"
-        "gcc-4.7-link-fix.patch")
-md5sums=('030fe31af33c22a932393c7a5f33bb2e'
-         '439f5cd6a853e6b279a4cb1a89cec54d'
-         '19894027f5896d2f69066dddb76de17f')
+        "gcc-4.7-link-fix.patch"
+        "fix-compatibility-with-gcc49.patch")
+sha512sums=('4ac1bcff8f396d868b2381bc73bb0307022e9a7d5228c83722abde8d4d01e4c6273042763c1e003c8e60f606d60923a573122d33680f5d892b4ef7b62f02009f'
+            'e2c824efded6099f4820376bf1715cc444f0648a5ba515f5dea89c47e4357769ed00842d35179407042e72294a7ff24c3c547af232c2388911349ba502867f66'
+            '4fef9e8033aefa22a08315e98f5efc9e88787f4a113b172bdddfa94085762c5dfcbe3957910b92f53e03328c029b9f3182be307bb2efd4f1faac67648d93c7c5'
+            'c2f8881a8a299142f2212ec4021a07c0d1681514435a9abcfe79558dad79fe8d92584242b406804b8351412edfe89d054ba1cd2a7856e3626cf133d0c37b8eaf')
 
-build()
+prepare() 
 {
-  cd sslsniff-$pkgver
-
+  cd "${pkgname}-${pkgver}"
   # Boost 1.47 patch
   patch -p0 < "${srcdir}"/boost-1.47.patch
   # Fix linking with libraries in gcc 4.7.x
   patch -p1 < "${srcdir}"/gcc-4.7-link-fix.patch
+  # fix issues with gcc 4.9
+  patch -p1 < "${srcdir}"/fix-compatibility-with-gcc49.patch
+}
+
+build()
+{
+  cd "${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr --disable-dependency-tracking
   make
@@ -33,7 +42,7 @@ build()
 
 package()
 {
-  cd sslsniff-$pkgver
+  cd "${pkgname}-${pkgver}"
   make install DESTDIR="${pkgdir}"
 
   # Package some example material.
