@@ -8,7 +8,7 @@ pkgrel=3
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A general tcp protocols testing and hacking utility"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://code.google.com/p/${pkgname}'
+url="http://code.google.com/p/${pkgname}"
 license=('GPL2')
 source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
 depends=('gtksourceview2')
@@ -23,10 +23,9 @@ prepare() {
 
 build() {
     cd ${pkgname}-${pkgver}
-    ./configure --prefix=/usr --datarootdir=/usr/share
-    make
+    ./configure --prefix=/usr --datarootdir=/usr/share 
+    make TCPJUNK_LIBS="-lssl -lgtksourceview-2.0 -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lcrypto"
 }
-
 package() {
     cd ${pkgname}-${pkgver}
     make DESTDIR="$pkgdir" install
