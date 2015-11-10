@@ -1,11 +1,11 @@
---- config.mk.orig	2015-11-09 20:31:35.395997265 -0500
-+++ config.mk	2015-11-09 20:31:59.829036415 -0500
+--- config.mk.orig2015-11-09 21:00:35.628122166 -0500
++++ config.mk2015-11-09 21:00:51.998035724 -0500
 @@ -1,7 +1,7 @@
  CC=gcc
  PREFIX=/usr
  CXX=g++
--CXXFLAGS= -D_MP_INTERNAL -D_AMD64_ -D_USE_THREAD_LOCAL  -fopenmp -mfpmath=sse -fno-strict-aliasing -fPIC -c -O3 -D _EXTERNAL_RELEASE -fomit-frame-pointer -msse -msse2 
-+CXXFLAGS= -D_MP_INTERNAL -D_AMD64_ -D_USE_THREAD_LOCAL  -fopenmp -fno-strict-aliasing -fPIC -c -O3 -D _EXTERNAL_RELEASE -fomit-frame-pointer
+-CXXFLAGS= -D_MP_INTERNAL  -fopenmp -mfpmath=sse -fno-strict-aliasing -c -O3 -D _EXTERNAL_RELEASE -fomit-frame-pointer -msse -msse2 
++CXXFLAGS= -D_MP_INTERNAL  -fopenmp -fno-strict-aliasing -c -O3 -D _EXTERNAL_RELEASE -fomit-frame-pointer
  CXX_OUT_FLAG=-o 
  OBJ_EXT=.o
  LIB_EXT=.a
