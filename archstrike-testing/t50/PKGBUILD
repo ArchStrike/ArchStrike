@@ -18,8 +18,8 @@ sha512sums=('ed67261e332cdacca9529e09c714c03b8e4652dc2a94f13161823cfd6a8d13813c6
 
 prepare() {
   cd "${pkgname}-${_pkgver}/src"
-  if [[ CARCH == "armv6h" ]] || [[ CARCH == "armv7h" ]]; then
-        patch -i < $srcdir/remove_sse_for_arm.patch
+  if [[ ${CARCH} == "armv6h" ]] || [[ ${CARCH} == "armv7h" ]]; then
+     patch -i $srcdir/remove_sse_for_arm.patch
   fi
 }
  
