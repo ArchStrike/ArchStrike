@@ -3,10 +3,10 @@
 buildarch=20
 
 pkgname=john
-pkgver=1.7.9
-pkgrel=2
-_jumbover=7
-pkgdesc="John The Ripper - A fast password cracker (jumbo-$_jumbover included)"
+pkgver=1.8.0
+_pkgver=${pkgver}-jumbo-1
+pkgrel=1
+pkgdesc="John The Ripper - A fast password cracker"
 arch=('armv6h' 'armv7h')
 url="http://www.openwall.com/$pkgname/"
 groups=('archstrike' 'archstrike-crackers')
@@ -17,19 +17,15 @@ optdepends=("perl: for executing some of the scripts at /usr/share/john"
             "python: for executing some of the scripts at /usr/share/john")
 backup=('etc/john/john.conf')
 install=john.install
-source=(http://www.openwall.com/$pkgname/g/$pkgname-$pkgver.tar.bz2
-        http://www.openwall.com/john/g/john-$pkgver-jumbo-$_jumbover.diff.gz
+source=(http://www.openwall.com/$pkgname/j/$pkgname-${_pkgver}.tar.xz
         ftp://ftp.kfki.hu/pub/packages/security/ssh/ossh/libdes-4.04b.tar.gz
         params.h.patch)
-md5sums=('45f54fc59386ecd67daaef9f19781d93'
-         'b953fcb7f743eeeb5f938a28c352b8ef'
-         'c8d5c69f86c2eedb485583b0305284a1'
-         '516f3e2803075c29237a88e7e4e8b174')
+sha512sums=('163cd71f634c2d1e9d0fa760984cc05001bfeef8300098d6b9cc8bf7e1719fec1d37142c39d7fd65ef37ee96c95681f01d7f0b1941058b7f9926442e2df5cd8e'
+            'ec5c2a30910e8e284b10f664eb39970a28fae9dd36d73cff2b647d5eebba58527356559e3f5266626caeae91235bb6a912f0d3a85a16b7ad73fb1ebb46a11bc9'
+            '67eb3bccb0c888d4384f25df81fba949c82d9f615a64b67af427bfa9d753bd79fa1853b118a95efa80fea7ff2699d501708db59f5945168ae561718b7117169d')
 
 build() {
   # jumbo patch
-  cd ${srcdir}/$pkgname-$pkgver
-  patch -p1 < ${srcdir}/$pkgname-$pkgver-jumbo-$_jumbover.diff
   cd ${srcdir}/john-$pkgver/src/
 
   # patch default params
