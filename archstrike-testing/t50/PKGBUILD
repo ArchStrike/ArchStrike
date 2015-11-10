@@ -12,13 +12,14 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/project/t50/t50-$pkgver/t50-${_pkgver}.tgz")
-sha512sums=('ed67261e332cdacca9529e09c714c03b8e4652dc2a94f13161823cfd6a8d13813c64c437ff9eebc55191c2d01f236c32a12a29bfee9668ffd4b778060dcf16ea')
+source=("http://downloads.sourceforge.net/project/t50/t50-$pkgver/t50-${_pkgver}.tgz" "remove_sse_for_arm.patch")
+sha512sums=('ed67261e332cdacca9529e09c714c03b8e4652dc2a94f13161823cfd6a8d13813c64c437ff9eebc55191c2d01f236c32a12a29bfee9668ffd4b778060dcf16ea'
+            '07fb9e3257749c4a16f46741b24e3684b1dd6b0fd2d09287cffda1153710d54517b18438ea7d6c555cbb54ba478211d1ef6c8863872c9f4b715bd5c2ba794cd9')
 
 prepare() {
   cd "${pkgname}-${_pkgver}/src"
   if [[ CARCH == "armv6h" ]] || [[ CARCH == "armv7h" ]]; then
-        sed -i 's|$(USE_SSE)||' Makefile
+        patch -i < $srcdir/remove_sse_for_arm.patch
   fi
 }
  
