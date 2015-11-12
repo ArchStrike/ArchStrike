@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=fragroute
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-intel')
 pkgdesc="A network intrusion detection evasion toolkit"
 url='http://www.monkey.org/~dugsong/fragroute/'
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
   cd "${pkgname}-${pkgver}"
-  CPPFLAGS= ./configure --prefix=/usr --mandir=/usr/share/man --sysconfdir=/etc
+  CPPFLAGS= ./configure --prefix=/usr --sbindir=/usr/bin --mandir=/usr/share/man --sysconfdir=/etc
   make
 }
 
