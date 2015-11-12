@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=sqlmap
 pkgname=$_pkgname-git
-pkgver=20151104.r6919
+pkgver=20151112.r6934
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-exploit' 'archstrike-fuzzers')
