@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=mitmf-git
-pkgver=20150528.r291
+pkgver=20151103.r425
 pkgrel=1
 groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
 pkgdesc="A Framework for Man-In-The-Middle attacks written in Python."
@@ -12,7 +12,7 @@ url='https://github.com/byt3bl33d3r/MITMf'
 license=('GPL3')
 depends=('python2-configobj' 'python2-pillow' 'python2-user-agents' 'python2-service-identity' 'python2-ipy'
          'python2-twisted' 'python2-netfilterqueue' 'python2-msgpack' 'python2-requests' 'python2-pyopenssl'
-         'scapy' 'capstone' 'python2-pefile' 'python2-dnspython' 'systemd' 'backdoor-factory-git' 'python2-pypcap'
+         'scapy' 'python2-capstone' 'capstone' 'python2-pefile' 'python2-dnspython' 'systemd' 'backdoor-factory-git' 'python2-pypcap'
          'python2-yaml' 'python2-watchdog' 'python2-dnslib' 'impacket')
 makedepends=('git')
 provides=('mitmf')
