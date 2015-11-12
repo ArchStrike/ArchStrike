@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=mitmf-git
 pkgver=20151103.r425
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
 pkgdesc="A Framework for Man-In-The-Middle attacks written in Python."
 arch=('any')
