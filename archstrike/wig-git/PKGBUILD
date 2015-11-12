@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=wig
 pkgname=$_pkgname-git
-pkgver=r500.89c1265
+pkgver=r507.e60a0aa
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc='WebApp Information Gatherer'
@@ -37,7 +37,12 @@ package() {
   cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/usr/bin/env bash
 cd /usr/share/$_pkgname
-python $_pkgname.py "\$@"
+
+if [[ -z "$1" ]]; then
+    python $_pkgname.py -h
+else
+    python $_pkgname.py "\$@"
+fi
 EOF
 
   chmod a+x "$pkgdir/usr/bin/$_pkgname"
