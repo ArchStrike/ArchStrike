@@ -3,29 +3,45 @@
 buildarch=212
 
 pkgname=dislocker
-pkgver=0.3
-pkgrel=2
-pkgdesc="A tool to exploit the hash length extension attack in various hashing algorithms. With FUSE capabilities built in"
+pkgver=0.4.1
+pkgrel=1
+pkgdesc="Read BitLocker encrypted volumes under Linux"
 arch=('armv6h' 'i686' 'armv7h' 'x86_64')
-url="http://www.hsc.fr/ressources/outils/dislocker/"
+url="https://github.com/Aorimn/dislocker"
 license=('GPL2')
 groups=('archstrike')
-depends=('fuse')
-source=(http://www.hsc.fr/ressources/outils/dislocker/download/dislocker.tar.gz)
-sha512sums=('e2273793c03493c9ac29ca4763b0e28f0e3d6fc65bf2b2f5d61f9d36070a0d0136ffed8eb1f32508c9adc3e54667b8b16693a658cfc5ff5e3da3569720a0fb85')
+depends=('fuse' 'mbedtls')
+source=("https://github.com/Aorimn/dislocker/archive/v0.4.1.tar.gz")
+sha512sums=('b6affe17f9c183422a15b0b186b6b332429e60649dad3a8b354524a1913415f3301fd21f2e89a6dbe83dd99aebf0ed349d6fd2976950842954d257d1d658eb33')
+
+prepare() {
+  cd "${pkgname}-${pkgver}/src"
+  sed -i 's|polarssl|mbedtls|g' Makefile
+  sed -i 's|polarssl|mbedtls|g' encommon.h
+  sed -i 's|polarssl|mbedtls|g;s|sha2.h|sha256.h|' accesses/stretch_key.h
+  sed -i 's|polarssl|mbedtls|g' ssl_bindings.h
+  sed -i '30i#include "mbedtls/compat-1.3.h"' ssl_bindings.h
+}
 
 build() {
-  cd "$srcdir/$pkgname"/src
-  make
+  cd "${pkgname}-${pkgver}/src"
+  make all
 }
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "${pkgname}-${pkgver}"
   install -dm755 "$pkgdir"/usr/bin
+  install -dm755 "$pkgdir"/usr/lib
   install -dm755 "$pkgdir"/usr/share/man/man1
   install -Dm644 README.txt "$pkgdir"/usr/share/dislocker/README.txt
   install -Dm644 CHANGELOG.txt "$pkgdir"/usr/share/dislocker/CHANGELOG.txt
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/dislocker/LICENSE
   cd src
-  make INSTALL_PATH="$pkgdir"/usr/bin/ MAN_PATH="$pkgdir"/usr/share/man/man1 install
+  make DESTDIR="${pkgdir}/usr" install
+  ## Fixing installer issues
+  cd "${pkgdir}/usr/lib"
+  rm -rf libdislocker.so.0
+  rm -rf libdislocker.so
+  ln -s libdislocker.so.0.4.1 libdislocker.so.0
+  ln -s libdislocker.so.0 libdislocker.so
 }
