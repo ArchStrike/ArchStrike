@@ -4,13 +4,13 @@ buildarch=212
 
 pkgname=karma-hostapd
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a set of patches to access point software to get it to respond to probe requests not just for itself but for any ESSID requested"
 url="http://www.digininja.org/karma/"
 license=('GPL')
 groups=('archstrike')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('libnl1' 'openssl')
+depends=('libnl1' 'openssl' 'hostapd')
 source=("http://www.digininja.org/files/hostapd-$pkgver-karma.tar.bz2"
   "hostapd-karma.conf")
 sha512sums=('fdee10e76254a91f2a10273e48660622cda69c29f01fdd4c3cb2cbd1d62a833d67fe73066112a60edd959cb89a82c348c7be2a6ad82de5075c1584a36be33716'
