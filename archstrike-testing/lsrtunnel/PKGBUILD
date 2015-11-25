@@ -4,23 +4,25 @@ buildarch=212
 
 pkgname=lsrtunnel
 pkgver=0.2
-pkgrel=1
-pkgdesc="lsrtunnel spoofs connections using source routed packets."
-url="http://www.synacklabs.net/projects/lsrtunnel/"
+pkgrel=2
+pkgdesc='Spoofs connections to a remote host by pretending to be the middle host in a source routed path'
+url='https://packetstormsecurity.com/files/26525/lsrtunnel-0.2.tar.gz.html'
 depends=('libpcap' 'libdnet')
-license="GPL"
+license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike' 'archstrike-spoof')
-source=(http://packetstorm.foofus.com/UNIX/security/lsrtunnel-$pkgver.tar.gz)
+source=("http://packetstorm.foofus.com/UNIX/security/$pkgname-$pkgver.tar.gz")
 md5sums=('e268ebc4c8c0c1af8d2cbf9149c40d44')
+sha512sums=('6d46dd2c95e09d2712356809892db21349f22413d60b3bbb5ffa5aff15f865f15f05d5d9e8366283cefbc0ad9e596fa01e8086c031a2bcce5cf6cd206ddcf9db')
 
 build() {
-  cd $srcdir/lsrtunnel-$pkgver
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
 package(){
-  cd $srcdir/lsrtunnel-$pkgver
-  make DESTDIR=$pkgdir install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
