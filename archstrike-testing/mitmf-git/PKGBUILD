@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=mitmf
 pkgname=$_pkgname-git
 pkgver=20151103.r425
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
 pkgdesc='Framework for Man-In-The-Middle attacks'
 arch=('any')
@@ -17,15 +17,22 @@ depends=(
   'impacket'
   'python2-beautifulsoup4'
   'python2-capstone'
+  'python2-chardet'
   'python2-configobj'
+  'python2-crypto'
+  'python2-cryptography'
   'python2-dnslib'
   'python2-dnspython'
+  'python2-flask'
   'python2-ipy'
+  'python2-lxml'
   'python2-magic'
   'python2-msgpack'
+  'python2-netaddr'
   'python2-netfilterqueue'
   'python2-pefile'
   'python2-pillow'
+  'python2-pyasn1'
   'python2-pyinotify'
   'python2-pyopenssl'
   'python2-pypcap'
