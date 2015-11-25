@@ -2,55 +2,90 @@
 
 buildarch=1
 
-pkgname=mitmf-git
+_pkgname=mitmf
+pkgname=$_pkgname-git
 pkgver=20151103.r425
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
-pkgdesc="A Framework for Man-In-The-Middle attacks written in Python."
+pkgdesc='Framework for Man-In-The-Middle attacks'
 arch=('any')
 url='https://github.com/byt3bl33d3r/MITMf'
 license=('GPL3')
-depends=('python2-configobj' 'python2-pillow' 'python2-user-agents' 'python2-service-identity' 'python2-ipy'
-         'python2-twisted' 'python2-netfilterqueue' 'python2-msgpack' 'python2-requests' 'python2-pyopenssl'
-         'scapy' 'python2-capstone' 'capstone' 'python2-pefile' 'python2-dnspython' 'systemd' 'backdoor-factory-git' 'python2-pypcap'
-         'python2-yaml' 'python2-watchdog' 'python2-dnslib' 'impacket')
+depends=(
+  'backdoor-factory-git'
+  'capstone'
+  'impacket'
+  'python2-beautifulsoup4'
+  'python2-capstone'
+  'python2-configobj'
+  'python2-dnslib'
+  'python2-dnspython'
+  'python2-ipy'
+  'python2-magic'
+  'python2-msgpack'
+  'python2-netfilterqueue'
+  'python2-pefile'
+  'python2-pillow'
+  'python2-pyinotify'
+  'python2-pyopenssl'
+  'python2-pypcap'
+  'python2-requests'
+  'python2-service-identity'
+  'python2-twisted'
+  'python2-user-agents'
+  'python2-watchdog'
+  'python2-yaml'
+  'scapy'
+  'systemd'
+)
 makedepends=('git')
-provides=('mitmf')
-replaces=('mitmf')
-conflicts=('mitmf')
-install=${pkgname}.install
-source=("${pkgname}::git+https://github.com/byt3bl33d3r/MITMf.git" "${pkgname}.tmpfiles.conf")
-sha512sums=('SKIP'
-            'a380c2f2e812efff0ed1f303f91046c4e639e4bb8a8b0f93e17d8e8ac1b7ec1c20c124d2a203d66fc72aaa62f4753de8935e8b365d39a7e2bd90c2c2dfa39376')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+install=$pkgname.install
+source=(
+  "$pkgname::git+https://github.com/byt3bl33d3r/MITMf.git"
+  "$pkgname.tmpfiles.conf"
+)
+sha512sums=(
+  'SKIP'
+  'a380c2f2e812efff0ed1f303f91046c4e639e4bb8a8b0f93e17d8e8ac1b7ec1c20c124d2a203d66fc72aaa62f4753de8935e8b365d39a7e2bd90c2c2dfa39376'
+)
 
 pkgver() {
-  cd "${pkgname}"
+  cd $pkgname
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
-prepare(){
-  cd "${pkgname}"
-  #git submodule
-  grep -iRl 'python' "$srcdir/${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+prepare() {
+  cd $pkgname
+  while read -r; do
+      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
 }
 
 package() {
-  cd "${pkgname}"
+  # Install tmpfiles script
+  install -Dm644 $pkgname.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
 
-  install -dm755 "$pkgdir/usr/share/mitmf/"
+  # Install package files and create a symlink to backdoor-factory in the package directory
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
+  rmdir "$pkgdir/usr/share/$_pkgname/libs/bdfactory"
+  ln -sf /usr/share/backdoor-factory "$pkgdir/usr/share/$_pkgname/libs/bdfactory"
+
+  # Move license to the package license directory
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  mv "$pkgdir/usr/share/$_pkgname/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Create launcher script
   install -dm755 "$pkgdir/usr/bin/"
-  install -Dm644 $srcdir/${pkgname}.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/${pkgname}.conf"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/mitmf/"
+  printf '%s\n\n%s\n%s\n' \
+    '#!/usr/bin/env bash' \
+    "cd /usr/share/$_pkgname" \
+    "python2 $_pkgname.py \"\$@\"" \
+      > "$pkgdir/usr/bin/$_pkgname"
 
-  cd ${pkgdir}
-  find ./ -type d -exec chmod 755 {} \+
-  find ./ -type f -exec chmod 644 {} \+
-
-cat > "${pkgdir}/usr/bin/mitmf" <<EOF
-#!/bin/sh
-cd /usr/share/mitmf
-python2 mitmf.py "\$@"
-EOF
-  chmod +x "$pkgdir/usr/bin/mitmf"
+  # Make launcher script executable
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
 }
