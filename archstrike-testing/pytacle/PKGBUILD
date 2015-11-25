@@ -4,30 +4,35 @@ buildarch=212
 
 pkgname=pytacle
 pkgver=alpha2
-pkgrel=1
-pkgdesc="Automates the task of sniffing GSM frames"
+pkgrel=2
+pkgdesc='Automates the task of sniffing GSM frames'
 groups=('archstrike' 'archstrike-sniffers')
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-url='http://packetstormsecurity.com/files/124299/pytacle-alpha2.tar.gz'
+arch=('any')
+url='https://www.insinuator.net/2013/10/pytacle-alpha2/'
 license=('GPL3')
 depends=('pygtk')
-source=(http://packetstorm.foofus.com/wireless/pytacle-$pkgver.tar.gz
-        py2.patch)
-md5sums=('5468c3e07706a551b3141dbab8b002e3'
-         '27dbd45061403dd91c9ce291597cc165')
+source=("http://www.ernw.de/download/$pkgname-$pkgver.tar.gz")
+sha512sums=('a45b78442e6341cccfd88f243b14628f07f57e0c1ddd7e590701b9bac06f084caad231c825dc62ea68b563733851b457c9638ed3807448289571c32c305e4a66')
 
 prepare() {
-  cd "$srcdir/pytacle-$pkgver"
-  patch -p1 pytacle.py "$srcdir/py2.patch"
+  cd $pkgname-$pkgver
+  sed -i 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' *.py
 }
 
 package() {
-  cd "$srcdir/pytacle-$pkgver"
+  cd $pkgname-$pkgver
 
-  install -Dm755 pytacle.py "$pkgdir/usr/bin/pytacle"
+  # Install package files
+  install -Dm644 mcc_mnc.py "$pkgdir/usr/lib/python2.7/$pkgname/mcc_mnc.py"
+  install -Dm644 windows.glade "$pkgdir/usr/lib/python2.7/$pkgname/windows.glade"
+  install -Dm755 $pkgname.py "$pkgdir/usr/lib/python2.7/$pkgname/$pkgname.py"
 
-  install -dm755 "$pkgdir/usr/lib/python2.7/pytacle"
-
-  install -m644 mcc_mnc.py "$pkgdir/usr/lib/python2.7/pytacle/"
-  install -m644 windows.glade "$pkgdir/usr/lib/python2.7/pytacle"
+  # Create launcher
+  install -dm755 "$pkgdir/usr/bin"
+  printf '%s\n\n%s\n%s\n' \
+    '#!/usr/bin/env bash' \
+    "cd /usr/lib/python2.7/$pkgname" \
+    "python2 $pkgname.py \"$\@\"" \
+      > "$pkgdir/usr/bin/$pkgname"
+  chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
