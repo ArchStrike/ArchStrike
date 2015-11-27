@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=212
+buildarch=192
 
 pkgname=johnny
 pkgver=2.2
