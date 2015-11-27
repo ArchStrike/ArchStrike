@@ -8,7 +8,7 @@ buildarch=212
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=0.3.3637
+pkgver=17.1.r48.g747468b
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -20,7 +20,6 @@ depends=('bash')
 makedepends=('git' 'nodejs' 'python2')
 optdepends=(
   'cjdnsify: allows you to run some programs bound to your cjdns address'
-  'cjdns-git-sysvinit: support for sysvinit (rc.d)'
 )
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -29,7 +28,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-  git describe --always | sed 's|-|.|g;s|[^\.]*\.||;s|\.[^\.]*$||'
+  git describe --tags | sed 's|^[^-]*-v||;s|-|.r|;s|-|.|g'
 }
 
 build() {
