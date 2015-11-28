@@ -4,7 +4,7 @@ buildarch=212
 
 _pkgname=wpscan
 pkgname=$_pkgname-git
-pkgver=20151026.r1990
+pkgver=20151126.r1993
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
@@ -12,7 +12,7 @@ pkgdesc='A vulnerability scanner which checks the security of WordPress installa
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url='http://wpscan.org'
 license=('custom')
-depends=('ruby1.9' 'ruby1.9-bundler' 'java-environment' 'libxslt')
+depends=('ruby1.9' 'ruby1.9-bundler' 'libxslt' 'curl')
 makedepends=('git' 'unzip')
 options=('!strip')
 conflicts=("$_pkgname")
@@ -25,28 +25,42 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
-package() {
-  cd $pkgname
+prepare() {
+  # Use the local share folder for files that need write access
+  cd $pkgname/lib/common
+  sed -i "s|ROOT_DIR, 'cache'|ENV['HOME'] + '/.local/share/$_pkgname/cache'|" common_helper.rb
+  sed -i "s|ROOT_DIR, 'log.txt'|ENV['HOME'] + '/.local/share/$_pkgname/log.txt'|" common_helper.rb
+}
 
+package() {
+  # Create required directories
   install -dm755 "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -dm755 "$pkgdir/usr/bin"
+
+  # Move application files to the share folder
+  cd $pkgname
   cp -a --no-preserve=owner * "$pkgdir/usr/share/$_pkgname"
+
+  # Build and install locally
   cd "$pkgdir/usr/share/$_pkgname"
   bundle-1.9 config build.nokogiri --use-system-libraries
   bundle-1.9 install --path vendor/bundle
+
+  # Extract the data and delete what we don't need
   unzip -o data.zip
-  rm "$pkgdir/usr/share/$_pkgname/data.zip"
-  rm "$pkgdir/usr/share/$_pkgname/data/LICENSE"
-  for i in $(find "$pkgdir" -type d -iname ext); do
-    rm -rf "$i"
-  done
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
+  rm data.zip
+  rm data/LICENSE
+  find . -type d -name ext -exec rm '{}' \;
+
+  # Install the license
+  mv LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Create the launcher
+  cat > "$pkgdir/usr/bin/$_pkgname" << EOF
 #!/usr/bin/env bash
 cd /usr/share/$_pkgname
 ruby-1.9 ./$_pkgname.rb "\$@"
 EOF
-  sed -i "s/ROOT_DIR + '\/log.txt/'\/home\/' + ENV['USER'] + '\/$_pkgname.log/" "$pkgdir/usr/share/$_pkgname/lib/common/common_helper.rb"
-  sed -i "s/ROOT_DIR + '\/cache/'\/home\/' + ENV['USER'] + '\/cache/" "$pkgdir/usr/share/$_pkgname/lib/common/common_helper.rb"
   chmod 0755 "$pkgdir/usr/bin/$_pkgname"
 }
