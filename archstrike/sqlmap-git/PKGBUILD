@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=sqlmap
 pkgname=$_pkgname-git
-pkgver=20151124.r6968
+pkgver=20151127.r6972
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-exploit' 'archstrike-fuzzers')
@@ -19,6 +19,7 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("$pkgname::git+https://github.com/sqlmapproject/sqlmap")
 sha512sums=('SKIP')
+backup=("etc/$_pkgname.conf")
 
 pkgver() {
   cd $pkgname
@@ -36,9 +37,14 @@ package() {
   cd $pkgname
 
   install -dm755 "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/share/doc"
   install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/etc"
 
   cp --no-preserve=ownership -R * "$pkgdir/usr/share/$_pkgname"
+  mv "$pkgdir/usr/share/$_pkgname/doc" "$pkgdir/usr/share/doc/$_pkgname"
+  mv "$pkgdir/usr/share/$_pkgname/$_pkgname.conf" "$pkgdir/etc/$_pkgname.conf"
+  ln -sf /etc/$_pkgname.conf "$pkgdir/usr/share/$_pkgname/$_pkgname.conf"
 
   if [[ "$CARCH" = 'i686' ]]; then
     rm -rf "$pkgdir/usr/share/$_pkgname/udf/mysql/linux/64/"
