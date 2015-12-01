@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=perl-math-pari
 pkgver=2.010808
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl interface to PARI"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 epoch='1'
@@ -17,8 +17,11 @@ sha512sums=('006e77328f0d8e61b89addbb6b8b8a8adb8c8c1591a1d3cdf80f5183a5fb30bb192
 
 build() {
   cd "$srcdir/Math-Pari-$pkgver"
-
-  echo -e "y\n" | perl Makefile.PL installdirs=vendor
+  if [[ $CARCH == "i686" ]]; then
+        echo -e "y\n" | perl Makefile.PL machine=ix86 installdirs=vendor
+  else
+        echo -e "y\n" | perl Makefile.PL installdirs=vendor
+  fi
   make
 }
 
