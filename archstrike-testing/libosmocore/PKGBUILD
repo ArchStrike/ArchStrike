@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Dominik Heidler <dominik@heidler.eu>
+
+buildarch=212
+
+pkgname=libosmocore
+pkgver=0.9.0
+pkgrel=1
+pkgdesc="core libs for osmocom"
+arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+url="http://bb.osmocom.org/trac/wiki/libosmocore"
+license=('GPL')
+depends=('pcsclite')
+makedepends=('autoconf' 'glibc')
+source=("http://cgit.osmocom.org/$pkgname/snapshot/$pkgname-$pkgver.tar.gz")
+sha512sums=('4f59dde407277a04797020a785861056c863420c160837999f0cff85b6ca1e7c9eecbaa71ae88d876e06ab0115ab06b718bb4667f788749f760881d10c15e60c')
+
+build() {
+  cd "${pkgname}-${pkgver}"
+
+  autoreconf -i
+  ./configure --prefix=/usr --exec-prefix=/usr --bindir=/usr/bin --sbindir=/usr/sbin --datadir=/usr/share \
+              --libexecdir=/usr/lib --localstatedir=/var --docdir=/usr/share/doc/libosmocore --libdir=/usr/lib/
+  make
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR=$pkgdir install
+  # fix messed up docs dir
+  chown -R root:root $pkgdir/usr/share/doc/$pkgname
+}
