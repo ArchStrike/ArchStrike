@@ -11,7 +11,7 @@ url="https://github.com/SmeegeSec/HashTag"
 arch=('any')
 license=('MIT')
 depends=('python2')
-makedeps=('git')
+makedepends=('git')
 source=("git+https://github.com/SmeegeSec/HashTag.git" "https://raw.githubusercontent.com/SmeegeSec/HashTag/master/LICENSE.txt")
 sha512sums=('SKIP'
             'd886bb5bf4561fc9b5556ad40420a4b4e16544a3e79d65c06376f15a2f3e1aa0dc087f95e2f388b598314be246ca4f9af7ad841388ac27f5e6b22f3c37f732cf')
