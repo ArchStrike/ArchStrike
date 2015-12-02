@@ -13,6 +13,7 @@ arch=('any')
 groups=('archstrike' 'archstrike-exploit')
 depends=('metasploit' 'mingw-w64-gcc' 'wget')
 makedepends=('git')
+provides=('metasploitavevasion')
 source=("git+https://github.com/nccgroup/${pkgname}.git#branch=master"
         "${pkgname}.sh"
         "${pkgname}.desktop"
