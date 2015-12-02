@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=192
 
 pkgname=hashcat-utils
 pkgver=1.1
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Utilites for Hashcat"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64')
 url='http://hashcat.net/wiki/doku.php?id=hashcat_utils'
 license=('custom')
 if [[ ${CARCH} == "x86_64" ]]; then
