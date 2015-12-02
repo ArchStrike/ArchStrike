@@ -10,17 +10,24 @@ pkgdesc="A very versatile packet injector and sniffer that provides a command-li
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://hexinject.sourceforge.net'
 license=('BSD')
-depends=('libpcap')
-source=("http://sourceforge.net/projects/hexinject/files/hexinject-${pkgver}/hexinject-${pkgver}.tar.gz/download")
-md5sums=('26fbb396bed9c64de653e35ae78b6956')
+depends=('libpcap' 'tcl')
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('cd145b6f2ae9d739effca03959fb474df11d28ff015c0e5bd1e30c341f60085154795f3c8a601b7241623944b3868b6fc9a3e1530a3aa4e7aaa2b3794a5aa34a')
+
+prepare() {
+ cd "$pkgname"
+ #fix compatibility issues with gcc5.2
+ sed -i '/gcc/ s/$/ -std=gnu89/' Makefile
+}
 
 build() {
-  cd "$srcdir/hexinject"
+  cd "$pkgname"
   make
 }
 
 package() {
-  install -D -m755 $srcdir/hexinject/hexinject $pkgdir/usr/bin/hexinject
-  install -D -m755 $srcdir/hexinject/prettypacket $pkgdir/usr/bin/prettypacket
-  install -D -m755 $srcdir/hexinject/hex2raw $pkgdir/usr/bin/hex2raw
+  cd "$pkgname"
+  install -Dm755 hexinject $pkgdir/usr/bin/hexinject
+  install -Dm755 prettypacket $pkgdir/usr/bin/prettypacket
+  install -Dm755 hex2raw $pkgdir/usr/bin/hex2raw
 }
