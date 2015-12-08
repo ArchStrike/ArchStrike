@@ -2,6 +2,7 @@
 
 buildarch=1
 
+DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 pkgname='orakelcrackert'
 pkgver='1.00'
 pkgrel=1
@@ -10,8 +11,8 @@ url='http://freeworld.thc.org/thc-orakelcrackert11g/'
 groups=('archstrike')
 license=('custom')
 arch=('any')
-source=("http://freeworld.thc.org/thc-orakelcrackert11g/thc-orakelcrackert11g.tar.gz")
-md5sums=('66d8dc57670a3e30c146927819db46ae')
+source=("https://freeworld.thc.org/thc-orakelcrackert11g/thc-orakelcrackert11g.tar.gz")
+sha512sums=('8a1c38b75b9b5b623be17d900b86d88e5b267a538c22a6d3512a79dcf4a60778bdb2c9c53667afb033e827990985ea2a1016e4d8d9db94eb17bb36e71309ff07')
 
 package() {
   cd "$srcdir"
