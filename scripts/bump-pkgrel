@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+[[ -f "$1" ]] || exit 1
+
+while read -r; do
+    pkgbuild="$REPLY"/PKGBUILD
+
+    if [[ -f "$pkgbuild" ]]; then
+        unset pkgrel
+        eval "$(egrep '^\ *pkgrel=' "$pkgbuild")"
+
+        if [[ -n "$pkgrel" ]]; then
+            new_pkgrel=$(( pkgrel + 1 ))
+            sed -i 's|^\ *pkgrel.*|pkgrel='"$new_pkgrel"'|' "$pkgbuild"
+            printf '%s\n' "Updated pkgrel from $pkgrel to $new_pkgrel for $pkgbuild"
+        else
+            printf '%s\n' "Unable to read pkgrel from $REPLY/PKGBUILD" >&2
+        fi
+    else
+        printf '%s\n' "Unable to locate $REPLY/PKGBUILD" >&2
+    fi
+done < "$@"
