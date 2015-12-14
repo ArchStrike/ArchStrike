@@ -19,6 +19,7 @@ src/
 *.dmg
 *.egg
 *.exe
+*.gem
 *.gz
 *.iso
 *.jar
