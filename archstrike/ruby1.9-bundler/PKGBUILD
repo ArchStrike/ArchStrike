@@ -4,9 +4,9 @@ buildarch=1
 
 pkgname=ruby1.9-bundler
 _gemname=${pkgname#ruby1.9-}
-pkgver=1.10.6
+pkgver=1.11.0
 pkgrel=1
-pkgdesc="Manages an application's dependencies through its entire life, across many machines, systematically and repeatably."
+pkgdesc="Manages an application's dependencies through its entire life, across many machines, systematically and repeatably"
 arch=('any')
 url='http://gembundler.com'
 license=('MIT')
@@ -17,7 +17,7 @@ source=(
 )
 noextract=("$_gemname-$pkgver.gem")
 sha512sums=(
-  '8b6abcaa53f6d7e5f7728fde4120bda79e6aa849e27ae5df589076c66828b7dfac16106d079a3430504c3bd42b63a8ba1ae1de0901608bc661c9dc399c70c1e7'
+  '49eb3b7a58541e024739de67ee7e40e48734f1c2e36dcf6fe9b85528d0c158be292b257f2e200e00b41fc35a53a8ce3e144c01b1a7d2e3bddbb2466121bbd0be'
   'fa43908bb0e9af7b5f2efd785e052749276671c1af46df762df337b24312f0b157d291484a5a0299a644a3d1455e6465a57d120defb859aaa26b158a4a02677a'
 )
 
