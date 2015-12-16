@@ -6,7 +6,7 @@ buildarch=1
 _pkgname=subbrute
 pkgname=$_pkgname-git
 pkgver=20150903.r99
-pkgrel=1
+pkgrel=2
 pkgdesc='A DNS meta-query spider that enumerates DNS records, and subdomains'
 arch=('any')
 url='https://github.com/TheRook/subbrute'
@@ -28,20 +28,8 @@ pkgver() {
 package() {
   cd $_pkgname
 
-  # install upstream files
-  install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$_pkgname"
-  install -dm755 "$pkgdir/usr/share/$_pkgname/windows"
-  install -Dm644 windows/* "$pkgdir/usr/share/$_pkgname/windows/"
-  install -m755 -t "$pkgdir/usr/share/$_pkgname" resolvers.txt subbrute.py names.txt names_small.txt
-  install -Dm755 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-
-cat > "$pkgdir/usr/bin/$_pkgname" << EOF
-#!/usr/bin/env bash
-
-cd /usr/share/$_pkgname
-python $_pkgname.py "\$@"
-EOF
-
-  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+  install -m755 -t "$pkgdir/usr/share/$_pkgname" resolvers.txt names.txt names_small.txt
+  install -Dm755 $_pkgname.py "$pkgdir/usr/bin/$_pkgname"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
