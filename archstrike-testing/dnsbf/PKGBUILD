@@ -8,11 +8,11 @@ pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="search for available domain names in an IP range"
 arch=('any')
-url='http://code.google.com/p/dnsbf'
+url='https://github.com/strayArch/dnsbf'
 license=('BSD')
 makedepends=('subversion')
 depends=('python2')
-source=('svn+http://dnsbf.googlecode.com/svn/trunk/')
+source=('https://raw.githubusercontent.com/strayArch/dnsbf/master/dnsbf.py')
 md5sums=('SKIP')
 
 package() {
