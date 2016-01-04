@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=spiderfoot
-pkgver=2.3.0
+pkgver=2.6.1
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="The Open Source Footprinting Tool"
@@ -11,22 +11,22 @@ url='http://spiderfoot.net'
 arch=('any')
 license=('GPL2')
 depends=('python2-lxml' 'python2-mako' 'python2-cherrypy' 'python2-m2crypto' 'python2-netaddr')
-source=("http://downloads.sourceforge.net/project/spiderfoot/spiderfoot-$pkgver-src.tar.gz")
-sha512sums=('9d13f08046ab17c087905c9335fef801db1c2e116abdab770684028a478597bbd7441d3a64a91930bbf90d52384d2b5662d32468510399c81b98583072cd6add')
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}-src.tar.gz")
+sha512sums=('96f1f38937f3f6509f344e725fb79c56835270228747c4d6fb5cef897ab1ea398ca7a3c99c8be2c10dd31008969d3bb9d4313e498ac6e44f734faea6ff2b8f34')
 
 package() {
-  cd "$srcdir/spiderfoot-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Base directories.
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/spiderfoot"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  cp -a * "$pkgdir/usr/share/spiderfoot"
-  sed -i 's|python|python2|' $pkgdir/usr/share/spiderfoot/ext/metapdf/metapdf.py
-cat > "$pkgdir/usr/bin/spiderfoot" << EOF
+  cp -R ./ "${pkgdir}/usr/share/${pkgname}"
+  sed -i 's|python|python2|' ${pkgdir}/usr/share/${pkgname}/sf.py
+  cat > "$pkgdir/usr/bin/spiderfoot" << EOF
 #!/bin/sh
 cd /usr/share/spiderfoot
-python2 sf.py "\$@"
+./sf.py
 EOF
   chmod +x "$pkgdir/usr/bin/spiderfoot"
 }
