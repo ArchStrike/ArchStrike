@@ -3,29 +3,26 @@
 buildarch=212
 
 pkgname=zzuf
-pkgver=0.13
+pkgver=0.14
 pkgrel=4
 pkgdesc='Transparent application input fuzzer'
-url='http://sam.zoy.org/zzuf'
+url='https://github.com/samhocevar/zzuf'
 groups=('archstrike' 'archstrike-fuzzers')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('custom')
-source=("http://caca.zoy.org/files/$pkgname/$pkgname-$pkgver.tar.gz" 'LICENSE')
-sha512sums=(
-  'e8208dae68b4eee5ebc96775476f616c6822bc9a6a9c753d7f477e9f3e6f527a03e1aec494c2cb8a6666f3159104ea2e221acf8da35efb7d8e357666dbc315ce'
-  'fb6575315a22516e29ad414c8e0c9074e0e18a5361ce746524d938e0bf329f7b742b66dc43cfba138f69534d747507e2983b34149d7c66bd4ae2e1b435e37034'
-)
+source=("https://github.com/samhocevar/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('bed9ce368be3fb63b827ca4d371e3d54ff5c67424ff632cf9d86a80b11228a794750bc4cb57736a02c2a15dff1d02106b284d9988fdc5fcf400953c71e4adf3d')
 
 build() {
-  cd $pkgname-$pkgver
+  cd ${pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
-  mv "$pkgdir"/usr/bin/zzcat "$pkgdir"/usr/bin/$pkgname-zzcat
+  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  mv "${pkgdir}"/usr/bin/zzat "${pkgdir}"/usr/bin/${pkgname}-zzat
 }
