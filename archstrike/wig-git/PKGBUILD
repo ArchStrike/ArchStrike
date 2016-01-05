@@ -3,8 +3,8 @@
 buildarch=1
 
 _pkgname=wig
-pkgname=$_pkgname-git
-pkgver=r515.a20f95b
+pkgname=${_pkgname}-git
+pkgver=r519.66fff86
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc='WebApp Information Gatherer'
@@ -15,35 +15,35 @@ provides=('wig')
 depends=('python-requests')
 makedepends=('git')
 options=('!emptydirs')
-source=("$_pkgname::git+https://github.com/jekyc/wig.git")
+source=("$_pkgname::git+https://github.com/jekyc/${_pkgname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd ${_pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd $_pkgname
+  cd ${_pkgname}
 
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/$_pkgname"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -dm755 "$pkgdir/usr/share/$_pkgname/cache"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}/cache"
 
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
+  cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/$_pkgname
+cd /usr/share/${_pkgname}
 
-if [[ -z "$1" ]]; then
-    python $_pkgname.py -h
+if [[ "\$1" = "" ]]; then
+    ./${_pkgname}.py -h
 else
-    python $_pkgname.py "\$@"
+    ./${_pkgname}.py "\$@"
 fi
 EOF
 
-  chmod a+x "$pkgdir/usr/bin/$_pkgname"
+  chmod a+x "${pkgdir}/usr/bin/${_pkgname}"
 }
