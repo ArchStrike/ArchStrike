@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# run to check for packages that don't have a groups array
+
+curr_dir="$(readlink -f "$0")"
+curr_dir="${curr_dir%\/*}"
+cd "$curr_dir"/.. || exit
+
+while read -r; do
+    [[ "$REPLY" =~ ^\ *groups= ]] || {
+        pkg="${REPLY%\/*}"
+        pkg="${pkg/\.\/}"
+        printf '%s\n' "$pkg"
+    }
+done < <(find . -name 'PKGBUILD')
