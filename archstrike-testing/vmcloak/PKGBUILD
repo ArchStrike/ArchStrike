@@ -3,10 +3,10 @@
 buildarch=192
 
 pkgname=vmcloak
-pkgver=0.2.6
+pkgver=0.3.7
 pkgrel=1
 pkgdesc="Automated Virtual Machine Generation and Cloaking for Cuckoo Sandbox."
-url="https://github.com/jbremer/vmcloak"
+url="https://github.com/jbremer/${pkgname}"
 arch=('i686' 'x86_64')
 license=('GPL3')
 groups=('archstrike' 'archstrike-malware')
@@ -15,7 +15,7 @@ makedepends=('python2-setuptools' 'unzip')
 conflicts=('vmcloak-git')
 replaces=('vmcloak-git')
 source=("https://github.com/jbremer/vmcloak/archive/${pkgver}.zip")
-sha512sums=('75dd1a5d0a6b28b5bc49a768955af48e2c3e9c96971347ab900829664fc8874c29029b9680f2bc1376d8128f339dd68297bfbc7747af08795c75913bc4cfe40a')
+sha512sums=('85296fe6e5637c9b0c307e77adc081956ade357e626d5512155ce24a09794718d9a1fdc56f46d928b25d59b4120552e45acd28286def7a1057a3db93a71332c7')
 
 prepare() {
   find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
