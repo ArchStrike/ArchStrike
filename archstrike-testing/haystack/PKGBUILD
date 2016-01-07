@@ -3,20 +3,20 @@
 buildarch=1
 
 pkgname=haystack
-pkgver=0.29
+pkgver=0.31
 pkgrel=1
 pkgdesc="A Python framework for Finding C Structures from process memory - heap analysis - Memory structures forensics"
 arch=('any')
-url="https://github.com/trolldbois/python-haystack"
+url="https://github.com/trolldbois/python-${pkgname}"
 license=('GPL3')
 depends=('python2-levenshtein' 'python2-ptrace' 'python2-argparse' 'python2-networkx')
 makedepends=('python2-setuptools')
-source=("https://github.com/trolldbois/python-haystack/archive/v$pkgver.tar.gz")
-sha512sums=('e637e1bc226ed5aef5575720f6b0151359335810d870f01fa6173433895c0556183e5e1d8c67175bb2afcf62e12fcfa6ddb8193971e9261c0b13a5e62cd185ed')
+source=("https://github.com/trolldbois/python-${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('53d443b59dd3e31db46345901779f252d82f91e3fedcf7fb25815fb2c52ebe2690c4d5299277fb33fdb97a1ff579f12d8eee52cbac754e1dc9b586bf4151cf45')
 
 package() {
-  cd "$srcdir/python-haystack-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "${srcdir}/python-${pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
-  sed -i 's|python22|python2|' $pkgdir/usr/bin/haystack-find-heap.py
+  sed -i 's|python22|python2|' ${pkgdir}/usr/bin/haystack-find-heap.py
 }
