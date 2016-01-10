@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=132
+buildarch=1
 
 pkgname=dnsbf
 pkgver=0.3
