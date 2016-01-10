@@ -3,19 +3,18 @@
 buildarch=1
 
 pkgname=dnsbf
-pkgver=0.2
+pkgver=0.3
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="search for available domain names in an IP range"
 arch=('any')
-url='http://code.google.com/p/dnsbf'
+url='https://github.com/strayArch/dnsbf/blob/master/README.md'
 license=('BSD')
-makedepends=('subversion')
 depends=('python2')
-source=('svn+http://dnsbf.googlecode.com/svn/trunk/')
-md5sums=('SKIP')
+source=('https://raw.githubusercontent.com/strayArch/dnsbf/master/dnsbf.py')
+sha224sums=('583ce4a3e06969fa9ece6ce67f3db18b660d14ba1a66901950216d61')
 
 package() {
-  cd "$srcdir/trunk"
+  cd "$srcdir/"
   install -Dm755 dnsbf.py "$pkgdir/usr/bin/dnsbf"
 }
