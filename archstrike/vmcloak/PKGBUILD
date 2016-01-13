@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=vmcloak
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Automated Virtual Machine Generation and Cloaking for Cuckoo Sandbox."
 url="https://github.com/jbremer/${pkgname}"
 arch=('i686' 'x86_64')

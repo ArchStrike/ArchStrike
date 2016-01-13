@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=spiderfoot
 pkgver=2.6.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="The Open Source Footprinting Tool"
 url='http://spiderfoot.net'
