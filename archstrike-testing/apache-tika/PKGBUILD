@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=apache-tika
-pkgver=1.9
+pkgver=1.11
 pkgrel=1
 pkgdesc="Toolkit for detecting and extracting metadata and structured text content"
 arch=('any')
@@ -12,20 +12,20 @@ license=('Apache')
 url="https://tika.apache.org"
 depends=('java-environment' 'bash')
 noextract=(tika-server-${pkgver}.jar)
-source=("http://central.maven.org/maven2/org/apache/tika/tika-server/$pkgver/tika-server-$pkgver.jar" "apache-tika.service")
-sha512sums=('484e5fe6fd16678150ae9700840c108f74704a1fc4b9b36e543a2530f2dac366360c2bb6c22d35f5800ab3e07aa0e6bd0168a023194d449e892df334bc4ae896'
+source=("http://central.maven.org/maven2/org/apache/tika/tika-server/${pkgver}/tika-server-${pkgver}.jar" "apache-tika.service")
+sha512sums=('73a0f3d0662b2d7259ea8421499400e0773c8fdd71dc5fb46b57135d1e05441964c27ef664130deaf61f87dcfe3eeb6d670e2a5267dc13dbb6ba89c1978eabf7'
             '9d104dcb5c9cb545f5e21121bbdb6e1f8b2eaa533f951e1bc681cb71f5105b15020a330a81a59926c5790bfd12b80cbf1c733df6e974fb7fea3e1a469433f0ae')
 
 package() {
-  cd "$srcdir"
-  install -dm755 $pkgdir/usr/bin
-  install -Dm755 "tika-server-$pkgver.jar" "$pkgdir/usr/share/java/$pkgname/tika-server-$pkgver.jar"
-  install -Dm644 "apache-tika.service" "$pkgdir/usr/lib/systemd/system/apache-tika.service"
+  cd "${srcdir}"
+  install -dm755 ${pkgdir}/usr/bin
+  install -Dm755 "tika-server-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/tika-server-${pkgver}.jar"
+  install -Dm644 "apache-tika.service" "${pkgdir}/usr/lib/systemd/system/apache-tika.service"
 
-cat > $pkgdir/usr/bin/tika <<EOF
+cat > ${pkgdir}/usr/bin/tika <<EOF
 #!/bin/sh
-"$JAVA_HOME/bin/java" -jar "/usr/share/java/apache-tika/tika-server-$pkgver.jar" "\$@"
+"$JAVA_HOME/bin/java" -jar "/usr/share/java/apache-tika/tika-server-${pkgver}.jar" "\$@"
 EOF
 
-chmod +x $pkgdir/usr/bin/tika
+chmod +x ${pkgdir}/usr/bin/tika
 }
