@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+_pkgname=qt4reactor
+pkgname=python2-${_pkgname}
+pkgver=1.6
+pkgrel=1
+pkgdesc='Twisted Qt4 integration'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://pypi.python.org/pypi/qt4reactor'
+license=('custom:MIT')
+depends=('python2' 'python2-twisted' 'python2-pyqt4')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/q/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('1de8a7243452aac9a76eae6668f6defd1fe34866946fcb022aaa077f9b3e2477f73d4ab0d558edcc7c8c2f9a880f6e937520a0107d5e7148b6d829b2d3084e22')
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py build
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 ${srcdir}/${_pkgname}-${pkgver}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
