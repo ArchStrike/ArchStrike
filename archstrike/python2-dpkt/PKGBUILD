@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-dpkt
 pkgver=1.8.6
-pkgrel=2
+pkgrel=1
 pkgdesc="This is a Python library for interacting with and creating packets."
 arch=('any')
 url=("https://github.com/kbandla/dpkt")
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("git+https://github.com/kbandla/dpkt.git")
-sha224sums=('SKIP')
+sha512sums=('SKIP')
 
 build(){
   cd "$srcdir/dpkt"
