@@ -1,0 +1,45 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=wifiphisher
+pkgname=wifiphisher-git
+pkgver=20160111.r134
+pkgrel=1
+groups=('archstrike' 'archstrike-wireless')
+pkgdesc="A tool for Fast automated phishing attacks against WPA networks"
+arch=('any')
+url='https://github.com/sophron/wifiphisher'
+license=('GPL3')
+depends=('scapy')
+makedepends=('git')
+provides=('${_pkgname}')
+source=("git+https://github.com/sophron/wifiphisher.git")
+sha512sums=('SKIP')
+
+prepare(){
+  grep -iRl 'python' "${srcdir}/${_pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}"
+
+  # Make base directories.
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
+cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
+#!/bin/sh
+cd /usr/share/${_pkgname}
+python2 ${_pkgname}.py "\$@"
+EOF
+
+chmod +x "${pkgdir}/usr/bin/${_pkgname}"
+
+}
