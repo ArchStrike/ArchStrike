@@ -3,24 +3,24 @@
 buildarch=1
 
 pkgname=python2-dpkt
-pkgver=1.8
+pkgver=1.8.6
 pkgrel=2
 pkgdesc="This is a Python library for interacting with and creating packets."
 arch=('any')
-url=("http://code.google.com/p/dpkt/")
-license=('custom')
+url=("https://github.com/kbandla/dpkt")
+license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://dpkt.googlecode.com/files/dpkt-$pkgver.tar.gz")
-sha512sums=('25af49a7b79d192382103e056e762e2933f37b6c72f490c9c6740883e18fdde6c983d640aa27514f15f77ac27e2f037b1943adcaa6046872f53d92e08de73cb3')
+source=("git+https://github.com/kbandla/dpkt.git")
+sha224sums=('SKIP')
 
 build(){
-  cd "$srcdir/dpkt-$pkgver"
+  cd "$srcdir/dpkt"
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/dpkt-$pkgver"
+  cd "$srcdir/dpkt"
   python2 setup.py install "--root=$pkgdir" --optimize=1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
