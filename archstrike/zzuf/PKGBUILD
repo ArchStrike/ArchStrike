@@ -11,18 +11,18 @@ groups=('archstrike' 'archstrike-fuzzers')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('custom')
-source=("https://github.com/samhocevar/${pkgname}/releases/download/v${pkgver}/${pkgname}-${pkgver}.tar.gz")
+source=("https://github.com/samhocevar/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
 sha512sums=('bed9ce368be3fb63b827ca4d371e3d54ff5c67424ff632cf9d86a80b11228a794750bc4cb57736a02c2a15dff1d02106b284d9988fdc5fcf400953c71e4adf3d')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  install -Dm644 "${srcdir}/${pkgname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cd ${srcdir}/${pkgname}-${pkgver}
-  make DESTDIR="${pkgdir}" install
-  mv "${pkgdir}"/usr/bin/zzat "${pkgdir}"/usr/bin/${pkgname}-zzat
+  install -Dm644 $pkgname-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
+  mv "$pkgdir"/usr/bin/zzat "$pkgdir"/usr/bin/$pkgname-zzat
 }
