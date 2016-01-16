@@ -5,21 +5,21 @@ buildarch=212
 pkgname=libnfc
 pkgver=1.7.1
 pkgrel=3
-pkgdesc="The first free NFC SDK and Programmers API"
+pkgdesc='The first free NFC SDK and Programmers API'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://nfc-tools.org/index.php?title=Libnfc'
 license=('LGPL3')
 depends=('libusb' 'pcsclite' 'libusb-compat')
-source=("https://github.com/nfc-tools/${pkgname}/releases/download/${pkgname}-${pkgver}/${pkgname}-${pkgver}.tar.bz2")
-md5sums=('a3bea901778ac324e802b8ffb86820ff')
+source=("https://github.com/nfc-tools/$pkgname/releases/download/$pkgname-$pkgver/$pkgname-$pkgver.tar.bz2")
+sha512sums=('6a03d197c450c0ab8f2d16ae8c1f80e206fa909ece84a32dbb962acd0f7ef693a419608cdaa4c2207a1d2593599e44479520d7413eace7fca19d3230442e506c')
 
 build() {
-    cd $srcdir/${pkgname}-${pkgver}
-    ./configure --prefix /usr
-    make
+  cd $pkgname-$pkgver
+  ./configure --prefix /usr
+  make
 }
 
 package() {
-    cd $srcdir/${pkgname}-${pkgver}
-    make DESTDIR=$pkgdir install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
