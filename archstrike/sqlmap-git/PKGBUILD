@@ -15,45 +15,45 @@ arch=('any')
 depends=('python2')
 makedepends=('git')
 options=('!strip')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-source=("$pkgname::git+https://github.com/sqlmapproject/${_pkgname}")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname::git+https://github.com/sqlmapproject/$_pkgname")
 sha512sums=('SKIP')
-backup=("etc/${_pkgname}.conf")
+backup=("etc/$_pkgname.conf")
 
 pkgver() {
-  cd ${pkgname}
-  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  cd $pkgname
+  printf '%s.r%s' "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd ${pkgname}
+  cd $pkgname
   while read -r; do
       sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
   done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
 }
 
 package() {
-  cd ${pkgname}
+  cd $pkgname
 
-  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
-  install -dm755 "${pkgdir}/usr/share/doc"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/etc"
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/share/doc"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/etc"
 
-  cp --no-preserve=ownership -R * "${pkgdir}/usr/share/${_pkgname}"
-  mv "${pkgdir}/usr/share/${_pkgname}/doc" "${pkgdir}/usr/share/doc/${_pkgname}"
-  mv "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.conf" "${pkgdir}/etc/${_pkgname}.conf"
-  ln -sf /etc/${_pkgname}.conf "${pkgdir}/usr/share/${_pkgname}/${_pkgname}.conf"
+  cp --no-preserve=ownership -R * "$pkgdir/usr/share/$_pkgname"
+  mv "$pkgdir/usr/share/$_pkgname/doc" "$pkgdir/usr/share/doc/$_pkgname"
+  mv "$pkgdir/usr/share/$_pkgname/$_pkgname.conf" "$pkgdir/etc/$_pkgname.conf"
+  ln -sf /etc/$_pkgname.conf "$pkgdir/usr/share/$_pkgname/$_pkgname.conf"
 
-  if [[ "${CARCH}" = 'i686' ]]; then
-    rm -rf "${pkgdir}/usr/share/${_pkgname}/udf/mysql/linux/64/"
+  if [[ "$CARCH" = 'i686' ]]; then
+    rm -rf "$pkgdir/usr/share/$_pkgname/udf/mysql/linux/64/"
   fi
 
-  cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
+  cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${_pkgname}
-python2 ./${_pkgname}.py "\$@"
+cd /usr/share/$_pkgname
+python2 ./$_pkgname.py "\$@"
 EOF
-  chmod 0755 "${pkgdir}/usr/bin/${_pkgname}"
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
 }
