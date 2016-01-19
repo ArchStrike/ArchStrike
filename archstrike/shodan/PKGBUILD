@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=shodan
-pkgver=1.4.2
+pkgver=1.4.5
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2 library for Shodan.io'
@@ -14,8 +14,8 @@ license=('MIT')
 arch=('any')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/s/$pkgname/$pkgname-$pkgver.tar.gz")
-md5sums=('231fdda03b37c4cae7f0f7653fbfb10a')
-sha512sums=('260548e37005b55a2cbcaeb1cfd702997849b4bb29eb3bf796e8fffb31116935cd99335c66f9d3090204db4dfeccc14c901a22593e53d6b114f8e1d460301fac')
+md5sums=('d06a62d05adae8632b177db3e711a2b4')
+sha512sums=('6d463ad335c17df446a22b30190fe13fff18fcacabc37b8f5a28cc1bf336dda27ab9412838c9804258bb8eab3eb17b22242cfa1dd46f133488a8d9ba89c50fef')
 
 build() {
   cd $pkgname-$pkgver
