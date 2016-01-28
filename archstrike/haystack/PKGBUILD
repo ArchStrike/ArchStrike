@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=haystack
-pkgver=0.31
-pkgrel=4
+pkgver=0.33
+pkgrel=1
 pkgdesc='A Python framework for Finding C Structures from process memory - heap analysis - Memory structures forensics'
 arch=('any')
 url='https://github.com/trolldbois/python-haystack'
@@ -13,7 +13,7 @@ groups=('archstrike' 'archstrike-forensics')
 depends=('python2-levenshtein' 'python2-ptrace' 'python2-argparse' 'python2-networkx')
 makedepends=('python2-setuptools')
 source=("https://github.com/trolldbois/python-$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('53d443b59dd3e31db46345901779f252d82f91e3fedcf7fb25815fb2c52ebe2690c4d5299277fb33fdb97a1ff579f12d8eee52cbac754e1dc9b586bf4151cf45')
+sha512sums=('e0fa6d767092af1ef8404ada8319dcb912f48fa77bd261a048108f5063f034a685bc26bbc0a608acaa1858cb823d14b21d773840ca58648b7f4e3906fb4f7941')
 
 prepare() {
   while read -r; do
@@ -24,7 +24,4 @@ prepare() {
 package() {
   cd python-$pkgname-$pkgver
   python2 setup.py install --root="$pkgdir" --optimize=1
-
-  # Remove haystack-gui because it currently isn't working (https://github.com/trolldbois/python-haystack#graphic-example-)
-  rm "$pkgdir/usr/bin/$pkgname-gui"
 }
