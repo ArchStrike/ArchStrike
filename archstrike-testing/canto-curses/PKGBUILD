@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=canto-curses
-pkgver=0.9.3
+pkgver=0.9.6
 pkgrel=1
 pkgdesc="An ncurses UI for the Canto Atom/RSS feed reader"
 url="http://codezen.org/canto-ng/"
@@ -12,10 +12,10 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('canto-daemon>=0.9.1')
 replaces=('canto')
 conflicts=('canto')
-source=("http://codezen.org/static/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('547061439e5d5a7f2bcb1643cc597578161f3c3c284520326fe483f79a60650e9b8b1c7cf5a5e1f165f13510e7cab893b77968b5995c66b572c0bb605b6ebaaa')
+source=("https://github.com/themoken/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('940acce8a68438527c7809985964596c096e2a03af6e689a1ea7c9fb7e8b06bb3cfe2976871a2eb0a92f9b151a2e8ce0ae9a0d608c7b029bd2a5afee40fac05f')
 
 package() {
-    cd ${pkgname}-${pkgver}
-    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+    cd $pkgname-$pkgver
+    python setup.py install --prefix=/usr --root=$pkgdir --optimize=1
 }
