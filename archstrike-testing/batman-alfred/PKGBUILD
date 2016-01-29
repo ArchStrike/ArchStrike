@@ -1,25 +1,25 @@
 # Maintainer: ArchStrike <team@archstrike.org>
-_pkgname=alfred
 
 buildarch=212
 
-pkgname=batman-${_pkgname}
+_pkgname=alfred
+pkgname=batman-$_pkgname
 groups=('archstrike' 'archstrike-wireless')
-pkgver=2015.0
+pkgver=2016.0
 pkgrel=1
 pkgdesc="Almighty Lightweight Fact Remote Exchange Daemon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.open-mesh.org"
 license=('GPL')
 depends=('gpsd')
-source=("http://downloads.open-mesh.org/batman/releases/batman-adv-${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('a79767e691f4b893906aff2efb23391fbd50339c46d5f368b01ea84a2cc54bed4dddabeab15da1af1ff42cf31401dbb6434164229652286f97a9ec2e8ca806d1')
+source=("http://downloads.open-mesh.org/batman/releases/batman-adv-$pkgver/$_pkgname-$pkgver.tar.gz")
+sha512sums=('5708f0532b29423ba22a5b57f7e58ea30bdb4242371ade9d257d7175c76ad19d7375981846b1742f584e9ff1e6f2758b771e4230c6dc3a15643d080c848a2d18')
 
 build(){
-    cd ${_pkgname}-${pkgver}
+    cd $_pkgname-$pkgver
     make
 }
 package() {
-    cd ${_pkgname}-${pkgver}
-    make DESTDIR="${pkgdir}" PREFIX=/usr SBINDIR=/usr/bin install
+    cd $_pkgname-$pkgver
+    make DESTDIR=$pkgdir PREFIX=/usr SBINDIR=/usr/bin install
 }
