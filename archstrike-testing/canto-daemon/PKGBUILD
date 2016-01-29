@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=canto-daemon
-pkgver=0.9.1
+pkgver=0.9.5
 pkgrel=2
 pkgdesc="Atom/RSS feed reader daemon"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
 arch=('any')
-depends=('python-feedparser')
-source=("http://codezen.org/static/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('88e708c92813ddda44a8ea6a5d21722510822f22ebc0a4fb4165e6793ea50d89b139a51a4b1e06f811d7073c6b103590b52e4299c674f904e8b5aae7645484fd')
+depends=('python' 'python-feedparser')
+source=("https://github.com/themoken/canto-next/archive/v$pkgver.tar.gz")
+sha512sums=('35f9d1ee9031638494edf771c78e0cdc6181488d1102a6dab6ace46b6ebe0928368a6ece1b6850140c1215e7829e68d2df240b38553254a9dfe7ec2545eb89cf')
 
 package() {
-    cd canto-next-${pkgver}
-    python setup.py install --prefix=/usr --root="$pkgdir"
+    cd canto-next-$pkgver
+    python setup.py install --prefix=/usr --root=$pkgdir --optimize=1
 }
