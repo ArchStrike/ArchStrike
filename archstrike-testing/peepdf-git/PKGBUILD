@@ -1,0 +1,41 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=peepdf-git
+_pkgname=peepdf
+pkgver=0.3
+pkgrel=1
+groups=('archstrike' 'archstrike-forensics' 'archstrike-malware')
+pkgdesc="A Python tool to explore PDF files in order to find out if the file can be harmful or not"
+arch=('any')
+url='https://github.com/jesparza/peepdf'
+license=('GPL3')
+depends=('python2' 'python2-simplejson')
+conflicts=('peepdf')
+provides=('peepdf')
+source=("https://github.com/jesparza/peepdf/archive/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('2a20b1d95a22cf916e5ba1935129705de36280da5d157181ee74cf54251fc0e071cf3f0db748c8766d1b4fc0f842842bdaede31a75e292bb8fc3069f9d2c1cf2')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+  find -name '*.py' -exec sed -i 's/env python$/env python2/' '{}' \;
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+
+  # Base directories.
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+
+  # Entire program.
+  cp --no-preserve=ownership -R * "${pkgdir}/usr/share/${_pkgname}"
+
+  # Joint script.
+  cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
+#!/bin/sh
+python2 /usr/share/peepdf/peepdf.py "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/${_pkgname}"
+}
