@@ -1,11 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Kevin MacMartin <prurigro@gmail.com>
 # Contributor: Eric Ozwigh <ozwigh at gmail dot com>
+# Contributor: drathir <drathir87 at gmail dot com>
 
 buildarch=212
 
 pkgname=veracrypt
-_pkgver=1.0f-1
+_pkgver=1.16
 pkgver=${_pkgver/\-/_}
 pkgrel=1
 pkgdesc='Free disk encryption software based on TrueCrypt'
@@ -18,7 +19,7 @@ makedepends=('git' 'nasm')
 options=('!makeflags')
 source=("https://github.com/veracrypt/VeraCrypt/archive/VeraCrypt_$_pkgver.tar.gz"
         "$pkgname.desktop")
-sha512sums=('5d38d2281c04dfe34deb3ff03896315f6410c3f02dabb3366eac42fa8e88ce9977274aad3461fcd1b0184d923f3186f8e2e27e8cc561bc28f0249a1634dc07ee'
+sha512sums=('9f924de8bb4f6e081e167447d9d0666e14110c9b08edcc78c874033fbef4e0f3e7549034e7999e4f9c7ab1176bd95957cf8a43fc6c8b5ec441c22813d7604684'
             '76e3a277724bab09194e15fabc7a47d4c6c25384926d00dfab06a6a4ed1ae91fbe51d18dd66cfd925290aec8e6eb72397a4aa276d7818c456afd106cd932c09a')
 
 prepare() {
