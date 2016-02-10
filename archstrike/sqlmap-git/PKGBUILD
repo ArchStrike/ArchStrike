@@ -4,12 +4,12 @@ buildarch=1
 
 _pkgname=sqlmap
 pkgname=$_pkgname-git
-pkgver=20160205.r7074
+pkgver=20160206.r7075
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-exploit' 'archstrike-fuzzers')
 pkgdesc='An automatic SQL injection tool developed in Python'
-url='https://github.com/sqlmapproject/${_pkgname}'
+url="https://github.com/sqlmapproject/sqlmap"
 license=('GPL')
 arch=('any')
 depends=('python2')
