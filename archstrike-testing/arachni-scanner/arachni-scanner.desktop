@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=Arachni Console
-Comment=Web Application Security Scanner Framework
-Exec=sh -c '/usr/bin/arachni_console'
-Icon=archstrike
-Terminal=true
-Categories=ArchStrike;ArchStrikeWebapp;ArchStrikeScanners;ArchStrikeFuzzer;

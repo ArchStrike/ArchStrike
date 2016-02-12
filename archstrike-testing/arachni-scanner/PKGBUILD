@@ -3,14 +3,14 @@
 buildarch=212
 
 pkgname=arachni-scanner
-pkgver=1.1
+pkgver=1.4
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc='A feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications.'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('Apache2')
 url="https://www.arachni-scanner.com"
-if [[ "${CARCH}" = 'x86_64' ]] ; then
+if [[ "$CARCH" = 'x86_64' ]] ; then
   depends=('ruby' 'ruby-bundler' 'lib32-libxslt')
 else
   depends=('ruby' 'ruby-bundler' 'libxslt')
@@ -18,64 +18,62 @@ fi
 replaces=('arachni')
 conflicts=('arachni')
 provides=('arachni')
-source=("https://github.com/Arachni/arachni/archive/v${pkgver}.zip"
-        "${pkgname}.desktop")
-sha512sums=('018e6a2096475fa6c2c9218c87b8f8c20195027391bcd143ef53497fca70670af50d7e00f44121329d415d05fa8a9579fd0d78960241459c76cab185979a64fd'
-            '49adbc81a6bce91c1b0199f43bce53125a7b4dbda89fe4fcbde4ec0f40fe3bb5a8e7cab8b01f067ac0b4e2b241c1247ca349eaad22ddabaf14c5d9211036a18f')
+source=("https://github.com/Arachni/arachni/archive/v$pkgver.tar.gz")
+sha512sums=('af16d77e24d82575c03a080d6e2291c6db0f0015cc73ac067fd83c229fe4b3a1f12d07f43cda9e95eba9a3f5e4402bd202fb5c9c3715c58b3ba6b2003119f818')
 
 package() {
-  install -Dm644 "${pkgname}".desktop "${pkgdir}"/usr/share/applications/"${pkgname}".desktop
-  cd arachni-"${pkgver}"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -m644 *.md "${pkgdir}/usr/share/doc/${pkgname}"
-  cp --no-preserve=ownership -a * "${pkgdir}/usr/share/${pkgname}"
+  cd arachni-"$pkgver"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 *.md "$pkgdir/usr/share/doc/$pkgname"
+  cp --no-preserve=ownership -a * "$pkgdir/usr/share/$pkgname"
   cd ${pkgdir}/usr/share/arachni-scanner
   bundle config build.nokogiri --use-system-libraries
   bundle install --path vendor/bundle
 
-  cat > "${pkgdir}/usr/bin/arachni" << EOF
+  cat > "$pkgdir/usr/bin/arachni" << EOF
 #!/bin/sh
 cd /usr/share/arachni-scanner
 ruby ./bin/arachni "\$@"
 EOF
 
-  cat > "${pkgdir}/usr/bin/arachni_console" << EOF
+  cat > "$pkgdir/usr/bin/arachni_console" << EOF
 #!/bin/sh
 cd /usr/share/arachni-scanner
 ruby ./bin/arachni_console "\$@"
 EOF
 
-  cat > "${pkgdir}/usr/bin/arachni_multi" << EOF
+  cat > "$pkgdir/usr/bin/arachni_multi" << EOF
 #!/bin/sh
 cd /usr/share/arachni-scanner
 ruby ./bin/arachni_multi "\$@"
 EOF
 
-  cat > "${pkgdir}/usr/bin/arachni_rpc" << EOF
+  cat > "$pkgdir/usr/bin/arachni_rpc" << EOF
 #!/bin/sh
 cd /usr/share/arachni-scanner
 ruby ./bin/arachni_rpc "\$@"
 EOF
-  cat > "${pkgdir}/usr/bin/arachni_rpcd" << EOF
+
+  cat > "$pkgdir/usr/bin/arachni_rpcd" << EOF
 #!/bin/sh
 cd /usr/share/arachni-scanner
 ruby ./bin/arachni_rpcd "\$@"
 EOF
 
-  cat > "${pkgdir}/usr/bin/arachni_rpcd_monitor" << EOF
+  cat > "$pkgdir/usr/bin/arachni_rpcd_monitor" << EOF
 #!/bin/sh
 cd /usr/share/arachni-scanner
 ruby ./bin/arachni_rpcd_monitor "\$@"
 EOF
 
-  cat > "${pkgdir}/usr/bin/arachni_script" << EOF
+  cat > "$pkgdir/usr/bin/arachni_script" << EOF
 #!/bin/sh
 cd /usr/share/arachni-scanner
 ruby ./bin/arachni_script "\$@"
 EOF
 
-  chmod +x "${pkgdir}"/usr/bin/*
+  chmod +x "$pkgdir"/usr/bin/*
 }
