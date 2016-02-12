@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=armitage
-pkgver=141120
+pkgver=150813
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A graphical cyber attack management tool for Metasploit"
@@ -13,11 +13,9 @@ license=('GPL')
 depends=('metasploit' 'java-environment' 'postgresql' 'nmap' 'ruby1.9-msgpack')
 install=armitage.install
 source=("http://www.fastandeasyhacking.com/download/armitage$pkgver.tgz"
-        'armitage.install'
-        'armitage.desktop')
-sha512sums=('06e4a95f02f354545ebeff3258a1fbd8bb4d787a90548cd35fcf85c312ada6460d364629495d46f91ee46d24644665e8b37462a36d99888b682efa3cd04e663b'
-            'f9664591f31bf4dc5fd262e3e59d435a022887a6f5b76e2db64b987bc0f3b5dd168796b80bf7e755a5b28673ead3b52968ece60c572a9c460d727d12d4cb2863'
-            '514baf2b71846878fdbf230eb87ff47f73dbc43bc1d3b61ee76bb3fb6aa25895139bb291c8bb99bd010527a8e991080236f2031221b7e360d9a8d81614ccff97')
+        'armitage.install')
+sha512sums=('29743c32ff13e62e5cb4a97cf60b3f5e5a4c5ac01a014ff709abc1be4f1b9d795973de357b967a764b4acd4f26d47f6d4517f40c9831672c74e054de2d361e51'
+            'c986d01c29de2b8a2b4541433063cbce4ec82a55508bcf74877614ccc9809a8751462b2467aba296a679ff146ba1e6fe60c405cfa18cb6705bc2f6fd595dd998')
 
 package() {
   cd "$srcdir/$pkgname"
@@ -28,7 +26,6 @@ package() {
   install -Dm755 armitage.jar "$pkgdir/usr/share/armitage/armitage.jar"
   install -Dm755 cortana.jar "$pkgdir/usr/share/armitage/cortana.jar"
   install -Dm644 readme.txt whatsnew.txt "$pkgdir/usr/share/armitage/"
-  install -Dm644 "$srcdir/armitage.desktop" "$pkgdir/usr/share/applications/armitage.desktop"
 
 cat > "$pkgdir/usr/bin/armitage" <<EOF
 #!/bin/sh
