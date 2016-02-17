@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
+# Contributor: kfgz <kfgz at interia pl>
+# Contributor: Adam Wolk <netprobe at gmail dot com>
+
+buildarch=212
+
+pkgname=libewf
+pkgver=20140608
+pkgrel=3
+epoch=2
+pkgdesc="A library for support of the Expert Witness Compression Format (EWF)"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url="https://github.com/libyal/libewf/"
+license=('LGPL3')
+makedepends=('fuse')
+depends=('util-linux' 'fuse' 'python2')
+options=('!libtool')
+source=(https://googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/$pkgname-$pkgver.tar.gz)
+sha256sums=('d14030ce6122727935fbd676d0876808da1e112721f3cb108564a4d9bf73da71')
+
+build() {
+  cd "${srcdir}"/$pkgname-$pkgver
+  ./configure --prefix=/usr --sysconfdir=/etc --enable-python
+  make
+}
+
+package() {
+  cd "${srcdir}"/$pkgname-$pkgver
+
+  make DESTDIR="${pkgdir}" install
+}
