@@ -1,23 +1,21 @@
---- Makefile.orig	2014-04-29 21:51:26.555454662 -0700
-+++ Makefile	2014-04-29 21:54:13.520155592 -0700
+diff -aur netsniff-ng-0.6.0.orig/Makefile netsniff-ng-0.6.0/Makefile
+--- netsniff-ng-0.6.0.orig/Makefile	2015-11-06 06:11:48.000000000 -0500
++++ netsniff-ng-0.6.0/Makefile	2016-02-23 14:48:50.684539193 -0500
 @@ -23,7 +23,7 @@
  TOOLS ?= netsniff-ng trafgen astraceroute flowtop ifpps bpfc curvetun mausezahn
  
  # For packaging purposes, prefix can define a different path.
 -PREFIX ?= /usr/local
-+PREFIX ?= /usr
++PREFIX ?= /usr/
  
- # Disable if you don't want it
- CCACHE ?= $(CONFIG_CCACHE)
-@@ -33,9 +33,9 @@
+ # Set to use ccache for compilation
+ CCACHE ?=
+@@ -33,7 +33,7 @@
  DESTDIR=
  
  # Location of installation paths.
 -SBINDIR = $(PREFIX)/sbin
 +SBINDIR = $(PREFIX)/bin
  INCDIR = $(PREFIX)/include
--ETCDIR = $(PREFIX)/etc
-+ETCDIR = /etc
+ ETCDIR ?= /etc
  ETCDIRE = $(ETCDIR)/netsniff-ng
- MAN8DIR = $(PREFIX)/share/man/man8
- 
