@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=libsmraw
-pkgver=20150105
+pkgver=20160108
 pkgrel=1
 pkgdesc="Library and tools to access the (split) RAW image format"
 url="https://github.com/libyal/libsmraw"
@@ -12,7 +12,7 @@ license=('LGPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 makedepends=('git')
 source=("https://github.com/libyal/libsmraw/archive/$pkgver.tar.gz")
-sha512sums=('49325b467822dea433297c04ef2d32042cd4b23c35ccf0d0c6012a65b2b453ffe2207aa9e25efa6b7cbc112115d5f692582dfac550c81b61459412f493aca513')
+sha512sums=('d8b19b19bff16b0521f07a97214df46e13b1dd700e2bd853d946e22ad0eb07736c1a1bc9eb1755742086413471964fb8c6c0158da837362770bf7580830eb614')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
