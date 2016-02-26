@@ -3,16 +3,16 @@
 buildarch=212
 
 pkgname=perl-iptables-parse
-pkgver=1.1
-pkgrel=2
+pkgver=1.6.1
+pkgrel=1
 pkgdesc="IPTables::Parse - Perl extension for parsing iptables and ip6tables firewall rulesets"
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('any')
 url="http://search.cpan.org/~mrash/IPTables-Parse/"
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'iptables')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/M/MR/MRASH/IPTables-Parse-$pkgver.tar.gz")
-md5sums=('e258a32c73f99697a6f52276bda15878')
+sha512sums=('7638665e34f06771519bc8989ad57b6308c5efb39ecb32f3f6f208d0ece1675f499452f4b4b5b2ddd25109abecbdb5015e4441431defa8688f33f9eb2ad921eb')
 
 build() {
   cd  "$srcdir/IPTables-Parse-$pkgver"
