@@ -3,16 +3,16 @@
 buildarch=212
 
 pkgname="libevtx"
-pkgver="20150928"
+pkgver="20160107"
 pkgrel=1
 pkgdesc="Library and tooling to access the Windows XML Event Log (EVTX) format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libevtx'
 license=('GPL3')
-depends=('libcsystem' 'libbfio' 'python2')
+depends=('libcsystem' 'libbfio' 'python2' 'libregf')
 makedepends=('git')
 source=("https://github.com/libyal/libevtx/archive/$pkgver.tar.gz")
-sha512sums=('6339d839b04ab6ec51217cd6a073b935ebc8acbe1b5caf37b2ba5a165def094601b2c03830da8004ba00f3fb0d2a3e0c7da761ba99c477015b9282532841d33c')
+sha512sums=('d94b63e6947737170e58ea59d78917beb8b04741084c3ae6643b91c30f1710db0b22c464c1e497952c064e82af150eea58a5f3e1364ca794a598d6b506391d27')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
