@@ -3,19 +3,19 @@
 buildarch=1
 
 pkgname=bamfdetect
-pkgver=1.6.8
+pkgver=1.6.12
 pkgrel=1
 pkgdesc="Identifies and extracts information from bots and other malware"
 url="https://github.com/bwall/bamfdetect"
 arch=('any')
 license=('MIT')
 groups=('archstrike' 'archstrike-malware')
-depends=('python2')
+depends=('python2-yara' 'python2-pefile' 'python2-rarfile' 'python2-crypto' 'python2-pbkdf2')
 makedepends=('python2-setuptools')
 conflicts=('bamf-git')
 replaces=('bamf-git')
 source=("https://github.com/bwall/bamfdetect/archive/v$pkgver.tar.gz")
-sha512sums=('5678b70c9ab7f7978092142ea004441e12a4274ab98bfea42a799b876e47ccd83a08e3626f934f304f0873d92ce9ee958f69ebb60ca2468b371810b16974f0a7')
+sha512sums=('faf1192378c4df0c8e43346a593ecb4c94a83f001eedacf30618186b14de2cfe154061fbb01c6be80231322476e011e4d2f83f316336a9aaffe407b6c7315f80')
 
 prepare() {
   find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
