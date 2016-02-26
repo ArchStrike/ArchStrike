@@ -3,17 +3,19 @@
 buildarch=1
 
 pkgname=python-xbee
-pkgver=2.1.0
-pkgrel=3
+pkgver=2.2.3
+pkgrel=1
 pkgdesc='Python tools for working with XBee radios'
 url='https://pypi.python.org/pypi/XBee'
 arch=('any')
 license=('MIT')
-depends=('python' 'python-pyserial')
+depends=('python-pyserial')
+makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/X/XBee/XBee-${pkgver}.tar.gz")
-md5sums=('ed3c8c24fd375d980fcef9ce520c53e8')
+sha512sums=('c1dc131aef20456e0f1c7fd5ca78052daef64cd34e5cf29c1ea5316596ba4bbd7e91b964dbb772e2baa81fe744e4705c793bad767c73ef7d1b184f8a01bd0a50')
 
 package() {
   cd XBee-$pkgver
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 }
