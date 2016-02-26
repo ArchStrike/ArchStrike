@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname='websockify'
-pkgver=0.6.1
+pkgver=0.8.0
 pkgrel=1
 pkgdesc="WebSocket to TCP proxy/bridge."
 license=('LGPL3')
@@ -14,7 +14,7 @@ makedepends=('python2' 'python2-distribute')
 depends=('python2')
 groups=('archstrike')
 source=("https://github.com/kanaka/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('72a34096ff8262cde78658e7b5727b5f0cac001916cf6c868ed1baf4cb4745e823d727f8decc1a244db22a3517a3616e25aad2d7ac9b1300d6f55571c4680bff')
+sha512sums=('f2231767805788d00348e89c24972de767beeffe350b9a7f57e4008e3203d5447633aabaa0e9a50b48404039d63bcf8dc0244fb7511a7b045d3337c15ab7af36')
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
