@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pygitlab
-pkgver=0.9
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="A Python wrapper for the GitLab API"
 url="https://github.com/gpocentek/python-gitlab"
@@ -12,12 +12,12 @@ license=('GPL3')
 depends=('python2-requests' 'python2-six')
 makedepends=('python2-setuptools' 'python2-sphinx')
 source=(https://github.com/gpocentek/python-gitlab/archive/$pkgver.tar.gz)
-sha512sums=('aa9eebc87afac207fb21c3a930eb5b905fdb06ba55810d13dad328db711e335b756aa2e0aa6d706d06af85103555422cd4f2a7b7362e636353e439c1b84856f3')
+sha512sums=('d34cede1a391a769299983d6055bcb6797c99c54036315a2af1a1dc9c469b52cedd8406edcab2d91e439e7827bbf055579d5006e4cb5bf1dfc6150d2b7dc621e')
 
 package(){
   cd "$srcdir/python-gitlab-$pkgver"
   python2 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 README.md "$pkgdir/usr/share/$pkgname/README.md"
+  install -Dm644 README.rst "$pkgdir/usr/share/$pkgname/README.rst"
   # Rename bin to not conflict with gitlab
   mv $pkgdir/usr/bin/gitlab $pkgdir/usr/bin/pygitlab
   # fixing issues with python3
