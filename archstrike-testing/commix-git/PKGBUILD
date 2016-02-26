@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=commix-git
-pkgver=20150626.r169
+pkgver=20160226.r439
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Find and exploit a command injection vulnerability in a certain vulnerable parameter or string."
@@ -29,6 +29,7 @@ cd "$srcdir/$pkgname"
 install -dm755 "$pkgdir/usr/share/$pkgname/"
 install -dm755 "$pkgdir/usr/bin/"
 cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' $pkgdir/usr/share/commix-git/src/core/modules/shellshock/shellshock.py
 
 cat > "$pkgdir/usr/bin/commix" <<EOF
 #!/bin/sh
