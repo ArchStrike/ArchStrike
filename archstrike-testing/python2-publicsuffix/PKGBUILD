@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-publicsuffix
-pkgver=1.0.5
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="Get a public suffix for a domain name using the Public Suffix List."
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/publicsuffix/publicsuffix-${pkgver}.tar.gz")
-sha512sums=('19a6fab4dc5f9d5a1b4b6cd8e1e2dd4f032de0102f5032a78805ad045f5ad88db0bf9d9263f92ee4de7d04612e9906d7f9e8aa6dc6bea549250b72a38b4e03a0')
+sha512sums=('d006f14624f84531606659675ed49a3c96f184c30bbb4ac7b512141d70e101a9cf14a91c8e7d57757b5cb0064551bbc996af17e88c0fdc762c3032b3cc8f17ef')
 
 build() {
   cd "publicsuffix-${pkgver}"
