@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=keimpx-git
-pkgver=20140804.r163
+pkgver=20151130.r165
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Tool to verify the usefulness of credentials across a network over SMB"
@@ -13,11 +13,9 @@ depends=('impacket' 'python2-crypto')
 makedepends=('git' 'python2-distribute')
 arch=('any')
 source=("${pkgname}::git+https://github.com/inquisb/keimpx.git"
-        "setup.py-remove_py2exe.patch"
-        "keimpx-git.desktop")
+        "setup.py-remove_py2exe.patch")
 sha512sums=('SKIP'
-      'aec4d1650df3dbf7442c803c7cb7f08739c0a71c7c504cfce09781621cf84a5c8447b2126bde895d8de909dbed3cb9c30c1266bc7c4a647d8a95afbc2e9c5b36'
-      '90df0299d78d2063f8c39e8607004c4726db39d50aacec4be8ea8d64c0fd37230ffebd707948cb143af9e652073411f8f4db18d687f1a1b979c7aee80406e671')
+            'aec4d1650df3dbf7442c803c7cb7f08739c0a71c7c504cfce09781621cf84a5c8447b2126bde895d8de909dbed3cb9c30c1266bc7c4a647d8a95afbc2e9c5b36')
 provides=('keimpx')
 conflicts=('keimpx')
 replaces=('keimpx')
@@ -45,7 +43,6 @@ package() {
   install -dm 755 "${pkgdir}/usr/bin/"
   install -dm 755 "${pkgdir}/usr/share/${pkgname}/"
   install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm 644 "${srcdir}/keimpx-git.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
 
   cp -a --no-preserve=ownership * ${pkgdir}/usr/share/${pkgname}/
   rm -rf ${pkgdir}/usr/contrib/
