@@ -4,7 +4,7 @@ _pkgname=demjson
 buildarch=1
 
 pkgname=python2-demjson
-pkgver=2.2.3
+pkgver=2.2.4
 pkgrel=1
 pkgdesc="Encoder, decoder, and lint/validator for JSON (JavaScript Object Notation) compliant with RFC 4627"
 arch=('any')
@@ -12,7 +12,7 @@ url='http://deron.meranda.us/python/demjson/'
 license=('LGPL')
 depends=(python2)
 makedepends=(python2-distribute)
-sha512sums=('058f8429967e21b30a9e28ec7790c372f5eb3126d7ab05c17d6f0548002650314048bf2f4eb3e2c8f75bb91169722c90eeeddb815ca166dfb14b2d1385504b14')
+sha512sums=('d8a1cde062d0b062bdae29b6d79ad69fb9cc185428718a0009ccbed544ed37bd354fbb86edadb56bd98183ac8636b2edae322ed19aa5f07a7b6df668c7aa0029')
 source=(http://deron.meranda.us/python/demjson/dist/demjson-$pkgver.tar.gz)
 
 package() {
