@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname="libvmdk"
-pkgver="20150516"
+pkgver="20160119"
 pkgrel=1
 pkgdesc="Library and tools to access the VMware Virtual Disk (VMDK) format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -13,7 +13,7 @@ depends=('libcsystem' 'python2' 'libbfio' 'fuse')
 makedepends=('git')
 install="$pkgname.install"
 source=("https://github.com/libyal/libvmdk/archive/$pkgver.tar.gz")
-sha512sums=('aa3bbbcc645c37d6d7cf2e26500afaf26fbb9f467682c6431f028b4e8373b31c11345f0a5bf5060b620ea53b960ef6bb0b7c30871dbdd3bfef919eab9ed11af3')
+sha512sums=('2fbfa8ac7a7c67e2a08655c60c686fe5204c2effadd5e79fbc781cb8970cb2de63646695c00710871062f7f9bc6eebf1945c16f0f6a61ce21dd3997c6bcfa7cc')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
