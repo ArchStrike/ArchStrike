@@ -3,20 +3,20 @@
 buildarch=212
 
 pkgname=fpdns
-pkgver=0.9.3
+pkgver=20130404
 pkgrel=1
 pkgdesc="Program that remotely determines DNS server versions"
-url="http://code.google.com/p/fpdns/"
+url="https://github.com/kirei/fpdns"
 depends=('perl')
 license=('BSD')
 options=('!emptydirs')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('any')
 groups=('archstrike' 'archstrike-analysis')
-source=("http://fpdns.googlecode.com/files/Net-DNS-Fingerprint-$pkgver.tar.gz")
-md5sums=('16f1fbc9e5c8b935a0a48a509dc58899')
+source=("https://github.com/kirei/fpdns/archive/$pkgver.tar.gz")
+sha512sums=('1a4d9c1cb666efa3f48dcca2b5cd04793e92727359652095572b17479f5343479c57d2937f1fff8070c071a2698eda5c4dff981caf86436f184f0b076b0fa0b3')
 
 build() {
-  cd "$srcdir/Net-DNS-Fingerprint-$pkgver"
+  cd "$pkgname-$pkgver"
 
   eval $(perl -V:archname)
 
@@ -29,13 +29,10 @@ build() {
 }
 
 package() {
-  cd "$srcdir/Net-DNS-Fingerprint-$pkgver"
+  cd "$pkgname-$pkgver"
+  make pure_install DESTDIR="$pkgdir"
+  find $pkgdir -name '.packlist' -delete
+  find $pkgdir -name '*.pod' -delete
 
-  install -Dm755 "$srcdir/Net-DNS-Fingerprint-$pkgver/apps/fpdns" \
-    "$pkgdir/usr/bin/fpdns"
-  install -Dm444 \
-    "$srcdir/Net-DNS-Fingerprint-$pkgver/blib/lib/Net/DNS/Fingerprint.pm" \
-    "$pkgdir/usr/lib/perl5/site_perl/Net/DNS/Fingerprint.pm"
-  install -Dm644 "${srcdir}/Net-DNS-Fingerprint-$pkgver/LICENSE" \
-    "$pkgdir/usr/share/licenses/LICENSE"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
