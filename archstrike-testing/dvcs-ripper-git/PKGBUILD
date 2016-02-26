@@ -3,14 +3,19 @@
 buildarch=1
 
 pkgname=dvcs-ripper-git
-pkgver=20150205.r12
+pkgver=20151124.r44
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Rip web accessible (distributed) version control systems: SVN/GIT/..."
 arch=('any')
 url='https://github.com/kost/dvcs-ripper'
 license=('GPL2')
-depends=('perl')
+depends=('perl' 'perl-dbd-sqlite' 'perl-dbi' 'perl-parallel-forkmanager' 'perl-io-socket-ssl')
+optdepends=('git: for git repos'
+            'cvs: for cvs repos'
+            'subversion: for svn repos'
+            'bzr: for bzr repos'
+            'mercurial: for hg repos')
 makedepends=('git')
 provides=('dvcs-ripper')
 source=("${pkgname}::git+https://github.com/kost/dvcs-ripper.git")
