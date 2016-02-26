@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=libmsiecf
-pkgver=20150708
+pkgver=20160107
 pkgrel=1
 pkgdesc="Library and tools to access the Microsoft Internet Explorer (MSIE) Cache File (index.dat) files"
 url="https://github.com/libyal/libmsiecf"
@@ -11,7 +11,7 @@ license=('LGPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('libbfio' 'python2' 'libcsystem')
 source=(https://github.com/libyal/libmsiecf/releases/download/$pkgver/libmsiecf-alpha-$pkgver.tar.gz)
-sha512sums=('13caab125dc9d0588ee54d6f28f6eb3b8e627008aec32c8a0d35b899e497e7dfd235946fe9cf4e8d55f0224179b99ac1de8369f705c2cc2677a19d41d7fc06c0')
+sha512sums=('f21ee14ee1242225b18f3bacf18f57358d1252fbada1877417b7efd0ec71b26f95dd92557ec77155de1485cf084bdfe1614023bcbed47efda51af32102fff76d')
 
 build() {
   cd "$srcdir"/${pkgname}-${pkgver}
