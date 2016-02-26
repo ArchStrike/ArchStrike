@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=libvshadow
-pkgver=20150106
+pkgver=20160110
 pkgrel=1
 pkgdesc="Library and tools to access the Volume Shadow Snapshot (VSS) format"
 url="https://github.com/libyal/libvshadow"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 makedepends=('git')
 source=("https://github.com/libyal/libvshadow/archive/$pkgver.tar.gz")
-sha512sums=('e190da3fe9d0faffa48a9f703622790479eb7e9a400dd27f41d5d1ceb477da048a3f3031b99edab94a718044da471bff455a2d678b6cf22ae4168c5d15d9dab3')
+sha512sums=('d390d8b7f07e966eddf4a6acde624c95b352a6dd01b418ec2e0bda5ff3c0dc894d44037d52e28b7820a5c2416d024796875866e6c9d1466acb51a624d4614157')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
