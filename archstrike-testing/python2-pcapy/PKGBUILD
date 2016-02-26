@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=python2-pcapy
-pkgver=0.10.9
+pkgver=0.10.10
 pkgrel=1
 pkgdesc="Python module for the libpcap packet capture library."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,10 +12,11 @@ license=('Apache')
 depends=('python2' 'libpcap')
 makedepends=('python2-setuptools')
 source=("https://github.com/CoreSecurity/pcapy/archive/$pkgver.tar.gz")
-sha512sums=('b36c300cd5c60641de6341344051658981cd55b90ad3e7ef57a08386b666e1adfd0825dbf413ccb4dee8ae0864346aa60b77ee5a73d0a5c6b5249089958d073a')
+sha512sums=('9b53a5d14b1e4a95f1745513a0e42e64ee818c9f342ffb84cac8700b0cb88e051e2b0d2659cc6cf273a43d95695bcd7da7f8fd3dca8a2b81edfef21471ac904d')
 
 package() {
     cd "$srcdir/pcapy-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/python2-pcapy/LICENSE"
+    rm -rf $pkgdir/usr/tests
 }
