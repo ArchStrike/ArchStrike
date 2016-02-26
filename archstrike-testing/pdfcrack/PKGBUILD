@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname='pdfcrack'
-pkgver='0.14'
+pkgver='0.15'
 pkgrel=1
 pkgdesc='Password recovery tool for PDF-files.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('glibc')
 source=("http://downloads.sourceforge.net/pdfcrack/pdfcrack-$pkgver.tar.gz")
 groups=('archstrike' 'archstrike-crackers')
-sha512sums=('2da2b7bc37db49f55c6cdd45f837bc509b217fcd36cd57212c2508618996038e21bf391a20f5adece312e9a5f7d892fe254dac8438222f158e4ce7019cbac3f2')
+sha512sums=('9eef648fcb8c9cd4fb70af3ad4ce1b8da892edc98919104bbee70947d7f93262f44cb6e8854ff10b0e4680fcf0c3abfc258d0d14428d261744ed4b28c792a966')
 
 build() {
   cd "$srcdir"/pdfcrack-$pkgver
