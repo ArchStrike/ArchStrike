@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=3proxy
-pkgver=0.7.1.3
+pkgver=0.8.3
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc='Tiny free proxy server'
@@ -12,11 +12,11 @@ license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc')
 options=('!makeflags')
-source=("$url/$pkgver/$pkgname-$pkgver.tgz")
-sha512sums=('944160c8c9f5eda6b85f2d92260bf465a65ee42620d921a17d90203aac1fd8879fd69d471ad73a8c87cbe4d75cf88add5f584b85cb6f190420a6684d0097d20e')
+source=("https://github.com/z3APA3A/3proxy/archive/3proxy-0.8.3.tar.gz")
+sha512sums=('dd6414ff0995b3d8d9d19e3de5e9ae7c602371d9ded9212b1ec725fe5ae4e3ccb0c3a57ce5575fa4c508f17fe2faa34f22798c04b9b8a0c8b622fc1abc309015')
 
 prepare() {
-  cd $pkgname
+  cd $pkgname-$pkgname-$pkgver
   sed -i 's|/usr/bin/install|/bin/install|g' Makefile.Linux
   sed -i 's|/usr/local|/usr|g' Makefile.Linux
   sed -i 's|-s ||g' Makefile.Linux
@@ -25,12 +25,12 @@ prepare() {
 }
 
 build() {
-  cd $pkgname
+  cd $pkgname-$pkgname-$pkgver
   make -f Makefile.Linux prefix=/usr
 }
 
 package() {
-  cd $pkgname
+  cd $pkgname-$pkgname-$pkgver
   make -f Makefile.Linux install DESTDIR="$pkgdir"
   find "$pkgdir/etc/$pkgname" -type f | xargs chmod 644
   mv "$pkgdir/usr/bin/proxy" "$pkgdir/usr/bin/$pkgname"
