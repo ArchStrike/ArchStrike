@@ -4,8 +4,8 @@
 buildarch=212
 
 pkgname=multimon-ng
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="An sdr decoder, supports pocsag, ufsk, clipfsk, afsk, hapn, fsk, dtmf, zvei."
 url="http://dekar.wc3edit.net/2012/05/24/multimonng/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ depends=('libpulse')
 makedepends=('qt4')
 optdepends=('sox: wav conversion')
 source=("https://github.com/EliasOenal/multimon-ng/archive/$pkgver.tar.gz")
-sha512sums=('624cd1893d185a6ed9c4ea2777afefb7ca8ceba9defcb7690738a50aacc025407e7b18b779b9e2a53f0e9a728476003c77b2232d740a1cef08c2e9a18c0f24ea')
+sha512sums=('f12cda7b87078455464113bef586cb38c2953ea652ba6a7ac65da12714748c6141ea3642ba8b35dba35b45bc9be0528af92360242f22f8a65c2472135a6c9822')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
