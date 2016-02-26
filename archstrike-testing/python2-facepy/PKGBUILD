@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-facepy
-pkgver=1.0.6
+pkgver=1.0.8
 pkgrel=1
 pkgdesc="makes it really easy to interact with Facebook's Graph API"
 arch=(any)
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://github.com/jgorset/facepy/archive/v$pkgver.tar.gz")
-sha512sums=('26ac6935e2b53fc431077b9875a1c6c96cd634a1d639210ff4d3ebb1fb6eefbf6da930e7b867d00b920b204daab9db5ca4e3d1cb3752df4ccde2aa00a7dde1da')
+sha512sums=('8d14625878730f38ab21bc54120874c967903a4690c8d7dc985486ce106bef7919f2fe9163e15dea5923100fb40218a512d79b196d415c5bcf44aa34665170df')
 
 package() {
   cd "$srcdir/facepy-$pkgver"
