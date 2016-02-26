@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=mrtparse-git
-pkgver=r309.a508cc3
+pkgver=r395.48eb6f1
 pkgrel=1
 groups=('archstrike')
 pkgdesc="a module to read and analyze the MRT format data."
@@ -32,4 +32,5 @@ pkgver() {
 package() {
   cd "$srcdir/mrtparse"
   python2 setup.py install --root="$pkgdir/" --optimize=1
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
 }
