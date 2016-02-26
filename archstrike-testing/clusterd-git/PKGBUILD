@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=clusterd-git
-pkgver=r129.0f04a49
+pkgver=r143.d190b2c
 pkgrel=1
 pkgdesc="automates the fingerprinting, reconnaissance, and exploitation phases of an application server attack"
 url="https://github.com/hatRiot/clusterd"
 arch=('any')
 license=('MIT')
 groups=('archstrike')
-depends=('python2' 'python2-requests' 'java-environment')
+depends=('python2-requests' 'java-environment')
 makedepends=('git')
 provides=('clusterd')
 conflicts=('clusterd')
