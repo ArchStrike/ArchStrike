@@ -3,15 +3,15 @@
 buildarch=1
 
 pkgname=wphardening
-pkgver=1.4
+pkgver=1.5
 pkgrel=1
 pkgdesc="A security tool for WordPress"
 arch=('any')
 url="https://github.com/elcodigok/wphardening"
 license=('GPL3')
-depends=('python2')
+depends=('python2-gitpython')
 source=(https://github.com/elcodigok/wphardening/archive/v$pkgver.tar.gz)
-sha512sums=('eeec7c566716b988f6667e38b734d8c6b5f9c723ae0a2d798e23a3f77acc371d51371b4d7b4d2405aeed8485b9a811f7ee62301cd9fb310df350d2d3b29eafe9')
+sha512sums=('ba9a7eef8d09985ffea5263696098970933ed8a6896bc96ff7f5ba2a1e105148b8145072006ecacf784d5f39b15dcfebed09dc4b81b11a7e67a5dd4d4805ae4e')
 
 prepare(){
   grep -iRl 'python' "$srcdir/wphardening-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
@@ -23,10 +23,8 @@ package() {
   install -dm755 "$pkgdir/usr/share/$pkgname/data"
   install -dm755 "$pkgdir/usr/share/$pkgname/doc"
   install -dm755 "$pkgdir/usr/share/$pkgname/lib"
-  install -dm755 "$pkgdir/usr/share/$pkgname/lib/autoload"
-  install -dm755 "$pkgdir/usr/share/$pkgname/lib/command"
-  install -Dm644 lib/autoload/*.py "$pkgdir/usr/share/$pkgname/lib/autoload/"
-  install -Dm644 lib/command/*.py "$pkgdir/usr/share/$pkgname/lib/command/"
+  install -dm755 "$pkgdir/usr/share/$pkgname/lib/minify"
+  install -Dm644 lib/minify/*.py "$pkgdir/usr/share/$pkgname/lib/minify/"
   install -Dm644 README.md "$pkgdir/usr/share/$pkgname/"
   install -Dm644 data/* "$pkgdir/usr/share/$pkgname/data/"
   install -Dm644 doc/AUTHOR "$pkgdir/usr/share/$pkgname/doc/"
