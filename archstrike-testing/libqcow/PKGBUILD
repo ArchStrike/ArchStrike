@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=libqcow
-pkgver=20150105
+pkgver=20160123
 pkgrel=1
 pkgdesc="Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility"
 url="http://code.google.com/p/libqcow/"
@@ -13,7 +13,7 @@ license=('LGPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 makedepends=('git')
 source=("https://github.com/libyal/libqcow/archive/$pkgver.tar.gz")
-sha512sums=('5b0b386c114d68b17f1c730468a5271f0ac06f54d5bdd95e3a2b4ee425f2ea5768465664029fdbe889e9daa49c048dc476286354893bc2b36e884ff4dcf20f3f')
+sha512sums=('8a62983e46ce461d8569845cead5e1901bc3995bd16df0b42d544996de9f01bbc4249f90b9f0ba5e6d76927eb93c212a4edbad5397840226298b238e88210f24')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
