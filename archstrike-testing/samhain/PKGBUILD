@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=samhain
-pkgver=4.1.1
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="File integrity / intrusion detection system"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -18,7 +18,7 @@ source=("$pkgname-$pkgver::http://la-samhna.de/${pkgname}/${pkgname}-current.tar
         "${pkgname}rc.linux.patch"
         "${pkgname}.tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('ed42f440ae73c11b047e676435022cdf7018631380362a5b89526f5f2f8c31dcc0f5ddce51990e18f94fdfd35f3c4ae521c007f805431416e2f3d342a7307a2c'
+sha512sums=('0dcb89b7a11b0aaef7b306360857c64b505651b526f7c3030ac7186f1c334c745df7b544e16fa9edac260156b1fa32d44e2276cf2476807d0ea0c011d05c9e4f'
             '60711b05211aebe4a12368ca54e4a5516a0a04bbae838b95811bb5823ad6d307d2b8bc9e5b36f23b0a3cae8919712dfac2ba7acf5b27238a23b9f8f5dce6e8fd'
             '7b173400586412f08d5f55a1eeaf2454d19fbb9df5b5958e22e336d6e9daec09a694af6242d5f84a506d7f143180aa30cca7c53af3021638778e64851e6ac428'
             'ddc65ab92cc9acc5be43603bfbfaf5ad58aedf345164c2cb86be61d2d75ae0c6e231d56be88f1ce195d30ce01fb6f3d8094d7adb46deb4f2ed45890e89a9b0c0')
@@ -51,4 +51,6 @@ package() {
     install -Dm644 ${pkgname}.service "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
     cd ${pkgname}-${pkgver}
     make DESTDIR="$pkgdir" install
+    chmod 644 $pkgdir/etc/samhainrc
+    chmod 755 $pkgdir/usr/bin/samhain
 }
