@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname='ms-sys'
-pkgver='2.5.0'
+pkgver='2.5.2'
 pkgrel=1
 pkgdesc='A tool to write Win9x-.. master boot records (mbr) under linux - RTM!'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ license=('GPL2')
 groups=('archstrike' 'archstrike-backdoors' 'archstrike-forensics')
 source=("http://downloads.sourceforge.net/sourceforge/ms-sys/ms-sys-$pkgver.tar.gz")
 depends=('glibc')
-sha512sums=('306c39ed8c3c77047d3c0aaa2ce07edd00d8e6d358923910325d3c81252ac0f48ff64b87309c21197c063b7b4f67339af476bb3b6ae0bd5ac759ef26b3f74ea4')
+sha512sums=('f4465de43b316b3257b6ec222d39e17a3b00b7d71e24046da2ee9a35d3b6ef62fd803d069ac9c114c406d18de0a0254a0330f9daa4517e2164b336cf000d141f')
 
 prepare() {
   cd "$srcdir/ms-sys-$pkgver"
