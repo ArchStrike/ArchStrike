@@ -4,24 +4,24 @@ _pkgname=pysnmp
 buildarch=1
 
 pkgname=python2-$_pkgname
-pkgver=4.2.5
+pkgver=4.3.2
 pkgrel=1
 pkgdesc="SNMP library for Python"
 url='http://sourceforge.net/projects/pysnmp/'
 license=('BSD')
 arch=('any')
-depends=("python2" "python2-pyasn1")
-makedepends=("python2-distribute")
+depends=("python2" "python2-pyasn1" "python2-crypto")
+makedepends=("python2-setuptools")
 optdepends=("python2-pysnmp-mibs")
 conflicts=('pysnmp')
 provides=('pysnmp')
 source=(http://downloads.sourceforge.net/sourceforge/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha512sums=('bf93d7dd7ca95ff8b272c90d0c7d4e528075c83d8d6d630ab50e392227188bd0abdd05ad98521d9c4c0a1891a0b448fb9e4411f8a1d6bc7a9c2f7bb132c0dca0')
+sha512sums=('55696d03f20b37edcfc605b68d308691387dd870a6e477b6907885789d6993e00c689e866ba8170604711669bc28c0da01039e4f15d0058a6ebb5f78c3f0e450')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/python2-pysnmp/LICENSE
+  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/python2-pysnmp/LICENSE.txt
   # Package python module only.
   rm -fr "$pkgdir"/usr/bin
 }
