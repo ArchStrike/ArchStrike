@@ -3,20 +3,19 @@
 buildarch=1
 
 pkgname=luksipc
-pkgver=0.01
-pkgrel=2
+pkgver=0.04
+pkgrel=1
 groups=('archstrike')
 pkgdesc="A tool to convert unencrypted block devices to encrypted LUKS devices in-place"
-arch=(any)
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.johannes-bauer.com/linux/luksipc"
+depends=('glibc')
 license=('GPL3')
-source=($url/$pkgname-$pkgver.tar.gz return_code.patch)
-md5sums=('8a61e207dfd020f634ede641bc57fe63'
-         '53bc909090376e830c3de70136b2e29c')
+source=($url/$pkgname-$pkgver.tar.gz)
+sha512sums=('e96b0e281c4a469042e634a798a9ad88d7db91a5de73ed3bd523e65d8280bb293b460a2cbaf77a0562b0ff60672e7a2f74b901d1ec57b56a0e5c98b49969aa92')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  patch -p1 < $srcdir/return_code.patch
   make all
 }
 
