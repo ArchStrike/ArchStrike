@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=sagan-rules
-pkgver=06172014
+pkgver=10222015
 pkgrel=1
 epoch=1
 pkgdesc="Rules package for Sagan"
@@ -12,7 +12,7 @@ arch=('any')
 url="http://sagan.softwink.com/"
 license=('GPL')
 source=("http://sagan.quadrantsec.com/rules/sagan-rules-${pkgver}.tar.gz")
-sha512sums=('824e3b159fae10876f59e50b1c751e509b04e6ee347e74afb19c1a5f935fe41b8d8874d6379bea477fea5a9c5754b1917f9b78da3009203fe23a0c600e03da23')
+sha512sums=('6672b91a946165f1f90bff856cbc71a16817ff5fd13a73054eb70af6a56610a7ec6851d872f376159e6a609569e052a7586278070a7c1e6bd9e3d6462dc26f67')
 
 package() {
   install -dm0755 "${pkgdir}"/usr/share/sagan-git/rules
