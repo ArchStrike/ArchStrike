@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname="libbde"
-pkgver="20150905"
+pkgver="20160110"
 pkgrel=1
 pkgdesc="Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -13,7 +13,7 @@ depends=('fuse' 'libcsystem' 'libbfio' 'python2')
 makedepends=('git')
 install="$pkgname.install"
 source=("https://github.com/libyal/libbde/archive/$pkgver.tar.gz")
-sha512sums=('96b8a76cef7448c054f2eecfea7b6b7b86120046f4f77349b72f860092d6ff7d41fffa9f27444a8d8bbd8a7a30899469ebab4cbfb62a45d2de6a7e44db1f2fb3')
+sha512sums=('273a2e9499bc931c7102620f1372e182a3279ba075d333da360cd7ed7bbf38b7d1bf690965c311c2a2f585621959076175515280691aed55a9b0fd5eef393f71')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
