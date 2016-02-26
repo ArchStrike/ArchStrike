@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-requests_ntlm
-pkgver=0.1.0
+pkgver=0.2.0
 pkgrel=1
 pkgdesc="Allows for HTTP NTLM authentication using the requests library"
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('python2-distribute')
 source=("https://pypi.python.org/packages/source/r/requests_ntlm/requests_ntlm-$pkgver.tar.gz")
-sha512sums=('f14e7e66dfbd42177abfdb10f06e3304114ba838e041495e920bfc010acdeb7bcc4ee7ed8f5b4666ada998c7a30b50288d6a864e4bf2fdb24d693499620f495c')
+sha512sums=('74fe90ba339a1d68ef964dfe9fa0d06a5eebe8050feadfad534955f3ac73a9cde0c48e1700cd6628f52f7be4e88a410942a6e803647e3adb813b8524227742f8')
 
 package() {
   cd "$srcdir/requests_ntlm-$pkgver"
