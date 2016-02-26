@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=zulucrypt
-pkgver=4.7.6
+pkgver=4.8.0
 pkgrel=1
 pkgdesc="a cli and gui frontend to cryptsetup."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ makedepends=('cmake' 'git' 'automoc4')
 optdepends=('kdeutils-kwallet: retrieve volume keys from kde kwallet')
 options=('!strip' '!buildflags' '!distcc')
 source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/$pkgver/zuluCrypt-$pkgver.tar.xz")
-sha512sums=('d8c6d3117fbf28641b05a387c4b5a90be5ad4d6dca0f7df3bda6a12c1b1aaf43d4d44e1d19e5932fe686411c73143d6ad00ad8f6a9ca3e45010aa371cd40df1e')
+sha512sums=('d593b22eb1cf01e1aea622ce2b94817c7f589484481c73fb626f04e94bbee2ee7615a4caabfd312e43b4cf6fb77e8123365047e54aa3f4bb8cb735dae4072cfa')
 install=${pkgname}.install
 
 build() {
