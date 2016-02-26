@@ -5,7 +5,7 @@
 buildarch=212
 
 pkgname=cryptmount
-pkgver=5.1
+pkgver=5.2
 pkgrel=1
 pkgdesc='Utility which allows an ordinary user to mount an encrypted file system'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ license=('GPL')
 depends=('cryptsetup')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-$pkgver/$pkgname-$pkgver.tar.gz")
 backup=('etc/cryptmount/cmtab')
-sha512sums=('f9e46b365dae10cd70baa5f89de3c964690d51a6be0cd66392fccbac2b4b3634cc69cf61efa8a08533879ba6231ee74a597aad2c9f3b53200ece3d947fde461c')
+sha512sums=('030df15a8c1472fafa61f957d7a0f1af09ed1e958bbc09a714c43bf4e12cbcb3069ce2fc9442586c4b9bab9816d17e0d9bc1a3a968e7d3cc5ff79686e97bc361')
 
 build() {
   cd $pkgname-$pkgver
@@ -32,7 +32,6 @@ package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir" install
   # fixing perms
-  chmod 644 $pkgdir/usr/lib/cryptmount/cm-gcry.so $pkgdir/usr/lib/cryptmount/cm-luks.so
   chmod 2755 $pkgdir/usr/bin/cryptmount
 }
 
