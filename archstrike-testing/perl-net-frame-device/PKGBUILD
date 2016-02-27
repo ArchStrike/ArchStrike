@@ -5,7 +5,7 @@ _perlmod='Net-Frame-Device'
 buildarch=1
 
 pkgname='perl-net-frame-device'
-pkgver='1.11'
+pkgver='1.12'
 pkgrel=1
 pkgdesc='Get network device information and gateway.'
 arch=('any')
@@ -14,7 +14,7 @@ license=('GPL' 'PerlArtistic')
 depends=(perl perl-net-frame perl-net-frame-dump perl-net-frame-layer-icmp6 perl-net-frame-simple perl-net-frame-layer-ipv6 perl-net-ipv4addr perl-net-ipv6addr perl-net-libdnet perl-net-libdnet6 perl-net-pcap perl-net-write)
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/G/GO/${_author}/${_perlmod}-${pkgver}.tar.gz")
-sha512sums=('0ca86c3802a254cc485770d4eca52cb456bff0e9cfe1736d2afdb093a9354b20baa0cb99872031d78994235bfbc8b7e53859c68024f9869e3e3cd98b302412df')
+sha512sums=('aba85b72ebc412fa4e3c7083d541abf3a2c3b08bea5c44074aa5aa02f78f2a54ba1b0fa93987c08033e0105df2a5fc4364fe5fb576439dd99666f5cf34314ae6')
 
 prepare() {
   cd "${srcdir}/${_perlmod}-${pkgver}"
