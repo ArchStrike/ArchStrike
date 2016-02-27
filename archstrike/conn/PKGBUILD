@@ -1,28 +1,27 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-_pkgname=Conn
-
 buildarch=212
 
+_pkgname=Conn
 pkgname=conn
 pkgver=1.0.36
 pkgrel=1
-pkgdesc="Small C library usefull to easy build ipv4/ipv6 network daemons/clients"
-url="http://kernel.embedromix.ro/us/"
+pkgdesc='Small C library usefull to easy build ipv4/ipv6 network daemons/clients'
+url='http://kernel.embedromix.ro/us/'
 license=('LGPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc')
-source=("http://kernel.embedromix.ro/us/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+source=("http://kernel.embedromix.ro/us/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('367eb4dc54955262914c3d184686ea18c00e5ea84ca6607cb9872ecdd27ea0cf88f343c68f715d309607886d647a7352ce4365e5e8090ed79073ffedd710269a')
 
 build() {
-    cd ${_pkgname}-${pkgver}
-    ./configure --prefix=/usr
-    make
+  cd $_pkgname-$pkgver
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
-    make DESTDIR="${pkgdir}" install
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
