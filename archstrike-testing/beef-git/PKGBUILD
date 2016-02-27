@@ -2,23 +2,23 @@
 
 buildarch=192
 
-pkgname=beef-git
-pkgver=20150625.r2366
+_pkgname=beef
+pkgname=$_pkgname-git
+pkgver=20160218.r2616
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
-pkgdesc="Pentesting framework that focuses on web-browser exploitation"
+pkgdesc='Pentesting framework that focuses on web-browser exploitation'
 arch=('i686' 'x86_64')
 url='http://beefproject.com'
 license=('Apache')
-makedepends=('git' 'python2')
 options=('!emptydirs')
-provides=('beef')
-replaces=('beef')
-conflicts=('beef')
-depends=('ruby1.9' 'java-environment' 'python2' 'sqlite' 'ruby1.9-bundler')
-source=("${pkgname}::git+http://github.com/beefproject/beef.git" "beef.desktop")
-sha512sums=('SKIP' '8fc10b9cad8f7cd29bc97ff728f6e41cdaba833c52580ae636455e75a02b07797b4cbe33d8c1b10e1978235e9aaf2416571e1963179e96c54f4431a77e81660f')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+depends=('ruby-bundler' 'java-environment' 'python2')
+makedepends=('git')
+source=("$pkgname::git+http://github.com/beefproject/beef.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -26,17 +26,21 @@ pkgver() {
 }
 
 package() {
-  cd "${pkgname}"
-  install -dm755 "${pkgdir}"/usr/share/"${pkgname}"
-  cp -a --no-preserve=ownership * "${pkgdir}"/usr/share/"${pkgname}"
-  cd "${pkgdir}"/usr/share/"${pkgname}"
-  bundle-1.9 install --path vendor/bundle
-  install -dm755 "${pkgdir}"/usr/bin
-  install -Dm644 "${srcdir}"/beef.desktop "${pkgdir}"/usr/share/applications/beef.desktop
-  cat > "${pkgdir}"/usr/bin/beef <<EOF
+  cd $pkgname
+
+  # Install the package files
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
+  cd "$pkgdir/usr/share/$_pkgname"
+  bundle install --path vendor/bundle
+
+  # Create the launcher
+  install -dm755 "$pkgdir/usr/bin"
+  cat > "$pkgdir/usr/bin/$_pkgname" << EOF
 #!/usr/bin/env bash
-cd /usr/share/beef-git
-ruby-1.9 ./beef "\$@"
+cd /usr/share/$_pkgname
+unset GEM_HOME
+/usr/bin/ruby ./$_pkgname "\$@"
 EOF
-  chmod 755 "${pkgdir}"/usr/bin/beef
+  chmod 0755 "$pkgdir/usr/bin/$_pkgname"
 }
