@@ -4,7 +4,7 @@ buildarch=212
 
 _pkgname=wpscan
 pkgname=$_pkgname-git
-pkgver=20160218.r2011
+pkgver=20160226.r2016
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
@@ -12,7 +12,7 @@ pkgdesc='A vulnerability scanner which checks the security of WordPress installa
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url='http://wpscan.org'
 license=('custom')
-depends=('ruby1.9' 'ruby1.9-bundler' 'libxslt' 'curl')
+depends=('ruby-bundler' 'libxslt' 'libyaml' 'ruby-typhoeus' 'ruby-nokogiri' 'curl')
 makedepends=('git' 'unzip')
 options=('!strip')
 conflicts=("$_pkgname")
@@ -44,8 +44,8 @@ package() {
 
   # Build and install locally
   cd "$pkgdir/usr/share/$_pkgname"
-  bundle-1.9 config build.nokogiri --use-system-libraries
-  bundle-1.9 install --path vendor/bundle
+  bundle config build.nokogiri --use-system-libraries
+  bundle install --path vendor/bundle
 
   # Extract the data and delete what we don't need
   unzip -o data.zip
@@ -60,7 +60,8 @@ package() {
   cat > "$pkgdir/usr/bin/$_pkgname" << EOF
 #!/usr/bin/env bash
 cd /usr/share/$_pkgname
-ruby-1.9 ./$_pkgname.rb "\$@"
+uset GEM_HOME
+PATH=/usr/bin ruby ./$_pkgname.rb "\$@"
 EOF
   chmod 0755 "$pkgdir/usr/bin/$_pkgname"
 }
