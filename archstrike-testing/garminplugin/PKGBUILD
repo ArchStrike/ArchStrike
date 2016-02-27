@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=garminplugin
 pkgrel=1
-pkgver=0.3.26
+pkgver=0.3.27
 pkgdesc="Garmin Communicator Plugin for Linux"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.andreas-diesner.de/garminplugin/doku.php"
@@ -12,7 +12,7 @@ license=('GPL')
 #makedepends=("xulrunner")
 depends=('garmintools' 'tinyxml')
 source=(https://github.com/adiesner/GarminPlugin/archive/V${pkgver}.zip)
-sha256sums=('318e4a42122747a4beca848a21dcffebaeccfef2b5abb5fbebc1667a03202d66')
+sha256sums=('5487a1d3242f3d35bbf2830bae5fa5e84cec9245f0da87c90ca2d9a3ca225be0')
 
 build() {
   cd ${srcdir}/GarminPlugin-${pkgver}/src
