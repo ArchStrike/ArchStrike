@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname='perl-term-ansicolor'
-pkgver='4.03'
+pkgver='4.04'
 pkgrel='1'
 pkgdesc="Term::ANSIColor - Color screen output using ANSI escape sequences for perl"
 arch=('any')
@@ -11,17 +11,17 @@ license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url="http://search.cpan.org/~rra/Term-ANSIColor-4.02/ANSIColor.pm"
-source=("http://search.cpan.org/CPAN/authors/id/R/RR/RRA/Term-ANSIColor-4.02.tar.gz")
-sha512sums=('46e5237b1db1a9d8c74e1039849e4cd0c3b9c5a1c860f00473f6690c632de9c8e4afb7e390a6da537afbd7780cdd3cc04a00c6a38d5b033bdceb88c9d5312353')
+url="http://search.cpan.org/~rra/Term-ANSIColor-$pkgver/ANSIColor.pm"
+source=("http://search.cpan.org/CPAN/authors/id/R/RR/RRA/Term-ANSIColor-$pkgver.tar.gz")
+sha512sums=('2f8f60f319094aceac148d56c7fbfba4f28ec0fc33e0cc7387a6c4d391c0d90487a4613d6e52fd206799d76392dd9b17b0ce03d9b491aecdfbcc75761503dbe2')
 
 build() {
-    cd "$srcdir/Term-ANSIColor-4.02"
+    cd "$srcdir/Term-ANSIColor-$pkgver"
     perl Makefile.PL INSTALLDIRS=vendor
     make
 }
 
 package(){
-    cd "$srcdir/Term-ANSIColor-4.02"
+    cd "$srcdir/Term-ANSIColor-$pkgver"
     make DESTDIR=$pkgdir install
 }
