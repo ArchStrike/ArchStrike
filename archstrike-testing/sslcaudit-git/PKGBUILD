@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=sslcaudit-git
-pkgver=r522.5b6be3e
+pkgver=r524.f218b9b
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Utility to perform security audits of SSL/TLS clients"
