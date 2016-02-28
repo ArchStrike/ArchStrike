@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=od1n-git
-pkgver=20150404.r152
+pkgver=20160207.r189
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-webapps')
 pkgdesc="A Web security tool to make fuzzing at HTTP inputs, made in C with libCurl"
