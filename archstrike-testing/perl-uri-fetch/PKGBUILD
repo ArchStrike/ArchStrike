@@ -5,7 +5,7 @@
 buildarch=1
 
 pkgname='perl-uri-fetch'
-pkgver='0.10'
+pkgver='0.11'
 pkgrel='1'
 pkgdesc="Smart URI fetching/caching"
 arch=('any')
@@ -15,8 +15,8 @@ depends=('perl>=5.8.1' 'perl-class-errorhandler' 'perl-libwww' 'perl-uri')
 makedepends=()
 url='http://search.cpan.org/dist/URI-Fetch'
 source=("http://cpan.metacpan.org/authors/id/N/NE/NEILB/URI-Fetch-$pkgver.tar.gz")
-sha512sums=('3780c879712c6e88e6b409ad1f5d081a09fbbaabde96b29b167573375bfc68b656ded7acd03282648b77236602d052f2bda88461142dd29bea8b47396629331f')
-_distdir="URI-Fetch-0.10"
+sha512sums=('34adec1cbb698ec0901d37aee45ecfea72351e5af8d65e3bf94833731e53f1cf47cfd4d310baf0e8f1f84edfe671a155039af91e332446cea146dcc8a8c86eb9')
+_distdir="URI-Fetch-$pkgver"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
