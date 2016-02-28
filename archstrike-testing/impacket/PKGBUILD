@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=impacket
-pkgver=0.9.13
+pkgver=0.9.14
 pkgrel=1
 pkgdesc="Collection of Python2 classes focused on providing access to network packets"
 arch=('any')
@@ -11,8 +11,8 @@ url='https://github.com/CoreSecurity/impacket'
 license=('Apache')
 depends=('python2-crypto' 'python2-pcapy' 'python2-pyopenssl' 'python2-pyasn1')
 groups=('archstrike')
-source=("https://pypi.python.org/packages/source/i/impacket/impacket-$pkgver.tar.gz")
-sha512sums=('9c9ba1ea12776b023a4fec4b0f6f60cfed33d337da948111951f452548fd213a5f48698126a9c8735706ae5d05111f0de3f20b17c221567ca98d2c84bb22ccef')
+source=("https://github.com/CoreSecurity/impacket/releases/download/impacket_0_9_14/impacket-$pkgver.tar.gz")
+sha512sums=('f937f78da4f54c5bf61053e590364d1d5378bfe59f02aedf7fec9062fa11d3e907aa1d4c66fb323effe9eb523cba571b46a0c5f7f379995d85d478dc23dff2a3')
 
 prepare(){
   grep -iRl 'python' "$srcdir/impacket-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
@@ -22,7 +22,7 @@ package() {
   cd "${srcdir}/impacket-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" --optimize=1
   chmod 644 $pkgdir/usr/share/doc/impacket/LICENSE
-  chmod 644 $pkgdir/usr/share/doc/impacket/README
+  chmod 644 $pkgdir/usr/share/doc/impacket/README.md
   find  $pkgdir/usr/share/doc/impacket/testcases -type f  |xargs chmod 755
   chmod 755 $pkgdir/usr/share/doc/impacket/testcases
   chmod 755 $pkgdir/usr/share/doc/impacket/testcases/ImpactPacket
