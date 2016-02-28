@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=create_ap-git
-pkgver=r160.0f5a503
+pkgver=r191.69541cb
 pkgrel=1
 pkgdesc="A shell script to create a NATed/Bridged Software Access Point(aka WiFi)"
 arch=('any')
