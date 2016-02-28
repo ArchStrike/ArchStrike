@@ -3,33 +3,33 @@
 buildarch=1
 
 pkgname=perl-netpacket
-pkgver=1.5.0
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="Assemble/disassemble network packets at the protocol level"
 arch=('any')
 url='http://search.cpan.org/dist/NetPacket/'
 license=('custom')
 makedepends=('perl-module-build>=0.360.100')
-provides=('perl-netpacket-arp=1.5.0' 'perl-netpacket-ethernet=1.5.0'
-          'perl-netpacket-icmp=1.5.0' 'perl-netpacket-icmpv6=1.5.0'
-          'perl-netpacket-igmp=1.5.0' 'perl-netpacket-ip=1.5.0'
-          'perl-netpacket-ipv6=1.5.0' 'perl-netpacket-pflog=1.5.0'
-          'perl-netpacket-tcp=1.5.0' 'perl-netpacket-udp=1.5.0')
+provides=('perl-netpacket-arp=1.6.0' 'perl-netpacket-ethernet=1.6.0'
+          'perl-netpacket-icmp=1.6.0' 'perl-netpacket-icmpv6=1.6.0'
+          'perl-netpacket-igmp=1.6.0' 'perl-netpacket-ip=1.6.0'
+          'perl-netpacket-ipv6=1.6.0' 'perl-netpacket-pflog=1.6.0'
+          'perl-netpacket-tcp=1.6.0' 'perl-netpacket-udp=1.6.0')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/Y/YA/YANICK/NetPacket-$pkgver.tar.gz")
-sha512sums=('9c25022ae497c493005ab68d6ca47d679d60caf42de548f0920c25f3154c3264886165430120e09c6b3fed66630387b4de0a88eec41e3b6a51a14b9c5f97255b')
+sha512sums=('9482b35294177fbf0c67474f0b14c87b3d8fb61497cef2c65fb942ff9472dc527d24a68fa8656ca71a0ddd73edb4a02240341177a36c4ed0e9b832b20b120349')
 
 build() {
   cd "$srcdir/NetPacket-$pkgver"
 
-  PERL_MM_USE_DEFAULT=1 perl Build.PL INSTALLDIRS=vendor
-  ./Build
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 package() {
   cd "$srcdir/NetPacket-$pkgver"
-
-  ./Build install destdir=${pkgdir}
+  
+  make install DESTDIR=${pkgdir}
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Remove perllocal.pod and .packlist.
