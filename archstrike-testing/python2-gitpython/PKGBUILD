@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-gitpython
-pkgver=1.0.1
+pkgver=1.0.2
 pkgrel=1
 pkgdesc="A python library used to interact with Git repositories"
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2' 'git' 'python2-gitdb>=0.6.4')
 makedepends=('python2' 'python2-distribute')
 conflicts=('gitpython-git' 'gitpython')
 source=("http://pypi.python.org/packages/source/G/GitPython/GitPython-$pkgver.tar.gz")
-sha512sums=('63fc061f0e045b11adf20ab291f9d614028d76fb44c6b0910193f6a9f4a5f9bae070527fa2ca06b234da12b7cd545194a7f5e912f4e09370bd41f81552c3160f')
+sha512sums=('faff50d5272158f1d05d932e7827c05272f9a28772aabbcabd631b735bb4d8306d2861d13c327d02a4c554bd9a9902c473fb282318036405497dd8bf0fcc51a8')
 
 package() {
   cd "$srcdir/GitPython-$pkgver"
