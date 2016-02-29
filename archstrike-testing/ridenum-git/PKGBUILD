@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=ridenum-git
-pkgver=r43.e86c25b
+pkgver=r51.dc23c91
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Rid_enum is a null session RID cycle attack for brute forcing domain controllers."
