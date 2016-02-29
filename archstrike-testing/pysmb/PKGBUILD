@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=pysmb
-pkgver=1.1.16
-pkgrel=2
+pkgver=1.1.17
+pkgrel=1
 pkgdesc="an experimental SMB/CIFS library written in Python"
 arch=('any')
 url="http://pypi.python.org/pypi/pysmbc/"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('5e0c09d13a17dd503faa8f3056e7fbbf7b9f500ef7d72de64511f32918480652102daa317be39be358a1398b3360f3bf6fd12c104effa80c1d62248c712e876d')
+sha512sums=('e6febf9a03f3cfd0a3019d0c4f71a2027ed9118b452bb078af85e4b097ecbe5868bca9aabb6dd7ae262eb5f1205ac50d21754cc274cedebb9ceb863ecc95406d')
 
 build(){
   cd "${srcdir}/${pkgname}-${pkgver}"
