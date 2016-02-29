@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=vfeed-git
-pkgver=20150811.r1
+pkgver=20151126.r49
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-misc')
