@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-cluster
-pkgver=1.2.2
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="Allows grouping a list of arbitrary objects into related groups (clusters)"
 arch=('any')
@@ -12,7 +12,12 @@ license=('LGPL')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/c/cluster/cluster-${pkgver}.tar.gz")
-sha512sums=('02600fa1fccdb07251bea83ab81908c22968fcfd4d6ccf382a75ab43117ee8ecc4385f7666f272d1e6cfc0634f7e15778635b50fde572773e564604c981e75cf')
+sha512sums=('698da0d6b138eb44441cdae798a5906edc4c1002787a778b917c3436b0f5a7143ae09546978a3ed78dd3697adcf67184b0dea8ef386222cd3d5f3796ca43c713')
+
+prepare() {
+  cd $srcdir/cluster-$pkgver
+  sed -i '/version=/d' setup.py
+}
 
 package() {
   cd "$srcdir/cluster-$pkgver"
