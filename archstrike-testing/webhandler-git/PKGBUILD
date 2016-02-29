@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=webhandler-git
-pkgver=r321.bcd2263
+pkgver=r324.047dddf
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A handler for PHP system functions & also an alternative 'netcat' handler."
