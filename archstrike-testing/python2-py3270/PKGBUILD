@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-py3270
-pkgver=0.2.0
+pkgver=0.3.3
 pkgrel=1
 pkgdesc="A Python interface to x3270, an IBM 3270 terminal emulator"
 arch=('any')
-url='https://pypi.python.org/pypi/py3270/0.2.0'
+url='https://pypi.python.org/pypi/py3270/'
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=(https://pypi.python.org/packages/source/p/py3270/py3270-$pkgver.tar.gz LICENSE)
-sha512sums=('fb0178940081bf452af5384f8892e73f86ee6c75d9920837105ac9cf937b0cf0d7b3a992f14505d7f46164847edb6b0d49a7ee23bf1910b8b7c4f1329a5cd4a0'
+source=(https://pypi.python.org/packages/source/p/py3270/py3270-$pkgver.zip LICENSE)
+sha512sums=('d12251fdd7febd95304aa737d35063cb85184af351a3f95050dcaf03da74f1a41788e6fa7b375091b9256dc40b447cad7d97f7fdfcf0aed00b3a2d69fe8b34b6'
             '0d1540a2077131cdd882ddb6b792ff78d99b8345f5eb7851544cd357c31a0045bc91a16434b067e9c64c7e9cca7855c5896d70d1741928a8e265a3a95d156d49')
 
 package() {
