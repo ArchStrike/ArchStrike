@@ -1,20 +1,21 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=212
 
 pkgname=backdoor-factory-git
-pkgver=0.r142.0bd3429
+pkgver=0.r166.eacacb6
 pkgrel=1
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
 url="https://github.com/secretsquirrel/the-backdoor-factory"
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('capstone' 'python2-pefile')
 makedepends=('git')
 replaces=('backdoor-factory')
 conflicts=('backdoor-factory')
 provides=('backdoor-factory' 'bdf')
+options=('!strip')
 source=("${pkgname}::git+https://github.com/secretsquirrel/the-backdoor-factory.git")
 sha512sums=('SKIP')
 
@@ -34,4 +35,7 @@ python2 /usr/share/backdoor-factory/backdoor.py "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/backdoor-factory"
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  chmod 644 $pkgdir/usr/share/backdoor-factory/aPLib/lib/macho/aplib.a
+  chmod 644 $pkgdir/usr/share/backdoor-factory/aPLib/lib/macho64/aplib.a
+  sed -i 's|python|python2|' $pkgdir/usr/share/backdoor-factory/osslsigncode/misc/pagehash.py
 }
