@@ -3,13 +3,13 @@
 buildarch=1
 
 pkgname=python2-fuzzywuzzy-git
-pkgver=r180.5f0eb1b
+pkgver=r230.48474ac
 pkgrel=1
 pkgdesc="Fuzzy string matching in python"
 arch=('any')
 url="https://pypi.python.org/pypi/fuzzywuzzy/0.2"
 license=('custom')
-depends=('python2')
+depends=('python2-levenshtein')
 makedepends=('git' 'python2-setuptools')
 conflicts=('python2-fuzzywuzzy')
 provides=('python2-fuzzywuzzy')
