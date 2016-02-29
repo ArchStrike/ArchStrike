@@ -1,0 +1,38 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=dirsearch
+pkgver=0.3.5
+pkgrel=1
+groups=('archstrike' 'archstrike-webapps')
+pkgdesc='A HTTP(S) directory/file brute forcer'
+arch=('any')
+url='https://github.com/maurosoria/dirsearch'
+license=('custom')
+depends=('python')
+provides=('dirs3arch')
+replaces=('dirs3arch')
+conflicts=('dirs3arch')
+source=("https://github.com/maurosoria/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('3af986c911327b961651b84a777969b5f81ca4d873f00922d7104b8e827ddb34314f6b573f679ff8e41f50ffcb79bc3d084bbe1e032db504c8c8e0736d467413')
+
+package() {
+  cd $pkgname-$pkgver
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+
+  for dir in db lib thirdparty reports; do
+    install -dm755 "$pkgdir/usr/share/$pkgname/$dir"
+    cp -a --no-preserve=ownership "$dir"/* "$pkgdir/usr/share/$pkgname/$dir/"
+  done
+
+  install -Dm755 $pkgname.py "$pkgdir/usr/share/$pkgname"
+  install -Dm755 default.conf "$pkgdir/usr/share/$pkgname"
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  ln -s /usr/share/$pkgname/$pkgname.py "$pkgdir/usr/bin/$pkgname"
+}
