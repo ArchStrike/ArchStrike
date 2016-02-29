@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=hqlmap
-pkgver=r35.081395e
+pkgver=r38.bb6ab46
 pkgrel=1
 pkgdesc="This project has been created to exploit HQL Injections"
 arch=('any')
@@ -27,6 +27,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/hqlmap/LICENSE"
   cp -R --no-preserve=ownership db "$pkgdir/usr/share/hqlmap"
   install -Dm644 HQLmap.py "$pkgdir/usr/share/hqlmap/hqlmap.py"
+  sed -i 's|python|python2|' $pkgdir/usr/share/hqlmap/hqlmap.py
   cat > $pkgdir/usr/bin/hqlmap<<EOF
 #!/bin/sh
 cd /usr/share/hqlmap
