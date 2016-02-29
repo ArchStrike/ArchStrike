@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pshitt-git
-pkgver=20150623.r22
+pkgver=20150625.r23
 pkgrel=1
 groups=('archstrike')
 pkgdesc="A lightweight fake SSH server designed to collect authentication data sent by intruders. "
