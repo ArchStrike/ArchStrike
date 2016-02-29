@@ -3,24 +3,19 @@
 buildarch=192
 
 pkgname=hashcat-utils
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Utilites for Hashcat"
 arch=('i686' 'x86_64')
-url='http://hashcat.net/wiki/doku.php?id=hashcat_utils'
+url='https://github.com/hashcat/hashcat-utils'
 license=('custom')
-if [[ ${CARCH} == "x86_64" ]]; then
-      depends=('lib32-glibc')
-else
-      depends=('glibc')
-fi
-makedepends=('p7zip')
-source=("http://hashcat.net/tools/hashcat-utils/hashcat-utils-$pkgver.7z")
-sha512sums=('ed4208b673857496fde6b0ae725bdb04dfb8ecaf7d4097ca4e922848b537d0590fb439b35410170f0e12094d11c6699c14a0df734a7850703c99e8cb3fedc6de')
+depends=('glibc')
+source=("https://github.com/hashcat/hashcat-utils/archive/$pkgver.tar.gz")
+sha512sums=('3012b103e467b9bc26ed1f5a33e26ed7dc2baa258ab32ab82a1e1ffd2f0f83c9c314346bbc534cf42884b07f0159f2c2af0814ac2dfb2e048c71e5a744dbcf48')
 
 prepare() {
-  cd "$srcdir/hashcat-utils-$pkgver"
+  cd "$srcdir/hashcat-utils-$pkgver/src"
   sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-gcc|gcc|' Makefile
   sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-strip|strip|' Makefile
   sed -i 's/release: posix windows/release: posix/' Makefile
@@ -29,15 +24,16 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/hashcat-utils-$pkgver"
-  make
+  cd "$srcdir/hashcat-utils-$pkgver/src"
+  make linux
 }
 
 package() {
-  cd "$srcdir/hashcat-utils-$pkgver"
+  cd "$srcdir/hashcat-utils-$pkgver/src"
 
   # Base directory.
   install -dm755 "$pkgdir/usr/bin"
+  install -Dm644 ../LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE 
 
   # Bin.
   for bin in $(ls *.bin)
