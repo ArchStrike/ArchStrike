@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=hashpump-git
-pkgver=r43.484c538
+pkgver=r45.2d01d3b
 pkgrel=1
 pkgdesc="A tool to exploit the hash length extension attack in various hashing algorithms"
 arch=('armv6h' 'i686' 'armv7h' 'x86_64')
