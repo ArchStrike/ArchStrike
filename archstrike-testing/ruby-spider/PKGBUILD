@@ -2,25 +2,25 @@
 
 buildarch=1
 
-pkgname=ruby-spider
-_gemname=spider
+_pkgname=spider
+pkgname=ruby-$_pkgname
 pkgver=0.4.4
-pkgrel=2
-pkgdesc="A Web spidering library"
+pkgrel=3
+pkgdesc='A Web spidering library'
 arch=('any')
 license=('')
 makedepends=('ruby')
-url='http://spider.rubyforge.org/'
-source=("http://rubygems.org/downloads/spider-$pkgver.gem")
-md5sums=('2721ec80f548b548dc3c5c9b3f893c60')
-noextract=("spider-$pkgver.gem")
+url='http://spider.rubyforge.org'
+source=("http://rubygems.org/downloads/$_pkgname-$pkgver.gem")
+sha512sums=('3a692f89c55699f01be7a72d7a7139793f0b5a5e698717fdb7f9ae659e22362104f0dcd535e78622936024050bafe86dc554a06cc1f7bbcb3bf32811370668a3')
+noextract=("$_pkgname-$pkgver.gem")
 
 package() {
-  cd "$srcdir"
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
+
   if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" spider-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" $_pkgname-$pkgver.gem
   else
-    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" spider-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_pkgname-$pkgver.gem
   fi
 }
