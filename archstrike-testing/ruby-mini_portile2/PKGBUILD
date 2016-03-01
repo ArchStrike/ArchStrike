@@ -1,0 +1,34 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=mini_portile2
+pkgname=ruby-$_pkgname
+pkgver=2.1.0
+pkgrel=1
+pkgdesc='Simplistic port-like solution for developers'
+arch=('any')
+license=('MIT')
+makedepends=('ruby')
+url='http://github.com/luislavena/mini_portile'
+source=(
+  "https://rubygems.org/downloads/$_pkgname-$pkgver.gem"
+  "https://github.com/flavorjones/$_pkgname/blob/master/LICENSE.txt"
+)
+sha512sums=(
+  '175ba73cccaf25daa89fb4c9054c4be1951e912bcb7b226a847aef6fca0ca08aa2568f225cc15a70e122b0c3355dd9c09b93505c3b3acd2c03e36941e2923dc8'
+  '87e38f218040fe35536a957d27430eb1be5bc9587e2dae7d6f28e7f855478cc2cd0f24dcf0793f241cb95127bae6ea8b511bc2906ff6ab2860eac926b33c4f17'
+)
+noextract=("$_pkgname-$pkgver.gem")
+
+package() {
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" $_pkgname-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_pkgname-$pkgver.gem
+  fi
+
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
