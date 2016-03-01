@@ -4,16 +4,17 @@
 buildarch=212
 
 pkgname=yaf
-pkgver=2.7.1
-pkgrel=3
+pkgver=2.8.1
+pkgrel=1
 pkgdesc="Yet Another Flowmeter"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://tools.netsa.cert.org/yaf/'
 license=('GPL')
-depends=('libltdl' 'libpcap' 'libfixbuf>=1.0.0')
+depends=('libltdl' 'libpcap' 'libfixbuf>=1.7.0')
 makedepends=('p0f' 'doxygen' 'graphviz')
+install=$pkgname.install
 source=("http://tools.netsa.cert.org/releases/yaf-$pkgver.tar.gz")
-sha512sums=('465bf7198a79ff6e11117b0cb0cb8265aa41e24b6cf3ba45edbd82bbb2e7eab7f99a85cb25447cfafcd1be26b13c45cdeea78f6485b0abd2de090c9ed8c54609')
+sha512sums=('a6f7688711120de93f19c347d41d2c6c6a4a5139687812cc4bb29f022ddd0bbbfbe3e209c9afa622a2f9f89eb715d763fd374c0a8834e6d7e6fa2e0c4810ff0f')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
