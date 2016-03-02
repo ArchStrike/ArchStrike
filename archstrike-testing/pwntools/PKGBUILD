@@ -1,37 +1,46 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=1
 
-pkgname='pwntools'
-pkgver='2.1.3'
-pkgrel='1'
+pkgname=pwntools
+pkgver=2.2.0
+pkgrel=1
 pkgdesc='The CTF framework used by #Gallopsled in every CTF'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('any')
 url='https://github.com/Gallopsled/pwntools'
 license=('MIT')
 groups=('archstrike' 'archstrike-misc')
-if [[ $CARCH == 'x86_64' ]]; then
-      depends=('python2-argparse' 'python2-pyelftools' 'python2-paramiko'  'python2-mako' 'lib32-glibc')
-else
-      depends=('python2-argparse' 'python2-pyelftools' 'python2-mako')
-fi
-
+depends=('python2-paramiko' 'python2-argparse' 'python2-mako' 'python2-pyelftools' 'python2-capstone' 'ropgadget' 'python2-pyserial' 'python2-requests')
 makedepends=('python2-setuptools')
-source=("https://github.com/Gallopsled/pwntools/archive/${pkgver}.tar.gz")
-sha512sums=('8720ca980320a6de912f1a3156ce85495f534c9707f9f9f65f82e71a83b700ce2c6681341d2fd3a1dfe8c62eeea5c1d29ef7bf0465fbfc03815413fef3d18161')
+source=(
+  "https://github.com/Gallopsled/$pkgname/archive/$pkgver.tar.gz"
+  'capstone-version.patch'
+)
+sha512sums=(
+  '533ebe31c55812cd6a26a5d89b0e431854eff7b6d3df6605b7af77a5ac66774cdcaae69efef2749bb5bce45f8437d88adf5824df5bb41f626daaffdb947983ef'
+  '2c1fe0e175aae45cdb0955c8da499dcb6671ca3765a694c23a4eb491faeee9ef8008020035cd9f1431f53d1074082dfd2eb9e8c240a1ca04854b783cb4c3005d'
+)
 
-prepare(){
-    cd "$srcdir/$pkgname-$pkgver/bin"
-    mv disasm disasm-pwntools
+prepare() {
+  cd $pkgname-$pkgver
+  patch -p1 < ../capstone-version.patch
+
+  while read -r; do
+      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
 }
 
-build(){
-    cd "$srcdir/$pkgname-$pkgver"
-    python2 setup.py build
+build() {
+  cd $pkgname-$pkgver
+  python2 setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python2 setup.py install --root="$pkgdir/" --optimize=1
-    install -Dm644 LICENSE-pwntools.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd $pkgname-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  mv "$pkgdir/usr/bin/disasm" "$pkgdir/usr/bin/$pkgname-disasm"
+  install -Dm644 LICENSE-$pkgname.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README.md "$pkgdir/usr/share/docs/$pkgname/README.md"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -r examples "$pkgdir/usr/share/$pkgname/"
 }
