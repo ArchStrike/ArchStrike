@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=responder
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A LLMNR and NBT-NS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication."
 url="https://github.com/SpiderLabs/Responder"
@@ -12,9 +12,8 @@ license=('custom')
 arch=('any')
 depends=('python2')
 makedepends=('unzip')
-source=("https://github.com/SpiderLabs/Responder/archive/v$pkgver.zip" 'responder.desktop' 'LICENSE')
+source=("https://github.com/SpiderLabs/Responder/archive/v$pkgver.zip" 'LICENSE')
 sha512sums=('acb30a9209baa488a53a21c402608ebd03e1eda4169338966bfc18a798e2c498c07fb49f1127f2966de317b1921c742ff305c795531430e601327c6d8bf30267'
-            'c2c7794297c10d19a759ff5465ad588130a8dd356b4f319861e79ebd25be21f28a325737d9efd0b8f1d6688aade0f5dcf970f7e94acbe0319a69fc9884d7e62c'
             '49254b769f161d19ade5858a4eb4eba7ce791051cb04bdabba4184ee8409e7bb83e3ec0941dfe3fc71d09fe5abff6d6d8b22b4ec8ffaa82f63a3dd91cc979551')
 
 prepare() {
