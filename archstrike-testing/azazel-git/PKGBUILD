@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=azazel-git
-pkgver=r10.401e3aa
+pkgver=r12.16ca8ac
 pkgrel=1
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="A userland rootkit based off of the original LD_PRELOAD technique from Jynx rootkit."
