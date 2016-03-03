@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby1.9-bundler
 _gemname=${pkgname#ruby1.9-}
-pkgver=1.11.0
+pkgver=1.11.2
 pkgrel=1
 pkgdesc="Manages an application's dependencies through its entire life, across many machines, systematically and repeatably"
 arch=('any')
@@ -16,10 +16,8 @@ source=(
   'https://raw.githubusercontent.com/bundler/bundler/master/LICENSE.md'
 )
 noextract=("$_gemname-$pkgver.gem")
-sha512sums=(
-  '49eb3b7a58541e024739de67ee7e40e48734f1c2e36dcf6fe9b85528d0c158be292b257f2e200e00b41fc35a53a8ce3e144c01b1a7d2e3bddbb2466121bbd0be'
-  'fa43908bb0e9af7b5f2efd785e052749276671c1af46df762df337b24312f0b157d291484a5a0299a644a3d1455e6465a57d120defb859aaa26b158a4a02677a'
-)
+sha512sums=('c7a5e3456fea7d21c25476fb67a41e05456b8c930c6ecc41156d7e0606d68f016881dae76a63cf3f3ec6ddfd397f853ef89d65dd0a14d9d45984719228675a73'
+            'fa43908bb0e9af7b5f2efd785e052749276671c1af46df762df337b24312f0b157d291484a5a0299a644a3d1455e6465a57d120defb859aaa26b158a4a02677a')
 
 package() {
   local _gemdir="$(ruby-1.9 -rubygems -e'puts Gem.default_dir')"
