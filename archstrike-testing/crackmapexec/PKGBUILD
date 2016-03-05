@@ -2,40 +2,38 @@
 
 buildarch=1
 
-pkgname=crackmapexec
 _pkgname=CrackMapExec
-pkgver=1.0.9
+pkgname=crackmapexec
+pkgver=2.3
 pkgrel=1
-groups=('archstrike' 'archstrike-exploits')
-pkgdesc=" A swiss army knife for pentesting Windows/Active Directory environments"
+groups=('archstrike' 'archstrike-exploit')
+pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
 url='https://github.com/byt3bl33d3r/CrackMapExec'
 license=('GPL3')
-depends=('impacket' 'python2-gevent' 'python2-netaddr' 'python2-crypto' 'python2-pyasn1' 'python2-termcolor')
-source=("https://github.com/byt3bl33d3r/CrackMapExec/archive/v$pkgver.tar.gz")
-sha512sums=('27dc60d1d45d022bd090265eb9136c91780c07ad14b689048028268a4f9cfc81f9c8eab497c4c4eb2ac9e0a8deec7ce048b0170608f1781caea04735792e01f2')
+depends=('impacket' 'python2-gevent' 'python2-netaddr' 'python2-crypto' 'python2-pyasn1' 'python2-termcolor' 'python2-colorama' 'python2-pyopenssl')
+source=("https://github.com/byt3bl33d3r/$_pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('865ab679b0e35d08d848882e270054e509b2e7ce3818eb3fc5ad8c781473e12119dcac70d8861fc607f38ef82d6391ae13251bbf3a6226599a2d7fb4cc51500b')
 
 prepare(){
-  cd "${_pkgname}-${pkgver}"
-  grep -iRl 'python' "$srcdir/${_pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  cd $_pkgname-$pkgver
+
+  while read -r; do
+      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
+  cd $_pkgname-$pkgver
 
-  install -dm755 "$pkgdir/usr/share/${pkgname}/"
-  install -dm755 "$pkgdir/usr/bin/"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/${pkgname}/"
+  # Install the license
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  cd ${pkgdir}
-  find ./ -type d -exec chmod 755 {} \+
-  find ./ -type f -exec chmod 644 {} \+
+  # Install the application files
+  install -dm755 "$pkgdir/usr/share/$pkgname/"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
 
-cat > "${pkgdir}/usr/bin/$pkgname" <<EOF
-#!/bin/sh
-cd /usr/share/$pkgname
-python2 ${pkgname}.py "\$@"
-EOF
-  chmod +x "$pkgdir/usr/bin/$pkgname"
+  # Symlink the main script to the system $PATH
+  install -dm755 "$pkgdir/usr/bin"
+  ln -s /usr/share/$pkgname/$pkgname.py "$pkgdir/usr/bin/$pkgname"
 }
