@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-tzinfo
 pkgver=0.3.33
-pkgrel=3
+pkgrel=4
 pkgdesc="A Ruby library for time zone transformations"
 arch=('any')
 url="http://tzinfo.rubyforge.org/"

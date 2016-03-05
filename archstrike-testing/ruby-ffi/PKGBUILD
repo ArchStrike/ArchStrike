@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-ffi
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby FFI"
 arch=('any')
 license=('')

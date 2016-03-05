@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pretty print Ruby objects with proper indentation and colors'
 arch=(any)
 url='http://github.com/michaeldv/awesome_print'

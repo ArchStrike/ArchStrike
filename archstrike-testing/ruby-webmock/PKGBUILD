@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-webmock
 pkgver=1.16.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for stubbing HTTP requests in Ruby."
 arch=('any')
 license=('')

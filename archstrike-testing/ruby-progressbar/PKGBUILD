@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-progressbar
 pkgver=0.21.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby/ProgressBar is a text progress bar library for Ruby."
 arch=('any')
 license=('')

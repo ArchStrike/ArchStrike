@@ -7,7 +7,7 @@ buildarch=212
 
 pkgname=ruby-$_gemname-arachni
 pkgver=1.6.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://nokogiri.org'

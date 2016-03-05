@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-net-ssh
 pkgver=2.7.0
-pkgrel=0
+pkgrel=1
 pkgdesc="Net::SSH: a pure-Ruby implementation of the SSH2 client protocol."
 arch=('any')
 license=('MIT')

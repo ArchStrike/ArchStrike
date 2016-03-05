@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=ruby-activesupport
 pkgver=4.0.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Utility classes and extension to the standard library that were required by Rails, but found of general use."
 arch=(any)
 url="http://www.rubyonrails.org"

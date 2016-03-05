@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=ruby-$_gemname
 pkgver=0.5.8
-pkgrel=1
+pkgrel=2
 pkgdesc='MessagePack, a binary-based efficient data interchange format.'
 arch=(armv6h armv7h i686 x86_64)
 url='http://msgpack.org/'

@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname-arachni
 pkgver=0.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Simplistic port-like solution for developers'
 arch=(any)
 url='http://github.com/luislavena/mini_portile'

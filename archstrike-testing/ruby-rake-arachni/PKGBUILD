@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname-arachni
 pkgver=0.9.2.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Rake is a Make-like program implemented in Ruby'
 arch=(any)
 url='https://github.com/jimweirich/rake'

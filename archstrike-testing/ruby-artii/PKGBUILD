@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=2.0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='A little Figlet-based ASCII art generator.'
 arch=(any)
 url='http://github.com/miketierney/artii'

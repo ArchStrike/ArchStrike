@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=0.9.4
-pkgrel=1
+pkgrel=2
 pkgdesc='An interface for providing process table information'
 arch=(any)
 url='http://www.rubyforge.org/projects/sysutils'

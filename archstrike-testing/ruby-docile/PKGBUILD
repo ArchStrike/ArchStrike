@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-docile
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Docile keeps your Ruby DSLs tame and well-behaved"
 arch=('any')
 license=('')

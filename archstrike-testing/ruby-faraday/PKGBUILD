@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=0.8.7
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTP/REST API client library."
 arch=('any')
 url='https://github.com/lostisland/faraday'

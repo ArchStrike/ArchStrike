@@ -7,7 +7,7 @@ buildarch=212
 
 pkgname=ruby-$_gemname
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
 pkgdesc='sampling callstack-profiler for ruby 2.1+'
 arch=(i686 x86_64 armv6h armv7h)
 url='http://github.com/tmm1/stackprof'

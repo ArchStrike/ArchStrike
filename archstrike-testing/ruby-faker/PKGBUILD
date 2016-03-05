@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=1.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Easily generate fake data'
 arch=(any)
 url='https://github.com/stympy/faker'

@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast syntax highlighting for selected languages.'
 arch=(any)
 url='http://coderay.rubychan.de'

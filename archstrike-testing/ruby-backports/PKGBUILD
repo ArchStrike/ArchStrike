@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=3.6.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Backports of Ruby features for older Ruby.'
 arch=(any)
 url='http://github.com/marcandre/backports'

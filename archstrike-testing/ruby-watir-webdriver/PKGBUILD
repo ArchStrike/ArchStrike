@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=0.6.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Watir on WebDriver'
 arch=(any)
 url='http://github.com/watir/watir-webdriver'

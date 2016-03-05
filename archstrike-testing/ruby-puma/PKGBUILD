@@ -7,7 +7,7 @@ buildarch=212
 
 pkgname=ruby-$_gemname
 pkgver=2.9.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, fast, threaded, and highly concurrent HTTP 1.1 server for Ruby/Rack applications'
 arch=(armv6h armv7h i686 x86_64)
 url='http://puma.io'

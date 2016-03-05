@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Pure-Ruby Readline Implementation'
 arch=(any)
 url='http://github.com/luislavena/rb-readline'

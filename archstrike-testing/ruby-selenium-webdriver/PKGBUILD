@@ -7,7 +7,7 @@ buildarch=212
 
 pkgname=ruby-$_gemname
 pkgver=2.42.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The next generation developer focused tool for automated testing of webapps'
 arch=(armv6h armv7h i686 x86_64)
 url='http://selenium.googlecode.com'

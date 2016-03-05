@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc='kramdown is a fast, pure-Ruby Markdown-superset converter.'
 arch=(any)
 url='http://kramdown.gettalong.org'

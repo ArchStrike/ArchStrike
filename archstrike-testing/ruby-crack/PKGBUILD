@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-crack
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Really simple JSON and XML parsing, ripped from Merb and Rails."
 arch=('any')
 license=('')

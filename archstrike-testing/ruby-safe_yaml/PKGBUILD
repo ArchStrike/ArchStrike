@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-safe_yaml
 pkgver=0.9.7
-pkgrel=1
+pkgrel=2
 pkgdesc="SameYAML provides an alternative implementation of YAML.load suitable for accepting user input in Ruby applications."
 arch=('any')
 license=('')

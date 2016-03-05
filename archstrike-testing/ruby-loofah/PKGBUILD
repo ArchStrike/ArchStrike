@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=2.0.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Loofah is a general library for manipulating and transforming HTML/XML documents and fragments'
 arch=(any)
 url='https://github.com/flavorjones/loofah'

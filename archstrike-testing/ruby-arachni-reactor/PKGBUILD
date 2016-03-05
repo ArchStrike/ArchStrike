@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=0.1.0.beta5
-pkgrel=1
+pkgrel=2
 pkgdesc='A simple, lightweight, pure-Ruby implementation of the Reactor pattern, mainly focused on network connections -- and less so on generic tasks.'
 arch=(any)
 url='https://github.com/Arachni/arachni-reactor'

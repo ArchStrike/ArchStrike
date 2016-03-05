@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=ruby-${_gemname}
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Ruby gem for color and formatting in terminal."
 arch=(any)
 url="https://github.com/toy/smart_colored"

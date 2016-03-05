@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-stringex
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Some [hopefully] useful extensions to Ruby's String class"
 arch=('any')
 license=('MIT')

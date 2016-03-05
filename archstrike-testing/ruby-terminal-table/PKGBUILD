@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-terminal-table
 pkgver=1.4.5
-pkgrel=0
+pkgrel=1
 pkgdesc="Simple, feature rich ascii table generation library"
 arch=('any')
 license=('')

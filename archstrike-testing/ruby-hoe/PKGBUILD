@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-hoe
 pkgver=3.7.2
-pkgrel=0
+pkgrel=1
 pkgdesc="Hoe is a rake/rubygems helper for project Rakefiles"
 arch=('any')
 license=('MIT')

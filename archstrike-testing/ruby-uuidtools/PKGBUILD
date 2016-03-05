@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-uuidtools
 pkgver=2.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="UUID generator"
 arch=('any')
 license=('')

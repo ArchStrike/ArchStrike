@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname-arachni
 pkgver=1.3.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Classy web-development dressed in a DSL'
 arch=(any)
 url='http://www.sinatrarb.com/'

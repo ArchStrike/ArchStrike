@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=ruby-$_gemname
 pkgver=0.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The RPC protocol specification of the Arachni WebAppSec scanner Grid.'
 arch=(any)
 url='https://github.com/Arachni/arachni-rpc'
