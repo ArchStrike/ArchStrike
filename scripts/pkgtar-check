@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+[[ -z "$1" ]] && {
+    printf '%s\n' 'PackageTar Check: Run from the base of the built repo to find packages with contents matching the regex'
+    printf '%s\n' 'USAGE: ./pkgtar-check "regex match"'
+    exit
+}
+
+while read -r; do
+    [[ -f "$REPLY" ]] || continue
+    tar -tf "$REPLY" 2>/dev/null | egrep -q "$1" && sed 's|^\./||;s|-[^-]*-[^-]*-[^-]*\.pkg\.tar\.xz$||' <<< "$REPLY"
+done < <(find . -iname '*.pkg.tar.xz')
+
