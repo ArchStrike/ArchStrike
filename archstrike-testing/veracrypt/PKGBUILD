@@ -6,7 +6,7 @@
 buildarch=212
 
 pkgname=veracrypt
-_pkgver=1.16
+_pkgver=1.17
 pkgver=${_pkgver/\-/_}
 pkgrel=1
 pkgdesc='Free disk encryption software based on TrueCrypt'
@@ -19,7 +19,7 @@ makedepends=('git' 'nasm')
 options=('!makeflags')
 source=("https://github.com/veracrypt/VeraCrypt/archive/VeraCrypt_$_pkgver.tar.gz"
         "$pkgname.desktop")
-sha512sums=('9f924de8bb4f6e081e167447d9d0666e14110c9b08edcc78c874033fbef4e0f3e7549034e7999e4f9c7ab1176bd95957cf8a43fc6c8b5ec441c22813d7604684'
+sha512sums=('c8bd49d8cb3f2490fe9b3c2728ff849c8f069138db54d6f4fd94af11068148ce289307e1afcdd46e9ba4863afa75d252956a1ac8f7441ce999c6f181a870e7d7'
             'd779d831f8c235266710aa2e29a9216d783e7c1e9a31674d546df607834f7b8c217f1775a4a9e4e33c4d3476b2e24c176239d0e2749326250586918a5a7d7101')
 
 prepare() {
