@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 [[ -z "$1" ]] && {
-    printf '%s\n' 'PackageTar Check: Run from the base of the built repo to find packages with contents matching the regex'
+    printf '%s\n' 'PackageTar Check: Run from the base of the compiled repo to output packages containing file paths matching a regex'
     printf '%s\n' 'USAGE: ./pkgtar-check "regex match"'
     exit
 }
