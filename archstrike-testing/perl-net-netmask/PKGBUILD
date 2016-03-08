@@ -3,15 +3,15 @@
 buildarch=1
 
 pkgname=perl-net-netmask
-pkgver=1.9021
+pkgver=1.9022
 pkgrel=1
 pkgdesc="Parse, manipulate and lookup IP network blocks."
 arch=('any')
 url='http://search.cpan.org/~muir/Net-Netmask-1.9016/'
-license=('Unknown')
+license=('custom')
 source=("http://search.cpan.org/CPAN/authors/id/M/MU/MUIR/modules/Net-Netmask-${pkgver}.tar.gz")
 depends=('perl')
-sha512sums=('a32d1319dcedcbd8daa8a77a038bd436d79c7c89986aff6666ad27aaf0b4ed14fb4e6163bfb0f771a84c01b94f8662b96fd97dd915c52ee3f0ce35df76642a7e')
+sha512sums=('85778356c0eb5047a1f8ce9883fe61dec4f54180571eefff0d08a723f6f8f828b5c6a52015de751bc13fc340275a5bc220668a37086bc4a62f164ed93f6e087f')
 options=('!emptydirs')
 
 package() {
@@ -21,7 +21,7 @@ package() {
   make
 
   make pure_install doc_install DESTDIR=${pkgdir}
-
+  install -Dm644 README $pkgdir/usr/share/licenses/$pkgname/README
   find ${pkgdir} -name '.packlist' -delete
   find ${pkgdir} -name '*.pod' -delete
 }
