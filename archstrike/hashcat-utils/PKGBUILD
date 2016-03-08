@@ -4,18 +4,18 @@ buildarch=192
 
 pkgname=hashcat-utils
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
-pkgdesc="Utilites for Hashcat"
+pkgdesc='Small utilities that are useful in advanced password cracking'
 arch=('i686' 'x86_64')
 url='https://github.com/hashcat/hashcat-utils'
 license=('custom')
 depends=('glibc')
-source=("https://github.com/hashcat/hashcat-utils/archive/$pkgver.tar.gz")
+source=("https://github.com/hashcat/$pkgname/archive/$pkgver.tar.gz")
 sha512sums=('3012b103e467b9bc26ed1f5a33e26ed7dc2baa258ab32ab82a1e1ffd2f0f83c9c314346bbc534cf42884b07f0159f2c2af0814ac2dfb2e048c71e5a744dbcf48')
 
 prepare() {
-  cd "$srcdir/hashcat-utils-$pkgver/src"
+  cd $pkgname-$pkgver/src
   sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-gcc|gcc|' Makefile
   sed -i 's|/opt/hashcat-toolchain/linux32/bin/i686-hashcat-linux-gnu-strip|strip|' Makefile
   sed -i 's/release: posix windows/release: posix/' Makefile
@@ -24,20 +24,18 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/hashcat-utils-$pkgver/src"
+  cd $pkgname-$pkgver/src
   make linux
 }
 
 package() {
-  cd "$srcdir/hashcat-utils-$pkgver/src"
+  # Install license
+  cd $pkgname-$pkgver
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  # Base directory.
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm644 ../LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE 
-
-  # Bin.
-  for bin in $(ls *.bin)
-  do
-    install -m755 "$bin" "$pkgdir/usr/bin/hashcat-${bin%.bin}"
+  # Install binary files
+  cd src
+  for bin in *.bin; do
+    install -Dm755 "$bin" "$pkgdir/usr/bin/hashcat-${bin%.bin}"
   done
 }
