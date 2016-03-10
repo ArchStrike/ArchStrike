@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=damm-git
-pkgver=20150120.r28
+pkgver=20151203.r30
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="Differential Analysis of Malware in Memory"
