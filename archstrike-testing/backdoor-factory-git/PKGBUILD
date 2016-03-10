@@ -3,15 +3,16 @@
 buildarch=212
 
 pkgname=backdoor-factory-git
-pkgver=0.r166.eacacb6
+pkgver=0.r167.f4083f9
 pkgrel=1
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
 url="https://github.com/secretsquirrel/the-backdoor-factory"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
-depends=('capstone' 'python2-pefile')
-makedepends=('git')
+depends=('capstone' 'python2-pefile' 'curl')
+dependsx86_64=('capstone' 'python2-pefile' 'lib32-glibc' 'curl') 
+makedepends=('git' 'autoconf')
 replaces=('backdoor-factory')
 conflicts=('backdoor-factory')
 provides=('backdoor-factory' 'bdf')
@@ -24,8 +25,30 @@ pkgver() {
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+ cd "${pkgname}/osslsigncode"
+ ./autogen.sh
+}
+
+build() {
+  cd "${pkgname}/osslsigncode"
+  ./configure --prefix=/usr
+  make
+  if [[ $CARCH == "x86_64" ]] || [[ $CARCH == "i686" ]]; then
+     cd "${srcdir}/${pkgname}/aPLib/example"
+     gcc -c -I../lib/elf -m32 -z noexecstack -Wall -O2 $CFLAGS -s -o appack.o appack.c -v 
+     gcc -m32 -z noexecstack -Wall -O2 $CFLAGS -s -o appack appack.o ../lib/elf/aplib.a -v
+  fi  
+}
+
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}/osslsigncode"
+  make DESTDIR=$pkgdir install
+  if [[ $CARCH == "x86_64" ]] || [[ $CARCH == "i686" ]]; then
+     cd "${srcdir}/${pkgname}/aPLib/example"
+     install -Dm755 appack $pkgdir/usr/bin/appack
+  fi
+  cd "${srcdir}/${pkgname}"
   install -dm755 "$pkgdir/usr/share/backdoor-factory"
   install -dm755 "$pkgdir/usr/bin/"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/backdoor-factory"
@@ -38,4 +61,6 @@ EOF
   chmod 644 $pkgdir/usr/share/backdoor-factory/aPLib/lib/macho/aplib.a
   chmod 644 $pkgdir/usr/share/backdoor-factory/aPLib/lib/macho64/aplib.a
   sed -i 's|python|python2|' $pkgdir/usr/share/backdoor-factory/osslsigncode/misc/pagehash.py
+  rm -rf $pkgdir/usr/share/backdoor-factory/osslsigncode
+  rm -rf $pkgdir/usr/share/backdoor-factory/aPLib
 }
