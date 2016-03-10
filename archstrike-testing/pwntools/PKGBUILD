@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pwntools
 pkgver=2.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc='The CTF framework used by #Gallopsled in every CTF'
 arch=('any')
 url='https://github.com/Gallopsled/pwntools'
@@ -40,7 +40,7 @@ package() {
   python2 setup.py install --root="$pkgdir" --optimize=1
   mv "$pkgdir/usr/bin/disasm" "$pkgdir/usr/bin/$pkgname-disasm"
   install -Dm644 LICENSE-$pkgname.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/docs/$pkgname/README.md"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -dm755 "$pkgdir/usr/share/$pkgname"
   cp -r examples "$pkgdir/usr/share/$pkgname/"
 }
