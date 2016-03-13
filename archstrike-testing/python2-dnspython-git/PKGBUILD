@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-dnspython-git
-pkgver=v1.12.0.r68.g3fff406
+pkgver=v1.12.0.r70.g99fd864
 pkgrel=1
 epoch=1
 pkgdesc="A DNS toolkit for python"
