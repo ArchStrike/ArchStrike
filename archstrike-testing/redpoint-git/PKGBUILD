@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=redpoint-git
-pkgver=20151207.r120
+pkgver=20160308.r123
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
 pkgdesc="Digital Bond's ICS Enumeration Tools"
