@@ -1,0 +1,28 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=ruby-rack
+pkgver=1.6.4
+pkgrel=1
+pkgdesc="a modular Ruby webserver interface"
+arch=('any')
+license=('custom')
+makedepends=('ruby')
+url='https://github.com/rack/rack'
+source=("http://rubygems.org/downloads/rack-$pkgver.gem")
+sha512sums=('304a6ae21bfd38008fd7d147f82c44397f3a1d2e689bd01de689aedc6ea0e8784605207fd314bc796974edc5dfcab81636664ea2becb0489302999f99501d41a')
+noextract=("rack-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" rack-$pkgver.gem
+  else
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" rack-$pkgver.gem
+  fi
+
+  install -dm 755 "$pkgdir"/usr/share/licenses/$pkgname
+  ln -s ${_gemdir}/gems/${pkgname#*-}-$pkgver/COPYING "$pkgdir"/usr/share/licenses/$pkgname/
+}
