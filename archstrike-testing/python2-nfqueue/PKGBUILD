@@ -3,31 +3,27 @@
 buildarch=1
 
 pkgname=python2-nfqueue
-pkgver=0.4
-pkgrel=3
+pkgver=0.5
+pkgrel=1
 pkgdesc="Python bindings for libnetfilter_queue by Pierre Chifflier"
-url="https://www.wzdftpd.net/redmine/projects/nfqueue-bindings/wiki/"
+url="https://github.com/chifflier/nfqueue-bindings"
 arch=('any')
 license=('GPL')
 depends=('python2' 'libnetfilter_queue')
 makedepends=('python2-distribute' 'cmake' 'swig')
-source=("http://ftp.de.debian.org/debian/pool/main/n/nfqueue-bindings/nfqueue-bindings_$pkgver.orig.tar.gz"
+source=("https://github.com/chifflier/nfqueue-bindings/archive/nfqueue-bindings-$pkgver.tar.gz"
         python-support.patch)
-md5sums=('2ac7cca1c2f41dfee4a600374ef86292'
-         'ea00b499e84a4e3b7b34595625da451a')
+sha512sums=('c88ef6997b8e4b3ae2c2eb6c1002b74f39979c73b4dc3a4da428aa4eeb6eedeeaff1cbc27c0740e8b29fb8b6a6f98af326be0b4fbc6ed3e432a9884febb3f7a6'
+            '354e1c51eca8eff38cde7e13b0ca6a90ea2387bb2b6a678709b4bfcdab54b4ebee4f9a0031ecb769c208186b6bd157780f0e012cbaccc4a16a1a5d6716d1de47')
 
 prepare() {
-  cd "$srcdir/nfqueue-bindings-$pkgver"
+  cd "$srcdir/nfqueue-bindings-nfqueue-bindings-$pkgver"
 
   patch -p1 -i ../python-support.patch
-
-  # I don't feel like editing the patch.
-  sed -i 'i\#include <stdint.h>' nfq.h
-  sed -i 's/dist-packages/site-packages/' python/CMakeLists.txt
 }
 
 package() {
-  cd "$srcdir/nfqueue-bindings-$pkgver"
+  cd "$srcdir/nfqueue-bindings-nfqueue-bindings-$pkgver"
 
   # Examples.
   install -dm755 -p "$pkgdir/usr/share/doc/nfqueue-bindings/examples"
