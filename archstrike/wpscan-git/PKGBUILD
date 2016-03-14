@@ -4,8 +4,8 @@ buildarch=212
 
 _pkgname=wpscan
 pkgname=$_pkgname-git
-pkgver=20160226.r2016
-pkgrel=3
+pkgver=20160311.r2017
+pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc='A vulnerability scanner which checks the security of WordPress installations using a black box approach'
