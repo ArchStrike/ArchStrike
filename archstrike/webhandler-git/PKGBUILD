@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=webhandler-git
 pkgver=r324.047dddf
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A handler for PHP system functions & also an alternative 'netcat' handler."
 url="https://github.com/lnxg33k/webhandler"
@@ -16,7 +16,7 @@ replaces=('webhandler')
 conflicts=('webhandler')
 provides=('webhandler')
 source=("git+https://github.com/lnxg33k/webhandler")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/webhandler"
