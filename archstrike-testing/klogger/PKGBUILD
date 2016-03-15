@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname='klogger'
 pkgver='1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A keystroke logger for the NT-series of Windows.'
 url='http://ntsecurity.nu/toolbox/klogger/'
 groups=('archstrike')
 license=('custom')
 arch=('any')
 source=('http://ntsecurity.nu/downloads/klogger.exe')
-md5sums=('9fa1130da88aee67fd72e3bf0547de6c')
+sha512sums=('9fa1130da88aee67fd72e3bf0547de6c')
 
 package() {
   cd "$srcdir"
