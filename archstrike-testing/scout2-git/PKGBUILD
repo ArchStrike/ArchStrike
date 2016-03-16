@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=scout2-git
-pkgver=r287.e83e870
+pkgver=r602.750d021
 pkgrel=1
 pkgdesc="Security auditing tool for AWS environments"
 url="http://isecpartners.github.io/Scout2/"
@@ -15,16 +15,16 @@ makedepends=('git')
 provides=('scout2')
 conflicts=('scout2')
 replaces=('scout2')
-source=(scout2-git::git+https://github.com/iSECPartners/Scout2.git)
+source=($pkgname::git+https://github.com/iSECPartners/Scout2.git)
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/scout2-git"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/scout2-git"
+  cd "$pkgname"
   git submodule init
   git submodule update
 }
@@ -35,14 +35,10 @@ package() {
   install -dm755 "$pkgdir"/usr/share/scout2-git
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/scout2-git/LICENSE
   install -m644 README.md "$pkgdir"/usr/share/scout2-git/README.md
-  install -m644 Scout2.py "$pkgdir"/usr/share/scout2-git/Scout2.py
-  install -m644 report.html "$pkgdir"/usr/share/scout2-git/report.html
-  cp --no-preserve=ownership -r AWSUtils AWSScout2 inc-bootstrap inc-handlebars inc-jquery inc-scout2 rules "$pkgdir"/usr/share/scout2-git
-  cat > "$pkgdir"/usr/bin/Scout2.py <<EOF
-#!/bin/sh
-cd /usr/share/scout2-git
-python2 Scout2.py "\$@"
-EOF
-  chmod +x "$pkgdir"/usr/bin/Scout2.py
+  install -m755 *.py "$pkgdir"/usr/share/scout2-git/
+  install -m644 *.json "$pkgdir"/usr/share/scout2-git/
+  cp --no-preserve=ownership -r AWSScout2 html inc-bootstrap inc-handlebars inc-jquery inc-scout2 listall-configs recurse_configs rules rulesets tests "$pkgdir"/usr/share/scout2-git
+  grep -iRl 'python' "$pkgdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  ln -s /usr/share/$pkgname/Scout2.py "$pkgdir/usr/bin/$pkgname"
 }
 
