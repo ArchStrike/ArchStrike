@@ -3,11 +3,11 @@
 buildarch=212
 
 pkgname=w3af
-pkgver=1.6.45
+pkgver=1.6.54
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="Web Application Attack and Audit Framework"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('any')
 url='http://w3af.sourceforge.net'
 license=('GPL')
 depends=(
@@ -26,11 +26,9 @@ source=(
   "$pkgname.desktop"
   "$pkgname-no-update.patch"
 )
-sha512sums=(
-  '54d0626291f591e1dfc29a5721ec1583e2d7a371a374fc6afd580d072328b4ff511dad782c3e5607ae955494934f1a1514ff60c2071bc11d8c4735fb48534aeb'
-  '48a878492fc1958af75686bcbec33868a9e977140b52234c6c1c70a9e105a9aa08a38fa5d23d4ad7407eb193efab016b74665d02a638f1adeb401c1350d78100'
-  '1cf6d9322bb21a3ca04641eb80ed38a5acae640bda6b28975667351e7debfa939ff51563e66e0508a33c5f9ac41f0bebb9944fef81886ed4f7f2cbf9d5d2d710'
-)
+sha512sums=('8132bb3ee0433739b9a3bd4a6b25d90e9f71d915eb1f7a63c382199bfc8b9dc5abe6bdd73c7715ab5804e6cf22a99f8ba98ac39cee92a5f3e547f7cb939f8ac6'
+            'f4f2f5b115c4c42457fe0a4700b3a4b06eedd25bd19d7e31a642d5217c28a79af4aef61aa644bb9096faac1bb75919458beb69f16d8cce8fd8a4b7ce11d421e6'
+            '1cf6d9322bb21a3ca04641eb80ed38a5acae640bda6b28975667351e7debfa939ff51563e66e0508a33c5f9ac41f0bebb9944fef81886ed4f7f2cbf9d5d2d710')
 
 prepare() {
   # Delete some of the stuff from w3af-extlib (stuff that needs to be installed) -> dependencies
