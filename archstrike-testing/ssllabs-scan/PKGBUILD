@@ -1,15 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch="212"
+buildarch=212
 
 pkgname=ssllabs-scan
 pkgver=1.3.0
 pkgrel=1
 pkgdesc="Test whether a host is vulnerable to the Heartbleed attack"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686')
-_url="github.com/ssllabs/ssllabs-scan"
 groups=("archstrike")
-url="https://$_url"
+url="https://github.com/ssllabs/ssllabs-scan"
 license=("APACHE")
 depends=('glibc')
 makedepends=('go')
