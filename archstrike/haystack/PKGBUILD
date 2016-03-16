@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=haystack
-pkgver=0.34
+pkgver=0.36
 pkgrel=1
 pkgdesc='A Python framework for Finding C Structures from process memory - heap analysis - Memory structures forensics'
 arch=('any')
@@ -13,7 +13,7 @@ groups=('archstrike' 'archstrike-forensics')
 depends=('python2-pefile' 'python2-levenshtein' 'python2-ptrace' 'python2-argparse' 'python2-networkx')
 makedepends=('python2-setuptools')
 source=("https://github.com/trolldbois/python-$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('d0fb4b59acfef350a04ebc98dbc039d79acc5a516f21f12bfcb05f68adb3c64b7ed8ee7680c5bf9de21abe719f5099d2e28296b86bd4dee264d71261d35eb269')
+sha512sums=('8c2b2b0a6cdce06652d63b8296da4f3919dfda61d259ff6e7f1d2a445d0da1cf49405153e635c6f15d631175e06e0e44f9f4900412ef49b6e49ba893dcfe4498')
 
 prepare() {
   while read -r; do
