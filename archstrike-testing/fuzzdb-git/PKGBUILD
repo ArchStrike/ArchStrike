@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=fuzzdb
 pkgname=fuzzdb-git
 pkgver=20160309.r249
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="Attack and Discovery Pattern Database for Application Fuzz Testing"
 url="https://github.com/fuzzdb-project/fuzzdb"
@@ -13,7 +13,9 @@ arch=('any')
 license=('BSD')
 depends=('python2')
 makedepends=('git')
-source=("fuzzdb::git+https://github.com/fuzzdb-project/fuzzdb.git")
+replaces=('fuzzdb')
+provides=('fuzzdb')
+source=("$_pkgname::git+https://github.com/fuzzdb-project/fuzzdb.git")
 sha512sums=('SKIP')
 
 pkgver() {
