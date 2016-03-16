@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch="212"
+
+pkgname=ssllabs-scan
+pkgver=1.3.0
+pkgrel=1
+pkgdesc="Test whether a host is vulnerable to the Heartbleed attack"
+arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+_url="github.com/ssllabs/ssllabs-scan"
+groups=("archstrike")
+url="https://$_url"
+license=("APACHE")
+depends=('glibc')
+makedepends=('go')
+source=("https://github.com/ssllabs/ssllabs-scan/archive/v$pkgver.tar.gz")
+sha512sums=('3b009454809e4e7fbdb34e67e0ac34e86f0d9f2c7281acdd7df5202745b4961acc98642df7d4f7851cdb3ac36958a04da99c17bfc7a7f081bce5054861e44d1d')
+
+build() {
+	cd "$pkgname-$pkgver"
+	GOPATH="$srcdir" go get -d -t github.com/ssllabs/ssllabs-scan
+}
+
+package() {
+	cd "$pkgname-$pkgver"
+	GOPATH="$srcdir" go build -v github.com/ssllabs/ssllabs-scan
+	install -Dm755 $pkgname $pkgdir/usr/bin/$pkgname
+	install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
