@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=sipp
-pkgver=3.5.0
+pkgver=3.5.1
 pkgrel=1
 groups=('archstrike' 'archstrike-voip')
 pkgdesc="A free Open Source test tool / traffic generator for the SIP protocol."
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('ncurses')
 makedepends=('autoconf')
 source=(https://github.com/SIPp/sipp/archive/v$pkgver.tar.gz)
-sha512sums=('770f5946a2a75c0b7696e130829ede58529358774fde667f3e811af9106a326d51300ad9554b9e6bf7a36c88c142d61c018869f6fc5de6ce2301a1a333a2de6f')
+sha512sums=('f089ca6c3f04eec0b77fef3a711a289d63513238a3a1ceca3e2aba16bae226a9654b6f894a26f0dd7e918a1035e5a792b4eb72a3a4e4d550cf7f278cf9456967')
 
 prepare() {
  cd $pkgname-$pkgver
