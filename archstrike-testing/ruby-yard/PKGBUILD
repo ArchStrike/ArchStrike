@@ -1,11 +1,10 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-_gemname=yard
-
 buildarch=1
 
+_gemname=yard
 pkgname=ruby-$_gemname
-pkgver=0.8.7
+pkgver=0.8.7.6
 pkgrel=2
 pkgdesc='Documentation tool for consistent and usable documentation in Ruby.'
 arch=(any)
@@ -15,11 +14,17 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('bb3f4074e12b2c3067841223fc99bd420f81de4de9287b904b46c6ca9d56b209aec2e1d61c87ac6b0d1768b69bb14032f44d90da1abe34ec704fc46ce08f70f7')
+sha512sums=('678d0831bfcb08de413b8c776e6916d4314fd6f487e3b8bb2683f328eacc99d4251e6ca204ff6044cb542dee909e321cc552257b044eb8035102a28d83512080')
 
 package() {
+  cd "$srcdri"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  if [[ $CARCH == arm* ]] ; then
+    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  else
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  fi
+
   rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
