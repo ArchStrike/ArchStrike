@@ -1,24 +1,29 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-_gemname=msgpack
-
 buildarch=212
 
-pkgname=ruby-$_gemname
-pkgver=0.5.8
-pkgrel=2
+_pkgname=msgpack
+pkgname=ruby-$_pkgname
+pkgver=0.7.4
+pkgrel=1
 pkgdesc='MessagePack, a binary-based efficient data interchange format.'
 arch=(armv6h armv7h i686 x86_64)
-url='http://msgpack.org/'
-license=('Apache 2.0')
+url='https://github.com/msgpack/msgpack-ruby'
+license=('Apache')
 depends=(ruby)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
-sha1sums=('96f031e918be8a59675af812599959b2647158fc')
+source=(https://rubygems.org/downloads/$_pkgname-$pkgver.gem)
+noextract=($_pkgname-$pkgver.gem)
+sha512sums=('4e78df4abe0f9c91a67f66108ee4e8420651d8d23a6ec7de9241138fd1065ce723ad68648c0bd4572801f800363e7f1f34362312d8f861857ffcdfc7accd950a')
 
 package() {
+  cd "$srcdir"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
-  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+  if [[ $CARCH == arm* ]] ; then
+      gem install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
+  else
+      gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
+  fi
+
+  rm "$pkgdir/$_gemdir/cache/$_pkgname-$pkgver.gem"
 }
