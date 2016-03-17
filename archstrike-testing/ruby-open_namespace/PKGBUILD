@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=ruby-open_namespace
 pkgver=0.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows namespaces to load constants on-demand"
 arch=('any')
-license=('GPL3')
+license=('custom')
 depends=('ruby' 'ruby-rspec' 'ruby-yard')
 url='https://github.com/postmodern/open_namespace'
 source=("http://rubygems.org/downloads/open_namespace-$pkgver.gem")
-md5sums=('9173dab710521164468651b044a38e0f')
+sha512sums=('94f7d7a543263e13a6fde153992d54d9e719204d03566692b7165e89844e5c4d6809dbc75319d031cfbd6a519e27ae5a23c1afd5a4d4b8b885df496e171b35fd')
 noextract=("open_namespace-$pkgver.gem")
 
 package() {
@@ -22,4 +22,7 @@ package() {
   else
     gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" open_namespace-$pkgver.gem
   fi
+
+  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_gemdir/gems/${pkgname#*-}-$pkgver/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/"
 }
