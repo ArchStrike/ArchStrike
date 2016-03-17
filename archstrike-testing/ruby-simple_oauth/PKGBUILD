@@ -1,22 +1,22 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Mainrainer: Alfredo Palhares <masterkorp@masterkorp.net>
 
-_gemname=simple_oauth
+_pkgname=simple_oauth
 
 buildarch=1
 
-pkgname=ruby-$_gemname
-pkgver=0.2.0
-pkgrel=3
+pkgname=ruby-$_pkgname
+pkgver=0.3.1
+pkgrel=1
 pkgdesc="Simply builds and verifies OAuth headers"
 arch=('any')
 url="https://github.com/laserlemon/simple_oauth"
 license=('MIT')
 depends=('ruby')
 makedepends=('rubygems')
-source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
+source=(http://rubygems.org/downloads/$_pkgname-$pkgver.gem)
 noextract=($_gemname-$pkgver.gem)
-md5sums=('667c3f24f101ad072ef80f91774c7c82')
+sha512sums=('206512ba643b60de3601d11add691c0f6386ea62e8516651d525b5956ca7d8009e167f8acd8375ba07ae8ec598dcf115bc6813c4028a836827b618db9ce6939a')
 
 package() {
   cd "$srcdir"
@@ -26,4 +26,6 @@ package() {
   else
     gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" simple_oauth-$pkgver.gem
   fi
+  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_gemdir/gems/${pkgname#*-}-$pkgver/LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/"
 }
