@@ -2,29 +2,29 @@
 
 buildarch=1
 
-_gemname=yard
-pkgname=ruby-$_gemname
+_pkgname=yard
+pkgname=ruby-$_pkgname
 pkgver=0.8.7.6
-pkgrel=2
+pkgrel=3
 pkgdesc='Documentation tool for consistent and usable documentation in Ruby.'
 arch=(any)
 url='http://yardoc.org'
 license=(MIT)
 depends=(ruby)
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
-noextract=($_gemname-$pkgver.gem)
+source=(https://rubygems.org/downloads/$_pkgname-$pkgver.gem)
+noextract=($_pkgname-$pkgver.gem)
 sha512sums=('678d0831bfcb08de413b8c776e6916d4314fd6f487e3b8bb2683f328eacc99d4251e6ca204ff6044cb542dee909e321cc552257b044eb8035102a28d83512080')
 
 package() {
-  cd "$srcdri"
+  cd "$srcdir"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   if [[ $CARCH == arm* ]] ; then
-    gem-1.9 install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+    gem install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
   else
-    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+    gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
   fi
 
-  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
-  install -D -m644 "$pkgdir/$_gemdir/gems/$_gemname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  rm "$pkgdir/$_gemdir/cache/$_pkgname-$pkgver.gem"
+  install -D -m644 "$pkgdir/$_gemdir/gems/$_pkgname-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
