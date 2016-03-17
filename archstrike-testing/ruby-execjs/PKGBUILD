@@ -3,20 +3,20 @@
 buildarch=1
 
 pkgname=ruby-execjs
-_gemname=${pkgname#ruby-}
+_pkgname=${pkgname#ruby-}
 pkgver=1.3.0
-pkgrel=3
+pkgrel=1
 pkgdesc="Run JavaScript code from Ruby."
 arch=(any)
 url=https://github.com/sstephenson/execjs
 license=('MIT')
 depends=('ruby' 'rubygems' 'nodejs' 'ruby-multi_json')
-source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-noextract=(${_gemname}-${pkgver}.gem)
-md5sums=('2d4c329414b33e501abab0c29d9ed960')
+source=(http://rubygems.org/downloads/$_pkgname-$pkgver.gem)
+noextract=($_pkgname-$pkgver.gem)
+sha512sums=('8244cdee17cf3da4115a9a63b1a1f17a3be10497cec7ae8a2f6936044302e556155afc9e500d34c8ab085940bc2a976f74e490c584fa0cd2b0aa2fa9484eb1c4')
 
 package() {
-  cd "${srcdir}"
+  cd "$srcdir"
   export HOME=/tmp
   local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
   if [[ $CARCH == arm* ]] ; then
@@ -24,4 +24,7 @@ package() {
   else
     gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" execjs-$pkgver.gem
   fi
+
+  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_gemdir/gems/${pkgname#*-}-$pkgver/LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
