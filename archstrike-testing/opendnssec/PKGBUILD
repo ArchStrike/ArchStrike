@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=opendnssec
-pkgver=1.4.8.2
+pkgver=1.4.9
 pkgrel=1
 pkgdesc="Turn-key solution for DNSSEC (sqlite3)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -22,7 +22,7 @@ source=("https://dist.opendnssec.org/source/$pkgname-$pkgver.tar.gz"
         "pid-path.patch"
         "ods-signer.service"
         "ods-enforcer.service")
-sha512sums=('7f2e10b425f60947aca40c61509b07ddc4363105cc882b518ffa816437299d6f881411cb38325f27b3a34c2005953988b39c945362866dd0f1f7c6ef973bfa06'
+sha512sums=('5cf571750ff205667f5162f28c7575e28f15a7367afce5bb3cd3da080f429c3e0457f597abb76ba260f781a340a4ef78e991252404e694a10a051190d50b5c7f'
             '74f386ec8db1ff3a1dd4faf8e1d7eaa6e04f1ab0f89d5289f440ed1c2fe7040d8688ce27796d04d8152c235369297ce829f5dec0aa205c3e62263ae759e15d4a'
             '28d868feedbee8251b0000556705ee094707782dad2072f4e37ebff3ac1658d09c884488dd6852e9734fa859218048daff50b66fe25930f6445619e3c89ca877'
             'a3700c82e6577bdacbce9cfd749e71e3c749814884ad4e9a1359e97105f9c045dc1472ba231ecb52c23855cacf67874623c8eef715955bfd41239b199d03a0db')
