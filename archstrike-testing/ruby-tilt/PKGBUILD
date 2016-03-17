@@ -3,28 +3,27 @@
 buildarch=1
 
 pkgname=ruby-tilt
-_gemname=${pkgname#ruby-}
-pkgver=1.3.6
-pkgrel=3
+_pkgname=${pkgname#ruby-}
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Generic interface to multiple Ruby template engines"
 arch=('any')
 url="http://github.com/rtomayko/tilt"
 license=('MIT')
 depends=('ruby' 'rubygems')
-source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-noextract=(${_gemname}-${pkgver}.gem)
-sha256sums=('c6276c334df2ffc5963b5b2ca0b50cf5234f8769bb84108e951e03ccadfbe6fb')
+source=(http://rubygems.org/downloads/$_pkgname-$pkgver.gem)
+noextract=($_pkgname-$pkgver.gem)
+sha512sums=('93540d673f1c0e841be43e54e85451482f6ea8f967d14bce46c997be69a9ff16684aa5966c91cfd8d590cc32ef590974151183839ec315d46df5d398fd016832')
 
 package() {
-  cd "${srcdir}"
-
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
   if [[ $CARCH == arm* ]] ; then
-    HOME=/tmp gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri \
-  -i "${pkgdir}${_gemdir}" ${_gemname}-${pkgver}.gem
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" $_pkgname-$pkgver.gem
   else
-    HOME=/tmp gem install --no-user-install --ignore-dependencies \
-  -i "${pkgdir}${_gemdir}" ${_gemname}-${pkgver}.gem
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_pkgname-$pkgver.gem
   fi
 
+  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_gemdir/gems/${pkgname#*-}-$pkgver/COPYING "$pkgdir/usr/share/licenses/$pkgname/"
 }
