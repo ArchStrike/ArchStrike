@@ -14,35 +14,35 @@ depends=('python2-dicttoxml' 'python2-pypdf2' 'python2-lxml' 'python2-slowaes' '
 replaces=('recon-ng')
 provides=('recon-ng')
 makedepends=('git')
-source=("git+https://bitbucket.org/LaNMaSteR53/recon-ng.git"
+source=("$pkgname::git+https://bitbucket.org/LaNMaSteR53/recon-ng.git"
         "recon-ng.sh"
         "recon-cli.sh"
         "recon-rpc.sh")
 sha512sums=('SKIP'
-            '0db687f52bdb306990ee51a4a07822685f8468a6acd2b4447ab57efe3b2aa09d6d2e74ffbf32f66d3ab8bec0dfd76a694399a4907fc5eb812f9ec01e5d8de2b0'
-            'ca78c0d7a46b0ad2677e6b59a65fbf3e9457c7387e5bbcfd0ac468e4d6aebd18929d07467cd74f8b4087dff681a436c642000675d59ef383c0d75ab50f55196b'
-            'fc67b96e456fcf2b18d07674143e7a012191900676e570fb8394ef4eff2f8db6fbb3d23c8c5db12a70ab2ecdc9cdfc64c972efcf84a4f26086b1850d42a512c5')
+            '0411cd02281d6f7c12a6431d35386d94d3d6cb7eb173dd646993b7c1f6e8743a9f3ff6b2f23ea6dab7490a1c4b61cfa11b8ffa4ac8ba9cadef8eae0f8f3aa230'
+            '3fef93a80e83758352314bb54591e234866c347b1c89d73eb03cd7496b3893e12d93e7b5c42302e7102b8ae10572aeebd1ba3e67b5dc1da2b424bf19cd9b5994'
+            'f262c1cfcaf66a341fbefe56516a6050bccc84462be3147bc6988f9ae31af8cc790d87a9153ad267aa5b3d8b97d3c36fb20f455cdde9e39788474fd2a00ef3b2')
 
 pkgver() {
-  cd "$srcdir/recon-ng"
+  cd "$pkgname"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd "$srcdir/recon-ng"
+  cd "$pkgname"
   sed -i '1s/env python/env python2/' "recon-ng"
   sed -i '1s/env python/env python2/' "recon-cli"
   sed -i '1s/env python/env python2/' "recon-rpc"
 }
 
 package() {
-  cd "$srcdir/recon-ng"
+  cd "$pkgname"
   install -dm755 "$pkgdir/usr/bin"
   install -Dm755 "$srcdir/recon-ng.sh" "$pkgdir/usr/bin/recon-ng"
   install -Dm755 "$srcdir/recon-cli.sh" "$pkgdir/usr/bin/recon-cli"
   install -Dm755 "$srcdir/recon-rpc.sh" "$pkgdir/usr/bin/recon-rpc"
-  install -dm755 "$pkgdir/usr/share/recon-ng"
-  cp -R * "$pkgdir/usr/share/recon-ng"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -R * "$pkgdir/usr/share/$pkgname"
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
 }
