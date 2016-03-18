@@ -1,0 +1,24 @@
+#Maintainer: ArchStrike <team@archstrike.org>
+
+pkgname=python2-dicttoxml
+pkgver=1.6.6
+pkgrel=1
+pkgdesc="Converts a Python dictionary or other native data type into a valid XML string."
+url="https://github.com/quandyfactory/dicttoxml"
+depends=('python2')
+makedepends=('python2-setuptools')
+license=('GPL2')
+arch=('any')
+source=("https://pypi.python.org/packages/source/d/dicttoxml/dicttoxml-$pkgver.tar.gz")
+sha512sums=('d2bf83f107b5d81a4fd04e9a5beb162db65808f7bb97d15de5d34beb8a4a2f68fce9e4c46f9c0c56d56c4fcce48181b3175a821834e4fb18d1ee4bc1ac952c8b')
+
+build() {
+    cd $srcdir/dicttoxml-$pkgver
+    python2 setup.py build
+}
+
+package() {
+    cd $srcdir/dicttoxml-$pkgver
+    python2 setup.py install --root="$pkgdir" --optimize=1
+    grep -iRl 'python' "$pkgdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
