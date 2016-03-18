@@ -3,39 +3,34 @@
 buildarch=212
 
 pkgname=t50
-pkgver=5.4.1
-_pkgver=5.4.1-rc1
-pkgrel=2
+pkgver=5.5
+pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/project/t50/t50-$pkgver/t50-${_pkgver}.tgz" "remove_sse_for_arm.patch")
-sha512sums=('ed67261e332cdacca9529e09c714c03b8e4652dc2a94f13161823cfd6a8d13813c64c437ff9eebc55191c2d01f236c32a12a29bfee9668ffd4b778060dcf16ea'
-            '07fb9e3257749c4a16f46741b24e3684b1dd6b0fd2d09287cffda1153710d54517b18438ea7d6c555cbb54ba478211d1ef6c8863872c9f4b715bd5c2ba794cd9')
+source=("http://downloads.sourceforge.net/project/t50/t50-$pkgver/t50-${pkgver}.tar.gz" "uname.patch")
+sha512sums=('976e2d61a852b05b3c6d13e4ddd5bc6cec6b2784f01978918940987f78d6d42510b49921db7f670468accb256e0cfdfedf343213a885ec5f14f269578dcfa3a8'
+            'c00f32cfedffde09b1c93cd0ed8deab73b165d0013425a5d8852df27fac4ea6220a0e1b528d1168fbd89fae4e5feaf813515ee28c1531d132e3ed385ecabe523')
 
 prepare() {
-  cd "${pkgname}-${_pkgver}/src"
-  if [[ ${CARCH} == "armv6h" ]] || [[ ${CARCH} == "armv7h" ]]; then
-     patch -i $srcdir/remove_sse_for_arm.patch
-  fi
+  cd "$srcdir"
+  patch -i $srcdir/uname.patch
 }
  
 build() {
-  cd "${pkgname}-${_pkgver}/src"
+  cd "$srcdir"
   make
 }
 
 package() {
-  cd "${pkgname}-${_pkgver}/src"
+  cd "$srcdir"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/man/man1"
+  install -Dm755 release/t50 "$pkgdir/usr/bin/t50"
 
-  install -Dm755 t50 "$pkgdir/usr/bin/t50"
-
-  gzip -c -9 ../t50.1 > "$pkgdir/usr/share/man/man1/t50.1.gz"
+  install -Dm644 doc/t50.8 "$pkgdir/usr/share/man/man8/t50.8"
 }
