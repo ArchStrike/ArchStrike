@@ -3,17 +3,16 @@
 buildarch=1
 
 pkgname=dex2jar
-pkgver=0.0.9.15
-_dlsuffix=
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 groups=('archstrike' 'archstrike-hardware' 'archstrike-reverse')
 pkgdesc="A tool for converting Android's .dex format to Java's .class format"
 arch=('any')
-url='http://code.google.com/p/dex2jar'
+url='https://sourceforge.net/projects/dex2jar'
 license=('Apache')
 depends=('java-environment' 'bash')
-source=("http://dex2jar.googlecode.com/files/dex2jar-$pkgver${_dlsuffix}.zip")
-sha512sums=('250da1bc2aeda0b632b6bc4e925fdc1b283e3ff99f0d69d5c836cc3746f05b83d11a83209b203d14956112ab662b52641855a7cb0a718ac684929aad771a67a5')
+source=("http://downloads.sourceforge.net/dex2jar/$pkgname-$pkgver.zip")
+sha512sums=('c4a6c72ea09b58a44fcb8918cfada600467f10f99a02b53d2436ac68295e73c8daf9ba0a8bc7160ba1e28e87f032ee034435ebe40af35b6e2fe9fa4607581358')
 
 package() {
   cd "$srcdir/dex2jar-$pkgver"
