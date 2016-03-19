@@ -1,42 +1,48 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=1
 
-pkgname=theharvester
+pkgname=theharvester-git
 _pkgname=theHarvester
-pkgver=2.2a
-pkgrel=2
+pkgver=20160310.r46
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers)"
-url='http://www.edge-security.com/theHarvester.php'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/laramies/theHarvester'
+arch=('any')
 license=('GPL2')
-depends=('python')
-source=("https://theharvester.googlecode.com/files/${_pkgname}-${pkgver}.tar.gz")
-md5sums=('5b1d9f3e71c801dfb109e8c35ec32f27')
+depends=('python2-requests')
+replaces=('theharvester')
+provides=('theharvester')
+source=("$_pkgname::git+https://github.com/laramies/theHarvester.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
-  cd ${srcdir}/${_pkgname}-$pkgver
-
-  sed -i 's|env python$|env python2|' ${_pkgname}.py
+  grep -iRl 'python' "${_pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-  cd ${srcdir}/${_pkgname}-$pkgver
+  cd ${_pkgname}
 
   # Make base directories.
-  install -d $pkgdir/usr/bin
-  install -d $pkgdir/usr/share/theharvester
-  install -d $pkgdir/usr/share/doc/theharvester
-  install -d $pkgdir/usr/share/licenses/theharvester
+  install -dm755 $pkgdir/usr/bin
+  install -dm755 $pkgdir/usr/share/${pkgname}
+  install -dm755 $pkgdir/usr/share/doc/${pkgname}
+  install -dm755 $pkgdir/usr/share/licenses/${pkgname}
 
   # Install docs.
-  install -m644 README ${pkgdir}/usr/share/doc/theharvester/README
+  install -m644 README ${pkgdir}/usr/share/doc/${pkgname}/README
+  install -m644 LICENSES ${pkgdir}/usr/share/licenses/${pkgname}/LICENSES 
 
   # Install sharable.
-  cp --no-preserve=ownership -r discovery lib *.txt $pkgdir/usr/share/theharvester
-  install -m755 *.py $pkgdir/usr/share/theharvester
+  cp --no-preserve=ownership -r discovery lib *.txt $pkgdir/usr/share/${pkgname}
+  install -m755 *.py $pkgdir/usr/share/${pkgname}
 
   # Link to bin.
-  ln -s ../share/theharvester/theHarvester.py $pkgdir/usr/bin/theharvester
+  ln -s ../share/${pkgname}/${_pkgname}.py $pkgdir/usr/bin/theharvester
 }
