@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pygitlab
-pkgver=0.12.1
+pkgver=0.12.2
 pkgrel=1
 pkgdesc="A Python wrapper for the GitLab API"
 url="https://github.com/gpocentek/python-gitlab"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python2-requests' 'python2-six')
 makedepends=('python2-setuptools' 'python2-sphinx')
 source=(https://github.com/gpocentek/python-gitlab/archive/$pkgver.tar.gz)
-sha512sums=('d34cede1a391a769299983d6055bcb6797c99c54036315a2af1a1dc9c469b52cedd8406edcab2d91e439e7827bbf055579d5006e4cb5bf1dfc6150d2b7dc621e')
+sha512sums=('b1b2ce5d3ed3a834ced497c4652f644d6ebc0dea12c1467432011fe0bb4f5dafa74f4dfb97e07e9be6670b2c0f2c7577b2afcf5c1d894a9f124691830adb3abb')
 
 package(){
   cd "$srcdir/python-gitlab-$pkgver"
@@ -22,4 +22,5 @@ package(){
   mv $pkgdir/usr/bin/gitlab $pkgdir/usr/bin/pygitlab
   # fixing issues with python3
   sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/gitlab/cli.py $pkgdir/usr/lib/python2.7/site-packages/gitlab/tests/test_gitlabobject.py
+  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/gitlab/tests/test_cli.py
 }
