@@ -5,7 +5,7 @@
 buildarch=1
 
 pkgname=python2-bitstring
-pkgver=3.1.3
+pkgver=3.1.4
 pkgrel=1
 pkgdesc='Python module designed to help make the creation, manipulation and analysis of binary data as simple and natural as possible'
 arch=('any')
@@ -15,10 +15,12 @@ depends=('python2')
 makedepends=('unzip' 'python2-setuptools')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/b/bitstring/bitstring-$pkgver.zip)
-sha512sums=('3a9a09ea5cb2e847caef3b3589f11fda0dd6da4c638e2ce720e8a6774d00380e987cb95562b4720afa8bd3aa21b928703bf75c6c8b5a3619400b5b9496d4e06b')
+sha512sums=('9c10b742db32a7f4ee1173169ae4f599ccba3570a6bfcb2f466b5e7411584b90b53274bd5dd03351234431ed5fcf8df42a021143fb921d878d511776e1c8997c')
 
 prepare(){
   grep -iRl 'python' "$srcdir/bitstring-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  sed -i '/README.rst/d' $srcdir/bitstring-$pkgver/setup.py
+  sed -i '/kwds/d' $srcdir/bitstring-$pkgver/setup.py
 }
 
 build() {
