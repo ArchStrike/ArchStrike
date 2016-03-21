@@ -3,23 +3,27 @@
 buildarch=1
 
 pkgname=ruby-parameters
+_gemname=${pkgname#ruby-}
 pkgver=0.4.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows you to add annotated variables to your classes"
 arch=('any')
-license=('GPL3')
+license=('custom')
 depends=('ruby' 'ruby-rspec' 'ruby-yard')
-url='https://github.com/postmodern/parameters#readme'
-source=("http://rubygems.org/downloads/parameters-$pkgver.gem")
-md5sums=('24ea9322fea1ac5e12837a00be26571d')
-noextract=("parameters-$pkgver.gem")
+url='https://github.com/postmodern/parameters'
+source=("http://rubygems.org/downloads/$_gemname-$pkgver.gem")
+sha512sums=('eef804c17012d091c4a43c569c7c38e34f2d9cc405eb5293498fef10838ec114c1f59145e913b55ecc57a5ae2856cec5a4f7462dc283183be6efea089b37ea6c')
+noextract=("$_gemname-$pkgver.gem")
 
 package() {
   cd "$srcdir"
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
   if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" parameters-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   else
-    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" parameters-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   fi
+
+  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_gemdir/gems/${pkgname#*-}-$pkgver/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/"
 }
