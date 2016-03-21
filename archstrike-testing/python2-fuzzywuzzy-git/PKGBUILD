@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-fuzzywuzzy-git
-pkgver=r233.32adc6d
+pkgver=r236.6244ce3
 pkgrel=1
 pkgdesc="Fuzzy string matching in python"
 arch=('any')
