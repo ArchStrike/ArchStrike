@@ -4,27 +4,31 @@ buildarch=1
 
 pkgname=ruby-mechanize
 _gemname=mechanize
-pkgver=2.7.2
-pkgrel=3
+pkgver=2.7.4
+pkgrel=1
 pkgdesc="Automates interaction with websites, handling cookies, redirects and forms"
 arch=(any)
-url="http://mechanize.rubyforge.org/"
-license=('GPL2')
+url="https://github.com/sparklemotion/mechanize"
+license=('MIT')
 depends=('ruby' 'ruby-http-cookie>=1.0.0' 'ruby-mime-types>=1.17.2'
          'ruby-net-http-digest_auth>=1.1.1' 'ruby-net-http-persistent>=2.5.2'
          'ruby-nokogiri>=1.4' 'ruby-ntlm-http>=0.1.1' 'ruby-webrobots>=0.0.9'
          'ruby-webrobots<0.2')
 makedepends=('ruby')
-source=(https://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-noextract=(${_gemname}-${pkgver}.gem)
-md5sums=('b21a0b08f6a067ad981e3b9e31146537')
+source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha512sums=('d5d0dd824f3c2cee9111a55bff7323ed280cdb8f585169e71f35adcc2b9805b019867f916b425b9bfd655eaf2453ce405e6a303369dce7aff9e0bf4bd297f8c5')
 
 package() {
-  cd "${srcdir}"
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  cd "$srcdir"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+
   if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" mechanize-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   else
-    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" mechanize-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   fi
+
+  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_gemdir/gems/${pkgname#*-}-$pkgver/COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/"
 }
