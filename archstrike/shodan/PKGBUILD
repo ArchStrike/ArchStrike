@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=shodan
-pkgver=1.5.0
-pkgrel=2
+pkgver=1.5.1
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2 library for Shodan.io'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ license=('MIT')
 arch=('any')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/s/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('97c4533bb5f70caf4f4d686d5dad1475306c0b3949df34e060a2a7be18c5cd7a85ff69b9057b63ca341fc9f6cf57efcbe5c3a0dc5161d65e2700e438cf62ce18')
+sha512sums=('1f128a31ff57684ffdcfff4e94aca8833c7e2e2abfe3b7f1bb93904568b8fa9aeadb02310013f3b3a706359349b2afcab1b891b51d292653c995e1990abca499')
 
 build() {
   cd $pkgname-$pkgver
@@ -25,4 +25,5 @@ package() {
   cd $pkgname-$pkgver
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/shodan/cli/worldmap.py
 }
