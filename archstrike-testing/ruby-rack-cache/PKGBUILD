@@ -4,24 +4,27 @@ buildarch=1
 
 pkgname=ruby-rack-cache
 _gemname=${pkgname#ruby-}
-pkgver=1.2
-pkgrel=3
-pkgdesc="HTTP Caching for Rack"
+pkgver=1.6.1
+pkgrel=1
+pkgdesc="quick drop-in component to enable HTTP caching for Rack-based applications"
 arch=('any')
-url="http://tomayko.com/src/rack-cache"
+url="https://github.com/rtomayko/rack-cache"
 license=('MIT')
-depends=('ruby' 'rubygems')
-source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
-noextract=(${_gemname}-${pkgver}.gem)
-md5sums=('ccdcdd7302394e05d3033d683b658556')
+depends=('ruby' 'rubygems' 'ruby-rack')
+source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
+noextract=($_gemname-$pkgver.gem)
+sha512sums=('79c3ef7f52c6b114d72a79721d8f9f49f73f0677193f56637781afac45e5ab7ef3e7f81ba451d12632d9c43ab6748e78a6145819eb336720594f5fb04cc784c9')
 
 package() {
-  cd "${srcdir}"
-  export HOME=/tmp
-  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  cd "$srcdir"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+
   if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" rack-cache-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   else
-    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" rack-cache-$pkgver.gem
+        gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   fi
+
+  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_gemdir/gems/${pkgname#*-}-$pkgver/MIT-LICENSE "$pkgdir/usr/share/licenses/$pkgname/"
 }
