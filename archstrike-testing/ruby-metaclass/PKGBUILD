@@ -4,23 +4,27 @@ buildarch=1
 
 pkgname=ruby-metaclass
 _gemname=metaclass
-pkgver=0.0.1
-pkgrel=2
+pkgver=0.0.4
+pkgrel=1
 pkgdesc='Adds a metaclass method to all Ruby objects'
 arch=('any')
 url='https://github.com/floehopper/metaclass'
 license=('MIT')
 makedepends=('ruby')
 source=(http://rubygems.org/downloads/$_gemname-$pkgver.gem)
-md5sums=('563290373717a06691561ed1b5786a1b')
+sha512sums=('67326faf2384e53a2a1096f499cb6af35e5a7d5928eefeef81bae0519739aef78da6e196b62e904fb3247dd09d1bb3411e227473c155e7a8c20420408107e325')
 #noextract=($_gemname-$pkgver.gem)
 
 package() {
   cd "$srcdir"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
+
   if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" metaclass-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   else
-    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" metaclass-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
   fi
+
+  install -dm 755 "$pkgdir/usr/share/licenses/$pkgname"
+  ln -s $_gemdir/gems/${pkgname#*-}-$pkgver/COPYING.txt "$pkgdir/usr/share/licenses/$pkgname/"
 }
