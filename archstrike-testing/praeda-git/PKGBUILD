@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=praeda-git
-pkgver=r41.d52e216
+pkgver=r45.8b29acc
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="An automated data/information harvesting tool designed to gather critical information from various embedded devices. "
