@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=praeda-git
 pkgver=r45.8b29acc
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="An automated data/information harvesting tool designed to gather critical information from various embedded devices. "
 arch=('any')
 url='https://github.com/percx/Praeda'
 license=('GPL2')
-depends=('perl' 'perl-io-socket' 'perl-net-ssleay' 'perl-net-snmp' 'perl-netaddr-ip' 'perl-html-tableextract' 'perl-http-cookies' 'perl-html-tagparser')
+depends=('perl' 'perl-io-socket' 'perl-net-ssleay' 'perl-net-snmp' 'perl-netaddr-ip' 'perl-html-tableextract' 'perl-http-cookies' 'perl-html-tagparser' 'perl-bytes-random-secure')
 makedepends=('git')
 provides=('praeda')
 conflicts=('praeda')
