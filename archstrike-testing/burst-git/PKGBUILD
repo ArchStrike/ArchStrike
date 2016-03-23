@@ -2,27 +2,31 @@
 
 buildarch=1
 
-pkgname=burst-git
-pkgver=20150611.r206
+_pkgname=burst
+pkgname=$_pkgname-git
+pkgver=20150703.r223
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
-pkgdesc="An HTTP framework."
+pkgdesc='An open source HTTP framework'
 arch=('any')
 url='https://github.com/tweksteen/burst'
 license=('BSD')
 depends=('python2')
 makedepends=('git' 'python2-setuptools')
-provides=('burst')
-source=("${pkgname}::git+https://github.com/tweksteen/burst.git")
-md5sums=('SKIP')
+provides=("$_pkgname")
+source=("$pkgname::git+https://github.com/tweksteen/burst.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  cd $pkgname
+  printf '%s.r%s' "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}"
-  python2 setup.py install --root=$pkgdir --optimize=1
+  export PYTHONPATH="$pkgdir/usr/lib/python2.7/site-packages"
+  cd $pkgname
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  cp -r $_pkgname/{injection,external} "$pkgdir/usr/lib/python2.7/site-packages/$_pkgname/"
+  install -Dm644 bin/bash_completion "$pkgdir/usr/share/bash-completion/completions/$_pkgname"
   install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }
