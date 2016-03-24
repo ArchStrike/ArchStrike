@@ -1,18 +1,18 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=1
 
 pkgname=bluepot
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc="A Bluetooth Honeypot written in Java, it runs on Linux"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('any')
 depends=('java-environment')
-url="https://code.google.com/p/bluepot/"
+url="https://github.com/andrewmichaelsmith/bluepot"
 license=('GPL3')
-source=("https://bluepot.googlecode.com/files/bluepot-$pkgver.tar.gz")
-md5sums=('7672080300ece7919a031f9ca7beddce')
+source=("https://github.com/andrewmichaelsmith/bluepot/raw/master/bin/bluepot-0.1.tar.gz")
+sha512sums=('40109c7cd1c8612bce6d60dc8a1feb05a4f0520f58fa50b68d92ca2ec117c29f495e524a56e1e0e6e31cfe04796589792161faa5bd9ac081c6116b8b741cbad5')
 
 prepare() {
   cd "$srcdir/bluepot"
