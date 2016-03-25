@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=netsniff-ng
-pkgver=0.6.0
+pkgver=0.6.1
 pkgrel=1
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A high performance Linux network sniffer for packet inspection."
@@ -13,7 +13,7 @@ url='http://netsniff-ng.org/'
 license=('GPL2')
 source=(https://github.com/netsniff-ng/netsniff-ng/archive/v${pkgver}.tar.gz
   netsniff-ng_configureForArch.patch)
-sha512sums=('bcce6aa0e7d0ca3ba149bc0d6371deca566135d6d84126a20477d61ce0f06c8eaaa3299c58a17f8ff12b147bfe36016f284e4a2f622c1c417f45095dd3de37f4'
+sha512sums=('4924d5ed9ffa6bb916d0d9f4a648cff71c002b8ae4f4a1a83b51dcacc1fc24230095e7f8d83d4e79b8a23d215830e54f75c4e5193854468db5b81b8111d6fb22'
             '621cebe2901829cdb324fe7e58fe7057ac8f455aa1586647df740fd195717778c78baeaab79789564ad61ab9ce92242d320fd39af41b93d879c7d17a46811022')
 
 build() {
