@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=python-aiohttp
-pkgver=0.21.4
+pkgver=0.21.5
 pkgrel=1
 pkgdesc="http client/server for asyncio"
 url="https://github.com/KeepSafe/aiohttp/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("https://pypi.python.org/packages/source/a/aiohttp/aiohttp-${pkgver}.tar.gz" 'LICENSE')
-sha512sums=('e9abc66e1f6ba81b94ef5a528e3bca58434f6d30242967a6b69e66ea164a31d076dbd2159b464c6a59c219483e81febfba986066863f6a3811ff0dc8a51adb64'
+sha512sums=('4958d7c58988a95fc5b1e94e4eb7247f59b55e5ba439391c7b072a7ec267491159e1c8c7c6f05e6f7f72e4de5c12784c8d437665c01e6d9fb1e87a3334c1d35c'
             '1a306b212a69701ff569509f4c8e9169233edc4d32076ce416062e5d20dc34ec0e85c130c94f19041ac3c1e928ebef579ddff409e111254a7ddff3b655aa2dcd')
 
 build() {
