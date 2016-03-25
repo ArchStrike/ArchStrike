@@ -4,7 +4,7 @@ _pkgname=byacc
 buildarch=212
 
 pkgname=${_pkgname}-noconflict
-pkgver=20150711
+pkgver=20160324
 pkgrel=1
 pkgdesc="Non-conflicting version of byacc not providing bison/yacc"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ url="http://invisible-island.net/byacc/"
 license=('custom')
 depends=('glibc')
 source=("ftp://invisible-island.net/${_pkgname}/${_pkgname}-${pkgver}.tgz")
-sha512sums=('348558046acca31a39e8df480ae4c46ad03a1b073a51877a8981914bce65e8922e83e14c45eecd0e122c9d3d018cd4b6ab8c7f29b8dbfa13d648f2f86104a4e9')
+sha512sums=('ad2721d1433368560a0d26b8e3a2cabacc62b682f7866ae3be5ac1ef1a0e60438ba84303be070877d6431878753e594d2e136c5beaa04518c1b9b45c09656fad')
 
 build() {
     cd ${_pkgname}-${pkgver}
