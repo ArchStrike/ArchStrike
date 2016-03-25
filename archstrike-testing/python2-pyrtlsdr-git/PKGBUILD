@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-pyrtlsdr-git
-pkgver=r192.99e9461
+pkgver=r194.7885001
 pkgrel=1
 pkgdesc="A Python wrapper for librtlsdr (a driver for Realtek RTL2832U based SDR's)"
 depends=('python2')
