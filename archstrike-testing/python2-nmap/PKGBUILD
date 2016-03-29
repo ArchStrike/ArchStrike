@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-nmap
 _realname=python-nmap
-pkgver=0.1.4
+pkgver=0.6.0
 pkgrel=1
 epoch=1
 pkgdesc='Python2 library which helps in using the nmap port scanner'
@@ -17,7 +17,7 @@ source=("http://xael.org/pages/python-nmap-${pkgver}.tar.gz")
 makedepends=('python2-setuptools')
 options=(!emptydirs)
 changelog=CHANGELOG
-sha512sums=('575f5f4e2b0c1ef3cad557dab5c4524f513c8545d682b6dbd0c0ea5fcad3e48e0dd6c522f532657941bd3d69892c335cce10a5749956cf4c199dc0b67d27fdeb')
+sha512sums=('7cce34542877217b32c098b0052781510adba724b880edfb7e73f45e2838b16e7da54c401918221d910094ccb8550f182d1d35d47794bc280677217b586cf553')
 
 prepare(){
   grep -iRl 'python' "$srcdir/${_realname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
@@ -26,4 +26,5 @@ prepare(){
 package(){
   cd "$srcdir/${_realname}-${pkgver}"
   python2 setup.py install --root=${pkgdir} --optimize=1
+  sed -i 's|python3|python2|' $pkgdir/usr/lib/python2.7/site-packages/nmap/test_nmap.py
 }
