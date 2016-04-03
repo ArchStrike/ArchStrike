@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname='androguard'
-pkgver='1.9'
+pkgver='2.0'
 pkgrel='1'
 pkgdesc='Python framework for Android application analysis.'
 arch=('any')
@@ -12,7 +12,7 @@ url='https://code.google.com/p/androguard/'
 license=('Apache')
 groups=('archstrike')
 depends=('python2')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'muparser' 'sparsehash')
 optdepends=(
     'ipython2: interactive analysis support'
     'python2-pygments: color support'
@@ -25,11 +25,17 @@ optdepends=(
     'zlib: elsim support'
     'psyco2-svn: acceleration support'
 )
-source=("https://androguard.googlecode.com/files/androguard-$pkgver.tar.gz")
-sha512sums=('682cc56b0065fb481c95b82dd1150654bafab9eb2d1fd22de85de4d3bd3f8bde15a65c9c66d62e09f1c33731cc59f33f9d967d5050ebba3692c557d219e243fe')
+source=("https://github.com/androguard/androguard/archive/v$pkgver.tar.gz")
+sha512sums=('8ff72bc564da7d583add4b8de917f7c413d53874fe7a3f154029c06b72ac250de52fe1747f1389c777f80bd5b94667d75635c68631e80bf177ac9cf1d1fb49ae')
+
+build() {
+   cd "$srcdir/androguard-$pkgver"
+   make
+   python2 setup.py build
+}
 
 package() {
     cd "$srcdir/androguard-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
-    sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/androguard/core/bytecodes/libdvm/test_dvm.py
+    grep -iRl 'python' "$pkgdir/usr/lib/python2.7/site-packages/androguard/core/api_specific_resources" | xargs sed -i 's|python$|python2|'
 }
