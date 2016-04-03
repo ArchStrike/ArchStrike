@@ -12,17 +12,12 @@ url='https://code.google.com/p/androguard/'
 license=('Apache')
 groups=('archstrike')
 depends=('python2')
-makedepends=('python2-setuptools' 'muparser' 'sparsehash')
+makedepends=('python2-setuptools' 'muparser' 'sparsehash' 'snappy')
 optdepends=(
     'ipython2: interactive analysis support'
     'python2-pygments: color support'
     'pydot: CFG support'
     'python2-magic: file identification support'
-    'sparsehash: elsim support'
-    'muparser: elsim support'
-    'snappy: elsim support'
-    'bzip2: elsim support'
-    'zlib: elsim support'
     'psyco2-svn: acceleration support'
 )
 source=("https://github.com/androguard/androguard/archive/v$pkgver.tar.gz")
