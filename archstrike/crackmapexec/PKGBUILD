@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=CrackMapExec
 pkgname=crackmapexec
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
@@ -35,5 +35,6 @@ package() {
 
   # Symlink the main script to the system $PATH
   install -dm755 "$pkgdir/usr/bin"
+  chmod 755 $pkgdir/usr/share/$pkgname/$pkgname.py
   ln -s /usr/share/$pkgname/$pkgname.py "$pkgdir/usr/bin/$pkgname"
 }
