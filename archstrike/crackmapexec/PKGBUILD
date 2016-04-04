@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=CrackMapExec
 pkgname=crackmapexec
-pkgver=2.3
+pkgver=3.0
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
@@ -13,7 +13,7 @@ url='https://github.com/byt3bl33d3r/CrackMapExec'
 license=('GPL3')
 depends=('impacket' 'python2-gevent' 'python2-netaddr' 'python2-crypto' 'python2-pyasn1' 'python2-termcolor' 'python2-colorama' 'python2-pyopenssl')
 source=("https://github.com/byt3bl33d3r/$_pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('865ab679b0e35d08d848882e270054e509b2e7ce3818eb3fc5ad8c781473e12119dcac70d8861fc607f38ef82d6391ae13251bbf3a6226599a2d7fb4cc51500b')
+sha512sums=('36187c339b78a8515d9f267f657e0db97f50c80751135b20738839c2924567764e6f712a2e0baa155e02d058f7fb2bead050dbe01dc51a63477bbc8d90ddd106')
 
 prepare(){
   cd $_pkgname-$pkgver
