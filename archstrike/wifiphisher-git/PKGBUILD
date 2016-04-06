@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=wifiphisher
 pkgname=$_pkgname-git
-pkgver=20160323.r172
+pkgver=20160330.r183
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc='A tool for Fast automated phishing attacks against WPA networks'
