@@ -1,49 +1,37 @@
-# Maintainer: ArchStrike <team@archstrike.org>
+#Maintainer:  ArchStrike <team@archstrike.org>
 
-buildarch=192
-
-pkgname=oclhashcat
-_pkgname=oclHashcat
-pkgver=1.37
+groups=('archstrike' 'archstrike-crackers')
+pkgname='oclhashcat'
+_pkgname='oclHashcat'
+pkgver=2.01
 pkgrel=1
-pkgdesc="Worlds fastest WPA cracker with dictionary mutation engine"
-url=('http://hashcat.net/oclhashcat/')
+pkgdesc='Worlds fastest WPA cracker with dictionary mutation engine'
+url='http://hashcat.net/oclhashcat/'
 arch=('i686' 'x86_64')
 license=('custom')
-depends=('bash' 'libcl')
-optdepends=('nvidia-utils>=319.37: For for gpu support via Nvidia CUDA'
-            'catalyst-utils>=13.4: For gpu support via ATI Stream'
-            'opencl-catalyst: For gpu support via ATI Stream')
+depends=('bash' 'libcl' 'catalyst-utils>=15.7')
 source=("http://hashcat.net/files/$_pkgname-$pkgver.7z")
-sha512sums=('74d5ef5be20357e706bfbff496a60e8c2d90b33e93981bca398d04099645bef0ec8df9b77f179bb770312966f788a2fe7a486abdf9a3e7bee7b0204d2d900902')
+sha512sums=('068f900aad1fbed9cbb767d1fdff5a41f98c60c3805c13121fe803e2aa461a8411f4904b5f1716a3dc82b9db4b08258a69a07d3f8aac087ad28b43cc2319e0e1')
 options=('!strip')
 
-prepare() {
-  cd $_pkgname-$pkgver
-  sed -i '1,2d;s|${OCLHASHCAT_ROOT}/oclHashcat64.bin "${OCLHASHCAT_ROOT}"/oclHashcat32.bin "${OCLHASHCAT_ROOT}"/cudaHashcat64.bin "${OCLHASHCAT_ROOT}"/cudaHashcat32.bin|oclHashcat|' extra/tab_completion/oclHashcat64.sh
-}
-
 package() {
+  # Copy files
   install -dm755 "$pkgdir/opt/$pkgname"
   cp -a --no-preserve=ownership  $_pkgname-$pkgver/* "$pkgdir/opt/$pkgname/"
   cd "$pkgdir/opt/$pkgname"
 
-  # Install bash completion
-  install -Dm644 extra/tab_completion/oclHashcat64.sh "$pkgdir/usr/share/bash-completion/completions/oclHashcat"
-  rm -rf extra/tab_completion
-
-  # Install the executable script
+  # Set up bash pivot
   install -dm755 "$pkgdir/usr/bin"
   if [ "$CARCH" = "x86_64" ]; then
-    rm oclHashcat32.bin
-    echo -e "#!/bin/bash\n/opt/$pkgname/oclHashcat64.bin \$@" > "$pkgdir/usr/bin/$_pkgname"
+    rm ${_pkgname}32.bin
+    echo -e "#!/bin/bash\n/opt/$pkgname/${_pkgname}64.bin \$@" > "$pkgdir/usr/bin/$_pkgname"
   else
-    rm oclHashcat64.bin
-    echo -e "#!/bin/bash\n/opt/$pkgname/oclHashcat32.bin \$@" > "$pkgdir/usr/bin/$_pkgname"
+    rm ${_pkgname}64.bin
+    echo -e "#!/bin/bash\n/opt/$pkgname/${_pkgname}32.bin \$@" > "$pkgdir/usr/bin/$_pkgname"
   fi
   chmod a+x "$pkgdir/usr/bin/$_pkgname"
 
-  # Cleanup win-executables
+  # Get rid of windows stuff
   find . \( -name "*.cmd" -o -name "*.exe" \) -exec rm '{}' \;
 
   # Cleanup permissions
@@ -57,4 +45,3 @@ package() {
   find "$pkgdir" -iname '*.dict' -exec chmod 644 '{}' \;
   find "$pkgdir" -iname '*.bin' -exec chmod 755 '{}' \;
 }
-
