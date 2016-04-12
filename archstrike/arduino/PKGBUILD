@@ -8,7 +8,7 @@ buildarch=192
 
 pkgname=arduino
 pkgver=1.6.8
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc='Open-source electronics prototyping platform'
 arch=('i686' 'x86_64')
