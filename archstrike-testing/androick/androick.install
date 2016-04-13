@@ -1,9 +1,0 @@
-post_install(){
-  echo "Before using this tool you will need to download the android-sdk and android-platform-build-tools from the aur."
-  echo "Please visit https://wiki.archlinux.org/index.php/Aur_helpers for a list for AUR helpers."
-}
-
-post_upgrade(){
-  post_install
-}
-
