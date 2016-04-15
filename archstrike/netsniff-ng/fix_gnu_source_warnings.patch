@@ -1,0 +1,37 @@
+diff -aur netsniff-ng-0.6.1.orig/ioops.c netsniff-ng-0.6.1/ioops.c
+--- netsniff-ng-0.6.1.orig/ioops.c	2016-04-15 10:58:39.277369842 -0400
++++ netsniff-ng-0.6.1/ioops.c	2016-04-15 11:02:13.517066561 -0400
+@@ -1,4 +1,6 @@
+-#define _GNU_SOURCE
++#ifndef _GNU_SOURCE
++# define _GNU_SOURCE
++#endif
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+diff -aur netsniff-ng-0.6.1.orig/proc.c netsniff-ng-0.6.1/proc.c
+--- netsniff-ng-0.6.1.orig/proc.c	2016-04-15 10:58:39.280703118 -0400
++++ netsniff-ng-0.6.1/proc.c	2016-04-15 11:00:51.761770374 -0400
+@@ -1,4 +1,6 @@
+-#define _GNU_SOURCE
++#ifndef _GNU_SOURCE
++#  define _GNU_SOURCE
++#endif
+ #include <sched.h>
+ #include <sys/wait.h>
+ #include <sys/types.h>
+diff -aur netsniff-ng-0.6.1.orig/xmalloc.c netsniff-ng-0.6.1/xmalloc.c
+--- netsniff-ng-0.6.1.orig/xmalloc.c	2016-04-15 10:58:39.284036393 -0400
++++ netsniff-ng-0.6.1/xmalloc.c	2016-04-15 11:01:06.244859518 -0400
+@@ -4,8 +4,9 @@
+  * Copyright 2014, 2015 Tobias Klauser
+  * Subject to the GPL, version 2.
+  */
+-
+-#define _GNU_SOURCE
++#ifndef _GNU_SOURCE
++# define _GNU_SOURCE
++#endif
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>
