@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=device-pharmer-git
-pkgver=r35.c1d449e
-pkgrel=2
+pkgver=r37.e0e6281
+pkgrel=1
 pkgdesc="Opens 1K+ IPs or Shodan search results and attempts to login"
 url="https://github.com/DanMcInerney/device-pharmer"
 arch=('any')
