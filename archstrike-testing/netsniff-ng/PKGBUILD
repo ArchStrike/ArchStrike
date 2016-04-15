@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=netsniff-ng
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A high performance Linux network sniffer for packet inspection."
 depends=('geoip' 'zlib' 'libnacl' 'libcap' 'liburcu' 'gnuplot' 'libcli' 'libnet' 'libnetfilter_conntrack' 'libpcap' 'libnl')
@@ -15,6 +15,13 @@ source=(https://github.com/netsniff-ng/netsniff-ng/archive/v${pkgver}.tar.gz
   netsniff-ng_configureForArch.patch)
 sha512sums=('4924d5ed9ffa6bb916d0d9f4a648cff71c002b8ae4f4a1a83b51dcacc1fc24230095e7f8d83d4e79b8a23d215830e54f75c4e5193854468db5b81b8111d6fb22'
             '621cebe2901829cdb324fe7e58fe7057ac8f455aa1586647df740fd195717778c78baeaab79789564ad61ab9ce92242d320fd39af41b93d879c7d17a46811022')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  # cleans up depracated compilation warnings with the newer version of gcc
+  sed -i 's|_BSD_SOURCE|_DEFAULT_SOURCE|;s|_SVID_SOURCE|_DEFAULT_SOURCE|' astraceroute.c
+  sed -i 's|_BSD_SOURCE|_DEFAULT_SOURCE|;s|_SVID_SOURCE|_DEFAULT_SOURCE|' tprintf.c
+}
 
 build() {
   cd "$srcdir/netsniff-ng-${pkgver}"
