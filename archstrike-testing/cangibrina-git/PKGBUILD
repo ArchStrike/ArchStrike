@@ -6,7 +6,7 @@ _pkgname=cangibrina
 buildarch=1
 
 pkgname=$_pkgname-git
-pkgver=20150322.r93.8744afe
+pkgver=20160409.r112.981ed21
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-scanners' 'archstrike-webapps')
 pkgdesc='Fast and powerfull dashboard (admin) finder'
