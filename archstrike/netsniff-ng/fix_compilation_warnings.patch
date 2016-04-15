@@ -1,0 +1,64 @@
+diff -aur netsniff-ng-0.6.1.orig/astraceroute.c netsniff-ng-0.6.1/astraceroute.c
+--- netsniff-ng-0.6.1.orig/astraceroute.c	2016-04-15 11:25:53.413130620 -0400
++++ netsniff-ng-0.6.1/astraceroute.c	2016-04-15 11:29:57.309938451 -0400
+@@ -4,7 +4,9 @@
+  * Subject to the GPL, version 2.
+  */
+ 
+-#define _BSD_SOURCE
++#ifdef _BSD_SOURCE
++# define _DEFAULT_SOURCE
++#endif
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <signal.h>
+diff -aur netsniff-ng-0.6.1.orig/ioops.c netsniff-ng-0.6.1/ioops.c
+--- netsniff-ng-0.6.1.orig/ioops.c	2016-04-15 11:25:53.416463912 -0400
++++ netsniff-ng-0.6.1/ioops.c	2016-04-15 11:32:59.060805515 -0400
+@@ -1,4 +1,6 @@
+-#define _GNU_SOURCE
++#ifndef _GNU_SOURCE
++# define _GNU_SOURCE
++#endif
+ #include <unistd.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
+diff -aur netsniff-ng-0.6.1.orig/proc.c netsniff-ng-0.6.1/proc.c
+--- netsniff-ng-0.6.1.orig/proc.c	2016-04-15 11:25:53.419797203 -0400
++++ netsniff-ng-0.6.1/proc.c	2016-04-15 11:34:04.739901068 -0400
+@@ -1,4 +1,6 @@
+-#define _GNU_SOURCE
++#ifndef _GNU_SOURCE
++# define _GNU_SOURCE
++#endif
+ #include <sched.h>
+ #include <sys/wait.h>
+ #include <sys/types.h>
+diff -aur netsniff-ng-0.6.1.orig/tprintf.c netsniff-ng-0.6.1/tprintf.c
+--- netsniff-ng-0.6.1.orig/tprintf.c	2016-04-15 11:25:53.423130493 -0400
++++ netsniff-ng-0.6.1/tprintf.c	2016-04-15 11:32:05.481538580 -0400
+@@ -5,7 +5,9 @@
+  * Subject to the GPL, version 2.
+  */
+ 
+-#define _BSD_SOURCE
++#ifdef _BSD_SOURCE
++# define _DEFAULT_SOURCE
++#endif
+ #include <ctype.h>
+ #include <stdio.h>
+ #include <stdarg.h>
+diff -aur netsniff-ng-0.6.1.orig/xmalloc.c netsniff-ng-0.6.1/xmalloc.c
+--- netsniff-ng-0.6.1.orig/xmalloc.c	2016-04-15 11:25:53.426463785 -0400
++++ netsniff-ng-0.6.1/xmalloc.c	2016-04-15 11:33:36.026963876 -0400
+@@ -5,7 +5,9 @@
+  * Subject to the GPL, version 2.
+  */
+ 
+-#define _GNU_SOURCE
++#ifndef _GNU_SOURCE
++# define _GNU_SOURCE
++#endif
+ #include <stdarg.h>
+ #include <stdio.h>
+ #include <stdlib.h>
