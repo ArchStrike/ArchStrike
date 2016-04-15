@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-bson
-pkgver=0.4.2
+pkgver=0.4.3
 pkgrel=1
 pkgdesc="BSON codec for Python"
 url="http://github.com/martinkou/bson"
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://pypi.python.org/packages/source/b/bson/bson-$pkgver.tar.gz" "https://raw.githubusercontent.com/py-bson/bson/master/LICENSE")
-sha512sums=('a0f5d72084b18b7557c59047ed82a5986af3a2c8c3464ea696160c0e9585f7f59e6327ce515a393a526c090240bb458d55c9554b235e2b4169fbcc0727eb29b6'
+sha512sums=('acd7dd080e9fe1616e679c18eadcc58fda3db7959d54a0f729cf702c650a84df88f912cc3adafb0085ec1af19f6b164625c48873f02216c9b372f58ed6845578'
             'ed947f051a6cace4a5fc051a31db39a8385d7ccf17de69ec6c41c2fac9d4b5af5e599ffb9eed51bb3cdcf8fc44bc94c80d595929aafcd7526e64f329db330c8d')
 
 build() {
