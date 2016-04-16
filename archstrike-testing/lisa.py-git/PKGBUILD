@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=lisa.py-git
-pkgver=20150203.r28
+pkgver=20160414.r36
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-debugging')
 pkgdesc="An Exploit Dev Swiss Army Knife."
