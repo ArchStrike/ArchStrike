@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=inception-git
-pkgver=r431.34f207d
-pkgrel=2
+pkgver=r432.e38dd7b
+pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A FireWire physical memory manipulation and hacking tool exploiting IEEE 1394 SBP-2 DMA. "
 arch=('any')
