@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=backdoor-factory-git
-pkgver=0.r167.f4083f9
+pkgver=0.r170.988f010
 pkgrel=1
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
