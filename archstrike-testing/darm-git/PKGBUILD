@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=darm-git
-pkgver=414.f42b509
+pkgver=416.cadffa7
 pkgrel=1
 pkgdesc="An ARMv7 disassembling library written in C."
 arch=("i686" "x86_64" "armv6h" "armv7h")
