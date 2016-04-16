@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=linenum
-pkgver=20150209.r20.fb1b097
+pkgver=20160410.r22.f7b184b
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
