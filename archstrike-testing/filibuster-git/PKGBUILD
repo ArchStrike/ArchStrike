@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=filibuster-git
-pkgver=r161.37b7f9c
+pkgver=r164.f343308
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A Egress filter mapping application with additional functionality"
