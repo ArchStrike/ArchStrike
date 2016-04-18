@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=conpot
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.1
+pkgrel=1
 pkgdesc="ICS honeypot with the goal to collect intelligence about the motives
     and methods of adversaries targeting industrial control systems"
 url="http://conpot.org"
@@ -13,7 +13,7 @@ makedepends=('python2-distribute')
 license=('GPL2')
 arch=('any')
 source=("https://pypi.python.org/packages/source/C/Conpot/Conpot-${pkgver}.tar.gz")
-sha512sums=('06cd8463db9a2e16200582cfc1a354610ceef928a4d1b36c81ee3f3bc6d43c2ae805f717fe901fb6789d7bebe66de8e796dba7981655eeb70998bd7b889885fa')
+sha512sums=('cde2f9478f20f7982cf51002323e17da8d1a03b4624208251b29b0328f1be296aff45fb71a09b8d8165bb24ee1092f36d5de8c4fd12bdde518c3f5343c426647')
 
 build() {
   cd "${srcdir}"/Conpot-"${pkgver}"
