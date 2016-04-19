@@ -55,19 +55,6 @@ prepare() {
   # Fix all calls to 'python-pycrypto' change to 'python2-crypto'
   grep -Rl python-pycrypto ./ | xargs sed -i 's|python-pycrypto|python2-crypto|g'
 
-  # ArchStrike Fixes
-  cd "$srcdir/social-engineer-toolkit/config"
-  ## Check if Metasploit is installed
-  ## Set ArchStrike Metasploit directory
-  if [ -d /usr/share/metasploit ]; then
-    sed -i 's|/opt/metasploit/apps/pro/msf3|/usr/share/metasploit|g' ./set_config
-  fi
-  ## Apply httpd directory
-  sed -i 's|/var/www|/srv/http|g' ./set_config
-  ## Set proper dnsspoof bin
-  sed -i 's|/usr/local/sbin/dnsspoof|/usr/sbin/dnsspoof|g' ./set_config
-  ## Set proper airbase-ng bin
-  sed -i 's|/usr/local/sbin/airbase-ng|/usr/sbin/airbase-ng|g' ./set_config
 }
 
 package() {
