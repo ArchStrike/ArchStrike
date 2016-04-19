@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=metasploitavevasion-git
-packname=metasploitavevasion
+_pkgname=metasploitavevasion
 pkgver=2.0.20151222.r29
 pkgrel=1
 pkgdesc="Metasploit payload generator that avoids most Anti-Virus products."
@@ -15,30 +15,30 @@ groups=('archstrike' 'archstrike-exploit')
 depends=('metasploit' 'mingw-w64-gcc' 'wget')
 makedepends=('git')
 provides=('metasploitavevasion')
-source=("git+https://github.com/nccgroup/${packname}.git#branch=master"
-        "${packname}.sh"
-        "${packname}.desktop"
-        "${packname}.png")
+source=("$pkgname::git+https://github.com/nccgroup/${_pkgname}.git#branch=master"
+        "${_pkgname}.sh"
+        "${_pkgname}.desktop"
+        "${_pkgname}.png")
 sha512sums=('SKIP'
             '634ee44780aa8a9b67fd1c424cf1395c0493e72fe87cb5f5c2e89378a12d12cef425808a8d70aefdf4d5ae1d205df4bf1dbea95d1f0207c28c4d629f09cb599e'
             'beca80298d01595d06a7fe0c3507d0417cb66d2e1c2a92a0dae1097423ca6d4e2cee988e563063b1f4c30a7769c63bfeb53ecacfbc1626a43ea5d414f6e0115e'
             'dce7096d395b791cfc1b44d6256ea6a138c0a2db87ed17fedbbd86c815bd8eb31d8a6631e55e9d81afc339090ae4c45696b0b7ccead74478ebcd2c263c436d84')
 
 pkgver() {
-    cd ${packname}
+    cd ${pkgname}
     grep -e "^VERSION=" avoid.sh > version.sh
     source version.sh
     printf "%s.%s.r%s" "$VERSION" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-    cd ${packname}
+    cd ${pkgname}
     find . -type f -exec sed -i 's|i586-mingw32msvc-gcc|i686-w64-mingw32-gcc|g' '{}' \;
 }
 
 package() {
-    install -Dm755 ${packname}/avoid.sh "${pkgdir}/usr/bin/avoid.sh"
-    install -Dm755 ${packname}.sh "${pkgdir}/usr/bin/${pkgname}"
-    install -Dm644 ${packname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 ${packname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+    install -Dm755 ${pkgname}/avoid.sh "${pkgdir}/usr/bin/avoid.sh"
+    install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+    install -Dm644 ${_pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
