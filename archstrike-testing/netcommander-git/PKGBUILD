@@ -3,7 +3,8 @@
 buildarch=1
 
 pkgname=netcommander-git
-pkgver=1.3
+_pkgname=netcommander
+pkgver=20111208.r21
 pkgrel=1
 groups=('archstrike' 'archstrike-spoof')
 pkgdesc="An easy-to-use arp spoofing tool"
@@ -12,11 +13,15 @@ url='https://github.com/sincoder/NetCommander'
 license=('GPL3')
 depends=('python2' 'scapy')
 makedepends=('git')
-source=('git+https://github.com/sincoder/NetCommander')
-md5sums=('SKIP')
+source=("$_pkgname::git+https://github.com/sincoder/NetCommander.git")
+sha512sums=('SKIP')
+pkgver() {
+  cd $_pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
-  cd "$srcdir/NetCommander"
+  cd "$_pkgname"
 
   # Fix file location.
   sed -i 's|mac-prefixes|/usr/share/netcommander/mac-prefixes|' netcmd.py
@@ -26,7 +31,7 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/NetCommander"
+  cd "$_pkgname"
 
   install -Dm755 "netcmd.py" "$pkgdir/usr/bin/netcmd"
   install -Dm644 "mac-prefixes" "$pkgdir/usr/share/mac-prefixes"
