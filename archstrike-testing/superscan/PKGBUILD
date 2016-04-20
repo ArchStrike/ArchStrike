@@ -3,13 +3,12 @@
 buildarch=1
 
 pkgname='superscan'
-_pkgname='SuperScan4.1'
 pkgver='4.1'
 pkgrel=1
 pkgdesc='Powerful TCP port scanner, pinger, resolver.'
 url='http://www.mcafee.com/us/downloads/free-tools/superscan.aspx'
 groups=('archstrike')
-license=('FOUNDSTONE')
+license=('custom')
 arch=('any')
 source=("http://b2b-download.mcafee.com/products/tools/foundstone/superscan-4.1.zip")
 md5sums=('7f7ee56509f3fa030427542421d163bb')
@@ -17,10 +16,11 @@ md5sums=('7f7ee56509f3fa030427542421d163bb')
 package() {
   cd "$srcdir"
 
-  install -D -m755 "$_pkgname.exe" \
-    "$pkgdir/usr/share/windows/superscan-$pkgver/$_pkgname.exe"
+  install -D -m755 "SuperScan4.1.exe" \
+    "$pkgdir/usr/share/windows/superscan-$pkgver/SuperScan4.1.exe"
   install -D -m644 "ReadMe.txt" \
     "$pkgdir/usr/share/windows/superscan-$pkgver/readme.txt"
   install -D -m644 "registry.txt" \
     "$pkgdir/usr/share/windows/superscan-$pkgver/registry.txt"
+   install -Dm644 "$srcdir"/ReadMe.txt "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
