@@ -3,30 +3,24 @@
 buildarch=1
 
 pkgname=termineter
-pkgver=0.1.0
+pkgver=0.2.5
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="Smart meter testing framework"
-url="https://code.google.com/p/termineter/"
+url="https://github.com/securestate/termineter"
 arch=('any')
 license=('GPL3')
-depends=('python2' 'python2-pyserial')
-source=("https://termineter.googlecode.com/files/termineter-v$pkgver.tar.bz2")
-md5sums=('2ea2025b17d9409ef543310269cad355')
+depends=('python2-pyserial' 'python2-pyasn1' 'python2-smoke-zephyr' 'python2-crcelk')
+makedepends=('python2-setuptools')
+source=("https://github.com/securestate/termineter/archive/v$pkgver.tar.gz")
+sha512sums=('3d231618515e89d407756be4bbc9f53fd2ca2596cf127b6d10ba68fd7d0277153ce0a46a97bc21813181a329a0e3b49e271213e5821355ab2a0307697226ea78')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  sed -i '/from __future__/d' setup.py
+}
 
 package() {
-  cd "$srcdir/termineter"
-
-  # Base directories.
-  install -dm755 "$pkgdir/usr/share/termineter"
-  install -dm755 "$pkgdir/usr/bin"
-
-  cp -a * "$pkgdir/usr/share/termineter"
-
-  # The upstream provides an install script but this works better.
-  cat > "$pkgdir/usr/bin/termineter" << EOF
-#/bin/sh
-python2 /usr/share/termineter/termineter.py "\$@"
-EOF
-  chmod +x "$pkgdir/usr/bin/termineter"
+  cd "$pkgname-$pkgver"
+  python2 setup.py install --root=$pkgdir --optimize=1
 }
