@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname='set-git'
-pkgver=6.1.2.r882.gee71b31
+pkgver=7.0.6.r24.gfd15096
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-exploit')
@@ -31,7 +31,6 @@ provides=('set')
 replaces=('set')
 source=('git+https://github.com/trustedsec/social-engineer-toolkit/')
 md5sums=('SKIP')
-backup=('usr/share/set/config/set_config')
 
 pkgver() {
   cd "$srcdir/social-engineer-toolkit"
