@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname="libevt"
-pkgver="20160107"
+pkgver="20160421"
 pkgrel=1
 pkgdesc="Library and tooling to access the Windows Event Log (EVT) format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -13,7 +13,7 @@ depends=('libcsystem' 'libbfio' 'python2' 'libregf')
 install="$pkgname.install"
 makedepends=('git')
 source=("https://github.com/libyal/libevt/archive/$pkgver.tar.gz")
-sha512sums=('c40dd14f1236a89b04c3c20acd6dcc4f347bc9db14c8903ec05e07ebeb1ab879982a9d0357ba0521c2ef1fa5d23c91bffd81c316d31c919ed245e35c400e1ac4')
+sha512sums=('5cea29bcd66e5ee9acc5aa07fd08d93b0113eb25740d8496cea0c3eadc2a34b10df7ff7e53d55edcef9421e65bfeb85886ee8221d92441146663bdacd56a72a5')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
