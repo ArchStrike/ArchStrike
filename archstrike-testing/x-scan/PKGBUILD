@@ -10,7 +10,7 @@ url='http://www.xfocus.org/'
 groups=('archstrike')
 license=('custom')
 arch=('any')
-source=("https://github.com/ArchStrike-Project/x-scan/raw/master/X-Scan-v$pkgver.zip")
+source=("https://github.com/ArchAssault-Project/x-scan/raw/master/X-Scan-v$pkgver.zip")
 md5sums=('5cb7b849f16580b431d16700b343b9f6')
 
 package() {
