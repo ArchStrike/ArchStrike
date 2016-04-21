@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname="liblnk"
-pkgver="20160107"
+pkgver="20160420"
 pkgrel=1
 pkgdesc="Library and tools to access the Windows Shortcut File (LNK) format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('libfwsi')
 makedepends=('git')
 source=("https://github.com/libyal/liblnk/archive/$pkgver.tar.gz")
-sha512sums=('d5e97d4037147ae1fd8ac255f94f2779a121017b9fc2b86e18009ea1ebd94b01c2084d6040bb434fcbba7e73c91d6a169e204b629d3604c29da5c4bc5fee9c2e')
+sha512sums=('bccf9721761cb3d3b66aabd0d18f2a706ec6f5b2e5c6bfd0b1b6986a9d10f0cabb18dbf23fffb5c8a176e5d6876208acc1ce35987fa21ef88f46dbf5ae746106')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
