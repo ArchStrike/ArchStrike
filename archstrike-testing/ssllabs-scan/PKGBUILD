@@ -11,7 +11,7 @@ groups=("archstrike")
 url="https://github.com/ssllabs/ssllabs-scan"
 license=("APACHE")
 depends=('glibc')
-makedepends=('go')
+makedepends=('go' 'git')
 source=("https://github.com/ssllabs/ssllabs-scan/archive/v$pkgver.tar.gz")
 sha512sums=('3b009454809e4e7fbdb34e67e0ac34e86f0d9f2c7281acdd7df5202745b4961acc98642df7d4f7851cdb3ac36958a04da99c17bfc7a7f081bce5054861e44d1d')
 
