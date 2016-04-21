@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=vega
-pkgver=1.0-devel-130
+pkgver=1.0.devel.130
 pkgrel=3
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="An open source platform to test the security of web applications"
