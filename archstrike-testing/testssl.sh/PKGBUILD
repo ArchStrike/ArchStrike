@@ -3,9 +3,10 @@
 
 pkgname='testssl.sh'
 pkgver=2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Testing TLS/SSL encryption"
 arch=('any')
+groups=('archstrike')
 url="https://github.com/drwetter/testssl.sh"
 license=("GPL")
 depends=('coreutils' 'util-linux' 'openssl')
