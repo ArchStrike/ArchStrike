@@ -1,0 +1,19 @@
+# Maintainer: ArchStrike <team [at] archstrike [dot] org>
+# Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
+
+pkgname='testssl.sh'
+pkgver=2.6
+pkgrel=1
+pkgdesc="Testing TLS/SSL encryption"
+arch=('any')
+url="https://github.com/drwetter/testssl.sh"
+license=("GPL")
+depends=('coreutils' 'util-linux' 'openssl')
+source=("testssl-${pkgver}.sh::${url}/raw/v${pkgver}/testssl.sh")
+sha512sums=('e924dde492f680994fcc1a7c898599326a3e964a059ff95d5e81f071f7c85d85345c8d886572e68b4c431590020cbd9cd73ccd80f3721e907657e3412cd45dd5')
+
+package() {
+  cd "${srcdir}"
+
+  install -D -m755 "testssl-${pkgver}.sh" "${pkgdir}/usr/bin/testssl.sh"
+}
