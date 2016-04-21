@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=${_pkgname}-git
 _pkgver=dd59d99
-pkgver=r30.6b4db1b
+pkgver=r92.612c5a1
 pkgrel=1
 pkgdesc='An easy to use audio filtering library made from webrtc code'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
