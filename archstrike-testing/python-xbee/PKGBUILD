@@ -14,6 +14,12 @@ makedepends=('python-setuptools')
 source=("https://pypi.python.org/packages/source/X/XBee/XBee-${pkgver}.tar.gz")
 sha512sums=('c1dc131aef20456e0f1c7fd5ca78052daef64cd34e5cf29c1ea5316596ba4bbd7e91b964dbb772e2baa81fe744e4705c793bad767c73ef7d1b184f8a01bd0a50')
 
+prepare() {
+  cd XBee-$pkgver
+  # Fixes build issues in a clean chroot
+  sed -i '/long_description/d' setup.py
+}
+
 package() {
   cd XBee-$pkgver
   python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
