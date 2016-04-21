@@ -10,25 +10,25 @@ arch=('i686' 'x86_64')
 url="https://www.shellterproject.com/"
 license=('custom')
 depends=('wine' 'bash')
-makedepends=('unrar' 'curl')
-DLAGENTS=("https::/usr/bin/curl -A 'Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 6.1)' -fLC - --retry 3 --retry-delay 3 -o %o %u")
-source=("https://www.shellterproject.com/Downloads/Shellter/Latest/Shellter_v1.7_Wine_Beta1.rar")
+makedepends=('unzip' 'curl')
+DLAGENTS=("https::/usr/bin/curl -A 'Mozilla/4.0' -fLC - --retry 3 --retry-delay 3 -o %o %u")
+source=("https://www.shellterproject.com/Downloads/Shellter/Latest/shellter.zip")
 noextract=('Shellter_v1.7_Wine_Beta1.rar')
-sha512sums=('a3e6e1ad9d46746482e89ad23610e39d88d1ab3908fa0d2066d52bf0d8ebf8364d9ccd5a5b6f4f28ef29bc9e5a8db8aac81b9a679ad2a5740a466582ce3493f2')
+sha512sums=('719798de8ba5c0c891eb4a8bf4bb5c0a17dd08683bdd264ab91298e7cdb6091eef732e28b54346db7c54203a7ccce72326cd6b1e6d743aceda2832e48b916e37')
 
 build(){
-  unrar x Shellter_v1.7_Wine_Beta1.rar
+  unzip shellter.zip
 }
 
 package() {
-  cd "$srcdir/Shellter_v1.7_Wine_Beta1"
+  cd "$srcdir/shellter"
   install -dm755 "$pkgdir/usr/bin/"
   install -dm755 "$pkgdir/usr/share/shellter"
   install -dm755 "$pkgdir/usr/share/shellter/ShellCode_Samples"
-  install -Dm644 ShellCode_Samples/* "$pkgdir/usr/share/shellter/ShellCode_Samples/"
-  install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 shellcode_samples/* "$pkgdir/usr/share/shellter/ShellCode_Samples/"
+  install -Dm644 license.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm644 *.txt "$pkgdir/usr/share/shellter/"
-  install -Dm755 Shellter_v1.7_Wine_Beta1.exe "$pkgdir/usr/share/shellter/Shellter_v1.7_Wine_Beta1.exe"
+  install -Dm755 shellter.exe "$pkgdir/usr/share/shellter/shellter.exe"
 
 cat >"$pkgdir/usr/bin/shellter" <<EOF
 #!/bin/bash
@@ -37,10 +37,10 @@ set -e
 
 if [ ! -d "$HOME/.shellter" ] ; then
   mkdir -p "$HOME/.shellter/wine"
-  ln -s /usr/share/shellter/Shellter_v1.7_Wine_Beta1.exe "$HOME/.shellter/Shellter_v1.7_Wine_Beta1.exe"
+  ln -s /usr/share/shellter/shellter.exe "$HOME/.shellter/shellter.exe"
 fi
 
-wine "$HOME/.shellter/Shellter_v1.7_Wine_Beta1.exe" "\$@"
+wine "$HOME/.shellter/shellter.exe" "\$@"
 EOF
 
 chmod +x "$pkgdir/usr/bin/shellter"
