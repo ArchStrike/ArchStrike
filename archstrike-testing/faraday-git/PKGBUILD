@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=faraday-git
-pkgver=20150507.r1187
+pkgver=20160407.r2127
 pkgrel=1
 pkgdesc="A new concept (IPE) Integrated Penetration-Test Environment a multiuser Penetration test IDE. Designed for distribution, indexation and analyze of the generated data during the process of a security audit."
 groups=('archstrike' 'archstrike-misc')
