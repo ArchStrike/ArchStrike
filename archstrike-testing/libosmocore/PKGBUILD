@@ -11,9 +11,10 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="http://bb.osmocom.org/trac/wiki/libosmocore"
 license=('GPL')
 depends=('pcsclite')
+install="$pkgname.install"
 makedepends=('autoconf' 'glibc')
 source=("http://cgit.osmocom.org/$pkgname/snapshot/$pkgname-$pkgver.tar.gz")
-sha512sums=('4f59dde407277a04797020a785861056c863420c160837999f0cff85b6ca1e7c9eecbaa71ae88d876e06ab0115ab06b718bb4667f788749f760881d10c15e60c')
+sha512sums=('abcc5c3929b50089e65ca8d7f17faa9a0d3f44ef5bcb0253beaee13d480bc1a26460aa9d0ff2c76ec4115dc6fbb55dbcbe73d558d03b41a0b44af73fe1fcdef6')
 
 build() {
   cd "${pkgname}-${pkgver}"
@@ -27,6 +28,4 @@ build() {
 package() {
   cd "${pkgname}-${pkgver}"
   make DESTDIR=$pkgdir install
-  # fix messed up docs dir
-  chown -R root:root $pkgdir/usr/share/doc/$pkgname
 }
