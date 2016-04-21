@@ -4,21 +4,28 @@ buildarch=212
 
 pkgname=unicornscan
 pkgver=0.4.7
-pkgrel=5
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='A new information gathering and correlation engine.'
 url='http://www.unicornscan.org/'
-depends=('libpcap' 'postgresql-libs' 'libdnet' 'libltdl')
+depends=('libpcap' 'postgresql-libs' 'libdnet' 'libltdl' 'geoip')
 makedepends=('flex' 'bison')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=("http://www.unicornscan.org/releases/${pkgname}-${pkgver}-2.tar.bz2")
-sha512sums=('e952bad280b0f926cca2eb0dd960114f45da497f56c4a20a939b42eefb0c515c0613ca7271709778f83a8de5819a64c42616e38a73ef67fe08c44157c812d230')
+source=("http://downloads.sourceforge.net/project/osace/unicornscan/unicornscan%20-%200.4.7%20source/unicornscan-$pkgver-2.tar.bz2" "unicornscan-0.4.7-gcc5.patch")
+sha512sums=('e952bad280b0f926cca2eb0dd960114f45da497f56c4a20a939b42eefb0c515c0613ca7271709778f83a8de5819a64c42616e38a73ef67fe08c44157c812d230'
+            '169a35af9db4787ad25917f4f65b7a458aaf4e11c116edd930df7087444f02e53ec0eff20257e7afcac45f70f1df781b9d8098a62825e4cf3a224bca429cc221')
 options=(!emptydirs)
+install="$pkgname.install"
+
+prepare(){
+  cd $pkgname-$pkgver
+  patch -Np1 < $srcdir/unicornscan-0.4.7-gcc5.patch
+}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure CFLAGS="${CFLAGS} -D_GNU_SOURCE" --prefix=/usr --localstatedir=/var/lib --libexecdir=/usr/lib/${pkgname} --sysconfdir=/etc/${pkgname} --with-pgsql
+  ./configure CFLAGS="${CFLAGS} -D_GNU_SOURCE -lGeoIP" --prefix=/usr --localstatedir=/var/lib --libexecdir=/usr/lib/${pkgname} --sysconfdir=/etc/${pkgname} --with-pgsql
   make
 }
 
