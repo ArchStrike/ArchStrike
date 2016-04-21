@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=fbht-git
-pkgver=r53.9e515ef
+pkgver=r68.1ffc236
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Facebook Hacking Tool"
