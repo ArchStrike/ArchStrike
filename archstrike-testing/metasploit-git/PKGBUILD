@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=metasploit-git
-pkgver=20150524.r33578
+pkgver=20160420.r38074
 pkgrel=1
 epoch=2
 groups=('archstrike' 'archstrike-exploit' 'archstrike-fuzzers' 'archstrike-scanners')
@@ -21,7 +21,8 @@ replaces=('metasploit')
 conflicts=('metasploit')
 provides=('metasploit')
 backup=('usr/share/metasploit/log/production.log')
-md5sums=('SKIP')
+install="$pkgname.install"
+sha512sums=('SKIP')
 
 pkgver() {
     cd "${pkgname}"
@@ -65,8 +66,8 @@ package() {
   bundle install --deployment
   rm msfupdate
   #chmod 0644 vendor/bundle/ruby/1.9.1/gems/robots-0.10.1/lib/robots.rb
-  chmod 0644 vendor/bundle/ruby/2.2.0/gems/robots-0.10.1/lib/robots.rb
-  chmod 0644 vendor/bundle/ruby/2.2.0/gems/*/*/*.rb
+  #chmod 0644 vendor/bundle/ruby/$(ruby --version|awk '{print $2}'|cut -d'p' -f1)/gems/robots-0.10.1/lib/robots.rb
+  chmod 0644 vendor/bundle/ruby/$(ruby --version|awk '{print $2}'|cut -d'p' -f1)/gems/*/*/*.rb
   install -Dm0666 /dev/null "${pkgdir}"/usr/share/metasploit/log/production.log
 
   cat > "${pkgdir}/usr/bin/msfbinscan" <<EOF
