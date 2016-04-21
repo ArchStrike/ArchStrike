@@ -1,0 +1,31 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=whatweb-git
+_pkgname=WhatWeb
+pkgver=r4127.60d502e
+pkgrel=1
+groups=('archstrike' 'archstrike-webapps' 'archstrike-recon')
+pkgdesc="Next generation web scanner that identifies what websites are running."
+arch=('any')
+url='https://github.com/urbanadventurer/WhatWeb'
+license=('GPL')
+conflicts=('whatweb')
+provides=('whatweb')
+depends=('ruby')
+source=("$pkgname::git+https://github.com/urbanadventurer/$_pkgname.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "$pkgname"
+  ( set -o pipefail
+    git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
+    printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  )
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  make DESTDIR=$pkgdir install
+}
