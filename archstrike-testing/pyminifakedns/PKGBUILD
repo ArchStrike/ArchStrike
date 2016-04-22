@@ -19,15 +19,10 @@ prepare() {
   sed -i '1s/^/#!\/usr\/bin\/env python2\n\n/' 1
 }
 
-build() {
-  cd "$srcdir"
-
-  install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/pyminifakedns"
-
+package() {
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
   cp --no-preserve=ownership 1 "$pkgdir/usr/share/pyminifakedns/pyminifakedns.py"
-
   chmod +x "$pkgdir/usr/share/pyminifakedns/pyminifakedns.py"
-
   ln -s "/usr/share/pyminifakedns/pyminifakedns.py" "$pkgdir/usr/bin/pyminifakedns"
 }
