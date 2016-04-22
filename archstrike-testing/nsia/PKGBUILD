@@ -2,6 +2,8 @@
 
 buildarch=1
 
+DLAGENTS=("http::/usr/bin/curl -k -fLC - --retry 3 --retry-delay 3 -o %o %u")
+
 pkgname=nsia
 pkgver=1.0.6
 pkgrel=5
