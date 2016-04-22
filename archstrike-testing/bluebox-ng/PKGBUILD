@@ -12,7 +12,7 @@ url='https://github.com/jesusprubio/bluebox-ng'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL3')
 depends=('coffee-script' 'python2' 'nmap')
-makedepends=('git')
+makedepends=('git' 'npm')
 source=("$url/archive/$pkgver.tar.gz")
 sha512sums=('c3fc0b41b92c70cbd0abe80de9d50fc6769a15e4997b7b3186a231d2644d634fc4948db4817925c44186b9246d79f8847bef8e93c041396dfcf80d8a0b967898')
 
