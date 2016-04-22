@@ -1,0 +1,35 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=fierce-git
+pkgver=20130507.r3
+pkgrel=1
+groups=('archstrike' 'archstrike-scanners')
+pkgdesc="A DNS scanner"
+arch=('any')
+url='https://github.com/davidpepper/fierce-domain-scanner'
+license=(unknown)
+makedepends=('git')
+replaces=('fierce')
+provides=('fierce')
+depends=('perl' 'perl-net-dns')
+source=("${pkgname}::git+https://github.com/davidpepper/fierce-domain-scanner.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  # Conform to our install location.
+  sed -i 's|hosts\.txt|/etc/fierce/hosts.txt|' "fierce.pl"
+}
+
+package() {
+  cd ${pkgname}
+  install -D -m755 fierce.pl "$pkgdir/usr/bin/fierce.pl"
+  install -D -m644 hosts.txt "$pkgdir/etc/fierce/hosts.txt"
+}
