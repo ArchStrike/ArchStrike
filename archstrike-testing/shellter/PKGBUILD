@@ -17,7 +17,7 @@ noextract=('Shellter_v1.7_Wine_Beta1.rar')
 sha512sums=('719798de8ba5c0c891eb4a8bf4bb5c0a17dd08683bdd264ab91298e7cdb6091eef732e28b54346db7c54203a7ccce72326cd6b1e6d743aceda2832e48b916e37')
 
 build(){
-  unzip shellter.zip
+  unzip -o shellter.zip
 }
 
 package() {
