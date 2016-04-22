@@ -4,8 +4,8 @@
 buildarch=212
 
 pkgname=gr-gsm-git
-pkgver=20141203.r154
-pkgrel=1
+pkgver=20160417.r566
+pkgrel=2
 pkgdesc="Gnuradio blocks and tools for receiving GSM transmissions"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/ptrkrysik/gr-gsm"
@@ -14,7 +14,14 @@ depends=('gnuradio' 'boost' 'swig' 'log4cpp' 'python2-scipy' 'libosmocore')
 makedepends=('git' 'cmake' 'doxygen')
 provides=('gr-gsm')
 source=("${pkgname}::git+https://github.com/ptrkrysik/gr-gsm")
-sha1sums=('SKIP')
+sha512sums=('SKIP')
+
+prepare() {
+  cd "${pkgname}"
+  # upgrading doxygen docs to fix warnings
+  doxygen -u docs/doxygen/Doxyfile.in > /dev/null
+  doxygen -u docs/doxygen/Doxyfile.swig_doc.in > /dev/null
+}
 
 pkgver() {
   cd "${pkgname}"
