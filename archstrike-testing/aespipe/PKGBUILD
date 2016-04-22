@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=aespipe
 pkgver=2.4d
-pkgrel=1
+pkgrel=2
 pkgdesc="Reads data from stdin and outputs encrypted or decrypted results to stdout"
 url="http://loop-aes.sourceforge.net/aespipe"
 license=('GPL')
@@ -33,7 +33,11 @@ build() {
     fi
 
     make
-    make tests
+}
+
+check() {
+   cd ${pkgname}-v${pkgver}
+   make tests
 }
 
 package() {
