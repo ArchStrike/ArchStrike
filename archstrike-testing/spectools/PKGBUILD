@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=spectools
-pkgver=2010_04_R1
+pkgver=2016_01_R1
 pkgrel=1
 pkgdesc="Spectrum-Tools is a set of utilities for using the Wi-Spy USB spectrum analyzer hardware. Stable version."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -11,14 +11,14 @@ url="http://www.kismetwireless.net/spectools/"
 license=('GPL2')
 depends=('libusb-compat' 'gtk2')
 groups=('archstrike' 'archstrike-wireless')
-source=(http://www.kismetwireless.net/code/spectools-${pkgver//_/-}.tar.gz)
-md5sums=('1574813385fbe652736b439accec7120')
+source=(http://www.kismetwireless.net/code/spectools-${pkgver//_/-}.tar.xz)
+sha512sums=('59da488e08114018cd756d45f48541a26f643a3618bfbaec0e72c434c80e6cbc8b4f930476206c66af84ee574807e011489f884e96c7291c626b1b4e69619fad')
 
  build() {
   cd $srcdir/spectools-${pkgver//_/-}
+  export CFLAGS+=" -std=gnu89"
   autoreconf --install
   ./configure --prefix=/usr --sysconfdir=/etc
-  make
 }
 
 package(){
