@@ -3,18 +3,18 @@
 buildarch=1
 
 pkgname=python2-xdot
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="Interactive viewer for Graphviz dot files"
 arch=('any')
 url="https://github.com/jrfonseca/xdot.py"
 license=('LGPL')
-depends=('graphviz' 'pygtk')
-makedepends=('python2-distribute')
+depends=('python2' 'graphviz' 'pygtk')
+makedepends=('python2-setuptools')
 conflicts=('xdot')
 provides=('xdot')
-source=("https://pypi.python.org/packages/source/x/xdot/xdot-$pkgver.tar.gz")
-sha512sums=('7490ba913852443ca69c1ad9abbf2708e8f6d79e1beddfb6ff96afc0d3480a92e1c533ab7dee87d04072dbd397bd9cbbace559ab199fd4b273a8caeb696a2196')
+source=("https://pypi.python.org/packages/f5/52/7cec1decf2b07c7749eb997fa5f365781a512722f48e6ad4294e31c94629/xdot-$pkgver.tar.gz")
+sha512sums=('67e86cc0c00fe729bbeaa34bba43ef196edcc4b4603d235438aedb22a1e4305f8a8ffabb72c72a4c3f9b5eb2be4c0de02aa02e0c2a10faaf9a3fb7c3382bc086')
 
 package() {
   cd "$srcdir/xdot-$pkgver"
@@ -23,4 +23,7 @@ package() {
    -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
    -e "s|#![ ]*/bin/python$|#!/usr/bin/python2|" \
    $(find $pkgdir -name '*.py')
+   chmod 644 $pkgdir/usr/lib/python2.7/site-packages/xdot-0.7-py2.7.egg-info/*.txt
+   chmod 644 $pkgdir/usr/lib/python2.7/site-packages/xdot-0.7-py2.7.egg-info/PKG-INFO
+   sed -i 's|python3|python2|' $pkgdir/usr/lib/python2.7/site-packages/xdot.py
 }
