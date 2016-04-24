@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=ipdecap
-pkgver=0.7
+pkgver=0.7.1
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="Decapsulate traffic encapsulated within GRE, IPIP, 6in4, ESP (ipsec) protocols, can also remove IEEE 802.1Q (virtual lan) header"
@@ -12,7 +12,7 @@ url="https://github.com/lpefferkorn/ipdecap"
 license=('GPL3')
 depends=('openssl' 'libpcap')
 source=("https://github.com/lpefferkorn/ipdecap/archive/v$pkgver.tar.gz")
-md5sums=('b7800e5247ac77db4229d793515bb30b')
+sha512sums=('b44a94f28c97d853d3e4a5a40aec65295eebb71838e86798d0ea78b0a0bec15ef9efde60c5b12e635b6316f05361a090a5ada2318a5c2e223a5ad86269946f07')
 
 build() {
   cd $srcdir/ipdecap-$pkgver
