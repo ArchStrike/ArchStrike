@@ -1,0 +1,37 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=sctpscan-git
+pkgver=20140205.r34
+pkgrel=1
+groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
+pkgdesc="A network scanner for discovery and security"
+url="http://www.p1sec.com/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+depends=('glib2')
+makedepends=('git')
+license=('GPL3')
+source=("${pkgname}::git+https://github.com/philpraxis/sctpscan.git" "setpgrp.patch")
+sha512sums=('SKIP'
+            '9b2c10235a67abf847c0f9eb07887f4a2044ffc036be73f9e6b00a55ea585b5644b1bf4e93a485ee7ba1b7bf273d791766d5ca359b402a32b1b6926edd441022')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd $pkgname
+  patch < $srcdir/setpgrp.patch
+}
+
+build() {
+  cd $pkgname
+  make
+}
+
+package() {
+  cd $pkgname
+  install -Dm755 sctpscan "$pkgdir/usr/bin/sctpscan"
+}
