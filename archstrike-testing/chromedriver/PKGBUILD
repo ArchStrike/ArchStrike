@@ -13,8 +13,8 @@ depends=('libxi' 'gconf' 'nss')
 optdepends=('chromium' 'google-chrome')
 source_i686=("http://chromedriver.storage.googleapis.com/$pkgver/${pkgname}_linux32.zip")
 source_x86_64=("http://chromedriver.storage.googleapis.com/$pkgver/${pkgname}_linux64.zip")
-sha512sums_i686=('95290850a84b25ae0bd069afb9957bca49bae94854d69594e431cd3d46cfed3039386c8fb4ab38bda8c2a91327a77c543e545145c08b8e235f33da11dd81f3c0')
-sha512sums_x86_64=('b8624ebfeb6db0e43b12385cdaf6bab7f503c09f05b374a25b0b9e94e5ad9dea08e2f0603f7006b6fd8dbece96372e51b569c17414273417a2d8eb90a8d6fe42')
+sha512sums_i686=('12abab33773707dbd02c398a86cb031c8d55063456a71a7546cd24a4948d67f659bf1ce8badb31243860ab609424ce95efd8aa6637598bb721d64f1c4d1b9ab6')
+sha512sums_x86_64=('962e111fb5845f0df68de5a5362eff65a3d271bf0da1e3e17b386185e16d4c09c5dd0ca74b67aa6db52bd60683c703c24742fbf088d7bb88508bdbfec23aba57')
 
 package() {
   mkdir -p "$pkgdir/usr/bin/"
