@@ -18,6 +18,10 @@ sha512sums=('f089ca6c3f04eec0b77fef3a711a289d63513238a3a1ceca3e2aba16bae226a9654
 prepare() {
  cd $pkgname-$pkgver
  autoreconf -vifs
+ # Fixing compile issue
+ # make: *** No rule to make target include/version.h', needed bysrc/call.cpp'. Stop.
+ echo "#define SIPP_VERSION \"v$pkgver\"" > include/version.h
+
 } 
 
 build() {
