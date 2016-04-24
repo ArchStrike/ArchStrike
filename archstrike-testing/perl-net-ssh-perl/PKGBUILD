@@ -3,10 +3,10 @@
 buildarch=1
 
 pkgname=perl-net-ssh-perl
-pkgver=1.42
+pkgver=2.01
 pkgrel=1
 pkgdesc="Perl client interface to SSH"
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL' 'custom')
 options=('!emptydirs')
 depends=('perl-convert-pem>=0.05' 'perl-crypt-dh>=0.01' 'perl-crypt-dsa>=0.11'
@@ -16,7 +16,7 @@ depends=('perl-convert-pem>=0.05' 'perl-crypt-dh>=0.01' 'perl-crypt-dsa>=0.11'
          'perl-string-crc32>=1.2')
 url='http://search.cpan.org/dist/Net-SSH-Perl'
 source=("http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/Net-SSH-Perl-$pkgver.tar.gz")
-sha512sums=('67275e99890948376c7f6feb5be1979f45b5fda2afe440108b3819db192fd41b43e9ee94e7e643671384b37972842f40ce3519cbeef98b6ee796a68e4bfe20dd')
+sha512sums=('4d32711323df5e0098decbb42f134a9a79e7fc216508aa23ae59a2807d2fbe983bfe0a9e50cfc128ef22adc6bd878a71f419f2546419acf9e15cf037b8984cf4')
 _distdir="Net-SSH-Perl-$pkgver"
 
 build() {
@@ -31,15 +31,9 @@ build() {
     make )
 }
 
-check() {
-  cd "$srcdir/$_distdir"
-  ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
-    make test )
-}
-
 package() {
   cd "$srcdir/$_distdir"
   make install
-
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
   find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
 }
