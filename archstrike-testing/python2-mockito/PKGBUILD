@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-mockito
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A spying framework based on Java library with the same name."
 arch=('any')
-url="http://code.google.com/p/mockito-python"
+url="https://pypi.python.org/pypi/mockito/"
 license=('MIT')
 depends=('python2')
-makedepends=('python2-distribute')
-source=("https://pypi.python.org/packages/source/m/mockito/mockito-$pkgver.tar.gz")
-md5sums=('b18d93fe67bb8fa1de6bb9d2b519df70')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/12/1f/fa7396989d346889497c4287565650548277948926ab816fb9631f20eb14/mockito-$pkgver.tar.gz")
+sha512sums=('818874c16514ba1b64930971aa2442910bb897f7281e5338d7638a4305aade6d1c8ddb7f8c6aca2bd989fe58eb562c867ac25609aac38ce7b3d2b37b1fbad4b6')
 
 package() {
   cd "$srcdir/mockito-$pkgver"
@@ -21,7 +21,7 @@ package() {
   rm -rf tests
 
   python2 setup.py install --prefix=/usr --root=$pkgdir/ --optimize=1
-
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
