@@ -1,7 +1,7 @@
 #Maintainer: ArchStrike <team@arcstrike.org>
 
 pkgname=python2-boto3
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 pkgdesc="The AWS SDK for Python"
 url="https://github.com/boto/boto3"
@@ -9,8 +9,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('APACHE')
 arch=('any')
-source=("https://pypi.python.org/packages/source/b/boto3/boto3-$pkgver.tar.gz")
-sha512sums=('fb404fb0705e5e2b3c232b55371da2685c254dc3e56eecd522989d2a6fa032c1df56f2208862c0e7da0edbe6a67f9f3f33610e55b68e52756f7429a8e3ab8e45')
+source=("https://github.com/boto/boto3/archive/$pkgver.tar.gz")
+sha512sums=('10fa396e8896a157e80d028b590056dd8e967afec37062056d94fab45652d4adedbe5e98f1cc67c6c8b9ae9282145367b4e1973fd7506170e486b026b57db9f5')
 
 build() {
     cd $srcdir/boto3-$pkgver
