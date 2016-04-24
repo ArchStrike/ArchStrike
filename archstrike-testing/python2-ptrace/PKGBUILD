@@ -5,16 +5,15 @@ buildarch=1
 
 pkgname=(python2-ptrace python-ptrace)
 _pkgname=python-ptrace
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.9
+pkgrel=1
 pkgdesc="A debugging using ptrace (Linux, BSD and Darwin system call to trace processes) written in Python."
-url="https://pypi.python.org/pypi/ptrace/"
+url="https://pypi.python.org/pypi/python-ptrace/"
 arch=('any')
 license=('GPL2')
-depends=('python2' 'python')
 makedepends=('python2-setuptools' 'python-setuptools')
-source=(http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz)
-sha512sums=('1c3dadf381ad0fe30374fe030fc3a81b5ec0885c31ac9be4ae561cf14ff891fc2e465555133b2efce6be0154b06768121aa068161bb3de10aca6df0eb181e25c')
+source=("https://pypi.python.org/packages/72/7d/c2bb02f71264eba6fe807983495acee389d251e42ad718cf7e281952d883/python-ptrace-$pkgver.tar.gz")
+sha512sums=('a09e20d193f036cbd36af8c139ba35253f23b31d1d512b955a8bce7bca20d77e8a313f48142bc122e1d95c5994dc6ce24db38ce33b0840998d7004a38fc4738f')
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
@@ -32,6 +31,7 @@ build() {
 }
 
 package_python-ptrace() {
+  depends=('python')
   cd "$srcdir/$_pkgname-$pkgver"
   python setup.py install --root=$pkgdir/ --optimize=1
   #Fixing for conflicts
@@ -40,6 +40,7 @@ package_python-ptrace() {
 }
 
 package_python2-ptrace() {
+  depends=('python2')
   cd "$srcdir/$_pkgname-$pkgver-py2"
 
   python2 setup.py install --root=$pkgdir/ --optimize=1
