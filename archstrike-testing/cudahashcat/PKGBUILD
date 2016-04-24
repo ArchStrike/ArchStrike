@@ -1,5 +1,7 @@
 #Maintainer:  ArchStrike <team@archstrike.org>
 
+buildarch="192"
+
 groups=('archstrike' 'archstrike-crackers')
 pkgname='cudahashcat'
 _pkgname='cudaHashcat'
