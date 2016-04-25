@@ -11,7 +11,7 @@ url="https://github.com/secretsquirrel/the-backdoor-factory"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('capstone' 'python2-pefile' 'curl')
-dependsx86_64=('capstone' 'python2-pefile' 'lib32-glibc' 'curl') 
+depends_x86_64+=('lib32-glibc')
 makedepends=('git' 'autoconf')
 replaces=('backdoor-factory')
 conflicts=('backdoor-factory')
@@ -21,46 +21,51 @@ source=("${pkgname}::git+https://github.com/secretsquirrel/the-backdoor-factory.
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "$pkgname"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
- cd "${pkgname}/osslsigncode"
- ./autogen.sh
+  cd "$pkgname/osslsigncode"
+  ./autogen.sh
 }
 
 build() {
-  cd "${pkgname}/osslsigncode"
+  cd "$pkgname/osslsigncode"
   ./configure --prefix=/usr
   make
-  if [[ $CARCH == "x86_64" ]] || [[ $CARCH == "i686" ]]; then
-     cd "${srcdir}/${pkgname}/aPLib/example"
-     gcc -c -I../lib/elf -m32 -z noexecstack -Wall -O2 $CFLAGS -s -o appack.o appack.c -v 
+
+  if [[ "$CARCH" = 'x86_64' ]] || [[ "$CARCH" = 'i686' ]]; then
+     cd "$srcdir/$pkgname/aPLib/example"
+     gcc -c -I../lib/elf -m32 -z noexecstack -Wall -O2 $CFLAGS -s -o appack.o appack.c -v
      gcc -m32 -z noexecstack -Wall -O2 $CFLAGS -s -o appack appack.o ../lib/elf/aplib.a -v
-  fi  
+  fi
 }
 
 package() {
-  cd "${pkgname}/osslsigncode"
+  cd "$pkgname/osslsigncode"
   make DESTDIR=$pkgdir install
-  if [[ $CARCH == "x86_64" ]] || [[ $CARCH == "i686" ]]; then
-     cd "${srcdir}/${pkgname}/aPLib/example"
-     install -Dm755 appack $pkgdir/usr/bin/appack
+
+  if [[ "$CARCH" = 'x86_64' ]] || [[ "$CARCH" = 'i686' ]]; then
+     cd "$swcdir/$pkgname/aPLib/example"
+     install -Dm755 appack "$pkgdir/usr/bin/appack"
   fi
-  cd "${srcdir}/${pkgname}"
+
+  cd "$srcdir/$pkgname"
   install -dm755 "$pkgdir/usr/share/backdoor-factory"
-  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/bin"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/backdoor-factory"
+
   cat > "$pkgdir/usr/bin/backdoor-factory" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 python2 /usr/share/backdoor-factory/backdoor.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/backdoor-factory"
-  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-  chmod 644 $pkgdir/usr/share/backdoor-factory/aPLib/lib/macho/aplib.a
-  chmod 644 $pkgdir/usr/share/backdoor-factory/aPLib/lib/macho64/aplib.a
-  sed -i 's|python|python2|' $pkgdir/usr/share/backdoor-factory/osslsigncode/misc/pagehash.py
-  rm -rf $pkgdir/usr/share/backdoor-factory/osslsigncode
-  rm -rf $pkgdir/usr/share/backdoor-factory/aPLib
+
+  chmod 0755 "$pkgdir/usr/bin/backdoor-factory"
+  find "$pkgdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  chmod 644 "$pkgdir/usr/share/backdoor-factory/aPLib/lib/macho/aplib.a"
+  chmod 644 "$pkgdir/usr/share/backdoor-factory/aPLib/lib/macho64/aplib.a"
+  sed -i 's|python|python2|' "$pkgdir/usr/share/backdoor-factory/osslsigncode/misc/pagehash.py"
+  rm -rf "$pkgdir/usr/share/backdoor-factory/osslsigncode"
+  rm -rf "$pkgdir/usr/share/backdoor-factory/aPLib"
 }
