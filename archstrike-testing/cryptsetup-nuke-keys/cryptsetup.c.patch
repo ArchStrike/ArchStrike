@@ -1,8 +1,8 @@
 diff --git a/src/cryptsetup.c b/src/cryptsetup.c
-index d523dc9..ec9e663 100644
+index 296699a..75c38a8 100644
 --- a/src/cryptsetup.c
 +++ b/src/cryptsetup.c
-@@ -36,6 +36,7 @@ static const char *opt_header_backup_file = NULL;
+@@ -37,6 +37,7 @@ static const char *opt_header_backup_file = NULL;
  static const char *opt_uuid = NULL;
  static const char *opt_header_device = NULL;
  static const char *opt_type = "luks";
@@ -10,7 +10,7 @@ index d523dc9..ec9e663 100644
  static int opt_key_size = 0;
  static long opt_keyfile_size = 0;
  static long opt_new_keyfile_size = 0;
-@@ -1027,6 +1028,9 @@ static int action_luksAddKey(void)
+@@ -1036,6 +1037,9 @@ static int action_luksAddKey(void)
  		if (r < 0)
  			goto out;
  
@@ -20,7 +20,7 @@ index d523dc9..ec9e663 100644
  		r = crypt_keyslot_add_by_passphrase(cd, opt_key_slot,
  						    password, password_size,
  						    password_new, password_new_size);
-@@ -1039,6 +1043,15 @@ out:
+@@ -1048,6 +1052,15 @@ out:
  	return r;
  }
  
@@ -36,7 +36,7 @@ index d523dc9..ec9e663 100644
  static int action_luksChangeKey(void)
  {
  	const char *opt_new_key_file = (action_argc > 1 ? action_argv[1] : NULL);
-@@ -1377,6 +1390,7 @@ static struct action_type {
+@@ -1386,6 +1399,7 @@ static struct action_type {
  	{ "erase",        action_luksErase ,   1, 1, N_("<device>"), N_("erase all keyslots (remove encryption key)") },
  	{ "luksFormat",   action_luksFormat,   1, 1, N_("<device> [<new key file>]"), N_("formats a LUKS device") },
  	{ "luksAddKey",   action_luksAddKey,   1, 1, N_("<device> [<new key file>]"), N_("add key to LUKS device") },

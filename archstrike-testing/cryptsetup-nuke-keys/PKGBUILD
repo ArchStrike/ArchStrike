@@ -4,19 +4,19 @@ buildarch=212
 
 _pkgname=cryptsetup
 pkgname=$_pkgname-nuke-keys
-pkgver=1.6.8
+pkgver=1.7.1
 pkgrel=1
 pkgdesc='A patched cryptsetup which adds the option to nuke all keyslots given a certain passphrase'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
 url='https://github.com/offensive-security/cryptsetup-nuke-keys'
-groups=()
+groups=('archstrike')
 depends=('device-mapper' 'libgcrypt' 'popt' 'util-linux')
 options=('!emptydirs')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=(
-  "https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/$_pkgname-$pkgver.tar.xz"
+  "https://www.kernel.org/pub/linux/utils/cryptsetup/v1.7/$_pkgname-$pkgver.tar.xz"
   'encrypt_hook'
   'encrypt_install'
   'sd-encrypt'
@@ -26,11 +26,11 @@ source=(
   'setup.c.patch'
 )
 sha512sums=(
-  'db189a98da6329f4d4c2ae92dbdc08ccffdf6ae41c964186ebf48a612bf0aa9731653ef6b7549b5feee0043edfa171874c3609418499902e6339b48481c621d7'
+  '02fb87871dc3729883a1c17748470c21dd58263741c82d42bce5b1789c419f8a75e36ac9415304986001b4ce0db22ee437566fb7f5e3584e4b566aba9a76950d'
   '27fe07cb8098534a1666f579920d4ac49c3b688e6a50320e98e3f6520e641a1c965541a19292e5872858d86c0a9df052496c3d81637bf6e1da3c1b43884a401d'
   '9a98b696de6d0ea10018dd0aabbc04af3f75407261d91a0299a339715b0278638868d44e4ca6d35bb9ce9575285491ae78f932f8468a34084b185483ddab3fd0'
   '76892c8f6fb2143c4964cb1233bb4dda44de0a26909e4da65be6f702ebe4b242a74c93f7910f57d1ca8f1ac322dbf926e215ad42181632f6ef535cf92c6e7a91'
-  'bc951439e96d9e5cd438e34db4568417f2cf3a932ce60eba8e94f706c9884cdbdc039dd20efd7f67397f1d5fb3fa6d1a9b76500795e469ed08beb0b1a638bf70'
+  '7b43e60e1e905bbce31b01f3a3f7a9458e5f60b7e97c5554d5dee415f5619d3d2633708acc03e66a64e44a22a6cedb5739100fda97ec8126e0e632897fcc39d4'
   'fc714776dd0e8395f75c715f32536492f4c11ce0fb6f946319a77c6c080953637980f7baf2457b70b96fcd8e96299c15e87daa48d11872206d2fd5fc36d108b9'
   '39b39b5dcf9e9d0675477a0392c0375622c99b9b658512dc5a8dc1f7601b4119c3f9845d13c1dce66d305a2ee19b5d15141f68fb8cd76de4b323be7b776e644d'
   '964bd334ad37ea4a8502125673a2d062ee36b886fc2738455a43ce8a76f026a34eaba434a8a36f8236c633a6cb8bdf8eda15b1b0338d505d651f1eb0970ddc6e'
