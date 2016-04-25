@@ -2,59 +2,62 @@
 
 buildarch=212
 
-pkgname=cryptsetup-nuke-keys
-pkgver=1.6.6
+_pkgname=cryptsetup
+pkgname=$_pkgname-nuke-keys
+pkgver=1.6.8
 pkgrel=1
-pkgdesc="cryptsetup patched to nuke all keyslots given a certain passphrase"
+pkgdesc='A patched cryptsetup which adds the option to nuke all keyslots given a certain passphrase'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
-url="https://github.com/offensive-security/cryptsetup-nuke-keys"
+url='https://github.com/offensive-security/cryptsetup-nuke-keys'
 groups=()
 depends=('device-mapper' 'libgcrypt' 'popt' 'util-linux')
 options=('!emptydirs')
-source=(https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/cryptsetup-$pkgver.tar.xz
-        encrypt_hook
-        encrypt_install
-        sd-encrypt
-        cryptsetup.c.patch
-        keymanage.c.patch
-        libcryptsetup.h.patch
-        setup.c.patch)
-sha512sums=('6ee6b4e8fe4f721bb97d1cf47c5e2d1c96001dd3ac48154d414f64d23620ac3ec3eeea2ad584a1a3111e07a086c8a4fdbfabdf4859cda58ba2bd6765b1f009a8'
-            '27fe07cb8098534a1666f579920d4ac49c3b688e6a50320e98e3f6520e641a1c965541a19292e5872858d86c0a9df052496c3d81637bf6e1da3c1b43884a401d'
-            '9a98b696de6d0ea10018dd0aabbc04af3f75407261d91a0299a339715b0278638868d44e4ca6d35bb9ce9575285491ae78f932f8468a34084b185483ddab3fd0'
-            '76892c8f6fb2143c4964cb1233bb4dda44de0a26909e4da65be6f702ebe4b242a74c93f7910f57d1ca8f1ac322dbf926e215ad42181632f6ef535cf92c6e7a91'
-            '333e457cb559ed5d9754110fc88f444b8ae4d4c22fd25fc695789356cbc0f718567200a719490f94f236487534bf285b4844d18a2494483873477a8d5b06631b'
-            '367d6b4e398735555e15d014800df812d5c08611b17164051c22f59365fe33d725ff5190d49db1c4b358ab70a28d2c3e9b556c86ab3b91163e22a73d8d2b2086'
-            'bad92a2b5004c54940db8ed82d1f614292008333ef51d868da6ebd86b523bb49b71b92c799c8fd29f6e437a70692e53cafc7f1050b8438a858e03ae6ada66eda'
-            '1a19f5a711946b942ca6caf6ca7bb6c824e95fc2a6004fdf57c7d43e3c3d0b051aae72575e1b34096776194b9981e83286eee289c29066c8bd09e17948fca0a4')
-provides=('cryptsetup')
-conflicts=('cryptsetup')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=(
+  "https://www.kernel.org/pub/linux/utils/cryptsetup/v1.6/$_pkgname-$pkgver.tar.xz"
+  'encrypt_hook'
+  'encrypt_install'
+  'sd-encrypt'
+  'cryptsetup.c.patch'
+  'keymanage.c.patch'
+  'libcryptsetup.h.patch'
+  'setup.c.patch'
+)
+sha512sums=(
+  'db189a98da6329f4d4c2ae92dbdc08ccffdf6ae41c964186ebf48a612bf0aa9731653ef6b7549b5feee0043edfa171874c3609418499902e6339b48481c621d7'
+  '27fe07cb8098534a1666f579920d4ac49c3b688e6a50320e98e3f6520e641a1c965541a19292e5872858d86c0a9df052496c3d81637bf6e1da3c1b43884a401d'
+  '9a98b696de6d0ea10018dd0aabbc04af3f75407261d91a0299a339715b0278638868d44e4ca6d35bb9ce9575285491ae78f932f8468a34084b185483ddab3fd0'
+  '76892c8f6fb2143c4964cb1233bb4dda44de0a26909e4da65be6f702ebe4b242a74c93f7910f57d1ca8f1ac322dbf926e215ad42181632f6ef535cf92c6e7a91'
+  'bc951439e96d9e5cd438e34db4568417f2cf3a932ce60eba8e94f706c9884cdbdc039dd20efd7f67397f1d5fb3fa6d1a9b76500795e469ed08beb0b1a638bf70'
+  'fc714776dd0e8395f75c715f32536492f4c11ce0fb6f946319a77c6c080953637980f7baf2457b70b96fcd8e96299c15e87daa48d11872206d2fd5fc36d108b9'
+  '39b39b5dcf9e9d0675477a0392c0375622c99b9b658512dc5a8dc1f7601b4119c3f9845d13c1dce66d305a2ee19b5d15141f68fb8cd76de4b323be7b776e644d'
+  '964bd334ad37ea4a8502125673a2d062ee36b886fc2738455a43ce8a76f026a34eaba434a8a36f8236c633a6cb8bdf8eda15b1b0338d505d651f1eb0970ddc6e'
+)
 
 prepare() {
-  cd "${srcdir}"/${pkgname%-nuke*}-${pkgver}
-  # luksAddNuke
-  patch -p1 < ${srcdir}/cryptsetup.c.patch
-  patch -p1 < ${srcdir}/keymanage.c.patch
-  patch -p1 < ${srcdir}/libcryptsetup.h.patch
-  patch -p1 < ${srcdir}/setup.c.patch
+  cd $_pkgname-$pkgver
+
+  # Patch in nuke keys support
+  patch -p1 < "$srcdir/cryptsetup.c.patch"
+  patch -p1 < "$srcdir/keymanage.c.patch"
+  patch -p1 < "$srcdir/libcryptsetup.h.patch"
+  patch -p1 < "$srcdir/setup.c.patch"
 }
 
 build() {
-  cd "${srcdir}"/${pkgname%-nuke*}-${pkgver}
-  ./configure --prefix=/usr --disable-static --enable-cryptsetup-reencrypt
+  cd $_pkgname-$pkgver
+  ./configure --prefix=/usr --sbindir=/usr/bin --disable-static --enable-cryptsetup-reencrypt
   make
 }
 
 package() {
-  cd "${srcdir}"/${pkgname%-nuke*}-${pkgver}
-  make DESTDIR="${pkgdir}" install
-  # install hook
-  install -D -m644 "${srcdir}"/encrypt_hook "${pkgdir}"/usr/lib/initcpio/hooks/encrypt
-  install -D -m644 "${srcdir}"/encrypt_install "${pkgdir}"/usr/lib/initcpio/install/encrypt
-  install -D -m644 "${srcdir}"/sd-encrypt "${pkgdir}"/usr/lib/initcpio/install/sd-encrypt
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 
-  # usrmove
-  cd "$pkgdir"/usr
-  mv sbin bin
+  # install hook
+  install -D -m644 "$srcdir"/encrypt_hook "$pkgdir"/usr/lib/initcpio/hooks/encrypt
+  install -D -m644 "$srcdir"/encrypt_install "$pkgdir"/usr/lib/initcpio/install/encrypt
+  install -D -m644 "$srcdir"/sd-encrypt "$pkgdir"/usr/lib/initcpio/install/sd-encrypt
 }

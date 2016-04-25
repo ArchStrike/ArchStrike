@@ -1,11 +1,13 @@
---- ./lib/libcryptsetup.h	2014-01-06 20:10:05.351392053 -0800
-+++ ./lib/libcryptsetup.h	2014-01-06 20:11:12.141390279 -0800
-@@ -725,6 +725,8 @@
- #define CRYPT_ACTIVATE_PRIVATE (1 << 4)
- /** corruption detected (verity), output only */
- #define CRYPT_ACTIVATE_CORRUPTED (1 << 5)
+diff --git a/lib/libcryptsetup.h b/lib/libcryptsetup.h
+index bf223a2..d40d5d0 100644
+--- a/lib/libcryptsetup.h
++++ b/lib/libcryptsetup.h
+@@ -752,6 +752,8 @@ int crypt_keyslot_destroy(struct crypt_device *cd, int keyslot);
+ #define CRYPT_ACTIVATE_SAME_CPU_CRYPT (1 << 6)
+ /** use submit_from_crypt_cpus for dm-crypt */
+ #define CRYPT_ACTIVATE_SUBMIT_FROM_CRYPT_CPUS (1 << 7)
 +/** key slot is a nuke, will wipe all keyslots */
 +#define CRYPT_ACTIVATE_NUKE (1 << 30)
  
+ 
  /**
-  * Active device runtime attributes

@@ -1,7 +1,9 @@
---- ./lib/luks1/keymanage.c	2014-01-06 20:12:00.504722334 -0800
-+++ ./lib/luks1/keymanage.c	2014-01-06 20:13:37.661386433 -0800
-@@ -941,6 +941,25 @@
- 	r = LUKS_verify_volume_key(hdr, vk);
+diff --git a/lib/luks1/keymanage.c b/lib/luks1/keymanage.c
+index d1d16cf..078d8e2 100644
+--- a/lib/luks1/keymanage.c
++++ b/lib/luks1/keymanage.c
+@@ -953,6 +953,25 @@ static int LUKS_open_key(unsigned int keyIndex,
+ 
  	if (!r)
  		log_verbose(ctx, _("Key slot %d unlocked.\n"), keyIndex);
 +
