@@ -8,7 +8,7 @@ buildarch=212
 pkgname=veracrypt
 _pkgver=1.17
 pkgver=${_pkgver/\-/_}
-pkgrel=1
+pkgrel=2
 pkgdesc='Free disk encryption software based on TrueCrypt'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike' 'archstrike-crypto')
@@ -18,19 +18,23 @@ depends=('fuse' 'wxgtk' 'device-mapper')
 makedepends=('git' 'nasm')
 options=('!makeflags')
 source=("https://github.com/veracrypt/VeraCrypt/archive/VeraCrypt_$_pkgver.tar.gz"
-        "$pkgname.desktop")
+        "$pkgname.desktop" "0002_gcc5_invalid_chars.patch")
 sha512sums=('c8bd49d8cb3f2490fe9b3c2728ff849c8f069138db54d6f4fd94af11068148ce289307e1afcdd46e9ba4863afa75d252956a1ac8f7441ce999c6f181a870e7d7'
-            'd779d831f8c235266710aa2e29a9216d783e7c1e9a31674d546df607834f7b8c217f1775a4a9e4e33c4d3476b2e24c176239d0e2749326250586918a5a7d7101')
+            'd779d831f8c235266710aa2e29a9216d783e7c1e9a31674d546df607834f7b8c217f1775a4a9e4e33c4d3476b2e24c176239d0e2749326250586918a5a7d7101'
+            '281a509abf4d0e531c08022ff939093d2dbf814ae9098e6085b0801c8ad8d2608da24ebff5aa3300a6d8ffe49428e9126009d8ad247eac0d71171e9aa2797d1f')
 
 prepare() {
   # Disable the makeself command
   cd VeraCrypt-VeraCrypt_$_pkgver/src
   sed -i 's|makeself|#makeself|' Main/Main.make
+  msg2 "Applying patches..."
+  patch -Np1 -i $srcdir/0002_gcc5_invalid_chars.patch  # compatibility with new gcc5 ABI
 }
 
 build() {
   cd VeraCrypt-VeraCrypt_$_pkgver/src
-  WX_CONFIG='/usr/bin/wx-config' make LFLAGS+='-ldl'
+  WX_CONFIG='/usr/bin/wx-config'
+  make LFLAGS+='-ldl'
 }
 
 package() {
