@@ -1,0 +1,30 @@
+# Maintainer: Archstrike <team@archstrike.org>
+# Contibutor: xorond <xorond@gmail.com>
+
+buildarch=212
+
+pkgname=passifist
+pkgver=1.0.8
+pkgrel=1
+groups=('archstrike' 'archstrike-networking' 'archstrike-scanners')
+pkgdesc="The tool analyzes broadcast traffic and has a plugin architecture through which it dissects and reports services found."
+arch=('i686' 'x86_64')
+url="http://www.cqure.net/wp/tools/network/passifist/"
+depends=('glibc' 'openssl' 'libpcap')
+license=('GPL3')
+source=("http://www.cqure.net/tools/passifist_src_${pkgver}.tgz")
+sha512sums=('0e4222ef05d1be17c1560f82411468a00c24980e60f372374df6f601dfafcdda04f605405cde5a0cbbcbf3a200449bdd86974203207d9fd3dab549edab084df5')
+
+build() {
+  cd $srcdir/passifist
+  ./configure
+  make
+}
+
+package() {
+  cd $srcdir/passifist
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/passifist"
+  install -Dm644 COPYING "$pkgdir/usr/share/passifist"
+  install -m755 passifist "$pkgdir/usr/bin/passifist"
+}
