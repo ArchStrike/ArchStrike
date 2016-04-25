@@ -27,4 +27,5 @@ package() {
   install -dm755 "$pkgdir/usr/share/passifist"
   install -Dm644 COPYING "$pkgdir/usr/share/passifist"
   install -m755 passifist "$pkgdir/usr/bin/passifist"
+  cp -a --no-preserve=ownership plugins/* "$pkgdir/usr/share/passifist"
 }
