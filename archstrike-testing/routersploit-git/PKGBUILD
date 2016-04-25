@@ -1,0 +1,48 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=routersploit
+pkgname=$_pkgname-git
+pkgver=20160424.r95
+pkgrel=1
+groups=('archstrike' 'archstrike-exploits')
+pkgdesc='The Router Exploitation Framework'
+arch=('any')
+url='https://github.com/reverse-shell/routersploit'
+license=('GPL3')
+depends=('python2-requests' 'python2-paramiko' 'python2-beautifulsoup4')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/reverse-shell/routersploit.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd $pkgname
+  while read -r; do
+      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
+  # Move license to the package license directory
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+  # Create launcher script
+  install -dm755 "$pkgdir/usr/bin/"
+  printf '%s\n\n%s\n%s\n' \
+    '#!/usr/bin/env bash' \
+    "cd /usr/share/$_pkgname" \
+    "python2 rsf.py \"\$@\"" \
+      > "$pkgdir/usr/bin/$_pkgname"
+
+  # Make launcher script executable
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+}
