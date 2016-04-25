@@ -4,10 +4,10 @@ buildarch=212
 
 pkgname=netsniff-ng
 pkgver=0.6.1
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A high performance Linux network sniffer for packet inspection."
-depends=('geoip' 'zlib' 'libnacl' 'libcap' 'liburcu' 'gnuplot' 'libcli' 'libnet' 'libnetfilter_conntrack' 'libpcap' 'libnl')
+depends=('geoip' 'libsodium' 'libcap' 'liburcu' 'gnuplot' 'libcli' 'libnet' 'libnetfilter_conntrack' 'libpcap')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://netsniff-ng.org/'
 license=('GPL2')
@@ -26,6 +26,8 @@ prepare() {
 
 build() {
   cd "$pkgname-$pkgver"
+  # forces use of newer libsodium library for curvetun
+  NACL_INC_DIR=$(pkg-config --variable=includedir libsodium )/sodium
   ./configure
   patch -p1 -i "$srcdir"/netsniff-ng_configureForArch.patch Makefile
   make PREFIX=/usr
