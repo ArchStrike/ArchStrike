@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=backdoor-factory-git
 pkgver=0.r170.988f010
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
 url="https://github.com/secretsquirrel/the-backdoor-factory"
@@ -47,7 +47,7 @@ package() {
   make DESTDIR=$pkgdir install
 
   if [[ "$CARCH" = 'x86_64' ]] || [[ "$CARCH" = 'i686' ]]; then
-     cd "$swcdir/$pkgname/aPLib/example"
+     cd "$srcdir/$pkgname/aPLib/example"
      install -Dm755 appack "$pkgdir/usr/bin/appack"
   fi
 
