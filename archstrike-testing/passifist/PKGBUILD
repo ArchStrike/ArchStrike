@@ -1,11 +1,11 @@
 # Maintainer: Archstrike <team@archstrike.org>
-# Contibutor: xorond <xorond@gmail.com>
+# Contributor: xorond <xorond@gmail.com>
 
 buildarch=212
 
 pkgname=passifist
 pkgver=1.0.8
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking' 'archstrike-scanners')
 pkgdesc="The tool analyzes broadcast traffic and has a plugin architecture through which it dissects and reports services found."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
