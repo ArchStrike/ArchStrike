@@ -4,13 +4,13 @@ buildarch=212
 
 pkgname=guymager
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='A forensic imager for media acquisition'
 url='http://guymager.sourceforge.net'
 license=('GPL')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
-depends=('libguytools' 'libewf' 'libbfio' 'parted')
+depends=('libguytools' 'libewf' 'parted')
 makedepends=('qtchooser' 'qt5-tools')
 options=('!strip')
 backup=("etc/$pkgname/$pkgname.cfg")
