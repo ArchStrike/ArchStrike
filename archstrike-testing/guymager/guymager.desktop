@@ -1,10 +1,8 @@
 [Desktop Entry]
-Encoding=UTF-8
-Type=Application
 Name=Guymager
-Comment=A forensic imager for media acquisition
-Exec=guymager
-Icon=archstrike-menu.png
+Comment=Forensic imager for media acquisition
+Exec=/usr/bin/guymager
+Icon=guymager
 Terminal=false
-StartupNotify=false
-Categories=ArchStrike;ArchStrikeForensic;
+Type=Application
+Categories=Utility

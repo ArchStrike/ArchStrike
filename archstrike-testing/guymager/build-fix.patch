@@ -1,0 +1,14 @@
+diff --git a/guymager.pro b/guymager.pro
+index e646093..edc204a 100644
+--- a/guymager.pro
++++ b/guymager.pro
+@@ -137,9 +137,6 @@ HEADERS += threadscan.h
+ HEADERS += threadwrite.h
+ HEADERS += util.h
+ 
+-QMAKE_CXXFLAGS *= $(shell dpkg-buildflags --get CXXFLAGS)
+-QMAKE_LFLAGS   *= $(shell dpkg-buildflags --get LDFLAGS)
+-
+ QMAKE_CXXFLAGS_WARN_ON += -fmessage-length=0     # Tell g++ not to split messages into different lines
+ QMAKE_CXXFLAGS_WARN_ON += -fno-strict-aliasing   # Avoid strange error messages when using QVarLengthArray
+ 
