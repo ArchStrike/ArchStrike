@@ -5,8 +5,8 @@ _pkgname=i2pd
 buildarch=212
 
 pkgname=$_pkgname-git
-pkgver=20151005.r2087
-pkgrel=3
+pkgver=20160424.r2733
+pkgrel=1
 pkgdesc='I2P router written in C++'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="https://github.com/PrivacySolutions/i2pd"
@@ -16,7 +16,7 @@ depends=('crypto++' 'boost-libs' 'systemd')
 makedepends=('cmake' 'git' 'boost' 'miniupnpc')
 backup=("etc/default/$_pkgname.conf")
 install=$pkgname.install
-source=("git+$url"
+source=("$pkgname::git+https://github.com/PurpleI2P/i2pd.git"
         "$_pkgname.service"
         "$_pkgname.tmpfiles.conf"
         "$_pkgname.conf")
@@ -26,25 +26,29 @@ sha512sums=('SKIP'
             '2e816538c766ae15ee405ac751c64e7512765e81f7e7b56dab1c96fe8efd2969c688e5545d2672c97d4f09612089762ca45dd27cb9676aca512cd7b22448e4af')
 
 pkgver() {
-  cd $_pkgname
-  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci openssl | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd $_pkgname/build
+  cd $pkgname/build
   if [[ $CARCH == "x86_64" ]] || [[ $CARCH == "i686" ]]; then
      cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="/usr/lib" -DCMAKE_BUILD_TYPE="Release"  -DWITH_HARDENING="on" \
-     -DWITH_AESNI="on" -DWITH_UPNP="on" -DWITH_OPTIMIZE="on"  ..
+     -DWITH_AESNI="on" -DWITH_UPNP="on" -DWITH_PCH="on"
   else
      cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release"  -DWITH_HARDENING="on" \
-     -DWITH_UPNP="on" -DWITH_OPTIMIZE="on"  ..
+     -DWITH_UPNP="on" -DWITH_PCH="on"
   fi
   make
 }
 
 package(){
-  cd $_pkgname/build
+  cd $pkgname/build
   make DESTDIR=${pkgdir} install
+  # clean up messing stuff
+  rm -rf $pkgdir/usr/src
+  install -Dm644 $pkgdir/usr/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  rm $pkgdir/usr/LICENSE
   install -Dm644 $srcdir/$_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
   install -Dm644 $srcdir/$_pkgname.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
   install -Dm644 $srcdir/$_pkgname.conf "$pkgdir/etc/default/$_pkgname.conf"
