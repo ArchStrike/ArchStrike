@@ -6,27 +6,32 @@
 buildarch=212
 
 pkgname=libewf
-pkgver=20140608
-pkgrel=3
+pkgver=20160424
+pkgrel=1
 epoch=2
-pkgdesc="A library for support of the Expert Witness Compression Format (EWF)"
+pkgdesc='A library for support of the Expert Witness Compression Format (EWF)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="https://github.com/libyal/libewf/"
+url='https://github.com/libyal/libewf'
 license=('LGPL3')
-makedepends=('fuse')
-depends=('util-linux' 'fuse' 'python2')
+depends=('util-linux' 'fuse' 'python' 'libbfio')
+makedepends=('git')
 options=('!libtool')
-source=(https://googledrive.com/host/0B3fBvzttpiiSMTdoaVExWWNsRjg/$pkgname-$pkgver.tar.gz)
-sha256sums=('d14030ce6122727935fbd676d0876808da1e112721f3cb108564a4d9bf73da71')
+source=("https://github.com/libyal/$pkgname/archive/20160424.tar.gz")
+sha512sums=('898fd1abc0031a8e1260198d10faf085b3657442322605d47de4f0df7008a1f3c52b09e5634f89631b4cceae13c2835bcb445dbb9a9e22abbdd1afac3e4c57cf')
+
+prepare() {
+  cd $pkgname-$pkgver
+  ./synclibs.sh
+}
 
 build() {
-  cd "${srcdir}"/$pkgname-$pkgver
+  cd $pkgname-$pkgver
+  ./autogen.sh
   ./configure --prefix=/usr --sysconfdir=/etc --enable-python
   make
 }
 
 package() {
-  cd "${srcdir}"/$pkgname-$pkgver
-
-  make DESTDIR="${pkgdir}" install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
