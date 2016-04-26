@@ -1,8 +1,8 @@
-diff --git a/core/fern.py b/core/fern.py
-index 658263b..715888a 100644
---- a/core/fern.py
-+++ b/core/fern.py
-@@ -69,23 +69,7 @@ class mainwindow(QtGui.QDialog,Ui_Dialog):
+diff --git a/Fern-Wifi-Cracker/core/fern.py b/Fern-Wifi-Cracker/core/fern.py
+index 286ed15..e8e5b3d 100644
+--- a/Fern-Wifi-Cracker/core/fern.py
++++ b/Fern-Wifi-Cracker/core/fern.py
+@@ -75,23 +75,7 @@ class mainwindow(QtGui.QDialog,Ui_Dialog):
          self.connect(self,QtCore.SIGNAL("wpa_button_false"),self.wpa_button_false)
  
          self.connect(self.database_button,QtCore.SIGNAL("clicked()"),self.database_window)
@@ -26,7 +26,7 @@ index 658263b..715888a 100644
  
          self.set_WindowFlags()
  
-@@ -121,183 +105,6 @@ class mainwindow(QtGui.QDialog,Ui_Dialog):
+@@ -146,180 +130,6 @@ class mainwindow(QtGui.QDialog,Ui_Dialog):
              self.settings.create_settings("xterm",str())
          variables.xterm_setting = self.settings.read_last_settings("xterm")
  
@@ -85,7 +85,7 @@ index 658263b..715888a 100644
 -
 -
 -    #
--    # Update Fern application via SVN,updates at ("svn checkout http://fern-wifi-cracker.googlecode.com/svn/Fern-Wifi-Cracker/")
+-    # Update Fern application via SVN,updates at ("svn checkout http://github.com/savio-code/fern-wifi-cracker/trunk/Fern-Wifi-Cracker/")
 -    #
 -    def update_fern(self):
 -        global updater_control
@@ -116,11 +116,8 @@ index 658263b..715888a 100644
 -
 -        update_directory = '/tmp/Fern-Wifi-Cracker/'
 -
--        svn_path = 'http://fern-wifi-cracker.googlecode.com/svn/Fern-Wifi-Cracker/'
--
--
 -        try:
--            online_response_check = urllib2.urlopen('http://fern-wifi-cracker.googlecode.com/svn/Fern-Wifi-Cracker/version')
+-            online_response_check = urllib2.urlopen('https://raw.githubusercontent.com/savio-code/fern-wifi-cracker/master/Fern-Wifi-Cracker/version')
 -            online_response = online_response_check.read()
 -
 -            online_files = re.compile('total_files = \d+',re.IGNORECASE)
@@ -132,7 +129,7 @@ index 658263b..715888a 100644
 -            if 'Fern-Wifi-Cracker' in os.listdir('/tmp/'):
 -                variables.exec_command('rm -r /tmp/Fern-Wifi-Cracker')
 -
--            svn_access = subprocess.Popen('cd /tmp/ \n svn checkout http://fern-wifi-cracker.googlecode.com/svn/Fern-Wifi-Cracker/',\
+-            svn_access = subprocess.Popen('cd /tmp/ \n svn checkout https://github.com/savio-code/fern-wifi-cracker/trunk/Fern-Wifi-Cracker/',\
 -                    shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE,stdin=subprocess.PIPE)
 -            svn_update = svn_access.stdout
 -            thread.start_new_thread(self.update_error,())
@@ -181,7 +178,7 @@ index 658263b..715888a 100644
 -        updater_control = 0
 -        while updater_control != 1:
 -            try:
--                online_response_thread = urllib2.urlopen('http://fern-wifi-cracker.googlecode.com/svn/Fern-Wifi-Cracker/version')
+-                online_response_thread = urllib2.urlopen('https://raw.githubusercontent.com/savio-code/fern-wifi-cracker/master/Fern-Wifi-Cracker/version')
 -                online_response_string = ''
 -                online_response = online_response_thread.read()
 -
@@ -210,10 +207,10 @@ index 658263b..715888a 100644
      #
      # Launches Tool Box window
      #
-diff --git a/gui/main_window.py b/gui/main_window.py
+diff --git a/Fern-Wifi-Cracker/gui/main_window.py b/Fern-Wifi-Cracker/gui/main_window.py
 index bf18711..4c347ce 100644
---- a/gui/main_window.py
-+++ b/gui/main_window.py
+--- a/Fern-Wifi-Cracker/gui/main_window.py
++++ b/Fern-Wifi-Cracker/gui/main_window.py
 @@ -62,17 +62,11 @@ class Ui_Dialog(object):
          self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
          spacerItem1 = QtGui.QSpacerItem(13, 20, QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Minimum)
