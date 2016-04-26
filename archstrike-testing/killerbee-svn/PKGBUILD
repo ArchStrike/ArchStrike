@@ -11,6 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://code.google.com/p/killerbee/'
 license=('BSD')
 depends=('python2' 'python2-crypto' 'python2-pyusb' 'pygtk' 'python2-cairo' 'python2-pyserial')
+makedepends=('subversion')
 conflicts=('killerbee')
 provides=('killerbee')
 replaces=('killerbee')
