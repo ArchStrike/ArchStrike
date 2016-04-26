@@ -13,8 +13,8 @@ depends=('perl' 'python')
 arch=('any')
 source=('pykismetearth.py'
         'kismetearth.pl')
-md5sums=('e9acafce7dcecbda36ad2c0357eb92e6'
-         'ae7f759841e3807a3c37d5029a7314d9')
+sha512sums=('856c58c03347070ed897f734891c69701b3ca4832319859ec2bcf07ea4ac6a9470b48a282deca6f8d6b42bd8c3014d5a33bfddef2b41d2d8bd97f635b05a86db'
+            '2fd0c97eebee58235e84a5d10de77d5fc163c165c156658eeecb31a802310de0e501aeccae0276a71210c8656945c4bf9427f40cefd118b0a92ce29e039c0dd4')
 
 pkgver() {
   date +%Y%m%d
