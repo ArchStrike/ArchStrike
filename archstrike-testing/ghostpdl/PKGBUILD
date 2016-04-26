@@ -4,38 +4,33 @@
 buildarch=212
 
 pkgname=ghostpdl
-pkgver=9.10
-pkgrel=2
-pkgdesc="An interpreter for the Postscript language and for PDF - GhostPCL (PCL-5, and PCL-XL), GhostXPS (XPS), GhostPDF and ghostscript"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.artifex.com"
+pkgver=9.18
+pkgrel=1
+pkgdesc='An interpreter for the Postscript language and for PDF - GhostPCL (PCL-5, and PCL-XL), GhostXPS (XPS), GhostPDF and ghostscript'
+url='http://www.artifex.com'
 license=('GPL')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+groups=('archstrike')
 depends=('libxt' 'libxext' 'python' 'tcl')
-source=("http://downloads.ghostscript.com/public/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('20cb73604bff0acb01b88b8977c260af20d450d60a672ecdeff49e2904d18b3367cffcea6408f067e8899c9feb831ad12aa6813aa9c3b6808c5a58d626005343')
+source=("http://downloads.ghostscript.com/public/$pkgname-$pkgver.tar.gz")
+sha512sums=('bad9d6e65503db1f01b70e0bfd52cb1f023291d80a6db845003796eec1a38885fcc5edc7ea1d2da044bef7e97f25f272721ec9eaab357c5eb0a3338769d92c2f')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
-    ./configure --prefix=/usr
-    make
+  cd $pkgname-$pkgver
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd $srcdir/$pkgname-$pkgver
-    install -d ${pkgdir}/usr/bin
-    install -d ${pkgdir}/usr/share/${pkgname}/doc
-    install -d ${pkgdir}/usr/share/licenses/${pkgname}
-    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
-    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING.AFPL
-    install -Dm644 ${srcdir}/${pkgname}-${pkgver}/COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
-    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/main/obj/pcl6 ${pkgdir}/usr/bin/pcl6
-    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/language_switch/obj/pspcl6 ${pkgdir}/usr/bin/pspcl6
-    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/xps/obj/gxps ${pkgdir}/usr/bin/gxps
-    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/tools/pcl2pdf ${pkgdir}/usr/bin/pcl2pdf
-    install -Dm755 ${srcdir}/${pkgname}-${pkgver}/tools/pcl2pdfwr ${pkgdir}/usr/bin/pcl2pdfwr
-    mv tools ${pkgdir}/usr/share/${pkgname}/
-    mv urwfonts ${pkgdir}/usr/share/${pkgname}/
-    for doc in README.txt doc/ghost* doc/who_owns_what.txt; do
-      install -Dm644 ${doc} ${pkgdir}/usr/share/${pkgname}/doc/${doc}
-    done
+  cd $pkgname-$pkgver
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm755 bin/gpcl6 "$pkgdir/usr/bin/gpcl6"
+  install -Dm755 bin/gxps "$pkgdir/usr/bin/gxps"
+  install -Dm755 pcl/tools/pcl2pdf "$pkgdir/usr/bin/pcl2pdf"
+  install -Dm755 pcl/tools/pcl2pdfwr "$pkgdir/usr/bin/pcl2pdfwr"
+  cp -r --no-preserve=ownership doc/* "$pkgdir/usr/share/doc/$pkgname/"
+  cp -r --no-preserve=ownership pcl/tools "$pkgdir/usr/share/$pkgname/"
+  cp -r --no-preserve=ownership pcl/urwfonts "$pkgdir/usr/share/$pkgname/"
 }
