@@ -3,9 +3,9 @@
 buildarch=212
 
 pkgname=metasploit-git
-pkgver=20160420.r38074
+pkgver=20160424.r38125
 pkgrel=1
-epoch=2
+epoch=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="An open source platform that supports vulnerability research, exploit development and the creation of custom security tools representing the largest collection of quality-assured exploits"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
