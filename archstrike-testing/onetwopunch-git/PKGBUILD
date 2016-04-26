@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=onetwopunch-git
-pkgver=20150408.r8
+pkgver=20160330.r13
 pkgrel=1
 pkgdesc='Script combining the speed of unicornscan w/ the versitility of nmap'
 arch=('any')
