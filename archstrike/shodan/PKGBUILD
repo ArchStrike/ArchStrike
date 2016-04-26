@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=shodan
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2 library for Shodan.io'
@@ -13,8 +13,8 @@ depends=('python2-click' 'python2-colorama' 'python2-requests' 'python2-simplejs
 license=('MIT')
 arch=('any')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/source/s/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('447de0d862d921bf4ced8ac0cd226bd3df4a9caa30549e827d1c8c30c17d6735e8c5f2d8a486d11cdfb3372da3f091ec559e6ab00b21435804433889f03ef830')
+source=("https://pypi.python.org/packages/6a/77/1549623c67d67efc9e4a854ca7e1ebfcb9de3f3ba2658706401d052725a0/$pkgname-$pkgver.tar.gz")
+sha512sums=('a1a30465eafd36b89f4310a41b6f8666c527235420d7f4e2bcc5cc2ee39a64e0153d9c19455f97ba2a80b69066290dc90c771d4dc0014763008cff1e1007c787')
 
 build() {
   cd $pkgname-$pkgver
