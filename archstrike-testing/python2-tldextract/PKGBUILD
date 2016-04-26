@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-tldextract
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Accurately separates the gTLD or ccTLD (generic or country code top-level domain) from the registered domain and subdomains of a URL"
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://github.com/john-kurkowski/tldextract/archive/$pkgver.tar.gz" "LICENSE")
-sha512sums=('f4ba4408550197e030d242f1233bb0325ac9d712e82c52ee3bc5132af95d5eee588689f0ccc80cc6cf86394f475ed628ad9d9db6c0dce02b2033330bd14b7c78'
+sha512sums=('2862aee69b76379c888941cd77fccf4904978853ca5844afe1eacbed3048b1ba0130bb0f96406d45937abefaa64e0511dc5694a681efe4106cdf621e8c9153be'
             'ccf77efa127b315ad6006ba8d59b1b8f395a14e4a04cd7e72e3ec81982bf788d164f67ebb50ac0fbc32056b8a1590597cb9874697317d6ad63542031968a2b1c')
 
 package() {
