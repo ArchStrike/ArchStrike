@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+pkgname=libguytools
+pkgver=2.0.4
+pkgrel=1
+pkgdesc='A small programming toolbox for Guymager'
+url='https://sourceforge.net/projects/libguytools'
+license=('GPL')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+depends=('qt5-base')
+makedepends=('qtchooser')
+options=('!strip')
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/LatestSource/tools-$pkgver.tar.gz")
+sha512sums=('22e6784a9bcd0019b0cdef4b6d5b32f4c946ba731095131a47c6e3530bdba341258719afecc3265c6504fe217a383d507846c29c5119463eb0ca6b68a1a92c49')
+
+build() {
+  cd tools-$pkgver
+  ./create_version_file.sh
+  qmake trunk.pro
+  make
+  qmake toolsstatic.pro
+  make
+}
+
+package() {
+  cd tools-$pkgver
+  install -dm755 "$pkgdir/usr"
+  cp -r --no-preserve=ownership lib "$pkgdir/usr/"
+  cp -r --no-preserve=ownership include "$pkgdir/usr/"
+}
