@@ -5,13 +5,13 @@ buildarch=212
 
 pkgname=xmount
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to crossmount between multiple input and output harddisk image files"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike')
 license=('GPL')
 url="https://www.pinguin.lu"
-depends=('libewf' 'afflib')
+depends=('libewf-python' 'afflib') # depending against our version of libewf with python support
 makedepends=('cmake')
 source=(http://files.pinguin.lu/${pkgname}-${pkgver}.tar.gz)
 sha512sums=('c14422c4097039c3b47204f761ced23ad6493efbcf5e2089b9fd9c32bdc2e9a5ef8b710e367e86a3692e1e14bb1ba81967d1aa396e42a0a3e44e53f5aeba6b84')
@@ -19,7 +19,7 @@ sha512sums=('c14422c4097039c3b47204f761ced23ad6493efbcf5e2089b9fd9c32bdc2e9a5ef8
 build() {
   cd "${srcdir}"/${pkgname}-${pkgver}
   mkdir build && cd build
-  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .. #CFLAGS+="-lewf"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make
 }
 
