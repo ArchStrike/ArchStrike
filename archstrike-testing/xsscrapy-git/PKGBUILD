@@ -4,14 +4,15 @@
 buildarch=1
 
 pkgname=xsscrapy-git
-pkgver=20150212.r126.4ec3e7d
+pkgver=20160425.r132.e4e360d
 pkgrel=1
 pkgdesc="xss spider"
 arch=('any')
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 url="https://github.com/DanMcInerney/xsscrapy"
 license=('BSD')
-depends=('python2-beautifulsoup3' 'python2-pybloom' 'python2-requests' 'scrapy')
+depends=('python2-beautifulsoup3' 'python2-pybloom' 'python2-requests' 'scrapy' 'python2-w3lib' 'python2-lxml' 'python2-six' 'python2-cssselect' 'python2-pyopenssl'
+         'python2-cryptography' 'python2-queuelib' 'python2-requests' 'python2-twisted')
 makedepends=('git')
 options=('staticlibs' '!strip')
 provides=('xsscrapy')
