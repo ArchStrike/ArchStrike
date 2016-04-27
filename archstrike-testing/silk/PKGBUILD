@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=silk
-pkgver=3.11.0.1
+pkgver=3.12.0
 pkgrel=1
 pkgdesc='CERT netflow tools.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ depends=('libfixbuf' 'lzo2' 'libpcap' 'python2' 'gnutls' 'c-ares' 'adns')
 makedepends=('perl' 'flex' 'bison')
 install="$pkgname.install"
 source=("http://tools.netsa.cert.org/releases/$pkgname-$pkgver.tar.gz")
-sha512sums=('e17c92219960fb4614bcaf168170ddf5baca5558c7980096450780387404b6be6411642835c8f276c99514451057c97b351933791ca3f2b9e33c5e906a501895')
+sha512sums=('4667f4133cecf6aa198659870e93422433fa518bceaa7eeed3a0552c2eeb37dcf9b715d60f10bd31bbec996ea188d2bf2662a9046b0a50ad459ad76df213739c')
 
 prepare(){
   grep -iRl 'python' "$srcdir/$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
