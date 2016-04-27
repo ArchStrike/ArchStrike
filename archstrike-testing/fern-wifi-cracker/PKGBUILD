@@ -2,8 +2,9 @@
 
 buildarch=1
 
-pkgname=fern-wifi-cracker
-pkgver=221
+_pkgname=fern-wifi-cracker
+pkgname=$_pkgname-git
+pkgver=20151124.r238.d51c885
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
@@ -12,11 +13,14 @@ url='https://github.com/savio-code/fern-wifi-cracker'
 license=('GPL')
 depends=('python2-pyqt4' 'macchanger' 'xterm' 'aircrack-ng' 'scapy' 'gksu')
 makedepends=('git')
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+replaces=("$_pkgname")
 source=(
-  "git+https://github.com/savio-code/fern-wifi-cracker.git"
+  "git+https://github.com/savio-code/$_pkgname.git"
   'remove-update.patch'
   'remove-pro-tip.patch'
-  "$pkgname.desktop"
+  "$_pkgname.desktop"
 )
 sha512sums=(
   'SKIP'
@@ -25,20 +29,25 @@ sha512sums=(
   '352dcf1a1dfd798ca8e7d0c50b3b9bb7912109fc3b0d9d82323810552fcb725e95ed92e244fd548f46c438014aeccca6c91fb0f27f197736484893638b1015e4'
 )
 
+pkgver() {
+  cd $_pkgname
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare() {
-  cd $pkgname
+  cd $_pkgname
   patch -p1 < ../remove-update.patch
   patch -p1 < ../remove-pro-tip.patch
   sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' Fern-Wifi-Cracker/execute.py
 }
 
 package() {
-  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+  install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   install -d "$pkgdir/usr/bin"
-  echo -e '#!/usr/bin/env bash\n\ncd /usr/share/fern-wifi-cracker\npython2 ./execute.py "\$@"' > "$pkgdir/usr/bin/$pkgname"
-  chmod 755 "$pkgdir/usr/bin/$pkgname"
+  echo -e '#!/usr/bin/env bash\n\ncd /usr/share/fern-wifi-cracker\npython2 ./execute.py "\$@"' > "$pkgdir/usr/bin/$_pkgname"
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
 
-  install -d "$pkgdir/usr/share/$pkgname"
-  cp -R --no-preserve=ownership $pkgname/Fern-Wifi-Cracker/* "$pkgdir/usr/share/$pkgname/"
+  install -d "$pkgdir/usr/share/$_pkgname"
+  cp -R --no-preserve=ownership $_pkgname/Fern-Wifi-Cracker/* "$pkgdir/usr/share/$_pkgname/"
 }
