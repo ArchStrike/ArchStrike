@@ -8,14 +8,14 @@ buildarch=192
 
 pkgname=arduino
 pkgver=1.6.8
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc='Open-source electronics prototyping platform'
 arch=('i686' 'x86_64')
 url='http://arduino.cc'
 options=('!strip' 'staticlibs')
 license=('GPL')
-depends=('avr-libc' 'libusb-compat' 'java-runtime=8' 'java-rxtx' 'desktop-file-utils' 'shared-mime-info')
+depends=('avr-libc' 'avrdude' 'libusb-compat' 'java-runtime=8' 'java-rxtx' 'desktop-file-utils' 'shared-mime-info')
 makedepends=('java-environment=8' 'avr-gcc' 'apache-ant' 'unzip' 'zip')
 install=$pkgname.install
 
@@ -62,6 +62,10 @@ package() {
     --preserve-permissions \
     --strip-components=1 \
     -C "$pkgdir/opt/$pkgname"
+
+  # replace the included avrdude_bin with a symlink to the system version
+  rm "$pkgdir/opt/arduino/hardware/tools/avr/bin/avrdude_bin"
+  ln -s /usr/bin/avrdude "$pkgdir/opt/arduino/hardware/tools/avr/bin/avrdude_bin"
 
   # create a link to the launch script
   ln -s /opt/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"
