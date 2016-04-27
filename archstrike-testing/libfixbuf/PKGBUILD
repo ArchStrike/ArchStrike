@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname="libfixbuf"
-pkgver="1.7.0"
+pkgver="1.7.1"
 pkgrel=1
 pkgdesc="IPFIX Message Format Implementation"
 arch=("i686" "x86_64" "armv6h" "armv7h")
@@ -12,7 +12,7 @@ url='http://tools.netsa.cert.org/fixbuf/'
 license=('GPL')
 depends=('glib2')
 source=("http://tools.netsa.cert.org/releases/$pkgname-$pkgver.tar.gz")
-sha512sums=('384af145b64049e01be31695ce638a087e03f33c74abc8d784a71bdb5b0246384689382232c06d2130c359d1b52f2be385e562ea88c9705cf5acef7114eccf89')
+sha512sums=('eba7e88a191ff844ed88bc3be7e35e4e95dc1b04aac66ed1b5da4c5214d39eaa566da1b390b268e6586e89bda9a4d9df248c50ed864a47ed1d2cbab462c28897')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
