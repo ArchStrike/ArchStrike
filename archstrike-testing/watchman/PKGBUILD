@@ -5,8 +5,8 @@
 buildarch=212
 
 pkgname=watchman
-pkgver=3.0.0
-pkgrel=2
+pkgver=4.5.0
+pkgrel=3
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 groups=('archstrike' 'archstrike-misc')
 url="https://facebook.github.io/watchman/"
@@ -15,7 +15,7 @@ license=('Apache')
 depends=('pcre')
 makedepends=('autoconf' 'automake')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/facebook/watchman/archive/v${pkgver}.tar.gz")
-sha512sums=('76aff759b2460d3ae98b96d1788cb37126fc00680635046f5d9bcf663e7d9cedf96c931f6d5774bf5f0686255d52c08b01be336fef6cf8fcf577a707d4bdb511')
+sha512sums=('0b3031b3439ca3c26cd1535e70dcd0f37669fd2fb1cad8a9d8fe7c8e63ba679f434c30436e220718ab1c3e4788dc2f8177157a97e070c228fb0b277ea4dbcb56')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
