@@ -25,7 +25,7 @@ optdepends=('python2-paramiko: SSH'
             'java-runtime: keystore files'
             'unzip: zip archives')
 source=("https://github.com/lanjelot/patator/archive/$pkgver.tar.gz")
-sha256sums=('7938aba21880f35e36f7ccf05524e0c34c611a5d60d6db02256111e5d6e9e435')
+sha512sums=('7938aba21880f35e36f7ccf05524e0c34c611a5d60d6db02256111e5d6e9e435')
 
 build() {
   sed -e 's|#!/usr/bin/env python|#!/usr/bin/env python2|g' -i "$srcdir/$pkgname-$pkgver/patator.py"
