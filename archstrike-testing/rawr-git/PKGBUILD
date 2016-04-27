@@ -16,7 +16,7 @@ depends=('nmap' 'graphviz' 'python2-pygraphviz' 'python2-lxml' 'phantomjs' 'pyth
 replaces=('rawr')
 conflicts=('rawr')
 provides=('rawr')
-source=("git+https://bitbucket.org/al14s/rawr.git#branch=dev" "${_pkgname}.desktop")
+source=("git+https://bitbucket.org/al14s/rawr.git" "${_pkgname}.desktop")
 sha512sums=('SKIP'
             'd8d773eb61f22eed1b2c3ad568e8dce44740eab68e6cca9d055c5d51fc519b10f649e320857220a9ec56c68203d5f1ec0e3d82a610e0f3b8b76ffecbf29c794c')
 
