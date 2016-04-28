@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dfvfs
 pkgver=20160330
-pkgrel=2
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A tool that provides read-only access to file-system objects from various storage media types and file formats."
 arch=('any')
