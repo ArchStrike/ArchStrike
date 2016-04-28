@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=passivedns
 pkgver=1.2.0
-pkgrel=2
+pkgrel=1
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A network sniffer that logs all DNS server replies for use in a passive DNS setup."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
