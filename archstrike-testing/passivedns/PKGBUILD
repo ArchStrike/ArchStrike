@@ -10,12 +10,13 @@ pkgdesc="A network sniffer that logs all DNS server replies for use in a passive
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/gamelinux/passivedns"
 license=('GPL')
-depends=('gcc' 'libpcap' 'ldns')
+depends=('libpcap' 'ldns')
+makedepends=('autoconf')
 source=("https://github.com/gamelinux/passivedns/archive/$pkgver.tar.gz")
 sha512sums=('2fcbf4337b0c9c531b575e730ba19c8354bfdac990b25a65ce72c16477da3379ebcc5cedb8f9509fffaf7cafb80d8038ba1a75a6cba666a0c1458ffd60b11452')
 
 build(){
-  cd "$srcdir/passivedns-$pkgver"
+  cd "$srcdir/passivedns-$pkgver/"
   autoreconf --install
   ./configure
   make
@@ -25,13 +26,11 @@ package() {
   cd "$srcdir/passivedns-$pkgver"
 
   install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/passivedns"
   install -dm755 "$pkgdir/usr/share/doc/passivedns"
 
   cp -r --no-preserve=ownership README "$pkgdir/usr/share/doc/passivedns"
-  cp -r --no-preserve=ownership src/passivedns "$pkgdir/usr/share/passivedns/"
+  install -Dm755 src/passivedns "$pkgdir/usr/bin/passivedns"
 
-  ln -s "/usr/share/passivedns/passivedns" "$pkgdir/usr/bin/"
   # Adding license
   cd "$srcdir/passivedns-$pkgver/doc"
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/passivedns/LICENSE
