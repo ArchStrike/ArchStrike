@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=codecrypt
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc="A GnuPG-like program for encryption and signing that uses only quantum-computer-resistant algorithms"
 url="https://github.com/exaexa/$pkgname"
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('crypto++' 'gmp' 'fftw')
 makedepends=('libtool' 'automake' 'autoconf')
 source=("https://github.com/exaexa/codecrypt/archive/v$pkgver.tar.gz")
-sha512sums=('059ba82331a96e0bcd72fb7a148f3afdd0b362e5ab67664e33cf2d68303dd5cd379919f80c2ca209b884fb3e386edd288757374c5154fca204c453144a031355')
+sha512sums=('674a505bfd833e76d0bf44ce25cef89f355374b645bb98889983cdee76ab3d7e4828a074ccb430b1b9b1f86aa234312a02952bb6f84db4c66f3410985524a2cb')
 
 build() {
     LDFLAGS="$LDFLAGS -pthread"
