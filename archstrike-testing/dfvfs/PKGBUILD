@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=dfvfs
-pkgver=20160108
+pkgver=20160330
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A tool that provides read-only access to file-system objects from various storage media types and file formats."
 arch=('any')
 url='https://github.com/log2timeline/dfvfs'
 license=('APACHE')
-depends=('python2-six' 'python2-construct' 'python2-protobuf' 'libewf' 'libqcow' 'libbde' 'libsmdev' 'libsmraw' 'libvhdi' 'libvmdk' 'libvshadow')
+depends=('python2' 'python2-six' 'python2-construct' 'python2-protobuf' 'libewf' 'libqcow' 'libbde' 'libsmdev' 'libsmraw' 'libvhdi' 'libvmdk' 'libvshadow')
 makedepends=('python2-setuptools')
 source=("https://github.com/log2timeline/dfvfs/archive/$pkgver.tar.gz")
-sha512sums=('ab4755609567b57edbaf1854211927a8d8b1bcf9c7040967d369aed65ddfef76ead8cbe075b90a8c17d268c9fb851084c105899d25f2f5f18a9b0bc221566926')
+sha512sums=('851a65c5fbeb45ff86470dd4b5b6279f51b3ca20c05022da1fdf2e13e59baee8345b9d88159ab59d5e01a790edabf59e3c4f8d9a7b1169f42190210eaf53f545')
 
 prepare(){
   grep -iRl 'python' "$srcdir/$pkgname-$pkgver/" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
