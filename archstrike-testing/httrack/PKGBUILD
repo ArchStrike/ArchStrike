@@ -9,8 +9,8 @@
 buildarch=212
 
 pkgname=httrack
-pkgver=3.48.9
-pkgrel=3
+pkgver=3.48.22
+pkgrel=1
 pkgdesc="An easy-to-use offline browser utility."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike' 'archstrike-webapps')
@@ -18,9 +18,8 @@ url="http://www.httrack.com/"
 license=('GPL')
 depends=('xdg-utils' 'hicolor-icon-theme' 'desktop-file-utils')
 options=('!libtool')
-install="$pkgname.install"
 source=("http://mirror.httrack.com/historical/$pkgname-$pkgver.tar.gz")
-sha512sums=('397d11d14525b8409180fd97dab1a0b9b13b0c2842507ec16261dc5629d1b61980017606809cad565f6e2e564f95f5b1f885a2293f38392e1da8de69885e8e51')
+sha512sums=('9252aec5fce454b6e95b4bdb89dd60e86eb3f01c4cebffe14e3f9288bec8e295c03f6543f5458293f78be7b9001520100aacb0fe79bb78322e1085b1a7232684')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
