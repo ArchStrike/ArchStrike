@@ -4,7 +4,7 @@ _pkgname=rawr
 buildarch=1
 
 pkgname=${_pkgname}-git
-pkgver=70.d3114df
+pkgver=73.0924126
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc="Web enumerator for the rapid Assessment of web resources"
