@@ -33,8 +33,6 @@ prepare() {
 }
 
 package() {
-    install -Dm644 ${_pkgname}.desktop "$pkgdir"/usr/share/applications/${_pkgname}.desktop
-
     cd $_pkgname
     install -dm755 "$pkgdir"/usr/bin
     install -dm755 "$pkgdir"/usr/share/${_pkgname}
