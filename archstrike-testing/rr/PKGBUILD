@@ -1,4 +1,3 @@
-# Maintainer: ArchStrike <team@archstrike.org>
 
 buildarch=192
 
@@ -11,14 +10,14 @@ arch=('i686' 'x86_64')
 url='https://github.com/mozilla/rr'
 makedepends=("cmake" "python2-pexpect" "gdb")
 license=('custom')
-depends_x86_64=('libpfm4' 'lib32-gcc-libs' 'bash' 'lib32-zlib' 'python2')
-depends_i686=('libpfm4' 'bash' 'zlib' 'python2')
+depends_x86_64+=('libpfm4' 'lib32-gcc-libs' 'bash' 'lib32-zlib' 'python2' 'gcc-multilib')
+depends_i686+=('libpfm4' 'bash' 'zlib' 'python2')
 source=("https://github.com/mozilla/rr/archive/$pkgver.tar.gz")
 sha512sums=('905fb9d926423184a3f5a06561bf59ee902a30a76222f2ecd1a487540696aa4c4c3cc954c3b3e839d8d8e1472b4181da68228f6432472bbe81a181ae7b1925c5')
 
 build(){
   cd "$srcdir/rr-$pkgver"
-  export CFLAGS="$CFLAGS -fPIC"
+  export CFLAGS+=" -fPIC"
   mkdir build && cd build
   cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
   make
