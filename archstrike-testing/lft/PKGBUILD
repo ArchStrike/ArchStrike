@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=lft
-pkgver=3.73
+pkgver=3.74
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A layer four traceroute implementing numerous other features"
@@ -12,16 +12,16 @@ license=('custom')
 url="http://pwhois.org/lft/"
 depends=('libpcap')
 source=("http://pwhois.org/dl/index.who?file=lft-$pkgver.tar.gz")
-sha512sums=('ae0fac196aa4cee7a4f9832c1d4ee9e6bb012513b95e73f7818bd0d66c9347c8ee776532defdcd7425cc4866c95b37a93f8117c53cdbe22d229bbb4453dc552b')
+sha512sums=('00d231d0b49039d72bd0119faa36f7159229b0010cbe735b5bbee42b21843a205be9b324556c40523d48f00400262bed71e7ce36dd564e2f1c892ca5dc885fe6')
 
 build() {
-  cd "$srcdir/lft-$pkgver"
+  cd "$pkgname-$pkgver"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/lft-$pkgver"
+  cd "$pkgname-$pkgver"
   make "prefix=$pkgdir/usr" install
   install -Dm644 "$srcdir/lft-$pkgver"/COPYING \
     "$pkgdir"/usr/share/licenses/lft/LICENSE
