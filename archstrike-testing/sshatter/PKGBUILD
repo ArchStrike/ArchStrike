@@ -4,15 +4,15 @@ buildarch=1
 
 pkgname=sshatter
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Password bruteforcer for SSH"
 url="http://www.nth-dimension.org.uk/downloads.php?id=34"
 groups=('archstrike' 'archstrike-crackers')
 license=('GPL')
-arch=(any)
-depends=('perl' 'perl-parallel-forkmanager' 'perl-net-ssh-perl')
+arch=('any')
+depends=('perl' 'perl-parallel-forkmanager' 'perl-net-ssh-perl' 'perl-crypt-x')
 source=(sshatter-$pkgver.tar.gz::"http://www.nth-dimension.org.uk/utils/get.php?downloadsid=34")
-md5sums=('143df6844a004a87eda09dadb7284db1')
+sha512sums=('bed8ea70ddb3800a510f966bfda756a16966aa211cf9934a5eeb57b3ed5c200af78b1a291faa83dc8600abbff6522eac0af4e370cbfc7c531dadd4a2042aa4ca')
 
 package() {
   cd "$srcdir/SSHatter-$pkgver/src"
@@ -25,8 +25,8 @@ package() {
   cat > $pkgdir/usr/bin/sshatter << EOF
 #!/bin/sh
 cd /usr/share/sshatter
-perl SSHatter.pl \$*
+perl SSHatter.pl "\$@"
 EOF
-  chmod 0755 $pkgdir/usr/bin/sshatter
+  chmod +x "$pkgdir/usr/bin/sshatter"
 }
 
