@@ -1,0 +1,38 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: xorond <xorond@gmail.com>
+_author='Karel Miko'
+_perlmod='CryptX'
+
+buildarch=1
+
+pkgname='perl-crypt-x'
+pkgver='0.031'
+pkgrel=1
+pkgdesc="Cryptographically secure random number generator"
+arch=('any')
+url='http://search.cpan.org/~mik/CryptX-0.031/lib/Crypt/PRNG.pm'
+license=('custom')
+depends=('perl>=5.10.0')
+options=(!emptydirs)
+source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIK/CryptX-$pkgver.tar.gz")
+sha512sums=('247f1bc025e93ecabe8b942b5c4124d21fe73408f820800e026228ff1c73a6536f21fa417dad0b64745504fb0aec35a15589c61c425af4214223ad45de20ddaa')
+
+prepare() {
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+}
+
+build() {
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  make
+}
+
+package() {
+  cd "$srcdir/$_perlmod-$pkgver"
+
+  make install DESTDIR="$pkgdir/"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
