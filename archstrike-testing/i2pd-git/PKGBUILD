@@ -5,7 +5,7 @@ _pkgname=i2pd
 buildarch=212
 
 pkgname=$_pkgname-git
-pkgver=20160424.r2733
+pkgver=20160428.r2743
 pkgrel=1
 pkgdesc='I2P router written in C++'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -39,6 +39,8 @@ build() {
      cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_BUILD_TYPE="Release"  -DWITH_HARDENING="on" \
      -DWITH_UPNP="on" -DWITH_PCH="on"
   fi
+  export CXXFLAGS+=" -fPIC"
+  export LDFLAGS+=" -z now -pie"
   make
 }
 
