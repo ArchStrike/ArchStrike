@@ -4,15 +4,21 @@ buildarch=212
 
 pkgname=lft
 pkgver=3.74
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A layer four traceroute implementing numerous other features"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('custom')
 url="http://pwhois.org/lft/"
 depends=('libpcap')
-source=("http://pwhois.org/dl/index.who?file=lft-$pkgver.tar.gz")
-sha512sums=('00d231d0b49039d72bd0119faa36f7159229b0010cbe735b5bbee42b21843a205be9b324556c40523d48f00400262bed71e7ce36dd564e2f1c892ca5dc885fe6')
+source=("http://pwhois.org/dl/index.who?file=lft-$pkgver.tar.gz" "define_default_source.patch")
+sha512sums=('00d231d0b49039d72bd0119faa36f7159229b0010cbe735b5bbee42b21843a205be9b324556c40523d48f00400262bed71e7ce36dd564e2f1c892ca5dc885fe6'
+            '7b0f3c1a588ff3a55fa949039102a388a77dc12b276023501bd46bef9a44f747423919cac5322596ee6eb4360972ac5ca543c98b12211e65e94f7cfd7f6820bb')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -Np1 -i $srcdir/define_default_source.patch
+}
 
 build() {
   cd "$pkgname-$pkgver"
