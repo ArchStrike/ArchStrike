@@ -1,0 +1,38 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: xorond <xorond@gmail.com>
+
+buildarch=212
+
+pkgname=gophish
+pkgver=0.1.2
+pkgrel=1
+pkgdesc="Open-source phishing toolkit designed for businesses and penetration testers. It provides the ability to quickly and easily setup and execute phishing engagements and security awareness training."
+arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+url="https://github.com/gophish/gophish"
+groups=('archstrike' 'archstrike-social-engineering')
+license=("MIT")
+depends=('glibc' 'bash')
+makedepends=('go' 'git')
+source=("https://github.com/gophish/gophish/archive/v$pkgver.tar.gz")
+sha512sums=('ea56ee37df846aabfb4d36180de7488fc29dd6f2fb0fc80a755ff48e6db0576131df816ea6bd97b96ae9d4a497412bfdc15a0456a4258d4aee26a6963fb44d78')
+
+build() {
+  cd "$pkgname-$pkgver"
+  GOPATH="$srcdir" go get -d -t github.com/gophish/gophish
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  GOPATH="$srcdir" go build -v github.com/gophish/gophish
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+cat > "$pkgdir/usr/bin/gophish" << EOF
+#!/bin/bash
+cd /usr/share/gophish
+./gophish "\$@"
+EOF
+  chmod +x "$pkgdir/usr/bin/gophish"
+}
