@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=fakedns-git
-pkgver=20150219.r36.90bd7e1
+pkgver=20160503.r66.62d1d78
 pkgrel=1
 groups=('archstrike' 'archstrike-spoof' 'archstrike-proxy')
 pkgdesc="A regular-expression based python MITM DNS server with correct DNS request passthrough and \"Not Found\" responses."
@@ -15,25 +15,26 @@ makedepends=('git')
 replaces=('fakedns')
 conflicts=('fakedns')
 provides=('fakedns')
-source=("git+https://github.com/Crypt0s/FakeDns.git")
+source=("$pkgname::git+https://github.com/Crypt0s/FakeDns.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${srcdir}"/FakeDns
+    cd "${pkgname}"
     printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}"/FakeDns
+  cd "${pkgname}"
   sed -i 's|bin/python$|bin/python2|' *.py
 }
 
 package() {
-  cd "${srcdir}"/FakeDns
+  cd "${pkgname}"
   install -dm755 "${pkgdir}"/usr/bin/
   install -Dm644 dns.conf.example "${pkgdir}"/usr/share/"${pkgname}"/dns.conf.example
   install -Dm755 fakedns.py "${pkgdir}"/usr/share/"${pkgname}"/fakedns.py
   install -Dm644 README.md "${pkgdir}"/usr/share/doc/"${pkgname}"/README.md
+  sed -i 's|python|python2|' $pkgdir/usr/share/"${pkgname}"/fakedns.py
 
 cat > "${pkgdir}"/usr/bin/fakedns << EOF
 #!/bin/sh
