@@ -19,7 +19,7 @@ sha512sums=('116f5bc3780a7ed5fe5be0615f0f04fc6c63da72b762cb2d8c275ae1caadf48fa1b
 prepare() {
   cd "$srcdir"
 
-  sed -i 's:python:python2:g' detect_sniffer.py
+  sed -i 's|python|python2|g' detect_sniffer.py
 }
 
 package() {
