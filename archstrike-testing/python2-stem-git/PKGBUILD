@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-stem-git
-pkgver=20160424.r2346
+pkgver=20160429.r2347
 pkgrel=1
 epoch=1
 pkgdesc='A controller library for Tor'
