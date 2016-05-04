@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-ua-parser
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="Python port of Browserscope's user agent parser"
-url="https://github.com/tobie/ua-parser"
+url="https://github.com/ua-parser/uap-python"
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('APACHE')
 arch=('any')
-source=("https://pypi.python.org/packages/source/u/ua-parser/ua-parser-${pkgver}.tar.gz")
-sha512sums=('045f3b8d0c24e0e2a951df13b21a4f55414b529dbd0716c0274271c23025102955dfcc1d4129084e852010463bbfe67629d68f757980308ae9cd0a95ad493027')
+source=("https://pypi.python.org/packages/9c/f4/872c229b0d6335bc56d552bceebc91dae2f5d3abf2e0e749db32b765471b/ua-parser-$pkgver.tar.gz")
+sha512sums=('6d953a155db6cf4f3df1dce4dc6c11c43ec0d7161703c0e8de3738d798523981624283a51eed4135fc22a8e5b968098735d6e3bfc6ba09415cbe2cc01d536a62')
 
 build() {
     cd $srcdir/ua-parser-${pkgver}
