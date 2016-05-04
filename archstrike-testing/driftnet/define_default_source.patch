@@ -1,0 +1,24 @@
+Only in driftnet-upstream-1.1.5.orig: driftnet-upstream-1.1.5
+diff -aur driftnet-upstream-1.1.5.orig/src/Makefile.am driftnet-upstream-1.1.5/src/Makefile.am
+--- driftnet-upstream-1.1.5.orig/src/Makefile.am	2016-05-04 16:34:27.673770236 -0400
++++ driftnet-upstream-1.1.5/src/Makefile.am	2016-05-04 16:41:20.210785765 -0400
+@@ -17,6 +17,6 @@
+ endif
+ 
+ AM_CFLAGS += -Wall
+-AM_CFLAGS += -D__FAVOR_BSD -D_BSD_SOURCE # Get BSDish definitions of the TCP/IP structs (linux).
++AM_CFLAGS += -D__FAVOR_BSD -D_BSD_SOURCE -D_DEFAULT_SOURCE # Get BSDish definitions of the TCP/IP structs (linux).
+ AM_CFLAGS += -DDRIFTNET_VERSION=\"$(VERSION)\"
+ AM_CFLAGS += -DDRIFTNET_PROGNAME=\"$(PACKAGE)\"
+diff -aur driftnet-upstream-1.1.5.orig/src/Makefile.in driftnet-upstream-1.1.5/src/Makefile.in
+--- driftnet-upstream-1.1.5.orig/src/Makefile.in	2016-05-04 16:34:27.677103547 -0400
++++ driftnet-upstream-1.1.5/src/Makefile.in	2016-05-04 16:41:38.833972375 -0400
+@@ -298,7 +298,7 @@
+ 
+ SUBDIRS = media $(am__append_1)
+ AM_CFLAGS = -I$(srcdir)/media $(am__append_2) -Wall -D__FAVOR_BSD \
+-	-D_BSD_SOURCE -DDRIFTNET_VERSION=\"$(VERSION)\" \
++	-D_BSD_SOURCE -D_DEFAULT_SOURCE -DDRIFTNET_VERSION=\"$(VERSION)\" \
+ 	-DDRIFTNET_PROGNAME=\"$(PACKAGE)\"
+ driftnet_LDADD = media/libmedia.a $(am__append_3)
+ all: config.h
