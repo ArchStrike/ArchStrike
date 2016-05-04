@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: xorond <xorond@gmail.com>
+
+buildarch=212
+
+pkgname=detectsniffer
+pkgver=20160504
+pkgrel=1
+groups=('archstrike' 'archstrike-defense')
+pkgdesc='Tool that detects sniffers in the network'
+url='https://github.com/galkan/tools/tree/master/detect_sniffer'
+license=('custom')
+depends=('scapy' 'python2')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+source=("https://raw.githubusercontent.com/galkan/tools/master/detect_sniffer/detect_sniffer.py" "https://raw.githubusercontent.com/galkan/tools/master/detect_sniffer/LICENSE.txt")
+sha512sums=('116f5bc3780a7ed5fe5be0615f0f04fc6c63da72b762cb2d8c275ae1caadf48fa1bf063a47dc57e6721c6d08fd8c26bbade6178637d57bcca460564f4a7f908a'
+            '38f659b5c3eea636e8ed819fa9ebf10b5590c469ca5ab8bf0a3462d57d438fa2f65647a70f21b6b00531f82f82d228d50271d23325d780dd3a525edeaf5b39d3')
+
+prepare() {
+  cd "$srcdir"
+
+  sed -i 's:python:python2:g' detect_sniffer.py
+}
+
+package() {
+  cd "$srcdir"
+
+  install -Dm755 detect_sniffer.py "$pkgdir/usr/bin/detectsniffer"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+}
