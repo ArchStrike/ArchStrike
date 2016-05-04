@@ -3,21 +3,35 @@
 buildarch=212
 
 pkgname=zzuf
-pkgver=0.14
-pkgrel=4
+pkgver=0.15
+pkgrel=1
 pkgdesc='Transparent application input fuzzer'
 url='https://github.com/samhocevar/zzuf'
 groups=('archstrike' 'archstrike-fuzzers')
 depends=('glibc')
+makedepends=('autoconf')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('custom')
-source=("https://github.com/samhocevar/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz")
-sha512sums=('bed9ce368be3fb63b827ca4d371e3d54ff5c67424ff632cf9d86a80b11228a794750bc4cb57736a02c2a15dff1d02106b284d9988fdc5fcf400953c71e4adf3d')
+install="${pkgname}.install"
+source=("https://github.com/samhocevar/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz" "define_default_source.patch")
+sha512sums=('f5b26f630343d4e0d87705df26b2fa01059ea7ffd7a4970a353014f9e59bc31526edde675de6a4dab9372e39d762cfd180a38990e498f609a3c7ae7fe44ba487'
+            '12e85df69e5b7859c55061e9a762712619a2ae9a112d74427b5c3493b164426f8805eebc4fc810cf6f9fd818f2590fb8e20c119d7de912e7c9d48041664495ac')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 -i $srcdir/define_default_source.patch
+}
 
 build() {
   cd $pkgname-$pkgver
+  ./bootstrap
   ./configure --prefix=/usr
   make
+}
+
+check() {
+  cd $pkgname-$pkgver
+  make test
 }
 
 package() {
