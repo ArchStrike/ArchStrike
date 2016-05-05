@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=libsoc
-pkgver=0.7.1
+pkgver=0.8.1
 pkgrel=1
 pkgdesc="a C library for interfacing with common SoC peripherals through generic kernel interfaces"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ depends=('glibc')
 install=$pkgname.install
 license=(custom)
 source=("https://github.com/jackmitch/libsoc/archive/$pkgver.tar.gz")
-sha512sums=('4c6ef5bca3463e5b2dd3b3bf81647696c45b928cbfbbbb5887bbd057b6d37f783695d790b1611458c633ac23291ee614a54693f8e2fc80fd7d583735e21e5a44')
+sha512sums=('98b06d2e3d6a2dfb3f73bca2a17f42e3dcfacacd98b54387e792d3e653241339efcade68a443c0a6789bc38c84b22cfec4be6bf15e5022a4192015d2e462493e')
 
 build() {
   cd $pkgname-$pkgver
