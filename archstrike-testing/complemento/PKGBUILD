@@ -3,20 +3,20 @@
 buildarch=212
 
 pkgname=complemento
-pkgver=0.7.6
-pkgrel=2
-pkgdesc="Complemento is a collection of tools for pentester: LetDown is a powerful tcp flooder ReverseRaider is a domain scanner that use wordlist scanning or reverse resolution scanning Httsquash is an http server scanner, banner grabber and data retriever"
+pkgver=0.7.7.3
+pkgrel=1
+pkgdesc="A collection of tools for a pentester: LetDown is a powerful tcp flooder ReverseRaider is a domain scanner that use wordlist scanning or reverse resolution scanning Httsquash is an http server scanner, banner grabber and data retriever"
 url="http://complemento.sourceforge.net"
-license="GPL"
+license=("GPL")
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fingerprinting')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('glibc' 'c-ares' 'libnet' 'python2' 'libpcap' 'curl')
+depends=('c-ares' 'libnet' 'python2' 'libpcap' 'curl')
 source=(http://downloads.sourceforge.net/complemento/complemento-$pkgver.tar.gz)
-md5sums=('dbc1c22769109f27b04556314cf58968')
+sha512sums=('f26e0c11fd0521fb77a4e64db2e7db87435933443ce0b3b04eafdf2401862c0905b15e21c1a8d93c726f840caeb2867e9a3026ff341ce89d43f4a7f996ffa2a7')
 
 prepare() {
-  cd "$srcdir/complemento/letdown/"
-  sed -i 's/python2.5/python2/g' Makefile
+  cd "$pkgname/letdown"
+  sed -i 's/python-config/python2-config/g' Makefile
 
   cd "$srcdir/complemento/httsquash/"
   sed -i 's/python2.5/python2/g' Makefile
@@ -26,67 +26,50 @@ prepare() {
 }
 
 build() {
-  cd "$srcdir/complemento"
-
+  cd "$pkgname"
+  export CFLAGS=$CFLAGS
+  export LDFLAGS=$LDFLAGS
   make clean
   make
 }
 
 package() {
+  cd "$pkgname"
   # Base directories
   install -dm755 "$pkgdir/usr/share/complemento/reverseraider/wordlists"
   install -dm755 "$pkgdir/usr/share/complemento/letdown/payloads"
-  install -dm755 "$pkgdir/usr/share/complemento/httsquash"
   install -dm755 "$pkgdir/usr/share/doc/complemento"
   install -dm755 "$pkgdir/usr/bin"
-
-  cd "$srcdir/complemento"
-
+  
   # Doc
-  install -m644 readme "$pkgdir/usr/share/doc/complemento"
+  install -Dm644 readme "$pkgdir/usr/share/doc/complemento/readme"
 
   # --- LETDOWN ---
 
-  cd "$srcdir/complemento/letdown"
+  cd "$srcdir/$pkgname/letdown"
 
   # Bin
-  install -m755 letdown "$pkgdir/usr/share/complemento/letdown"
-
-  cat > "$pkgdir/usr/bin/letdown" <<EOF
-#!/bin/sh
-echo >&2
-echo >&2 'Payloads are at /usr/share/complemento/letdown/payloads'
-echo >&2 'Enjoy.'
-echo >&2
-
-/usr/share/complemento/letdown/letdown
-EOF
-  chmod +x "$pkgdir/usr/bin/letdown"
+  install -Dm755 letdown "$pkgdir/usr/bin/letdown"
 
   # Doc
-  install -m644 readme "$pkgdir/usr/share/doc/complemento/readme-letdown"
+  install -Dm644 README "$pkgdir/usr/share/doc/complemento/readme-letdown"
 
   # Payloads
-  install -m644 payloads/* "$pkgdir/usr/share/complemento/letdown/payloads"
+  install -Dm644 payloads/* "$pkgdir/usr/share/complemento/letdown/payloads"
 
   # --- HTTSQUASH ---
 
-  cd "$srcdir/complemento/httsquash"
+  cd "$srcdir/$pkgname/httsquash"
 
   # Bin
-  install -m755 httsquash "$pkgdir/usr/share/complemento/httsquash"
-  ln -s /usr/share/complemento/httsquash/httsquash "$pkgdir/usr/bin/httsquash"
-
-  # Doc
-  install -m644 readme "$pkgdir/usr/share/doc/complemento/readme-httsquash"
+  install -Dm755 httsquash "$pkgdir/usr/bin/httsquash"
 
   # --- REVERSERAIDER ---
 
-  cd "$srcdir/complemento/reverseraider"
+  cd "$srcdir/$pkgname/reverseraider"
 
   # Bin
-  install -m755 reverseraider "$pkgdir/usr/share/complemento/reverseraider"
-  ln -s /usr/share/complemento/reverseraider "$pkgdir/usr/bin/reverseraider"
+  install -Dm755 reverseraider "$pkgdir/usr/bin/reverseraider"
 
   # Wordlists
   install -m644 wordlists/* "$pkgdir/usr/share/complemento/reverseraider/wordlists"
