@@ -3,28 +3,29 @@
 buildarch=1
 
 pkgname=o-saft
-pkgver=15.05.15
+pkgver=15.12.15
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
-pkgdesc="an easy to use tool to show informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations."
+pkgdesc='An easy to use tool to show informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations'
 arch=('any')
 url='https://www.owasp.org/index.php/O-Saft'
-license=('GPL2')
-depends=('ruby' 'perl-net-dns' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-io-socket-inet6')
+license=('GPL')
+depends=('ruby' 'perl-net-dns' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-io-socket-inet6' 'tk' 'coreutils')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/OWASP/O-Saft#tag=${pkgver}")
+source=("$pkgname::git+https://github.com/OWASP/O-Saft#tag=$pkgver")
 sha512sums=('SKIP')
 
 package() {
-  cd "${pkgname}"
+  cd "$pkgname"
   install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/o-saft"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/o-saft/"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
 
 cat > "$pkgdir/usr/bin/o-saft" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/o-saft
 perl o-saft.pl "\$@"
 EOF
-chmod +x "$pkgdir/usr/bin/o-saft"
+
+  chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
