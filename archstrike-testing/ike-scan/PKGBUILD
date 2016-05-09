@@ -3,24 +3,28 @@
 buildarch=212
 
 pkgname=ike-scan
-pkgver=1.9
+pkgver=1.9.4
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
-pkgdesc="A tool that uses IKE protocol to discover, fingerprinting and test IPSec VPN servers"
+pkgdesc='Discover and fingerprint IKE hosts (IPsec VPN Servers)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url='http://www.nta-monitor.com/tools/ike-scan/'
+url='https://github.com/royhills/ike-scan'
 license=('GPL')
 depends=('openssl')
-makedepends=('make' 'gcc')
-source=(http://www.nta-monitor.com/tools/ike-scan/download/ike-scan-1.9.tar.gz)
-md5sums=('bed63c7d2f54c482525a735be7b5e720')
+source=("https://github.com/royhills/$pkgname/archive/$pkgver.tar.gz")
+sha512sums=('d7dde6d3d76a2e3ddeb9ed1f0dee3e2c3a13d4afa57ebb8ff19f6af094f7334b464509cee6ffc385d2703bcf9bc1c503bc604506279518f692f82c8f12f146be')
 
 build() {
-  cd $srcdir/ike-scan-$pkgver
+  cd $pkgname-$pkgver
+  aclocal
+  autoheader
+  automake --add-missing
+  autoconf
   ./configure --prefix=/usr --mandir=/usr/share/man --with-openssl
+  make
 }
 
 package() {
-  cd $srcdir/ike-scan-$pkgver
-  make DESTDIR=$pkgdir install
+  cd $pkgname-$pkgver
+  make DESTDIR="$pkgdir" install
 }
