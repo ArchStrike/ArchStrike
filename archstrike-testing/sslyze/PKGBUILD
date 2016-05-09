@@ -3,36 +3,34 @@
 buildarch=1
 
 pkgname=sslyze
-pkgver=0.9
+pkgver=0.13.5
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations"
 arch=('any')
-url='https://github.com/iSECPartners/sslyze'
+url='https://github.com/nabla-c0d3/sslyze'
 license=('GPL2')
 depends=('python2')
-makedepends=('nassl')
-source=("https://github.com/iSECPartners/sslyze/archive/release-$pkgver.zip")
-sha512sums=('3bbb223dbae2704e042731a0409ea423b0262450804954f3190614c893740404c4e24d423ffa507f9dc0e92792fb050ee628edc93dd4114478ff9eb25329a1d7')
+makedepends=('nassl' 'python2-setuptools')
+source=("https://github.com/nabla-c0d3/sslyze/archive/$pkgver.zip")
+sha512sums=('86748c61b376273406e3887d8e01839ca40f44933aef81a714ab6d2176fa8d3853b3fc497053f911e46a3647970292ec41b279e97eae7ad33904c3538ecbd6ee')
 
 prepare() {
   find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
   find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/ usr/bin/python2|'
-  cd $pkgname-release-$pkgver
+  cd $pkgname-$pkgver
   install -dm755 nassl
   cp /usr/lib/python2.7/site-packages/nassl/_nassl.so .
 }
 
 build(){
-  cd $pkgname-release-$pkgver
+  cd $pkgname-$pkgver
   python2 setup.py build
 }
 
 package() {
-  cd $pkgname-release-$pkgver
+  cd $pkgname-$pkgver
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/sslyze/LICENSE.txt"
-  install -Dm644 AUTHORS.txt "$pkgdir/usr/share/sslyze/AUTHORS.txt"
-  mv "$pkgdir/usr/bin/sslyze.py" "$pkgdir/usr/bin/sslyze"
 }
