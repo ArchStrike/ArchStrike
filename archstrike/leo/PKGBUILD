@@ -4,16 +4,16 @@ buildarch=1
 
 pkgname=leo
 pkgver=5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Literate programmer's editor, outliner, and project manager"
 arch=('any')
 url='http://leoeditor.com'
 license=('custom')
-depends=('python-pyqt4' 'python-pyenchant')
+depends=('python-pyqt4')
 optdepends=('python-pyenchant: For Spelling support')
 makedepends=('unzip' 'python-setuptools')
 groups=('archstrike' 'archstrike-misc')
-source=("http://downloads.sourceforge.net/sourceforge/leo/Leo-$pkgver-final.zip")
+source=("http://downloads.sourceforge.net/sourceforge/$pkgname/Leo-$pkgver-final.zip")
 sha512sums=('3049eb349d719d62a6518a9bcdb3bf5d7baa42ef8350573f56356fd2ec42fdb58eef1987cf49de0d07dc8b787784409616490976ae2dd2dab9f3d5c9b4b49a00')
 
 package() {
