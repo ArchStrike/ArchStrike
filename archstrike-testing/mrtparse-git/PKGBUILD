@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=mrtparse-git
-pkgver=r409.60cac38
+pkgver=r410.eb8d555
 pkgrel=1
 groups=('archstrike')
 pkgdesc="a module to read and analyze the MRT format data."
