@@ -3,28 +3,25 @@
 buildarch=212
 
 pkgname=pcapsipdump
-pkgver=0.1.4
+pkgver=0.2
 pkgrel=1
-pkgdesc="pcapsipdump is a tool for dumping SIP sessions (+RTP traffic, if available) to disk in a fashion similar to 'tcpdump -w' (format is exactly the same), but one file per sip session (even if there is thousands of concurrect SIP sessions)."
-url="http://pcapsipdump.sourceforge.net/"
-groups=('archstrike' 'archstrike-voip')
+pkgdesc='A libpcap-based SIP sniffer with per-call sorting capabilities'
+url='http://pcapsipdump.sourceforge.net'
 license=('GPL')
-depends=('libpcap' 'gcc-libs')
+groups=('archstrike' 'archstrike-voip')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=(http://downloads.sourceforge.net/pcapsipdump/${pkgname}-${pkgver}.tar.gz
-        header-fix.patch)
-md5sums=('95ed26caf66237a654cae2cacdaa3386'
-         '7c0536c4023ac420116bc4e27534b589')
+options=('!buildflags')
+depends=('libpcap')
+source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('7bd1dd4508262ff5aa43b26ba382aa0b17d9f971b192f5f7b6e861a81f60a853e966abba0b8b688f3bf157a8a7b00790189748c2d29bc7e8c61c13e9cbfd37ac')
 
 build() {
-  cd "$srcdir/pcapsipdump-$pkgver"
-  patch -Np0 -i "$srcdir"/header-fix.patch
-  make CPPFLAGS="$CXXFLAGS"
+  cd $pkgname-$pkgver
+  make
 }
 
-package(){
-  cd "$srcdir/pcapsipdump-$pkgver"
-  install -Dm755 pcapsipdump $pkgdir/usr/bin/pcapsipdump
-  install -Dm644 README.txt $pkgdir/usr/share/doc/pcapsipdump/README
+package() {
+  cd $pkgname-$pkgver
+  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 README.txt "$pkgdir/usr/share/doc/$pkgname/README"
 }
-
