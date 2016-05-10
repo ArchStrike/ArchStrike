@@ -1,7 +1,7 @@
-diff -aur pip3line-2.6.0.orig/defaultplugins/baseplugins/CMakeLists.txt pip3line-2.6.0/defaultplugins/baseplugins/CMakeLists.txt
---- pip3line-2.6.0.orig/defaultplugins/baseplugins/CMakeLists.txt	2015-07-19 19:24:22.588087680 -0400
-+++ pip3line-2.6.0/defaultplugins/baseplugins/CMakeLists.txt	2015-07-19 19:24:41.117836707 -0400
-@@ -266,7 +266,7 @@
+diff -aur pip3line-2.7.1.orig/defaultplugins/baseplugins/CMakeLists.txt pip3line-2.7.1/defaultplugins/baseplugins/CMakeLists.txt
+--- pip3line-2.7.1.orig/defaultplugins/baseplugins/CMakeLists.txt	2016-05-09 21:24:10.000898016 -0400
++++ pip3line-2.7.1/defaultplugins/baseplugins/CMakeLists.txt	2016-05-09 21:24:31.683909522 -0400
+@@ -278,7 +278,7 @@
  target_link_libraries ( baseplugins ${EXTERN_LIB} )
  
  IF(UNIX)
@@ -10,10 +10,10 @@ diff -aur pip3line-2.6.0.orig/defaultplugins/baseplugins/CMakeLists.txt pip3line
  		PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
  		GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
  ENDIF(UNIX)
-diff -aur pip3line-2.6.0.orig/defaultplugins/distormplugin/CMakeLists.txt pip3line-2.6.0/defaultplugins/distormplugin/CMakeLists.txt
---- pip3line-2.6.0.orig/defaultplugins/distormplugin/CMakeLists.txt	2015-07-19 19:24:22.598087544 -0400
-+++ pip3line-2.6.0/defaultplugins/distormplugin/CMakeLists.txt	2015-07-19 19:24:53.850996936 -0400
-@@ -89,7 +89,7 @@
+diff -aur pip3line-2.7.1.orig/defaultplugins/distormplugin/CMakeLists.txt pip3line-2.7.1/defaultplugins/distormplugin/CMakeLists.txt
+--- pip3line-2.7.1.orig/defaultplugins/distormplugin/CMakeLists.txt	2016-05-09 21:24:10.010897867 -0400
++++ pip3line-2.7.1/defaultplugins/distormplugin/CMakeLists.txt	2016-05-09 21:24:49.803640589 -0400
+@@ -88,7 +88,7 @@
  target_link_libraries ( distormplugin  ${EXTERN_LIBS} )
  
  IF(UNIX)
@@ -22,10 +22,10 @@ diff -aur pip3line-2.6.0.orig/defaultplugins/distormplugin/CMakeLists.txt pip3li
  		PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
  		GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE )
  ENDIF(UNIX)
-diff -aur pip3line-2.6.0.orig/defaultplugins/exampleplugin/CMakeLists.txt pip3line-2.6.0/defaultplugins/exampleplugin/CMakeLists.txt
---- pip3line-2.6.0.orig/defaultplugins/exampleplugin/CMakeLists.txt	2015-07-19 19:24:22.598087544 -0400
-+++ pip3line-2.6.0/defaultplugins/exampleplugin/CMakeLists.txt	2015-07-19 19:25:24.090583816 -0400
-@@ -60,7 +60,7 @@
+diff -aur pip3line-2.7.1.orig/defaultplugins/exampleplugin/CMakeLists.txt pip3line-2.7.1/defaultplugins/exampleplugin/CMakeLists.txt
+--- pip3line-2.7.1.orig/defaultplugins/exampleplugin/CMakeLists.txt	2016-05-09 21:24:10.010897867 -0400
++++ pip3line-2.7.1/defaultplugins/exampleplugin/CMakeLists.txt	2016-05-09 21:25:10.370002009 -0400
+@@ -59,7 +59,7 @@
  target_link_libraries ( exampleplugin ${EXTERN_LIB} )
  
  IF(UNIX)
@@ -34,10 +34,10 @@ diff -aur pip3line-2.6.0.orig/defaultplugins/exampleplugin/CMakeLists.txt pip3li
  		PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
  		GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
  ENDIF(UNIX)
-diff -aur pip3line-2.6.0.orig/defaultplugins/opensslplugin/CMakeLists.txt pip3line-2.6.0/defaultplugins/opensslplugin/CMakeLists.txt
---- pip3line-2.6.0.orig/defaultplugins/opensslplugin/CMakeLists.txt	2015-07-19 19:24:22.598087544 -0400
-+++ pip3line-2.6.0/defaultplugins/opensslplugin/CMakeLists.txt	2015-07-19 19:25:09.024123330 -0400
-@@ -90,7 +90,7 @@
+diff -aur pip3line-2.7.1.orig/defaultplugins/opensslplugin/CMakeLists.txt pip3line-2.7.1/defaultplugins/opensslplugin/CMakeLists.txt
+--- pip3line-2.7.1.orig/defaultplugins/opensslplugin/CMakeLists.txt	2016-05-09 21:24:10.010897867 -0400
++++ pip3line-2.7.1/defaultplugins/opensslplugin/CMakeLists.txt	2016-05-09 21:25:31.009695680 -0400
+@@ -88,7 +88,7 @@
  	target_link_libraries ( opensslplugin  ${EXTERN_LIBS} )
  
  	IF(UNIX)
@@ -46,10 +46,10 @@ diff -aur pip3line-2.6.0.orig/defaultplugins/opensslplugin/CMakeLists.txt pip3li
  			PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
  			GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE )
  	ENDIF(UNIX)
-diff -aur pip3line-2.6.0.orig/defaultplugins/python27plugin/CMakeLists.txt pip3line-2.6.0/defaultplugins/python27plugin/CMakeLists.txt
---- pip3line-2.6.0.orig/defaultplugins/python27plugin/CMakeLists.txt	2015-07-19 19:24:22.598087544 -0400
-+++ pip3line-2.6.0/defaultplugins/python27plugin/CMakeLists.txt	2015-07-19 19:25:36.750410049 -0400
-@@ -108,7 +108,7 @@
+diff -aur pip3line-2.7.1.orig/defaultplugins/python27plugin/CMakeLists.txt pip3line-2.7.1/defaultplugins/python27plugin/CMakeLists.txt
+--- pip3line-2.7.1.orig/defaultplugins/python27plugin/CMakeLists.txt	2016-05-09 21:24:10.010897867 -0400
++++ pip3line-2.7.1/defaultplugins/python27plugin/CMakeLists.txt	2016-05-09 21:26:01.809238547 -0400
+@@ -113,7 +113,7 @@
  
  
  IF(UNIX)
@@ -58,10 +58,10 @@ diff -aur pip3line-2.6.0.orig/defaultplugins/python27plugin/CMakeLists.txt pip3l
  		PERMISSIONS OWNER_READ OWNER_WRITE OWNER_EXECUTE
  		GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
  ENDIF(UNIX)
-diff -aur pip3line-2.6.0.orig/defaultplugins/pythonplugin/CMakeLists.txt pip3line-2.6.0/defaultplugins/pythonplugin/CMakeLists.txt
---- pip3line-2.6.0.orig/defaultplugins/pythonplugin/CMakeLists.txt	2015-07-19 19:24:22.598087544 -0400
-+++ pip3line-2.6.0/defaultplugins/pythonplugin/CMakeLists.txt	2015-07-19 19:25:49.646899224 -0400
-@@ -97,7 +97,7 @@
+diff -aur pip3line-2.7.1.orig/defaultplugins/pythonplugin/CMakeLists.txt pip3line-2.7.1/defaultplugins/pythonplugin/CMakeLists.txt
+--- pip3line-2.7.1.orig/defaultplugins/pythonplugin/CMakeLists.txt	2016-05-09 21:24:10.010897867 -0400
++++ pip3line-2.7.1/defaultplugins/pythonplugin/CMakeLists.txt	2016-05-09 21:26:22.122270394 -0400
+@@ -96,7 +96,7 @@
  	target_link_libraries ( python3plugin ${EXTERN_LIB} ${PYTHON_LIBRARIES} )
  
  	IF(UNIX)
