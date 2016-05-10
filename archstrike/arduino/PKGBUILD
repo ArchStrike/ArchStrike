@@ -7,8 +7,8 @@
 buildarch=192
 
 pkgname=arduino
-pkgver=1.6.8
-pkgrel=3
+pkgver=1.6.9
+pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc='Open-source electronics prototyping platform'
 arch=('i686' 'x86_64')
@@ -24,11 +24,9 @@ source=(
   "$pkgname.desktop"
   "$pkgname.mime.xml"
 )
-sha512sums=(
-  'a5814e7d7a43a337f96b2abc33c0bc10a09c5baa91b7416b9c17ee65ce643944eae133a8485dff09d5164665f90fdd25707e1025d7bd76f704552224074c5931'
-  'dd0c5929a051e1c0303d6921fc85fe4ddf01a66230985a1834a0af11c5e040f2ee7b4622c7d31c57c5e45e420b36e3cf2ad0eb00c1c230e5bb26b533858ff2b9'
-  '910f1f5f9c9861a0b010d25e9c3579c78cb2f0b31c94fc79ed4e55b0bc65535d8ce4c54fb5cdf8a90ee589c7f1bb432bb62136ca48be1829fc001fe5acc0f0f3'
-)
+sha512sums=('92b3508068e3aae6a88c3a395d0906fb63d2fd8ee20d003173b96f3f0ff6851eddcdb77c6349dfec3ad0ee36976f53432c643f56724490e9187d4af049fd4bf8'
+            'dd0c5929a051e1c0303d6921fc85fe4ddf01a66230985a1834a0af11c5e040f2ee7b4622c7d31c57c5e45e420b36e3cf2ad0eb00c1c230e5bb26b533858ff2b9'
+            '910f1f5f9c9861a0b010d25e9c3579c78cb2f0b31c94fc79ed4e55b0bc65535d8ce4c54fb5cdf8a90ee589c7f1bb432bb62136ca48be1829fc001fe5acc0f0f3')
 
 prepare() {
   # remove the username/password check for updating reference documentation
