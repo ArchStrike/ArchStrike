@@ -10,9 +10,10 @@ groups=('archstrike' 'archstrike-crackers')
 pkgdesc=" This program uses bruteforce algorithm to find correct password (rar, 7z, zip)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL2')
-makedepends=('gcc' 'libxml2')
+depends=('libxml2')
+makedepends=('gcc')
 source=(http://downloads.sourceforge.net/rarcrack/rarcrack-$pkgver.tar.bz2)
-md5sums=('62d0cf77c6c4edc7204305649f8b7362')
+sha512sums=('ee8da7ce868a60eaf0bf3fad429bbc1c29a625e15890013cbef28595a7d04d7b7f41943800d2e7bbe6758e8f9d1b9b8d497efc52b1101867ebd9802802c346da')
 
 build() {
   cd $srcdir/rarcrack-$pkgver
