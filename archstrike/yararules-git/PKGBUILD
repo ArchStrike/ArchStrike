@@ -2,25 +2,26 @@
 
 buildarch=1
 
-pkgname=yararules-git
-pkgver=20160506.r588
+_pkgname=yararules
+pkgname=$_pkgname-git
+pkgver=20160510.r590
 pkgrel=1
-pkgdesc="A Repository of yara rules"
+pkgdesc='A Repository of yara rules'
 arch=('any')
-url="https://github.com/Yara-Rules/rules"
-license=("GPL2")
+url='https://github.com/Yara-Rules/rules'
+license=('GPL')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/Yara-Rules/rules.git")
+source=("$pkgname::git+https://github.com/Yara-Rules/rules.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd $pkgname
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}"
-  install -dm755 $pkgdir/usr/share/yararules
-  install -Dm644 *.yar "$pkgdir/usr/share/yararules/"
-  install -Dm644 README.md "$pkgdir/usr/share/yararules/"
+  cd $pkgname
+  install -dm755 $pkgdir/usr/share/$_pkgname
+  install -Dm644 *.yar "$pkgdir/usr/share/$_pkgname/"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
