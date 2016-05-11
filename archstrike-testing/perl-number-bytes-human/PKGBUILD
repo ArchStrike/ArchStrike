@@ -3,15 +3,15 @@
 buildarch=1
 
 pkgname=perl-number-bytes-human
-pkgver=0.09
-pkgrel=3
+pkgver=0.10
+pkgrel=1
 pkgdesc="Convert byte count to human readable format."
 arch=('any')
 url='http://search.cpan.org/dist/Number-Bytes-Human/'
 license=('PerlArtistic')
 source=("http://search.cpan.org/CPAN/authors/id/D/DA/DAGOBERT/Number-Bytes-Human-${pkgver}.tar.gz")
 depends=('perl')
-md5sums=('09c021072dc095bfae6895608c999f8b')
+sha512sums=('031616b2486dc0f61e7522933c78b9eb99348856e2c8268cc37c4df45877ff4bb9323adafc965553eea4305553fa0147f11b7c9c3246080ca04fe83ccd43e79a')
 options=('!emptydirs')
 
 package() {
