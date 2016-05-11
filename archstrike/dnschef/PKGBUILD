@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnschef
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="A highly configurable DNS proxy for pentesters"
 url="http://thesprawl.org/projects/dnschef/"
@@ -16,7 +16,7 @@ sha512sums=('472429f1ff562cdc4eca814574508eaf197e9fc9fe8ad03fe7807f0b4c9bd325b82
 
 prepare() {
   cd "$srcdir/dnschef-$pkgver"
-  sed -i 's/env python/env python2/' *.py
+  sed -i 's/env python$/env python2/' *.py
 }
 
 package() {
@@ -26,7 +26,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/dnschef"
 
-  cp -a * "$pkgdir/usr/share/dnschef"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/dnschef/"
 
   # Bin.
 cat > "$pkgdir/usr/bin/dnschef" <<EOF
