@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=bvi
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A display-oriented editor for binary files operate like 'vi' editor"
 url="http://bvi.sourceforge.net"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
