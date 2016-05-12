@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=netsniff-ng
 pkgver=0.6.1
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A high performance Linux network sniffer for packet inspection."
 depends=('geoip' 'libsodium' 'liburcu' 'libcli' 'libnet' 'libnetfilter_conntrack' 'libpcap')
