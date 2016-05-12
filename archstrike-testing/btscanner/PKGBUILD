@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=btscanner
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-bluetooth' 'archstrike-scanners')
 pkgdesc="Bluetooth device scanner."
 url='http://www.pentest.co.uk'
@@ -14,8 +14,8 @@ license=('GPL')
 changelog="btscanner.changelog"
 source=(http://www.pentest.co.uk/src/btscanner-$pkgver.tar.bz2
         btscanner.patch)
-md5sums=('587ec5847647d432eac1704b260af020'
-         '481f2f5b49ba83b8ab8155983c911db9')
+sha512sums=('b46f1b009d3a13e3937cc22b358691acb458bc4811ebbbab37ee84ef8bb8afdba539d3f50ce0d6157c676262ebc3834ba00295ae0aacd346b3979637e92160b6'
+            'faa5c576f010ab4c2aa78a93cbe8ff93a309ba61fea16ab95ad442b483132091f8c2861a6c9e2fc2125f10086467a8f4a156561fc4c9e4fccb23e33c1f3ede5e')
 
 prepare() {
   cd "$srcdir/btscanner-$pkgver"
