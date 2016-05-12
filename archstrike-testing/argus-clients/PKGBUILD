@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=argus-clients
 pkgver=3.0.8
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-networking' 'archstrike-defense')
 pkgdesc="Network monitoring client for Argus"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
