@@ -4,11 +4,11 @@ buildarch=212
 
 pkgname='httping'
 pkgver='2.4'
-pkgrel=1
+pkgrel=2
 pkgdesc="A 'ping'-like tool for http-requests."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-depends=('openssl' 'fftw')
-url=('http://www.vanheusden.com/httping/')
+depends=('openssl' 'fftw' 'ncurses')
+url='http://www.vanheusden.com/httping/'
 license=('GPL')
 groups=('archstrike' 'archstrike-networking' 'archstrike-recon')
 source=("http://www.vanheusden.com/httping/httping-$pkgver.tgz")
