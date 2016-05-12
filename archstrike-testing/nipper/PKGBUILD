@@ -4,14 +4,15 @@ buildarch=212
 
 pkgname=nipper
 pkgver=0.11.7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon' 'archstrike-networking')
 pkgdesc="Network Infrastructure Parser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://www.titania-security.com/"
+depends=("glibc")
 license=('GPL3')
 source=("http://packetstorm.foofus.com/cisco/nipper-$pkgver.tgz")
-md5sums=('cc6e500d2cefef2322ad8b4a1102aae1')
+sha512sums=('cc6e500d2cefef2322ad8b4a1102aae1')
 
 build(){
   cd "$srcdir/nipper-$pkgver"
