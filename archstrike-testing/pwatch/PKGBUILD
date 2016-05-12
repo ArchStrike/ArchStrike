@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=pwatch
 pkgver=0.0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An ncurses tool that can be run by root to give information about processes"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL')
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('ncurses')
 makedepends=('linux-api-headers')
 source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('890b6e54184f5408c0f91f9e9c2414ac2aa5e0e9b73190541e7d3377ad70fd63f54d327fb5f38d00363a85a018f17f51961ad6a3d78035834529a44c8353c928')
+sha512sums=('3ad3c3fc7df5746676b71f756d8addb7ab31cb96a8fabc67608203cd7d29c9499ea5b02c87fb39c36740d69a090cdbe925ed3d8a9c47302d63d9fa01194aa10b')
 
 build() {
     cd "${pkgname}-${pkgver}"
