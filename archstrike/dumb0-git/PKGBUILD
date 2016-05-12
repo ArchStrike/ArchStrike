@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=dumb0-git
 pkgver=r19.1493e74
-pkgrel=1
-groups=('archstrike' 'archstrike-scanners')
+pkgrel=2
+groups=('archstrike' 'archstrike-scanners' 'archstrike-webapps')
 pkgdesc="A simple tool to dump users in popular forums and CMS :)"
 arch=('any')
 url='https://github.com/0verl0ad/Dumb0'
@@ -31,8 +31,12 @@ prepare() {
 
 package() {
   cd "$srcdir/dumb0"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share"
+  install -dm755 "$pkgdir/usr/share/licenses/dumb0"
 
   install -Dm755 Dumb0.pl "$pkgdir/usr/bin/dumb0"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/dumb0/"
   install -Dm644 README.md "$pkgdir/usr/share/dumb0/README.md"
 
 }
