@@ -10,7 +10,7 @@ pkgdesc='MD4/MD5/NTLM1 hash cracker'
 url='http://c3rb3r.openwall.net/mdcrack/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('custom')
-depends=('ncruses')
+depends=('ncurses')
 source=("http://c3rb3r.openwall.net/mdcrack/download/mdcrack-$pkgver.tar.gz"
         "mdcrack.patch")
 sha512sums=('1a0ec91e19c65ea5c94b988a3a40226e2996adde26970e847ee3756263e65201751c449e6a29595b67314480be10460fdb2ebb31b5e734039d777e58b42c2965'
