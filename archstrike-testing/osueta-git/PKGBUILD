@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=osueta-git
-pkgver=r65.90323e2
+pkgver=r68.827593a
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A simple Python script to exploit the OpenSSH User Enumeration Timing Attack."
