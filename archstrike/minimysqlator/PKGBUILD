@@ -4,29 +4,29 @@ buildarch=1
 
 pkgname=minimysqlator
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Mini MySqlat0r is a multi-platform application used to audit web sites in order to discover and exploit SQL injection vulnerabilities."
 arch=(any)
 url="http://www.scrt.ch/pages_en/minimysqlator.html"
 license=('GPL')
 depends=('java-runtime')
 groups=('archstrike' 'archstrike-database')
-source=(http://www.scrt.ch/outils/mms/mms_05.jar
-        http://www.scrt.ch/outils/mms/common_tables.txt)
-md5sums=('727350bcc40c05c40bae9a7c900600bb'
-         '58e55a5d090ea1a8509470433a7d659b')
+source=("http://www.scrt.ch/outils/mms/mms_05.jar" "http://www.scrt.ch/outils/mms/common_tables.txt" "minimysqlator.desktop") 
+sha512sums=('f6b489f2376af052a48f849882ddd34bb56fe83972bbc9a42231cb3aa26cf63ff90d075e7713a5c0a0fe86ef1f7d94c8a856e28b1930a65cae031d8530ef163b'
+            'e29e8f12ab07da85443cf077419b2fb737c56ab58e163234155393bd85e53b96b2f90e0fdf2e0f8a7f7c1b0d5ad9d6f9b74f62dea578016fb2fb5ab4910e689b'
+            '5ce97d4669bbe0ea9526f6f44b959c8cc5db4567f90aafdf62a78679b00d56f782d3cd98efc64fa10d7b1502d350665ed73520d7ec147d50cd375a1789696ec7')
 
 package() {
   cd "$srcdir/"
   install -Dm644 mms_05.jar $pkgdir/usr/share/minimysqlator/mms.jar
   install -Dm644 common_tables.txt $pkgdir/usr/share/minimysqlator/common_tables.txt
 
-  mkdir -p $pkgdir/usr/bin/
+  install -dm755 "$pkgdir/usr/bin"
   cat > $pkgdir/usr/bin/minimysqlator << EOF
 #!/bin/sh
 cd /usr/share/minimysqlator/
 java -jar /usr/share/minimysqlator/mms.jar \$@
 EOF
-  chmod 755 $pkgdir/usr/bin/minimysqlator
+  chmod +x $pkgdir/usr/bin/minimysqlator
 }
 
