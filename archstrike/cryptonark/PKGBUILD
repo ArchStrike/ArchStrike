@@ -20,5 +20,6 @@ sha512sums=('dff15bf04d283d54a69456936f1f3cd9891fdb4c403f52f3937718441d69b2055d0
 
 package() {
   cd "$srcdir"
+  install -dm755 "$pkgdir/usr/bin"
   install -Dm755 cnark.pl "${pkgdir}/usr/bin/cnark"
 }
