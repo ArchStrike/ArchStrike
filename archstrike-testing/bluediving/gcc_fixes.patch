@@ -1,0 +1,23 @@
+diff -aur bluediving-0.9.orig/tools/bss-0.8/replace.c bluediving-0.9/tools/bss-0.8/replace.c
+--- bluediving-0.9.orig/tools/bss-0.8/replace.c	2016-05-13 13:20:22.536154069 -0400
++++ bluediving-0.9/tools/bss-0.8/replace.c	2016-05-13 13:22:04.804250857 -0400
+@@ -10,6 +10,7 @@
+ // Modifications by Ollie Whitehouse <ol at uncon dot org>
+ // 
+ #include <stdio.h>
++#include <string.h>
+ 
+ char *replace(char *string, char *oldpiece, char *newpiece) {
+ 
+diff -aur bluediving-0.9.orig/tools/greenplaque_src/Makefile bluediving-0.9/tools/greenplaque_src/Makefile
+--- bluediving-0.9.orig/tools/greenplaque_src/Makefile	2016-05-13 13:20:22.532820798 -0400
++++ bluediving-0.9/tools/greenplaque_src/Makefile	2016-05-13 13:24:42.511315922 -0400
+@@ -3,7 +3,7 @@
+ 
+ DEPS=src/list.h
+ 
+-LIBS=-lbluetooth -lpthread -D_REENTRANT
++LIBS=-lbluetooth -pthread -D_REENTRANT
+ 
+ all: $(EXE)
+ 

@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=bluediving
 pkgver=0.9
-pkgrel=9
+pkgrel=10
 pkgdesc="A Bluetooth penetration testing suite"
 url='http://bluediving.sourceforge.net/'
 license=('GPL')
@@ -13,12 +13,15 @@ groups=('archstrike' 'archstrike-bluetooth')
 depends=('bluez-utils' 'sox' 'obexftp' 'readline' 'expat' 'perl-xml-simple' 'openobex' 'libxml2')
 install=bluediving.install
 source=("http://downloads.sourceforge.net/sourceforge/bluediving/bluediving-$pkgver.tgz"
-        'btftp.patch')
+        "btftp.patch"
+        "gcc_fixes.patch")
 sha512sums=('8fc941cca2b4623eb5b9b6f34bb5ba4e7ea20861d537642627769a4245a9355e9640569e035478c55afd06e45bfd7fc7f26993a07ed207156e28962755e16e8e'
-            'd922ad8c501ee65c2562271c958a33c17daa5899b186158b2428854818fd9d33e9aaac6b5b231fcb151b2fa002f1f66ccf2d82cac58516a32dd8a09605e404a4')
+            'd922ad8c501ee65c2562271c958a33c17daa5899b186158b2428854818fd9d33e9aaac6b5b231fcb151b2fa002f1f66ccf2d82cac58516a32dd8a09605e404a4'
+            'ea388ebf36d7c7a4ff6249e539a15c6d7229e06e4553686db92f399372658f77d6d5c0c40dd17fc661515855960c6b6b869fed87604364f5df575cd4cd1edd75')
 
 prepare() {
   cd "$srcdir/bluediving-$pkgver"
+  patch -Np1 -i $srcdir/gcc_fixes.patch
   # Change the bluedivingNG.conf path to /etc.
   sed -i -e 's/bluedivingNG.conf/\/etc\/bluedivingNG.conf/g' bluedivingNG.pl
   # Change the paths of the compiled tools to /usr/bin/.
