@@ -1,0 +1,449 @@
+diff -aur AFFLIBv3-3.7.7.orig/lib/afflib.h AFFLIBv3-3.7.7/lib/afflib.h
+--- AFFLIBv3-3.7.7.orig/lib/afflib.h	2016-05-12 20:35:09.890677735 -0400
++++ AFFLIBv3-3.7.7/lib/afflib.h	2016-05-12 20:36:55.005386158 -0400
+@@ -406,7 +406,7 @@
+ #define AF_SECTORSIZE	"sectorsize"	// in bytes, stored in arg
+ #define AF_DEVICE_SECTORS "devicesectors"// stored as a 64-bit number
+ #define AF_BADFLAG      "badflag"	// data used to mark a bad sector
+-#define AF_PAGE		"page%"I64d	// segment flag indicates compression (replaces seg%d)
++#define AF_PAGE		"page%" I64d	// segment flag indicates compression (replaces seg%d)
+ #define AF_PAGE_MD5	AF_PAGE"_md5"	// md5 hash of page
+ #define AF_PAGE_SHA1	AF_PAGE"_sha1"	// sha1 hash of page
+ #define AF_PAGE_SHA256	AF_PAGE"_sha256"// sha256 hash of page
+@@ -428,7 +428,7 @@
+ #define AF_BOM_SEG "affbom%d"
+ 
+ /* Deprecated terminology; pages were originally called data segments */
+-#define AF_SEG_D        "seg%"I64d	// segment flag indicates compression (deprecated)
++#define AF_SEG_D        "seg%" I64d	// segment flag indicates compression (deprecated)
+ #define AF_SEGSIZE_D	"segsize"	// segment data size (deprecated)
+ 
+ /* Bill of Materials */
+diff -aur AFFLIBv3-3.7.7.orig/tools/affcat.cpp AFFLIBv3-3.7.7/tools/affcat.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affcat.cpp	2016-05-12 20:35:09.900677549 -0400
++++ AFFLIBv3-3.7.7/tools/affcat.cpp	2016-05-12 21:10:32.394480909 -0400
+@@ -99,12 +99,12 @@
+     int bytes = af_read(af,buf,af->image_pagesize); // read what we can
+ 
+     if(bytes<0){
+-	if(opt_debug) fprintf(stderr,"affcat: cannot read page %"I64d"\n",pagenum);
++	if(opt_debug) fprintf(stderr,"affcat: cannot read page %" I64d "\n",pagenum);
+ 	return -1;
+     }
+ 
+     if(opt_debug){
+-	fprintf(stderr,"affcat: page:%"I64d" bytes: %d offset:%"I64d"\n",
++	fprintf(stderr,"affcat: page:%"I64d" bytes: %d offset:%" I64d "\n",
+ 		pagenum, bytes,offset);
+     }
+ 
+@@ -196,7 +196,7 @@
+ 	    const char *opt = opts.c_str();
+ 	    uint64_t offset=0;
+ 	    int count=0;
+-	    if(sscanf(opt,"%"I64u":%d",&offset,&count)!=2){
++	    if(sscanf(opt,"%" I64u ":%d",&offset,&count)!=2){
+ 		err(1,"Cannot decode '%s'\n",opt);
+ 	    }
+ 	    af_seek(af,offset,SEEK_SET);
+@@ -227,7 +227,7 @@
+ 	if(opt_list){
+ 	    printf("%s",segname);
+ 	    if(opt_list_long){
+-		printf("\targ:%"PRIu32"\tlen:%d",arg,(int)datalen);
++		printf("\targ:%" PRIu32 "\tlen:%d",arg,(int)datalen);
+ 	    }
+ 	    putchar('\n');
+ 	}
+@@ -270,7 +270,7 @@
+ 
+ 	//fprintf(stderr,"bytes written=%qd imagesize=%qd\n",total_bytes_written,imagesize);
+ 	if((total_bytes_written > imagesize) && (imagesize>0)){
+-	    err(1,"affcat internal error. bytes written=%"I64d" imagesize=%" I64d,
++	    err(1,"affcat internal error. bytes written=%" I64d " imagesize=%" I64d,
+ 		(int64_t)total_bytes_written,
+ 		(int64_t)imagesize);
+ 	    return -1;
+@@ -284,7 +284,7 @@
+ {
+     int64_t r=0;
+     char ch;
+-    if(sscanf(buf,"%"I64d"%c",&r,&ch)==1) return r;
++    if(sscanf(buf,"%" I64d "%c",&r,&ch)==1) return r;
+     fprintf(stderr,"Cannot parse '%s'\n",buf);
+     exit(0);
+ }
+diff -aur AFFLIBv3-3.7.7.orig/tools/affcompare.cpp AFFLIBv3-3.7.7/tools/affcompare.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affcompare.cpp	2016-05-12 20:35:09.900677549 -0400
++++ AFFLIBv3-3.7.7/tools/affcompare.cpp	2016-05-12 21:07:02.251727947 -0400
+@@ -153,10 +153,10 @@
+ void print_info(char dir,const char *segname,uint32_t arg,size_t len,
+ 		unsigned char *data,int mcr)
+ {
+-    printf("    %c %s arg=%"PRIu32" len=%d\n",dir,segname,arg,(int)len);
++    printf("    %c %s arg=%" PRIu32 " len=%d\n",dir,segname,arg,(int)len);
+     printf("          ");
+     if((arg == AF_SEG_QUADWORD) && (len==8)){
+-	printf("data=%"I64d" as a 64-bit value\n",af_decode_q(data));
++	printf("data=%" I64d " as a 64-bit value\n",af_decode_q(data));
+ 	return;
+     }
+     /* Otherwise, just print some stuff... */
+@@ -290,17 +290,17 @@
+ 
+     /* Find the size of each page, then get the page */
+     if(af_get_page(af1,pagenum,0,&data1_len)<0)
+-	err(1,"Cannot read page %"I64d" size from %s\n",pagenum,af_filename(af1));
++	err(1,"Cannot read page %" I64d " size from %s\n",pagenum,af_filename(af1));
+     if(af_get_page(af1,pagenum,data1,&data1_len)<0)
+-	err(1,"Cannot read page %"I64d" from %s",pagenum,af_filename(af1));
++	err(1,"Cannot read page %" I64d " from %s",pagenum,af_filename(af1));
+ 
+     if(af_get_page(af2,pagenum,0,&data2_len)<0)
+-	err(1,"Cannot read page %"I64d" size from %s\n",pagenum,af_filename(af2));
++	err(1,"Cannot read page %" I64d " size from %s\n",pagenum,af_filename(af2));
+     if(af_get_page(af2,pagenum,data2,&data2_len)<0)
+-	err(1,"Cannot read page %"I64d" from %s",pagenum,af_filename(af2));
++	err(1,"Cannot read page %" I64d " from %s",pagenum,af_filename(af2));
+ 
+     if(data1_len != data2_len){
+-	printf("page %"I64d" size %d != size %d\n",pagenum,(int)data1_len,(int)data2_len);
++	printf("page %" I64d " size %d != size %d\n",pagenum,(int)data1_len,(int)data2_len);
+ 	return 1;
+     }
+ 
+@@ -341,7 +341,7 @@
+     outline[0] = 0;
+     if(opt_all || (no_match>0) || af1_bad || af2_bad){
+ 	snprintf(outline,sizeof(outline),
+-		"   page%"I64d" sectors:%4d  matching: %3d  different:%3d",
++		"   page%" I64d " sectors:%4d  matching: %3d  different:%3d",
+ 		pagenum,total_sectors,matching_sectors,no_match);
+     }
+     if(af1_bad){
+@@ -373,7 +373,7 @@
+ 	    if(i==0){
+ 		printf("\n   ");
+ 	    }
+-	    printf(" %"I64d,*j);
++	    printf(" %" I64d,*j);
+ 	    i = (i+1) % 10;
+ 	}
+ 	putchar('\n');
+@@ -391,7 +391,7 @@
+ 	    memcpy(b2,data1+offset,16);
+ 	    b2[15]=0;
+ 
+-	    printf("===  sector %"I64d" (offset=%d) ===\n",*j,offset);
++	    printf("===  sector %" I64d " (offset=%d) ===\n",*j,offset);
+ 	    printf("   %s:\n",af_filename(af1));
+ 	    print_sector(af1,data1+offset);
+ 	    printf("-------------------------------------\n");
+@@ -429,10 +429,10 @@
+ 	size_t len1,len2;
+ 
+ 	if(af_get_page_raw(af1,*i,&arg1,0,&len1)){
+-	    err(1,"Could not read page %"I64d" in file %s\n",*i,af_filename(af1));
++	    err(1,"Could not read page %" I64d " in file %s\n",*i,af_filename(af1));
+ 	}
+ 	if(af_get_page_raw(af2,*i,&arg2,0,&len2)){
+-	    err(1,"Page %"I64d" is in file %s but not in %s\n",*i,af_filename(af1),
++	    err(1,"Page %" I64d " is in file %s but not in %s\n",*i,af_filename(af1),
+ 		af_filename(af2));
+ 	}
+ 	if(arg1==arg2 && len1==len2){
+@@ -450,7 +450,7 @@
+ 	    continue;
+ 	}
+     }
+-    printf("%s -> %s Nochg: %d  NUL: %d  LZMA: %d  old: %"I64d" new: %"I64d" LZred: %6.2f%%\n",
++    printf("%s -> %s Nochg: %d  NUL: %d  LZMA: %d  old: %" I64d " new: %" I64d " LZred: %6.2f%%\n",
+ 	   af_filename(af1),
+ 	   af_filename(af2),
+ 	   comp_unchanged,comp_zero,comp_lzma,bytes_old,bytes_new,(bytes_old-bytes_new)*100.0/bytes_old);
+@@ -492,8 +492,8 @@
+     if(af1->image_pagesize != af2->image_pagesize){
+ 	fprintf(stderr,"Currently, %s requires that both images have the "
+ 		"same image datsegsize.\n"
+-		"  pagesize(%s)=%"PRIu32"\n"
+-		"  pagesize(%s)=%"PRIu32"\n",
++		"  pagesize(%s)=%" PRIu32 "\n"
++		"  pagesize(%s)=%" PRIu32 "\n",
+ 		progname,file1,af1->image_pagesize, file2,af2->image_pagesize);
+ 	fprintf(stderr,"Data segments will be ignored.\n");
+ 	no_data_segments = true;
+@@ -502,8 +502,8 @@
+     if(af1->image_sectorsize != af2->image_sectorsize){
+ 	fprintf(stderr,"Currently, %s requires that both images have the "
+ 		"same image sectorsize.\n"
+-		"  sectorsize(%s)=%"PRIu32"\n"
+-		"  sectorsize(%s)=%"PRIu32"\n",
++		"  sectorsize(%s)=%" PRIu32 "\n"
++		"  sectorsize(%s)=%" PRIu32 "\n",
+ 		progname,file1,af1->image_sectorsize, file2,af2->image_sectorsize);
+ 	fprintf(stderr,"Data segments will be ignored.\n");
+ 	no_data_segments = true;
+diff -aur AFFLIBv3-3.7.7.orig/tools/affconvert.cpp AFFLIBv3-3.7.7/tools/affconvert.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affconvert.cpp	2016-05-12 20:35:09.900677549 -0400
++++ AFFLIBv3-3.7.7/tools/affconvert.cpp	2016-05-12 21:25:11.848101945 -0400
+@@ -423,15 +423,15 @@
+ 	    
+ 	    int64_t pagenum = *i;
+ 	    
+-	    if(!opt_quiet) printf("Converting page %"I64d" of %"I64d"\r",pagenum,highest_pagenum);fflush(stdout);
++	    if(!opt_quiet) printf("Converting page %" I64d " of %" I64d "\r",pagenum,highest_pagenum);fflush(stdout);
+ 	    
+ 	    size_t data_len = image_pagesize;
+ 	    if(af_get_page(a_in,pagenum,data,&data_len)){
+-		err(1,"af_get_page(file=%s,page=%"I64d")",
++		err(1,"af_get_page(file=%s,page=%" I64d ")",
+ 		    af_filename(a_in),pagenum);
+ 	    }
+ 	    if(af_update_page(a_out,pagenum,data,data_len)){
+-		err(1,"af_update_page(file=%s,page=%"I64d")",
++		err(1,"af_update_page(file=%s,page=%" I64d ")",
+ 		    af_filename(a_out),pagenum);
+ 	    }
+ 	    
+@@ -499,10 +499,10 @@
+ 
+     /* Finish the hash calculations and write to the db */
+     if(!opt_quiet){
+-	printf("bytes converted: %"I64d" \n",total_bytes_converted);
++	printf("bytes converted: %" I64d " \n",total_bytes_converted);
+ 	/* If the vnode implementation tracked segments written, report it. */
+ 	if(a_out->pages_written || a_out->pages_compressed){
+-	    printf("Total pages: %"I64u"  (%"I64u" compressed)\n",
++	    printf("Total pages: %" I64u "  (%" I64u " compressed)\n",
+ 		   a_out->pages_written,a_out->pages_compressed);
+ 	}
+     }
+@@ -552,7 +552,7 @@
+ int64_t atoi64(const char *buf)
+ {
+     int64_t r=0;
+-    sscanf(buf,"%"I64d,&r);
++    sscanf(buf,"%" I64d,&r);
+     return r;
+ }
+ 
+diff -aur AFFLIBv3-3.7.7.orig/tools/affcopy.cpp AFFLIBv3-3.7.7/tools/affcopy.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affcopy.cpp	2016-05-12 20:35:09.900677549 -0400
++++ AFFLIBv3-3.7.7/tools/affcopy.cpp	2016-05-12 21:07:39.594365816 -0400
+@@ -469,7 +469,7 @@
+ 	AFFILE *af = afouts.begin()->af;
+ 	uint64_t w = af->bytes_written;
+ 	double sec = ((t1.tv_sec-t0.tv_sec)+(t1.tv_usec-t0.tv_usec)/1000000.0);
+-	printf("%s: %"I64d" bytes transferred in %.2f seconds. xfer rate: %.2f MBytes/sec\n",
++	printf("%s: %" I64d " bytes transferred in %.2f seconds. xfer rate: %.2f MBytes/sec\n",
+ 	       af_filename(af),w,sec,(w/1000000.0) / sec);
+     }
+ 	
+diff -aur AFFLIBv3-3.7.7.orig/tools/affdiskprint.cpp AFFLIBv3-3.7.7/tools/affdiskprint.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affdiskprint.cpp	2016-05-12 20:35:09.904010820 -0400
++++ AFFLIBv3-3.7.7/tools/affdiskprint.cpp	2016-05-12 21:31:09.274778548 -0400
+@@ -97,7 +97,7 @@
+ uint64_t atoi64(const char *buf)
+ {
+     uint64_t ret=0;
+-    sscanf(buf,"%"PRIu64,&ret);
++    sscanf(buf,"%" PRIu64,&ret);
+     return ret;
+ }
+ 
+@@ -201,7 +201,7 @@
+     int64_t imagesize = af_get_imagesize(af);
+     if(imagesize>0){
+ 	char buf[32];
+-	snprintf(buf,sizeof(buf),"%"PRIu64,imagesize);
++	snprintf(buf,sizeof(buf),"%" PRIu64,imagesize);
+ 	out_xmlstr(cout,2,AF_IMAGESIZE,buf);
+ 	cout << "\n";
+     }
+@@ -212,7 +212,7 @@
+     int64_t sectors = imagesize/sectorsize;
+     if(sectors>0){
+ 	char buf[32];
+-	snprintf(buf,sizeof(buf),"%"PRIu32"",sectorsize);
++	snprintf(buf,sizeof(buf),"%" PRIu32 "",sectorsize);
+ 	out_xmlstr(cout,2,AF_SECTORSIZE,buf);
+ 	cout << "\n";
+     }
+diff -aur AFFLIBv3-3.7.7.orig/tools/affinfo.cpp AFFLIBv3-3.7.7/tools/affinfo.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affinfo.cpp	2016-05-12 20:35:09.904010820 -0400
++++ AFFLIBv3-3.7.7/tools/affinfo.cpp	2016-05-12 21:22:07.691531682 -0400
+@@ -179,7 +179,7 @@
+ void sig_info(int arg)
+ {
+     if(af==0) return;
+-    printf("Validating %"I64d" of %"I64d"\n", af->pos,af->image_size);
++    printf("Validating %" I64d " of %" I64d"\n", af->pos,af->image_size);
+ }
+ 
+ 
+@@ -417,7 +417,7 @@
+     memset(output_line,0,sizeof(output_line));
+ 
+     /* Now append the arg and the data len */
+-    sprintf(output_line,"%-24s %8"PRIu32"   %8d   ",segname,arg,(int)data_len);
++    sprintf(output_line,"%-24s %8" PRIu32 "   %8d   ",segname,arg,(int)data_len);
+ 
+     if(opt_no_preview){
+ 	printf("%s\n",output_line);
+@@ -447,7 +447,7 @@
+ 	 */
+ 	switch(data_len){
+ 	case 8:
+-	    printf("%s= %"I64d" (64-bit value)\n",
++	    printf("%s= %" I64d " (64-bit value)\n",
+ 		   output_line,af_decode_q(data));
+ 	    break;
+ 	case 0:
+@@ -673,22 +673,22 @@
+ 
+ 
+     printf("\n");
+-    printf("Total segments:        %8"PRIu32"   (%"PRIu32" real)\n", total_segs,(total_segs-total_nulls));
++    printf("Total segments:        %8" PRIu32 "   (%" PRIu32 " real)\n", total_segs,(total_segs-total_nulls));
+     if(aes_segs){
+ 	printf("  Encrypted segments:  %8u\n",aes_segs);
+     }
+-    printf("  Page  segments:      %8"PRIu32"\n",total_pages);
+-    printf("  Hash  segments:      %8"PRIu32"\n",total_hashes);
+-    printf("  Signature segments:  %8"PRIu32"\n",total_signatures);
+-    printf("  Null segments:       %8"PRIu32"\n",total_nulls);
++    printf("  Page  segments:      %8" PRIu32 "\n",total_pages);
++    printf("  Hash  segments:      %8" PRIu32 "\n",total_hashes);
++    printf("  Signature segments:  %8" PRIu32 "\n",total_signatures);
++    printf("  Null segments:       %8" PRIu32 "\n",total_nulls);
+     if(opt_all){
+-	printf("  Empty segments:      %8"PRIu32"\n",total_nulls);
++	printf("  Empty segments:      %8" PRIu32 "\n",total_nulls);
+ 	printf("\n");
+-	printf("Total data bytes in segments: %"I64d"\n",total_datalen);
++	printf("Total data bytes in segments: %" I64d "\n",total_datalen);
+ 
+ 	printf("Total space in file dedicated to segment names: %zd\n",
+ 	       total_segname_len);
+-	printf("Total overhead for %"PRIu32" segments: %zd bytes (%"PRIu32"*(%zd+%zd))\n",
++	printf("Total overhead for %" PRIu32 " segments: %zd bytes (%" PRIu32 "*(%zd+%zd))\n",
+ 	       total_segs,
+ 	       (size_t) total_segs*(sizeof(struct af_segment_head) +sizeof(struct af_segment_tail)),
+ 	       total_segs,
+@@ -720,7 +720,7 @@
+ 	//printf("device_bytes=%"I64d"\n",device_bytes);
+ 	//printf("device_pages=%"I64d"\n",device_pages);
+ 	if(missing_pages!=0){
+-	    printf("Missing page segments: %8"I64u"\n",missing_pages);
++	    printf("Missing page segments: %8" I64u "\n",missing_pages);
+ 	}
+ 	else {
+ 	    some_missing_pages=0;
+@@ -735,7 +735,7 @@
+ 
+     if(some_missing_pages && opt_debug){
+ 	printf("Cannot calculate missing pages\n");
+-	printf("  device_sectors=%"I64d" image_pagesize=%"PRIu32" sectorsize=%"PRIu32"\n",
++	printf("  device_sectors=%" I64d " image_pagesize=%" PRIu32 " sectorsize=%" PRIu32 "\n",
+ 	       device_sectors,af->image_pagesize,af->image_sectorsize);
+     }
+     af_close(af);
+@@ -756,8 +756,8 @@
+     printf("<!DOCTYPE Server >\n");
+     printf("<device name='%s'>\n",fn);
+     printf("   <sector_size>%d</sector_size>\n",afb.sector_size);
+-    printf("   <total_sectors>%"PRId64"</total_sectors>\n",afb.total_sectors);
+-    printf("   <max_read_blocks>%"PRIu64"</max_read_blocks>\n",afb.max_read_blocks);
++    printf("   <total_sectors>%" PRId64 "</total_sectors>\n",afb.total_sectors);
++    printf("   <max_read_blocks>%" PRIu64 "</max_read_blocks>\n",afb.max_read_blocks);
+     printf("</device>\n");
+     close(fd);
+ }
+diff -aur AFFLIBv3-3.7.7.orig/tools/affix.cpp AFFLIBv3-3.7.7/tools/affix.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affix.cpp	2016-05-12 20:35:09.904010820 -0400
++++ AFFLIBv3-3.7.7/tools/affix.cpp	2016-05-12 21:12:02.336139172 -0400
+@@ -93,7 +93,7 @@
+     r = (*af->v->open)(af);
+     /* See if we can build a TOC */
+     if(r<0){
+-	printf("AFF file corrupt at %"I64d" out of %"I64d" (%"I64d" bytes from end)\n",
++	printf("AFF file corrupt at %" I64d " out of %" I64d " (%" I64d " bytes from end)\n",
+ 	       ftello(af->aseg),(int64_t)len,len-ftello(af->aseg));
+ 	if(opt_fix){
+ 	    printf("Truncating... %d \n",fileno(af->aseg));
+diff -aur AFFLIBv3-3.7.7.orig/tools/affsegment.cpp AFFLIBv3-3.7.7/tools/affsegment.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affsegment.cpp	2016-05-12 20:35:09.904010820 -0400
++++ AFFLIBv3-3.7.7/tools/affsegment.cpp	2016-05-12 21:16:56.847320849 -0400
+@@ -230,19 +230,19 @@
+ 		free(buf);
+ 		continue;
+ 	    }
+-	    if(opt_debug) fprintf(stderr," arg=%"PRIu32" len=%zd\n",arg,len);
++	    if(opt_debug) fprintf(stderr," arg=%" PRIu32" len=%zd\n",arg,len);
+ 	    int p = 1;
+ 	    
+ 	    if(filecount>1) printf("%s:",fn);
+ 	    if(print_segs.size()>1) printf("%s=",segname);
+ 	    if(opt_quad && len==8){
+ 		uint64_t quad = af_decode_q(buf);
+-		printf("%"I64u"\n",quad);
++		printf("%" I64u "\n",quad);
+ 		p = 0;
+ 	    }
+ 	    
+ 	    if(opt_arg){
+-		printf("%"PRIu32"\n",arg);
++		printf("%" PRIu32 "\n",arg);
+ 		p = 0;
+ 	    }
+ 	    
+diff -aur AFFLIBv3-3.7.7.orig/tools/affverify.cpp AFFLIBv3-3.7.7/tools/affverify.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affverify.cpp	2016-05-12 20:35:09.904010820 -0400
++++ AFFLIBv3-3.7.7/tools/affverify.cpp	2016-05-12 21:15:43.495353625 -0400
+@@ -451,7 +451,7 @@
+     printf("\n");
+     do {
+ 	double frac = (double)total_read / af_get_imagesize(af);
+-	printf("  Read %14zd/%14"PRId64" bytes; done in %s\n",
++	printf("  Read %14zd/%14" PRId64 " bytes; done in %s\n",
+ 	       total_read,
+ 	       af_get_imagesize(af),
+ 	       t.eta_text(frac).c_str());
+diff -aur AFFLIBv3-3.7.7.orig/tools/affxml.cpp AFFLIBv3-3.7.7/tools/affxml.cpp
+--- AFFLIBv3-3.7.7.orig/tools/affxml.cpp	2016-05-12 20:35:09.904010820 -0400
++++ AFFLIBv3-3.7.7/tools/affxml.cpp	2016-05-12 21:28:17.377979960 -0400
+@@ -135,7 +135,7 @@
+ 
+ void print_xml64(const char *name,int64_t val)
+ {
+-    printf("   <%s coding='base10'>%"I64d"</%s>\n\n",name,val,name);
++    printf("   <%s coding='base10'>%" I64d "</%s>\n\n",name,val,name);
+ }
+ 
+ int xml_info(const char *infile)
+@@ -250,14 +250,14 @@
+ 	     * The strcmp is there because early AF_IMAGESIZE segs didn't set
+ 	     * AF_SEG_QUADWORD...
+ 	     */
+-	    printf("    <%s coding='base10'>%"I64d"</%s>\n",segname,af_decode_q(data),segname);
++	    printf("    <%s coding='base10'>%" I64d "</%s>\n",segname,af_decode_q(data),segname);
+ 	    free(data);
+ 	    continue;
+ 	}
+ 
+ 	/* If datalen==0, just print the arg as an unsigned number */
+ 	if(datalen==0){
+-	    printf("    <%s coding='base10'>%"PRIu32"</%s>\n",segname,arg,segname);
++	    printf("    <%s coding='base10'>%" PRIu32 "</%s>\n",segname,arg,segname);
+ 	    free(data);
+ 	    continue;
+ 	}
+@@ -265,7 +265,7 @@
+ 	/* Just handle it as binhex ... */
+ 	printf("    <%s",segname);
+ 	if(datalen==0){
+-	    printf(" arg='%"PRIu32"' />\n",arg);
++	    printf(" arg='%" PRIu32 "' />\n",arg);
+ 	    free(data);
+ 	    continue;
+ 	}
