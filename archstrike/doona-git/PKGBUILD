@@ -11,9 +11,9 @@ url='https://github.com/wireghoul/doona'
 license=('GPL2')
 depends=('perl')
 makedepends=('git')
-provides=('donoa')
+provides=('doona')
 source=("git+https://github.com/wireghoul/doona.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/doona"
