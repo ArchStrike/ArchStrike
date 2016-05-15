@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=routersploit
 pkgname=$_pkgname-git
-pkgver=20160513.r217
+pkgver=20160514.r235
 pkgrel=1
 groups=('archstrike' 'archstrike-exploits')
 pkgdesc='The Router Exploitation Framework'
@@ -31,18 +31,17 @@ prepare() {
 package() {
   cd $pkgname
   install -dm755 "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/bin"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
   # Move license to the package license directory
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
   # Create launcher script
-  install -dm755 "$pkgdir/usr/bin/"
-  printf '%s\n\n%s\n%s\n' \
-    '#!/usr/bin/env bash' \
-    "cd /usr/share/$_pkgname" \
-    "python2 rsf.py \"\$@\"" \
-      > "$pkgdir/usr/bin/$_pkgname"
-
+cat > "$pkgdir/usr/bin/routersploit" << EOF
+#!/bin/sh
+cd /usr/share/routerploit
+./rsf.py "\$@"
+EOF
   # Make launcher script executable
-  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+chmod +x "$pkgdir/usr/bin/$_pkgname"
 }
