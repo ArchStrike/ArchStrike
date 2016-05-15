@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=xorsearch
 pkgver=1.11.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-crypto' 'archstrike-reverse')
 pkgdesc="Program to search for a given string in an XOR, ROL or ROT encoded binary file."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -17,7 +17,7 @@ sha512sums=('9e51d7cbc7da90544dfadda32f9290dcbd674a7d9a6538f93f68d72ec41ebce5b29
 
 build() {
   cd "${srcdir}"
-  gcc -o xorsearch XORSearch.c
+  gcc $CFLAGS -o xorsearch XORSearch.c -trigraphs
 }
 
 package() {
