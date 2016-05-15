@@ -1,0 +1,35 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=geoipgen
+pkgver=0.4
+pkgrel=2
+pkgdesc="A country to IP addresses generator."
+url="http://code.google.com/p/geoipgen/"
+groups=('archstrike' 'archstrike-misc')
+license=('GPL')
+depends=('ruby')
+arch=('any')
+source=("http://geoipgen.googlecode.com/files/geoipgen-$pkgver.tar.gz" "http://www.maxmind.com/download/geoip/database/GeoIPCountryCSV.zip")
+sha512sums=('31eb57b73a3a3b53bb71bd2fad757135f0b3bc53de262abb4790c663d178c149ca9ee0e0da577fc008f498b887cda9332b119d1469dc070c175b356f889a7794'
+            'a74152fa790c179debca5c6192288e641c3ba44897b6d1419338d760de022c1aad5256b070373bce618472b9aee8e3cf4d44140944748cd20258cc0163eb436e')
+
+package() {
+  cd "$srcdir/geoipgen-$pkgver"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm755 geoipgen "$pkgdir/usr/share/$pkgname/"
+  for f in README CHANGELOG TODO; do
+    install -Dm644 $f $pkgdir/usr/share/doc/geoipgen/$f
+  done
+  cd "$srcdir"
+  install -Dm644 GeoIPCountryWhois.csv "$pkgdir/usr/share/geoipgen/"
+cat > "$pkgdir/usr/bin/geoipgen" << EOF
+#!/bin/sh
+cd /usr/share/geoipgen
+./geoipgen "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/$pkgname"
+}
+
