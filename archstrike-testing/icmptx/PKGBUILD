@@ -3,17 +3,17 @@
 buildarch=212
 
 pkgname=icmptx
-pkgver=0.01
+pkgver=0.2
 pkgrel=1
 pkgdesc="IP over ICMP"
-url="http://thomer.com/icmptx/"
+url="https://github.com/jakkarth/icmptx"
 groups=('archstrike' 'archstrike-tunnel')
 license=('GPL')
 makedepends=('make' 'gcc')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=(http://thomer.com/icmptx/${pkgname}-${pkgver}.tar.gz)
-md5sums=('f83d1d7789a1b100abcc00d1a56ee95d')
+source=(https://github.com/jakkarth/icmptx/archive/$pkgver.tar.gz)
+sha512sums=('b7999bf78e08719073d9097a1b807714af3fb3b3ab53a2c73dae0db8233a3848aeefbb1238415e934932da902702e1a4d0b34895fef6bfda03b29559be5f109b')
 
 build() {
   cd "$srcdir/icmptx-$pkgver"
