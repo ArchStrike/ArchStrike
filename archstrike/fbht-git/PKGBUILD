@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=fbht-git
 pkgver=r68.1ffc236
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Facebook Hacking Tool"
 arch=('any')
 url='https://github.com/chinoogawa/fbht'
 license=('custom')
-depends=('python2' 'python2-mechanize' 'python2-networkx' 'python2-matplotlib' 'python2-numpy')
+depends=('python2' 'python2-mechanize' 'python2-networkx' 'python2-matplotlib' 'python2-numpy' 'python2-selenium')
 makedepends=('git')
 provides=('fbht')
 source=("git+https://github.com/chinoogawa/fbht.git")
@@ -32,7 +32,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/fbht"
   install -dm755 "$pkgdir/usr/bin"
 
-  # Licenes and docs
+  # Licences and docs
   install -dm755 "$pkgdir/usr/share/fbht/dumps"
   install -dm755 "$pkgdir/usr/share/fbht/logs"
   install -Dm644 "License" "$pkgdir/usr/share/licenses/$pkgname/License"
@@ -51,6 +51,5 @@ python2 main.py "\$@"
 EOF
 
 chmod +x "$pkgdir/usr/bin/fbht"
-
 }
 
