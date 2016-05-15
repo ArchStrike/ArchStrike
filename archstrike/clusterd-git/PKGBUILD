@@ -37,11 +37,11 @@ package() {
   install -m755 clusterd.py "$pkgdir"/usr/share/clusterd-git/clusterd.py
   cp --no-preserve=ownership -ar src "$pkgdir"/usr/share/clusterd-git
   chmod u+rwX,g+rwX,o+rX -R "$pkgdir"/usr/share/clusterd-git/src
-  cat > "$pkgdir"/usr/bin/clusterd.py <<EOF
+  cat > "$pkgdir"/usr/bin/clusterd <<EOF
 #!/bin/sh
 cd /usr/share/clusterd-git
 python2 clusterd.py "\$@"
 EOF
-  chmod +x "$pkgdir"/usr/bin/clusterd.py
+  chmod +x "$pkgdir"/usr/bin/clusterd
 }
 
