@@ -1,0 +1,53 @@
+diff -aur rcracki_mt_0.7.0_src.orig/rcracki_mt/ChainWalkContext.cpp rcracki_mt_0.7.0_src/rcracki_mt/ChainWalkContext.cpp
+--- rcracki_mt_0.7.0_src.orig/rcracki_mt/ChainWalkContext.cpp	2016-05-15 19:22:36.059023295 -0400
++++ rcracki_mt_0.7.0_src/rcracki_mt/ChainWalkContext.cpp	2016-05-15 19:25:58.926099904 -0400
+@@ -581,7 +581,7 @@
+ 
+ 		for ( int j = 0; j <= m_vCharset[i].m_nPlainLenMax; j++ )
+ 		{
+-			printf( "m_vCharset[%d].m_nPlainSpaceUpToX[%d]: %"PRIu64"\n"
++			printf( "m_vCharset[%d].m_nPlainSpaceUpToX[%d]: %" PRIu64 "\n"
+ 				, i, j, m_vCharset[i].m_nPlainSpaceUpToX[j] );
+ 		}
+ 		
+@@ -598,7 +598,7 @@
+ 		
+ 	for ( int i = 0; i <= m_nPlainLenMaxTotal; i++ )
+ 	{
+-		printf( "m_nPlainSpaceUpToX[%d]: %"PRIu64"\n"
++		printf( "m_nPlainSpaceUpToX[%d]: %" PRIu64 "\n"
+ 			, i, m_nPlainSpaceUpToX[i] );
+ 	}
+ 
+diff -aur rcracki_mt_0.7.0_src.orig/rcracki_mt/HashAlgorithm.cpp rcracki_mt_0.7.0_src/rcracki_mt/HashAlgorithm.cpp
+--- rcracki_mt_0.7.0_src.orig/rcracki_mt/HashAlgorithm.cpp	2016-05-15 19:22:36.059023295 -0400
++++ rcracki_mt_0.7.0_src/rcracki_mt/HashAlgorithm.cpp	2016-05-15 19:30:13.272434690 -0400
+@@ -321,7 +321,6 @@
+ 	MD4_Update(&ctx,(unsigned char*) unicode_user,userlen*2);
+ 	MD4_Final(pHash,&ctx);
+ 
+-	/*
+ 	unsigned char unicode_pwd[256];
+ 	for (int i=0; i<nPlainLen; i++)
+ 	{
+diff -aur rcracki_mt_0.7.0_src.orig/rcracki_mt/Public.cpp rcracki_mt_0.7.0_src/rcracki_mt/Public.cpp
+--- rcracki_mt_0.7.0_src.orig/rcracki_mt/Public.cpp	2016-05-15 19:22:36.062356580 -0400
++++ rcracki_mt_0.7.0_src/rcracki_mt/Public.cpp	2016-05-15 19:24:51.613736562 -0400
+@@ -472,7 +472,7 @@
+ {
+ 	char str[32];
+ 
+-	sprintf(str, "%"PRIu64, n);
++	sprintf(str, "%" PRIu64, n);
+ 
+ 	return str;
+ }
+@@ -482,7 +482,7 @@
+ 	char str[32];
+ 
+ 	//sprintf(str, "%016llx", n);
+-	sprintf(str, "%016"PRIx64, n);
++	sprintf(str, "%016" PRIx64, n);
+ 
+ 	return str;
+ }
