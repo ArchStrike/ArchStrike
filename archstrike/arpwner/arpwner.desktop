@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Arpwner
+Comment=A tool for arp poisoning and dns poisoning attacks.
+Exec=arpwner
+Icon=archstrike-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchStrike;ArchStrikeScanners;
