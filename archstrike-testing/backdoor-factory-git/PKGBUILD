@@ -4,13 +4,13 @@ buildarch=212
 
 pkgname=backdoor-factory-git
 pkgver=0.r171.c4ad314
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
 url="https://github.com/secretsquirrel/the-backdoor-factory"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
-depends=('capstone' 'python2-pefile' 'curl')
+depends=('capstone' 'python2-pefile' 'curl' 'libgsf')
 depends_x86_64+=('lib32-glibc')
 makedepends=('git' 'autoconf')
 replaces=('backdoor-factory')
