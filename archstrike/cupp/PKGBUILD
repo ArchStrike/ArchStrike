@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname='cupp'
 pkgver='3.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='Common User Password Profiler'
 url='http://www.remote-exploit.org/?page_id=418'
 groups=('archstrike' 'archstrike-crackers')
 license=('GPL3')
 depends=('python2')
 arch=('any')
-md5sums=('d7bea1245095036a368566b9a15ddc86')
+sha512sums=('54a40f7c3a373104a702b62f9c90f941261f0e0b1f21eb4edaca4c638c5f8db78fce4fe301c8ada61a0293cf5bbe103719b9ea95133f1544d7b27726e38b72c5')
 source=("http://www.remote-exploit.org/content/cupp-$pkgver.tar.gz")
 
 prepare(){
@@ -21,24 +21,24 @@ prepare(){
 package() {
   cd "$srcdir/cupp"
 
-  #Base directories
+  # Base directories
   install -dm755 "$pkgdir/usr/share/cupp"
   install -dm755 "$pkgdir/usr/bin"
 
-  #Bin
+  # Bin
   install -D -m755 "cupp.py" "$pkgdir/usr/share/cupp/cupp.py"
   install -D -m644 "cupp.cfg" "$pkgdir/usr/share/cupp/cupp.cfg"
 
   # Docs
   install -D -m644 "docs/README" "$pkgdir/usr/share/doc/cupp/README"
   install -D -m644 "docs/LICENSE" "$pkgdir/usr/share/licenses/cupp/LICENSE"
-
-  cat << EOF > "$pkgdir"/usr/bin/cupp
-  #!/bin/bash
-
-  cd /usr/share/cupp
-  python2 ./cupp.py "\$@"
+  
+  # Wrapper script
+cat > "$pkgdir/usr/bin/cupp" << EOF 
+#!/bin/bash
+cd /usr/share/cupp
+python2 ./cupp.py "\$@"
 EOF
 
-  chmod +x "$pkgdir/usr/bin/cupp"
+chmod +x "$pkgdir/usr/bin/cupp"
 }
