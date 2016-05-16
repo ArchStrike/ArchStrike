@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=csfrt
+pkgname=csrft
 pkgver=r32.17146bb
 pkgrel=1
 pkgdesc="In few words, this is a simple HTTP Server in NodeJS that will communicate with the clients (victims) and send them payload that will be executed using JavaScript"
@@ -12,6 +12,7 @@ license=('GPL3')
 depends=('nodejs')
 makedepends=('git')
 groups=('archstrike')
+replaces=('csfrt')
 source=("$pkgname"::'git+https://github.com/PaulSec/CSRFT.git')
 sha512sums=('SKIP')
 
@@ -23,13 +24,13 @@ pkgver() {
 package() {
   cd "$srcdir/$pkgname"
   install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/csfrt"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/csfrt/LICENSE"
-  cp -aR --no-preserve=ownership * "$pkgdir/usr/share/csfrt"
-  cat > $pkgdir/usr/bin/csfrt<<EOF
+  install -dm755 "$pkgdir/usr/share/csrft"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/csrft/LICENSE"
+  cp -aR --no-preserve=ownership * "$pkgdir/usr/share/csrft"
+  cat > $pkgdir/usr/bin/csrft<<EOF
 #!/bin/sh
-cd /usr/share/csfrt
+cd /usr/share/csrft
 node ./server.js
 EOF
-  chmod +x "$pkgdir/usr/bin/csfrt"
+  chmod +x "$pkgdir/usr/bin/csrft"
 }
