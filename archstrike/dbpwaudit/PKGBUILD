@@ -12,7 +12,7 @@ license=('GPL')
 depends=('java-runtime')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(http://www.cqure.net/tools/dbpwaudit_${pkgver//./_}.zip)
-md5sums=('74b2ab5d0a142f0f03d6c67452dba6b2')
+sha512sums=('74b2ab5d0a142f0f03d6c67452dba6b2')
 
 prepare() {
   cd "$srcdir/DBPwAudit"
