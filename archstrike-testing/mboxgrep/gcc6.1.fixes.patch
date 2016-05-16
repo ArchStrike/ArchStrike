@@ -1,0 +1,22 @@
+diff -aur mboxgrep-0.7.9.orig/src/md5.c mboxgrep-0.7.9/src/md5.c
+--- mboxgrep-0.7.9.orig/src/md5.c	2016-05-15 19:50:04.631933451 -0400
++++ mboxgrep-0.7.9/src/md5.c	2016-05-15 19:52:36.996404496 -0400
+@@ -34,6 +34,7 @@
+ #  define memcpy(d, s, n) bcopy ((s), (d), (n))
+ # endif
+ #endif
++#include <strings.h>
+ 
+ #include "md5.h"
+ 
+diff -aur mboxgrep-0.7.9.orig/src/misc.c mboxgrep-0.7.9/src/misc.c
+--- mboxgrep-0.7.9.orig/src/misc.c	2016-05-15 19:50:04.631933451 -0400
++++ mboxgrep-0.7.9/src/misc.c	2016-05-15 19:53:57.331913499 -0400
+@@ -21,6 +21,7 @@
+ #define _XOPEN_SOURCE  /* Pull in strptime(3) from time.h */
+ #define _BSD_SOURCE    /* Compensate for _XOPEN_SOURCE to pull in strdup(3)
+                         * from string.h. */
++#define _DEFAULT_SOURCE
+ 
+ #include <config.h>
+ 

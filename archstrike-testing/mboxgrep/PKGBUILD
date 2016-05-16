@@ -4,26 +4,31 @@ buildarch=212
 
 pkgname=mboxgrep
 pkgver=0.7.9
-pkgrel=3
+pkgrel=4
 pkgdesc="A small, non-interactive utility that scans mail folders for messages matching regular expressions. It does matching against basic and extended POSIX regular expressions, and reads and writes a variety of mailbox formats."
 url="http://mboxgrep.sourceforge.net"
 groups=('archstrike' 'archstrike-forensics')
 license=('GPL')
 depends=('pcre')
-install="mboxgrep.install"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=("http://downloads.sourceforge.net/mboxgrep/mboxgrep-$pkgver.tar.gz"
-  'mboxgrep.desktop')
+source=("http://downloads.sourceforge.net/mboxgrep/mboxgrep-$pkgver.tar.gz" 'mboxgrep.desktop' "gcc6.1.fixes.patch")
 sha512sums=('d7e768a0ad11bc3df8619f2a888d2943c68ef72dd036c2fe58268686efb50cb1f62ba379571b6cd6efa8493c5ea0d7c09a29520eae6c68f66d9453710eeeba11'
-            '0ec6b7b327f6c87cd35398662a8f3be12d8d1fa637fbf21573760a130e9afd735e802caa3f4e03c7faf56d710809b74ec28f6d7c05c1a0c656f595d1cd6239c9')
+            'ec614448045e265f12742deabc8915df472ca931f273fb7807158be3569a7e817ac828f6de0c7fda708540100ca025a207e44ca9655b94a449ad843ab727dccc'
+            '3cf511e18f89742f27641205b812513cc4bf96a0e9b78e6a9132699cfe11199025f8b3061f20143ff20fe8f57e0fe24f19252e8a5e404e1fe12220060d50ab60')
+
+prepare() {
+  cd "$pkgname-$pkgver"
+  patch -Np1 -i $srcdir/gcc6.1.fixes.patch
+}
+
 
 build() {
-  cd "$srcdir/mboxgrep-$pkgver"
+  cd "$pkgname-$pkgver"
   ./configure --prefix=/usr --mandir=$pkgdir/usr/share/man --infodir=$pkgdir/usr/share/info
   make
 }
 package(){
-  cd "$srcdir/mboxgrep-$pkgver"
+  cd "$pkgname-$pkgver"
 
   #Binaries
   make prefix="$pkgdir" install
