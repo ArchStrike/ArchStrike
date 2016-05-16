@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dradis
 pkgver=2.5.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source framework to enable effective information sharing."
 groups=('archstrike' 'archstrike-misc')
 url="http://dradisframework.org/"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('ruby1.8' 'ruby1.8-sqlite3' 'ruby1.8-rake')
 arch=('any')
 source=(http://downloads.sourceforge.net/dradis/dradis-v$pkgver.tar.bz2)
-md5sums=('dd8184df383c9b2abf201b16dc6202e5')
+sha512sums=('dd8184df383c9b2abf201b16dc6202e5')
 
 prepare() {
   cd "$srcdir/dradis-2.5/server/script"
