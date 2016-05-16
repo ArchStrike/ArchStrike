@@ -4,17 +4,18 @@ buildarch=212
 
 pkgname=firewalk
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="An active reconnaissancenaissance network security tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-license=('BSD')
+license=('custom')
 depends=('libdnet' 'libnet' 'libpcap')
 source=('http://packetfactory.openwall.net/firewalk/dist/firewalk.tar.gz'
-        'firewalk-gcc3.4.patch')
+        'firewalk-gcc3.4.patch' 'LICENSE')
 url='http://packetfactory.openwall.net/projects/firewalk/'
-md5sums=('02412f13218ea052427bbf038a88a026'
-         'd94be823c96efbaeee8f75941cfdd3b7')
+sha512sums=('919aa6e464dac72a02f8967ccf7109de7d0b3a574f0a396bcf69bacc988ab8e13e8e25932d749eadc898cae2546f8f81014d53ef51429e6c784a16d40da90ff2'
+            'e9079d6d9a08af3bfad96cc93b1eda144c90ec26b4e8686bdf585c9eaab3b9c34dbc94a073bb3ca851211b5d3f758281539cfd1240e7877a72166239f059f338'
+            'd85ae06ab33133f4d4ff7ad91dfe8829dc018d9cf8fe7f65578e1a569c43e2b42f02e95bee7e76a76a0a6452f7402c075fde650b550976ec35ef38d7924db844')
 
 prepare() {
   cd "$srcdir/Firewalk"
@@ -32,5 +33,10 @@ build() {
 package() {
   cd "$srcdir/Firewalk"
 
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm755 firewalk "$pkgdir/usr/bin/firewalk"
+  cd "$srcdir"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 }
