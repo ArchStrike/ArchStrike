@@ -12,7 +12,7 @@ license=('GPL')
 depends=('ruby1.8' 'ruby1.8-sqlite3' 'ruby1.8-rake')
 arch=('any')
 source=(http://downloads.sourceforge.net/dradis/dradis-v$pkgver.tar.bz2)
-sha512sums=('dd8184df383c9b2abf201b16dc6202e5')
+sha512sums=('a01e833811e7d3984d0cf68ff6b0e63acfafe03ca3a6d828837cd9ed6a5dcbccea88dffc34bcb48fb291fb20a6a93c55fa6bb1698a7dfd9b5c05d4ed7e82c7aa')
 
 prepare() {
   cd "$srcdir/dradis-2.5/server/script"
