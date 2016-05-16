@@ -4,25 +4,23 @@ buildarch=212
 
 pkgname=perl-net-pcap
 _realname=Net-Pcap
-pkgver=0.17
-pkgrel=6
+pkgver=0.18
+pkgrel=1
 pkgdesc="Perl/CPAN Module Net::Pcap"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://metacpan.org/release/Net-Pcap'
 license=("GPL" "PerlArtistic")
 options=('!emptydirs')
 source=("http://cpan.metacpan.org/authors/id/S/SA/SAPER/$_realname-$pkgver.tar.gz"
-        makefile.patch
         listdatalinks.patch)
 depends=('perl' 'libpcap')
-md5sums=('fbe911ba5f57d5ba43494434ffb828a0'
-         '5e96f92128b562f66ba092d23700f6c1'
-         'c6781cc15f79672b91fe3be96cb43c3d')
+sha512sums=('63cc216345eb65b1e76efa657623c9d444d20f4b54ab0c75e787483baaa4f1de7e3a9294967aa7eccbdca04c60b089194dd7e0d19838f899b332c5881a8c7f6d'
+            'd5c59c7c0bbc2549c3338b5c22aeea2ca91c9bf79acf72787ebd8edd65140465a2aabcd77e35212a5846aad4146a74aeadf5013970065572d82bb05d2ac5e758'
+            'cf67d0be2cdb5c55913bd016474cbc35c7ff483a21fa6d3e947745d91ea1bb1208a42ee1aba93b53b98d3dba7b493a5b9c271f4bc752e86211b21d384341be17')
 
 prepare() {
   cd $srcdir/$_realname-$pkgver
 
-  patch -p1 <../makefile.patch
   patch -p1 <../listdatalinks.patch
 }
 
