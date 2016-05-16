@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=fakeap
 pkgver=0.3.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="Black Alchemy's Fake AP generates thousands of counterfeit 802.11b access points. Hide in plain sight amongst Fake AP's cacophony of beacon frames."
 url="http://www.blackalchemy.to/project/fakeap/"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('perl')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(http://www.sourcefiles.org/Networking/Tools/Wireless/fakeap-$pkgver.tar.gz)
-md5sums=('b5077cf7a164dc293ffbab6da79284ab')
+sha512sums=('b346d83c2b116abd4eb0d5dc58fbc1f634a41685ab377a3354c7add58e2764c0779addaeac841f01715bdb8b3c9b7725de25c3d439af96521689c8d6465ba6a3')
 
 prepare() {
   cd "$srcdir/fakeap-$pkgver"
@@ -30,10 +30,14 @@ package() {
 
   install -m644 README CREDITS "$pkgdir/usr/share/doc/fakeap"
 
-  cp -a --no-preserve=ownership lists "$pkgdir/usr/share/fakeap"
+  cp -a --no-preserve=ownership lists "$pkgdir/usr/share/fakeap/"
 
   install -m755 fakeap.pl "$pkgdir/usr/share/fakeap/fakeap.pl"
-  chmod 755 "$pkgdir/usr/share/fakeap/fakeap.pl"
 
-  ln -sf /usr/share/fakeap/fakeap.pl "$pkgdir/usr/bin/fakeap"
+cat > "$pkgdir/usr/bin/fakeap" << EOF
+#!/bin/sh
+cd /usr/share/fakeap
+perl fakeap.pl "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/fakeap"
 }
