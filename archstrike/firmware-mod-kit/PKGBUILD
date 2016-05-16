@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('MIT')
 depends=('python-magic')
 source=("http://firmware-mod-kit.googlecode.com/files/fmk_${pkgver}.tar.gz")
-md5sums=('91bd2cb3803880368af369d07271b5b9')
+sha512sums=('a5261935e42446568c0c0d4c4fc1beff18c5aa7b85b1aa3398dfeaf80c8bdbb4fb2a6fb4945defc29599d6e58f1553e80e8bb755da4d98f79e99447f0c3414b1')
 
 build(){
  cd "$srcdir/fmk/src"
