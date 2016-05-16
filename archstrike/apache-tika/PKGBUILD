@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=apache-tika
-pkgver=1.12
-pkgrel=2
+pkgver=1.13
+pkgrel=1
 pkgdesc='Toolkit for detecting and extracting metadata and structured text content'
 arch=('any')
 license=('Apache')
@@ -16,7 +16,7 @@ source=(
   "http://central.maven.org/maven2/org/apache/tika/tika-server/$pkgver/tika-server-$pkgver.jar"
   "$pkgname.service"
 )
-sha512sums=('2bd6d9b11421688beb2a9f23d2755db43c5493e97b5db153276b1650d12d92da9496dd270b8e7a8e36f346724e716cf7f289595ca473a921fb8bf9634f99caa4'
+sha512sums=('22eb60fa230e1bb8602d6d07b002688570e797122d00c97088f353234136ec64b04f1ad8f3d5f9b3982eec7bc41272cbe01815a992c6c74a892f001f83a85141'
             'e46522bfcc86ada8776c4f12cf645a81c34492b1c86e9bd1258d7fa248fb8fed9c2bd57e5971c5c9a4687f35626f872f63920649279cfaba5498a55c3331bcf5')
 
 package() {
