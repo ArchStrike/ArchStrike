@@ -6,13 +6,13 @@ pkgname='easyfuzzer'
 pkgver='3.6'
 pkgrel=4
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
-pkgdesc='A flexible fuzzer, not only for web, has a CSV output for efficient output analyze (platform independant).'
+pkgdesc='A flexible fuzzer, not only for web, has a CSV output for efficient output analyze (platform independent).'
 arch=('any')
 url='http://www.mh-sec.de/downloads.html.en'
 license=('custom:unknown')
 depends=('perl' 'perl-io-socket')
 source=("http://www.mh-sec.de/downloads/easyfuzzer-$pkgver.tar.gz")
-md5sums=('3acc241ca3ae89c49c93489a959d5789')
+sha512sums=('3082fa16b8a1c1121fa9b39618aec54695c52dd9ee6d34a42c871160fbbd8e6757c839f6294d121e3394717bd96ad7ba2fec7236f3a9be8c4b995819f176e2b6')
 
 package() {
   cd "$srcdir/easyfuzzer"
