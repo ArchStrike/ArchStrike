@@ -3,18 +3,18 @@
 buildarch=1
 
 pkgname=ruby1.8-rake
-pkgver=0.8.7
+pkgver=10.1.0
 _realname="rake"
 pkgrel=1
 pkgdesc="A simple ruby build program with capabilities similar to make"
 arch=(any)
 url="http://rake.rubyforge.org"
 license=("MIT")
-depends=('ruby1.8')
-makedepends=('rubygems1.8')
+depends=('ruby')
+makedepends=('ruby')
 source=(http://gems.rubyforge.org/gems/$_realname-$pkgver.gem)
 noextract=($_realname-$pkgver.gem)
-md5sums=('d9eb83525310ad1a0e8a3eeddfe3c65f')
+sha512sums=('8dec056f8fdd31f8c82d240180e37c2dd5b1adf4db1f3bd68a09034ea2d554332163b0aa0c0dad86a65db3b0552d279df252cf09165000a1ac4a57a6ef24c768')
 
 build() {
   cd $srcdir
@@ -22,8 +22,8 @@ build() {
 
 package() {
   cd $srcdir
-  local _gemdir="$(ruby-1.8 -rubygems -e'puts Gem.default_dir')"
-  gem-1.8 install --ignore-dependencies -i "$pkgdir$_gemdir" ${_realname}-$pkgver.gem
+  local _gemdir="$(ruby -rubygems -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies -i "$pkgdir$_gemdir" ${_realname}-$pkgver.gem --no-user-install
   install -d $pkgdir/usr/bin
   ln -s $_gemdir/bin/rake $pkgdir/usr/bin/rake-1.8
 }
