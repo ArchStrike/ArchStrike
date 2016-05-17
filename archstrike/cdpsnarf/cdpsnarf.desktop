@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Cdpsnarf
+Comment=Cisco discovery protocol sniffer
+Exec=cdpsnarf
+Icon=archstrike-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchStrike;ArchStrikeSniffer;
