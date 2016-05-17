@@ -13,7 +13,7 @@ license=('GPL')
 depends=('python')
 makedepends=('git')
 source=("git+https://github.com/MRGEffitas/scripts")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd scripts
