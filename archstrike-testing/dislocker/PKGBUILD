@@ -32,10 +32,5 @@ package() {
   make DESTDIR="${pkgdir}" install
   ## Fixing installer issues
   mv $pkgdir/usr/lib64/libdislocker* $pkgdir/usr/lib/
-  #cd "${pkgdir}/usr/lib64"
-  #rm -rf libdislocker.so.0
-  #rm -rf libdislocker.so
   rm -rf $pkgdir/usr/lib64
-  #ln -s libdislocker.so.$pkgver libdislocker.so.0
-  #ln -s libdislocker.so.0 libdislocker.so
 }
