@@ -4,12 +4,13 @@ buildarch=212
 
 pkgname=dns2tcp
 pkgver=0.5.2
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-tunnel')
 pkgdesc="A tool for relaying TCP connections over DNS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.hsc.fr/ressources/outils/dns2tcp/index.html.en'
 license=('GPL')
+depends=('glibc')
 source=(http://www.hsc.fr/ressources/outils/dns2tcp/download/dns2tcp-$pkgver.tar.gz)
 sha512sums=('2f8dfb671853374be0aa8105f22456ae56d9e56fc270475740ab8704d1e202abe34faf36a25d820283aa672c8d2d1f168907537f4fede115e1935a0920570584')
 
