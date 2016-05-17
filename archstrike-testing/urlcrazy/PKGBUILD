@@ -6,24 +6,29 @@ DLAGENTS=("http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3
 
 pkgname=urlcrazy
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-webapps' 'archstrike-dns' 'archstrike-recon')
 pkgdesc="Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage."
 arch=('any')
 url='http://www.morningstarsecurity.com/research/urlcrazy'
 license=('custom')
-depends=('ruby1.8')
-source=("http://www.morningstarsecurity.com/downloads/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('157ad3ce675fff67faba61be8332985a9e90bb3308cf8629f91aff5d5940af6bbd71c44f6719d08fc01216c7ea7b8b1f57891d689dcaaf523ad240865776e1f0')
+depends=('ruby')
+source=("http://www.morningstarsecurity.com/downloads/${pkgname}-${pkgver}.tar.gz" "ruby2.x.fixes.patch")
+sha512sums=('157ad3ce675fff67faba61be8332985a9e90bb3308cf8629f91aff5d5940af6bbd71c44f6719d08fc01216c7ea7b8b1f57891d689dcaaf523ad240865776e1f0'
+            '9f18a4ceb2340d8c0d036507f27398383ed5f913c184bf84d2170912d38f7f3667e6189728bfea63c91d289e9f37eb6eb006473757c6c09bbf956e5acd79e3e9')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i $srcdir/ruby2.x.fixes.patch
+}
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
-  mkdir -p "${pkgdir}/usr/bin"
-  mkdir -p "${pkgdir}/usr/share"
-  mkdir -p "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  sed -i 's|#!/usr/bin/env ruby|#!/usr/bin/env ruby-1.8|g' ${pkgname}
 
   cp -r ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/share/${pkgname}
   ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
