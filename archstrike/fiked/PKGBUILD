@@ -11,8 +11,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.roe.ch/FakeIKEd'
 license=('GPL')
 depends=("libgcrypt" "libnet")
-source=(http://mirror.roe.ch/rel/fiked/fiked-$pkgver.tar.bz2)
-md5sums=('2313cf2e13c0d516caea72bf4b57a7e4')
+source=("http://mirror.roe.ch/rel/fiked/fiked-$pkgver.tar.bz2")
+sha512sums=('468c75655bb84ae1553249d1ede078254d98dbf7f1ee98c37f169d1612d817d9b9cff60d06b3196f41e96cc1200dd3712237bc8bb50195100ce0130336809423')
 
 prepare() {
   cd "$srcdir/fiked-$pkgver"
