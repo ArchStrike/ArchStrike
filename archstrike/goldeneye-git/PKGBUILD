@@ -4,9 +4,9 @@ buildarch=1
 
 pkgname=goldeneye-git
 pkgver=r16.7a38fe9
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
-pkgdesc="Modular framework that takes advantage of poor upgrade implementations by injecting fake updates"
+pkgdesc="HTTP DoS Test Tool"
 arch=('any')
 url='https://github.com/jseidl/GoldenEye'
 license=('GPL3')
@@ -14,7 +14,7 @@ depends=('python2')
 makedepends=('git')
 provides=('goldeneye')
 source=("git+https://github.com/jseidl/GoldenEye.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/GoldenEye"
