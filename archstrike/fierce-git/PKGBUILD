@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=fierce-git
 pkgver=20160428.r6
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A DNS scanner"
 arch=('any')
@@ -30,6 +30,6 @@ prepare() {
 
 package() {
   cd ${pkgname}
-  install -D -m755 fierce.pl "$pkgdir/usr/bin/fierce.pl"
+  install -D -m755 fierce.pl "$pkgdir/usr/bin/fierce"
   install -D -m644 hosts.txt "$pkgdir/etc/fierce/hosts.txt"
 }
