@@ -2,26 +2,32 @@
 
 buildarch=1
 
-pkgname=dpscan
-pkgver=0.1
+pkgname=dpscan-git
+pkgver=20120216.r4
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Drupal Vulnerabilty Scanner"
 url="https://github.com/insaneisnotfree/Blue-Sky-Information-Security"
 arch=('any')
 license=('GPL2')
-depends=('python2')
+depends=('python2' 'wget')
 makedepends=('git')
-source=("git+https://github.com/insaneisnotfree/Blue-Sky-Information-Security.git")
-md5sums=('SKIP')
+replaces=('dpscan')
+source=("$pkgname::git+https://github.com/insaneisnotfree/Blue-Sky-Information-Security.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
-  cd "$srcdir/Blue-Sky-Information-Security"
+  cd "$pkgname"
   sed -i 's/\home\/bin\/python/usr\/bin\/python2/' DPScan.py
 }
 
 package() {
-  cd "$srcdir/Blue-Sky-Information-Security"
+  cd "$pkgname"
 
   install -Dm755 DPScan.py "$pkgdir/usr/bin/dpscan"
 }
