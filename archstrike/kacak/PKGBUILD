@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=kacak
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="Tools for penetration testers that can enumerate which users logged on windows system"
 arch=('any')
 url='https://github.com/galkan/kacak'
 license=('custom')
-depends=('python2' 'metasploit')
+depends=('python2' 'metasploit-git')
 source=("https://github.com/galkan/kacak/archive/v$pkgver.tar.gz")
 sha512sums=('ce3a18060685648c53667f1af201e05eed292fcd5f84878e4503d853c0197aa2a487b21eb8e0bc7fd2a934424742256bf2942900dc244879be53b03a02b13385')
 
