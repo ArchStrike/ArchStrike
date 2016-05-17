@@ -3,29 +3,21 @@
 buildarch=212
 
 pkgname=dislocker
-pkgver=0.4.1
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="Read BitLocker encrypted volumes under Linux"
 arch=('armv6h' 'i686' 'armv7h' 'x86_64')
 url="https://github.com/Aorimn/dislocker"
 license=('GPL2')
 groups=('archstrike')
-depends=('fuse' 'mbedtls')
-source=("https://github.com/Aorimn/dislocker/archive/v0.4.1.tar.gz")
-sha512sums=('b6affe17f9c183422a15b0b186b6b332429e60649dad3a8b354524a1913415f3301fd21f2e89a6dbe83dd99aebf0ed349d6fd2976950842954d257d1d658eb33')
-
-prepare() {
-  cd "${pkgname}-${pkgver}/src"
-  sed -i 's|polarssl|mbedtls|g' Makefile
-  sed -i 's|polarssl|mbedtls|g' encommon.h
-  sed -i 's|polarssl|mbedtls|g;s|sha2.h|sha256.h|' accesses/stretch_key.h
-  sed -i 's|polarssl|mbedtls|g' ssl_bindings.h
-  sed -i '30i#include "mbedtls/compat-1.3.h"' ssl_bindings.h
-}
+depends=('fuse' 'mbedtls' 'ruby')
+source=("https://github.com/Aorimn/dislocker/archive/v$pkgver.tar.gz")
+sha512sums=('92c091d660219e1f65d734ed988e77242abedf2a503a976b050f129f208a1ba88edaf06c6028cd456d5ed9ce7c4ed54064e4e81d37d46915893a2df9d7cb65b9')
 
 build() {
-  cd "${pkgname}-${pkgver}/src"
-  make all
+  cd "${pkgname}-${pkgver}/"
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
+  make
 }
 
 package() {
@@ -33,15 +25,17 @@ package() {
   install -dm755 "$pkgdir"/usr/bin
   install -dm755 "$pkgdir"/usr/lib
   install -dm755 "$pkgdir"/usr/share/man/man1
-  install -Dm644 README.txt "$pkgdir"/usr/share/dislocker/README.txt
-  install -Dm644 CHANGELOG.txt "$pkgdir"/usr/share/dislocker/CHANGELOG.txt
+  install -Dm644 README.md "$pkgdir"/usr/share/dislocker/README.md
+  install -Dm644 CHANGELOG.md "$pkgdir"/usr/share/dislocker/CHANGELOG.md
   install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/dislocker/LICENSE
   cd src
-  make DESTDIR="${pkgdir}/usr" install
+  make DESTDIR="${pkgdir}" install
   ## Fixing installer issues
-  cd "${pkgdir}/usr/lib"
-  rm -rf libdislocker.so.0
-  rm -rf libdislocker.so
-  ln -s libdislocker.so.0.4.1 libdislocker.so.0
-  ln -s libdislocker.so.0 libdislocker.so
+  mv $pkgdir/usr/lib64/libdislocker* $pkgdir/usr/lib/
+  #cd "${pkgdir}/usr/lib64"
+  #rm -rf libdislocker.so.0
+  #rm -rf libdislocker.so
+  rm -rf $pkgdir/usr/lib64
+  #ln -s libdislocker.so.$pkgver libdislocker.so.0
+  #ln -s libdislocker.so.0 libdislocker.so
 }
