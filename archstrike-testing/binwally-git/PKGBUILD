@@ -2,17 +2,19 @@
 
 buildarch=1
 
-pkgname=binwally
+pkgname=binwally-git
 pkgver=0.r4.0aabd8b
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-analysis' 'archstrike-forensics' 'archstrike-source-audit')
 pkgdesc="Binary and Directory tree comparison tool using the Fuzzy Hashing concept (pydeep)"
 url="https://github.com/bmaia/binwally"
-arch=(any)
+arch=('any')
 license=('MIT')
 depends=('python2-pydeep')
 makedepends=('git')
-source=("git+https://github.com/bmaia/binwally.git")
+replaces=('binwally')
+provides=('binwally')
+source=("$pkgname::git+https://github.com/bmaia/binwally.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -28,7 +30,7 @@ package() {
   grep -iRl 'hash_from_file' "${srcdir}/${pkgname}" | xargs sed -i 's|hash_from_file|hash_file|g'
 
   install -dm755 "${pkgdir}/usr/bin/"
-  install -m755 ${pkgname}.py "${pkgdir}/usr/bin/${pkgname}"
+  install -m755 binwally.py "${pkgdir}/usr/bin/${pkgname}"
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -m755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
