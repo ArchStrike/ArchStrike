@@ -4,15 +4,21 @@ buildarch=212
 
 pkgname=aimage
 pkgver=3.2.5
-pkgrel=6
+pkgrel=7
 pkgdesc='A program to create aff-images'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.afflib.org'
 license=('custom')
 depends=('afflib')
 groups=('archstrike' 'archstrike-forensics')
-source=("http://pkgs.fedoraproject.org/repo/pkgs/$pkgname/$pkgname-$pkgver.tar.gz/07a11d653cdd1d7a5aefe4d99cdbd408/$pkgname-$pkgver.tar.gz")
-sha512sums=('dc26f0e4ce1d336390aa0cc3ebeeb3388435ff2992b2f25217ad7fe61e05231f51359d5f8917b8a157fdaf6294903bb6c7e019ab3e116703c210ab93907a76db')
+source=("http://pkgs.fedoraproject.org/repo/pkgs/$pkgname/$pkgname-$pkgver.tar.gz/07a11d653cdd1d7a5aefe4d99cdbd408/$pkgname-$pkgver.tar.gz" "gcc6.1.fixes.patch")
+sha512sums=('dc26f0e4ce1d336390aa0cc3ebeeb3388435ff2992b2f25217ad7fe61e05231f51359d5f8917b8a157fdaf6294903bb6c7e019ab3e116703c210ab93907a76db'
+            '001841475b0c0810e031bd83615e7ac045738856b79277cfc6fd9bac15344dc632621165d83a11e9c86ef3dcd81496d7e1f2551a9dd1b6f1e59861f994f13bec')
+
+prepare() {
+ cd $pkgname-$pkgver
+ patch -Np1 -i $srcdir/gcc6.1.fixes.patch
+}
 
 build() {
   cd $pkgname-$pkgver
