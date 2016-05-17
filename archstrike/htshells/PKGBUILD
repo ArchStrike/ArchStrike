@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=htshells
-pkgver=760b5e9
+pkgver=20150702.r79.399feaa
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Self contained web shells and other attacks via .htaccess files."
@@ -14,11 +14,11 @@ options=('!emptydirs')
 arch=('any')
 license=('GPL3')
 source=("git+https://github.com/wireghoul/htshells.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd htshells
-  git describe --always | sed 's|-|.|g'
+  cd $pkgname 
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
