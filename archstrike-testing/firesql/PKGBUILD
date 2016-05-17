@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=firesql
 pkgver=0.0.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="A mysql firewall"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
