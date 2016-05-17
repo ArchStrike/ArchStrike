@@ -32,6 +32,8 @@ package() {
   cd src
   make DESTDIR="${pkgdir}" install
   ## Fixing installer issues
-  mv $pkgdir/usr/lib64/libdislocker* $pkgdir/usr/lib/
-  rm -rf $pkgdir/usr/lib64
+  if [[ $CARCH == x86_64 ]]; then
+        mv $pkgdir/usr/lib64/libdislocker* $pkgdir/usr/lib/
+        rm -rf $pkgdir/usr/lib64
+  fi
 }
