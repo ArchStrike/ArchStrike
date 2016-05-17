@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://wcoserver.googlecode.com/files/'
 license=('GPL2')
 source=("http://wcoserver.googlecode.com/files/ftpmap-$pkgver.tar.gz")
-md5sums=('5095c0712e4a906dae75f082acbabffb')
+sha512sums=('eb2f6fa01071e6de7a87cb159e9f3c7b6f8258ac76177c7b339e63d2a89fc9884162ec0bff0495e7383deea76275370ff2fbf740c2960d28bba909a0c936bd10')
 
 build() {
   cd "$srcdir/ftpmap-$pkgver"
