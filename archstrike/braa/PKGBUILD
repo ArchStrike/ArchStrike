@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=braa
 pkgver=0.82
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A mass snmp scanner"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -23,6 +23,8 @@ build() {
 
 package() {
   cd braa-"${pkgver}"
-  install -Dm0755 braa ${pkgdir}/usr/bin/braa
-  install -Dm0644 README ${pkgdir}/usr/share/doc/braa/README
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm644 "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm0755 braa "$pkgdir/usr/bin/braa"
+  install -Dm0644 README "$pkgdir/usr/share/doc/braa/README"
 }
