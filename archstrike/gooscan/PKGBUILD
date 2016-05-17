@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('unknown')
 groups=('archstrike' 'archstrike-autonomous')
 source=('gooscan.c')
-md5sums=('ea871dbdfcb3c3780ad4bd30de9077c5')
+sha512sums=('6667f5f3405ddf6a7c3be9a68c2fc6e2030dfe3d0bc8f5719119f42d9dcfd7bb280d3c97024d9f17900434373095e1044ff3d26a9b60e19a1a8ae63c693a1f31')
 
 build() {
   cd "$srcdir"
