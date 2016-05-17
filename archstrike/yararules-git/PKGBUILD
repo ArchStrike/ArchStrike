@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=yararules
 pkgname=$_pkgname-git
-pkgver=20160513.r593
+pkgver=20160516.r594
 pkgrel=1
 pkgdesc='A Repository of yara rules'
 arch=('any')
