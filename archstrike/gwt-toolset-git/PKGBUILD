@@ -2,9 +2,9 @@
 
 buildarch=1
 
-pkgname='gwtenum'
+pkgname='gwt-toolset-git'
 pkgver=20120831.r7.f27a5aa
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc='analyzes the obfuscated Javascript produced by Google Web Toolkit (GWT) applications in order to enumerate all services and method calls'
 url='http://www.gdssecurity.com/l/t/d.php?k=GwtEnum'
@@ -14,6 +14,9 @@ arch=('any')
 depends=('python2')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/GDSSecurity/GWT-Penetration-Testing-Toolset.git")
+replaces=('gwtenum')
+provides=('gwtenum')
+conflicts=('gwtenum')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -26,10 +29,10 @@ package() {
 
   _tools="gwtenum gwtfuzzer gwtparse"
 
-  install -d -m755 "$pkgdir/usr/share/gwtenum"
+  install -d -m755 "$pkgdir/usr/share/gwt-toolset"
   install -d -m755 "$pkgdir/usr/bin"
 
-  cp -r * "$pkgdir/usr/share/gwtenum"
+  cp -r * "$pkgdir/usr/share/gwt-toolset"
 
   for tool in $_tools
   do
