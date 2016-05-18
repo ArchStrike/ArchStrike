@@ -12,7 +12,7 @@ license=('GPL')
 groups=('archstrike' 'archstrike-crackers')
 depends=('python2')
 source=('http://www.toolswatch.org/dpe/dpeparser.py')
-md5sums=('f802cc1d26190fdba0f4cfe5a7f1aaa8')
+sha512sums=('f941a536b7eb05f589dbbc1533d07dbb10a50776f197aca5b5158b263e216603e833ce315f73b1f3d0fe59ea10578dcd1059b998ca1db27c0bd4c8c4239b9f27')
 
 pkgver() {
   date +%Y%m%d
@@ -20,13 +20,11 @@ pkgver() {
 
 prepare() {
   cd "$srcdir"
-
   sed -i 's#MydpeDB ="dpe_db.xml"#MydpeDB = "/usr/share/dpeparser/dpe_db.xml"#' dpeparser.py
 }
 
 build() {
   cd "$srcdir"
-
   python2 dpeparser.py -u
 }
 
@@ -39,9 +37,9 @@ package() {
   install -m755 dpeparser.py "$pkgdir/usr/share/dpeparser"
   install -m644 dpe_db.xml "$pkgdir/usr/share/dpeparser"
 
-  cat > "$pkgdir/usr/bin/dpeparser" <<EOF
+cat > "$pkgdir/usr/bin/dpeparser" <<EOF
 #!/bin/bash
 python2 /usr/share/dpeparser/dpeparser.py "\$@"
 EOF
-  chmod 755 "$pkgdir/usr/bin/dpeparser"
+  chmod +x "$pkgdir/usr/bin/dpeparser"
 }
