@@ -32,7 +32,7 @@ package() {
   if [[ "$CARCH" == 'x86_64' ]]; then
          install -Dm755 hashcat-cli64.bin "${pkgdir}/usr/bin/hashcat"
   else
-         install -Dm755 hashcat-cli32.bin "${pkgdir}}/usr/bin/hashcat"
+         install -Dm755 hashcat-cli32.bin "${pkgdir}/usr/bin/hashcat"
   fi
 
   cp -dpr --no-preserve=ownership "${srcdir}/hashcat-${pkgver}"/{charsets,rules,salts,tables} "${pkgdir}"/etc/"hashcat"/
