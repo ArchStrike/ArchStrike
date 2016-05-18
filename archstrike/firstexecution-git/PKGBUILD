@@ -13,7 +13,7 @@ license=('GPL3')
 makedepends=('git')
 provides=('firstexecution')
 source=("git+https://github.com/nccgroup/firstexecution.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/firstexecution"
