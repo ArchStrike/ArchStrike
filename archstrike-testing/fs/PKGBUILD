@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=fs
-pkgver=0.5.0
+pkgver=0.5.4
 pkgrel=1
 pkgdesc="Filesystem abstraction layer"
 arch=('any')
@@ -12,8 +12,8 @@ url="http://pyfilesystem.org"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/source/f/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('59c59dcd81696cd5f70b139a8112fe348845eaf73cc866876bd4dd7208ffaef57affab22f81483f2f64e154708872c85e50a934b8224e308b7f231b1ddfa3a20')
+source=("https://pypi.python.org/packages/04/36/d9d564bd96ef2bffb3e493bbb03f363cbdc3a0b19676621053999be78ea4/$pkgname-$pkgver.tar.gz")
+sha512sums=('d67c85f2816cf1a84c25664a6cf71dac551c3eec4eb34154bc92d52eb0efa9739adca6d0ec86b9978ff6af408cfa17b913ee8fd4c143cd2adf862ca0a1dd4c5d')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
