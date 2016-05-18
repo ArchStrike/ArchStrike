@@ -12,18 +12,24 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike' 'archstrike-networking')
 options=('!emptydirs')
 license=('GPL')
-source=("http://downloads.sourceforge.net/sourceforge/ipaudit/ipaudit-$pkgver.tar.gz" 'ipaudit.desktop')
+source=("http://downloads.sourceforge.net/sourceforge/ipaudit/ipaudit-$pkgver.tar.gz" 'ipaudit.desktop' "gcc6.1.fixes.patch")
 sha512sums=('3a8890821c515aea95762eeb2cc7a649533ff739984c944bcb26acb72434e1f2b453a98365719fce9e062d6262b9d76ac389f149ad2a19361422783bc0b55e09'
-            '8298ed38fba9bfac62b03c1fdb100568b7efd84e64cd27ce05197c6681d8ff94352194944d11b76e983d4ec2593686adf3c6d6a3ae85e714dc204c1823e90040')
+            '0b996b0b28f98f0ce639099c6b18264b9137950e8b018e38de4f4e700da4317d17395a7ef8040d31262721ac7190e8a00de82c7d54ac80ccaa191a1eb5ef0985'
+            '74953fc89d84bbc0dec1b13b6216e2658c9d8337efe0e20f9d61099f031ef08a4d04279c75e14ab69a50bbf89157b75d167646ca7aad262eb82bf6de2e9d313a')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 -i $srcdir/gcc6.1.fixes.patch
+}
 
 build() {
-  cd $srcdir/ipaudit-$pkgver
+  cd $pkgname-$pkgver
   ./configure --prefix=/usr --mandir=/usr/share/man --sbindir=/usr/bin
   make
 }
 
 package(){
-  cd $srcdir/ipaudit-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR=$pkgdir install
   install -Dm644 "$srcdir/ipaudit.desktop" "$pkgdir/usr/share/applications/ipaudit.desktop"
 }
