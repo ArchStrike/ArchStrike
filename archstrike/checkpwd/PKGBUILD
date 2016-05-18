@@ -13,10 +13,10 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('unixodbc' 'zlib' 'libstdc++5')
 source=(http://www.red-database-security.com/software/oracle_checkpwd_linux.tar.gz checkpwd.sh checkpwd_nopw.sh sqlplus.sh)
 noextract=(oracle_checkpwd_linux.tar.gz)
-md5sums=('aa05f5e7c8a20ec1094e68143085c3a7'
-         'd97923529c2cd6ad77b91bb5ce556328'
-         'e45bbc9424dd760c335640143e0d8730'
-         'ac3e0978fb385e7355dd2fcbf14c1d4c')
+sha512sums=('55c64630e45ab13a1187ea428be0c102b84e11baf4e93790f02d25a273ebb8f4ced4716c7d8026b0b69b584bcea2aa8c67a29f06ffef91c0124fd2d28c92b744'
+            'a97f73fc19caa189718fbc860885fbc8f69f8ab544748da71ecbdf4989cb95ed7beb9827d7913e9d1f05a623c9b6b61bc265caa0909cc6bf786c41b317fdecff'
+            '3a9645f004ba964e7f4d41a4698128c3c74868de796fbb099a423214a7f54f23fe148be4ca428ed514f5cf2868ea6f39dada9a67c56894a9c5d365521d63700a'
+            '7620a0386cf3c34009e71c9a5163b885b997b22a2985654808030eb66abbbb6f84e9f9ccd6443d6289ef7843c8683119cea12093d1d9c3549214e9bc3a6af85a')
 
 package() {
   cd "$srcdir"
