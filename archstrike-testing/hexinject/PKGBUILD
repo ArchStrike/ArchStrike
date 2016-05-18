@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=hexinject
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A very versatile packet injector and sniffer that provides a command-line framework for raw network access"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -27,7 +27,9 @@ build() {
 
 package() {
   cd "$pkgname"
+  install -Dm644 README $pkgdir/usr/share/licenses/$pkgname/README
   install -Dm755 hexinject $pkgdir/usr/bin/hexinject
   install -Dm755 prettypacket $pkgdir/usr/bin/prettypacket
   install -Dm755 hex2raw $pkgdir/usr/bin/hex2raw
+  install -Dm755 packets.tcl $pkgdir/usr/bin/packets_tcl
 }
