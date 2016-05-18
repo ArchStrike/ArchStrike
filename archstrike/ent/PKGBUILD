@@ -9,7 +9,7 @@ pkgdesc='Pseudorandom number sequence test.'
 url='http://www.fourmilab.ch/random'
 license=('Public Domain')
 source=('http://www.fourmilab.ch/random/random.zip')
-md5sums=('8104a83af1ea5b280da96c92da18eae4')
+sha512sums=('f74cfae8cd8b9f405b7459a350571d3ef438bdba42508da59ca214f6e7f6372d253a4c1a30685aa7dfc1cf14dde9796ea54bf42aa103a63bae09a5bb3fd3d3d8')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike' 'archstrike-misc')
 
