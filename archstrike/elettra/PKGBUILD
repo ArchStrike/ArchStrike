@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=elettra
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Encryption utility by Julia Identity"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('custom')
@@ -13,7 +13,7 @@ depends=('glibc' 'libmcrypt' 'mhash' 'zlib')
 makedepends=('cmake')
 groups=('archstrike' 'archstrike-misc')
 source=(http://www.winstonsmith.info/julia/elettra/elettra-src.tar.gz)
-md5sums=('8ece5fdfccea33001ac8d4f61080b2fe')
+sha512sums=('341a83436d9c163391eabbc06600b29e8ee837bb805f2f9ea922ffa8d8dcb9ec53e50ae475e13e2810ac69419b86072cd7e6c44d13c80e43ee67071e6864d5b3')
 
 build(){
    cd $srcdir/elettra/src
@@ -30,8 +30,8 @@ package() {
     install -dm755 $pkgdir/usr/share/doc/elettra
 
     # Docs
-    install -m644 README $pkgdir/usr/share/doc/elettra/README
+    install -Dm644 README $pkgdir/usr/share/doc/elettra/README
 
    # Bin
-   install -m755  src/build/elettra $pkgdir/usr/bin/elettra
+   install -Dm755  src/build/elettra $pkgdir/usr/bin/elettra
 }
