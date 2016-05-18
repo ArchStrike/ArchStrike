@@ -4,36 +4,32 @@ buildarch=192
 
 pkgname=hashcat
 pkgver=2.00
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A multithreaded cross platform hash cracker."
 arch=('i686' 'x86_64')
-url='http://hashcat.net/hashcat/'
+url='https://github.com/hashcat/hashcat'
 license=('MIT')
-makedepends=('p7zip')
 depends=('gmp')
-source=("https://hashcat.net/files/hashcat-${pkgver}.7z")
-sha512sums=('197680747e81831471c8835c7b3469f4291a50a759f5ebe83be5e062c529a4a7a72841eb71a44e9f316dd6b508aec2619b4b80957f254eabc60fc6cac030bb16')
+source=("https://github.com/hashcat/hashcat/archive/$pkgver.tar.gz")
+sha512sums=('367215bf4f6a48b5ce1806c5e45091b7640c1d2d275ee49b37204273d7485f5f5dce228b4c898247cb152209d85cff737225a457bf16c18a3f7e9afc57201040')
 
-prepare() {
-  cd "${srcdir}/hashcat-${pkgver}"
-
-  if [[ "$CARCH" == 'x86_64' ]]; then
-    mv hashcat-cli64.bin hashcat
-  else
-    mv hashcat-cli32.bin hashcat
-  fi
+build() {
+  cd "${pkgname}-${pkgver}"
+  make linux
 }
 
 package() {
-  cd "${srcdir}/hashcat-${pkgver}"
-
-  rm *.{exe,bin,app}
+  cd "${pkgname}-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/share/doc/hashcat"
   install -dm755 "${pkgdir}/etc/hashcat"
 
-  install -Dm755 hashcat "${pkgdir}/usr/bin/hashcat"
+  if [[ "$CARCH" == 'x86_64' ]]; then
+         install -Dm755 hashcat-cli64.bin "${pkgdir}/usr/bin/hashcat"
+  else
+         install -Dm755 hashcat-cli32.bin "${pkgdir}}/usr/bin/hashcat"
+  fi
 
   cp -dpr --no-preserve=ownership "${srcdir}/hashcat-${pkgver}"/{charsets,rules,salts,tables} "${pkgdir}"/etc/"hashcat"/
   cp -dpr --no-preserve=ownership "${srcdir}/hashcat-${pkgver}"/examples "${pkgdir}"/usr/share/doc/"hashcat"/
