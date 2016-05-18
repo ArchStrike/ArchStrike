@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=cms-explorer
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-fingerprinting' 'archstrike-webapps')
 pkgdesc="Designed to reveal the specific modules, plugins, components and themes that various cms driven websites are running"
 arch=('any')
@@ -21,8 +21,8 @@ package() {
   install -dm755 "$pkgdir/usr/share/cms-explorer"
   install -dm755 "$pkgdir/usr/bin"
 
-  install -m644 *.txt *.pm "$pkgdir/usr/share/cms-explorer"
-  install -m755 *.pl "$pkgdir/usr/share/cms-explorer"
+  install -Dm644 *.txt *.pm "$pkgdir/usr/share/cms-explorer"
+  install -Dm755 *.pl "$pkgdir/usr/share/cms-explorer"
 
   cat > "$pkgdir/usr/bin/cms-explorer" <<EOF
 #!/bin/sh
