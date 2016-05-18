@@ -4,30 +4,36 @@ buildarch=192
 
 pkgname=maskprocessor
 pkgver=0.73
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A High-Performance word generator with a per-position configurable charset"
 arch=('i686' 'x86_64')
-url='http://hashcat.net/wiki/doku.php?id=maskprocessor'
+url='https://github.com/hashcat/maskprocessor'
 license=('MIT')
 depends=('glibc')
-makedepends=('p7zip')
-source=("https://github.com/jsteube/maskprocessor/releases/download/v0.73/maskprocessor-$pkgver.7z")
-sha512sums=('f8428b6b331d833b2266f7d7aa47c5cad6831758dfce5905efc6bd049a57bedc432283165be6716204d74ce0dded7bcb4a96085cbf01877fecdbbb3da555677a')
+source=("https://github.com/hashcat/maskprocessor/archive/v$pkgver.tar.gz")
+sha512sums=('71274cf2fc09b03a1105878e2c6315635374d3df2777c91e2f10d2a4cb006c8e9a3b98012d4ce62032599c5b1d36b8f6694eacd86ff58f7d85bb5ba2fa9ceb99')
+
+build() {
+  cd "$pkgname-$pkgver/src"
+  if [[ "$CARCH" == 'x86_64' ]]; then
+     make mp64.bin
+  elif [[ "$CARCH" == 'i686' ]]; then
+     make mp32.bin
+  fi
+}
 
 package() {
-  cd "$srcdir/maskprocessor-$pkgver"
+  cd "$pkgname-$pkgver/src"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/bin"
 
   # Bin.
   if [[ "$CARCH" == 'x86_64' ]]; then
-    install -m755 mp64.bin "$pkgdir/usr/bin/mp64"
-    ln -s mp64 "$pkgdir/usr/bin/maskprocessor"
+    install -Dm755 mp64.bin "$pkgdir/usr/bin/maskprocessor"
   elif [[ "$CARCH" == 'i686' ]]; then
-    install -m755 mp32.bin "$pkgdir/usr/bin/mp32"
-    ln -s mp32 "$pkgdir/usr/bin/maskprocessor"
+    install -Dm755 mp32.bin "$pkgdir/usr/bin/maskprocessor"
   fi
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/maskprocessor/LICENSE"
+  install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/maskprocessor/LICENSE"
 }
