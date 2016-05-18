@@ -29,10 +29,10 @@ package() {
 
   _tools="gwtenum gwtfuzzer gwtparse"
 
-  install -d -m755 "$pkgdir/usr/share/gwt-toolset"
-  install -d -m755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/gwt-toolset"
+  install -dm755 "$pkgdir/usr/bin"
 
-  cp -r * "$pkgdir/usr/share/gwt-toolset"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/gwt-toolset"
 
   for tool in $_tools
   do
@@ -41,6 +41,6 @@ package() {
 cd /usr/share/gwtenum/$tool
 python2 $tool.py \$@
 EOF
-    chmod 755 "$pkgdir/usr/bin/$tool"
+    chmod +x "$pkgdir/usr/bin/$tool"
   done
 }
