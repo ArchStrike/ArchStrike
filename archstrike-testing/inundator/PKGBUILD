@@ -16,7 +16,7 @@ sha512sums=('cb82024facb1aeaee1afc100e1c6cd49ae500411804d053f9bcf6b76bb34f64fda9
             '293d5c9d8c12aaa9fa00ffe3f4444df10ce99288a633244842f00888227c578cebbfac11694e48fb8940eb77fe31d777f14d38eda365838a27d914cec189352b')
 
 prepare() {
-  cd "$pkgname-$pkgver"
+  cd "$srcdir"
   patch -Np1 -i $srcdir/perl5.22.patch
 }
 
