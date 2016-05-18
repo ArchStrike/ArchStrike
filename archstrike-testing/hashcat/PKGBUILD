@@ -16,7 +16,11 @@ sha512sums=('367215bf4f6a48b5ce1806c5e45091b7640c1d2d275ee49b37204273d7485f5f5dc
 
 build() {
   cd "${pkgname}-${pkgver}"
-  make linux
+  if [[ $CARCH == "x86_64" ]]; then
+        make posix64
+  else
+        make posix32
+  fi
 }
 
 package() {
