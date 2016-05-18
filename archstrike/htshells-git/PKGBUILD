@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=htshells
+pkgname=htshells-git
 pkgver=20150702.r79.399feaa
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
@@ -13,7 +13,8 @@ makedepends=('git')
 options=('!emptydirs')
 arch=('any')
 license=('GPL3')
-source=("git+https://github.com/wireghoul/htshells.git")
+replaces=('htshells')
+source=("$pkgname::git+https://github.com/wireghoul/htshells.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -22,7 +23,7 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/htshells"
+  cd "$pkgname"
 
   # Base directory.
   install -dm755 "$pkgdir/usr/share/htshells"
