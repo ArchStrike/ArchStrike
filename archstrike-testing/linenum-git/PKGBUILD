@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=linenum
+pkgname=linenum-git
 pkgver=20160410.r22.f7b184b
 pkgrel=1
 epoch=1
@@ -13,16 +13,18 @@ arch=('any')
 license=('GPL3')
 depends=('bash')
 makedepends=('git')
-source=("git+https://github.com/rebootuser/LinEnum.git")
+provides=('linenum')
+replaces=('linenum')
+source=("$pkgname::git+https://github.com/rebootuser/LinEnum.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd LinEnum
+  cd $pkgname
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//  g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/LinEnum"
+  cd "$pkgname"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/bin/"
