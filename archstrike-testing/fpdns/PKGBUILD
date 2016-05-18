@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=fpdns
 pkgver=20130404
-pkgrel=1
+pkgrel=2
 pkgdesc="Program that remotely determines DNS server versions"
 url="https://github.com/kirei/fpdns"
 depends=('perl')
@@ -22,8 +22,8 @@ build() {
 
   /usr/bin/perl Makefile.PL \
     INSTALLARCHLIB=/usr/lib/perl5/current/$archname \
-    INSTALLSITELIB=/usr/lib/perl5/site_perl/current \
-    INSTALLSITEARCH=/usr/lib/perl5/site_perl/current/$archname
+    INSTALLSITELIB=/usr/lib/perl5/site_perl/ \
+    INSTALLSITEARCH=/usr/lib/perl5/site_perl/$archname
 
   /usr/bin/make
 }
@@ -31,6 +31,7 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   make pure_install DESTDIR="$pkgdir"
+  mv $pkgdir/usr/bin/site_perl/$pkgname $pkgdir/usr/bin/$pkgname
   find $pkgdir -name '.packlist' -delete
   find $pkgdir -name '*.pod' -delete
 
