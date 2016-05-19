@@ -6,13 +6,13 @@ buildarch=1
 
 pkgname=$_pkgname-git
 pkgver=20151012.r4504.67019b9
-pkgrel=1
+pkgrel=2
 pkgdesc='A static analysis tool for binaries'
 url='https://bitbucket.org/mihaila/bindead'
 license=('GPL3')
 arch=('any')
 groups=('archstrike' 'archstrike-analysis')
-depends=('bash' 'java-runtime')
+depends=('bash' 'java-runtime' 'java-environment')
 makedepends=('java-environment' 'maven' 'git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -42,10 +42,10 @@ package() {
   # Jar file and executable script
   install -Dm644 $_pkgname.jar "$pkgdir/usr/share/$_pkgname/$_pkgname.jar"
   install -dm755 "$pkgdir/usr/bin"
-  printf '%s\n\n%s %s' \
-    '#!/usr/bin/env bash' \
-    "java -jar /usr/share/$_pkgname/$_pkgname.jar" '$@' \
-      > "$pkgdir/usr/bin/$_pkgname"
-  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+cat > "$pkgdir/usr/bin/bindead" << EOF
+#!/bin/sh
+cd /usr/share/bindead
+java -jar bindead.jar "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/bindead"
 }
-
