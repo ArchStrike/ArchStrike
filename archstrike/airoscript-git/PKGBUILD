@@ -2,9 +2,9 @@
 
 buildarch=1
 
-pkgname=airoscript
+pkgname=airoscript-git
 pkgver=45.0a122ee
-pkgrel=2
+pkgrel=1
 epoch=1
 pkgdesc='Script to simplify the use of aircrack-ng tools'
 arch=('any')
@@ -15,27 +15,30 @@ depends=('mdk3' 'aircrack-ng' 'dhclient' 'perl-yaml-syck')
 options=('!makeflags')
 makedepends=('git')
 source=(
-  'git+http://github.com/patrickhno/Airoscript'
-  'Makefile.patch'
+  "$pkgname::git+http://github.com/patrickhno/Airoscript"
+  "Makefile.patch"
 )
+replaces=('airoscript')
+provides=('airoscript')
+conflicts=('airoscript')
 sha512sums=(
   'SKIP'
   'c7b9eb321243ff436c3bd0887cf11400bedc206c097d6abfc102f4fba4920aa6223b39f978cb64a4c032adb70940c815a4241b7ec4eb017f6b51e0e34fd13bca'
 )
 
 pkgver() {
-  cd Airoscript
+  cd $pkgname
   printf '%s\n' $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 prepare() {
-  cd Airoscript
+  cd $pkgname 
   patch -Np1 < ../Makefile.patch
   find -type f -exec sed -i 's|/sbin|/bin|g' {} \;
 }
 
 package() {
-  cd Airoscript
+  cd $pkgname 
   rm -rf src/locale/*
   make prefix="$pkgdir/usr" aircrack_prefix=/usr etcdir="$pkgdir/etc/airoscript" install
   # Fix conflict with extra/screen.
