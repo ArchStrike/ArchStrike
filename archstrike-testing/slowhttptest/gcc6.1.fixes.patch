@@ -1,0 +1,48 @@
+diff -aur slowhttptest-1.6.orig/src/slowhttptest.cc slowhttptest-1.6/src/slowhttptest.cc
+--- slowhttptest-1.6.orig/src/slowhttptest.cc	2016-05-18 22:01:26.366028144 -0400
++++ slowhttptest-1.6/src/slowhttptest.cc	2016-05-18 22:09:10.746040654 -0400
+@@ -560,20 +560,20 @@
+           !is_dosed_ * num_connections_);
+     }
+   } else {
+-    slowlog(LOG_INFO, cLGN"\nslow HTTP test status on "cGRN"%d"cLGN"th second:\n\n"
++    slowlog(LOG_INFO, cLGN "\nslow HTTP test status on " cGRN"%d"cLGN"th second:\n\n"
+       cLGN"initializing:" cLGN"        %d\n"
+       cLGN"pending:     " cLGN"        %d\n"
+       cLGN"connected:   " cLGN"        %d\n"
+       cLGN"error:       " cLGN"        %d\n"
+       cLGN"closed:      " cLGN"        %d\n"
+-      cLGN"service available:"cLGN"   %s\n"cRST,
++      cLGN"service available:" cLGN"   %s\n"cRST,
+         seconds_passed_,
+         initializing_,
+         connecting_,
+         connected_,
+         errored_,
+         closed_,
+-        is_dosed_ ? cLRD"NO"cRST: cLGN"YES"cRST);
++        is_dosed_ ? cLRD "NO"cRST: cLGN "YES"cRST);
+   }
+ }
+ 
+diff -aur slowhttptest-1.6.orig/src/slowhttptestmain.cc slowhttptest-1.6/src/slowhttptestmain.cc
+--- slowhttptest-1.6.orig/src/slowhttptestmain.cc	2016-05-18 22:01:26.366028144 -0400
++++ slowhttptest-1.6/src/slowhttptestmain.cc	2016-05-18 22:02:10.305398533 -0400
+@@ -44,7 +44,7 @@
+ }
+ static void usage() {
+   printf(
+-      "\n"PACKAGE", a tool to test for slow HTTP "
++      "\n" PACKAGE", a tool to test for slow HTTP "
+       "DoS vulnerabilities - version " VERSION "\n"
+       "Usage: "
+       PACKAGE" [options ...]"
+@@ -293,7 +293,7 @@
+   signal(SIGPIPE, SIG_IGN);
+   signal(SIGINT, &int_handler);
+   slowlog_init(debug_level, NULL);
+-  std::auto_ptr<SlowHTTPTest> slow_test(
++  std::unique_ptr<SlowHTTPTest> slow_test(
+       new SlowHTTPTest(rate, duration, interval,
+       conn_cnt, max_random_data_len, content_length,
+       type, need_stats, pipeline_factor, probe_interval,
