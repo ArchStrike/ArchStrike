@@ -15,7 +15,7 @@ depends=('python2' 'python2-pyserial' 'wxpython2.8')
 makedepends=('git' 'dos2unix')
 provides=('cecster')
 source=("cecster::git+https://github.com/nccgroup/$_pkgname.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/cecster"
