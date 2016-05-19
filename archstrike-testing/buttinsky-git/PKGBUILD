@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=buttinsky-git
 pkgver=r138.1a2a1b2
-pkgrel=1
+pkgrel=2
 pkgdesc="provide an open source framework for automated botnet monitoring"
 url="https://github.com/buttinsky/buttinsky"
 arch=('any')
 license=('GPL3')
 groups=('archstrike')
-depends=('python2')
+depends=('python2-gevent' 'python2-validictory' 'python2-configobj')
 makedepends=('git')
 provides=('buttinsky')
 conflicts=('buttinsky')
