@@ -3,32 +3,26 @@
 buildarch=212
 
 pkgname=python2-pypcap
-pkgver=1.1
-pkgrel=6
+pkgver=1.1.5
+pkgrel=1
 pkgdesc="Python extension module for libpcap."
 url="https://github.com/dugsong/pypcap"
 license=('custom')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('python2' 'libpcap')
-source=("https://github.com/dugsong/pypcap/archive/PYPCAP_${pkgver//./_}.tar.gz"
-        "python2-pypcap.patch")
-sha512sums=('3583df18ac5c6ad0ecf40002437fca8a45fe030e1361dc1545f488d32b2fbab8e0705835ee8d7f52a7095be80edc1488f0e16581ac0fca79f56b53222b4124a6'
-            '097b97987bfe81ce74f887ff5953359b32ec86e9c396f6510fe497b30b626afa4ddf4d9959ffe21ce37d407c52d5d58c98fc22498c5079048df170914d0e3b7d')
-
-prepare() {
-  cd "$srcdir/pypcap-PYPCAP_${pkgver//./_}"
-  patch -p0 < ../python2-pypcap.patch
-}
+makedepends=('python2-setuptools')
+source=("https://github.com/pynetwork/pypcap/archive/v$pkgver.tar.gz")
+sha512sums=('15df8f966abb6e29f3dfbd0c7f39bb2c3616b4352667e62dc08da287c427e611ec32ac543103d0e5864e5beb86bb9353bf1417bc6680a46e79e06496d4bba353')
 
 build() {
-  cd "$srcdir/pypcap-PYPCAP_${pkgver//./_}"
+  cd "$srcdir/pypcap-$pkgver"
   python2 setup.py config
   python2 setup.py build
   python2 setup.py build_py
 }
 
 package() {
-  cd "$srcdir/pypcap-PYPCAP_${pkgver//./_}"
+  cd "$srcdir/pypcap-$pkgver"
   python2 setup.py install "--root=$pkgdir" --optimize=1
-  install -Dm644 "$srcdir/pypcap-PYPCAP_${pkgver//./_}/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 "$srcdir/pypcap-$pkgver/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
