@@ -12,7 +12,7 @@ url='http://www.aldeid.com/wiki/Bed'
 license=('GPL')
 depends=('perl')
 source=("http://web.archive.org/web/20101229024258/http://www.remote-exploit.org/wp-content/uploads/2010/01/bed-$pkgver.tar.gz")
-md5sums=('eafc26ffc8523b10918276b33197d373')
+sha512sums=('17a2debe4516c13dd677529b8ebe34bee777ce554668c1b5b43f94b05688611423392e04bbb5b4b52218ec18bf3bc77857ce493683384f73206b93a8b0c97aef')
 
 package() {
   cd "$srcdir/bed-$pkgver"
