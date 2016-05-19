@@ -39,7 +39,7 @@ package() {
   cat > "$pkgdir/usr/bin/${_pkgname}" <<EOF
 #!/bin/sh
 cd /usr/share/${_pkgname}
-python2 ${_pkgname}.py
+python2 ${_pkgname}.py "\$@"
 EOF
   chmod +x "$pkgdir/usr/bin/${_pkgname}"
 }
