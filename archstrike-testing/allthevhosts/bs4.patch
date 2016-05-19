@@ -1,0 +1,29 @@
+--- allthevhosts.py.orig	2016-05-19 10:22:54.320999375 -0400
++++ allthevhosts.py	2016-05-19 10:24:42.646120083 -0400
+@@ -35,7 +35,7 @@
+ 	except:
+ 		print "\r[E]Bing search error",
+ 	
+-	soup = BeautifulSoup(search)
++	soup = BeautifulSoup(search, 'lxml')
+ 	for url in soup.find_all('cite'):
+ 		try:
+ 			tld=re.sub('\/.*','',url.string)
+@@ -49,7 +49,7 @@
+ 	print "[-] searching myipneighbours...",
+ 	try:
+ 		search = urllib2.urlopen("http://www.my-ip-neighbors.com/?domain="+ip).read()
+-		soup = BeautifulSoup(search)
++		soup = BeautifulSoup(search, 'lxml')
+ 		for url in soup.find_all('td'):
+ 			try:
+ 				if url.attrs and str(url.attrs['class'])=="['domain']" and url.string not in matches:
+@@ -66,7 +66,7 @@
+ 		print "[-] Searching ipneighbour...",
+ 		search = urllib2.urlopen("http://www.ipneighbour.com/", "domainName="+ip+"&submit=").read()
+ 		
+-		soup = BeautifulSoup(search)
++		soup = BeautifulSoup(search, 'lxml')
+ 		for url in soup.find_all('a'):
+ 			try:
+ 				if url.attrs and str(url.attrs['target'])=='_blank' and url.attrs['href'].replace('http://','') not in matches:
