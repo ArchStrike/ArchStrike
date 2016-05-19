@@ -6,7 +6,7 @@ buildarch=192
 
 pkgname=b2sum
 pkgver=20150531
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAKE2 file hash sum check. Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file"
 _zipprefix="blake2_code"
 arch=('i686' 'x86_64')
