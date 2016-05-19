@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname='elettra-gui'
 pkgver='1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='Gui for the elettra cryptography application.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.winstonsmith.info/julia/elettra/'
@@ -13,7 +13,7 @@ depends=('wxgtk')
 makedepends=('elettra' 'webkitgtk2' 'libsm')
 groups=('archstrike' 'archstrike-misc')
 source=('http://www.winstonsmith.info/julia/elettra/elettra_gui.tar.gz')
-md5sums=('51f9466bce5bc1bf3022e5e3c33a1f2e')
+sha512sums=('c76e027324fd5735307fa591c802892f623ee25b09e1ea44cd9fadfada8f26fc2a860fe1a9bbe357a172f584cb1dea3e9f2953da8599cb563b3a4ff20add7786')
 
 build() {
   cd "$srcdir/elettra_gui"
