@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=parsero
+pkgname=parsero-git
 pkgver=0.75
 pkgrel=2
 groups=('archstrike' 'archstrike-recon')
@@ -12,10 +12,12 @@ arch=('any')
 license=('GPL2')
 depends=('python' 'python-urllib3' 'python-beautifulsoup4')
 makedepends=('git')
-source=("git+https://github.com/behindthefirewalls/Parsero.git")
+replaces=('parsero')
+provides=('parsero')
+source=("$pkgname::git+https://github.com/behindthefirewalls/Parsero.git")
 md5sums=('SKIP')
 
 package() {
-  cd $srcdir/Parsero
+  cd $pkgname
   install -Dm755 parsero.py $pkgdir/usr/bin/parsero
 }
