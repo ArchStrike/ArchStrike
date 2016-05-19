@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=nimbostratus
+pkgname=nimbostratus-git
 pkgver=20140204.r54.c7c206f
 pkgrel=1
 epoch=1
@@ -11,10 +11,12 @@ pkgdesc="Tools for fingerprintinging and exploiting Amazon cloud infrastructures
 url="https://github.com/andresriancho/nimbostratus"
 arch=('any')
 license=('GPL3')
-depends=('python2' 'python2-boto')
+depends=('python2-boto' 'python2-httpretty' 'python2-requests')
 makedepends=('git')
-source=("git+https://github.com/andresriancho/nimbostratus.git")
-md5sums=('SKIP')
+replaces=('nimbostratus')
+provides=('nimbostratus')
+source=("$pkgname::git+https://github.com/andresriancho/nimbostratus.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -22,7 +24,7 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/nimbostratus"
+  cd "$pkgname"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/bin/"
