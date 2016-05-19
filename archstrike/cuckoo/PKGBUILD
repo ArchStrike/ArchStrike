@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=cuckoo
-pkgver=1.2
+pkgver=2.0
 pkgrel=1
 pkgdesc="A malware analysis system"
 url="http://cuckoosandbox.org/"
@@ -18,9 +18,9 @@ depends=('python2-sqlalchemy' 'python2-bson' 'python2-dpkt'
          'python2-pefile' 'python2-pymongo' 'tcpdump' 'yara' 'python2-yara'
    'python2-chardet')
 optdepends=('python2-pydeep')
-source=("http://downloads.cuckoosandbox.org/$pkgver/cuckoo_$pkgver.tar.gz"
+source=("https://downloads.cuckoosandbox.org/cuckoo-current.tar.gz"
   'cuckoo.desktop')
-sha512sums=('fe523a1aca99e01ce93d1e4e888a9b00bb042c65630f02966dffab09c3e1fcff47dfea55527bfa57efef5a305b6fe93821b26a1f2dd28f4eaa36ebd860c25696'
+sha512sums=('31f493c83b834ab22b3902c8c4f37d4aaf571dc47ca81adff0d71c39fd8bbeedda67ba5ebe2e16d40e739f3096368799e63cb4f289665d099b088125d40bd0b9'
             'fde1e6d9c4bea273d848b9dbee09027f6eb7e8b48116ee4bcaddef314c7c22f8bca5a3e7e9dabe06d007fe603fe7c1cd518b2c707b41866945b0adf83dcc42a4')
 
 prepare() {
