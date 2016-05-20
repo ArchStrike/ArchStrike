@@ -11,7 +11,7 @@ url='http://www.flamerobin.org/'
 license=('expat')
 depends=('wxgtk2.8' 'libfbclient')
 source=("http://downloads.sourceforge.net/sourceforge/flamerobin/flamerobin-${pkgver}-src.tar.gz")
-md5sums=('bb25fb767c87f135dc4a70d3a7344f06')
+sha512sums=('76eeecae759ab7aec817a4775fe185f982f6f50f5dec850b1fbb00b56239807867fe36568592e313315c0f02364c1986d9691e84d5fced2aedd85571d239f2be')
 
 build() {
   cd "flamerobin-${pkgver}-src"
