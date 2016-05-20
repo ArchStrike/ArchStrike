@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=device-pharmer-git
 pkgver=r37.e0e6281
-pkgrel=1
+pkgrel=2
 pkgdesc="Opens 1K+ IPs or Shodan search results and attempts to login"
 url="https://github.com/DanMcInerney/device-pharmer"
 arch=('any')
@@ -25,16 +25,16 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir"/device-pharmer-git
-  install -dm755 "$pkgdir"/usr/bin/
-  install -dm755 "$pkgdir"/usr/share/device-pharmer-git
-  install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/device-pharmer-git/LICENSE
-  install -m755 device-pharmer.py "$pkgdir"/usr/share/device-pharmer-git/device-pharmer.py
-  cat > "$pkgdir"/usr/bin/device-pharmer.py <<EOF
+  cd "$srcdir/device-pharmer-git"
+  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -m755 device-pharmer.py "$pkgdir/usr/share/$pkgname/device-pharmer.py"
+cat > "$pkgdir"/usr/bin/device-pharmer <<EOF
 #!/bin/sh
 cd /usr/share/device-pharmer-git
 python2 device-pharmer.py "\$@"
 EOF
-  chmod +x "$pkgdir"/usr/bin/device-pharmer.py
+chmod +x "$pkgdir/usr/bin/device-pharmer"
 }
 
