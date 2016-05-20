@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=hashdb
-pkgver=2.0.1
+pkgver=3.0.0
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics' 'archstrike-misc')
 pkgdesc="A block hash toolkit"
@@ -12,17 +12,17 @@ url='https://github.com/NPS-DEEP/hashdb/'
 license=('GPL')
 depends=('tre' 'libxml2' 'python2') 
 makdepends=('autoconf')
-source=("https://github.com/NPS-DEEP/hashdb/archive/v$pkgver.tar.gz")
-sha512sums=('90a636cfe1e3f2298474ca4520521170346776accf607a92a93b3ecf6ae695a02522d04c3f4270b688c37a4d5527180be09e5d9304027e877e2078ab4d762f62')
+source=("https://github.com/NPS-DEEP/hashdb/archive/v$pkgver-alpha-1b.tar.gz")
+sha512sums=('fa19316eb7f7456f34bb2be388a0468a466836de00906e6cbd7df07f8702ff57431cea8d27a66aa1368411a930e73e7d2b5b030f21351a4a8d1097736a01f7ab')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}-alpha-1b"
   ./bootstrap.sh
   ./configure --prefix=/usr --sysconfdir=/etc
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}-alpha-1b"
   make DESTDIR="${pkgdir}" install
 }
