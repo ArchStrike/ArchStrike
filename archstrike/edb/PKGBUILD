@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=edb
 pkgver=0.9.20
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-reverse' 'archstrike-debugging')
 pkgdesc="A QT4-based binary mode debugging with the goal of having usability on par with OllyDbg."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,18 +12,23 @@ url='http://www.codef00.com/projects.php#Debugger'
 license=('GPL2')
 depends=('qt4>=4.5')
 makedepends=('boost>=1.35.0')
-install=edb.install
 conflicts=('edb-debugger')
 provides=('edb-debugger')
-source=(http://www.codef00.com/projects/debugger-$pkgver.tgz
-        edb.desktop)
-md5sums=('5916d415f598fae8632dd763f58e11d1'
-         'a08fb481bc46f47c6c004f7b8bd928e4')
+source=("http://www.codef00.com/projects/debugger-$pkgver.tgz" "edb.desktop" "i686.patch")
+sha512sums=('c65c023c351ee7aee47dbb743a6e84e9b9c680e9eef39caa1a873903c53aa48b451ea92b5363720d55277d81ca8a95741c0777a2748da9fb6d09957ff000ecb1'
+            '0d138537f72fd3392f2535e9a017e5027b89030d93c8f39f338a2c1d42f028e0db9e9626a1215c516be25ea948216ff3c6f26b2a446b7ac3e853d565889f0730'
+            '7eb7250977a2d53ad53e6ea79ad52ff3c9f3b65f13f6118c9f95b2278fec410231473c56e15f6a83790aaf74e59dd928de1eeaf4e1d208918bd86e4874ede1f4')
+
+prepare() {
+  cd $srcdir/debugger
+  if [[ "$CARCH" == 'i686' ]]; then
+     patch -Np1 -i $srcdir/i686.patch
+  fi
+}
 
 build() {
   cd $srcdir/debugger
-
-  qmake-qt4 -makefile DEFAULT_PLUGIN_PATH="/usr/lib/edb/"
+  qmake-qt4 -makefile DEFAULT_PLUGIN_PATH="/usr/lib/edb/" 
   make
 }
 

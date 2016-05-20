@@ -1,0 +1,88 @@
+diff -aur debugger.orig/plugins/plugins.pri debugger/plugins/plugins.pri
+--- debugger.orig/plugins/plugins.pri	2016-05-20 00:47:31.195034671 +0000
++++ debugger/plugins/plugins.pri	2016-05-20 00:52:26.831711999 +0000
+@@ -28,21 +28,24 @@
+ 	freebsd-* : INCLUDEPATH += $$LEVEL/include/os/unix/freebsd
+ 	macx-*    : INCLUDEPATH += $$LEVEL/include/os/unix/osx /opt/local/include
+ 
++        INCLUDEPATH += $$LEVEL/include/arch/x86
++        include(plugins-x86.pri)
++
+ 	# arch include paths
+-	macx {
+-		INCLUDEPATH += $$LEVEL/include/arch/x86_64
+-		include(plugins-x86_64.pri)
+-	}
++	#macx {
++	#	INCLUDEPATH += $$LEVEL/include/arch/x86_64
++	#	include(plugins-x86_64.pri)
++	#}
+ 
+-	!macx:contains(QMAKE_HOST.arch, x86_64) {
+-		INCLUDEPATH += $$LEVEL/include/arch/x86_64
+-		include(plugins-x86_64.pri)
+-	}
++	#!macx:contains(QMAKE_HOST.arch, x86_64) {
++	#	INCLUDEPATH += $$LEVEL/include/arch/x86_64
++	#	include(plugins-x86_64.pri)
++	#}
+ 	
+-	!macx:contains(QMAKE_HOST.arch, i[3456]86) {
+-		INCLUDEPATH += $$LEVEL/include/arch/x86
+-		include(plugins-x86.pri)
+-	}
++	#!macx:contains(QMAKE_HOST.arch, i[3456]86) {
++	#	INCLUDEPATH += $$LEVEL/include/arch/x86
++	#	include(plugins-x86.pri)
++	#}
+ }
+ 
+ win32 {
+diff -aur debugger.orig/src/src.pro debugger/src/src.pro
+--- debugger.orig/src/src.pro	2016-05-20 00:47:31.185034670 +0000
++++ debugger/src/src.pro	2016-05-20 00:50:46.505041711 +0000
+@@ -190,26 +190,28 @@
+ 		VPATH       += $$LEVEL/include/os/unix/freebsd
+ 		INCLUDEPATH += $$LEVEL/include/os/unix/freebsd
+ 	}
++        VPATH       += arch/x86 $$LEVEL/include/arch/x86
++        INCLUDEPATH += arch/x86 $$LEVEL/include/arch/x86
+ 
+-	macx-* {
+-		VPATH       += $$LEVEL/include/os/unix/osx
+-		INCLUDEPATH += $$LEVEL/include/os/unix/osx /opt/local/include
+-	}
++	#macx-* {
++	#	VPATH       += $$LEVEL/include/os/unix/osx
++	#	INCLUDEPATH += $$LEVEL/include/os/unix/osx /opt/local/include
++	#}
+ 
+-	macx {
+-		VPATH       += arch/x86_64 $$LEVEL/include/arch/x86_64
+-		INCLUDEPATH += arch/x86_64 $$LEVEL/include/arch/x86_64
+-	}
++	#macx {
++	#	VPATH       += arch/x86_64 $$LEVEL/include/arch/x86_64
++	#	INCLUDEPATH += arch/x86_64 $$LEVEL/include/arch/x86_64
++	#}
+ 
+-	!macx:contains(QMAKE_HOST.arch, x86_64) {
+-		VPATH       += arch/x86_64 $$LEVEL/include/arch/x86_64
+-		INCLUDEPATH += arch/x86_64 $$LEVEL/include/arch/x86_64
+-	}
++	#!macx:contains(QMAKE_HOST.arch, x86_64) {
++	#	VPATH       += arch/x86_64 $$LEVEL/include/arch/x86_64
++	#	INCLUDEPATH += arch/x86_64 $$LEVEL/include/arch/x86_64
++	#}
+ 	
+-	!macx:contains(QMAKE_HOST.arch, i[3456]86) {
+-		VPATH       += arch/x86 $$LEVEL/include/arch/x86
+-		INCLUDEPATH += arch/x86 $$LEVEL/include/arch/x86
+-	}
++	#!macx:contains(QMAKE_HOST.arch, i[3456]86) {
++	#	VPATH       += arch/x86 $$LEVEL/include/arch/x86
++	#	INCLUDEPATH += arch/x86 $$LEVEL/include/arch/x86
++	#}
+ 
+ 	*-g++* | *-clang* {
+ 		QMAKE_CXXFLAGS_DEBUG += -g3
