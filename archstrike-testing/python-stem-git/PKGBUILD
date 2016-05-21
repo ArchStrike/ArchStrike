@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python-stem-git
 pkgver=20160513.r2351
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A controller library for Tor'
 arch=('any')
@@ -12,6 +12,7 @@ url='https://stem.torproject.org/'
 license=('LGPL3')
 depends=('python')
 makedepends=('git' 'python-setuptools')
+replaces=('python2-stem-git')
 source=("${pkgname}::git+http://git.torproject.org/stem.git")
 sha512sums=('SKIP')
 
