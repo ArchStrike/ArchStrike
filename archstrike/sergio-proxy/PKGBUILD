@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sergio-proxy
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
 pkgdesc="A multi-threaded transparent HTTP proxy for manipulating web traffic"
 url="https://github.com/darkoperator/dnsreconnaissance"
@@ -12,10 +12,15 @@ license=('GPL3')
 arch=('any')
 depends=('python2')
 source=("https://sergio-proxy.googlecode.com/files/sergio-proxy-v$pkgver.tar.gz")
-md5sums=('5cd74bf96c65140d2a25375bc067ec36')
+sha512sums=('246b069ea2f3d96ecc403181ef276aa67ad98596dd49b7eee6d355c661de13daf1217234876de58de67a987e6e12446b4e859517c2949f666ace424b12250012')
+
+prepare() {
+  cd "$pkgname"
+  sed -i 's|python$|python2|' sergio-proxy.py
+}
 
 package() {
-  cd "$srcdir/sergio-proxy"
+  cd "$pkgname"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/bin"
@@ -23,9 +28,9 @@ package() {
 
   cp -a * "$pkgdir/usr/share/sergio-proxy"
 
-  cat > "$pkgdir/usr/bin/sergio-proxy" <<EOF
+cat > "$pkgdir/usr/bin/sergio-proxy" <<EOF
 #!/bin/sh
 python2 /usr/share/sergio-proxy/sergio-proxy.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/sergio-proxy"
+chmod +x "$pkgdir/usr/bin/sergio-proxy"
 }
