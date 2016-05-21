@@ -16,16 +16,16 @@ makedepends=('git')
 provides=('centry')
 conflicts=('centry')
 replaces=('centry')
-source=("centry::git+https://github.com/0xPoly/Centry.git")
+source=("$pkgname::git+https://github.com/0xPoly/Centry.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/centry"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/centry"
+  cd "$pkgname"
 
   # Make base directories.
   install -dm755 "$pkgdir/usr/share/centry"
@@ -41,7 +41,6 @@ cat > "$pkgdir/usr/bin/centry" << EOF
 cd /usr/share/centry
 python ./centry.py "\$@"
 EOF
-
 chmod +x "$pkgdir/usr/bin/centry"
 
 }
