@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=jsql
 pkgver=0.74
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A lightweight application used to find database information from a distant server."
 arch=('any')
@@ -22,13 +22,12 @@ package() {
   install -dm755 "$pkgdir/usr/share/jsql"
 
   #Bins
-  install -m755 "jsql-injection-v$pkgver.jar" "$pkgdir/usr/share/jsql"
+  install -Dm755 "jsql-injection-v$pkgver.jar" "$pkgdir/usr/share/jsql"
 
 cat > "$pkgdir/usr/bin/jsql" << EOF
 #!/bin/sh
-java -jar /usr/share/jsql/jsql-injection-v$pkgver.jar $*
+java -jar /usr/share/jsql/jsql-injection-v$pkgver.jar "\$@"
 EOF
-
 chmod +x "$pkgdir/usr/bin/jsql"
 }
 
