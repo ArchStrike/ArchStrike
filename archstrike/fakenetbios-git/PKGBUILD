@@ -14,7 +14,7 @@ depends=('glibc')
 makedepends=('git')
 provides=('fakenetbios')
 source=("git+https://github.com/mubix/FakeNetBIOS.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/FakeNetBIOS"
