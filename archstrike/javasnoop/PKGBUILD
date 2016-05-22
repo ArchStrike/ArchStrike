@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('java-runtime')
 source=("https://javasnoop.googlecode.com/files/JavaSnoop-$pkgver-RC2.zip")
-md5sums=('f1960ef82c4b5c6a389e44915a9f1d3d')
+sha512sums=('4d03971e6c2b22ec9efb3757306a9c1fd7c16f005c60b159b9980cf23671569709441f4768c2c9929d6c89b27ee6ebb5244dad7e35959344f26c2d9920a5110a')
 
 package(){
   cd "$srcdir/JavaSnoop"
