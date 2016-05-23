@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=routersploit
 pkgname=$_pkgname-git
 pkgver=20160523.r240
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploits')
 pkgdesc='The Router Exploitation Framework'
 arch=('any')
@@ -39,7 +39,7 @@ package() {
   # Create launcher script
 cat > "$pkgdir/usr/bin/routersploit" << EOF
 #!/bin/sh
-cd /usr/share/routerploit
+cd /usr/share/routersploit
 ./rsf.py "\$@"
 EOF
   # Make launcher script executable
