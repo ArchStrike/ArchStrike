@@ -14,7 +14,7 @@ depends=('python2' 'python2-pyusb' 'libusb' 'wxpython2.8')
 makedepends=('git')
 provides=('frisbeelite')
 source=("git+https://github.com/nccgroup/FrisbeeLite.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/FrisbeeLite"
