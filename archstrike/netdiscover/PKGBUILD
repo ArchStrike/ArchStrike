@@ -10,10 +10,10 @@ pkgrel=1
 groups=('archstrike' 'archstrike-recon' 'archstrike-wireless')
 pkgdesc="An active/passive address reconnaissancenaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://nixgeneration.com/~jaime/${pkgname}/"
+url="https://sourceforge.net/projects/netdiscover/"
 license=('GPL')
 depends=('libpcap')
-source=("http://nixgeneration.com/~jaime/${pkgname}/releases/${pkgname}-${_pkgver}-pre-beta${_betanum}-LINUXONLY.tar.gz"
+source=("http://downloads.sourceforge.net/$pkgname/${pkgname}-${_pkgver}-pre-beta${_betanum}-LINUXONLY.tar.gz"
         'misc.diff'
         'oui.diff')
 sha512sums=('54240e4310980bc447461b78a6b658f87e0a632a8963d8b718dbf48fd95d61510e09dbf1b56de9d11e31499e0f4a9df7d79b9e8a996dcd6bae602b68b57f3d4c'
