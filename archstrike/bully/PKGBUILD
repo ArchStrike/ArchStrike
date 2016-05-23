@@ -28,5 +28,5 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
 
   # Bin.
-  install -m755 bully "$pkgdir/usr/bin/bully"
+  install -Dm755 bully "$pkgdir/usr/bin/bully"
 }
