@@ -10,7 +10,7 @@ arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 groups=('archstrike' 'archstrike-scanners')
 license=('GPL2')
 url="http://www.angryziber.com"
-depends=('java-runtime')
+depends=('java-runtime' 'java-environment' 'bash')
 if [[ $CARCH == "i686" ]]; then
 source=("http://downloads.sourceforge.net/project/ipscan/ipscan3-binary/3.2.1/ipscan-linux-$pkgver.jar"
       "ipscan"
@@ -20,9 +20,9 @@ elif [[ $CARCH == "x86_64" ]]; then
              "ipscan64"
              "ipscan.desktop")
 fi
-md5sums=('d6f9d7186e530bfe56eaaa330c8ec3ba'
-         '2ddec9efc5bec219792d18d9024efcdc'
-         'cf4d809ff9dc110f5e2725e18322a27c')
+sha512sums=('43085113bdfd4b39ad510db4873cc89dd09dbc733def8e3898eb3139bef477349ce44a8550a2841b93f7043adfd982db20b9accf3f630990e05ddbdf639c3b2c'
+            'a0f0b2d1b98c233b2e3dc4842eb2ba71b18d0f3f7ea7374ffba413168dc50d36116d690bcfc73158570442408124efe467c0e06a5e72b70c37330d1dbe0478d9'
+            '8ea48cd34aea5c877a6836b15bcb392cf51fe4870b360bd880116869fa9654504ed785898bb5b5173d1018ca4a0ff2d5017d4d55036e9ca05cd538ac969df813')
 
 package() {
   cd $srcdir
