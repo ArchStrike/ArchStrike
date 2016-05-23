@@ -5,12 +5,13 @@ buildarch=212
 
 pkgname=netzob
 pkgver=1.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="An opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.netzob.org"
 license=('GPL3')
-depends=('python2' 'strace' 'lsof' 'python2-matplotlib' 'python2-lxml' 'python2-sphinx' 'python2-distribute' 'graphviz' 'python2-ptrace' 'python2-pcapy' 'python2-bitarray' 'impacket' 'python2-gobject' 'python2-babel' 'python2-httplib2')
+depends=('python2' 'strace' 'lsof' 'python2-matplotlib' 'python2-lxml' 'python2-sphinx' 'graphviz' 'python2-ptrace' 'python2-pcapy' 'python2-bitarray' 'impacket' 'python2-gobject' 'python2-babel' 'python2-httplib2' 'python2-bintrees')
+makedepends=('python2-setuptools')
 source=(http://www.netzob.org/repository/$pkgver/Netzob-$pkgver.tar.gz)
 sha512sums=('2bb7a1560edaaa98a7d8ac4e374112b19deef4f16a988c8d21282a9f6f544453e968ca2f351d772c895f13aff26e68962477fc8d531caeee36848290d4d3e9ec')
 
