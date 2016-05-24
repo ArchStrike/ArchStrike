@@ -3,12 +3,13 @@
 
 pkgname=binjitsu-git
 pkgver=20160521.r2467
-pkgrel=1
+pkgrel=2
 pkgdesc="binjitsu is a CTF framework and exploit development library. Written in Python, it is designed for rapid prototyping and development, and intended to make exploit writing as simple as possible."
 url="https://github.com/binjitsu/binjitsu/"
 depends=('python2-dateutil' 'python2-paramiko' 'python2-mako' 'python2-pyelftools' 'capstone' 'ropgadget' 'python2-pyserial' 'python2-requests' 'python2-pygments' 'python2-pysocks')
 makedepends=('git' 'python2-setuptools')
 license=('CUSTOM')
+groups=('archstrike' 'archstrike-misc')
 arch=('any')
 replaces=('pwntools')
 provides=('pwntools')
