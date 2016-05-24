@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-mockito
-pkgver=0.5.3
+pkgver=0.6.1
 pkgrel=1
 pkgdesc="A spying framework based on Java library with the same name."
 arch=('any')
@@ -11,8 +11,8 @@ url="https://pypi.python.org/pypi/mockito/"
 license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/12/1f/fa7396989d346889497c4287565650548277948926ab816fb9631f20eb14/mockito-$pkgver.tar.gz")
-sha512sums=('818874c16514ba1b64930971aa2442910bb897f7281e5338d7638a4305aade6d1c8ddb7f8c6aca2bd989fe58eb562c867ac25609aac38ce7b3d2b37b1fbad4b6')
+source=("https://pypi.python.org/packages/95/b7/01202bce3564329056a76f1fab437bfe38a1f77965ab1f46404aedc0a3df/mockito-$pkgver.tar.gz")
+sha512sums=('86993b0edf2d99b58134f6bbee78eb9d5228190c359f8e55ece71eb104ee80e7ec700e83585a443bf9b73d69d213154143f1b0beab42d4a25b42a052fde55621')
 
 package() {
   cd "$srcdir/mockito-$pkgver"
