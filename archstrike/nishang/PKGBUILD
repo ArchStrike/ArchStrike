@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=nishang
-pkgver=0.5.0
+pkgver=0.6.7
 pkgrel=1
 pkgdesc="A PowerShell framework and collection of scripts and payloads for offensive security and pentesting"
 url="https://github.com/samratashok/${pkgname}"
@@ -13,7 +13,7 @@ arch=('any')
 groups=('archstrike')
 source=("https://github.com/samratashok/${pkgname}/archive/v${pkgver}.zip"
         "${pkgname}.7")
-sha512sums=('aa79fc4cdcf9b3b44d493248b74da8b291d0f93084eaba8bd8c08a699bef6371ea717e2fe4d34836931d6661d876b4bd48ae8560203e2ddbb278670f2bfbb389'
+sha512sums=('94b507462b5e2dff6d02c364f90ea315abf0387d3b61d023d582a11340facdbcfd988a9508af04770d727bfbbce8cd277d382ca3e2298c6709cc0ccfbbb19e7f'
             'd36d8227a0885c588212fc8457baca7b8ae99bae0a8a3ce7b847dd8ccbc663ac74fd1dff226e5492fa50504b5e61ca9bd3523a1b6e31719223a1f674f938eb7c')
 
 package() {
@@ -21,6 +21,4 @@ package() {
     cd ${pkgname}-${pkgver}
     install -dm755 "${pkgdir}/usr/share/${pkgname}"
     cp -ar --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
-    rm "${pkgdir}/usr/share/${pkgname}/README.md"
-    rm "${pkgdir}/usr/share/${pkgname}/CHANGELOG.txt"
 }
