@@ -5,17 +5,17 @@
 buildarch=1
 
 pkgname=python2-bitstring
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Python module designed to help make the creation, manipulation and analysis of binary data as simple and natural as possible'
 arch=('any')
-url="http://code.google.com/p/python-bitstring/"
+url="https://pypi.python.org/pypi/bitstring/"
 license=('MIT')
 depends=('python2')
 makedepends=('unzip' 'python2-setuptools')
 options=(!emptydirs)
-source=(https://pypi.python.org/packages/source/b/bitstring/bitstring-$pkgver.zip)
-sha512sums=('9c10b742db32a7f4ee1173169ae4f599ccba3570a6bfcb2f466b5e7411584b90b53274bd5dd03351234431ed5fcf8df42a021143fb921d878d511776e1c8997c')
+source=("https://pypi.python.org/packages/f3/e5/dfe4c49c93d174a5fd807ed307d3a3f38c6b3e140972945f81a5f5578ca7/bitstring-$pkgver.zip")
+sha512sums=('a147c5da1b230299435b7903d991f9a5daf1144cf441bdedbceffd94ea1bcf3c7e27fca94aa624ab0b8b3abba5278e56720b85d7f33b9ebf3099e9ee4ffdb3f3')
 
 prepare(){
   grep -iRl 'python' "$srcdir/bitstring-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
@@ -37,7 +37,7 @@ package() {
   python2 setup.py install --root=${pkgdir}/ --optimize=1
 
   #install license
-  install -D -m644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
 # vim:set ts=2 sw=2 et:
