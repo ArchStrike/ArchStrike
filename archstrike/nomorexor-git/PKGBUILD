@@ -2,7 +2,7 @@
 
 buildarch=212
 
-pkgname=nomorexor
+pkgname=nomorexor-git
 pkgver=0.1
 pkgrel=1
 groups=('archstrike' 'archstrike-crypto')
@@ -11,25 +11,33 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/hiddenillusion/NoMoreXOR"
 license=('unknown')
 replaces=('nommorexor')
-#depends=('python2' 'python2-yara')
-source=("https://github.com/hiddenillusion/NoMoreXOR/archive/master.zip")
-md5sums=('26ed693932730592167e6bce945c4a6d')
+depends=('python2' 'python2-yara')
+makedepends=('git')
+replaces=('nomorexor')
+provides=('nomorexor')
+conflicts=('nomorexor')
+source=("${pkgname}::git+https://github.com/hiddenillusion/NoMoreXOR/")
+sha512sums=('SKIP')
 
 prepare(){
-  cd "$srcdir/NoMoreXOR-master/"
+  cd "$pkgname"
   sed -i 's|env python|env python2|' NoMoreXOR.py
-  chmod +x NoMoreXOR.py
 }
 
 package() {
-  cd "$srcdir/NoMoreXOR-master"
+  cd "$pkgname"
 
   install -dm755 "$pkgdir/usr/bin/"
   install -dm755 "$pkgdir/usr/share/nomorexor"
   install -dm755 "$pkgdir/usr/share/doc/nomorexor"
 
-  cp --no-preserve=ownership NoMoreXOR.py "$pkgdir/usr/share/nomorexor"
-  cp --no-preserve=ownership Readme.md "$pkgdir/usr/share/doc/nomorexor"
+  install -Dm755 NoMoreXOR.py "$pkgdir/usr/share/nomorexor/nomorexor.py"
+  install -Dm644 Readme.md "$pkgdir/usr/share/doc/nomorexor"
 
-  ln -s "/usr/share/nomorexor/NoMoreXOR.py" "$pkgdir/usr/bin/nomorexor"
+cat > "$pkgdir/usr/bin/nomorexor" <<EOF
+#!/bin/sh
+cd /usr/share/nomorexor
+python2 nomorexor.py "\$@"
+EOF
+chmod +x "$pkgdir/usr/bin/nomorexor"
 }
