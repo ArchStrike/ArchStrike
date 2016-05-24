@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=bdfproxy-git
-pkgver=20160101.r85
+pkgver=20160518.r86
 pkgrel=1
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="Patch Binaries via MITM: BackdoorFactory + mitmProxy."
