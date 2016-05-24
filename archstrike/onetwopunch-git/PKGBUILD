@@ -36,5 +36,5 @@ cat > "${pkgdir}/usr/bin/onetwopunch" <<EOF
 #!/bin/sh
 sh /usr/share/onetwopunch-git/onetwopunch.sh "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/onetwopunch"
+chmod +x "${pkgdir}/usr/bin/onetwopunch"
 }
