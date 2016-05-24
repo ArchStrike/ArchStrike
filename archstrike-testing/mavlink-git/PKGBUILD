@@ -3,14 +3,15 @@
 buildarch=212
 
 pkgname=mavlink-git
-pkgver=20140220
-pkgrel=3
+pkgver=20160524.r1991
+pkgrel=1
 pkgdesc="MAVLink micro air vehicle marshalling / communication libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://qgroundcontrol.org/mavlink/"
 groups=('archstrike-drone')
 license=('LGPL')
-makedepends=('git' 'cmake' 'python2' 'python2-setuptools')
+depends=("python2" "bash" "sh")
+makedepends=('git' 'cmake' 'python2-setuptools')
 provides=('python2-mavlink')
 source=("$pkgname"::'git://github.com/mavlink/mavlink.git')
 md5sums=('SKIP')
@@ -18,14 +19,14 @@ md5sums=('SKIP')
 pkgver() {
   cd "$srcdir/$pkgname"
   # Use the tag of the last commit
-  git describe --long | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
   cp "$srcdir/$pkgname/pymavlink/generator/C/include_v1.0/mavlink_conversions.h" "$srcdir/$pkgname/pymavlink/generator/C/include_v0.9/mavlink_conversions.h"
   mkdir -p "$srcdir/$pkgname-build"
   cd "$srcdir/$pkgname-build"
-  cmake "$srcdir/$pkgname" -DCMAKE_INSTALL_PREFIX=/usr
+  cmake "$srcdir/$pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2
   make
   cd "$srcdir/$pkgname/pymavlink"
   python2 setup.py build
@@ -37,5 +38,10 @@ package() {
   cd "$srcdir/$pkgname/pymavlink"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   install -Dm0644 "$srcdir/$pkgname/pymavlink/README.txt" "$pkgdir/usr/share/licenses/$pkgname/README.txt"
+  if [[ -d "${pkgdir}"/usr/lib64 ]] ; then
+    mv "${pkgdir}"/usr/lib64 "${pkgdir}"/usr/lib
+  fi
+  # Fix python issues
+  grep -iRl 'python' "$pkgdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python|#!/usr/bin/env python2|'
 }
 
