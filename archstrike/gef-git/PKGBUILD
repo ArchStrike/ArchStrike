@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=gef-git
 _pkgname=gef
-pkgver=r276.ab68bfc
+pkgver=r277.f50237e
 pkgrel=1
 pkgdesc="Provides additional features to GDB using the Python API to assist during the process of dynamic analysis or exploit development."
 url='https://github.com/hugsy/gef'
