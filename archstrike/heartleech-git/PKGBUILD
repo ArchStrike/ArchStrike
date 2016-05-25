@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=192
+
+pkgname=heartleech-git
+pkgver=116.3ab1d60
+pkgrel=1
+groups=('archstrike' 'archstrike-exploit' 'archstrike-cypto')
+pkgdesc="Scans for systems vulnerable to the bug, and then download them"
+arch=('i686' 'x86_64')
+url="https://github.com/robertdavidgraham/heartleech"
+license=('GPL')
+depends=('glibc' 'openssl')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/robertdavidgraham/heartleech.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+build() {
+  cd $pkgname
+  make
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm755 heartleech "$pkgdir/usr/bin"
+}
