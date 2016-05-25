@@ -3,16 +3,16 @@
 buildarch=212
 
 pkgname=rfcat
-pkgver=130515
-pkgrel=2
+pkgver=150225
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="RF ChipCon-based Attack Toolset"
-url="http://code.google.com/p/rfcat"
+url="https://bitbucket.org/atlas0fd00m/rfcat"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('BSD')
 depends=('python2' 'python2-pyusb' 'python' 'ipython')
-source=("http://rfcat.googlecode.com/files/rfcat_$pkgver.tgz")
-sha512sums=('c131533e67465b987b807ac8bf98bb68f0a29b4be56eb0657290b3d0891fb51f798f282750f5ab7ca856f3ba411b23b83e08b08ab4bf76bdc42f072f5320d6a2')
+source=("https://bitbucket.org/atlas0fd00m/rfcat/downloads/rfcat_$pkgver.tgz")
+sha512sums=('4a6fd4b97a3892d5bed835f3159e058c855e20a3144e2085b7b66ffd88a2afa1331ed182d6264b7639a163db9960f2ab66ffb13d27a08cd263f946d86530ec0a')
 
 package() {
   cd "$srcdir/rfcat_$pkgver"
