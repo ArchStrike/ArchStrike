@@ -5,19 +5,19 @@
 buildarch=192
 
 pkgname=b2sum-git
-pkgver=20140711.r15
+pkgver=20160504.r49
 pkgrel=1
-pkgdesc="Utility to calculate BLAKE2 checksums written in Go."
+pkgdesc="BLAKE2 file hash sum check. Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file"
 arch=('i686' 'x86_64')
-url="https://github.com/dchest/b2sum"
-groups=('archstrike' 'archstrike-misc')
+url="https://blake2.net/"
+groups=('archstrike')
 license=('custom')
-depends=('bash')
-makedepends=('go' 'git')
-replaces=('b2sum')
-provides=('b2sum')
-conflicts=('b2sum')
-source=("$pkgname::git+https://github.com/dchest/b2sum.git")
+depends=('glibc')
+makedepends=('unzip' 'gnuplot' 'git')
+provides=("b2sum")
+replaces=("b2sum")
+conflicts=("b2sum")
+source=("$pkgname::git+https://github.com/BLAKE2/BLAKE2.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -25,24 +25,21 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
+prepare() {
+  cd "$pkgname/b2sum"
+  sed -i "s# -fopenmp##" makefile
+  make clean
+}
+
 build() {
-  cd $pkgname
-  GOPATH="$srcdir" go get -d -t bitbucket.org/dchest/b2sum
+  cd "$pkgname/b2sum"
+  make all
 }
 
 package() {
-  cd $pkgname
-  GOPATH="$srcdir" go build -v bitbucket.org/dchest/b2sum
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
-
-cat > "$pkgdir/usr/bin/b2sum" << EOF
-#!/bin/sh
-/usr/share/$pkgname/./b2sum "\$@"
-EOF
-chmod +x "$pkgdir/usr/bin/b2sum"
+  cd "$pkgname/b2sum"
+  install -dm755 "$pkgdir/usr/share/licenses/b2sum"
+  install -Dm755 b2sum "${pkgdir}"/usr/bin/b2sum
+  install -Dm644 ../COPYING "${pkgdir}"/usr/share/licenses/b2sum/COPYING
+  install -Dm644 ../README.md "${pkgdir}"/usr/share/b2sum/README.md
 }
-  
