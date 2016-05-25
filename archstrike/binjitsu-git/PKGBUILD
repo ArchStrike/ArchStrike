@@ -3,7 +3,7 @@
 
 pkgname=binjitsu-git
 pkgver=20160525.r2473
-pkgrel=1
+pkgrel=2
 pkgdesc="binjitsu is a CTF framework and exploit development library. Written in Python, it is designed for rapid prototyping and development, and intended to make exploit writing as simple as possible."
 url="https://github.com/binjitsu/binjitsu/"
 depends=('python2-dateutil' 'python2-paramiko' 'python2-mako' 'python2-pyelftools' 'capstone' 'ropgadget' 'python2-pyserial' 'python2-requests' 'python2-pygments' 'python2-pysocks')
@@ -33,4 +33,8 @@ package() {
     sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/pwnlib/elf/datatypes.py
     install -Dm644 LICENSE-binjitsu.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE-binjitsu.txt
     install -Dm644 LICENSE-pwntools.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE-pwntools.txt
+    # fix conflict bins
+    mv $pkgdir/usr/bin/checksec $pkgdir/usr/bin/binjitsu-checksec
+    mv $pkgdir/usr/bin/disasm $pkgdir/usr/bin/binjitsu-disasm
+    mv $pkgdir/usr/bin/errno $pkgdir/usr/bin/binjitsu-errno
 }
