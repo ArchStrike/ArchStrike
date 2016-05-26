@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=umit
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="A powerful nmap frontend."
 arch=('any')
 url="https://sourceforge.net/projects/umit/"
