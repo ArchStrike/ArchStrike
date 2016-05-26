@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=aesfix
 pkgver=1.0.1
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-forensics' 'archstrike-crackers')
 pkgdesc='A tool to find AES key in RAM'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
