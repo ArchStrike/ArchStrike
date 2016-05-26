@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wikigen
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A script to generate wordlists out of wikipedia pages."
 url="https://github.com/zombiesam/wikigen"
 arch=('any')
