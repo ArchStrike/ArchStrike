@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=arachni-scanner
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc='A feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications.'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
