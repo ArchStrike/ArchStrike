@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wmat
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps' 'archstrike-crackers')
 pkgdesc="Automatic tool for testing webmail accounts"
 arch=('any')
