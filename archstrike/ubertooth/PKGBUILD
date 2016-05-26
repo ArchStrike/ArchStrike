@@ -14,7 +14,7 @@ license=('GPL')
 makedepends=('cmake' 'libpcap')
 depends=('libusbx' 'libbtbb' 'bluez-libs' 'python-numpy' 'python-pyusb' 'python-pyside' 'libpcap')
 source=(
-  "https://github.com/greatscottgadgets/$pkgname/archive/2015-10-R1.tar.gz"
+  "https://github.com/greatscottgadgets/$pkgname/archive/${pkgver//./-}.tar.gz"
   'specan_ui.patch'
 )
 sha512sums=(
