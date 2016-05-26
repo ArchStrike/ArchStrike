@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bitbucket-cli
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Command-line tool for accessing BitBucket'
 arch=('any')
 url='http://bitbucket.org/zhemao/bitbucket-cli/'
