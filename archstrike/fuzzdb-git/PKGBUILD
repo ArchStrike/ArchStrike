@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=fuzzdb
 pkgname=fuzzdb-git
-pkgver=20160520.r274
+pkgver=20160525.r277
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="Attack and Discovery Pattern Database for Application Fuzz Testing"
