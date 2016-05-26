@@ -21,11 +21,11 @@ provides=("$_pkgname")
 conflicts=("$_pkgname")
 replaces=("$_pkgname")
 
-source=("git+https://github.com/derv82/${_pkgname}.git"
+source=("$_pkgname::git+https://github.com/derv82/${_pkgname}.git"
         "${_pkgname}.desktop"
         "${_pkgname}.svg")
 sha512sums=('SKIP'
-            '465243916e4cf375bc164ddf408f6085466ff1bb49d8a99716dbd68265e80e0cfdfe95ee1eb65c216ddcac46235beccbf0229f8f24a777229de758662217b67b'
+            'ab22b6f16f65fb4e2c78b10eeb4a272af998d5e39febebd5abfd11d14aae0cc1d3a46fdbffa39c93665fff7a2ea76292a706cebab52686090ffa58194a619e4a'
             '8697bcbb3f8e38916ce084aa7d9e0b72237712cd74baa745dcdb00e3a0988d3231aa80ebf095c53f81d16b28d51fe95dcf35877f57a663222c6996006f3bdf30')
 
 pkgver() {
