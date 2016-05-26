@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=armitage
 pkgver=150813
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A graphical cyber attack management tool for Metasploit"
 url='http://www.fastandeasyhacking.com/'
