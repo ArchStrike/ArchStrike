@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname='androguard'
 pkgver='2.0'
-pkgrel='1'
+pkgrel='2'
 pkgdesc='Python framework for Android application analysis.'
 arch=('any')
 url='https://code.google.com/p/androguard/'
