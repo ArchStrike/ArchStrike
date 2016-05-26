@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=tomb
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="A system for easy encryption and backup of personal files"
 url="http://www.dyne.org/software/${pkgname}"
 groups=('archstrike')
