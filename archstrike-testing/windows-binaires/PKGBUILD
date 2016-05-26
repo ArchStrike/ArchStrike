@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=windows-binaries
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="A colleciton of pentesting Windows binaries"
 arch=('any')
