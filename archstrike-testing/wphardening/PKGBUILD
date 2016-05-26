@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wphardening
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A security tool for WordPress"
 arch=('any')
 url="https://github.com/elcodigok/wphardening"
