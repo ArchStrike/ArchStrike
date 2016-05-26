@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wifi-monitor
 pkgver=0.r24.33b682e
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="Prints the IPs on your local network that're sending the most packets"
 url="https://github.com/DanMcInerney/wifi-monitor"
