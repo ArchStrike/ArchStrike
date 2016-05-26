@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bdfproxy-git
 pkgver=20160518.r86
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="Patch Binaries via MITM: BackdoorFactory + mitmProxy."
 url="https://github.com/secretsquirrel/BDFProxy"
