@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=trid
 pkgver=2.11
-pkgrel=5
+pkgrel=6
 pkgdesc="Utility to identify file types using their binary signatures"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url="http://mark0.net/soft-trid-e.html"
