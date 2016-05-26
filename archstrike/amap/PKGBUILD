@@ -6,7 +6,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname=amap
 pkgver=5.4
-pkgrel=5
+pkgrel=6
 pkgdesc="Next-generation tool for assisting network penetration testing."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL2' 'custom')
