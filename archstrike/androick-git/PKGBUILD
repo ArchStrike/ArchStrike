@@ -3,7 +3,7 @@
 pkgname='androick-git'
 _pkgname='Androick'
 pkgver=r5.35048d7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A python tool to help in forensics analysis on android."
 arch=('any')
