@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=bluebox-ng
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 epoch=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='A GPL VoIP/UC vulnerability scanner written using Node.js powers'
