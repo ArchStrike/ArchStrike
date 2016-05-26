@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=0trace
 pkgver=20070125
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='A hop enumeration tool'
 url='https://jon.oberheide.org/0trace'
