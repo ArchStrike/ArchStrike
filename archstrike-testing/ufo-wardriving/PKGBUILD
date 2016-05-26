@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ufo-wardriving
 pkgver=4
-pkgrel=1
+pkgrel=3
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc="Allows you to test the security of wireless networks by detecting their passwords based on the router model"
 url="http://www.ufo-wardriving.com/"
