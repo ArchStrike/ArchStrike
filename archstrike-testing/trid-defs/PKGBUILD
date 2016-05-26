@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=trid-defs
 pkgver=30.12.14
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="Definitions DB for trid that describes recurring patterns in supported file types"
 arch=('any')
