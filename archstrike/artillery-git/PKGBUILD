@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=artillery-git
 pkgver=20160328.r163
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="A combination of a honeypot, file-system monitoring, system hardening, and overall health of a server to create a comprehensive way to secure a system"
