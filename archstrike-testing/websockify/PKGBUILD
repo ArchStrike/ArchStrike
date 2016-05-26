@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname='websockify'
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="WebSocket to TCP proxy/bridge."
 license=('LGPL3')
 arch=('any')
