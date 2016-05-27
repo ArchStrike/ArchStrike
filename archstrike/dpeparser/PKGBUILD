@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=dpeparser
-pkgver=20131217
-pkgrel=1
+pkgver=20160517
+pkgrel=2
 pkgdesc="Default password enumeration project"
 arch=('any')
 url="http://www.toolswatch.org/dpe/"
