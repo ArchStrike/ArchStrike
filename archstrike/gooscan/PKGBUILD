@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=gooscan
 pkgver=1.0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that automates queries against Google search appliances, but with a twist."
 url="http://johnny.ihackstuff.com/downloads/task,doc_details&Itemid=/gid,28/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
