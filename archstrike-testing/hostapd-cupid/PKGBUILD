@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=hostapd-cupid
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator with cupid patch(https://github.com/lgrangeia/cupid/)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://w1.fi/"
