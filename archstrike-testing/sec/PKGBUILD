@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=sec
 pkgver=2.7.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A logfile monitoring tool with support for event correlation, written in perl"
 arch=('any')
 url="https://simple-evcorr.github.io/"
