@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=smtpscan
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-fingerprinting')
 pkgdesc='A tool to guess which MTA is used by sending several special SMTP requests and by comparing error codes'
 arch=('any')
