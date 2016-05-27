@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=tcpick
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="TCP stream sniffer and connection tracker"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('libpcap')
