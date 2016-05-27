@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=php-mt-seed
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="PHP mt_rand() seed cracker"
 url="http://www.openwall.com/php_mt_seed/"
