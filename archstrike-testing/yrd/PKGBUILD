@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=yrd
 pkgver=0.4.2.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A cjdns config tool for humans and cyborgs'
 url='https://github.com/kpcyrd/yrd'
 license=('GPL3')
