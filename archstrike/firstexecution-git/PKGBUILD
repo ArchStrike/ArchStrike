@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=firstexecution-git
 pkgver=r6.a275793
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A Collection of different ways to execute code outside of the expected entry points"
 arch=('any')
