@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-bson
 pkgver=0.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="BSON codec for Python"
 url="http://github.com/martinkou/bson"
 depends=('python2')
