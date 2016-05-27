@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=shellter
 pkgver=1.7
-pkgrel=3
+pkgrel=4
 pkgdesc="A Dynamic Shellcode Injector(wine version - beta)"
 arch=('i686' 'x86_64')
 url="https://www.shellterproject.com/"
