@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=easy_creds
 pkgver=3.9
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc='a bash script that leverages ettercap and other tools to obtain credentials.'
 arch=('any')
