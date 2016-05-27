@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=wig
 pkgname=$_pkgname-git
-pkgver=r559.d8ef069
+pkgver=r561.e4e5482
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc='WebApp Information Gatherer'
