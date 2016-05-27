@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pyminifakedns
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-spoof' 'archstrike-networking')
 pkgdesc="Minimal DNS server written in Python; it always replies with a 127.0.0.1 A-record"
 arch=('any')
