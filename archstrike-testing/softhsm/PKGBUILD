@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=softhsm
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software PKCS11 store"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.opendnssec.org/softhsm/"
