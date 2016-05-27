@@ -2,7 +2,7 @@
 
 pkgname=python2-crcelk
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Updated fork of CrcMoose."
 url="https://github.com/zeroSteiner/crcelk"
 depends=('python2')
