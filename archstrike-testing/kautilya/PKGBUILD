@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=kautilya
 pkgver=0.5.5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc="Pwnage with Human Interface Devices using Teensy++2.0 and Teensy 3.0 devices"
 arch=('any')
