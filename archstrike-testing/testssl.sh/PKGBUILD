@@ -3,7 +3,7 @@
 
 pkgname='testssl.sh'
 pkgver=2.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Testing TLS/SSL encryption"
 arch=('any')
 groups=('archstrike')
