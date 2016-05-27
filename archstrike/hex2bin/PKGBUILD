@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname='hex2bin'
 pkgver='2.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Converts Motorola and Intel hex files to binary.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://hex2bin.sourceforge.net/'
