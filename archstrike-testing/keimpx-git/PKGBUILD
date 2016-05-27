@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=keimpx-git
 pkgver=20151130.r165
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Tool to verify the usefulness of credentials across a network over SMB"
 url='https://github.com/inquisb/keimpx'
