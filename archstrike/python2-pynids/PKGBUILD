@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=python2-pynids
 pkgver=0.6.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python wrapper for libnids."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://jon.oberheide.org/pynids/"
