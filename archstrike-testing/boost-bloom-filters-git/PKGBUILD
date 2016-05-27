@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=boost-bloom-filters-git
 pkgver=20130409.r190
-pkgrel=1
+pkgrel=2
 pkgdesc="A collection of generic, C++ Bloom Filter classes developed for the Boost C++ Libraries."
 arch=('any')
 url='https://github.com/cabrera/boost-bloom-filters'
