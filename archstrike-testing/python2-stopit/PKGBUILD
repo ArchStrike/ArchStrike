@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=python2-$_pkgname
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc='Timeout control decorator and context managers, raise any exception in another thread'
 license=('GPL3')
