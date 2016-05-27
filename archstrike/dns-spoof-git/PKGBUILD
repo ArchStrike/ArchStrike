@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=dns-spoof-git
 pkgver=r12.3918a10
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-dns')
 pkgdesc="DNS Spoof"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
