@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python-ipgetter
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility to fetch your external IP address"
 url="https://github.com/phoemur/ipgetter"
 depends=('python')
