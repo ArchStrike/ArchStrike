@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=dissy
 pkgver=10
-pkgrel=1
+pkgrel=2
 pkgdesc="A graphical frontend to the objdump disassembler for compiler-generated code"
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
