@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=karma-hostapd
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="a set of patches to access point software to get it to respond to probe requests not just for itself but for any ESSID requested"
 url="http://www.digininja.org/karma/"
 license=('GPL')
