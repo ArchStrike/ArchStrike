@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=unicorn
-pkgver=1.1
+pkgver=2.3
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A simple tool for using a PowerShell downgrade attack and inject shellcode straight into memory."
@@ -12,7 +12,7 @@ url='https://github.com/trustedsec/unicorn'
 license=('custom')
 depends=('python2' 'metasploit')
 source=("https://github.com/trustedsec/unicorn/archive/$pkgver.tar.gz")
-sha512sums=('53d2423fd0b5d2d562142d73f6205a031c924caa3e0bfa82518ed85832dbf147f07b49e7c5547ca6cc11ad10bf7376ddaad887e8814eeb07c589d4cfdefa585b')
+sha512sums=('eeaa6f7feedd22744ad03551ce372764def7716cfc86e5dbc544da48969338b594d33d00d129fe869b41a555a0bb661fdfae1eec378fd9fa3d178f12c18140fd')
 
 prepare(){
   cd "$srcdir/$pkgname-$pkgver"
