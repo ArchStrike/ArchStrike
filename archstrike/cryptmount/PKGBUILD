@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=cryptmount
 pkgver=5.2
-pkgrel=1
+pkgrel=2
 pkgdesc='Utility which allows an ordinary user to mount an encrypted file system'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike' 'archstrike-crypto')
