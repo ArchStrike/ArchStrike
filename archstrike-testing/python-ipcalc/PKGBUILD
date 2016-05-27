@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='python-ipcalc'
 pkgver='1.99.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='IP subnet calculator for Python.'
 arch=('any')
 url='https://pypi.python.org/pypi/ipcalc/'
