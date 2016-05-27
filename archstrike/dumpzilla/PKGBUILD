@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dumpzilla
 pkgver=03152013
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A forensic tool for firefox"
 arch=('any')
