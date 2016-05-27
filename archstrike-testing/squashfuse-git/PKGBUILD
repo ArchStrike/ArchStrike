@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=squashfuse-git
 pkgver=20160327.r303
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="FUSE filesystem to mount squashfs archives"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
