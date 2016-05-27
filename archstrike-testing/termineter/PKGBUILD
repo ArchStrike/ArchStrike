@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=termineter
 pkgver=0.2.5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="Smart meter testing framework"
 url="https://github.com/securestate/termineter"
