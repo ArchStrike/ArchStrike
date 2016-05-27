@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=simple-ducky
 pkgver=1.1.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-exploit')
 pkgdesc="A payload generator"
 url="https://code.google.com/p/simple-ducky-payload-generator"
