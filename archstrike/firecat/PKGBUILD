@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=firecat
 pkgver=v.16
-pkgrel=1
+pkgrel=2
 pkgdesc="Penetration testing tool that allows you to punch reverse TCP tunnels out of a compromised network"
 url="https://github.com/BishopFox/firecat"
 license=('custom')
