@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-enum
 pkgver=0.4.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Robust enumerated type support in Python."
 url="http://pypi.python.org/pypi/enum/"
 depends=('python2')
