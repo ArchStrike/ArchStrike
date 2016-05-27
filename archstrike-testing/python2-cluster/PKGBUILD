@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-cluster
 pkgver=1.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows grouping a list of arbitrary objects into related groups (clusters)"
 arch=('any')
 url='https://github.com/exhuma/python-cluster'
