@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnsrecon
 pkgver=0.8.9
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='DNS Enumeration Script '
 url='https://github.com/darkoperator/dnsrecon'
