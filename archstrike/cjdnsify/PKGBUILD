@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=cjdnsify
 pkgver=20140717.r6.bc354af
-pkgrel=2
+pkgrel=3
 pkgdesc='Limit network access of bind-compatible programs to the local cjdns network'
 url='https://github.com/prurigro/cjdnsify'
 license=('GPL')
