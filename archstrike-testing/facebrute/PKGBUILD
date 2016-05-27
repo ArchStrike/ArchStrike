@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=facebrute
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Facebook brute forcer script"
 url="https://github.com/emerinohdz/FaceBrute"
 license=('Artistic2.0')
