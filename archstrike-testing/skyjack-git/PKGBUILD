@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=$_pkgname-git
 pkgver=8.8b0a57c
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-drone')
 pkgdesc='Takes over Parrot drones, deauthenticating their true owner and taking over control, turning them into zombie drones under your own control'
 arch=('any')
