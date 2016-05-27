@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=bluesnarfer
 pkgver=0.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc="A bluetooth attacking tool"
 url="http://www.alighieri.org/project.html"
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('bluez-libs')
 license=('custom')
 source=("http://www.alighieri.org/tools/bluesnarfer.tar.gz")
-md5sums=('ee1fcf2e12b74e8cf65f43cdd2c47b72')
+sha512sums=('929010a6751ccd258edc6053248b3873c66f3c3db7da9414a5c020c80274004ebe89e4c32f45c34768954e3fb8e8019d15c219ec53b7d6ea0b98edec6ab8da2a')
 
 build() {
   cd "$srcdir/bluesnarfer"
