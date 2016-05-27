@@ -10,10 +10,10 @@ pkgver=2.0.22
 pkgrel=2
 pkgdesc="An event notification library static libs"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-url="http://www.monkey.org/~provos/libevent/"
+url="http://libevent.org"
 license=('BSD')
 options=('staticlibs')
-source=(http://sourceforge.net/projects/levent/files/libevent/libevent-${pkgver%.*}/${_pkgname}-$pkgver-stable.tar.gz)
+source=(https://github.com/${_pkgname}/${_pkgname}/releases/download/release-${pkgver}-stable/${_pkgname}-${pkgver}-stable.tar.gz)
 sha512sums=('990637f12e890bfa7f86c194c8b112701436e92b60afb829194879efb85d558b986261e6508fe29bde73981feada874438e2d442cec8ea5730c889954f9bc907')
 
 build() {
