@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=libbfio
 pkgver="20160108"
-pkgrel=1
+pkgrel=2
 pkgdesc="Library to provide basic file input/output abstraction"
 url="https://github.com/libyal/libbfio"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
