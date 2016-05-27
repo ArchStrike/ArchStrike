@@ -4,22 +4,23 @@ buildarch=1
 
 pkgname=halberd
 pkgver=0.2.4
-pkgrel=1
+pkgrel=2
 pkgdesc="HTTP load balancer detector"
 url="http://halberd.superadditive.com/"
 depends=('python2')
+makedepends=('python2-setuptools')
 license=('GPL2')
 arch=('any')
-source=('https://pypi.python.org/packages/source/h/halberd/halberd-0.2.4.tar.gz')
-sha512sums=('80563f9a903a034163ede3319e88305bce8d2de9541aa1fc4d42dff6dd55516d000b0e50af6a053e3c894d6f30bb9d0d27461d0b353ff246b281def8ce6dfd80')
+source=("http://halberd.superadditive.com/dist/halberd-$pkgver.tar.gz")
+sha512sums=('934b3e0af72d9c8454ee4c7b2afc1513555728955bc7530d6e5e4cbd8426e615111b0875c25e9a6d9794bb6e64095fac908c794cc3295b59a6ff521ebd1aec1f')
 
 build() {
-    cd $srcdir/halberd-0.2.4
+    cd $pkgname-$pkgver
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/halberd-0.2.4
+    cd $pkgname-$pkgver
     python2 setup.py install --root="$pkgdir" --optimize=1
     install -dm755 "$pkgdir"/usr/share/man
     mv "$pkgdir"/usr/man "$pkgdir"/usr/share/man
