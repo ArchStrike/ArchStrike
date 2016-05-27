@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=rr
 pkgver=4.2.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="A Record and Replay Framework"
 arch=('i686' 'x86_64')
