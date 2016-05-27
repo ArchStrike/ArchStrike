@@ -5,7 +5,7 @@ buildarch=192
 
 pkgname=johnny
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc='GUI for John the Ripper'
