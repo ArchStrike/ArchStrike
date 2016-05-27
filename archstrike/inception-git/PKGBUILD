@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=212
 
 pkgname=inception-git
 pkgver=r432.e38dd7b
