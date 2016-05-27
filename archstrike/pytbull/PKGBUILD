@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pytbull
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A python based flexible IDS/IPS testing framework shipped with more than 300 tests"
 arch=('any')
