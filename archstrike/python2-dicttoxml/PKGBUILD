@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-dicttoxml
 pkgver=1.6.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Converts a Python dictionary or other native data type into a valid XML string'
 url='https://github.com/quandyfactory/dicttoxml'
 depends=('python2')
