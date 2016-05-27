@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=haystack
 pkgver=0.36
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python framework for Finding C Structures from process memory - heap analysis - Memory structures forensics'
 arch=('any')
 url='https://github.com/trolldbois/python-haystack'
