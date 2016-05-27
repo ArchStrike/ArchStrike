@@ -6,14 +6,13 @@ buildarch=212
 
 pkgname=dmitry
 pkgver=1.3a
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Deepmagic Information Gathering Tool with the ability to gather as much information as possible about a host'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.mor-pah.net'
 license=('GPL')
 source=("https://dl.packetstormsecurity.net/UNIX/misc/DMitry-$pkgver.tar.gz")
-md5sums=('8d578ba16de34b5cbebf6b767181b00d')
 sha512sums=('8818a442db2308c798bb8c57edc11630ec7bc1d633a68fdec2f9333198d3c48037603890770e97364b18ad789a8352ec76c2bba1ecec465080a4bcffd75480eb')
 
 build() {
