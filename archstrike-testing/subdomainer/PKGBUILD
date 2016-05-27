@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='subdomainer'
 pkgver='1.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool designed for obtaining subdomain names from public sources.'
 url='http://www.edge-security.com/subdomainer.php'
 groups=('archstrike' 'archstrike-recon' 'archstrike-scanners')
