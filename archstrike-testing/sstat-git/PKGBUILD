@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sstat-git
 pkgver=20141023.r8
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Check the status of a server while fuzzing or DDoSing"
 arch=('any')
