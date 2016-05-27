@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=chromedriver
 pkgver=2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/a/chromium.org/chromedriver/"
