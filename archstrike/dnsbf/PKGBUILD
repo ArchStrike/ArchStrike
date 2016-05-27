@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnsbf
 pkgver=0.3
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Search for available domain names in an IP range'
 arch=('any')
