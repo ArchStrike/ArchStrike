@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=clusterd-git
 pkgver=r143.d190b2c
-pkgrel=1
+pkgrel=2
 pkgdesc="automates the fingerprinting, reconnaissance, and exploitation phases of an application server attack"
 url="https://github.com/hatRiot/clusterd"
 arch=('any')
