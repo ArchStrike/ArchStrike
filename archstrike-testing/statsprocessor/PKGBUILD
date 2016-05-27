@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=statsprocessor
 pkgver=0.11
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A high-performance word-generator based on per-position Markov-attack"
 arch=('i686' 'x86_64')
