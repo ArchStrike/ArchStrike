@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-nfqueue
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings for libnetfilter_queue by Pierre Chifflier"
 url="https://github.com/chifflier/nfqueue-bindings"
 arch=('any')
