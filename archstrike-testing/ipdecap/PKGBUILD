@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=ipdecap
 pkgver=0.7.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="Decapsulate traffic encapsulated within GRE, IPIP, 6in4, ESP (ipsec) protocols, can also remove IEEE 802.1Q (virtual lan) header"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
