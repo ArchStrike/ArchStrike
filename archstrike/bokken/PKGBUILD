@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bokken
 pkgver=1.8
-pkgrel=1
+pkgrel=2
 pkgdesc="GUI for radare2 and pyew"
 arch=('any')
 url="http://bokken.re"
