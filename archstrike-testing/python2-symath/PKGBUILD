@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname="python2-symath"
 pkgver="0.1.25"
-pkgrel="1"
+pkgrel="2"
 pkgdesc="symbolic mathematics for python"
 arch=("any")
 url="http://github.com/bniemczyk/symbolic"
