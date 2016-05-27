@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sploitego
 pkgver=r153.d9568dc
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="Maltego Penetration Testing Transforms"
