@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-cybox
 pkgver=2.1.0.12
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for parsing and generating CybOX 2.1.0 content."
 url="https://pypi.python.org/pypi/cybox/"
 depends=('python2')
