@@ -2,7 +2,7 @@
 
 pkgname=python2-smoke-zephyr
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Python utility collection"
 url="https://github.com/zeroSteiner/smoke-zephyr"
 depends=('python2')
