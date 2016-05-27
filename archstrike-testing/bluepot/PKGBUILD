@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bluepot
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc="A Bluetooth Honeypot written in Java, it runs on Linux"
 arch=('any')
