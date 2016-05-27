@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python-pyusb
 pkgver=1.0.0rc1
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure Python module which provides USB access."
 arch=('any')
 url="https://github.com/walac/pyusb"
