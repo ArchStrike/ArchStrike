@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-modbus-tk-git
 pkgver=20131111.r26
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of modbus protocol in python"
 url="https://github.com/glastopf/modbus-tk"
 depends=('python2')
