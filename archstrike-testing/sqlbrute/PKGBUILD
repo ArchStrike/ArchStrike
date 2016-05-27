@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sqlbrute
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
 pkgdesc="Brute forces data out of databases using blind SQL injection."
 arch=('any')
