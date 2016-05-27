@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=funkload
 pkgver=1.17.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A functional and load web tester, written in Python"
 arch=('any')
