@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=exabgp
 pkgver=3.4.16
-pkgrel=1
+pkgrel=2
 pkgdesc='The BGP swiss army knife of networking'
 arch=('any')
 license=('custom')
