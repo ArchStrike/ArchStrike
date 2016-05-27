@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=casefile
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics' 'archstrike-recon' 'archstrike-scanners')
 pkgdesc="The little brother to Maltego without transforms, but combines graph and link analyze to examine links between manually added data to mind map your information"
 arch=('any')
