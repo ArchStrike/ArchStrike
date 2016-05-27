@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=redfang
 pkgver=2.5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-bluetooth' 'archstrike-scanners')
 pkgdesc='Finds non-discoverable Bluetooth devices by brute-forcing the last six bytes of the Bluetooth addresses and calling read_remote_name()'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
