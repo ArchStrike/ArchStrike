@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=spiped
 pkgver=1.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility for creating symmetrically encrypted and authenticated pipes between socket addresses"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=(http://www.tarsnap.com/$pkgname/$pkgname-$pkgver.tgz)
