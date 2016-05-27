@@ -3,7 +3,7 @@ buildarch=1
 
 pkgname=doona-git
 pkgver=r135.9fa1f8d
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A fork of the Bruteforce Exploit Detector Tool (BED)."
 arch=('any')
