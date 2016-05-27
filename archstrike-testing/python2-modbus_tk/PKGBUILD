@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-modbus_tk
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Implementation of modbus protocol in python"
 url="http://code.google.com/p/modbus-tk/"
 depends=('python2')
