@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=tftp-bruteforce
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc='A fast TFTP filename bruteforcer written in perl'
 url='http://www.hackingexposedcisco.com'
 groups=('archstrike' 'archstrike-crackers')
