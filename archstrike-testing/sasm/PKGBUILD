@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=sasm
 pkgver=3.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A simple crossplatform IDE for NASM, MASM, GAS and FASM assembly languages"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/Dman95/SASM"
