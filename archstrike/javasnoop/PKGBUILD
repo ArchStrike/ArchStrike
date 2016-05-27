@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=javasnoop
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-reverse')
 pkgdesc="A tool that lets you intercept methods, alter data and otherwise hack Java applications running on your computer"
 url="https://code.google.com/p/javasnoop/"
