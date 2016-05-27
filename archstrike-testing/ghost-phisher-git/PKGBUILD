@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ghost-phisher-git
 pkgver=r125.1778290
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="GUI suite for phishing and penetration attacks"
 url="https://github.com/savio-code/ghost-phisher"
