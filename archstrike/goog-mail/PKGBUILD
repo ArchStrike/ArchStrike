@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='goog-mail'
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 pkgdesc='Enumerate domain emails from google.'
 url='http://rafale.org/~mattoufoutu/darkc0de.com/others/'
 groups=('archstrike' 'archstrike-recon')
