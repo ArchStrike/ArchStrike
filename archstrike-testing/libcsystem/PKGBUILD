@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=libcsystem
 pkgver=20150629
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for cross-platform C system functions"
 url="https://github.com/libyal/libcsystem"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
