@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-pyrasite-gui
 pkgver=2.0beta7
-pkgrel=1
+pkgrel=2
 pkgdesc="Code injection and introspection of running Python processes"
 groups=('archstrike' 'archstrike-misc')
 arch=('any')
