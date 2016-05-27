@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=domainanalyzer
 pkgver=0.8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A security analysis tool which automatically discovers and reports information about the given domain"
 arch=('any')
 url="http://sourceforge.net/projects/domainanalyzer/"
