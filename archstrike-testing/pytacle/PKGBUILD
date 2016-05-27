@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=pytacle
 pkgver=alpha2
-pkgrel=2
+pkgrel=3
 pkgdesc='Automates the task of sniffing GSM frames'
 groups=('archstrike' 'archstrike-sniffers')
 arch=('any')
