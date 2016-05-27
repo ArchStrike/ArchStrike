@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=skypefreak-git
 pkgver=r33.9347a65
-pkgrel=1
+pkgrel=2
 pkgdesc="A Forensic Framework for Skype"
 url="https://github.com/OsandaMalith/SkypeFreak"
 arch=('any')
