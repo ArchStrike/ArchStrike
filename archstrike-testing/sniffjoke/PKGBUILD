@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=sniffjoke
 pkgver=0.4.1
-pkgrel=2
+pkgrel=3
 license=(GPL)
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="Injects packets in the transmission flow that are able to seriously disturb passive analyze like sniffing, interception and low level information theft"
