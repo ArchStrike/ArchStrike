@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=hpfeeds-git
 pkgver=20150522.r164
-pkgrel=1
+pkgrel=2
 pkgdesc="Honeynet Project generic authenticated datafeed protocol"
 url="https://github.com/rep/hpfeeds"
 depends=('python2')
