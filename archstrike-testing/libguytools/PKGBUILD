@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=libguytools
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc='A small programming toolbox for Guymager'
 url='https://sourceforge.net/projects/libguytools'
 license=('GPL')
