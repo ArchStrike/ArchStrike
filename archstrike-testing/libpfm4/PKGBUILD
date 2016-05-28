@@ -6,7 +6,7 @@ buildarch=192
 
 pkgname=libpfm4
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="The hardware-based performance monitoring interface for Linux."
 arch=('x86_64' 'i686')
 url="http://perfmon2.sourceforge.net/"
