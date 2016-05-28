@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=libmsiecf
 pkgver=20160421
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and tools to access the Microsoft Internet Explorer (MSIE) Cache File (index.dat) files"
 url="https://github.com/libyal/libmsiecf"
 license=('LGPL3')
