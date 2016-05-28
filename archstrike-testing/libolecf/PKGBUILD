@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=libolecf
 pkgver=20160423
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and tools to access the OLE 2 Compound File (OLECF) format"
 url="https://github.com/libyal/libolecf"
 license=('LGPL3')
