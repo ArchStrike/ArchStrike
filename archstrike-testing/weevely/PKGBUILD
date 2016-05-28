@@ -10,34 +10,34 @@ groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="A Stealth tiny web shell that provides a telnet-like console."
 arch=('any')
 url='http://epinna.github.io/Weevely3'
-depends=('python2')
+depends=('python2-mako' 'python2-prettytable' 'python2-yaml')
 license=('GPL')
-source=("https://github.com/epinna/Weevely3/archive/v$pkgver.tar.gz")
+source=("https://github.com/epinna/weevely3/archive/v${pkgver}.tar.gz")
 sha512sums=('68193d2d5aab2c9c630bb3bc3d8a731cef617e3773052e065920c8023731a70efe41f0f793f76208c35cede74a833dc78d8b80d38f4c4197277669f3d50e67c2')
 
 prepare(){
-  grep -iRl 'python' "$srcdir/${_pkgname}-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${srcdir}/${_pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-  cd "$srcdir/${_pkgname}-$pkgver"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
 
   # Base directories.
-  install -dm755 "$pkgdir/usr/share/weevely"
-  install -dm755 "$pkgdir/usr/share/doc/weevely"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/weevely"
+  install -dm755 "${pkgdir}/usr/share/doc/weevely"
+  install -dm755 "${pkgdir}/usr/bin"
 
-  cp -R --no-preserve=ownership utils bd testsuite core modules weevely.py "$pkgdir/usr/share/weevely"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/weevely"
+  cp -R --no-preserve=ownership utils bd testsuite core modules weevely.py "${pkgdir}/usr/share/weevely"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/weevely"
   # fixing small issue
-  sed -i 's|python22|python2|' $pkgdir/usr/share/weevely/utils/ipaddr.py
-  sed -i 's|python|python2|' $pkgdir/usr/share/weevely/modules/audit/_linuxprivchecker/linuxprivchecker.py
+  sed -i 's|python22|python2|' ${pkgdir}/usr/share/weevely/utils/ipaddr.py
+  sed -i 's|python|python2|' ${pkgdir}/usr/share/weevely/modules/audit/_linuxprivchecker/linuxprivchecker.py
 
-cat >"$pkgdir/usr/bin/$pkgname" <<EOF
+cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/sh
-cd /usr/share/$pkgname
+cd /usr/share/${pkgname}
 python2 weevely.py "\$@"
 EOF
 
-chmod +x "$pkgdir/usr/bin/$pkgname"
+chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
