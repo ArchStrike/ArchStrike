@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=libsmraw
 pkgver=20160424
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and tools to access the (split) RAW image format"
 url="https://github.com/libyal/libsmraw"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
