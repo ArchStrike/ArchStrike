@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=lsrtunnel
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc='Spoofs connections to a remote host by pretending to be the middle host in a source routed path'
 url='https://packetstormsecurity.com/files/26525/lsrtunnel-0.2.tar.gz.html'
 depends=('libpcap' 'libdnet')
@@ -12,7 +12,6 @@ license=('MIT')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike' 'archstrike-spoof')
 source=("http://packetstorm.foofus.com/UNIX/security/$pkgname-$pkgver.tar.gz")
-md5sums=('e268ebc4c8c0c1af8d2cbf9149c40d44')
 sha512sums=('6d46dd2c95e09d2712356809892db21349f22413d60b3bbb5ffa5aff15f865f15f05d5d9e8366283cefbc0ad9e596fa01e8086c031a2bcce5cf6cd206ddcf9db')
 
 build() {
