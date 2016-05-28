@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ircsnapshot-git
 pkgver=r94.cb02a85
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to gather information from IRC servers"
 arch=('any')
 url="https://github.com/bwall/ircsnapshot"
@@ -29,17 +29,15 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$pkgname/bin"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -m755 "ircsnapshot/ircsnapshot.py" "$pkgdir/usr/share/$pkgname/bin/ircsnapshot.py"
-  install -m755 "ircsnapshot/to.gexf.py" "$pkgdir/usr/share/$pkgname/bin/to.gexf.py"
-  install -m644 "ircsnapshot/example.png" "$pkgdir/usr/share/$pkgname/example.png"
-  install -m644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm755 "ircsnapshot/ircsnapshot.py" "$pkgdir/usr/share/$pkgname/bin/ircsnapshot.py"
+  install -Dm755 "ircsnapshot/to.gexf.py" "$pkgdir/usr/share/$pkgname/bin/to.gexf.py"
+  install -Dm644 "ircsnapshot/example.png" "$pkgdir/usr/share/$pkgname/example.png"
+  install -Dm644 LICENSE.TXT "$pkgdir/usr/share/licenses/$pkgname/"
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-#  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
-  cat > $pkgdir/usr/bin/ircsnapshot <<EOF
+
+cat > "$pkgdir/usr/bin/ircsnapshot" <<EOF
 #!/bin/sh
 python2 /usr/share/$pkgname/bin/ircsnapshot.py "\$@"
 EOF
-  chmod +x $pkgdir/usr/bin/ircsnapshot
+chmod +x $pkgdir/usr/bin/ircsnapshot
 }
-
-# vim:set ts=2 sw=2 et:
