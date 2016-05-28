@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=lisa.py-git
 pkgver=20160414.r36
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit' 'archstrike-debugging')
 pkgdesc="An Exploit Dev Swiss Army Knife."
 arch=('any')
