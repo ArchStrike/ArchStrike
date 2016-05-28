@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=libqcow
 pkgver=20160123
-pkgrel=1
+pkgrel=2
 pkgdesc="Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility"
 url="http://code.google.com/p/libqcow/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
