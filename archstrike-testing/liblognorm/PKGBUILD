@@ -6,19 +6,18 @@ buildarch=212
 
 pkgname=liblognorm
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="log normalization library for rsyslog"
-arch=(i686 x86_64 armv6h armv7h)
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url=http://www.liblognorm.com
 license=('GPL2')
-depends=('libee' 'json-c' 'python2-sphinx')
+depends=('libee' 'json-c' 'python2-sphinx' 'pcre')
 source=("http://www.liblognorm.com/files/download/liblognorm-${pkgver}.tar.gz")
-sha256sums=('8e370460a152057abc577d59acbe60b7846312897e56f8f9d3e74edf9c621951')
 sha512sums=('09c6ab434fcdd788df84341aaf426c51385a8f3cc9960f07b77e369c22b3a1b8d890ba8d4d0507928b235d2667ed7f7a2c935eed8214d698117c8cfecba75d5f')
 
 build() {
   cd "${pkgname}"-"${pkgver}"
-  ./configure --prefix=/usr
+  ./configure --prefix=/usr --enable-regexp --enable-docs
   make
 }
 
