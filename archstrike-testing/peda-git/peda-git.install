@@ -1,7 +1,6 @@
 post_install(){
-  echo "Add /usr/share/peda-git/peda.py to gdb:"
-  echo "source /usr/share/peda-git/peda.py >> ~/.gdbinit"
-  echo "DONE! debug your program with gdb and enjoy"
+  echo 'Now add "/usr/share/peda-git/peda.py" to ~/.gdbinit by running:'
+  echo '    echo "source /usr/share/peda-git/peda.py" >> ~/.gdbinit'
 }
 
 post_upgrade(){
