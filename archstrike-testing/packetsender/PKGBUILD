@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=packetsender
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A utility to allow sending and receiving TCP and UDP packets."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
