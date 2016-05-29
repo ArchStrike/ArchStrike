@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=perl-iptables-parse
 pkgver=1.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="IPTables::Parse - Perl extension for parsing iptables and ip6tables firewall rulesets"
 arch=('any')
 url="http://search.cpan.org/~mrash/IPTables-Parse/"
