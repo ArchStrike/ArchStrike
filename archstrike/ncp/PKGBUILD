@@ -4,13 +4,12 @@ buildarch=212
 
 pkgname=ncp
 pkgver=1.2.4
-pkgrel=8
+pkgrel=9
 pkgdesc="A fast file copy tool for LANs"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.fefe.de/${pkgname}/"
 license=('GPL')
 groups=('archstrike')
-depends=()
 makedepends=('libowfat')
 source=("http://dl.fefe.de/${pkgname}-${pkgver}.tar.bz2"
         "${pkgname}-versionfix.patch")
