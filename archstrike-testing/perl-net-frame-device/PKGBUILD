@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-frame-device'
 pkgver='1.12'
-pkgrel=1
+pkgrel=2
 pkgdesc='Get network device information and gateway.'
 arch=('any')
 url='http://search.cpan.org/~gomor/Net-Frame-Device-1.11/lib/Net/Frame/Device.pm'
