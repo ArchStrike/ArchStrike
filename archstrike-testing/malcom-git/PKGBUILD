@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=malcom-git
 pkgver=20151127.r704
-pkgrel=1
+pkgrel=2
 pkgdesc="Analyze a system's network communication using graphical representations of network traffic"
 url="https://github.com/tomchop/malcom"
 arch=('any')
