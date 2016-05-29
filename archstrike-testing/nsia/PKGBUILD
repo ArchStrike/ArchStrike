@@ -6,7 +6,7 @@ DLAGENTS=("http::/usr/bin/curl -k -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
 pkgname=nsia
 pkgver=1.0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="A website scanner that monitors websites in realtime in order to detect defacements, compliance violations, exploits, sensitive information disclosure and other issues."
 url="http://threatfactor.com/Products/"
 arch=('any')
