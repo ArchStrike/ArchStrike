@@ -6,13 +6,13 @@ buildarch=1
 pkgname=metasploitavevasion-git
 _pkgname=metasploitavevasion
 pkgver=2.0.20151222.r29
-pkgrel=3
+pkgrel=4
 pkgdesc="Metasploit payload generator that avoids most Anti-Virus products."
 url="https://github.com/nccgroup/${pkgname}"
 license=('AGPL3')
 arch=('any')
 groups=('archstrike' 'archstrike-exploit')
-depends=('metasploit-git' 'mingw-w64-gcc' 'wget')
+depends=('metasploit' 'mingw-w64-gcc' 'wget')
 makedepends=('git')
 provides=('metasploitavevasion')
 source=("$pkgname::git+https://github.com/nccgroup/${_pkgname}.git#branch=master"
