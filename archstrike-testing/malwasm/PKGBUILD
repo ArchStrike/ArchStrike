@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='malwasm'
 pkgver='0.1.1'
-pkgrel=2
+pkgrel=3
 pkgdesc="Offline debugging for malware's reverse engineering."
 url='https://code.google.com/p/malwasm/'
 license=('GPL2')
