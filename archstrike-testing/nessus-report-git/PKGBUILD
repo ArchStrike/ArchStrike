@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=nessus-report-git
 pkgver=r13.b5015a1
-pkgrel=1
+pkgrel=2
 pkgdesc="Automatically parse and tabulate Nessus findings into OpenDocument tables"
 url="https://github.com/roeyk/nessus-report"
 arch=('any')
