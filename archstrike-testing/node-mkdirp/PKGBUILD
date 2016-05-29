@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=node-$_pkgname
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Recursively mkdir, like mkdir -p, but in node.js'
 arch=('any')
 url='https://github.com/substack/node-mkdirp'
