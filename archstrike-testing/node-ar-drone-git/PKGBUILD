@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=node-$_pkgname-git
 pkgver=v0.3.3.2.g228bd45
-pkgrel=2
+pkgrel=3
 pkgdesc='A node.js client for controlling Parrot AR Drone 2.0 quad-copters'
 arch=('any')
 url='https://github.com/felixge/node-ar-drone'
