@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=luksipc
 pkgver=0.04
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="A tool to convert unencrypted block devices to encrypted LUKS devices in-place"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
