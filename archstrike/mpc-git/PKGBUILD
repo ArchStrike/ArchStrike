@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=mpc-git
 pkgver=r19.b18f793
-pkgrel=1
+pkgrel=2
 pkgdesc="Msfvenom Payload Creator (MPC)"
 url="https://github.com/g0tmi1k/mpc"
 arch=('any')
