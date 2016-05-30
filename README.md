@@ -2,7 +2,6 @@
 
 ###An Arch Linux repository for security professionals and enthusiasts.
 
-
 Done the Arch Way and optimized for i686, x86_64, ARMv6, and ARMv7.
 
 [website](https://archstrike.org)
@@ -17,19 +16,16 @@ If you find any issues, please don't hesitate to contact us via github, IRC, twi
 
 Email us at: team@archstrike.org
 Join the chat: #archstrike on freenode
-Tweet us: https://twitter.com/ArchStrike
-Send us a pull request: https://github.com/ArchStrike/ArchStrike
-
+Tweet us: <https://twitter.com/ArchStrike>
+Send us a pull request: <https://github.com/ArchStrike/ArchStrike>
 
 ##Contributing
-
 
 Contributions are very welcome. You can contribute at our [github page](https://github.com/ArchStrike/ArchStrike)
 
 Just clone our repository with `git clone https://github.com/ArchStrike/ArchStrike.git` then make your changes and submit it back to us via a pull request.
 
 ##FAQ
-
 
 Q: What difference does ArchStrike have from other penetration distributions?
 
