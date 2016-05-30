@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=novnc-git
 pkgver=r933.f52105b
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="VNC client using HTML5 (Web Sockets, Canvas) with encryption (wss://) support."
 arch=('any')
@@ -50,7 +50,7 @@ package() {
   cat >$pkgdir/usr/bin/novnc <<EOF
 #!/bin/sh
 cd /usr/share/novnc
-exec ./utils/launch.sh \$*
+exec ./utils/launch.sh "\$@"
 EOF
   chmod +x  $pkgdir/usr/bin/novnc
 
