@@ -15,8 +15,11 @@ Our team is working very hard to maintain the repository and give you the best A
 If you find any issues, please don't hesitate to contact us via github, IRC, twitter or email. Any feedback is appreciated.
 
 Email us at: team@archstrike.org
+
 Join the chat: #archstrike on freenode
+
 Tweet us: <https://twitter.com/ArchStrike>
+
 Send us a pull request: <https://github.com/ArchStrike/ArchStrike>
 
 ##Contributing
