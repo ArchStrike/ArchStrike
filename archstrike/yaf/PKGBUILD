@@ -5,10 +5,11 @@ buildarch=212
 
 pkgname=yaf
 pkgver=2.8.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Yet Another Flowmeter"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://tools.netsa.cert.org/yaf/'
+groups=('archstrike' 'archstrike-misc')
 license=('GPL')
 depends=('libltdl' 'libpcap' 'libfixbuf>=1.7.0')
 makedepends=('p0f' 'doxygen' 'graphviz')
