@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=xssless
+pkgname=xssless-git
 pkgver=r35.9eee648
 pkgrel=1
 pkgdesc="An automated XSS payload generator written in python."
@@ -12,8 +12,11 @@ license=('GPL2')
 groups=('archstrike')
 depends=('python2' 'python2-beautifulsoup4')
 makedepends=('git')
-source=("git+https://github.com/mandatoryprogrammer/xssless.git")
-md5sums=('SKIP')
+replaces=('xssless')
+provides=('xssless')
+conflicts=('xssless')
+source=("$pkgname::git+https://github.com/mandatoryprogrammer/xssless.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/xssless"
@@ -25,7 +28,7 @@ prepare(){
 }
 
 package() {
-  cd "$srcdir/xssless"
+  cd "$pkgname"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/share/$pkgname"
