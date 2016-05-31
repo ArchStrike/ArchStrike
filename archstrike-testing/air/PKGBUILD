@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname='air'
 pkgver='2.0.0'
-pkgrel=6
+pkgrel=7
 pkgdesc='A GUI front-end to dd/dc3dd designed for easily creating forensic images.'
 url='http://air-imager.sourceforge.net/'
 groups=('archstrike' 'archstrike-forensics')
 license=('GPL')
 arch=('any')
-depends=('perl-tk' 'sharutils')
+depends=('perl-tk' 'shareutils' 'mt-st-git')
 install='air.install'
 options=('!emptydirs')
 source=("http://downloads.sourceforge.net/air-imager/air-$pkgver.tar.gz" "air.install" "air.desktop")
