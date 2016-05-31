@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=xssless-git
 pkgver=r35.9eee648
-pkgrel=1
+pkgrel=2
 pkgdesc="An automated XSS payload generator written in python."
 url="https://github.com/mandatoryprogrammer/xssless"
 arch=('any')
@@ -19,7 +19,7 @@ source=("$pkgname::git+https://github.com/mandatoryprogrammer/xssless.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/xssless"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
