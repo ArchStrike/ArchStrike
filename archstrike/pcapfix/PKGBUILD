@@ -5,8 +5,9 @@ buildarch=212
 
 pkgname=pcapfix
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A repair tool for corrupted pcap files. "
+groups=('archstrike' 'archstrike-forensics' 'archstrike-misc' 'archstrike-analysis')
 arch=("i686" "x86_64" "armv6h" "armv7h")
 license=("GPL3")
 url='http://f00l.de/pcapfix/'
