@@ -5,10 +5,11 @@ buildarch=212
 
 pkgname=gephi
 pkgver=0.8.2beta
-pkgrel=1
+pkgrel=2
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('i686' 'armv6h' 'armv7h' 'x86_64')
 url="http://gephi.org"
+groups=('archstrike' 'archstrike-misc')
 license=('CDDL' 'GPL3')
 if [[ "${CARCH}" == x86_64 ]] ; then
   depends=('java-environment' 'bash' 'libxxf86vm' 'lib32-libx11')
