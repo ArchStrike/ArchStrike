@@ -5,8 +5,9 @@ buildarch=212
 
 pkgname=${_pkgname}-noconflict
 pkgver=20160324
-pkgrel=2
+pkgrel=3
 pkgdesc="Non-conflicting version of byacc not providing bison/yacc"
+groups=('archstrike' 'archstrike-misc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://invisible-island.net/byacc/"
 license=('custom')
