@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=automator-git
-pkgver=r86.6c916fd
-pkgrel=3
+pkgver=r88.42548cf
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="IP URL and MD5 OSINT Analysis"
 arch=('any')
 url='https://github.com/1aN0rmus/TekDefense-Automater'
 license=('MIT')
-depends=('python2')
+depends=('python2-requests' 'python2-beautifulsoup4')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/1aN0rmus/TekDefense-Automater.git")
 sha256sums=('SKIP')
