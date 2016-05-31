@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=create_ap-git
 pkgver=r206.a7fa8b5
-pkgrel=1
+pkgrel=2
 pkgdesc="A shell script to create a NATed/Bridged Software Access Point(aka WiFi)"
 arch=('any')
 url="https://github.com/oblique/create_ap"
@@ -31,6 +31,6 @@ package() {
   install -Dm755 "create_ap" "${pkgdir}/usr/bin/create_ap"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/create_ap-git/LICENSE"
   install -Dm644 "create_ap.service" "${pkgdir}/usr/share/create_ap-git/create_ap.service.example"
-  install -m644 README.md "$pkgdir"/usr/share/create_ap-git/README.md
+  install -Dm644 README.md "$pkgdir"/usr/share/$pkgname/README.md
 }
 
