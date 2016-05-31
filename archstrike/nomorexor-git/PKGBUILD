@@ -1,43 +1,40 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=1
 
-pkgname=nomorexor-git
-pkgver=0.1
+_pkgname=nomorexor
+pkgname=$_pkgname-git
+pkgver=20130122.r1.d723edb
 pkgrel=1
 groups=('archstrike' 'archstrike-crypto')
-pkgdesc="Tool to help guess a files 256 byte XOR key by using frequency analyze"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+pkgdesc='Tool to help guess a files 256 byte XOR key by using frequency analyze'
+arch=('any')
 url="https://github.com/hiddenillusion/NoMoreXOR"
-license=('unknown')
-replaces=('nommorexor')
-depends=('python2' 'python2-yara')
+license=('custom')
+depends=('python2-yara')
 makedepends=('git')
-replaces=('nomorexor')
-provides=('nomorexor')
-conflicts=('nomorexor')
-source=("${pkgname}::git+https://github.com/hiddenillusion/NoMoreXOR/")
+replaces=("$_pkgname")
+provides=("$_pkgname")
+conflicts=("$_pkgname")
+source=("$pkgname::git+https://github.com/hiddenillusion/NoMoreXOR/")
 sha512sums=('SKIP')
 
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
 prepare(){
-  cd "$pkgname"
+  cd $pkgname
   sed -i 's|env python|env python2|' NoMoreXOR.py
 }
 
 package() {
-  cd "$pkgname"
-
+  cd $pkgname
+  install -Dm644 Readme.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
+  install -Dm755 NoMoreXOR.py "$pkgdir/usr/share/$_pkgname/$_pkgname.py"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  grep created NoMoreXOR.py > "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/nomorexor"
-  install -dm755 "$pkgdir/usr/share/doc/nomorexor"
-
-  install -Dm755 NoMoreXOR.py "$pkgdir/usr/share/nomorexor/nomorexor.py"
-  install -Dm644 Readme.md "$pkgdir/usr/share/doc/nomorexor"
-
-cat > "$pkgdir/usr/bin/nomorexor" <<EOF
-#!/bin/sh
-cd /usr/share/nomorexor
-python2 nomorexor.py "\$@"
-EOF
-chmod +x "$pkgdir/usr/bin/nomorexor"
+  ln -sf /usr/share/$_pkgname/$_pkgname.py "$pkgdir/usr/bin/$_pkgname"
 }
