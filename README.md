@@ -8,7 +8,7 @@ Done the Arch Way and optimized for i686, x86_64, ARMv6, and ARMv7.
 
 [twitter](https://twitter.com/ArchStrike)
 
-[ArchStrike](https://archstrike.org) is a penetration testing and security layer on top of Arch Linux. We follow the Arch Linux standarts very closely in order to keep our packages clean, proper and easy to maintain.
+[ArchStrike](https://archstrike.org) is a penetration testing and security layer on top of Arch Linux. We follow the Arch Linux standards very closely in order to keep our packages clean, proper and easy to maintain.
 
 Our team is working very hard to maintain the repository and give you the best ArchStrike experience.
 
