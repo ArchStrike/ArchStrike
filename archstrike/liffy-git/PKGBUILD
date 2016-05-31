@@ -8,14 +8,14 @@ pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Local File Inclusion Exploitation tool."
 arch=('any')
-url='https://github.com/rotlogix/liffy'
+url='https://github.com/hvqzao/liffy'
 license=('GPL2')
 depends=('python2' 'python2-blessings' 'python2-requests' 'python2-daemon')
 makedepends=('git')
 provides=('liffy')
 replaces=('liffy')
 conflicts=('liffy')
-source=("git+https://github.com/rotlogix/liffy.git")
+source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
