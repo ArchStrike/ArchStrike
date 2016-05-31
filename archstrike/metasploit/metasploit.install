@@ -1,9 +1,5 @@
 #!/bin/sh
 
-pre_install() {
- rm -rf /usr/share/metasploit/modules/* >/dev/null
-}
-
 post_install() {
     echo "
 :: HOWTO: Setup PostgreSQL Database for operation with Metasploit ::
@@ -45,8 +41,4 @@ production:
 6) Start '/usr/bin/msfconsole', it will detect if '/usr/share/metasploit/database.yml' exists and connect to the PostgreSQL database.
     # /usr/bin/msfconsole
 "
-}
-
-post_upgrade() {
-  pre_install
 }
