@@ -7,7 +7,7 @@ curr_dir="${curr_dir%\/*}"
 cd "$curr_dir"/.. || exit
 
 while read -r; do
-    [[ "$REPLY" =~ ^\ *groups= ]] || {
+    egrep -q '^\ *groups=' "$REPLY" || {
         pkg="${REPLY%\/*}"
         pkg="${pkg/\.\/}"
         printf '%s\n' "$pkg"
