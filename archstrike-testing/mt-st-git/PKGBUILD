@@ -5,7 +5,7 @@ buildarch=192
 
 pkgname="${_name}-git"
 pkgver=6.ece9c03
-pkgrel=1
+pkgrel=2
 pkgdesc='Utilities for managing magnetic tape storage devices'
 arch=('i686' 'x86_64')
 url="https://github.com/Distrotech/${_name}"
@@ -29,4 +29,5 @@ build() {
 package() {
   cd "${_name}"
   make DESTDIR="${pkgdir}" PREFIX=/usr SBINDIR=/usr/bin install
+  ln -sf "${pkgdir}"/usr/bin/mt-st "${pkgdir}"/usr/bin/mt
 }
