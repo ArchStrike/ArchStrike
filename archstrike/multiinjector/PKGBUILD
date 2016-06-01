@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='multiinjector'
 pkgver='0.3'
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='Automatic SQL injection utility using a lsit of URI addresses to test parameter manipulation.'
 arch=('any')
@@ -12,7 +12,7 @@ url='http://chaptersinwebsecurity.blogspot.de/2008/11/multiinjector-v03-released
 license=('GPL')
 depends=('python2' 'python2-pycurl')
 source=('http://www.hybridsec.com/tools/multinjector/MultiInjector.py')
-md5sums=('0e32e14a56aac616118404c97cba5241')
+sha512sums=('be717112635372e3bd3bc925e272debca1daab1cd003b77c2ce4a6173a2d42904825f326bbe73ed4e209f6cf9752c621be7400057bc966e5cd2b42fb841947dc')
 
 prepare(){
   grep -iRl 'python' "$srcdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
@@ -20,6 +20,5 @@ prepare(){
 
 package() {
   cd "$srcdir"
-
-  install -Dm755 "MultiInjector.py" "$pkgdir/usr/bin/MultiInjector"
+  install -Dm755 "MultiInjector.py" "$pkgdir/usr/bin/multiinjector"
 }
