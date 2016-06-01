@@ -1,0 +1,33 @@
+# Maintainer: ArchStrike <team@archstrike.org> 
+buildarch=1
+
+pkgname=firmwalker-git
+pkgver=20160321.r69
+pkgrel=1
+groups=('archstrike' 'archstrike-forensics')
+pkgdesc="Simple bash script for searching the extracted or mounted firmware file system"
+arch=('any')
+url="https://github.com/craigz28/firmwalker"
+license=('GPL3')
+depends=('bash')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/craigz28/firmwalker.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/firmwalker" <<EOF
+#!/bin/sh
+sh /usr/share/firmwalker-git/firmwalker.sh
+EOF
+chmod 755 "$pkgdir/usr/bin/firmwalker"
+}
