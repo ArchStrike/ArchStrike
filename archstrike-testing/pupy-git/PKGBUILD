@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=pupy-git
 pkgver=20160529.r322
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/n1nj4sec/pupy"
 groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
 pkgdesc="Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python."
 license=('custom')
-depends=('python2' 'python2-pefile' 'python2-rpyc' 'python2-crypto' 'python2-yaml' 'scapy' 'pupy-binaries')
+depends=('python2' 'python2-pefile' 'python2-rpyc' 'python2-crypto' 'python2-yaml' 'scapy' 'pupy-binaries-git')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/n1nj4sec/pupy.git")
 sha512sums=('SKIP')
