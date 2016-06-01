@@ -3,21 +3,21 @@
 buildarch=1
 
 pkgname=xsser
-pkgver=1.6
-pkgrel=4
+pkgver=1.7
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A penetration testing tool for detecting and exploiting XSS vulnerabilites."
 arch=('any')
-url='http://xsser.sourceforge.net/'
+url='https://xsser.03c8.net/'
 license=('GPL3')
 depends=('orbited' 'python2-beautifulsoup3' 'python2-pycurl' 'twisted' 'pygtk')
 makedepends=('subversion' 'python2-setuptools')
 optdepends=('pygtkmoz')
-source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}_${pkgver}-1.tar.gz")
-sha512sums=("6b076df0219dba8363a8ec436338837a8c57dfd0f7c4325e5dea987660b7a498bb38d9401952bd32c12f5c2070e1b40a67cf86ecaa8362c91a99186d6bb3eb03")
+source=("https://xsser.03c8.net/xsser/${pkgname}_${pkgver}-1.tar.gz")
+sha512sums=("235723bf82a6d6c11c4520fcd4a945e3a8eb4542ea343098e5c454344fa960c731fd41eb571635e81aeaf2c633070355ae66af4c041fa885f4756aa783be44b3")
 
 package() {
-  cd "${srcdir}/${pkgname}-public"
+  cd "${srcdir}/${pkgname}_${pkgver}-1/${pkgname}-public"
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
-  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/python2|'
 }
