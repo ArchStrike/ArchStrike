@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-pyyaml
+pkgver=3.11
+pkgrel=1
+pkgdesc="YAML parser and editor for python"
+arch=('any')
+url="https://pypi.python.org/pypi/PyYAML/"
+license=("MIT")
+depends=("python2")
+makedepends=("python2-setuptools")
+source=("https://pypi.python.org/packages/75/5e/b84feba55e20f8da46ead76f14a3943c8cb722d40360702b2365b91dec00/PyYAML-$pkgver.tar.gz")
+sha512sums=('76de005f59e1842108399af53178cfac2c08ee5cc996cc38ab6ec8b046c6b894422c461a1f1ed1df91abf96f154d41170227912cae7336cff88adfd3c0e8d783')
+
+build() {
+  cd $srcdir/pyyaml-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  cd $srcdir/pyyaml-$pkgver
+  python2 setup.py install --root="$pkgdir/" --optimize=1
+}
