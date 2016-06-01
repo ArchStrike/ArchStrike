@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=metacoretex
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc="MetaCoretex is an entirely JAVA vulnerability scanning framework for databases."
 url="http://metacoretex.sourceforge.net/"
 groups=('archstrike' 'archstrike-database')
@@ -12,14 +12,14 @@ arch=(any)
 license=('custom')
 depends=('java-runtime')
 source=(http://downloads.sourceforge.net/metacoretex/${pkgname}-${pkgver}.tar.gz)
-md5sums=('0505b17ff98627f7a43663211e5c7a89')
+sha512sums=('c5b4a28f0c2a6e0ed3bc2929a5368d2fc42cef88efc7af43b1fc11945ec16ae5256a5d12baa85280c3228b948be94b14bccab4b238dcabccc212bb07f4b3dc76')
 
 package() {
   cd "$srcdir/metacoretex-$pkgver"
 
-  install -d $pkgdir/usr/bin/
-  install -d $pkgdir/usr/share/metacoretex/
-  install -d $pkgdir/usr/share/doc/metacoretex/
+  install -dm755 $pkgdir/usr/bin/
+  install -dm755 $pkgdir/usr/share/metacoretex/
+  install -dm755 $pkgdir/usr/share/doc/metacoretex/
 
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/metacoretex/LICENSE
   install -Dm644 README $pkgdir/usr/share/doc/metacoretex/README
@@ -27,18 +27,17 @@ package() {
 
   install -Dm755 mctx.sh $pkgdir/usr/share/metacoretex/mctx.sh
 
-  cp -r docs/* $pkgdir/usr/share/doc/metacoretex/
+  cp -a --no-preserve=ownership docs/* $pkgdir/usr/share/doc/metacoretex/
 
   for dir in contrib schema conf dist probes; do
     cp -r $dir $pkgdir/usr/share/metacoretex/
   done
 
-  cat > $pkgdir/usr/bin/metacoretex << EOF
+cat > $pkgdir/usr/bin/metacoretex << EOF
 #!/bin/sh
 cd /usr/share/metacoretex/
 ./mctx.sh "\$*"
 EOF
-
-  chmod +x $pkgdir/usr/bin/metacoretex
+chmod 755 $pkgdir/usr/bin/metacoretex
 }
 
