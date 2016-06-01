@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=pupy-binaries-git
+pkgver=20160508.r9
+pkgrel=1
+groups=('archstrike' 'archstrike-malware')
+pkgdesc="Precompiled templates for pupy"
+arch=('any')
+url="https://github.com/n1nj4sec/pupy-binaries"
+license=('custom')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/n1nj4sec/pupy-binaries.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/share/pupy/pupy/payload_templates"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/pupy/pupy/payload_templates"
+}
