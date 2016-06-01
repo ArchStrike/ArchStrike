@@ -4,14 +4,14 @@ buildarch=212
 
 pkgname=miranda-upnp
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners' 'archstrike-exploit')
 pkgdesc="A Python-based Universal Plug-N-Play client application designed to discover, query and interact with UPNP devices"
 url='http://code.google.com/p/miranda-upnp/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('MIT')
 source=("http://miranda-upnp.googlecode.com/files/miranda-${pkgver}.tar.gz")
-md5sums=('6547f43734c363b4d6c9f3dc09ba8aea')
+sha512sums=('f56536a2aebf119935dffadda3b27ae0c7d306ded9da3f4e94eaad6c69d56595b663eca807916bdfe4fd96415819c508f5278c4e25c67e5bfdd70854513e87e4')
 
 prepare() {
   cd "$srcdir/miranda-$pkgver"
@@ -24,10 +24,10 @@ package() {
 
   # Make base directories.
   install -d "$pkgdir/usr/bin"
-  install -d "$pkgdir/usr/doc/miranda-upnp"
+  install -d "$pkgdir/usr/share/doc/miranda-upnp"
 
   # Install docs.
-  install -m644 docs/* "$pkgdir/usr/doc/miranda-upnp"
+  install -m644 docs/* "$pkgdir/usr/share/doc/miranda-upnp"
 
   # Install bin.
   install -m755 src/portmapper.sh "$pkgdir/usr/bin/miranda-upnp-portmapper"
