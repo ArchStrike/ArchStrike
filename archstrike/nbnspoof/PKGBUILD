@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=nbnspoof
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-spoof')
 pkgdesc='NetBIOS Name Service Spoofer'
 arch=('any')
@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd "$srcdir"
-  install -Dm755 nbnspoof.py "$pkgdir/usr/bin/nbnspoof.py"
+  install -Dm755 nbnspoof.py "$pkgdir/usr/bin/nbnspoof"
 }
