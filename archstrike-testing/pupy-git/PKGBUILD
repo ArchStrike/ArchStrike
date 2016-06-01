@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pupy-git
 pkgver=20160529.r322
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://github.com/n1nj4sec/pupy"
 groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
@@ -31,7 +31,26 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/pupy"
-  ln -s "/usr/share/pupy/pupy/pp.py" "$pkgdir/usr/bin/pp"
-  ln -s "/usr/share/pupy/pupy/pupygen.py" "$pkgdir/usr/bin/pupygen"
-  ln -s "/usr/share/pupy/pupy/pupysh.py" "$pkgdir/usr/bin/pupysh"
+
+cat > "$pkgdir/usr/bin/pp" <<EOF
+#!/bin/sh
+cd /usr/share/pupy/pupy
+python2 pp.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/pp"
+
+cat > "$pkgdir/usr/bin/pupygen" <<EOF
+#!/bin/sh
+cd /usr/share/pupy/pupy
+python2 pupygen.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/pupygen"
+
+cat > "$pkgdir/usr/bin/pupysh" <<EOF
+#!/bin/sh
+cd /usr/share/pupy/pupy
+python2 pupysh.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/pupysh"
 }
+
