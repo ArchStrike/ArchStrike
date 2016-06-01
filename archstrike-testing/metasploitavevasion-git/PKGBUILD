@@ -6,7 +6,7 @@ buildarch=1
 pkgname=metasploitavevasion-git
 _pkgname=metasploitavevasion
 pkgver=2.0.20151222.r29
-pkgrel=4
+pkgrel=5
 pkgdesc="Metasploit payload generator that avoids most Anti-Virus products."
 url="https://github.com/nccgroup/${pkgname}"
 license=('AGPL3')
@@ -37,8 +37,10 @@ prepare() {
 }
 
 package() {
+    install -dm755 "$pkgdir/usr/bin"
+    install -dm755 "$pkgdir/usr/share/applications/${pkgname}"
     install -Dm755 ${pkgname}/avoid.sh "${pkgdir}/usr/bin/avoid.sh"
-    install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
+    install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
     install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
     install -Dm644 ${_pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
