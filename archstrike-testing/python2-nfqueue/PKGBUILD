@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=212
 
 pkgname=python2-nfqueue
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc="Python bindings for libnetfilter_queue by Pierre Chifflier"
 url="https://github.com/chifflier/nfqueue-bindings"
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL')
 depends=('python2' 'libnetfilter_queue')
 makedepends=('python2-distribute' 'cmake' 'swig')
@@ -31,4 +31,7 @@ package() {
 
   # Library.
   make PREFIX="$pkgdir/usr" install
+
+  # Fixing python issues
+  sed -i 's|python|python2|' $pkgdir/usr/share/doc/nfqueue-bindings/examples/*.py
 }
