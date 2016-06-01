@@ -1,0 +1,35 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+pkgname=onionscan-git
+pkgver=20160527.r35
+pkgrel=1
+pkgdesc="Tool to scan onion services"
+arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+url="https://github.com/s-rah/onionscan"
+groups=('archstrike' 'archstrike-scanners')
+license=("MIT")
+depends=('glibc' 'libexif')
+makedepends=('go' 'git')
+source=("$pkgname::git+https://github.com/s-rah/onionscan")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build() {
+  cd $pkgname
+  GOPATH="$srcdir" go get -d -t github.com/s-rah/onionscan
+}
+
+package() {
+  cd $pkgname
+  GOPATH="$srcdir" go build -v github.com/s-rah/onionscan
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  ln -s "/usr/share/$pkgname/onionscan" "$pkgdir/usr/bin/onionscan"
+}
