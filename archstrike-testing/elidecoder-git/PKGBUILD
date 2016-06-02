@@ -1,0 +1,45 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=elidecode-git
+pkgver=20160424.r33
+pkgrel=1
+groups=('archstrike' 'archstrike-debugging' 'archstrike-analysis' 'archstrike-reverse')
+arch=('any')
+pkgdesc="A tool to decode obfuscated shellcodes using the unicorn-engine for the emulation and the capstone-engine to print the asm code" 
+url="https://github.com/DeveloppSoft/EliDecode"
+license=('GPL3')
+depends=('capstone' 'unicorn-engine' 'python2' 'bash')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/DeveloppSoft/EliDecode.git")
+sha512sums=('SKIP')
+
+prepare() {
+  cd $pkgname
+  sed -i 's|python$|python2|g' *.py
+}
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname/tests"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm755 decoder.py "$pkgdir/usr/share/$pkgname"
+  install -Dm755 constants.py "$pkgdir/usr/share/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  cp -a --no-preserve=ownership tests/* "$pkgdir/usr/share/$pkgname/tests"
+
+cat > "$pkgdir/usr/bin/elidecode" <<EOF
+#!/bin/sh
+python2 /usr/share/$pkgname/decoder.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/elidecode"
+
+}
