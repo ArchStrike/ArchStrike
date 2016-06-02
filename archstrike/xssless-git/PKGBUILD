@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=xssless-git
-pkgver=r35.9eee648
+pkgver=r45.8e7ebe1
 pkgrel=2
 pkgdesc="An automated XSS payload generator written in python."
 url="https://github.com/mandatoryprogrammer/xssless"
