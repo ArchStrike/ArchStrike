@@ -42,9 +42,9 @@ package() {
   install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   ##easy xsscrapy script
   install -dm755 "${pkgdir}"/usr/bin/
-  cat > "${pkgdir}"/usr/bin/xsscrapy" <<EOF
+  cat > "${pkgdir}"/usr/bin/xsscrapy <<EOF
 #!/bin/bash
-cd /usr/share/xsscrapy;
+cd /usr/share/${pkgname};
 python2 xsscrapy.py "\$@"
 EOF
   chmod +x "${pkgdir}"/usr/bin/xsscrapy
