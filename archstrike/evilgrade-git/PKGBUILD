@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=evilgrade-git
-pkgver=r7.22dc742
+pkgver=r14.6cd914d
 pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Modular framework that takes advantage of poor upgrade implementations by injecting fake updates"
