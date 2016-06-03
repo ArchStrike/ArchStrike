@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=xsscrapy-git
 pkgver=20160425.r132.e4e360d
-pkgrel=2
+pkgrel=3
 pkgdesc="xss spider"
 arch=('any')
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
@@ -42,10 +42,10 @@ package() {
   install -Dm644 "${srcdir}"/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   ##easy xsscrapy script
   install -dm755 "${pkgdir}"/usr/bin/
-  cat > "${pkgdir}"/usr/bin/"${pkgname}" <<EOF
+  cat > "${pkgdir}"/usr/bin/xsscrapy <<EOF
 #!/bin/bash
 cd /usr/share/${pkgname};
 python2 xsscrapy.py "\$@"
 EOF
-  chmod +x "${pkgdir}"/usr/bin/"${pkgname}"
+  chmod +x "${pkgdir}"/usr/bin/xsscrapy
 }
