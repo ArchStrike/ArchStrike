@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=mitmf
 pkgname=$_pkgname-git
 pkgver=20160130.r429
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
 pkgdesc='Framework for Man-In-The-Middle attacks'
 arch=('any')
@@ -44,6 +44,7 @@ depends=(
   'python2-yaml'
   'scapy'
   'systemd'
+  'python2-future'
 )
 makedepends=('git')
 provides=("$_pkgname")
