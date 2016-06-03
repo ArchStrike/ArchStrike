@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=peda-git
-pkgver=r81.6710298
-pkgrel=2
+pkgver=r82.b7c7d7a
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A Python Exploit Development Assistant for GDB"
 arch=('any')
