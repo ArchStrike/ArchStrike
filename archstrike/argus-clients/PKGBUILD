@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=argus-clients
-pkgver=3.0.8
-pkgrel=4
+pkgver=3.0.8.2
+pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-defense')
 pkgdesc="Network monitoring client for Argus"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ url="http://qosient.com/argus/"
 depends=('geoip' 'libsasl' 'pcre')
 license=('GPL3')
 source=("http://qosient.com/argus/src/argus-clients-$pkgver.tar.gz")
-sha512sums=('79022b3c3e472ebc526b27c20c25ae97abdb9a363a91ebbe3baf405f2aba9bdd80fbc0250b444d3d7ab4488e3c1325389a4719e92d9aded7598a91c3309369c2')
+sha512sums=('1e172abc976f4391eba78389e998c83fe0f669551693cefe54dd219d899054ad12aba8c9262419983f90803bcee1c616b94667976ad49f25eda5769fe6054e95')
 
 build() {
   cd $srcdir/argus-clients-$pkgver
