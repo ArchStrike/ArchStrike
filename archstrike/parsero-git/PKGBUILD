@@ -15,7 +15,7 @@ makedepends=('git')
 replaces=('parsero')
 provides=('parsero')
 source=("$pkgname::git+https://github.com/behindthefirewalls/Parsero.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 package() {
   cd $pkgname
