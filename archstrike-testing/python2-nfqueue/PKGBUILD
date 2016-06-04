@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=python2-nfqueue
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Python bindings for libnetfilter_queue by Pierre Chifflier"
 url="https://github.com/chifflier/nfqueue-bindings"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -20,6 +20,8 @@ prepare() {
   cd "$srcdir/nfqueue-bindings-nfqueue-bindings-$pkgver"
 
   patch -p1 -i ../python-support.patch
+  # fixing more python issues
+  sed -i 's|dist-packages|site-packages|' python/CMakeLists.txt
 }
 
 package() {
