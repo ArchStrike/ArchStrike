@@ -3,7 +3,7 @@ buildarch=1
 
 pkgname=firmwalker-git
 pkgver=20160321.r69
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Simple bash script for searching the extracted or mounted firmware file system"
 arch=('any')
@@ -27,7 +27,8 @@ package() {
 
 cat > "$pkgdir/usr/bin/firmwalker" <<EOF
 #!/bin/sh
-sh /usr/share/firmwalker-git/firmwalker.sh
+cd /usr/share/$pkgname
+sh firmwalker.sh "\$@"
 EOF
 chmod 755 "$pkgdir/usr/bin/firmwalker"
 }
