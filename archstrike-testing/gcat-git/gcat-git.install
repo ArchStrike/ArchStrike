@@ -1,0 +1,10 @@
+#!/bin/sh
+
+post_install() {
+echo "
+To learn more about configuring gcat please read the README file at
+
+/usr/share/gcat-git/README.md
+
+"
+}
