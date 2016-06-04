@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=elidecode-git
-pkgver=20160424.r33
+pkgver=20160604.r43
 pkgrel=1
 groups=('archstrike' 'archstrike-debugging' 'archstrike-analysis' 'archstrike-reverse')
 arch=('any')
