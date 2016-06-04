@@ -4,16 +4,14 @@ buildarch=1
 
 pkgname=usbkill-git
 pkgver=r208.ad12c6e
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="An anti-forensic kill-switch that waits for a change on your USB ports and then immediately shuts down your computer."
 arch=('any')
 url="https://github.com/hephaest0s/usbkill"
 license=('custom')
-depends=('python2')
+depends=('python')
 makedepends=('git python2-setuptools')
-replaces=('usbkill')
-provides=('usbkill')
 source=("$pkgname::git+https://github.com/hephaest0s/usbkill.git" "LICENSE")
 sha512sums=('SKIP'
             'f723e0249b950c68ca6e3e4b961b5e671a26c9005231a12d10fe1487940a9e6e0c2c2159aae01c5439464021bdf3c4346cde94056a680ed4d4fe5460948d4386')
@@ -23,14 +21,10 @@ pkgver() {
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare() {
-    grep -iRl 'python' "$pkgname" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
-}
-
 package() {
     cd "$pkgname"
-    python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-    find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/python2|'
+    install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+    python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
 
     install -Dm644 "$srcdir"/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
