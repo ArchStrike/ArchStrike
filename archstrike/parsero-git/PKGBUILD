@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=parsero-git
-pkgver=0.75
-pkgrel=2
+pkgver=20140929.r81
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A Robots.txt audit tool"
 url='https://github.com/behindthefirewalls/Parsero'
@@ -16,6 +16,11 @@ replaces=('parsero')
 provides=('parsero')
 source=("$pkgname::git+https://github.com/behindthefirewalls/Parsero.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
 
 package() {
   cd $pkgname
