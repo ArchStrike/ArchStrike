@@ -3,13 +3,13 @@ buildarch=1
 
 pkgname=firmwalker-git
 pkgver=20160321.r69
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Simple bash script for searching the extracted or mounted firmware file system"
 arch=('any')
 url="https://github.com/craigz28/firmwalker"
 license=('GPL3')
-depends=('bash')
+depends=('bash' 'eslint')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/craigz28/firmwalker.git")
 sha512sums=('SKIP')
