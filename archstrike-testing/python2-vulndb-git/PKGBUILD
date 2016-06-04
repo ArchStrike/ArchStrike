@@ -26,8 +26,8 @@ prepare() {
 
 package() {
   cd "$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/python2|'
 
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
