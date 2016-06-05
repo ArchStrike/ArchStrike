@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=usbkill-git
 pkgver=r208.ad12c6e
-pkgrel=2
-groups=('archstrike')
+pkgrel=3
+groups=('archstrike' 'archstrike-defense')
 pkgdesc="An anti-forensic kill-switch that waits for a change on your USB ports and then immediately shuts down your computer."
 arch=('any')
 url="https://github.com/hephaest0s/usbkill"
 license=('custom')
 depends=('python')
-makedepends=('git python2-setuptools')
+makedepends=('git' 'python2-setuptools')
 source=("$pkgname::git+https://github.com/hephaest0s/usbkill.git" "LICENSE")
 sha512sums=('SKIP'
             'f723e0249b950c68ca6e3e4b961b5e671a26c9005231a12d10fe1487940a9e6e0c2c2159aae01c5439464021bdf3c4346cde94056a680ed4d4fe5460948d4386')
