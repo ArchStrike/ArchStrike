@@ -2,9 +2,9 @@
 
 buildarch=1
 
-pkgname=facebrute
+pkgname=facebrute-git
 pkgver=0.3
-pkgrel=3
+pkgrel=1
 pkgdesc="Facebook brute forcer script"
 url="https://github.com/emerinohdz/FaceBrute"
 license=('Artistic2.0')
@@ -15,6 +15,15 @@ source=("${pkgname}::git+https://github.com/emerinohdz/FaceBrute.git#tag=v${pkgv
 md5sums=('SKIP')
 
 package() {
-    cd $pkgname
-    install -Dm755 ${pkgname}.py "${pkgdir}/usr/bin/${pkgname}"
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  
+cat > "$pkgdir/usr/bin/facebrute" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 facebrute.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/facebrute"
 }
