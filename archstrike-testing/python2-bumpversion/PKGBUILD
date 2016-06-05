@@ -3,13 +3,14 @@
 
 pkgname=python2-bumpversion
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Version-bump your software with a single command!"
 url="https://github.com/peritus/bumpversion"
-depends=('python2' )
-makedepends=('python2-distribute' )
+depends=('python2')
+makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
+replaces=('bumpversion')
 source=("https://pypi.python.org/packages/14/41/8c9da3549f8e00c84f0432c3a8cf8ed6898374714676aab91501d48760db/bumpversion-$pkgver.tar.gz")
 sha512sums=('2dc507be98838e4a389502cbdae08d23bad465b171923e15c40ae16da2cc9529c71dfc40213c47d23da363257b363fd5786a5661a4a6d6b568b5f8b2cf8af959')
 
