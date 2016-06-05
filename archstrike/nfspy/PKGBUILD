@@ -12,7 +12,7 @@ license=('MIT')
 arch=('any')
 depends=('python2' 'python2-fuse')
 source=("https://github.com/bonsaiviking/NfSpy/archive/v$pkgver.tar.gz")
-md5sums=('c8437ae053001efabb871a69e81d92d8')
+sha512sums=('dce93054e242acdfa6db78d92cdc4538b1187a981573d5aa530717db73b777acbda3570531d80d8401fc78eee848f5eebb74eafff82e4b176505c40d8d841b29')
 
 package() {
   cd "$srcdir/NfSpy-$pkgver"
