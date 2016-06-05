@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=auto-xor-decryptographyr
+pkgname=auto-xor-decryptographyr-git
 pkgver=5.1f552be
 pkgrel=3
 groups=('archstrike' 'archstrike-crypto')
