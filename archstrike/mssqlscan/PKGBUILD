@@ -9,10 +9,10 @@ pkgdesc='A small multi-threaded tool that scans for Microsoft SQL Servers.'
 arch=('any')
 url='http://www.cqure.net/wp/mssqlscan/'
 license=('GPL')
-depends=('java-runtime')
+depends=('java-runtime' 'java-environment' 'bash')
 groups=('archstrike' 'archstrike-scanners')
 source=("http://www.cqure.net/tools/mssqlscan-bin-${pkgver//./_}.zip")
-md5sums=('7d089524d6a889d68a8d004b977695ff')
+sha512sums=('3634292077c451f42ec719a0a53adf2105011f5cfb6931775b997e7b3bb510f1a3b2b688885bddd85973cf3fd3575933f18ad6c50be2ed5215ed2fca072326a4')
 
 prepare() {
   cd "$srcdir/MSSQLScan"
@@ -23,9 +23,11 @@ prepare() {
 package() {
   cd "$srcdir/MSSQLScan"
 
-  install -D -m755 "mssqlscan.sh" "$pkgdir/usr/share/mssqlscan/mssqlscan.sh"
-  cp -r "lib" "bin" "$pkgdir/usr/share/mssqlscan/"
-  mkdir -p "$pkgdir/usr/bin/"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -Dm755 "mssqlscan.sh" "$pkgdir/usr/share/$pkgname/mssqlscan.sh"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
   cd "$pkgdir/usr/bin"
   ln -sf "/usr/share/mssqlscan/mssqlscan.sh" "mssqlscan"
 }
