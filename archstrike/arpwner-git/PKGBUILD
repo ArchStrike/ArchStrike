@@ -2,7 +2,7 @@
 
 buildarch=1
 
-pkgname=arpwner
+pkgname=arpwner-git
 pkgver=20120106.r26.f300fdf
 pkgrel=3
 epoch=1
@@ -13,6 +13,9 @@ arch=('any')
 license=('GPL3')
 depends=('python2' 'python2-pypcap')
 makedepends=('git')
+replaces=('arpwner')
+provides=('arpwner')
+conflicts=('arpwner')
 source=("$pkgname::git+https://github.com/ntrippar/ARPwner.git" "arpwner.desktop")
 sha512sums=('SKIP' 'e396feea228a34e78b581ce53a0a927b09f0afb88f5ddc9c7579e9e4e3d7371dcf66de4995ae567efffa36432649309a8898902a6a275df1a6e3d4008f59f525')
 
