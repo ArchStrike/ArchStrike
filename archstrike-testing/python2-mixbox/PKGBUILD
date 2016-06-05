@@ -5,11 +5,11 @@ buildarch=1
 
 pkgname=python2-mixbox
 pkgver=0.0.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Utility library for cybox, maec, and stix packages"
 url="http://github.com/CybOXProject/mixbox"
 depends=('python2' 'python2-bumpversion')
-makedepends=('python2-distribute' )
+makedepends=('python2-setuptools' )
 license=('UNKNOWN')
 arch=('any')
 source=("https://pypi.python.org/packages/b2/d9/74f5d16ec643876a448b064f0a562940b2504a5a61c33d9979bfbb69c34f/mixbox-$pkgver.zip")
