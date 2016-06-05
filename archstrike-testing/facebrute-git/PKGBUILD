@@ -2,20 +2,20 @@
 
 buildarch=1
 
-pkgname=facebrute-git
+pkgname=facebrute
 pkgver=0.3
-pkgrel=1
+pkgrel=4
 pkgdesc="Facebook brute forcer script"
 url="https://github.com/emerinohdz/FaceBrute"
 license=('Artistic2.0')
+groups=('archstrike' 'archstrike-crackers')
 arch=('any')
 depends=('python2')
-makedepends=('git')
-source=("${pkgname}::git+https://github.com/emerinohdz/FaceBrute.git#tag=v${pkgver}")
-md5sums=('SKIP')
+source=("https://github.com/emerinohdz/FaceBrute/archive/v$pkgver.tar.gz")
+sha512sums=('2b2a20fc683a8e95940b6087881e4eb665364c19f867898305d9f77203049608d490050ae5104161ca96bebaaea24e83c522fb83825c5dc05c52f466488c2120')
 
 package() {
-  cd $pkgname
+  cd FaceBrute-$pkgver
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$pkgname"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
