@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=morbid
 pkgver=0.8.7.3
-pkgrel=6
+pkgrel=7
 pkgdesc="A Twisted-based publish/subscribe messaging server that uses the STOMP protocol"
 arch=('any')
 url='http://pypi.python.org/pypi/morbid/'
 license=('MIT')
 groups=('archstrike')
-depends=(python2)
+depends=('python2' 'stomper')
 makedepends=(python2-distribute)
 source=(http://pypi.python.org/packages/source/m/morbid/morbid-$pkgver.tar.gz)
 sha512sums=('50a01e75ecf1691dcb6f4354647038627196eb4cd37d6e44812912bf0890870d307c8705f6894ecc389a86508d2dc81ed9195408b922c5ad140104a9b78c26dc')
