@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='subdomainer'
 pkgver='1.2'
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool designed for obtaining subdomain names from public sources.'
 url='http://www.edge-security.com/subdomainer.php'
 groups=('archstrike' 'archstrike-recon' 'archstrike-scanners')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('python2')
 arch=('any')
 source=('http://www.edge-security.com/soft/subdomainer.py')
-md5sums=('2858a999be8b56a7864f53651c3573ca')
+sha512sums=('e170f9a8b89316da7f49ad66fb88dbca35b5310c2cf5ac4fe5e88cededa718a178f73d300d31a3c1d69689c5d43ce36cddb29b02c27213bb61f293335477968b')
 
 prepare() {
   cd "$srcdir"
@@ -23,5 +23,5 @@ prepare() {
 package() {
   cd "$srcdir"
 
-  install -D -m755 "subdomainer.py" "$pkgdir/usr/bin/subdomainer.py"
+  install -Dm755 "subdomainer.py" "$pkgdir/usr/bin/subdomainer"
 }
