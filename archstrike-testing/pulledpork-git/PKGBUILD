@@ -5,8 +5,8 @@ _pkgname=pulledpork
 buildarch=1
 
 pkgname=$_pkgname-git
-pkgver=20160314.r277
-pkgrel=2
+pkgver=20160603.r281
+pkgrel=1
 pkgdesc="Snort rule management"
 arch=('any')
 url="https://github.com/shirkdog/pulledpork"
