@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=192
 
 pkgname=sslyze
 pkgver=0.13.6
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations"
-arch=('any')
+arch=('i686' 'x86_64')
 url='https://github.com/nabla-c0d3/sslyze'
 license=('GPL2')
 depends=('python2')
