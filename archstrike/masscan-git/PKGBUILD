@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=masscan-git
-pkgver=20160419.r404
-pkgrel=3
+pkgver=20160606.r410
+pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-crackers')
 pkgdesc="TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes"
