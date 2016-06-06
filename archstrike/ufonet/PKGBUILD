@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ufonet
 pkgver=0.3b
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool designed to launch DDoS attacks against a target, using 'Open Redirect' vectors on third party web applications, like botnet."
 arch=('any')
 url="http://ufonet.sourceforge.net/"
@@ -29,6 +29,5 @@ cat >"$pkgdir/usr/bin/ufonet" <<EOF
 cd /usr/share/ufonet
 python2 ufonet "\$@"
 EOF
-
-chmod +x "$pkgdir/usr/bin/ufonet"
+chmod 755 "$pkgdir/usr/bin/ufonet"
 }
