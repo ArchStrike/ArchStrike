@@ -4,11 +4,12 @@ buildarch=212
 
 pkgname=sucrack
 pkgver=1.2.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A multi-threaded Linux/UNIX tool for brute-force cracking local user accounts via su"
 url='http://labs.portcullis.co.uk/application/sucrack'
 license=('custom')
+depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 source=("http://labs.portcullis.co.uk/download/sucrack-${pkgver}.tar.gz")
 md5sums=('6ebfe5e94577a53ce8dcabadd3581ec3')
