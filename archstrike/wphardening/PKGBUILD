@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/elcodigok/wphardening"
 license=('GPL3')
 depends=('python2-gitpython')
-source=(https://github.com/elcodigok/wphardening/archive/v$pkgver.tar.gz)
+source=("https://github.com/elcodigok/wphardening/archive/v$pkgver.tar.gz")
 sha512sums=('ba9a7eef8d09985ffea5263696098970933ed8a6896bc96ff7f5ba2a1e105148b8145072006ecacf784d5f39b15dcfebed09dc4b81b11a7e67a5dd4d4805ae4e')
 
 prepare(){
