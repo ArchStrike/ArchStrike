@@ -3,37 +3,28 @@
 buildarch=1
 
 pkgname=wafw00f
-pkgver=0.9.1
+pkgver=0.9.4
 pkgrel=1
-groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
-pkgdesc="Identify and fingerprint Web Application Firewall (WAF) products protecting a website"
+pkgdesc="Identifies and fingerprints Web Application Firewall (WAF) products."
+url="https://github.com/sandrogauci/wafw00f"
+depends=('python2' 'python2-beautifulsoup4' 'python2-pluginbase')
+makedepends=('python2-setuptools')
+license=('custom')
+groups=('archstrike' 'archstrike-scanners')
 arch=('any')
-url="https://github.com/sandrogauci/${pkgname}"
-license=('BSD')
-depends=('bash' 'python2' 'python2-beautifulsoup4')
-makedepends=('git')
-provides=('waffit')
-conflicts=('waffit')
-replaces=('waffit')
-source=("git+https://github.com/sandrogauci/${pkgname}.git"
-        "${pkgname}.sh"
-        "${pkgname}.1")
-sha512sums=('SKIP'
-            '7734b995e99b8f5ca1baff70d32baa45e49013bc13b2abb41ab44e6ff1fd20a6af869b2ee67e70beb3f4b1bbb50f44c8d9cd5b631ff675538bf51a9db0c1db3e'
-            'e00a8c86ef6a1cffcb1469d668370568baa07f5297c43128e438c60457c6236b12153e23e3d120a906a7f56bb19be53181fda3d15f018324f42bed7ad6f38a18')
+source=("https://pypi.python.org/packages/25/90/5330680a141f399a6511dcd35ceed8521a02086dff6a985424cc0712fb54/wafw00f-$pkgver.tar.gz")
+sha512sums=('88426f9512d9933f8d13bbe6a439d0b8f9346ab0dcca11cc031383b06685e44d3e597b86e0d4ad0e72069982b5853b33c6489cc9c005d40b9acb7101eff91a7d')
 
-prepare(){
-    cd ${pkgname}/${pkgname}
-    git checkout tags/v${pkgver}
-    grep -irl 'python' | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+prepare() {
+    grep -iRl 'python' $srcdir/wafw00f-$pkgver | xargs sed -i 's|python$|python2|'
+}
+
+build() {
+    cd $srcdir/wafw00f-$pkgver
+    python2 setup.py build
 }
 
 package() {
-    install -Dm644 ${pkgname}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
-    install -Dm755 ${pkgname}.sh "${pkgdir}/usr/bin/${pkgname}"
-    rename ".py" "" ${pkgname}/${pkgname}/${pkgname}.py
-    install -dm755 "${pkgdir}/usr/lib/python2.7/site-packages"
-    cp -a --no-preserve=ownership ${pkgname}/${pkgname} "${pkgdir}/usr/lib/python2.7/site-packages/${pkgname}"
-    install -Dm644 ${pkgname}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-    install -Dm644 ${pkgname}/CREDITS.txt "${pkgdir}/usr/share/licenses/${pkgname}/CREDITS"
+    cd $srcdir/wafw00f-$pkgver
+    python2 setup.py install --root="$pkgdir" --optimize=1 
 }
