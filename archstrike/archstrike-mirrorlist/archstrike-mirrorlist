@@ -1,6 +1,7 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2015-10-21
+# Generated on 2016-06-06
 #
 
 Server = https://mirror.archstrike.org/$arch/$repo
+Server = https://uk.mirror.archstrike.org/$arch/$repo

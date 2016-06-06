@@ -1,9 +1,9 @@
-# Maintainer: ArchStrike <archstrikelinux@gmail.com>
+# Maintainer: ArchStrike <team@archstrike.org>
 
 buildarch=1
 
 pkgname=archstrike-mirrorlist
-pkgver=20151021
+pkgver=20160606
 pkgrel=1
 pkgdesc='ArchStrike mirror list for use by pacman'
 url='http://archstrike.org'
@@ -12,7 +12,7 @@ groups=('archstrike')
 arch=('any')
 backup=("etc/pacman.d/$pkgname")
 source=("$pkgname")
-sha512sums=('5a596ca09abea7d56ba7a08b349a5bac859a2baaa30670fc2581788f251770d8abc2b51e16e830fdae4a0c50614b48b9edc747a7f4b2810706b617236d33449e')
+sha512sums=('a61ae525cbeebf0c370ce2d2b270a601ac5fc92cfcfa53836d2837f66268e40a79407518e779ad45d8a901bceb96f17be5a1f18d7ef2006a3f854feb74ec2a1a')
 
 package() {
   install -dm755 "$pkgdir/etc/pacman.d"
