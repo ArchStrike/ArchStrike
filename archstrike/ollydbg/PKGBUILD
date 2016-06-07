@@ -12,10 +12,10 @@ url='http://www.ollydbg.de'
 license=('custom')
 depends=('wine' 'wine_gecko' 'wine-mono')
 makedepends=('unzip')
-source=(ollydbg
+source=("ollydbg"
         "http://www.ollydbg.de/odbg${pkgver}.zip")
-md5sums=('17e173635428db7cf7b12530dccf7076'
-         '1cf4d4f9217c0d8bb6a33eb3c89c7606')
+sha512sums=('34477422454e8741ee5a77251df84165f7e062c8b5e046e47a164f0440279776b18445193823373342df9f78fb4d9f745650a3124a0f55cb6238f37d63a85f64'
+            '7409e5b462fa8a498d9b3f0216538bd30372420c73cac6d5da1928641130a48e309d066dbdf65c42af51025cccc549cf327d631299c665117a094384c09b712f')
 
 package() {
   cd "$srcdir"
