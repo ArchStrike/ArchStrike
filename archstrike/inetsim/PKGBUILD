@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('perl' 'perl-net-dns' 'perl-net-server' 'perl-ipc-shareable' 'openssl')
 install=inetsim.install
 source=("http://www.inetsim.org/downloads/inetsim-$pkgver.tar.gz")
-md5sums=('f3a125ff6dd5618f7e14975628ec47a4')
+sha512sums=('f30b688b7f665ce342a4d792a473c23f9b22839e74425b267fd056aefddf0cde9027450a95748a0fe58fa736374f57cfd72374a04ad1901c128466cfb2fc048d')
 
 package() {
   cd "$srcdir/inetsim-$pkgver"
