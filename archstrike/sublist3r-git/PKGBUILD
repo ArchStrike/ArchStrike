@@ -10,6 +10,7 @@ groups=('archstrike' 'archstrike-dns' 'archstrike-scanners')
 pkgdesc="A Fast subdomains enumeration tool for penetration testers"
 license=('GPL2')
 depends=('python2-dnspython' 'python2-requests')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/aboul3la/Sublist3r.git")
 sha512sums=('SKIP')
 
