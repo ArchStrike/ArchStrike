@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pacemaker-git
 pkgver=r78.e46f354
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A CVE-2014-0160 client exploit"
 arch=('any')
@@ -23,5 +23,5 @@ pkgver() {
 
 package() {
   cd "$srcdir/pacemaker"
-  install -Dm755 pacemaker.py $pkgdir/usr/bin/pacemaker.py
+  install -Dm755 pacemaker.py $pkgdir/usr/bin/pacemaker
 }
