@@ -15,8 +15,8 @@ makedepends=('libnet')
 source=(http://downloads.sourceforge.net/project/ucsniff/videosnarf/videosnarf-$pkgver.tar.gz
         videosnarf-0.63-fix-linking.patch)
 
-md5sums=('19acd3bcb5c3912b1c5795b505f11958'
-         '78472de65f6d4e7e2e41f98624b28147')
+sha512sums=('d9d033bcea5c0cd6fed784fc4a9ec3796c75432e90d2d479dfc6989031270f9eaf7654a79fad866319d0c3f1cdc0aab325fd1cebeadfcf9ee0a8d875f314a6de'
+            '1be90f258f3f92e05cdfe58c0677b92be895bf2e742d080cfe077b75295f008dbac6d51830f961197f8606668b510dc9c8fb2beb18a18682dbc9c00206165830')
 
 build() {
   cd "$srcdir/videosnarf-$pkgver"
