@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=guymager
 pkgver=0.8.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='A forensic imager for media acquisition'
 url='http://guymager.sourceforge.net'
