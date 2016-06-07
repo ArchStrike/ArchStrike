@@ -2,7 +2,7 @@
 
 buildarch=212
 
-pkgname=ohrwurm
+pkgname=ohrwurm-git
 pkgver=0.1
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
