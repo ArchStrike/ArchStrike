@@ -3,17 +3,24 @@
 buildarch=212
 
 pkgname=ohrwurm-git
-pkgver=0.1
-pkgrel=2
+pkgver=20100930.r1
+pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A small and simple RTP fuzzer"
 url='http://mazzoo.de/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('glibc' 'libpcap')
 makedepends=('git')
+provides=('ohrwurm')
+replaces=('ohrwurm')
 license=('GPL')
 source=("$pkgname::git+https://github.com/mazzoo/ohrwurm")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
   cd "$pkgname"
