@@ -5,22 +5,20 @@ buildarch=1
 pkgname=underscorejs
 _script=underscore
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Underscore is a utility-belt library for JavaScript that provides a lot of the functional programming support that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects."
 arch=(any)
-url=http://underscorejs.org
+url="http://underscorejs.org"
 license=('MIT')
 source=("${url}/${_script}.js" "${url}/${_script}-min.js" "${url}/LICENSE")
-md5sums=('a09bb7689b7d5b1d33a0290a632bfb85'
-  'dd9663be9a71f3570bc35f0edba28712'
-  '19bf0f8c9bfb3f719f45bda2c3bdbd71')
+sha512sums=('7368782bf3cdf0e163a66eebe18f9ad746b1266d57aeb2b41cfdc484c1814e02ba4496376dd890346c05203b3dba88605ad43ff9f4614e2deff2262f1d5ae246'
+            'edf361ece5066bb6dda66490f3588dc60072c2ca4d4f15710717db4f58129d0d76e1519f92c8f7011fd01a175868ef192c704b4a869af95b150e0c3bf797816b'
+            'a31c76892330269fd72e794fb56999df84cbd0f00ff0f3028a8eadca224d94389f5e532fb73e593957cb0b35f685dadbe5fd53687f22f78502e43e56ec23ffa4')
 
 package() {
   cd "${srcdir}"
-  mkdir -p "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 "${_script}-min.js" "${pkgdir}/usr/share/${pkgname}/${_script}-min.js"
   install -Dm644 "${_script}.js" "${pkgdir}/usr/share/${pkgname}/${_script}.js"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
