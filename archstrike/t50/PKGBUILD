@@ -3,34 +3,24 @@
 buildarch=212
 
 pkgname=t50
-pkgver=5.5
-pkgrel=2
+pkgver=5.6.3
+pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/project/t50/t50-$pkgver/t50-${pkgver}.tar.gz" "uname.patch")
-sha512sums=('954a94242ee80bd6d685bb7c5bcc3f49dd1ab2662524934f5bff001d33df08216c632b40357e257781b764701e55d3b5bfeb0aac83ea2df26a93fea341a37862'
-            '5c1b07b6dae3218a015dc1378e002dbd5692b3db52c4210bf56d03351a2f07eba6726c84418dc24acfd2044b23bb145429290ffea155c43b90d632e7a72de0dc')
+source=("http://downloads.sourceforge.net/project/t50/t50-5.6/t50-${pkgver}.tar.gz")
+sha512sums=('66db453555c780eb74fc504dd55087217363ad3b458d949cc34a4f1794ca928779f6bf9c28d7f9bbc9fd7541071246126235f2ad1c5ac3396a11f5d79b812136')
 
-prepare() {
-  cd "$srcdir"
-  patch -i $srcdir/uname.patch
-}
- 
 build() {
-  cd "$srcdir"
+  cd "$pkgname-$pkgver"
+  ./configure --prefix=/usr 
   make
 }
 
 package() {
-  cd "$srcdir"
-
-  # Base directories.
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm755 release/t50 "$pkgdir/usr/bin/t50"
-
-  install -Dm644 doc/t50.8 "$pkgdir/usr/share/man/man8/t50.8"
+  cd "$pkgname-$pkgver"
+  make DESTDIR=$pkgdir install
 }
