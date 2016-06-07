@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=t50
 pkgver=5.6.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -16,7 +16,7 @@ sha512sums=('66db453555c780eb74fc504dd55087217363ad3b458d949cc34a4f1794ca928779f
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr 
+  ./configure --prefix=/usr --sbindir=/usr/bin 
   make
 }
 
