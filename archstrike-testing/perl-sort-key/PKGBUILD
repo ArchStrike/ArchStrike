@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=perl-sort-key
 pkgver=1.33
-pkgrel=1
+pkgrel=2
 pkgdesc="Perl module that sorts arrays by one or multiple calculated keys."
 arch=(armv6h armv7h i686 x86_64)
 url=http://search.cpan.org/~salva/Sort-Key/
