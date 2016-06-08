@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-sort-versions
 pkgver=1.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Sort::Versions - a perl 5 module for sorting of revision-like numbers"
 arch=('any')
 url='http://search.cpan.org/~edavis/Sort-Versions/'
