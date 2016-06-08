@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=obexstress
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Script for testing remote OBEX service for some potential vulnerabilities"
 url="http://bluetooth-pentest.narod.ru/"
 groups=('archstrike' 'archstrike-bluetooth')
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python2' 'lightblue')
 arch=(any)
 source=(http://bluetooth-pentest.narod.ru/software/obexstress.py)
-md5sums=('e960ba64193ef94a55a19ade02e6adf9')
+sha512sums=('a0a84900c7a932da0d2a5aed4c4e85a8d15928b8a98c118b4aaa18813a2841cdf94039a1f6aed5600ae90783df3f97ed2a216c78edc922f8d27a809db1cbeb9c')
 
 package() {
   cd "$srcdir/"
