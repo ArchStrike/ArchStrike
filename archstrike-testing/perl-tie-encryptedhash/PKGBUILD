@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-tie-encryptedhash
 pkgver=1.24
-pkgrel=3
+pkgrel=4
 pkgdesc="Hashes (and objects based on hashes) with encrypting fields"
 arch=('any')
 url='http://search.cpan.org/~VIPUL/Tie-EncryptedHash-1.24/'
