@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=hash-identifier
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="Identifies the different types of hashes used to encrypt data, especially passwords"
 arch=('any')
@@ -12,21 +12,23 @@ url='http://code.google.com/p/hash-identifier'
 license=('GPL3')
 makedepends=('subversion' 'dos2unix')
 depends=('python2')
-source=('svn+http://hash-identifier.googlecode.com/svn/trunk/')
-md5sums=('SKIP')
+source=("$pkgname::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/hash-identifier/Hash_ID_v$pkgver.py")
+sha512sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/trunk/Hash_ID_v$pkgver"
-
-  # Fix line endings.
-  dos2unix Hash_ID.py
-
-  # Fix shebang.
-  sed -i 's/env python$/env python2/' Hash_ID.py
+  grep -iRl 'python' "$pkgname" | xargs sed -i 's|python$|python2|'
 }
 
 package() {
-  cd "$srcdir/trunk/Hash_ID_v$pkgver"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp $pkgname "$pkgdir/usr/share/$pkgname"
 
-  install -Dm755 Hash_ID.py "$pkgdir/usr/bin/hashid"
+cat > "$pkgdir/usr/bin/hashid" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 $pkgname "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/hashid"
 }
+
