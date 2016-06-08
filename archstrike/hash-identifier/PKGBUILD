@@ -26,8 +26,7 @@ package() {
 
 cat > "$pkgdir/usr/bin/hashid" <<EOF
 #!/bin/sh
-cd /usr/share/$pkgname
-python2 $pkgname "\$@"
+python2 /usr/share/$pkgname/$pkgname "\$@"
 EOF
 chmod 755 "$pkgdir/usr/bin/hashid"
 }
