@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=panoptic
-pkgver=0.r179.770bc70
-pkgrel=1
+pkgver=0.r182.b5eae6b
+pkgrel=2
 groups=('archstrike' 'archstrike-autonomous')
 pkgdesc="A tool that automates the process of search and retrieval of content for common log and config files through LFI vulnerability"
 url="https://github.com/lightos/Panoptic"
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python2')
 makedepends=('git')
 source=("git+https://github.com/lightos/Panoptic.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/Panoptic"
@@ -33,10 +33,11 @@ package() {
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/panoptic"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
 cat > "$pkgdir/usr/bin/panoptic" << EOF
 #!/bin/sh
 cd /usr/share/panoptic/
 python2 panoptic.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/panoptic"
+chmod 755 "$pkgdir/usr/bin/panoptic"
 }
