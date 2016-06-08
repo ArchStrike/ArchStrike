@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+pkgname='lightblue'
+pkgver='0.4'
+pkgrel=1
+pkgdesc='A cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='http://lightblue.sourceforge.net/'
+license=('GPL')
+depends=('python2' 'openobex')
+makedepends=('bluez-libs' 'python2-setuptools')
+source=("http://ufpr.dl.sourceforge.net/sourceforge/lightblue/lightblue-$pkgver.tar.gz")
+sha512sums=('aa1446bacc1a75492e9bd604a41f89b72144642e029066f1d5ab85410f701a3c7e45bad9f4a33be1b3c65ac5525e0c9ab0f0fcaa0481795bc412d9e8bd97dac0')
+
+prepare(){
+  cd "$srcdir"
+  
+  grep -iRl 'python' "$srcdir/lightblue-$pkgver" |
+  xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+
+}
+
+package() {
+  cd "$srcdir/lightblue-$pkgver"
+  
+  python2 setup.py install --root=$pkgdir --optimize=1
+}
+
