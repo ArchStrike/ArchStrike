@@ -2,6 +2,7 @@
 
 buildarch=1
 
+pkgname=routersploit-git
 _pkgname=routersploit
 pkgver=20160607.r266
 pkgrel=1
