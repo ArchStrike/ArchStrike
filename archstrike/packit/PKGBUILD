@@ -12,7 +12,7 @@ source=("http://packit.sourceforge.net/downloads/packit-$pkgver.tgz")
 url='http://packit.sourceforge.net/'
 groups=('archstrike' 'archstrike-networking')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-md5sums=('270594ff97f6c203131136208bb4d2ca')
+sha512sums=('cc7e957d2149edbc92d4d914c9f29aecb7945bab43f2df7435bc4c21a4724f92e9d99990683e4d301384117f79819f87f423eaa28dbef11b37a96c4aa40a1398')
 license=('GPL')
 
 build() {
