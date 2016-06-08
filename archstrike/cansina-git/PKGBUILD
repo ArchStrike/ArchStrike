@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=cansina-git
 pkgver=r139.47f6ac8
-pkgrel=2
+pkgrel=3
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A python-based Web Content Discovery Tool"
 arch=('any')
 url='https://github.com/deibit/cansina'
 license=('GPL3')
-depends=('python2-requests' 'java-environment-common' 'fuzzdb')
+depends=('python2-requests' 'java-environment-common' 'fuzzdb-git')
 makedepends=('git')
 conflicts=('cansina')
 replaces=('cansina')
@@ -39,5 +39,5 @@ cat > "${pkgdir}"/usr/bin/cansina <<EOF
 #!/bin/sh
 python2 /usr/share/cansina-git/./cansina.py "\$@"
 EOF
-chmod +x "${pkgdir}"/usr/bin/cansina
+chmod 755 "${pkgdir}"/usr/bin/cansina
 }
