@@ -5,19 +5,19 @@ buildarch=212
 
 pkgname="${_name}-git"
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight, fast, portable and secure addition to any firewall system or security infrastructure.'
 url='http://portspoof.org/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL2')
-makedepends=('git' 'automake-1.11')
+makedepends=('git' 'automake')
 groups=('archstrike')
 depends=('gcc-libs')
 provides=('portspoof')
 conflicts=('portspoof')
 replaces=('portspoof')
 source=("${_name}::git://github.com/drk1wi/${_name}.git")
-sha256sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
    cd "${srcdir}/${_name}"
