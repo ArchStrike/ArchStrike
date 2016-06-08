@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-number-bytes-human
 pkgver=0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Convert byte count to human readable format."
 arch=('any')
 url='http://search.cpan.org/dist/Number-Bytes-Human/'
