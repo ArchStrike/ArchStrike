@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-frame-simple'
 pkgver='1.06'
-pkgrel=1
+pkgrel=2
 pkgdesc='Frame crafting made easy.'
 arch=('any')
 url='http://search.cpan.org/~gomor/Net-Frame-Simple-1.05/lib/Net/Frame/Simple.pm'

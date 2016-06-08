@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=perl-math-gmp
 pkgver=2.07
-pkgrel=1
+pkgrel=2
 pkgdesc="High speed arbitrary size integer math "
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url='http://search.cpan.org/~TURNSTEP/Math-GMP-2.06/'

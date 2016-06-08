@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname='perl-io-socket'
 pkgver='1.2301'
-pkgrel='2'
+pkgrel='3'
 pkgdesc="IO::Socket - Object interface to socket communications for perl"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('PerlArtistic' 'GPL')

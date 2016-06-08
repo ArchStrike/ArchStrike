@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-net-nslookup
 pkgver=2.04
-pkgrel=1
+pkgrel=2
 pkgdesc='Provide nslookup(1)-like capabilties.'
 arch=('any')
 url='http://search.cpan.org/~darren/Net-Nslookup-2.01/lib/Net/Nslookup.pm'

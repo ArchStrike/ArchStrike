@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-crypt-random
 pkgver=1.25
-pkgrel=3
+pkgrel=4
 pkgdesc="Cryptographically Secure, True Random Number Generator"
 arch=('any')
 url='http://search.cpan.org/~VIPUL/Crypt-Random-1.25/'

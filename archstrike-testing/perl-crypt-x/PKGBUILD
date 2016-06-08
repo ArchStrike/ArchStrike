@@ -7,7 +7,7 @@ buildarch=212
 
 pkgname='perl-crypt-x'
 pkgver='0.035'
-pkgrel=1
+pkgrel=2
 pkgdesc="Cryptographically secure random number generator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://search.cpan.org/~mik/CryptX-0.031/lib/Crypt/PRNG.pm'

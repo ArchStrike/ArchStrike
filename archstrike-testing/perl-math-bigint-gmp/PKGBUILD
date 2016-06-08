@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=perl-math-bigint-gmp
 pkgver=1.51
-pkgrel=1
+pkgrel=2
 pkgdesc="Big integer calculations using the GNU Multiple Precision Arithmetic Library."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://search.cpan.org/~PJACKLAM/Math-BigInt-GMP-1.37/'
