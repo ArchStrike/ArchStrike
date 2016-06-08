@@ -3,8 +3,8 @@
 buildarch=192
 
 pkgname=chromedriver
-pkgver=2.21
-pkgrel=2
+pkgver=2.22
+pkgrel=1
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
 arch=('i686' 'x86_64')
 url="https://sites.google.com/a/chromium.org/chromedriver/"
@@ -13,10 +13,11 @@ depends=('libxi' 'gconf' 'nss')
 optdepends=('chromium' 'google-chrome')
 source_i686=("http://chromedriver.storage.googleapis.com/$pkgver/${pkgname}_linux32.zip")
 source_x86_64=("http://chromedriver.storage.googleapis.com/$pkgver/${pkgname}_linux64.zip")
-sha512sums_i686=('12abab33773707dbd02c398a86cb031c8d55063456a71a7546cd24a4948d67f659bf1ce8badb31243860ab609424ce95efd8aa6637598bb721d64f1c4d1b9ab6')
-sha512sums_x86_64=('962e111fb5845f0df68de5a5362eff65a3d271bf0da1e3e17b386185e16d4c09c5dd0ca74b67aa6db52bd60683c703c24742fbf088d7bb88508bdbfec23aba57')
+sha512sums_i686=('12307d66ce314fc5b71287c1537489831a958e1d37cfb00607434ee35374cb7c165db1e80dcf5b63b09e04e8223945a24b66fdec40ec1f9cf624ed7cd8687fbe')
+sha512sums_x86_64=('2efc0c4160bbb5e78313ca21ed3c0e60028935b0c267543ad06d841dfcfd9c728d371b44880f44a312436a91c92b7be5db83983e6c3ade0588a80eb848b16aad')
 
 package() {
-  mkdir -p "$pkgdir/usr/bin/"
-  install -D -m 755 "$srcdir/$pkgname" "$pkgdir/usr/bin/"
+  cd ${srcdir}
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm755 "$pkgname" "$pkgdir/usr/bin/"
 }
