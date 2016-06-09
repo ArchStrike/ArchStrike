@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=inetsim
 pkgver=1.2.5
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="A software suite for simulating common internet services in a lab environment, e.g. for analyzing the network behaviour of unknown malware samples"
 url="http://www.inetsim.org"
