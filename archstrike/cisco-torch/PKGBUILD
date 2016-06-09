@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=cisco-torch
 pkgver=0.4b
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fingerprinting' 'archstrike-exploit')
 pkgdesc="Cisco Torch mass scanning, fingerprintinging, and exploit tool."
 url="http://www.arhont.com"
