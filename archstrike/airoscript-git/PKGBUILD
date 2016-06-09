@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=airoscript-git
 pkgver=45.0a122ee
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Script to simplify the use of aircrack-ng tools'
 arch=('any')
