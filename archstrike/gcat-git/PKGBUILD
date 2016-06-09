@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=gcat-git
-pkgver=20150924.r27
+pkgver=20160609.r28
 pkgrel=1
 groups=('archstrike' 'archstrike-malware' 'archstrike-exploit')
 arch=('any')
