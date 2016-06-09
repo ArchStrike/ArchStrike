@@ -5,14 +5,14 @@ buildarch=1
 
 pkgname=${_pkgname}-git
 pkgver=20150525.r138.edbdedd
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
 arch=('any')
-groups=('archstrike')
+groups=('archstrike' 'archstrike-wireless')
 url="https://github.com/derv82/${_pkgname}"
 license=('GPL')
-depends=('python2' 'aircrack-ng' 'net-tools' 'wireless_tools' 'which' 'iw')
+depends=('python2' 'aircrack-ng' 'net-tools' 'wireless_tools' 'which' 'iw' 'wireshark-cli')
 makedepends=('git')
 optdepends=('reaver: scan and attack WPS-enabled routers'
             'wireshark-cli: packet sniffing support'
