@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=enum4linux
 pkgver=0.8.9
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
 pkgdesc="A tool for enumerating information from Windows and Samba systems."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
