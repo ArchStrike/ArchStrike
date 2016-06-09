@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-scp
 pkgver=0.10.2
-pkgrel=1
+pkgrel=2
 pkgdesc="scp module for paramiko"
 url="https://github.com/jbardin/scp.py"
 depends=('python2')
