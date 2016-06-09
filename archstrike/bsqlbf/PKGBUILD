@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bsqlbf
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc='Blind SQL Injection Brute Forcer'
 arch=('any')
 url='http://code.google.com/p/bsqlbf-v2/'
