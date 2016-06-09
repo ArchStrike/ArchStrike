@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=batctl
-pkgver=2016.1
-pkgrel=2
+pkgver=2016.2
+pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="B.A.T.M.A.N. advanced control and management tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,7 +12,7 @@ url="http://www.open-mesh.net/"
 depends=('libnl')
 license=('GPL')
 source=("http://downloads.open-mesh.net/batman/releases/batman-adv-$pkgver/batctl-$pkgver.tar.gz")
-sha512sums=('2b590e77b70dd1696527c3e3f7ea18bc4a4939702268a01e79281524e0e8d47a44167a9d558f7ea3ce6f9c20cf9e0405485c8b8b5cd9e2f0e724504cd7b3a9b2')
+sha512sums=('a1b60152f0d0bd24f4b6b05aabf1afce5a2af8c9b5299e4fe25c4358246f375d89fed390e211fb47b0573032cdd96cbdc0d9a67d7f69b7ffd0ed2482499a657d')
 
 build(){
   cd "$srcdir/$pkgname-$pkgver"
