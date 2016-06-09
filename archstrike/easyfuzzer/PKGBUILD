@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='easyfuzzer'
 pkgver='3.6'
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
 pkgdesc='A flexible fuzzer, not only for web, has a CSV output for efficient output analyze (platform independent).'
 arch=('any')
