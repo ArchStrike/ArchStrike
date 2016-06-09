@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=fakeap
 pkgver=0.3.2
-pkgrel=2
+pkgrel=3
 groups=('archstrike')
 pkgdesc="Black Alchemy's Fake AP generates thousands of counterfeit 802.11b access points. Hide in plain sight amongst Fake AP's cacophony of beacon frames."
 url="http://www.blackalchemy.to/project/fakeap/"
