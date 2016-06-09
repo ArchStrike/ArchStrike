@@ -3,7 +3,7 @@
 
 buildarch=1
 
-pkgname=pyhton2-scp
+pkgname=python2-scp
 pkgver=0.10.2
 pkgrel=1
 pkgdesc="scp module for paramiko"
