@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=chaosreader
 pkgver=0.94
-pkgrel=4
+pkgrel=5
 pkgdesc="Fetch application data from snoop or tcpdump logs"
 arch=('any')
 url="http://www.brendangregg.com/chaosreader.html"
