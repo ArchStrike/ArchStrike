@@ -1,0 +1,41 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=backdoorme-git
+pkgver=20160608.r193
+pkgrel=1
+groups=('archstrike' 'archstrike-malware')
+arch=('any')
+pkgdesc="Powerful utility capable of backdooring Unix machines with a slew of backdoors"
+url="https://github.com/Kkevsterrr/backdoorme"
+license=('MIT')
+depends=('python2' 'python2-colorama' 'python2-paramiko' 'python2-scp' 'python2-rpyc')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/Kkevsterrr/backdoorme.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  grep -iRl 'python' $pkgname | xargs sed -i 's|python$|python2|'
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/backdoorme" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 master.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/backdoorme"
+}
