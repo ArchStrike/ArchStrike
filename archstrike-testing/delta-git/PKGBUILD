@@ -3,8 +3,9 @@
 buildarch=1
 
 pkgname=delta-git
+_pkgname=delta
 pkgver=20160608.r5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Track the changes of a website"
@@ -28,14 +29,16 @@ prepare() {
 package() {
   cd $pkgname
   install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
   
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
+  install -Dm644 readme.md "$pkgdir/usr/share/docs/$_pkgname"
 
-cat > "$pkgdir/usr/bin/delta" <<EOF
+cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/bin/sh
-cd /usr/share/$pkgname
+cd /usr/share/$_pkgname
 python2 delta.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/delta"
+chmod 755 "$pkgdir/usr/bin/$_pkgname"
 }
