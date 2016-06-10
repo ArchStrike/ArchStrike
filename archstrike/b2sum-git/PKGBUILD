@@ -2,13 +2,13 @@
 # Contributor: Michael DÃ¼ll <michael.duell@rub.de>
 # Contributor: Dalton Miller
 
-buildarch=192
+buildarch=128
 
 pkgname=b2sum-git
 pkgver=20160610.r51
-pkgrel=1
+pkgrel=2
 pkgdesc="BLAKE2 file hash sum check. Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file"
-arch=('i686' 'x86_64')
+arch=('x86_64')
 url="https://blake2.net/"
 groups=('archstrike')
 license=('custom')
