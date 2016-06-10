@@ -1,0 +1,41 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=delta-git
+pkgver=20160608.r5
+pkgrel=1
+groups=('archstrike' 'archstrike-recon' 'archstrike-scanners')
+arch=('any')
+pkgdesc="Track the changes of a website"
+url="https://github.com/pangbo-1988/data_diff"
+license=('GPL3')
+depends=('python2' 'python2-urllib3' 'python2-elasticsearch' 'python2-mmh3' 'scrapy' 'elasticsearch')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/pangbo-1988/data_diff")
+install=$pkgname.install
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  grep -iRl 'python' $pkgname | xargs sed -i 's|python$|python2|'
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/delta" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 delta.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/delta"
+}
