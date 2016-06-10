@@ -1,24 +1,24 @@
 #Maintainer: ArchStrike <team@archstrike.org>
 
 pkgname=python2-rarfile
-pkgver=2.7
-pkgrel=2
+pkgver=2.8
+pkgrel=1
 pkgdesc="RAR archive reader for Python"
 url="https://github.com/markokr/rarfile"
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('ISC')
 arch=('any')
-source=("https://pypi.python.org/packages/source/r/rarfile/rarfile-$pkgver.tar.gz")
-sha512sums=('39827329644a89ac9721a52bb591be9a8921e919e1c0f2434df3d467d52b49aac4b18e27fdd4e40b5dd21b0df1ced495d42afe69331392ffadd9ac1fc857db56')
+source=("https://github.com/markokr/rarfile/archive/rarfile_${pkgver/./_}.tar.gz")
+sha512sums=('bcc26566f716cf316d94d7743c5e6b9ed279fdb13f1787ef9fc0d9899ea2ff55428b091fe87570c592ee11593ff74cae365ad7f2c0439372ffcf4cd331f35b08')
 
 build() {
-    cd $srcdir/rarfile-$pkgver
+    cd $srcdir/rarfile-rarfile_${pkgver/./_}
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/rarfile-$pkgver
+    cd $srcdir/rarfile-rarfile_${pkgver/./_}
     python2 setup.py install --root="$pkgdir" --optimize=1 
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
