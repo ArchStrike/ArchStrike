@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pcredz
 pkgver=1.0.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A tool that extracts credit card numbers, NTLM(DCE-RPC, HTTP, SQL, LDAP, etc), Kerberos (AS-REQ Pre-Auth etype 23), HTTP Basic, SNMP, POP, SMTP, FTP, IMAP, and more from a pcap file or from a live interface."
 arch=('any')
@@ -23,10 +23,15 @@ package() {
   cd "$srcdir/PCredz-$pkgver"
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/share/pcredz"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
   install -dm755 "$pkgdir/usr/bin"
 
-  install -Dm644 Readme.md "$pkgdir/usr/share/$pkgname/Readme.md"
-  install -Dm755 Pcredz "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 Readme.md "$pkgdir/usr/share/$pkgname"
+  install -Dm755 Pcredz "$pkgdir/usr/share/$pkgname"
 
+cat > "$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/sh
+python2 /usr/share/$pkgname/Pcredz "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/$pkgname"
 }
