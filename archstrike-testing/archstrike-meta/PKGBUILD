@@ -1,15 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
-
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64')
 url='https://www.archstrike.org/'
 license=('GPL')
-groups=('archstrike')
+groups=('archstrike' 'archstrike-meta')
 
 package_archstrike-meta-upstream-all() {
   pkgdesc='Meta package for ArchStrike includes upstream packages that are security related'
