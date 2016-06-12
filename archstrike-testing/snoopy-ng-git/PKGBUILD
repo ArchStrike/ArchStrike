@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=snoopy-ng-git
 _pkgname=snoopy-ng
-pkgver=r118.1ce0a3c
+pkgver=r128.eac73f5
 pkgrel=1
 groups=('archstrike' 'archstrike-drone' 'archstrike-exploit')
 pkgdesc="A distributed, sensor, data collection, interception, analysis, and visualization framework."
