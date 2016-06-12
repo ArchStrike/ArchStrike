@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=snmp-brute-git
-pkgver=20150218.r11
-pkgrel=3
+pkgver=20151002.r15
+pkgrel=1
 groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc="SNMP brute force, enumeration, CISCO config downloader and password cracking script."
 url="https://github.com/SECFORCE/SNMP-Brute"
