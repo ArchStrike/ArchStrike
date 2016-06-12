@@ -3,28 +3,28 @@
 buildarch=1
 
 pkgname=ufonet
-pkgver=0.3b
-pkgrel=2
+pkgver=0.6
+pkgrel=1
 pkgdesc="A tool designed to launch DDoS attacks against a target, using 'Open Redirect' vectors on third party web applications, like botnet."
 arch=('any')
-url="http://ufonet.sourceforge.net/"
+url="https://ufonet.03c8.net/"
 license=('GPL3')
 groups=('archstrike' 'archstrike-ddos')
-depends=('python2-pycurl')
-source=("http://downloads.sourceforge.net/project/ufonet/ufonet-$pkgver.zip")
-sha512sums=('85965e285cf58a80203d5a425ab548a7ecd912638ad9385fa892f07cf787a8092c391d17e161ad7071703ef72f8264683df623fd30a33f707d607c06f82cb533')
+depends=('python2-pycurl' 'python2-geoip')
+source=("https://ufonet.03c8.net/ufonet/ufonet-v0.6.tar.gz")
+sha512sums=('db9909c5a469c37c2920ae1106608e8190926bed61479551025601a6cba71ba4ff99161343ebcd1372cd4bedc6c417a60eafc199679b87e7f6a1e3fbfd4d6148')
+
+prepare() {
+  grep -iRl 'python' $srcdir/$pkgname/$pkgname | xargs sed -i 's|python$|pyhton2|'
+}
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver/$pkgname"
+  cd "$srcdir/$pkgname/$pkgname"
   install -dm755 "$pkgdir/usr/bin/"
   install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -Dm755 *.py "$pkgdir/usr/share/$pkgname/"
-  install -Dm755 ufonet "$pkgdir/usr/share/$pkgname/"
-  install -Dm644 README "$pkgdir/usr/share/$pkgname/"
-  install -Dm644 zombies.txt "$pkgdir/usr/share/$pkgname/"
-  sed -i 's|env python|env python2|' $pkgdir/usr/share/ufonet/ufonet $pkgdir/usr/share/ufonet/main.py $pkgdir/usr/share/ufonet/update.py $pkgdir/usr/share/ufonet/options.py
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
 
-cat >"$pkgdir/usr/bin/ufonet" <<EOF
+cat > "$pkgdir/usr/bin/ufonet" <<EOF
 #!/bin/sh
 cd /usr/share/ufonet
 python2 ufonet "\$@"
