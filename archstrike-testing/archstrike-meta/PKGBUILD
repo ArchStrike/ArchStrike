@@ -99,5 +99,6 @@ package_archstrike-meta-upstream-all() {
     capstone
     keystone
     sqlmap
+    veracrypt
   )
 }
