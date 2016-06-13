@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=commix-git
-pkgver=20160612.r579
+pkgver=20160613.r581
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Find and exploit a command injection vulnerability in a certain vulnerable parameter or string."
@@ -36,5 +36,5 @@ cat > "$pkgdir/usr/bin/commix" <<EOF
 cd /usr/share/$pkgname
 python2 commix.py "\$@"
 EOF
-chmod +x "$pkgdir/usr/bin/commix"
+chmod 755 "$pkgdir/usr/bin/commix"
 }
