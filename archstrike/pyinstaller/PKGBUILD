@@ -4,15 +4,15 @@ buildarch=1
 
 pkgname=pyinstaller
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="A program that converts (packages) Python programs into stand-alone executables, under Windows, Linux, Mac OS X, Solaris and AIX."
 arch=('any')
 url="http://www.pyinstaller.org/"
 license=('GPL')
-depends=('python2')
+depends=('python2' 'lib32-zlib')
 source=("https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-$pkgver.tar.gz")
-md5sums=('248531f6fc94b0ffb02473321496d6d0')
+sha512sums=('aad29298b3342ccf94c7234ae6c81ef97ed3bfdbd1b696acf087d08bc5c6536b066b7f2012d7cdd1c47c465dfafd886290be44234fb86935eea56f015add9ea7')
 options=('!strip' '!emptydirs')
 
 prepare() {
@@ -31,9 +31,9 @@ package() {
   install -dm 755 "$pkgdir/usr/share/doc/pyinstaller"
   install -dm 755 "$pkgdir/usr/share/pyinstaller"
 
-  mv "doc/Manual.pdf" "$pkgdir/usr/share/doc/pyinstaller"
+  install -Dm644 "doc/Manual.pdf" "$pkgdir/usr/share/doc/pyinstaller"
   rm -rf "doc"
-  cp -a --no-preserve=ownership . "$pkgdir/usr/share/pyinstaller"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/pyinstaller"
 
   ln -s "/usr/share/pyinstaller/pyinstaller.py" "$pkgdir/usr/bin/pyinstaller"
 }
