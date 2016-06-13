@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=plaso
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A Python-based backend engine for the tool log2timeline."
 arch=('any')
 url='https://github.com/log2timeline/plaso'
 license=('APACHE')
-depends=('python2-six' 'python2-psutil' 'python2-dpkt' 'python2-dateutil' 'binplist' 'python2-bencode' 'python2-pyparsing' 'python2-pytz' 'python2-protobuf' 'python2-hachoir-core'
+depends=('python2-six' 'python2-psutil' 'python2-dpkt-git' 'python2-dateutil' 'binplist' 'python2-bencode' 'python2-pyparsing' 'python2-pytz' 'python2-protobuf' 'python2-hachoir-core'
          'python2-hachoir-metadata' 'python2-hachoir-parser' 'dfvfs' 'sqlite3' 'python2-yaml' 'sleuthkit-archstrike' 'ipython2' 'pytsk' 'libbde' 'libesedb' 'libevt' 'libevtx' 'libewf' 'libfwsi'
          'liblnk' 'libmsiecf' 'libolecf' 'libqcow' 'libregf' 'libsmdev' 'libsmraw' 'libvhdi' 'libvmdk' 'libvshadow')
 makedepends=('python2-setuptools')
