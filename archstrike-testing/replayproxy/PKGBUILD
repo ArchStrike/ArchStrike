@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=replayproxy
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Forensic tool to replay web-based attacks (and also general HTTP traffic) that were captured in a pcap file"
 url="https://code.google.com/p/replayproxy/"
 arch=('any')
 license=('BSD')
-depends=('python2' 'python2-dpkt' 'python2-pynids')
+depends=('python2' 'python2-dpkt-git' 'python2-pynids')
 source=("https://replayproxy.googlecode.com/files/replayproxy%201.1.zip")
 md5sums=('ddb042fba5180656abd5151dbdc48713')
 
