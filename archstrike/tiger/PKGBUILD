@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=tiger
 pkgver=3.2.3
-pkgrel=7
+pkgrel=8
 groups=('archstrike' 'archstrike-scanners' 'archstrike-autonomous')
 pkgdesc="A security scanner that checks computer for known problems"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -22,7 +22,7 @@ source=("http://download.savannah.gnu.org/releases/${pkgname}/${pkgname}-${pkgve
         "${pkgname}.png")
 sha512sums=('d0b8326ff0a0159aa99e794f114769c56d520c35a48c16d53d2ca90132ac32614fe84ae661f9ad61aa943ce8171b6051a0495e838e19447e1c34f26d5b730d73'
             '787a0db0d4dd16897a4a0e1f7b5095c27d298a4f0b667a633bbdcd660232c46a3cc2f0c95177cdbb1debb6a2b83d77fbc3fbc2ea2757cdfd3360f2fc2dc1707b'
-            '213c0bd9ff98ffbcefa1813f4b1a894cb19a81ce62030af67b815623cec96ad7884764ef99a8473244e8d11ff7d89b13c9765139c6c5e6745cd356e6a1eb3e55'
+            '4e8fe47179257d5d63409d635e1952a06448c2b356c5efae5ccaa20873c872d886f7d0c65a6030fce40264836460bda791cc827119fadbad12368d5b187df6f3'
             '8207fa992a6e66df9e5f454e4375513e60acba5f4289ae641cc2c494cfe70e46293f865a1c25e9af173fb94489367ef6edc48cd294be73d66edf92c34efd1ea3')
 
 prepare() {
