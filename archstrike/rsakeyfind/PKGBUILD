@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname='rsakeyfind'
 pkgver='1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool to find RSA key in RAM.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://citp.princeton.edu/memory/code/'
@@ -13,8 +13,8 @@ makedepends=('make')
 groups=('archstrike' 'archstrike-forensics' 'archstrike-crackers')
 source=("http://citp.princeton.edu/memory-content/src/rsakeyfind-$pkgver.tar.gz"
         "rsakeyfind.patch")
-md5sums=('f9b44701baf001d1fea62c66edba8772'
-         '1788696dcc8d4ee55dd0139c04673d7f')
+sha512sums=('a92308518d3d7759b36dd452edb9c5f983fb239841f05bdf707aa944edb6aa3fb74187c310b830e96045812686b2bffe93395badc9a428bb40bbee90d9bef55c'
+            '25663b588bb332393710baa3d16acb38c13c266d76b6948bf9c9298a382634f013a895d7609259ec8072f5c0ac95f77f8946f4d5e1897c761b30df14300331f8')
 
 prepare() {
   cd "$srcdir/rsakeyfind"
@@ -31,6 +31,6 @@ build() {
 package() {
   cd "$srcdir/rsakeyfind"
 
-  install -D -m755 "rsakeyfind" "$pkgdir/usr/bin/rsakeyfind"
-  install -D -m644 "LICENSE" "$pkgdir/usr/share/licenses/rsakeyfind/LICENSE"
+  install -Dm755 "rsakeyfind" "$pkgdir/usr/bin/rsakeyfind"
+  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/rsakeyfind/LICENSE"
 }
