@@ -5,7 +5,7 @@ buildarch=1
 pkgname=rfidiot-git
 _gitname=RFIDIOt
 pkgver=20160514.r73
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="An open source python library for exploring RFID devices."
@@ -40,6 +40,8 @@ package() {
   rm -f *.sh
 
   # Strip extensions and add the 'rfidiot-' prefix.
+  install -Dm755 rfidiot-cli.py "$pkgdir/usr/bin/rfidiot-cli"
+  rm rfidiot-cli.py
   for file in *.py ; do
     # Remove extension. Add prefix.
     new_file=rfidiot-$(basename "${file%.*}")
