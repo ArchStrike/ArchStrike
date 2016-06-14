@@ -21,7 +21,7 @@ package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   if [[ $CARCH == arm* ]] ; then
       gem install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
-  rm "$pkgdir/$_gemdir/extensions/$CARCH-linux/2.3.0/$_pkgname-$pkgver/gem_make.out"
+      find $pkgdir -type f -iname gem_make.out |xargs rm -rf
   else
       gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
       find $pkgdir -type f -iname gem_make.out |xargs rm -rf
