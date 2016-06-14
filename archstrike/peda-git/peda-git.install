@@ -1,8 +1,0 @@
-post_install(){
-  echo 'Now add "/usr/share/peda-git/peda.py" to ~/.gdbinit by running:'
-  echo '    echo "source /usr/share/peda-git/peda.py" >> ~/.gdbinit'
-}
-
-post_upgrade(){
-  post_install
-}
