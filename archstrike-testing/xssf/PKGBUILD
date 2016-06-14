@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=xssf
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Cross-Site Scripting Framework for metasploit"
 arch=('any')
 url='https://code.google.com/p/xssf/'
 license=('BSD')
-depends=('java-environment' 'ruby1.9')
+depends=('java-environment' 'ruby')
 source=("https://xssf.googlecode.com/files/XSSF-$pkgver.zip")
 sha512sums=('d8105c844f36260f4f91959c3c224f5a9900e0172ff2e394cb5fd90df46a74e6f0ddb53f29fb4fd15aaa68c269376e8342cdfd98ed758f30b3b9bb132946bf3b')
 
