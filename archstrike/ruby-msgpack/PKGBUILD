@@ -4,25 +4,27 @@ buildarch=212
 
 _pkgname=msgpack
 pkgname=ruby-$_pkgname
-pkgver=0.7.4
+pkgver=0.7.6
 pkgrel=1
 pkgdesc='MessagePack, a binary-based efficient data interchange format.'
-arch=(armv6h armv7h i686 x86_64)
+arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/msgpack/msgpack-ruby'
 license=('Apache')
-depends=(ruby)
+depends=('ruby')
 options=(!emptydirs)
-source=(https://rubygems.org/downloads/$_pkgname-$pkgver.gem)
-noextract=($_pkgname-$pkgver.gem)
-sha512sums=('4e78df4abe0f9c91a67f66108ee4e8420651d8d23a6ec7de9241138fd1065ce723ad68648c0bd4572801f800363e7f1f34362312d8f861857ffcdfc7accd950a')
+source=("https://rubygems.org/downloads/$_pkgname-$pkgver.gem")
+noextract=("$_pkgname-$pkgver.gem")
+sha512sums=('9d30533175118c08f671015a99664e4798c845f63595495933b42f0fa95c160a6708e472da70baeb64537a704dd4768cdc9ab99a19045daabd92555b21f4e389')
 
 package() {
   cd "$srcdir"
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
   if [[ $CARCH == arm* ]] ; then
-      gem install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
+      gem install --no-rdoc --no-ri --no-user-install --ignore-dependencies -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/extensions/$CARCH-linux/2.3.0/$_pkgname-$pkgver/gem_make.out"
   else
       gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
+  rm "$pkgdir/$_gemdir/extensions/$CARCH-linux/2.3.0/$_pkgname-$pkgver/gem_make.out"
   fi
 
   rm "$pkgdir/$_gemdir/cache/$_pkgname-$pkgver.gem"
