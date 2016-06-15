@@ -4,17 +4,17 @@ buildarch=1
 
 pkgname=pipal
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A password analyser"
 url="http://www.digininja.org/projects/pipal.php"
 arch=('any')
 license=('GPL3')
-depends=('ruby1.9')
+depends=('ruby')
 source=("http://www.digininja.org/files/pipal_$pkgver.tar.bz2"
         require.patch)
-md5sums=('9611ea004e612900c6a40e069c9669f4'
-         '228d9c75822474b92523cc01f4911e59')
+sha512sums=('683b83863fae0650c2e1071418d09152419dfbe25909053a3677574fcf4e1251c3bb0862d762fc35b44035e8b541302e871e443538588a185341e09d94169237'
+            '6c88204ccfc4eb4229d6742281b07cd3214dc0ddfc774bf931b703dfd0f83b0969a83d0a18c15b26970878fd7d9176b95b102308efc72fd7c6b316bb743725e3')
 
 prepare() {
   cd "$srcdir/pipal"
@@ -28,11 +28,11 @@ package() {
   install -dm755 "$pkgdir/usr/share/pipal"
   install -dm755 "$pkgdir/usr/bin"
 
-  cp -a * "$pkgdir/usr/share/pipal"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/pipal"
 
-  cat > "$pkgdir/usr/bin/pipal" << EOF
+cat > "$pkgdir/usr/bin/pipal" << EOF
 #!/bin/sh
-ruby-1.9 /usr/share/pipal/pipal.rb "\$@"
+ruby /usr/share/pipal/pipal.rb "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/pipal"
+chmod 755 "$pkgdir/usr/bin/pipal"
 }
