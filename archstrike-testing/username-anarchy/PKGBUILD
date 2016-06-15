@@ -4,28 +4,28 @@ buildarch=1
 
 pkgname=username-anarchy
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-autonomous')
 pkgdesc="Tools for generating usernames when penetration testing"
 url="http://www.morningstarsecurity.com/research/username-anarchy"
 arch=('any')
 license=('GPL3')
-depends=('ruby1.9')
-source=("https://github.com/urbanadventurer/username-anarchy/archive/master.zip")
-md5sums=('8b726be53831c49c5117b4bdd1817858')
+depends=('ruby')
+source=("https://github.com/urbanadventurer/username-anarchy/archive/version$pkgver.tar.gz")
+sha512sums=('6f29cf435ac01eef3d0eca45813e31ad2763577821fb1cfd5bfb23c9d569d205b6a540789dff93719aa823e47b6462c0edfc9d59ae54ec9dccc8c803dc8d70d9')
 
 package() {
-  cd "$srcdir/username-anarchy-master"
+  cd "$srcdir/username-anarchy-version$pkgver"
 
   install -dm755 "$pkgdir/usr/share/username-anarchy"
   install -dm755 "$pkgdir/usr/bin"
 
-  cp -a * "$pkgdir/usr/share/username-anarchy"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/username-anarchy"
 
 cat > "$pkgdir/usr/bin/username-anarchy" << EOF
 #!/bin/sh
 cd /usr/share/username-anarchy
-ruby-1.9 username-anarchy "\$@"
+ruby username-anarchy "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/username-anarchy"
+chmod 755 "$pkgdir/usr/bin/username-anarchy"
 }
