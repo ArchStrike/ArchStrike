@@ -5,21 +5,23 @@ buildarch=1
 
 pkgname=origami
 pkgver=1.2.7
-pkgrel=2
+pkgrel=3
 pkgdesc='Aims at providing a scripting tool to generate and analyze malicious PDF files.'
 groups=('archstrike' 'archstrike-malware')
-arch=(any)
+arch=('any')
 url='http://code.google.com/p/origami-pdf'
-license=(LGPL3)
-depends=(ruby1.9)
-options=(!emptydirs)
-source=(https://rubygems.org/downloads/$pkgname-$pkgver.gem)
-noextract=($pkgname-$pkgver.gem)
+license=("LGPL3")
+depends=("ruby")
+options=("!emptydirs")
+install="$pkgname.install"
+source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
+noextract=("$pkgname-$pkgver.gem")
+depends=('ruby' 'ruby-gtk2')
 sha512sums=('e01a4993768ea109a11f06850f933dc57dbc3191b5a7bcab02978ca331a5e69df7c4addec522dbbbb72e7ae1feb7f75a97c8b53842cb13cf57cf4cba57e6441c')
 
 package() {
-  local _gemdir="$(ruby-1.9 -e'puts Gem.default_dir')"
-  gem-1.9 install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $pkgname-$pkgver.gem
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $pkgname-$pkgver.gem
   rm "$pkgdir/$_gemdir/cache/$pkgname-$pkgver.gem"
   install -D -m644 "$pkgdir/$_gemdir/gems/$pkgname-$pkgver/COPYING.LESSER" "$pkgdir/usr/share/licenses/$pkgname/COPYING.LESSER"
 }
