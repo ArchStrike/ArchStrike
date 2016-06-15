@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=$_pkgname-git
 pkgver=20160613.r283
-pkgrel=1
+pkgrel=2
 pkgdesc="Snort rule management"
 arch=('any')
 url="https://github.com/shirkdog/pulledpork"
@@ -27,14 +27,17 @@ package() {
 
   install -dm755 "$pkgdir/usr/share/$pkgname/"
   install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/etc/pulledpork"
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+  cd "$pkgdir/usr/share/$pkgname/etc/"
+  cp -a --no-preserve=ownership * "$pkgdir/etc/pulledpork"
 
 cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/bin/sh
 cd /usr/share/$pkgname
 perl pulledpork.pl "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/$_pkgname"
+chmod 755 "$pkgdir/usr/bin/$_pkgname"
 }
 
