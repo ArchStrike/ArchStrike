@@ -1,11 +1,11 @@
 diff --git a/lib/libcryptsetup.h b/lib/libcryptsetup.h
-index bf223a2..d40d5d0 100644
+index a668a50..1c25806 100644
 --- a/lib/libcryptsetup.h
 +++ b/lib/libcryptsetup.h
-@@ -752,6 +752,8 @@ int crypt_keyslot_destroy(struct crypt_device *cd, int keyslot);
- #define CRYPT_ACTIVATE_SAME_CPU_CRYPT (1 << 6)
- /** use submit_from_crypt_cpus for dm-crypt */
- #define CRYPT_ACTIVATE_SUBMIT_FROM_CRYPT_CPUS (1 << 7)
+@@ -758,6 +758,8 @@ int crypt_keyslot_destroy(struct crypt_device *cd, int keyslot);
+ #define CRYPT_ACTIVATE_RESTART_ON_CORRUPTION (1 << 9)
+ /** dm-verity: ignore_zero_blocks - do not verify zero blocks */
+ #define CRYPT_ACTIVATE_IGNORE_ZERO_BLOCKS (1 << 10)
 +/** key slot is a nuke, will wipe all keyslots */
 +#define CRYPT_ACTIVATE_NUKE (1 << 30)
  

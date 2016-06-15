@@ -1,8 +1,8 @@
 diff --git a/lib/luks1/keymanage.c b/lib/luks1/keymanage.c
-index d1d16cf..078d8e2 100644
+index a3cea58..2de8f5e 100644
 --- a/lib/luks1/keymanage.c
 +++ b/lib/luks1/keymanage.c
-@@ -953,6 +953,25 @@ static int LUKS_open_key(unsigned int keyIndex,
+@@ -964,6 +964,25 @@ static int LUKS_open_key(unsigned int keyIndex,
  
  	if (!r)
  		log_verbose(ctx, _("Key slot %d unlocked.\n"), keyIndex);
