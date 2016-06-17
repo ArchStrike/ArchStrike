@@ -1,0 +1,43 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=brutexss-git
+pkgver=20160617.r43
+pkgrel=1
+groups=('archstrike' 'archstrike-exploit' 'archstrike-webapps')
+arch=('any')
+pkgdesc="Cross-Site Scripting BruteForcer"
+url="https://github.com/shawarkhanethicalhacker/BruteXSS"
+license=('GPL3')
+depends=('python2' 'python2-colorama' 'python2-mechanize')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/shawarkhanethicalhacker/BruteXSS.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd $pkgname
+  sed -i 's|python$|python2|' brutexss.py
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+
+  cp -a --no-preserve=ownership brutexss.py wordlist.txt "$pkgdir/usr/share/$pkgname"
+  install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname"
+
+cat > "$pkgdir/usr/bin/brutexss" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 brutexss.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/brutexss"
+}
