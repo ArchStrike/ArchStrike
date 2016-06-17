@@ -4,20 +4,23 @@ buildarch=212
 
 pkgname=w3af
 pkgver=1.6.54
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="Web Application Attack and Audit Framework"
-arch=('any')
+arch=('all')
 url='http://w3af.sourceforge.net'
 license=('GPL')
 depends=(
-  'graphviz' 'gtk2' 'halberd' 'libxml2' 'libxslt' 'pdfminer'
-  'pygtk' 'pygtksourceview2' 'python2-beautifulsoup3' 'python2-chardet' 'python2-clamd'
-  'python2-cluster' 'python2-dartspylru-git' 'python2-esmre' 'python2-futures'
-  'python2-gitpython' 'python2-guess-language' 'python2-lxml' 'python2-msgpack'
-  'python2-nltk' 'python2-ntlm' 'python2-phply' 'python2-pip' 'python2-pybloomfiltermmap'
-  'python2-pygithub' 'python2-pyopenssl' 'python2-pysqlite' 'python2-stopit'
-  'python2-tblib' 'python2-xdot' 'scapy')
+  'graphviz' 'gtk2' 'halberd' 'libxml2' 'libxslt' 'mitmproxy' 'pdfminer'
+  'pygtk' 'pygtksourceview2' 'python2-pyasn1' 'python2-beautifulsoup3'
+  'python2-chardet' 'python2-clamd' 'python2-cluster' 'python2-dartspylru-git'
+  'python2-esmre' 'python2-flask' 'python2-futures' 'python2-gitpython'
+  'python2-gobject' 'python2-guess-language' 'python2-jinja' 'python2-lxml'
+  'python2-markdown' 'python2-msgpack' 'python2-ndg-httpsclient' 'python2-nltk'
+  'python2-ntlm' 'python2-phply' 'python2-pip' 'python2-psutil'
+  'python2-pybloomfiltermmap' 'python2-pygithub' 'python2-pyopenssl'
+  'python2-pysqlite' 'python2-ruamel.ordereddict' 'python2-stopit'
+  'python2-tblib' 'python2-vulndb-git' 'python2-xdot' 'pywebkitgtk' 'scapy')
 depends_x86_64+=('lib32-glibc')
 makedepends=('git')
 options=('!strip')
