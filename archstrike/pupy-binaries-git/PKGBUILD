@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=pupy-binaries-git
-pkgver=20160508.r9
-pkgrel=2
+pkgver=20160618.r10
+pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="Precompiled templates for pupy"
 arch=('any')
