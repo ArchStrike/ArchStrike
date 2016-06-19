@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=rspet-git
-pkgver=20160601.r87
+pkgver=20160615.r95
 pkgrel=1
 groups=('archstrike' 'archstrike-malware' 'archstrike-exploit')
 arch=('any')
@@ -15,6 +15,11 @@ makedepends=('git')
 source=("$pkgname::git+https://github.com/panagiks/RSPET.git")
 sha512sums=('SKIP')
 
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
 package() {
   cd $pkgname
   install -dm755 "$pkgdir/usr/share/$pkgname"
@@ -24,14 +29,14 @@ package() {
 cat > "$pkgdir/usr/bin/rspet-server" <<EOF
 #!/bin/sh
 cd /usr/share/$pkgname/Server
-python RSPET_server.py "\$@"
+python rspet_server.py "\$@"
 EOF
 chmod 755 "$pkgdir/usr/bin/rspet-server"
 
 cat > "$pkgdir/usr/bin/rspet-client" <<EOF
 #!/bin/sh
 cd /usr/share/$pkgname/Client
-python RSPET_client.py "\$@"
+python rspet_client.py "\$@"
 EOF
 chmod 755 "$pkgdir/usr/bin/rspet-client"
 
