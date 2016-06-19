@@ -2,7 +2,7 @@
 
 pkgname=changeme
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A default credential scanner"
 arch=('any')
@@ -28,7 +28,7 @@ package() {
 cat > $pkgdir/usr/bin/$pkgname <<EOF
 #!/bin/sh
 cd /usr/share/$pkgname
-python2 ./$pkgname.py "\$@"
+python2 $pkgname.py "\$@"
 EOF
-chmod +x $pkgdir/usr/bin/$pkgname
+chmod 755 $pkgdir/usr/bin/$pkgname
 }
