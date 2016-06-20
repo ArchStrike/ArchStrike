@@ -1,0 +1,23 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=metasploit-payload-creator
+pkgver=1.4.2
+pkgrel=1
+groups=('archstrike' 'archstrike-malware')
+arch=('any')
+pkgdesc="A wrapper to generate multiple types of payloads, based on users choice."
+url="https://github.com/g0tmi1k/mpc"
+license=('MIT')
+depends=('bash' 'metasploit')
+source=("https://github.com/g0tmi1k/mpc/archive/v${pkgver}.tar.gz")
+sha512sums=('e8639c6f148e9d841bb72d23191989032a5503a5be8ab18f6e3c50fea5a2083232449b69756019414aa64e08d79dab9beaa60c35019023fd366ad35cce88efa6')
+
+package() {
+  cd mpc-$pkgver
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm755 mpc.sh "$pkgdir/usr/bin/metasploit-payload-creator"
+}
