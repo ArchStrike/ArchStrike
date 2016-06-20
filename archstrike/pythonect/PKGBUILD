@@ -3,8 +3,13 @@
 buildarch=1
 
 pkgname=pythonect
-pkgver=0.6.0
+# OLD VERSION NOTE:
+#  0.6.0 includes changes to the .parse() that appear to break it, the return values should be 
+#  a list/graph and instead return 1, this functionality breaks other packages that depend on
+#  pythonect (e.g. hackersh) due to this I've rolled the version back to 0.5.0
+pkgver=0.5.0
 pkgrel=1
+epoch=1
 pkgdesc="A general-purpose dataflow programming language written in Python"
 arch=('any')
 url="http://www.pythonect.org/"
@@ -13,7 +18,7 @@ depends=('python2-ply')
 makedepends=('git' 'python2-distribute')
 options=('!emptydirs')
 source=("https://pypi.python.org/packages/source/P/Pythonect/Pythonect-$pkgver.tar.gz")
-sha512sums=('ebfac2d200b196c2be8e931f2a078fb2afdb8fb9ce7d8639e56c32da01ec36a49fd1f29e0280fa57977823450b9e4f4649ced43ce7b6cc878543d00fc8392e42')
+sha512sums=('f33ec18f4511140920e11e46a8c5bcc5847da2d8033b1ed71c29a17d999100af204fefbc3434cdd467c17138eb3f8a85b69ab29a4ff15e524422724e79f6774f')
 
 package() {
   cd "$srcdir/Pythonect-$pkgver"
