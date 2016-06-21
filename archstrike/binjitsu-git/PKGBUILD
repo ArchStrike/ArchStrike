@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
 pkgname=binjitsu-git
-pkgver=20160614.r2485
+pkgver=20160621.r2486
 pkgrel=1
 pkgdesc='binjitsu is a CTF framework and exploit development library. Written in Python, it is designed for rapid prototyping and development, and intended to make exploit writing as simple as possible.'
 url='https://github.com/binjitsu/binjitsu/'
