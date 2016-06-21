@@ -3,20 +3,21 @@
 buildarch=212
 
 pkgname=libsoc
-pkgver=0.8.1
+pkgver=0.8.2
 pkgrel=1
 pkgdesc="a C library for interfacing with common SoC peripherals through generic kernel interfaces"
 arch=('x86_64' 'i686' 'armv6h' 'armv7h')
 url="https://github.com/jackmitch/libsoc"
 depends=('glibc')
+makedepends=('autoconf')
 install=$pkgname.install
 license=(custom)
 source=("https://github.com/jackmitch/libsoc/archive/$pkgver.tar.gz")
-sha512sums=('98b06d2e3d6a2dfb3f73bca2a17f42e3dcfacacd98b54387e792d3e653241339efcade68a443c0a6789bc38c84b22cfec4be6bf15e5022a4192015d2e462493e')
+sha512sums=('56c589d3ffb6b1803c337b4a1a2faf81b407deacd3cb68f7659fea68c7c085b44522206cfb06a811478ac2dca6c9283f16c8d798f513bd8f9956b32215b1e049')
 
 build() {
   cd $pkgname-$pkgver
-  ./autogen.sh
+  autoreconf -i 
   ./configure --prefix=/usr --enable-debug
   make
 }
@@ -24,6 +25,6 @@ build() {
 package() {
   cd $pkgname-$pkgver
   make DESTDIR="$pkgdir/" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
 }
 
