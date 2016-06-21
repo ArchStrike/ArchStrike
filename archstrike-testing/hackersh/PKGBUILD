@@ -4,18 +4,18 @@ buildarch=1
 
 pkgname=hackersh
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-misc' 'archstrike-autonomous')
-pkgdesc="A shell for with Pythonect-like syntax, including wrappers for commonly used security tools"
+pkgdesc="A shell (command interpreter) written in Python with Pythonect-like syntax, builtin security commands, and out of the box wrappers for various security tools."
 arch=('any')
 url='http://www.hackersh.org/'
 license=('GPL')
-depends=('python2' 'pythonect' 'python2-prettytable' 'python2-netaddr')
+depends=('pythonect' 'python2-prettytable' 'python2-netaddr' 'python2-networkx')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/source/H/Hackersh/Hackersh-$pkgver.tar.gz")
-md5sums=('6343e39b48980ee224ba0f8dd55678e0')
+source=("https://github.com/ikotler/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('92971829518e0eaca4d2a8beb1e37c2cc9aa51cab8d25e7a16561e84d5e50021a6d2a95b1fc7afec3b786c80d45749aad4757aa6d8a21cbde78da47270025d24')
 
 package() {
-  cd "$srcdir/Hackersh-$pkgver"
+  cd "$srcdir/$pkgname-$pkgver"
   python2 setup.py install --root="$pkgdir/" --optimize=1
 }
