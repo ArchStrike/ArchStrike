@@ -1,10 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
+buildarch=1
+
 _gemname=net-dns
 pkgname=ruby-${_gemname}
 pkgver=0.8.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Pure Ruby DNS library, with a clean OO interface and an extensible API'
 url='https://github.com/bluemonk/net-dns'
 arch=('any')
