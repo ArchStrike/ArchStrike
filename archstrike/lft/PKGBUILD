@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=lft
-pkgver=3.75
+pkgver=3.76
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A layer four traceroute implementing numerous other features"
@@ -12,7 +12,7 @@ license=('custom')
 url="http://pwhois.org/lft/"
 depends=('libpcap')
 source=("http://pwhois.org/dl/index.who?file=lft-$pkgver.tar.gz" "define_default_source.patch")
-sha512sums=('92f2e87c3c2f9f511bee77c39b7260b08c95171560c158bc4dcabe4017c54a5a708a96e24bbcd424c2cb9685ae1d981c13e746622b6c197a86199a8e54dfca25'
+sha512sums=('b641a388293f6877b992089a9ab0cbe93f598aca6b181588e77823ba30f54692ebb8651f8aed5700ba84d2e083f0979885552e637f7928d1c7fb7b075c6630ff'
             '7b0f3c1a588ff3a55fa949039102a388a77dc12b276023501bd46bef9a44f747423919cac5322596ee6eb4360972ac5ca543c98b12211e65e94f7cfd7f6820bb')
 
 prepare() {
