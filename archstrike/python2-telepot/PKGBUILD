@@ -3,10 +3,10 @@
 
 pkgname=python2-telepot
 pkgver=8.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python framework for Telegram Bot API"
 url="https://github.com/nickoala/telepot"
-depends=('python2')
+depends=('python2' 'python2-urllib3')
 makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
