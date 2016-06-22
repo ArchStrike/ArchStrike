@@ -5,7 +5,7 @@
 buildarch=128
 
 pkgname=b2sum-git
-pkgver=20160619.r55
+pkgver=20160622.r57
 pkgrel=1
 pkgdesc="BLAKE2 file hash sum check. Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file"
 arch=('x86_64')
