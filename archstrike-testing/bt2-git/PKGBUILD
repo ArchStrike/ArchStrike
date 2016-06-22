@@ -4,12 +4,12 @@ buildarch=1
 
 pkgname=bt2-git
 pkgver=20160527.r18
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
 pkgdesc="A post-exploitation tool that leverages the infrastructure of Telegram as a C&C"
 url="https://github.com/blazeinfosec/bt2"
-license=('Apache2')
+license=('Apache')
 depends=('python2' 'python2-telepot')
 makedepends=('git')
 install="$pkgname.install"
@@ -21,6 +21,10 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
+prepare() {
+  grep -iRl 'python' $pkgname | xargs sed -i 's|python$|python2|'
+}
+
 package() {
   cd $pkgname
   install -dm755 "$pkgdir/usr/bin"
@@ -28,7 +32,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -dm755 "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname"
 
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
   cd "$pkgdir/usr/share/$pkgname"
