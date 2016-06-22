@@ -1,0 +1,43 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=bt2-git
+pkgver=20160527.r18
+pkgrel=1
+groups=('archstrike' 'archstrike-malware')
+arch=('any')
+pkgdesc="A post-exploitation tool that leverages the infrastructure of Telegram as a C&C"
+url="https://github.com/blazeinfosec/bt2"
+license=('Apache2')
+depends=('python2' 'python2-telepot')
+makedepends=('git')
+install="$pkgname.install"
+source=("$pkgname::git+https://github.com/blazeinfosec/bt2.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cd "$pkgdir/usr/share/$pkgname"
+  rm LICENSE README.md
+
+cat > "$pkgdir/usr/bin/bt2" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 bt2.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/bt2"
+}

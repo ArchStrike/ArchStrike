@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+post_install() {
+  echo "Please check out the documentation at /usr/share/doc/bt2-git for setup instructions."
+}
