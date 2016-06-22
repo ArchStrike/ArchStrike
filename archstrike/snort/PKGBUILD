@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=snort
-pkgver=2.9.8.2
-pkgrel=2
+pkgver=2.9.8.3
+pkgrel=1
 pkgdesc='A lightweight network intrusion detection system'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.snort.org'
@@ -34,7 +34,7 @@ source=(
   'white_list.rules'
   'black_list.rules'
 )
-sha512sums=('60f660b2093ae88211dcef9256edf35441c0ffc61ec8240b6d25e947b55b0fdb23482913246e2288a8a533dbaff4e5ea2d8f51298ab9aa67baa1ab74d1c4f7a4'
+sha512sums=('2f3dfe46e14a5106a02ca60b2d334549f4924ff916de0804b2b7792cdd31e104fbb454b4b932855b5f25a861698db0f8988844782b12b0e5fa132d88d4a7a687'
             '6f882da312fe5138b32192d7f3d7f56a614e1782688e5e8a132950e25f40ce844a67dfcae766365459d4244fc151a87310a4a109b730313b460e664e29cd59ab'
             '96d3a27752c60cec9b188cdc358f3a38c0f6f0a179e16f3778abaf6385cc82169cdf0b41ea9bf39cfa64455e6ca5e484c2d952c72ced0901512b4750343ec5d9'
             '08341de9f302622b40917914e5e67c0f79c1800c463be7675bb019a3c033c3302a1be522ffd7a5b4759211f962ce4557557ea2653c4c89843dbd33b95a2e2e35'
