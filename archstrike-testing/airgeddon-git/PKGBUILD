@@ -1,0 +1,42 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=airgeddon-git
+pkgver=20160617.r39
+pkgrel=1
+groups=('archstrike' 'archstrike-networking')
+arch=('any')
+pkgdesc="Multi-use bash script for Linux systems to audit wireless networks."
+url="https://github.com/v1s1t0r1sh3r3/airgeddon"
+license=('GPL')
+depends=('bash' 'iw' 'gawk' 'aircrack-ng' 'xterm')
+optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git" "remove-update.patch")
+sha512sums=('SKIP'
+            '0db3436ebb5238b142e16b7cd8df7f39100859e5a6fc7e8db1005487c0364f346eccdcc014c540abb97bb28c1e1d24de8fec3067046fb9bf39ba27fc785c31c0')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd $pkgname
+  patch -i ../remove-update.patch 
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cd "$pkgdir/usr/share/$pkgname"
+  chmod 755 airgeddon.sh
+  rm LICENSE
+
+  ln -s "/usr/share/$pkgname/airgeddon.sh" "$pkgdir/usr/bin/airgeddon"  
+}
