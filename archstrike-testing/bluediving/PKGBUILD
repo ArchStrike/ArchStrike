@@ -4,13 +4,13 @@ buildarch=212
 
 pkgname=bluediving
 pkgver=0.9
-pkgrel=10
+pkgrel=11
 pkgdesc="A Bluetooth penetration testing suite"
 url='http://bluediving.sourceforge.net/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 groups=('archstrike' 'archstrike-bluetooth')
-depends=('bluez-utils' 'sox' 'obexftp' 'readline' 'expat' 'perl-xml-simple' 'openobex' 'libxml2')
+depends=('bluez-utils' 'sox' 'obexftp' 'readline' 'expat' 'perl-xml-simple' 'openobex' 'libxml2' 'perl-switch' 'redfang' 'carwhisperer' 'bss' 'mpg123')
 install=bluediving.install
 source=("http://downloads.sourceforge.net/sourceforge/bluediving/bluediving-$pkgver.tgz"
         "btftp.patch"
@@ -22,6 +22,8 @@ sha512sums=('8fc941cca2b4623eb5b9b6f34bb5ba4e7ea20861d537642627769a4245a9355e964
 prepare() {
   cd "$srcdir/bluediving-$pkgver"
   patch -Np1 -i $srcdir/gcc_fixes.patch
+  # Change the db/out.txt file to /usr/share.
+  sed -i -e 's/db\/oui.txt/\/usr\/share\/bluediving\/db\/oui.txt/g' bluedivingNG.pl
   # Change the bluedivingNG.conf path to /etc.
   sed -i -e 's/bluedivingNG.conf/\/etc\/bluedivingNG.conf/g' bluedivingNG.pl
   # Change the paths of the compiled tools to /usr/bin/.
@@ -61,4 +63,8 @@ package() {
 
   install -Dm644 "$srcdir/bluediving-$pkgver/sounds/explosion.wav" "$pkgdir/usr/share/bluediving/explosion.wav"
   install -Dm644 "$srcdir/bluediving-$pkgver/tools/carwhisperer-0.2/out.raw" "$pkgdir/usr/share/bluediving/out.raw"
+
+  cd "$srcdir/bluediving-$pkgver/db"
+  install -dm755 "$pkgdir/usr/share/bluediving/db"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/bluediving/db"
 }
