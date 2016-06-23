@@ -3,20 +3,22 @@
 buildarch=212
 
 pkgname=pymssql
-pkgver=2.1.2
-pkgrel=2
+pkgver=2.1.3
+pkgrel=1
 pkgdesc="A fast MS SQL Server client library for Python directly using C API instead of ODBC. It is Python DB-API 2.0 compliant. Works on Linux, *BSD, Solaris, Mac OS X and Windows"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://pymssql.org/en/latest/"
 license=('LGPL')
 depends=('python2>=2.5' 'cython2>=0.13' 'freetds>=0.82')
 makedepends=('python2-setuptools')
-source=("https://github.com/pymssql/pymssql/archive/v$pkgver.tar.gz")
-sha512sums=('e04f531cb9b02eff5a79b24c7f02ce1d644b579c0b4bb68f87860093ca47b4a8e67d797b5920ad4f9bf3c0710bc5421ef16ed7e531f1716ed6121ebc9b87f8dc')
+source=("https://github.com/pymssql/pymssql/archive/v$pkgver.tar.gz" "remove_DBVERSION80_symbol.patch")
+sha512sums=('b2f5eec34ad3f3d0639a29a801558f9c8d41c1d9a2eb14ce9949169b6cb794104bf0caaa8a1f8869b3943a65bcea330027c3c8c475a9c4016481e12f43307b14'
+            '9309d43f119a783f0da06e1a141521729db8313b03910d88d4eb6726ff7e91b1f6eef62d2a13d82cd865fa9b843bfacc63ad2782f766c62f38db867a2d109e80')
 
 prepare(){
   cd "$srcdir/pymssql-${pkgver}"
   sed -i 's|/usr/local|/usr/|' setup.py
+  patch -Np1 -i $srcdir/remove_DBVERSION80_symbol.patch
 }
 
 build(){
