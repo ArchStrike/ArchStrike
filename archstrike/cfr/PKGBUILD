@@ -6,8 +6,8 @@ buildarch=1
 
 pkgname=cfr
 pkgver=0_115
-pkgrel=1
-groups=('archstrike', 'archstrike-decompile')
+pkgrel=2
+groups=('archstrike' 'archstrike-decompile')
 pkgdesc='Another Java decompiler'
 arch=('any')
 url="http://www.benf.org/other/cfr/"
