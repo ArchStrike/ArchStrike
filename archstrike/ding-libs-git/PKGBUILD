@@ -4,7 +4,7 @@
 buildarch=192
 
 pkgname=ding-libs-git
-pkgver=0.5.0.3.g04da7fe
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="'D is not GLib' utility libraries"
 arch=('i686' 'x86_64')
