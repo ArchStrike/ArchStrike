@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team archstrike org>
+
+buildarch=212
+
+pkgname=zizzania
+pkgver='0.0.1'
+pkgrel=1
+pkgdesc='An Automated wireless DeAuth attack'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/cyrus-and/zizzania'
+license=('custom')
+groups=('archstrike' 'archstrike-wireless')
+depends=('libpcap')
+makedepends=('scons' 'uthash')
+source=("https://github.com/cyrus-and/zizzania/archive/v$pkgver.tar.gz")
+sha512sums=('efdc95dae7394fb2d586f0a217fe05b6b34c1554933d11647b9d8b32e7c2fc7161bce5f1195232daa96d38cc21b6504aa25bc0dd65e53afabf569f455fa25ee8')
+
+build() {
+  cd "$pkgname-$pkgver"
+  make
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -Dm755 src/zizzania $pkgdir/usr/bin/zizzania
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE 
+}
