@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=silk
-pkgver=3.12.1
+pkgver=3.12.2
 pkgrel=1
 pkgdesc='CERT netflow tools.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -15,7 +15,7 @@ depends=('libfixbuf' 'lzo2' 'libpcap' 'python2' 'gnutls' 'c-ares' 'adns')
 makedepends=('perl' 'flex' 'bison')
 install="$pkgname.install"
 source=("http://tools.netsa.cert.org/releases/$pkgname-$pkgver.tar.gz")
-sha512sums=('278b2d8f4167e521c72f272a9eb9bc20c553c6af360e27d08a7a850f68797a1b5ccd55b51057d3d79b07bd710442d61f0505f9324089dee55550e9cde86a8038')
+sha512sums=('855d102f56524a7f53522f7e74ac89cccf912bfaaa45279f6ad8c8b37fda0e561fae1b2b14625ac8663c62977c6d807676534872aea898415846eddb7ab3b630')
 
 prepare(){
   grep -iRl 'python' "$srcdir/$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
@@ -23,15 +23,15 @@ prepare(){
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-        export LIBS="-lpthread"
-        ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --enable-ipv6 --with-python=$(which python2) --with-pcap \
-        --with-pic --with-libfixbuf --with-gnutls --enable-output-compression --enable-localtime
+  export LIBS="-lpthread"
+  ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --enable-ipv6 --with-python=$(which python2) --with-pcap \
+  --with-pic --with-libfixbuf --with-gnutls --enable-output-compression --enable-localtime --enable-data-rootdir=/usr/share/$pkgname
   make
 }
 
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
-        # Fixing python
-        sed -i 's|python$|python2|' $pkgdir/usr/bin/rwidsquery $pkgdir/usr/bin/rwpcut
+  # Fixing python
+  sed -i 's|python$|python2|' $pkgdir/usr/bin/rwidsquery $pkgdir/usr/bin/rwpcut
 }
