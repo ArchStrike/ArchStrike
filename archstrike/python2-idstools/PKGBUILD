@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python2-idstools
-pkgver=0.5.2
-pkgrel=2
+pkgver=0.5.3
+pkgrel=1
 pkgdesc="A collection of Python libraries for working with IDS systems (typically Snort and Suricata)."
 arch=('any')
 url='https://pypi.python.org/pypi/idstools'
@@ -12,8 +12,8 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 groups=('archstrike' 'archstrike-networking')
-source=("https://pypi.python.org/packages/source/i/idstools/idstools-$pkgver.tar.gz" "LICENSE")
-sha512sums=('5ff4de0db6534f2afdb98b113d9b3b5b1ca9d6ffa261cc5fe6b872b692c665e6d76d4773837496f8324f82ab826cce01ea816e9ed885641606994051f1fd8f7f'
+source=("https://pypi.python.org/packages/af/8e/7ddf3161525dc78cc07de178b2d01e8769dc68e9042b70e53942e1461a48/idstools-$pkgver.tar.gz" "LICENSE")
+sha512sums=('1f2aa7bd65a81aff097617bff662d4780d62fda70d7edb0e6d3a696cb736d4d741d8f019b38c346264f7751f646124cdd3290894c160e1fb2f8f54de2dd9565b'
             'f5df92f91db41a289c34387ccc13c05eb0073a21763061464e303a6f25b10abe998bb7c9a6afb660414b30eb78c69abb6a32d5f46d53b0bcddc49309e565abbd')
 
 prepare(){
