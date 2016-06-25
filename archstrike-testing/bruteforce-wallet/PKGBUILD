@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=128
 
 pkgname=bruteforce-wallet
 pkgver=1.4.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-bruteforce')
-arch=('i686' 'x86_64')
+arch=('x86_64')
 pkgdesc="Tries to decrypt one of the encrypted addresses in the wallet by trying all the possible passwords"
 url="https://github.com/glv2/bruteforce-wallet"
 license=('GPL3')
