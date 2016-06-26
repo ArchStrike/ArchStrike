@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=webpwn3r-git
 pkgver=0.r35.3fb27bb
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A python based Web Applications Security Scanner"
 url='https://github.com/zigoo0/webpwn3r'
@@ -39,6 +39,5 @@ cat > "$pkgdir/usr/bin/webpwn3r" <<EOF
 cd /usr/share/webpwn3r
 python2 scan.py "\$@"
 EOF
-
-chmod +x "$pkgdir/usr/bin/webpwn3r"
+chmod 755 "$pkgdir/usr/bin/webpwn3r"
 }
