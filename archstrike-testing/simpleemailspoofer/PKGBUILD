@@ -1,0 +1,42 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=simpleemailspoofer-git
+pkgver=20160623.r46
+pkgrel=1
+groups=('archstrike' 'archstrike-spoof')
+arch=('any')
+pkgdesc="A simple Python CLI to spoof emails."
+url="https://github.com/lunarca/SimpleEmailSpoofer"
+license=('MIT')
+depends=('python2' 'python2-argparse' 'python2-colorama')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/lunarca/SimpleEmailSpoofer.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  grep -iRl 'python' $pkgname | xargs sed -i 's|python$|python2|'
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/simple-email-spoofer" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/$pkgname
+python2 SimpleEmailSpoofer.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/simple-email-spoofer"
+}
