@@ -4,8 +4,8 @@ _pkgname=rtlamr
 buildarch=212
 
 pkgname=rtlamr-git
-pkgver=275.17b0016
-pkgrel=2
+pkgver=277.7de771c
+pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc="An rtl-sdr receiver for smart meters operating in the 900MHz ISM band."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686')
