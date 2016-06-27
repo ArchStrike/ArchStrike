@@ -1,11 +1,15 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2016-06-24
+# Generated on 2016-06-27
 #
 
+## Official Mirrors
 Server = https://mirror.archstrike.org/$arch/$repo
 Server = https://uk.mirror.archstrike.org/$arch/$repo
-Server = https://mirror.wh1t3fox.net/archstrike/$arch/$repo
 Server = https://jp.mirror.archstrike.org/$arch/$repo
+
+## Community Mirrors
 Server = http://mirror.keystealth.org/archstrike/$arch/$repo
 Server = http://archstrike.outerworld.org/$arch/$repo
+Server = http://mirror.i3d.net/pub/archstrike/$arch/$repo
+Server = https://mirror.wh1t3fox.net/archstrike/$arch/$repo
