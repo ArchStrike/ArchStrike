@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=shellnoob
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit' 'archstrike-debugging')
 pkgdesc="A toolkit that eases the writing and debugging of shellcode"
 url="https://github.com/reyammer/shellnoob"
@@ -12,7 +12,7 @@ arch=('any')
 license=('MIT')
 depends=('python2')
 source=("https://github.com/reyammer/shellnoob/archive/v$pkgver.tar.gz")
-md5sums=('5628a3197cfed3238f818a3badddda69')
+sha512sums=('20ee2ae0b39df077e623b15a013d9177e8df84e9ac519ad95b0836708d25cccd24661db34982f03717f42bfd2131c56a3a0e9356e3502cdc6593415ab5e087c1')
 
 prepare() {
   cd "shellnoob-$pkgver"
@@ -28,13 +28,17 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/lib/python2.7/site-packages"
   install -dm755 "$pkgdir/usr/share/doc/shellnoob/samples/x86-linux"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
   # Bin.
-  install -m755 shellnoob.py "$pkgdir/usr/lib/python2.7/site-packages/shellnoob.py"
+  install -Dm755 shellnoob.py "$pkgdir/usr/lib/python2.7/site-packages/shellnoob.py"
   ln -s "/usr/lib/python2.7/site-packages/shellnoob.py" "$pkgdir/usr/bin/shellnoob"
 
   # Docs.
-  install -m644 README.md "$pkgdir/usr/share/doc/shellnoob/README.md"
-  install -d "$pkgdir/usr/share/doc/shellnoob/samples/x86-linux"
-  install -m644 samples/x86-linux/* "$pkgdir/usr/share/doc/shellnoob/samples/x86-linux"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/shellnoob/README.md"
+  install -dm755 "$pkgdir/usr/share/doc/shellnoob/samples/x86-linux"
+  install -Dm644 samples/x86-linux/* "$pkgdir/usr/share/doc/shellnoob/samples/x86-linux"
+
+  # License
+  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname"
 }
