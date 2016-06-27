@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=fbht-git
-pkgver=r68.1ffc236
-pkgrel=2
+pkgver=r69.95c8bd5
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Facebook Hacking Tool"
 arch=('any')
 url='https://github.com/chinoogawa/fbht'
 license=('custom')
-depends=('python2' 'python2-mechanize' 'python2-networkx' 'python2-matplotlib' 'python2-numpy' 'python2-selenium')
+depends=('python2' 'python2-mechanize' 'python2-networkx' 'python2-matplotlib' 'python2-numpy' 'python2-selenium' 'python2-simplejson')
 makedepends=('git')
 provides=('fbht')
 source=("git+https://github.com/chinoogawa/fbht.git")
