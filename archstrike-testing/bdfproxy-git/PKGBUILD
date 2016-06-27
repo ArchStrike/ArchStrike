@@ -3,17 +3,18 @@
 buildarch=1
 
 pkgname=bdfproxy-git
-pkgver=20160518.r86
-pkgrel=2
+pkgver=20160617.r87
+pkgrel=1
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="Patch Binaries via MITM: BackdoorFactory + mitmProxy."
 url="https://github.com/secretsquirrel/BDFProxy"
 arch=('any')
 license=('GPL3')
-depends=('capstone' 'python2-pefile' 'mitmproxy')
+depends=('python2' 'capstone' 'python2-pefile' 'mitmproxy' 'python2-future' 'python2-capstone' 'python2-configobj')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/secretsquirrel/BDFProxy.git")
-sha512sums=('SKIP')
+source=("${pkgname}::git+https://github.com/secretsquirrel/BDFProxy.git" "mitmproxy.patch")
+sha512sums=('SKIP'
+            'e1ec6e8881b0c2bfcba49f5f25ba923a1daf483444ac176e8f9d115ecc7a7f5cd14c30c42d0dfd14c414a0c8bc4290efafa66ffb18cf3d7f03ec2d10f42253d4')
 
 pkgver() {
     cd "${pkgname}"
@@ -24,17 +25,21 @@ prepare(){
   cd "${pkgname}"
   git submodule init
   git submodule update
+  patch -i ../mitmproxy.patch
+  cd ${srcdir}
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
 }
 
 package() {
   cd "${pkgname}"
   install -dm755 "$pkgdir/usr/share/bdfproxy"
   install -dm755 "$pkgdir/usr/bin/"
-  cp -ar --no-preserve=ownership * "$pkgdir/usr/share/bdfproxy"
-  cat > "$pkgdir/usr/bin/bdfproxy" <<EOF
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/bdfproxy"
+
+cat > "$pkgdir/usr/bin/bdfproxy" <<EOF
 #!/bin/sh
-python2 /usr/share/bdfproxy/bdf_proxy.py "\$@"
+cd /usr/share/bdfproxy
+python2 bdf_proxy.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/bdfproxy"
-  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+chmod 755 "$pkgdir/usr/bin/bdfproxy"
 }
