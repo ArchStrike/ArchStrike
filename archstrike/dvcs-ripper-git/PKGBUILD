@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dvcs-ripper-git
 pkgver=20151124.r44
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Rip web accessible (distributed) version control systems: SVN/GIT/..."
 arch=('any')
@@ -35,7 +35,7 @@ package() {
 
   install -Dm644 README.md "$pkgdir/usr/share/${pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
-  install -Dm755 rip-cvs.pl "$pkgdir/usr/bin/rip-cvs.pl"
-  install -Dm755 rip-git.pl "$pkgdir/usr/bin/rip-git.pl"
-  install -Dm755 rip-svn.pl "$pkgdir/usr/bin/rip-svn.pl"
+  install -Dm755 rip-cvs.pl "$pkgdir/usr/bin/rip-cvs"
+  install -Dm755 rip-git.pl "$pkgdir/usr/bin/rip-git"
+  install -Dm755 rip-svn.pl "$pkgdir/usr/bin/rip-svn"
 }
