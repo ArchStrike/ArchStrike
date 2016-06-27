@@ -1,26 +1,26 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=196
+buildarch=1
 
 pkgname=pdfbook-analyzer
 pkgver=2014220
 groups=('archstrike' 'archstrike-forensics')
-pkgrel=1
+pkgrel=2
 pkgdesc="Utility for facebook memory forensics."
-arch=('x86_64' 'i686' 'armv7h')
+arch=('any')
 url='http://sourceforge.net/projects/pdfbook/'
 license=('GPL2')
 depends=('python2')
 makedepends=('git')
-source=(git+http://git.code.sf.net/p/pdfbook/code)
-md5sums=('SKIP')
+source=("$pkgname::git+http://git.code.sf.net/p/pdfbook/code")
+sha512sums=('SKIP')
 
 prepare() {
-  cd "$srcdir/code"
+  cd $pkgname
   sed -i 's/env python/env python2/' pdfbook.v2.py
 }
 
 package() {
-  cd "$srcdir/code"
+  cd $pkgname
   install -Dm755 pdfbook.v2.py "$pkgdir/usr/bin/pdfbook-analyzer"
 }
