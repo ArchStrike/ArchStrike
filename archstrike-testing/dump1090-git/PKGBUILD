@@ -6,7 +6,7 @@ buildarch=212
 
 pkgname=dump1090-git
 pkgver=20141031.r386
-pkgrel=1
+pkgrel=2
 pkgdesc="Dump1090 is a simple Mode S decoder for RTLSDR devices. MalcolmRobb fork. Git version."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/MalcolmRobb/dump1090"
@@ -23,6 +23,11 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
+prepare() {
+  cd "${pkgname}"
+  # Reference public_html to /usr/share
+  sed -i -e 's/\.\/public_html/\/usr\/share\/dump1090-git\/public_html/g' dump1090.h
+}
 build() {
   cd "${pkgname}"
   make
