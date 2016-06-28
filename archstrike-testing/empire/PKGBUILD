@@ -1,0 +1,40 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="Empire"
+pkgname=empire
+pkgver=1.5
+pkgrel=1
+pkgdesc="A pure PowerShell post-exploitation agent."
+arch=('any')
+groups=('archstrike' 'archstrike-exploit' 'archstrike-backdoors')
+url="https://github.com/PowerShellEmpire/Empire"
+license=('custom')
+install="${pkgname}.install"
+depends=('python2-m2crypto' 'swig' 'python2-crypto' 'python2-flask' 'python2-pydispatcher' 'python2-iptools')
+source=("https://github.com/PowerShellEmpire/$_pkgname/archive/$pkgver.tar.gz")
+sha512sums=('9bbc18e160eb51aa719fbfd0e2e1d8387698b597c19d7283a21fa199a4afd3ad0b65c924e5b6e4ae2837d375d4964ea433797453d2c07c9391860ce17808a635')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/${_pkgname}-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  cd ${_pkgname}-${pkgver}
+  sed -i 's|../data/empire.db|/usr/share/empire/data/empire.db|' setup/setup_database.py
+  sed -i 's|../data/empire.pem|/usr/share/empire/data/empire.pem|' setup/cert.sh
+}
+
+package() {
+  cd "$srcdir/${_pkgname}-$pkgver"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -a --no-preserve=ownership * $pkgdir/usr/share/$pkgname/
+
+cat >"$pkgdir/usr/bin/$pkgname" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 $pkgname "\$@"
+EOF
+
+chmod +x "$pkgdir/usr/bin/$pkgname"
+}
