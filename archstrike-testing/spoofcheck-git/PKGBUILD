@@ -1,0 +1,42 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=spoofcheck-git
+pkgver=20160623.r15
+pkgrel=1
+groups=('archstrike' 'archstrike-recon')
+arch=('any')
+pkgdesc="Simple script that checks a domain for email protections"
+url="https://github.com/BishopFox/spoofcheck"
+license=('MIT')
+depends=('python2' 'python2-emailprotectionslib' 'python2-colorama' 'python2-dnslib' 'python2-tldextract' 'python2-setuptools' 'python2-idna' 'python2-requests' 'python2-requests-file')
+makedepends=('git' 'python2-setuptools')
+source=("$pkgname::git+https://github.com/BishopFox/spoofcheck.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  grep -iRl 'python' $pkgname | xargs sed -i 's|python$|python2|'
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/spoofcheck" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/$pkgname
+python2 spoofcheck.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/spoofcheck"
+}
