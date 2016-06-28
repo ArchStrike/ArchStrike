@@ -1,0 +1,8 @@
+post_install() {
+  echo "Please run /usr/share/empire/setup/setup_database.py and /usr/share/empire/setup/cert.sh, before first run"
+  echo "If this is an uppgrade please run /usr/share/empire/setup/reset.sh"
+}
+
+post_upgrade() {
+   post_install
+}
