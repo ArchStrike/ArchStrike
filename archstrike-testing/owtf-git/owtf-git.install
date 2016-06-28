@@ -1,0 +1,9 @@
+post_install() {
+  echo """
+  Please run owtf-db-config and owtf-ssl-config before you try running owtf.
+  
+  owtf-db-config: That will create the db file for you.
+  owtf-ssl-config: That will set up the CA certificates for SSL MitM
+
+  """
+}

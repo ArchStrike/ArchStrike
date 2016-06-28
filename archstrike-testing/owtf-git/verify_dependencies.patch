@@ -1,0 +1,14 @@
+diff --git a/owtf.py b/owtf.py
+index 4562b18..c2437d3 100755
+--- a/owtf.py
++++ b/owtf.py
+@@ -9,9 +9,6 @@ from __future__ import print_function
+ import os
+ import sys
+ import logging
+-from framework.dependency_check import verify_dependencies
+-
+-verify_dependencies(os.path.dirname(os.path.abspath(sys.argv[0])) or '.')
+ 
+ from framework.core import Core
+ from framework.dependency_management.component_initialiser import ComponentInitialiser, DatabaseNotRunningException

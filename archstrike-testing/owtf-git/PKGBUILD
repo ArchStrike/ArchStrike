@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=owtf-git
-pkgver=r1017.0bbeea1
-pkgrel=3
+pkgver=r1556.d666a6a
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="The Offensive (Web) Testing Framework"
 url="https://www.owasp.org/index.php/OWASP_OWTF"
@@ -13,10 +13,11 @@ arch=('armv7h' 'armv6h' 'i686' 'x86_64')
 depends=('python2-jinja' 'python2-markdown' 'python2-pyvirtualdisplay'
          'python2-tornado' 'python2-pycurl' 'python2-rdflib' 'python2-selenium'
          'python2-pexpect' 'python2-lxml' 'java-environment' 'ptp'
-         'python2-pyopenssl' 'python2-beautifulsoup4' 'python2-python-owasp-zap-v2'
-         'python2-sqlalchemy' 'python2-six' 'python2-psycopg2')
+         'python2-pyopenssl' 'python2-beautifulsoup4'                                   'python2-python-owasp-zap-v2' 'python2-ipaddr'
+         'python2-sqlalchemy' 'python2-six' 'python2-psycopg2'
+         'python2-cookies' 'python2-easyprocess' 'postgresql')
 optdepends=('tor' 'proxychains-ng' 'skipfish' 'metagoofil' 'set' 'wpscan' 'theharvester'
-      'metasploit' 'whatweb' 'cms-explorer' 'whapiti' 'arachini'
+      'metasploit' 'whatweb' 'cms-explorer' 'wapiti' 'arachni'
       'dnsrecon' 'dirbuster' 'w3af' 'lbd' 'nikto' 'tlssled'
       'httprint' 'hydra' 'wafw00f' 'websecurify' 'hoppy')
 makedepends=('git')
@@ -24,36 +25,60 @@ options=('!strip')
 provides=('owtf')
 replaces=('owtf')
 conflicts=('owtf')
-source=("git+https://github.com/owtf/owtf" "LICENSE" 'default.cfg.patch'
-        'ssl-cipher-check.pl' 'BIG-IP_cookie_decoder.py')
+install="$pkgname.install"
+source=("$pkgname::git+https://github.com/owtf/owtf" "LICENSE"
+        'ssl-cipher-check.pl' 'BIG-IP_cookie_decoder.py' 'default.cfg.patch'           'dependency_check.patch' 'verify_dependencies.patch' "$pkgname.install"        'sslconfig.patch')
 sha512sums=('SKIP'
             '9a46df3e73cb5bfd87b266d591010497368e9d1e2980c3f7c0fbbe7832a37db62fba3f6b72015b9e577f0080073536f5b6a1dfa05316bcc9c4697f34a9f5dc7c'
-            'f0da35a393f5aadc2f6f21d6b5e0323415a06ae605bd7d6255d8327f898b018071e4cfd559df3e0c5ad57128cacc533bfb88553d1606c1486cbaa0d19d47863c'
             'db582f5008530581f02a2073496dfc79a2140fab7b5d477f27bef20d8d72d4b8c88ee9ce3cdaec73530b994fa17234aa7ca18de90ba61fbc59aa85bed485bd15'
-            '138e97b092c3b7daaceb434a1478673dd9e558bf89d080ca8886b89ced212e1ec3d9af3148e7d9b32833be1b5ae764f268dfe5efc32e17dc704fac7024499d0d')
+            '138e97b092c3b7daaceb434a1478673dd9e558bf89d080ca8886b89ced212e1ec3d9af3148e7d9b32833be1b5ae764f268dfe5efc32e17dc704fac7024499d0d'
+            'e54f4cde532a8ddde75ec1b48c6c756e98b21c275e2c4895771da638c69653884fea90d1ba1968573ab494b35a480fd3a1ae693ac9b385c40e78ff1c963680be'
+            '2843089b2efd2a9b017369f660202cd91c9ccbec8075600ae56256a2ea086781e20873bd113bbbf8c708391bdf4998243286ecd29b9097a8171ced34c9cca931'
+            '8d573920b981d40058ddfd29d803b035b1a9248769b07bc061e9e8c1f569eb645ab5e5cae5e3fd390c86efd59146dc3499f6cc641da7b5da7880dd443912f1bf'
+            '6341f3134d3512958079deaf8ff54d4f1f8a334952cd2cfdd931c5fdac8f5d82249c28e15200523117c410a4745c0fdd59103a44605bee244caf8cc26c2234d6'
+            '541a08f7aa1f2562415ec0f422cf0c9f00106db7ff24f35c8909ec8b737ef05de5b7785832ffd67a75c0e5fbbcc90276cd06615e6106c1726a32aeaa51e567bf')
 
 pkgver() {
-  cd "${srcdir}/owtf"
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  grep -iRl 'python' $pkgname | xargs sed -i 's|python$|python2|'
+  cd $pkgname
+  patch -Np1 -i $srcdir/default.cfg.patch
+  patch -Np1 -i $srcdir/dependency_check.patch
+  patch -Np1 -i $srcdir/verify_dependencies.patch
+  patch -Np1 -i $srcdir/sslconfig.patch
+}
+
 package() {
-  cd "${srcdir}/owtf"
+  cd $pkgname
   install -dm755 "${pkgdir}/usr/share/owtf-git"
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/owtf-git/LICENSE
   cp -a --no-preserve=owner * "${pkgdir}"/usr/share/owtf-git
   install -Dm0755 "${srcdir}"/ssl-cipher-check.pl "${pkgdir}"/usr/share/owtf-git/tools/restricted/ssl/ssl-cipher-check
   install -Dm0755 "${srcdir}"/BIG-IP_cookie_decoder.py "${pkgdir}"/usr/share/owtf-git/tools/restricted/decoding/cookies
-  patch -Np1 -i "${srcdir}"/default.cfg.patch
-  sed -i -e "s|#![ ]*/usr/bin/python$|#!/usr/bin/python2|" \
-       -e "s|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|" \
-       -e "s|#![ ]*/bin/python$|#!/usr/bin/python2|" \
-  $(find ${pkgdir} -name '*.py')
-  cat > "${pkgdir}/usr/bin/owtf" << EOF
+
+cat > "${pkgdir}/usr/bin/owtf" << EOF
 #!/bin/sh
 cd /usr/share/owtf-git
 python2 ./owtf.py "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/owtf"
+chmod 755 "${pkgdir}/usr/bin/owtf"
+
+cat > "${pkgdir}/usr/bin/owtf-db-config" <<EOF
+#!/bin/sh
+cd /usr/share/owtf-git/
+bash install/db_config_setup.sh "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/owtf-db-config"
+
+cat > "${pkgdir}/usr/bin/owtf-ssl-config" <<EOF
+#!/bin/sh
+cd /usr/share/owtf-git/
+bash install/proxy_CA.sh "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/owtf-ssl-config"
 }
