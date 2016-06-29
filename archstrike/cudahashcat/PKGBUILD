@@ -6,7 +6,7 @@ groups=('archstrike' 'archstrike-crackers')
 pkgname='cudahashcat'
 _pkgname='cudaHashcat'
 pkgver=2.01
-pkgrel=2
+pkgrel=3
 pkgdesc='Worlds fastest WPA cracker with dictionary mutation engine'
 url='http://hashcat.net/oclhashcat/'
 arch=('i686' 'x86_64')
@@ -26,12 +26,12 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   if [ "$CARCH" = "x86_64" ]; then
     rm ${_pkgname}32.bin
-    echo -e "#!/bin/bash\n/opt/$pkgname/${_pkgname}64.bin \$@" > "$pkgdir/usr/bin/$_pkgname"
+    echo -e "#!/bin/bash\n/opt/$pkgname/${_pkgname}64.bin \$@" > "$pkgdir/usr/bin/$pkgname"
   else
     rm ${_pkgname}64.bin
-    echo -e "#!/bin/bash\n/opt/$pkgname/${_pkgname}32.bin \$@" > "$pkgdir/usr/bin/$_pkgname"
+    echo -e "#!/bin/bash\n/opt/$pkgname/${_pkgname}32.bin \$@" > "$pkgdir/usr/bin/$pkgname"
   fi
-  chmod a+x "$pkgdir/usr/bin/$_pkgname"
+  chmod a+x "$pkgdir/usr/bin/$pkgname"
 
   # Get rid of windows stuff
   find . \( -name "*.cmd" -o -name "*.exe" \) -exec rm '{}' \;
