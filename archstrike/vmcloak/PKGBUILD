@@ -1,19 +1,19 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=1
 
 pkgname=vmcloak
-pkgver=0.3.12
+pkgver=0.3.13
 pkgrel=1
 pkgdesc='Automated Virtual Machine Generation and Cloaking for Cuckoo Sandbox'
 url='https://github.com/jbremer/vmcloak'
-arch=('i686' 'x86_64')
+arch=('any')
 license=('GPL3')
 groups=('archstrike' 'archstrike-malware')
 depends=('cdrtools' 'virtualbox' 'dmidecode' 'lshw' 'python2-lockfile' 'python2-sphinx')
 makedepends=('python2-setuptools' 'unzip')
 source=("https://github.com/jbremer/$pkgname/archive/$pkgver.zip")
-sha512sums=('66f8b761cca8a7e7c499ada93cfef10c60dad47c2729846729e927d1ae85f4a83a21d4446d7007071c01a29a1e5aa4279181afbf3620bc4bcb677c1a3c5c62c1')
+sha512sums=('b87848c4801190533f514bf81846802aeabd1049e4f307df61afb578069a3d2c8c576af9f03883d28d1ee91ebccf9e18084554dd54a1d5cec22812e897dd934f')
 
 prepare() {
   find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
