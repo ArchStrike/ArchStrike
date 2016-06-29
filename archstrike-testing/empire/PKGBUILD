@@ -5,14 +5,14 @@ buildarch=1
 _pkgname="Empire"
 pkgname=empire
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
 groups=('archstrike' 'archstrike-exploit' 'archstrike-backdoors')
 url="https://github.com/PowerShellEmpire/Empire"
 license=('custom')
 install="${pkgname}.install"
-depends=('python2-m2crypto' 'swig' 'python2-crypto' 'python2-flask' 'python2-pydispatcher' 'python2-iptools')
+depends=('python2-m2crypto' 'swig' 'python2-crypto' 'python2-flask' 'python2-pydispatcher' 'python2-iptools' 'python2-pyopenssl')
 source=("https://github.com/PowerShellEmpire/$_pkgname/archive/$pkgver.tar.gz")
 sha512sums=('9bbc18e160eb51aa719fbfd0e2e1d8387698b597c19d7283a21fa199a4afd3ad0b65c924e5b6e4ae2837d375d4964ea433797453d2c07c9391860ce17808a635')
 
