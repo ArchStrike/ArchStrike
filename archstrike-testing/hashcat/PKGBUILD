@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=192
+
+pkgname=hashcat
+pkgver=3.00
+pkgrel=1
+groups=('archstrike' 'archstrike-crackers')
+pkgdesc="A multithreaded cross platform hash cracker."
+arch=('i686' 'x86_64')
+url='https://github.com/hashcat/hashcat'
+license=('MIT')
+depends=('gmp' "opencl-headers")
+source=("https://github.com/hashcat/hashcat/archive/v$pkgver.tar.gz")
+sha512sums=('cdaf00830a1f4b52b008c5c6499cd6246eb328a1711be1446ea7b8b3d6ad9afeb9f3626cf9cef58a04b4a414d10e09e5a8429bc47684a9d6dbf511effbc2eedb')
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  export PREFIX=/usr make
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR=$pkgdir install
+
+  # License
+  install -Dm644 docs/license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
+
+}
