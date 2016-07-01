@@ -4,9 +4,9 @@ buildarch=212
 
 pkgname=derrick
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-logging')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="Simple tool for recording data streams of TCP and UDP traffic."
 url="https://github.com/rieck/derrick"
 license=('custom')
