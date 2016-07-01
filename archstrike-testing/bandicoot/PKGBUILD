@@ -1,0 +1,31 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=bandicoot
+pkgver=0.5.1
+pkgrel=1
+pkgdesc="A toolbox to analyze mobile phone metadata."
+url="https://github.com/yvesalexandre/bandicoot"
+depends=('python')
+makedepends=('python-setuptools')
+license=('MIT')
+arch=('any')
+install="${pkgname}.install"
+source=("https://pypi.python.org/packages/c5/6e/4bd0afc627e815b5b33068c39ba347572d9a59ba6daf189e2ef92a08033a/bandicoot-${pkgver}.tar.gz" "LICENSE" "${pkgname}.install")
+sha512sums=('26f6f374d9d9592a36abf73e588579817efeceaed6b43dabcdfb31638d9a3339347091778067d48acddd9691aadb23a8c452e6535fd425a041a4dfe37fd275d1'
+            '9237c955e51bf53a19a7fec8841590b72e1ba92af2e4280a43cd89a4ebc690e8c0db1bb347514cefbe700a46f9ea9cc6076fe9c42e92ccfafa58bc552f542970'
+            '04156225bd357a35ef7866f412b50274f48782917f0ae8e8dadd0cc5a83a88183f8e5ff6d4fa5fead814ee6c923614d31a301bbb414ee3df454c2cf78ffaba0d')
+
+build() {
+    cd ${srcdir}/bandicoot-${pkgver}
+    python setup.py build
+}
+
+package() {
+    cd ${srcdir}/bandicoot-${pkgver}
+    python setup.py install --root="${pkgdir}" --optimize=1 
+
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+}
