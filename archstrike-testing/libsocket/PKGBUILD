@@ -4,16 +4,17 @@ buildarch=212
 
 pkgname=libsocket
 pkgver=1.8
-pkgrel=3
+pkgrel=4
 pkgdesc="Generic C++ socket library"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 depends=('gcc-libs')
 url="http://www.happycoders.org/software/libsocket.php"
 license=('LGPL2.1')
+install=${pkgname}.install
 source=("http://www.speedblue.org/conf/$pkgname-$pkgver.tar.gz"
         'includes.patch')
-sha1sums=('410c48dc97a9508cf87d5bafb32eec3e4b1f68f1'
-          'bd71bfe775f3d6ca714f0abcf23aacc97452eddf')
+sha512sums=('150091d242b0b505502dafa73cfabe37ad96781413f08b2f4b6deb3a7c952a53bc4459ad842f9aae2f71b72e7a4329742d9b0c397c319d5a8000e9d281ec4e09'
+            '9ed935df56208630673be0249eba5b3531507f01e931edc51168f06b23321377f3c08946b3827cf826371b9cc8b8aa650ef72c09af277ca4a9b476756cc8cb88')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
