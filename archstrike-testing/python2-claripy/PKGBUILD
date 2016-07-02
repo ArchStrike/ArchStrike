@@ -5,11 +5,11 @@ buildarch=1
 
 pkgname=python2-claripy
 pkgver=4.6.6.29
-pkgrel=1
+pkgrel=2
 pkgdesc="An abstraction layer for constraint solvers"
 url="https://github.com/angr/claripy"
-depends=('python2' )
-makedepends=('python2-setuptools' )
+depends=('python2' 'python2-angr-only-z3-custom')
+makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 source=("https://pypi.python.org/packages/7e/12/e076c88310f244be2063177ee0544ccf8c103b23776beee6fd172739e9b5/claripy-$pkgver.tar.gz")
