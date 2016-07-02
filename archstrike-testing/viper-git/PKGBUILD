@@ -4,7 +4,7 @@ pkgbase=viper-git
 buildarch=1
 
 pkgname=(viper-git viper-git-docs)
-pkgver=r715.05b6c15
+pkgver=r1096.1637f84
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="A Binary analysis framework"
@@ -12,20 +12,20 @@ arch=('any')
 url='https://github.com/botherder/viper'
 license=('custom')
 makedepends=('git' 'python2-sphinx')
-source=("git+https://github.com/botherder/viper.git")
+source=("$pkgname::git+https://github.com/botherder/viper.git")
 sha512sums=('SKIP')
 
 prepare(){
-  grep -iRl 'python' "$srcdir/viper" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "$pkgname" | xargs sed -i 's|python$|python2|'
 }
 
 pkgver() {
-  cd "$srcdir/viper"
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package_viper-git() {
-  depends=('python2-magic' 'python2-bottle' 'python2-pefile' 'python2-pyliblzma' 'python2-pydeep' 'python2-requests' 'python2-sqlalchemy' 'python2-crypto' 'python2-beautifulsoup4' 'python2-olefile' 'python2-prettytable' 'python2-pyelftools' 'python2-bitstring' 'python2-dnspython' 'python2-m2crypto' 'python2-pyasn1' 'python2-pyexiftool-git')
+  depends=('python2-magic' 'python2-bottle' 'python2-pefile' 'python2-pyliblzma' 'python2-pydeep' 'python2-requests' 'python2-sqlalchemy' 'python2-crypto' 'python2-beautifulsoup4' 'python2-olefile' 'python2-prettytable' 'python2-pyelftools' 'python2-bitstring' 'python2-dnspython' 'python2-m2crypto' 'python2-pyasn1' 'python2-pyexiftool-git' 'python2-terminaltables' 'python2-future' 'python2-yara' 'python2-pypdns' 'python2-pypssl' 'python2-dateutil' 'python2-r2pipe' 'python2-pype32' 'python2-pbkdf2')
   provides=('viper')
   conflicts=('viper')
   replaces=('viper')
@@ -35,56 +35,31 @@ package_viper-git() {
               'peepdf: PDF Parsing'
               'yara: Malware parsing'
               'python2-pyclamd: Clamav parsing')
-  cd "$srcdir/viper"
-  install -dm755 "$pkgdir/usr/share/viper"
-  install -dm755 "$pkgdir/usr/share/viper/data"
-  install -dm755 "$pkgdir/usr/share/viper/data/peid"
-  install -dm755 "$pkgdir/usr/share/viper/data/yara"
-  install -dm755 "$pkgdir/usr/share/viper/modules"
-  install -dm755 "$pkgdir/usr/share/viper/modules/pdftools"
-  install -dm755 "$pkgdir/usr/share/viper/modules/rats"
-  install -dm755 "$pkgdir/usr/share/viper/viper"
-  install -dm755 "$pkgdir/usr/share/viper/viper/core"
-  install -dm755 "$pkgdir/usr/share/viper/viper/common"
-  install -dm755 "$pkgdir/usr/share/viper/viper/core/ui"
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -dm755 "$pkgdir/usr/bin"
 
-  install -Dm644 modules/*.py "$pkgdir/usr/share/viper/modules/"
-  install -Dm644 viper/*.py "$pkgdir/usr/share/viper/viper/"
-  install -Dm644 viper/common/*.py "$pkgdir/usr/share/viper/viper/common/"
-  install -Dm644 viper/core/*.py "$pkgdir/usr/share/viper/viper/core/"
-  install -Dm644 viper/core/ui/*.py "$pkgdir/usr/share/viper/viper/core/ui/"
-  install -Dm644 modules/pdftools/*.py "$pkgdir/usr/share/viper/modules/pdftools/"
-  install -Dm644 modules/rats/*.py "$pkgdir/usr/share/viper/modules/rats/"
-  install -Dm644 data/peid/*.TXT "$pkgdir/usr/share/viper/data/peid/"
-  install -Dm644 data/yara/*.yara "$pkgdir/usr/share/viper/data/yara/"
-  install -Dm755 viper.py "$pkgdir/usr/share/viper/viper.py"
-  install -Dm755 api.py "$pkgdir/usr/share/viper/api.py"
-  install -Dm755 web.py "$pkgdir/usr/share/viper/web.py"
-  install -Dm755 update.py "$pkgdir/usr/share/viper/update.py"
-  install -Dm644 README.md "$pkgdir/usr/share/viper/README.md"
-  install -Dm644 CHANGELOG "$pkgdir/usr/share/viper/CHANGELOG"
-  install -Dm644 requirements.txt "$pkgdir/usr/share/viper/requirements.txt"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 
 cat > "$pkgdir/usr/bin/viper" <<EOF
 #!/bin/sh
-cd /usr/share/viper
-python2 viper.py "\$@"
+cd /usr/share/$pkgname
+python2 viper-cli "\$@"
 EOF
-
-chmod +x "$pkgdir/usr/bin/viper"
+chmod 755 "$pkgdir/usr/bin/viper"
 }
 
-package_viper-git-docs(){
+package_viper-git-docs() {
   provides=('viper-docs')
   conflicts=('viper-docs')
   replaces=('viper-docs')
   makedepends=('python2-sphinx')
   pkgdesc="Viper documentation"
-  cd "$srcdir/viper/docs"
+  cd viper-git/docs
   make SPHINXBUILD=sphinx-build2 html
-  install -dm755  "$pkgdir/usr/share/doc/viper-git"
+  install -dm755  "$pkgdir/usr/share/doc/$pkgname"
   install -Dm644 ../LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp -a --no-preserve=ownership build/html/* "$pkgdir/usr/share/doc/viper-git"
+  cp -a --no-preserve=ownership build/html/* "$pkgdir/usr/share/doc/$pkgname"
 }
