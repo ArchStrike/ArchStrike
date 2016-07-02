@@ -3,9 +3,9 @@
 
 buildarch=1
 
-pkgname=ana
+pkgname=python2-ana
 pkgver=0.02
-pkgrel=1
+pkgrel=2
 pkgdesc="unknown"
 url="https://pypi.python.org/pypi/ana"
 depends=('python2')
