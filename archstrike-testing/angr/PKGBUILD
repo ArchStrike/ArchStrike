@@ -1,0 +1,33 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=angr
+pkgver=4.6.6.29
+pkgrel=1
+pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
+url="https://github.com/angr/angr"
+depends=('python2' 'python2-capstone' 'python2-cachetools' 'python2-networkx' 'python2-rpyc' 'python2-futures' 'python2-progressbar' 'python2-mulpyplexer' 'python2-cooldict' 'python2-ana' 'python2-archinfo' 'python2-pyvex' 'python2-claripy' 'python2-simuvex' 'python2-cle' 'python2-pyelftools' 'python2-cffi' 'python2-bintrees' 'python2-dpkt')
+makedepends=('python2-setuptools')
+license=('custom')
+arch=('any')
+install="$pkgname.install"
+source=("https://pypi.python.org/packages/50/c9/7a6c3f1d044899bc2925c98759a6d8165b8eb96776145d109f8260ecff2b/angr-${pkgver}.tar.gz" "LICENSE")
+sha512sums=('54295ce5dd9ef147bc7a99feefcd297226a545b9ee632b446e49aea5adcd9dac83ca2c2ccd42e3a76735f481bc513c453df1f927400e2d5f278289cbad3146c0'
+            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
+
+prepare() {
+  grep -iRl 'python' $pkgname-$pkgver | xargs sed -i 's|python$|python2|'
+}
+
+build() {
+  cd $pkgname-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  cd $pkgname-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1 
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+}
