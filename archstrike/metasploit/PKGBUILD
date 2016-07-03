@@ -19,7 +19,6 @@ optdepends=('java-environment: msfgui'
 url='http://www.metasploit.com'
 license=('BSD')
 options=('!emptydirs' '!strip')
-# TODO clone with git instead of using the archive?
 source=("https://github.com/rapid7/metasploit-framework/archive/$pkgver.tar.gz")
 replaces=('metasploit-git')
 conflicts=('metasploit-git')
@@ -36,11 +35,9 @@ build() {
   bundle install --deployment
   
   # Locking msfupdate
-  # Note: I am not deleting it, just moving to keep the original source
-  mv msfupdate msfupdate.backup
+  rm msfupdate
 
-  # Owner can read, write and exec, others can read
-  chmod 744 vendor -R
+  chmod 755 vendor -R
 }
 
 package() {
@@ -81,14 +78,6 @@ package() {
 
   cd ${pkgdir}/usr/share/metasploit
   
-  # Runned in the build statement
-  #bundle config build.nokogiri --use-system-libraries
-  #bundle install --deployment
-  #rm msfupdate
-  #chmod 0644 vendor/bundle/ruby/1.9.1/gems/robots-0.10.1/lib/robots.rb
-  #chmod 0644 vendor/bundle/ruby/$(ruby --version|awk '{print $2}'|cut -d'p' -f1)/gems/robots-0.10.1/lib/robots.rb
-  #chmod 0644 vendor/bundle/ruby/$(ruby --version|awk '{print $2}'|cut -d'p' -f1)/gems/*/*/*.rb
-  
   # Set the original mod
   chmod 0644 vendor/bundle/ruby/2.3.0/gems/*/*/*.rb
   
@@ -99,13 +88,6 @@ package() {
 cd /usr/share/metasploit
 ruby ./msfbinscan "\$@"
 EOF
-
-  # Msfcli is deprecated...
-#  cat > "${pkgdir}/usr/bin/msfcli" <<EOF
-##!/bin/sh
-#cd /usr/share/metasploit
-#ruby ./msfcli "\$@"
-#EOF
 
   cat > "${pkgdir}/usr/bin/msfconsole" <<EOF
 #!/bin/sh
@@ -130,25 +112,11 @@ cd /usr/share/metasploit
 ruby ./msfelfscan "\$@"
 EOF
 
-  # Msfencode is deprecated...
-#  cat > "${pkgdir}/usr/bin/msfencode" <<EOF
-##!/bin/sh
-#cd /usr/share/metasploit
-#ruby ./msfencode "\$@"
-#EOF
-
   cat > "${pkgdir}/usr/bin/msfmachscan" <<EOF
 #!/bin/sh
 cd /usr/share/metasploit
 ruby ./msfmachscan "\$@"
 EOF
-
-  # Msfpayload is deprecated...
-#  cat > "${pkgdir}/usr/bin/msfpayload" <<EOF
-##!/bin/sh
-#cd /usr/share/metasploit
-#ruby ./msfpayload "\$@"
-#EOF
 
   cat > "${pkgdir}/usr/bin/msfpescan" <<EOF
 #!/bin/sh
