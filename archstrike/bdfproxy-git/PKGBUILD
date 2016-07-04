@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bdfproxy-git
 pkgver=20160704.r91
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="Patch Binaries via MITM: BackdoorFactory + mitmProxy."
 url="https://github.com/secretsquirrel/BDFProxy"
@@ -14,7 +14,7 @@ depends=('python2' 'capstone' 'python2-pefile' 'mitmproxy' 'python2-future' 'pyt
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/secretsquirrel/BDFProxy.git" "mitmproxy.patch")
 sha512sums=('SKIP'
-            'e1ec6e8881b0c2bfcba49f5f25ba923a1daf483444ac176e8f9d115ecc7a7f5cd14c30c42d0dfd14c414a0c8bc4290efafa66ffb18cf3d7f03ec2d10f42253d4')
+            '8d9274ccd5ee60b1ed422e7b1fda2f307d0ce4c24458871dca076dc58f9e1d031cd4faa844c97d3afa3ff7ab85e8178de71b58f5175837da63e8b6cad384eb44')
 
 pkgver() {
     cd "${pkgname}"

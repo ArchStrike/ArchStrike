@@ -1,15 +1,15 @@
 diff --git a/bdf_proxy.py b/bdf_proxy.py
-index c4fa360..ce002c8 100755
+index b4e9b02..fd3898f 100755
 --- a/bdf_proxy.py
 +++ b/bdf_proxy.py
-@@ -28,8 +28,8 @@
-     Tested on Kali-Linux.
- """
- 
--from libmproxy import controller, proxy, platform
--from libmproxy.proxy.server import ProxyServer
-+from mitmproxy import controller, proxy, platform
-+from mitmproxy.proxy.server import ProxyServer
+@@ -31,8 +31,8 @@ try:
+     from mitmproxy import controller, proxy, platform
+     from mitmproxy.proxy.server import ProxyServer
+ except:
+-    from libmproxy import controller, proxy, platform
+-    from libmproxy.proxy.server import ProxyServer
++    from mitmproxy import controller, proxy, platform
++    from mitmproxy.proxy.server import ProxyServer
  import os
  from bdf import pebin
  from bdf import elfbin
