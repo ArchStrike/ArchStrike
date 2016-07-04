@@ -9,8 +9,9 @@ epoch=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="An open source platform that supports vulnerability research, exploit development and the creation of custom security tools representing the largest collection of quality-assured exploits"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+makedepends=('ruby-bundler')
 depends_x86_64+=('lib32-libxslt')
-depends+=('ruby' 'ruby-bundler' 'git' 'libxslt' 'postgresql-libs' 'sqlite' 'libpcap' 'postgresql')
+depends+=('ruby' 'git' 'libxslt' 'postgresql-libs' 'sqlite' 'libpcap' 'postgresql')
 optdepends=('java-environment: msfgui'
             'dradis: dradisis database system')
 url='http://www.metasploit.com'
@@ -24,6 +25,19 @@ backup=('usr/share/metasploit/log/production.log')
 install="$pkgname.install"
 sha512sums=('40a281390c12da564331b56cf911fbdeb3ac0edd791a251f0568b1ca6448cd3ee32da8a3df541770147d5e997817287187db1e0be20bad72f0d853c0e5b77199')
 
+build() {
+  cd "$pkgname-framework-$pkgver"
+  
+  # Nokogiri SHOULD be ok with that
+  bundle config build.nokogiri --use-system-libraries
+  bundle install --deployment
+  
+  # Locking msfupdate
+  rm msfupdate
+
+  chmod 755 vendor -R
+}
+
 package() {
   cd "$pkgname-framework-$pkgver"
 
@@ -36,7 +50,7 @@ package() {
   # Shareable.
   cp --no-preserve=ownership -a documentation/* "${pkgdir}/usr/share/doc/metasploit"
   cp --no-preserve=ownership README.md "${pkgdir}/usr/share/doc/metasploit"
-
+  
   # Source + Bin.
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/metasploit"
   install -m644 .rspec "${pkgdir}/usr/share/metasploit"
@@ -48,6 +62,11 @@ package() {
   install -m644 .yardopts "${pkgdir}/usr/share/metasploit"
   install -m644 .gitmodules "${pkgdir}/usr/share/metasploit"
   install -m644 .mailmap "${pkgdir}"/usr/share/metasploit
+  
+  # We need to move the .bundle dir which contains bundle's config file
+  # or metasploit won't find its gems
+  cp -Rf --no-preserve=ownership .bundle "${pkgdir}/usr/share/metasploit/.bundle"
+
   # Commenting out the .git dir to shrink size. This will cause
   # a warning when starting about not being a git dir.
   #cp -a --no-preserve=ownership .git "${pkgdir}/usr/share/metasploit"
@@ -56,25 +75,16 @@ package() {
   ln -s /etc/metasploit "${pkgdir}/usr/share/metasploit/config"
 
   cd ${pkgdir}/usr/share/metasploit
-  bundle config build.nokogiri --use-system-libraries
-  bundle install --deployment
-  rm msfupdate
-  #chmod 0644 vendor/bundle/ruby/1.9.1/gems/robots-0.10.1/lib/robots.rb
-  #chmod 0644 vendor/bundle/ruby/$(ruby --version|awk '{print $2}'|cut -d'p' -f1)/gems/robots-0.10.1/lib/robots.rb
-  #chmod 0644 vendor/bundle/ruby/$(ruby --version|awk '{print $2}'|cut -d'p' -f1)/gems/*/*/*.rb
+  
+  # Set the original mod
   chmod 0644 vendor/bundle/ruby/2.3.0/gems/*/*/*.rb
+  
   install -Dm0666 /dev/null "${pkgdir}"/usr/share/metasploit/log/production.log
 
   cat > "${pkgdir}/usr/bin/msfbinscan" <<EOF
 #!/bin/sh
 cd /usr/share/metasploit
 ruby ./msfbinscan "\$@"
-EOF
-
-  cat > "${pkgdir}/usr/bin/msfcli" <<EOF
-#!/bin/sh
-cd /usr/share/metasploit
-ruby ./msfcli "\$@"
 EOF
 
   cat > "${pkgdir}/usr/bin/msfconsole" <<EOF
@@ -100,22 +110,10 @@ cd /usr/share/metasploit
 ruby ./msfelfscan "\$@"
 EOF
 
-  cat > "${pkgdir}/usr/bin/msfencode" <<EOF
-#!/bin/sh
-cd /usr/share/metasploit
-ruby ./msfencode "\$@"
-EOF
-
   cat > "${pkgdir}/usr/bin/msfmachscan" <<EOF
 #!/bin/sh
 cd /usr/share/metasploit
 ruby ./msfmachscan "\$@"
-EOF
-
-  cat > "${pkgdir}/usr/bin/msfpayload" <<EOF
-#!/bin/sh
-cd /usr/share/metasploit
-ruby ./msfpayload "\$@"
 EOF
 
   cat > "${pkgdir}/usr/bin/msfpescan" <<EOF
