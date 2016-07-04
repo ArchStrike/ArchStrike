@@ -9,11 +9,9 @@ epoch=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="An open source platform that supports vulnerability research, exploit development and the creation of custom security tools representing the largest collection of quality-assured exploits"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-# TODO clean the depends and makedepends vars
-makedepends=('ruby' 'ruby-bundler' 'git' 'libxslt' 'postgresql-libs' 'sqlite' 'libpcap' 'postgresql')
-makedepends_x86_64+=('lib32-libxslt')
+makedepends=('ruby-bundler')
 depends_x86_64+=('lib32-libxslt')
-depends+=('ruby' 'ruby-bundler' 'git' 'libxslt' 'postgresql-libs' 'sqlite' 'libpcap' 'postgresql')
+depends+=('ruby' 'git' 'libxslt' 'postgresql-libs' 'sqlite' 'libpcap' 'postgresql')
 optdepends=('java-environment: msfgui'
             'dradis: dradisis database system')
 url='http://www.metasploit.com'
