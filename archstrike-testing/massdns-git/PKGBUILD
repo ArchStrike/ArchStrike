@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=massdns-git
 pkgver=20160703.r22
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-dns' 'archstrike-networking')
 pkgdesc='A high-performance DNS stub resolver in C'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -12,8 +12,8 @@ url='https://github.com/blechschmidt/massdns'
 license=('GPL3')
 depends=('ldns')
 makedepends=('git')
-provides=("$pkgname")
-replaces=("$pkgname")
+provides=("massdns")
+replaces=("massdns")
 source=("$pkgname::git+https://github.com/blechschmidt/massdns.git")
 sha512sums=('SKIP')
 
