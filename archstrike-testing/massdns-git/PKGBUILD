@@ -1,0 +1,37 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+pkgname=massdns-git
+pkgver=20160703.r22
+pkgrel=1
+groups=('archstrike' 'archstrike-dns' 'archstrike-networking')
+pkgdesc='A high-performance DNS stub resolver in C'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/blechschmidt/massdns'
+license=('GPL3')
+depends=('ldns')
+makedepends=('git')
+provides=("$pkgname")
+replaces=("$pkgname")
+source=("$pkgname::git+https://github.com/blechschmidt/massdns.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build() {
+  cd $pkgname
+  make
+}
+
+package() {
+  cd $pkgname
+  install -dm755 $pkgdir/usr/share/$pkgname
+  install -Dm755 bin/massdns $pkgdir/usr/bin/massdns
+  install -Dm644 *.txt $pkgdir/usr/share/$pkgname/
+  install -Dm755 *.py $pkgdir/usr/share/$pkgname/
+  install -Dm644 README.md $pkgdir/usr/share/$pkgname/README.md
+}
