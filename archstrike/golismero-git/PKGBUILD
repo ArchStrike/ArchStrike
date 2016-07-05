@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=golismero-git
-pkgver=20160511.r40
+pkgver=20160705.r41
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Opensource web security testing framework"
