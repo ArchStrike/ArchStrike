@@ -16,9 +16,8 @@ else
      makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx-svn' 'python2' 'gcc-libs')
 fi
 depends=('libpcap' 'boost-libs' 'python2' 'log4cxx-svn' 'pcre')
-source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-$pkgver.tar.gz" "add_missing_logger.patch")
-sha512sums=('0bb6bd7f2ecd8e27960380ff9550cfabf436c6862ddc05d1466f7f73d2df6b798344a90d178cfce08c9f3bacc91812e4fd68f2e71d8a85b39b00ed9b86f161b7'
-            '337a6e1ef3854b3eed9c02e73ece8c07b95995c0f1a6ea3f87e2b5f232d354009314ceb39bed9916772452e36091d8ddd0f5ae0996922995930386900d567231')
+source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-$pkgver.tar.gz")
+sha512sums=('0bb6bd7f2ecd8e27960380ff9550cfabf436c6862ddc05d1466f7f73d2df6b798344a90d178cfce08c9f3bacc91812e4fd68f2e71d8a85b39b00ed9b86f161b7')
 
 prepare(){
    grep -iRl 'python' "$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
