@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=212
 
 pkgname=peach-git
 pkgver=20160606.r52
