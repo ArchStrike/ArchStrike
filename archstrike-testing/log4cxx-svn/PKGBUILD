@@ -15,7 +15,6 @@ source=("${pkgname}::svn+http://svn.apache.org/repos/asf/incubator/log4cxx/trunk
 install=${pkgname}.install
 conflicts=("log4cxx")
 replaces=("log4cxx")
-source=(http://archive.apache.org/dist/logging/$pkgname/$pkgver/apache-$pkgname-$pkgver.tar.gz)
 sha512sums=('SKIP')
 
 pkgver() {
