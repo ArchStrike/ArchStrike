@@ -10,10 +10,12 @@ url="https://github.com/Caleb1994/peach"
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A SmartFuzzer that is capable of performing both generation and mutation based fuzzing"
 license=('MIT')
-depends=('python2' 'binjitsu-git' 'python2-colorama')
+depends+=('python2' 'binjitsu-git' 'python2-colorama' 'glibc' 'libcap')
+depends_x86_64=('lib32-glibc')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/Caleb1994/peach.git")
-sha512sums=('SKIP')
+source=("$pkgname::git+https://github.com/Caleb1994/peach.git" "LICENSE")
+sha512sums=('SKIP'
+            '98cc6c6f3071b93c9cb83dbaa78d80bc28a8e37bee0a01230d841dfacbd725da987edd7e69e8cfb08235eb29d7894969c5447d734b0ecedb7bc5ad69d9baab2f')
 
 prepare() {
   grep -iRl 'python' "$pkgname" | xargs sed -i 's|python$|python2|'
@@ -28,6 +30,9 @@ package() {
   cd $pkgname
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -Dm644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname"
+
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
 
 cat > "$pkgdir/usr/bin/peach.py" <<EOF
