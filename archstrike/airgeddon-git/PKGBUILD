@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=airgeddon-git
-pkgver=20160624.r46
+pkgver=20160705.r53
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
@@ -15,7 +15,7 @@ optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git" "remove-update.patch")
 sha512sums=('SKIP'
-            '0db3436ebb5238b142e16b7cd8df7f39100859e5a6fc7e8db1005487c0364f346eccdcc014c540abb97bb28c1e1d24de8fec3067046fb9bf39ba27fc785c31c0')
+            '37dab1d94bef4ba1fee3457bf77ba5882a0d6932b4c8e214526753dea24efeb7caa89e489524a8407c8832e5cdad3b764a58560ac30cc66100d30db9a514d544')
 
 pkgver() {
   cd $pkgname
@@ -24,7 +24,7 @@ pkgver() {
 
 prepare() {
   cd $pkgname
-  patch -i ../remove-update.patch 
+  patch -Np1 -i $srcdir/remove-update.patch 
 }
 
 package() {

@@ -1,142 +1,17 @@
 diff --git a/airgeddon.sh b/airgeddon.sh
-old mode 100644
-new mode 100755
-index d33b861..7c5d56c
+index 48e9126..90c5bf8 100644
 --- a/airgeddon.sh
 +++ b/airgeddon.sh
-@@ -49,8 +49,6 @@ declare -A optional_tools=(
- 							[${optional_tools_names[3]}]=0
- 							[${optional_tools_names[4]}]=0
- 						)
--update_tools=("curl")
--
- #General vars
- standardhandshake_filename="handshake-01.cap"
- tmpdir="/tmp/"
-@@ -1178,21 +1176,6 @@ function language_strings() {
- 	arr["french",211]="Il semble que vous ne pouvez pas vous connecter à Internet. Impossible dans ces conditions de pouvoir accéder aux dépôts. Le script va donc s’exécuter sans s'actualiser..."
- 	arr["catalan",211]="Sembla que no tens connexió a internet. El script no pot connectar al repositori. Continuarà sense actualitzar-se..."
+@@ -6,7 +6,7 @@ airgeddon_version="3.42"
+ debug_mode=0
  
--	arr["english",212]="The script is already in the latest version. It doesn't need to be updated"
--	arr["spanish",212]="El script ya está en la última versión. No necesita ser actualizado"
--	arr["french",212]="La dernière version du script est déjà installée. Pas de mise à jour possible"
--	arr["catalan",212]="El script ja està en l'última versió. No necessita ser actualitzat"
--
--	arr["english",213]="A new version of the script exists (v$airgeddon_last_version). It will be downloaded"
--	arr["spanish",213]="Existe una nueva versión del script (v$airgeddon_last_version). Será descargada"
--	arr["french",213]="Une nouvelle version du script est disponible (v$airgeddon_last_version). Lancement du téléchargement"
--	arr["catalan",213]="Hi ha una nova versió dels script (v$airgeddon_last_version). Serà descarregada"
--
--	arr["english",214]="The new version was successfully downloaded. The script will be launched again"
--	arr["spanish",214]="La nueva versión se ha descargado con éxito. El script se lanzará de nuevo"
--	arr["french",214]="Le téléchargement de la dernière version du script a réussit. Le script a été lancé à nouveau"
--	arr["catalan",214]="La nova versió s'ha descarregat amb èxit. El script es llençarà de nou"
--
- 	arr["english",215]="WPA/WPA2 passwords always has 8 as a minimum length"
- 	arr["spanish",215]="Una contraseña WPA/WPA2 siempre tiene como mínimo una longitud de 8"
- 	arr["french",215]="Un mot de passe WPA/WPA2 a une longueur minimale de 8 caractères"
-@@ -1243,15 +1226,6 @@ function language_strings() {
- 	arr["french",224]="L'exécution du script se poursuit à partir exactement le même point où il était"
- 	arr["catalan",224]="El script contínua la seva execució des d'exactament el mateix punt en el qual estava"
+ #Enabled 1 / Disabled 0 - Auto update feature (it has no effect on debug mode) - Default value 1
+-auto_update=1
++auto_update=0
  
--	arr["english",225]="The script can't check if there is a new version because you haven't installed update tools needed"
--	arr["spanish",225]="El script no puede comprobar si hay una nueva versión porque no tienes instaladas las herramientas de actualización necesarias"
--	arr["french",225]="Le script ne peut pas vérifier si une nouvelle version est disponible parce que vous n'avez pas installé les outils nécessaires de mise à jour"
--	arr["catalan",225]="El script no pot comprovar si hi ha una nova versió perquè no tens instal·lades les eines d'actualització necessàries"
--
--	arr["english",226]="Update tools: checking..."
--	arr["spanish",226]="Herramientas de actualización: comprobando..."
--	arr["french",226]="Vérification de la présence des outils de mise à jour..."
--	arr["catalan",226]="Eines d'actualització: comprovant..."
- 
- 	arr["english",227]="Working...  "
- 	arr["spanish",227]="Trabajando...  "
-@@ -3700,18 +3674,6 @@ function check_compatibility() {
- 	echo
- 	language_strings ${language} 226 "blue"
- 
--	update_toolsok=1
--	for i in "${update_tools[@]}"; do
--		echo -ne "$i"
--		time_loop
--		if ! hash ${i} 2> /dev/null; then
--			echo -e ${red_color}" Error\r"${normal_color}
--			update_toolsok=0
--		else
--			echo -e ${green_color}" Ok\r"${normal_color}
--		fi
--	done
--
- 	if [ ${essential_toolsok} -eq 0 ]; then
- 		echo
- 		language_strings ${language} 111 "yellow"
-@@ -3744,17 +3706,6 @@ function check_bash_version() {
- 	fi
- }
- 
--function check_update_tools() {
--
--	if [ ${update_toolsok} -eq 1 ]; then
--		autoupdate_check
--	else
--		echo
--		language_strings ${language} 225 "yellow"
--		language_strings ${language} 115 "read"
--	fi
--}
--
- function print_intro() {
- 
- 	echo -e ${yellow_color}"                  .__                         .___  .___"
-@@ -3863,7 +3814,6 @@ function welcome() {
- 		detect_distro_main
- 		language_strings ${language} 115 "read"
- 
--		check_update_tools
- 	fi
- 
- 	select_interface
-@@ -3904,39 +3854,6 @@ function download_last_version() {
- 	fi
- }
- 
--function autoupdate_check() {
--
--	echo
--	language_strings ${language} 210 "blue"
--	echo
--	hasinternet_access=0
--
--	ping -c 1 ${host_to_check_internet} -W 1 > /dev/null 2>&1
--	if [ "$?" = "0" ]; then
--		hasinternet_access=1
--	fi
--
--	if [ ${hasinternet_access} -eq 1 ]; then
--
--		airgeddon_last_version=`timeout -s SIGTERM 15 curl -L ${urlscript_directlink} 2> /dev/null | grep "airgeddon_version=" | head -1 | cut -d "\"" -f 2`
--
--		if [ "$airgeddon_last_version" != "" ]; then
--			if compare_floats_greater_than ${airgeddon_last_version} ${airgeddon_version}; then
--				language_strings ${language} 213 "yellow"
--				download_last_version
--			else
--				language_strings ${language} 212 "yellow"
--			fi
--		else
--			language_strings ${language} 5 "yellow"
--		fi
--	else
--		language_strings ${language} 211 "yellow"
--	fi
--
--	language_strings ${language} 115 "read"
--}
--
- function autodetect_language() {
- 
- 	autochanged_language=0
-@@ -3993,4 +3910,4 @@ function echo_pink() {
+ #Enabled 1 / Disabled 0 - Auto change language feature - Default value 1
+ auto_change_language=1
+@@ -4478,4 +4478,4 @@ function echo_brown() {
  
  trap capture_traps INT
  trap capture_traps SIGTSTP
