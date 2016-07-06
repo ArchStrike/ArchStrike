@@ -1,0 +1,40 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=peach-git
+pkgver=20160606.r52
+pkgrel=1
+arch=('any')
+url="https://github.com/Caleb1994/peach"
+groups=('archstrike' 'archstrike-fuzzers')
+pkgdesc="A SmartFuzzer that is capable of performing both generation and mutation based fuzzing"
+license=('MIT')
+depends=('python2' 'binjitsu-git' 'python2-colorama')
+makedepends=('git')
+source=("$pkgname::git+https://github.com/Caleb1994/peach.git")
+sha512sums=('SKIP')
+
+prepare() {
+  grep -iRl 'python' "$pkgname" | xargs sed -i 's|python$|python2|'
+}
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+
+cat > "$pkgdir/usr/bin/peach.py" <<EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 peach.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/peach.py"
+}
+
