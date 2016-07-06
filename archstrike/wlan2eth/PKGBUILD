@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=wlan2eth
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="re-writes 802.11 captures into standard Ethernet frames."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="http://www.willhackforsushi.com/?page_id=79"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=("libpcap")
 groups=('archstrike' 'archstrike-wireless')
 source=(http://www.willhackforsushi.com/code/wlan2eth/wlan2eth-$pkgver.tgz)
-md5sums=('3112bf518f2478940e8103ca716d6b57')
+sha512ums=('3112bf518f2478940e8103ca716d6b57')
 build() {
   cd "$srcdir/wlan2eth-$pkgver"
   sed -i "s|-g3 -ggdb -pipe|$CFLAGS|g" Makefile
@@ -23,3 +23,4 @@ package(){
   cd "$srcdir/wlan2eth-$pkgver"
   install -Dm755 wlan2eth "$pkgdir"/usr/bin/wlan2eth
 }
+sha512sums=('c55cc2490fe7eaa5e84658a557d3f60a724edcfaeed966214ba4e695a0029cdbb39cbf25a62ee371ae20407df1a03b24bb27a7be89f396c0cbc97b88107b7776')
