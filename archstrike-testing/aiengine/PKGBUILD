@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=aiengine
-pkgver=1.3
+pkgver=1.5
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A packet inspection engine with capabilities of learning without any human intervention."
@@ -11,28 +11,30 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://bitbucket.org/camp0/aiengine"
 license=('GPL3')
 if [[ $CARCH == 'x86_64' ]]; then
-     makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx' 'python2' 'gcc-libs-multilib')
+     makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx-svn' 'python2' 'gcc-libs-multilib')
 else
-     makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx' 'python2' 'gcc-libs')
+     makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx-svn' 'python2' 'gcc-libs')
 fi
-depends=('libpcap' 'boost-libs' 'python2' 'log4cxx' 'pcre')
-source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-$pkgver.tar.gz")
-sha512sums=('b1d8467e5140412a37a8615b1eadba777997cf10915a0b3b76a6814a3ef6f8f2a2a1c40d3877ee946fa8560febbaa79f66c9d2d5fba0f877f9943ec658bb6808')
+depends=('libpcap' 'boost-libs' 'python2' 'log4cxx-svn' 'pcre')
+source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-$pkgver.tar.gz" "add_missing_logger.patch")
+sha512sums=('0bb6bd7f2ecd8e27960380ff9550cfabf436c6862ddc05d1466f7f73d2df6b798344a90d178cfce08c9f3bacc91812e4fd68f2e71d8a85b39b00ed9b86f161b7'
+            '337a6e1ef3854b3eed9c02e73ece8c07b95995c0f1a6ea3f87e2b5f232d354009314ceb39bed9916772452e36091d8ddd0f5ae0996922995930386900d567231')
 
 prepare(){
-   grep -iRl 'python' "$srcdir/aiengine-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+   grep -iRl 'python' "$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 build() {
-  cd $srcdir/aiengine-$pkgver
+  cd $pkgname-$pkgver
   ./autogen.sh
+  export CXXFLAGS="-llog4cxx"
   export PYTHON=/usr/bin/python2.7
   ./configure --prefix=/usr --enable-adaptor --enable-bloomfilter --enable-tcpqos \
-   --enable-reject --enable-fscompress --with-pic --with-boost-python --with-pcre
+   --enable-reject --enable-fscompress --enable-pythongil --with-pic --with-boost-python --with-pcre
   make
 }
 
 package() {
-  cd $srcdir/aiengine-$pkgver
+  cd $pkgname-$pkgver
   make DESTDIR=$pkgdir install
 }
