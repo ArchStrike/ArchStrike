@@ -3,29 +3,23 @@
 buildarch=212
 
 pkgname=logkeys
-pkgver=0.1.1a
-pkgrel=13
+pkgver=0.1.1c
+pkgrel=1
 pkgdesc="Simple keylogger supporting also USB keyboards."
-license=('GPLv3')
+license=('GPL')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 groups=('archstrike')
-depends=('procps-ng' 'kbd')
+depends+=('procps-ng' 'kbd' 'gcc')
+depends_x86_64=('gcc-multilib')
 optdepends=('logkeys-keymaps: for additional keymaps')
-url="http://logkeys.googlecode.com/"
+url="https://github.com/kernc/logkeys"
 install="logkeys.install"
 backup=('etc/conf.d/logkeysd')
-source=("http://logkeys.googlecode.com/files/logkeys-$pkgver.tar.gz"
-        logkeys-stdout.patch logkeysd.conf logkeys.service)
-md5sums=('19362a382b65e89c66ea4c5642297589'
-         '8718a499a50d5607bde054aa48594406'
-         '0ddf617f1c51e2362a1c7a08c1cd62f6'
-         'bd70a5e5601168bbf7bf7f91ee530d14')
-
-prepare() {
-  cd "$srcdir/logkeys-$pkgver"
-
-  patch -p1 < "$srcdir/logkeys-stdout.patch"
-}
+source=("https://github.com/kernc/logkeys/archive/${pkgver}.tar.gz"
+        'logkeysd.conf' 'logkeys.service')
+sha512sums=('b1fc172830597431020ba401ee8c63cb5c410e80fc93c9c28c7e27ec041963497115c89fcf51486f20a1e878857c5e543574a51cee5580f8c0e352104720ba55'
+            'f897b9f04bcf4f5e010c363e3b966d84fe62eb47b2f18292e1db5bd55dd5a275f7a8708df17682eda0611c330b7cd4c9feb14fb60867b98d302b34f58c8b7f39'
+            'cc5bf7fd1e5491dd97903ddecb111eadb9b086fb93bfda4b63f3ed9242b8722f48690ada21a7a9259ae1fcfc8aa4e5e2daf4bd01171f3236c319a080614be9c8')
 
 build() {
   cd "$srcdir/logkeys-$pkgver"
