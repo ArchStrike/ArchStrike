@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-dicttoxml
-pkgver=1.6.6
-pkgrel=2
+pkgver=1.7.3
+pkgrel=1
 pkgdesc='Converts a Python dictionary or other native data type into a valid XML string'
 url='https://github.com/quandyfactory/dicttoxml'
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('GPL')
 arch=('any')
-source=("https://pypi.python.org/packages/source/d/dicttoxml/dicttoxml-$pkgver.tar.gz")
-sha512sums=('d2bf83f107b5d81a4fd04e9a5beb162db65808f7bb97d15de5d34beb8a4a2f68fce9e4c46f9c0c56d56c4fcce48181b3175a821834e4fb18d1ee4bc1ac952c8b')
+source=("https://pypi.python.org/packages/ac/6b/ed609774fda250795a81ce42ad888a5c6d45b6976616c465b9e35d3923a7/dicttoxml-$pkgver.tar.gz")
+sha512sums=('4ce044e982b7f91d8a7e0dc72842c0659e139378e90f31d81818a2f1598fae1a3be04ddbfe83026703ecaad767010949dfaaea9abe114ea4f9ad3578c091157d')
 
 prepare() {
   cd dicttoxml-$pkgver
