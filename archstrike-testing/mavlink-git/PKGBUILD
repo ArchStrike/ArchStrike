@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=mavlink-git
-pkgver=20160627.r2026
+pkgver=20160707.r2029
 pkgrel=1
 pkgdesc="MAVLink micro air vehicle marshalling / communication libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
