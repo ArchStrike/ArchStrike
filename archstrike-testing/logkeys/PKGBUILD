@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=logkeys
 pkgver=0.1.1c
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple keylogger supporting also USB keyboards."
 license=('GPL')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -16,10 +16,16 @@ url="https://github.com/kernc/logkeys"
 install="logkeys.install"
 backup=('etc/conf.d/logkeysd')
 source=("https://github.com/kernc/logkeys/archive/${pkgver}.tar.gz"
-        'logkeysd.conf' 'logkeys.service')
+        'logkeysd.conf' 'logkeys.service' 'eventx-chroot.patch')
 sha512sums=('b1fc172830597431020ba401ee8c63cb5c410e80fc93c9c28c7e27ec041963497115c89fcf51486f20a1e878857c5e543574a51cee5580f8c0e352104720ba55'
             'f897b9f04bcf4f5e010c363e3b966d84fe62eb47b2f18292e1db5bd55dd5a275f7a8708df17682eda0611c330b7cd4c9feb14fb60867b98d302b34f58c8b7f39'
-            'cc5bf7fd1e5491dd97903ddecb111eadb9b086fb93bfda4b63f3ed9242b8722f48690ada21a7a9259ae1fcfc8aa4e5e2daf4bd01171f3236c319a080614be9c8')
+            'cc5bf7fd1e5491dd97903ddecb111eadb9b086fb93bfda4b63f3ed9242b8722f48690ada21a7a9259ae1fcfc8aa4e5e2daf4bd01171f3236c319a080614be9c8'
+            '294c3ef1d5f01df3902cb3e0bfee829301e1bb9cc171cf6f774f976a39aab3f5b4cf67eb6983739e593535b8ef43a8f5bf52ea659e6fcbe5c42bdc3784ed1144')
+
+prepare() {
+  cd "$srcdir/logkeys-$pkgver"
+  patch -Np1 -i $srcdir/eventx-chroot.patch
+}
 
 build() {
   cd "$srcdir/logkeys-$pkgver"

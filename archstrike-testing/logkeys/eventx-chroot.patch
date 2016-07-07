@@ -1,0 +1,17 @@
+diff --git a/configure b/configure
+index 17ceef6..e2642c4 100755
+--- a/configure
++++ b/configure
+@@ -3622,12 +3622,6 @@ fi
+ fi
+ { $as_echo "$as_me:${as_lineno-$LINENO}: result: $ac_cv_file__dev_input" >&5
+ $as_echo "$ac_cv_file__dev_input" >&6; }
+-if test "x$ac_cv_file__dev_input" = xyes; then :
+-
+-else
+-  as_fn_error $? "Input event interface devices not found in expected location /dev/input/eventX !" "$LINENO" 5
+-
+-fi
+ 
+ { $as_echo "$as_me:${as_lineno-$LINENO}: checking for /proc/bus/input/devices" >&5
+ $as_echo_n "checking for /proc/bus/input/devices... " >&6; }
