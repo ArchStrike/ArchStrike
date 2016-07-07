@@ -32,23 +32,23 @@ If you have more questions regarding contribution, you can check out our [wiki p
 
 ##FAQ
 
-Q: What difference does ArchStrike have from other penetration distributions?
+**Q: What difference does ArchStrike have from other penetration distributions?**
 
 A: We are a layer on top of ArchLinux that you can install and remove easily. We try and follow the Arch Linux standards when making our packages.
 
-Q: Where can I download an ISO file?
+**Q: Where can I download an ISO file?**
 
 A: As of yet, we do not have an ISO, although our team is working on an ISO to be released as you are reading this. Updates on the ISO will be made on twitter and our website.
 
-Q: How can I contact you?
+**Q: How can I contact you?**
 
 A: Send us a mail, join our IRC channel or contact us via github. All are fine.
 
-Q: I am having trouble installing ArchStrike, can you help me?
+**Q: I am having trouble installing ArchStrike, can you help me?**
 
 A: Sure! Send us an email or join our IRC channel.
 
-Q: What is the archstrike-testing repository and do I need it?
+**Q: What is the archstrike-testing repository and do I need it?**
 
 A: The testing repository is merely a quality control mechanism we have in place. When new tools are added, they stay in testing until they are verified to be functioning correctly. Most of the packages in testing build and work fine but some may have problems. If you want to have the full range of tools that we provide, go ahead and add the testing repository as well.
 
