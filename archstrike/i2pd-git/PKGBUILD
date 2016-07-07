@@ -5,7 +5,7 @@ _pkgname=i2pd
 buildarch=212
 
 pkgname=$_pkgname-git
-pkgver=20160705.r3178
+pkgver=20160706.r3186
 pkgrel=1
 pkgdesc='I2P router written in C++'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
