@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=opendnssec
-pkgver=1.4.10
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Turn-key solution for DNSSEC (sqlite3)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -22,7 +22,7 @@ source=("https://dist.opendnssec.org/source/$pkgname-$pkgver.tar.gz"
         "pid-path.patch"
         "ods-signer.service"
         "ods-enforcer.service")
-sha512sums=('00ba6ceba595f9d4d7736af982b78779f204eb52fcf92222256792368328647ca1a4c84b4db64dcdd9a0119292f132a4efd15e60436c2a125bf6a8fb3f33540e'
+sha512sums=('4a011d3b897e1a50f60d7f91e79f99eb5b9e2042aad9fbd4ebf64f8acc1cb5bd18de7527a95a30a3d8a38c5811bf11e3c5f2865505e8dbf0f91dbb9c346dc22e'
             '74f386ec8db1ff3a1dd4faf8e1d7eaa6e04f1ab0f89d5289f440ed1c2fe7040d8688ce27796d04d8152c235369297ce829f5dec0aa205c3e62263ae759e15d4a'
             '28d868feedbee8251b0000556705ee094707782dad2072f4e37ebff3ac1658d09c884488dd6852e9734fa859218048daff50b66fe25930f6445619e3c89ca877'
             'a3700c82e6577bdacbce9cfd749e71e3c749814884ad4e9a1359e97105f9c045dc1472ba231ecb52c23855cacf67874623c8eef715955bfd41239b199d03a0db')
@@ -53,7 +53,5 @@ package() {
         "${pkgdir}/usr/lib/systemd/system/ods-signer.service"
   install -Dm644 "${srcdir}/ods-enforcer.service" \
         "${pkgdir}/usr/lib/systemd/system/ods-enforcer.service"
-  install -Dm644 "enforcer/utils/migrate_adapters_1.sqlite3" \
-        "${pkgdir}/usr/share/opendnssec"
   chmod 644 ${pkgdir}/etc/opendnssec/{conf.xml.sample,conf.xml}
 }
