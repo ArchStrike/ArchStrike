@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=logkeys
 pkgver=0.1.1c
-pkgrel=2
+pkgrel=3
 pkgdesc="Simple keylogger supporting also USB keyboards."
 license=('GPL')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -42,7 +42,5 @@ package() {
   install -Dm644 "$srcdir/logkeysd.conf" "$pkgdir/etc/conf.d/logkeysd"
   install -Dm644 "$srcdir/logkeys.service" "$pkgdir/usr/lib/systemd/system/logkeys.service"
 
-  mv "$pkgdir/usr/etc"/* "$pkgdir/usr/bin"
-  rmdir "$pkgdir/usr/etc"
 }
 
