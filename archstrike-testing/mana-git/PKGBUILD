@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=mana-git
-pkgver=20141024.r44
+pkgver=20160512.r84
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A toolkit for rogue access point (evilAP) attacks first presented at Defcon 22"
@@ -19,15 +19,23 @@ source=("${pkgname}::git+https://github.com/sensepost/mana.git"
         "apache-fix.patch"
         "archfixes.patch")
 sha512sums=('SKIP'
-            'f04e7831d449ef5ecce280f6952daf592417ea4fa2953e51b701bef4f07ae7e40f066a6ba887e624643c0d60a704e7007a23fdcd22af87c09ef587dad5f1948d'
-            'fded55c3c11beb41c4e6570c8fd014ff2660ee50425c9c0411d8fc1c0101649b5607658ee51cb111f5a68082621421551898c19733fe5dc756a8d921405726da')
+            'f94e4051a3172d7c32daf50e991ca5c74f35fff5c8d72315a0d3a5b86e5a373ab3db5d5a5c49e68e58876085817b09baecec9c84729ae091e841630d04542cce'
+            '46eb409cf7dba877ec03e885605b729147f8aab76b495dbcc7bcc372e9f1b232dedb138a0068f8f286d71e5e8a107ad4a6a23d7d16c82b21462142dba44871e5')
 
 prepare(){
-  grep -iRl 'python' "${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
   cd ${pkgname}
   patch -i $srcdir/apache-fix.patch
   cd run-mana
   patch < $srcdir/archfixes.patch
+
+  ## submodules
+  git submodule init
+  git submodule update
+
+  ## py2 fixes
+  cd $srcdir
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
+  sed -i 's|python2.6|python2|' $pkgname/sslstrip-hsts/dns2proxy/dns2proxy.py
 }
 
 pkgver() {
@@ -36,7 +44,7 @@ pkgver() {
 }
 
 build(){
-  cd "${srcdir/mana}"
+  cd $pkgname
   make
 }
 
@@ -44,10 +52,9 @@ package() {
   cd "${pkgname}"
   install -dm755 "$pkgdir/usr/bin/"
   make DESTDIR=$pkgdir install
-  install -Dm644 hostapd-manna/COPYING "$pkgdir/usr/share/licenses/hostapd-manna/COPYING"
+  install -Dm644 hostapd-mana/COPYING "$pkgdir/usr/share/licenses/hostapd-mana/COPYING"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/mana-git/LICENSE"
-  # Fixing a sed mixup, if your going to py2 why not specify it in every file
-  sed -i 's|python22.6|python2|' $pkgdir/usr/share/mana-toolkit/sslstrip-hsts/dns2proxy.py
+  
   # Missing dirs, needed
   install -dm755 "$pkgdir/var/lib/mana-toolkit/lamb_braai/"
   install -dm755 "$pkgdir/var/lib/mana-toolkit/sslsplit/"
@@ -55,37 +62,37 @@ package() {
 cat > "$pkgdir/usr/bin/mana-firelamb-view" <<EOF
 #!/bin/sh
 cd /usr/share/mana-toolkit/run-mana
-./firelamb-view.sh "\$@"
+bash firelamb-view.sh "\$@"
 EOF
 
 cat > "$pkgdir/usr/bin/mana-nat-full" <<EOF
 #!/bin/sh
 cd /usr/share/mana-toolkit/run-mana
-./start-nat-full.sh "\$@"
+bash start-nat-full.sh "\$@"
 EOF
 
 cat > "$pkgdir/usr/bin/mana-nat-simple" <<EOF
 #!/bin/sh
 cd /usr/share/mana-toolkit/run-mana
-./start-nat-simple.sh "\$@"
+bash start-nat-simple.sh "\$@"
 EOF
 
 cat > "$pkgdir/usr/bin/mana-noupstream-eap" <<EOF
 #!/bin/sh
 cd /usr/share/mana-toolkit/run-mana
-./start-noupstream-eap.sh "\$@"
+bash start-noupstream-eap.sh "\$@"
 EOF
 
 cat > "$pkgdir/usr/bin/mana-noupstream" <<EOF
 #!/bin/sh
 cd /usr/share/mana-toolkit/run-mana
-./start-noupstream.sh "\$@"
+bash start-noupstream.sh "\$@"
 EOF
 
-chmod +x "$pkgdir/usr/bin/mana-firelamb-view"
-chmod +x "$pkgdir/usr/bin/mana-nat-full"
-chmod +x "$pkgdir/usr/bin/mana-nat-simple"
-chmod +x "$pkgdir/usr/bin/mana-noupstream-eap"
-chmod +x "$pkgdir/usr/bin/mana-noupstream"
+chmod 755 "$pkgdir/usr/bin/mana-firelamb-view"
+chmod 755 "$pkgdir/usr/bin/mana-nat-full"
+chmod 755 "$pkgdir/usr/bin/mana-nat-simple"
+chmod 755 "$pkgdir/usr/bin/mana-noupstream-eap"
+chmod 755 "$pkgdir/usr/bin/mana-noupstream"
 
 }

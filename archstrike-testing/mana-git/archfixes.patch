@@ -1,28 +1,26 @@
-diff -aur run-mana.orig/start-nat-full.sh run-mana/start-nat-full.sh
---- run-mana.orig/start-nat-full.sh	2014-10-09 18:17:44.216949760 -0400
-+++ run-mana/start-nat-full.sh	2014-10-10 17:35:08.796355852 -0400
-@@ -9,7 +9,7 @@
+diff --git a/run-mana/start-nat-full.sh b/run-mana/start-nat-full.sh
+index c69ca61..9892cc5 100755
+--- a/run-mana/start-nat-full.sh
++++ b/run-mana/start-nat-full.sh
+@@ -9,7 +9,7 @@ hostname WRT54G
  echo hostname WRT54G
  sleep 2
  
 -service network-manager stop
-+systemctl stop network-manager 
++systemctl stop network-manager
  rfkill unblock wlan
  
  ifconfig $phy down
-@@ -37,9 +37,9 @@
+@@ -37,7 +37,7 @@ iptables -t nat -A PREROUTING -i $phy -p udp --dport 53 -j DNAT --to 10.0.0.1
  
  #SSLStrip with HSTS bypass
- cd /usr/share/mana-toolkit/sslstrip-hsts/
--python sslstrip.py -l 10000 -a -w /var/lib/mana-toolkit/sslstrip.log&
-+python2 sslstrip.py -l 10000 -a -w /var/lib/mana-toolkit/sslstrip.log&
+ cd /usr/share/mana-toolkit/sslstrip-hsts/sslstrip2/
+-python sslstrip.py -l 10000 -a -w /var/lib/mana-toolkit/sslstrip.log.`date "+%s"`&
++python2 sslstrip.py -l 10000 -a -w /var/lib/mana-toolkit/sslstrip.log.`date "+%s"`&
  iptables -t nat -A PREROUTING -i $phy -p tcp --destination-port 80 -j REDIRECT --to-port 10000
--python dns2proxy.py $phy&
-+python2 dns2proxy.py $phy&
- cd -
- 
- #SSLSplit
-@@ -89,7 +89,7 @@
+ cd /usr/share/mana-toolkit/sslstrip-hsts/dns2proxy/
+ python dns2proxy.py -i $phy&
+@@ -93,7 +93,7 @@ pkill dnsmasq
  pkill sslstrip
  pkill sslsplit
  pkill hostapd
@@ -31,11 +29,12 @@ diff -aur run-mana.orig/start-nat-full.sh run-mana/start-nat-full.sh
  iptables --policy INPUT ACCEPT
  iptables --policy FORWARD ACCEPT
  iptables --policy OUTPUT ACCEPT
-diff -aur run-mana.orig/start-nat-simple.sh run-mana/start-nat-simple.sh
---- run-mana.orig/start-nat-simple.sh	2014-10-09 18:17:44.216949760 -0400
-+++ run-mana/start-nat-simple.sh	2014-10-10 17:35:16.719573027 -0400
-@@ -5,7 +5,7 @@
- conf=/etc/mana-toolkit/hostapd-karma.conf
+diff --git a/run-mana/start-nat-simple.sh b/run-mana/start-nat-simple.sh
+index e0affb5..d8fb512 100755
+--- a/run-mana/start-nat-simple.sh
++++ b/run-mana/start-nat-simple.sh
+@@ -5,7 +5,7 @@ phy=wlan1
+ conf=/etc/mana-toolkit/hostapd-mana.conf
  hostapd=/usr/lib/mana-toolkit/hostapd
  
 -service network-manager stop
@@ -43,72 +42,3 @@ diff -aur run-mana.orig/start-nat-simple.sh run-mana/start-nat-simple.sh
  rfkill unblock wlan
  
  ifconfig $phy up
-@@ -33,5 +33,5 @@
- pkill sslstrip
- pkill sslsplit
- pkill hostapd
--pkill python
-+pkill python2
- iptables -t nat -F
-diff -aur run-mana.orig/start-noupstream-eap.sh run-mana/start-noupstream-eap.sh
---- run-mana.orig/start-noupstream-eap.sh	2014-10-09 18:17:44.216949760 -0400
-+++ run-mana/start-noupstream-eap.sh	2014-10-10 17:34:53.489913589 -0400
-@@ -16,7 +16,7 @@
- mkfifo $EXNODE
- $crackapd&
- 
--service network-manager stop
-+systemctl stop network-manager
- rfkill unblock wlan
- 
- # Start hostapd
-@@ -36,8 +36,8 @@
- dhcpd -pf /var/run/dhcpd-two.pid -lf /var/lib/dhcp/dhcpd-two.leases -cf /etc/mana-toolkit/dhcpd-two.conf $phy0
- dnsspoof -i $phy -f /etc/mana-toolkit/dnsspoof.conf&
- dnsspoof -i $phy0 -f /etc/mana-toolkit/dnsspoof.conf&
--service apache2 start
--service stunnel4 start
-+systemctl start httpd
-+systemctl start stunnel4
- tinyproxy -c /etc/mana-toolkit/tinyproxy.conf&
- msfconsole -r /etc/mana-toolkit/karmetasploit.rc&
- 
-@@ -58,5 +58,5 @@
- pkill tinyproxy
- pkill stunnel4
- pkill msfconsole
--service apache2 stop
-+systemctl stop httpd
- iptables -t nat -F
-diff -aur run-mana.orig/start-noupstream.sh run-mana/start-noupstream.sh
---- run-mana.orig/start-noupstream.sh	2014-10-09 18:17:44.216949760 -0400
-+++ run-mana/start-noupstream.sh	2014-10-10 17:34:33.326875860 -0400
-@@ -8,7 +8,7 @@
- echo hostname WRT54G
- sleep 2
- 
--service network-manager stop
-+systemctl stop network-manager
- rfkill unblock wlan
- 
- ifconfig $phy down
-@@ -24,8 +24,8 @@
- 
- dhcpd -cf /etc/mana-toolkit/dhcpd.conf $phy
- dnsspoof -i $phy -f /etc/mana-toolkit/dnsspoof.conf&
--service apache2 start
--service stunnel4 start
-+systemctl start httpd 
-+service start stunnel4
- tinyproxy -c /etc/mana-toolkit/tinyproxy.conf&
- msfconsole -r /etc/mana-toolkit/karmetasploit.rc&
- 
-@@ -43,6 +43,6 @@
- pkill dnsspoof
- pkill tinyproxy
- pkill stunnel4
--pkill ruby
--service apache2 stop
-+pkill ruby-1.9
-+systemctl stop httpd
- iptables -t nat -F
