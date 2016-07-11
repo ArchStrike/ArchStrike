@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=pupy-git
-pkgver=20160630.r404
-pkgrel=2
+pkgver=20160711.r419
+pkgrel=1
 arch=('any')
 url="https://github.com/n1nj4sec/pupy"
 groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
