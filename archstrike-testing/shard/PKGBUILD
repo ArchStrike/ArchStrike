@@ -4,7 +4,6 @@ buildarch=1
 
 pkgname=shard
 pkgver=1.1
-_release=MultiCredSupport
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
@@ -12,29 +11,23 @@ pkgdesc="A command line tool to detect shared passwords"
 url="https://github.com/philwantsfish/shard"
 license=('MIT')
 depends=('java-environment')
-makedepends=('sbt')
-source=("https://github.com/philwantsfish/shard/archive/${_release}.tar.gz" "LICENSE.md")
-sha512sums=('73ab89eb6bc9d640e2658346fbdf6b9664bae62dd1678bf419762c50df59e272e6c2b9f52cf0ca44e0a8a1cdd23c665f7de1f716ccb30a342da2b58c89252608'
+source=("https://github.com/philwantsfish/shard/releases/download/MultiCredSupport/${pkgname}-${pkgver}.jar" "LICENSE.md")
+noextract=("${pkgname}-${pkgver}.jar")
+sha512sums=('127d2427e030622a6f6092a0c17c77cb742fe9206fa5f376c210cf0c26b3a2cb39ff6cd7c8ffa54f709de5ed25d22a8aca8e84e4e38dea66d73c68623fecdd84'
             'cce994c12eee0dbdd1011ca13bbe6e2e2a9d08c3b1d685765d81f9ff43bf3c340508bbd8658eed7297096c9363f217a0e1494fc841b080253757431b0545ce3c')
 
-build() {
-  cd ${pkgname}-${_release} 
-  sbt assembly
-}
-
 package() {
-  cd ${pkgname}-${_release}
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  cp target/scala-2.11/shard-assembly-1.0.jar "${pkgdir}/usr/share/${pkgname}"
+  install -Dm755 "${srcdir}/${pkgname}-${pkgver}.jar" "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 ${srcdir}/LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/sh
 cd /usr/share/${pkgname}
-java -jar shard-assembly-1.0.jar "\$@"
+java -jar ${pkgname}-${pkgver}.jar "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
