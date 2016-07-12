@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=archstrike-openbox-config
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="ArchStrike config files for OpenBox"
@@ -18,7 +18,6 @@ package() {
   cd ${pkgname}-${pkgver}
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  cp -a --no-preserve=ownership wallpapers "${pkgdir}/usr/share/${pkgname}"
-  cp -a --no-preserve=ownership etc/* "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
 }
