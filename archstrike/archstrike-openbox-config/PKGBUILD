@@ -1,0 +1,24 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=archstrike-openbox-config
+pkgver=1.0
+pkgrel=1
+groups=('archstrike-desktop')
+arch=('any')
+pkgdesc="ArchStrike config files for OpenBox"
+url="https://github.com/ArchStrike/archstrike-openbox-config"
+license=('GPL3')
+depends=('openbox' 'feh')
+source=("https://github.com/ArchStrike/archstrike-openbox-config/archive/${pkgver}.tar.gz")
+sha512sums=('bb022c332b11bd5bc4bdb716ba63b1491529c58e53d59cea496be394aecb89608210f6faa09be54861c2278edcfe9479c57b8446b8f8b5dee50f252e738ca124')
+
+package() {
+  cd ${pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+
+  cp -a --no-preserve=ownership wallpapers "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership etc/* "${pkgdir}/usr/share/${pkgname}"
+
+}
