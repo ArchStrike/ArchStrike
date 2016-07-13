@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=seclists-git
-pkgver=r259.412603a
+pkgver=r260.601038e
 pkgrel=1
 pkgdesc="A collection of multiple types of lists used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more."
 arch=('any')
