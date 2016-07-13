@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=suricata
-pkgver=3.1
+pkgver=3.1.1
 pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
@@ -15,7 +15,7 @@ optdepends=('snort: suricata can use rulesets provided by snort')
 options=('!emptydirs')
 backup=('etc/suricata/suricata.yaml')
 source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz)
-sha512sums=('64483951136f064ed3ad0e01276ac633e53aed511d5517b67d6ab2b81e7c2af436dcece7f8a2576c741cd79d19176da622775ff580f2f0cf747fd134ddcfd352')
+sha512sums=('0fb78e9ce5241f68d289d00e0776e2035f032e1e3be59debbf0764f365309c7d6885dcea26b1b09460f32a00820780fbe0698898957bc207764f3462000ca0b4')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
@@ -29,7 +29,9 @@ build() {
   --localstatedir=/var \
   HAVE_PYTHON_CONFIG=/usr/bin/python2 \
   --enable-gccprotect \
+  --enable-gccmarch \
   --enable-nfqueue \
+  --enable-python \
   --enable-nflog \
   --enable-luajit \
   --enable-geoip \
