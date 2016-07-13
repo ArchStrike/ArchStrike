@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=massdns-git
-pkgver=20160703.r22
-pkgrel=2
+pkgver=20160713.r23
+pkgrel=1
 groups=('archstrike' 'archstrike-dns' 'archstrike-networking')
 pkgdesc='A high-performance DNS stub resolver in C'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
