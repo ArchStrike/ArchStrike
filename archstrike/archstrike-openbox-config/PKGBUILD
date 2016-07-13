@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=archstrike-openbox-config
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="ArchStrike config files for OpenBox"
 url="https://github.com/ArchStrike/archstrike-openbox-config"
 license=('GPL3')
-depends=('openbox' 'obmenu-generator' 'oblogout' 'feh')
+depends=('openbox' 'obmenu-generator' 'oblogout' 'feh' 'terminator' 'tint2' 'dmenu' 'firefox' 'spacefm')
 source=("https://github.com/ArchStrike/archstrike-openbox-config/archive/${pkgver}.tar.gz")
 sha512sums=('bb022c332b11bd5bc4bdb716ba63b1491529c58e53d59cea496be394aecb89608210f6faa09be54861c2278edcfe9479c57b8446b8f8b5dee50f252e738ca124')
 
