@@ -4,7 +4,8 @@ buildarch=1
 
 pkgname=archstrike-xfce-config
 pkgver=1.1
-pkgrel=3
+pkgrel=1
+epoch=1
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="ArchStrike config files for Xfce"
