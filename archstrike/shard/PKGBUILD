@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=shard
-pkgver=1.2
+pkgver=1.3
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('java-environment' 'bash')
 source=("https://github.com/philwantsfish/shard/releases/download/${pkgver}/${pkgname}-${pkgver}.jar" "LICENSE.md")
 noextract=("${pkgname}-${pkgver}.jar")
-sha512sums=('ce140cbaf9412369cde529a4fc095a7b440c9d4d8333e779ba2052f4b863b72da866433639019c95af6d0be7b4671de2d65a4ae4be7f5c22f7e8ecc4f1616303'
+sha512sums=('ee9d4674c09f1fb8a25d0aebc561f530523804f30a80c2a6df6cb8ee23f5810f429425b026ca2371718dc57963dffdf9933a2f4bf41a43eb37a2dfab9d0646bb'
             'cce994c12eee0dbdd1011ca13bbe6e2e2a9d08c3b1d685765d81f9ff43bf3c340508bbd8658eed7297096c9363f217a0e1494fc841b080253757431b0545ce3c')
 
 package() {
