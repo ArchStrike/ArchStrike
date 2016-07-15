@@ -6,7 +6,12 @@ post_install() {
 
   1) Remove the current i3 configuration files (not to be done if it's your first i3 install)
 
+  # lets backup first
+  mkdir -p ~/.config/backup
+  cp -a ~/.config/i3 ~/.config/i3status ~/.config/gtk-3.0 ~/.config/backup
   rm -rf ~/.config/i3 ~/.config/i3status ~/.config/gtk-3.0
+
+  # you can return to your old configurations by copying the contents of the backup directory to ~/.config
 
   2) Copy files
 

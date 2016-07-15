@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=archstrike-i3-config
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="i3wm configs for ArchStrike"
