@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team {at} archstrike {dot} org>
+# Contributor: Alad Wenter <https://wiki.archlinux.org/index.php/Special:EmailUser/Alad>
+
+buildarch=1
+
+pkgname=ttf-font-awesome
+pkgver=4.6.3
+pkgrel=1
+pkgdesc="Iconic font designed for Bootstrap"
+url="http://fortawesome.github.io/Font-Awesome/"
+license=('CCPL')
+depends=('fontconfig' 'xorg-font-utils')
+arch=('any')
+source=("https://github.com/FortAwesome/Font-Awesome/archive/v$pkgver.tar.gz")
+sha512sums=('ecf78028e7948e89d352c7f0de413198d95c235e36f49c24146d246012145ac62e0f4d1148655ef88be15710340688b2f3cc55247cfb6742a41400422f88d69f')
+
+package() {
+  cd Font-Awesome-$pkgver/fonts
+  # setup directories
+  install -dm755 "$pkgdir"/usr/share/fonts/TTF
+  install -dm755 "$pkgdir"/usr/share/fonts/OTF
+  # install fonts
+  install -Dm644 *.ttf "$pkgdir"/usr/share/fonts/TTF
+  install -Dm644 *.otf "$pkgdir"/usr/share/fonts/OTF
+}
