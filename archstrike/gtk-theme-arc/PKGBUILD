@@ -1,0 +1,31 @@
+# Maintainer: ArchStrike <team {at} archstrike {dot} org>
+# Contributor: zach <zach {at} zach-adams {dot} com>
+# Contributor: Gordian Edenhofer <gordian.edenhofer[at]yahoo[dot]de
+
+buildarch=1
+
+pkgname=gtk-theme-arc
+_pkgname=arc-theme
+pkgver=20160605
+pkgrel=1
+pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Official releases only."
+arch=('any')
+url="https://github.com/horst3180/${_pkgname}"
+license=('GPL3')
+depends=('gtk3' 'gtk-engine-murrine')
+source=("https://github.com/horst3180/${_pkgname}/archive/$pkgver.tar.gz")
+conflicts=('gtk-theme-arc-git')
+provides=('gtk-theme-arc')
+sha512sums=('e8905d4c5bf3a2881243db12ce23972180edf95873eb1533cbeb0a582f8f684fdcbaa7df9b314354d0cb83d5e462e45ce07561dfac706b4fceaa5d350b2357e9')
+
+build() {
+	cd "${_pkgname}-$pkgver"
+	./autogen.sh 
+        ./configure --prefix=/usr
+        make
+}
+
+package() {
+        cd "${_pkgname}-$pkgver"
+	make DESTDIR="${pkgdir}" install
+}
