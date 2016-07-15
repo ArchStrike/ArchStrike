@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=archstrike-wallpapers
-pkgver=20160715.r2
+pkgver=20160715.r3
 pkgrel=1
 groups=('archstrike-desktop')
 arch=('any')
