@@ -1,6 +1,7 @@
 post_install() {
-  echo "Please run /usr/share/empire/setup/setup_database.py and /usr/share/empire/setup/cert.sh, before first run"
-  echo "If this is an uppgrade please run /usr/share/empire/setup/reset.sh"
+    echo """
+    Please run 'empire-setup' AS ROOT before you run empire for the first time.
+    """
 }
 
 post_upgrade() {
