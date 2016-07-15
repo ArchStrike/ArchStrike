@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=archstrike-wallpapers
+pkgver=20160715.r2
+pkgrel=1
+groups=('archstrike-desktop')
+arch=('any')
+pkgdesc="Wallpapers for ArchStrike"
+url="https://github.com/ArchStrike/archstrike-wallpapers"
+license=('GPL3')
+makedepends=('git')
+source=("$pkgname::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+}
