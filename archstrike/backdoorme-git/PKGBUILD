@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=backdoorme-git
-pkgver=20160608.r193
+pkgver=20160715.r196
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
@@ -12,6 +12,7 @@ url="https://github.com/Kkevsterrr/backdoorme"
 license=('MIT')
 depends=('python2' 'python2-colorama' 'python2-paramiko' 'python2-scp' 'python2-rpyc')
 makedepends=('git')
+options=("!strip")
 source=("$pkgname::git+https://github.com/Kkevsterrr/backdoorme.git")
 sha512sums=('SKIP')
 
