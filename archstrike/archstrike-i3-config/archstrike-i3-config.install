@@ -1,0 +1,28 @@
+post_install() {
+  echo """
+  The configuration files go to /usr/share/archstrike-i3-config
+
+  To change your i3 configuration, please run the following commands.
+
+  1) Remove the current i3 configuration files (not to be done if it's your first i3 install)
+
+  rm -rf ~/.config/i3 ~/.config/i3status ~/.config/gtk-3.0
+
+  2) Copy files
+
+  cp -a /usr/share/archstrike-i3-config/config/* ~/.config/
+  
+  3) Add i3 to your .xinitrc
+
+  rm .xinitrc
+  echo 'exec i3' > .xinitrc
+
+  4) Restart X or reboot
+  If you are using a display manager you'll need to change your default desktop environment/window manager to i3
+
+  """
+}
+
+post_upgrade() {
+  post_install
+}

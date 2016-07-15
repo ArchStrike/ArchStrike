@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=archstrike-i3-config
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
 groups=('archstrike-desktop')
 arch=('any')
@@ -12,7 +12,8 @@ url="https://github.com/ArchStrike/archstrike-i3-config"
 license=('GPL3')
 depends=('i3-wm' 'i3lock' 'i3status' 'rofi' 'compton' 'notify-osd' 'ttf-hack' 'feh' 'scrot' 'imagemagick' 'ttf-font-awesome' 'gtk-theme-arc' 'firefox' 'terminator' 'thunar' 'ranger' 'thunderbird' 'hexchat' 'weechat')
 source=("https://github.com/ArchStrike/archstrike-i3-config/archive/${pkgver}.tar.gz")
-sha512sums=('53892dcebacd15988936d185def0045b3d7c6f62c599d266b0a1bdde3084e4357df8d5d769f947e75aa4c13e7138aa16348a8fe88ee958f9027838c45a36f3f1')
+install="${pkgname}.install"
+sha512sums=('aab6e471870ca8ec13cfd4302cda55f92a3240e51db67a4ad4a8360290f220ae53c76b72ccfa04f1e3454bdb0c9b9f8384618159bccac42103341297916e7deb')
 
 package() {
 
