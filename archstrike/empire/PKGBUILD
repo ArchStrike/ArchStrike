@@ -5,7 +5,7 @@ buildarch=1
 _pkgname="Empire"
 pkgname=empire
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
 groups=('archstrike' 'archstrike-exploit' 'archstrike-backdoors')
@@ -43,10 +43,20 @@ chmod 755 "$pkgdir/usr/bin/$pkgname"
 
 cat > "${pkgdir}/usr/bin/${pkgname}-setup" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/empire/setup
-./setup_database.py
-./cert.sh
-./reset.sh
+if [[ -f "/usr/share/empire/data/empire.db" ]]; then
+     echo "Empire DB found..."
+     read -r -p "Would you like to reset your Empire DB [y/N]" USERINPUT
+     case $USERINPUT in [yY][eE][sS]|[yY])
+        cd /usr/share/empire/setup
+        ./reset.sh;;
+     *)
+        echo "DB will not be reset continuing with setup"
+        cd /usr/share/empire/setup
+        ./setup_database.py
+        ./cert.sh
+        ./reset.sh;;
+     esac
+fi
 EOF
 chmod 755 "${pkgdir}/usr/bin/empire-setup"
 }
