@@ -1,12 +1,12 @@
 diff --git a/framework/dependency_check.py b/framework/dependency_check.py
-index 1361e10..d73e40f 100644
+index 1361e10..88de5f6 100644
 --- a/framework/dependency_check.py
 +++ b/framework/dependency_check.py
 @@ -1,55 +1,4 @@
  #!/usr/bin/env python
  """
 -This is the script for checking the owtf pip dependencies
-+Removing this entire file because it uses pip for dependency checking
++Removing the whole thing because it uses pip
  """
 -
 -import os
