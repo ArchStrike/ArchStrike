@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=archstrike-xfce-config
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="ArchStrike config files for Xfce"
@@ -13,6 +13,7 @@ license=('GPL3')
 depends=('network-manager-applet' 'gtk-theme-arc' 'ttf-hack')
 source=("https://github.com/ArchStrike/archstrike-xfce-config/archive/${pkgver}.tar.gz")
 sha512sums=('42ebbd12cf1b0b77ef17b5c04b0509d34461d86319ef6a44897425be24841f1f8a66b687adc311adc46b372517602d563d6f14a11bc66f04fe824324b4f336fd')
+install="${pkgname}.install"
 
 package() {
   cd ${pkgname}-${pkgver}

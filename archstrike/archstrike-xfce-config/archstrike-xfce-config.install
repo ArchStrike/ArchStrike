@@ -1,0 +1,35 @@
+post_install() {
+  echo """
+  The configuration files go to /usr/share/archstrike-xfce-config
+
+  To change your xfce configuration, please run the following commands.
+
+  1) Remove the current xfce configuration files (not to be done if it's your first xfce install)
+
+  # lets backup first
+  mkdir -p ~/.config/backup
+  cp -a ~/.config/desktop ~/.config/xfconf ~/.config/backup
+  rm -rf ~/.config/desktop ~/.config/xfconf
+
+  # you can return to your old configurations by copying the contents of the backup directory to ~/.config
+
+  2) Copy files
+
+  cp -a /usr/share/archstrike-xfce-config/config/xfce4/* ~/.config/
+  cp -a /usr/share/archstrike-xfce-config/icons/* /usr/share/pixmaps/
+  cp -a /usr/share/archstrike-xfce-config/wallpapers/* /usr/share/backgrounds/xfce/
+  
+  3) Add xfce4 to your .xinitrc
+
+  rm .xinitrc
+  echo 'exec xfce4' > .xinitrc
+
+  4) Restart X or reboot
+  If you are using a display manager you'll need to change your default desktop environment/window manager to xfce 
+
+  """
+}
+
+post_upgrade() {
+  post_install
+}
