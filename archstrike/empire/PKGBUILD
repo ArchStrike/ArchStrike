@@ -63,7 +63,6 @@ echo "DB not found continuing with setup"
 cd /usr/share/empire/setup
 ./setup_database.py
 ./cert.sh
-./reset.sh
 EOF
 chmod 755 "${pkgdir}/usr/bin/empire-setup"
 }
