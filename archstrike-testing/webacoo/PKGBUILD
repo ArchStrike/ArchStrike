@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=webacoo
 pkgver=0.2.3
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="Web Backdoor Cookie Script-Kit"
 url="https://github.com/anestisb/WeBaCoo"
 arch=('any')
 license=('GPL3')
-depends=('perl-io-socket-socks')
+depends=('perl-io-socket-socks' 'perl-uri-fetch')
 source=("https://github.com/anestisb/WeBaCoo/archive/v${pkgver}.tar.gz")
 sha512sums=('2ed6656acf0123d16486087a9bf74b026b2016cb3bdbb4391a32ac7bf95a027ac138de6b09932b9536dc8626c03a116ee033f720f60415d53e536d539e295ef4')
 
