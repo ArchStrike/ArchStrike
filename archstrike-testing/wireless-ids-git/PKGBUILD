@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wireless-ids-git
 pkgver=r24.b132071
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="Ability to detect suspicious activity such as (WEP/WPA/WPS) attack by sniffing the air for wireless packets."
 arch=('any')
@@ -36,7 +36,7 @@ package() {
 
 cat > $pkgdir/usr/bin/wireless-ids <<EOF
 #!/bin/sh
-cd /usr/share/wireless-ids
+cd /usr/share/$pkgname
 python2 ./wids.py "\$@"
 EOF
 chmod +x $pkgdir/usr/bin/wireless-ids
