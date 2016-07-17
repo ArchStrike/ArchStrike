@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wmat
 pkgver=20160717
-pkgrel=2
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-crackers')
 pkgdesc="Automatic tool for testing webmail accounts"
 arch=('any')
@@ -25,6 +25,7 @@ prepare() {
   sed -i 's/env python/env python2/' wmat.py
   sed -i '2i# -*- coding: utf-8 -*-' wmat.py 
   sed -i 's/”/"/gi' wmat.py
+  dos2unix *.py
 }
 
 package() {
