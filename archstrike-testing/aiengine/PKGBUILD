@@ -16,11 +16,16 @@ else
      makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx-svn' 'python2' 'gcc-libs')
 fi
 depends=('libpcap' 'boost-libs' 'python2' 'log4cxx-svn' 'pcre')
-source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-$pkgver.tar.gz")
-sha512sums=('0bb6bd7f2ecd8e27960380ff9550cfabf436c6862ddc05d1466f7f73d2df6b798344a90d178cfce08c9f3bacc91812e4fd68f2e71d8a85b39b00ed9b86f161b7')
+source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-$pkgver.tar.gz" "remove_x86_64_instr_garbage.patch")
+sha512sums=('0bb6bd7f2ecd8e27960380ff9550cfabf436c6862ddc05d1466f7f73d2df6b798344a90d178cfce08c9f3bacc91812e4fd68f2e71d8a85b39b00ed9b86f161b7'
+            'fd098f522946125489c43238515dea1cdcf16a582612e4db06ed7f51af7d58b57e39a9ad41e822808ffac9722ac395ba2d78061f923711878b338d023d59dd23')
 
 prepare(){
    grep -iRl 'python' "$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+   if [[ ${CARCH} != "x86_64" ]]; then 
+      cd "$pkgname-$pkgver"
+      patch -Np1 < $srcdir/remove_x86_64_instr_garbage.patch
+   fi
 }
 
 build() {

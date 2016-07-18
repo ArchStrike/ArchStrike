@@ -1,0 +1,17 @@
+diff -aur aiengine-1.5.orig/src/main.cc aiengine-1.5/src/main.cc
+--- aiengine-1.5.orig/src/main.cc	2016-07-18 17:45:53.401788572 -0400
++++ aiengine-1.5/src/main.cc	2016-07-18 17:47:00.654137724 -0400
+@@ -462,13 +462,6 @@
+ 	std::cout << " Boost version:" << BOOST_VERSION / 100000 << "." << BOOST_VERSION / 100 % 1000 << std::endl;
+ 
+ 
+-        // Garbage 
+-        __asm__ volatile (
+-        	"push %rax\n"
+-               	"xor %rax,%rax\n"
+-               	"pop %rax\n"
+-        );
+-
+ #ifdef HAVE_LIBLOG4CXX
+ 	BasicConfigurator::configure();
+ #endif	
