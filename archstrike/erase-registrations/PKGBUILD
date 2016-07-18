@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=erase-registrations
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 epoch=1
 pkgdesc="VOIP regisration eraser"
 url="http://www.hackingexposedvoip.com/"
