@@ -4,40 +4,42 @@ buildarch=1
 
 pkgname=eyewitness-git
 pkgver=r528.f486062
-pkgrel=1
+pkgrel=2
 pkgdesc="designed to take screenshots of websites, provide some server header info, and identify default credentials is possible"
 arch=('any')
 url="https://github.com/ChrisTruncer/EyeWitness"
 license=('GPL3')
 groups=('archstrike')
-depends=('python2-pyqt4' 'ghost.py' 'python2-netaddr')
+depends=('python2-pyqt4' 'ghost.py' 'python2-netaddr' 'python2-beautifulsoup4' 'python2-fuzzywuzzy-git' 'python2-selenium' 'python2-levenshtein' 'python2-pyasn1' 'python2-pyvirtualdisplay' 'python2-rdpy')
 makedepends=('git')
 provides=('eyewitness')
 replaces=('eyewitness')
 conflicts=('eyewitness')
 options=('!emptydirs')
-source=('git+https://github.com/ChrisTruncer/EyeWitness.git')
+source=("${pkgname}::git+https://github.com/ChrisTruncer/EyeWitness.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir"/EyeWitness
+  cd ${pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
+}
+
 package() {
-  cd "$srcdir"/EyeWitness
-  install -dm755 "$pkgdir"/usr/bin
-  install -Dm755 EyeWitness.py "$pkgdir"/usr/share/eyewitness-git/EyeWitness.py
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/eyewitness-git/LICENSE
-  install -m644 CHANGELOG "$pkgdir"/usr/share/eyewitness-git/CHANGELOG
-  install -m644 README.md "$pkgdir"/usr/share/eyewitness-git/README.md
-  install -m644 signatures.txt "$pkgdir"/usr/share/eyewitness-git/signatures.txt
-  find "$pkgdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-  cat > "$pkgdir"/usr/bin/EyeWitness.py <<EOF
+  cd ${pkgname}
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}"
+
+cat > "$pkgdir/usr/bin/eyewitness" <<EOF
 #!/bin/sh
 cd /usr/share/eyewitness-git/
-python2 ./EyeWitness.py "\$@"
+./EyeWitness.py "\$@"
 EOF
-  chmod +x "$pkgdir"/usr/bin/EyeWitness.py
+chmod 755 "$pkgdir/usr/bin/eyewitness"
 }
 
