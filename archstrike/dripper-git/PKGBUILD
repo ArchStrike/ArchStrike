@@ -5,7 +5,7 @@ buildarch=212
 
 pkgname=${_pkgname}-git
 pkgver=20130912.r3.2430d65
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A fast, asynchronous DNS scanner; it can be used for enumerating subdomains and enumerating boxes via reverse DNS"
