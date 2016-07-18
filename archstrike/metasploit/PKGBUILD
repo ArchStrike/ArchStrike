@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=metasploit
-pkgver=4.12.13
+pkgver=4.12.14
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-fuzzers' 'archstrike-scanners')
@@ -23,7 +23,7 @@ conflicts=('metasploit-git')
 provides=('metasploit-git')
 backup=('usr/share/metasploit/log/production.log')
 install="$pkgname.install"
-sha512sums=('fa4b00166cc4f987b1a202109e52c4565689d0449ed7d4bfb886c8b394b69bf7fde1da266633280e22d4852ee51bc879667c0d42e01173a5cb09aa599759dd46')
+sha512sums=('381d3ed51ab719f49b9c49defd27871efd75b401ada948cc5b0c0eba5487cc919f540c19aa03e7b1ac49361f59906aea6d5306959398572f8b3e5ee22da17ed6')
 
 build() {
   cd "$pkgname-framework-$pkgver"
