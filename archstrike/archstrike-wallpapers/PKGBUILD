@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=archstrike-wallpapers
 pkgver=20160715.r3
-pkgrel=1
+pkgrel=2
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="Wallpapers for ArchStrike"
@@ -21,6 +21,6 @@ pkgver() {
 
 package() {
   cd ${pkgname}
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/wallpapers/archstrike/"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/wallpapers/archstrike/"
 }
