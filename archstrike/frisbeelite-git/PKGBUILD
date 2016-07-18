@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=frisbeelite-git
 pkgver=r1.3ebce5c
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A GUI-based USB device fuzzer"
 arch=('any')
