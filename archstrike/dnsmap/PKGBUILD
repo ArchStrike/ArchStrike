@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=dnsmap
 pkgver=0.30
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fingerprinting')
 pkgdesc="Passive DNS network mapper"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
