@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnsbrute-git
 pkgver=0.r2.b1dc84a
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-dns')
 pkgdesc="Multi theaded DNS bruteforcing"
 arch=('any')
