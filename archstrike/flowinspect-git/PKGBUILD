@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=flowinspect-git
 pkgver=r96.1f62b3b
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A network traffic inspection tool"
 arch=('any')
