@@ -4,8 +4,8 @@ buildarch=212
 
 _pkgname=msgpack
 pkgname=ruby-$_pkgname
-pkgver=0.7.6
-pkgrel=2
+pkgver=1.0.0
+pkgrel=1
 pkgdesc='MessagePack, a binary-based efficient data interchange format.'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 url='https://github.com/msgpack/msgpack-ruby'
@@ -14,7 +14,7 @@ depends=('ruby')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/$_pkgname-$pkgver.gem")
 noextract=("$_pkgname-$pkgver.gem")
-sha512sums=('9d30533175118c08f671015a99664e4798c845f63595495933b42f0fa95c160a6708e472da70baeb64537a704dd4768cdc9ab99a19045daabd92555b21f4e389')
+sha512sums=('e87c267a67cc8d89dcc499570bf3316a84643acfbd045ec7a66990b3388e9305c068b7d5c759d35e52c9acb1172794399d2df4a3db4b7685978f3488ff1c3eca')
 
 package() {
   cd "$srcdir"
