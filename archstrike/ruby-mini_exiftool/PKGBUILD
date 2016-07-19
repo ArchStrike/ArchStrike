@@ -1,11 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
+buildarch=1
+
 _gemname=mini_exiftool
 pkgname=ruby-${_gemname}
 pkgver=2.7.6
 pkgrel=1
 pkgdesc='This library is a wrapper for the ExifTool command-line application (http://www.sno.phy.queensu.ca/~phil/exiftool).'
-arch=(any)
+arch=('any')
 url='https://github.com/janfri/mini_exiftool'
 license=('GPL')
 depends=(ruby)
