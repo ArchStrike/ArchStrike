@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=packerid-git
 pkgver=r10.024bae1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-reverse')
 pkgdesc="Script which uses a PEiD database to identify which packer (if any) is being used by a binary."
 arch=('any')
@@ -13,7 +13,8 @@ url="https://github.com/sooshie/packerid"
 makedepends=('git')
 provides=('packerid')
 replaces=('packerid')
-depends=('python2' 'python2-pefile' 'python2-capstone')
+conflicts=('packerid')
+depends=('python2' 'python2-pefile' 'python2-capstone' 'python2-future')
 source=('packerid-git::git+https://github.com/sooshie/packerid.git')
 sha512sums=('SKIP')
 
@@ -32,11 +33,11 @@ package() {
   cd "$srcdir/$pkgname"
 
   install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/packerid"
+  install -dm755 "$pkgdir/usr/share/${pkgname}"
 
-  cp -r --no-preserve=ownership * "$pkgdir/usr/share/packerid"
+  cp -r --no-preserve=ownership * "$pkgdir/usr/share/${pkgname}"
 
-  chmod +x "$pkgdir/usr/share/packerid/packerid.py"
+  chmod 755 "$pkgdir/usr/share/${pkgname}/packerid.py"
 
-  ln -s "/usr/share/packerid/packerid.py" "$pkgdir/usr/bin/packerid"
+  ln -s "/usr/share/${pkgname}/packerid.py" "$pkgdir/usr/bin/packerid"
 }
