@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=python2-pefile
 pkgver=2016.3.28
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a Python library for PE file support and investigation."
 arch=('any')
 url='https://github.com/erocarrera/pefile'
 license=('MIT')
-depends=('python2')
-makedepends=('python2-distribute')
+depends=('python2-future')
+makedepends=('python2-setuptools')
 source=("https://github.com/erocarrera/pefile/files/192316/pefile-$pkgver.tar.gz"
         "https://reverse-engineering-scripts.googlecode.com/files/UserDB.TXT"
         "http://research.pandasecurity.com/blogs/images/userdb.txt" )
