@@ -1,26 +1,22 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
-
-pkgname=ruby-mini_exiftool
 _gemname=mini_exiftool
-pkgver=2.3.0
-pkgrel=3
-pkgdesc="This library is wrapper for the Exiftool command-line application (http://www.sno.phy.queensu.ca/~phil/exiftool)."
-arch=('any')
-license=('')
-makedepends=('ruby')
-url='http://gitorious.org/mini_exiftool'
-source=("http://rubygems.org/downloads/mini_exiftool-$pkgver.gem")
-md5sums=('92facc9036cbb6d42bbe97e980f2bd31')
-noextract=("mini_exiftool-$pkgver.gem")
+pkgname=ruby-${_gemname}
+pkgver=2.7.6
+pkgrel=1
+pkgdesc='This library is a wrapper for the ExifTool command-line application (http://www.sno.phy.queensu.ca/~phil/exiftool).'
+arch=(any)
+url='https://github.com/janfri/mini_exiftool'
+license=('GPL')
+depends=(ruby)
+options=(!emptydirs)
+source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
+noextract=(${_gemname}-${pkgver}.gem)
+sha512sums=('f983b3edd6acf5b589efba455b57bfd33f7b9c8a472c9946d54e72599a41bb25e057625ff80f3fa9ca71056fdbffaaca1111012d769f1c21c101170500dc3037')
 
 package() {
-  cd "$srcdir"
-  local _gemdir=$(ruby -e 'puts Gem.default_dir')
-  if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" mini_exiftool-$pkgver.gem
-  else
-    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" mini_exiftool-$pkgver.gem
-  fi
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "${pkgdir}/${_gemdir}" -n "${pkgdir}/usr/bin" ${_gemname}-${pkgver}.gem
+  rm "${pkgdir}/${_gemdir}/cache/${_gemname}-${pkgver}.gem"
+  install -Dm644 "${pkgdir}/${_gemdir}/gems/${_gemname}-${pkgver}/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
