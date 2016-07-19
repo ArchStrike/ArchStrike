@@ -13,8 +13,8 @@ url='http://code.google.com/p/skipfish/'
 depends=('openssl' 'libidn')
 source=("http://skipfish.googlecode.com/files/skipfish-$pkgver.tgz"
         "skipfish.patch")
-md5sums=('8edf6092f3d1835cb4a381b7a723db8a'
-         '640b24c2989f2316ac5e0926bba3b226')
+sha512sums=('ef961cbd6794083779a3e0d1a51dc68b6d0b580b840b213a16cf6dc4d2af858121db8527dcc590cf76efe6cdf0e2ee02dbb7a61956eb0017e9005a19f3537a74'
+            '54cb7bbd6904776a12e5153e942aab62e4e1777a3fc78f8ad4f61c32e33593d4d5ea643bc3898e3284a9aed9aba04cc572367fc0bf4f2b5482588137815550d7')
 
 build() {
   cd "$srcdir/skipfish-$pkgver"
