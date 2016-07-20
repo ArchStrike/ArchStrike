@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ghost.py
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Webkit based webclient."
 url="https://github.com/jeanphix/Ghost.py"
 groups=('archstrike')
