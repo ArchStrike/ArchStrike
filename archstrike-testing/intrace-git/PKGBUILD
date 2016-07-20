@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=intrace-git
-pkgver=1.5
+pkgver=20151016.r26
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Traceroute-like application piggybacking on existing TCP connections"
@@ -15,6 +15,11 @@ replaces=("intrace")
 provides=("intrace")
 source=("${pkgname}::git+https://github.com/robertswiecki/intrace.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
 
 prepare() {
   cd ${pkgname}
