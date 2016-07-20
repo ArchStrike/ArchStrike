@@ -13,6 +13,7 @@ license=('GPL2' 'GPL3')
 depends=("glibc")
 replaces=("intrace")
 provides=("intrace")
+makedepends=("git")
 source=("${pkgname}::git+https://github.com/robertswiecki/intrace.git")
 sha512sums=('SKIP')
 
