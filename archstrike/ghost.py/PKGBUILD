@@ -1,0 +1,31 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=ghost.py
+pkgver=0.2.3
+pkgrel=2
+pkgdesc="Webkit based webclient."
+url="https://github.com/jeanphix/Ghost.py"
+groups=('archstrike')
+depends=('python2')
+makedepends=('python2-setuptools')
+license=('MIT')
+arch=('any')
+source=("https://pypi.python.org/packages/bf/26/bf58a9ad9a7705beee4f8e9f9d9c78106d9f29817d71c93f2c82f3620d5e/Ghost.py-${pkgver}.tar.gz")
+sha512sums=('f6d851e783de89317abead94817e499a2e773657a1bc0bc9641cde4e96704375f13d9d4b2d9a861f655e0a7690912b7fa37f1b20702d13534bc56e12965d62af')
+
+prepare() {
+  grep -iRl 'python' Ghost.py-${pkgver} | xargs sed -i 's|python$|python2|'
+}
+
+build() {
+  cd $srcdir/Ghost.py-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  cd $srcdir/Ghost.py-$pkgver
+  python2 setup.py install --root="$pkgdir" --optimize=1 
+  mv ${pkgdir}/usr/ghost ${pkgdir}/usr/share
+}
