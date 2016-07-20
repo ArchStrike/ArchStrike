@@ -29,4 +29,6 @@ package() {
   python2 setup.py install --root="$pkgdir" --optimize=1 
   # move dir to correct place
   mv ${pkgdir}/usr/ghost ${pkgdir}/usr/share
+  # clean up conflict with ptp
+  rm -rf $pkgdir/usr/lib/python2.7/site-packages/tests/__init__.py*
 }
