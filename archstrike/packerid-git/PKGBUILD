@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=packerid-git
-pkgver=r10.024bae1
-pkgrel=2
+pkgver=r12.7b2ee6e
+pkgrel=1
 groups=('archstrike' 'archstrike-reverse')
 pkgdesc="Script which uses a PEiD database to identify which packer (if any) is being used by a binary."
 arch=('any')
