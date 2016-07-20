@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='A Repository of yara rules'
 arch=('any')
 url='https://github.com/Yara-Rules/rules'
-license=('GPL')
+license=('GPL2')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/Yara-Rules/rules.git")
 sha512sums=('SKIP')
@@ -22,6 +22,6 @@ pkgver() {
 package() {
   cd $pkgname
   install -dm755 $pkgdir/usr/share/$_pkgname
-  install -Dm644 *.yar "$pkgdir/usr/share/$_pkgname/"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
   install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
 }
