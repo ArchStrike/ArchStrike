@@ -6,7 +6,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname=secure-delete
 pkgver=3.1
-pkgrel=2
+pkgrel=3
 depends=('bash')
 groups=('archstrike' 'archstrike-defense' 'archstrike-forensics')
 pkgdesc='Secure file, disk, swap, memory erasure toolkit'
@@ -42,11 +42,15 @@ package() {
       install
   chmod 755 "$pkgdir"/usr/bin/*
 
+  # patching the_cleaner.sh
+  sed -i 's|smem|sdmem|' $pkgdir/usr/bin/the_cleaner.sh
+  sed -i 's|srm|sdrm|' $pkgdir/usr/bin/the_cleaner.sh
+
   # Fix a conflict with community/smem.
-  mv "$pkgdir/usr/bin/srm" "$pkgdir/usr/bin/srm-secure-delete"
-  mv "$pkgdir/usr/bin/smem" "$pkgdir/usr/bin/smem-secure-delete"
+  mv "$pkgdir/usr/bin/srm" "$pkgdir/usr/bin/sdrm"
+  mv "$pkgdir/usr/bin/smem" "$pkgdir/usr/bin/sdmem"
 
   # Fix a conflict with community/srm.
-  mv "$pkgdir/usr/share/man/man1/srm.1" "$pkgdir/usr/share/man/man1/srm-secure-delete.1"
-  mv "$pkgdir/usr/share/man/man1/smem.1" "$pkgdir/usr/share/man/man1/smem-secure-delete.1"
+  mv "$pkgdir/usr/share/man/man1/srm.1" "$pkgdir/usr/share/man/man1/sdrm.1"
+  mv "$pkgdir/usr/share/man/man1/smem.1" "$pkgdir/usr/share/man/man1/sdmem.1"
 }
