@@ -1,0 +1,40 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+pkgname=intrace-git
+pkgver=1.5
+pkgrel=1
+groups=('archstrike' 'archstrike-recon')
+pkgdesc="Traceroute-like application piggybacking on existing TCP connections"
+url='https://github.com/robertswiecki/intrace'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+license=('GPL2' 'GPL3')
+depends=("glibc")
+replaces=("intrace")
+provides=("intrace")
+source=("${pkgname}::git+https://github.com/robertswiecki/intrace.git")
+sha512sums=('SKIP')
+
+prepare() {
+  cd ${pkgname}
+  sed -i 's|_BSD_SOURCE|_DEFAULT_SOURCE|' config.h
+}
+
+build() {
+  cd ${pkgname}
+  make
+}
+
+package() {
+  cd ${pkgname}
+
+  # Make base directories.
+  install -d ${pkgdir}/usr/bin
+  install -d ${pkgdir}/usr/share/doc/intrace
+
+  install -Dm755 intrace ${pkgdir}/usr/bin/intrace
+  install -Dm644 README.md ${pkgdir}/usr/share/doc/$pkgname/README.md
+  install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/$pkgname/ChangeLog
+
+}
