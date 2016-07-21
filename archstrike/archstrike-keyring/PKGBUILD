@@ -5,11 +5,10 @@ noautobuild=1
 
 pkgname=archstrike-keyring
 pkgver=20151110
-pkgrel=3
+pkgrel=4
 pkgdesc='ArchStrike PGP keyring'
 url='https://archstrike.org'
 license=('GPL3')
-groups=('archstrike')
 arch=('any')
 depends=('gnupg')
 makedepends=('git')

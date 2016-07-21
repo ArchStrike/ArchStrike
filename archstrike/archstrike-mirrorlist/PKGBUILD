@@ -4,11 +4,10 @@ buildarch=1
 
 pkgname=archstrike-mirrorlist
 pkgver=20160713
-pkgrel=1
+pkgrel=2
 pkgdesc='ArchStrike mirror list for use by pacman'
 url='http://archstrike.org'
 license=('GPL3')
-groups=('archstrike')
 arch=('any')
 backup=("etc/pacman.d/$pkgname")
 source=("$pkgname")
