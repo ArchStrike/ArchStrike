@@ -1,0 +1,39 @@
+# Maintainer: ArchStrike <team [at] archstrike [dot] org>
+
+buildarch=212
+
+pkgname=bettercap
+pkgver=1.5.6
+pkgrel=1
+groups=('archstrike' 'archstrike-sniffers' 'archstrike-exploit' 'archstrike-networking')
+pkgdesc='A complete, modular, portable and easily extensible MITM framework.'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+url='https://github.com/evilsocket/bettercap'
+license=('GPL3')
+depends=('ruby-rspec-core' 'libpcap')
+source=("https://github.com/evilsocket/bettercap/archive/v$pkgver.tar.gz")
+sha512sums=('b630f6b2b7586caf1d47434af48e3663fa941796ef40b8e04de77c461f1e9c288aa09967b02b822d47848856424633b621c6072d5605a83a63b0d8c0e45f1a98')
+
+build() {
+  cd "$pkgname-$pkgver"
+
+  gem build bettercap.gemspec
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
+  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+
+  gem install --no-user-install -n "$pkgdir/usr/bin" -i "$pkgdir/$_gemdir" bettercap*.gem
+ 
+  # clean up extension mess
+  find $pkgdir/usr/lib/ruby/gems/2.3.0 -type d -name "extensions" |xargs rm -rf
+
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/"
+  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/"
+}
