@@ -4,11 +4,11 @@ buildarch=1
 
 pkgname=archstrike-installer
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Full ArchStike installer for the ArchStrike live environment"
 url="https://github.com/ArchStrike/archstrike-installer"
-license=('GPL')
+license=('MIT')
 depends=('python2')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha512sums=('f6e1047509c94d6a9a29aa97457c1146560350b2499908ed6582fa9f4baae6e1a3d09131ec001ecd49dd938e6a623407faf29ca3d913542bf8c900f615674e82')
@@ -16,6 +16,8 @@ sha512sums=('f6e1047509c94d6a9a29aa97457c1146560350b2499908ed6582fa9f4baae6e1a3d
 package() {
   cd ${pkgname}-${pkgver}
   install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm755 as-install.py "${pkgdir}/usr/bin/archstrike-installer"
 
 }
