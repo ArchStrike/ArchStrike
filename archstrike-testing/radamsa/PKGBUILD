@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=radamsa
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="General purpose data fuzzer."
@@ -11,16 +11,16 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url="https://github.com/aoh/radamsa"
 license=("MIT")
 depends=('glibc')
-source=("https://github.com/aoh/radamsa/archive/v$pkgver.tar.gz")
-sha512sums=('ee90cda52b8d1e8ce50a3a6089943d36c5943ab5dcbf424b15f2d9315498dd1021105218a0c6b11d7da56f095978dd173e46b085453fb212a6bdfaa7d4a0c708')
+source=("https://github.com/aoh/radamsa/archive/v${pkgver}.tar.gz")
+sha512sums=('3fd4c9877bc16e527a78fe5fd19c9f51064a2799cc616e5528ebade667daea79f40245f54a4e841d512c18e4847c14805e617f9729fdd2a8d3689a5c3f0068f4')
 
 build() {
-  cd "$srcdir/radamsa-$pkgver"
+  cd "$pkgname-$pkgver"
   make
 }
 
 package() {
-  cd "$srcdir/radamsa-$pkgver"
+  cd "$pkgname-$pkgver"
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENCE "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
 }
