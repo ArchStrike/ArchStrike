@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=owtf-git
-pkgver=r1561.74e87d9
-pkgrel=2
+pkgver=r1562.7a9286b
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="The Offensive (Web) Testing Framework"
 url="https://www.owasp.org/index.php/OWASP_OWTF"
