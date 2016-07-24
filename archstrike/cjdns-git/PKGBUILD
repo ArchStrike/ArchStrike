@@ -8,7 +8,7 @@ buildarch=212
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=17.4.r23.g113d160
+pkgver=17.4.r24.gb657639
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
