@@ -38,7 +38,7 @@ A: We are a layer on top of ArchLinux that you can install and remove easily. We
 
 **Q: Where can I download an ISO file?**
 
-A: As of yet, we do not have an ISO, although our team is working on an ISO to be released as you are reading this. Updates on the ISO will be made on twitter and our website.
+A: Our first official release was made! You can [download from here](https://archstrike.org/downloads). 
 
 **Q: How can I contact you?**
 
