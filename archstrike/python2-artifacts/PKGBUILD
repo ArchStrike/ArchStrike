@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team [at] archstrike [dot] org>
+
+buildarch=1
+
+_pkgname=artifacts
+pkgname=python2-artifacts
+pkgver=20160713
+pkgrel=1
+pkgdesc="A free, community-sourced, machine-readable knowledge base of forensic artifacts that the world can use both as an information source and within other tools." 
+url="https://github.com/ForensicArtifacts/artifacts"
+arch=('any')
+license=('Apache')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/36/83/429bf4858ec3dcf579f1cdaa1634fcc88d32b4ae4194774033617d7de3d6/artifacts-$pkgver.tar.gz")
+sha512sums=('03ce837e921bc8b9374485280fffa642561e615b020552e74ca676c1d2fd36a041b2823e13b295a2961031630e213a76b84267b641f142592c39f750efb53620')
+
+build() {
+  cd $srcdir/${_pkgname}-${pkgver}
+  python2 setup.py build
+}
+
+package() {
+  cd $srcdir/${_pkgname}-${pkgver}
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+}
