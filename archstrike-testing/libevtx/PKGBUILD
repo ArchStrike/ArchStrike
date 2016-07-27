@@ -4,20 +4,17 @@ buildarch=212
 
 pkgname="libevtx"
 pkgver="20160421"
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and tooling to access the Windows XML Event Log (EVTX) format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libevtx'
 license=('GPL3')
 depends=('libcsystem' 'libbfio' 'python2' 'libregf')
-makedepends=('git')
-source=("https://github.com/libyal/libevtx/archive/$pkgver.tar.gz")
-sha512sums=('77ce8454b06b846ae627c17ab14240c4b0d93e096cf27ef7c2ed6606103a5855a12fcadfb0a271e06f9b0d9d62f2e184ad234e5791e1b2b5dd72b5793669cdce')
+source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-alpha-${pkgver}.tar.gz")
+sha512sums=('b531eb70d06921e2b25f03c0383873388afb69df084468fca64f607647c3df3af8a99cee21d273824d13862f85e5f051d55fd80fb946c1b48f011a3c9aeb042d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
   make
 }
