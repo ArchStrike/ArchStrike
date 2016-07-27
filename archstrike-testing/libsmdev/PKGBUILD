@@ -4,23 +4,18 @@ buildarch=212
 
 pkgname="libsmdev"
 pkgver="20160320"
-pkgrel=2
+pkgrel=3
 pkgdesc="Library to access to storage media devices"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libsmdev'
 license=('GPL3')
 depends=('libcsystem' 'python2')
-makedepends=('git')
-source=("https://github.com/libyal/libsmdev/archive/$pkgver.tar.gz")
-sha512sums=('d07746da0d47d63860f8043563c06ce5ee73fcbc89fee4028238a7df6ea0d12f42487639324ace9a52508f712e0179c2f510b2a7b47f2fc90e9ae2be634ef7a1')
+source=("https://github.com/libyal/libsmdev/releases/download/20160320/libsmdev-alpha-$pkgver.tar.gz")
+sha512sums=('bf6ebb3dccc1746739c5d394250a051e56fcb29423882f5daceefabb406445c59a0cb6d7b800149d4ca512cd67570111f2d415c17db5c3107309149b20d6c949')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
-  # Fix really weird compile error related to a commented out line libcfile_support.c:742:2: error: #error Missing file remove function
-  sed -i '742d' libcfile/libcfile_support.c
   make
 }
 
