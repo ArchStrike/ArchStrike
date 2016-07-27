@@ -4,24 +4,19 @@ buildarch=212
 
 pkgname="libesedb"
 pkgver="20151213"
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and tools to access the Extensible Storage Engine (ESE) Database File (EDB) format."
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libesedb'
 license=('GPL3')
 depends=('libcsystem' 'libbfio' 'python2')
 install="$pkgname.install"
-makedepends=('git')
-source=("https://github.com/libyal/libesedb/archive/$pkgver.tar.gz")
-sha512sums=('2f2df590b766ab8fadf112a7f982833e0e7132be398892c01b642188386e5136815b08061ea4f587f5fcade820aabefbc1aab00a14d6b8a0fbe77902b507067a')
+source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-experimental-$pkgver.tar.gz")
+sha512sums=('0cce5c8545374b9a7c3277c2e660a5754db8ac506a5e5e0a45863befd6bcef24ef210b0e7ef3ca62bae407de5bb63d6a8c52feea89591b2c8269c32c66dcda93')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
-  # Fix really weird compile error related to a commented out line libcfile_support.c:742:2: error: #error Missing file remove function
-  sed -i '742d' libcfile/libcfile_support.c
   make
 }
 
