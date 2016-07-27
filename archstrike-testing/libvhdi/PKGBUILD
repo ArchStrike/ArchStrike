@@ -4,20 +4,17 @@ buildarch=212
 
 pkgname=libvhdi
 pkgver=20160424
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and tools to access the Virtual Hard Disk (VHD) image format"
 url="https://github.com/libyal/libvhdi"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('LGPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
-makedepends=('git')
-source=("https://github.com/libyal/libvhdi/archive/$pkgver.tar.gz")
-sha512sums=('9ab5600c2315509b9af2d13c285eb93dfcb6964141ab18834e3e1490f0dae5137f9207dcdc20755d0d7cd507d935be939ec5a053f3eb123a82ddf7b4dacae906')
+source=("https://github.com/libyal/libvhdi/releases/download/20160424/libvhdi-alpha-$pkgver.tar.gz")
+sha512sums=('a79c60335577a2f606cbf24c8e79436da8fbd763cefd8ac9fd6be47a4c5edfdbfce077c48c90a3b8d4fd852b636c45f95b896e84c15a0f53075e964d467bc5cb')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python --with-pyprefix=2
   make
 }
