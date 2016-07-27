@@ -4,24 +4,19 @@ buildarch=212
 
 pkgname="libregf"
 pkgver="20160424"
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and tools to access the Windows NT Registry File (REGF) format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libregf'
 license=('GPL3')
 depends=('fuse' 'libcsystem' 'libbfio' 'python2' 'libfwsi')
-makedepends=('git')
 install="${pkgname}.install"
-source=("https://github.com/libyal/libregf/archive/$pkgver.tar.gz")
+source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz")
 sha512sums=('30ea0491188355c694a255954eec18982e45deefd7fd1f9215a7e2432632bf5444f2eb9bd7994c60a20c9a7654ac479fc7dd59cb07004141f38eb581e8816328')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
-  # Fix really weird compile error related to a commented out line libcfile_support.c:742:2: error: #error Missing file remove function
-  sed -i '742d' libcfile/libcfile_support.c
   make
 }
 
