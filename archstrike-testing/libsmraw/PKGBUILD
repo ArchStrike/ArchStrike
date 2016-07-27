@@ -4,20 +4,17 @@ buildarch=212
 
 pkgname=libsmraw
 pkgver=20160424
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and tools to access the (split) RAW image format"
 url="https://github.com/libyal/libsmraw"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('LGPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
-makedepends=('git')
-source=("https://github.com/libyal/libsmraw/archive/$pkgver.tar.gz")
-sha512sums=('884410c62bb54544f79aafab8fc52ce54d0369e2809063488026754048b79532447ef6a6d04c93ebde40cad4c436da3a18bd2cb964016702115a1b0533f2f5ae')
+source=("https://github.com/libyal/libsmraw/releases/download/20160424/libsmraw-alpha-$pkgver.tar.gz")
+sha512sums=('a6ff7ba5ad37b2fe532cf480f67b635fe01ae4c317e0a3ee074e3a9358c21988268c30a2006634a6a43a4d830eb85e1cb7263223da528ceac1e7c3c7efad57ac')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python --with-pyprefix=2
   make
 }
