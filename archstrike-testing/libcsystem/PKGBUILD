@@ -4,20 +4,17 @@ buildarch=212
 
 pkgname=libcsystem
 pkgver=20150629
-pkgrel=2
+pkgrel=3
 pkgdesc="Library for cross-platform C system functions"
 url="https://github.com/libyal/libcsystem"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('glibc')
-makedepends=('git')
-source=("https://github.com/libyal/libcsystem/archive/$pkgver.tar.gz")
-sha512sums=('78f25590995f710f678f591756f1c89bd8b0db0257e913de525a3e00e92c363dcc65a670d7490de45b8238a95c622a2961f0624bdf40f085d0cabee735ba6a5d')
+source=("https://github.com/libyal/libcsystem/releases/download/20150629/libcsystem-alpha-$pkgver.tar.gz")
+sha512sums=('8ddb7c2446656d80af56d97405782e90a90950826621cfb878525c850bab175cbfe17cb8d8e521c0451bae0ac09e42fd56f03dbe437caa5bb9b24f6e5061623b')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
-  ./synclibs.sh
-  ./autogen.sh
   ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output
   make
 }
