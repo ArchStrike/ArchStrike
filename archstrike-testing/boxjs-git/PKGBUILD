@@ -1,0 +1,44 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=boxjs-git
+pkgver=20160727.r50
+pkgrel=1
+groups=('archstrike' 'archstrike-analysis')
+arch=('any')
+pkgdesc="A tool for studying JavaScript malware."
+url="https://github.com/CapacitorSet/box-js"
+license=('MIT')
+depends=('nodejs' 'gnuplot' 'npm') 
+makedepends=('git')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  npm install
+  find . -name package.json | xargs sed -i "s|${srcdir}|/usr/share/${pkgname}|"
+}
+
+package() {
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/boxjs" <<EOF
+#!/bin/sh
+cd /usr/share/${pkgname}
+node run.js "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/boxjs"
+}
