@@ -4,20 +4,17 @@ buildarch=212
 
 pkgname="liblnk"
 pkgver="20160420"
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and tools to access the Windows Shortcut File (LNK) format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/liblnk'
 license=('GPL3')
-depends=('libfwsi')
-makedepends=('git')
-source=("https://github.com/libyal/liblnk/archive/$pkgver.tar.gz")
-sha512sums=('bccf9721761cb3d3b66aabd0d18f2a706ec6f5b2e5c6bfd0b1b6986a9d10f0cabb18dbf23fffb5c8a176e5d6876208acc1ce35987fa21ef88f46dbf5ae746106')
+depends=('libfwsi' 'python2')
+source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-alpha-${pkgver}.tar.gz")
+sha512sums=('6980a1351b0eddde08f2cb6083eddb29acef79df7baac0d8d53f44d2a9c65b0a16f5a2aa88fad879b24fb458e3d2b10a28cec24c5cbddf1fffa81ec35e00e813')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
   make
 }
