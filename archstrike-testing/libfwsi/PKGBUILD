@@ -4,23 +4,18 @@ buildarch=212
 
 pkgname="libfwsi"
 pkgver="20160110"
-pkgrel=2
+pkgrel=3
 pkgdesc="Library to access the Windows Shell Item format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libfwsi'
 license=('GPL3')
 depends=('libcsystem' 'libbfio' 'python2')
-makedepends=('git')
-source=("https://github.com/libyal/libfwsi/archive/$pkgver.tar.gz")
-sha512sums=('ab61eef6a49ff61b8497b66a83bb3524d5d3a0eb9f47bee989c995830c39454bf74e12e9e0ade938f94f94236c438db578a10e474bf28df80dcf824bb2b929ae')
+source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-experimental-${pkgver}.tar.gz")
+sha512sums=('447ad682822bea854f871858c01ba73b9523fcb5e95941ca7db5a0d1ee84812d340f486bf916275f1e3ecaf18a1ab752cdc351851736c558ab88f113d3f3e9c2')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
-  # Fix really weird compile error related to a commented out line libcfile_support.c:742:2: error: #error Missing file remove function
-  sed -i '742d' libcfile/libcfile_support.c 
   make
 }
 
