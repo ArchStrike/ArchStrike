@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+pkgname="libvslvm"
+pkgver="20160110"
+pkgrel=3
+pkgdesc="Library and tools to access the Linux Logical Volume Manager (LVM) volume system format."
+arch=("i686" "x86_64" "armv6h" "armv7h")
+url='https://github.com/libyal/libvslvm'
+license=('GPL3')
+depends=('libcsystem' 'libbfio' 'python2')
+install="$pkgname.install"
+source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/${pkgname}-experimental-${pkgver}.tar.gz")
+sha512sums=('bb76b5994878dfc0ebbe82137ef9d209530d5058672ff43b3b90e4ca51fd3e249bd2f6b895ce6b8d8e6d375c7f8845da195bf7b136e13f7d6c2339de918c2040')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}
