@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-pyghmi
+pkgver=1.0.7
+pkgrel=1
+pkgdesc="This is a pure python implementation of IPMI protocol."
+arch=('any')
+url="http://pypi.python.org/pypi/pyghmi/"
+license=('GPL')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/ba/10/9692154687c91000f5d7cd72edfdf792e1d77deb180b831e7823fb46322b/pyghmi-${pkgver}.tar.gz")
+sha512sums=('0cee3c67145e6f867a05dee9ff5507ef523156a5de2e64ca7f4c9eca82b42340d950a1806fb21ab684560dc34f6a9855597e7494dee1b8cc8736f5b63d47d277')
+
+build(){
+  cd "${srcdir}/pyghmi-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/pyghmi-${pkgver}"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}
