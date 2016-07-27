@@ -2,7 +2,7 @@
 
 buildarch=212
 
-pkgname=python-mixbox
+pkgname=python2-mixbox
 pkgver=0.0.12
 pkgrel=1
 pkgdesc="A library of common code leveraged by python-cybox, python-maec, and python-stix"
