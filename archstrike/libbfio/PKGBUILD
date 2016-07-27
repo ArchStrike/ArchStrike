@@ -4,24 +4,19 @@ buildarch=212
 
 pkgname=libbfio
 pkgver="20160108"
-pkgrel=2
+pkgrel=3
 pkgdesc="Library to provide basic file input/output abstraction"
 url="https://github.com/libyal/libbfio"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('GPL3')
 depends=('glibc')
-makedepends=('git')
 install="$pkgname.install"
-source=("https://github.com/libyal/libbfio/archive/$pkgver.tar.gz")
-sha512sums=('c10441c788403e8788db6f0b2a54765c171869beb103252c25ffd6e6c1c163957a82f4c2cdbd4727c430b7a68e0c027725d067a944e9558b1aa9195bf92c6b29')
+source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz")
+sha512sums=('7b8c0bd712dea36976f87607452d34d4f2d62f92fab97d08700e6d73f21a48c1446b1b00ea4b4b2ae21395663e6e658994895647ae3f09469975355260cb8309')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
-  ./synclibs.sh
-  ./autogen.sh
   ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output
-  # Fix really weird compile error related to a commented out line libcfile_support.c:742:2: error: #error Missing file remove function
-  sed -i '742d' libcfile/libcfile_support.c
   make
 }
 
