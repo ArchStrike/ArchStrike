@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+pkgname="libfwnt"
+pkgver="20160418"
+pkgrel=3
+pkgdesc="Library for Windows NT data types."
+arch=("i686" "x86_64" "armv6h" "armv7h")
+url='https://github.com/libyal/libfwnt'
+license=('GPL3')
+depends=('libcsystem' 'libbfio' 'python2')
+install="$pkgname.install"
+source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-experimental-$pkgver.tar.gz")
+sha512sums=('63c7e518938a827c314ca9350a5a4ed920c5e686698160d87893b3b60bd06ce3e7dbd21766e9474b34109ac2562799283696efb2560dd183a424c0377dd88e88')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}
