@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=binjitsu-git
-pkgver=20160726.r2627
+pkgver=20160727.r2633
 pkgrel=1
 pkgdesc='binjitsu is a CTF framework and exploit development library. Written in Python, it is designed for rapid prototyping and development, and intended to make exploit writing as simple as possible.'
 url='https://github.com/binjitsu/binjitsu/'
