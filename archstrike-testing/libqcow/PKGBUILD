@@ -5,23 +5,18 @@ buildarch=212
 
 pkgname=libqcow
 pkgver=20160123
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility"
 url="http://code.google.com/p/libqcow/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 license=('LGPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
-makedepends=('git')
-source=("https://github.com/libyal/libqcow/archive/$pkgver.tar.gz")
-sha512sums=('8a62983e46ce461d8569845cead5e1901bc3995bd16df0b42d544996de9f01bbc4249f90b9f0ba5e6d76927eb93c212a4edbad5397840226298b238e88210f24')
+source=("https://github.com/libyal/libqcow/releases/download/20160123/libqcow-alpha-$pkgver.tar.gz")
+sha512sums=('ac3dd444aa2fa034e643e8e1f2d500a2afb6f10c118c7b268c31b1ba90a74a01df39a745a10e8e69a9ff5358a5131087bbd2eef68f19ef88c723afdc596d19d5')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --with-openssl --with-libfuse --enable-verbose-output --enable-debug-output --enable-python --with-pyprefix=2
-  # Fix really weird compile error related to a commented out line libcfile_support.c:742:2: error: #error Missing file remove function
-  sed -i '742d' libcfile/libcfile_support.c  
   make
 }
 
