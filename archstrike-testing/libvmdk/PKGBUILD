@@ -4,24 +4,19 @@ buildarch=212
 
 pkgname="libvmdk"
 pkgver="20160119"
-pkgrel=2
+pkgrel=3
 pkgdesc="Library and tools to access the VMware Virtual Disk (VMDK) format"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libvmdk'
 license=('GPL3')
 depends=('libcsystem' 'python2' 'libbfio' 'fuse')
-makedepends=('git')
 install="$pkgname.install"
-source=("https://github.com/libyal/libvmdk/archive/$pkgver.tar.gz")
-sha512sums=('2fbfa8ac7a7c67e2a08655c60c686fe5204c2effadd5e79fbc781cb8970cb2de63646695c00710871062f7f9bc6eebf1945c16f0f6a61ce21dd3997c6bcfa7cc')
+source=("https://github.com/libyal/libvmdk/releases/download/20160119/libvmdk-alpha-$pkgver.tar.gz")
+sha512sums=('ab8df3cdb75edda64efb48139eda80badf06c1c89b6cdb2c9091b91b160c7f7789188026cb41b50104262399375ad39c61b78e64300bf03a11cfadfc691f34f7')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
-  ./synclibs.sh
-  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
-  # Fix really weird compile error related to a commented out line libcfile_support.c:742:2: error: #error Missing file remove function
-  sed -i '742d' libcfile/libcfile_support.c
   make
 }
 
