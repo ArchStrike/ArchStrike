@@ -4,16 +4,20 @@ buildarch=1
 
 pkgname=conpot
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 pkgdesc="ICS honeypot with the goal to collect intelligence about the motives
     and methods of adversaries targeting industrial control systems"
 url="http://conpot.org"
-depends=('python2-gevent' 'python2-pysnmp' 'python2-lxml' 'python2-bottle' 'python2-jinja' 'python2-beautifulsoup4' 'python2-requests' 'python2-sphinx' 'python2-libtaxii>=1.1.0' 'mysql-python' 'python2-xlrd' 'python2-stix' 'python2-cybox' 'python2-crc16' 'python2-enum' 'hpfeeds' 'python2-modbus-tk-git')
-makedepends=('python2-distribute')
+depends=('python2-gevent' 'python2-pysnmp' 'python2-lxml' 'python2-bottle' 'python2-jinja' 'python2-beautifulsoup4' 'python2-requests' 'python2-sphinx' 'python2-libtaxii>=1.1.0' 'mysql-python' 'python2-xlrd' 'python2-stix' 'python2-cybox' 'python2-crc16' 'python2-enum' 'hpfeeds' 'python2-modbus-tk-git' 'python2-dateutil' 'python2-mixbox' 'python2-ordered-set' 'python2-pyghmi' 'python2-bacpypes')
+makedepends=('python2-setuptools')
 license=('GPL2')
 arch=('any')
 source=("https://pypi.python.org/packages/source/C/Conpot/Conpot-${pkgver}.tar.gz")
 sha512sums=('cde2f9478f20f7982cf51002323e17da8d1a03b4624208251b29b0328f1be296aff45fb71a09b8d8165bb24ee1092f36d5de8c4fd12bdde518c3f5343c426647')
+
+prepare() {
+  grep -iRl 'python' "Conpot-${pkgver}" | xargs sed -i 's|python$|python2|'
+}
 
 build() {
   cd "${srcdir}"/Conpot-"${pkgver}"
@@ -23,6 +27,4 @@ build() {
 package() {
   cd "${srcdir}"/Conpot-"${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
-  find "${pkgdir}" -type f -name 'log_worker.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-  mv "$pkgdir/usr/lib/python2.7/site-packages/bin" "$pkgdir/usr/lib/python2.7/site-packages/$pkgname/"
 }
