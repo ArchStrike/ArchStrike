@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=cansina-git
-pkgver=r148.988fe64
+pkgver=r149.7ca7e47
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
