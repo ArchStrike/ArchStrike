@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=kismon
 pkgver=0.8.1
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI client for kismet (wireless scanner/sniffer/monitor)"
 arch=('any')
 groups=('archstrike' 'archstrike-wireless')
 url="https://www.salecker.org/software/kismon.html"
 license=('BSD')
-depends=('gtk3' 'gobject-introspection-runtime' 'python-gobject2' 'python-simplejson' 'python-cairo' 'osm-gps-map')
+depends=('gtk3' 'gobject-introspection-runtime' 'python-gobject' 'python-simplejson' 'python-cairo' 'osm-gps-map')
 source=("https://files.salecker.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('6c40603f0cc58acde0991754976c407539b7197846303977b82bf40813ebea63ba81773d494ee9cf051b500b0144f569e8b38c5d44824b03b6b3e127cb6badc9')
 
