@@ -5,14 +5,13 @@ buildarch=1
 
 pkgname=onionshare
 pkgver=0.9
-pkgrel=2
+pkgrel=3
 pkgdesc="Securely and anonymously share a file of any size"
 groups=('archstrike' 'archstrike-misc')
 url="https://github.com/micahflee/onionshare"
 arch=('any')
 license=('GPL3')
-depends=('python-stem-git' 'python-flask')
-optdepends=('python-pyqt4: to run onionshare-gui' 'tor-browser-en: before you can share a file, you need to open Tor Browser')
+depends=('python-stem-git' 'python-flask' 'python-pyqt5')
 makedepends=('python-setuptools')
 source=(https://github.com/micahflee/onionshare/archive/v$pkgver.tar.gz)
 sha512sums=('5a9a731629e3f00be355c73e1638eea5201e8fe57dc4cab623875add3d893bbe9ae134e020f2489b40c62e1017774423dc8260e2adc0dbc340936196c70e6b6d')
