@@ -5,7 +5,7 @@ buildarch=212
 
 _pkgname=multidict
 pkgname=python-${_pkgname}
-pkgver=1.2.0
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A multidict implementation"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
@@ -14,7 +14,7 @@ license=('APACHE')
 depends=('python')
 makedepends=('cython' 'python-setuptools')
 source=("https://github.com/aio-libs/multidict/archive/v${pkgver}.tar.gz")
-sha512sums=('5a6ec121db9b08707ba1491d39faf35645f48596d69f8ff01ccbd034bed15172bee6f98e8618dd762bf76131735b8453dae9bf29939780029ac2e5bb21b9535b')
+sha512sums=('fa3acd8b1325281f2b1a7e131b1d00d018067aeedcf8de2a1e3e92e5d252279f12a2e71099c733490f07116f9ea75ae0f1dcb373e238c5146dd4e99217855b22')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
