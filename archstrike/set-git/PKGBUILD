@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname='set-git'
-pkgver=7.2.3.r191.g67ee124
+pkgver=7.3.r9.gc79f00d
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-exploit')
