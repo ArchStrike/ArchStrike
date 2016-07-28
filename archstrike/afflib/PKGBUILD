@@ -4,14 +4,14 @@ buildarch=212
 
 pkgname=afflib
 pkgver=3.7.7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='An extensible open format for the storage of disk images and related forensic information'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='https://github.com/sshock/AFFLIBv3/'
 license=('custom')
 install="$pkgname.install"
-depends=('fuse' 'openssl' 'expat' 'zlib' 'python2' 'curl')
+depends=('fuse' 'openssl' 'expat' 'zlib' 'python2' 'curl' 'libtool')
 source=("https://github.com/sshock/AFFLIBv3/archive/v$pkgver.tar.gz" "fix_spacing_issues.patch")
 sha512sums=('8698d66ab84601e5dcd64fcedf2087d5a8227895ed4009d314958eb223c56e0e59aa3e76d57f854a911f79194ae9c1ffc8af8e686310752744b43030c9e84e80'
             'b3c78fdd519bcc2ab314a0c5ea5e19087a4eb3afba7451c561a768b4df9fbbfea9c6b42dc9fe1572d711d8da89d541c2c123c11a5aed9ba7309d2e1732941a65')
