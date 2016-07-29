@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=metasploit-payload-creator
-pkgver=1.4.2
-pkgrel=2
+pkgver=1.4.3
+pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
 pkgdesc="A wrapper to generate multiple types of payloads, based on users choice."
@@ -15,7 +15,7 @@ provides=('mpc-git')
 replaces=('mpc-git')
 conflicts=('mpc-git')
 source=("https://github.com/g0tmi1k/mpc/archive/v${pkgver}.tar.gz")
-sha512sums=('e8639c6f148e9d841bb72d23191989032a5503a5be8ab18f6e3c50fea5a2083232449b69756019414aa64e08d79dab9beaa60c35019023fd366ad35cce88efa6')
+sha512sums=('758c6d40961d45315c9b3d0184dbf277e4fb74e0d5bc5c2103d4d0916bf1dd7ef3fa00371e5caee1f0d1d9d49f91651a44f8f316f614aa830340782b9a4b4b8e')
 
 package() {
   cd mpc-$pkgver
