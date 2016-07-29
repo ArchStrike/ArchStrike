@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=lans-git
 pkgver=20151122.r168
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-spoof')
 pkgdesc="A Multithreaded asynchronous packet parsing/injecting arp spoofer."
 url="https://github.com/DanMcInerney/LANs.py"
 arch=('any')
 license=('GPL')
-depends=('scapy' 'python2-nfqueue' 'aircrack-ng' 'twisted' 'nbtscan')
+depends=('scapy' 'python2-nfqueue' 'aircrack-ng' 'twisted' 'nbtscan' 'python2-requests' 'nmap')
 makedepends=('git')
 replaces=('lans')
 provides=('lans')
@@ -31,5 +31,5 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
 
   # Bin.
-  install -m755 LANs.py "$pkgdir/usr/bin/lans"
+  install -Dm755 LANs.py "$pkgdir/usr/bin/lans"
 }
