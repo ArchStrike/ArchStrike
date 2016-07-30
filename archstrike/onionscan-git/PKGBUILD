@@ -3,7 +3,7 @@
 buildarch=212
 
 pkgname=onionscan-git
-pkgver=20160611.r42
+pkgver=20160729.r44
 pkgrel=1
 pkgdesc="Tool to scan onion services"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686')
