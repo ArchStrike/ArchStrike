@@ -5,7 +5,7 @@
 
 pkgname=reaver-wps-fork-t6x-git
 _pkgname=reaver-wps-fork-t6x
-pkgver=1.5.2.r21.ged98a95
+pkgver=1.5.2.r23.g005990d
 pkgrel=1
 pkgdesc="Brute force attack against Wifi Protected Setup forked w/ added Pixie Dust Attack"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64')
