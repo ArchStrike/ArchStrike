@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=xsscrapy-git
-pkgver=20160425.r132.e4e360d
-pkgrel=3
+pkgver=20160729.r134.763e445
+pkgrel=1
 pkgdesc="xss spider"
 arch=('any')
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
