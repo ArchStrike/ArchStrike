@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=192
+
+pkgname=btproxy-git
+pkgver=20160227.r62
+pkgrel=1
+groups=('archstrike' 'archstrike-bluetooth')
+arch=('i686' 'x86_64')
+pkgdesc="Bluetooth Proxy tool"
+url="https://github.com/conorpp/btproxy"
+license=('GPL3')
+depends=('bluez' 'bluez-utils' 'bluez-libs' 'python')
+makedepends=('git' 'python-setuptools')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd ${pkgname}
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+}
