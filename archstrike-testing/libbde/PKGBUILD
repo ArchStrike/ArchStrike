@@ -3,27 +3,24 @@
 buildarch=212
 
 pkgname="libbde"
-pkgver="20160418"
+pkgver="20160731"
 pkgrel=1
 pkgdesc="Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes"
 arch=("i686" "x86_64" "armv6h" "armv7h")
 url='https://github.com/libyal/libbde'
 license=('GPL3')
 depends=('fuse' 'libcsystem' 'libbfio' 'python2')
-makedepends=('git')
 install="$pkgname.install"
-source=("https://github.com/libyal/libbde/archive/$pkgver.tar.gz")
-sha512sums=('5f80c88e84af0b86808272de87f21a4986b53bbca968da0e7c0267bae937a27442391e67478073559b4976ae5d2c7139140b3be27479aebed634aab15b7d922b')
+source=("https://github.com/libyal/libbde/releases/download/20160731/libbde-alpha-$pkgver.tar.gz")
+sha512sums=('5742bcd646471a97de52fda3863ce640db985e5ff4fbe9bd48a6fea8955e8c3381329c9c01544c90f8c55d56ab43e61a0f1d426cdfeb79afe155d3cc127e95c8')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  ./synclibs.sh
-  ./autogen.sh
+  cd "$srcdir/${pkgname}-${pkgver}"
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname}-${pkgver}"
   make DESTDIR="$pkgdir/" install
 }
