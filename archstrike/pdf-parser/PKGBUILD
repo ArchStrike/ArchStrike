@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=pdf-parser
-pkgver=0.6.4
-pkgrel=2
+pkgver=0.6.5
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Parses a PDF document to identify the fundamental elements used in the analyzed file"
 arch=('any')
@@ -13,7 +13,7 @@ license=('custom')
 depends=(python2)
 source=(http://www.didierstevens.com/files/software/pdf-parser_V${pkgver//./_}.zip
         LICENSE)
-sha512sums=('19473b479d29b6ab897d16016b141f4c08535e60234c0a56e983dc7817ac19df733ca018ee11a8f7e33b7381d9041247714bfc29150029c0bf00b52302ffb7c7'
+sha512sums=('88f7d6f393a9a5a21ba19a3609a4c5da3fd0e20e9ec662d4bc5bb617a011c6fdb1b4e427367a67d73fc5b025a688ac0ee6e3b247a07a409f6ae3fb9430857c3f'
             '81c04aad50b9a4a702b53cc9a155d5ae87dc35db114e0a11ae1249268adecefbe2f0581fa7147dddf5399ae36e21ff089d0c11037f239be806146bddf4023375')
 
 package() {
