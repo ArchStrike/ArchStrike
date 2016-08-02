@@ -4,7 +4,7 @@
 buildarch=212
 
 pkgname=opendnssec
-pkgver=2.0.0
+pkgver=2.0.1
 pkgrel=1
 pkgdesc="Turn-key solution for DNSSEC (sqlite3)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h')
@@ -22,7 +22,7 @@ source=("https://dist.opendnssec.org/source/$pkgname-$pkgver.tar.gz"
         "pid-path.patch"
         "ods-signer.service"
         "ods-enforcer.service")
-sha512sums=('4a011d3b897e1a50f60d7f91e79f99eb5b9e2042aad9fbd4ebf64f8acc1cb5bd18de7527a95a30a3d8a38c5811bf11e3c5f2865505e8dbf0f91dbb9c346dc22e'
+sha512sums=('aa12818f92688e087acaff8a6771d2a7da733e04d9e821967d313c7ff880a1056f470b11988eba1e7aad606418c3a4587f654163d74f68e3f61943c74d86d052'
             '74f386ec8db1ff3a1dd4faf8e1d7eaa6e04f1ab0f89d5289f440ed1c2fe7040d8688ce27796d04d8152c235369297ce829f5dec0aa205c3e62263ae759e15d4a'
             '28d868feedbee8251b0000556705ee094707782dad2072f4e37ebff3ac1658d09c884488dd6852e9734fa859218048daff50b66fe25930f6445619e3c89ca877'
             'a3700c82e6577bdacbce9cfd749e71e3c749814884ad4e9a1359e97105f9c045dc1472ba231ecb52c23855cacf67874623c8eef715955bfd41239b199d03a0db')
@@ -31,9 +31,6 @@ build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   # /var/lib/run -> /var/run
   patch -p0 < "${srcdir}/pid-path.patch"
-#  aclocal
-#  autoconf
-#  automake --add-missing
   ./configure --prefix=/usr --datarootdir=/usr/share --localstatedir=/var/lib --sysconfdir=/etc --with-pkcs11-softhsm=/usr/lib/libsofthsm.so --sbindir=/usr/bin
   # Create the correct (/var/run/opendnssec) directory
   sed -i \
