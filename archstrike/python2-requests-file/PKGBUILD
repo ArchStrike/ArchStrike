@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-requests-file
 pkgver=1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="File transport adapter for Requests"
 url="http://github.com/dashea/requests-file"
 depends=('python2')
@@ -22,5 +22,6 @@ build() {
 
 package() {
     cd $srcdir/requests-file-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1 
-}
+    python2 setup.py install --root="$pkgdir" --optimize=1
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+} 
