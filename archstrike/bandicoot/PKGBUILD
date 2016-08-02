@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=bandicoot
-pkgver=0.5.2
+pkgver=0.5.3
 pkgrel=1
 pkgdesc="A toolbox to analyze mobile phone metadata."
 url="https://github.com/yvesalexandre/bandicoot"
@@ -12,8 +12,8 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 install="${pkgname}.install"
-source=("https://pypi.python.org/packages/0e/1b/ea7df04f6fe4416697df1330c2d224c812fce12ca8a46ea24a64519966bf/bandicoot-${pkgver}.tar.gz" "LICENSE" "${pkgname}.install")
-sha512sums=('abaf8903f7a4c6a1b5c5619e5454d86051fdde0d5219f1832ae16e7356e0a22c9658562d9002ecb96fc39d236456028c72e711dba47ce32fac4470c1a8df027d'
+source=("https://pypi.python.org/packages/0d/22/a1e4b2176f1cb24ed9c6c61d8682a2e8daff159664115de378310fdfde56/bandicoot-${pkgver}.tar.gz" "LICENSE" "${pkgname}.install")
+sha512sums=('b920e458493d3a06e889863921c6ec84ded06084df9fdb8a61dc3b8ada4a698c1a44c3ea4122c15ae0ec424ecf376cc235637e6b62c02af85a8a449064bb6e71'
             '9237c955e51bf53a19a7fec8841590b72e1ba92af2e4280a43cd89a4ebc690e8c0db1bb347514cefbe700a46f9ea9cc6076fe9c42e92ccfafa58bc552f542970'
             '04156225bd357a35ef7866f412b50274f48782917f0ae8e8dadd0cc5a83a88183f8e5ff6d4fa5fead814ee6c923614d31a301bbb414ee3df454c2cf78ffaba0d')
 
