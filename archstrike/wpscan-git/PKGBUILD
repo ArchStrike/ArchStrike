@@ -4,7 +4,7 @@ buildarch=212
 
 _pkgname=wpscan
 pkgname=$_pkgname-git
-pkgver=20160726.r2057
+pkgver=20160801.r2060
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
@@ -51,7 +51,7 @@ package() {
   unzip -o data.zip
   rm data.zip
   rm data/LICENSE
-  find . -type d -name ext -exec rm '{}' \;
+  find . -type d -name ext |xargs rm -rf
 
   # Install the license
   mv LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
