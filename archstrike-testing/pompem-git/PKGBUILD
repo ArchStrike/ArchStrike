@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=pompem-git
 pkgver=r107.88ddb4f
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A python exploit tool finder"
 arch=('any')
 url='https://github.com/rfunix/Pompem'
 license=('custom')
-depends=('python2' 'python2-beautifulsoup3' 'python2-requests')
+depends=('python' 'python-requests' 'python-httplib2' )
 makedepends=('git')
 conflicts=('pompem')
 replaces=('pompem')
@@ -38,7 +38,7 @@ package() {
 cat > "$pkgdir/usr/bin/pompem" << EOF
 #!/bin/sh
 cd /usr/share/pompem
-python2 pompem.py "\$@"
+python pompem.py "\$@"
 EOF
 
 chmod +x "$pkgdir/usr/bin/pompem"
