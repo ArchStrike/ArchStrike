@@ -2,6 +2,8 @@
 # Contributor: Daichi Shinozaki <dsdseg@gmail.com>
 # Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
 
+buildarch=1
+
 pkgbase=paho-mqtt
 pkgname=(python-$pkgbase python2-$pkgbase)
 pkgver=1.1
