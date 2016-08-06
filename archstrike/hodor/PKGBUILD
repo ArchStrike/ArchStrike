@@ -1,0 +1,20 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=hodor
+pkgver=1.0
+pkgrel=1
+groups=('archstrike' 'archstrike-analysis' 'archstrike-recon')
+arch=('any')
+pkgdesc="A MQTT client, that automatically subscribes to #"
+url="https://github.com/archey/hodor"
+license=('GPL3')
+depends=('python2-paho-mqtt')
+source=("hodor.py")
+sha512sums=('0395d60dee2973d7514afa90c4017a7073af0821682c57bcc9f24d68c75c431d658cf0df2e3d8dbaff4aaf921420bb5766523f16d854d13a361d673fdb364bae')
+
+
+package() {
+  install -Dm755 $srcdir/hodor.py "${pkgdir}/usr/bin/hodor"
+}
