@@ -1,0 +1,43 @@
+# Maintainer: ArchStrike <team archstrike org>
+# Contributor: Daichi Shinozaki <dsdseg@gmail.com>
+# Contributor: Christopher Arndt <aur -at- chrisarndt -dot- de>
+
+pkgbase=paho-mqtt
+pkgname=(python-$pkgbase python2-$pkgbase)
+pkgver=1.1
+pkgrel=1
+url="http://www.eclipse.org/paho/clients/python"
+license=('EPL')
+arch=('any')
+makedepends=('python-setuptools', 'python2-setuptools')
+source=("https://pypi.python.org/packages/source/p/paho-mqtt/paho-mqtt-$pkgver.tar.gz")
+sha512sums=('e0b918406a1a551cded15313807ab508d3cd6a3c09aa8a0e6c105598e3e5f0d80d5974afe1352b604f428310ccb82a20c757a4da9934c7e0fb63337def312906')
+
+
+prepare() {
+   cp -r $pkgbase-${pkgver} python2-$pkgbase-${pkgver}
+}
+
+build() {
+   cd $srcdir/$pkgbase-${pkgver}
+   python setup.py build
+
+   cd $srcdir/python2-$pkgbase-${pkgver}
+   python2 setup.py build
+}
+
+package_python-paho-mqtt() {
+    pkgdesc="Python client library for MQTT v3.1 and v3.1.1"
+    depends=('python')
+
+    cd $srcdir/$pkgbase-$pkgver
+    python setup.py install --root="$pkgdir" --optimize=1
+}
+
+package_python2-paho-mqtt() {
+    pkgdesc="Python 2 client library for MQTT v3.1 and v3.1.1"
+    depends=('python2')
+
+    cd $srcdir/python2-$pkgbase-$pkgver
+    python2 setup.py install --root="$pkgdir" --optimize=1
+}
