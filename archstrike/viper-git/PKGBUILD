@@ -4,7 +4,7 @@ pkgbase=viper-git
 buildarch=1
 
 pkgname=(viper-git viper-git-docs)
-pkgver=r1101.d2f4ce2
+pkgver=r1103.bb1cd66
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="A Binary analysis framework"
