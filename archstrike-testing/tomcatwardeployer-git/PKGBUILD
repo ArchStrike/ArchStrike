@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=tomcatwardeployer-git
 pkgver=20160730.r51
-pkgrel=1
-groups=('archstrike' 'archstrike-exploits')
+pkgrel=2
+groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="Apache Tomcat auto WAR deployment & pwning penetration testing tool."
 url="https://github.com/mgeeky/tomcatWarDeployer"
