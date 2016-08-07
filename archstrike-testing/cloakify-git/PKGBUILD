@@ -1,0 +1,48 @@
+# Maintainer: ArchStrike <team archstrike org>
+
+buildarch=1
+
+pkgname=cloakify-git
+pkgver=20160801.r20
+pkgrel=1
+pkgdesc='Cloakify Toolset - Data Exfiltration In Plain Sight; Evade DLP/MLS Devices; Social Engineering of Analysts; Evade AV Detection'
+arch=('any')
+url='https://github.com/trycatchhcf/cloakify'
+license=('MIT')
+groups=('archstrike' 'archstrike-misc')
+depends=('python2')
+source=("$pkgname::git+https://github.com/TryCatchHCF/Cloakify.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd $pkgname
+  while read -r; do
+      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
+}
+
+package() {
+    cd $pkgname
+    install -dm755 $pkgdir/usr/share/$pkgname
+    install -dm755 $pkgdir/usr/bin
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cp -a --no-preserve=ownership * $pkgdir/usr/share/$pkgname/
+cat > $pkgdir/usr/bin/cloakify << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 ./cloakify.py "\$@"
+EOF
+cat > $pkgdir/usr/bin/decloakify << EOF
+#!/bin/sh
+cd /usr/share/$pkgname
+python2 ./decloakify.py "\$@"
+EOF
+
+chmod 755 $pkgdir/usr/bin/cloakify
+chmod 755 $pkgdir/usr/bin/decloakify
+}
