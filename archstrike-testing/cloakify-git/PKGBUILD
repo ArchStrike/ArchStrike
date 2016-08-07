@@ -1,16 +1,17 @@
-# Maintainer: ArchStrike <team archstrike org>
+# Maintainer: ArchStrike <team@archstrike.org>
 
 buildarch=1
 
 pkgname=cloakify-git
-pkgver=20160801.r20
+pkgver=20160807.r22
 pkgrel=1
-pkgdesc='Cloakify Toolset - Data Exfiltration In Plain Sight; Evade DLP/MLS Devices; Social Engineering of Analysts; Evade AV Detection'
+pkgdesc='Data Exfiltration In Plain Sight; Evade DLP/MLS Devices; Social Engineering of Analysts; Evade AV Detection'
 arch=('any')
 url='https://github.com/trycatchhcf/cloakify'
 license=('MIT')
-groups=('archstrike' 'archstrike-misc')
+groups=('archstrike' 'archstrike-misc' 'archstrike-crypto')
 depends=('python2')
+makedepends=('git')
 source=("$pkgname::git+https://github.com/TryCatchHCF/Cloakify.git")
 sha512sums=('SKIP')
 
@@ -27,16 +28,18 @@ prepare() {
 }
 
 package() {
-    cd $pkgname
-    install -dm755 $pkgdir/usr/share/$pkgname
-    install -dm755 $pkgdir/usr/bin
-    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    cp -a --no-preserve=ownership * $pkgdir/usr/share/$pkgname/
+  cd $pkgname
+  install -dm755 $pkgdir/usr/share/$pkgname
+  install -dm755 $pkgdir/usr/bin
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cp -a --no-preserve=ownership * $pkgdir/usr/share/$pkgname/
+
 cat > $pkgdir/usr/bin/cloakify << EOF
 #!/bin/sh
 cd /usr/share/$pkgname
 python2 ./cloakify.py "\$@"
 EOF
+
 cat > $pkgdir/usr/bin/decloakify << EOF
 #!/bin/sh
 cd /usr/share/$pkgname
