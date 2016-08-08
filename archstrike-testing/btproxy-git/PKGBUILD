@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=btproxy-git
 pkgver=20160227.r62
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-bluetooth')
 arch=('i686' 'x86_64')
 pkgdesc="Bluetooth Proxy tool"
@@ -23,4 +23,6 @@ pkgver() {
 package() {
   cd ${pkgname}
   python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  # fix naming conflict
+  mv $pkgdir/usr/bin/btproxy $pkgdir/usr/bin/$pkgname
 }
