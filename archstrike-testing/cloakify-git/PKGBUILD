@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=cloakify-git
 pkgver=20160807.r22
-pkgrel=1
+pkgrel=2
 pkgdesc='Data Exfiltration In Plain Sight; Evade DLP/MLS Devices; Social Engineering of Analysts; Evade AV Detection'
 arch=('any')
 url='https://github.com/trycatchhcf/cloakify'
@@ -36,14 +36,12 @@ package() {
 
 cat > $pkgdir/usr/bin/cloakify << EOF
 #!/bin/sh
-cd /usr/share/$pkgname
-python2 ./cloakify.py "\$@"
+python2 /usr/share/${pkgname}/cloakify.py "\$@"
 EOF
 
 cat > $pkgdir/usr/bin/decloakify << EOF
 #!/bin/sh
-cd /usr/share/$pkgname
-python2 ./decloakify.py "\$@"
+python2 /usr/share/${pkgname}/decloakify.py "\$@"
 EOF
 
 chmod 755 $pkgdir/usr/bin/cloakify
