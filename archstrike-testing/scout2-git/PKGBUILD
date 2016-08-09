@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=scout2-git
-pkgver=r603.1fee9c4
+pkgver=r605.da7de21
 pkgrel=1
 pkgdesc="Security auditing tool for AWS environments"
 url="http://isecpartners.github.io/Scout2/"
