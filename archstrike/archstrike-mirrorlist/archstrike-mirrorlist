@@ -1,6 +1,6 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2016-07-27
+# Generated on 2016-08-09
 #
 
 ## Official Mirrors
@@ -16,3 +16,4 @@ Server = https://mirror.wh1t3fox.net/archstrike/$arch/$repo
 Server = http://mirror.jmu.edu/pub/archstrike/$arch/$repo
 Server = http://www.mirrorservice.org/sites/mirror.archstrike.org/$arch/$repo
 Server = https://www.mirrorservice.org/sites/mirror.archstrike.org/$arch/$repo
+Server = https://mirror.umd.edu/archstrike/$arch/$repo
