@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=tomcatwardeployer-git
 pkgver=20160730.r51
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="Apache Tomcat auto WAR deployment & pwning penetration testing tool."
 url="https://github.com/mgeeky/tomcatWarDeployer"
 license=('GPL3')
-depends=('python2' 'python2-mechanize' 'python2-beautifulsoup3')
+depends=('python2' 'python2-mechanize' 'python2-beautifulsoup3' 'tree' 'fastjar')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
