@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=mimikatz
+pkgver=2.1.0
+release=alpha-20160808
+pkgrel=1
+groups=('archstrike' 'archstrike-exploit')
+arch=('any')
+pkgdesc="A little tool to play with Windows security"
+url="https://github.com/gentilkiwi/mimikatz"
+license=('custom')
+options=(!strip)
+source=("https://github.com/gentilkiwi/mimikatz/archive/${pkgver}-${release}.tar.gz" "LICENSE")
+sha512sums=('8aa0776dcdfc2ca02e07fd1bd2728448e2ef30b1cb2f7cd4d8ec1e38159586004f797f674c67d080125c9c649f2babf2c665d491b9c3bd47d37097956d7be1c8'
+            '4ac4bba96e2c65e4499913f14c1161e22d67c930529fbcfa74f9c691f96537370ca4f60446ed273288ce372b97974f6c22df145db68a42c373dbe3c0caba5dec')
+
+package() {
+  cd ${pkgname}-${pkgver}-${release}
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+
+}
