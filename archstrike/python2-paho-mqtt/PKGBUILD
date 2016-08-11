@@ -5,26 +5,27 @@
 buildarch=1
 
 pkgbase=paho-mqtt
+_pkgname=paho.mqtt.python
 pkgname=(python-$pkgbase python2-$pkgbase)
-pkgver=1.1
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 url="http://www.eclipse.org/paho/clients/python"
 license=('EPL')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/source/p/paho-mqtt/paho-mqtt-$pkgver.tar.gz")
-sha512sums=('e0b918406a1a551cded15313807ab508d3cd6a3c09aa8a0e6c105598e3e5f0d80d5974afe1352b604f428310ccb82a20c757a4da9934c7e0fb63337def312906')
+source=("https://github.com/eclipse/paho.mqtt.python/archive/v${pkgver}.tar.gz")
+sha512sums=('c1db1ac287ca15e9e4af03c09e73c1abc502204641ac1be72d3e1c0ef0fbcb4bc4f97afd2b17410e3d196f0441daaa3c4ffda644d33e92ec014f94848e2e7b81')
 
 
 prepare() {
-   cp -r $pkgbase-${pkgver} python2-$pkgbase-${pkgver}
+   cp -r $_pkgname-${pkgver} python2-$_pkgname-${pkgver}
 }
 
 build() {
-   cd $srcdir/$pkgbase-${pkgver}
+   cd $srcdir/$_pkgname-${pkgver}
    python setup.py build
 
-   cd $srcdir/python2-$pkgbase-${pkgver}
+   cd $srcdir/python2-$_pkgname-${pkgver}
    python2 setup.py build
 }
 
@@ -32,7 +33,7 @@ package_python-paho-mqtt() {
     pkgdesc="Python client library for MQTT v3.1 and v3.1.1"
     depends=('python')
 
-    cd $srcdir/$pkgbase-$pkgver
+    cd $srcdir/$_pkgname-$pkgver
     python setup.py install --root="$pkgdir" --optimize=1
 }
 
@@ -40,6 +41,6 @@ package_python2-paho-mqtt() {
     pkgdesc="Python 2 client library for MQTT v3.1 and v3.1.1"
     depends=('python2')
 
-    cd $srcdir/python2-$pkgbase-$pkgver
+    cd $srcdir/python2-$_pkgname-$pkgver
     python2 setup.py install --root="$pkgdir" --optimize=1
 }
