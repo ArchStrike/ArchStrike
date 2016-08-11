@@ -1,0 +1,22 @@
+# Maintainer: CHIPSEC team <chipsec@intel.com>
+
+buildarch=1
+
+pkgname=chipsec
+pkgver=1.2.3
+pkgrel=1
+groups=('archstrike' 'archstrike-hardware')
+pkgdesc="CHIPSEC:  Platform Security Assessment Framework"
+url='https://github.com/chipsec/chipsec'
+arch=('i686' 'x86_64')
+license=('GPL')
+depends=('python2' 'make' 'nasm' 'gcc' 'linux-headers')
+install="${pkgname}.install"
+source=("https://github.com/chipsec/chipsec/archive/master.zip")
+sha512sums=('ca9df7d858773e07788734cb9bf7d6fa83be2b6f26bce1f7921d9646b329e1bcd672cda2fadaa83f2540fbd91a0a2f97256e77a669ecd6012091f2ae419303a2')
+
+package(){
+  cd "$srcdir/chipsec-master"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cp -r --no-preserve=ownership * "$pkgdir/usr/share/chipsec/"
+}

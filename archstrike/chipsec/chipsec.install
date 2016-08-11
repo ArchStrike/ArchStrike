@@ -1,0 +1,11 @@
+post_install() {
+	# build driver and usermode compoment
+        make -C /usr/share/chipsec/source/drivers/linux
+        make -C /usr/share/chipsec/source/tool/chipsec/helper/linux
+        # add scripts to /usr/sbin/ for run chipsec_main, chipsec_util
+        echo '#!/bin/sh' > /usr/sbin/chipsec_main
+        echo -e "python2.7 /usr/share/chipsec/source/tool/chipsec_main.py \"\$@\"" >> /usr/sbin/chipsec_main
+        echo '#!/bin/sh' > /usr/sbin/chipsec_util
+        echo -e "python2.7 /usr/share/chipsec/source/tool/chipsec_util.py \"\$@\"" >> /usr/sbin/chipsec_util
+        chmod +x /usr/sbin/chipsec_main /usr/sbin/chipsec_util
+}
