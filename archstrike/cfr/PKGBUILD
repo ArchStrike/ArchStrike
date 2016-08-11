@@ -20,7 +20,7 @@ sha512sums=('791932c3f9a1d694b9bbe50e6d11f6e893fa2b06ef4f89e8a8427b2f7e3d22873b8
             '34f760447784493317b1715d975c649107765325443dd4aa1806cc8278dfb50bb1ced120b467a67438efd0f8db81049f2b1497f9b7752d445be5f53dddfebbaa')
 
 package() {
-  install -Dm644 "cfr_${pkgver}.jar" "$pkgdir/usr/share/$pkgname/cfr.jar"
+  install -Dm644 "cfr_0_${pkgver}.jar" "$pkgdir/usr/share/$pkgname/cfr.jar"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -dm755 "$pkgdir/usr/bin"
 cat > "$pkgdir/usr/bin/cfr" << EOF
