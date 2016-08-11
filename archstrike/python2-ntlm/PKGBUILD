@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-ntlm
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Python clients running on any operating system to provide NTLM authentication to a supporting server"
 arch=('any')
-url='http://code.google.com/p/python-ntlm'
+url='https://pypi.python.org/pypi/python-ntlm/'
 license=('GPL')
 depends=('python2')
-makedepends=('python2-distribute')
+makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/python-ntlm/python-ntlm-$pkgver.tar.gz")
-sha512sums=('cfc13daba074f4650f83e390c44eab5f5033534fb2a352ae43d76b1f03742baeda8ba33a57266b2dcd3a241891b54c25beb2028dbb8aa3166a2250fa2b578e18')
+sha512sums=('6d8d8bfe3912bf863cdffb7f62633235cbacc9711cae643d0492450e610b02e6fbfaed11da6e0dff5e0ca20df32d241844354b122b14a57658c76321dc0f0742')
 
 package() {
   cd "$srcdir/python-ntlm-$pkgver"
