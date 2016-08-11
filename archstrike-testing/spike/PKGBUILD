@@ -4,13 +4,14 @@ buildarch=212
 
 pkgname=spike
 pkgver=2.9
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="IMMUNITYsec's fuzzer creation kit in C"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.immunitysec.com/resources-freesoftware.shtml'
 license=('GPL2')
 depends=('gcc' 'automake' 'openssl')
+depends_x86_64+=('gcc-multilib')
 optdepends=('python2: needed to run SPIKE_Console.py python GUI'
             'wxpython: needed to run SPIKE_Console.py python GUI')
 source=("http://www.immunitysec.com/downloads/SPIKE${pkgver}.tgz")
@@ -50,7 +51,7 @@ package() {
     post_spike quake quakeserver sendmsrpc ss_spike statd_spike sunrpcfuzz \
     webfuzz x11_spike
   do
-    install -m755 "$bin" "$pkgdir/usr/bin/spike-${bin/_/-}"
+    install -m755 "$bin" "$pkgdir/usr/bin/spike-${bin//_/-}"
   done
 
   # Install libraries.
@@ -66,5 +67,5 @@ package() {
           $pkgdir/usr/share/doc/spike
 
   # Install data.
-  cp --no-preserve=ownership -R dcedump data encrypted "$pkgdir/usr/share/spike"
+  cp --no-preserve=ownership -R dcedump data encrypted src/audits "$pkgdir/usr/share/spike"
 }
