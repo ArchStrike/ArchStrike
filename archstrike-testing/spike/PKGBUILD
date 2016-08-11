@@ -4,19 +4,18 @@ buildarch=212
 
 pkgname=spike
 pkgver=2.9
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="IMMUNITYsec's fuzzer creation kit in C"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://www.immunitysec.com/resources-freesoftware.shtml'
 license=('GPL2')
-depends=('gcc' 'automake' 'openssl')
-depends_x86_64+=('gcc-multilib')
+depends=('gcc' 'automake' 'openssl' 'glibc')
+depends_x86_64+=('gcc-multilib' 'lib32-glibc')
 optdepends=('python2: needed to run SPIKE_Console.py python GUI'
             'wxpython: needed to run SPIKE_Console.py python GUI')
 source=("http://www.immunitysec.com/downloads/SPIKE${pkgver}.tgz")
-md5sums=('5e41c40904db2b3da06f181e8815aedd')
-sha1sums=('efc403a5f48f7172402f8896f398d2b1b9881f29')
+sha512sums=('733d788dfb0558bb1fa8e083e7dca095f188cbc65d7bb94349dd487a84a627937b2dea5fb32d16272deea8d464085b8c6efc374ffd6806710106358d873439e2')
 
 prepare() {
   cd $srcdir/SPIKE/SPIKE/src
