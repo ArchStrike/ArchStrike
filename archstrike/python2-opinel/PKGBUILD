@@ -2,7 +2,7 @@
 
 pkgname='python2-opinel'
 _name='opinel'
-pkgver=0.22.2
+pkgver=0.23.3
 pkgrel=1
 pkgdesc='A Python package used by Scout2 and AWS-Recipes.'
 arch=('any')
@@ -11,7 +11,7 @@ license=('GPL3')
 depends=("python2-requests" "python2-boto3")
 makedepends=('python2-setuptools')
 source=("https://github.com/iSECPartners/opinel/archive/v$pkgver.tar.gz")
-sha512sums=('888a955c69bc9572ea73c8d961dbff3128451c74912b225f43c1f43961e4d5dbb8073a124b64db03f91a3918a0042bc397e7938a0f103a45d87010efa52daf52')
+sha512sums=('725cac132429e3333879e197bb8cf6e08505d712ee8ca20a366d0051598a8f85932d741ee93012969e889b89ec765f776fbb0828a7d106199ace41ed23f1e313')
 
 package() {
     cd ${srcdir}/${_name}-${pkgver}
