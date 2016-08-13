@@ -1,0 +1,45 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=192
+
+pkgname=wcc-git
+pkgver=20160813.r20
+pkgrel=1
+groups=('archstrike' 'archstrike-misc')
+arch=('i686' 'x86_64')
+pkgdesc="The Witchcraft Compiler Collection"
+url="https://github.com/endrazine/wcc"
+license=('MIT')
+depends=('glibc' 'zlib' 'libelf' 'uthash' 'capstone' 'gsl' 'ccache' 'lua')
+depends_x86_64+=('lib32-glibc' 'lib32-zlib')
+makedepends=('git' 'clang')
+source=("${pkgname}::git+${url}.git" "destdir.patch")
+sha512sums=('SKIP'
+            '9e5f9c65dcc30f7db10a5925b687a6ca37a1ec427a6dc2025eacad63feec49e546ccc1ed58970358bc7b18b9691ce26467c46e2d542ea12e0de9a856dde507f6')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  git submodule init
+  git submodule update
+  patch -Np1 -i ${srcdir}/destdir.patch
+}
+
+build() {
+  cd ${pkgname}
+  make
+}
+
+package() {
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  make DESTDIR="${pkgdir}" install
+
+}

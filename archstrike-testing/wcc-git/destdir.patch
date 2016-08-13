@@ -1,0 +1,58 @@
+diff --git a/src/tools/Makefile b/src/tools/Makefile
+index 59ade9b..a69cbf2 100644
+--- a/src/tools/Makefile
++++ b/src/tools/Makefile
+@@ -8,8 +8,8 @@ clean:
+ 	rm ../../bin/wcch -f
+ 
+ install:
+-	cp wldd /usr/bin/wldd
+-	cp wcch /usr/bin/wcch
++	cp wldd $(DESTDIR)/usr/bin/wldd
++	cp wcch $(DESTDIR)/usr/bin/wcch
+ 
+ uninstall:
+ 	rm /usr/bin/wldd -f
+diff --git a/src/wcc/Makefile b/src/wcc/Makefile
+index c6eeda7..de904d9 100644
+--- a/src/wcc/Makefile
++++ b/src/wcc/Makefile
+@@ -33,7 +33,7 @@ clean:
+ 	rm -f wcc a.out wcc.o core wcc32 ls.o ls.so
+ 
+ install:
+-	cp wcc /usr/bin/wcc
++	cp wcc $(DESTDIR)/usr/bin/wcc
+ #	cp wcc32 /usr/bin/wcc32
+ 
+ uninstall:
+diff --git a/src/wld/Makefile b/src/wld/Makefile
+index 36b245f..5806b94 100644
+--- a/src/wld/Makefile
++++ b/src/wld/Makefile
+@@ -21,7 +21,7 @@ clean:
+ 	rm -f wld wld32 a.out
+ 
+ install:
+-	cp wld /usr/bin/wld
++	cp wld $(DESTDIR)/usr/bin/wld
+ #	cp wld32 /usr/bin/wld32
+ 
+ uninstall:
+diff --git a/src/wsh/Makefile b/src/wsh/Makefile
+index e95f926..8a5695e 100644
+--- a/src/wsh/Makefile
++++ b/src/wsh/Makefile
+@@ -35,9 +35,9 @@ deepclean:
+ 	make clean
+ 
+ install::
+-	mkdir -p /usr/share/wcc/
+-	cp -r ./scripts /usr/share/wcc/
+-	cp wsh /usr/bin/wsh
++	mkdir -p $(DESTDIR)/usr/share/wcc/
++	cp -r ./scripts $(DESTDIR)/usr/share/wcc/
++	cp wsh $(DESTDIR)/usr/bin/wsh
+ 
+ uninstall::
+ 	rm -rf /usr/share/wcc/
