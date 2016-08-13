@@ -1,22 +1,30 @@
-# Maintainer: CHIPSEC team <chipsec@intel.com>
+# Maintainer: ArchStrike <team archstrike org>
+# Contributor: CHIPSEC team <chipsec@intel.com>
 
-buildarch=1
+buildarch=192
 
 pkgname=chipsec
-pkgver=1.2.3
+pkgver=1.2.4
 pkgrel=1
-groups=('archstrike' 'archstrike-hardware')
-pkgdesc="CHIPSEC:  Platform Security Assessment Framework"
+groups=('archstrike' 'archstrike-hardware' 'archstrike-forensics')
+pkgdesc="A framework for analyzing security of PC platforms including hardware, system firmware including BIOS/UEFI and the configuration of platform components."
+arch=('i686' 'x86_64' )
 url='https://github.com/chipsec/chipsec'
-arch=('i686' 'x86_64')
-license=('GPL')
-depends=('python2' 'make' 'nasm' 'gcc' 'linux-headers')
-install="${pkgname}.install"
-source=("https://github.com/chipsec/chipsec/archive/master.zip")
-sha512sums=('ca9df7d858773e07788734cb9bf7d6fa83be2b6f26bce1f7921d9646b329e1bcd672cda2fadaa83f2540fbd91a0a2f97256e77a669ecd6012091f2ae419303a2')
+license=('GPL2')
+depends=('python2' 'nasm' 'linux-headers')
+source=("https://github.com/chipsec/chipsec/archive/v$pkgver.tar.gz")
+sha512sums=('680340a132f8154286a933db1ad8d1a8078a2bc34ab4526a6b4dbf10cb58116c6a01c52e560aaf8684a1634d688c09c6e06e91289cd59b1bd019055e503c76fd')
 
-package(){
-  cd "$srcdir/chipsec-master"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  cp -r --no-preserve=ownership * "$pkgdir/usr/share/chipsec/"
+build(){
+  cd "$srcdir/chipsec-$pkgver/source/drivers/linux/"
+  make
 }
+
+package() {
+  cd "$srcdir/chipsec-$pkgver/source/tools/"
+
+  python2 setup.py install root=$pkgdir --optimize=1
+
+
+}
+
