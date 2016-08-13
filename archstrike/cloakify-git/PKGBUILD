@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=cloakify-git
-pkgver=20160807.r22
-pkgrel=2
+pkgver=20160812.r52
+pkgrel=1
 pkgdesc='Data Exfiltration In Plain Sight; Evade DLP/MLS Devices; Social Engineering of Analysts; Evade AV Detection'
 arch=('any')
 url='https://github.com/trycatchhcf/cloakify'
