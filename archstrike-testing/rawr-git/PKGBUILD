@@ -5,14 +5,14 @@ buildarch=1
 
 pkgname=${_pkgname}-git
 pkgver=73.0924126
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc="Web enumerator for the rapid Assessment of web resources"
 arch=('any')
 url="https://bitbucket.org/al14s/rawr/wiki/Home"
 license=('GPL3')
 makedepends=('git')
-depends=('nmap' 'graphviz' 'python2-pygraphviz' 'python2-lxml' 'phantomjs' 'python2-pillow')
+depends=('nmap' 'graphviz' 'python2-pygraphviz' 'python2-lxml' 'phantomjs' 'python2-pillow' 'python2-xlsxwriter' 'python2-rdpy')
 replaces=('rawr')
 conflicts=('rawr')
 provides=('rawr')
