@@ -3,24 +3,24 @@
 buildarch=1
 
 pkgname=python2-cybox
-pkgver=2.1.0.12
-pkgrel=2
+pkgver=2.1.0.13
+pkgrel=1
 pkgdesc="A Python library for parsing and generating CybOX 2.1.0 content."
-url="https://pypi.python.org/pypi/cybox/"
+url="https://github.com/CybOXProject/python-cybox"
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/source/c/cybox/cybox-${pkgver}.zip")
-sha512sums=('63c75153b24675f6602d972f21b0ce63204594e09cff4f930e3a31c6eabe98cb3605f2198180d008aac0a06995878d824ab27a22d352a9d9b6e5ede34af841c5')
+source=("https://github.com/CybOXProject/python-cybox/archive/v${pkgver}.tar.gz")
+sha512sums=('9e885a267843d15126ac354439094668b77d073f3620f3e11a67ecabea288925e01426a9c5ba0b9706879a08dfb13010ddb21e4e3accad79be7b2645afaaf406')
 
 build() {
-  cd cybox-"${pkgver}"
+  cd python-cybox-"${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd cybox-"${pkgver}"
+  cd python-cybox-"${pkgver}"
   python2 setup.py install --root="${pkgdir}" --optimize=1
   install -Dm0644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
