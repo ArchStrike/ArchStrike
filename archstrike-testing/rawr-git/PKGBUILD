@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=${_pkgname}-git
 pkgver=73.0924126
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc="Web enumerator for the rapid Assessment of web resources"
 arch=('any')
@@ -37,7 +37,6 @@ package() {
     install -dm755 "$pkgdir"/usr/bin
     install -dm755 "$pkgdir"/usr/share/${_pkgname}
     cp -a --no-preserve=ownership * "$pkgdir"/usr/share/${_pkgname}/
-
-    echo -e '#!/usr/bin/env bash\n\ncd /usr/share/rawr\npython2 rawr.py' > "$pkgdir"/usr/bin/${_pkgname}
-    chmod a+x "$pkgdir"/usr/bin/${_pkgname}
+    
+    ln -s  "$pkgdir/usr/share/${_pkgname}/rawr.py" "$pkgdir/usr/bin/${_pkgname}"
 }
