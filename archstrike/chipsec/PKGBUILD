@@ -21,7 +21,7 @@ build(){
 }
 
 package() {
-  cd "$srcdir/chipsec-$pkgver/source/tools/"
+  cd "$srcdir/chipsec-$pkgver/source/tool/"
 
   python2 setup.py install root=$pkgdir --optimize=1
 
