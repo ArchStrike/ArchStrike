@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=airgraph-ng
 pkgname=$_pkgname-svn
-pkgver=2858
+pkgver=2859
 pkgrel=1
 pkgdesc='Graphing tool for the aircrack suite'
 arch=('any')
