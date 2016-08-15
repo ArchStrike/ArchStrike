@@ -1,6 +1,6 @@
 post_install(){
 	echo "Add /usr/share/pwndbg-git/gbdinit.py to gdb:"
-	echo "source /usr/share/pwndbg-git/gdbinit.py >> ~/.gdbinit"
+	echo "echo 'source /usr/share/pwndbg-git/gdbinit.py' >> ~/.gdbinit"
 	echo "DONE! debug your program with gdb and enjoy"
 
 }
