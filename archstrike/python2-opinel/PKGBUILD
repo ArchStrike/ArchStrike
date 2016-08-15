@@ -2,7 +2,7 @@
 
 pkgname='python2-opinel'
 _name='opinel'
-pkgver=0.23.3
+pkgver=0.24.0
 pkgrel=1
 pkgdesc='A Python package used by Scout2 and AWS-Recipes.'
 arch=('any')
@@ -11,11 +11,11 @@ license=('GPL3')
 depends=("python2-requests" "python2-boto3")
 makedepends=('python2-setuptools')
 source=("https://github.com/iSECPartners/opinel/archive/v$pkgver.tar.gz")
-sha512sums=('725cac132429e3333879e197bb8cf6e08505d712ee8ca20a366d0051598a8f85932d741ee93012969e889b89ec765f776fbb0828a7d106199ace41ed23f1e313')
+sha512sums=('f71df30445c7ec658b710ff1610ae532be461620082eb7b600824ac563cf15fed0f295de71c916aea6c97401ca9396aa8f0d5f29b61971af022dc2212a4d42aa')
 
 package() {
     cd ${srcdir}/${_name}-${pkgver}
     python2 setup.py install --root=${pkgdir}
-    install -D -m644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
