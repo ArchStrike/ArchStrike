@@ -1,0 +1,37 @@
+# Maintainer: ArchStrike <team archstrike dot org>
+# Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
+
+buildarch=192
+
+pkgname=rp++
+_pkgname=rp
+pkgver=1
+pkgrel=2
+pkgdesc="Find ROP gadgets in PE/ELF/MACH-O x86/x64 binaries"
+url="https://github.com/0vercl0k/rp"
+groups=('archstrike' 'archstrike-decompile')
+arch=('i686' 'x86_64')
+license=('GPL3')
+makedepends=('cmake')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/0vercl0k/rp/archive/v${pkgver}.tar.gz)
+sha512sums=('c8dff7430dd2d45d6de92c15ef33a3fb99193be3132955e6c14fd532489817a004320ea4c9de84f9a368a6a4a1ecfd4a55ee02285408084aab91564f0fa5e3a4')
+
+build() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  mkdir build && cd build
+  cmake ..
+  make
+}
+
+check() {
+  cd ${srcdir}/${_pkgname}-${pkgver}/bin
+  ./rp* -f bin_tests/elf-x86-bash-v4.1.5.1 --search-hexa="main"
+}
+
+package() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 bin/rp* "${pkgdir}/usr/bin/${_pkgname}"
+}
+
+# vim:set ts=2 sw=2 et:
