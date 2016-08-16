@@ -3,18 +3,18 @@
 buildarch=212
 
 pkgname=bluebox-ng
-pkgver=0.1.8
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 epoch=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='A GPL VoIP/UC vulnerability scanner written using Node.js powers'
 url='https://github.com/jesusprubio/bluebox-ng'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64')
 license=('GPL3')
-depends=('coffee-script' 'python2' 'nmap')
+depends=('coffee-script' 'python2' 'nmap' 'rhino' 'gnuplot')
 makedepends=('git' 'npm')
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('c3fc0b41b92c70cbd0abe80de9d50fc6769a15e4997b7b3186a231d2644d634fc4948db4817925c44186b9246d79f8847bef8e93c041396dfcf80d8a0b967898')
+sha512sums=('d477d043d6bb5ba66a6c16d002a49fe7b77e66d0fa404e6feb1cb548f76bdd68806ce42a1d841affd45789dc0cd02ffa8f552ecfadf8a9ca9b768eb947f8862a')
 
 prepare() {
   cd $pkgname-$pkgver
@@ -27,7 +27,7 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
   install -Dm644 package.json "$pkgdir/usr/lib/node_modules/$pkgname/package.json"
   install -m755 *.js "$pkgdir/usr/lib/node_modules/$pkgname/"
-  cp -r --no-preserve=ownership {artifacts,bin,examples,modules,node_modules,utils} "$pkgdir/usr/lib/node_modules/$pkgname/"
+  cp -r --no-preserve=ownership {artifacts,bin,examples,node_modules} "$pkgdir/usr/lib/node_modules/$pkgname/"
   install -dm755 "$pkgdir/usr/bin"
   printf '%s\n\n%s\n' \
     '#!/usr/bin/env bash' \
