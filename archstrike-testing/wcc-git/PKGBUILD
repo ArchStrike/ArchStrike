@@ -3,8 +3,8 @@
 buildarch=212
 
 pkgname=wcc-git
-pkgver=20160814.r26
-pkgrel=2
+pkgver=20160816.r27
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 pkgdesc="The Witchcraft Compiler Collection"
