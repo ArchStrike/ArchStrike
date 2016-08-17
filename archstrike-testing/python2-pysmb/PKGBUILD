@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-pysmb
+_pkgname=pysmb
+pkgver=1.1.17
+pkgrel=1
+pkgdesc="an experimental SMB/CIFS library written in Python"
+arch=('any')
+url="http://pypi.python.org/pypi/pysmbc/"
+license=('GPL')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('e6febf9a03f3cfd0a3019d0c4f71a2027ed9118b452bb078af85e4b097ecbe5868bca9aabb6dd7ae262eb5f1205ac50d21754cc274cedebb9ceb863ecc95406d')
+
+prepare() {
+  grep -iRl 'python' ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
+}
+
+build(){
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}

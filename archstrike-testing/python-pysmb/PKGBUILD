@@ -2,29 +2,28 @@
 
 buildarch=1
 
-pkgname=pysmb
+pkgname=python-pysmb
+_pkgname=pysmb
 pkgver=1.1.17
-pkgrel=3
+pkgrel=1
 pkgdesc="an experimental SMB/CIFS library written in Python"
 arch=('any')
 url="http://pypi.python.org/pypi/pysmbc/"
 license=('GPL')
-depends=('python' 'python2')
+depends=('python')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/source/p/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+replaces=('pysmb')
+provides=('pysmb')
+conflicts=('pysmb')
+source=("https://pypi.python.org/packages/source/p/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('e6febf9a03f3cfd0a3019d0c4f71a2027ed9118b452bb078af85e4b097ecbe5868bca9aabb6dd7ae262eb5f1205ac50d21754cc274cedebb9ceb863ecc95406d')
 
 build(){
-  cp -r ${pkgname}-${pkgver} ${pkgname}2-${pkgver}
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
-  cd "${srcdir}/${pkgname}2-${pkgver}"
-  python2 setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" --optimize=1
-  cd "${srcdir}/${pkgname}2-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
 }
