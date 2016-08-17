@@ -4,7 +4,7 @@ buildarch=212
 
 pkgname=metasploit
 pkgver=4.12.20
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="An open source platform that supports vulnerability research, exploit development and the creation of custom security tools representing the largest collection of quality-assured exploits"
@@ -89,7 +89,7 @@ EOF
 
   cat > "${pkgdir}/usr/bin/msfconsole" <<EOF
 #!/bin/sh
-if ! [[ -f /usr/share/metasploit/database.yml ]]; then
+if [ ! -f /usr/share/metasploit/database.yml ]; then
     cd /usr/share/metasploit
     ruby ./msfconsole -y msfconsole/database.yml "\$@"
 else
