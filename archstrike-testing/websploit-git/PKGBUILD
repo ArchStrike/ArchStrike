@@ -1,0 +1,44 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=websploit-git
+pkgver=20140922.r5
+pkgrel=1
+groups=('archstrike' 'archstrike-fuzzers' 'archstrike-social-engineering' 'archstrike-scanners')
+arch=('any')
+pkgdesc="advanced MITM framework"
+url="https://github.com/websploit/websploit"
+license=('GPL3')
+depends=('python2' 'scapy' 'metasploit' 'ruby-bundler' 'apache' 'driftnet')
+makedepends=('git')
+replaces=('websploit')
+provides=('websploit')
+conflicts=('websploit')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
+}
+
+package() {
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/websploit" <<EOF
+#!/bin/sh
+cd /usr/share/${pkgname}
+python2 websploit "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/websploit"
+
+}
