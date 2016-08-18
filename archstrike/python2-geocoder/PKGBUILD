@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-geocoder
-pkgver=1.16.1
+pkgver=1.16.3
 pkgrel=1
 pkgdesc="Geocoder is a simple and consistent geocoding library."
 url="https://github.com/DenisCarriere/geocoder"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/4f/99/50050e76f4fabb4c8c3dd61bfacb9e5755826d16ac65454595b8489ef313/geocoder-${pkgver}.tar.gz")
-sha512sums=('672f56c1fe4b44e86e6b234eae4205ce1c63eeb8ba772a4958647f3f9c22cbd41c4a3ccd8c96905fa6115c2f24281d0b6f864fa11045020df76846d275b7cc8e')
+source=("https://pypi.python.org/packages/8d/81/6b2e00d77f66df178ce75f7a7beb801668b8d4590f9a4efc4d4c58609298/geocoder-${pkgver}.tar.gz")
+sha512sums=('deb2aecf2b066d9df7c017f9bb1217b56241c54d1caf725e6ed546663e1d0cf5b170a6de6b42b3a8e540ba1db467256815da5d5b95ef6085528cad0e4d89085f')
 
 prepare() {
     grep -iRl 'python' geocoder-$pkgver | xargs sed -i 's|python$|python2|'
