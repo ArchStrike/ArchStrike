@@ -1,16 +1,16 @@
 # Maintainer: ArchStrike <team archstrike org>
 
 pkgname=changeme
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A default credential scanner"
 arch=('any')
 url='https://github.com/ztgrace/changeme'
 license=('GPL3')
-depends=('python2-requests' 'python2-logutils' 'python2-yaml' 'python2-netaddr' 'python2-responses' 'python2-nose' 'python2-lxml' 'python2-cerberus' 'shodan')
+depends=('python2-requests' 'python2-logutils' 'python2-yaml' 'python2-netaddr' 'python2-responses' 'python2-nose' 'python2-lxml' 'python2-cerberus' 'shodan' 'python2-libnmap')
 source=("https://github.com/ztgrace/changeme/archive/$pkgver.tar.gz")
-sha512sums=('186ef97cf9aee58a30a89255238a545117d23c893f1c67be784cd81d91d26da9716e6152f58f42b02c880e2ff10b750fc0ef38fcf115c5ae128ec18e15edbc89')
+sha512sums=('2c035745a9c751008cea61945cc9b4d38b9faa878fa6701cf2459ea46ad3d771b396cc47ebfa41182a0c8bb81e99902b81b19cfbd29a176dc56443db8afccc88')
 
 
 prepare(){
