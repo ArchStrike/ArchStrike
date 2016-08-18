@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='set-git'
 pkgver=7.3.12.r3.g8807a03
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-exploit')
 pkgdesc="Social-engineer toolkit. Aimed at penetration testing around Social-Engineering"
@@ -78,10 +78,10 @@ package() {
 
   # Joint script to handle default configuration.
 cat > "$pkgdir/usr/bin/setoolkit" << EOF
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Make sure only root can run our script
-if [[ $EUID -ne 0 ]]; then
+if [[ \$EUID -ne 0 ]]; then
    echo "This script must be run as root" 1>&2
    exit 1
 fi
