@@ -8,11 +8,17 @@ pkgrel=1
 pkgdesc="Python PE parsing module"
 url="https://github.com/erocarrera/pefile"
 depends=('python' 'python-future')
-makedepends=('python3' )
+makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
-source=("https://github.com/erocarrera/pefile/archive/v${pkgver}.tar.gz")
-sha512sums=('f14693753f74d427591224ca6e0360087fb1961bbbd22ad3a99182ab5153a9845c400bcd1e0a267b930edab8ac36640e2bd97484700ce9bb36a046b2ec4f122e')
+source=("https://github.com/erocarrera/pefile/archive/v${pkgver}.tar.gz" "setup_utf8_encoding.patch")
+sha512sums=('f14693753f74d427591224ca6e0360087fb1961bbbd22ad3a99182ab5153a9845c400bcd1e0a267b930edab8ac36640e2bd97484700ce9bb36a046b2ec4f122e'
+            '355d49b20947ad011bbb7def260ece08eefc2b0332e0a3a1dc229d01ce4cd8aad42694429a1fbfe3acf5fcba95994323a93552bfba346d353f5e8ce7e416b1a3')
+
+prepare() {
+   cd $srcdir/pefile-$pkgver
+   patch -Np1 -i $srcdir/setup_utf8_encoding.patch
+}
 
 package() {
     cd $srcdir/pefile-$pkgver
