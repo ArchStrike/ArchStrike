@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=spoofcheck-git
-pkgver=20160623.r15
+pkgver=20160817.r16
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 arch=('any')
