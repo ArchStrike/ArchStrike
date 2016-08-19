@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python-pefile
-pkgver=2016.3.4
+pkgver=2016.3.28
 pkgrel=1
 pkgdesc="Python PE parsing module"
 url="https://github.com/erocarrera/pefile"
@@ -11,8 +11,8 @@ depends=('python' 'python-future')
 makedepends=('python3' )
 license=('custom')
 arch=('any')
-source=("https://github.com/erocarrera/pefile/releases/download/v${pkgver}/pefile-${pkgver}.tar.gz")
-sha512sums=('3befda46a772b03c41cbce37db2b16e50a2cdea60e2884ae003081e7a66c7f1cb083b0f74eaccdfbba5cf4f6913a6aedbe48e2a97f26d820c3c37fd9b6694ffc')
+source=("https://github.com/erocarrera/pefile/archive/v${pkgver}.tar.gz")
+sha512sums=('f14693753f74d427591224ca6e0360087fb1961bbbd22ad3a99182ab5153a9845c400bcd1e0a267b930edab8ac36640e2bd97484700ce9bb36a046b2ec4f122e')
 
 package() {
     cd $srcdir/pefile-$pkgver
