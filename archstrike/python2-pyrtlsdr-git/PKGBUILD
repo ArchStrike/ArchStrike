@@ -1,15 +1,15 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Gergely Imreh <imrehg(at)gmail(dot)com>
 
-buildarch=1
+buildarch=196
 
 pkgname=python2-pyrtlsdr-git
 pkgver=r219.3479723
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python wrapper for librtlsdr (a driver for Realtek RTL2832U based SDR's)"
 depends=('python2')
 makedepends=('git' 'python2-setuptools' 'python2-pypandoc')
-arch=('any')
+arch=('i686' 'x86_64' 'armv7h')
 url="https://github.com/roger-/pyrtlsdr"
 license=('GPL3')
 provides=('python2-pyrtlsdr')
