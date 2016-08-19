@@ -4,13 +4,14 @@ buildarch=212
 
 pkgname=netsniff-ng
 pkgver=0.6.1
-pkgrel=7
+pkgrel=8
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A high performance Linux network sniffer for packet inspection."
 depends=('geoip' 'libsodium' 'liburcu' 'libcli' 'libnet' 'libnetfilter_conntrack' 'libpcap')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h')
 url='http://netsniff-ng.org/'
 license=('GPL2')
+makedepends=('hardening-wrapper')
 source=(https://github.com/netsniff-ng/netsniff-ng/archive/v${pkgver}.tar.gz
         netsniff-ng_configureForArch.patch
         fix_compilation_warnings.patch)
