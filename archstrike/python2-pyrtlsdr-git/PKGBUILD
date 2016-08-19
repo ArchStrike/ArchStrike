@@ -1,30 +1,33 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Gergely Imreh <imrehg(at)gmail(dot)com>
 
-buildarch=196
+buildarch=1
 
 pkgname=python2-pyrtlsdr-git
 pkgver=r219.3479723
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper for librtlsdr (a driver for Realtek RTL2832U based SDR's)"
 depends=('python2')
 makedepends=('git' 'python2-setuptools' 'python2-pypandoc')
-arch=('armv7h' 'i686' 'x86_64')
+arch=('any')
 url="https://github.com/roger-/pyrtlsdr"
 license=('GPL3')
 provides=('python2-pyrtlsdr')
 replaces=('python2-pyrtlsdr')
 conflicts=('python2-pyrtlsdr')
-source=('pyrtlsdr::git+https://github.com/roger-/pyrtlsdr.git')
+source=("${pkgname}::git+https://github.com/roger-/pyrtlsdr.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/pyrtlsdr"
+  cd ${pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
+}
+
 package(){
-  cd "$srcdir/pyrtlsdr"
-  python2 setup.py install --root=$pkgdir --optimize=1
-  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/rtlsdr/rtlsdrtcp.py
+  cd ${pkgname}
+  python2 setup.py install --root=${pkgdir} --optimize=1
 }
