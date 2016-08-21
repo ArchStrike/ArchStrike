@@ -1,0 +1,9 @@
+post_install() {
+  echo """
+  For the package to work correctly, run 'updatedb' as root.
+  """
+}
+
+post_upgrade() {
+  post_install
+}

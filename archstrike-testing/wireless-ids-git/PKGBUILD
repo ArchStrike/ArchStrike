@@ -4,17 +4,18 @@ buildarch=1
 
 pkgname=wireless-ids-git
 pkgver=r24.b132071
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="Ability to detect suspicious activity such as (WEP/WPA/WPS) attack by sniffing the air for wireless packets."
 arch=('any')
 url='https://github.com/SYWorks/wireless-ids'
 license=('GPL2')
-depends=('python2')
+depends=('python2' 'aircrack-ng' 'mlocate' 'wireshark-cli')
 makedepends=('git')
 provides=('wireless-ids')
 conflicts=('wireless-ids')
 replaces=('wireless-ids')
+install=${pkgname}.install
 source=("wireless-ids::git+https://github.com/SYWorks/wireless-ids.git")
 sha512sums=('SKIP')
 
@@ -39,5 +40,5 @@ cat > $pkgdir/usr/bin/wireless-ids <<EOF
 cd /usr/share/$pkgname
 python2 ./wids.py "\$@"
 EOF
-chmod +x $pkgdir/usr/bin/wireless-ids
+chmod 755 $pkgdir/usr/bin/wireless-ids
 }
