@@ -5,7 +5,7 @@ _pkgname=i2pd
 buildarch=220
 
 pkgname=$_pkgname-git
-pkgver=20160819.r3366
+pkgver=20160821.r3368
 pkgrel=1
 pkgdesc='I2P router written in C++'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -13,7 +13,7 @@ url="https://github.com/PrivacySolutions/i2pd"
 license=('GPL2')
 groups=('archstrike')
 depends=('crypto++' 'boost-libs' 'systemd')
-makedepends=('cmake' 'git' 'boost' 'miniupnpc')
+makedepends=('hardening-wrapper' 'cmake' 'git' 'boost' 'miniupnpc')
 backup=("etc/default/$_pkgname.conf")
 install=$pkgname.install
 source=("$pkgname::git+https://github.com/PurpleI2P/i2pd.git"
