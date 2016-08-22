@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=silk
 pkgver=3.12.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CERT netflow tools.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'armv8')
 url='http://tools.netsa.cert.org/silk'
