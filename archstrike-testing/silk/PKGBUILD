@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: William Robertson <nullptr@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=silk
 pkgver=3.12.2
 pkgrel=1
 pkgdesc='CERT netflow tools.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'armv8')
 url='http://tools.netsa.cert.org/silk'
 license=('GPL')
 groups=('archstrike' 'archstrike-networking')
