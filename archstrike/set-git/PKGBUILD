@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname='set-git'
-pkgver=7.3.12.r3.g8807a03
-pkgrel=2
+pkgver=7.3.12.r7.gf70a606
+pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-exploit')
 pkgdesc="Social-engineer toolkit. Aimed at penetration testing around Social-Engineering"
