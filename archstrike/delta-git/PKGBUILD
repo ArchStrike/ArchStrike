@@ -31,7 +31,7 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$_pkgname"
   install -dm755 "$pkgdir/usr/share/doc/$_pkgname"
-  
+
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
   install -Dm644 readme.md "$pkgdir/usr/share/docs/$_pkgname"
 

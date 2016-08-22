@@ -1,5 +1,7 @@
 #Maintainer: ArchStrike <team@archstrike.org>
 
+buildarch=1
+
 pkgname=python2-rarfile
 pkgver=2.8
 pkgrel=1
@@ -19,6 +21,6 @@ build() {
 
 package() {
     cd $srcdir/rarfile-rarfile_${pkgver/./_}
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

@@ -5,14 +5,14 @@
 # Contributer: Joker-jar <joker-jar@yandex.ru>
 # Contributor: josephgbr <rafael.f.f1@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=ncpfs
 pkgver=2.2.6
 pkgrel=7
 pkgdesc="Allows you to mount volumes of NetWare servers under Linux."
 url="http://www.novell.com/"
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('GPL')
 groups=('archstrike')
 depends=('pam')

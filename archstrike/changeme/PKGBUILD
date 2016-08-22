@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <team archstrike org>
 
+buildarch=1
+
 pkgname=changeme
 pkgver=0.4.2
 pkgrel=1
@@ -12,11 +14,9 @@ depends=('python2-requests' 'python2-logutils' 'python2-yaml' 'python2-netaddr' 
 source=("https://github.com/ztgrace/changeme/archive/$pkgver.tar.gz")
 sha512sums=('4eaabba24ff42add9310dd9390a2c7886062cf91a5fa5f809090b86bc1ed26a2fb3931e2c2073f9d7685e795bc4a7eb2908f375473600862b18c5c4d5cdeffe9')
 
-
 prepare(){
   grep -iRl 'python' "$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
-
 
 package() {
   cd "$pkgname-$pkgver"

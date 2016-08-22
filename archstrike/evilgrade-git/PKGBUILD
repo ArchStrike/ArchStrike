@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=evilgrade-git
 pkgver=r27.7488d21
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Modular framework that takes advantage of poor upgrade implementations by injecting fake updates"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/infobyte/evilgrade'
 license=('GPL')
 depends=('perl' 'perl-data-dump' 'perl-io-socket-ssl' 'perl-digest-sha1' 'perl-rpc-xml' 'java-environment')

@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=shellter
 pkgver=1.7
 pkgrel=4
 pkgdesc="A Dynamic Shellcode Injector(wine version - beta)"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://www.shellterproject.com/"
 license=('custom')
 depends=('wine' 'bash')

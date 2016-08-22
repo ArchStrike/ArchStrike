@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=btproxy-git
 pkgver=20160227.r62
 pkgrel=2
 groups=('archstrike' 'archstrike-bluetooth')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="Bluetooth Proxy tool"
 url="https://github.com/conorpp/btproxy"
 license=('GPL3')

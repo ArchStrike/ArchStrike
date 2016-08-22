@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='voiper'
 pkgver='0.07'
@@ -10,7 +10,7 @@ url='http://voiper.sourceforge.net/'
 groups=('archstrike' 'archstrike-voip')
 depends=('python' 'wxpython')
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("http://downloads.sourceforge.net/voiper/$pkgname-$pkgver.tar.gz")
 md5sums=('d2bce38a993b51accf301fa3fe343565')
 

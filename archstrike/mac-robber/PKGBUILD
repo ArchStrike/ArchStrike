@@ -2,13 +2,13 @@
 # Credits: Geoffroy Carrier <geoffroy.carrier@koon.fr>
 # Contributor: Dominik Richter <dominik.richter@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=mac-robber
 pkgver=1.02
 pkgrel=2
 pkgdesc="Forensic tool that collects data from allocated files in a mounted file system. Useful together with sleuthkit."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.sleuthkit.org/mac-robber/index.php"
 license=('GPL2')
 optdepends=('sleuthkit: use mac-robber output with mactime')

@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=196
+buildarch=204
 
 pkgname=rtlsdr-scanner-git
 pkgver=0.r943.b55e5a4
@@ -8,7 +8,7 @@ pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A cross platform Python frequency scanning GUI for the OsmoSDR rtl-sdr library"
 url='https://github.com/EarToEarOak/RTLSDR-Scanner'
-arch=('armv7h' 'i686' 'x86_64')
+arch=('armv7h' 'i686' 'x86_64' 'aarch64')
 license=('GPL3')
 depends=('python2-pyrtlsdr-git' 'wxpython2.8' 'python2-pyserial' 'python2-pillow' 'python2-numpy' 'rtl-sdr' 'python2-matplotlib')
 makedepends=('git')

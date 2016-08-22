@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=fiked
 pkgver=0.0.5
 pkgrel=2
 groups=('archstrike')
 pkgdesc="Fake IDE daemon"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.roe.ch/FakeIKEd'
 license=('GPL')
 depends=("libgcrypt" "libnet")

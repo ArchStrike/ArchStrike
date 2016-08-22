@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=bluebox-ng
 pkgver=1.1.0
@@ -9,7 +9,7 @@ epoch=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='A GPL VoIP/UC vulnerability scanner written using Node.js powers'
 url='https://github.com/jesusprubio/bluebox-ng'
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('GPL3')
 depends=('coffee-script' 'python2' 'nmap' 'rhino' 'gnuplot')
 makedepends=('git' 'npm')

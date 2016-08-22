@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=log4cxx-svn
 pkgver=1756866
@@ -9,7 +9,7 @@ pkgdesc="A C++ port of Log4j"
 url="http://logging.apache.org/log4cxx"
 license=("APACHE")
 depends=('apr-util')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 makedepends=('subversion' 'autoconf')
 source=("${pkgname}::svn+http://svn.apache.org/repos/asf/incubator/log4cxx/trunk")
 install=${pkgname}.install
@@ -21,7 +21,6 @@ pkgver() {
   cd $pkgname
   svnversion | tr -d [A-z]
 }
-
 
 build() {
   cd "$pkgname"

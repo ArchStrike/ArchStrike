@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=metasploit
 pkgver=4.12.21
@@ -8,7 +8,7 @@ pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="An open source platform that supports vulnerability research, exploit development and the creation of custom security tools representing the largest collection of quality-assured exploits"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 makedepends=('ruby-bundler')
 depends_x86_64+=('lib32-libxslt')
 depends+=('ruby' 'git' 'libxslt' 'postgresql-libs' 'sqlite' 'libpcap' 'postgresql')
@@ -27,11 +27,11 @@ sha512sums=('75099cb9e30285d422d2890be52251b4ec94ed069e60ab95d1ea75419328c50a1c9
 
 build() {
   cd "$pkgname-framework-$pkgver"
-  
+
   # Nokogiri SHOULD be ok with that
   bundle config build.nokogiri --use-system-libraries
   bundle install --deployment
-  
+
   # Locking msfupdate
   rm msfupdate
 
@@ -50,7 +50,7 @@ package() {
   # Shareable.
   cp --no-preserve=ownership -a documentation/* "${pkgdir}/usr/share/doc/metasploit"
   cp --no-preserve=ownership README.md "${pkgdir}/usr/share/doc/metasploit"
-  
+
   # Source + Bin.
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/metasploit"
   install -m644 .rspec "${pkgdir}/usr/share/metasploit"
@@ -62,7 +62,7 @@ package() {
   install -m644 .yardopts "${pkgdir}/usr/share/metasploit"
   install -m644 .gitmodules "${pkgdir}/usr/share/metasploit"
   install -m644 .mailmap "${pkgdir}"/usr/share/metasploit
-  
+
   # We need to move the .bundle dir which contains bundle's config file
   # or metasploit won't find its gems
   cp -Rf --no-preserve=ownership .bundle "${pkgdir}/usr/share/metasploit/.bundle"
@@ -75,10 +75,10 @@ package() {
   ln -s /etc/metasploit "${pkgdir}/usr/share/metasploit/config"
 
   cd ${pkgdir}/usr/share/metasploit
-  
+
   # Set the original mod
   chmod 0644 vendor/bundle/ruby/2.3.0/gems/*/*/*.rb
-  
+
   install -Dm0666 /dev/null "${pkgdir}"/usr/share/metasploit/log/production.log
 
   cat > "${pkgdir}/usr/bin/msfbinscan" <<EOF

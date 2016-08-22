@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=128
+buildarch=136
 
 pkgname=cryptohazemultiforcer
 pkgver=1.31
@@ -8,7 +8,7 @@ pkgrel=3
 pkgdesc="High performance multihash brute forcer with CUDA support"
 url="http://www.cryptohaze.com/multiforcer.php"
 license=('custom')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 optdepends=('cuda: cuda support')
 depends=('bash' 'ocl-icd')
 groups=('archstrike')

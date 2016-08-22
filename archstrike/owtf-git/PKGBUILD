@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=owtf-git
 pkgver=r1562.7a9286b
@@ -9,7 +9,7 @@ groups=('archstrike' 'archstrike-webapps')
 pkgdesc="The Offensive (Web) Testing Framework"
 url="https://www.owasp.org/index.php/OWASP_OWTF"
 license=('custom')
-arch=('armv7h' 'armv6h' 'i686' 'x86_64')
+arch=('armv7h' 'armv6h' 'i686' 'x86_64' 'aarch64')
 depends=('python2-jinja' 'python2-markdown' 'python2-pyvirtualdisplay'
          'python2-tornado' 'python2-pycurl' 'python2-rdflib' 'python2-selenium'
          'python2-pexpect' 'python2-lxml' 'java-environment' 'ptp'

@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname='bios_memimage'
 pkgver='1.2'
 pkgrel=2
 pkgdesc='A tool to dump RAM contents to disk (aka cold boot attack)'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='http://citp.princeton.edu/memory/code/'
 license=('BSD')
 groups=('archstrike' 'archstrike-crackers' 'archstrike-forensics')

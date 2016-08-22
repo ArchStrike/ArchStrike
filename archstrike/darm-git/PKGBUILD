@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Nicolas Hureau <archlinux@kalenz.fr>
 
-buildarch=212
+buildarch=220
 
 pkgname=darm-git
 pkgver=416.cadffa7
 pkgrel=2
 pkgdesc="An ARMv7 disassembling library written in C."
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url="https://github.com/jbremer/darm"
 license=("custom")
 depends=('glibc')

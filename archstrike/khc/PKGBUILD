@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=khc
 pkgver=0.2
@@ -9,7 +9,7 @@ pkgdesc='A small tool designed to recover hashed known_host files back to their 
 url='http://packetstormsecurity.com/files/87003'
 license=('custom')
 groups=('archstrike-crackers')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('openssl')
 source=(
   "http://packetstorm.foofus.com/UNIX/utilities/${pkgname}_$pkgver.tar.gz"

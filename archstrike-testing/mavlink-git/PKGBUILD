@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=mavlink-git
 pkgver=20160820.r2063
 pkgrel=1
 pkgdesc="MAVLink micro air vehicle marshalling / communication libraries"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://qgroundcontrol.org/mavlink/"
 groups=('archstrike-drone')
 license=('LGPL')

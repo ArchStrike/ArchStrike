@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=beleth-git
 pkgver=0.r36.0963699
@@ -8,7 +8,7 @@ pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A Multi-threaded Dictionary based SSH cracker"
 url="https://github.com/chokepoint/Beleth"
-arch=('armv7h' 'armv6h' 'i686' 'x86_64')
+arch=('armv7h' 'armv6h' 'i686' 'x86_64' 'aarch64')
 license=('custom')
 depends=('libssh2')
 makedepends=('git')

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=joomscan
 pkgver=2012.03.10
 pkgrel=3
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Detects file inclusion, sql injection, command execution vulnerabilities of a target Joomla! web site."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('perl-switch' 'perl-www-mechanize')
 license=('LGPL3')
 url='http://joomscan.sourceforge.net/'

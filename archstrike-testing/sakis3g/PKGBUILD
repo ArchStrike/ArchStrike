@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=sakis3g
 pkgver=0.2.0e
 pkgrel=1
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-misc')
 pkgdesc="An all-in-one script for connecting with 3G"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.sakis3g.org/"
 license=('GPL2')
 depends=('ppp' 'net-tools')

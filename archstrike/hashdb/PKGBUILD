@@ -1,16 +1,16 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=hashdb
 pkgver=3.0.0
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics' 'archstrike-misc')
 pkgdesc="A block hash toolkit"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/NPS-DEEP/hashdb/'
 license=('GPL')
-depends=('tre' 'libxml2' 'python2') 
+depends=('tre' 'libxml2' 'python2')
 makdepends=('autoconf')
 source=("https://github.com/NPS-DEEP/hashdb/archive/v$pkgver-alpha-1b.tar.gz")
 sha512sums=('fa19316eb7f7456f34bb2be388a0468a466836de00906e6cbd7df07f8702ff57431cea8d27a66aa1368411a930e73e7d2b5b030f21351a4a8d1097736a01f7ab')

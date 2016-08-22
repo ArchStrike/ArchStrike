@@ -4,14 +4,14 @@
 # Contributor: darkapex <me@jailuthra.in>
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
-buildarch=192
+buildarch=200
 
 pkgname=arduino
 pkgver=1.6.11
 pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc='Open-source electronics prototyping platform'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='http://arduino.cc'
 options=('!strip' 'staticlibs')
 license=('GPL')

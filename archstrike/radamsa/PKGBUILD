@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=radamsa
 pkgver=0.5
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="General purpose data fuzzer."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/aoh/radamsa"
 license=("MIT")
 depends=('glibc')

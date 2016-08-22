@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=212
+buildarch=220
 
 pkgname=pwatch
 pkgver=0.0.6
@@ -10,7 +10,7 @@ pkgdesc="An ncurses tool that can be run by root to give information about proce
 url="http://kernel.embedromix.ro/us/"
 license=('GPL')
 groups=('archstrike' 'archstrike-analysis')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('ncurses')
 makedepends=('linux-api-headers')
 source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz")

@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
@@ -8,7 +8,7 @@ pkgname=amap
 pkgver=5.4
 pkgrel=6
 pkgdesc="Next-generation tool for assisting network penetration testing."
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('GPL2' 'custom')
 groups=('archstrike')
 depends=('pcre' 'openssl')

@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=pyqt3
 pkgver=3.18.1
 pkgrel=15
 pkgdesc="A set of Python bindings for the Qt3 toolkit"
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://www.riverbankcomputing.com/software/pyqt/intro"
 depends=('python2-sip' 'qscintilla-qt3')
 license=('GPL')

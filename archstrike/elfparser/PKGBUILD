@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team archstrike dot org>
 
-buildarch=212
+buildarch=220
 
 pkgname=elfparser
 pkgver=1.4.0
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Cross Platform ELF analysis"
 url="https://github.com/jacob-baines/elfparser"
 groups=('archstrike' 'archstrike-decompile')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('custom')
 depends=('boost' 'python')
 depends_x86_64+=('gcc-libs-multilib')
@@ -26,7 +26,7 @@ build() {
 check() {
   cd ${pkgname}-${pkgver}/build
   ./${pkgname}-cli_test
-} 
+}
 
 package() {
   cd ${pkgname}-${pkgver}/build

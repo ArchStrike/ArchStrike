@@ -27,7 +27,7 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1 
+  python2 setup.py install --root="$pkgdir" --optimize=1
   # fix weird python issue
   sed -i 's|python|python2|' ${pkgdir}/usr/lib/python2.7/site-packages/pocsuite/thirdparty/pyparsing/setup.py
 }

@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libsoc
 pkgver=0.8.2
 pkgrel=1
 pkgdesc="a C library for interfacing with common SoC peripherals through generic kernel interfaces"
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/jackmitch/libsoc"
 depends=('glibc')
 makedepends=('autoconf')
@@ -17,7 +17,7 @@ sha512sums=('56c589d3ffb6b1803c337b4a1a2faf81b407deacd3cb68f7659fea68c7c085b4452
 
 build() {
   cd $pkgname-$pkgver
-  autoreconf -i 
+  autoreconf -i
   ./configure --prefix=/usr --enable-debug
   make
 }

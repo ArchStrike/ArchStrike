@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=garmintools
 pkgver=0.10
@@ -8,7 +8,7 @@ pkgrel=5
 pkgdesc="This software provides Linux users with the ability to communicate with the Garmin Forerunner 305 via the USB interface."
 depends=('libusb-compat')
 install="garmintools.install"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 source=("http://garmintools.googlecode.com/files/$pkgname-$pkgver.tar.gz"
         "array-size.patch")

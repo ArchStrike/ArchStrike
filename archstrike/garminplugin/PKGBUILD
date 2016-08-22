@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=garminplugin
 pkgrel=2
 pkgver=0.3.27
 pkgdesc="Garmin Communicator Plugin for Linux"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.andreas-diesner.de/garminplugin/doku.php"
 license=('GPL')
 #makedepends=("xulrunner")

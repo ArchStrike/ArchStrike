@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libvidcap
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="A cross-platform library for capturing video from webcams and other video capture devices."
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://libvidcap.sourceforge.net"
 license=('GPL')
 source=(http://downloads.sourceforge.net/sourceforge/libvidcap/$pkgname-$pkgver.tar.gz)

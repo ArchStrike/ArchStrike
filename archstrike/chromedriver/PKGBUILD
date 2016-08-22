@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=chromedriver
 pkgver=2.23
 pkgrel=1
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://sites.google.com/a/chromium.org/chromedriver/"
 license=('Apache')
 depends=('libxi' 'gconf' 'nss')

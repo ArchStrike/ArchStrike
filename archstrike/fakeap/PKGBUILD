@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=fakeap
 pkgver=0.3.2
@@ -10,7 +10,7 @@ pkgdesc="Black Alchemy's Fake AP generates thousands of counterfeit 802.11b acce
 url="http://www.blackalchemy.to/project/fakeap/"
 license=('GPL')
 depends=('perl')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=(http://www.sourcefiles.org/Networking/Tools/Wireless/fakeap-$pkgver.tar.gz)
 sha512sums=('b346d83c2b116abd4eb0d5dc58fbc1f634a41685ab377a3354c7add58e2764c0779addaeac841f01715bdb8b3c9b7725de25c3d439af96521689c8d6465ba6a3')
 

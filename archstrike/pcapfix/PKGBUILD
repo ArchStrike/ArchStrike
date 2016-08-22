@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Rafał Michalski <plum.michalski at gmail dot com>
 
-buildarch=212
+buildarch=220
 
 pkgname=pcapfix
 pkgver=1.1.0
 pkgrel=2
 pkgdesc="A repair tool for corrupted pcap files. "
 groups=('archstrike' 'archstrike-forensics' 'archstrike-misc' 'archstrike-analysis')
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 license=("GPL3")
 url='http://f00l.de/pcapfix/'
 depends=('glibc')

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 _pkgname=msgpack
 pkgname=ruby-$_pkgname
 pkgver=1.0.0
 pkgrel=1
 pkgdesc='MessagePack, a binary-based efficient data interchange format.'
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url='https://github.com/msgpack/msgpack-ruby'
 license=('Apache')
 depends=('ruby')
@@ -25,7 +25,7 @@ package() {
   else
       gem install --ignore-dependencies --no-user-install -i "$pkgdir/$_gemdir" -n "$pkgdir/usr/bin" $_pkgname-$pkgver.gem
       find $pkgdir -type f -iname gem_make.out |xargs rm -rf
-  fi  
+  fi
 
   rm "$pkgdir/$_gemdir/cache/$_pkgname-$pkgver.gem"
 }

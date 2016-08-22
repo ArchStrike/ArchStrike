@@ -2,13 +2,13 @@
 _author=GAAS
 _perlmod=Digest-MD2
 
-buildarch=212
+buildarch=220
 
 pkgname=perl-digest-md2
 pkgver=2.04
 pkgrel=2
 pkgdesc="Perl interface to the MD2 Algorithm"
-arch=('x86_64' 'i686' 'armv7h' 'armv6h')
+arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
 url='http://search.cpan.org/~GAAS/Digest-MD2-2.03/'
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0', 'gmp')

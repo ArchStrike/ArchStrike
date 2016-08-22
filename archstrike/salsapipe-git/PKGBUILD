@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=128
+buildarch=136
 
 _pkgname=salsapipe
 pkgname=$_pkgname-git
@@ -9,7 +9,7 @@ pkgrel=3
 pkgdesc='Encrypted network tunneling using salsa20 from libnettle and GPG from libgpgme'
 url='https://github.com/prurigro/salsapipe'
 license=('GPL3')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 groups=('archassault' 'archassault-networking')
 depends=('gpgme')
 makedepends=('git')

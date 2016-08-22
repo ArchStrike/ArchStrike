@@ -2,13 +2,13 @@
 # Contributor: tuftedocelot <tuftedocelot@fastmail.fm>
 # Contributor: Davbo <dave@davbo.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=x3270
 pkgver=3.3.14ga11
 pkgrel=4
 pkgdesc="An IBM 3270 terminal emulator for the X Window System patched for birp(https://github.com/sensepost/birp)"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://x3270.bgp.nu/"
 license=('BSD' 'MIT')
 depends=('openssl' 'libxaw')

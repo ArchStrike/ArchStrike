@@ -23,7 +23,7 @@ build() {
 
 package() {
     cd $srcdir/pluginbase-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" --optimize=1
 
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"

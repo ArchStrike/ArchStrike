@@ -32,9 +32,9 @@ package() {
   # Docs
   install -D -m644 "docs/README" "$pkgdir/usr/share/doc/cupp/README"
   install -D -m644 "docs/LICENSE" "$pkgdir/usr/share/licenses/cupp/LICENSE"
-  
+
   # Wrapper script
-cat > "$pkgdir/usr/bin/cupp" << EOF 
+cat > "$pkgdir/usr/bin/cupp" << EOF
 #!/bin/bash
 cd /usr/share/cupp
 python2 ./cupp.py "\$@"

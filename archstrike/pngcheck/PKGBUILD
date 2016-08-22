@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team[at]archstrike[dot]org>
 # Contributor: Rudy Matela <rudy@matela.com.br>
 
-buildarch=212
+buildarch=220
 
 pkgname=pngcheck
 pkgver=2.3.0
 pkgrel=1
 groups=('archstrike' 'archstrike-steganography')
 pkgdesc="Verifies the integrity of PNG, JNG and MNG files by checking the CRCs and decompressing the image data"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.libpng.org/pub/png/apps/pngcheck.html"
 license=('GPL')
 depends=('libpng')

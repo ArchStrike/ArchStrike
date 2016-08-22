@@ -1,5 +1,8 @@
 # Maintainer: ArchStrike <team archstrike.org>
 # Contributor: Daniel Müllner <daniel@danifold.net>
+
+buildarch=1
+
 pkgname=perl-crypt-random-seed
 pkgver=0.03
 pkgrel=2

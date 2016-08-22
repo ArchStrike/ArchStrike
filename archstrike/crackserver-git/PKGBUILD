@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=crackserver-git
 pkgver=r33.e5763ab
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="An XMLRPC server for password cracking"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/averagesecurityguy/crack'
 license=('custom')
 depends=('python2' 'rcracki_mt' 'john' 'hashcat' 'ike-scan' 'pyrit')

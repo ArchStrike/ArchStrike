@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=logkeys
 pkgver=0.1.1c
 pkgrel=3
 pkgdesc="Simple keylogger supporting also USB keyboards."
 license=('GPL')
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 groups=('archstrike')
 depends+=('procps-ng' 'kbd' 'gcc')
 depends_x86_64=('gcc-multilib')

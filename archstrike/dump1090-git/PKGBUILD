@@ -2,13 +2,13 @@
 # Contributor: qs9rx < that nick at enjoys dot it>
 # Contributor: David Manouchehri <d@32t.ca>
 
-buildarch=212
+buildarch=220
 
 pkgname=dump1090-git
 pkgver=20141031.r386
 pkgrel=2
 pkgdesc="Dump1090 is a simple Mode S decoder for RTLSDR devices. MalcolmRobb fork. Git version."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/MalcolmRobb/dump1090"
 license=('BSD')
 groups=('archstrike')

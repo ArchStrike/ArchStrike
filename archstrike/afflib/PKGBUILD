@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=afflib
 pkgver=3.7.7
 pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='An extensible open format for the storage of disk images and related forensic information'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/sshock/AFFLIBv3/'
 license=('custom')
 install="$pkgname.install"

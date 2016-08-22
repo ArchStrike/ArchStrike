@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=vbrute-git
 pkgver=r1.11dda8b
 pkgrel=1
 pkgdesc="Virtual hosts brute forcer. Specify file containing domains and file containing IPs and will attempt to connect to IP with specific domain."
 url="https://github.com/nccgroup/vbrute"
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('GPL3')
 groups=('archstrike')
 depends=('libevent')

@@ -3,14 +3,14 @@
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 # Contributor: Andy Weidenbaum <archbaum@gmail.com>
 
-buildarch=212
+buildarch=220
 
 _pkgname=cryptsetup
 pkgname=$_pkgname-nuke-keys
 pkgver=1.7.2
 pkgrel=1
 pkgdesc='A patched cryptsetup which adds the option to nuke all keyslots given a certain passphrase'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 url='https://github.com/offensive-security/cryptsetup-nuke-keys'
 groups=('archstrike')

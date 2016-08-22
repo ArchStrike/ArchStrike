@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=crackle-git
 pkgver=71.20215f8
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers' 'archstrike-bluetooth')
 pkgdesc="Crack and decrypt BLE encryption"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/mikeryan/crackle/'
 license=('GPL')
 depends=('libpcap')

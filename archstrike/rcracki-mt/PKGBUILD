@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=rcracki-mt
 pkgver=0.7.0
@@ -16,7 +16,7 @@ provides=('rcracki_mt')
 source=("http://downloads.sourceforge.net/project/rcracki/rcracki_mt/rcracki_mt_$pkgver/rcracki_mt_${pkgver}_src.7z" "gcc6.1.fixes.patch")
 sha512sums=('f93dc1d7ca1f18c63a9612b053d86ad639589e2534361c2fb3d3c064c162002798082bc1219737ae9567a23daa6ef7a0f7a52e7debbeb8ceceb2e1724c71bf0d'
             'f079b71d94ca87f7deb223a8a847974142ca80c958ec7530999faac628440855d1d1687fbbafeb5e4e48f14ed32df66cc438aae54099edb9049d7d56c87bbeea')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 
 prepare() {
   cd "$srcdir/rcracki_mt_${pkgver}_src/"

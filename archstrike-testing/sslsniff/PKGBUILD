@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=sslsniff
 pkgver=0.8
 pkgrel=2
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A tool to MITM all SSL connections on a LAN and dynamically generate certs for the domains that are being accessed on the fly"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.thoughtcrime.org/software/sslsniff/'
 license=('custom')
 depends=('openssl' 'boost-libs' 'log4cpp')
@@ -21,7 +21,7 @@ sha512sums=('4ac1bcff8f396d868b2381bc73bb0307022e9a7d5228c83722abde8d4d01e4c6273
             '4fef9e8033aefa22a08315e98f5efc9e88787f4a113b172bdddfa94085762c5dfcbe3957910b92f53e03328c029b9f3182be307bb2efd4f1faac67648d93c7c5'
             'c2f8881a8a299142f2212ec4021a07c0d1681514435a9abcfe79558dad79fe8d92584242b406804b8351412edfe89d054ba1cd2a7856e3626cf133d0c37b8eaf')
 
-prepare() 
+prepare()
 {
   cd "${pkgname}-${pkgver}"
   # Boost 1.47 patch

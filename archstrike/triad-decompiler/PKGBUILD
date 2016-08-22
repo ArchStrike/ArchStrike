@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=triad-decompiler
 pkgver=0.4.3
 pkgrel=1
 groups=('archstrike' 'archstrike-decompile' 'archstrike-analysis')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 pkgdesc="Capstone based x86 decompiler for ELF binaries"
 url="https://github.com/electrojustin/triad-decompiler"
 license=('custom')

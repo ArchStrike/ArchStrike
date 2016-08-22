@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=phrasendrescher
 pkgver=1.2.2
 pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A modular and multi processing pass phrase cracking tool"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.leidecker.info/projects/phrasendrescher/'
 license=('BSD')
 depends=('openssl' 'libssh2' 'gpgme')

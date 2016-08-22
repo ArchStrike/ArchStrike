@@ -2,13 +2,13 @@
 # Contributor: Christoph Zeiler <archNOSPAM_at_moonblade.dot.org>
 # Contributor: Matthew Sharpe <matt.sharpe@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=bkhive
 pkgver=1.1.1
 pkgrel=1
 pkgdesc="Program for dumping the syskey bootkey from a Windows NT/2K/XP system hive"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-crackers')
 url="http://sourceforge.net/projects/ophcrack"
 license=('GPL')

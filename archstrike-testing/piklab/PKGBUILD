@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=piklab
 pkgver=0.16.2
@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="IDE for applications based on Microchip PIC and dsPIC microcontrollers similar to the MPLAB environment"
 url="http://piklab.sourceforge.net"
 license=('GPL')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('kdebase-runtime' 'libusb-compat' 'kdebase-katepart')
 makedepends=('cmake' 'automoc4')
 optdepends=('pk2cmd-plus: PICkit 2 CLI software with updated DeviceFile and udev rules'

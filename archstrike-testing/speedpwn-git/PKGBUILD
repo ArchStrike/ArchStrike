@@ -2,7 +2,7 @@
 
 _pkgname=speedpwn
 
-buildarch=212
+buildarch=220
 
 pkgname=${_pkgname}-git
 pkgver=20111209.r8.3dd2793
@@ -11,7 +11,7 @@ _aircrackver="1.2-beta3"
 pkgdesc="An active WPA/2 Bruteforcer, original created to prove weak standard key generation in different ISP-labeled routers without a client connected"
 url="https://gitorious.org/${_pkgname}/${_pkgname}"
 license=('GPL')
-arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'arm' 'armv6h' 'armv7h' 'aarch64')
 depends=('openssl' 'libnl')
 makedepends=('git')
 source=("${_pkgname}::git+https://gitorious.org/speedpwn/speedpwn.git"

@@ -2,13 +2,13 @@
 
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
-buildarch=212
+buildarch=220
 
 pkgname=tbear
 pkgver=1.5
 pkgrel=4
 pkgdesc='An ncurses-based Bluetooth scanner (a bit similar to kismet), a Bluetooth DoS tool and a Bluetooth hidden device locator'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://freshmeat.net/projects/t-bear'
 license=('GPL')
 depends=('bluez-libs' 'bluez' 'ncurses')

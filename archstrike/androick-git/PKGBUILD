@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
+buildarch=1
+
 pkgname='androick-git'
 _pkgname='Androick'
 pkgver=r5.35048d7

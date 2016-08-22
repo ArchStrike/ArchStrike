@@ -1,14 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
-
 
 pkgname=ctunnel
 pkgver=0.7
 pkgrel=2
 pkgdesc="Tunnel and/or proxy TCP or UDP connections via a cryptographygraphic tunnel compiled with Openssl."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://nardcore.org/ctunnel"
 license=('GPL')
 depends=('openssl' 'zlib')

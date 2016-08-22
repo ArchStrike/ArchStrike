@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=perl-moose
 _cpanname=Moose
 pkgver='2.1804'
 pkgrel=1
 pkgdesc="A postmodern object system for Perl 5"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-class-load>=0.09' 'perl-class-load-xs>=0.01'

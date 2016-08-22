@@ -1,5 +1,7 @@
 # Maintainer: Archstrike <team archstrike org>
 
+buildarch=1
+
 pkgname='python2-opinel'
 _name='opinel'
 pkgver=0.24.0

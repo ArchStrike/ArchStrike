@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=212
+buildarch=220
 
 pkgname=tomb
 pkgver=2.2
@@ -10,7 +10,7 @@ pkgdesc="A system for easy encryption and backup of personal files"
 url="http://www.dyne.org/software/${pkgname}"
 groups=('archstrike')
 license=('GPL3')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('cryptsetup' 'pinentry' 'sudo' 'gnupg' 'zsh' 'gtk2' 'libnotify')
 optdepends=('dcfldd: Replacement for dd with hashing support'
             'wipe: Secure file wiping utility'

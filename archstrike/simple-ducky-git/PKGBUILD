@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=simple-ducky-git
 pkgver=20130909.r20
@@ -8,7 +8,7 @@ pkgrel=1
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-exploit')
 pkgdesc="A payload generator"
 url="https://code.google.com/p/simple-ducky-payload-generator"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('bash' 'java-environment' 'dbd')
 makedepends=('git')
 license=('GPL3')
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" 
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {

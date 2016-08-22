@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 _pkgname=hyperfox
 
-buildarch=212
+buildarch=220
 
 pkgname=hyperfox-git
 pkgver=20150113.r45
 pkgrel=1
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="A security tool for proxying and recording HTTP and HTTPs traffic."
-arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 _url="github.com/xiam/hyperfox"
 url="https://$_url"
 license=("custom")

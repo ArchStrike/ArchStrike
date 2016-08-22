@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=subterfuge
 pkgver=5.0
@@ -8,7 +8,7 @@ pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Automated Man-in-the-Middle Attack Framework"
 url='http://kinozoa.com'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 makedepends=('arptables' 'twisted' 'scapy' 'sqlite3' 'python2'
              'python2-virtualenv' 'net-tools' 'dhcpcd' 'dhcp' 'dhclient' 'nmap'

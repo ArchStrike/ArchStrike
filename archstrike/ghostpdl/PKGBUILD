@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributer: fnord0 <fnord0 AT riseup DOT net>
 
-buildarch=212
+buildarch=220
 
 pkgname=ghostpdl
 pkgver=9.19
@@ -9,7 +9,7 @@ pkgrel=1
 pkgdesc='An interpreter for the Postscript language and for PDF - GhostPCL (PCL-5, and PCL-XL), GhostXPS (XPS), GhostPDF and ghostscript'
 url='http://www.artifex.com'
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 depends=('libxt' 'libxext' 'python' 'tcl')
 source=("https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs919/ghostpdl-$pkgver.tar.gz")

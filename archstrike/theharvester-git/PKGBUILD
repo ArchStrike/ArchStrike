@@ -38,7 +38,7 @@ package() {
 
   # Install docs.
   install -m644 README ${pkgdir}/usr/share/doc/${pkgname}/README
-  install -m644 LICENSES ${pkgdir}/usr/share/licenses/${pkgname}/LICENSES 
+  install -m644 LICENSES ${pkgdir}/usr/share/licenses/${pkgname}/LICENSES
 
   # Install sharable.
   cp --no-preserve=ownership -r discovery lib *.txt $pkgdir/usr/share/${pkgname}

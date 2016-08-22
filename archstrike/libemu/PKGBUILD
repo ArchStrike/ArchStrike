@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contriibutor: Gagou <gagou@rez-gif.supelec.fr>
 
-buildarch=212
+buildarch=220
 
 pkgname=libemu
 _pkgver="0.2.0+git20120122+564"
@@ -10,7 +10,7 @@ pkgrel=1
 pkgdesc="A small library written in c offering basic x86 emulation and shellcode detection"
 url="https://packages.debian.org/jessie/libemu-dev"
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 install=${pkgname}.install
 depends=('glibc')
 source=("http://http.debian.net/debian/pool/main/libe/libemu/libemu_0.2.0+git20120122.orig.tar.gz")

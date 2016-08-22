@@ -3,14 +3,14 @@
 # Contributor: kfgz <kfgz at interia pl>
 # Contributor: Adam Wolk <netprobe at gmail dot com>
 
-buildarch=212
+buildarch=220
 
 _pkgname=libewf
 pkgname=$_pkgname-python
 pkgver=20160424
 pkgrel=2
 pkgdesc='A library for support of the Expert Witness Compression Format (with python support)'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/libyal/libewf'
 license=('LGPL3')
 depends=('util-linux' 'fuse' 'python' 'libbfio')

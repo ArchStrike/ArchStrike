@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=wcc-git
 pkgver=20160816.r27
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="The Witchcraft Compiler Collection"
 url="https://github.com/endrazine/wcc"
 license=('MIT')

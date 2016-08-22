@@ -37,6 +37,6 @@ package() {
     install -dm755 "$pkgdir"/usr/bin
     install -dm755 "$pkgdir"/usr/share/${_pkgname}
     cp -a --no-preserve=ownership * "$pkgdir"/usr/share/${_pkgname}/
-    
+
     ln -s  "$pkgdir/usr/share/${_pkgname}/rawr.py" "$pkgdir/usr/bin/${_pkgname}"
 }

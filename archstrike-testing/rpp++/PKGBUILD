@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team archstrike dot org>
 # Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 
-buildarch=192
+buildarch=200
 
 pkgname=rp++
 _pkgname=rp
@@ -10,7 +10,7 @@ pkgrel=2
 pkgdesc="Find ROP gadgets in PE/ELF/MACH-O x86/x64 binaries"
 url="https://github.com/0vercl0k/rp"
 groups=('archstrike' 'archstrike-decompile')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('GPL3')
 makedepends=('cmake')
 source=(${pkgname}-${pkgver}.tar.gz::https://github.com/0vercl0k/rp/archive/v${pkgver}.tar.gz)

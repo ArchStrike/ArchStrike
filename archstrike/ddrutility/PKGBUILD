@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Jonathan Liu <net147@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=ddrutility
 pkgver=2.7
 pkgrel=1
 pkgdesc="Set of utilities for use with GNU ddrescue to aid with data recovery"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 url="http://sourceforge.net/projects/ddrutility/"
 license=('GPL3')

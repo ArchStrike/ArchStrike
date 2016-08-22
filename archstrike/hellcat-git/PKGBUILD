@@ -3,13 +3,13 @@
 
 _pkgname=hellcat
 
-buildarch=212
+buildarch=220
 
 pkgname=${_pkgname}-git
 pkgver=r45.8873f05
 pkgrel=4
 pkgdesc="netcat that takes unfair advantage of traffic shaping systems that don't initially ratelimit"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/matildah/hellcat"
 groups=('archstrike')
 license=('MIT')

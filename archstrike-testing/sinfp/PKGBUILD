@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='sinfp'
 _distname='Net-SinFP3'
 pkgver='1.21'
 pkgrel=1
 pkgdesc='A full operating system stack fingerprintinging suite.'
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url='http://www.networeconnaissance.com/tools/sinfp/'
 groups=('archstrike' 'archstrike-fingerprinting')
 license=('PerlArtistic')

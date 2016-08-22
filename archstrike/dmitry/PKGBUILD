@@ -2,14 +2,14 @@
 
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
-buildarch=212
+buildarch=220
 
 pkgname=dmitry
 pkgver=1.3a
 pkgrel=4
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Deepmagic Information Gathering Tool with the ability to gather as much information as possible about a host'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.mor-pah.net'
 license=('GPL')
 source=("https://dl.packetstormsecurity.net/UNIX/misc/DMitry-$pkgver.tar.gz")

@@ -2,14 +2,14 @@
 # Contributor: Guenther Starnberger <gst@sysfrog.org>
 # Contributor: Moritz Lipp <mlq@pwmt.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=globalplatform
 pkgver=6.0.0
 pkgrel=1
 pkgdesc="Global Platform libraries"
 license=('GPL3')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://sourceforge.net/projects/globalplatform/"
 depends=('glibc' 'pcsclite' 'openssl')
 source=(http://downloads.sourceforge.net/globalplatform/globalplatform-${pkgver}.tar.gz)

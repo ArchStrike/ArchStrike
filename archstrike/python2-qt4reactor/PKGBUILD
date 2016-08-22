@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 _pkgname=qt4reactor
 pkgname=python2-$_pkgname
 pkgver=1.6
 pkgrel=2
 pkgdesc='Twisted Qt4 integration'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://pypi.python.org/pypi/qt4reactor'
 license=('MIT')
 depends=('python2' 'python2-twisted' 'python2-pyqt4')

@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=carwhisperer
 pkgver=0.2
@@ -10,7 +10,7 @@ url="http://trifinite.org/trifinite_stuff_carwhisperer.html"
 groups=('archstrike' 'archstrike-bluetooth')
 license=('GPL')
 depends=('bluez-libs' 'perl')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=(http://trifinite.org/Downloads/carwhisperer-$pkgver.tar.gz)
 sha512sums=('bf322bde831ae7eaceba4d2dd3d34768218c5db693f8eda28af0a1cc0fb889f4e66f1c8baadd39f2203b61b478e4ae73e4dd2b59be878410b2badf23e2eb80e1')
 

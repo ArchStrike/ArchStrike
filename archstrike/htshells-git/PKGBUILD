@@ -18,7 +18,7 @@ source=("$pkgname::git+https://github.com/wireghoul/htshells.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname 
+  cd $pkgname
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 

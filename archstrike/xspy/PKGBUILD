@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=xspy
 pkgver=1.0c
 pkgrel=2
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A utility for monitoring keypresses on remote X servers"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.freshports.org/security/xspy/'
 license=('GPL')
 depends=('libx11')

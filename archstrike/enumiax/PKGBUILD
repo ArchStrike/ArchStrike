@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=enumiax
 pkgver=0.4a
@@ -11,7 +11,7 @@ pkgdesc="IAX enumerator"
 url='http://sourceforge.net/projects/enumiax/'
 license=('GPL')
 depends=('glibc')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=(http://downloads.sourceforge.net/enumiax/enumiax-$pkgver.tar.gz)
 sha512sums=('671af2e274fa94b950d42db57880ec6d494510df8970edeeebe2e06a98aba4b6f3f10686624238f7cb19c590751a29d80993ffeee3c7091a30b4f2c337f8ce18')
 

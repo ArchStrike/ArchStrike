@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Maintainer: renek <aur@spaceshore.net>
 
-buildarch=212
+buildarch=220
 
 _pkgname=multidict
 pkgname=python-${_pkgname}
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="A multidict implementation"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/aio-libs/multidict'
 license=('APACHE')
 depends=('python')

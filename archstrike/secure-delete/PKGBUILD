@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
@@ -12,7 +12,7 @@ groups=('archstrike' 'archstrike-defense' 'archstrike-forensics')
 pkgdesc='Secure file, disk, swap, memory erasure toolkit'
 url='http://www.thc.org'
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("https://www.thc.org/releases/secure_delete-$pkgver.tar.gz")
 sha512sums=('9e7ae1458ffcce53fac23cf9b8df673d0754e6c3ff7791c445f2290dfa04f01fd2eda8b7c5d0045883159a32438783c380f770d7277ca77c9642c68e8f42dd07')
 

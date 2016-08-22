@@ -23,7 +23,6 @@ pkgver() {
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-
 prepare(){
    cd "$pkgname/Ghost-Phisher"
    sed -i 's/python/python2/' *.py

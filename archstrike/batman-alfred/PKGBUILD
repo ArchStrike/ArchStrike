@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 _pkgname=alfred
 pkgname=batman-$_pkgname
@@ -8,7 +8,7 @@ groups=('archstrike' 'archstrike-wireless')
 pkgver=2016.2
 pkgrel=1
 pkgdesc="Almighty Lightweight Fact Remote Exchange Daemon"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.open-mesh.org"
 license=('GPL')
 depends=('gpsd')

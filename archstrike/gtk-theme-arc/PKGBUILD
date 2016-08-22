@@ -19,13 +19,13 @@ provides=('gtk-theme-arc')
 sha512sums=('e8905d4c5bf3a2881243db12ce23972180edf95873eb1533cbeb0a582f8f684fdcbaa7df9b314354d0cb83d5e462e45ce07561dfac706b4fceaa5d350b2357e9')
 
 build() {
-	cd "${_pkgname}-$pkgver"
-	./autogen.sh 
-        ./configure --prefix=/usr
-        make
+  cd "${_pkgname}-$pkgver"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-        cd "${_pkgname}-$pkgver"
-	make DESTDIR="${pkgdir}" install
+  cd "${_pkgname}-$pkgver"
+  make DESTDIR="$pkgdir" install
 }

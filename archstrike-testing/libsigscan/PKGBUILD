@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname="libsigscan"
 pkgver="20160312"
 pkgrel=1
 pkgdesc="Library for binary signature scanning."
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libsigscan'
 license=('GPL3')
 depends=('libcsystem' 'python2')

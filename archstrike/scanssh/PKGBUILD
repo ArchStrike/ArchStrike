@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=scanssh
 pkgver=2.1.1
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Fast SSH server and open proxy scanner.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('libevent' 'libpcap' 'libdnet')
 url='https://github.com/ofalk/scanssh'
 license=('GPL')

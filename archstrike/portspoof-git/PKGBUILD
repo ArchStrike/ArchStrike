@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 _name='portspoof'
 
-buildarch=212
+buildarch=220
 
 pkgname="${_name}-git"
 pkgver=1.3
 pkgrel=2
 pkgdesc='A lightweight, fast, portable and secure addition to any firewall system or security infrastructure.'
 url='http://portspoof.org/'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 makedepends=('git' 'automake')
 groups=('archstrike')

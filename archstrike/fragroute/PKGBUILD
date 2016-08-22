@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=fragroute
 pkgver=1.2
@@ -11,8 +11,8 @@ url='http://www.monkey.org/~dugsong/fragroute/'
 depends=('libpcap' 'libdnet' 'libevent')
 makedepends=('libevent-static')
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
-source=("http://www.monkey.org/~dugsong/fragroute/fragroute-$pkgver.tar.gz" "http://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/security/fragroute/patches/patch-fragroute.c") 
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+source=("http://www.monkey.org/~dugsong/fragroute/fragroute-$pkgver.tar.gz" "http://ftp.netbsd.org/pub/pkgsrc/current/pkgsrc/security/fragroute/patches/patch-fragroute.c")
 sha512sums=('00f32a4660db8a58e0e86c525065f8a33ed8b9aec2933938dc2543ad533b0035c636c7b5e5833ff79cecaa7361dbfec4b7c88b5589de166e54dc76ae35a53351'
             'e1dfa4cad488265f9ca18fdc93469a021a2deb60b598cbc84fa1094ea5d77f0df05d2bc196f115596c9f84301b63dd0f23e31a0c9f89830ae5ea7b5a4e2e3524')
 

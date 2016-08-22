@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libnfc
 pkgver=1.7.1
 pkgrel=4
 pkgdesc='The first free NFC SDK and Programmers API'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://nfc-tools.org/index.php?title=Libnfc'
 license=('LGPL3')
 depends=('libusb' 'pcsclite' 'libusb-compat')

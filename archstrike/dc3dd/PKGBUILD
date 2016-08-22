@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=dc3dd
 pkgver=7.2.641
@@ -11,7 +11,7 @@ url='http://sourceforge.net/projects/dc3dd'
 license=("GPL3")
 depends=('glibc')
 makedepends=('perl-locale-gettext')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=(http://downloads.sf.net/sourceforge/dc3dd/dc3dd-$pkgver.tar.bz2)
 sha512sums=('9afa57bfbfce00778130eb75b4add915f132ad2b19d9271faed87f807bb646d2083e1bd5b09acfa378a50e894c57d65472263cd7966acf45c30d174754cdf6c8')
 

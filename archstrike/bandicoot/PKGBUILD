@@ -24,7 +24,7 @@ build() {
 
 package() {
     cd ${srcdir}/bandicoot-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1 
+    python setup.py install --root="${pkgdir}" --optimize=1
 
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"

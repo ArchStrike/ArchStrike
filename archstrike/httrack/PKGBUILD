@@ -6,13 +6,13 @@
 # Contributor: orelien <aurelien.foret@wanadoo.fr>
 # Contributor: Muflone <webreg@vbsimple.net>
 
-buildarch=212
+buildarch=220
 
 pkgname=httrack
 pkgver=3.48.22
 pkgrel=1
 pkgdesc="An easy-to-use offline browser utility."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-webapps')
 url="http://www.httrack.com/"
 license=('GPL')

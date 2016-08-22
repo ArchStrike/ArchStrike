@@ -23,7 +23,7 @@ prepare() {
   cd "$srcdir/wmat"
 
   sed -i 's/env python/env python2/' wmat.py
-  sed -i '2i# -*- coding: utf-8 -*-' wmat.py 
+  sed -i '2i# -*- coding: utf-8 -*-' wmat.py
   sed -i 's/”/"/gi' wmat.py
   dos2unix *.py
 }

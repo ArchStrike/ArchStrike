@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=mfcuk
 pkgver=0.3.8
 pkgrel=3
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="MIFARE Classic Universal toolKit"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/mfcuk/'
 license=('GPL2')
 depends=("libnfc")

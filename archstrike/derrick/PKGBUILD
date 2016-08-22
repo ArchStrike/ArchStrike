@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=derrick
 pkgver=0.3
 pkgrel=2
 groups=('archstrike' 'archstrike-logging')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="Simple tool for recording data streams of TCP and UDP traffic."
 url="https://github.com/rieck/derrick"
 license=('custom')

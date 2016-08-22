@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=sniffjoke
 pkgver=0.4.1
@@ -8,7 +8,7 @@ pkgrel=3
 license=(GPL)
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="Injects packets in the transmission flow that are able to seriously disturb passive analyze like sniffing, interception and low level information theft"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.delirandom.net/sniffjoke/'
 depends=('iptables' 'tcpdump')
 makedepends=('cmake' 'git')

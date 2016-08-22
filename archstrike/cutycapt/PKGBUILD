@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=cutycapt
 pkgver=10
 pkgrel=4
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A Qt and WebKit based command-line utility that captures WebKit's rendering of a web page."
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url='http://cutycapt.sourceforge.net/'
 license=('GPL')
 depends=('qtwebkit')

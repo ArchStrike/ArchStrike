@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=dirbuster
 pkgver=1.0_RC1
@@ -9,7 +9,7 @@ groups=('archstrike' 'archstrike-scanners' 'archstrike-webapps')
 pkgdesc="An application designed to brute force directories and files names on web/application servers"
 url='http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project'
 license=('LGPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('java-runtime')
 source=("http://downloads.sourceforge.net/dirbuster/DirBuster-${pkgver/_/-}.tar.bz2")
 md5sums=('1e53740d6761fa2305dc13986145c43a')

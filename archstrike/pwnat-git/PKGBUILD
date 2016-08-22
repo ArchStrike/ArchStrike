@@ -2,14 +2,14 @@
 
 _pkgname=pwnat
 
-buildarch=212
+buildarch=220
 
 pkgname=$_pkgname-git
 pkgver=20140907.r9.1d07c2e
 pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc='Punches holes in firewalls and NATs allowing any numbers of clients behind NATs to directly connect to a server behind a different NAT with no 3rd party, port forwarding, DMZ or spoofing involved'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://samy.pl/pwnat/'
 license=('GPL3')
 depends=('glibc')

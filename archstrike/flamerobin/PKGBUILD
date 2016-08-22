@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=flamerobin
 pkgver=0.9.2
 pkgrel=6
 pkgdesc="A tool to handle Firebird database management"
 groups=('archstrike' 'archstrike-database')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.flamerobin.org/'
 license=('expat')
 depends=('wxgtk2.8' 'libfbclient')

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libcsystem
 pkgver=20150629
 pkgrel=3
 pkgdesc="Library for cross-platform C system functions"
 url="https://github.com/libyal/libcsystem"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('glibc')
 source=("https://github.com/libyal/libcsystem/releases/download/20150629/libcsystem-alpha-$pkgver.tar.gz")

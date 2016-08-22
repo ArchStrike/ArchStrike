@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libolecf
 pkgver=20160814
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Library and tools to access the OLE 2 Compound File (OLECF) format"
 url="https://github.com/libyal/libolecf"
 license=('LGPL3')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('fuse' 'python2' 'libcsystem' 'libbfio')
 source=(https://github.com/libyal/libolecf/releases/download/$pkgver/libolecf-alpha-$pkgver.tar.gz)
 sha512sums=('1d63c2154fa011c044ff02d85cbde99a6eeb669062b5f4e88ea5da34adde0c2099f07dbd2e58f51ffe0b25da026175694bc91a1d710e46357a8d4a592b09e944')

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: xorond <xorond@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=gophish
 pkgver=0.1.2
 pkgrel=1
 pkgdesc="Open-source phishing toolkit designed for businesses and penetration testers. It provides the ability to quickly and easily setup and execute phishing engagements and security awareness training."
-arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/gophish/gophish"
 groups=('archstrike' 'archstrike-social-engineering')
 license=("MIT")

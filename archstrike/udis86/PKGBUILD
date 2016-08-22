@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=udis86
 pkgver=1.7.2
 pkgrel=3
 pkgdesc="A minimalistic disassembler library"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://udis86.sourceforge.net/"
 license=('BSD')
 groups=('archstrike' 'archstrike-reverse' 'archstrike-debugging')

@@ -1,6 +1,8 @@
 # Maintainer: ArchStrike <team [at] archstrike [dot] org>
 # Contributor: Johannes Schleifenbaum <johannes [at] js-webcoding [dot] de>
 
+buildarch=1
+
 pkgname='testssl.sh'
 pkgver=2.6
 pkgrel=3

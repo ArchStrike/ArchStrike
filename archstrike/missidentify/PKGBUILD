@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=missidentify
 pkgver=1.0
@@ -9,7 +9,7 @@ groups=('archstrike' 'archstrike-intel')
 pkgdesc="A program to find Win32 applications"
 url='http://missidentify.sourceforge.net/'
 license=('GPL2')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-intel')
 source=("http://downloads.sourceforge.net/missidentify/missidentify-$pkgver.tar.gz")
 sha512sums=('708e724e5587d9f7348ca574e16e2847ad3db313a31364b3327d5e815c4b32ab91f09fea7853dc150c90063b800bf2607196e93b570a400bc794d74a9348065d')

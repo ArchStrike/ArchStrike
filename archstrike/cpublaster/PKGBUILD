@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=192
+buildarch=200
 
 pkgname=cpublaster
 pkgver=0.10
@@ -11,7 +11,7 @@ url='http://kernel.embedromix.ro/us/'
 license=('GPL3')
 groups=('archstrike')
 depends=('glibc')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 source=(
   "http://kernel.embedromix.ro/us/$pkgname/$pkgname-$pkgver.tar.gz"
   "$pkgname.1"

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=reglookup
 pkgver=1.0.1
 pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Command line utility for reading and querying Windows NT registries"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://projects.sentinelchicken.org/reglookup'
 license=('GPL')
 depends=('talloc' 'bash')

@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=neighbor-cache-fingerprinter-git
 pkgver=r83.f1e596f
@@ -9,7 +9,7 @@ groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A mechanism for remote operating system detection by
 extrapolating characteristics of the target system's underlying Neighbor Cache
 and general ARP behavior."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/PherricOxide/Neighbor-Cache-Fingerprinter'
 license=('GPL2')
 if [[ $CARCH == 'x86_64' ]]; then

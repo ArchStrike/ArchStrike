@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=rr
 pkgver=4.3.0
 pkgrel=2
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto' 'archstrike-analysis')
 pkgdesc="A Record and Replay Framework"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/mozilla/rr'
 makedepends=("cmake" "python2-pexpect" "gdb")
 license=('custom')

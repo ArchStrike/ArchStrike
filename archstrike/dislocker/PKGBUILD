@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=dislocker
 pkgver=0.6.1
 pkgrel=1
 pkgdesc="Read BitLocker encrypted volumes under Linux"
-arch=('armv6h' 'i686' 'armv7h' 'x86_64')
+arch=('armv6h' 'i686' 'armv7h' 'x86_64' 'aarch64')
 url="https://github.com/Aorimn/dislocker"
 license=('GPL2')
 groups=('archstrike')

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=w3af
 pkgver=1.6.54
 pkgrel=4
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="Web Application Attack and Audit Framework"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://w3af.sourceforge.net'
 license=('GPL')
 depends=(

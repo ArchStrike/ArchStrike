@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=recoverjpeg
 pkgver=2.6
@@ -8,7 +8,7 @@ pkgrel=3
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='Recover jpegs from damaged devices'
 url='http://www.rfc1149.net/devel/recoverjpeg.html'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('bash' 'python')
 optdepends=(

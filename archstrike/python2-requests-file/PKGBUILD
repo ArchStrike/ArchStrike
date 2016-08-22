@@ -24,4 +24,4 @@ package() {
     cd $srcdir/requests-file-$pkgver
     python2 setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-} 
+}

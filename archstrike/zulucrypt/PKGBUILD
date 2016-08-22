@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Salan54 <salan at fremenil dot com>
 
-buildarch=212
+buildarch=220
 
 pkgname=zulucrypt
 pkgver=5.0.0
 pkgrel=1
 pkgdesc="a cli and gui frontend to cryptsetup."
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/mhogomchungu/zuluCrypt/"
 license=('GPL')
 depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'tcplay' 'gtk-update-icon-cache')

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Javier Torres <javitonino [at] gmail [dot] com>
 
-buildarch=212
+buildarch=220
 
 pkgname=opendnssec
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="Turn-key solution for DNSSEC (sqlite3)"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="http://www.opendnssec.org/"
 license=('BSD')
 groups=('archstrike')

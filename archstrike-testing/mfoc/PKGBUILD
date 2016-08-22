@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=mfoc
 pkgver=0.10.7
 pkgrel=3
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc="Mifare Classic Offline Cracker"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/mfoc/'
 license=('GPL2')
 depends=("libnfc")

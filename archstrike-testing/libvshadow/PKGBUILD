@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libvshadow
 pkgver=20160110
 pkgrel=3
 pkgdesc="Library and tools to access the Volume Shadow Snapshot (VSS) format"
 url="https://github.com/libyal/libvshadow"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 source=("https://github.com/libyal/libvshadow/releases/download/20160110/libvshadow-alpha-$pkgver.tar.gz")

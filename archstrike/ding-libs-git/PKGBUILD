@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Mantas M. <grawity@gmail.com>
 
-buildarch=192
+buildarch=200
 
 pkgname=ding-libs-git
 pkgver=0.6.0
 pkgrel=1
 pkgdesc="'D is not GLib' utility libraries"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://git.fedorahosted.org/git/ding-libs.git"
 license=('GPL3')
 depends=('glibc')

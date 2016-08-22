@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=212
+buildarch=220
 
 _pkgname=Conn
 pkgname=conn
@@ -10,7 +10,7 @@ pkgrel=2
 pkgdesc='Small C library usefull to easy build ipv4/ipv6 network daemons/clients'
 url='http://kernel.embedromix.ro/us/'
 license=('LGPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('glibc')
 source=("http://kernel.embedromix.ro/us/$_pkgname/$_pkgname-$pkgver.tar.gz")
 sha512sums=('367eb4dc54955262914c3d184686ea18c00e5ea84ca6607cb9872ecdd27ea0cf88f343c68f715d309607886d647a7352ce4365e5e8090ed79073ffedd710269a')

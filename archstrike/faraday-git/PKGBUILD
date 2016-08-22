@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=faraday-git
 pkgver=20160817.r2986
@@ -15,7 +15,7 @@ depends_armv7h+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'pyth
 makedepends=('git')
 options=('!strip')
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("${pkgname}::git+https://github.com/infobyte/faraday.git")
 replaces=('faraday')
 conflicts=('faraday')

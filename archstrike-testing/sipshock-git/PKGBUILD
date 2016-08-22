@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 _pkgname=sipshock
 
-buildarch=212
+buildarch=220
 
 pkgname=sipshock-git
 pkgver=7.6ab5591
 pkgrel=1
 pkgdesc="A scanner for SIP proxies vulnerable to Shellshock"
-arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 _url="github.com/zaf/sipshock"
 url="https://$_url"
 license=("GPL3")

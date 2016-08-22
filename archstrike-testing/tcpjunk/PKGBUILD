@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=tcpjunk
 pkgver=2.9.03
 pkgrel=4
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A general tcp protocols testing and hacking utility"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://code.google.com/p/${pkgname}"
 license=('GPL2')
 source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
@@ -23,7 +23,7 @@ prepare() {
 
 build() {
     cd ${pkgname}-${pkgver}
-    ./configure --prefix=/usr --datarootdir=/usr/share 
+    ./configure --prefix=/usr --datarootdir=/usr/share
     make TCPJUNK_LIBS="-lssl -lgtksourceview-2.0 -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype -lcrypto"
 }
 package() {

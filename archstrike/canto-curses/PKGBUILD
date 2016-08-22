@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=canto-curses
 pkgver=0.9.6
@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc="An ncurses UI for the Canto Atom/RSS feed reader"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('canto-daemon>=0.9.1')
 replaces=('canto')
 conflicts=('canto')

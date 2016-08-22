@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=python2-py-bcrypt
 pkgver=0.4
 pkgrel=3
 pkgdesc="py-bcrypt is an implementation the OpenBSD Blowfish password hashing algorithm"
-arch=('armv7h' 'armv6h' 'x86_64' 'i686')
+arch=('armv7h' 'armv6h' 'x86_64' 'i686' 'aarch64')
 url="https://code.google.com/p/py-bcrypt/"
 license=('MIT')
 depends=('python2')

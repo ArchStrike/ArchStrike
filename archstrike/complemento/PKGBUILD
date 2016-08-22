@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=complemento
 pkgver=0.7.7.3
@@ -9,7 +9,7 @@ pkgdesc="A collection of tools for a pentester: LetDown is a powerful tcp floode
 url="http://complemento.sourceforge.net"
 license=("GPL")
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fingerprinting')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('c-ares' 'libnet' 'python2' 'libpcap' 'curl')
 source=(http://downloads.sourceforge.net/complemento/complemento-$pkgver.tar.gz)
 sha512sums=('f26e0c11fd0521fb77a4e64db2e7db87435933443ce0b3b04eafdf2401862c0905b15e21c1a8d93c726f840caeb2867e9a3026ff341ce89d43f4a7f996ffa2a7')
@@ -40,7 +40,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/complemento/letdown/payloads"
   install -dm755 "$pkgdir/usr/share/doc/complemento"
   install -dm755 "$pkgdir/usr/bin"
-  
+
   # Doc
   install -Dm644 readme "$pkgdir/usr/share/doc/complemento/readme"
 

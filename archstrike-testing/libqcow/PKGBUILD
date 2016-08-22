@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: David McIlwraith <archaios at archaios dot net>
 
-buildarch=212
+buildarch=220
 
 pkgname=libqcow
 pkgver=20160123
 pkgrel=3
 pkgdesc="Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility"
 url="http://code.google.com/p/libqcow/"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 source=("https://github.com/libyal/libqcow/releases/download/20160123/libqcow-alpha-$pkgver.tar.gz")

@@ -2,14 +2,14 @@
 # Contributor: Swift Geek <swifgeek  google c m>
 # FindFFTW.cmake stolen from https://github.com/jedbrown/cmake-modules/blob/master/FindFFTW.cmake
 
-buildarch=128
+buildarch=136
 
 pkgname=dabstick-radio
 pkgver=0.96
 pkgrel=2
 pkgdesc="The DAB decoding software (SDR-J)"
 groups=('archstrike' 'archstrike-hardware')
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="http://www.sdr-j.tk/"
 license=('GPL2')
 depends=('fftw' 'qwt' 'faad2' 'portaudio' 'rtl-sdr')

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=argus
 pkgver=3.0.8.2
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-defense')
 pkgdesc="Network monitoring tool with flow control"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://qosient.com/argus/"
 depends=('bash' 'libpcap' 'libsasl' 'zlib')
 license=('GPL3')

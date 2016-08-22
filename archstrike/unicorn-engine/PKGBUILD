@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
-buildarch=192
+buildarch=200
 
 _pkgname=unicorn
 pkgname='unicorn-engine'
@@ -9,7 +9,7 @@ pkgver=0.9
 pkgrel=3
 pkgdesc='Lightweight, multi-platform, multi-architecture CPU emulator framework based on QEMU'
 url='http://www.unicorn-engine.org'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 groups=('archstrike' 'archstrike-debugging' 'archstrike-decompile')
 license=('GPL2')
 depends=('glib2')

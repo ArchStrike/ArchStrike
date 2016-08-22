@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Jipuf <jipuf@gmx.fr>
 
-buildarch=212
+buildarch=220
 
 pkgname=yaf
 pkgver=2.8.4
 pkgrel=3
 pkgdesc="Yet Another Flowmeter"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://tools.netsa.cert.org/yaf/'
 groups=('archstrike' 'archstrike-misc')
 license=('GPL')

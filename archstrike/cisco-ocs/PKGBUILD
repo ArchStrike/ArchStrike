@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 DLAGENTS=("http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3 -o %o %u")
 
@@ -9,7 +9,7 @@ pkgver=0.2
 pkgrel=3
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Cisco Router Default Password Scanner"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.question-defense.com/2013/01/11/ocs-version-0-2-release-ocs-cisco-router-default-password-scanner'
 depends=('glibc')
 license=('GPL2')

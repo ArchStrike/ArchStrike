@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=od1n-git
 pkgver=20160815.r191
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-webapps')
 pkgdesc="A Web security tool to make fuzzing at HTTP inputs, made in C with libCurl"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/CoolerVoid/0d1n'
 license=('GPL3')
 depends=('curl')

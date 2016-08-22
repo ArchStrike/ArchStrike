@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=t50
 pkgver=5.6.4
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
@@ -16,7 +16,7 @@ sha512sums=('0244ed5040631f8ccb44bedaca07fd67cf468d159142c0278cf315f9dc686be05e2
 
 build() {
   cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr --sbindir=/usr/bin 
+  ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 

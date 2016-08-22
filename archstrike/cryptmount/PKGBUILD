@@ -2,13 +2,13 @@
 # Contributor: Mike Sampson <mike at sambodata dot com>
 # Contributor: Andrea Benazzo <andy@qitty.net>
 
-buildarch=212
+buildarch=220
 
 pkgname=cryptmount
 pkgver=5.2.1
 pkgrel=1
 pkgdesc='Utility which allows an ordinary user to mount an encrypted file system'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-crypto')
 url="http://cryptmount.sourceforge.net/"
 license=('GPL')

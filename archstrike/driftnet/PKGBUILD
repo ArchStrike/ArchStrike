@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=driftnet
 pkgver=1.1.5
 pkgrel=3
 groups=('archstrike' 'archstrike-scanners' 'archstrike-sniffers')
 pkgdesc="Listens to network traffic and picks out images from TCP streams it observes"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/deiv/driftnet'
 license=('GPL')
 depends=('libpcap' 'gtk2' 'giflib')

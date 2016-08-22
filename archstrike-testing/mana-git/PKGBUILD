@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=mana-git
 pkgver=20160512.r84
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A toolkit for rogue access point (evilAP) attacks first presented at Defcon 22"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/sensepost/mana'
 license=('BSD' 'GPL3')
 depends=('libnl1' 'apache' 'dsniff'  'macchanger' 'metasploit' 'procps' 'iptables'
@@ -54,7 +54,7 @@ package() {
   make DESTDIR=$pkgdir install
   install -Dm644 hostapd-mana/COPYING "$pkgdir/usr/share/licenses/hostapd-mana/COPYING"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/mana-git/LICENSE"
-  
+
   # Missing dirs, needed
   install -dm755 "$pkgdir/var/lib/mana-toolkit/lamb_braai/"
   install -dm755 "$pkgdir/var/lib/mana-toolkit/sslsplit/"

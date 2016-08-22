@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=netdiscover
 _pkgver=0.3
@@ -9,7 +9,7 @@ pkgver=${_pkgver}.beta${_betanum}
 pkgrel=1
 groups=('archstrike' 'archstrike-recon' 'archstrike-wireless')
 pkgdesc="An active/passive address reconnaissancenaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://sourceforge.net/projects/netdiscover/"
 license=('GPL')
 depends=('libpcap')

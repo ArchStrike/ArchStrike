@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=firmware-mod-kit
 pkgver=099
@@ -8,7 +8,7 @@ pkgrel=4
 groups=('archstrike' 'archstrike-misc')
 pkgdesc=" Modify firmware images without recompiling!"
 url="http://code.google.com/p/firmware-mod-kit"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT')
 depends=('python-magic')
 source=("http://firmware-mod-kit.googlecode.com/files/fmk_${pkgver}.tar.gz")

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=fakemail
 pkgver=1.0
 pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Fake mail server that captures e-mails as files for acceptance testing."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://sourceforge.net/projects/fakemail/'
 license=('GPL')
 depends=('python2')

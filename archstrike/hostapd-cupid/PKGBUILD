@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=hostapd-cupid
 pkgver=2.1
 pkgrel=2
 pkgdesc="IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator with cupid patch(https://github.com/lgrangeia/cupid/)"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://w1.fi/"
 license=('custom')
 groups=('archstrike-wireless')

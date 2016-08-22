@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=beecrypt
 pkgver=4.2.1
 pkgrel=6
 pkgdesc="A strong and fast cryptography toolkit"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://beecrypt.sourceforge.net/"
 license=('LGPL')
 depends=('icu')

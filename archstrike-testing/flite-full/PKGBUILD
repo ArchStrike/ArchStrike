@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 __upstream_name=flite
 
-buildarch=192
+buildarch=200
 
 pkgname=${__upstream_name}-full
 pkgver=1.4
 pkgrel=3
 pkgdesc="A lighweight version of festival speech synthesis compiled with shared libs."
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="http://www.speech.cs.cmu.edu/flite/"
 license=('custom')
 depends=('glibc')

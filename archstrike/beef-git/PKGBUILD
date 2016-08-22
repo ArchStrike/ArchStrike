@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 _pkgname=beef
 pkgname=$_pkgname-git
@@ -9,7 +9,7 @@ pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='Pentesting framework that focuses on web-browser exploitation'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='http://beefproject.com'
 license=('Apache')
 options=('!emptydirs')

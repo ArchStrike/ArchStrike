@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=wificurse
 pkgver=0.3.9
 pkgrel=3
 pkgdesc="WiFi Jammer via fake deauthentication packets"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=(GPL)
 url=https://github.com/oblique/wificurse
 depends=('glibc')

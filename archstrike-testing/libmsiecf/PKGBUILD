@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libmsiecf
 pkgver=20160813
@@ -8,7 +8,7 @@ pkgrel=1
 pkgdesc="Library and tools to access the Microsoft Internet Explorer (MSIE) Cache File (index.dat) files"
 url="https://github.com/libyal/libmsiecf"
 license=('LGPL3')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('libbfio' 'python2' 'libcsystem')
 source=(https://github.com/libyal/libmsiecf/releases/download/$pkgver/libmsiecf-alpha-$pkgver.tar.gz)
 sha512sums=('c860737b8cf1014ca638bb096001ca3d506d112aa75691db0eac92696efcb71b473acf8d978e3ddd845edd593d2e8e965e27fadc7a58bb102f04c8fde57bce11')

@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=rarcrack
 pkgver=0.2
@@ -8,7 +8,7 @@ pkgrel=1
 url="http://rarcrack.sourceforge.net/"
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc=" This program uses bruteforce algorithm to find correct password (rar, 7z, zip)"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('libxml2')
 makedepends=('gcc')

@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>                                                                                                                                                           [0/2845]
 
-buildarch=212
+buildarch=1
 
 pkgname=shodan
 pkgver=1.5.5

@@ -27,7 +27,6 @@ check() {
    ./Build test
 }
 
-
 package() {
     cd "${_pkgname}-$pkgver"
     ./Build install

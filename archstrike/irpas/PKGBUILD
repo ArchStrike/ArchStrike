@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=irpas
 pkgver=0.10
 pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Internetwork Routing Protocol Attack Suite."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://phenoelit-us.org/irpas'
 license=('Custom')
 depends=('libpcap')

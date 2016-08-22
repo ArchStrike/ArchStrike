@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=dns-spoof-git
 pkgver=r12.3918a10
 pkgrel=2
 groups=('archstrike' 'archstrike-dns')
 pkgdesc="DNS Spoof"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/maurotfilho/dns-spoof'
 license=('GPL')
 depends=('libpcap')

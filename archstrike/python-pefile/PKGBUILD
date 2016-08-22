@@ -23,6 +23,6 @@ prepare() {
 package() {
     cd $srcdir/pefile-$pkgver
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    python setup.py install --root="$pkgdir" --optimize=1 
+    python setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 }

@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=spectools
 pkgver=2016_01_R1
 pkgrel=2
 pkgdesc="Spectrum-Tools is a set of utilities for using the Wi-Spy USB spectrum analyzer hardware. Stable version."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.kismetwireless.net/spectools/"
 license=('GPL2')
 depends=('libusb-compat' 'gtk2')

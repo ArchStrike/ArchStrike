@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Marat Akhin <Marat.Akhin@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=z3-codeplex
 pkgver=4.4.1
 pkgrel=2
 pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research (built from Codeplex sources, libraries only)"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://z3.codeplex.com/"
 license=('custom')
 makedepends=('python2')

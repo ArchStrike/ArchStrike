@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname="libevt"
 pkgver="20160421"
 pkgrel=3
 pkgdesc="Library and tooling to access the Windows Event Log (EVT) format"
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libevt'
 license=('GPL3')
 depends=('libcsystem' 'libbfio' 'python2' 'libregf')

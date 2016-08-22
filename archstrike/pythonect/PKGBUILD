@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pythonect
 # OLD VERSION NOTE:
-#  0.6.0 includes changes to the .parse() that appear to break it, the return values should be 
+#  0.6.0 includes changes to the .parse() that appear to break it, the return values should be
 #  a list/graph and instead return 1, this functionality breaks other packages that depend on
 #  pythonect (e.g. hackersh) due to this I've rolled the version back to 0.5.0
 pkgver=0.5.0

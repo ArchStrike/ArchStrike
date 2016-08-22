@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=pytsk
 pkgver=20140506
 pkgrel=2
 pkgdesc="A library for support of the Expert Witness Compression Format (EWF)"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/libyal/libewf/"
 license=('LGPL3')
 depends=('sleuthkit-archstrike' 'python2')

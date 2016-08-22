@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=flare
 pkgver=0.6
@@ -9,7 +9,7 @@ pkgdesc="Flare processes an SWF and extracts all scripts from it."
 url="http://www.nowrap.de/flare.html"
 groups=('archstrike' 'archstrike-misc')
 license=('custom')
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 depends=('zlib')
 source_i686=("http://www.nowrap.de/download/${pkgname}${pkgver//./}linux.tgz")
 source_armv7h=("http://www.nowrap.de/download/${pkgname}${pkgver//./}linux.tgz")

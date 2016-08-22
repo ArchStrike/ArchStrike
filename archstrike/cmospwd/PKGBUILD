@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=cmospwd
 pkgver=5.0
 pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Decrypts password stored in CMOS used to access BIOS setup."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.cgsecurity.org/wiki/CmosPwd'
 license=('GPL')
 depends=('glibc')

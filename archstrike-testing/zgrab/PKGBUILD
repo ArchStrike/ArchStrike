@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=zgrab
 pkgver=0.0.1
 pkgrel=1
 pkgdesc="Application layer scanner that operates with ZMap"
-arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/zmap/zgrab"
 groups=('archstrike' 'archstrike-scanners')
 license=("custom")
@@ -27,4 +27,4 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-} 
+}

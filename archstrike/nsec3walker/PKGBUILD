@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=nsec3walker
 pkgver=20101223
@@ -8,7 +8,7 @@ pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Enumerates domain names using DNSSEC"
 url='http://dnscurve.org/nsec3walker.html'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('python2')
 license=('custom')
 source=("http://dnscurve.org/nsec3walker-$pkgver.tar.gz" "gcc6.1.fixes.patch")

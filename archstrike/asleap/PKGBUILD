@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=asleap
 pkgver=2.2
 pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Actively recover LEAP/PPTP passwords."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=(GPL)
 url='http://www.willhackforsushi.com/Asleap.html'
 depends=('openssl' 'libpcap')

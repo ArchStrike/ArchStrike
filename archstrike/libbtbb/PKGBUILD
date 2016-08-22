@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Ari Mizrahi <codemunchies@debugsecurity.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=libbtbb
 pkgver=2015.10.R1
 pkgrel=1
 pkgdesc="A library to decode Bluetooth baseband packets, as produced by the Ubertooth and GR-Bluetooth projects."
 url="https://greatscottgadgets.com/ubertoothone"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('libpcap' 'python')
 makedepends=('cmake' 'libpcap')

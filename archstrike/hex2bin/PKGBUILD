@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='hex2bin'
 pkgver='2.2'
 pkgrel=2
 pkgdesc='Converts Motorola and Intel hex files to binary.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://hex2bin.sourceforge.net/'
 license=('BSD')
 depends=('glibc')

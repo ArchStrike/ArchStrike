@@ -14,7 +14,7 @@
 #   https://github.com/nning/linux-grsec
 #
 
-buildarch=128
+buildarch=136
 
 pkgname=linux-grsec-tresor
 true && pkgname=(linux-grsec-tresor linux-grsec-tresor-headers)
@@ -24,7 +24,7 @@ _grsecver=3.0
 _timestamp=201312151212
 pkgver=${_basekernel}.8
 pkgrel=1
-arch=(x86_64)
+arch=(x86_64 'aarch64')
 url=('https://github.com/nning/linux-grsec', 'http://www1.informatik.uni-erlangen.de/tresor')
 license=(GPL2)
 options=(!strip)

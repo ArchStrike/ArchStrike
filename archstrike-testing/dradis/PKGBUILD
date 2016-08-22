@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=dradis
 pkgver=3.1.0
@@ -10,7 +10,7 @@ groups=('archstrike' 'archstrike-misc')
 url="http://dradisframework.org/"
 license=('GPL')
 depends=('ruby' 'redis')
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 options=(!strip)
 source_x86_64=("http://downloads.sourceforge.net/dradis/dradis-$pkgver.rc2-linux-x86_64.tar.gz")
 sha512sums_x86_64=('ee0b300395c9c59270890c86cf6f0881af494e128d8e837e899ea09f3356e02a78626ee3791630ac00771db4b060f1e718dbf7153c785c1f082334a943bd16e9')

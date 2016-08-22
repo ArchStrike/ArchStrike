@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team[at]archstrike[dot]org>
 
-buildarch=212
+buildarch=220
 
 pkgname=preeny
 pkgver=0.1
 pkgrel=1
 pkgdesc='Some helpful preload libraries for pwning stuff.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/zardus/preeny'
 license=('GPL3')
 depends=('ding-libs')

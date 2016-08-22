@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=fakenetbios-git
 pkgver=r7.b83701e
 pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A Simulation of NetBIOS hosts (Windows-like) "
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/mubix/FakeNetBIOS'
 license=('custom')
 depends=('glibc')

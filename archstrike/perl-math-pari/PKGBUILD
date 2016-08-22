@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=perl-math-pari
 pkgver=2.010808
 pkgrel=4
 pkgdesc="Perl interface to PARI"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 epoch='1'
 url='http://search.cpan.org/~ilyaz/Math-Pari-2.01088/Pari.pm'
 license=('GPL Artistic')

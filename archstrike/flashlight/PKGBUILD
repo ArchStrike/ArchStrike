@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: xorond <xorond@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname='flashlight'
 pkgver=1.0
 pkgrel=1
 pkgdesc="Provides services to scan network/ports and gather information rapidly on target networks."
 license=('custom')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/galkan/flashlight"
 depends=('python2' 'nmap' 'tcpdump' 'dsniff')
 groups=('archstrike' 'archstrike-recon')
@@ -25,7 +25,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -dm755 "$pkgdir/usr/bin"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE" 
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 flashlight.py "$pkgdir/usr/share/$pkgname/flashlight.py"
 cat > "$pkgdir/usr/bin/flashlight" << EOF
 #!/bin/bash

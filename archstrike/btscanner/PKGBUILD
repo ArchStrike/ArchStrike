@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=btscanner
 pkgver=2.1
@@ -9,7 +9,7 @@ groups=('archstrike' 'archstrike-bluetooth' 'archstrike-scanners')
 pkgdesc="Bluetooth device scanner."
 url='http://www.pentest.co.uk'
 depends=('bluez-libs' 'bluez-utils' 'libxml2' 'ncurses')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 changelog="btscanner.changelog"
 source=(http://www.pentest.co.uk/src/btscanner-$pkgver.tar.bz2

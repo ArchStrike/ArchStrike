@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=python2-pysctp
 pkgver=0.6
 pkgrel=1
 pkgdesc="A python module for the SCTP protocol stack and library."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://pypi.python.org/pypi/pysctp/0.6'
 license=('LGPL')
 depends=('python2' 'lksctp-tools')

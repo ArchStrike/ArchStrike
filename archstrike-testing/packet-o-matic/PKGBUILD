@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='packet-o-matic'
 _pkgname='pom-ng'
 pkgver='0.0.18'
 pkgrel=1
 pkgdesc='A real time packet processor. Reads the packet from an input module, match the packet using rules and connection tracking information and then send it to a target module.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.packet-o-matic.org/'
 license=('GPL')
 groups=('archstrike' 'archstrike-networking' 'archstrike-tunnel')

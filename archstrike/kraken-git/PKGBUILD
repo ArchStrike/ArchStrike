@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: onny <onny@project-insanity.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=kraken-git
 _pkgname=kraken
@@ -10,7 +10,7 @@ pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc="A project to encrypt A5/1 GSM signaling using a Time/Memory Tradeoff Attack."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://opensource.srlabs.de/projects/a51-decrypt"
 license=("GPL3")
 if [[ $CARCH == 'x86_64' ]]; then

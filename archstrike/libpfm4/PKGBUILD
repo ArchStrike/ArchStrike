@@ -2,13 +2,13 @@
 # Contributor: Benjamin Chretien <chretien at lirmm dot fr>
 # Contributor: Håvard Espeland <espeland@acm.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=libpfm4
 pkgver=4.7.0
 pkgrel=2
 pkgdesc="The hardware-based performance monitoring interface for Linux."
-arch=('x86_64' 'i686')
+arch=('x86_64' 'i686' 'aarch64')
 url="http://perfmon2.sourceforge.net/"
 license=('MIT')
 if [[ $CARCH == 'x86_64' ]]; then

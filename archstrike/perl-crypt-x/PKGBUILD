@@ -3,13 +3,13 @@
 _author='Karel Miko'
 _perlmod='CryptX'
 
-buildarch=212
+buildarch=220
 
 pkgname=perl-crypt-x
 pkgver=0.039
 pkgrel=1
 pkgdesc="Cryptographically secure random number generator"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://search.cpan.org/~mik/CryptX-$pkgver/"
 license=('custom')
 depends=('perl>=5.10.0')

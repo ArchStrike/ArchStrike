@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=kwprocessor
 pkgver=1.00
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc='Advanced keyboard-walk generator with configureable basechars, keymap and routes'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/hashcat/kwprocessor'
 license=('MIT')
 depends=('glibc')
@@ -20,14 +20,14 @@ build() {
 }
 
 package() {
-  
+
   install -dm755 $pkgdir/usr/share/$pkgname
   install -dm755 $pkgdir/usr/share/$pkgname/{basechars,keymaps,routes}
 
   # Install license
   cd $pkgname-$pkgver
   install -Dm644 doc/license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
-  
+
   # binaries
   install -Dm755 kwp $pkgdir/usr/bin/kwp
 

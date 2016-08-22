@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libsocket
 pkgver=1.8
 pkgrel=4
 pkgdesc="Generic C++ socket library"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('gcc-libs')
 url="http://www.happycoders.org/software/libsocket.php"
 license=('LGPL2.1')

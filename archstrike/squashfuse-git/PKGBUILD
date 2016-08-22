@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Tim Jester-Pfadt <t.jp@gmx.de>
 
-buildarch=212
+buildarch=220
 
 pkgname=squashfuse-git
 pkgver=20160327.r303
 pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="FUSE filesystem to mount squashfs archives"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/vasi/squashfuse"
 license=('BSD')
 depends=('fuse' 'zlib' 'lzo' 'xz' 'lz4')

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team [at] archstrike [dot] org>
 
-buildarch=212
+buildarch=220
 
 pkgname=bettercap
 pkgver=1.5.7
 pkgrel=1
 groups=('archstrike' 'archstrike-sniffers' 'archstrike-exploit' 'archstrike-networking')
 pkgdesc='A complete, modular, portable and easily extensible MITM framework.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/bettercap'
 license=('GPL3')
 depends=('ruby-rspec-core' 'libpcap' 'net-tools')
@@ -33,7 +33,7 @@ package() {
 
   # fix $pkgdir reference by deleting gem_make.out files
   find ${pkgdir}/${_gemdir} -name gem_make.out | xargs rm -rf
- 
+
   install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/"
 }

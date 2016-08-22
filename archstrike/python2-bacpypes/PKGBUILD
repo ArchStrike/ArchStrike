@@ -23,7 +23,7 @@ package() {
   cd "${srcdir}/bacpypes-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  
+
   python2 setup.py install --root="$pkgdir" --optimize=1
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }

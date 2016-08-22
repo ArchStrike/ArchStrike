@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=python2-pysvn
 pkgver=1.9.0
 pkgrel=1
 pkgdesc="Python2 SVN Extension."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://pysvn.tigris.org"
 license=('APACHE')
 makedepends=('python2-setuptools')

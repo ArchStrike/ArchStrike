@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=elidecode-git
 pkgver=20160618.r48
 pkgrel=1
 groups=('archstrike' 'archstrike-debugging' 'archstrike-analysis' 'archstrike-reverse')
-arch=('i686' 'x86_64')
-pkgdesc="A tool to decode obfuscated shellcodes using the unicorn-engine for the emulation and the capstone-engine to print the asm code" 
+arch=('i686' 'x86_64' 'aarch64')
+pkgdesc="A tool to decode obfuscated shellcodes using the unicorn-engine for the emulation and the capstone-engine to print the asm code"
 url="https://github.com/DeveloppSoft/EliDecode"
 license=('GPL3')
 depends=('capstone' 'unicorn-engine' 'python2' 'bash')

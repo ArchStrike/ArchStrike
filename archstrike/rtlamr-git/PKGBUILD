@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 _pkgname=rtlamr
 
-buildarch=212
+buildarch=220
 
 pkgname=rtlamr-git
 pkgver=297.9f1f0de
 pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc="An rtl-sdr receiver for smart meters operating in the 900MHz ISM band."
-arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 _url="github.com/bemasher/rtlamr"
 url="https://$_url"
 license=("AGPL")
