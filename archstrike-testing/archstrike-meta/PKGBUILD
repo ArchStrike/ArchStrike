@@ -1,10 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
+buildarch=1
+
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
 pkgver=0.6
 pkgrel=5
-arch=('i686' 'x86_64')
+arch=('any')
 url='https://www.archstrike.org/'
 license=('GPL')
 groups=('archstrike-meta')
