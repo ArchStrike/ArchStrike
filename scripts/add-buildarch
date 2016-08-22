@@ -49,7 +49,7 @@ for currarch in "${arch[@]}"; do
         armv7h)
             buildarch=$(( buildarch + 4 ))
         ;;
-        armv8)
+        aarch64)
             buildarch=$(( buildarch + 8 ))
         ;;
         armv6h)
