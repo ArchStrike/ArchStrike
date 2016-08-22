@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=intrace-git
 pkgver=20151016.r26
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Traceroute-like application piggybacking on existing TCP connections"
 url='https://github.com/robertswiecki/intrace'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'armv8')
 license=('GPL2' 'GPL3')
 depends=("glibc")
 replaces=("intrace")
