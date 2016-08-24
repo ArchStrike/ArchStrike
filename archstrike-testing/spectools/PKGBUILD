@@ -11,8 +11,14 @@ url="http://www.kismetwireless.net/spectools/"
 license=('GPL2')
 depends=('libusb-compat' 'gtk2')
 groups=('archstrike' 'archstrike-wireless')
-source=(http://www.kismetwireless.net/code/spectools-${pkgver//_/-}.tar.xz)
-sha512sums=('59da488e08114018cd756d45f48541a26f643a3618bfbaec0e72c434c80e6cbc8b4f930476206c66af84ee574807e011489f884e96c7291c626b1b4e69619fad')
+source=("http://www.kismetwireless.net/code/spectools-${pkgver//_/-}.tar.xz" "config.guess-for-aarch64.patch")
+sha512sums=('59da488e08114018cd756d45f48541a26f643a3618bfbaec0e72c434c80e6cbc8b4f930476206c66af84ee574807e011489f884e96c7291c626b1b4e69619fad'
+            'cf83e1357eefb8bdf1542850d66d8007d620e4050b5715dc83f4a921d36ce9ce47d0d13c5d85f2b0ff8318d2877eec2f63b931bd47417a81a538327af927da3e')
+
+prepare() {
+  cd $srcdir/spectools-${pkgver//_/-}
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
  build() {
   cd $srcdir/spectools-${pkgver//_/-}
