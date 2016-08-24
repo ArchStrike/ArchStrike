@@ -4,10 +4,10 @@ buildarch=1
 
 pkgname=rsmangler
 pkgver=1.4
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-autonomous')
 pkgdesc='Takes a wordlist and perform various manipulations on it similar to those done by John the Ripper with a few extras.'
-url=('http://www.randomstorm.com/rsmangler-security-tool.php')
+url='http://www.randomstorm.com/rsmangler-security-tool.php'
 arch=('any')
 license=('CCPL')
 depends=('ruby')
