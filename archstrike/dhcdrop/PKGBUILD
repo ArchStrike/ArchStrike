@@ -4,14 +4,13 @@ buildarch=220
 
 pkgname=dhcdrop
 pkgver=0.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Remove illegal dhcp servers with IP-pool underflow. Stable version"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.netpatch.ru/dhcdrop.html"
 license=('GPL')
 depends=('libpcap')
-source=("http://www.netpatch.ru/projects/dhcdrop/dhcdrop-$pkgver.tar.bz2"
-        'dhcdrop.desktop')
+source=("http://www.netpatch.ru/projects/dhcdrop/dhcdrop-$pkgver.tar.bz2")
 sha512sums=('11ac0ca6dcb65f696936e47e43cfbdd59083b607b26b5d12274cc04577be257dda94e9c27eb0c4aebb40f5f572693478cceb04cc4b5b06bf8882c3001fc46142'
             'fca86c1269d3bb84ec1eb9908d99b0eb14dee2bb1b06621254faf9806b4c9718cf7f9b84521a09502cf74f829d15d98dae414823233450c30afc0645dc1530a9')
 groups=('archstrike' 'archstrike-misc')
@@ -25,5 +24,4 @@ build() {
 package(){
   cd "$srcdir/dhcdrop-$pkgver"
   make DESTDIR="$pkgdir" install
-  install -Dm644 "$srcdir/dhcdrop.desktop" "$pkgdir/usr/share/applications/dhcdrop.desktop"
 }
