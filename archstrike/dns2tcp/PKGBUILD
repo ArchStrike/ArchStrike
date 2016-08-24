@@ -11,8 +11,14 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.hsc.fr/ressources/outils/dns2tcp/index.html.en'
 license=('GPL')
 depends=('glibc')
-source=(http://www.hsc.fr/ressources/outils/dns2tcp/download/dns2tcp-$pkgver.tar.gz)
-sha512sums=('2f8dfb671853374be0aa8105f22456ae56d9e56fc270475740ab8704d1e202abe34faf36a25d820283aa672c8d2d1f168907537f4fede115e1935a0920570584')
+source=("http://www.hsc.fr/ressources/outils/dns2tcp/download/dns2tcp-$pkgver.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('2f8dfb671853374be0aa8105f22456ae56d9e56fc270475740ab8704d1e202abe34faf36a25d820283aa672c8d2d1f168907537f4fede115e1935a0920570584'
+            '733648e8dade3c13259ab275dc795bf678c1d5001a7e15f8e1a4cc9e518cdc0b465bc9c7d5bcf4f48e7619366b11fea6a14ca694e5b70c4a5fcdf46353b60688')
+
+prepare() {
+ cd "$srcdir/dns2tcp-$pkgver"
+ patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd "$srcdir/dns2tcp-$pkgver"
