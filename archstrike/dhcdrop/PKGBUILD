@@ -10,10 +10,15 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.netpatch.ru/dhcdrop.html"
 license=('GPL')
 depends=('libpcap')
-source=("http://www.netpatch.ru/projects/dhcdrop/dhcdrop-$pkgver.tar.bz2")
+source=("http://www.netpatch.ru/projects/dhcdrop/dhcdrop-$pkgver.tar.bz2" "config.guess-for-aarch64.patch")
 sha512sums=('11ac0ca6dcb65f696936e47e43cfbdd59083b607b26b5d12274cc04577be257dda94e9c27eb0c4aebb40f5f572693478cceb04cc4b5b06bf8882c3001fc46142'
-            'fca86c1269d3bb84ec1eb9908d99b0eb14dee2bb1b06621254faf9806b4c9718cf7f9b84521a09502cf74f829d15d98dae414823233450c30afc0645dc1530a9')
+            '5e739686dc751cc9b80dac23acbb3e408f5342f7c76c7f593d6ab407ea073428ed219b193dc2327e3640d9872d1d9bd52ca384217c7a90b884601466778a67dc')
 groups=('archstrike' 'archstrike-misc')
+
+prepare() {
+  cd "$srcdir/dhcdrop-$pkgver"
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd "$srcdir/dhcdrop-$pkgver"
