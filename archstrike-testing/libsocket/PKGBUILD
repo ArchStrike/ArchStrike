@@ -12,12 +12,16 @@ url="http://www.happycoders.org/software/libsocket.php"
 license=('LGPL2.1')
 install=${pkgname}.install
 source=("http://www.speedblue.org/conf/$pkgname-$pkgver.tar.gz"
-        'includes.patch')
+        "includes.patch"
+        "config.guess-for-aarch64.patch")
 sha512sums=('150091d242b0b505502dafa73cfabe37ad96781413f08b2f4b6deb3a7c952a53bc4459ad842f9aae2f71b72e7a4329742d9b0c397c319d5a8000e9d281ec4e09'
-            '9ed935df56208630673be0249eba5b3531507f01e931edc51168f06b23321377f3c08946b3827cf826371b9cc8b8aa650ef72c09af277ca4a9b476756cc8cb88')
+            '9ed935df56208630673be0249eba5b3531507f01e931edc51168f06b23321377f3c08946b3827cf826371b9cc8b8aa650ef72c09af277ca4a9b476756cc8cb88'
+            '51c3548ca7fe40daa945db1a7f34599da748f20e2a6667a728efcc97127304619118e53eb78e793c76ef8b45bd0ca73f1d67af0f68b7e6b830012574e8f2b012')
 
 build() {
   cd $srcdir/$pkgname-$pkgver
+  # Fix config.guess
+  patch -Np1 -i $srcdir/${source[2]}
   # Fix includes
   patch -Np1 -i $srcdir/${source[1]}
   # Fix the paths; another subdir might be handy for their own
