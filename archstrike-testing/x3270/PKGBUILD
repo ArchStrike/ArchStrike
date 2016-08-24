@@ -15,23 +15,24 @@ depends=('openssl' 'libxaw')
 makedepends=('xorg-xset' 'xorg-bdftopcf' 'fontconfig' 'xorg-mkfontdir' 'imake' 'openssl' 'libx11' 'libxaw' 'libxt' 'xbitmaps')
 backup=(etc/x3270/ibm_hosts)
 install=x3270.install
-source=(http://downloads.sourceforge.net/sourceforge/x3270/suite3270-$pkgver-src.tgz
-  x3270.desktop
-        x3270-hack-full.patch)
-
+source=(http://downloads.sourceforge.net/sourceforge/x3270/suite3270-$pkgver-src.tgz x3270.desktop x3270-hack-full.patch config.guess-for-aarch64.patch)
 sha512sums=('1f4b735b1baa0c813809324989becd1b62807bf05033f0415a9cd7523af04728bc2511213a091e8c4377163a4c26635168633c12d331da3f0a683f736c041bca'
             '7321d4a50b5ca76484140fa971c8c60b9dc721096e3ce1f0682d975c9f1a9049264901c37bd03b2b90f5af603643f63fa3a9a5cad84f2e1f6a5585026d2a7278'
-            'e90c584eefe683dfbe1a9d79defbafbe69b4e7ef488b505724f129f5a91214c7d0e1eab635a587a69d4a15c49a5aa4495fdae1a625258899e1bbb68a28273548')
+            'e90c584eefe683dfbe1a9d79defbafbe69b4e7ef488b505724f129f5a91214c7d0e1eab635a587a69d4a15c49a5aa4495fdae1a625258899e1bbb68a28273548'
+            '24c89da0163905f8c18ce42a3b8dab934af77468e679163f15d06115dfeeaed401395692da9d25878a1b0ce3a37e32bd90f211ec033a5e66b246e682ca80555b')
 
 prepare(){
    cd $srcdir/$pkgname-${pkgver:0:3}
+   patch -Np1 -i "$srcdir/config.guess-for-aarch64.patch"
    patch -p1 -i "$srcdir/x3270-hack-full.patch"
 }
 
 build() {
    cd $srcdir/$pkgname-${pkgver:0:3}
+   export CFLAGS+=" -std=gnu89"
    ./configure --prefix=/usr --bindir=/usr/bin --sysconfdir=/etc --with-fontdir=/usr/share/fonts/3270
-
+   sed -i 's|_BSD_SOURCE|_DEFAULT_SOURCE|' Makefile 
+   sed -i 's|_SVID_SOURCE|_DEFAULT_SOURCE|' Makefile 
    make depend
    make
 
