@@ -12,8 +12,14 @@ license=("GPL3")
 depends=('glibc')
 makedepends=('perl-locale-gettext')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=(http://downloads.sf.net/sourceforge/dc3dd/dc3dd-$pkgver.tar.bz2)
-sha512sums=('9afa57bfbfce00778130eb75b4add915f132ad2b19d9271faed87f807bb646d2083e1bd5b09acfa378a50e894c57d65472263cd7966acf45c30d174754cdf6c8')
+source=("http://downloads.sf.net/sourceforge/dc3dd/dc3dd-$pkgver.tar.bz2" "config.guess-for-aarch64.patch")
+sha512sums=('9afa57bfbfce00778130eb75b4add915f132ad2b19d9271faed87f807bb646d2083e1bd5b09acfa378a50e894c57d65472263cd7966acf45c30d174754cdf6c8'
+            '6363ff8739c73b81b258c685de3ae38f257e61811403d6a0f82634dceb1e6df56e4509565692cd07661aa134c61382d93d87c97c36ae54dfc6b5bc73d9a2ebf1')
+
+prepare() {
+  cd $srcdir/dc3dd-$pkgver
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd $srcdir/dc3dd-$pkgver
