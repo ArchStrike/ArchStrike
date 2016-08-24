@@ -11,8 +11,14 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://sourceforge.net/projects/sipsak.berlios/'
 license=('GPL')
 depends=('c-ares' 'openssl')
-source=("http://downloads.sourceforge.net/project/sipsak.berlios/sipsak-$pkgver-1.tar.gz")
-sha512sums=('c2d62ddaf2ecc9616941cf002a0494d2f9c43747e6b527f8b1542e9b5ae143fc69b18fc140bd3f255896b0e8eb02f7d198cc1799a4041e2d0c95d90b653591fe')
+source=("http://downloads.sourceforge.net/project/sipsak.berlios/sipsak-$pkgver-1.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('c2d62ddaf2ecc9616941cf002a0494d2f9c43747e6b527f8b1542e9b5ae143fc69b18fc140bd3f255896b0e8eb02f7d198cc1799a4041e2d0c95d90b653591fe'
+            'd538f73c74e532fc675c4e257bd4ddbb4e838124879ffb5d23a2d518b590468aecdc41140b1d7359287815fe30b5913e8defcc07cb3cc3ac1ee70d42287102bc')
+
+prepare() {
+  cd $srcdir/sipsak-$pkgver
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd $srcdir/sipsak-$pkgver
