@@ -14,12 +14,16 @@ arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 license=('unknown')
 depends=('openssl')
 source=("https://thc.org/thc-ssl-dos/thc-ssl-dos-$pkgver.tar.gz"
-        remove-skiddie-check.diff)
+        "remove-skiddie-check.diff"
+        "config.guess-for-aarch64.patch")
 sha512sums=('f450aebe7d3bc40ef2bdd8d53a24fbff3efd4adf32caee4e650a28b9ecbdafa95fd3b89ad1744be8544369fd696cb36942e55cbdf29e875b281cb8ac390ee499'
-            '5914b19d77b71d731e997d9d8160c1b1ea63712828c1a4360ff4c80fef29b5c493ff25ff69ff8055b1a1c14dbf3334970940bd719df8cf8cc83fbafd63321a80')
+            '5914b19d77b71d731e997d9d8160c1b1ea63712828c1a4360ff4c80fef29b5c493ff25ff69ff8055b1a1c14dbf3334970940bd719df8cf8cc83fbafd63321a80'
+            '52fd79b47340da32cd16cf60e90520ac3b39dc73932a7c23fb46548d69914ab1fd45dfeef3cfd0f82ed3716ba865506f0dafbdc3ef37e3b4d7065cb91d73fe20')
 
 prepare() {
-  cd "${pkgname}-${pkgver}/src"
+  cd "$pkgname-$pkgver"
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+  cd src
   patch < "$srcdir/remove-skiddie-check.diff"
 }
 
