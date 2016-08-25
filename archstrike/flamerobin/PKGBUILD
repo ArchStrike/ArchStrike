@@ -11,13 +11,19 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.flamerobin.org/'
 license=('expat')
 depends=('wxgtk2.8' 'libfbclient')
-source=("http://downloads.sourceforge.net/sourceforge/flamerobin/flamerobin-${pkgver}-src.tar.gz")
-sha512sums=('76eeecae759ab7aec817a4775fe185f982f6f50f5dec850b1fbb00b56239807867fe36568592e313315c0f02364c1986d9691e84d5fced2aedd85571d239f2be')
+source=("http://downloads.sourceforge.net/sourceforge/flamerobin/flamerobin-${pkgver}-src.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('76eeecae759ab7aec817a4775fe185f982f6f50f5dec850b1fbb00b56239807867fe36568592e313315c0f02364c1986d9691e84d5fced2aedd85571d239f2be'
+            '7a963454e73bc1f940c85d98139ed2347e97fcfce706d3cf42d7beea4f8bf2c09ce372357eefbbbdbb6ec3409d6da9f03501b2515fcd51249ba82af35a6773a7')
+
+prepare() {
+  cd "flamerobin-${pkgver}-src"
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd "flamerobin-${pkgver}-src"
 
-  CXXFLAGS=-fpermissive ./configure \
+  CXXFLAGS=$CXXFLAGS ./configure \
     --prefix=/usr \
     --with-wx-config=/usr/bin/wx-config-2.8
 
