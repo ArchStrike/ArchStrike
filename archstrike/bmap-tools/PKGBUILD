@@ -4,31 +4,26 @@ buildarch=1
 
 pkgname=bmap-tools
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool for copying largely sparse files using information from a block map file"
 arch=('any')
-url="http://git.infradead.org/users/dedekind/bmap-tools.git"
+url="https://github.com/01org/bmap-tools"
 license=('GPL2')
 depends=('python2')
-makedepends=('git' 'python2-setuptools')
+makedepends=('python2-setuptools')
 groups=('archstrike')
-source=(git://git.infradead.org/users/dedekind/bmap-tools.git)
-sha256sums=('SKIP')
+source=("https://github.com/01org/bmap-tools/archive/v$pkgver.tar.gz")
+sha512sums=('f1084ac3503c21d284f533695c4dcc42abd72d7cbd2c25d2280832791fd322494220ff903d134795f5322f3c3578a0568fab2e288ee3680604db793aa8632db8')
 
-pkgver() {
-  cd "$srcdir/bmap-tools"
-
-  awk '/^VERSION =/ { print $3 }' bmaptool | sed 's/"\(.*\)"/\1/'
-}
 
 build() {
-  cd "$srcdir/bmap-tools"
+  cd "$srcdir/bmap-tools-$pkgver"
 
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/bmap-tools"
+  cd "$srcdir/bmap-tools-$pkgver"
 
   python2 setup.py install --root=$pkgdir/ --optimize=1
   install -Dm644 docs/man1/bmaptool.1 "$pkgdir"/usr/share/man/man1/bmaptool.1
