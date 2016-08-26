@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-telepot
-pkgver=8.3
+pkgver=9.1
 pkgrel=1
 pkgdesc="Python framework for Telegram Bot API"
 url="https://github.com/nickoala/telepot"
@@ -12,8 +12,8 @@ depends=('python2' 'python2-urllib3')
 makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/3b/79/f88a3c3c559d3e894705c161cab5be902f3b23e2d29229374ca7e474cd41/telepot-$pkgver.zip")
-sha512sums=('990093cafdeefffec310dada9ba53a1a4eeb8f67571d8b1716d803c306e9b0403dc13e65708e362f43c65ab680a09eb828238ab13bed2b9a26bc7545effe278c')
+source=("https://pypi.python.org/packages/30/11/de7b8a3e160f76623e658097769ae704f786f60195b8a60c244c4b851037/telepot-$pkgver.zip")
+sha512sums=('c016cb71a93b97ade80cf460884a2abbb5e8ee93620e51011acf819f03decc4836ad633220685544adcfe5c5239ca3c0bdc76899403db25f13867ab565e87870')
 
 build() {
     cd $srcdir/telepot-$pkgver
