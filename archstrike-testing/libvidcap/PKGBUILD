@@ -9,8 +9,14 @@ pkgdesc="A cross-platform library for capturing video from webcams and other vid
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://libvidcap.sourceforge.net"
 license=('GPL')
-source=(http://downloads.sourceforge.net/sourceforge/libvidcap/$pkgname-$pkgver.tar.gz)
-md5sums=('99521148426bff8319436494bbc5f0cb')
+source=("http://downloads.sourceforge.net/sourceforge/libvidcap/$pkgname-$pkgver.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('3f40f383d94404a60d5bc3a5c475360e578e493952fe08f9a6f72f5e65bb500dcd302729febd40727f80c7d3de16947b6e6d276060e6a27d5a9ccbcc9f1d4445'
+            '8ba45650e3c0fdf85deb04f16d6f97ffefe8384e6e13fc2abe6d09516fafb8a6a8c6b508eb8763177a03a4a340bb6ae6eb7358d437b7db8b3ccca3787c348842')
+
+prepare() {
+  cd "$srcdir/libvidcap-$pkgver"
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd "$srcdir/libvidcap-$pkgver"
