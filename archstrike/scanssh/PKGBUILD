@@ -11,8 +11,14 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('libevent' 'libpcap' 'libdnet')
 url='https://github.com/ofalk/scanssh'
 license=('GPL')
-source=("https://github.com/ofalk/scanssh/archive/$pkgname-$pkgver.tar.gz")
-sha512sums=('461e28e448e7fb693b31a7aaac6c0e44b4ddba9a038201475f557952b10e302d177dcce3aee8a7b0170a8c346f416edead50435059d2809471781b99dde37d40')
+source=("https://github.com/ofalk/scanssh/archive/$pkgname-$pkgver.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('461e28e448e7fb693b31a7aaac6c0e44b4ddba9a038201475f557952b10e302d177dcce3aee8a7b0170a8c346f416edead50435059d2809471781b99dde37d40'
+            '13b8c222fe1cdf6182668cf51e5c82e678a515450ce916614e923193233280058483cfe665060dc1f074dc6ffb029a4e173519b56552f807fffcb5984cbcec76')
+
+prepare() {
+  cd "$srcdir/$pkgname-$pkgname-$pkgver"
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd "$srcdir"
