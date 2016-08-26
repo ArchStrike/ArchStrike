@@ -12,8 +12,14 @@ license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 depends=('libxt' 'libxext' 'python' 'tcl')
-source=("https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs919/ghostpdl-$pkgver.tar.gz")
-sha512sums=('44c7de7230355b8c9010bf2153e7fd3086ba6a18878a8174de9c11e1b6fb6b8171c41325b650cece69352c51448f242803bb240368cbcdabaf800ae50bc2486b')
+source=("https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs919/ghostpdl-$pkgver.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('44c7de7230355b8c9010bf2153e7fd3086ba6a18878a8174de9c11e1b6fb6b8171c41325b650cece69352c51448f242803bb240368cbcdabaf800ae50bc2486b'
+            'c4d907f1f1d7b49f079ed2f8043bd518053d8082b675dc3b26726a5ae72917e66f72ebb4ce9ecf7597d4920889a9da304cc10a7be5ecd95633517fa542ce5955')
+
+prepare() {
+  cd $pkgname-$pkgver
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd $pkgname-$pkgver
