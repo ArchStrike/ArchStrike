@@ -5,7 +5,7 @@
 
 ###An Arch Linux repository for security professionals and enthusiasts.
 
-Done the Arch Way and optimized for i686, x86_64, ARMv6, ARMv7, and AArch64.
+Done the Arch Way and optimized for i686, x86_64, ARMv6, ARMv7, and ARMv8.
 
 [Our website](https://archstrike.org)
 
