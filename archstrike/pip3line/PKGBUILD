@@ -4,17 +4,14 @@ buildarch=220
 
 pkgname=pip3line
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A Raw bytes manipulation & interception framework"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/metrodango/pip3line'
 license=('GPL3')
-if [[ "$CARCH" == 'x86_64' ]]; then
-     depends=('qt5-svg' 'python' 'gcc-libs-multilib' 'distorm' 'qt5-xmlpatterns')
-else
-     depends=('qt5-svg' 'python' 'gcc-libs' 'distorm' 'qt5-xmlpatterns')
-fi
+depends_x86_64+=('gcc-libs-multilib')
+depends=('qt5-svg' 'python' 'python2' 'distorm' 'qt5-xmlpatterns' 'hicolor-icon-theme')
 makedepends=('cmake')
 source=("https://github.com/metrodango/pip3line/archive/$pkgver.tar.gz" "libdir.patch")
 sha512sums=('009bdf50fc26f481f8d442ef45f422bd0451fad2d9ca58a1e3d08d855beb5b206003de9fbacf8fa40229672e98b8e5e78dcc1c04f7959aa80535bb9bd22b8334'
