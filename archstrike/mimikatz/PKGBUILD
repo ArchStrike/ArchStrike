@@ -3,8 +3,7 @@
 buildarch=1
 
 pkgname=mimikatz
-pkgver=2.1.0
-release=alpha-20160822
+pkgver=2.1.0.alpha.20160822
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
@@ -12,12 +11,12 @@ pkgdesc="A little tool to play with Windows security"
 url="https://github.com/gentilkiwi/mimikatz"
 license=('custom')
 options=(!strip)
-source=("https://github.com/gentilkiwi/mimikatz/archive/${pkgver}-${release}.tar.gz" "LICENSE")
+source=("https://github.com/gentilkiwi/mimikatz/archive/${pkgver/.alpha./-alpha-}.tar.gz" "LICENSE")
 sha512sums=('754912fc42b29eca1596bfbc614b17a5794c8c7eb7bf5c1a9a563e6271ec375dff22b7475bd5ead20ad1be8e23fa1f88ea83c7d2b0874211ac3bdab7fcc9cf63'
             '4ac4bba96e2c65e4499913f14c1161e22d67c930529fbcfa74f9c691f96537370ca4f60446ed273288ce372b97974f6c22df145db68a42c373dbe3c0caba5dec')
 
 package() {
-  cd ${pkgname}-${pkgver}-${release}
+  cd ${pkgname}-${pkgver/.alpha./-alpha-}
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
