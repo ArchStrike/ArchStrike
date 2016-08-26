@@ -13,8 +13,14 @@ license=('GPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://sourceforge.net/projects/globalplatform/"
 depends=('glibc' 'globalplatform')
-source=(http://downloads.sourceforge.net/globalplatform/gpshell-${pkgver}.tar.gz)
-sha512sums=('612b1ebf637c00d1aa605820dab15ea94eed754e4a70162d333f0307289b92b81aa7156c6a0ae5ed5ecb2693dace45c17ca830420f2c5811505d712667ed7d86')
+source=("http://downloads.sourceforge.net/globalplatform/gpshell-${pkgver}.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('612b1ebf637c00d1aa605820dab15ea94eed754e4a70162d333f0307289b92b81aa7156c6a0ae5ed5ecb2693dace45c17ca830420f2c5811505d712667ed7d86'
+            'c04477a1a35e846d7f0e4c093846735bc0aa884f559b460c6822492bd933271086493b78e2a456554abd2f659737d55cb34cb488070c6d781e5cbbc16689fb17')
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   cd $srcdir/$pkgname-$pkgver
