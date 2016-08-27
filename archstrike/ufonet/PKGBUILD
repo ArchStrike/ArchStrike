@@ -3,23 +3,23 @@
 buildarch=1
 
 pkgname=ufonet
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="A tool designed to launch DDoS attacks against a target, using 'Open Redirect' vectors on third party web applications, like botnet."
 arch=('any')
 url="https://ufonet.03c8.net/"
 license=('GPL3')
 groups=('archstrike' 'archstrike-ddos')
-depends=('python2-pycurl' 'python2-geoip')
-source=("https://ufonet.03c8.net/ufonet/ufonet-v0.6.tar.gz")
-sha512sums=('db9909c5a469c37c2920ae1106608e8190926bed61479551025601a6cba71ba4ff99161343ebcd1372cd4bedc6c417a60eafc199679b87e7f6a1e3fbfd4d6148')
+depends=('python2-pycurl' 'python2-geoip' 'python2-requests' 'tor')
+source=("https://ufonet.03c8.net/ufonet/ufonet-v${pkgver}.tar.gz")
+sha512sums=('12f877b4ee4413d5e7fd4d70142a9712a0c557dac91616192870abd36d88f9e50b07c0b4e3ddb756e2685b7bc6a8562031598da90e2ff9fd319ad97734b7ed3e')
 
 prepare() {
-  grep -iRl 'python' $srcdir/$pkgname/$pkgname | xargs sed -i 's|python$|pyhton2|'
+  grep -iRl 'python' ${pkgname}-v${pkgver} | xargs sed -i 's|python|python2|'
 }
 
 package() {
-  cd "$srcdir/$pkgname/$pkgname"
+  cd "${pkgname}-v${pkgver}/$pkgname"
   install -dm755 "$pkgdir/usr/bin/"
   install -dm755 "$pkgdir/usr/share/$pkgname"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
