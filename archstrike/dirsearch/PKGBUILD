@@ -3,9 +3,8 @@
 buildarch=1
 
 pkgname=dirsearch
-pkgver=0.3.6.1
-_pkgver='0.3.6-1'
-pkgrel=2
+pkgver=0.3.7
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='A HTTP(S) directory/file brute forcer'
 arch=('any')
@@ -15,18 +14,18 @@ depends=('python')
 provides=('dirs3arch')
 replaces=('dirs3arch')
 conflicts=('dirs3arch')
-source=("https://github.com/maurosoria/$pkgname/archive/v$_pkgver.tar.gz")
-sha512sums=('f8d1fa1b6f32ef59c35315421a5bfbb83d59ad76017bc354e71f1ed202e06825a45148b290acc999aa523fd10b442fd3f00d365f7f02d949b1e24fcd8d153c03')
+source=("https://github.com/maurosoria/$pkgname/archive/v$pkgver.tar.gz")
+sha512sums=('1605e232a9f15dd6548fdef70ef1966c3db36c13421f60bcd95319b383d1950f1505ed991bc0266657c5cbb532d860360d013de8c6b358d5ccbf16238617205c')
 
 package() {
-  cd $pkgname-$_pkgver
+  cd $pkgname-$pkgver
 
   # Make base directories.
   install -dm755 "$pkgdir/usr/share/$pkgname"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -dm755 "$pkgdir/usr/bin"
 
-  for dir in db lib thirdparty reports; do
+  for dir in db logs lib thirdparty reports; do
     install -dm755 "$pkgdir/usr/share/$pkgname/$dir"
     cp -a --no-preserve=ownership "$dir"/* "$pkgdir/usr/share/$pkgname/$dir/"
   done
@@ -35,5 +34,5 @@ package() {
   install -Dm755 default.conf "$pkgdir/usr/share/$pkgname"
   install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  ln -s /usr/share/$pkgname/$pkgname.py "$pkgdir/usr/bin/$pkgname"
+  ln -s "/usr/share/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
 }
