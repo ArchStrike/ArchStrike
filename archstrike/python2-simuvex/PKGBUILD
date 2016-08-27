@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-simuvex
-pkgver=4.6.6.28
+pkgver=5.6.8.22
 pkgrel=1
 pkgdesc="A symbolic execution engine for the VEX IR"
 url="https://github.com/angr/simuvex"
@@ -12,11 +12,11 @@ depends=('python2' )
 makedepends=('python2-setuptools' )
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/f7/d7/d56f73528bfe899876f073cc559a7cf40ab38b380106737c12b9a7ab0a21/simuvex-$pkgver.tar.gz")
-sha512sums=('5f60cc54a7eccb2dd6895ad997260cc0df12d66e60b7e172596d923f623aaad7ec525846362e02c6d4e79af262b61f6e3e950f659ce4bee456a01a9b62b022db')
+source=("https://pypi.python.org/packages/89/eb/f31c5318e512e0add8ea2c8c16f0a51e906a3b9e3138529235a8acd71712/simuvex-${pkgver}.tar.gz")
+sha512sums=('152fc4222ada74c6de6cdfeac63759e37c4a93e318b26dded210ef61cab959f3853c23453796d4ae28d298e9c6f4fae9e2126555888bde3df416c20aaf42904d')
 
 prepare() {
-    grep -iRl 'python' simuvex-$pkgver | xargs sed -i 's|python$|python2|'
+    grep -iRl 'python' simuvex-$pkgver | xargs sed -i 's|python|python2|'
 }
 
 build() {
