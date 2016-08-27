@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-cle
-pkgver=4.6.6.28
+pkgver=5.6.8.22
 pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
 url="https://pypi/python.org/pypi/cle"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/dd/a1/65090a8fea9ba4ab6fae1cfaa2ffa082331206a62289e854c29bdb073036/cle-$pkgver.tar.gz")
-sha512sums=('2ce2a455fe7a9f2570e4a2814843fa55948673385d150985044fce5ee1f4ba808496ed647834dbac0c73cd67607e6adaab1ef2ba3a9fdc3d76f5c9e927fd572d')
+source=("https://pypi.python.org/packages/ec/93/eda4e9afff0b211324292b686d6dd9d1c424dc89529e281609c8a76c3cd3/cle-${pkgver}.tar.gz")
+sha512sums=('2cd84d488d43a7c9753ad6ca3d4909e33fecef3b95c14a5097f0e5bddc11ea5f385b3a06398f0406acbb65902d25d4944f7386c20bb49d895bf2e6775dc44fce')
 
 build() {
     cd $srcdir/cle-$pkgver
