@@ -1,0 +1,9 @@
+post_install() {
+	libtool --finish /usr/lib/beecrypt > /dev/null
+
+}
+
+post_upgrade() {
+	post_install
+}
+

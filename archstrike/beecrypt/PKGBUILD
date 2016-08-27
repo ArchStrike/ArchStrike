@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=beecrypt
 pkgver=4.2.1
-pkgrel=6
+pkgrel=7
 pkgdesc="A strong and fast cryptography toolkit"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://beecrypt.sourceforge.net/"
@@ -13,12 +13,19 @@ license=('LGPL')
 depends=('icu')
 makedepends=('automake' 'python2')
 options=('!libtool')
-source=(http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz)
-sha512sums=('59995d53c024efe6344a21ac0d6d55fbe652488a4a22cc6719f9fc3851d56697fa8738937d48aa1e6f9ebe749de61ac3c79a5f0cea793872213c3bdf922e71bc')
+install=${pkgname}.install
+source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname-$pkgver.tar.gz" "gcc6-fixes.patch")
+sha512sums=('59995d53c024efe6344a21ac0d6d55fbe652488a4a22cc6719f9fc3851d56697fa8738937d48aa1e6f9ebe749de61ac3c79a5f0cea793872213c3bdf922e71bc'
+            '5ec3a932f71517d028a28fda78bbce8f1f5adea2a646f8056be55f28650155bef078c8ccb7cde0b1f2c73f2e9747d91b8586ef2197929fb30461155f8170686a')
+
+prepare() {
+  cd ${srcdir}/$pkgname-$pkgver
+  patch -Np1 -i $srcdir/gcc6-fixes.patch
+}
 
 build() {
   cd ${srcdir}/$pkgname-$pkgver
-  CXXFLAGS="$CXXFLAGS -fpermissive"
+  CXXFLAGS="$CXXFLAGS"
   ./configure --prefix=/usr --sysconfdir=/etc --with-python=python2
   make
 }
