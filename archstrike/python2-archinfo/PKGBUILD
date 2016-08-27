@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-archinfo
-pkgver=4.6.6.28
+pkgver=5.6.8.22
 pkgrel=1
 pkgdesc="none"
 url="https://pypi.python.org/pypi/archinfo"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/42/6c/b6c484853254efed0fe9ca457678d2d55465c257fe934959fa34ac126c64/archinfo-$pkgver.tar.gz")
-sha512sums=('7a4703701284071a577cbfeffc7a478f82fe1f75800d438826f0e5d2cefeb3df88fabe314fa43e6de9cec1b8caa5a029b53e46836932dcdf2981ef5742c4403e')
+source=("https://pypi.python.org/packages/8f/c2/d4231531f3377e4d902e27d47fe42da1e48e102447d808e1b8216f3d6cfc/archinfo-${pkgver}.tar.gz")
+sha512sums=('ec51b16cd578ac08d9d813c40eab47d74f6347253dae109beaf15e867eced3c7e55cacb06f0dd514db3ffa0ad030672c818738b57ecc30536a8c6eb4eb1b1ce8')
 
 build() {
     cd $srcdir/archinfo-$pkgver
