@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=masscan-git
-pkgver=20160625.r415
+pkgver=20160828.r416
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-crackers')
