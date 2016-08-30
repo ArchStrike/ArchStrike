@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=sniffles
+pkgver=3.2.0
+pkgrel=1
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+groups=('archstrike' 'archstrike-networking')
+pkgdesc="A Packet Capture Generator for IDS and Regular Expression Evaluation"
+url='https://github.com/petabi/sniffles'
+license=('GPL3')
+depends=('python-sortedcontainers')
+makedpends=('python-setuptools')
+source=("https://github.com/petabi/sniffles/archive/$pkgver.tar.gz")
+sha512sums=('77202b2476cabdfb5e902a47b47deaa295c6c6a6b0a10da6362f3d0ecbd406cbe4d16c08fc1541bf66626de965857cdaaf6ec5a76203d5687f2535a72cfec361')
+
+
+build() {
+  cd $pkgname-$pkgver
+  python setup.py build
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1 
+}
