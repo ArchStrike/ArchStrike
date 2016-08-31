@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=bully
-pkgver=1.0.22
-pkgrel=3
+pkgver=1.1
+pkgrel=1
 groups=('archstrike' 'archstrike-crackers' 'archstrike-wireless')
 pkgdesc="A wifi-protected-setup (WPS) brute force attack tool."
 url="https://github.com/Lrs121/bully"
@@ -13,16 +13,16 @@ license=('GPL3')
 depends=('libpcap' 'openssl')
 makedepends=('python2-setuptools')
 #original src code was taken down The original project has been taken down or removed from public access. this source will be available unless I recieve a take down request.
-source=("https://github.com/Lrs121/bully/archive/v1.0-22.tar.gz")
-sha512sums=('7b25225afd55da87df33436d2192673731d9c6300bc146f8f55dcfddf03a2308db33161c3ca1c99b30b2275d9822ff44122298669fff0efd3752a2a0e6991dc3')
+source=("https://github.com/aanarchyy/bully/archive/$pkgver.tar.gz")
+sha512sums=('455c24e45c4e5f4bfb97cdb70da1f6b49b9614fb8cd52263b3153f2b62f30f88f068e43f73e4f87e2efd194413e137cd39eb378a40739dae3a8504dbd50165e7')
 
 build(){
-  cd "$srcdir/bully-1.0-22/src"
+  cd "$srcdir/bully-$pkgver/src"
   make
 }
 
 package() {
-  cd "$srcdir/bully-1.0-22/src"
+  cd "$srcdir/bully-$pkgver/src"
 
   # Base directory.
   install -dm755 "$pkgdir/usr/bin"
