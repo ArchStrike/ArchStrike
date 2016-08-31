@@ -7,12 +7,12 @@ pkgver=1.0.9
 pkgrel=1
 pkgdesc="This is a pure python implementation of IPMI protocol."
 arch=('any')
-url="https://github.com/openstack/pyghmi"
+url="https://pypi.python.org/pypi/pyghmi/"
 license=('GPL')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://github.com/openstack/pyghmi/archive/$pkgver.tar.gz")
-sha512sums=('b6e1641ef9027e4061ad760a7547fbf023e1036efba64ba819f1ffef198bf69c73f0e752addaffaa8ba56e97a8f60a0b340c327cabeb1f25ba3770b8e723d49c')
+source=("https://pypi.python.org/packages/0a/6a/396874b4ef4eea20365899810378bfca2afd1bfbed00098fe38f31255ef8/pyghmi-$pkgver.tar.gz")
+sha512sums=('cdf549c050e42c81d8e4114dae889fe4e8adcf7e37dc9d7f7f6d5a42f9d5c15e2e3f75697bdf94431893193643c3669e7221135914211c7db93332d8441c07d3')
 
 build(){
   cd "${srcdir}/pyghmi-${pkgver}"
