@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=ssh-audit-git
-pkgver=20160812.r37
+pkgver=20160830.r38
 pkgrel=1
 groups=('archstrike' 'archstrike-scanner')
 pkgdesc='SSH server auditing (banner, key exchange, encryption, mac, compression, compatbility, etc)'
