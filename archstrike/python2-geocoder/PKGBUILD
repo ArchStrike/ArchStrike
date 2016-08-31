@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-geocoder
-pkgver=1.16.3
+pkgver=1.17.3
 pkgrel=1
 pkgdesc="Geocoder is a simple and consistent geocoding library."
 url="https://github.com/DenisCarriere/geocoder"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/8d/81/6b2e00d77f66df178ce75f7a7beb801668b8d4590f9a4efc4d4c58609298/geocoder-${pkgver}.tar.gz")
-sha512sums=('deb2aecf2b066d9df7c017f9bb1217b56241c54d1caf725e6ed546663e1d0cf5b170a6de6b42b3a8e540ba1db467256815da5d5b95ef6085528cad0e4d89085f')
+source=("https://pypi.python.org/packages/9c/6f/6583d9c3f873f80167b81b909de4602c91c3a6f1f6e93d502cb49d55503c/geocoder-$pkgver.tar.gz")
+sha512sums=('33440072fba6f10378ad653462b9ab2fe6918813e7172e1e86942a6a5873a0226400c5b94a622ce04a79b64c324c642fbe48ddfbab5e4300d7f73d40fd08ff51')
 
 prepare() {
     grep -iRl 'python' geocoder-$pkgver | xargs sed -i 's|python$|python2|'
@@ -27,4 +27,5 @@ build() {
 package() {
     cd $srcdir/geocoder-$pkgver
     python2 setup.py install --root="$pkgdir" --optimize=1
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
