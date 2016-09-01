@@ -1,19 +1,19 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=200
+buildarch=192
 
 pkgname=sslyze
-pkgver=0.13.6
-pkgrel=2
+pkgver=0.14.0
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('i686' 'x86_64')
 url='https://github.com/nabla-c0d3/sslyze'
 license=('GPL2')
 depends=('python2')
 makedepends=('nassl' 'python2-setuptools')
 source=("https://github.com/nabla-c0d3/sslyze/archive/$pkgver.zip")
-sha512sums=('adc72bc7f99fb6a0748a343139ece1796bf7a4aab7ac777ca00c12bfba4da72cd4654188e901b6193ae8ebd23d48d4b5b336a2ec020dac674182c898aaf6efaf')
+sha512sums=('f7467d899261a308175abdc791ab0e5bfaef94d58e73a584fa61ba360f3a97e3f61007302b8846c7d9ffd6787e0dacdb0d08e492798eef7081f4396160622ca9')
 
 prepare() {
   find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
