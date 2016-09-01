@@ -1,0 +1,28 @@
+# Maintainer: Will Price <will.price94@gmail.com>
+
+pkgname=mylg
+pkgver=0.2.3
+pkgrel=1
+pkgdesc="A General Network diagnostic tool"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="mylg.io"
+license=('MIT')
+depends=('libpcap')
+makedepends=('go' 'git')
+source=("https://github.com/mehrdadrad/mylg/archive/v$pkgver.tar.gz")
+sha512sums=('70bd8491bec02920f8ca83844e567c748dbf52ea2b2f7d81f29fb2b3392291d6f63015c496f4f86b30c6539bb73ef6d2a50c4dada9f9c1d2dd3de7531b3a62c5')
+
+build() {
+    export GOPATH="$srcdir"
+    export GOBIN="${srcdir}/bin"
+
+    cd "$pkgname-$pkgver"
+    go get -v
+    go build mylg.go
+}
+
+package() {
+    cd $pkgname-$pkgver
+    install -Dm755 mylg "$pkgdir/usr/bin/$pkgname"
+    install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
