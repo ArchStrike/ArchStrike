@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=wcc-git
-pkgver=20160816.r27
+pkgver=20160831.r28
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
