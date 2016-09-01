@@ -2,7 +2,8 @@
 
 pkgname=mylg
 pkgver=0.2.3
-pkgrel=1
+pkgrel=2
+groups=('archstrike' 'archstrike-networking')
 pkgdesc="A General Network diagnostic tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="mylg.io"
