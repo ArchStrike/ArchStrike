@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-cerberus
-pkgver=0.9.2
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Lightweight, extensible schema and data validation tool for Python dictionaries."
 url="http://github.com/nicolaiarocci/cerberus"
@@ -12,16 +12,16 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('CUSTOM')
 arch=('any')
-source=("https://pypi.python.org/packages/c1/7a/65f3aa48279cda81208ccca4c932e63fedaf02f80f1fb6a482a7b8d8f239/Cerberus-$pkgver.tar.gz")
-sha512sums=('e30603bed3ee40fa2018c301f118a73e171ca5a20cf79d24eb87560cdfb1392ae1a8e210fdca43accd427ebf46ad8c97cab8c47e8bd4e0c1ee024e5502dea73e')
+source=("https://github.com/nicolaiarocci/cerberus/archive/$pkgver.tar.gz")
+sha512sums=('b8cf867d1d4ad22fa8d78f8f56ea9c80af944db8862ed3f596da6202069903e956d0d64e0e8f7c0017022cd7521c8ce053b0676ed967f7753f769bf5fff9f529')
 
 build() {
-    cd $srcdir/Cerberus-$pkgver
+    cd $srcdir/cerberus-$pkgver
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/Cerberus-$pkgver
+    cd $srcdir/cerberus-$pkgver
     python2 setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
