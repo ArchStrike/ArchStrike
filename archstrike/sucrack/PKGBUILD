@@ -11,8 +11,14 @@ url='http://labs.portcullis.co.uk/application/sucrack'
 license=('custom')
 depends=('glibc')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=("http://labs.portcullis.co.uk/download/sucrack-${pkgver}.tar.gz")
-md5sums=('6ebfe5e94577a53ce8dcabadd3581ec3')
+source=("http://labs.portcullis.co.uk/download/sucrack-${pkgver}.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('6ea47a542a652ce416af9f8dece569eec6662a361860a150291e1f6c23ff0cc8288b573aee047624c4c2c32f51aa01c6ce88177a0f41353b17c891d905085a41'
+            '6a81a01acedff4fa2ce87bade9a0ec09b764bf5746f4523495f628e2c994f08878fd95df1f98d987d8d1fce43f46d77999cb49944fd99f167727236cfdc2225c')
+
+prepare() {
+  cd $srcdir/sucrack-$pkgver
+  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+}
 
 build() {
   unset LDFLAGS
