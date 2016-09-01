@@ -1,0 +1,34 @@
+# Maintainer: ArchStrike <team[at]archstrike[dot]org>
+# Contributor:  Chris Severance aur.severach aATt spamgourmet dott com
+# Contributor : xav <xav at ethertricks dot net>
+
+buildarch=220
+
+pkgname=ipsumdump
+pkgver=1.85
+pkgrel=1
+pkgdesc='A tool that summarizes TCP/IP dump files into a self-describing ASCII format easily readable by humans and programs'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url='http://www.cs.ucla.edu/~kohler/ipsumdump/'
+license=('GPL2' 'custom:Click')
+depends=('libpcap')
+source=("http://www.cs.ucla.edu/~kohler/${pkgname}/${pkgname}-${pkgver}.tar.gz" 'LICENSE')
+sha512sums=('b42844cf028b9c1ea9da90306be8d731bffcec1a8f5c9eeb8029f563ddd5781651c583913a2105d8ad99cabac4b003345e1e8fdfb83367cabf806de1bca31596'
+            '664edb8bdfededa74d5675f37ce188b8976d001db0c9d0c2752a735a76d7ee597456e6d963c1da540619da197e84053c2329d6d1f4037ee826c28f200c395a9e')
+
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  ./configure --prefix='/usr' --mandir='/usr/share/man' --sbindir='/usr/bin'
+  make
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  install -Dpm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # Ensure there are no forbidden paths
+  #! grep -alqr "/sbin" "${pkgdir}" || echo "${}" # the executables have sbin fallback which is OK
+  ! grep -alqr "/usr/tmp" "${pkgdir}" || echo "${}"
+}
