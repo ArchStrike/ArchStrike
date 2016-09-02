@@ -1,0 +1,24 @@
+diff -aur bro-2.4.1.orig/aux/broccoli/src/bro_openssl.c bro-2.4.1/aux/broccoli/src/bro_openssl.c
+--- bro-2.4.1.orig/aux/broccoli/src/bro_openssl.c	2016-09-01 20:04:33.845304552 -0400
++++ bro-2.4.1/aux/broccoli/src/bro_openssl.c	2016-09-01 20:04:49.291757183 -0400
+@@ -302,7 +302,7 @@
+    * to set up an SSL connection now and abort if this fails in any way.
+    */
+ 
+-  if (! (ctx = SSL_CTX_new(SSLv3_method())))
++  if (! (ctx = SSL_CTX_new(SSLv23_method())))
+     D_RETURN_(FALSE);
+   
+   /* We expect things to be stored in PEM format, which means that we
+diff -aur bro-2.4.1.orig/src/ChunkedIO.cc bro-2.4.1/src/ChunkedIO.cc
+--- bro-2.4.1.orig/src/ChunkedIO.cc	2016-09-01 20:04:33.865304275 -0400
++++ bro-2.4.1/src/ChunkedIO.cc	2016-09-01 20:05:00.188272862 -0400
+@@ -709,7 +709,7 @@
+ 		{
+ 		SSL_load_error_strings();
+ 
+-		ctx = SSL_CTX_new(SSLv3_method());
++		ctx = SSL_CTX_new(SSLv23_method());
+ 		if ( ! ctx )
+ 			{
+ 			Log("can't create SSL context");

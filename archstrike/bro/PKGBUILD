@@ -4,19 +4,25 @@ buildarch=220
 
 pkgname=bro
 pkgver=2.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A highly configurable IDS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://bro-ids.org/"
 backup=(etc/bro/{broccoli.conf,broctl.cfg,networks.cfg,node.cfg})
 license=('BSD')
-depends=('libpcap' 'curl' 'ruby' 'file' 'geoip' 'python2' 'gperftools')
+depends=('curl' 'ruby' 'file' 'geoip' 'python2' 'gperftools' 'ipsumdump' 'postfix')
 makedepends=('cmake' 'swig')
 install=${pkgname}.install
-groups=('archstrike')
+groups=('archstrike' 'archstrike-networking')
 options=('!emptydirs')
-source=("https://www.bro.org/downloads/release/bro-$pkgver.tar.gz")
-sha512sums=('4f7bf6c037fe7b16214830d2dba9f7abffd853f66030aa710fb9f174a475f8cd27d8de6bacf965f142f942a42093ceb78dcd8cbcedac6fbcfdd65ac07b3dd410')
+source=("https://www.bro.org/downloads/release/bro-$pkgver.tar.gz" "sslv3.patch")
+sha512sums=('4f7bf6c037fe7b16214830d2dba9f7abffd853f66030aa710fb9f174a475f8cd27d8de6bacf965f142f942a42093ceb78dcd8cbcedac6fbcfdd65ac07b3dd410'
+            'f82f0a1af2750d7f1e50a66bcaf6b33bcbea4e871c5eab07665e137512aef8356c3868dbf32d91774a3fc79485b99b93afcad93e2d3b4a2f382dddec19875455')
+
+prepare() {
+  cd $srcdir/$pkgname-$pkgver
+  patch -Np1 -i "$srcdir/sslv3.patch"
+}
 
 build() {
   cd $srcdir/$pkgname-$pkgver
