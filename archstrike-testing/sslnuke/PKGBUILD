@@ -1,38 +1,43 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=220
 
-pkgname=sslnuke
+pkgname=sslnuke-git
 pkgver=0.r5.c5faeaa
-pkgrel=2
+pkgrel=1
 groups=('archstrike' 'archstrike-proxy' 'archstrike-crackers')
 pkgdesc="Transparent proxy that decrypts SSL traffic and prints out IRC messages."
 url="https://github.com/jtripper/sslnuke"
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+depends=('openssl')
 makedepends=('git')
 license=('GPL2')
-install='sslnuke.install'
-source=("git+https://github.com/jtripper/sslnuke.git"
-        "sslnuke.install")
-md5sums=('SKIP'
-         '30dc76b857af964909400af5abe97fdc')
+provides=('sslnuke')
+replaces=('sslnuke')
+install="${pkgname}.install"
+source=("$pkgname::git+https://github.com/jtripper/sslnuke.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/sslnuke"
+  cd "$pkgname"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
+prepare() {
+  cd "$pkgname"
+  sed -i 's|SSLv3_server_method|SSLv23_server_method|' src/ssl.c
+}
+
 build(){
-  cd "$srcdir/sslnuke"
+  cd "$pkgname"
   make
 }
 
 package() {
-  cd "$srcdir/sslnuke"
+  cd "$pkgname"
 
   # Base directories.
   install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/sslnuke/"
   install -dm755 "$pkgdir/usr/share/licenses/sslnuke/"
 
   # Docs.
