@@ -10,12 +10,14 @@ pkgdesc="A general tcp protocols testing and hacking utility"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://code.google.com/p/${pkgname}"
 license=('GPL2')
-source=("http://${pkgname}.googlecode.com/files/${pkgname}-${pkgver}.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/tcpjunk/$pkgname-$pkgver.tar.gz" "sslv3.patch")
 depends=('gtksourceview2')
-sha512sums=('25005242b55d1741686fd7368e2722760a137af54374b8d8e756d11af7d27a573450a38e619b4d4b68f153265abad972d2add9faa9eba4976da7212130164c35')
+sha512sums=('25005242b55d1741686fd7368e2722760a137af54374b8d8e756d11af7d27a573450a38e619b4d4b68f153265abad972d2add9faa9eba4976da7212130164c35'
+            '5d1ee981abc828d196030be8f6a795242fc7b6cad05a5f85041d37f8a3fe7c5c67bda2c7a24544dcb592758a08346d7fc10a688df268a81961f32b263a6bc180')
 
 prepare() {
     cd ${pkgname}-${pkgver}
+    patch -Np1 -i $srcdir/sslv3.patch
     while read -r file; do
         sed -i 's|\$(DATADIRNAME)/||g' "$file"
     done < <(grep -ir '$(DATADIRNAME)/' | sed 's|:.*$||g')
