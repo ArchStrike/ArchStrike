@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=burpsuite
-pkgver=1.7.03
+pkgver=1.7.05
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers' 'archstrike-proxy')
 pkgdesc="An integrated platform for attacking web applications (free edition)."
@@ -13,7 +13,7 @@ arch=('any')
 license=('custom')
 noextract=("burpsuite.jar")
 source=("burpsuite.jar::https://portswigger.net/DownloadUpdate.ashx?Product=Free" LICENSE)
-sha512sums=('adfb3ed340e2dc38ab8f4d1e0d7a6848743ede4fee744b4a0a369253b1212db8fec297194a1fce0000e5a185083725c3c304b820c9f68cc73ef12d450a66a10d'
+sha512sums=('927820410b768cb5b7cbb0bb700064883a5ed2e4da8282f463fd360ddac48f1b44870c705ae939189f4accbc85c0fdb92064c5db9a6e82f752fb70b67a598d9b'
             '37abc24b19571bfd2941e3dd7aa8a8a330bd3bbbafb3d1f813035ab0313e189c1f4a43a68f820a32656b86dd29cca94afcaefc6a4bfb4219ef18dc0fc4923b86')
 
 package() {
