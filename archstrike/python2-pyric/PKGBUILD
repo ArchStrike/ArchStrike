@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-pyric
-pkgver=0.1.6
+pkgver=0.1.6.1
 pkgrel=1
 pkgdesc="Python Wireless Library"
 url="http://wraith-wireless.github.io/PyRIC/"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('GPL3')
 arch=('any')
-source=("https://github.com/wraith-wireless/pyric/archive/${pkgver}.tar.gz")
-sha512sums=('690a572e2c2a126f1465c813f066fabf1986e9e094c80c781553f32266dfb8044a934006f38e4fd8a360f6cfae1e42dfde384d116ca75532396739027299a550')
+source=("https://pypi.python.org/packages/e1/56/cb834d27ef717594f0179c8c0eefb20af5a09bb10e76b7f8b787bbe8529d/PyRIC-$pkgver.tar.gz")
+sha512sums=('946763f1ba691d9ad079a0b302e2687b705c93fd07763939a6eb84a1b7aef27d07425f478beb5cacbda1c0fc79bd5ec9f97930eba5e1fdb334e7a395b8b6b648')
 
 prepare() {
   grep -iRl 'python' PyRIC-${pkgver} | xargs sed -i 's|python$|python2|'
