@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=3proxy
-pkgver=0.8.6
-pkgrel=2
+pkgver=0.8.7
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc='Tiny free proxy server'
 url='http://3proxy.ru'
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('glibc' 'openssl')
 options=('!makeflags')
 source=("https://github.com/z3APA3A/3proxy/archive/3proxy-$pkgver.tar.gz")
-sha512sums=('15195e9d00738594fa7e071e0a403d1150b0d8f4f17560dc3927197c5945baa5adc5eb84f51487871ba83ce3a124f2b2699e6ba15bec1816aa7b4ac7f64b0369')
+sha512sums=('3794392667ce2231ac9b8fa4fb81fabb99b894d637c1630e22bc195234b5442412eb9e6255d7e32319ed2be1abca1d35f320ad7ee688b696596ffbb1c14d9bf7')
 
 prepare() {
   cd $pkgname-$pkgname-$pkgver
