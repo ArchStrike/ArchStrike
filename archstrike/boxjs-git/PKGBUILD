@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=boxjs-git
-pkgver=20160831.r82
+pkgver=20160905.r86
 pkgrel=1
 groups=('archstrike' 'archstrike-analysis')
 arch=('any')
