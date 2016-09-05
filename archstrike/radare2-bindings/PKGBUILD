@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=radare2-bindings
-pkgver=0.10.3
+pkgver=0.10.5
 pkgrel=1
 pkgdesc="Language bindings of the radare2 api for Valabind and friends"
 url="http://radare.org"
@@ -16,7 +16,7 @@ makedepends=('valabind' 'swig')
 options=(!emptydirs)
 provides=('r2-bindings')
 source=(http://www.radare.org/get/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('4c3852b8d16a5ab95149927612b644c868ba747256d7d8cfb73f3e7286a0493d4cb1019ba29068c9f83e28eb47a679521f3adcd89133c885a2495f41c0d1c9a6')
+sha512sums=('663e2cc83d3348bd9af5a3aff93055620617e1b685a3f020125daa9380e836a82c5186ebb9a0ef4ca6f1807f0bbf3984389f72d2a57ec48f735338db7ad58acd')
 
 prepare() {
   cd ${pkgname}-${pkgver}
