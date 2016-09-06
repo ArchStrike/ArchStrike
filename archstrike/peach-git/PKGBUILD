@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=peach-git
 pkgver=20160905.r53
-pkgrel=1
+pkgrel=2
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Caleb1994/peach"
 groups=('archstrike' 'archstrike-fuzzers')
@@ -17,13 +17,16 @@ source=("$pkgname::git+https://github.com/Caleb1994/peach.git" "LICENSE")
 sha512sums=('SKIP'
             '98cc6c6f3071b93c9cb83dbaa78d80bc28a8e37bee0a01230d841dfacbd725da987edd7e69e8cfb08235eb29d7894969c5447d734b0ecedb7bc5ad69d9baab2f')
 
-prepare() {
-  grep -iRl 'python' "$pkgname" | xargs sed -i 's|python$|python2|'
-}
-
 pkgver() {
   cd $pkgname
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  git submodule init
+  git submodule update
+  grep -iRl 'python' . | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
