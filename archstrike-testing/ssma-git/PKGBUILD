@@ -1,0 +1,42 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=ssma-git
+pkgver=20160906.r16
+pkgrel=1
+groups=('archstrike' 'archstrike-analysis' 'archstrike-malware')
+arch=('any')
+pkgdesc="Simple Static Malware Analyzer"
+url="https://github.com/secrary/SSMA"
+license=('GPL3')
+depends=('python' 'python-pefile' 'python-magic' 'python-yara' 'python-gitpython' 'python-virustotal-api' 'ssdeep')
+makedepends=('git')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  sed -i '2i # -*- coding: utf-8 -*-' ssma.py
+}
+
+package() {
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  chmod 755 ${pkgdir}/usr/share/${pkgname}/ssma.py
+
+cat > "${pkgdir}/usr/bin/ssma" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+./ssma.py "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/ssma"
+}
