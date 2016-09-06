@@ -5,7 +5,7 @@ _pkgname=ruler
 buildarch=220
 
 pkgname=ruler-git
-pkgver=20160901.r8
+pkgver=20160906.r13
 pkgrel=1
 pkgdesc="A tool that allows you to interact with Exchange servers through the MAPI/HTTP protocol."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
