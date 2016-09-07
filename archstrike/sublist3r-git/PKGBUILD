@@ -3,13 +3,13 @@
 buildarch=1
 
 pkgname=sublist3r-git
-pkgver=20160717.r50
+pkgver=20160907.r52
 pkgrel=1
 arch=('any')
 groups=('archstrike' 'archstrike-dns' 'archstrike-scanners')
 pkgdesc="A Fast subdomains enumeration tool for penetration testers"
 license=('GPL2')
-depends=('python2-dnspython' 'python2-requests')
+depends=('python2-argparse' 'python2-dnspython' 'python2-requests')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/aboul3la/Sublist3r.git")
 sha512sums=('SKIP')
