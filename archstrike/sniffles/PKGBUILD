@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=sniffles
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A Packet Capture Generator for IDS and Regular Expression Evaluation"
@@ -24,4 +24,6 @@ build() {
 package() {
   cd "$pkgname-$pkgver"
   python setup.py install --root="$pkgdir" --optimize=1 
+  # fix conflict issue
+  mv $pkgdir/usr/bin/rulegen $pkgdir/usr/bin/${pkgname}-rulegen
 }
