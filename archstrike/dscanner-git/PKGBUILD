@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=200
+buildarch=192
 
 pkgname=dscanner-git
 pkgver=20160906.r980
-pkgrel=1
+pkgrel=2
 pkgdesc="Swiss-army knife for D source code"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/Dscanner"
 license=('custom')
 depends=('glibc')
