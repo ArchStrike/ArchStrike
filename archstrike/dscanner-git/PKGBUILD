@@ -3,8 +3,8 @@
 buildarch=192
 
 pkgname=dscanner-git
-pkgver=20160906.r980
-pkgrel=2
+pkgver=20160907.r982
+pkgrel=1
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
 url="https://github.com/Hackerpilot/Dscanner"
