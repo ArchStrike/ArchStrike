@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pwntools
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='CTF framework and exploit development library'
 arch=('any')
 url='https://github.com/Gallopsled/pwntools'
@@ -37,8 +37,8 @@ package() {
     install -Dm644 LICENSE-pwntools.txt "$pkgdir/usr/share/licenses/$pkgname/license-pwntools.txt"
    
     # fix conflict bins
-    mv "$pkgdir/usr/bin/checksec" "$pkgdir/usr/bin/binjitsu-checksec"
-    mv "$pkgdir/usr/bin/disasm" "$pkgdir/usr/bin/binjitsu-disasm"
-    mv "$pkgdir/usr/bin/errno" "$pkgdir/usr/bin/binjitsu-errno"
+    mv "$pkgdir/usr/bin/checksec" "$pkgdir/usr/bin/pwntools-checksec"
+    mv "$pkgdir/usr/bin/disasm" "$pkgdir/usr/bin/pwntools-disasm"
+    mv "$pkgdir/usr/bin/errno" "$pkgdir/usr/bin/pwntools-errno"
 
 } 
