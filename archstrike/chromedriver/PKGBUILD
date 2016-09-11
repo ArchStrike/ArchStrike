@@ -3,7 +3,7 @@
 buildarch=200
 
 pkgname=chromedriver
-pkgver=2.23
+pkgver=2.24
 pkgrel=1
 pkgdesc="Standalone server which implements WebDriver's wire protocol"
 arch=('i686' 'x86_64' 'aarch64')
@@ -13,8 +13,8 @@ depends=('libxi' 'gconf' 'nss')
 optdepends=('chromium' 'google-chrome' 'fontconfig')
 source_i686=("http://chromedriver.storage.googleapis.com/$pkgver/${pkgname}_linux32.zip")
 source_x86_64=("http://chromedriver.storage.googleapis.com/$pkgver/${pkgname}_linux64.zip")
-sha512sums_i686=('2737406c06f0ab97829638f7a24c3466e4bec97bd023a32e1b94a6eeb8b7c7080afc8b090197f64817157e0ca3127d40bc57b7a4aa8147942ff7a73284942370')
-sha512sums_x86_64=('a151cd6ed75b30a4e66632ce2200c8ac873a0e1c18255cf58fae910b57c82edbdbf6adc1418805591b2214769a88f7fecf5bce3e032f550bf0780c70c3c7fefc')
+sha512sums_i686=('36d853050c58bfc79e3b04e14f9c00cb3b5dad42cbc6a7433b06ef841184443750d714d7a5c80528e237831adf68ddb3f24540b9f19e6601e9e483e57f50cc7b')
+sha512sums_x86_64=('ae1fa127560af1b8419c273f9e23253a19423276294cb920c87b0c209134244315c4d3878b9025589471d72056abb0087ef897f684e28d63b5fc71d628dd1791')
 
 package() {
   cd ${srcdir}
