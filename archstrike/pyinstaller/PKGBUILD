@@ -5,12 +5,12 @@ buildarch=1
 pkgname=pyinstaller
 _pkgname=PyInstaller
 pkgver=3.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Bundles a Python application and all its dependencies into a single package."
 url="https://github.com/pyinstaller/pyinstaller"
-depends+=('python' 'python-crypto' 'binutils')
+depends+=('python2' 'python2-crypto' 'binutils')
 depends_x86_64=('lib32-zlib' 'gcc-multilib' 'lib32-glibc')
-makedepends=('python-setuptools')
+makedepends=('python2-setuptools')
 license=('GPL')
 arch=('any')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
@@ -18,12 +18,12 @@ sha512sums=('568facc21e9ee06ff3f505c4e413d3a17329cfa219e62dca0a06ffe746e969b2913
 
 build() {
     cd ${_pkgname}-${pkgver}
-    python setup.py build
+    python2 setup.py build
 }
 
 package() {
     cd ${_pkgname}-${pkgver}
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
     install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}"
-    python setup.py install --root="${pkgdir}" --optimize=1 
+    python2 setup.py install --root="${pkgdir}" --optimize=1 
 }
