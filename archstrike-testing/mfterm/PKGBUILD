@@ -3,8 +3,8 @@
 buildarch=216
 
 pkgname=mfterm
-pkgver=1.0.4
-pkgrel=3
+pkgver=1.0.6
+pkgrel=1
 pkgdesc="Terminal for working with Mifare Classic 1-4k tags"
 url="https://github.com/4ZM/mfterm"
 arch=('x86_64' 'i686' 'armv6h' 'amv7h' 'aarch64')
@@ -13,7 +13,7 @@ groups=('archstrike' 'archstrike-hardware')
 depends=('libnfc')
 makedepends=('automake' 'readline' 'openssl')
 source=("$pkgname-$pkgver.tar.gz::https://github.com/4ZM/mfterm/archive/v${pkgver}.tar.gz")
-sha512sums=('b1a5174a2e51d18c215ec99dc35b3e219297f0a16cbe5403ec1dca05fc282e3dc3a6955b4b5d39c380794ecfc1f327ac2a5310a1b5562749205f4f317f91c183')
+sha512sums=('22232e2efc465c9bfb072a85bccb28f1a5e6d9f8b4c9316f6e2e4d291e27cf74508445ac9765c1a3b851faea9d09f99e2086bce9d147984919e24cfe9129d204')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
