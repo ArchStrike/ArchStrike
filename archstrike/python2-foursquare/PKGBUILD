@@ -4,27 +4,27 @@
 buildarch=1
 
 pkgname=python2-foursquare
-pkgver=1!2015.5.26
+pkgver=2016.9.12
 pkgrel=1
 pkgdesc="easy-as-pie foursquare wrapper library"
 url="http://github.com/mLewisLogic/foursquare"
 depends=('python2' )
-makedepends=('python2-setuptools' )
+makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/ae/e3/309be49bc13b6b07e177857b3f4b15afed9cce8d3e24d80cb6b7bf6b9e07/foursquare-1!2015.5.26.tar.gz")
-sha512sums=('44d27f2acf70bc85b7a14e98823c5cdfcb1710da03e4becc56d3f47c0ed3f49cd85312ce7adb4ef4400804d6b084765978abb7cf1fb9af8d8e109d0417b6852f')
+source=("https://pypi.python.org/packages/7e/9f/21ef283c50eb576eaebb0525d8a988baffe4d59ac2bbb1f9d84434bdf616/foursquare-1!${pkgver}.tar.gz")
+sha512sums=('b2dd53eb919f4fd5df84737c15dbd483f5741d11d0f006f4e12397d4669ef423aee71884ffc368e726dad20220183ec3840206c3a6178e706494ab83223a0c9c')
 
 prepare() {
-    grep -iRl 'python' foursquare-$pkgver | xargs sed -i 's|python$|python2|'
+    grep -iRl 'python' foursquare-1!$pkgver | xargs sed -i 's|python$|python2|'
 }
 
 build() {
-    cd $srcdir/foursquare-$pkgver
+    cd $srcdir/foursquare-1!$pkgver
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/foursquare-$pkgver
+    cd $srcdir/foursquare-1!$pkgver
     python2 setup.py install --root="$pkgdir" --optimize=1
 }
