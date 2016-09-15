@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=owtf-git
-pkgver=r1563.df10777
+pkgver=r1565.be9638c
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="The Offensive (Web) Testing Framework"
@@ -15,7 +15,7 @@ depends=('python2-jinja' 'python2-markdown' 'python2-pyvirtualdisplay'
          'python2-pexpect' 'python2-lxml' 'java-environment' 'ptp'
          'python2-pyopenssl' 'python2-beautifulsoup4'                                   'python2-python-owasp-zap-v2' 'python2-ipaddr'
          'python2-sqlalchemy' 'python2-six' 'python2-psycopg2'
-         'python2-cookies' 'python2-easyprocess' 'postgresql')
+         'python2-cookies' 'python2-easyprocess' 'postgresql' 'net-tools')
 optdepends=('tor' 'proxychains-ng' 'skipfish' 'metagoofil' 'set' 'wpscan' 'theharvester'
       'metasploit' 'whatweb' 'cms-explorer' 'wapiti' 'arachni'
       'dnsrecon' 'dirbuster' 'w3af' 'lbd' 'nikto' 'tlssled'
