@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=boxjs-git
-pkgver=20160909.r93
+pkgver=1.0.0
 pkgrel=1
 groups=('archstrike' 'archstrike-analysis')
 arch=('any')
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  npm install
+  npm install --global --production
   find . -name package.json | xargs sed -i "s|${srcdir}|/usr/share/${pkgname}|"
 }
 
@@ -34,11 +34,4 @@ package() {
 
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-
-cat > "${pkgdir}/usr/bin/boxjs" <<EOF
-#!/bin/sh
-cd /usr/share/${pkgname}
-node run.js "\$@"
-EOF
-chmod 755 "${pkgdir}/usr/bin/boxjs"
 }
