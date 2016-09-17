@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=xssya-git
-pkgver=20160902.r15
+pkgver=20160917.r16
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Cross Site Scripting Scanner & Vulnerability Confirmation (Working in two Methods)"
