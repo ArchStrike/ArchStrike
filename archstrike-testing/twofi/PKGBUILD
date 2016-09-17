@@ -4,21 +4,37 @@ buildarch=1
 
 pkgname=twofi
 pkgver=2.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='Twitter Words of Interest'
 arch=('any')
 url="http://www.digininja.org/projects/twofi.php"
 license=('CCPL')
-depends=('ruby')
-source=("http://www.digininja.org/files/twofi_$pkgver-beta.tar.bz2")
-sha512sums=('e1907abe4333fe039aa0fcb2571a9dbe617fd74bea39243d21592a39892d771591b0fb6912602d4ae5a74b4448030782dfe455d9ee7685be34abff4dee5601b4')
+depends=('ruby' 'ruby-bundler')
+source=("http://www.digininja.org/files/twofi_$pkgver-beta.tar.bz2" 'bundler.patch')
+sha512sums=('e1907abe4333fe039aa0fcb2571a9dbe617fd74bea39243d21592a39892d771591b0fb6912602d4ae5a74b4448030782dfe455d9ee7685be34abff4dee5601b4'
+            '8a66540f7675c72b42b1f96b2d883b5f3066c34054ae913b8494205f240fe1cdf74c553b088486a632f7ffc57346a65d9bc7db1d0a589df8bbef1c19435a876b')
+
+prepare() {
+  cd ${pkgname}
+  patch -Np1 -i ${srcdir}/bundler.patch
+}
 
 package() {
+  cd ${pkgname}
   # Base directories.
-  install -dm755 "$pkgdir/usr/share/doc/twofi"
+  install -dm755 "$pkgdir/usr/share/doc/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "$pkgdir/usr/bin"
 
-  install -m644 "$srcdir/twofi/README" "$pkgdir/usr/share/doc/twofi/README"
-  install -m755 "$srcdir/twofi/twofi.rb" "$pkgdir/usr/bin/twofi"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cd ${pkgdir}/usr/share/${pkgname}
+  bundle install --deployment
+
+cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+ruby twofi.rb "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
