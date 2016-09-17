@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pupy-git
-pkgver=20160905.r549
+pkgver=20160917.r550
 pkgrel=1
 arch=('any')
 url="https://github.com/n1nj4sec/pupy"
