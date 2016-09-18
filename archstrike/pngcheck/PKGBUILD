@@ -5,8 +5,8 @@ buildarch=220
 
 pkgname=pngcheck
 pkgver=2.3.0
-pkgrel=1
-groups=('archstrike' 'archstrike-steganography')
+pkgrel=2
+groups=('archstrike' 'archstrike-stego')
 pkgdesc="Verifies the integrity of PNG, JNG and MNG files by checking the CRCs and decompressing the image data"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.libpng.org/pub/png/apps/pngcheck.html"
