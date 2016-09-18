@@ -6,8 +6,8 @@ buildarch=220
 
 pkgname=outguess
 pkgver=0.2
-pkgrel=1
-groups=("archstrike" "archstrike-crypto" "archstrike-steganography")
+pkgrel=2
+groups=("archstrike" "archstrike-crypto" "archstrike-stego")
 pkgdesc="A universal steganographic tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.outguess.org"
