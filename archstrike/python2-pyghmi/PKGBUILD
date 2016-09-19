@@ -10,7 +10,7 @@ arch=('any')
 url="https://github.com/openstack/pyghmi"
 license=('GPL')
 depends=('python2')
-makedepends=('python2-setuptools')
+makedepends=('git' 'python2-setuptools')
 source=("https://github.com/openstack/pyghmi/archive/$pkgver.tar.gz")
 sha512sums=('892bf5a255e557362b61c72f59995a9456d0ae8d790cd2db9fee13a98db6994ebe476042f0d14dab668718a1b72559b32fa5b45b64c683ac44ddfdc0c2f56cb5')
 
