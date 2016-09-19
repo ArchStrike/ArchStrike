@@ -1,0 +1,28 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=shellsploit
+_pkgname=shellsploit-framework
+pkgver=0.3
+pkgrel=1
+groups=('archstrike' 'archstrike-exploit')
+arch=('any')
+pkgdesc="New Generation Exploit Development Kit"
+url="https://github.com/b3mb4m/shellsploit-framework"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://github.com/b3mb4m/shellsploit-framework/archive/v${pkgver}.tar.gz")
+sha512sums=('cebc40089966094417b1c29ad26e088d033323782dad2f1f449a3c48761d8be35dba7b6ef442145e7289e61c0c3c665e83fb6a1cd01b5a9805bb9abc90356898')
+
+prepare() {
+  grep -iRl 'python' ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  python2 easyinstall.py install --root="${pkgdir}" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+}
