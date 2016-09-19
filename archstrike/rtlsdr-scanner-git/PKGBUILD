@@ -3,7 +3,7 @@
 buildarch=204
 
 pkgname=rtlsdr-scanner-git
-pkgver=0.r943.b55e5a4
+pkgver=0.r945.7901abf
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A cross platform Python frequency scanning GUI for the OsmoSDR rtl-sdr library"
