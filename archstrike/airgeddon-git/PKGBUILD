@@ -15,7 +15,7 @@ optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git" "remove-update.patch")
 sha512sums=('SKIP'
-            '37dab1d94bef4ba1fee3457bf77ba5882a0d6932b4c8e214526753dea24efeb7caa89e489524a8407c8832e5cdad3b764a58560ac30cc66100d30db9a514d544')
+            '7fa7f37d081c869e72ec07df88d8e89773eac88c76190a90cb3f66bdb78cf32a3762b33391e1f28cfcc503d4b85116c2b678d67dfd3cf6dad6b5bd3da506ae97')
 
 pkgver() {
   cd $pkgname

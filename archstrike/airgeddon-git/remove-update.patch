@@ -1,8 +1,8 @@
 diff --git a/airgeddon.sh b/airgeddon.sh
-index 48e9126..90c5bf8 100644
+index ec2b27d..9d30b3c 100755
 --- a/airgeddon.sh
 +++ b/airgeddon.sh
-@@ -6,7 +6,7 @@ airgeddon_version="3.42"
+@@ -6,7 +6,7 @@ airgeddon_version="4.21"
  debug_mode=0
  
  #Enabled 1 / Disabled 0 - Auto update feature (it has no effect on debug mode) - Default value 1
@@ -11,10 +11,3 @@ index 48e9126..90c5bf8 100644
  
  #Enabled 1 / Disabled 0 - Auto change language feature - Default value 1
  auto_change_language=1
-@@ -4478,4 +4478,4 @@ function echo_brown() {
- 
- trap capture_traps INT
- trap capture_traps SIGTSTP
--welcome
-\ No newline at end of file
-+welcome
