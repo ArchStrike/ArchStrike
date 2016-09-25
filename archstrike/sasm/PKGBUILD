@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=sasm
-pkgver=3.5.1
+pkgver=3.6.0
 pkgrel=1
 pkgdesc="A simple crossplatform IDE for NASM, MASM, GAS and FASM assembly languages"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,7 +11,7 @@ url="https://github.com/Dman95/SASM"
 license=('custom')
 depends=('nasm' 'gdb' 'qt5-base')
 makedepends=('qt4>=4.8')
-sha512sums=('4e8ad86732abe29f983cbec6ff2c3994af65340f6f00ceb2febb3afa936a9c53662571f51edf1c89cbe0332ad9c70180292412ed3cae198c868a0b0eb50ca402')
+sha512sums=('ddbcfed1de198e42905b5c77c0cef4f98d99d3a87e0de06b3024de7f718daef6223036c92bdf9350c3d4ac9d06fa7269536b4beaf04e9aab1ec3755f928d03c0')
 source=("https://github.com/Dman95/SASM/archive/v$pkgver.tar.gz")
 
 build() {
