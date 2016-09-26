@@ -2,8 +2,8 @@
 
 buildarch=1
 
-pkgname=o-saft
-pkgver=15.12.15
+pkgname=o-saft-git
+pkgver=r1454.3928cab
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='An easy to use tool to show informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations'
@@ -12,8 +12,16 @@ url='https://www.owasp.org/index.php/O-Saft'
 license=('GPL')
 depends=('ruby' 'perl-net-dns' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-io-socket-inet6' 'tk' 'coreutils')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/OWASP/O-Saft#tag=$pkgver")
+provides=('o-saft')
+replaces=('o-saft')
+conflicts=('o-saft')
+source=("$pkgname::git+https://github.com/OWASP/O-Saft.git")
 sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
   cd "$pkgname"
@@ -23,9 +31,9 @@ package() {
 
 cat > "$pkgdir/usr/bin/o-saft" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/o-saft
+cd /usr/share/${pkgname}
 perl o-saft.pl "\$@"
 EOF
 
-  chmod 755 "$pkgdir/usr/bin/$pkgname"
+  chmod 755 "$pkgdir/usr/bin/o-saft"
 }
