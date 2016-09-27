@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=mibble
-pkgver=2.9.3
+pkgver=2.9.4
 pkgrel=1
-pkgdesc="Mibble is an open-source SNMP MIB parser (or SMI parser) written in Java. It can be used to read SNMP MIB files as well as simple ASN.1 files."
+pkgdesc="An open-source SNMP MIB parser (or SMI parser) written in Java. It can be used to read SNMP MIB files as well as simple ASN.1 files."
 url="http://www.mibble.org"
 groups=('archstrike' 'archstrike-misc')
 license=('GPL')
-depends=('java-runtime' 'bash')
+depends=('java-environment' 'bash')
 arch=(any)
 source=(http://www.mibble.org/download/stable/$pkgver/mibble-$pkgver.tar.gz)
-md5sums=('b786c28b06f909a22c4c2732831332f4')
+sha512sums=('4ae3abea5084c9fa6e33f326a383d7bcc367298db8c8b008b58e4409faff5be88066c9ec4e16d12eb9ad30465cb26331b8d6ffa0ab3b573a095b13cdfc220eef')
 
 package() {
   cd "$srcdir/mibble-$pkgver"
