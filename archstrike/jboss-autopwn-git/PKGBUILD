@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=jboss-autopwn-git
 pkgver=0.r1.3bc2d29
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A JBoss script for obtaining remote shell access"
 url="https://github.com/SpiderLabs/jboss-autopwn"
@@ -27,7 +27,7 @@ prepare() {
   cd "$srcdir/jboss-autopwn"
 
   sed -i 's/nc/sbd/' *.sh
-  sed -i 's|framework3|/usr/share/metasploit|' *.sh
+  sed -i 's|framework3|/opt/metasploit|' *.sh
 }
 
 package() {
