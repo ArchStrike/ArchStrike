@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=perl-xml-dom
-pkgver=1.45
-pkgrel=3
+pkgver=1.46
+pkgrel=1
 pkgdesc="Implements Level 1 of W3's DOM"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://search.cpan.org/dist/XML-DOM'
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0' 'perl-xml-parser>=2.30' 'perl-xml-regexp' 'libxml-perl>=0.07' 'perl-libwww')
 options=('!emptydirs')
 source=(http://www.cpan.org/authors/id/T/TJ/TJMATHER/XML-DOM-${pkgver}.tar.gz)
-sha512sums=('559082f36d96dee28fd8ade7867b56abbd904e8fd6f585a4a2b348b2a6ae7e7892a2974b3d1983a296044e08ce346fdd006999aab364638d8c998dcee441fccf')
+sha512sums=('0fc96571996262bb0a99bd5f85e5d9e0f9c71c604c46c74129f0f560aa2749f7b945c591bfc13b9178d2b8d83826d5306f4ac71db33b51c55ce4d76398bab13d')
 
 build() {
   cd "$srcdir/XML-DOM-$pkgver"
