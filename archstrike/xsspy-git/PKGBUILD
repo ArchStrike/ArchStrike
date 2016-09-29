@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=xsspy-git
-pkgver=20160620.r26
+pkgver=20160928.r29
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
