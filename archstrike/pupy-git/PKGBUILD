@@ -3,18 +3,27 @@
 buildarch=1
 
 pkgname=pupy-git
-pkgver=20160917.r550
+pkgver=20160928.r571
 pkgrel=1
-arch=('any')
-url="https://github.com/n1nj4sec/pupy"
-groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
-pkgdesc="Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python."
+pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python.'
+url='https://github.com/n1nj4sec/pupy'
 license=('custom')
-depends=('python2' 'python2-pefile' 'python2-rpyc' 'python2-crypto' 'python2-yaml' 'scapy' 'pupy-binaries-git' 'python2-future' 'python2-rsa' 'impacket')
+arch=('any')
+depends=('python2-pefile' 'python2-rpyc' 'python2-crypto' 'python2-yaml' 'scapy' 'pupy-binaries-git' 'python2-future' 'python2-rsa' 'impacket')
 makedepends=('git')
-options=(!strip)
-source=("$pkgname::git+https://github.com/n1nj4sec/pupy.git")
-sha512sums=('SKIP')
+groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
+options=('!strip')
+
+source=(
+  "$pkgname::git+https://github.com/n1nj4sec/pupy.git"
+  'pupy-binaries.git::git+https://github.com/n1nj4sec/pupy-binaries.git'
+  'git+https://github.com/AlessandroZ/LaZagne'
+  'git+https://github.com/gaffe23/linux-inject.git'
+  'git+https://github.com/CoreSecurity/impacket'
+  'git+https://github.com/secdev/scapy'
+)
+
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd $pkgname
@@ -22,13 +31,45 @@ pkgver() {
 }
 
 prepare() {
-  cd ${pkgname}
-  git submodule init pupy/external/LaZagne
-  git submodule update
-  grep -iRl 'python' "${srcdir}/${pkgname}" | xargs sed -i 's|python$|python2|'
+  cd $pkgname
+
+  # remove the LaZagne submodule and use the package version
+  git submodule deinit -f pupy/external/LaZagne
+  git rm pupy/external/LaZagne
+  rm -rf .git/modules/pupy/external/LaZagne
+  rm -rf ../LaZagne/.git
+  mv ../LaZagne pupy/external/LaZagne
+
+  # remove the impacket submodule and use the package version
+  git submodule deinit -f pupy/external/impacket
+  git rm pupy/external/impacket
+  rm -rf .git/modules/pupy/external/impacket
+  rm -rf ../impacket/.git
+  mv ../impacket pupy/external/impacket
+
+  # remove the linux-inject submodule and use the package version
+  git submodule deinit -f client/sources-linux/linux-inject
+  git rm client/sources-linux/linux-inject
+  rm -rf .git/modules/client/sources-linux/linux-inject
+  rm -rf ../linux-inject/.git
+  mv ../linux-inject client/sources-linux/linux-inject
+
+  # remove the scapy submodule and use the package version
+  git submodule deinit -f pupy/packages/src/scapy
+  git rm pupy/packages/src/scapy
+  rm -rf .git/modules/pupy/packages/src/scapy
+  rm -rf ../scapy/.git
+  mv ../scapy pupy/packages/src/scapy
+
+  # update and clone the remaining submodules
+  git submodule sync
+  git submodule foreach git fetch --all
+  git submodule update --init --recursive
+
+  while read -r; do
+      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
 }
-
-
 
 package() {
   cd $pkgname
@@ -39,24 +80,26 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/pupy"
 
 cat > "$pkgdir/usr/bin/pp.py" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/pupy/pupy
 python2 pp.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/pp.py"
+
+  chmod 755 "$pkgdir/usr/bin/pp.py"
 
 cat > "$pkgdir/usr/bin/pupygen" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/pupy/pupy
 python2 pupygen.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/pupygen"
+
+  chmod 755 "$pkgdir/usr/bin/pupygen"
 
 cat > "$pkgdir/usr/bin/pupysh" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/pupy/pupy
 python2 pupysh.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/pupysh"
-}
 
+  chmod 755 "$pkgdir/usr/bin/pupysh"
+}
