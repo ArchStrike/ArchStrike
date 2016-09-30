@@ -42,3 +42,11 @@ Please note however, that using 1 and 220 is not interchangable. A `buildarch` o
 * If it is not a new version but a different update such as changing something in the PKGBUILD that will effect the build process of the package, bump the `pkgrel` number by 1 and keep `pkgver` the same.
 
 * Ensure that `buildarch` is set correctly (see above).
+
+## Note about -git packages
+
+When adding a package that pulls the source from a git or svn repository, add a `.gitignore` file containing the name of the cloned repository.
+
+* For example, if something-git clones the repository called `something`, then `echo something > .gitignore` and commit the .gitignore file as well.
+
+
