@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=novnc-git
-pkgver=r1058.ca99791
+pkgver=r1074.00df309
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="VNC client using HTML5 (Web Sockets, Canvas) with encryption (wss://) support."
