@@ -4,7 +4,7 @@ _pkgname=hyperfox
 buildarch=220
 
 pkgname=hyperfox-git
-pkgver=20150113.r45
+pkgver=20161004.r58
 pkgrel=1
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="A security tool for proxying and recording HTTP and HTTPs traffic."
@@ -16,7 +16,7 @@ depends=('glibc')
 makedepends=('go' 'git')
 source=("$_url::git://github.com/xiam/hyperfox.git" "https://raw.githubusercontent.com/xiam/hyperfox/master/LICENSE")
 sha512sums=('SKIP'
-            '79ba530d4a0929d024a88f8923bd210ddb98dce3ac1b73f02bff25dc644cff8ab02bf70db04463fc2293fd90df471c283d4dd1fe71a4218b6fc6d902cf601fa2')
+            '24a3e733c61dba72fac1b216620219817ab64b372606f8ebb71991d712d0f7486c67b42255de501832e5903255ae8370e4d3d57f8be223ec68543d80b08fac63')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
