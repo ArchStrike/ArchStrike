@@ -2,8 +2,8 @@
 
 buildarch=1
 
-pkgname=boxjs-git
-pkgver=20161001.r130
+pkgname=box-js
+pkgver=1.3.0
 pkgrel=1
 groups=('archstrike' 'archstrike-analysis')
 arch=('any')
@@ -11,34 +11,29 @@ pkgdesc="A tool for studying JavaScript malware."
 url="https://github.com/CapacitorSet/box-js"
 license=('MIT')
 depends=('nodejs' 'gnuplot' 'npm')
-makedepends=('git')
-source=("${pkgname}::git+${url}.git")
-sha512sums=('SKIP')
-
-pkgver() {
-  cd ${pkgname}
-  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd ${pkgname}
-  npm install
-  find . -name package.json | xargs sed -i "s|${srcdir}|/usr/share/${pkgname}|"
-}
+provides=('boxjs-git')
+replaces=('boxjs-git')
+conflicts=('boxjs-git')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('941734898e1e60a69377ae0e3d0f33dc22c5c7e8d529773bf27e302af0aa2326b1e2c3b1afb4001c28e4986148ac766dee0846013026278daefb6ec360716ede')
 
 package() {
-  cd ${pkgname}
+  cd ${pkgname}-${pkgver}
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
+  npm install --production
+  find . -name package.json | xargs sed -i "s|${srcdir}|/usr/share/${pkgname}|"
+
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 
-cat > "${pkgdir}/usr/bin/boxjs" <<EOF
-#!/bin/sh
+cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
+#!/usr/bin/env bash
 cd /usr/share/${pkgname}
 node run.js "\$@"
 EOF
-chmod 755 "${pkgdir}/usr/bin/boxjs"
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+
 }
