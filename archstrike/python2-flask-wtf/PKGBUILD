@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-flask-wtf
-pkgver=0.13
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Simple integration of Flask and WTForms"
 arch=('any')
@@ -13,7 +13,7 @@ license=('BSD')
 depends=('python2-flask' 'python2-wtforms')
 makedepends=('python2-setuptools')
 source=("https://github.com/lepture/flask-wtf/archive/v$pkgver.tar.gz")
-sha512sums=('c476d50511748af8f02cbee8c3db585226287ee1f18e54d6f0b9d815bbb270263ab310ad6a62468e4e0eb6eb12879bc88a4ed1a1d56037b9289fdb45e6a3fb76')
+sha512sums=('131eb94e6af676b1aad9047be90318565972d5bfb7c3afa701bb34788cfbd3730f27b137a204abb3d0e54dd974d3b441a304be2fee99ca7a0a559d0f7b1eceff')
 
 build() {
     cd "$srcdir/flask-wtf-$pkgver"
