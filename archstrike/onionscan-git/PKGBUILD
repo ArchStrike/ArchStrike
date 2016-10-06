@@ -3,14 +3,14 @@
 buildarch=220
 
 pkgname=onionscan-git
-pkgver=20160731.r47
+pkgver=20161003.r48
 pkgrel=1
 pkgdesc="Tool to scan onion services"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/s-rah/onionscan"
 groups=('archstrike' 'archstrike-scanners')
 license=("MIT")
-depends=('glibc' 'libexif')
+depends=('libexif')
 makedepends=('go' 'git')
 source=("$pkgname::git+https://github.com/s-rah/onionscan")
 sha512sums=('SKIP')
@@ -30,6 +30,7 @@ package() {
   GOPATH="$srcdir" go build -v github.com/s-rah/onionscan
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$pkgname"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
-  ln -s "/usr/share/$pkgname/onionscan" "$pkgdir/usr/bin/onionscan"
+  install -Dm755 onionscan $pkgdir/usr/bin/onionscan
+  for i in config  protocol  report  scans  utils; do cp -a --no-preserve=ownership $i "$pkgdir/usr/share/$pkgname/$i"; done
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
