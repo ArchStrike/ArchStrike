@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=o-saft-git
-pkgver=r1476.fba2017
+pkgver=r1479.c2dc388
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='An easy to use tool to show informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations'
@@ -34,6 +34,5 @@ cat > "$pkgdir/usr/bin/o-saft" <<EOF
 cd /usr/share/${pkgname}
 perl o-saft.pl "\$@"
 EOF
-
-  chmod 755 "$pkgdir/usr/bin/o-saft"
+chmod 755 "$pkgdir/usr/bin/o-saft"
 }
