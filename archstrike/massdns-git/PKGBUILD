@@ -3,14 +3,14 @@
 buildarch=220
 
 pkgname=massdns-git
-pkgver=20160822.r57
+pkgver=20160903.r58
 pkgrel=1
 groups=('archstrike' 'archstrike-dns' 'archstrike-networking')
 pkgdesc='A high-performance DNS stub resolver in C'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/blechschmidt/massdns'
 license=('GPL3')
-depends=('ldns')
+depends=('ldns' 'python2')
 makedepends=('git')
 provides=("massdns")
 replaces=("massdns")
@@ -34,4 +34,6 @@ package() {
   install -Dm644 *.txt $pkgdir/usr/share/$pkgname/
   install -Dm755 *.py $pkgdir/usr/share/$pkgname/
   install -Dm644 README.md $pkgdir/usr/share/$pkgname/README.md
+  # fix python issues
+  sed -i 's|python|python2|' $pkgdir/usr/share/$pkgname/{ptr,subbrute}.py 
 }
