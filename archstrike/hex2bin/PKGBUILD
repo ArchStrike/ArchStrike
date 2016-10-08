@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname='hex2bin'
-pkgver='2.2'
-pkgrel=2
+pkgver='2.3'
+pkgrel=1
 pkgdesc='Converts Motorola and Intel hex files to binary.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://hex2bin.sourceforge.net/'
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('glibc')
 groups=('archstrike' 'archstrike-misc')
 source=("http://downloads.sourceforge.net/project/hex2bin/hex2bin/Hex2bin-$pkgver.tar.bz2")
-sha512sums=('47633ef7082966e3c3548aa4edddaae3edc294385cf63caac892c74f0cbfb268b8e6eab927ab4ad39e9545bc1cc3f0ed13079fe7d19349710b9145be08f00312')
+sha512sums=('b92acd955f1bd9466c84031839ec55b08a82cfddf440c0a9e6714e7e55b8ca3844f940649d4a648b2e2446294f197d156ad809b462ae3c5c110e88ac1da206ed')
 
 build() {
   cd "$srcdir/Hex2bin-$pkgver"
