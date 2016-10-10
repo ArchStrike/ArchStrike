@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=ssma-git
-pkgver=20161002.r51
+pkgver=20161010.r54
 pkgrel=1
 groups=('archstrike' 'archstrike-analysis' 'archstrike-malware')
 arch=('any')
