@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=shellsploit-library-git
 pkgver=20161001.r6
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="Exploit development library for python users"
@@ -34,4 +34,7 @@ package() {
   python2 setup.py install --root=${pkgdir} --optimize=1
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  # fix conflicting bin with shellsploit
+  rm "${pkgdir}/usr/bin/shellsploit"
 }
