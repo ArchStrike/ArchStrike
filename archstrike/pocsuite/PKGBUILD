@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=pocsuite
 _pkgname=Pocsuite
-pkgver=2.0.4
-pkgrel=3
+pkgver=2.0.5
+pkgrel=1
 pkgdesc="An open-sourced remote vulnerability testing framework developed by the Knownsec Security Team."
 url="https://github.com/knownsec/Pocsuite"
 groups=('archstrike' 'archstrike-exploit')
@@ -14,7 +14,7 @@ makedepends=('python2-setuptools')
 license=('GPL')
 arch=('any')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('e9baa22ee0e6795124d426527a09a9d89bbedbbdd49092eab3db526a735189e6be6915ca1d2d07e3415cefffd04922477c90c21a1b6c70b995874bae859710c2')
+sha512sums=('dc3e0ebd8e8a42ca930b402472ec41f67fad64f4b0e631b80748de72ac1ff259175a560f671703aeda177ff24ac7f5739e2985ec1ae528671fb30142898c0dac')
 
 prepare() {
   grep -iRl 'python' $_pkgname-$pkgver | xargs sed -i 's|python$|python2|'
