@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-pyvirtualdisplay
-pkgver=0.2
+pkgver=0.2.1
 pkgrel=1
 pkgdesc='Python wrapper for Xvfb, Xephyr and Xvnc'
 url='https://github.com/ponty/pyvirtualdisplay'
@@ -14,7 +14,7 @@ replaces=('pyvirtualdisplay')
 license=('BSD')
 arch=('any')
 source=("https://github.com/ponty/PyVirtualDisplay/archive/${pkgver}.tar.gz")
-sha512sums=('9f1f2e8f3fc9a1ac779c00075dfc721c84fe619c2a02e4b193ebfedfc0fb76b131bf3feb8b4df9a4d8d08473d360638c177f161b43f16a32d4b48864c481e7b7')
+sha512sums=('c7fd446565114dac819e54d5fac5e2c4f73e5066fa7ffd6715f476b106fad2b6ae1957e421631d7a998aa63659f9fcd34942903a5d99e7b5a0d15181ac02ce28')
 
 build() {
   cd PyVirtualDisplay-$pkgver
