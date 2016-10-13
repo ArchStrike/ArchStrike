@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=o-saft-git
-pkgver=r1479.c2dc388
+pkgver=r1488.759b17c
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='An easy to use tool to show informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations'
