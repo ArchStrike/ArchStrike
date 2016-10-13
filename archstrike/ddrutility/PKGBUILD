@@ -5,14 +5,14 @@ buildarch=220
 
 pkgname=ddrutility
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of utilities for use with GNU ddrescue to aid with data recovery"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 url="http://sourceforge.net/projects/ddrutility/"
 license=('GPL3')
 install="$pkgname.install"
-depends=('bash')
+depends=('bash' 'sleuthkit')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz")
 sha512sums=('502d2dca54648f0df480ffd141b707ef89d06d66435f02321b13c08c9a2807557f0909a044b8b67f778d71e168362cef1c7bb16cdfa88c57d0505b9e203a6468')
 
@@ -25,5 +25,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname-$pkgver"
   make DESTDIR="$pkgdir/" install
-        rmdir "$pkgdir/usr/share/aclocal"
+  rmdir "$pkgdir/usr/share/aclocal"
 }
