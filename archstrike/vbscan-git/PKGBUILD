@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=vbscan-git
-pkgver=20160505.r10
-pkgrel=2
+pkgver=20161016.r20
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Black Box vBulletin Vulnerability Scanner"
