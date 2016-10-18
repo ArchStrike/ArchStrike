@@ -1,7 +1,7 @@
 # Maintainer: Will Price <will.price94@gmail.com>
 
 pkgname=mylg
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A General Network diagnostic tool"
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('libpcap')
 makedepends=('go' 'git')
 source=("https://github.com/mehrdadrad/mylg/archive/v$pkgver.tar.gz")
-sha512sums=('c1183b1a31266d2ee7eae7dce1975d392139c169443bdffe9221dd56f6e34100f6f69d2475a07ee571c1c76c68127ee2c461e42a1d0cb16ae3529e2ff8548ce0')
+sha512sums=('c2b7e0ecc13295f9c3d9800fb83607a8c0380065ff5bee107e84a40375622ef736e26f288c98077eb2a2ee541f0c84ed4e003bb058f10bce762d36f2651e88f6')
 
 build() {
     export GOPATH="$srcdir"
