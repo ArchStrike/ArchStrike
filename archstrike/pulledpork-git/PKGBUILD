@@ -5,7 +5,7 @@ _pkgname=pulledpork
 buildarch=1
 
 pkgname=$_pkgname-git
-pkgver=20160824.r287
+pkgver=20161017.r289
 pkgrel=1
 pkgdesc="Snort rule management"
 arch=('any')
