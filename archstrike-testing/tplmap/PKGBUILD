@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=tplmap
-pkgver=0.2
+pkgver=0.3.1
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/epinna/tplmap"
 license=('GPL3')
 depends=('python2' 'python2-yaml' 'python2-requests')
 source=("https://github.com/epinna/tplmap/archive/v${pkgver}.tar.gz")
-sha512sums=('43de8c3e0cc0aaa60490c96c8badfdef85767e25d0a635d7ef1e968d62b4fc3b7703cb60b448a9ed0baaea0a59b6a818f2bf2734e1a3bcdf8ed1172bf4f773f3')
+sha512sums=('bd8752f4afdd299c17b896310306cc5ea92fc54ee8f2a25441d646f87a4fcf68e251f7240160fed738449abd894217f00fa26b0160c404b3196d957a80021eb7')
 
 prepare() {
   grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
