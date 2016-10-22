@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=recon-ng
 pkgname=$_pkgname-git
-pkgver=903.63acef7
+pkgver=904.7723096
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
