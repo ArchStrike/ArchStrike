@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=python2-regex
-pkgver=2016.09.22
+pkgver=2016.10.22
 pkgrel=1
 pkgdesc="Alternative regular expression module, to replace re."
 url="https://bitbucket.org/mrabarnett/mrab-regex"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('PSF')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=("https://pypi.python.org/packages/90/f2/818a691820f01cb845df2680299fce2b97af2f3ff31790b3a65ccab6aaa3/regex-$pkgver.tar.gz")
-sha512sums=('3df7c33de53dcb7e30b12379bb9eae4cad5e4d33b268462df1b7ddd24d735addbaf915079ba52f8e3578243c045e65a7e0cffc56b563207e6d893d1bddd46ad8')
+source=("https://pypi.python.org/packages/38/ad/724eb9832a5e7dd22a99084b503ab5199edc169f23186c3ca61d8f8ca101/regex-$pkgver.tar.gz")
+sha512sums=('215148657351d2bdbfd0792056b190e041b80d327d39f5568f0a56019ce6621282467428c0c07c1caf017c57b91493191398851ef653861f47fb9c4e85ae72ee')
 
 build() {
     cd $srcdir/regex-$pkgver
@@ -22,5 +22,5 @@ build() {
 
 package() {
     cd $srcdir/regex-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
 }
