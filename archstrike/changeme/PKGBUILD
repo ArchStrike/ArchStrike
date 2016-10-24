@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=changeme
-pkgver=0.4.3
+pkgver=0.4.4
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A default credential scanner"
@@ -12,7 +12,7 @@ url='https://github.com/ztgrace/changeme'
 license=('GPL3')
 depends=('python2-requests' 'python2-logutils' 'python2-yaml' 'python2-netaddr' 'python2-responses' 'python2-nose' 'python2-lxml' 'python2-cerberus' 'shodan' 'python2-libnmap')
 source=("https://github.com/ztgrace/changeme/archive/$pkgver.tar.gz")
-sha512sums=('badadf76da0b32051a2a435a51bd9369fdf9e4126f9d783ecbd03ad9ed3ef33c08695d40bb7fb22fcc920ec89690c2362253e7fcc137acc414a268b1d942b9b0')
+sha512sums=('cf3cfbd3c9cdb4d4f5c9ea7a2fa15a34356abc0b48dd9f2b6d7874095fa994502d7a9db438a86bb91046d7757c5e9c9d7d33cc38c2a654706e0dafe81960eb24')
 
 prepare(){
   grep -iRl 'python' "$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
