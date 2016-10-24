@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-elasticsearch
-pkgver=2.4.0
+pkgver=5.0.0
 pkgrel=1
 pkgdesc="Python client for Elasticsearch"
 url="https://github.com/elastic/elasticsearch-py"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 source=("https://github.com/elastic/elasticsearch-py/archive/$pkgver.tar.gz")
-sha512sums=('5a38419b4448850722c6af9181d5f00bed20796b645a336706040244c559893da7f57aa556251b8b2ee022c48f651b5f7646fc51f9f0f20ed3ab1449f244c096')
+sha512sums=('ed5ed433a81cadd71e596b14e7a0d1d69d549f25ea5e5ea3d4de0a755f3939eb3b86820937a4874e6acbfe0aa6d66027b5f696d7fac2fb9e692cbe140ed77417')
 
 build() {
     cd $srcdir/elasticsearch-py-$pkgver
@@ -22,6 +22,6 @@ build() {
 
 package() {
     cd $srcdir/elasticsearch-py-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644  LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
