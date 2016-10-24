@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=perl-io-socket-socks
-pkgver=0.68
-pkgrel=3
+pkgver=0.71
+pkgrel=1
 pkgdesc='Provides a way to create socks client or server both 4 and 5 version'
 url='http://search.cpan.org/~oleg/IO-Socket-Socks-0.68'
 depends=('perl')
@@ -12,7 +12,7 @@ arch=('any')
 license=('GPL')
 options=('!emptydirs')
 source=("http://search.cpan.org/CPAN/authors/id/O/OL/OLEG/IO-Socket-Socks-$pkgver.tar.gz")
-sha512sums=('a6d85e97c33cea7f95092fe268dc79dfe8e107405d9f046f8b7cbab2988eda0dfd5d2fb2727c63648cb2b10f12969428e5eccbe5e14a0680337cbd89aa85d725')
+sha512sums=('c570423e4f1a758896c5c9f0df8c0dfb9ab171607cda02096d93433a21cb9d91380f03c342e7927f89d28a3b910b11d0045f6596879aeea48bf88f44710f5d73')
 
 build() {
   cd  "$srcdir/IO-Socket-Socks-$pkgver"
