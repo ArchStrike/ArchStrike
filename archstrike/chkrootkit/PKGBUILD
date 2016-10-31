@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=chkrootkit
-pkgver=0.50
+pkgver=0.51
 pkgrel=1
 groups=('archstrike' 'archstrike-defense' 'archstrike-forensics')
 pkgdesc="Checks for rootkits on a system"
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
 depends=('bash')
 source=("ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz")
-sha512sums=('9f26fd34e85b58b13dedc5f38a889ae258bb2c0f1ff40e99c149e23f93890e956f94204b1bb2241584454e99168c53b583f52777083454237f3ba343424dba1c')
+sha512sums=('adef6823d069b32305605d0eaa3d3701c6a87900646d9509cebe0fd8a2fec0523595d0dcb4576b32245e7638388d3b43858dbc42be68de9971ac8461fcfdeb34')
 
 build(){
   cd "chkrootkit-${pkgver}"
