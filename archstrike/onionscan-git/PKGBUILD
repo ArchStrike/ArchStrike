@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=onionscan-git
-pkgver=20161003.r48
+pkgver=20161030.r128
 pkgrel=1
 pkgdesc="Tool to scan onion services"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -23,14 +23,14 @@ pkgver() {
 build() {
   cd $pkgname
   GOPATH="$srcdir" go get -d -t github.com/s-rah/onionscan
+  GOPATH="$srcdir" go build -o ${pkgname} -v github.com/s-rah/onionscan 
 }
 
 package() {
   cd $pkgname
-  GOPATH="$srcdir" go build -v github.com/s-rah/onionscan
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -Dm755 onionscan $pkgdir/usr/bin/onionscan
-  for i in config  protocol  report  scans  utils; do cp -a --no-preserve=ownership $i "$pkgdir/usr/share/$pkgname/$i"; done
+  install -Dm755 ${pkgname} $pkgdir/usr/bin/onionscan
+  for i in config  crawldb  deanonymization  design  doc  model  onionscan  protocol  report  spider  templates  utils  webui; do cp -a --no-preserve=ownership $i "$pkgdir/usr/share/$pkgname/$i"; done
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
