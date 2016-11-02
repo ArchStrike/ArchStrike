@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=ssh-audit-git
-pkgver=20161026.r164
+pkgver=20161102.r165
 pkgrel=1
 groups=('archstrike' 'archstrike-scanner')
 pkgdesc='SSH server auditing (banner, key exchange, encryption, mac, compression, compatbility, etc)'
@@ -14,9 +14,8 @@ depends=('python2')
 makedepends=('git')
 provides=("$pkgname")
 conflicts=("$pkgname")
-source=("${pkgname}::git+https://github.com/arthepsy/ssh-audit.git" "LICENSE")
-sha512sums=('SKIP'
-            'df5b9a00507108443a260055e973075016e13b0ca2562be585b01e082f0001f1ce83ece41f1e84d82a06a98525a4ca65977564c0bda35e25e70f69ab695b4c30')
+source=("${pkgname}::git+https://github.com/arthepsy/ssh-audit.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
@@ -24,14 +23,13 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  while read -r; do
-      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
-  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
   cd $pkgname
-  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   install -Dm755 ssh-audit.py "$pkgdir/usr/bin/ssh-audit"
 }
