@@ -4,13 +4,13 @@ buildarch=220
 
 pkgname=suricata
 pkgver=3.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://openinfosecfoundation.org/index.php/download-suricata"
 license=('GPL2')
 groups=('archstrike')
-depends=('nss' 'jansson' 'libcap-ng' 'libnetfilter_queue' 'pcre' 'libnet' 'libpcap' 'libyaml' 'python2-magic' 'file' 'luajit' 'geoip' 'libnetfilter_log')
+depends=('nss' 'jansson' 'libcap-ng' 'libnetfilter_queue' 'pcre' 'libdaq' 'libnet' 'libpcap' 'libyaml' 'python2-magic' 'file' 'luajit' 'geoip' 'libnetfilter_log')
 optdepends=('snort: suricata can use rulesets provided by snort')
 options=('!emptydirs')
 backup=('etc/suricata/suricata.yaml')
@@ -29,7 +29,8 @@ build() {
   --localstatedir=/var \
   HAVE_PYTHON_CONFIG=/usr/bin/python2 \
   --enable-gccprotect \
-  --enable-gccmarch \
+  --enable-gccmarch-native \
+  --enable-hiredis \
   --enable-nfqueue \
   --enable-python \
   --enable-nflog \
@@ -37,7 +38,7 @@ build() {
   --enable-geoip \
   --disable-coccinelle \
   --enable-old-barnyard2 \
-  --with-pic
+  --with-pie
   make
 }
 
