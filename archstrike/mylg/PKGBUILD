@@ -1,4 +1,5 @@
-# Maintainer: Will Price <will.price94@gmail.com>
+# Maintainer: ArchStrike <team[at]archstrike[dot]org>
+# Contributor: Will Price <will.price94@gmail.com>
 
 pkgname=mylg
 pkgver=0.2.5
