@@ -18,3 +18,4 @@ Server = http://www.mirrorservice.org/sites/mirror.archstrike.org/$arch/$repo
 Server = https://www.mirrorservice.org/sites/mirror.archstrike.org/$arch/$repo
 Server = https://mirror.umd.edu/archstrike/$arch/$repo
 Server = http://mirrors.dotsrc.org/archstrike/$arch/$repo
+Server = http://as.mirror.cariibou.com/$arch/$repo
