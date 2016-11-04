@@ -4,12 +4,12 @@ buildarch=1
 
 pkgname=pwntools
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='CTF framework and exploit development library'
 arch=('any')
 url='https://github.com/Gallopsled/pwntools'
 license=('MIT')
-groups=('archstrike' 'archstrike-exploits' 'archstrike-misc')
+groups=('archstrike' 'archstrike-exploit' 'archstrike-misc')
 depends_x86_64+=('lib32-glibc')
 depends=('python2-dateutil' 'python2-paramiko' 'python2-mako' 'python2-pyelftools' 'capstone' 'ropgadget' 'python2-pyserial' 
          'python2-requests' 'python2-pygments' 'python2-pysocks' 'python2-tox' 'python2-pip' 'python2-psutil')
