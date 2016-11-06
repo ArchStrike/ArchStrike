@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=crackle-git
-pkgver=81.cd043af
+pkgver=82.000962b
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers' 'archstrike-bluetooth')
 pkgdesc="Crack and decrypt BLE encryption"
