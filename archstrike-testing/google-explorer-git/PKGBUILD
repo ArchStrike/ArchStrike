@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=google-explorer-git
-pkgver=20161102.r32
+pkgver=20161103.r36
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
