@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team archstrike org>
+
+buildarch=1
+
+pkgname=python2-amoco
+pkgver=2.4.6
+pkgrel=1
+groups=('archstrike' 'archstrike-malware')
+pkgdesc="yet another tool for analysing binaries"
+arch=('any')
+url='https://github.com/bdcht/amoco'
+license=('GPL2')
+depends=('python2-pygments' 'python2-pyparsing' 'python2-ply' 'python2-crysp' 'python2-grandalf' 'python2-sqlalchemy')
+makedepends=('python2-setuptools')
+source=("https://github.com/bdcht/amoco/archive/v$pkgver.tar.gz")
+sha512sums=('6e8afcd63e3e288836cfd01d3b138e377656aadb49a7bf8bf9cd2b2dd79cceba14c6336eb7c20ca9395390d2c3adba05e11b91e8cbad8e547a91090138f2d470')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/amoco-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/amoco-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}
