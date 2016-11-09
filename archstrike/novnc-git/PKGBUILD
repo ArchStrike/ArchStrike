@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=novnc-git
-pkgver=r1125.ef887cd
+pkgver=r1127.37ebc5c
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="VNC client using HTML5 (Web Sockets, Canvas) with encryption (wss://) support."
@@ -23,7 +23,7 @@ pkgver() {
 }
 
 prepare(){
-  grep -iRl 'python' "${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
@@ -37,7 +37,7 @@ package() {
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
 cat >$pkgdir/usr/bin/novnc <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/${pkgname}
 exec ./utils/launch.sh "\$@"
 EOF
