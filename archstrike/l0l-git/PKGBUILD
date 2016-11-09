@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=l0l-git
-pkgver=20161107.r301
+pkgver=20161107.r303
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('i686' 'x86_64' 'armv6h' 'arm7h' 'aarch64')
