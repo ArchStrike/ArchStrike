@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=20161031.r415
+pkgver=20161108.r416
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='The Router Exploitation Framework'
@@ -22,10 +22,7 @@ pkgver() {
 }
 
 prepare() {
-  cd $pkgname
-  while read -r; do
-      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
-  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
@@ -38,10 +35,9 @@ package() {
 
   # Create launcher script
 cat > "$pkgdir/usr/bin/routersploit" << EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/routersploit
 ./rsf.py "\$@"
 EOF
-  # Make launcher script executable
-chmod +x "$pkgdir/usr/bin/$_pkgname"
+chmod 755 "$pkgdir/usr/bin/$_pkgname"
 }
