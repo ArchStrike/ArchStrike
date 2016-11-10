@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=netsniff-ng
-pkgver=0.6.1
-pkgrel=8
+pkgver=0.6.2
+pkgrel=1
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A high performance Linux network sniffer for packet inspection."
 depends=('geoip' 'libsodium' 'liburcu' 'libcli' 'libnet' 'libnetfilter_conntrack' 'libpcap')
@@ -12,26 +12,17 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://netsniff-ng.org/'
 license=('GPL2')
 makedepends=('hardening-wrapper')
-source=(https://github.com/netsniff-ng/netsniff-ng/archive/v${pkgver}.tar.gz
-        netsniff-ng_configureForArch.patch
-        fix_compilation_warnings.patch)
-sha512sums=('4924d5ed9ffa6bb916d0d9f4a648cff71c002b8ae4f4a1a83b51dcacc1fc24230095e7f8d83d4e79b8a23d215830e54f75c4e5193854468db5b81b8111d6fb22'
-            '621cebe2901829cdb324fe7e58fe7057ac8f455aa1586647df740fd195717778c78baeaab79789564ad61ab9ce92242d320fd39af41b93d879c7d17a46811022'
-            '5179351adcb9628c5cc648238c6b039967cae331dd5c023aebd4e2c6b6d09c5409df77bd246e6d158ca5093e47b1a4534d974f3a6c9bced274acaa207a770f9f')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  # cleans up depracated compilation warnings with the newer version of gcc
-  patch -p1 -i "$srcdir"/fix_compilation_warnings.patch
-}
+source=(https://github.com/netsniff-ng/netsniff-ng/archive/v${pkgver}.tar.gz)
+sha512sums=('5d87d4a002d050020731470554b2166e70cc882908874f21285ba8d6a63a8cc56b62439cacff872ed3bbc25c80b6ef93ee6e2426af90484be8a892408243f7f4')
 
 build() {
   cd "$pkgname-$pkgver"
   # forces use of newer libsodium library for curvetun
   export NACL_LIB=sodium
   export NACL_INC_DIR=$(pkg-config --variable=includedir libsodium )/sodium
-  ./configure
-  patch -p1 -i "$srcdir"/netsniff-ng_configureForArch.patch Makefile
+  ./configure --prefix=/usr
+  # fix location of sbin
+  sed -i 's|sbin|bin|' Makefile
   make PREFIX=/usr
 }
 
