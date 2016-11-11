@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-elasticsearch
-pkgver=5.0.0
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Python client for Elasticsearch"
 url="https://github.com/elastic/elasticsearch-py"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 source=("https://github.com/elastic/elasticsearch-py/archive/$pkgver.tar.gz")
-sha512sums=('ed5ed433a81cadd71e596b14e7a0d1d69d549f25ea5e5ea3d4de0a755f3939eb3b86820937a4874e6acbfe0aa6d66027b5f696d7fac2fb9e692cbe140ed77417')
+sha512sums=('a10483c853b3b1b6a9a250ceb51738b5351764cde18140b0b754f6563aa5ed8d3095063e85524968adc0faeb846acebedeeab7a29533e3025db698db228823d9')
 
 build() {
     cd $srcdir/elasticsearch-py-$pkgver
