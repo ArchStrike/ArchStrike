@@ -5,14 +5,14 @@
 buildarch=128
 
 pkgname=b2sum-git
-pkgver=20161028.r96
+pkgver=20161109.r99
 pkgrel=1
 pkgdesc="BLAKE2 file hash sum check. Computes the BLAKE2 (BLAKE2b or -s, -bp, -sp) cryptographic hash of a given file"
 arch=('x86_64')
 url="https://blake2.net/"
 groups=('archstrike')
 license=('custom')
-depends=('glibc')
+depends=('gcc-libs-multilib')
 makedepends=('unzip' 'gnuplot' 'git')
 provides=("b2sum")
 replaces=("b2sum")
@@ -38,8 +38,7 @@ build() {
 
 package() {
   cd "$pkgname/b2sum"
-  install -dm755 "$pkgdir/usr/share/licenses/b2sum"
   install -Dm755 b2sum "${pkgdir}"/usr/bin/b2sum
-  install -Dm644 ../COPYING "${pkgdir}"/usr/share/licenses/b2sum/COPYING
-  install -Dm644 ../README.md "${pkgdir}"/usr/share/b2sum/README.md
+  install -Dm644 ../COPYING "${pkgdir}"/usr/share/licenses/$pkgname/COPYING
+  install -Dm644 ../README.md "${pkgdir}"/usr/share/$pkgname/README.md
 }
