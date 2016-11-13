@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=frida
-pkgver=8.1.10
+pkgver=8.1.12
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android"
 url="http://www.frida.re"
@@ -12,9 +12,9 @@ depends=('python-colorama' 'python-pygments' 'python-prompt_toolkit')
 makedepends=('python-setuptools')
 license=('custom')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=("https://pypi.python.org/packages/a7/2c/c8d896fc515c66ee4f241f7bdf41a63447498027e6d979034aae9ce6e37a/frida-${pkgver}.zip"
+source=("https://pypi.python.org/packages/bb/c3/f971ef4ed1b10ee106a37568c7f47bb23448d2fc0556a3895bb7058f92fb/frida-${pkgver}.zip"
         "https://raw.githubusercontent.com/frida/frida/master/COPYING")
-sha512sums=('3e04777c1e31023f54a4162b12cb5c986c1754baec771eb969f70b30eb413701413e065332373aec681a78ebdd90c7387edf4a67d25b1890aacfac719d4bff07'
+sha512sums=('1bec1d7884824fc805cc351ae41149825b2891ed320834f7a24efc507c4ccf2db31564bf3bb3048ff5ea02976e2f7e7a00e5fe426c995e9355728243f3b1d466'
             'e36c8d5a0538fa4bb3575a60322057f7a687aab04c13deed25399462ba0be74ce6071cc41d967e23b9a96e552462d210280427a945c6cc956919b062878efc9a')
 
 build() {
