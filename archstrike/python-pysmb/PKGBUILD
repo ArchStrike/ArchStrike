@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-pysmb
+_pkgname=pysmb
+pkgver=1.1.18
+pkgrel=1
+pkgdesc="an experimental SMB/CIFS library written in Python"
+arch=('any')
+url="https://miketeo.net/wp/index.php/projects/pysmb"
+license=('GPL')
+depends=('python')
+makedepends=('python-setuptools')
+replaces=('pysmb')
+provides=('pysmb')
+conflicts=('pysmb')
+source=("https://miketeo.net/files/Projects/pysmb/pysmb-$pkgver.zip")
+sha512sums=('8ef20d364d5537a105cb1d84b2f329ead7d7498e91454db423a6f29453421ca0921a695a0068b86163574a4cf093e651e12847320ea8b033e2864d2bedc6b717')
+
+build(){
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="$pkgdir" --optimize=1
+}

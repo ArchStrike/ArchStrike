@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=sfuzz
 pkgver=0.7.0
@@ -8,7 +8,7 @@ pkgrel=3
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="Simple Fuzzer is a simple fuzzer"
 url='http://aconole.brad-x.com/programs/sfuzz.html'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 makedepends=('git')
 source=('git+https://github.com/orgcandman/Simple-Fuzzer')

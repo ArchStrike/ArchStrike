@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=perl-modern-perl
-pkgver=1.20150127
-pkgrel=3
+pkgver=1.20161005
+pkgrel=1
 pkgdesc="enable all of the features of Modern Perl with one command"
 arch=(any)
 url="https://metacpan.org/release/Modern-Perl"
@@ -13,7 +13,7 @@ depends=('perl>=5.10.0')
 makedepends=('perl-module-build')
 options=(!emptydirs)
 source=(http://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-$pkgver.tar.gz)
-sha512sums=('e57a0542937fccc1dfff37bd08a1f2d80725548beddb3439811697de3dc9ca4cb80e4ca96e383ffcdc2d3ec2e9fb6dfe167df95fd974d75a17b5228b7962e1c3')
+sha512sums=('8b015b145203b59e9aaace5bad5fc506aca0944e70f5b157aa1590a19a0b41734d04f8923771a1849f70e5c103d323d2af4f02e8a61449719df281f6dcf74a7f')
 
 build() {
   cd "$srcdir/Modern-Perl-$pkgver"

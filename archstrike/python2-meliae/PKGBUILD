@@ -2,13 +2,13 @@
 # Contributor: Karol "Kenji Takahashi" Woźniak <kenji.sx>
 # Contributor: Dieter Plaetinck <dieter@plaetinck.be>
 
-buildarch=212
+buildarch=220
 
 pkgname=python2-meliae
 pkgver=0.4.0
 pkgrel=1
 pkgdesc="Meliae is a library meant to help people understand how their memory is being used in Python"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://launchpad.net/meliae"
 license=('GPL3')
 depends=('python2')

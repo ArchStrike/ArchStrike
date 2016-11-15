@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=g711conversions
 pkgver=1.0
 pkgrel=2
 groups=('archstrike' 'archstrike-voip')
 pkgdesc="A library needed by rtpinsertsound and rtpmixsound."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.hackingvoip.com/sec_tools.html"
 license=('GPL2')
 source=("http://www.hackingvoip.com/tools/g711conversions.tar.gz")

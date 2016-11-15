@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 _name='mt-st'
 
-buildarch=192
+buildarch=200
 
 pkgname="${_name}-git"
 pkgver=6.ece9c03
 pkgrel=2
 pkgdesc='Utilities for managing magnetic tape storage devices'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/Distrotech/${_name}"
 groups=('archstrike')
 license=('GPL2')

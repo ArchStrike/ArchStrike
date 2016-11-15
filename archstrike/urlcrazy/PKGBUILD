@@ -29,7 +29,6 @@ package() {
   install -dm755 "${pkgdir}/usr/share"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-
   cp -r ${srcdir}/${pkgname}-${pkgver} ${pkgdir}/usr/share/${pkgname}
   ln -s "/usr/share/${pkgname}/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 

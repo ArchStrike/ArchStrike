@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=guymager
 pkgver=0.8.1
@@ -9,7 +9,7 @@ groups=('archstrike' 'archstrike-forensics')
 pkgdesc='A forensic imager for media acquisition'
 url='http://guymager.sourceforge.net'
 license=('GPL')
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 depends=('libguytools' 'libewf' 'libbfio' 'parted')
 makedepends=('qtchooser' 'qt5-tools')
 options=('!strip')

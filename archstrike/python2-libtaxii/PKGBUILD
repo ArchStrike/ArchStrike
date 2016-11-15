@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-libtaxii
-pkgver=1.1.109
-pkgrel=2
+pkgver=1.1.110
+pkgrel=1
 pkgdesc="TAXII Library."
-url="http://taxii.mitre.org/"
+url="https://github.com/TAXIIProject/libtaxii"
 depends=('python2-lxml')
-makedepends=('python2-distribute')
+makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/source/l/libtaxii/libtaxii-${pkgver}.zip")
-sha512sums=('677c8b8abb8316495e13880d0d8ff98141dd949ccce6ef5e49e714f4d990fa80009396724624f0f7f678f5a4ee67fdf99977b080bab042bbca72d4f81d26b644')
+source=("https://github.com/TAXIIProject/libtaxii/archive/$pkgver.tar.gz")
+sha512sums=('e37791f1b0a5ff1e4af82792dfee523b463b0da47951693f990776cfc3a111f570b146bcc8e031b7cac9bf3f6a1973d4ce678093d91e9614998bdcb5ddb31c64')
 
 build() {
   cd libtaxii-"${pkgver}"

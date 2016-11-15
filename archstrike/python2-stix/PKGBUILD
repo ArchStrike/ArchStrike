@@ -3,24 +3,25 @@
 buildarch=1
 
 pkgname=python2-stix
-pkgver=1.2.0.0
-pkgrel=2
+pkgver=1.2.0.2
+pkgrel=1
 pkgdesc="An API for parsing and generating STIX content."
 url="http://stix.mitre.org"
 depends=('python2')
-makedepends=('python2-distribute')
+makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/source/s/stix/stix-${pkgver}.zip")
-sha512sums=('470915dc940b747aa8e464dba69dd14a4cb74ee04851eaa26c307aa3500550744633b95e1a3e5b25bc23ce9aec95ffa432e05c33f8999f844d11130d53e7e28c')
+source=("https://github.com/STIXProject/python-stix/archive/v${pkgver}.tar.gz")
+sha512sums=('f7168c8fb4346a5771a43399052a68e9dc17cf0e00bb6aa4c8595b89ad2d09c4d020663504a591352364fbdb979a0dfa97d0c072891799ce908d570ffad8b92a')
 
 build() {
-  cd stix-"${pkgver}"
+  cd python-stix-"${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd stix-"${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  cd python-stix-"${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm0644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+  sed -i 's|python$|python2|' $pkgdir/usr/lib/python2.7/site-packages/stix/bindings/ttp.py
 }

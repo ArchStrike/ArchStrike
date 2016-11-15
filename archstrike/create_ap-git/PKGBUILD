@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=create_ap-git
-pkgver=r206.a7fa8b5
-pkgrel=2
+pkgver=r227.fc28805
+pkgrel=1
 pkgdesc="A shell script to create a NATed/Bridged Software Access Point(aka WiFi)"
 arch=('any')
 url="https://github.com/oblique/create_ap"
@@ -17,7 +17,7 @@ groups=('archstrike' 'archstrike-wireless')
 provides=('create_ap')
 conflicts=('create_ap')
 replaces=('create_ap')
-install=create_ap.install
+install=create_ap-git.install
 source=(${pkgname}::git+https://github.com/oblique/create_ap.git)
 sha512sums=('SKIP')
 

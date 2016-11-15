@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnsbrute-git
 pkgver=0.r2.b1dc84a
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-dns')
 pkgdesc="Multi theaded DNS bruteforcing"
 arch=('any')
@@ -31,16 +31,11 @@ package() {
   cd "$srcdir/dnsbrute"
 
   # Base directories.
-  install -dm755 "$pkgdir/usr/share/dnsbrute"
+  install -dm755 "$pkgdir/usr/share/${pkgname}"
   install -dm755 "$pkgdir/usr/bin/"
 
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/dnsbrute/"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/${pkgname}/"
+  ln -s "/usr/share/${pkgname}/dnsbrute.py" "${pkgdir}/usr/bin/dnsbrute"
 
-cat > "$pkgdir/usr/bin/dnsbrute" << EOF
-#!/bin/sh
-cd /usr/share/dnsbrute/
-python2 dnsbrute.py "\$@"
-EOF
-  chmod +x "$pkgdir/usr/bin/dnsbrute"
 }
 

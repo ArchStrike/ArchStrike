@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname="libfsntfs"
 pkgver="20160418"
 pkgrel=3
 pkgdesc="iLibrary and tools to access the New Technology File System (NTFS)."
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libfsntfs'
 license=('GPL3')
 depends=('libcsystem' 'libbfio' 'python2')

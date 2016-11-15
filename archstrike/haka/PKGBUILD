@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team[at]archstrike[dot]org>
 # Contributor: Levente Polyak <anthraxx[at]archlinux[dot]org>
 
-buildarch=212
+buildarch=220
 
 pkgname=haka
 pkgver=0.3.0
@@ -9,7 +9,7 @@ pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="Collection of tools that allows capturing TCP/IP packets and filtering them based on Lua policy files"
 url="http://haka-security.org/"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('MPL')
 depends=('wireshark-cli' 'rsync' 'iniparser' 'libnetfilter_queue' 'gawk' 'libedit' 'pcre' 'lua' 'capstone' 'luajit')
 makedepends=('cmake' 'swig' 'doxygen' 'python2-sphinx' 'check' 'iniparser')

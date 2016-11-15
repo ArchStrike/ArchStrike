@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=golismero-git
-pkgver=20160712.r42
+pkgver=20160917.r46
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Opensource web security testing framework"
@@ -36,12 +36,12 @@ package() {
   install -dm755 "$pkgdir/usr/share/golismero"
   install -dm755 "$pkgdir/usr/bin"
 
-  cp -a * "$pkgdir/usr/share/golismero"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/golismero"
 
-  cat > "$pkgdir/usr/bin/golismero" <<EOF
+cat > "$pkgdir/usr/bin/golismero" <<EOF
 #!/bin/sh
 cd /usr/share/golismero
 python2 golismero.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/golismero"
+chmod 755 "$pkgdir/usr/bin/golismero"
 }

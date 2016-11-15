@@ -1,0 +1,22 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=python2-gitdb2
+pkgver=2.0.0
+pkgrel=1
+pkgdesc="IO of git-style object databases"
+arch=('any')
+url='http://pypi.python.org/pypi/gitdb'
+license=('BSD')
+makedepends=('python2-setuptools')
+depends=('python2-async' 'python2-smmap')
+source=("https://pypi.python.org/packages/5c/bb/ab74c6914e3b570ab2e960fda17a01aec93474426eecd3b34751ba1c3b38/gitdb2-$pkgver.tar.gz")
+replaces=('python2-gitdb')
+sha512sums=('0b01a7ab0a8366e576618682904a175616163f2b4e6ab5621f69e171466bf8409e446889c31f6691c258926220ce08be3493e1445958e41f2cead187d51ab971')
+
+package() {
+  cd "$srcdir/gitdb2-$pkgver"
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

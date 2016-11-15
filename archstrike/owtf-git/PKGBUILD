@@ -1,21 +1,21 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=owtf-git
-pkgver=r1562.7a9286b
+pkgver=r1574.0812e37
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="The Offensive (Web) Testing Framework"
 url="https://www.owasp.org/index.php/OWASP_OWTF"
 license=('custom')
-arch=('armv7h' 'armv6h' 'i686' 'x86_64')
+arch=('armv7h' 'armv6h' 'i686' 'x86_64' 'aarch64')
 depends=('python2-jinja' 'python2-markdown' 'python2-pyvirtualdisplay'
          'python2-tornado' 'python2-pycurl' 'python2-rdflib' 'python2-selenium'
          'python2-pexpect' 'python2-lxml' 'java-environment' 'ptp'
          'python2-pyopenssl' 'python2-beautifulsoup4'                                   'python2-python-owasp-zap-v2' 'python2-ipaddr'
          'python2-sqlalchemy' 'python2-six' 'python2-psycopg2'
-         'python2-cookies' 'python2-easyprocess' 'postgresql')
+         'python2-cookies' 'python2-easyprocess' 'postgresql' 'net-tools')
 optdepends=('tor' 'proxychains-ng' 'skipfish' 'metagoofil' 'set' 'wpscan' 'theharvester'
       'metasploit' 'whatweb' 'cms-explorer' 'wapiti' 'arachni'
       'dnsrecon' 'dirbuster' 'w3af' 'lbd' 'nikto' 'tlssled'
@@ -32,7 +32,7 @@ sha512sums=('SKIP'
             '9a46df3e73cb5bfd87b266d591010497368e9d1e2980c3f7c0fbbe7832a37db62fba3f6b72015b9e577f0080073536f5b6a1dfa05316bcc9c4697f34a9f5dc7c'
             'db582f5008530581f02a2073496dfc79a2140fab7b5d477f27bef20d8d72d4b8c88ee9ce3cdaec73530b994fa17234aa7ca18de90ba61fbc59aa85bed485bd15'
             '138e97b092c3b7daaceb434a1478673dd9e558bf89d080ca8886b89ced212e1ec3d9af3148e7d9b32833be1b5ae764f268dfe5efc32e17dc704fac7024499d0d'
-            'e54f4cde532a8ddde75ec1b48c6c756e98b21c275e2c4895771da638c69653884fea90d1ba1968573ab494b35a480fd3a1ae693ac9b385c40e78ff1c963680be'
+            'dcf7325346e275cd97c1bff7ce7aec9b82455686eee4cc5a05a3f6b1fa8618c1243145a4c2dbd2373c345c62e324f1f8a077b722f6ede3fe72830b17c4151072'
             '2c5a4b9c39fcb3439ca818e327a447cbcc6e6ec8edb9e58cee05b04078165d9bce7b663ca1c341862dabdd0c710d1ce999b9c559d6d8b69e49e312391dd2f449'
             '9281032712e6ae2a524696e4906792ce50c697d840a9e54fea64fc5d1db8385988b90a57ee2cbd54f3ae5e39df4682468c187cd1622a75f26571ae1162930df9'
             '6341f3134d3512958079deaf8ff54d4f1f8a334952cd2cfdd931c5fdac8f5d82249c28e15200523117c410a4745c0fdd59103a44605bee244caf8cc26c2234d6'

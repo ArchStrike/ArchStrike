@@ -3,24 +3,24 @@
 buildarch=1
 
 pkgname=python2-modbus_tk
-pkgver=0.5.0
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Implementation of modbus protocol in python"
 url="http://code.google.com/p/modbus-tk/"
 depends=('python2')
-makedepends=('python2-distribute')
+makedepends=('python2-setuptools')
 license=('LGPL')
 arch=('any')
-source=("https://pypi.python.org/packages/source/m/modbus_tk/modbus_tk-${pkgver}.tar.gz")
-sha512sums=('4084ab7f6a3e51a7304f300ceab1b35165b999ef250e2769fc24cc6ebdd5dcd9c99ae98849df0785566b0ff56b21108e64f3721ceb4486a3869ae9f26a29844e')
+source=("https://github.com/ljean/modbus-tk/archive/$pkgver.tar.gz")
+sha512sums=('827dfd2bb94dae5d2c4aeb6fbd71ea692876ec486b71e0a79c68fb5410846d79914160651e6f4dccd70b4959c68c676025907ad971e67088fd6328c449c85835')
 
 build() {
-    cd modbus_tk-"${pkgver}"
+    cd modbus-tk-"${pkgver}"
     python2 setup.py build
 }
 
 package() {
-    cd modbus_tk-"${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    cd modbus-tk-"${pkgver}"
+    python2 setup.py install --root="${pkgdir}" -O1 --skip-build
     find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
 }

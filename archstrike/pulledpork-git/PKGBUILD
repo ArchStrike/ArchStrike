@@ -5,7 +5,7 @@ _pkgname=pulledpork
 buildarch=1
 
 pkgname=$_pkgname-git
-pkgver=20160627.r285
+pkgver=20161114.r299
 pkgrel=1
 pkgdesc="Snort rule management"
 arch=('any')
@@ -34,7 +34,7 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/etc/pulledpork"
 
 cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/$pkgname
 perl pulledpork.pl "\$@"
 EOF

@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <team archstrike org>
 
+buildarch=1
+
 pkgname=scansploit-git
 pkgver=20160415.r9
 pkgrel=1

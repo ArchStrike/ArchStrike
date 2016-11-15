@@ -1,18 +1,18 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=rfcat
-pkgver=150225
+pkgver=161011
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="RF ChipCon-based Attack Toolset"
 url="https://bitbucket.org/atlas0fd00m/rfcat"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 depends=('python2' 'python2-pyusb' 'python' 'ipython')
 source=("https://bitbucket.org/atlas0fd00m/rfcat/downloads/rfcat_$pkgver.tgz")
-sha512sums=('4a6fd4b97a3892d5bed835f3159e058c855e20a3144e2085b7b66ffd88a2afa1331ed182d6264b7639a163db9960f2ab66ffb13d27a08cd263f946d86530ec0a')
+sha512sums=('4cc6106da4f546b0e5ab6327859d2ac922becfda73980f11eca1c941ab8b79118000047acab4eb051d16f87631e932acbf3f403c2c3981096a1011b3cbad2bc7')
 
 package() {
   cd "$srcdir/rfcat_$pkgver"
@@ -21,7 +21,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/rfcat"
   install -dm755 "$pkgdir/usr/bin/"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  
+
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 
  cp -a * "$pkgdir/usr/share/rfcat"

@@ -5,8 +5,8 @@ _perlmod='Net-Frame-Simple'
 buildarch=1
 
 pkgname='perl-net-frame-simple'
-pkgver='1.06'
-pkgrel=2
+pkgver='1.07'
+pkgrel=1
 pkgdesc='Frame crafting made easy.'
 arch=('any')
 url='http://search.cpan.org/~gomor/Net-Frame-Simple-1.05/lib/Net/Frame/Simple.pm'
@@ -14,7 +14,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/G/GO/$_author/$_perlmod-$pkgver.tar.gz")
-sha512sums=('e0fc689781d8dae48224fdd25e7cd00877848b754d5f349bdf7d261bd1db22eb24a7d80d50cf3c7ebfa03e97c561a7a0d5ca8d12ab13a80d89efa5235c63dd53')
+sha512sums=('7fe0a36862cf6640e60a7f2486ecee0078b5ab814c0a3ccaa79b65fed0fcbfdfbc9b7620259c4d0e6e7a38e6888d985eb3150204b05058fca843e3d3ebf32c50')
 
 prepare() {
   cd "$srcdir/$_perlmod-$pkgver"

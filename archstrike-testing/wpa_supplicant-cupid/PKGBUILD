@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Thomas Bächler <thomas@archlinux.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=wpa_supplicant-cupid
 pkgver=2.1
 pkgrel=1
 pkgdesc="A utility providing key negotiation for WPA wireless networks - patched with cupid(https://github.com/lgrangeia/cupid)"
 url="http://hostap.epitest.fi/wpa_supplicant"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('openssl' 'libdbus' 'readline' 'libnl')
 makedepends=('git')
 groups=('archstrike-wireless')

@@ -9,12 +9,12 @@
 * Ensure your PR addresses three of the most common problems:
   * Correctly update the pkgver or pkgrel of the package (see below).
   * Update the checksums if external files have been added or modified.
-  * Is the package only for specific architectures?  Set the `buildarch` variable (see [the README](https://github.com/archlinuxarm/PKGBUILDs/blob/master/README.md))
+  * Is the package only for specific architectures?  Set the `buildarch` variable (see [the README](https://github.com/ArchStrike/ArchStrike/blob/master/README.md))
 
 **Pull requests that fail to meet these requirements may be summarily closed without response.**
 
 ## Submitting new packages
-* If the pull request is for a new package, review the [README](https://github.com/ArchStrike/ArchStrike/README.md) to ensure the package is going into the correct repository and meets all the stated requirements.
+* If the pull request is for a new package, review the [README](https://github.com/ArchStrike/ArchStrike/blob/master/README.md) to ensure the package is going into the correct repository and meets all the stated requirements.
 
 To make sure the `buildarch` variable is correct on your submitted package, please see below.
 
@@ -42,3 +42,11 @@ Please note however, that using 1 and 220 is not interchangable. A `buildarch` o
 * If it is not a new version but a different update such as changing something in the PKGBUILD that will effect the build process of the package, bump the `pkgrel` number by 1 and keep `pkgver` the same.
 
 * Ensure that `buildarch` is set correctly (see above).
+
+## Note about -git packages
+
+When adding a package that pulls the source from a git or svn repository, add a `.gitignore` file containing the name of the cloned repository.
+
+* For example, if something-git clones the repository called `something`, then `echo something > .gitignore` and commit the .gitignore file as well.
+
+

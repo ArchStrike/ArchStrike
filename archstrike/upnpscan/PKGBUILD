@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=upnpscan
 pkgver=0.4
 pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Scans the LAN or a given address range for UPnP capable devices.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.cqure.net/wp/tools/network/upnpscan/'
 source=("http://www.cqure.net/tools/${pkgname}-v${pkgver}-src.tgz")
 license=('GPL3')

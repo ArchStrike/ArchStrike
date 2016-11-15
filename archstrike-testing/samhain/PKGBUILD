@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=samhain
 pkgver=4.1.5
 pkgrel=1
 pkgdesc="File integrity / intrusion detection system"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://la-samhna.de/${pkgname}"
 license=('GPL')
 depends=('audit' 'systemd')

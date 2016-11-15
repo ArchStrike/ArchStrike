@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libguytools
 pkgver=2.0.4
@@ -8,7 +8,7 @@ pkgrel=2
 pkgdesc='A small programming toolbox for Guymager'
 url='https://sourceforge.net/projects/libguytools'
 license=('GPL')
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 depends=('qt5-base')
 makedepends=('qtchooser')
 options=('!strip')

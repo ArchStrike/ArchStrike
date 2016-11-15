@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=bfbtester
 pkgver=2.0.1
 pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Performs checks of single and multiple argument command line overflows and environment variable overflows"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://sourceforge.net/projects/bfbtester/'
 license=('GPL2')
 depends=('glibc')

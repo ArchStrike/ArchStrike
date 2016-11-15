@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=1
 
 pkgname=pytacle
 pkgver=alpha2

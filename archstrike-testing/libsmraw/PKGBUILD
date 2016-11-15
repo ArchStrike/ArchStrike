@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=libsmraw
 pkgver=20160424
 pkgrel=3
 pkgdesc="Library and tools to access the (split) RAW image format"
 url="https://github.com/libyal/libsmraw"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
 depends=('fuse' 'libcsystem' 'python2' 'libbfio')
 source=("https://github.com/libyal/libsmraw/releases/download/20160424/libsmraw-alpha-$pkgver.tar.gz")

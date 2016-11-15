@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname="libregf"
 pkgver="20160424"
 pkgrel=3
 pkgdesc="Library and tools to access the Windows NT Registry File (REGF) format"
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libregf'
 license=('GPL3')
 depends=('fuse' 'libcsystem' 'libbfio' 'python2' 'libfwsi')

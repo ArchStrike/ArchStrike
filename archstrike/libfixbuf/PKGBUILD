@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Jipuf <jipuf@gmx.fr>
 
-buildarch=212
+buildarch=220
 
 pkgname="libfixbuf"
 pkgver="1.7.1"
 pkgrel=2
 pkgdesc="IPFIX Message Format Implementation"
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='http://tools.netsa.cert.org/fixbuf/'
 license=('GPL')
 depends=('glib2')

@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=dirb
 pkgver=2.22
@@ -9,7 +9,7 @@ pkgrel=3
 groups=('archstrike' 'archstrike-scanners' 'archstrike-webapps')
 pkgdesc="A web content scanner, brute forceing for hidden files"
 url='http://dirb.sourceforge.net/'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=("GPL2")
 depends=('curl')
 source=("http://downloads.sourceforge.net/sourceforge/$pkgname/$pkgname$_pkgver.tar.gz")

@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Alexander Duscheleit <jinks@archlinux.us>
 
-buildarch=212
+buildarch=220
 
 pkgname=kyotocabinet-python2
 _pkgname=kyotocabinet-python-legacy
 pkgver=1.18
 pkgrel=1
 pkgdesc="Python2 bindings for Kyoto Cabinet."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://fallabs.com/kyotocabinet/"
 license=('GPL3')
 depends=('kyotocabinet>=1.2.34' 'python2')

@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=python2-pattern
 pkgver=2.6
 pkgrel=1
 pkgdesc="Pattern is a web mining module for the Python programming language."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.clips.ua.ac.be/pattern"
 license=('BSD')
 depends=('python2')

@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=128
+buildarch=136
 
 pkgname=truecrack
 pkgver=35
@@ -8,7 +8,7 @@ pkgrel=3
 groups=('archstrike')
 pkgdesc="Password cracking for truecrypt(c) volumes."
 url="http://code.google.com/p/truecrack/"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 license=('GPL3')
 depends=('cuda')
 source=("http://truecrack.googlecode.com/files/truecrack_v$pkgver.tar.gz")

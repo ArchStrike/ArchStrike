@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=tplmap
-pkgver=0.1
+pkgver=0.3.1
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/epinna/tplmap"
 license=('GPL3')
 depends=('python2' 'python2-yaml' 'python2-requests')
 source=("https://github.com/epinna/tplmap/archive/v${pkgver}.tar.gz")
-sha512sums=('0170744f27525ef73ae80f10a976f06c47e10f6c9b2e43fd40ed2505796bb7d401d0118f6256fdd3ed874b2f08726b14906ea0703d24f53d70986b318058dfed')
+sha512sums=('bd8752f4afdd299c17b896310306cc5ea92fc54ee8f2a25441d646f87a4fcf68e251f7240160fed738449abd894217f00fa26b0160c404b3196d957a80021eb7')
 
 prepare() {
   grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
@@ -26,7 +26,7 @@ package() {
 
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
- 
+
 cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/sh
 cd /usr/share/${pkgname}

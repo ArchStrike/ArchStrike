@@ -3,13 +3,13 @@
 # Contributor: Maxime de Roucy <maxime.deroucy@gmail.com>
 # Contributor: Joel Schaerer <joel.schaerer@laposte.net>
 
-buildarch=212
+buildarch=220
 
 pkgname=itpp
 pkgver=4.3.1
 pkgrel=2
 pkgdesc="C++ library of mathematical, signal processing and communication routines"
-arch=('i686' 'x86_64' 'armv7h' 'armv6h')
+arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="http://itpp.sourceforge.net/"
 license=('GPL')
 depends=('blas' 'lapack' 'fftw' 'perl')

@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=microchip-mplabx-bin
 pkgver=2.00
 pkgrel=1
 pkgdesc="IDE for Microchip PIC and dsPIC development"
-arch=(i686 x86_64)
+arch=(i686 x86_64 'aarch64')
 url=http://www.microchip.com/mplabx
 license=(custom)
 depends=(gtk2 alsa-lib libxslt libxtst desktop-file-utils)

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=recstudio
 pkgver=4.0_20130717
 pkgrel=3
 groups=('archstrike' 'archstrike-reverse' 'archstrike-decompile')
 pkgdesc="Cross platform interactive decompile"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.backerstreet.com/rec/rec.htm'
 license=('custom')
 depends=('gtk2')

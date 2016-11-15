@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=owasp-mantra-firefox
 pkgver=0.92b
 pkgrel=1
 pkgdesc="Free and Open Source Browser based Security Framework"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://sourceforge.net/projects/getmantra/"
 license=('GPL')
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')

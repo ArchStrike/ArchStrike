@@ -4,16 +4,16 @@ buildarch=1
 
 pkgname=weevely
 _pkgname=weevely3
-pkgver=3.3.1
-pkgrel=2
+pkgver=3.4
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="A Stealth tiny web shell that provides a telnet-like console."
 arch=('any')
 url='http://epinna.github.io/Weevely3'
-depends=('python2-mako' 'python2-prettytable' 'python2-yaml')
+depends=('python2-dateutil' 'python2-pysocks' 'python2-mako' 'python2-prettytable' 'python2-yaml')
 license=('GPL')
 source=("https://github.com/epinna/weevely3/archive/v${pkgver}.tar.gz")
-sha512sums=('68193d2d5aab2c9c630bb3bc3d8a731cef617e3773052e065920c8023731a70efe41f0f793f76208c35cede74a833dc78d8b80d38f4c4197277669f3d50e67c2')
+sha512sums=('b2149a925f0c37aabc5956d463aeddb3b3607e96b41506584d0f22a5ae6bd417991eb2eac27ab869c84081cc6d939907f6bdbad406f7585e84a34e39437529ad')
 
 prepare(){
   grep -iRl 'python' "${srcdir}/${_pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'

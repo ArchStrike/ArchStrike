@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='sqlpat'
 _pkgname='sqlbf'
@@ -11,7 +11,7 @@ url='http://www.cqure.net/wp/sqlpat/'
 groups=('archstrike' 'archstrike-crackers')
 license=('GPL')
 depends=('openssl')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("http://www.cqure.net/tools/$_pkgname-all-src-$pkgver.zip")
 md5sums=('bc0981277e76bacff2daa4b159363de9')
 

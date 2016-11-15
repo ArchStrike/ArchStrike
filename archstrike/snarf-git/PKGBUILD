@@ -3,13 +3,13 @@
 buildarch=1
 
 pkgname=snarf-git
-pkgver=20150205.r40
-pkgrel=2
+pkgver=20161006.r41
+pkgrel=1
 pkgdesc="man-in-the-middle / relay suite"
 url="https://github.com/purpleteam/snarf"
 arch=('any')
 license=('GPL2')
-groups=('archstrike')
+groups=('archstrike' 'archstrike-mitm')
 depends=('nodejs')
 makedepends=('git')
 conflicts=('snarf')
@@ -25,16 +25,16 @@ pkgver() {
 
 package() {
   cd "${pkgname}"
-  install -dm0755 "${pkgdir}"/usr/share/"${pkgname}"
-  install -dm0755 "${pkgdir}"/usr/bin
-  cp -a --no-preserve=ownership * "${pkgdir}"/usr/share/"${pkgname}"
-  install -Dm0644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -dm0755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm0755 "${pkgdir}/usr/bin"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cat > "${pkgdir}/usr/bin/snarf" << EOF
+cat > "${pkgdir}/usr/bin/snarf" << EOF
 #!/bin/sh
 cd /usr/share/snarf-git
-node ./snarf.js "\$@"
+node snarf.js "\$@"
 EOF
-  chmod 0755 "${pkgdir}"/usr/bin/snarf
+chmod 755 "${pkgdir}"/usr/bin/snarf
 }
 

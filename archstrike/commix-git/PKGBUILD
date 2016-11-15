@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=commix-git
-pkgver=20160807.r641
+pkgver=20161115.r712
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Find and exploit a command injection vulnerability in a certain vulnerable parameter or string."
@@ -21,18 +21,18 @@ printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$
 }
 
 prepare(){
-grep -iRl 'python' "$srcdir/${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
-cd "$srcdir/$pkgname"
-install -dm755 "$pkgdir/usr/share/$pkgname/"
-install -dm755 "$pkgdir/usr/bin/"
-cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
-sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' $pkgdir/usr/share/commix-git/src/core/modules/shellshock/shellshock.py
+  cd "$srcdir/$pkgname"
+  install -dm755 "$pkgdir/usr/share/$pkgname/"
+  install -dm755 "$pkgdir/usr/bin/"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' $pkgdir/usr/share/commix-git/src/core/modules/shellshock/shellshock.py
 
 cat > "$pkgdir/usr/bin/commix" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/$pkgname
 python2 commix.py "\$@"
 EOF

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=heartleech-git
 pkgver=116.3ab1d60
 pkgrel=3
 groups=('archstrike' 'archstrike-exploit' 'archstrike-crypto')
 pkgdesc="Scans for systems vulnerable to the heartbleed bug, and then download them"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url="https://github.com/robertdavidgraham/heartleech"
 license=('GPL')
 depends=('glibc' 'openssl')

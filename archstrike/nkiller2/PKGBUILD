@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='nkiller2'
 pkgver='2.0'
 pkgrel=2
 groups=('archstrike' 'archstrike-dos' 'archstrike-networking')
 pkgdesc='A TCP exhaustion/stressing tool.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://sock-raw.org/projects.html'
 license=('GPL3')
 depends=('openssl' 'libpcap')

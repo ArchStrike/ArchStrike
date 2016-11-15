@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=arpoison
 pkgver=0.7
@@ -8,7 +8,7 @@ pkgrel=2
 groups=('archstrike' 'archstrike-exploit' 'archstrike-spoof')
 pkgdesc='Sends out a custom ARP REPLY packet with the hardware and
  10 protocol address information of your choosing'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.arpoison.net"
 license=('GPL')
 depends=('libnet')

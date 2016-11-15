@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-terminaltables
-pkgver=3.0.0
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Generate simple tables in terminals from a nested list of strings."
 url="https://github.com/Robpol86/terminaltables"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/58/c9/f0c174c4e828365df3593c66ac32474cd994a8ec36fe19a798261c96c3bc/terminaltables-$pkgver.tar.gz")
-sha512sums=('8e9ce89b24887ea7618098b083e2407906d6345200d65af31cc82557089827624e4b8d8b8ec4717347bd571453b1fc10d7a06f3cba0038803f70690bae9f5ea6')
+source=("https://github.com/Robpol86/terminaltables/archive/v$pkgver.tar.gz")
+sha512sums=('dc49458652fff8bc6094d316d84c9b8e9fca1a26e3230c0b668bc03ec8528793f4ef024e8032d4a56fbfabfdfd4a1142870f550f0b373ba6a42dd2e3ead3f501')
 
 build() {
     cd $srcdir/terminaltables-$pkgver
@@ -22,5 +22,6 @@ build() {
 
 package() {
     cd $srcdir/terminaltables-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

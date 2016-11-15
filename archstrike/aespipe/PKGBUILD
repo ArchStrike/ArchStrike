@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=212
+buildarch=220
 
 pkgname=aespipe
 pkgver=2.4d
@@ -9,7 +9,7 @@ pkgrel=3
 pkgdesc="Reads data from stdin and outputs encrypted or decrypted results to stdout"
 url="http://loop-aes.sourceforge.net/aespipe"
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 depends=('bash')
 source=("http://loop-aes.sourceforge.net/${pkgname}/${pkgname}-v${pkgver}.tar.bz2")

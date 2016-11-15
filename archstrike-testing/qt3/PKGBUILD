@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Eric Bélanger <eric@archlinux.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=qt3
 pkgver=3.3.8b
 pkgrel=9
 epoch=1
 pkgdesc="A cross-platform application and UI framework"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.trolltech.com/products/qt/index.html"
 license=('GPL')
 depends=('libpng' 'libxmu' 'libxcursor' 'libxinerama' 'glu' 'libxft'

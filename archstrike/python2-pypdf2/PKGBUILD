@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-pypdf2
-pkgver=1.25.1
-pkgrel=2
+pkgver=1.26.0
+pkgrel=1
 pkgdesc='PDF toolkit'
-url='http://mstamy2.github.com/PyPDF2'
+url='https://github.com/mstamy2/PyPDF2'
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/source/P/PyPDF2/PyPDF2-$pkgver.tar.gz")
-sha512sums=('0cb43d4557d17ec82298ceabce5c4731438a0e16ad6c6b2abc54204a3d93373a46b86c995e9b39cec475de1dce325d552da17ce36de3733c7b0471779e3b0899')
+source=("https://github.com/mstamy2/PyPDF2/archive/$pkgver.tar.gz")
+sha512sums=('fe29c1e24be765c43fed47185dc69cfe959d36c693f6ac9fed9a33c48035c651eed8f2f6eb674697f923b769fcfdd275624b128ab99992477bfc0e854b90fa5c')
 
 prepare() {
   cd PyPDF2-$pkgver

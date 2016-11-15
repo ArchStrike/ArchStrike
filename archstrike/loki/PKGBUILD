@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=loki
 pkgver=0.2.7
 pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Python based framework implementing many packet generation and attack modules for Layer 2 and 3 protocols"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://c0decafe.de/loki.html"
 license=('BSD')
 depends=('python2' 'pygtk' 'python2-ipy' 'python2-pylibpcap' 'libdnet' 'python2-dpkt-git' 'libglade' 'autoconf' 'automake')

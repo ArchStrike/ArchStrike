@@ -19,7 +19,7 @@ source=("https://pypi.python.org/packages/source/g/${_pkgname}/${_pkgname}-${pkg
 sha512sums=('fdaa8c704e1d0869700cf67c3a1c04246bfd816f98beac9c755b723a2074aa26344991c924ebdd7de5661065cde48ad412685014c53fdb92df12401cad3c358c')
 
 package () {
-    
+
     cd "${_pkgname}-${pkgver}"
     python2 setup.py install --root="${pkgdir}/" --optimize=1
 

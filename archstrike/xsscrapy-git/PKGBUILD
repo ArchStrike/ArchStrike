@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=xsscrapy-git
-pkgver=20160729.r134.763e445
+pkgver=20161111.r138.f859faa
 pkgrel=1
 pkgdesc="xss spider"
 arch=('any')

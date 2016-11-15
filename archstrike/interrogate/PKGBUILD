@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=interrogate
 pkgver=0.0.4
 pkgrel=2
 groups=('archstrike' 'archstrike-forensics' 'archstrike-crackers')
 pkgdesc="A proof-of-concept tool for identification of cryptographic keys in binary material (regardless of target operating system), first and foremost for memory dump analysis and forensic usage."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/carmaa/interrogate"
 depends=('glibc')
 license=('GPL3')

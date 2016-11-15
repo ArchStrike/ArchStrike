@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=ipscan
 pkgver=3.2.1
 pkgrel=2
 pkgdesc="Angry IP scanner is a very fast IP address and port scanner."
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 groups=('archstrike' 'archstrike-scanners')
 license=('GPL2')
 url="http://www.angryziber.com"

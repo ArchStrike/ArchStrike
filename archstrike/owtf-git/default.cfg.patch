@@ -25,7 +25,7 @@ index d96ca0f..d78e81c 100644
 +TOOL_DIRBUSTER_BIN: /usr/bin/dirbuster
  #TOOL_DIRBUSTER_DIR: /usr/share/dirbuster
 -TOOL_METASPLOIT_DIR: /usr/share/metasploit-framework
-+TOOL_METASPLOIT_DIR: /usr/share/metasploit
++TOOL_METASPLOIT_DIR: /opt/metasploit
  TOOL_HOPPY_DIR: @@@FRAMEWORK_DIR@@@/tools/restricted/hoppy-1.8.1/hoppy-1.8.1
  TOOL_WPSCAN: /usr/bin/wpscan
  TOOL_HYDRA: /usr/bin/hydra

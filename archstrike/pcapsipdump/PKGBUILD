@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=pcapsipdump
 pkgver=0.2
@@ -9,7 +9,7 @@ pkgdesc='A libpcap-based SIP sniffer with per-call sorting capabilities'
 url='http://pcapsipdump.sourceforge.net'
 license=('GPL')
 groups=('archstrike' 'archstrike-voip')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 options=('!buildflags')
 depends=('libpcap')
 source=("http://downloads.sourceforge.net/$pkgname/$pkgname-$pkgver.tar.gz")

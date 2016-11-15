@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=wifi-honey
 pkgver=1.0
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A management tool for wifi honeypots"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.digininja.org/projects/wifi_honey.php"
 license=('CCPL')
 depends=('screen' 'aircrack-ng')

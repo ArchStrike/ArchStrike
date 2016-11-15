@@ -39,7 +39,6 @@ package(){
   cd ${pkgdir}/usr/share/${pkgname}
   rm LICENSE COPYING
 
-
 cat > "${pkgdir}/usr/bin/pyew" <<EOF
 #!/bin/sh
 cd /usr/share/${pkgname}

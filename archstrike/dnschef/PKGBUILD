@@ -2,6 +2,8 @@
 
 buildarch=1
 
+DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
+
 pkgname=dnschef
 pkgver=0.3
 pkgrel=2

@@ -2,13 +2,13 @@
 # Contributor: Limao Luo <luolimao+AUR@gmail.com>
 # Contributor: Brian Knox <taotetek@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=liblognorm
 pkgver=2.0.1
 pkgrel=1
 pkgdesc="log normalization library for rsyslog"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url=http://www.liblognorm.com
 license=('GPL2')
 depends=('libee' 'json-c' 'libfastjson' 'python2-sphinx' 'pcre')

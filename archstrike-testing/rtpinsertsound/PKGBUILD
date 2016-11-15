@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=rtpinsertsound
 pkgver=3.0
 pkgrel=1
 groups=('archstrike' 'archstrike-voip')
 pkgdesc="A tool to insert audio into a specified audio (i.e. RTP) stream"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.hackingvoip.com/sec_tools.html"
 license=('GPL2')
 depends=('libfindrtp' 'libnet')

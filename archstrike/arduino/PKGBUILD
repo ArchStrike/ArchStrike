@@ -4,18 +4,18 @@
 # Contributor: darkapex <me@jailuthra.in>
 # Contributor: tty0 <vt.tty0[d0t]gmail.com>
 
-buildarch=192
+buildarch=200
 
 pkgname=arduino
-pkgver=1.6.9
+pkgver=1.6.12
 pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc='Open-source electronics prototyping platform'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='http://arduino.cc'
 options=('!strip' 'staticlibs')
 license=('GPL')
-depends=('avr-libc' 'avrdude' 'libusb-compat' 'java-runtime=8' 'java-rxtx' 'desktop-file-utils' 'shared-mime-info')
+depends=('avr-libc' 'libusb-compat' 'java-runtime=8' 'java-rxtx' 'desktop-file-utils' 'shared-mime-info')
 makedepends=('java-environment=8' 'avr-gcc' 'apache-ant' 'unzip' 'zip')
 install=$pkgname.install
 
@@ -24,9 +24,11 @@ source=(
   "$pkgname.desktop"
   "$pkgname.mime.xml"
 )
-sha512sums=('92b3508068e3aae6a88c3a395d0906fb63d2fd8ee20d003173b96f3f0ff6851eddcdb77c6349dfec3ad0ee36976f53432c643f56724490e9187d4af049fd4bf8'
-            'dd0c5929a051e1c0303d6921fc85fe4ddf01a66230985a1834a0af11c5e040f2ee7b4622c7d31c57c5e45e420b36e3cf2ad0eb00c1c230e5bb26b533858ff2b9'
-            '910f1f5f9c9861a0b010d25e9c3579c78cb2f0b31c94fc79ed4e55b0bc65535d8ce4c54fb5cdf8a90ee589c7f1bb432bb62136ca48be1829fc001fe5acc0f0f3')
+sha512sums=(
+  '2d386ddf26babc920767db9062304b75bf0b6b12ac469a33597b9b8abcc306a1ea6c18dd8b59f51fa2ecd7ffd66f36e80ade1953fd104cf29f0d74b5ab9da2d9'
+  'dd0c5929a051e1c0303d6921fc85fe4ddf01a66230985a1834a0af11c5e040f2ee7b4622c7d31c57c5e45e420b36e3cf2ad0eb00c1c230e5bb26b533858ff2b9'
+  '910f1f5f9c9861a0b010d25e9c3579c78cb2f0b31c94fc79ed4e55b0bc65535d8ce4c54fb5cdf8a90ee589c7f1bb432bb62136ca48be1829fc001fe5acc0f0f3'
+)
 
 prepare() {
   # remove the username/password check for updating reference documentation
@@ -60,10 +62,6 @@ package() {
     --preserve-permissions \
     --strip-components=1 \
     -C "$pkgdir/opt/$pkgname"
-
-  # replace the included avrdude_bin with a symlink to the system version
-  rm "$pkgdir/opt/arduino/hardware/tools/avr/bin/avrdude_bin"
-  ln -s /usr/bin/avrdude "$pkgdir/opt/arduino/hardware/tools/avr/bin/avrdude_bin"
 
   # create a link to the launch script
   ln -s /opt/$pkgname/$pkgname "$pkgdir/usr/bin/$pkgname"

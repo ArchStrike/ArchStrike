@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=cymothoa
 pkgver=1
@@ -8,7 +8,7 @@ pkgrel=2
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="A stealth backdooring tool, that inject backdoor's shellcode into an existing process."
 url="http://cymothoa.sourceforge.net/"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('glibc')
 license=('GPL2')
 source=("http://downloads.sourceforge.net/project/cymothoa/cymothoa-$pkgver-beta/cymothoa-$pkgver-beta.tar.gz")

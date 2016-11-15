@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=hidattack
 pkgver=0.1
@@ -9,7 +9,7 @@ groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc="HID Attack (attacking HID host implementations)"
 url='http://mulliner.org/bluetooth/hidattack.php'
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 makedepends=('gcc')
 depends=(bluez openobex)
 source=(http://www.mulliner.org/bluetooth/hidattack${pkgver//./}.tar.gz)

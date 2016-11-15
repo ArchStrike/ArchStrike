@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd "$srcdir/NetPacket-$pkgver"
-  
+
   make install DESTDIR=${pkgdir}
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 

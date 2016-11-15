@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=bletchley
 pkgver=0.0.1
 pkgrel=5
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="A collection of practical application cryptanalyze tools."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://code.google.com/p/bletchley/"
 license=('GPL')
 depends=('python')

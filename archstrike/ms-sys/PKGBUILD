@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='ms-sys'
 pkgver='2.5.3'
 pkgrel=2
 pkgdesc='A tool to write Win9x-.. master boot records (mbr) under linux - RTM!'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://ms-sys.sourceforge.net/'
 license=('GPL2')
 groups=('archstrike' 'archstrike-backdoors' 'archstrike-forensics')

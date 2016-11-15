@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=synscan
 pkgver=5.02
@@ -8,7 +8,7 @@ pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='fast asynchronous half-open TCP portscanner'
 url='http://www.digit-labs.org/files/tools/synscan/'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('libpcap')
 license=('GPL2')
 source=("http://www.digit-labs.org/files/tools/synscan/releases/synscan-$pkgver.tar.gz")

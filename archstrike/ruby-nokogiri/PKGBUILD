@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=ruby-nokogiri
 _gemname=nokogiri
 pkgver=1.6.1
 pkgrel=3
 pkgdesc="Nokogiri (鋸) is an HTML, XML, SAX, and Reader parser"
-arch=('armv6h' 'armv7h' 'x86_64' 'i686')
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 license=('MIT')
 makedepends=('ruby')
 depends=('ruby-mini_portile')

@@ -5,14 +5,14 @@
 # Contributor: Aaron Griffin <aaron@archlinux.org>
 # Contributor: judd <jvinet@zeroflux.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=knockd-git
 _pkgname=knock
 pkgver=r88.258a27e
 pkgrel=2
 pkgdesc="A simple port-knocking daemon and client"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.zeroflux.org/projects/knock"
 license=(GPL)
 groups=('archstrike')

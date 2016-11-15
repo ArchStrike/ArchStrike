@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=rifiuti2
 pkgver=0.6.1
@@ -8,7 +8,7 @@ pkgrel=1
 groups=('archstrike' 'archstrike-recon' 'archstrike-forensics')
 pkgdesc="A rewrite of rifiuti, a great tool from Foundstone folks for analyzing Windows Recycle Bin INFO2 file."
 url="https://github.com/abelcheung/rifiuti2"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('custom:BSD')
 depends=('glib2')
 conflicts=('rifiuti')

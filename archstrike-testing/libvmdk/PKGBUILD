@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname="libvmdk"
 pkgver="20160119"
 pkgrel=3
 pkgdesc="Library and tools to access the VMware Virtual Disk (VMDK) format"
-arch=("i686" "x86_64" "armv6h" "armv7h")
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libvmdk'
 license=('GPL3')
 depends=('libcsystem' 'python2' 'libbfio' 'fuse')

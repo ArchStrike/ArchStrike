@@ -5,13 +5,13 @@
 
 _relname=pyliblzma
 
-buildarch=212
+buildarch=220
 
 pkgname=python2-${_relname}
 pkgver=0.5.3
 pkgrel=2
 pkgdesc='Python 2 bindings for liblzma'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://pypi.python.org/pypi/pyliblzma'
 license=('LGPL3')
 depends=('python2' 'xz')

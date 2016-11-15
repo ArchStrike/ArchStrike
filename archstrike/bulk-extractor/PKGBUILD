@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=bulk-extractor
 pkgver=1.5.5
 pkgrel=2
 groups=('archstrike' 'archstrike-forensics' 'archstrike-misc')
 pkgdesc="Bulk Email and URL extraction tool"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/simsong/bulk_extractor'
 license=('GPL')
 depends=('tre' 'java-environment' 'exiv2' 'afflib' 'libewf' 'sqlite' 'expat')

@@ -1,8 +1,11 @@
 # ArchStrike
 
+![alt text][logo]
+[logo]: https://archstrike.org/img/archstrike.svg "ArchStrike"
+
 ###An Arch Linux repository for security professionals and enthusiasts.
 
-Done the Arch Way and optimized for i686, x86_64, ARMv6, and ARMv7.
+Done the Arch Way and optimized for i686, x86_64, ARMv6, ARMv7, and ARMv8.
 
 [Our website](https://archstrike.org)
 

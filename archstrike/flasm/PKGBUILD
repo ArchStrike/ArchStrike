@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=flasm
 pkgver=1.62
 pkgrel=3
 groups=('archstrike' 'archstrike-reverse' 'archstrike-decompile')
 pkgdesc="Disassembler tool for SWF bytecode"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.nowrap.de/flasm.html'
 license=('custom')
 depends=('zlib')

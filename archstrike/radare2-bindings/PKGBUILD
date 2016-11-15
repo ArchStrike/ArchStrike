@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Levente Polyak <levente[at]leventepolyak[dot]net>
 
-buildarch=212
+buildarch=220
 
 pkgname=radare2-bindings
-pkgver=0.10.3
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Language bindings of the radare2 api for Valabind and friends"
 url="http://radare.org"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 license=('GPL3')
 depends=('radare2' 'gawk' 'ruby' 'lua' 'python2')
@@ -16,7 +16,7 @@ makedepends=('valabind' 'swig')
 options=(!emptydirs)
 provides=('r2-bindings')
 source=(http://www.radare.org/get/${pkgname}-${pkgver}.tar.xz)
-sha512sums=('4c3852b8d16a5ab95149927612b644c868ba747256d7d8cfb73f3e7286a0493d4cb1019ba29068c9f83e28eb47a679521f3adcd89133c885a2495f41c0d1c9a6')
+sha512sums=('6735f6edc1d1769acc21a69a626e0aca89937ea1f097841f7240f2ebd5b255294aa2b2cf0b2bc2feda1ac5190fa0f051d435f18919aa2eabf0e583347841d404')
 
 prepare() {
   cd ${pkgname}-${pkgver}

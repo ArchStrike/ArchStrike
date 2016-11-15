@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='sinfp'
 _distname='Net-SinFP3'
-pkgver='1.21'
+pkgver='1.23'
 pkgrel=1
 pkgdesc='A full operating system stack fingerprintinging suite.'
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url='http://www.networeconnaissance.com/tools/sinfp/'
 groups=('archstrike' 'archstrike-fingerprinting')
 license=('PerlArtistic')
@@ -20,7 +20,7 @@ depends=('perl' 'perl-class-gomor' 'perl-data-dumper' 'perl-dbd-sqlite'
         'perl-net-frame-layer-sinfp3' 'perl-io-socket-inet6'
         'perl-time-interval')
 source=("http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/Net-SinFP3-$pkgver.tar.gz")
-md5sums=('cfa7739489fa12a8f8485dabbd1a5475')
+sha512sums=('93efbd2b288af5e38f3c522ec9234f87744d6ec5d7743498a8a7207aad8482d455f5fe0e2f3f14dd646f5ce7f459cd05f61cddf8300f03447ee01abad39df065')
 
 prepare() {
   cd "$srcdir/$_distname-$pkgver"

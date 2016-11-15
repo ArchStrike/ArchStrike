@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=netsed
 pkgver=1.2
 pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="Small and handful utility design to alter the contents of packets forwarded thru network in real time."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://silicone.homelinux.org/projects/netsed/"
 license=('GPL2')
 depends=('glibc')

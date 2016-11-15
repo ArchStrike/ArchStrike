@@ -1,10 +1,10 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor drathir <drathir87@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=libnacl
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgver=20110221
 pkgrel=4
 pkgdesc="NaCl (pronounced 'salt') Networking and Cryptography library (works with pynacl)"

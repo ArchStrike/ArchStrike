@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Ari Mizrahi <codemunchies@debugsecurity.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=ubertooth
 pkgver=2015.10.R1
@@ -9,7 +9,7 @@ pkgrel=3
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc='A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only'
 url='https://greatscottgadgets.com/ubertoothone'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 makedepends=('cmake' 'libpcap')
 depends=('libusbx' 'libbtbb' 'bluez-libs' 'python-numpy' 'python-pyusb' 'python-pyside' 'libpcap')

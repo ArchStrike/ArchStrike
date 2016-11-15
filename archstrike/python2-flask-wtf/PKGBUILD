@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-flask-wtf
-pkgver=0.12
+pkgver=0.13.1
 pkgrel=1
 pkgdesc="Simple integration of Flask and WTForms"
 arch=('any')
@@ -12,16 +12,16 @@ url="http://github.com/lepture/flask-wtf"
 license=('BSD')
 depends=('python2-flask' 'python2-wtforms')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/source/F/Flask-WTF/Flask-WTF-$pkgver.tar.gz")
-sha512sums=('d9861a4fa6ace46fb2a632ff51777bc30af9b63c4f2a35cbe4a68a2777468eb7b6e1813ce331472458c05ce7069f73d998b4e9d3fd9d6ef56fc3abf0bb219a9e')
+source=("https://github.com/lepture/flask-wtf/archive/v$pkgver.tar.gz")
+sha512sums=('131eb94e6af676b1aad9047be90318565972d5bfb7c3afa701bb34788cfbd3730f27b137a204abb3d0e54dd974d3b441a304be2fee99ca7a0a559d0f7b1eceff')
 
 build() {
-    cd "$srcdir/Flask-WTF-$pkgver"
+    cd "$srcdir/flask-wtf-$pkgver"
     python2 setup.py build
 }
 
 package() {
-    cd "$srcdir/Flask-WTF-$pkgver"
+    cd "$srcdir/flask-wtf-$pkgver"
     python2 setup.py install --root="$pkgdir" --optimize=1
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

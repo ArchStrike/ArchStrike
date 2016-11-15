@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-cachetools
-pkgver=1.1.6
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="Extensible memoizing collections and decorators"
 url="https://github.com/tkem/cachetools"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/ba/00/b0ec69e21142cd838b2383a7881cf18368e35847cb66f908c8f25bcbaafc/cachetools-$pkgver.tar.gz")
-sha512sums=('79fad3f656f1428e781f16cc8647dfa6579b17b34b3e757a4dc4705873be521ad0435af0d1742544bc440fbd01a03c56eeb335a4fade30b17424927903276c3b')
+source=("https://github.com/tkem/cachetools/archive/v$pkgver.tar.gz")
+sha512sums=('eeb9d2d780fc90971f4459b540205f600b86701962dd387b7147d78be39af9117aabc68325f293cf021ba3a4fdf02ad3907489702a820d58582e679d34f856cb')
 
 build() {
     cd $srcdir/cachetools-$pkgver
@@ -22,5 +22,6 @@ build() {
 
 package() {
     cd $srcdir/cachetools-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }

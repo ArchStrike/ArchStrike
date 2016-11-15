@@ -2,7 +2,7 @@
 # Contributor: Sergej Pupykin <pupykin.s+arch@gmail.com>
 # Contributor: James Fryman <jfryman@gmail.com>
 
-buildarch=212
+buildarch=220
 
 _pkgname=libdnet
 pkgname=$_pkgname-ipv6
@@ -10,7 +10,7 @@ pkgver=1.12
 pkgrel=11
 pkgdesc='A simplified, portable interface to several low-level networking routines (with ipv6 support)'
 url='https://github.com/dugsong/libdnet'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('python2' 'bash')
 makedepends=('python2' 'pyrex')
 provides=("$_pkgname")

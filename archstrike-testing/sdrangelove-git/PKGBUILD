@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=sdrangelove-git
 pkgver=20150707.r174
 pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc="A project that allows you to control all the process inside a GNSS receiver, from the raw bits at the output of an analog-to-digital converter to the computation of the navigation solution, that is, obtaining receiver's position and time "
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://sdr.osmocom.org/trac/wiki/sdrangelove'
 license=('GPL3')
 depends=('gnuradio-osmosdr' 'qt5-multimedia' 'libusb' 'desktop-file-utils')

@@ -30,7 +30,7 @@ package() {
   cd "$srcdir/Hasher"
 
   python2 setup.py install --root=$pkgdir --optimize=1
-  
+
   #License
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   sed -i 's|env python$|env python2|' $pkgdir/usr/lib/python2.7/site-packages/hashes/__main__.py

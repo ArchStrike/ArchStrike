@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=mavlink-git
-pkgver=20160806.r2056
+pkgver=20161023.r2095
 pkgrel=1
 pkgdesc="MAVLink micro air vehicle marshalling / communication libraries"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://qgroundcontrol.org/mavlink/"
 groups=('archstrike-drone')
 license=('LGPL')
@@ -20,6 +20,12 @@ pkgver() {
   cd "$srcdir/$pkgname"
   # Use the tag of the last commit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  git submodule init
+  git submodule update
 }
 
 build() {

@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Wade Carpenter <archwade NOSPAM 20 NOSPAM apex3 AT xoxy NOSPAM net> / NOSPAM /./
 
-buildarch=212
+buildarch=220
 
 pkgname=bittwist
 pkgver=2.0
 pkgrel=2
 epoch=1
 pkgdesc="Bit-Twist is a simple yet powerful libpcap-based Ethernet packet generator. It is designed to complement tcpdump, which by itself has done a great job at capturing network traffic."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://bittwist.sourceforge.net/"
 license=('GPL')
 groups=('archstrike' 'archstrike-scanners')

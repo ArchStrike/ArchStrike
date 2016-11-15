@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=httprint
 pkgver=301
 pkgrel=2
 groups=('archstrike' 'archstrike-fingerprinting')
 pkgdesc='A web server fingerprintinging tool.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.net-square.com/httprint.html'
 license=('custom:NON-GPL')
 source=("http://www.net-square.com/_assets/httprint_linux_$pkgver.zip")

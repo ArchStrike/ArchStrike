@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # TODO: check license
 
-buildarch=212
+buildarch=220
 
 pkgname=honeyd
 pkgver=1.6.7
@@ -9,7 +9,7 @@ pkgrel=3
 groups=('archstrike')
 pkgdesc="A small daemon that creates virtual hosts on a network."
 url="https://github.com/DataSoft/Honeyd/"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=("GPL")
 depends=('libdnet' 'libevent' 'libedit' 'libpcap' 'pcre' 'zlib' 'tcl' 'python2')
 options=('!makeflags')

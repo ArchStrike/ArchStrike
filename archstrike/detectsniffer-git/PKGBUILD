@@ -1,0 +1,37 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: xorond <xorond@gmail.com>
+
+buildarch=1
+
+pkgname=detectsniffer-git
+pkgver=20160520.r148
+pkgrel=1
+groups=('archstrike' 'archstrike-defense')
+pkgdesc='Tool that detects sniffers in the network'
+url='https://github.com/galkan/tools/tree/master/detect_sniffer'
+license=('custom')
+depends=('scapy' 'python2')
+makedepends=('git')
+arch=('any')
+replaces=('detectsniffer')
+provides=('detectsniffer')
+conflicts=('detectsniffer')
+source=("${pkgname}::git+https://github.com/galkan/tools")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}/detect_sniffer
+  sed -i 's|python$|python2|g' detect_sniffer.py
+}
+
+package() {
+  cd ${pkgname}/detect_sniffer
+
+  install -Dm755 detect_sniffer.py "$pkgdir/usr/bin/detectsniffer"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+}

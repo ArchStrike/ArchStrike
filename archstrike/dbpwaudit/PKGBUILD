@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=dbpwaudit
 pkgver=0.8
@@ -10,7 +10,7 @@ pkgdesc="A Java tool that allows you to perform online audits of password qualit
 url='http://www.cqure.net/wp/dbpwaudit/'
 license=('GPL')
 depends=('java-runtime')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=(http://www.cqure.net/tools/dbpwaudit_${pkgver//./_}.zip)
 sha512sums=('74b2ab5d0a142f0f03d6c67452dba6b2')
 

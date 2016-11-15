@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=220
 
 pkgname=sctpscan-git
 pkgver=20140205.r34
@@ -8,7 +8,7 @@ pkgrel=2
 groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
 pkgdesc="A network scanner for discovery and security"
 url="http://www.p1sec.com/"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('glib2')
 makedepends=('git')
 license=('GPL3')

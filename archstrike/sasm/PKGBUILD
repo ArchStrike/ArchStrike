@@ -1,17 +1,17 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=sasm
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.7.0
+pkgrel=1
 pkgdesc="A simple crossplatform IDE for NASM, MASM, GAS and FASM assembly languages"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Dman95/SASM"
 license=('custom')
 depends=('nasm' 'gdb' 'qt5-base')
 makedepends=('qt4>=4.8')
-sha512sums=('13abdb8815a92c40fba39a06159566028c16e8d3246b16b5cc95911ecc3047ca68999d702812ba1c4fd9d4ff9cf5309247c9e348f69f31ebd471e18584819085')
+sha512sums=('1a40d048ca5d4e61b09cf927b3714c10620285054b6518fa0b39749fecd2b4dd96c7b71d30b950f4e7117bb03e0242052ebada560fccda1902c0db3fe1c20dcb')
 source=("https://github.com/Dman95/SASM/archive/v$pkgver.tar.gz")
 
 build() {

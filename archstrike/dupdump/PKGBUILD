@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=212
+buildarch=220
 
 pkgname=dupdump
 pkgver=0.5
@@ -10,7 +10,7 @@ pkgdesc='Finds duplicat files and directories and outputs a parsable list that c
 url='http://kernel.embedromix.ro/us/'
 depends=('openssl')
 license=('GPL3')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("http://kernel.embedromix.ro/us/$pkgname/$pkgname-$pkgver.tar.gz")
 sha512sums=('5f63643d24fb1f2fa9b85a3e773b50f8169c749d0087750ad9c824cd3ed1c3a48d093f3fc9f7adbd80feb3abdf311bdeb9db5a3d56df56bd98018c01880c8719')
 

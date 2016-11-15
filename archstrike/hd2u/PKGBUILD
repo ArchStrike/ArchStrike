@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=hd2u
 pkgver=1.0.3
 pkgrel=7
 pkgdesc="Dos2Unix text file converter"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 url="http://hany.sk/~hany/software/hd2u/"
 depends=('popt')

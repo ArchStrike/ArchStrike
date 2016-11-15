@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=jbrute
 pkgver=99
 pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Open Source Security tool to audit hashed passwords."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://sourceforge.net/projects/jbrute/"
 license=('GPL3')
 depends=('java-environment' 'bash')

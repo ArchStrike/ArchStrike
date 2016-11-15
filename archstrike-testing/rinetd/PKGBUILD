@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=rinetd
 pkgver=0.62
 pkgrel=3
 pkgdesc="internet redirection server"
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://www.boutell.com/rinetd"
 depends=('glibc')
 groups=('archstrike')

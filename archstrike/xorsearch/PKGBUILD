@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=xorsearch
 pkgver=1.11.1
 pkgrel=3
 groups=('archstrike' 'archstrike-crypto' 'archstrike-reverse')
 pkgdesc="Program to search for a given string in an XOR, ROL or ROT encoded binary file."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://blog.didierstevens.com/programs/xorsearch/"
 license=('custom')
 depends=('glibc')

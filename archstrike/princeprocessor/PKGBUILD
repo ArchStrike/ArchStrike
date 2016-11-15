@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=128
+buildarch=136
 
 pkgname=princeprocessor
 pkgver=0.21
 pkgrel=2
 pkgdesc="Standalone password candidate generator using the PRINCE algorithm"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 url="https://github.com/jsteube/princeprocessor"
 groups=('archstrike')
 license=('MIT')

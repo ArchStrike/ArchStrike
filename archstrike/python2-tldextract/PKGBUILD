@@ -4,16 +4,16 @@
 buildarch=1
 
 pkgname=python2-tldextract
-pkgver=2.0.1
-pkgrel=4
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="Accurately separate the TLD from the registered domain andsubdomains of a URL, using the Public Suffix List."
 url="https://github.com/john-kurkowski/tldextract"
 depends=('python2-requests-file')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/f4/fd/f9995517d2fce9b4800680916c8ace079cf6ced8fb7ff84a301105d87668/tldextract-2.0.1.tar.gz" "LICENSE")
-sha512sums=('c7d72dc2cc2801aaa0b3dc4f4206703d471b9f7c097818487a0160a8aba1fcca9c2e9a8f64b42ae1d422bfde8ce8de7fde13eb124f413042864ce80e497b11c1'
+source=("https://pypi.python.org/packages/44/db/ab27d3003968f766bff7bde238de418d2b8ddd727c3e56346ffd3ef05e27/tldextract-$pkgver.tar.gz" "LICENSE")
+sha512sums=('eb089dc38b6e44344ba8e5a015c1e5b1fa29d9984154d6a9193f38844e01d76782ccb193a11987c1fdd25406bd132d3ae7161573786fe961161e4e42dfb5ae8e'
             'ccf77efa127b315ad6006ba8d59b1b8f395a14e4a04cd7e72e3ec81982bf788d164f67ebb50ac0fbc32056b8a1590597cb9874697317d6ad63542031968a2b1c')
 
 build() {
@@ -23,7 +23,7 @@ build() {
 
 package() {
     cd $srcdir/tldextract-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
     install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }

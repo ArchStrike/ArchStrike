@@ -3,19 +3,19 @@
 _author='Karel Miko'
 _perlmod='CryptX'
 
-buildarch=212
+buildarch=220
 
 pkgname=perl-crypt-x
-pkgver=0.039
+pkgver=0.041
 pkgrel=1
 pkgdesc="Cryptographically secure random number generator"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://search.cpan.org/~mik/CryptX-$pkgver/"
 license=('custom')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIK/CryptX-$pkgver.tar.gz")
-sha512sums=('7bb0401628873721ab1d38fdc98b8b8f4f53f1c82aa4c22f095fe997b8ffa2e8072b24f6f2e8c3784ccdad2ebbd1aec67cffa6aaf57e8005f9b2b0532454b9d5')
+sha512sums=('f39da599bba86828570bb40e77524bf7a9b56c298a850f041d59ab9920178202b23ffd05c492a17a51cb837369a3a332037cedfc4ccdcb0ad5019782fc46a841')
 
 prepare() {
   cd "$srcdir/$_perlmod-$pkgver"

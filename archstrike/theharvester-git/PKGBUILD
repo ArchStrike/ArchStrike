@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=theharvester-git
 _pkgname=theHarvester
-pkgver=20160419.r53
-pkgrel=2
+pkgver=20161011.r56
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers)"
 url='https://github.com/laramies/theHarvester'
@@ -38,7 +38,7 @@ package() {
 
   # Install docs.
   install -m644 README ${pkgdir}/usr/share/doc/${pkgname}/README
-  install -m644 LICENSES ${pkgdir}/usr/share/licenses/${pkgname}/LICENSES 
+  install -m644 LICENSES ${pkgdir}/usr/share/licenses/${pkgname}/LICENSES
 
   # Install sharable.
   cp --no-preserve=ownership -r discovery lib *.txt $pkgdir/usr/share/${pkgname}

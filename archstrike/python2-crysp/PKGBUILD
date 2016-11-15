@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team archstrike org>
+
+buildarch=1
+
+pkgname=python2-crysp
+pkgver=0.8
+pkgrel=1
+pkgdesc="A crypto related pkg for amoco"
+arch=('any')
+url='https://github.com/bdcht/crysp'
+license=('GPL2')
+depends=('python2-matplotlib' 'python2-grandalf')
+makedepends=('python2-setuptools')
+source=("https://github.com/bdcht/crysp/archive/v$pkgver.tar.gz")
+sha512sums=('e8b67cc71ef383f74f813cfe864e3dc08758d984a7cc076a0d599fb12d94879ca071974bfa1607bf4a9ab99deef45605951c531d56f1032237471868e4ef785c')
+
+prepare(){
+  grep -iRl 'python' "$srcdir/crysp-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+
+package() {
+  cd "$srcdir/crysp-$pkgver"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}
+

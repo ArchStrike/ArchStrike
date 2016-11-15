@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=fuzzap-git
-pkgver=r14.f13932c
-pkgrel=2
+pkgver=r17.057002b
+pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A python script for obfuscating wireless networks"
 arch=('any')

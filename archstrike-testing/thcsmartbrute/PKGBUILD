@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
@@ -9,7 +9,7 @@ pkgver=1.0
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A tool that finds undocumented and secret commands implemented in a smartcard."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://www.thc.org/thc-smartbrute/"
 license=('GPL3')
 depends=('pcsclite')

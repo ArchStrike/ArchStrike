@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=212
+buildarch=220
 
 pkgname=slb
 pkgver=0.1.24
@@ -10,7 +10,7 @@ pkgdesc="A set of tools that can help you to control a load-balancing system"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL3')
 groups=('archstrike' 'archstrike-networking')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('ipvsadm' 'conn')
 options=('!emptydirs')
 source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz"

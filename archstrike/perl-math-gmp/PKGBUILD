@@ -2,13 +2,13 @@
 _author=TURNSTEP
 _perlmod=Math-GMP
 
-buildarch=212
+buildarch=220
 
 pkgname=perl-math-gmp
 pkgver=2.07
 pkgrel=2
 pkgdesc="High speed arbitrary size integer math "
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url='http://search.cpan.org/~TURNSTEP/Math-GMP-2.06/'
 license=('GPL' 'PerlArtistic')
 depends=('perl' 'gmp')

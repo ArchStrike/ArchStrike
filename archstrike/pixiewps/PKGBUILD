@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=pixiewps
 pkgver=1.2.2
 pkgrel=2
 pkgdesc="A tool written in C used to bruteforce offline the WPS pin"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/wiire/pixiewps"
 license=('GPL3')
 depends=('openssl')

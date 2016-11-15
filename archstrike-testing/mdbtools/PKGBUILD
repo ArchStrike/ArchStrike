@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=mdbtools
 pkgver=0.7.1
 pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Utilities for viewing data and exporting schema from Microsoft Access Database files"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://sourceforge.net/projects/mdbtools/"
 license=('LGPL' 'GPL')
 depends=('libgnomeui' 'unixodbc')
@@ -30,7 +30,7 @@ prepare() {
   done
   autoreconf -i -f
   sed -i 's/@LEXLIB@//' src/*/Makefile.am
-}  
+}
 
 build() {
   cd "$srcdir/mdbtools-$pkgver"

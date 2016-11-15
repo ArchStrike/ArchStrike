@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=simple-email-spoofer-git
-pkgver=20160623.r46
+pkgver=20160928.r49
 pkgrel=1
 groups=('archstrike' 'archstrike-spoof')
 arch=('any')

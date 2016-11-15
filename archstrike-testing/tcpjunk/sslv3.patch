@@ -1,0 +1,24 @@
+diff -aur tcpjunk-2.9.03.orig/src/client.c tcpjunk-2.9.03/src/client.c
+--- tcpjunk-2.9.03.orig/src/client.c	2016-09-01 20:15:41.049392701 -0400
++++ tcpjunk-2.9.03/src/client.c	2016-09-01 20:16:39.845244656 -0400
+@@ -54,7 +54,7 @@
+ 	SSL_load_error_strings();
+ 
+ 	/* Create SSL_CTX structure */
+-	meth = SSLv3_method();
++	meth = SSLv23_method();
+ 	ctx = SSL_CTX_new(meth);
+ 	if ((ctx) == NULL)
+ 	  {
+diff -aur tcpjunk-2.9.03.orig/src/server.c tcpjunk-2.9.03/src/server.c
+--- tcpjunk-2.9.03.orig/src/server.c	2016-09-01 20:15:41.049392701 -0400
++++ tcpjunk-2.9.03/src/server.c	2016-09-01 20:16:25.048783020 -0400
+@@ -49,7 +49,7 @@
+ 	SSL_load_error_strings();
+ 
+ 	/* SSL_METHOD structure */
+-	meth = SSLv3_method();
++	meth = SSLv23_method();
+ 	ctx = SSL_CTX_new(meth);
+ 	if ((ctx) == NULL)
+ 	  {

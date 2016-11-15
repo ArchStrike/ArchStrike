@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Jaroslav Lichtblau <dragonlord@aur.archlinux.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=tiger
 pkgver=3.2.3
 pkgrel=8
 groups=('archstrike' 'archstrike-scanners' 'archstrike-autonomous')
 pkgdesc="A security scanner that checks computer for known problems"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.nongnu.org/${pkgname}/"
 license=('GPL')
 depends=('make' 'desktop-file-utils' 'systemd')

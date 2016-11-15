@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=bruteforce-wallet
 pkgver=1.4.1
 pkgrel=3
 groups=('archstrike' 'archstrike-bruteforce')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="Tries to decrypt one of the encrypted addresses in the wallet by trying all the possible passwords"
 url="https://github.com/glv2/bruteforce-wallet"
 license=('GPL3')
@@ -21,16 +21,16 @@ build() {
 
 }
 
-package() { 
+package() {
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   cd ${pkgname}-${pkgver}
 
   make DESTDIR="${pkgdir}" install
-  
-  for i in NEWS AUTHORS README 
-  do 
-    install -Dm644 $i "${pkgdir}/usr/share/doc/${pkgname}" 
+
+  for i in NEWS AUTHORS README
+  do
+    install -Dm644 $i "${pkgdir}/usr/share/doc/${pkgname}"
   done
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
 }

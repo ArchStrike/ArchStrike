@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=zzuf
 pkgver=0.15
@@ -10,7 +10,7 @@ url='https://github.com/samhocevar/zzuf'
 groups=('archstrike' 'archstrike-fuzzers')
 depends=('glibc')
 makedepends=('autoconf')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('custom')
 install="${pkgname}.install"
 source=("https://github.com/samhocevar/$pkgname/releases/download/v$pkgver/$pkgname-$pkgver.tar.gz" "define_default_source.patch")

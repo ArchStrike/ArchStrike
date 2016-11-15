@@ -3,37 +3,27 @@
 buildarch=1
 
 pkgname=pyinstaller
-pkgver=2.1
+_pkgname=PyInstaller
+pkgver=3.2
 pkgrel=2
-groups=('archstrike' 'archstrike-misc')
-pkgdesc="A program that converts (packages) Python programs into stand-alone executables, under Windows, Linux, Mac OS X, Solaris and AIX."
-arch=('any')
-url="http://www.pyinstaller.org/"
+pkgdesc="Bundles a Python application and all its dependencies into a single package."
+url="https://github.com/pyinstaller/pyinstaller"
+depends+=('python2' 'python2-crypto' 'binutils')
+depends_x86_64=('lib32-zlib' 'gcc-multilib' 'lib32-glibc')
+makedepends=('python2-setuptools')
 license=('GPL')
-depends=('python2' 'lib32-zlib')
-source=("https://pypi.python.org/packages/source/P/PyInstaller/PyInstaller-$pkgver.tar.gz")
-sha512sums=('aad29298b3342ccf94c7234ae6c81ef97ed3bfdbd1b696acf087d08bc5c6536b066b7f2012d7cdd1c47c465dfafd886290be44234fb86935eea56f015add9ea7')
-options=('!strip' '!emptydirs')
+arch=('any')
+source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('568facc21e9ee06ff3f505c4e413d3a17329cfa219e62dca0a06ffe746e969b29137e8478113408f8db9c05b9ca69c6fc23bd8bf1396a9d821a911a60bb62e6b')
 
-prepare() {
-  cd "$srcdir/PyInstaller-$pkgver"
-  grep -RIl '^#!.*python' . | xargs sed -i '/^#!/ s|.*|#! /usr/bin/env python2|'
+build() {
+    cd ${_pkgname}-${pkgver}
+    python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/PyInstaller-$pkgver"
-
-  # Clean up.
-  rm -rf "bootloader" "old" "tests" "PKG-INFO" "setup.py"
-
-  # Base directories
-  install -dm 755 "$pkgdir/usr/bin"
-  install -dm 755 "$pkgdir/usr/share/doc/pyinstaller"
-  install -dm 755 "$pkgdir/usr/share/pyinstaller"
-
-  install -Dm644 "doc/Manual.pdf" "$pkgdir/usr/share/doc/pyinstaller"
-  rm -rf "doc"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/pyinstaller"
-
-  ln -s "/usr/share/pyinstaller/pyinstaller.py" "$pkgdir/usr/bin/pyinstaller"
+    cd ${_pkgname}-${pkgver}
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+    python2 setup.py install --root="${pkgdir}" --optimize=1 
 }

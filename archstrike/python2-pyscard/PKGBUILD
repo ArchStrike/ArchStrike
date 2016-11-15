@@ -2,13 +2,13 @@
 # Contributor: Guenther Starnberger <gst@sysfrog.org>
 # Contributor:  Artiom Molchanov <ar.molchanov@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=python2-pyscard
 pkgver=1.9.4
 pkgrel=1
 pkgdesc="A Python module adding smart cards support to Python"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://pyscard.sourceforge.net/"
 license=('LGPL')
 depends=('python2' 'pcsclite')

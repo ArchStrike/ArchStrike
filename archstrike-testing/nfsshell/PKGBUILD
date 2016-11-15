@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='nfsshell'
 pkgver=19980519
 pkgrel=2
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-networking')
 pkgdesc='Userland NFS command tool.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.paramecium.org/~leendert/'
 license=('custom')
 depends=('readline')

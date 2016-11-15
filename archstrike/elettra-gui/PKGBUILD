@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname='elettra-gui'
 pkgver='1.0'
 pkgrel=2
 pkgdesc='Gui for the elettra cryptography application.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.winstonsmith.info/julia/elettra/'
 license=('custom')
 depends=('wxgtk')

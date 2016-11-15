@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=200
 
 pkgname=maskprocessor
 pkgver=0.73
 pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A High-Performance word generator with a per-position configurable charset"
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 url='https://github.com/hashcat/maskprocessor'
 license=('MIT')
 depends=('glibc')

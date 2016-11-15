@@ -1,0 +1,29 @@
+diff -aur pefile-2016.3.28.orig/setup.py pefile-2016.3.28/setup.py
+--- pefile-2016.3.28.orig/setup.py	2016-08-19 10:52:17.641725553 -0400
++++ pefile-2016.3.28/setup.py	2016-08-19 10:53:36.890605121 -0400
+@@ -4,6 +4,7 @@
+ import os
+ import re
+ import sys
++from io import open
+ 
+ try:
+     from setuptools import setup, Command
+@@ -22,7 +23,7 @@
+     Parse docstring from file 'pefile.py' and avoid importing
+     this module directly.
+     """
+-    with open('pefile.py', 'r') as f:
++    with open('pefile.py', 'r', encoding='utf-8') as f:
+         tree = ast.parse(f.read())
+     return ast.get_docstring(tree)
+ 
+@@ -35,7 +36,7 @@
+     __version__, __author__, __contact__,
+     """
+     regex = attr_name + r"\s+=\s+'(.+)'"
+-    with open('pefile.py', 'r') as f:
++    with open('pefile.py', 'r', encoding='utf-8') as f:
+         match = re.search(regex, f.read())
+     # Second item in the group is the value of attribute.
+     return match.group(1)

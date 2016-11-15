@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=arpwner-git
 pkgver=20120106.r26.f300fdf
-pkgrel=3
+pkgrel=4
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A tool for arp posioning and dns poisoning attacks, written in python."
@@ -32,7 +32,7 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
 cat > "$pkgdir/usr/bin/arpwner" << EOF
 #!/bin/sh
-cd /usr/share/arpwner
+cd /usr/share/$pkgname
 python2 main.py "\$@"
 EOF
 chmod +x "$pkgdir/usr/bin/arpwner"

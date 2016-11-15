@@ -2,14 +2,14 @@
 # Contributor: Tom Gundersen <teg@jklm.no>
 # Contributor: Judd <jvinet@zeroflux.org>
 
-buildarch=1
+buildarch=220
 
 pkgname=libevent-static
 _pkgname=libevent
 pkgver=2.0.22
 pkgrel=2
 pkgdesc="An event notification library static libs"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://libevent.org"
 license=('BSD')
 options=('staticlibs')

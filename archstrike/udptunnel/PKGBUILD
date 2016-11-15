@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=udptunnel
 pkgver=19
 pkgrel=1
 groups=('archstrike' 'archstrike-tunnel' 'archstrike-networking')
 pkgdesc="Tunnels TCP over UDP packets."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/udptunnel/'
 license=('GPL3')
 source=("https://udptunnel.googlecode.com/files/udptunnel-r$pkgver.tar.gz")

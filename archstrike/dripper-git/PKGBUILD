@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 _pkgname=dripper
 
-buildarch=212
+buildarch=220
 
 pkgname=${_pkgname}-git
 pkgver=20130912.r3.2430d65
@@ -10,7 +10,7 @@ epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A fast, asynchronous DNS scanner; it can be used for enumerating subdomains and enumerating boxes via reverse DNS"
 url="http://www.blackhatlibrary.net/Dripper"
-arch=('x86_64' 'i686' 'armv6h' 'armv7h')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 depends=('gcc-libs')
 makedepends=('git')
 license=('GPL3')

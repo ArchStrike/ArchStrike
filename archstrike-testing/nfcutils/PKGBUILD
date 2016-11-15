@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=nfcutils
 pkgver=0.3.2
 pkgrel=3
 groups=('archstrike' 'archstrike-nearfield')
 pkgdesc="Provides a simple 'lsnearfield' command that list tags which are in your NFC device field"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://code.google.com/p/nearfield-tools"
 license=('LGPL3')
 depends=('libnfc')

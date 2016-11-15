@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=hcraft
 pkgver=1.0.0
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="HTTP Vuln Request Crafter"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://sourceforge.net/projects/hcraft/"
 license=('GPL2')
 source=("http://downloads.sourceforge.net/project/hcraft/hcraft/hcraft-1.0.0/hcraft-$pkgver.tar.gz")

@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=firewalk
 pkgver=5.0
 pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-scanners')
 pkgdesc="An active reconnaissancenaissance network security tool"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('custom')
 depends=('libdnet' 'libnet' 'libpcap')
 source=('http://packetfactory.openwall.net/firewalk/dist/firewalk.tar.gz'

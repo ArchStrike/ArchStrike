@@ -1,15 +1,15 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 _pkgname=wpscan
 pkgname=$_pkgname-git
-pkgver=20160808.r2067
+pkgver=20161102.r2100
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
 pkgdesc='A vulnerability scanner which checks the security of WordPress installations using a black box approach'
-arch=('armv6h' 'armv7h' 'i686' 'x86_64')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url='http://wpscan.org'
 license=('custom')
 depends=('ruby-bundler' 'libxslt' 'libyaml' 'curl')

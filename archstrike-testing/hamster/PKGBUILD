@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=hamster
 pkgver=2.0.0
 pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Tool for HTTP session sidejacking."
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://hamster.erratasec.com/'
 license=('GPL')
 depends=('libpcap')

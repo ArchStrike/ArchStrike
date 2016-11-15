@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=brutexss-git
-pkgver=20160715.r48
+pkgver=20160911.r52
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-webapps')
 arch=('any')
 pkgdesc="Cross-Site Scripting BruteForcer"
 url="https://github.com/shawarkhanethicalhacker/BruteXSS"
 license=('GPL3')
-depends=('python2' 'python2-colorama' 'python2-mechanize')
+depends=('python2-colorama' 'python2-mechanize')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/shawarkhanethicalhacker/BruteXSS.git")
 sha512sums=('SKIP')

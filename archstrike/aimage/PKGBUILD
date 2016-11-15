@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=aimage
 pkgver=3.2.5
 pkgrel=7
 pkgdesc='A program to create aff-images'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.afflib.org'
 license=('custom')
 depends=('afflib')

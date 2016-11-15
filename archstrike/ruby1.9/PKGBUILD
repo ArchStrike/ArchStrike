@@ -5,13 +5,13 @@
 # Contributor: John Proctor <jproctor@prium.net>
 # Contributor: Jeramy Rutley <jrutley@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=ruby1.9
 pkgdesc='An object-oriented language for quick and easy programming'
 pkgver=1.9.3_p551
 pkgrel=1
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.ruby-lang.org/en/'
 license=('BSD' 'custom')
 depends=('openssl' 'libffi' 'libyaml')

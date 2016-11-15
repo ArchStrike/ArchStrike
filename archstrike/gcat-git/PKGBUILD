@@ -14,7 +14,7 @@ depends=('python2')
 makedepends=('git')
 install="$pkgname.install"
 source=("$pkgname::git+https://github.com/byt3bl33d3r/gcat.git")
-sha512sums=('SKIP') 
+sha512sums=('SKIP')
 
 prepare() {
   cd $pkgname

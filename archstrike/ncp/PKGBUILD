@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=ncp
 pkgver=1.2.4
 pkgrel=9
 pkgdesc="A fast file copy tool for LANs"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.fefe.de/${pkgname}/"
 license=('GPL')
 groups=('archstrike')

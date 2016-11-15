@@ -27,5 +27,5 @@ build() {
 
 package() {
     cd $srcdir/pygoogle-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1 
+    python2 setup.py install --root="$pkgdir" --optimize=1
 }

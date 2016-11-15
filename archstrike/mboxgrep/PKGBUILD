@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=mboxgrep
 pkgver=0.7.9
@@ -10,7 +10,7 @@ url="http://mboxgrep.sourceforge.net"
 groups=('archstrike' 'archstrike-forensics')
 license=('GPL')
 depends=('pcre')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("http://downloads.sourceforge.net/mboxgrep/mboxgrep-$pkgver.tar.gz" 'mboxgrep.desktop' "gcc6.1.fixes.patch")
 sha512sums=('d7e768a0ad11bc3df8619f2a888d2943c68ef72dd036c2fe58268686efb50cb1f62ba379571b6cd6efa8493c5ea0d7c09a29520eae6c68f66d9453710eeeba11'
             'ec614448045e265f12742deabc8915df472ca931f273fb7807158be3569a7e817ac828f6de0c7fda708540100ca025a207e44ca9655b94a449ad843ab727dccc'
@@ -20,7 +20,6 @@ prepare() {
   cd "$pkgname-$pkgver"
   patch -Np1 -i $srcdir/gcc6.1.fixes.patch
 }
-
 
 build() {
   cd "$pkgname-$pkgver"

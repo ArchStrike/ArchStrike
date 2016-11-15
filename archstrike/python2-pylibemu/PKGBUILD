@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=python2-pylibemu
 pkgver=0.3.3
 pkgrel=2
 pkgdesc="A Libemu Cython wrapper"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/buffer/pylibemu'
 license=('GPL2')
 depends=('python2' 'libemu')

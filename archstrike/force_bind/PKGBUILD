@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Kevin MacMartin <prurigro@gmail.com>
 
-buildarch=212
+buildarch=220
 
 pkgname=force_bind
 pkgver=0.12
@@ -9,7 +9,7 @@ pkgrel=2
 pkgdesc='Force binding on a specific IP and/or port, change TTL/TOS/KA/MSS/REUSEADDR/FWMARK/PRIORITY. Works with both IPv4 and IPv6. Also, you can enforce bandwidth per process or per socket'
 url='http://kernel.embedromix.ro/us/'
 license=('GPL3')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('glibc')
 source=(
   "http://kernel.embedromix.ro/us/$pkgname/$pkgname-$pkgver.tar.gz"

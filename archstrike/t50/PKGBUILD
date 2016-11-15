@@ -1,26 +1,26 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=t50
-pkgver=5.6.4
+pkgver=5.6.7
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
 source=("http://downloads.sourceforge.net/project/t50/t50-5.6/t50-${pkgver}.tar.gz")
-sha512sums=('0244ed5040631f8ccb44bedaca07fd67cf468d159142c0278cf315f9dc686be05e2a2fe7488d18dc589243233096b1b6a6c138bee618e04cebed42ea21fe4927')
+sha512sums=('a3fdf600dd0fddbc5645e6b4c453f6cdea48f1450ce14718f4e63e0d5a0b6bb5e5ba64f84146f7e6df637476e59ea24451d97746e5aaabcb5495f334275075d3')
 
 build() {
-  cd "$pkgname-$pkgver"
-  ./configure --prefix=/usr --sbindir=/usr/bin 
+  cd "$pkgname-$pkgver-fix1"
+  ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "$pkgname-$pkgver-fix1"
   make DESTDIR=$pkgdir install
 }

@@ -5,17 +5,17 @@
 
 _pkgname=mbox
 
-buildarch=128
+buildarch=136
 
 pkgname=${_pkgname}-git
 
-buildarch=128
+buildarch=136
 
 pkgname=mbox-git
 pkgver=20140526.r274.a131424
 pkgrel=2
 pkgdesc="A lightweight sandbox tool for non-root users"
-arch=('x86_64')
+arch=('x86_64' 'aarch64')
 groups=('archstrike')
 url="http://pdos.csail.mit.edu/${_pkgname}"
 license=('MIT')

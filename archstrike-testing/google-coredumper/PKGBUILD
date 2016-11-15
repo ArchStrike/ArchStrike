@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Anatol Pomozov <anatol@google.com>
 
-buildarch=192
+buildarch=200
 
 pkgname=google-coredumper
 pkgver=1.2.1
@@ -10,7 +10,7 @@ groups=('archstrike' 'archstrike-debugging')
 pkgdesc='Library can be compiled into applications to create core dumps of the running program -- without terminating.'
 url='https://code.google.com/p/google-coredumper/'
 license=(GPL)
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('glibc')
 # Upstream is currently broken.
 # Here are fixs for upstream https://github.com/anatol/google-coredumper

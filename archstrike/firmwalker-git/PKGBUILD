@@ -1,4 +1,5 @@
-# Maintainer: ArchStrike <team@archstrike.org> 
+# Maintainer: ArchStrike <team@archstrike.org>
+
 buildarch=1
 
 pkgname=firmwalker-git

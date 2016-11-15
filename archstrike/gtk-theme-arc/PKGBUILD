@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=gtk-theme-arc
 _pkgname=arc-theme
-pkgver=20160605
+pkgver=20161005
 pkgrel=1
 pkgdesc="A flat theme with transparent elements for GTK 3, GTK 2 and Gnome-Shell. Official releases only."
 arch=('any')
@@ -16,16 +16,16 @@ depends=('gtk3' 'gtk-engine-murrine')
 source=("https://github.com/horst3180/${_pkgname}/archive/$pkgver.tar.gz")
 conflicts=('gtk-theme-arc-git')
 provides=('gtk-theme-arc')
-sha512sums=('e8905d4c5bf3a2881243db12ce23972180edf95873eb1533cbeb0a582f8f684fdcbaa7df9b314354d0cb83d5e462e45ce07561dfac706b4fceaa5d350b2357e9')
+sha512sums=('cbdb73424f85532d756f2b7ed781fbc49598be44e01715490c0f95a60d7e1ab1c4f58a02f1a60bc9aec7f9625a9b7190ed680888af9c6fdf8a192b935c2ebe33')
 
 build() {
-	cd "${_pkgname}-$pkgver"
-	./autogen.sh 
-        ./configure --prefix=/usr
-        make
+  cd "${_pkgname}-$pkgver"
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-        cd "${_pkgname}-$pkgver"
-	make DESTDIR="${pkgdir}" install
+  cd "${_pkgname}-$pkgver"
+  make DESTDIR="$pkgdir" install
 }

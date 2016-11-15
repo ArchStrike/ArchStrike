@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=gooscan
 pkgver=1.0.9
 pkgrel=2
 pkgdesc="A tool that automates queries against Google search appliances, but with a twist."
 url="http://johnny.ihackstuff.com/downloads/task,doc_details&Itemid=/gid,28/"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('unknown')
 groups=('archstrike' 'archstrike-autonomous')
 source=('gooscan.c')

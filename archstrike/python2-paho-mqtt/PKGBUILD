@@ -16,7 +16,6 @@ makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/eclipse/paho.mqtt.python/archive/v${pkgver}.tar.gz")
 sha512sums=('c1db1ac287ca15e9e4af03c09e73c1abc502204641ac1be72d3e1c0ef0fbcb4bc4f97afd2b17410e3d196f0441daaa3c4ffda644d33e92ec014f94848e2e7b81')
 
-
 prepare() {
    cp -r $_pkgname-${pkgver} python2-$_pkgname-${pkgver}
 }

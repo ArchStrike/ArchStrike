@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=stickykeyshunter-git
-pkgver=20160427.r14
+pkgver=20160911.r15
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Script to test an RDP host for sticky keys and utilman backdoor"

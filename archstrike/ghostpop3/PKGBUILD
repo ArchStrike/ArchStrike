@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=212
+buildarch=220
 
 pkgname=ghostpop3
 pkgver=0.1.0
@@ -10,7 +10,7 @@ pkgdesc="A program that simulates an 'always no messages' POP3 server"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL')
 groups=('archstrike' 'archstrike-honeypots')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('glibc')
 source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 options=('!emptydirs')

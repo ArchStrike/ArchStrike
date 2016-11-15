@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-buildarch=192
+buildarch=200
 
 pkgname=johnny
 pkgver=2.2
@@ -10,7 +10,7 @@ epoch=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc='GUI for John the Ripper'
 url='http://openwall.info/wiki/john/johnny'
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 license=('BSD')
 depends=('qt4' 'john')
 source=(

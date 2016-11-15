@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=codecrypt
 pkgver=1.7.5
@@ -9,7 +9,7 @@ pkgdesc="A GnuPG-like program for encryption and signing that uses only quantum-
 url="https://github.com/exaexa/$pkgname"
 license=('GPL3')
 groups=('archstrike-crypto')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('crypto++' 'gmp' 'fftw')
 makedepends=('libtool' 'automake' 'autoconf')
 source=("https://github.com/exaexa/codecrypt/archive/v$pkgver.tar.gz")

@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=artillery-git
-pkgver=20160801.r174
+pkgver=20160822.r176
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-defense')

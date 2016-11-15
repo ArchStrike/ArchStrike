@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=pev
 pkgver=0.70
 pkgrel=3
 groups=('archstrike' 'archstrike-forensics' 'archstrike-reverse')
 pkgdesc="Command line based tool for PE32/PE32+ file analyze"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://pev.sourceforge.net'
 license=('GPL')
 depends=('openssl' 'pcre')

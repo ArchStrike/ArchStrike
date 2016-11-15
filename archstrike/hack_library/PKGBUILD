@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=hack_library
 pkgver=1.0
 pkgrel=2
 groups=('archstrike' 'archstrike-voip')
 pkgdesc="A library needed by rtpmixsound and rtpinsertsound"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.hackingvoip.com/sec_tools.html"
 license=('GPL2')
 source=("http://www.hackingvoip.com/tools/$pkgname.tar.gz" "gcc6.1.fixes.patch")
