@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=recoverjpeg
-pkgver=2.6
-pkgrel=3
+pkgver=2.6.1
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='Recover jpegs from damaged devices'
 url='http://www.rfc1149.net/devel/recoverjpeg.html'
@@ -16,7 +16,7 @@ optdepends=(
   'imagemagick: needed for sort-pictures'
 )
 source=("http://www.rfc1149.net/download/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('16ac27fea28838232e215f624e6cd2e861d5921580fa83ff71f57b21bfbdc5ca45aca1e9e50f708aa1b55e9d29cc009caac1eb1d2f443766ebdcd387a8a231ba')
+sha512sums=('820ab1b4e9f06526c5b2e2ab882f55aff513d4041b0516f9f9a3e27c2520acf980cb486ae193a5390c2b2781174cb28c6df5ce17471a64a2775a335e357d0dd7')
 
 build() {
   cd $pkgname-$pkgver
