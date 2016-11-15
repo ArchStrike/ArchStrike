@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=onionshare
-pkgver=0.9.1
+pkgver=0.9.2
 pkgrel=1
 pkgdesc="Securely and anonymously share a file of any size"
 groups=('archstrike' 'archstrike-misc')
@@ -14,7 +14,7 @@ license=('GPL3')
 depends=('python-stem-git' 'python-flask' 'python-pyqt5')
 makedepends=('python-setuptools')
 source=(https://github.com/micahflee/onionshare/archive/v$pkgver.tar.gz)
-sha512sums=('08d16577f29cb5c58bf3c547c9a9671da1066a01d13f0f144bce2223e74f61e8b750dc2d055e2d36309450d605f359001c9281732b2c0df64bcb38e757dfc13c')
+sha512sums=('b1ce10783dcee6fef1d5ffbef252e6db32b2150fe9610345745d7e4bf10c25f1077bdaea80353cab6756521e20b179c72cad8daf6a5159a199a2dc727475759a')
 
 package() {
   cd "$srcdir/onionshare-$pkgver"
