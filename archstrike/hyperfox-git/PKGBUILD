@@ -4,7 +4,7 @@ _pkgname=hyperfox
 buildarch=220
 
 pkgname=hyperfox-git
-pkgver=20161004.r58
+pkgver=20161115.r60
 pkgrel=1
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="A security tool for proxying and recording HTTP and HTTPs traffic."
