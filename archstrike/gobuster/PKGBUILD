@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=gobuster
+pkgver=1.2
+pkgrel=1
+pkgdesc="Directory/file & DNS busting tool written in Go"
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
+url="https://github.com/OJ/gobuster"
+groups=('archstrike' 'archstrike-webapps' 'archstrike-enumeration')
+license=("APACHE")
+depends=('glibc')
+makedepends=('go' 'git')
+source=("https://github.com/OJ/gobuster/archive/v$pkgver.tar.gz")
+sha512sums=('a4c02b8f6a4f99ab6e6ab070b55cecf39b1141dbde1a2c1b41fa9e93e3b0ba3c90a74aa4b05abcf33539bbbf0ad5ebcc6d2e527f7880156bc5bb425834130868')
+
+build() {
+  cd "$pkgname-$pkgver"
+  GOPATH="$srcdir" go get -d -t github.com/OJ/gobuster
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  GOPATH="$srcdir" go build -v github.com/OJ/gobuster
+  install -Dm755 ${pkgname} ${pkgdir}/usr/bin/${pkgname}
+}
