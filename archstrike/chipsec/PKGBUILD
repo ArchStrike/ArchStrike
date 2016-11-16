@@ -1,0 +1,22 @@
+# Maintainer: ArchStrike <team archstrike org>
+# Contributor: CHIPSEC team <chipsec@intel.com>
+
+buildarch=192
+
+pkgname=chipsec
+pkgver=1.2.5
+pkgrel=1
+groups=('archstrike' 'archstrike-hardware' 'archstrike-forensics')
+pkgdesc="A framework for analyzing security of PC platforms including hardware, system firmware including BIOS/UEFI and the configuration of platform components."
+arch=('i686' 'x86_64' )
+url='https://github.com/chipsec/chipsec'
+license=('GPL2')
+depends=('python2' 'nasm' 'linux-headers')
+source=("https://github.com/chipsec/chipsec/archive/v$pkgver.tar.gz")
+sha512sums=('9822354d228caed378055d975e286e4863de86266f9fb82888ead56fe16b255a1515f27331000d516222f7c7274e7eb73440e7f90d17e7d44cc1b5b7b2558cc7')
+
+package() {
+  cd "$srcdir/chipsec-$pkgver/"
+
+  python2 setup.py install root=$pkgdir --optimize=1
+}
