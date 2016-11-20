@@ -3,7 +3,8 @@
 
 buildarch=1
 
-pkgname=cjdnsify
+pkgname=cjdnsify-git
+_pkgname=cjdnsify
 pkgver=20140717.r6.bc354af
 pkgrel=4
 pkgdesc='Limit network access of bind-compatible programs to the local cjdns network'
@@ -13,17 +14,20 @@ license=('GPL')
 depends=('bash' 'cjdns' 'force_bind')
 makedepends=('git')
 arch=('any')
-backup=("etc/default/$pkgname")
-source=("git://github.com/prurigro/$pkgname.git")
+backup=("etc/default/${_pkgname}")
+conflicts=('cjdnsify')
+replaces=('cjdnsify')
+provides=('cjdnsify')
+source=("${pkgname}::git://github.com/prurigro/${_pkgname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname}
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd $pkgname
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname.conf "$pkgdir/etc/default/$pkgname"
+  cd ${pkgname}
+  install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 ${_pkgname}.conf "${pkgdir}/etc/default/${_pkgname}"
 }
