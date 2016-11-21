@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=umap-git
 pkgver=r25.3ad8121
-pkgrel=3
+pkgrel=4
 pkgdesc="The USB host security assessment tool"
 url="https://github.com/nccgroup/umap"
 arch=('any')
 license=('AGPL')
 groups=('archstrike')
-depends=('python2' 'python-pyserial')
+depends=('python' 'python-pyserial')
 makedepends=('git')
 provides=('umap')
 conflicts=('umap')
@@ -54,7 +54,7 @@ package() {
   cat > "$pkgdir"/usr/bin/umap.py <<EOF
 #!/bin/sh
 cd /usr/share/umap-git
-python2 umap.py "\$@"
+python umap.py "\$@"
 EOF
   chmod +x "$pkgdir"/usr/bin/umap.py
 }
