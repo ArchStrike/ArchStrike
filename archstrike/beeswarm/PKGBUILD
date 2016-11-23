@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=beeswarm
-pkgver=0.7.17
+pkgver=0.7.18
 pkgrel=1
 groups=('archstrike' 'archstrike-honeypots')
 pkgdesc="A honeypot project which provides easy configuration, deployment and managment of honeypots."
@@ -16,7 +16,7 @@ depends=('python2' 'python2-pyzmq' 'python2-crypto' 'python2-ecdsa' 'python2-css
 license=('GPL3')
 arch=('any')
 source=("$pkgname-$pkgver::https://github.com/honeynet/beeswarm/archive/Release_$pkgver.tar.gz")
-sha512sums=('c9b63f68ec28bf03759376a34f4fb8779ce43d63a66465ad56a4a1b13ca3d0c2ae911fd82945bbb0ce04b3aa1a3df16ad6ddae807c94d35a7ea58ba3ac0db9f6')
+sha512sums=('6de842367e841724302183f760564942a2c70632e12409065a76dff6296586d1353b744b9645c6fc4105a65787edea08aac7f22d5d42c6ed307b618f070f9870')
 
 build() {
   cd "$srcdir/$pkgname-Release_$pkgver"
