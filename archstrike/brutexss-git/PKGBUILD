@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=brutexss-git
-pkgver=20160911.r52
+pkgver=20161123.r54
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-webapps')
 arch=('any')
