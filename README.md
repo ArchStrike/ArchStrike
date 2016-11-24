@@ -25,6 +25,8 @@ Tweet us: <https://twitter.com/ArchStrike>
 
 Send us a pull request: <https://github.com/ArchStrike/ArchStrike>
 
+Check out our subreddit: <https://reddit.com/r/archstrike>
+
 ##Contributing
 
 Contributions are very welcome. You can contribute at our [github page](https://github.com/ArchStrike/ArchStrike)
