@@ -3,27 +3,27 @@
 buildarch=1
 
 pkgname=auto-xor-decryptographyr-git
-pkgver=5.1f552be
-pkgrel=4
+pkgver=7.2eb176d
+pkgrel=1
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="Automatic XOR decryptographyr tool."
 arch=('any')
 url="http://www.blog.mrg-effitas.com/publishing-of-mrg-effitas-automatic-xor-decryptographyr-tool/"
 license=('GPL')
-depends=('python')
+depends=('python' 'python-argparse' 'python-future' 'python-more-itertools')
 makedepends=('git')
 replaces=('auto-xor-decryptographyr')
 provides=('auto-xor-decryptographyr')
 conflicts=('auto-xor-decryptographyr')
-source=("git+https://github.com/MRGEffitas/scripts")
+source=("${pkgname}::git+https://github.com/MRGEffitas/scripts")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd scripts
+  cd ${pkgname}
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 package() {
-  cd "$srcdir/scripts"
-  install -Dm755 auto_xor_decryptor.py "$pkgdir/usr/bin/auto_xor_decrypter"
+  cd ${pkgname}
+  install -Dm755 auto_xor_decryptor.py "$pkgdir/usr/bin/auto_xor_decryptor"
 }
