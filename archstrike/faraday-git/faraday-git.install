@@ -1,0 +1,31 @@
+post_install() {
+  echo """
+  To use faraday properly, you need to:
+
+  1) Start CouchDB
+  2) Start 'faraday-server'
+  3) Start 'faraday'
+
+  1 - Run 'systemctl start couchdb; systemctl enable couchdb' as root.
+  
+  2 - Run 'faraday-server'
+
+  3 - Run 'faraday' to start faraday.
+  """
+}
+
+post_upgrade() {
+  echo """
+  To use faraday properly, you need to:
+
+  1) Start CouchDB
+  2) Start 'faraday-server'
+  3) Start 'faraday'
+
+  1 - Run 'systemctl start couchdb; systemctl enable couchdb' as root.
+  
+  2 - Run 'faraday-server'
+
+  3 - Run 'faraday' to start faraday.
+  """
+}

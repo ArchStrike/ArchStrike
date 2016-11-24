@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=faraday-git
 pkgver=20161121.r3459
-pkgrel=2
+pkgrel=3
 pkgdesc="A new concept (IPE) Integrated Penetration-Test Environment a multiuser Penetration test IDE. Designed for distribution, indexation and analyze of the generated data during the process of a security audit."
 groups=('archstrike' 'archstrike-misc')
 url="http://www.faradaysec.com/"
@@ -20,6 +20,7 @@ source=("${pkgname}::git+https://github.com/infobyte/faraday.git")
 replaces=('faraday')
 conflicts=('faraday')
 provides=('faraday')
+install="${pkgname}.install"
 sha512sums=('SKIP')
 
 pkgver() {
