@@ -1,0 +1,19 @@
+diff --git a/makefile b/makefile
+index c76d53e..07740ab 100755
+--- a/makefile
++++ b/makefile
+@@ -10,10 +10,10 @@ PROG08 = ddru_ntfsfindbad
+ PROG09 = ddru_diskutility
+ PROG20 = ddru_findbad
+ PROG50 = ddru_ntfscommon
+-bindir = $(DESTDIR)/usr/local/bin/
+-infodir = $(DESTDIR)/usr/local/share/info/
+-mandir = $(DESTDIR)/usr/local/share/man/man1/
+-docdir= $(DESTDIR)/usr/local/share/doc/
++bindir = $(DESTDIR)/usr/bin/
++infodir = $(DESTDIR)/usr/share/info/
++mandir = $(DESTDIR)/usr/share/man/man1/
++docdir= $(DESTDIR)/usr/share/doc/
+ 
+ all: $(PROG00) $(PROG05) $(PROG08) $(PROG09)
+ 
