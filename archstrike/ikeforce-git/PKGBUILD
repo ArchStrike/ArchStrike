@@ -4,14 +4,14 @@ buildarch=1
 
 _pkgname=ikeforce
 pkgname=$_pkgname-git
-pkgver=r18.d32425f
+pkgver=r27.ea88d54
 pkgrel=1
 groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc='A command line IPSEC VPN brute forcing tool for Linux that allows group name/ID enumeration and XAUTH brute forcing capabilities'
 arch=('any')
 url='https://github.com/SpiderLabs/ikeforce'
 license=('GPL')
-depends=('python2-pyip')
+depends=('python2-pyip' 'python2-pyopenssl' 'python2-crypto')
 makedepends=('git')
 source=("$pkgname::git+$url")
 sha512sums=('SKIP')
