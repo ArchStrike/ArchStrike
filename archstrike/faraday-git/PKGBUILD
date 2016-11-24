@@ -4,14 +4,14 @@ buildarch=220
 
 pkgname=faraday-git
 pkgver=20161121.r3459
-pkgrel=1
+pkgrel=2
 pkgdesc="A new concept (IPE) Integrated Penetration-Test Environment a multiuser Penetration test IDE. Designed for distribution, indexation and analyze of the generated data during the process of a security audit."
 groups=('archstrike' 'archstrike-misc')
 url="http://www.faradaysec.com/"
 depends_x86_64+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'lib32-glibc' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
-depends_i686+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-intropsection-runtime')
+depends_i686+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
 depends_armv6h+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
-depends_armv7h+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlarlchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
+depends_armv7h+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
 makedepends=('git')
 options=('!strip')
 license=('GPL')
