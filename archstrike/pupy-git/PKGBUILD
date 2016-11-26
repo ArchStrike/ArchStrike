@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pupy-git
-pkgver=20161027.r703
+pkgver=20161120.r849
 pkgrel=1
 pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python.'
 url='https://github.com/n1nj4sec/pupy'
@@ -40,7 +40,7 @@ prepare() {
   grep -iRl 'python' ${srcdir}/${pkgname} | xargs sed -i 's|python$|python2|g'
 
   # remove each submodule to replace with the pkg version
-  for i in LaZagne impacket;
+  for i in LaZagne impacket scapy;
     do
     git submodule deinit -f pupy/external/${i};
     git rm pupy/external/${i};
@@ -55,13 +55,6 @@ prepare() {
   rm -rf .git/modules/client/sources-linux/linux-inject
   rm -rf ../linux-inject/.git
   mv ../linux-inject client/sources-linux/linux-inject
-
-  # do that for scapy
-  git submodule deinit -f pupy/packages/src/scapy
-  git rm pupy/packages/src/scapy
-  rm -rf .git/modules/pupy/packages/src/scapy
-  rm -rf ../scapy/.git
-  mv ../scapy pupy/packages/src/scapy
 
   # update and clone the remaining submodules
   git submodule sync
