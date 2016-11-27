@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=pyew-git
-pkgver=20140827.r100
-pkgrel=2
+pkgver=20161122.r101
+pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="a (command line) python tool to analyse malware."
 arch=('any')
@@ -40,7 +40,7 @@ package(){
   rm LICENSE COPYING
 
 cat > "${pkgdir}/usr/bin/pyew" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/${pkgname}
 ./pyew "\$@"
 EOF
