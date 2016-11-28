@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=intrace-git
-pkgver=20151016.r26
-pkgrel=2
+pkgver=20161120.r27
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Traceroute-like application piggybacking on existing TCP connections"
 url='https://github.com/robertswiecki/intrace'
@@ -37,10 +37,9 @@ package() {
 
   # Make base directories.
   install -d ${pkgdir}/usr/bin
-  install -d ${pkgdir}/usr/share/doc/intrace
 
   install -Dm755 intrace ${pkgdir}/usr/bin/intrace
-  install -Dm644 README.md ${pkgdir}/usr/share/doc/$pkgname/README.md
-  install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/$pkgname/ChangeLog
+  install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+  install -Dm644 ChangeLog ${pkgdir}/usr/share/doc/${pkgname}/ChangeLog
 
 }
