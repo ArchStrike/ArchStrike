@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-colorlog
-pkgver=2.7.0
+pkgver=2.10.0
 pkgrel=1
 pkgdesc="Log formatting with colors!"
 url="https://github.com/borntyping/python-colorlog"
@@ -12,17 +12,17 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/95/59/c70e535f1b3b8eab2279dc58dc5ce1a780eb83efccefa55ca745dc7f02ee/colorlog-$pkgver.tar.gz" "LICENSE")
-sha512sums=('765923004a2e2b0c0e34f7cbf2d79ac7232a13e9aba68166c8ba295303cd7187317d9a34a405a78cc5f7ca0281fc3b653848e419c0b3a0dd473ad0b859216703'
+source=("https://github.com/borntyping/python-colorlog/archive/v$pkgver.tar.gz" "LICENSE")
+sha512sums=('6782841826bf0c673c3a6678bbaaf05d4134deb1f1a2cd4a607862baff698146abe24e52ae9d3c3c89807e3fecdc68467ce460df251f6c04a4cac56b6ee9216e'
             '6d3fa302cb6ddc29e406f39c33a81902633e7afb84a2e0aa7a64205dbea568d406939709d3075bea440facd712d95ea3e035806c74f77a9e485cb01e0f3c2cdb')
 
 build() {
-    cd $srcdir/colorlog-2.7.0
+    cd $srcdir/python-colorlog-$pkgver
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/colorlog-2.7.0
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    cd $srcdir/python-colorlog-$pkgver
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 $srcdir/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
