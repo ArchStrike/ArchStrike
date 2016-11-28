@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=plasma-git
-pkgver=20161113.r811
+pkgver=20161126.r830
 pkgrel=1
 groups=('archstrike' 'archstrike-analysis')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
