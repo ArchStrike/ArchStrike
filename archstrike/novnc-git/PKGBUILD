@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=novnc-git
-pkgver=r1164.38d8cfd
+pkgver=r1168.77bc3a5
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="VNC client using HTML5 (Web Sockets, Canvas) with encryption (wss://) support."
@@ -13,9 +13,8 @@ license=('custom')
 makedepends=('git')
 depends=('bash' 'python2' 'websockify' 'nodejs' 'net-tools')
 provides=('novnc')
-source=("${pkgname}::git+https://github.com/kanaka/noVNC.git" "LICENSE")
-sha512sums=('SKIP'
-            'ee977c7e1fcd131b5c42b97fd384920b7ec5afb28aff5da024c1bd6c13b60406789cf7568d5c8f915eed7a573d7354decc3dac0ad0e93eb5c181931a21af2742')
+source=("${pkgname}::git+https://github.com/kanaka/noVNC.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -33,7 +32,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/${pkgname}"
   install -dm755 "$pkgdir/usr/share/licenses/${pkgname}"
   install -dm755 "$pkgdir/usr/bin"
-  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
 cat >$pkgdir/usr/bin/novnc <<EOF
