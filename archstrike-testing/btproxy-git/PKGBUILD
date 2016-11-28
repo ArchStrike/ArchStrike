@@ -3,7 +3,7 @@
 buildarch=200
 
 pkgname=btproxy-git
-pkgver=20161019.r64
+pkgver=20161125.r66
 pkgrel=1
 groups=('archstrike' 'archstrike-bluetooth')
 arch=('i686' 'x86_64' 'aarch64')
