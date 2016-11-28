@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=perl-math-pari
-pkgver=2.010808
-pkgrel=4
+pkgver=2.01080900
+pkgrel=1
 pkgdesc="Perl interface to PARI"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 epoch='1'
@@ -13,7 +13,7 @@ license=('GPL Artistic')
 depends=('perl')
 options=('!emptydirs' '!distcc')
 source=("http://search.cpan.org/CPAN/authors/id/I/IL/ILYAZ/modules/Math-Pari-$pkgver.zip")
-sha512sums=('006e77328f0d8e61b89addbb6b8b8a8adb8c8c1591a1d3cdf80f5183a5fb30bb19219cbfc2624d15ffcdb6b0dc5cff4d69e6e27eb7cb6c29796bbab36ecfda88')
+sha512sums=('844324472632081e16d8c70e2f3b14a04cc125dc65ac1e4e75b495f7b83393cadc637c6b81d2e6657380b153a6d91eba4a437087481ffbd4c6c58c5da0e4d05b')
 
 build() {
   cd "$srcdir/Math-Pari-$pkgver"
