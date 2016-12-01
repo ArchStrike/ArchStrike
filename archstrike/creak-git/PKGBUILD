@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=creak-git
-pkgver=20161102.r32
+pkgver=20161118.r38
 pkgrel=1
 groups=('archstrike' 'archstrike-mitm')
 arch=('any')
