@@ -1,4 +1,4 @@
-#First sample build
+# Maintainer: ArchStrike <team@archstrike.org>
 
 buildarch=1
 
@@ -12,6 +12,9 @@ license=('GPL')
 groups=('archstrike' 'archstrike-honeypots' 'archstrike-defense')
 depends=('python2' 'python2-dnslib' 'python2-requests' 'python2-twisted' 'python2-certifi' 'python2-urllib3')
 makedepends=('git')
+replaces=('honeypy')
+provides=('honeypy')
+conflicts=('honeypy')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
@@ -21,8 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$pkgname"
-  sed -i 's|python|python2|' Honey.py
+  sed -i 's|python|python2|' ${pkgname}/Honey.py
 }
 
 package() {
@@ -37,5 +39,5 @@ cat > "${pkgdir}/usr/bin/honeypy" <<EOF
 cd /usr/share/${pkgname}
 python2 Honey.py "\$@"
 EOF
-  chmod 755 "$pkgdir/usr/bin/honeypy"
+chmod 755 "$pkgdir/usr/bin/honeypy"
 }
