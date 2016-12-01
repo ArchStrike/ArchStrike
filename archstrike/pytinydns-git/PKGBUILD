@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pytinydns-git
 pkgver=r16.d8b53c4
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A tiny DNS server that resolves A records to IPs."
 arch=('any')
@@ -15,33 +15,32 @@ makedepends=('git')
 provides=('pytinydns')
 conflicts=('pytinydns')
 replaces=('pytinydns')
-source=("git+https://github.com/chokepoint/pytinydns.git")
+source=("${pkgname}::git+https://github.com/chokepoint/pytinydns.git")
 sha512sums=('SKIP')
 
-prepare(){
-  grep -iRl 'python' "$srcdir/pytinydns" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
-}
-
 pkgver() {
-  cd "$srcdir/pytinydns"
+  cd ${pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-package() {
-  cd "$srcdir/pytinydns"
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm755 pytinydns.py "$pkgdir/usr/share/pytinydns/pytinydns.py"
-  install -Dm755 redis_import.py "$pkgdir/usr/share/pytinydns/redis_import.py"
-  install -Dm644 pytinydns.conf "$pkgdir/usr/share/pytinydns/pytinydns.conf"
-  install -Dm644 pytinydns.host "$pkgdir/usr/share/pytinydns/pytinydns.host"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README "$pkgdir/usr/share/pytinydns/README"
+prepare() {
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
+}
 
-cat > "$pkgdir/usr/bin/pytinydns" <<EOF
-#!/bin/sh
+package() {
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 pytinydns.py "${pkgdir}/usr/share/pytinydns/pytinydns.py"
+  install -Dm755 redis_import.py "${pkgdir}/usr/share/pytinydns/redis_import.py"
+  install -Dm644 pytinydns.conf "${pkgdir}/usr/share/pytinydns/pytinydns.conf"
+  install -Dm644 pytinydns.host "${pkgdir}/usr/share/pytinydns/pytinydns.host"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 README "${pkgdir}/usr/share/pytinydns/README"
+
+cat > "${pkgdir}/usr/bin/pytinydns" <<EOF
+#!/usr/bin/env bash
 cd /usr/share/pytinydns
 python2 pytinydns.py "\$@"
 EOF
-
-chmod +x "$pkgdir/usr/bin/pytinydns"
+chmod 755 "${pkgdir}/usr/bin/pytinydns"
 }
