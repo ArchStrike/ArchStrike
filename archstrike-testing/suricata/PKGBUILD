@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=suricata
-pkgver=3.1.3
-pkgrel=2
+pkgver=3.2
+pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://openinfosecfoundation.org/index.php/download-suricata"
@@ -15,7 +15,7 @@ optdepends=('snort: suricata can use rulesets provided by snort')
 options=('!emptydirs')
 backup=('etc/suricata/suricata.yaml')
 source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz)
-sha512sums=('d29c2c4344d52ba3d8c5ed4331a35b512e323c9a13a73e3039df6406d8c6389d05e3b311db6b561125c12dfbea67b121afbdecb7f0a5cb0594cf339b492726fb')
+sha512sums=('327f5a62449af44f6cb95220e1ff9bf61b51db7bd25f2b1e8def3e8650ba754304cf9d02fc30b46b6cbaa6b5f94fa3d4be90edb8a293ff3b6c0927b596a2976e')
 
 prepare() {
   cd "$srcdir/$pkgname-$pkgver"
