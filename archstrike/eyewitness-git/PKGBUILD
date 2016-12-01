@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=eyewitness-git
-pkgver=r559.37a764b
+pkgver=r561.72f9697
 pkgrel=1
 pkgdesc="designed to take screenshots of websites, provide some server header info, and identify default credentials is possible"
 arch=('any')
@@ -36,7 +36,7 @@ package() {
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}"
 
 cat > "$pkgdir/usr/bin/eyewitness" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 python2 /usr/share/${pkgname}/EyeWitness.py "\$@"
 EOF
 chmod 755 "$pkgdir/usr/bin/eyewitness"
