@@ -4,7 +4,7 @@ buildarch=220
  
 _pkgname=pycdc
 pkgbase=pycdc-git
-pkgname=(python2-pycdc python-pycdc)
+pkgname=(python2-${pkgbase} python-${pkgbase})
 pkgver=20161108.r229
 pkgrel=1
 groups=('archstrike' 'archstrike-decompile')
@@ -14,6 +14,9 @@ license=('GPL3')
 depends_x86_64=('gcc-libs-multilib')
 depends=('gcc-libs')
 makedepends=('git' 'cmake' 'python2' 'python')
+replaces=("python2-${pkgbase}" "python-${pkgbase}")
+provides=("python2-${pkgbase}" "python-${pkgbase}")
+conflicts=("python2-${pkgbase}" "python-${pkgbase}")
 source=("$_pkgname::git+https://github.com/zrax/$_pkgname.git")
 sha512sums=('SKIP')
  
@@ -40,14 +43,14 @@ build() {
 }
  
  
-package_python2-pycdc() {
+package_python2-pycdc-git() {
   pkgdesc='A Python2 Byte-code Disassembler/Decompiler'
   cd "${_pkgname}-py2/build"
   install -Dm755 pycdc ${pkgdir}/usr/bin/pycdc2
   install -Dm755 pycdas ${pkgdir}/usr/bin/pycdas2
 }
  
-package_python-pycdc() {
+package_python-pycdc-git() {
   pkgdesc='A Python3 Byte-code Disassembler/Decompiler'
   cd "${_pkgname}/build"
   install -Dm755 pycdc ${pkgdir}/usr/bin/pycdc
