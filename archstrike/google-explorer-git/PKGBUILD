@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=google-explorer-git
 pkgver=20161103.r36
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Google mass exploit robot in python"
@@ -24,8 +24,10 @@ package() {
   cd ${pkgname}
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/google-explorer" <<EOF
 #!/usr/bin/env bash
