@@ -1,0 +1,55 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+ 
+buildarch=220
+ 
+_pkgname=pycdc
+pkgbase=pycdc-git
+pkgname=(python2-pycdc python-pycdc)
+pkgver=20161108.r229
+pkgrel=1
+groups=('archstrike' 'archstrike-decompile')
+arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
+url='https://github.com/zrax/pycdc'
+license=('GPL3')
+depends_x86_64=('gcc-libs-multilib')
+depends=('gcc-libs')
+makedepends=('git' 'cmake' 'python2' 'python')
+source=("$_pkgname::git+https://github.com/zrax/$_pkgname.git")
+sha512sums=('SKIP')
+ 
+pkgver() {
+  cd "${_pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+ 
+prepare(){
+  cd ${srcdir}
+  cp -a $_pkgname{,-py2}
+}
+ 
+build() {
+  cd "${_pkgname}-py2"
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
+  make
+ 
+  cd "$srcdir/${_pkgname}"
+  mkdir build && cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python ..
+  make
+}
+ 
+ 
+package_python2-pycdc() {
+  pkgdesc='A Python2 Byte-code Disassembler/Decompiler'
+  cd "${_pkgname}-py2/build"
+  install -Dm755 pycdc ${pkgdir}/usr/bin/pycdc2
+  install -Dm755 pycdas ${pkgdir}/usr/bin/pycdas2
+}
+ 
+package_python-pycdc() {
+  pkgdesc='A Python3 Byte-code Disassembler/Decompiler'
+  cd "${_pkgname}/build"
+  install -Dm755 pycdc ${pkgdir}/usr/bin/pycdc
+  install -Dm755 pycdas ${pkgdir}/usr/bin/pycdas
+}
