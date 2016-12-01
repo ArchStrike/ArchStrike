@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname='perl-text-csv-xs'
-pkgver='1.25'
+pkgver='1.26'
 pkgrel='1'
 pkgdesc="comma-separated values manipulation routines"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl')
 url='http://search.cpan.org/dist/Text-CSV_XS'
 source=("http://search.cpan.org/CPAN/authors/id/H/HM/HMBRAND/Text-CSV_XS-$pkgver.tgz")
-sha512sums=('768c9b5795efb0902bb47e66132cdffbfcf1cfefb961387afbc089025381af69a6ac08b390f78221de9e8e19e25ce066f774f2fc6bd034ea0cd9949b744e65f8')
+sha512sums=('f3e2841638e212f4858b230159ee2a246732d9f5739ce2adbd9778a630852946a9da11c0f270828b880ac6e160611817ffbc0f59f42f20ed64bc82255cdeed7b')
 _distdir="Text-CSV_XS-$pkgver"
 
 build() {
