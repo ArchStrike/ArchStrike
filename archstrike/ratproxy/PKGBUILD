@@ -1,17 +1,18 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=220
 
 pkgname=ratproxy
 pkgver=1.58
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps' 'archstrike-proxy' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="A passive web application security assessment tool"
 url="http://code.google.com/p/ratproxy/"
 license=('APACHE')
-arch=('any')
-source=("http://ratproxy.googlecode.com/files/ratproxy-$pkgver.tar.gz")
-md5sums=('e4d5e64a0bd8f8f92032cbcee77fb3cf')
+arch=('x86_64' 'i686' 'arvm6h' 'armv7h' 'aarch64')
+depends=('openssl' 'bash')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('432189c5863e0937f4dea92087847e6af1563e7a49a6b91b3f610ceb5aa1e25ac24a3bd837298abccfece7b1ad088ffe20cbfcb540dee164a4264bcb10ce89a2')
 
 build() {
   cd "$srcdir/ratproxy"
