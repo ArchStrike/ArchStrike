@@ -1,0 +1,52 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgbase=odfpy
+pkgname=("python-${pkgbase}" "python2-${pkgbase}")
+pkgver=1.3.3
+pkgrel=1
+pkgdesc="Python API and tools to manipulate OpenDocument files"
+url="https://github.com/eea/odfpy"
+makedepends=('python-setuptools' 'python2-setuptools')
+license=('GPL')
+arch=('any')
+source=("${url}/archive/release-${pkgver}.tar.gz")
+sha512sums=('eb4f04abacabd11274ee6ae6e68654b7f11e264546d0d0c89a19c11eec974882c76e3e3c17a2577fa279bfd6849434245ed3d70a0a32274923366209126cd89c')
+
+prepare() {
+  cp -r ${pkgbase}-release-${pkgver} python2-${pkgbase}-release-${pkgver}
+
+  #fix shebangs in python2 folder
+  grep -iRl 'python' python2-${pkgbase}-release-${pkgver} | xargs sed -i 's|python$|python2|g'
+}
+
+build() {
+  cd ${srcdir}/${pkgbase}-release-${pkgver}
+  python setup.py build
+
+  cd ${srcdir}/python2-${pkgbase}-release-${pkgver}
+  python2 setup.py build
+}
+
+package_python-odfpy() {
+  pkgdesc="Python API and tools to manipulate OpenDocument files"
+  depends=('python')
+
+  cd ${srcdir}/${pkgbase}-release-${pkgver}
+  python setup.py install --root="${pkgdir}" --optimize=1 
+
+  #move binaries and man pages to avoid conflict
+  for i in csv2ods mailodf odf2mht odf2xhtml odf2xml odfimgimport odflint odfmeta odfoutline odfuserfield xml2odf; do 
+    mv ${pkgdir}/usr/bin/${i} ${pkgdir}/usr/bin/${i}3; 
+    mv ${pkgdir}/usr/share/man/man1/${i}.1 ${pkgdir}/usr/share/man/man1/${i}3.1
+  done
+}
+
+package_python2-odfpy() {
+  pkgdesc="Python API and tools to manipulate OpenDocument files"
+  depends=('python2')
+
+  cd ${srcdir}/python2-${pkgbase}-release-${pkgver}
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+}
