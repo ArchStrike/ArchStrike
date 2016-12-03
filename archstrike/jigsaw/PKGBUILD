@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=jigsaw
 pkgver=1.3
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-scanners')
 pkgdesc="A simple ruby script for enumerating information about a company's employees. It is useful for Social Engineering or Email Phishing. Source no long on GitHub available as tarball in ours."
 arch=('any')
@@ -25,10 +25,11 @@ package() {
   install -m644 "$srcdir/jigsaw.desktop" "$pkgdir/usr/share/applications"
   cp -a --no-preserve=ownership lib jigsaw.rb "$pkgdir/usr/share/jigsaw"
   install -m644 README.markdown "$pkgdir/usr/share/jigsaw/doc"
+
 cat > "$pkgdir/usr/bin/jigsaw" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/jigsaw
 ruby jigsaw.rb "\$@"
 EOF
-chmod +x "$pkgdir/usr/bin/jigsaw"
+chmod 755 "$pkgdir/usr/bin/jigsaw"
 }
