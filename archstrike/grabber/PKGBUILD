@@ -4,15 +4,15 @@ buildarch=1
 
 pkgname=grabber
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A web application scanner. Basically it detects some kind of vulnerabilities in your website."
 arch=('any')
 url='http://rgaucher.info/beta/grabber/'
 license=('BSD')
-depends=('python')
+depends=('python2' 'python2-beautifulsoup3')
 makedepends=('dos2unix')
-source=(http://rgaucher.info/beta/grabber/Grabber.zip)
+source=("http://rgaucher.info/beta/grabber/Grabber.zip")
 sha512sums=('aa8ffed715dbcee735b7188ba3334fcf130a36f5a82bb088a6071888830e052f3696017f33563cca8259d460c2721a39aa89b738afe8704b869d69455a909b9d')
 
 prepare() {
@@ -22,25 +22,26 @@ prepare() {
 
   # Fix log file location.
   sed -i "s|LogHandler('grabber.log')|LogHandler(os.getenv('HOME') + '/.grabber.log')|" grabber.py
+  grep -iRl 'python' . | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
   cd "$srcdir/Grabber"
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/share/grabber"
+  install -dm755 "$pkgdir/usr/share/${pkgname}"
   install -dm755 "$pkgdir/usr/bin"
 
-  cp --no-preserve=ownership -r * "$pkgdir/usr/share/grabber"
+  cp --no-preserve=ownership -r * "$pkgdir/usr/share/${pkgname}"
 
   # The package's setup script is not adequate.
-  rm "$pkgdir/usr/share/grabber/setup.py"
+  rm "$pkgdir/usr/share/${pkgname}/setup.py"
 
   # Make joint script.
-  cat > "$pkgdir/usr/bin/grabber-scanner" <<EOF
-#!/bin/sh
-cd /usr/share/grabber
+cat > "$pkgdir/usr/bin/grabber-scanner" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
 python2 grabber.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/grabber-scanner"
+chmod 755 "$pkgdir/usr/bin/grabber-scanner"
 }
