@@ -4,7 +4,7 @@ buildarch=192
 
 _pkgname=beef
 pkgname=$_pkgname-git
-pkgver=20161127.r2779
+pkgver=20161203.r2781
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
@@ -29,13 +29,11 @@ package() {
   cd $pkgname
 
   # Install the package files
+  install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$_pkgname"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
   cd "$pkgdir/usr/share/$_pkgname"
   bundle install --path vendor/bundle
-
-  # Create the launcher
-  install -dm755 "$pkgdir/usr/bin"
 
 cat > "$pkgdir/usr/bin/$_pkgname" << EOF
 #!/usr/bin/env bash
