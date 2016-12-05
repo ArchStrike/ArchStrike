@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=dnsbf-git
+_pkgname=dnsbf
+pkgver=0.3
+pkgrel=1
+groups=('archstrike' 'archstrike-scanners')
+pkgdesc='Search for available domain names in an IP range'
+arch=('any')
+url='https://github.com/strayArch/dnsbf'
+license=('BSD')
+depends=('python2')
+makedepends=('git')
+replaces=('dnsbf')
+provides=('dnsbf')
+conflicts=('dnsbf')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+prepare() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd ${pkgname}
+  install -Dm755 dnsbf.py "${pkgdir}/usr/bin/${_pkgname}"
+}
