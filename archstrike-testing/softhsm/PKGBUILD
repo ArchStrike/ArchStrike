@@ -4,8 +4,8 @@
 buildarch=220
 
 pkgname=softhsm
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Software PKCS11 store"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.opendnssec.org/softhsm/"
@@ -14,7 +14,7 @@ depends=('botan>=1.8.5' 'sqlite3>=3.3.9' 'openssl')
 backup=("etc/softhsm2.conf")
 options=('!emptydirs')
 source=("https://dist.opendnssec.org/source/softhsm-$pkgver.tar.gz")
-sha512sums=('b3353cae05be3320d02ad96c75a8ca68f3fa74ee653b33c40189ba683500399e474741b14184774409e3783776267146d0847f2db3337b84b111c94bec5c8185')
+sha512sums=('6ef17deef491f7298244a3d2ddefe25843fc17534c4e5f2e08927f05cafdaf05601beb953539fce5d34fa02fe355cbd4ab3aaabb6e5a106936b04c06aae9793c')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
