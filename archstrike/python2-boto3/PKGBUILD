@@ -2,25 +2,43 @@
 
 buildarch=1
 
-pkgname=python2-boto3
+pkgbase=python2-boto3
+
+pkgname=(python2-boto3 python-boto3)
 pkgver=1.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="The AWS SDK for Python"
 url="https://github.com/boto/boto3"
-depends=('python2')
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 license=('APACHE')
 arch=('any')
 source=("https://github.com/boto/boto3/archive/$pkgver.tar.gz")
 sha512sums=('7c1e3e9ace9d5ec4806b7c1e744a036ead6e506ba8e8401739423d8fe5f99b39a2fdd56dba63c193b1e9a929fdabdde08db2d4cb84aa6c01db0a81f29de7d14f')
 
-build() {
-    cd $srcdir/boto3-$pkgver
-    python2 setup.py build
+prepare() {
+  cp -a boto3-$pkgver{,-py2}
 }
 
-package() {
+build() {
+  cd "$srcdir/boto3-$pkgver"
+  python3 setup.py build
+
+  cd "$srcdir/boto3-$pkgver-py2"
+  python2 setup.py build
+}
+
+package_python2-boto3() {
+    depends=('python2')
+
     cd $srcdir/boto3-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
+
+package_python-boto3() {
+    depends=('python')
+
+    cd $srcdir/boto3-$pkgver
+    python setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
