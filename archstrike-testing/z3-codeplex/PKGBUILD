@@ -4,41 +4,38 @@
 buildarch=220
 
 pkgname=z3-codeplex
-pkgver=4.4.1
-pkgrel=2
+pkgver=4.5.0
+pkgrel=1
 pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research (built from Codeplex sources, libraries only)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://z3.codeplex.com/"
+url="https://github.com/Z3Prover/z3"
 license=('custom')
-makedepends=('python2')
+makedepends=('python2' 'cmake')
 if [[ "$CARCH" == 'x86_64' ]]; then
       depends=('gcc-libs-multilib')
 else
       depends=('gcc-libs')
 fi
-source=("$pkgname-$pkgver.zip::http://download-codeplex.sec.s-msft.com/Download/SourceControlFileDownload.ashx?ProjectName=z3&changeSetId=89c1785b7322" "z3.patch" "remove_sse_arm.patch")
-sha512sums=('193406c8d1e123132206e335647dd8b7355d0e80b8b898b59dadb7d3cb5eaba3d9454dafb9161f591e78a244ddc9f4a5bd3d46617c5142f903733674ad66e91a'
+source=("https://github.com/Z3Prover/z3/archive/z3-$pkgver.tar.gz" "z3.patch" "remove_sse_arm.patch")
+sha512sums=('1ebc2c908d90b6b879f1e819c864ff894613276af47a440f27cf94968c195656952434754c3eb20f4bdbdd8497d227d22e1b4821c0d320b11052b5648d9e2dc7'
             'b424fc8c70901bff230e277cc8fbae3e452a18ab0215472aa29750c867255700fa0c9aa037d411a61446d761762f59966dd1340cb6c3fa9435609a5a31489bbf'
             '3af9765b51b7b712c382f86c36bb38bbfc169076ac8e9fab15884e59482ec35f9a1a4288b1e0469f1fc7b5a2754863fe323929a95ba83ac03c9d432f4c4f2604')
 
 build() {
-  cd "$srcdir"
+  cd "z3-z3-$pkgver"
 
-  autoconf
   if [[ ${CARCH} == "armv6h" ]] || [[ ${CARCH} == "armv7h" ]]; then
      patch -p1 -i $srcdir/remove_sse_arm.patch
   fi
-  ./configure --prefix=$pkgdir/usr --with-python=/usr/bin/python2
-  python2 scripts/mk_make.py --nodotnet
+  python2 scripts/mk_make.py --python
 
-  cd "$srcdir/build"
-  patch -i $srcdir/z3.patch
+  cd "build"
   make
 }
 
 package() {
-  cd "$srcdir/build"
+  cd "z3-z3-$pkgver/build"
   install -dm755 "$pkgdir/usr/lib/python2.7/site-packages"
   make DESTDIR=$pkgdir install
-  install -Dm644 $srcdir/LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 ../LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
