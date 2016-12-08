@@ -2,22 +2,44 @@
 
 buildarch=1
 
-pkgname='python2-opinel'
+pkgbase=python2-opinel
+
+pkgname=(python2-opinel python-opinel)
 _name='opinel'
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='A Python package used by Scout2 and AWS-Recipes.'
 arch=('any')
 url='https://github.com/iSECPartners/opinel'
 license=('GPL3')
-depends=("python2-requests" "python2-boto3")
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/iSECPartners/opinel/archive/v$pkgver.tar.gz")
 sha512sums=('1b504297231252bbd1d49fc208db87dc7f8b34d3f62587b0a46704baec1687d799f11dc1115895f9e5663b2e55c46f07aef4520cb8adec4512f70c468469d937')
 
-package() {
-    cd ${srcdir}/${_name}-${pkgver}
-    python2 setup.py install --root=${pkgdir} -O1
+prepare() {
+  cp -a $_name-$pkgver{,-py2}
+}
+
+build() {
+  cd "$srcdir/$_name-$pkgver"
+  python3 setup.py build
+
+  cd "$srcdir/$_name-$pkgver-py2"
+  python2 setup.py build
+}
+
+package_python2-opinel() {
+    depends=('python2-botocore' 'python2-boto3' 'python-requests' 'python2-netaddr')
+
+    cd ${srcdir}/${_name}-${pkgver}-py2
+    python2 setup.py install --root=${pkgdir} -O1 --skip-build
     install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
+package_python-opinel() {
+    depends=('python-botocore' 'python-boto3' 'python-requests' 'python-netaddr')
+  
+    cd ${srcdir}/${_name}-${pkgver}
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
