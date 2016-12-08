@@ -14,12 +14,12 @@ source=("https://github.com/tomerfiliba/plumbum/archive/v$pkgver.tar.gz")
 sha512sums=('067fe44003520e3710a8ffce13dd45dff5be5bd8ea9ef48123fcde99357bda36b877a2fa54d43f2e8f77e4a16b0cda80ff0a72f8a79486b59eb56b78ccc40ab4')
 
 build() {
-    cd $pkgname-$pkgver
+    cd plumbum-$pkgver
     python2 setup.py build
 }
 
 package() {
-    cd $pkgname-$pkgver
+    cd plumbum-$pkgver
     python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
