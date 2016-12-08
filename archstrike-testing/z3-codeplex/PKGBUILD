@@ -16,17 +16,12 @@ if [[ "$CARCH" == 'x86_64' ]]; then
 else
       depends=('gcc-libs')
 fi
-source=("https://github.com/Z3Prover/z3/archive/z3-$pkgver.tar.gz" "z3.patch" "remove_sse_arm.patch")
-sha512sums=('1ebc2c908d90b6b879f1e819c864ff894613276af47a440f27cf94968c195656952434754c3eb20f4bdbdd8497d227d22e1b4821c0d320b11052b5648d9e2dc7'
-            'b424fc8c70901bff230e277cc8fbae3e452a18ab0215472aa29750c867255700fa0c9aa037d411a61446d761762f59966dd1340cb6c3fa9435609a5a31489bbf'
-            '3af9765b51b7b712c382f86c36bb38bbfc169076ac8e9fab15884e59482ec35f9a1a4288b1e0469f1fc7b5a2754863fe323929a95ba83ac03c9d432f4c4f2604')
+source=("https://github.com/Z3Prover/z3/archive/z3-$pkgver.tar.gz")
+sha512sums=('1ebc2c908d90b6b879f1e819c864ff894613276af47a440f27cf94968c195656952434754c3eb20f4bdbdd8497d227d22e1b4821c0d320b11052b5648d9e2dc7')
 
 build() {
   cd "z3-z3-$pkgver"
 
-  if [[ ${CARCH} == "armv6h" ]] || [[ ${CARCH} == "armv7h" ]]; then
-     patch -p1 -i $srcdir/remove_sse_arm.patch
-  fi
   python2 scripts/mk_make.py --python
 
   cd "build"
