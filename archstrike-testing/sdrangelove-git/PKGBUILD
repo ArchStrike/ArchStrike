@@ -15,12 +15,18 @@ makedepends=('git' 'cmake')
 provides=('sdrangelove')
 conflicts=('sdrangelove')
 replaces=('sdrangelove')
-source=("${pkgname}::git+git://git.osmocom.org/sdrangelove.git")
-sha512sums=('SKIP')
+source=("${pkgname}::git+git://git.osmocom.org/sdrangelove.git" "gcc6-explicit-cast-instead-of-narrowing-conversion-error")
+sha512sums=('SKIP'
+            '2ed1a2cb560df74b8fea3e65bc7550cfd180fff37d947093bdab0de9fe16717a2bf8f38d3b2c61af8a4178f6b2ac8da9a33d45e33501d3e02b9c48682f18f76c')
 
 pkgver() {
   cd "${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd "${pkgname}"
+  patch -Np1 -i $srcdir/gcc6-explicit-cast-instead-of-narrowing-conversion-error
 }
 
 build(){
