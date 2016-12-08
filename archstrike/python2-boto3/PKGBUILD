@@ -30,7 +30,7 @@ build() {
 package_python2-boto3() {
     depends=('python2')
 
-    cd $srcdir/boto3-$pkgver
+    cd $srcdir/boto3-$pkgver-py2
     python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
