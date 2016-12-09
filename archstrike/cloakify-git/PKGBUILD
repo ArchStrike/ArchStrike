@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=cloakify-git
-pkgver=20160921.r60
+pkgver=20161209.r100
 pkgrel=1
 pkgdesc='Data Exfiltration In Plain Sight; Evade DLP/MLS Devices; Social Engineering of Analysts; Evade AV Detection'
 arch=('any')
@@ -33,17 +33,14 @@ package() {
   install -dm755 $pkgdir/usr/bin
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cp -a --no-preserve=ownership * $pkgdir/usr/share/$pkgname/
+  # fix perms on python files
+  find $pkgdir -type f -iname "*.py" |xargs chmod 755
 
-cat > $pkgdir/usr/bin/cloakify << EOF
+cat > $pkgdir/usr/bin/cloakifyFactory << EOF
 #!/bin/sh
-python2 /usr/share/${pkgname}/cloakify.py "\$@"
+cd /usr/share/${pkgname}
+python2 cloakifyFactory.py "\$@"
 EOF
 
-cat > $pkgdir/usr/bin/decloakify << EOF
-#!/bin/sh
-python2 /usr/share/${pkgname}/decloakify.py "\$@"
-EOF
-
-chmod 755 $pkgdir/usr/bin/cloakify
-chmod 755 $pkgdir/usr/bin/decloakify
+chmod 755 $pkgdir/usr/bin/cloakifyFactory
 }
