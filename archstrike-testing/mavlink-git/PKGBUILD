@@ -3,14 +3,14 @@
 buildarch=220
 
 pkgname=mavlink-git
-pkgver=20161023.r2095
+pkgver=20161128.r2295
 pkgrel=1
 pkgdesc="MAVLink micro air vehicle marshalling / communication libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://qgroundcontrol.org/mavlink/"
 groups=('archstrike-drone')
 license=('LGPL')
-depends=("python2" "bash" "sh")
+depends=("python2" "bash")
 makedepends=('git' 'cmake' 'python2-setuptools')
 provides=('python2-mavlink')
 source=("$pkgname"::'git://github.com/mavlink/mavlink.git')
@@ -43,11 +43,11 @@ package() {
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgname/pymavlink"
   python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
-  install -Dm0644 "$srcdir/$pkgname/pymavlink/README.txt" "$pkgdir/usr/share/licenses/$pkgname/README.txt"
+  install -Dm0644 "$srcdir/$pkgname/pymavlink/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   if [[ -d "${pkgdir}"/usr/lib64 ]] ; then
     mv "${pkgdir}"/usr/lib64 "${pkgdir}"/usr/lib
   fi
   # Fix python issues
-  grep -iRl 'python' "$pkgdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python|#!/usr/bin/env python2|'
+  grep -iRl 'python' "$pkgdir" | xargs sed -i 's|python$|python2|'
 }
 
