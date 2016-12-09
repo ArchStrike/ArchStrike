@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=scout2-git
-pkgver=r654.851dce7
+pkgver=r718.32fe114
 pkgrel=1
 pkgdesc="Security auditing tool for AWS environments"
 url="http://isecpartners.github.io/Scout2/"
 arch=('any')
 license=('GPL2')
 groups=('archstrike')
-depends=('python2-boto>=2.31.1' 'python2-dateutil>=2.2' 'python2-netaddr>=0.7.11' 'python2-requests>=2.4.0' 'python2-opinel')
+depends=('python-boto3' 'python-dateutil' 'python-netaddr' 'python-requests' 'python-botocore' 'python-opinel')
 makedepends=('git')
 provides=('scout2')
 conflicts=('scout2')
