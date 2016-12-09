@@ -10,7 +10,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://qgroundcontrol.org/mavlink/"
 groups=('archstrike-drone')
 license=('LGPL')
-depends=("python2" "bash")
+depends=("python2-future" "bash")
 makedepends=('git' 'cmake' 'python2-setuptools')
 provides=('python2-mavlink')
 source=("$pkgname"::'git://github.com/mavlink/mavlink.git')
@@ -42,7 +42,7 @@ package() {
   cd "$srcdir/$pkgname-build"
   make DESTDIR="$pkgdir/" install
   cd "$srcdir/$pkgname/pymavlink"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
   install -Dm0644 "$srcdir/$pkgname/pymavlink/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
   if [[ -d "${pkgdir}"/usr/lib64 ]] ; then
     mv "${pkgdir}"/usr/lib64 "${pkgdir}"/usr/lib
