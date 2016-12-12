@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-cle
-pkgver=5.6.8.22
+pkgver=5.6.12.3
 pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
 url="https://pypi/python.org/pypi/cle"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/ec/93/eda4e9afff0b211324292b686d6dd9d1c424dc89529e281609c8a76c3cd3/cle-${pkgver}.tar.gz")
-sha512sums=('2cd84d488d43a7c9753ad6ca3d4909e33fecef3b95c14a5097f0e5bddc11ea5f385b3a06398f0406acbb65902d25d4944f7386c20bb49d895bf2e6775dc44fce')
+source=("https://pypi.python.org/packages/72/1f/6abca1914d7190bf061427c3e41a1d6019e3424b1833b3499e9ea9588167/cle-${pkgver}.tar.gz")
+sha512sums=('d7f9cc919fcd62bba7c58bf9869b4a0f087bacb2c7d906ac298a6ce7110b43ada4c497d8b97a2b2a1e757780b06391159a82c4d457e590e569fce81cb186e5bd')
 
 build() {
     cd $srcdir/cle-$pkgver
@@ -22,5 +22,5 @@ build() {
 
 package() {
     cd $srcdir/cle-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
 }
