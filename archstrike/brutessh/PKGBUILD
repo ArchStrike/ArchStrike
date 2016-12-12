@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=brutessh
 pkgver=0.6
-pkgrel=2
+pkgrel=3
 pkgdesc="A simple sshd password bruteforcer using a wordlist, it's very fast for internal networks. It's multithreads."
 url="http://www.edge-security.com/edge-soft.php"
 groups=('archstrike' 'archstrike-crackers')
@@ -18,14 +18,13 @@ package() {
   cd "$srcdir/brutessh"
 
   install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/brutessh"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
 
-  cp --no-preserve=ownership -R README brutessh.py terminal.py "$pkgdir/usr/share/brutessh/"
+  cp --no-preserve=ownership -R README brutessh.py terminal.py "$pkgdir/usr/share/$pkgname/"
   cat > $pkgdir/usr/bin/brutessh << EOF
 #!/bin/sh
-cd /usr/share/brutessh
-python2 brutessh.py "\$@"
+python2 /usr/share/$pkgname/brutessh.py "\$@"
 EOF
   chmod +x $pkgdir/usr/bin/brutessh
-  chmod +x $pkgdir/usr/share/brutessh/brutessh.py
+  chmod +x $pkgdir/usr/share/$pkgname/brutessh.py
 }
