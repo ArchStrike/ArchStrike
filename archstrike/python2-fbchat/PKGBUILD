@@ -1,0 +1,24 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+pkgname=python2-fbchat
+_pkgname=fbchat
+pkgver=0.5.0
+pkgrel=1
+pkgdesc="Facebook Chat (Messenger) for Python"
+url="https://github.com/carpedm20/fbchat/"
+depends=('python2' 'python2-requests' 'python2-beautifulsoup4')
+makedepends=('python2-setuptools')
+license=('CUSTOM')
+arch=('any')
+source=("https://pypi.python.org/packages/a6/9c/b1a4ccef7dcb929c1a59f9af1750dfc58426002f9e58a48a9fac6a7e53fe/fbchat-${pkgver}.tar.gz")
+sha512sums=('fda9ad63ab770b187377598e886e2f84590336b0ef4f6761c1bb56560bb26713517bcedaf8b77652958a0a9511a6efdef59e9782bd3b76ac5f4da51511b0dc6f')
+
+build() {
+    cd ${_pkgname}-${pkgver}
+    python2 setup.py build
+}
+
+package() {
+    cd ${_pkgname}-${pkgver}
+    python2 setup.py install --root="${pkgdir}" --optimize=1 
+}
