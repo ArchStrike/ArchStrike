@@ -3,21 +3,21 @@
 buildarch=220
 
 pkgname=python2-nfqueue
-pkgver=0.5
-pkgrel=4
+pkgver=0.6
+pkgrel=1
 pkgdesc="Python bindings for libnetfilter_queue by Pierre Chifflier"
 url="https://github.com/chifflier/nfqueue-bindings"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('python2' 'libnetfilter_queue')
 makedepends=('python2-distribute' 'cmake' 'swig')
-source=("https://github.com/chifflier/nfqueue-bindings/archive/nfqueue-bindings-$pkgver.tar.gz"
+source=("https://github.com/chifflier/nfqueue-bindings/archive/v$pkgver.tar.gz"
         python-support.patch)
-sha512sums=('c88ef6997b8e4b3ae2c2eb6c1002b74f39979c73b4dc3a4da428aa4eeb6eedeeaff1cbc27c0740e8b29fb8b6a6f98af326be0b4fbc6ed3e432a9884febb3f7a6'
-            '354e1c51eca8eff38cde7e13b0ca6a90ea2387bb2b6a678709b4bfcdab54b4ebee4f9a0031ecb769c208186b6bd157780f0e012cbaccc4a16a1a5d6716d1de47')
+sha512sums=('6ee31b01377c0e4b6aa2d2f2e14b34d4d432f04d0e813f90a9d7e52ea9c8483044f7a36b48220887d658c80ca07bfefc88f8aa92309cff30619ec8fb9f52ab43'
+            '4aab52131941ea11a01a1ace753e787fe7c162600302ba1c75d2aea5aa10caa974c1a6c6b875c23cbf3a89b6886666fb0ffbd15cb5f3a53a1c134329ef188277')
 
 prepare() {
-  cd "$srcdir/nfqueue-bindings-nfqueue-bindings-$pkgver"
+  cd "$srcdir/nfqueue-bindings-$pkgver"
 
   patch -p1 -i ../python-support.patch
   # fixing more python issues
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/nfqueue-bindings-nfqueue-bindings-$pkgver"
+  cd "$srcdir/nfqueue-bindings-$pkgver"
 
   # Examples.
   install -dm755 -p "$pkgdir/usr/share/doc/nfqueue-bindings/examples"
