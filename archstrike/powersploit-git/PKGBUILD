@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=powersploit-git
-pkgver=r324.2403654
+pkgver=r476.c7985c9
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A PowerShell Post-Exploitation Framework"
