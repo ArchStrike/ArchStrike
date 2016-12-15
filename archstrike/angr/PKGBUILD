@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=angr
-pkgver=5.6.8.22
+pkgver=5.6.12.3
 pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
-depends=('python2' 'python2-capstone' 'python2-cachetools' 'python2-networkx' 'python2-rpyc' 'python2-futures' 'python2-progressbar' 'python2-mulpyplexer' 'python2-cooldict' 'python2-ana' 'python2-archinfo' 'python2-pyvex' 'python2-claripy' 'python2-simuvex' 'python2-cle' 'python2-pyelftools' 'python2-cffi' 'python2-bintrees' 'python2-dpkt')
+depends=('python2-capstone' 'python2-cachetools' 'python2-networkx' 'python2-rpyc' 'python2-futures' 'python2-progressbar' 'python2-mulpyplexer' 'python2-cooldict' 'python2-ana' 'python2-archinfo' 'python2-pyvex' 'python2-claripy' 'python2-simuvex' 'python2-cle' 'python2-pyelftools' 'python2-cffi' 'python2-bintrees' 'python2-dpkt')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 install="$pkgname.install"
-source=("https://pypi.python.org/packages/55/9a/146cbc52102ac8d184278e810150fe2d3bfdedc1c182fe524f498e3f0bcc/angr-${pkgver}.tar.gz" "LICENSE")
-sha512sums=('e0d3fd15d5f5b3f9843e55c2b07de21b21f93d4b96cff38e9e7b03228d84a7031979e9874abd4441e53eab2004b83a72ff15cee9d861840aa51bcfa568ed86c1'
+source=("https://pypi.python.org/packages/6b/1b/9919bdd112b46d3af54fefcff28aaa78c250b8715300a7dddd5b3989e0a3/angr-${pkgver}.tar.gz" "LICENSE")
+sha512sums=('12994442ca15b10966257d9c660ee2796041c4bb0e5d2846c5ff8e95ae78bff816e5c5eebeefc020536a9cdf60d41278e408854f5ae5a28b9f22382199b4e95a'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 prepare() {
@@ -27,7 +27,6 @@ build() {
 
 package() {
   cd $pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname"
+  python2 setup.py install --root="$pkgdir" -O1 --skip-build
+  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
