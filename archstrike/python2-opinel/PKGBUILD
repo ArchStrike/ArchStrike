@@ -6,15 +6,15 @@ pkgbase=python2-opinel
 
 pkgname=(python2-opinel python-opinel)
 _name='opinel'
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc='A Python package used by Scout2 and AWS-Recipes.'
 arch=('any')
 url='https://github.com/iSECPartners/opinel'
 license=('GPL3')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/iSECPartners/opinel/archive/v$pkgver.tar.gz")
-sha512sums=('1b504297231252bbd1d49fc208db87dc7f8b34d3f62587b0a46704baec1687d799f11dc1115895f9e5663b2e55c46f07aef4520cb8adec4512f70c468469d937')
+sha512sums=('bbe7a1b80c2bf2a70f34d909e91132510f7ea1aa112dde8aa818eae1496335d38aebb70013fadff0f70a03dc7a39b737ce1a61dd86a6fc8d0597039dd33e0ded')
 
 prepare() {
   cp -a $_name-$pkgver{,-py2}
