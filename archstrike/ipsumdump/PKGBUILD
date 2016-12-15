@@ -5,7 +5,7 @@
 buildarch=220
 
 pkgname=ipsumdump
-pkgver=1.85
+pkgver=1.86
 pkgrel=1
 pkgdesc='A tool that summarizes TCP/IP dump files into a self-describing ASCII format easily readable by humans and programs'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ url='http://www.cs.ucla.edu/~kohler/ipsumdump/'
 license=('GPL2' 'custom:Click')
 depends=('libpcap')
 source=("http://www.cs.ucla.edu/~kohler/${pkgname}/${pkgname}-${pkgver}.tar.gz" "LICENSE" "config.guess-for-aarch64.patch")
-sha512sums=('b42844cf028b9c1ea9da90306be8d731bffcec1a8f5c9eeb8029f563ddd5781651c583913a2105d8ad99cabac4b003345e1e8fdfb83367cabf806de1bca31596'
+sha512sums=('38bf55589ab81eb7601283410a9f962508e419c1a0ef24f088a2d1328b29e360a9788a20689ea45724fbc56194ecb5ede1f3b792e5bc7e97a500a7b2e434fe65'
             '664edb8bdfededa74d5675f37ce188b8976d001db0c9d0c2752a735a76d7ee597456e6d963c1da540619da197e84053c2329d6d1f4037ee826c28f200c395a9e'
             '86af1d0ee847f804aa8de07a7d40e4316ec08adab1cd686b4931c5cfd27e3f5095ea87b7adf15c9368a939a45f4253e92f87f5654a7d8628928c18ce0123e113')
 
