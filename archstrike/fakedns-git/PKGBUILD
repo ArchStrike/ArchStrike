@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=fakedns-git
-pkgver=20160714.r68.a1df5ce
+pkgver=20161215.r80.139dd9c
 pkgrel=1
 groups=('archstrike' 'archstrike-spoof' 'archstrike-proxy')
 pkgdesc="A regular-expression based python MITM DNS server with correct DNS request passthrough and \"Not Found\" responses."
