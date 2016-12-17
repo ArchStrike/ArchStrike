@@ -5,8 +5,8 @@ _pkgname=bindead
 buildarch=1
 
 pkgname=$_pkgname-git
-pkgver=20151012.r4504.67019b9
-pkgrel=2
+pkgver=20151012.r4504.67019b97b
+pkgrel=1
 pkgdesc='A static analysis tool for binaries'
 url='https://bitbucket.org/mihaila/bindead'
 license=('GPL3')
