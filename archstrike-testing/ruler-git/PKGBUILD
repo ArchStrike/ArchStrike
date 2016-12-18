@@ -5,7 +5,7 @@ _pkgname=ruler
 buildarch=220
 
 pkgname=ruler-git
-pkgver=20161213.r83
+pkgver=20161218.r87
 pkgrel=1
 pkgdesc="A tool that allows you to interact with Exchange servers through the MAPI/HTTP protocol."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -32,9 +32,9 @@ build() {
 
 package() {
   cd "$srcdir"
+  install -dm755 "${pkgdir}/usr/bin"
   GOPATH="$srcdir" go build -v github.com/sensepost/ruler
 
-  mkdir -p "$pkgdir/usr/bin"
-  cp "$srcdir/ruler" "$pkgdir/usr/bin/ruler"
+  cp "${srcdir}/ruler" "${pkgdir}/usr/bin/ruler"
   install -Dm644 $srcdir/src/github.com/sensepost/ruler/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
