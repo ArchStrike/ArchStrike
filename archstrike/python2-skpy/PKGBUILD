@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-skpy
+_pkgname=SkPy
+pkgver=0.6
+pkgrel=1
+pkgdesc="An unofficial Python library for interacting with the Skype HTTP API."
+url="https://skpy.t.allofti.me"
+depends=('python2' 'python2-beautifulsoup4' 'python2-requests')
+makedepends=('python2-setuptools' )
+license=('custom')
+arch=('any')
+source=("https://pypi.python.org/packages/ea/bb/1c2c64f0f3eceb2996167622b789e4a9434e4df48ce597eeed849aef6180/SkPy-${pkgver}.tar.gz")
+sha512sums=('fb581e2bcf328e82c71706c87472952a75eae3198bc365ee50d180e2f84d7edb0b909c70277faa9e24898442ab3d528d91540309273c330a66533885002cf8fc')
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py build
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install --root="${pkgdir}" --optimize=1 
+}
