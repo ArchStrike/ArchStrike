@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=dvcs-ripper-git
-pkgver=20151124.r44
-pkgrel=5
+pkgver=20161215.r46
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Rip web accessible (distributed) version control systems: SVN/GIT/..."
 arch=('any')
