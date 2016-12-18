@@ -4,18 +4,17 @@ buildarch=1
 
 pkgname=brut3k1t-git
 _pkgname=brut3k1t
-pkgver=20161213.r12
+pkgver=20161217.r19
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
 pkgdesc="Brute-force attack that supports multiple protocols and services"
 url="https://github.com/ex0dus-0x/brut3k1t"
 license=('MIT')
-depends=('python2' 'python2-pip' 'python2-selenium' 'python2-paramiko' 'python2-fbchat' 'geckodriver' 'xmpppy')
+depends=('python2' 'python2-pip' 'python2-selenium' 'python2-paramiko' 'python2-fbchat' 'python2-skpy' 'geckodriver' 'xmpppy')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git" 'comment.patch')
-sha512sums=('SKIP'
-            '1f76f1152d6ee05f500c2268a6a63591e4d206c6c0d847b709880aaf8910c57ba99b9fcd254f7a4b7577d779ae1004455939a4eaddba9c2234456800f06507d5')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd ${pkgname}
@@ -24,8 +23,6 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  # unfinished function causes import error, commenting that out for now
-  patch -Np1 -i "${srcdir}/comment.patch"
   grep -iRl 'python' . | xargs sed -i 's|python$|python2|g'
 }
 
