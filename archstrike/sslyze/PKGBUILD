@@ -3,8 +3,8 @@
 buildarch=192
 
 pkgname=sslyze
-pkgver=0.14.1
-pkgrel=2
+pkgver=0.14.2
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations"
 arch=('i686' 'x86_64')
@@ -13,11 +13,9 @@ license=('GPL2')
 depends=('python2')
 makedepends=('nassl' 'python2-setuptools')
 source=("https://github.com/nabla-c0d3/sslyze/archive/$pkgver.zip")
-sha512sums=('ed3a1ee7500a38299165e824dd03eb19ec61363d77ea10a7b935313b7e215abe82895b9676bfecf8da74495daa4cb24fb0f2ed139dbe0a570b692c6612661466')
+sha512sums=('5d988cd40d99927c75318d343c3f0234f046a29d04fdf86e04f3eb3327e0a10befbde222fc0f1f6095abe1103f1a2f398c0ed110cd7d904fb8ace0bd31141b1f')
 
 prepare() {
-  find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-  find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/ usr/bin/python2|'
   cd $pkgname-$pkgver
   install -dm755 nassl
   cp /usr/lib/python2.7/site-packages/nassl/_nassl.so .
@@ -30,7 +28,6 @@ build(){
 
 package() {
   cd $pkgname-$pkgver
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/sslyze/LICENSE.txt"
+  python2 setup.py install --root="$pkgdir" -O1 --skip-build
+  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
