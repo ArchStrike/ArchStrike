@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=backdoorme-git
-pkgver=20161207.r200
+pkgver=20161221.r215
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
 pkgdesc="Powerful utility capable of backdooring Unix machines with a slew of backdoors"
 url="https://github.com/Kkevsterrr/backdoorme"
 license=('MIT')
-depends=('python2-cffi' 'python2-ecdsa' 'python2-future' 'python2-idna' 
+depends=('python2-cffi' 'python2-ecdsa' 'python2-future' 'python2-idna' 'python2-pexpect' 
          'python2-pefile' 'python2-pyasn1' 'python2-pycparser' 'python2-six' 
          'python2-plumbum' 'python2-colorama' 'python2-paramiko' 'python2-scp' 'python2-rpyc'
 	 'pupy-git' 'nmap' 'metasploit' 'php' 'perl')
