@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=brut3k1t-git
 _pkgname=brut3k1t
-pkgver=20161217.r19
+pkgver=20161221.r27
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
 pkgdesc="Brute-force attack that supports multiple protocols and services"
 url="https://github.com/ex0dus-0x/brut3k1t"
 license=('MIT')
-depends=('python2' 'python2-pip' 'python2-selenium' 'python2-paramiko' 'python2-fbchat' 'python2-skpy' 'geckodriver' 'xmpppy')
+depends=('python2' 'python2-pip' 'python2-selenium' 'python2-paramiko' 'python2-skpy' 'python2-mechanize' 'geckodriver' 'xmpppy')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
