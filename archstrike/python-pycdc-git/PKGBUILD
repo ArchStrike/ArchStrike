@@ -6,7 +6,7 @@ _pkgname=pycdc
 pkgbase=pycdc-git
 pkgname=(python2-${pkgbase} python-${pkgbase})
 pkgver=20161108.r229
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-decompile')
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/zrax/pycdc'
@@ -16,7 +16,6 @@ depends=('gcc-libs')
 makedepends=('git' 'cmake' 'python2' 'python')
 replaces=("python2-${pkgbase}" "python-${pkgbase}")
 provides=("python2-${pkgbase}" "python-${pkgbase}")
-conflicts=("python2-${pkgbase}" "python-${pkgbase}")
 source=("$_pkgname::git+https://github.com/zrax/$_pkgname.git")
 sha512sums=('SKIP')
  
