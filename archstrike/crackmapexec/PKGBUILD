@@ -5,7 +5,7 @@ buildarch=1
 pkgname=crackmapexec
 _pkgname=CrackMapExec
 pkgver=3.1.4
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
 arch=('any')
@@ -15,6 +15,11 @@ depends=('impacket' 'python2-gevent' 'python2-netaddr' 'python2-crypto' 'python2
 makedepends=('python2-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('21fe449e1ef7a383ccc544bc8b25b1239668d48b8ea546441a9cec215990545657faef1b1f4fcc0b723a48f38e1ed2f2bee2dc36e5a40b18b6a4061f14cfb71a')
+
+prepare() {
+  cd $_pkgname-$pkgver
+  sed -i 's|gevent.coros|gevent.lock|' cme/connection.py
+}
 
 package() {
   cd $_pkgname-$pkgver
