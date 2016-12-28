@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=bettercap
-pkgver=1.5.9
+pkgver=1.6.0
 pkgrel=1
 groups=('archstrike' 'archstrike-sniffers' 'archstrike-exploit' 'archstrike-networking')
 pkgdesc='A complete, modular, portable and easily extensible MITM framework.'
@@ -12,7 +12,7 @@ url='https://github.com/evilsocket/bettercap'
 license=('GPL3')
 depends=('ruby-rspec-core' 'libpcap' 'net-tools')
 source=("https://github.com/evilsocket/bettercap/archive/v$pkgver.tar.gz")
-sha512sums=('427c2d911ef4381fa6242d043ac582718532cc417be04494769eb12c3911cbb2ae5fb0f8522a742387a76de275cc84926ba660d2eb003e21af040bfc969dda65')
+sha512sums=('f5ee26e61753889b7d345e035fc929a656c3a09848677538fa51a83e6f93889bcc85557c0cac1ccbe374b9d1e03fd244352dca6803618039b97a321573115fb7')
 
 build() {
   cd "$pkgname-$pkgver"
