@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-mockito
-pkgver=0.7.0
+pkgver=0.7.1
 pkgrel=1
 pkgdesc="A spying framework based on Java library with the same name."
 arch=('any')
@@ -11,16 +11,21 @@ url="https://pypi.python.org/pypi/mockito/"
 license=('MIT')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/37/18/efa2ab4c1941a63cedaebb5ab9b4b9f7199a60704b165cf1fa10f13b4661/mockito-${pkgver}.tar.gz")
-sha512sums=('9a17fea0d3aa46225217fd754ae43bae88209fbbe1f0a3357e0ce612023c4f1df4c1e9faac9b7e62b3270f6e3783e489c0ef3ed64131331b7f4eaa72f0d3b09f')
+source=("https://github.com/kaste/mockito-python/archive/$pkgver.tar.gz")
+sha512sums=('571766a089b5fa4dbf3a878f510bc7379082f4de03329acf7cfb36b3fd994202a6eec813ee588bae88314322052ac4f2eca5852c6e7c0008cd94ec91528a47ee')
+
+build() {
+  cd "$srcdir/mockito-python-$pkgver"
+  python2 setup.py build
+}
 
 package() {
-  cd "$srcdir/mockito-$pkgver"
+  cd "$srcdir/mockito-python-$pkgver"
 
   # Remove tests directory (conflicts with other python packages)
   rm -rf tests
 
-  python2 setup.py install --prefix=/usr --root=$pkgdir/ --optimize=1
+  python2 setup.py install --prefix=/usr --root=$pkgdir/ -O1 --skip-build
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
 
