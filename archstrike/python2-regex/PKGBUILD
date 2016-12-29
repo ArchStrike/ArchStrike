@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=python2-regex
-pkgver=2016.11.21
+pkgver=2016.12.27
 pkgrel=1
 pkgdesc="Alternative regular expression module, to replace re."
 url="https://bitbucket.org/mrabarnett/mrab-regex"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('PSF')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=("https://pypi.python.org/packages/da/5a/c6ab99673e6b289aa3f1b043f8438d6aa25a352c00aef2af37c0c0c9de3c/regex-$pkgver.tar.gz")
-sha512sums=('914d07d75c84b5d8ac68d9d31ecf9d8ffd33263e78fecf71d83cce72f038cf187144e17aa3a640460d8352ebea42ca9a669fdff17590629717f5f6f9a59fd098')
+source=("https://pypi.python.org/packages/68/a7/e33eb93fd6f8f914c9abd1ec7ddaea9a17ce5c412925ad98e266beacf911/regex-$pkgver.tar.gz")
+sha512sums=('b1b2dcee6dcee725ef4ef82f51f8b17b18be0e1b85eaf47e981e2e666f06ae9b5e9a418ccf8394caddc1f427f64d0a1bfcd8ae01e96210ab8eb17bfe771b8bcd')
 
 build() {
     cd $srcdir/regex-$pkgver
