@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=jexboss-git
-pkgver=20161104.r78
+pkgver=20161230.r80
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
