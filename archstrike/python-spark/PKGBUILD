@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team[at]archstrike[dot]org>
+# Contributor: Oliver Mangold omangold at gmail dot com
+
+pkgname=python-spark
+pkgver=1.5.1
+pkgrel=1
+pkgdesc="An Early-Algorithm Context-free grammar Parser"
+arch=('any')
+url="https://github.com/rocky/python-spark/"
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://github.com/rocky/python-spark/archive/release-$pkgver.tar.gz")
+sha512sums=('1abb8dda5c44b3a7bc4f033134ce81a21f7c6aadd660c9971155390296c21832851ae09a8ca9cf43bf7017f5008d020a6de1cfd08f4698ec770dfe2acbbf8a65')
+
+build() {
+    cd "$srcdir/${pkgname}-release-${pkgver}"
+    python setup.py build
+}
+
+package() {
+    cd "$srcdir/${pkgname}-release-${pkgver}"
+    python setup.py install --root="$pkgdir" -O1 --skip-build
+    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+}
+
