@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=brut3k1t-git
 _pkgname=brut3k1t
-pkgver=20161229.r29
+pkgver=20161231.r33
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
