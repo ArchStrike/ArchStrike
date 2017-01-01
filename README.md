@@ -33,7 +33,7 @@ Contributions are very welcome. You can contribute at our [github page](https://
 
 Just clone our repository with `git clone https://github.com/ArchStrike/ArchStrike.git` then make your changes and submit it back to us via a pull request.
 
-If you have more questions regarding contribution, you can check out our [wiki page about this](https://archstrike.org/wiki/contribution)
+If you have more questions regarding contribution, you can check out our [wiki page about this](https://archstrike.org/wiki/contributing)
 
 ##FAQ
 
