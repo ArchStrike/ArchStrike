@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=backdoorme-git
-pkgver=20161229.r238
+pkgver=20170103.r277
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
