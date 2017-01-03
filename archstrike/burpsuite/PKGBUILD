@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=burpsuite
-pkgver=1.7.10
+pkgver=1.7.15
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers' 'archstrike-proxy')
 pkgdesc="An integrated platform for attacking web applications (free edition)."
