@@ -4,8 +4,8 @@
 buildarch=220
 
 pkgname=tomb
-pkgver=2.2
-pkgrel=2
+pkgver=2.3
+pkgrel=1
 pkgdesc="A system for easy encryption and backup of personal files"
 url="http://www.dyne.org/software/${pkgname}"
 groups=('archstrike')
@@ -20,15 +20,15 @@ optdepends=('dcfldd: Replacement for dd with hashing support'
             'swish-e: Support file content indexing'
             'qrencode: Create paper backups of keys as QR codes')
 
-source=("https://files.dyne.org/tomb/tomb-${pkgver}.tar.gz")
-sha512sums=('11723f1cccc75ffe64156b1f26ee7095a0147b48e05c58e98ea0fac933e9f7e5884c705a10dd4416338bab443c56902435709de85e313a053fe61883631e1290')
+source=("https://files.dyne.org/tomb/Tomb-${pkgver}.tar.gz")
+sha512sums=('251a38dd28871767b52eda3069161da2f0d54d66372ff2a0dc9ae1e3e74b215c8d93bce9b5249f95b87851cc6d2b2543e9013d89a37a1e79e02cf56ad4f7dbb4')
 
 prepare() {
-    sed -i 's/^#!\/bin\/zsh/#!\/usr\/bin\/env\ zsh/g' tomb-${pkgver}/${pkgname}
+    sed -i 's/^#!\/bin\/zsh/#!\/usr\/bin\/env\ zsh/g' Tomb-${pkgver}/${pkgname}
 }
 
 build() {
-    cd tomb-${pkgver}/extras/gtk-tray
+    cd Tomb-${pkgver}/extras/gtk-tray
     make
 
     cd ../kdf-keys
@@ -36,7 +36,7 @@ build() {
 }
 
 package() {
-    cd tomb-${pkgver}
+    cd Tomb-${pkgver}
 
     # Install tomb
     make DESTDIR="${pkgdir}" PREFIX="/usr" install
