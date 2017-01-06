@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=origami
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Aims at providing a scripting tool to generate and analyze malicious PDF files.'
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
@@ -16,7 +16,7 @@ options=("!emptydirs")
 install="$pkgname.install"
 source=("https://rubygems.org/downloads/$pkgname-$pkgver.gem")
 noextract=("$pkgname-$pkgver.gem")
-depends=('ruby' 'ruby-gtk2')
+depends=('ruby' 'ruby-gtk2' 'ruby-colorize')
 sha512sums=('e39244b40a019879cd30c0b02add66f5132d37d937e9ce107ef2ae8525522d82cdba3af19d5757d4b1bf6bea7c9f0eae70a50cba096eb4527f0232851d2637c9')
 
 package() {
