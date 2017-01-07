@@ -1,8 +1,0 @@
-[core]
-	repositoryformatversion = 0
-	filemode = true
-	bare = true
-[remote "origin"]
-	url = http://git.torproject.org/stem.git
-	fetch = +refs/*:refs/*
-	mirror = true
