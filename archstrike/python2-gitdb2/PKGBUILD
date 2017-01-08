@@ -6,7 +6,7 @@ pkgbase=python2-gitdb2
 
 pkgname=(python2-gitdb2 python-gitdb2)
 pkgver=2.0.0
-pkgrel=3
+pkgrel=4
 pkgdesc="IO of git-style object databases"
 arch=('any')
 url='http://pypi.python.org/pypi/gitdb'
