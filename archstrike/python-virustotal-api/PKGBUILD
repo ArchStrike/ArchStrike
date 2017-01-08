@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python-virustotal-api
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Virus Total Public/Private/Intel API"
 url="https://github.com/blacktop/virustotal-api"
 depends=('python' )
