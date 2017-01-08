@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=(python-$_pkgname python2-$_pkgname)
 pkgver=0.8.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Pipe interface for radare2"
 url="https://pypi.python.org/pypi/r2pipe/"
 arch=('any')
