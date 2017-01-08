@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=pentmenu
-pkgver=1.3.1
-pkgrel=2
+pkgver=1.3.2
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 arch=('any')
 pkgdesc="Designed to be a simple way to implement various basic pentesting network functions, including network attacks, using wherever possible readily available software commonly installed on most linux distributions, without having to resort to multiple specialist tools"
@@ -12,7 +12,7 @@ url="https://github.com/GinjaChris/pentmenu"
 license=('GPL3')
 depends=('bash' 'hping' 'openbsd-netcat' 'openssl' 'stunnel' 'nmap' 'whois')
 source=("https://github.com/GinjaChris/pentmenu/archive/$pkgver.tar.gz")
-sha512sums=('192b9fe28f22fcb619ada4b277c8f1beac7826b532cbaec0d012503de9296b6ecbf6f7275416adb0d16939c75d7434789419fb07d3311db09adf3064871b5821')
+sha512sums=('a12a815f69ad2acf8c463c15ba5a920217f3597f4ad57ba2961bdcb671605c5937f46f3e9706a4c3f9f2273dc70559a841c0a5223ba8236040beef7b8626ccb4')
 
 package() {
   cd $pkgname-$pkgver
