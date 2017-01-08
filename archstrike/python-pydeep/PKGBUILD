@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=python-pydeep
 pkgver=0.2
-pkgrel=5
+pkgrel=6
 pkgdesc='This is the Python interface to ssdeep'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://pypi.python.org/pypi/pydeep'
