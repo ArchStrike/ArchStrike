@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=owtf-git
-pkgver=r1588.0ad0db24
+pkgver=r1591.b9a0fae4
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="The Offensive (Web) Testing Framework"
