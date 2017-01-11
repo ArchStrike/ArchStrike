@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname=wpscan
 pkgname=$_pkgname-git
-pkgver=20161124.r2109
+pkgver=20170111.r2111
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners')
