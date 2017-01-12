@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=onetwopunch-git
-pkgver=20160605.r14
-pkgrel=2
+pkgver=20170101.r15
+pkgrel=1
 pkgdesc='Script combining the speed of unicornscan w/ the versitility of nmap'
 arch=('any')
 url='https://github.com/superkojiman/onetwopunch'
