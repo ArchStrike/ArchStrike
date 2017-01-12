@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=shodan
-pkgver=1.6.3
-pkgrel=2
+pkgver=1.6.4
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2 library for Shodan.io'
 url='http://github.com/achillean/shodan-python'
@@ -12,8 +12,8 @@ depends=('python2-click' 'python2-click-plugins' 'python2-colorama' 'python2-req
 license=('MIT')
 arch=('any')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/65/57/913f5d4fb84dd35bec34a6c98df55dda73193103f14278b706cd13818ed1/shodan-${pkgver}.tar.gz")
-sha512sums=('d290526db800e0cecd4c897370be31b3447bf5be4b4138370c1d512d7e6ab1eb28819f5a571f052ce2d7d9e6d802f62caf752fd6b2e83495ab886705f5b5cacb')
+source=("https://pypi.python.org/packages/e2/b5/003f6f85782814dfecaf5ae12a89a98566f503230be44acceea2bb9ad627/shodan-${pkgver}.tar.gz")
+sha512sums=('b14a28e142a0ae353433f52e749e81107a7bad054725d762f30365819d92819b11a880157b9b032ba1ae45da123431aa19de445a90402ea5f4280cec89e0c47b')
 
 build() {
   cd $pkgname-$pkgver
