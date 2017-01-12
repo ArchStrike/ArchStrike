@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pyew-git
-pkgver=20161122.r101
+pkgver=20170110.r102
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="a (command line) python tool to analyse malware."
