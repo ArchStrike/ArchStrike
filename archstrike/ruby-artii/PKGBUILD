@@ -6,7 +6,7 @@ _gemname=artii
 buildarch=1
 
 pkgname=ruby-$_gemname
-pkgver=2.1.1
+pkgver=2.1.2
 pkgrel=1
 pkgdesc='A little Figlet-based ASCII art generator.'
 arch=(any)
@@ -16,7 +16,7 @@ depends=(ruby)
 options=(!emptydirs)
 source=(https://rubygems.org/downloads/$_gemname-$pkgver.gem LICENSE)
 noextract=($_gemname-$pkgver.gem)
-sha512sums=('ea7f263ed4e25f186acd6bed918afa4aa1b5208b9ec37026556d6ca79191066223cb186a45fd96caa22cff0ef7745718e0002aaa8e17c161c546e27c2499fd9b'
+sha512sums=('46810cdcee6c1c2fed8e563452c11d36c86c9ba01cdc22f32dd16baa714c8759081721cfbb015cfef6020efcbbf17202419d0f4ce7b91f3584c778c3037a93ae'
             '0174a3fd25e75a9ab0767dcf39dcb88dfafae29e18f884771c926aef3f5eca80d393c0371c9adfb68eb64e3cbdd9852aa33661172a8669572657132a8ecd368e')
 
 package() {
