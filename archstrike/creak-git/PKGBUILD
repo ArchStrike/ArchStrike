@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=creak-git
-pkgver=20161224.r39
+pkgver=20170106.r40
 pkgrel=1
 groups=('archstrike' 'archstrike-mitm')
 arch=('any')
 pkgdesc="Poison, reset, spoof, redirect MITM script"
 url="https://github.com/codepr/creak"
 license=('GPL')
-depends=('python2' 'python2-dpkt-git' 'python2-pypcap' 'scapy' 'libdnet')
+depends=('python2-configparser' 'python2-dpkt-git' 'python2-pypcap' 'scapy' 'libdnet')
 makedepends=('python2-setuptools' 'git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
