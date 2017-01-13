@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pupy-git
-pkgver=20170107.r883
+pkgver=20170112.r891
 pkgrel=1
 pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python.'
 url='https://github.com/n1nj4sec/pupy'
