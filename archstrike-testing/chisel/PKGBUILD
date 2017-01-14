@@ -4,8 +4,8 @@ buildarch=220
 
 pkgname=chisel
 pkgver=1.1.4
-pkgrel=1
-groups=('archstrike', 'archstrike-networking' 'archstrike-tunnel')
+pkgrel=2
+groups=('archstrike' 'archstrike-networking' 'archstrike-tunnel')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="A fast TCP tunnel over HTTP"
 url="https://github.com/jpillora/chisel"
