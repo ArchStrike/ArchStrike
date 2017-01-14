@@ -1,0 +1,44 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=chisel
+pkgver=1.1.4
+pkgrel=1
+groups=('archstrike', 'archstrike-networking' 'archstrike-tunnel')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgdesc="A fast TCP tunnel over HTTP"
+url="https://github.com/jpillora/chisel"
+license=('MIT')
+depends+=('glibc')
+depends_x86_64=('lib32-glibc')
+makedepends=('go' 'git')
+source=("https://github.com/jpillora/chisel/archive/1.1.4.tar.gz"
+        "LICENSE")
+sha512sums=('72e99379e1a375201065fafc167df97a5b17a052aa2f388ce740ee4f9f355da8f6c173abd5141aaa9f7efe6e38e077e0d4976886cc3023238077f9f7fe7ac853'
+            '4450bb1b51fc9660d861e959139aced1756a6879a53ed6ed8ac836a57475eb65640498c73a7a9cd76e30f97e66484568713a549de07caac40b111b7c72193280')
+
+prepare() {
+  export GOPATH="${srcdir}"
+  go get -d -u github.com/jpillora/chisel
+}
+
+build() {
+  cd "${pkgname}-${pkgver}"
+  export GOPATH="${srcdir}"
+  go build
+}
+
+package() {
+  cd "${pkgname}-${pkgver}"
+
+  # license
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  # binary
+  install -Dm755 "${pkgname}-${pkgver}" "${pkgdir}/usr/bin/${pkgname}"
+
+  # example
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 "example/users.json" "${pkgdir}/usr/share/doc/${pkgname}/examples/users.json"
+}
