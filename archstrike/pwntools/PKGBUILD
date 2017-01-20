@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pwntools
-pkgver=3.3.3
+pkgver=3.3.4
 pkgrel=1
 pkgdesc='CTF framework and exploit development library'
 arch=('any')
@@ -17,7 +17,7 @@ makedepends=('python2-setuptools')
 replaces=('binjitsu-git')
 provides=('binjitsu-git')
 source=("https://github.com/Gallopsled/pwntools/archive/$pkgver.tar.gz")
-sha512sums=('93198d62ecb002569e5c30753d1407d51daa1af9b141c4c76fb3c595de45b8cbde9c1c42d85cd023c1d26884ec944ef9e54e32e17ec18d4ff7d24cf0c4e68c7d')
+sha512sums=('20c6a7012db7873b55c5f603253bb8720c42acc6e9515089b3e627f225f6728f343082bbee2f059e60420df7927819c79383bdeab75ffb5e76c599cea5bdc271')
 
 prepare() {
   cd "$pkgname-$pkgver"
