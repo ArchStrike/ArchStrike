@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=gef-git
 _pkgname=gef
-pkgver=r668.6b958f4
+pkgver=r670.add1c36
 pkgrel=1
 pkgdesc="Provides additional features to GDB using the Python API to assist during the process of dynamic analysis or exploit development."
 url='https://github.com/hugsy/gef'
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 license=('MIT')
-depends=('python2' 'gdb' 'capstone' 'ropgadget' 'radare2' 'python2-keystone' 'unicorn' 'ropper')
+depends=('python2' 'gdb' 'python2-capstone' 'ropgadget' 'radare2' 'python2-keystone' 'unicorn-engine' 'ropper')
 makedepends=('git')
 install='gef-git.install'
 source=("${pkgname}::git+https://github.com/hugsy/gef.git")
