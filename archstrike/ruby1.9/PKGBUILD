@@ -19,8 +19,18 @@ optdepends=('tk: for Ruby/TK')
 makedepends=('openssl' 'tk' 'doxygen' 'graphviz' 'libyaml' 'ttf-liberation')
 options=('!emptydirs' '!makeflags')
 provides=('rubygems1.9' 'rake1.9')
-source=("http://cache.ruby-lang.org/pub/ruby/1.9/ruby-${pkgver//_/-}.tar.bz2")
-sha512sums=('5ea40f8c40cf116030ffdedbe436c1fdbf9a50b7bb44bc890845c9c2a885c34da711bc1a9e9694788c2f4710f7e6e0adc4410aec1ab18a25a27168f25ac3d68c')
+source=("http://cache.ruby-lang.org/pub/ruby/1.9/ruby-${pkgver//_/-}.tar.bz2" 
+        "openssl.patch::https://gist.githubusercontent.com/FiveYellowMice/c50490693d47577cfe7e6ac9fc3bf6cf/raw"
+        "aarch64.patch")
+sha512sums=('5ea40f8c40cf116030ffdedbe436c1fdbf9a50b7bb44bc890845c9c2a885c34da711bc1a9e9694788c2f4710f7e6e0adc4410aec1ab18a25a27168f25ac3d68c'
+            '381a649ed62c24741ff72685d585a3bad65e8c8a3e32fb324f653cc42d88e8c6bbeffc25995de3dd0784b9bf486a15613f3b6c813e8d4e9ca60678ca55c2417d'
+            '4c941b7b86fe6aac3ac8b80bf7753da81a43d864b286c5da24597f3543d4ac73d98f3a4f37db28d622d8f2104f31586e77d3e6ee63944de57dbe9a57a525037a')
+
+prepare() {
+  cd ruby-${pkgver//_/-}
+  patch -Np1 -i $srcdir/openssl.patch
+  patch -Np1 -i $srcdir/aarch64.patch
+}
 
 build() {
   cd ruby-${pkgver//_/-}

@@ -1,0 +1,31 @@
+diff --git a/ext/openssl/extconf.rb b/ext/openssl/extconf.rb
+index 8c04cb5..132d803 100644
+--- a/ext/openssl/extconf.rb
++++ b/ext/openssl/extconf.rb
+@@ -104,6 +104,9 @@
+ have_func("SSLv2_method")
+ have_func("SSLv2_server_method")
+ have_func("SSLv2_client_method")
++have_func("SSLv3_method")
++have_func("SSLv3_server_method")
++have_func("SSLv3_client_method")
+ unless have_func("SSL_set_tlsext_host_name", ['openssl/ssl.h'])
+   have_macro("SSL_set_tlsext_host_name", ['openssl/ssl.h']) && $defs.push("-DHAVE_SSL_SET_TL109")
+ end
+diff --git a/ext/openssl/ossl_ssl.c b/ext/openssl/ossl_ssl.c
+index f7cb7f0..47111f6 100644
+--- a/ext/openssl/ossl_ssl.c
++++ b/ext/openssl/ossl_ssl.c
+@@ -109,9 +109,12 @@ static const struct {
+     OSSL_SSL_METHOD_ENTRY(SSLv2_server),
+     OSSL_SSL_METHOD_ENTRY(SSLv2_client),
+ #endif
++#if defined(HAVE_SSLV3_METHOD) && defined(HAVE_SSLV3_SERVER_METHOD) && \
++        defined(HAVE_SSLV3_CLIENT_METHOD)
+     OSSL_SSL_METHOD_ENTRY(SSLv3),
+     OSSL_SSL_METHOD_ENTRY(SSLv3_server),
+     OSSL_SSL_METHOD_ENTRY(SSLv3_client),
++#endif
+     OSSL_SSL_METHOD_ENTRY(SSLv23),
+     OSSL_SSL_METHOD_ENTRY(SSLv23_server),
+     OSSL_SSL_METHOD_ENTRY(SSLv23_client),
