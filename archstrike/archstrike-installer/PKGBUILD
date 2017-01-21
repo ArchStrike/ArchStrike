@@ -3,21 +3,30 @@
 buildarch=1
 
 pkgname=archstrike-installer
-pkgver=1.1
-pkgrel=3
+pkgver=2.0
+pkgrel=1
 arch=('any')
 pkgdesc="Full ArchStike installer for the ArchStrike live environment"
 url="https://github.com/ArchStrike/archstrike-installer"
 license=('MIT')
 depends=('python2' 'arch-install-scripts' 'gptfdisk' 'util-linux' 'lvm2' 'cryptsetup' 'mkinitcpio')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('ff1f1f1c08250f4f0fdda6ae5901b8302f69ddda9d994917b083473c53d672f9c55e466300e9c4c3c3780f931d74e9cddbcb23d9d316c5c8cf9326368d81014a')
+sha512sums=('d2a62732116220ced37f5093e653dde4cf80f06826d3bb21b4c7e111b8b660012f6f900498d17bd3f66fc6f16149292ecdb6e5bcff4c93b5de6dd93f4a13a054')
 
 package() {
   cd ${pkgname}-${pkgver}
   install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm755 as-install.py "${pkgdir}/usr/bin/archstrike-installer"
+
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+python2 as-installer.py "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
 }
