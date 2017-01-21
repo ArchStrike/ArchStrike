@@ -4,7 +4,7 @@ buildarch=1
 
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
-pkgver=0.7
+pkgver=0.8
 pkgrel=1
 arch=('any')
 url='https://www.archstrike.org/'
@@ -95,7 +95,6 @@ package_archstrike-meta-upstream-all() {
     radare2
     afl
     radamsa
-    metasploit
     binwalk
     capstone
     keystone
