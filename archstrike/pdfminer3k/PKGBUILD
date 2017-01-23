@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pdfminer3k
-pkgver=1.3.0
+pkgver=1.3.1
 pkgrel=1
 arch=('any')
 pkgdesc='A python3 port of pdfminer'
@@ -13,8 +13,8 @@ depends=('python')
 makedepends=('python-setuptools')
 provides=('python-pdfminer')
 replaces=('python-pdfminer')
-source=("https://pypi.python.org/packages/d4/80/c0c837cfd85dd0b684d4dd140516fc3b4058b3dad72aa590bc1e42e5d458/pdfminer3k-$pkgver.tar.gz" "LICENSE")
-sha512sums=('4a1113d601a321606fb39b3d1a13c6fbac623d2dbf4b47e9cda284622900ce9b0232a5c43d268bba2bfacc4ee7b92566b17268726002b238cb742d9ca30fec8c'
+source=("https://pypi.python.org/packages/8c/87/cee0aa24f95c287020df7e3936cb51d32b34b05b430759bac15f89ea5ac2/pdfminer3k-$pkgver.tar.gz" "LICENSE")
+sha512sums=('7d6e3aa1a3c004d2356c3db7a4a2e75413f9cef3707d7c81c28b668bd882ffaac90543e4496cf4e36e281176248d8510cc759a82548d6237bc33da7b7ab5ba44'
             'f39753423638ab131ac193675e9280163769fe1102315f5c810c5bb58e255fc5673f0c1fbb96f0b153151cb8fc2763d38615a465f4c0e5fc121c0103cf97ab5c')
 
 prepare() {
