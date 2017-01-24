@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=nassl
-pkgver=0.14.1
+pkgver=0.14.2
 pkgrel=1
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto')
 pkgdesc='Experimental Python wrapper for OpenSSL'
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('python2')
 makedepends=('openssl' 'python2-setuptools')
 source=("https://github.com/nabla-c0d3/nassl/archive/$pkgver.tar.gz")
-sha512sums=('eed8cb537bda7d6aad2dcfb0419ed51cbf6449e37edd68ac3f35f880087f53bf084b80631e919e7c4d9307e6ffb9847deaa78601669ed52c1b3462805ec0b37e')
+sha512sums=('ab4c63200067828d46a9858f833da89d109d984b83b501d0df06d45ccc8531255b9f7a70cc338061368104ef924316c67402b946ac20843ed9db679f64cd0e62')
 
 prepare() {
   find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
