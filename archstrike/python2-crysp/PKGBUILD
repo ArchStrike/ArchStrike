@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-crysp
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 pkgdesc="A crypto related pkg for amoco"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL2')
 depends=('python2-matplotlib' 'python2-grandalf')
 makedepends=('python2-setuptools')
 source=("https://github.com/bdcht/crysp/archive/v$pkgver.tar.gz")
-sha512sums=('e8b67cc71ef383f74f813cfe864e3dc08758d984a7cc076a0d599fb12d94879ca071974bfa1607bf4a9ab99deef45605951c531d56f1032237471868e4ef785c')
+sha512sums=('d32e92758eefc98ac8f29426b4a37a47621588f578ef021407f5eeaf8b573f3a4e47c03258a4f12539bd77ccd4dc630185cd65f2cfbd7399212f9c14d692035e')
 
 prepare(){
   grep -iRl 'python' "$srcdir/crysp-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
