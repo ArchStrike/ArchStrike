@@ -4,7 +4,7 @@ buildarch=1
 
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 arch=('any')
 url='https://www.archstrike.org/'
@@ -42,6 +42,7 @@ package_archstrike-meta-upstream-all() {
     ngrep
     nbtscan
     lsof
+    metasploit
     mtr
     macchanger
     kismet
