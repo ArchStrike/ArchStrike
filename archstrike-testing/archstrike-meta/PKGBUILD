@@ -4,7 +4,7 @@ buildarch=1
 
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
-pkgver=0.9
+pkgver=0.10
 pkgrel=1
 arch=('any')
 url='https://www.archstrike.org/'
@@ -101,5 +101,6 @@ package_archstrike-meta-upstream-all() {
     keystone
     sqlmap
     veracrypt
+    wpscan
   )
 }
