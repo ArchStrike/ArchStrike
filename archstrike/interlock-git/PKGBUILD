@@ -4,8 +4,8 @@ buildarch=220
 
 pkgname=interlock-git
 _pkgname=interlock
-pkgver=20161116.r336
-pkgrel=2
+pkgver=20170126.r344
+pkgrel=1
 groups=('archstrike' 'archstrike-crypto')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="File encryption front-end"
