@@ -4,7 +4,7 @@ buildarch=1
 
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
-pkgver=0.10
+pkgver=0.11
 pkgrel=1
 arch=('any')
 url='https://www.archstrike.org/'
@@ -89,6 +89,7 @@ package_archstrike-meta-upstream-all() {
     openvas-libraries
     openvas-manager
     openvas-scanner
+    nasm
     nethogs
     net-snmp
     sqlmap
@@ -104,3 +105,4 @@ package_archstrike-meta-upstream-all() {
     wpscan
   )
 }
+
