@@ -3,28 +3,26 @@
 buildarch=1
 
 pkgname=kismon
-pkgver=0.8.1
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="GUI client for kismet (wireless scanner/sniffer/monitor)"
 arch=('any')
 groups=('archstrike' 'archstrike-wireless')
 url="https://www.salecker.org/software/kismon.html"
 license=('BSD')
 depends=('gtk3' 'gobject-introspection-runtime' 'python-gobject' 'python-simplejson' 'python-cairo' 'osm-gps-map')
+makedepends=('python-setuptools')
 source=("https://files.salecker.org/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('6c40603f0cc58acde0991754976c407539b7197846303977b82bf40813ebea63ba81773d494ee9cf051b500b0144f569e8b38c5d44824b03b6b3e127cb6badc9')
+sha512sums=('87471518a58903f173198d24f31cee7f22f5f9f3e7b0a645c0ad3b784e48e1ab5e504117701240ec8a5679f1f58c7e92302fe58ce8bfbad188ab8c70869a2f9f')
 
 build() {
   cd "${pkgname}-${pkgver}"
-
   python3 setup.py build
 }
 
 package() {
   cd "${pkgname}-${pkgver}"
-
-  python3 setup.py install --root=${pkgdir} --optimize=1
-
+  python3 setup.py install --root=${pkgdir} -O1 --skip-build
   install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
 
