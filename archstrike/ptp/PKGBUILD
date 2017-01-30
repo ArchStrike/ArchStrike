@@ -3,18 +3,16 @@
 buildarch=1
 
 pkgname=ptp
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="Ranks the discoveries listed in security tool reports."
 url="http://owtf.github.io/ptp"
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://github.com/owtf/ptp/archive/v${pkgver}.tar.gz"
-        'LICENSE')
-sha512sums=('336830995fa5e1d3704524d23570353d048faa1281de7d9bbc016a9611b219923f5a004da196dbd6f25d9d3f6e89bcb1bdf92cf3e7772e2b1f9f7d0db64e81fe'
-            '42e5bbd8115b16d6153cea57898870729f5a6fa0a177544b873f15333311c8ea5de950a076a2031233a292da0e08861b8678784ba6f055021f3d2ae6ae5305bd')
+source=("https://github.com/owtf/ptp/archive/v${pkgver}.tar.gz")
+sha512sums=('4c63a68701b62735b3fd086a0dec48291846842ef66289568d182c8d16a7072683ecbcb7e3dc24cb16d97f41e4b53a8280c6ebca965f87169b88f7f620625e56')
 
 build() {
   cd ${pkgname}-${pkgver}
@@ -26,5 +24,5 @@ package() {
   python2 setup.py install --root="$pkgdir" -O1 --skip-build
   rm -rf "${pkgdir}"/usr/lib/python2.7/test
   rm -rf "${pkgdir}"/usr/lib/python2.7/site-packages/tests
-  install -Dm644 "${srcdir}"/LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE
 }
