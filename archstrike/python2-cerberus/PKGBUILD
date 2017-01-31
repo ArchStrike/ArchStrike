@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-cerberus
-pkgver=1.0.1
+pkgver=1.1
 pkgrel=1
 pkgdesc="Lightweight, extensible schema and data validation tool for Python dictionaries."
 url="http://github.com/nicolaiarocci/cerberus"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('CUSTOM')
 arch=('any')
 source=("https://github.com/nicolaiarocci/cerberus/archive/$pkgver.tar.gz")
-sha512sums=('b8cf867d1d4ad22fa8d78f8f56ea9c80af944db8862ed3f596da6202069903e956d0d64e0e8f7c0017022cd7521c8ce053b0676ed967f7753f769bf5fff9f529')
+sha512sums=('f4632d4a297116ff4c45fb487d966b065f428fb8052f6fe7de7c2818d17345c0a37ac86555df1ae81ae3f53f805a72120ce0bcb9418062a1a4909cee8394f54c')
 
 build() {
     cd $srcdir/cerberus-$pkgver
