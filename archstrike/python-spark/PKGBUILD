@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-spark
-pkgver=1.5.2
+pkgver=1.6.0
 pkgrel=1
 pkgdesc="An Early-Algorithm Context-free grammar Parser"
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/rocky/python-spark/archive/release-$pkgver.tar.gz")
-sha512sums=('aef6201ac61a5ab4c73605a77622ed63c44bde83de89e83a5fed3d338c377b9d1e3027c589a268dfa7761fcaf0c943f852219b6440e2163cf3189fd92fba763a')
+sha512sums=('09f51bc46eef83dfdb98b9e2c3b39c643b215cf7fa6d8ad8425e1c89580225d0b3bdfff8876e0a3b6b5d504a542ad87e4314bf3101e47b8ad93b70699e23e54d')
 
 build() {
     cd "$srcdir/${pkgname}-release-${pkgver}"
