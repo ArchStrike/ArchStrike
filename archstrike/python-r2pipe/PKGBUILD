@@ -6,15 +6,15 @@ pkgbase=python-$_pkgname
 buildarch=1
 
 pkgname=(python-$_pkgname python2-$_pkgname)
-pkgver=0.8.8
-pkgrel=2
+pkgver=0.8.9
+pkgrel=1
 pkgdesc="A Pipe interface for radare2"
 url="https://pypi.python.org/pypi/r2pipe/"
 arch=('any')
 license=('MIT')
 makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://pypi.python.org/packages/ad/c4/9106bc2044c4ce052de211f6cb92c18e413bcad167454c97836ecbb14f31/r2pipe-${pkgver}.tar.gz")
-sha512sums=('e520be60ab6287f427960c9277aa0171ec2943ee0578082e2b36d32deb0e82eb40e315bd87f533a27240e8340f4040e610c281762cb7158788796f3c984a1f7c')
+source=("https://pypi.python.org/packages/ea/33/6564663d3f8af41213033cc760fb3823315c1ec38aa6dab877000ddddeff/r2pipe-${pkgver}.tar.gz")
+sha512sums=('5718c2fa55050725d68460a2f2ef801de30112e77d565eceea9ffd73fef7cfe10994bd9be0fe8db7c894f731dbce56613679e9a5bef73b6bdee4f2e4976dbd44')
 
 prepare() {
   cp -a $_pkgname-$pkgver{,-py2}
@@ -32,7 +32,7 @@ package_python-r2pipe() {
   depends=('python')
 
   cd "$srcdir/$_pkgname-$pkgver"
-  python3 setup.py install --root="$pkgdir/" --optimize=1
+  python3 setup.py install --root="$pkgdir/" -O1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
@@ -40,7 +40,7 @@ package_python2-r2pipe() {
   depends=('python2')
 
   cd "$srcdir/$_pkgname-$pkgver-py2"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  python2 setup.py install --root="$pkgdir/" -O1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   sed -i 's|env python|env python2|' $pkgdir/usr/lib/python2.7/site-packages/r2pipe/__init__.py
 }
