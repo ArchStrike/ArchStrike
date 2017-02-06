@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=rr
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto' 'archstrike-analysis')
 pkgdesc="A Record and Replay Framework"
@@ -14,13 +14,13 @@ license=('custom')
 depends_x86_64+=('libpfm4' 'lib32-gcc-libs' 'bash' 'lib32-zlib' 'python2' 'gcc-multilib')
 depends_i686+=('libpfm4' 'bash' 'zlib' 'python2')
 source=("https://github.com/mozilla/rr/archive/$pkgver.tar.gz")
-sha512sums=('d2481e4a81407327b052671798235e96ef7b4282ab8dfca0cfb0e192f93df664a109205f6fa4175c30b1569d22e79d8684f35ae108d77889f8783ec8bfd5ff0d')
+sha512sums=('8e9b7c6eaa9908e75853b5e19f61954b57e6e5afa7a8b6fe55f31aee36bab6ff315b5c3511d14c93dca5da19055a7879b6f3b9f51c349b1bb9acea130187a5e6')
 
 build(){
   cd "$srcdir/rr-$pkgver"
   export CFLAGS+=" -fPIC"
   mkdir build && cd build
-  cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
+  cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2 ..
   make
 }
 
