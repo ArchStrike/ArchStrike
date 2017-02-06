@@ -2,25 +2,28 @@
 
 buildarch=1
 
-pkgname=python2-phply
-pkgver=0.9.1
+_pkgname=phply
+
+pkgname=python2-${_pkgname}
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="PHP parser written in Python using PLY"
 arch=('any')
 url="https://github.com/ramen/phply"
 license=('BSD')
-depends=('python2')
-makedepends=('git' 'python2-setuptools')
-source=("git+http://github.com/ramen/phply")
-md5sums=('SKIP')
+depends=('python2-ply')
+makedepends=('python2-setuptools')
+source=("https://github.com/viraptor/phply/archive/${pkgver}.tar.gz")
+sha512sums=('85acf53d713ebfa2cfeef104ba48bfc7d8ff7da3cdb277dab39ddb658bf5714b76346dde101e17cb7dbf3e92de69ab9fa036dfafd5e8ff89854b919fdad9b422')
 
-prepare() {
-  cd "$srcdir/phply"
-    git checkout 435f523918145437e22d
+build() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/phply"
-  python2 setup.py install "--root=$pkgdir" --optimize=1
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install "--root=$pkgdir" -O1 --skip-build
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   rm -rf "$pkgdir/usr/lib/python2.7/site-packages/tests"
 }
