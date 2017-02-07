@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=20170202.r497
+pkgver=20170206.r499
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='The Router Exploitation Framework'
