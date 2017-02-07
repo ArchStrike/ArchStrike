@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-dpkt-git
-pkgver=20170204.r367
+pkgver=20170206.r368
 pkgrel=1
 pkgdesc='This is a Python library for interacting with and creating packets.'
 arch=('any')
