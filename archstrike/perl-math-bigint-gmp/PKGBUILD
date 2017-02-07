@@ -5,7 +5,7 @@ _perlmod=Math-BigInt-GMP
 buildarch=220
 
 pkgname=perl-math-bigint-gmp
-pkgver=1.6003
+pkgver=1.6004
 pkgrel=1
 pkgdesc="Big integer calculations using the GNU Multiple Precision Arithmetic Library."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.16.2' 'gmp')
 options=(!emptydirs)
 source=(http://cpan.perl.org/modules/by-authors/id/P/PJ/$_author/$_perlmod-$pkgver.tar.gz)
-sha512sums=('af2b510aa07fb951a8dc3a4a0e1b2cc43e81a606ed16bfd0a728547b556e8094c84804f055e43d5f65893a18e3974da98c937f14d6094ca8452eb78246c2a7ef')
+sha512sums=('54b416fe577512691a97b9a06f8ca2ffc4ab63e0d11325f5926c42a4248b87325c2b5db0c57b2239819e863891ea40ab028b0f061ed9c8bbbf6886c467cb8d1e')
 
 build() {
   cd "$srcdir/$_perlmod-$pkgver"
