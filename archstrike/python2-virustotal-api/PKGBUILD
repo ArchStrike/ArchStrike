@@ -3,31 +3,47 @@
 
 buildarch=1
 
-pkgname=python2-virustotal-api
-pkgver=1.1.2
+_pkgname=virustotal-api
+pkgbase=python2-$_pkgname
+
+
+pkgname=(python-$_pkgname python2-$_pkgname)
+pkgver=1.1.3
 pkgrel=1
 pkgdesc="Virus Total Public/Private/Intel API"
 url="https://github.com/blacktop/virustotal-api"
-depends=('python2' )
-makedepends=('python2-setuptools' )
+makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/8d/6c/a74d30e912650da797b762ff682a35a61acbb0ba03c77eca49daf528ec4e/virustotal-api-${pkgver}.tar.gz" "LICENSE")
-sha512sums=('ed687b1b75532d23489bc9a9dffc99e60ee041fd3e87740e5738c0c274af31fad92e8de06560961f15e3a617cb896d0a2749c4f125ff5257c19e01595f1f3d0e'
-            'fda7112d5d6375ff9f87741686dd26921b909ca7094524b70fe10fa27c802efaee04ac44e2081284bad0c5122741d91771e8da1bcf06d67e05c33fd5294fba33')
+source=("https://pypi.python.org/packages/54/f8/7624743cc21adb49ad35610789a074f72356bde8095fe7c410a4a3f81d94/virustotal-api-${pkgver}.tar.gz")
+sha512sums=('0fadd53ece4cdc46fb600664dafd942a4f60f8ab4b4f2a5e3effdc41bfd23b22f921a5cc74dcd8ea5785b27bf8dfdc03379e625051e1c95d4e1494ca8a7b3faf')
+
 
 prepare() {
-  grep -iRl 'python' virustotal-api-${pkgver} | xargs sed -i 's|python$|python2|g'
+  cp -a $_pkgname-$pkgver{,-py2}
 }
-  
+
 build() {
-  cd $srcdir/virustotal-api-$pkgver
+  cd "$srcdir/$_pkgname-$pkgver"
+  python3 setup.py build
+
+  cd "$srcdir/$_pkgname-$pkgver-py2"
   python2 setup.py build
 }
 
-package() {
-  cd $srcdir/virustotal-api-$pkgver
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  python2 setup.py install --root="$pkgdir" --optimize=1 
-  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
+package_python-virustotal-api() {
+  depends=('python')
+
+  cd "$srcdir/$_pkgname-$pkgver"
+  python3 setup.py install --root="$pkgdir/" -O1 --skip-build
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_python2-virustotal-api() {
+  depends=('python2')
+
+  cd "$srcdir/$_pkgname-$pkgver-py2"
+  python2 setup.py install --root="$pkgdir/" -O1 --skip-build
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  sed -i 's|env python|env python2|' $pkgdir/usr/lib/python2.7/site-packages/virus_total_apis/__init__.py $pkgdir/usr/lib/python2.7/site-packages/virus_total_apis/api.py
 }
