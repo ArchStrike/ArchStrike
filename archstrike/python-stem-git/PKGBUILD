@@ -2,16 +2,18 @@
 
 buildarch=1
 
-pkgname=python-stem-git
-pkgver=20170130.r2484
+_pkgname=stem
+pkgbase=python-$_pkgname-git
+
+pkgname=(python-$_pkgname-git python2-$_pkgname-git)
+pkgver=20170201.r2491
 pkgrel=1
 epoch=1
 pkgdesc='A controller library for Tor'
 arch=('any')
 url='https://stem.torproject.org/'
 license=('LGPL3')
-depends=('python')
-makedepends=('git' 'python-setuptools')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
 source=("${pkgname}::git+http://git.torproject.org/stem.git")
 sha512sums=('SKIP')
 
@@ -20,9 +22,32 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
-package() {
-  cd "${pkgname}"
-  python setup.py install --root="$pkgdir/" --optimize=1
+prepare() {
+  cp -a $pkgname{,-py2}
 }
 
-# vim:set ts=2 sw=2 et:
+build() {
+  cd "$srcdir/${pkgname}"
+  python3 setup.py build
+
+  cd "$srcdir/${pkgname}-py2"
+  python2 setup.py build
+}
+
+package_python-stem-git() {
+  depends=('python')
+
+  cd "$srcdir/${pkgname}"
+  python3 setup.py install --root="$pkgdir/" -O1 --skip-build
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_python2-stem-git() {
+  depends=('python2')
+
+  cd "$srcdir/python-stem-git-py2"
+  python2 setup.py install --root="$pkgdir/" -O1 --skip-build
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  #sed -i 's|env python|env python2|' $pkgdir/usr/lib/python2.7/site-packages/r2pipe/__init__.py
+}
+
