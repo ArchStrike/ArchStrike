@@ -5,7 +5,7 @@
 # Contributor: Chris Fordham
 
 pkgname=python2-botocore
-pkgver=1.5.9
+pkgver=1.5.10
 pkgrel=1
 pkgdesc='A low-level interface to a growing number of Amazon Web Services'
 arch=('any')
@@ -14,7 +14,7 @@ license=('Apache')
 depends=('python2-dateutil' 'python2-jmespath' 'python2-docutils')
 makedepends=('python2-setuptools')
 source=($pkgname-$pkgver.tar.gz::$url/archive/$pkgver.tar.gz)
-sha512sums=('3a64a09f16a536517e9191c9bc905a8c98df7346412b87b627c7d12b277a5aa1f6fb4aa616e0083577ecfe538e5779a746597c80994e1915271f7f8e6c887fb3')
+sha512sums=('a3da6765d3e86e9b1147435643508b2e1f5f09245adb173ba84c1e3633a1f5130544aba7821d55db5a010cbf57f03447837c144219a4b0d4a5f743415d3be8f6')
 
 build() {
   cd botocore-$pkgver
