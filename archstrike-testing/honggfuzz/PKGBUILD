@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=212
+buildarch=220
 
 pkgname=honggfuzz
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'armv6' 'armv7' 'aarch64')
 pkgdesc="Security oriented fuzzer with powerful analysis options. Supports evolutionary, feedback-driven fuzzing based on code coverage"
 url="https://github.com/google/honggfuzz"
 license=('Apache')
