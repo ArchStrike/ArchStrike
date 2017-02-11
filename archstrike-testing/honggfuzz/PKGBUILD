@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=212
+
+pkgname=honggfuzz
+pkgver=0.8
+pkgrel=1
+groups=('archstrike' 'archstrike-fuzzers')
+arch=('i686' 'x86_64')
+pkgdesc="Security oriented fuzzer with powerful analysis options. Supports evolutionary, feedback-driven fuzzing based on code coverage"
+url="https://github.com/google/honggfuzz"
+license=('Apache')
+depends=('libunwind' 'zlib')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('65db9e67fd3ba3303a62c61c05a738dfad71dd3cbef032de8cae0965886887ea11ee3f4011354cf7b40014a8cd02d773ca66a06389cf76b42bdc5a79dbcb1ca1')
+
+build() {
+  cd ${pkgname}-${pkgver}
+  make
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 honggfuzz "${pkgdir}/usr/bin"
+}
