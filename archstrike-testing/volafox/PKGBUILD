@@ -1,0 +1,35 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=volafox
+pkgver=1.0.1
+pkgrel=1
+groups=('archstrike' 'archstrike-analysis')
+arch=('any')
+pkgdesc="Mac OS X Memory Analysis Toolkit"
+url="https://github.com/n0fate/volafox"
+license=('GPL2')
+depends=('python2')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('35952c6c0f3c996a7e1f791fe7bf0c0f13741369f82376023d92e588bd2dad4d56f8646f918bc0543b5042669689d5ae0b27ba08d64ff5714830a21432bee6c8')
+
+prepare() {
+  grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+python2 vol.py "\$@"
+EOF
+
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+}
