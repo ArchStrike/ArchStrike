@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=any
+buildarch=1
 
 pkgname=mybff-git
 pkgver=20170103.r94
