@@ -3,22 +3,30 @@
 buildarch=220
 
 pkgname=jd-gui
-pkgver=0.3.5
-pkgrel=2
+pkgver=1.4.0
+pkgrel=1
 groups=('archstrike' 'archstrike-reverse' 'archstrike-decompile')
 pkgdesc='A standalone graphical utility that displays Java source codes of .class files'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://java.decompile.free.fr/?q=jdgui"
-license=('custom')
-depends=('gtk2')
-[[ "$CARCH" == x86_64 ]] && depends=('lib32-gtk2' 'lib32-libsm' 'lib32-libxxf86vm')
+url="https://github.com/java-decompiler/jd-gui"
+license=('GPL')
+depends=('gtk2' 'jdk8-openjdk' 'java-environment')
+depends_x86_64+=('lib32-gtk2' 'lib32-libsm' 'lib32-libxxf86vm')
 options=('!strip')
-source=(http://jd.benow.ca/jd-gui/downloads/jd-gui-$pkgver.linux.i686.tar.gz)
-md5sums=('3e82ffcb98508971d96150cf57837b13')
+source=("${url}/releases/download/v${pkgver}/jd-gui-${pkgver}.jar")
+sha512sums=('04f59d0ec974009ca5141f7f7229862d8e084f7ecc5685825e2fa10c8539c56f5a81252f3c80e344453c75050b8fa0dc5fd5cb6b4bb9c6b845bac86ed31899e0')
 
 package() {
-  cd "$srcdir"
+  cd ${srcdir}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  install -Dm755 jd-gui "$pkgdir/usr/bin/jd-gui"
-  install -Dm644 readme.txt "$pkgdir/usr/share/licenses/jd-gui/readme.txt"
+  install -Dm755 jd-gui-${pkgver}.jar "${pkgdir}/usr/share/${pkgname}/jd-gui.jar"
+
+cat > "${pkgdir}/usr/bin/${pkgname}"<<EOF
+#!/usr/bin/env bash
+java -jar /usr/share/${pkgname}/jd-gui.jar "\$@"
+EOF
+
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
