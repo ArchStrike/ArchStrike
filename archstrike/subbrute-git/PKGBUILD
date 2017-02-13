@@ -5,7 +5,7 @@ buildarch=1
 
 _pkgname=subbrute
 pkgname=$_pkgname-git
-pkgver=20161113.r103
+pkgver=20170212.r107
 pkgrel=1
 pkgdesc='A DNS meta-query spider that enumerates DNS records, and subdomains'
 arch=('any')
