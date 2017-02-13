@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=novnc-git
-pkgver=r1237.6ffdfd3
+pkgver=r1240.0ee5ca6
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="VNC client using HTML5 (Web Sockets, Canvas) with encryption (wss://) support."
@@ -29,17 +29,18 @@ package() {
   cd ${pkgname}
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/share/${pkgname}"
-  install -dm755 "$pkgdir/usr/share/licenses/${pkgname}"
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/${pkgname}/LICENSE.txt"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
-cat >$pkgdir/usr/bin/novnc <<EOF
+cat > ${pkgdir}/usr/bin/novnc <<EOF
 #!/usr/bin/env bash
 cd /usr/share/${pkgname}
 exec ./utils/launch.sh "\$@"
 EOF
-chmod 755  $pkgdir/usr/bin/novnc
+
+chmod 755  ${pkgdir}/usr/bin/novnc
 
 }
