@@ -3,28 +3,32 @@
 buildarch=1
 
 pkgname=spiderfoot
-pkgver=2.7.1
+pkgver=2.8.0
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='The Open Source Footprinting Tool'
 url='http://spiderfoot.net'
 arch=('any')
 license=('GPL2')
-depends=('python2-lxml' 'python2-mako' 'python2-cherrypy' 'python2-m2crypto' 'python2-netaddr')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver-src.tar.gz")
-sha512sums=('fdd50d57e0bc8789243a2596ad01462e38bec5167d173f33c78b2e496f4299a9367fab6775de8646ed22d1f84ab1c5db43162ee5d812c40430084397ee69fb11')
+depends=('python2-lxml' 'python2-mako' 'python2-cherrypy' 'python2-m2crypto' 'python2-netaddr' 'python2-requests')
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}-src.tar.gz")
+sha512sums=('dbf65176c1f1c5dcb8e009f79ac5c8d6d022f240c197a6f35385832fcdeb311b8e1842f9701d995afebd32adbd9159915f1eda3e74ae6496b65fd0fc1f41f61b')
 
 prepare() {
   grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
 }
 
 package() {
-  install -dm755 "$pkgdir"/usr/{bin,share}
-  cp -r $pkgname-$pkgver "$pkgdir/usr/share/$pkgname"
-  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+  cd ${pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/usr/bin/env bash
-cd /usr/share/$pkgname
-./sf.py
+cd /usr/share/${pkgname}
+python2 sf.py "\$@"
 EOF
-  chmod 755 "$pkgdir/usr/bin/$pkgname"
+
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
