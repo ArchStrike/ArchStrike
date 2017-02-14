@@ -1,18 +1,18 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=192
+buildarch=28
 
 pkgbase=archstrike-meta
-pkgname=('archstrike-meta-upstream-all')
+pkgname=('archstrike-meta-upstream-arm-all')
 pkgver=0.13
 pkgrel=1
 url='https://www.archstrike.org/'
 license=('GPL')
 groups=('archstrike-meta')
 
-package_archstrike-meta-upstream-all() {
+package_archstrike-meta-arm-upstream-all() {
   pkgdesc='Meta package for ArchStrike includes upstream packages that are security related'
-  arch=('x86_64' 'i686')
+  arch=('armv6h' 'armv7h' 'aarch64')
   depends=(
     aircrack-ng
     ltrace
@@ -46,7 +46,7 @@ package_archstrike-meta-upstream-all() {
     mtr
     macchanger
     kismet
-    john
+    # john as its not built into arm at this time
     jad
     iputils
     iodine
@@ -74,7 +74,7 @@ package_archstrike-meta-upstream-all() {
     dhex
     ncrack
     pdnsd
-    playpen
+    # playpen as its not built into arm at this time
     privoxy
     scrypt
     tinyproxy
@@ -83,7 +83,7 @@ package_archstrike-meta-upstream-all() {
     perl-image-exiftool
     recoll
     nemesis
-    chntpw
+    # chntpw as its not built into arm at this time
     greenbone-security-assistant
     openvas-cli
     openvas-libraries
@@ -101,7 +101,8 @@ package_archstrike-meta-upstream-all() {
     capstone
     keystone
     sqlmap
-    veracrypt
+    # veracrypt as its not built into arm at this time
     wpscan
   )
 }
+
