@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=wuzz
 pkgver=0.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/asciimoo/wuzz"
@@ -15,14 +15,19 @@ makedepends=('go' 'git')
 source=("https://github.com/asciimoo/wuzz/archive/v$pkgver.tar.gz")
 sha512sums=('76063c55702de59a3e1e9e4eb095d86f8ed7cc004fc6e399b47bbd857460a24b9246b3c708c20843dce5835a820310dbc30e78b1a5a6a3364cfdf417e3b2c578')
 
-build() {
-  cd "$pkgname-$pkgver"
+prepare() {
+  mkdir -p ${srcdir}/src/github.com/asciimoo/
+  mv ${srcdir}/$pkgname-$pkgver ${srcdir}/src/github.com/asciimoo/wuzz
   GOPATH="$srcdir" go get -d -t github.com/asciimoo/wuzz
+}
+
+build() {
+  cd src/github.com/asciimoo/wuzz
   GOPATH="$srcdir" go build -v github.com/asciimoo/wuzz
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd src/github.com/asciimoo/wuzz
   install -Dm755 ${pkgname} $pkgdir/usr/bin/wuzz
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
