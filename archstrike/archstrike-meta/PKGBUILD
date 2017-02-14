@@ -1,0 +1,106 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=192
+
+pkgbase=archstrike-meta
+pkgname=('archstrike-meta-upstream-all')
+pkgver=1.0
+pkgrel=1
+url='https://www.archstrike.org/'
+license=('GPL')
+groups=('archstrike-meta')
+
+package_archstrike-meta-upstream-all() {
+  pkgdesc='Meta package for ArchStrike includes upstream packages that are security related'
+  arch=('x86_64' 'i686')
+  depends=(
+    afl
+    aircrack-ng
+    arm
+    arp-scan
+    audit
+    binwalk
+    bsdiff
+    cadaver
+    capstone
+    checksec
+    chntpw
+    darkstat
+    dcfldd
+    ddrescue
+    dhex
+    dnscrypt-proxy
+    dnstracer
+    dsniff
+    ebizzy
+    envoy
+    etherape
+    ettercap
+    exiv2
+    extundelete
+    fcrackzip
+    fping
+    gdb
+    greenbone-security-assistant
+    hexedit
+    hping
+    httping
+    httptunnel
+    iodine
+    iputils
+    jad
+    jhead
+    john
+    keystone
+    kismet
+    lsof
+    ltrace
+    macchanger
+    metasploit
+    mtr
+    nasm
+    nbtscan
+    ncrack
+    nemesis
+    net-snmp
+    nethogs
+    ngrep
+    nmap
+    openvas-cli
+    openvas-libraries
+    openvas-manager
+    openvas-scanner
+    openvpn
+    ophcrack
+    pdnsd
+    perf
+    perl-image-exiftool
+    playpen
+    privoxy
+    proxychains
+    proxytunnel
+    radamsa
+    radare2
+    recoll
+    rkhunter
+    scrypt
+    siege
+    sleuthkit
+    socat
+    sqlmap
+    sslh
+    strace
+    stunnel
+    tcpreplay
+    testdisk
+    tinyproxy
+    torsocks
+    valgrind
+    veracrypt
+    wireshark-cli
+    wireshark-gtk
+    wpscan
+    xl2tpd
+    zaproxy
+  )
+}
