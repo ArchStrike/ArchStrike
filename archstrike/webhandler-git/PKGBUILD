@@ -3,44 +3,44 @@
 buildarch=1
 
 pkgname=webhandler-git
-pkgver=r324.047dddf
-pkgrel=3
+pkgver=r326.b709c1b
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A handler for PHP system functions & also an alternative 'netcat' handler."
 url="https://github.com/lnxg33k/webhandler"
 license=('GPL3')
 arch=('any')
-depends=('python2' 'python2-argparse' 'readline' 'php')
+depends=('python2-argparse' 'php')
 makedepends=('git')
 replaces=('webhandler')
 conflicts=('webhandler')
 provides=('webhandler')
-source=("git+https://github.com/lnxg33k/webhandler")
+source=("${pkgname}::git+https://github.com/lnxg33k/webhandler")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/webhandler"
+  cd "$pkgname"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+  find "${pkgname}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${pkgname}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
 }
 
 package() {
-  cd "$srcdir/webhandler"
+  cd "$pkgname"
 
   # Base directories.
-  install -Dm755 webhandler.py "$pkgdir"/usr/share/webhandler-git/webhandler.py
+  install -Dm755 webhandler.py "$pkgdir/usr/share/$pkgname/webhandler.py"
   install -dm755 "$pkgdir"/usr/bin
-  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/webhandler-git/LICENSE
-  install -m644 README.md "$pkgdir"/usr/share/webhandler-git/README.md
-  cp -a --no-preserve=ownership core modules "$pkgdir"/usr/share/webhandler-git
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  install -m644 README.md "$pkgdir"/usr/share/$pkgname/README.md
+  cp -a --no-preserve=ownership core modules "$pkgdir/usr/share/$pkgname"
 
   cat > "$pkgdir"/usr/bin/webhandler.py << EOF
 #!/bin/sh
-python2 /usr/share/webhandler-git/webhandler.py "\$@"
+python2 /usr/share/$pkgname/webhandler.py "\$@"
 EOF
   chmod +x "$pkgdir"/usr/bin/webhandler.py
 }
