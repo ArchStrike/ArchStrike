@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=sagan
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a snort-like log analysis engine"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-analysis')
@@ -23,7 +23,20 @@ sha512sums=('5699d0a5bcee6b3bc5f5dcf83bec7ec38d90f9cb8636e7190fcc0ef0ef419bb9133
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
   ./autogen.sh
-  ./configure --enable-esmtp --enable-geoip --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
+  if [[ $CARCH == i686 ]] || [[ $CARCH == armv6h ]] || [[ $CARCH == armv7h ]] || [[ $CARCH == aarch64 ]]; then
+        ./configure --enable-esmtp \
+                    --enable-geoip \
+                    --prefix=/usr \
+                    --sysconfdir=/etc \
+                    --sbindir=/usr/bin \
+                    --enable-system-strstr
+  else
+        ./configure --enable-esmtp \ 
+        --enable-geoip \
+        --prefix=/usr \
+        --sysconfdir=/etc \
+        --sbindir=/usr/bin
+  fi
   make
   sed "s:^var RULE_PATH.*$:var RULE_PATH /usr/share/sagan-git/rules/:" etc/sagan.conf > etc/sagan.conf.new
   mv etc/sagan.conf.new etc/sagan.conf
