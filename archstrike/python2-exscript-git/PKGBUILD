@@ -3,13 +3,13 @@
 buildarch=1
 
 pkgname=python2-exscript-git
-pkgver=0.r1559.806542d
+pkgver=20170215.r1574
 pkgrel=1
 pkgdesc="A Python module making Telnet and SSH easy"
 arch=('any')
 url="https://github.com/knipknap/exscript"
 license=('GPL2')
-depends=('python2-crypto')
+depends=('python2-crypto' 'python2-paramiko')
 makedepends=('git' 'python2-setuptools')
 provides=('python2-exscript')
 conflicts=('python2-exscript')
@@ -19,7 +19,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$pkgname"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
