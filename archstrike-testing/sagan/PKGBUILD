@@ -31,12 +31,9 @@ build() {
                     --sbindir=/usr/bin \
                     --enable-system-strstr
   else
-        ./configure --enable-esmtp \ 
-        --enable-geoip \
-        --prefix=/usr \
-        --sysconfdir=/etc \
-        --sbindir=/usr/bin
+       ./configure --enable-esmtp --enable-geoip --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
   fi
+  #./configure --enable-esmtp --enable-geoip --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
   make
   sed "s:^var RULE_PATH.*$:var RULE_PATH /usr/share/sagan-git/rules/:" etc/sagan.conf > etc/sagan.conf.new
   mv etc/sagan.conf.new etc/sagan.conf
