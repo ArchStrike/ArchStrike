@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=indxparse-git
-pkgver=r166.14839a6
-pkgrel=2
+pkgver=r167.868ae16
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A Tool suite for inspecting NTFS artifacts."
 arch=('any')
 url='http://www.williballenthin.com/forensics/mft/indxparse/'
 license=('APACHE')
-depends=('python2')
+depends=('wxpython' 'python2-jinja' 'python2-fuse')
 makedepends=('git')
 provides=('indxparse')
 conflicts=('indxparse')
