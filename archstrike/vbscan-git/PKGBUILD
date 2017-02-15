@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=vbscan-git
-pkgver=20161021.r24
+pkgver=20170215.r25
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
