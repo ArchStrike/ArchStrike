@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=arch-audit
-pkgver=0.1.7
+pkgver=0.1.8
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 arch=('x86_64' 'i686')
@@ -14,7 +14,7 @@ depends=('curl')
 depends_x86_64+=('gcc-libs-multilib')
 makedepends=('cargo')
 source=("https://github.com/ilpianista/arch-audit/archive/${pkgver}.tar.gz")
-sha512sums=('a5b924456fe0c5b7047957afad19838ef1bfc92c62052de99a7834cb36442d6edd0cd3d3408853bca0003ff3ee604d233c363ccfbabb84d8a5af6289b6a6ce61')
+sha512sums=('f8dd2439c81b4c23e2c3e60cf086e07488bc176489a201d4ee951c1faf2a1082b610c6765c3bc737e9246d59327232fc705b88a5816b6a0b770487b47f491f1c')
 
 build() {
   cd ${pkgname}-${pkgver}
