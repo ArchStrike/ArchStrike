@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=regeorg-git
-pkgver=r29.f4db171
-pkgrel=2
+pkgver=r30.1ca54c2
+pkgrel=1
 groups=('archstrike' 'archstrike-tunnel')
 pkgdesc="The successor to reDuh, pwn a bastion webserver and create SOCKS proxies through the DMZ. Pivot and pwn."
 arch=('any')
