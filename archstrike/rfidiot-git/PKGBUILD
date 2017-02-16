@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=rfidiot-git
 _gitname=RFIDIOt
-pkgver=20160514.r73
-pkgrel=2
+pkgver=20170216.r75
+pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="An open source python library for exploring RFID devices."
