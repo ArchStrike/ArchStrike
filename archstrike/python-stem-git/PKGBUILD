@@ -7,7 +7,7 @@ pkgbase=python-$_pkgname-git
 
 pkgname=(python-$_pkgname-git python2-$_pkgname-git)
 pkgver=20170212.r2501
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='A controller library for Tor'
 arch=('any')
@@ -40,6 +40,8 @@ package_python-stem-git() {
   cd "$srcdir/${pkgname}"
   python3 setup.py install --root="$pkgdir/" -O1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  # fix duplicate file issue with tor_prompt
+  mv $pkgdir/usr/bin/tor-prompt $pkgdir/usr/bin/tor-prompt3
 }
 
 package_python2-stem-git() {
@@ -48,6 +50,5 @@ package_python2-stem-git() {
   cd "$srcdir/python-stem-git-py2"
   python2 setup.py install --root="$pkgdir/" -O1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  #sed -i 's|env python|env python2|' $pkgdir/usr/lib/python2.7/site-packages/r2pipe/__init__.py
 }
 
