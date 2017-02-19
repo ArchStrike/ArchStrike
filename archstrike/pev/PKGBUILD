@@ -3,31 +3,33 @@
 buildarch=220
 
 pkgname=pev
-pkgver=0.70
-pkgrel=3
+pkgver=0.80
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics' 'archstrike-reverse')
 pkgdesc="Command line based tool for PE32/PE32+ file analyze"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://pev.sourceforge.net'
 license=('GPL')
 depends=('openssl' 'pcre')
-source=("http://sourceforge.net/projects/pev/files/pev-${pkgver}/pev-${pkgver}.tar.gz"
-        "${pkgname}.desktop")
-sha512sums=('c98ea778b05b514ef26d87627484b5942247fb4190ad6a166ee2a01fc185dd4663848ca9b5ba3a26be5c8a40eaf42f476bec58ddea0565ac4c6fe0710c9575aa'
-            '4230418ddafca1a859c9ca954fa11156eca1d1f6d65eca4dd97c0c80aba3f77b94d926c091dbe1b5068fd897ace2ecb3de7dec400d07fcad8342175df87f29db')
+makedepends=('unzip')
+install=${pkgname}.install
+source=("http://sourceforge.net/projects/pev/files/pev-${pkgver}/pev-${pkgver}.tar.gz" "${pkgname}.install" 'libs.patch')
+sha512sums=('d0c8ff8fcd60470899d5dbccfd7a7e4d960da007f42be9c7eab6b22a3d7cf4dde3c3d5cd9c7d70e369164503fb124640cf508ceda3d4792244cf33d11ab83321'
+            'b5981be50bb9b239dadaf770f14ce8a904570431a6c27cc88acc7a25f3417e9f94e9946632a618a4ee0ca9f7ca831bc3733fd43fd51d95f20dac2693d36dc8ad'
+            'dcdaf1ce37c2aa05d9acabd451c3db51b18cc7ab9fa8aa4a1331e1d1d19d4d76fc9e8aa4e9098198d2d667c32c97e6be74dcb6b7acfd0d2a261c1004d215b098')
 
 prepare() {
-    cd pev
-    find . -type f -name "Makefile" -exec sed -i 's|^datarootdir = |datarootdir = \$(DESTDIR)/|' '{}' \;
+    cd ${pkgname}
+    find . -type f -name "Makefile" -exec sed -i 's|^datarootdir = |datarootdir = \$(DESTDIR)|' '{}' \;
+    patch -Np1 -i ${srcdir}/libs.patch
 }
 
 build() {
-    cd pev
+    cd ${pkgname}
     make
 }
 
 package() {
-    install -Dm644 ${pkgname}.desktop "$pkgdir"/usr/share/applications/${pkgname}.desktop
-    cd pev
-    make DESTDIR="$pkgdir" install
+    cd ${pkgname}
+    make DESTDIR="${pkgdir}" install
 }
