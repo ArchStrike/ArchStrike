@@ -3,17 +3,18 @@
 buildarch=192
 
 pkgname=shellter
-pkgver=6.7
-pkgrel=2
+pkgver=6.8
+pkgrel=1
 pkgdesc="A Dynamic Shellcode Injector(wine version - beta)"
 arch=('i686' 'x86_64')
+groups=('archstrike' 'archstrike-exploit')
 url="https://www.shellterproject.com/"
 license=('custom')
 depends=('wine' 'bash')
 makedepends=('unzip' 'curl')
 DLAGENTS=("https::/usr/bin/curl -A 'Mozilla/4.0' -fLC - --retry 3 --retry-delay 3 -o %o %u")
 source=("https://www.shellterproject.com/Downloads/Shellter/Latest/shellter.zip")
-sha512sums=('9d41b81d1f6570aa4540382924db777a3269a22bcc020f44acd9268cf521db4bb039e133748a2c7c422dfb453f4900dab4aafc4d0a7033b90937def08f33f212')
+sha512sums=('d5992fd1c92ab616da3cf46455f670b59824d65a0db769b6e50ab7005ec72cc17530f0afca2dc341a5aca33fbb69920dfa6b2c04d9c811c85cdff026c080a9d4')
 
 build(){
   unzip -o shellter.zip
