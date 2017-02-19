@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=archstrike-menu
+pkgver=1.0
+pkgrel=1
+arch=('any')
+pkgdesc="ArchStrike menu for XFCE"
+url="https://github.com/ArchStrike/archstrike-menu"
+license=('GPL')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('f28d142d5f85c8a36c330648073d33556164b5390f27d60a966c954b8120a839d99791b1605cd4df9b522e12acc3f36ee028ab4d684d34c45ae8ecc8b7b203a9')
+
+package() {
+  cd ${pkgname}-${pkgver}
+  for i in icons/hicolor applications desktop-directories; do
+    install -dm755 "${pkgdir}/usr/share/${i}"
+  done
+  install -dm755 "${pkgdir}/etc/xdg/menus/applications-merged"
+
+  cp -a --no-preserve=ownership menus/* "${pkgdir}/etc/xdg/menus/applications-merged/"
+  cp -a --no-preserve=ownership desktop-directories/* "${pkgdir}/usr/share/desktop-directories/"
+  cp -a --no-preserve=ownership desktop-files/* "${pkgdir}/usr/share/applications/"
+  cp -a --no-preserve=ownership menu-icons/* "${pkgdir}/usr/share/icons/hicolor/"
+
+  ln -sf /etc/xdg/menus/applications-merged "${pkgdir}/etc/xdg/menus/gnome-applications-merged"
+  ln -sf /etc/xdg/menus/applications-merged "${pkgdir}/etc/xdg/menus/kf5-applications-merged"
+}
