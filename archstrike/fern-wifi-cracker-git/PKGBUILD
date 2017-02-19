@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=fern-wifi-cracker
 pkgname=$_pkgname-git
-pkgver=20160920.r239.6415b67
+pkgver=20170215.r240.c8d32ab
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
@@ -22,12 +22,10 @@ source=(
   'remove-pro-tip.patch'
   "$_pkgname.desktop"
 )
-sha512sums=(
-  'SKIP'
-  '4bfbf15c3287562ff437c984d1a5e4fa7f809d014c5459b02ed4c3c1c848564737e148c9a98f6020954acb8a11e4f97c57be7815bbe2b64c7c2c67dff8eee0ca'
-  'af0575b24e2b84b79a5b25ca6c702cae6af3668653f4cbb7c0ae36df446d68e402508148d8a57bae45a909151ad5b20694536d20d8d22b1beafeab4f991997bc'
-  '352dcf1a1dfd798ca8e7d0c50b3b9bb7912109fc3b0d9d82323810552fcb725e95ed92e244fd548f46c438014aeccca6c91fb0f27f197736484893638b1015e4'
-)
+sha512sums=('SKIP'
+            '4bfbf15c3287562ff437c984d1a5e4fa7f809d014c5459b02ed4c3c1c848564737e148c9a98f6020954acb8a11e4f97c57be7815bbe2b64c7c2c67dff8eee0ca'
+            '56f7beb9b99766a7715187efddfd4f449526913a06c1ae19d0a6f7fd7f3a4820c939593be4f76f0699acc0359ad319319604e3f8513e17601b61d05bcc9fa11b'
+            '352dcf1a1dfd798ca8e7d0c50b3b9bb7912109fc3b0d9d82323810552fcb725e95ed92e244fd548f46c438014aeccca6c91fb0f27f197736484893638b1015e4')
 
 pkgver() {
   cd $_pkgname
