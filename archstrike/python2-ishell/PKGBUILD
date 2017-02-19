@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-ishell
+_pkgname=ishell
+pkgver=0.1.4
+pkgrel=1
+pkgdesc="Build Interactive Shells with Python"
+url="http://github.com/italorossi/ishell"
+depends=('python2')
+makedepends=('python2-setuptools')
+license=('MIT')
+arch=('any')
+source=("https://pypi.python.org/packages/62/10/d45a0ca9f542a1eb0230dc5abbe90ad93bec6a83ad6006a8929de30d200f/ishell-${pkgver}.tar.gz")
+sha512sums=('2bd30bee9ff650b9dd6edf26c7532082c40e71a907caa2a566c3a1cf648da16573b14ecff5b32306bcd58486784c53bb677680e4fa56800e1c2d70526d6443f6')
+
+prepare() {
+  grep -iRl 'python' ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
+}
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py build
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install --skip-build --root="${pkgdir}" -O1
+}
