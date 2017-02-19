@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=aiengine
-pkgver=1.6
+pkgver=1.7.0
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A packet inspection engine with capabilities of learning without any human intervention."
@@ -17,7 +17,7 @@ else
 fi
 depends=('libpcap' 'boost-libs' 'python2' 'log4cxx-svn' 'pcre')
 source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-${pkgver}.tar.gz")
-sha512sums=('d7b47f2c2dc66a682927aad6e7de6bb64a4c7c281ac5d2b06b1eaf5bee14ba2e878a5b5a88b3224de4e8b1a1e013270f1426f525ff01c5b1eef13edbad8f026a')
+sha512sums=('f708e2dc542bb485e4853deb269fc77285f74b3d904be65c989d8c52175d42b0eecf43aa4c95612825d976fdd443f88f0df77ba803c8ae3d9c66dbb25095b794')
 
 prepare(){
    grep -iRl 'python' "${pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
