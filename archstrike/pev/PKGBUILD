@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=pev
 pkgver=0.80
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics' 'archstrike-reverse')
 pkgdesc="Command line based tool for PE32/PE32+ file analyze"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,15 +13,14 @@ license=('GPL')
 depends=('openssl' 'pcre')
 makedepends=('unzip')
 install=${pkgname}.install
-source=("http://sourceforge.net/projects/pev/files/pev-${pkgver}/pev-${pkgver}.tar.gz" "${pkgname}.install" 'libs.patch')
+source=("http://sourceforge.net/projects/pev/files/pev-${pkgver}/pev-${pkgver}.tar.gz" "destdir.patch")
 sha512sums=('d0c8ff8fcd60470899d5dbccfd7a7e4d960da007f42be9c7eab6b22a3d7cf4dde3c3d5cd9c7d70e369164503fb124640cf508ceda3d4792244cf33d11ab83321'
-            'b5981be50bb9b239dadaf770f14ce8a904570431a6c27cc88acc7a25f3417e9f94e9946632a618a4ee0ca9f7ca831bc3733fd43fd51d95f20dac2693d36dc8ad'
-            'dcdaf1ce37c2aa05d9acabd451c3db51b18cc7ab9fa8aa4a1331e1d1d19d4d76fc9e8aa4e9098198d2d667c32c97e6be74dcb6b7acfd0d2a261c1004d215b098')
+            '5cc0f64476b72a803f434f3253895b3626a6d715ab165ebca4e3e003c967cc5beca5ca05e49013ef91fe9c90ee5fae6667085113cf3c6d88891079353026153c')
 
 prepare() {
     cd ${pkgname}
-    find . -type f -name "Makefile" -exec sed -i 's|^datarootdir = |datarootdir = \$(DESTDIR)|' '{}' \;
-    patch -Np1 -i ${srcdir}/libs.patch
+    sed -i 's|prefix = /usr/local|prefix = /usr|' src/Makefile lib/libpe/Makefile
+    patch -Np1 -i ${srcdir}/destdir.patch
 }
 
 build() {
