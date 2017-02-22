@@ -8,7 +8,7 @@ buildarch=220
 
 _pkgname=cjdns
 pkgname=$_pkgname-git
-pkgver=18.r149.g8eb2bb7e
+pkgver=19.1.r1.gefa7bcb3
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -18,9 +18,7 @@ options=('!distcc' '!strip' '!buildflags')
 groups=('archstrike' 'archstrike-networking')
 depends=('bash')
 makedepends=('git' 'nodejs' 'python2')
-optdepends=(
-  'cjdnsify: allows you to run some programs bound to your cjdns address'
-)
+optdepends=('cjdnsify: allows you to run some programs bound to your cjdns address')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
 source=("git+$url#branch=crashey")
