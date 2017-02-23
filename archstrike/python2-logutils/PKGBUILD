@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-logutils
-pkgver=0.3.3
+pkgver=0.3.4.1
 pkgrel=1
 pkgdesc="Logging utilities"
 url="http://code.google.com/p/logutils/"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('CUSTOM')
 arch=('any')
-source=("https://pypi.python.org/packages/bc/53/c4abf7b947383a7a56f282ad68328322cd08a93e2528151038ad6c17d012/logutils-$pkgver.tar.gz")
-sha512sums=('d341567180e96cf09155af7af96becb773b81e1c25946c5f08fce56b85018f236eb23b0d76b2b938900128b763a65327d64f0abaec0ccb0f6365d4d8fa3dc369')
+source=("https://pypi.python.org/packages/37/df/14821b4ee65b071ecf67b37cae089e0e0982dec483a0faaa59a3d7f01dab/logutils-${pkgver}.tar.gz")
+sha512sums=('6ca9132a30471669ef7196bc91c21665099e1344848a6b938004379810a9da741eff951af99c9a22258143b9d191a9c4714258c5ee1e214149f27709b7b8cc3f')
 
 build() {
     cd $srcdir/logutils-$pkgver
@@ -22,6 +22,6 @@ build() {
 
 package() {
     cd $srcdir/logutils-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
 }
