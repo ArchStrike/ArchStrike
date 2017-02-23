@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=rfidiot-git
 _gitname=RFIDIOt
-pkgver=20170216.r75
+pkgver=20170219.r76
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-wireless')
