@@ -3,25 +3,24 @@
 buildarch=1
 
 pkgname=python2-user-agents
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings"
 url="https://github.com/selwin/python-user-agents"
-depends=('python2' 'python2-yaml' 'python2-ua-parser')
+depends=('python2-yaml' 'python2-ua-parser')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/source/u/user-agents/user-agents-${pkgver}.tar.gz" "https://raw.githubusercontent.com/selwin/python-user-agents/master/LICENSE.txt")
-sha512sums=('feabf703da955d9aaa5e2512b3a1b08cb67cb940beb40778b3afb445fb15010cac956dfe5a7d74f634fc9ab317b00bdea5d88ea7e6edc537cb730a29530406a1'
-            'd11493fa25d4eeffa85a4219e1221c469f11497b66c570296249bb7e1e01db06c2b05f613dcaae017070ae9b5a07fc273bb003bb2dba3ca8ecca3517d5e6723b')
+source=("https://github.com/selwin/python-user-agents/archive/v1.1.0.tar.gz")
+sha512sums=('025b25bbdbbb4e8314e5cd7d8648e0b19aac767db578262766f383542de3f5eae3f0604291f3f7061b664c55ac3fac4a19722804a0176758efc399ba3da0c5a9')
 
 build() {
-    cd $srcdir/user-agents-${pkgver}
+    cd $srcdir/python-user-agents-${pkgver}
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/user-agents-${pkgver}
-    python2 setup.py install --root="$pkgdir" --optimize=1
-    install -Dm0644 ${srcdir}/LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+    cd $srcdir/python-user-agents-${pkgver}
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
+    install -Dm0644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 }
