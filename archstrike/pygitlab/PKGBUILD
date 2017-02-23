@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pygitlab
-pkgver=0.18
+pkgver=0.19
 pkgrel=1
 pkgdesc="A Python wrapper for the GitLab API"
 url="https://github.com/gpocentek/python-gitlab"
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('python2-requests' 'python2-six')
 makedepends=('python2-setuptools' 'python2-sphinx')
 source=("https://github.com/gpocentek/python-gitlab/archive/$pkgver.tar.gz")
-sha512sums=('f7ca95dd3c629e238363d75b034a80a487702283f8d23ade7812b82c8afc484c49455622ca6cfa83940ea7c338754b76611f2a66fa538de9d81062d5f1318634')
+sha512sums=('5596ebcfdb6f006039c42343f72ea944dd47f56c7fc7fe66f779e4917a743dad58234ba03585ddaa4525da2169bd106a8bae3df67b1abb5e8693e7e7bd381e13')
 
 package(){
   cd "$srcdir/python-gitlab-$pkgver"
