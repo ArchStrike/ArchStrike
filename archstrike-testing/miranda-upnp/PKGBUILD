@@ -4,13 +4,15 @@ buildarch=220
 
 pkgname=miranda-upnp
 pkgver=1.3
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners' 'archstrike-exploit')
 pkgdesc="A Python-based Universal Plug-N-Play client application designed to discover, query and interact with UPNP devices"
 url='http://code.google.com/p/miranda-upnp/'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('MIT')
-source=("http://miranda-upnp.googlecode.com/files/miranda-${pkgver}.tar.gz")
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/miranda-upnp/miranda-${pkgver}.tar.gz")
 sha512sums=('f56536a2aebf119935dffadda3b27ae0c7d306ded9da3f4e94eaad6c69d56595b663eca807916bdfe4fd96415819c508f5278c4e25c67e5bfdd70854513e87e4')
 
 prepare() {
