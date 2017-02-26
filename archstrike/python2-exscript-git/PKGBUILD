@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-exscript-git
-pkgver=20170220.r1576
+pkgver=20170226.r1579
 pkgrel=1
 pkgdesc="A Python module making Telnet and SSH easy"
 arch=('any')
