@@ -1,0 +1,37 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-mitmproxy
+_pkgname=mitmproxy
+pkgver=0.18.2 #locked
+pkgrel=1
+arch=('any')
+pkgdesc="python2 version for mitmproxy"
+url="https://github.com/mitmproxy"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://github.com/mitmproxy/mitmproxy/archive/v${pkgver}.tar.gz")
+sha512sums=('39836063a041d7fd14bb82ccf2fb53262b8ec14b629197776e27ebfb2fc97103ee5b4af979ffe6db35103e833679e2e5a640295831d55a2cd0f20a602b559064')
+
+prepare() {
+  grep -iRl 'python' ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
+}
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py build
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  python2 setup.py install --skip-build -O1 --root="${pkgdir}"
+
+  #avoid conflicts with mitmproxy python3 version
+  for i in mitmproxy mitmdump mitmweb pathoc pathod; do
+    mv "${pkgdir}/usr/bin/${i}" "${pkgdir}/usr/bin/${i}-2"
+  done
+}
