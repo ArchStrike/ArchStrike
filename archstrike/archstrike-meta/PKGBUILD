@@ -4,15 +4,15 @@ buildarch=192
 
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
-pkgver=1.0
+pkgver=1.1
 pkgrel=1
+arch=('x86_64' 'i686')
 url='https://www.archstrike.org/'
 license=('GPL')
 groups=('archstrike-meta')
 
 package_archstrike-meta-upstream-all() {
   pkgdesc='Meta package for ArchStrike includes upstream packages that are security related'
-  arch=('x86_64' 'i686')
   depends=(
     afl
     aircrack-ng
@@ -53,6 +53,7 @@ package_archstrike-meta-upstream-all() {
     john
     keystone
     kismet
+    libpst
     lsof
     ltrace
     macchanger
