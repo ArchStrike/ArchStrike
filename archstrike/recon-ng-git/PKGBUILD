@@ -4,14 +4,14 @@ buildarch=1
 
 _pkgname=recon-ng
 pkgname=$_pkgname-git
-pkgver=905.e5fccd4
+pkgver=20170227.r906
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
 arch=('any')
 url='https://bitbucket.org/LaNMaSteR53/recon-ng'
 license=('GPL3')
-depends=('python2-dicttoxml' 'python2-pypdf2' 'python2-lxml' 'python2-slowaes' 'python2-dnspython' 'python2-jsonrpclib' 'python2-xlsxwriter' 'python2-olefile')
+depends=('python2-unicodecsv' 'python2-dicttoxml' 'python2-pypdf2' 'python2-lxml' 'python2-slowaes' 'python2-dnspython' 'python2-jsonrpclib' 'python2-xlsxwriter' 'python2-olefile')
 replaces=("$_pkgname")
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -21,7 +21,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd $pkgname
-  printf "%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
@@ -40,4 +40,5 @@ package() {
   ln -sf /usr/share/$_pkgname/recon-cli "$pkgdir/usr/bin/recon-cli"
   ln -sf /usr/share/$_pkgname/recon-ng "$pkgdir/usr/bin/recon-ng"
   ln -sf /usr/share/$_pkgname/recon-rpc "$pkgdir/usr/bin/recon-rpc"
+  ln -sf /usr/share/$_pkgname/recon-web "$pkgdir/usr/bin/recon-web"
 }
