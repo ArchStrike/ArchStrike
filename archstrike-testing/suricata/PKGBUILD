@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=suricata
-pkgver=3.2
+pkgver=3.2.1
 pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -12,19 +12,19 @@ license=('GPL2')
 groups=('archstrike')
 depends=('nss' 'jansson' 'libcap-ng' 'libnetfilter_queue' 'pcre' 'libdaq' 'libnet' 'libpcap' 'libyaml' 'python2-magic' 'file' 'luajit' 'geoip' 'libnetfilter_log' 'hiredis')
 optdepends=('snort: suricata can use rulesets provided by snort')
-options=('!emptydirs')
 backup=('etc/suricata/suricata.yaml')
-source=(http://openinfosecfoundation.org/download/$pkgname-$pkgver.tar.gz)
-sha512sums=('327f5a62449af44f6cb95220e1ff9bf61b51db7bd25f2b1e8def3e8650ba754304cf9d02fc30b46b6cbaa6b5f94fa3d4be90edb8a293ff3b6c0927b596a2976e')
+install=${pkgname}.install
+source=("http://openinfosecfoundation.org/download/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('6b0e5565368a085f059f62c9862364a9fcd970158b17671a25bcbed9b3ef8fcf857b1760a6d186ebe3227dde45070bc69a8b0d0bfd341f39a4d42ef93d12f290')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "$srcdir/${pkgname}-${pkgver}"
   find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
   find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
 }
 
 build() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/${pkgname}-${pkgver}
   ./configure --prefix=/usr --sysconfdir=/etc \
   --localstatedir=/var \
   HAVE_PYTHON_CONFIG=/usr/bin/python2 \
@@ -43,12 +43,12 @@ build() {
 }
 
 package() {
-  cd ${srcdir}/$pkgname-$pkgver
+  cd ${srcdir}/${pkgname}-${pkgver}
   make DESTDIR=${pkgdir} install
-  install -dm755 ${pkgdir}/var/log/$pkgname
-  install -Dm644 $pkgname.yaml "${pkgdir}/etc/$pkgname/$pkgname.yaml"
-  install -Dm644 classification.config "${pkgdir}/etc/$pkgname/classification.config"
-  install -Dm644 reference.config "${pkgdir}/etc/$pkgname/reference.config"
-  install -dm755 "${pkgdir}/etc/$pkgname/rules"
-  install -Dm644 rules/*.rules "${pkgdir}/etc/$pkgname/rules/"
+  install -Dm644 ${pkgname}.yaml "${pkgdir}/etc/${pkgname}/${pkgname}.yaml"
+  install -Dm644 classification.config "${pkgdir}/etc/${pkgname}/classification.config"
+  install -Dm644 reference.config "${pkgdir}/etc/${pkgname}/reference.config"
+  install -dm755 "${pkgdir}/etc/${pkgname}/rules"
+  install -Dm644 rules/*.rules "${pkgdir}/etc/${pkgname}/rules/"
+  install -dm755 "$pkgdir/var/log/${pkgname}"
 }
