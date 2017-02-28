@@ -4,15 +4,15 @@ buildarch=1
 
 pkgname=uniscan
 pkgver=6.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="A simple Remote File Include, Local File Include and Remote Command Execution vulnerability scanner."
 url="http://sourceforge.net/projects/uniscan/"
 arch=('any')
 license=('GPL2')
-depends=('perl' 'perl-moose' 'perl-lwp-protocol-https')
+depends=('perl-devel-overloadinfo' 'perl-moose' 'perl-lwp-protocol-https')
 source=("http://downloads.sourceforge.net/project/uniscan/6.2/uniscan$pkgver.tar.gz")
-md5sums=('e1b590fd06c140a8c5b222ee787f9a1c')
+sha512sums=('2d5484d3b9f2268a0d63731a9940cf307f8d397d0d9b0ef59f36e3924c24f5b5a7b86d05287b6e06eb98002a1f8e291f899b1a462f2e8a25d100c78f96e4f8cc')
 
 package() {
   cd "$srcdir/uniscan$pkgver"
