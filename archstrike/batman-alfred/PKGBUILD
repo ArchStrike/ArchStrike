@@ -5,7 +5,7 @@ buildarch=220
 _pkgname=alfred
 pkgname=batman-$_pkgname
 groups=('archstrike' 'archstrike-wireless')
-pkgver=2016.5
+pkgver=2017.0
 pkgrel=1
 pkgdesc="Almighty Lightweight Fact Remote Exchange Daemon"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('gpsd' 'libnl')
 makedepends=('hardening-wrapper')
 source=("http://downloads.open-mesh.org/batman/releases/batman-adv-$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('a47620777a01b27746697cbdc8a886e046b190faa15d8b3df7a72bdca84830699043ea904f18a71a477b520449cbbee1c2271a19d6eed4dacd126ac1f9d6923c')
+sha512sums=('fd87807f2fbac079b23a3429f9957e75773194ce1d65e15947f3f037b774210e3cb8fd00ec501f8494ddb6f7be4e6f1ec9362a404e8af74745f7c7b323c62c72')
 
 build(){
     cd $_pkgname-$pkgver
