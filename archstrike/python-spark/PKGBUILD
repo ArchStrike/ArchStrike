@@ -3,13 +3,13 @@
 
 pkgname=python-spark
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="An Early-Algorithm Context-free grammar Parser"
 arch=('any')
 url="https://github.com/rocky/python-spark/"
 license=('MIT')
-depends=('python')
+depends=('python' 'python-click')
 makedepends=('python-setuptools')
 source=("https://github.com/rocky/python-spark/archive/release-$pkgver.tar.gz")
 sha512sums=('09f51bc46eef83dfdb98b9e2c3b39c643b215cf7fa6d8ad8425e1c89580225d0b3bdfff8876e0a3b6b5d504a542ad87e4314bf3101e47b8ad93b70699e23e54d')
