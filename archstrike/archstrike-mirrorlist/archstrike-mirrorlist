@@ -1,12 +1,10 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2016-08-15
+# Generated on 2017-03-09
 #
 
 ## Official Mirrors
 Server = https://mirror.archstrike.org/$arch/$repo
-Server = https://uk.mirror.archstrike.org/$arch/$repo
-Server = https://jp.mirror.archstrike.org/$arch/$repo
 
 ## Community Mirrors
 Server = http://mirror.keystealth.org/archstrike/$arch/$repo
@@ -19,5 +17,4 @@ Server = https://www.mirrorservice.org/sites/mirror.archstrike.org/$arch/$repo
 Server = https://mirror.umd.edu/archstrike/$arch/$repo
 Server = http://mirrors.dotsrc.org/archstrike/$arch/$repo
 Server = http://mirror.layerjet.com/archstrike/$arch/$repo
-Server = http://as.mirror.cariibou.com/$arch/$repo
 Server = http://ftp.acc.umu.se/mirror/archstrike.org/$arch/$repo

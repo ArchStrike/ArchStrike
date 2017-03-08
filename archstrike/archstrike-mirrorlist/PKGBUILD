@@ -3,15 +3,15 @@
 buildarch=1
 
 pkgname=archstrike-mirrorlist
-pkgver=20161229
-pkgrel=2
+pkgver=20170309
+pkgrel=1
 pkgdesc='ArchStrike mirror list for use by pacman'
 url='http://archstrike.org'
 license=('GPL3')
 arch=('any')
 backup=("etc/pacman.d/$pkgname")
 source=("$pkgname")
-sha512sums=('c8bce77edadd84397220c59a00ed2ae7c7fd946a9b14d0c5b42818c2bc335c993dc4a489fa9eee3712783ba60f90ebf0f8669dcd620f204f4ce6481d417f4267')
+sha512sums=('5a7aea8d8df81b1e0cd14d3cd41a1656b1d17481e55ffcd9e8926f0f9fc4eeafd6972a57b038a9e47ec8aaa74c695507d68c574463fe0edd441ef90ac3c6056c')
 
 package() {
   install -dm755 "$pkgdir/etc/pacman.d"
