@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=rspet-git
-pkgver=20161025.r201
+pkgver=20170226.r260
 pkgrel=1
 groups=('archstrike' 'archstrike-malware' 'archstrike-exploit')
 arch=('any')
