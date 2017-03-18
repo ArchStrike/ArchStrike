@@ -1,6 +1,6 @@
 post_install(){
 	echo "Add /usr/share/gef-git/gef.py to gdb:"
-	echo "source /usr/share/gef-git/gef.py >> ~/.gdbinit"
+	echo "echo 'source /usr/share/gef-git/gef.py' >> ~/.gdbinit"
 	echo "DONE! debug your program with gdb and enjoy"
 
 }
