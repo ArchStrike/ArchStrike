@@ -4,13 +4,13 @@ buildarch=192
 
 pkgname=elidecode-git
 pkgver=20160618.r48
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-debugging' 'archstrike-analysis' 'archstrike-reverse')
 arch=('i686' 'x86_64')
 pkgdesc="A tool to decode obfuscated shellcodes using the unicorn-engine for the emulation and the capstone-engine to print the asm code"
 url="https://github.com/DeveloppSoft/EliDecode"
 license=('GPL3')
-depends=('capstone' 'unicorn-engine' 'python2' 'bash')
+depends=('capstone' 'unicorn' 'python2' 'bash' 'python2-unicorn')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/DeveloppSoft/EliDecode.git")
 sha512sums=('SKIP')
@@ -37,8 +37,9 @@ package() {
   cp -a --no-preserve=ownership tests/* "$pkgdir/usr/share/$pkgname/tests"
 
 cat > "$pkgdir/usr/bin/elidecode" <<EOF
-#!/bin/sh
-python2 /usr/share/$pkgname/decoder.py "\$@"
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+python2 decoder.py "\$@"
 EOF
 chmod 755 "$pkgdir/usr/bin/elidecode"
 
