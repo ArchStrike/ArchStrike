@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=elidecode-git
 pkgver=20160618.r48
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-debugging' 'archstrike-analysis' 'archstrike-reverse')
 arch=('i686' 'x86_64')
 pkgdesc="A tool to decode obfuscated shellcodes using the unicorn-engine for the emulation and the capstone-engine to print the asm code"
@@ -12,6 +12,8 @@ url="https://github.com/DeveloppSoft/EliDecode"
 license=('GPL3')
 depends=('capstone' 'unicorn' 'python2' 'bash' 'python2-unicorn')
 makedepends=('git')
+replaces=('unicorn-engine')
+conflicts=('unicorn-engine')
 source=("$pkgname::git+https://github.com/DeveloppSoft/EliDecode.git")
 sha512sums=('SKIP')
 
