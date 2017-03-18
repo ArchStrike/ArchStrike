@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=pwndbg-git
 pkgver=20170306.r536
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-decompile')
 pkgdesc="A collection of python that makes debugging with gdb suck less"
 arch=('any')
 url='https://github.com/pwndbg/pwndbg'
 license=('MIT')
-depends=('python-future' 'python-pycparser' 'python-psutil' 'python-ptrace' 'python-pyelftools' 'python-isort' 'python-six' 'python-capstone' 'unicorn-engine' 'gdb')
+depends=('python-future' 'python-pycparser' 'python-psutil' 'python-ptrace' 'python-pyelftools' 'python-isort' 'python-six' 'python-capstone' 'unicorn' 'gdb')
 makedepends=('git')
 provides=('pwndbg')
 replaces=('pwndbg')
