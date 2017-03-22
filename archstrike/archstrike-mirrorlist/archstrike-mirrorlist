@@ -1,6 +1,6 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2017-03-09
+# Generated on 2017-03-22
 #
 
 ## Official Mirrors
@@ -18,3 +18,5 @@ Server = https://mirror.umd.edu/archstrike/$arch/$repo
 Server = http://mirrors.dotsrc.org/archstrike/$arch/$repo
 Server = http://mirror.layerjet.com/archstrike/$arch/$repo
 Server = http://ftp.acc.umu.se/mirror/archstrike.org/$arch/$repo
+Server = https://ftp.yzu.edu.tw/Linux/archstrike/$arch/$repo
+Server = http://mirror.team-cymru.org/archstrike/$arch/$repo
