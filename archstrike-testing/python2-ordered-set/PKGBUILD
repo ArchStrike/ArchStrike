@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-ordered-set
+pkgver=2.0.1
+pkgrel=1
+pkgdesc="A MutableSet that remembers its order, so that every entry has an index."
+arch=('any')
+url="http://pypi.python.org/pypi/ordered-set/"
+license=('GPL')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://pypi.python.org/packages/source/o/ordered-set/ordered-set-${pkgver}.tar.gz")
+sha512sums=('1229bcf079a508cdd7b78460f3325cfa8d0f8a7476cd723694349402aca113affb36657502e7fdabfbf0f1415c14398d78253336ee9c7430d560d015fbc592ac')
+
+build(){
+  cd "${srcdir}/ordered-set-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/ordered-set-${pkgver}"
+  python2 setup.py install --root="$pkgdir" --optimize=1
+}
