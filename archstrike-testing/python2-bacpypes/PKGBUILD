@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-bacpypes
+pkgver=0.13.8
+pkgrel=1
+pkgdesc="BACpypes provides a BACnet application layer and network layer written in Python for daemons, scripting, and graphical interfaces."
+arch=('any')
+url="https://github.com/JoelBender/bacpypes"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://github.com/JoelBender/bacpypes/archive/v${pkgver}.tar.gz")
+sha512sums=('c263298571ef6a36c6aab4dc8894de9d1de47bc998a50176304a75c1547c2ce04a88305b5a56d860b871feebc299daa8ae1e245319ba024d50aea99090acd204')
+
+build(){
+  cd "${srcdir}/bacpypes-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/bacpypes-${pkgver}"
+
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  
+  python2 setup.py install --root="$pkgdir" --optimize=1
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+}
