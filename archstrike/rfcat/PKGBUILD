@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=rfcat
 pkgver=161011
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="RF ChipCon-based Attack Toolset"
 url="https://bitbucket.org/atlas0fd00m/rfcat"

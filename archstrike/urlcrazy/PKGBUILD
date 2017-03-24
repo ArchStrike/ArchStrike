@@ -6,7 +6,7 @@ DLAGENTS=("http::/usr/bin/curl -A "Mozilla/4.0" -fLC - --retry 3 --retry-delay 3
 
 pkgname=urlcrazy
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-webapps' 'archstrike-dns' 'archstrike-recon')
 pkgdesc="Generate and test domain typos and variations to detect and perform typo squatting, URL hijacking, phishing, and corporate espionage."
 arch=('any')

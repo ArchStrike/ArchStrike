@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=dns2tcp
 pkgver=0.5.2
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-tunnel')
 pkgdesc="A tool for relaying TCP connections over DNS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

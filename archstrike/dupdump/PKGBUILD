@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=dupdump
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Finds duplicat files and directories and outputs a parsable list that can be used to delete them'
 url='http://kernel.embedromix.ro/us/'
 depends=('openssl')

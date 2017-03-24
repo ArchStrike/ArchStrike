@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=trinity-git
 pkgver=v1.7.77.gdc4d90f4
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A Linux System call fuzzer"
 groups=('archstrike' 'archstrike-fuzzers')

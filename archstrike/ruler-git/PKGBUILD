@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=ruler-git
 pkgver=20170223.r97
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool that allows you to interact with Exchange servers through the MAPI/HTTP protocol."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 _url="github.com/sensepost/ruler"

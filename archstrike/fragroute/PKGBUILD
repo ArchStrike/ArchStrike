@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=fragroute
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-intel')
 pkgdesc="A network intrusion detection evasion toolkit"
 url='http://www.monkey.org/~dugsong/fragroute/'

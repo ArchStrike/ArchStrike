@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-fuzzywuzzy-git
 pkgver=r305.2df7b43
-pkgrel=1
+pkgrel=2
 pkgdesc="Fuzzy string matching in python"
 arch=('any')
 url="https://pypi.python.org/pypi/fuzzywuzzy/0.2"

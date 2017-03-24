@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=smbmap
 pkgver=1.0.5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="A handy SMB enumeration tool"
 url='https://github.com/ShawnDEvans/smbmap'

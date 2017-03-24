@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname="libfwsi"
 pkgver="20160110"
-pkgrel=3
+pkgrel=4
 pkgdesc="Library to access the Windows Shell Item format"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libfwsi'

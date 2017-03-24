@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=garmintools
 pkgver=0.10
-pkgrel=5
+pkgrel=6
 pkgdesc="This software provides Linux users with the ability to communicate with the Garmin Forerunner 305 via the USB interface."
 depends=('libusb-compat')
 install="garmintools.install"

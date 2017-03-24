@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-poyo
 pkgver=0.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A minimal YAML Parser for Python"
 url="https://github.com/hackebrot/poyo"
 depends=('python2')

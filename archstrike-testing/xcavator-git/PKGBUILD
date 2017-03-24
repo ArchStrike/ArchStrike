@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=xcavator-git
 pkgver=r5.bd9e2d8
-pkgrel=2
+pkgrel=3
 pkgdesc="man-in-the-middle and phishing attack tool that steals the victim's credentials of some web services like Facebook"
 arch=('any')
 url="https://github.com/nccgroup/xcavator"

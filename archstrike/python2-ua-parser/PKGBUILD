@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-ua-parser
 pkgver=0.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python port of Browserscope's user agent parser"
 url="https://github.com/ua-parser/uap-python"
 depends=('python2')

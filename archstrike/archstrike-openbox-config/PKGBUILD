@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=archstrike-openbox-config
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="ArchStrike config files for OpenBox"

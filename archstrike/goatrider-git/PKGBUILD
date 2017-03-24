@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=goatrider-git
 pkgver=20160125.r3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-analysis' 'archstrike-misc')
 arch=('any')
 pkgdesc="simple tool for doing a comparison of IP addresses or hostnames to BDS Artillery Feeds, OTX, Alexa Top 1M, and TOR"

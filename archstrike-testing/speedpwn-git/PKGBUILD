@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=${_pkgname}-git
 pkgver=20111209.r8.3dd2793
-pkgrel=2
+pkgrel=3
 _aircrackver="1.2-beta3"
 pkgdesc="An active WPA/2 Bruteforcer, original created to prove weak standard key generation in different ISP-labeled routers without a client connected"
 url="https://gitorious.org/${_pkgname}/${_pkgname}"

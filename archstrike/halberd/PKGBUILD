@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=halberd
 pkgver=0.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="HTTP load balancer detector"
 url="https://github.com/jmbr/halberd/"
 depends=('python2')

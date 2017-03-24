@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=onionshare
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely and anonymously share a file of any size"
 groups=('archstrike' 'archstrike-misc')
 url="https://github.com/micahflee/onionshare"

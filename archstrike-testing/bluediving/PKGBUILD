@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=bluediving
 pkgver=0.9
-pkgrel=11
+pkgrel=12
 pkgdesc="A Bluetooth penetration testing suite"
 url='http://bluediving.sourceforge.net/'
 license=('GPL')

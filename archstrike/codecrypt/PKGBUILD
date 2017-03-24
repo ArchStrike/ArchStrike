@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=codecrypt
 pkgver=1.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A GnuPG-like program for encryption and signing that uses only quantum-computer-resistant algorithms"
 url="https://github.com/exaexa/$pkgname"
 license=('GPL3')

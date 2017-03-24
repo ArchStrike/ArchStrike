@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-twittersearch
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to easily iterate tweets found by the Twitter API"
 url="http://github.com/ckoepp/TwitterSearch"
 depends=('python2')

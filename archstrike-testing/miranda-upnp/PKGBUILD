@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=miranda-upnp
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-scanners' 'archstrike-exploit')
 pkgdesc="A Python-based Universal Plug-N-Play client application designed to discover, query and interact with UPNP devices"
 url='http://code.google.com/p/miranda-upnp/'

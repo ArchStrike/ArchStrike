@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=bully
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers' 'archstrike-wireless')
 pkgdesc="A wifi-protected-setup (WPS) brute force attack tool."
 url="https://github.com/Lrs121/bully"

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=upnpscan
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Scans the LAN or a given address range for UPnP capable devices.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

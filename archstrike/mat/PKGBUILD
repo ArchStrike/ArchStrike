@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=mat
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Metadata Anonymisation Toolkit"
 url="https://mat.boum.org/"
 depends=('mutagen' 'python2-pyexiftool-git' 'python2-pdfrw' 'python2-gobject' 'poppler' 'poppler-glib')

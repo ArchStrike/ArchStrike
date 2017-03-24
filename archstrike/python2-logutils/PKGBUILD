@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-logutils
 pkgver=0.3.4.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Logging utilities"
 url="http://code.google.com/p/logutils/"
 depends=('python2')

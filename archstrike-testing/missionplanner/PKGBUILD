@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=missionplanner
 pkgver=1.2.55
-pkgrel=3
+pkgrel=4
 groups=('archstrike-drone')
 pkgdesc="A GroundControl Station for Ardupilot"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

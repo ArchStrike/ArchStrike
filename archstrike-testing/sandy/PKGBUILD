@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=sandy
 pkgver=20140930.r6.531ab16
-pkgrel=2
+pkgrel=3
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="An open-source Samsung phone encryption assessment framework."

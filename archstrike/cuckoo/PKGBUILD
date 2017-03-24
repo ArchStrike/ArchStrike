@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=cuckoo
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 pkgdesc="A malware analysis system"
 url="http://cuckoosandbox.org/"
 arch=('any')

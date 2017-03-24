@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=create_ap-git
 pkgver=r240.44a306b
-pkgrel=1
+pkgrel=2
 pkgdesc="A shell script to create a NATed/Bridged Software Access Point(aka WiFi)"
 arch=('any')
 url="https://github.com/oblique/create_ap"

@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=cfr
 pkgver=119
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-decompile')
 pkgdesc='Another Java decompiler'
 arch=('any')

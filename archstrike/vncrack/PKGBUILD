@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=vncrack
 pkgver=1.21
-pkgrel=1
+pkgrel=2
 pkgdesc="What it looks like: crack VNC."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://phenoelit-us.org/vncrack"

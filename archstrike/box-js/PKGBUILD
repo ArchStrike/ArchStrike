@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=box-js
 pkgver=1.3.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-analysis')
 arch=('any')
 pkgdesc="A tool for studying JavaScript malware."

@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=arch-audit
 pkgver=0.1.8
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 arch=('x86_64' 'i686')
 pkgdesc='pkg-audit-like utility for Arch Linux'

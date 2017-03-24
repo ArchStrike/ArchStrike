@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=xortool
 pkgver=0.96
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-crypto' 'archstrike-bruteforce' 'archstrike-forensics')
 pkgdesc="A tool to analyze multi-byte xor cipher."
 arch=('any')

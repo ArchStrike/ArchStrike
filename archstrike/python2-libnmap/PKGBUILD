@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-libnmap
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python NMAP library enabling you to start async nmap tasks, parse and compare/diff scan results"
 url="http://pypi.python.org/pypi/python-libnmap/"
 depends=('python2')

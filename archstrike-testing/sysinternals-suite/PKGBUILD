@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sysinternals-suite
 pkgver=20160729
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="Sysinternals tools suite"
 url="http://sysinternals.com"

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-pty-shells-git
 pkgver=20140728.r17
-pkgrel=1
+pkgrel=2
 pkgdesc="Python PTY backdoors - full PTY or nothing! http://insecurety.net"
 arch=('any')
 url="https://github.com/infodox/python-pty-shells"

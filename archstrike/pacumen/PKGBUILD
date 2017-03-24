@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pacumen
 pkgver=0.1a
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="Packet Acumen"
 arch=('any')

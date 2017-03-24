@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=ipsumdump
 pkgver=1.86
-pkgrel=1
+pkgrel=2
 pkgdesc='A tool that summarizes TCP/IP dump files into a self-describing ASCII format easily readable by humans and programs'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.cs.ucla.edu/~kohler/ipsumdump/'

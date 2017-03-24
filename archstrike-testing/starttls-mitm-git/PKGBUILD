@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=starttls-mitm-git
 pkgver=r7.b257756
-pkgrel=1
+pkgrel=2
 pkgdesc="A starttls-capable transparent man-in-the-middle proxy"
 arch=('any')
 url="https://github.com/ipopov/starttls-mitm"

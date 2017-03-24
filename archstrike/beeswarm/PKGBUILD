@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=beeswarm
 pkgver=0.7.18
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-honeypots')
 pkgdesc="A honeypot project which provides easy configuration, deployment and managment of honeypots."
 url="http://www.beeswarm-ids.org/"

@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=slb
 pkgver=0.1.24
-pkgrel=4
+pkgrel=5
 pkgdesc="A set of tools that can help you to control a load-balancing system"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL3')

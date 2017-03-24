@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wol-e
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-networking' 'archstrike-misc')
 pkgdesc="A suite of tools for the Wake on LAN feature of network attached computers"
 arch=('any')

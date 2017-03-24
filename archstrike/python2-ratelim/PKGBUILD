@@ -3,7 +3,7 @@
 
 pkgname=python2-ratelim
 pkgver=0.1.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Makes it easy to respect rate limits."
 url="http://github.com/themiurgo/ratelim"
 depends=('python2-decorator')

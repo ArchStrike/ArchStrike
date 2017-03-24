@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-pygoogle
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple interface to Google"
 url="pygoogle.sourceforge.net"
 depends=('python2' )

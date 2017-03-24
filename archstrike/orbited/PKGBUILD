@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=orbited
 pkgver=0.7.10
-pkgrel=7
+pkgrel=8
 pkgdesc="A browser(javascript)->tcp bridge; Comet is used to emulate TCP connections in the browser; Allows you to connect a web browser directly to an IRC or XMPP server, for instance."
 groups=('archstrike')
 arch=('any')

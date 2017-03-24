@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=tplmap
 pkgver=0.3.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Automatic Server-Side Template Injection Detection and Exploitation Tool"

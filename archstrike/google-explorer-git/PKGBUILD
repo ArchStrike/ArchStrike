@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=google-explorer-git
 pkgver=20161224.r53
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Google mass exploit robot in python"

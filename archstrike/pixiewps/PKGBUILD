@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=pixiewps
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 pkgdesc="A tool written in C used to bruteforce offline the WPS pin"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/wiire/pixiewps"

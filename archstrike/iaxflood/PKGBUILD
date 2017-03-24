@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='iaxflood'
 pkgver=20131208
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-dos' 'archstrike-voip')
 pkgdesc='IAX flooder.'
 url='http://www.hackingexposedvoip.com/'

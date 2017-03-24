@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=phrasendrescher
 pkgver=1.2.2
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A modular and multi processing pass phrase cracking tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

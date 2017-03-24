@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-rarfile
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="RAR archive reader for Python"
 url="https://github.com/markokr/rarfile"
 depends=('python2')

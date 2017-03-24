@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=netzob
 pkgver=1.0rc1
-pkgrel=2
+pkgrel=3
 pkgdesc="An opensource tool which supports the expert in its operations of reverse engineering, evaluation and simulation of communication protocols."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.netzob.org"

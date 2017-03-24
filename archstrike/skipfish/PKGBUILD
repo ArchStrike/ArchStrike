@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=skipfish
 pkgver=2.10b
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="A fully automated, active web application security reconnaissancenaissance tool"
 arch=('any')

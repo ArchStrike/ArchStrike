@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=onioff
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc' 'archstrike-scanners')
 arch=('any')
 pkgdesc="An onion url inspector for inspecting deep web links"

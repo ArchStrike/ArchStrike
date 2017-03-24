@@ -5,7 +5,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname=ctunnel
 pkgver=0.7
-pkgrel=2
+pkgrel=3
 pkgdesc="Tunnel and/or proxy TCP or UDP connections via a cryptographygraphic tunnel compiled with Openssl."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://nardcore.org/ctunnel"

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=l0l-git
 pkgver=20170118.r313
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 arch=('i686' 'x86_64' 'armv6h' 'arm7h' 'aarch64')
 pkgdesc="The Exploit Development Kit"

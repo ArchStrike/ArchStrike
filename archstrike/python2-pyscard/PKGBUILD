@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=python2-pyscard
 pkgver=1.9.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module adding smart cards support to Python"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://pyscard.sourceforge.net/"

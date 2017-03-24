@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ircsnapshot-git
 pkgver=r94.cb02a85
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool to gather information from IRC servers"
 arch=('any')
 url="https://github.com/bwall/ircsnapshot"

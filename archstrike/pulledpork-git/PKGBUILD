@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=$_pkgname-git
 pkgver=20161130.r306
-pkgrel=1
+pkgrel=2
 pkgdesc="Snort rule management"
 arch=('any')
 url="https://github.com/shirkdog/pulledpork"

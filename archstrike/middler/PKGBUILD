@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='middler'
 pkgver='1.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='A Man in the Middle tool to demonstrate protocol middling attacks.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/middler/'

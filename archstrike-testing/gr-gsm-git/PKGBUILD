@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=gr-gsm-git
 pkgver=20161130.r704
-pkgrel=1
+pkgrel=2
 pkgdesc="Gnuradio blocks and tools for receiving GSM transmissions"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://github.com/ptrkrysik/gr-gsm"

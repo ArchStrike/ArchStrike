@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=twittor-git
 pkgver=20150909.r5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
 pkgdesc="Stealthy python based backdoor that uses Twitter (Direct Messages) as a command and control server"

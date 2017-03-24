@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=checkpwd
 pkgver=1.23
-pkgrel=2
+pkgrel=3
 pkgdesc='Oracle Password Checker (Cracker)'
 url='http://www.red-database-security.com/software/checkpwd.html'
 groups=('archstrike' 'archstrike-crackers')

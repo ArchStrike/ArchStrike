@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-pygraphml
 pkgver=2.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Small library to parse GraphML files in Python"
 url="https://github.com/hadim/pygraphml/"
 depends=('python2')

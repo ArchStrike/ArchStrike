@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=mitmap
 pkgver=20140522
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-sniffers' 'archstrike-exploit')
 pkgdesc='Shell Script for launching a Fake AP with karma functionality and
 launches ettercap for packet capture and traffic manipulation.'

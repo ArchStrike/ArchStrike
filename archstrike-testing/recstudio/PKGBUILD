@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=recstudio
 pkgver=4.0_20130717
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-reverse' 'archstrike-decompile')
 pkgdesc="Cross platform interactive decompile"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

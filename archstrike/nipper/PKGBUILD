@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=nipper
 pkgver=0.11.7
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-recon' 'archstrike-networking')
 pkgdesc="Network Infrastructure Parser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

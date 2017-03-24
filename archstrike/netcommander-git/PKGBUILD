@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=netcommander-git
 pkgver=20111208.r21
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-spoof')
 pkgdesc="An easy-to-use arp spoofing tool"
 arch=('any')

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=ike-scan
 pkgver=1.9.4
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Discover and fingerprint IKE hosts (IPsec VPN Servers)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

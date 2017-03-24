@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=mimikittenz-git
 pkgver=20160709.r8
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="A post-exploitation powershell tool for extracting juicy info from memory"

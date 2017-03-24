@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=creepy-git
 pkgver=r137.9f60449
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-scanners' 'archstrike-social-engineering')
 pkgdesc="A geolocation information gatherer. Offers geolocation information gathering through social networking platforms."
 arch=('any')

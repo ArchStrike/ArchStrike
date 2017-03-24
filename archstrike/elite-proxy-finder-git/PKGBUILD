@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=elite-proxy-finder-git
 pkgver=r51.1ced3be
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Finds public elite anonymity proxies and concurrently tests them"
 arch=('any')

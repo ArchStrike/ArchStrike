@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=afflib
 pkgver=3.7.7
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='An extensible open format for the storage of disk images and related forensic information'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

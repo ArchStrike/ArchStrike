@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-linkedin
 pkgver=0.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python Library to interface with LinkedIn API, OAuth and JSON responses"
 url="https://github.com/michaelhelmick/linkedin/"
 depends=('python2' )

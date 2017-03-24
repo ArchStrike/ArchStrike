@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=arpwner-git
 pkgver=20120106.r26.f300fdf
-pkgrel=4
+pkgrel=5
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A tool for arp posioning and dns poisoning attacks, written in python."

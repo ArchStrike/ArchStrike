@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=hotpatch-git
 pkgver=20131202.r89.4b65e3f
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Hot patches executables on Linux using .so file injection"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

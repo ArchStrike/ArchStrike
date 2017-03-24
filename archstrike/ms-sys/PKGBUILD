@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='ms-sys'
 pkgver='2.5.3'
-pkgrel=2
+pkgrel=3
 pkgdesc='A tool to write Win9x-.. master boot records (mbr) under linux - RTM!'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://ms-sys.sourceforge.net/'

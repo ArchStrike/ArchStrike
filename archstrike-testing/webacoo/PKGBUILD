@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=webacoo
 pkgver=0.2.3
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="Web Backdoor Cookie Script-Kit"
 url="https://github.com/anestisb/WeBaCoo"

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=sctpscan-git
 pkgver=20140205.r34
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
 pkgdesc="A network scanner for discovery and security"
 url="http://www.p1sec.com/"

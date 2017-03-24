@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-libtaxii
 pkgver=1.1.110
-pkgrel=1
+pkgrel=2
 pkgdesc="TAXII Library."
 url="https://github.com/TAXIIProject/libtaxii"
 depends=('python2-lxml')

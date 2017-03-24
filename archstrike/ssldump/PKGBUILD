@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=ssldump
 pkgver=0.9b3
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="an SSLv3/TLS network protocol analyzer"
 url='http://sourceforge.net/projects/ssldump/'

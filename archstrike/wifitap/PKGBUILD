@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=wifitap
 pkgver=2b16088
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="WiFi injection tool through tun/tap device"
 arch=('any')

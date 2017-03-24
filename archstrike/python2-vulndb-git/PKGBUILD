@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-vulndb-git
 pkgver=r54.f208e18
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="Python SDK to access the vulnerability database"
 arch=('any')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=torshammer
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A slow post dos testing tool written in Python."
 url="https://sourceforge.net/projects/torshammer/"
 groups=('archstrike' 'archstrike-ddos')

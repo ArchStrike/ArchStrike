@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ropeme
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="ROPME is a set of python scripts to generate ROP gadgets and payload."
 arch=('any')

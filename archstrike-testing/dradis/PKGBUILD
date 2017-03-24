@@ -4,7 +4,7 @@ buildarch=200
 
 pkgname=dradis
 pkgver=3.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An open source framework to enable effective information sharing."
 groups=('archstrike' 'archstrike-misc')
 url="http://dradisframework.org/"

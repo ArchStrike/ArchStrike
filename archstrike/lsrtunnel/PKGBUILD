@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=lsrtunnel
 pkgver=0.2
-pkgrel=3
+pkgrel=4
 pkgdesc='Spoofs connections to a remote host by pretending to be the middle host in a source routed path'
 url='https://packetstormsecurity.com/files/26525/lsrtunnel-0.2.tar.gz.html'
 depends=('libpcap' 'libdnet')

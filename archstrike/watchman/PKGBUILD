@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=watchman
 pkgver=4.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="An inotify-based file watching and job triggering command line utility"
 groups=('archstrike' 'archstrike-misc')
 url="https://facebook.github.io/watchman/"

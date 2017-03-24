@@ -4,7 +4,7 @@ buildarch=200
 
 pkgname=ollydbg
 pkgver=201g
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-debugging')
 pkgdesc="A 32-bit assembler-level analysing debugging"
 arch=('i686' 'x86_64' 'aarch64')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pygitlab
 pkgver=0.19
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python wrapper for the GitLab API"
 url="https://github.com/gpocentek/python-gitlab"
 arch=('any')

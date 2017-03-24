@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=stepic
 pkgver=0.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-stego')
 arch=('any')
 pkgdesc="Python image steganography"

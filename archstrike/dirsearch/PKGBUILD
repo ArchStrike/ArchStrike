@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dirsearch
 pkgver=0.3.7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='A HTTP(S) directory/file brute forcer'
 arch=('any')

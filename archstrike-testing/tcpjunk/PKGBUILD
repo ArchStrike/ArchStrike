@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=tcpjunk
 pkgver=2.9.03
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A general tcp protocols testing and hacking utility"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

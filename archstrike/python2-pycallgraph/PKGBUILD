@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-pycallgraph
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module that creates call graphs for Python programs"
 arch=('any')
 url="http://pycallgraph.slowchop.com/"

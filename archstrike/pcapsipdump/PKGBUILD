@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=pcapsipdump
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A libpcap-based SIP sniffer with per-call sorting capabilities'
 url='http://pcapsipdump.sourceforge.net'
 license=('GPL')

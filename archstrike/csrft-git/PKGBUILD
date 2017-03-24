@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=csrft-git
 pkgver=r32.17146bb
-pkgrel=1
+pkgrel=2
 pkgdesc="In few words, this is a simple HTTP Server in NodeJS that will communicate with the clients (victims) and send them payload that will be executed using JavaScript"
 arch=('any')
 url="https://github.com/PaulSec/CSRFT"

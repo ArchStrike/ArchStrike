@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-ruamel.ordereddict
 pkgver=0.4.9
-pkgrel=2
+pkgrel=3
 pkgdesc="a version of dict that keeps keys in insertion resp. sorted order"
 url="https://bitbucket.org/ruamel/ordereddict"
 depends=('python2')

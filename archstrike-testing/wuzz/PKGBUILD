@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=wuzz
 pkgver=0.1.0
-pkgrel=2
+pkgrel=3
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/asciimoo/wuzz"

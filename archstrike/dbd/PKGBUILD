@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=dbd
 pkgver=1.50
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="A Netcat-clone, designed to be portable and offer strong encryption. It runs on Unix-like operating systems and on Microsoft Win32."
 url="https://github.com/gitdurandal/dbd"

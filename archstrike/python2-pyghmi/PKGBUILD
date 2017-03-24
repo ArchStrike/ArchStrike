@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-pyghmi
 pkgver=1.0.10
-pkgrel=1
+pkgrel=2
 pkgdesc="This is a pure python implementation of IPMI protocol."
 arch=('any')
 url="https://github.com/openstack/pyghmi"

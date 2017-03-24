@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=aeskeyfind
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-forensics' 'archstrike-crackers')
 pkgdesc='A tool to find AES key in RAM'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

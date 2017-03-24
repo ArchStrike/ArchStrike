@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=iosforensic
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 pkgdesc="iOS forensic tool. OWASP iOS Forensic"
 arch=('any')
 groups=('archstrike')

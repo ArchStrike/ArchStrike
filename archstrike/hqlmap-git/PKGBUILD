@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=hqlmap-git
 pkgver=r38.bb6ab46
-pkgrel=2
+pkgrel=3
 pkgdesc="This project has been created to exploit HQL Injections"
 arch=('any')
 url="https://github.com/PaulSec/HQLmap"

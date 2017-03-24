@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='pdfcrack'
 pkgver='0.15'
-pkgrel=2
+pkgrel=3
 pkgdesc='Password recovery tool for PDF-files.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://pdfcrack.sourceforge.net/"

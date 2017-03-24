@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=panoptic-git
 pkgver=0.r183.bc7236c
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-autonomous')
 pkgdesc="A tool that automates the process of search and retrieval of content for common log and config files through LFI vulnerability"
 url="https://github.com/lightos/Panoptic"

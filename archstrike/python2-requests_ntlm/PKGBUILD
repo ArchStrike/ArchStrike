@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-requests_ntlm
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Allows for HTTP NTLM authentication using the requests library"
 arch=('any')
 url='https://pypi.python.org/pypi/requests_ntlm/'

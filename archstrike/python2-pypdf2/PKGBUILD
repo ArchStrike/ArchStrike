@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-pypdf2
 pkgver=1.26.0
-pkgrel=1
+pkgrel=2
 pkgdesc='PDF toolkit'
 url='https://github.com/mstamy2/PyPDF2'
 depends=('python2')

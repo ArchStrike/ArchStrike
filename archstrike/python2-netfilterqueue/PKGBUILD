@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=python2-netfilterqueue
 pkgver=0.6
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python bindings for libnetfilter_queue"
 url="https://github.com/fqrouter/python-netfilterqueue"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

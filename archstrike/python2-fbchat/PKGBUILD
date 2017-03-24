@@ -3,7 +3,7 @@
 pkgname=python2-fbchat
 _pkgname=fbchat
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Facebook Chat (Messenger) for Python"
 url="https://github.com/carpedm20/fbchat/"
 depends=('python2-lxml' 'python2-requests' 'python2-beautifulsoup4')

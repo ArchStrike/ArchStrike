@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=missidentify
 pkgver=1.0
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-intel')
 pkgdesc="A program to find Win32 applications"
 url='http://missidentify.sourceforge.net/'

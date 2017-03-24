@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=heartbleed-git
 pkgver=119.v0.2.0.r48.g4a3332c
-pkgrel=1
+pkgrel=2
 pkgdesc="Test whether a host is vulnerable to the Heartbleed attack"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 _url="github.com/FiloSottile/Heartbleed"

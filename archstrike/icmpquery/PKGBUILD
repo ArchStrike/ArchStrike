@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=icmpquery
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Send and receive ICMP queries for address mask and current time.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

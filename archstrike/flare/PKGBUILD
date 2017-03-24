@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=flare
 pkgver=0.6
-pkgrel=4
+pkgrel=5
 pkgdesc="Flare processes an SWF and extracts all scripts from it."
 url="http://www.nowrap.de/flare.html"
 groups=('archstrike' 'archstrike-misc')

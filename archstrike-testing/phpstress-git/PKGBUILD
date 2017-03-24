@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=phpstress-git
 pkgver=r5.f987a7e
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-dos')
 pkgdesc="A PHP denial of service / stress test for Web Servers running PHP-FPM or PHP-CGI"
 arch=('any')

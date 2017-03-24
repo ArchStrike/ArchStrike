@@ -9,7 +9,7 @@ pkgbase=python2-$_pkgname
 
 pkgname=(python-$_pkgname python2-$_pkgname)
 pkgver=1.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Virus Total Public/Private/Intel API"
 url="https://github.com/blacktop/virustotal-api"
 makedepends=('python-setuptools' 'python2-setuptools')

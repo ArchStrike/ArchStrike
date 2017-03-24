@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=autobrowser-git
 pkgver=20161027.r24
-pkgrel=1
+pkgrel=2
 pkgdesc="A python analysing and reporting tool for pentesters"
 arch=('any')
 url="https://github.com/El3ct71k/AutoBrowser"

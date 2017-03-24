@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=ddrutility
 pkgver=2.8
-pkgrel=1
+pkgrel=2
 pkgdesc="Set of utilities for use with GNU ddrescue to aid with data recovery"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')

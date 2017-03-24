@@ -13,7 +13,7 @@ buildarch=136
 
 pkgname=mbox-git
 pkgver=20140526.r274.a131424
-pkgrel=2
+pkgrel=3
 pkgdesc="A lightweight sandbox tool for non-root users"
 arch=('x86_64' 'aarch64')
 groups=('archstrike')

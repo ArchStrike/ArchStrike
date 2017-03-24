@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=ip2clue
 pkgver=0.0.94
-pkgrel=1
+pkgrel=2
 pkgdesc="A mall memory/CPU footprint daemon to lookup country (and other info) based on IP (v4 and v6)"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL3')

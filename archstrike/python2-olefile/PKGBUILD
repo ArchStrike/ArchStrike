@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-olefile
 pkgver=0.42.1
-pkgrel=2
+pkgrel=3
 pkgdesc='A Python module to parse and read Microsoft OLE2 files (Structured Storage or Compound Document, Microsoft Office) - Improved version of the OleFileIO module from PIL, the Python Image Library'
 arch=('any')
 url='http://www.decalage.info/olefile'

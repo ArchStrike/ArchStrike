@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=creak-git
 pkgver=20170106.r40
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-mitm')
 arch=('any')
 pkgdesc="Poison, reset, spoof, redirect MITM script"

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-pysqli-git
 pkgver=r21.37418c9
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="Python SQL injection framework"
 arch=('any')

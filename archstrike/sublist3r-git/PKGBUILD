@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sublist3r-git
 pkgver=20170214.r94
-pkgrel=1
+pkgrel=2
 arch=('any')
 groups=('archstrike' 'archstrike-dns' 'archstrike-scanners')
 pkgdesc="A Fast subdomains enumeration tool for penetration testers"

@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=wpa_supplicant-cupid
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility providing key negotiation for WPA wireless networks - patched with cupid(https://github.com/lgrangeia/cupid)"
 url="http://hostap.epitest.fi/wpa_supplicant"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

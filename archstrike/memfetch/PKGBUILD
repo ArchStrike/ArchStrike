@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=memfetch
 pkgver=0.05b
-pkgrel=1
+pkgrel=2
 pkgdesc="dumps any userspace process memory without affecting its execution"
 url="http://lcamtuf.coredump.cx/"
 license=("GPL")

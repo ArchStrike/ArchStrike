@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-instagram-git
 pkgver=20160322.r232
-pkgrel=1
+pkgrel=2
 pkgdesc="Instagram api library for python."
 url='https://github.com/facebookarchive/python-instagram'
 license=('custom')

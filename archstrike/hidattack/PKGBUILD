@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=hidattack
 pkgver=0.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc="HID Attack (attacking HID host implementations)"
 url='http://mulliner.org/bluetooth/hidattack.php'

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=mana-git
 pkgver=20160512.r84
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A toolkit for rogue access point (evilAP) attacks first presented at Defcon 22"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

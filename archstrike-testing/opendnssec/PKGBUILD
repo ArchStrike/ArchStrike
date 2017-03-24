@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=opendnssec
 pkgver=2.0.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Turn-key solution for DNSSEC (sqlite3)"
 arch=('i686' 'x86_64' 'armv7h' 'armv6h' 'aarch64')
 url="http://www.opendnssec.org/"

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='lightblue'
 pkgver='0.4'
-pkgrel=1
+pkgrel=2
 pkgdesc='A cross-platform Bluetooth API for Python which provides simple access to Bluetooth operations'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://lightblue.sourceforge.net/'

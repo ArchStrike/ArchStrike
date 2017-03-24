@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=xss-callback-git
 pkgver=r14.6a2bb85
-pkgrel=1
+pkgrel=2
 pkgdesc="A lightweight HTTP Server that exploits XSS victim's session automatically"
 arch=('any')
 url="https://github.com/PaulSec/XSS-Callback"

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=bluesnarfer
 pkgver=0.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc="A bluetooth attacking tool"
 url="http://www.alighieri.org/project.html"

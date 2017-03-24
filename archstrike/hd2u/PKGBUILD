@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=hd2u
 pkgver=1.0.3
-pkgrel=7
+pkgrel=8
 pkgdesc="Dos2Unix text file converter"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')

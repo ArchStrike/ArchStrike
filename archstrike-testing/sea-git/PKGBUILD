@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sea-git
 pkgver=r103.9aca1c8
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="A tool to help to create exploits of binary programs"
 arch=('any')

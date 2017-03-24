@@ -4,7 +4,7 @@ buildarch=200
 
 pkgname=hashcat-utils
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc='Small utilities that are useful in advanced password cracking'
 arch=('i686' 'x86_64' 'aarch64')

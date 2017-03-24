@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=ohrwurm-git
 pkgver=20100930.r1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A small and simple RTP fuzzer"
 url='http://mazzoo.de/'

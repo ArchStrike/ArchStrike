@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=blindelephant-svn
 pkgver=7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fingerprinting')
 pkgdesc="A web application fingerprintinger. Attempts to discover the version of a (known) web application by comparing static files at known locations "
 url='http://blindelephant.sourceforge.net/'

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=shellnoob
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-exploit' 'archstrike-debugging')
 pkgdesc="A toolkit that eases the writing and debugging of shellcode"
 url="https://github.com/reyammer/shellnoob"

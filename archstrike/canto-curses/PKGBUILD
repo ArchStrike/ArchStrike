@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=canto-curses
 pkgver=0.9.6
-pkgrel=2
+pkgrel=3
 pkgdesc="An ncurses UI for the Canto Atom/RSS feed reader"
 url="http://codezen.org/canto-ng/"
 license=('GPL')

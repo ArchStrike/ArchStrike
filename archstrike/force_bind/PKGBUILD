@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=force_bind
 pkgver=0.12
-pkgrel=2
+pkgrel=3
 pkgdesc='Force binding on a specific IP and/or port, change TTL/TOS/KA/MSS/REUSEADDR/FWMARK/PRIORITY. Works with both IPv4 and IPv6. Also, you can enforce bandwidth per process or per socket'
 url='http://kernel.embedromix.ro/us/'
 license=('GPL3')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bandicoot
 pkgver=0.5.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A toolbox to analyze mobile phone metadata."
 url="https://github.com/yvesalexandre/bandicoot"
 depends=('python')

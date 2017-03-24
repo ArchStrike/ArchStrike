@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=backdoor-factory-git
 pkgver=0.r196.78570a5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
 url="https://github.com/secretsquirrel/the-backdoor-factory"

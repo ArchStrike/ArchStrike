@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=chkrootkit
 pkgver=0.51
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-defense' 'archstrike-forensics')
 pkgdesc="Checks for rootkits on a system"
 url="http://www.chkrootkit.org/"

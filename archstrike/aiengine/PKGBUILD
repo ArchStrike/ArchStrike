@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=aiengine
 pkgver=1.7.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A packet inspection engine with capabilities of learning without any human intervention."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

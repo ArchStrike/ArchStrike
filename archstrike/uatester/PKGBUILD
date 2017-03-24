@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=uatester
 pkgver=1.06
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc' 'archstrike-webapps')
 pkgdesc="User Agent String Tester"
 url="http://code.google.com/p/ua-tester/"

@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname="libfixbuf"
 pkgver="1.7.1"
-pkgrel=2
+pkgrel=3
 pkgdesc="IPFIX Message Format Implementation"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='http://tools.netsa.cert.org/fixbuf/'

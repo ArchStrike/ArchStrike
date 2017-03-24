@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=libvshadow
 pkgver=20160110
-pkgrel=3
+pkgrel=4
 pkgdesc="Library and tools to access the Volume Shadow Snapshot (VSS) format"
 url="https://github.com/libyal/libvshadow"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

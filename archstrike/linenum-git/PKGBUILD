@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=linenum-git
 pkgver=20160410.r22.f7b184b
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Scripted Local Linux Enumeration & Privilege Escalation Checks"

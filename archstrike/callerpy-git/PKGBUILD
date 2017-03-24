@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=callerpy-git
 pkgver=20140518.r40
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Truecaller Name Retriever"
 arch=('any')

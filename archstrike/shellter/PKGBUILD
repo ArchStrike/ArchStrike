@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=shellter
 pkgver=6.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A Dynamic Shellcode Injector(wine version - beta)"
 arch=('i686' 'x86_64')
 groups=('archstrike' 'archstrike-exploit')

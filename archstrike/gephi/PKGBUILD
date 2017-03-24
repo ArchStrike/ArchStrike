@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=gephi
 pkgver=0.8.2beta
-pkgrel=2
+pkgrel=3
 pkgdesc="An interactive graph visualization and exploration platform"
 arch=('i686' 'armv6h' 'armv7h' 'x86_64' 'aarch64')
 url="http://gephi.org"

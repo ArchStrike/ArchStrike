@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pytinydns-git
 pkgver=r16.d8b53c4
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A tiny DNS server that resolves A records to IPs."
 arch=('any')

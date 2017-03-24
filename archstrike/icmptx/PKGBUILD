@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=icmptx
 pkgver=0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="IP over ICMP"
 url="https://github.com/jakkarth/icmptx"
 groups=('archstrike' 'archstrike-tunnel')

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=argtable
 pkgver=2.13
-pkgrel=2
+pkgrel=3
 pkgdesc="ANSI C command line parser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://argtable.sourceforge.net/"

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=canto-daemon
 pkgver=0.9.5
-pkgrel=3
+pkgrel=4
 pkgdesc="Atom/RSS feed reader daemon"
 url="http://codezen.org/canto-ng/"
 license=('GPL')

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=sniffles
 pkgver=3.2.0
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A Packet Capture Generator for IDS and Regular Expression Evaluation"

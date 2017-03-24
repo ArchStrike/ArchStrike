@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=ssdeep
 pkgver=2.13
-pkgrel=3
+pkgrel=4
 pkgdesc='A program for computing context triggered piecewise hashes'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://ssdeep.sourceforge.net'

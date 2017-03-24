@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=sps
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc='A Linux packet crafting tool supporting IPv4 and IPv6 (including extension headers and tunneling IPv6 over IPv4)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

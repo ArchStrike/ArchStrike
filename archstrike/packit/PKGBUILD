@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='packit'
 pkgver='1.0'
-pkgrel=1
+pkgrel=2
 pkgdesc='A network auditing tool. Its value is derived from its ability to customize, inject, monitor, and manipulate IP traffic.'
 makedepends=('gcc' 'make')
 depends=('libpcap' 'libnet')

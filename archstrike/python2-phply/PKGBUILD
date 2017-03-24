@@ -6,7 +6,7 @@ _pkgname=phply
 
 pkgname=python2-${_pkgname}
 pkgver=1.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="PHP parser written in Python using PLY"
 arch=('any')
 url="https://github.com/ramen/phply"

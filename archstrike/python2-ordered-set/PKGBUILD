@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-ordered-set
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A MutableSet that remembers its order, so that every entry has an index."
 arch=('any')
 url="http://pypi.python.org/pypi/ordered-set/"

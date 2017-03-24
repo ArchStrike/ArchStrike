@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-cerberus
 pkgver=1.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Lightweight, extensible schema and data validation tool for Python dictionaries."
 url="http://github.com/nicolaiarocci/cerberus"
 depends=('python2')

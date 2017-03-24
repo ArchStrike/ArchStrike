@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname="libevtx"
 pkgver="20160421"
-pkgrel=3
+pkgrel=4
 pkgdesc="Library and tooling to access the Windows XML Event Log (EVTX) format"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libevtx'

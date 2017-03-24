@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=openstego
 pkgver=0.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Plugin based tool for steganography, with encrytion support."
 arch=('any')
 groups=('archstrike' 'archstrike-crypto' 'archstrike-forensics' 'archstrike-analysis')

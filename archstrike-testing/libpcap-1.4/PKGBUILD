@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=libpcap-1.4
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A system-independent interface for user-level packet capture"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://www.tcpdump.org/"

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-webunit
 pkgver=1.3.10
-pkgrel=1
+pkgrel=2
 pkgdesc="Unit test your websites with code that acts like a web browser."
 arch=('any')
 url="http://mechanicalcat.net/tech/webunit/"

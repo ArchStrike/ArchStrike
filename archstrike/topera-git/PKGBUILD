@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=topera-git
 pkgver=20140105.r19.3e230fd
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A new security tools for IPv6, with the particularity that their attacks can't be detected by Snort."

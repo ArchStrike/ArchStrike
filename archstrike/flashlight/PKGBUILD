@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname='flashlight'
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Provides services to scan network/ports and gather information rapidly on target networks."
 license=('custom')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

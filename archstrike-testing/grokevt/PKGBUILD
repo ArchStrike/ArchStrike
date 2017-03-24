@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='grokevt'
 pkgver='0.5.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='A collection of scripts built for reading Windows® NT/2K/XP/2K eventlog files.'
 url='http://code.google.com/p/grokevt/'
 license=('GPL')

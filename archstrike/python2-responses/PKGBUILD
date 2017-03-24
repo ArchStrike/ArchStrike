@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-responses
 pkgver=0.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A utility library for mocking out the requests Python library."
 url="https://github.com/getsentry/responses"
 depends=('python2')

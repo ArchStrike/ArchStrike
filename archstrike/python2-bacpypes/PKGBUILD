@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-bacpypes
 pkgver=0.14.1
-pkgrel=1
+pkgrel=2
 pkgdesc="BACpypes provides a BACnet application layer and network layer written in Python for daemons, scripting, and graphical interfaces."
 arch=('any')
 url="https://github.com/JoelBender/bacpypes"

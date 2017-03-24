@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-cachetools
 pkgver=2.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Extensible memoizing collections and decorators"
 url="https://github.com/tkem/cachetools"
 depends=('python2')

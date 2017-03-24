@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=python2-bitstring
 pkgver=3.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python module designed to help make the creation, manipulation and analysis of binary data as simple and natural as possible'
 arch=('any')
 url="https://pypi.python.org/pypi/bitstring/"

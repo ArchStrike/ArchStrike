@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ssdc
 pkgver=1.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python API for cross-platform colored terminal text."
 arch=('any')
 url="https://github.com/bwall/ssdc"

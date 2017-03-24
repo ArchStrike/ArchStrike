@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-mmh3
 pkgver=2.3.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python wrapper for MurmurHash (MurmurHash3), a set of fast and robust hash functions."
 url="http://packages.python.org/mmh3"
 depends=('python2')

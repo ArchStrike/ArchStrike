@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=lbd
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Load Balancing detector"

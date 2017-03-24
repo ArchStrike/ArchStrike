@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=bettercap
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-sniffers' 'archstrike-exploit' 'archstrike-networking')
 pkgdesc='A complete, modular, portable and easily extensible MITM framework.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

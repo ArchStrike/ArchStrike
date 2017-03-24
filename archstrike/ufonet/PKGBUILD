@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ufonet
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool designed to launch DDoS attacks against a target, using 'Open Redirect' vectors on third party web applications, like botnet."
 arch=('any')
 url="https://ufonet.03c8.net/"

@@ -3,7 +3,7 @@
 
 pkgname=python2-plumbum
 pkgver=1.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Plumbum: shell combinators library"
 url="https://plumbum.readthedocs.io"
 depends=('python2' )

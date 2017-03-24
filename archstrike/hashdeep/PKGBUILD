@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=hashdeep
 pkgver=4.4
-pkgrel=2
+pkgrel=3
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Advanced checksum hashing tool"

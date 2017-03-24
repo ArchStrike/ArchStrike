@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=$_pkgname-git
 pkgver=20161017.r11.10d6e10
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc='Punches holes in firewalls and NATs allowing any numbers of clients behind NATs to directly connect to a server behind a different NAT with no 3rd party, port forwarding, DMZ or spoofing involved'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=pentbox
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="A security suite that packs security and stability testing oriented tools for networks and systems"
 arch=('any')

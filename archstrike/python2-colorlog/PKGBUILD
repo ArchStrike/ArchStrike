@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-colorlog
 pkgver=2.10.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Log formatting with colors!"
 url="https://github.com/borntyping/python-colorlog"
 depends=('python2')

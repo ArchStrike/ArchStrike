@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=haka
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="Collection of tools that allows capturing TCP/IP packets and filtering them based on Lua policy files"
 url="http://haka-security.org/"

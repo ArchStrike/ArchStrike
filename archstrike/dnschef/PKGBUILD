@@ -6,7 +6,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname=dnschef
 pkgver=0.3
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="A highly configurable DNS proxy for pentesters"
 url="http://thesprawl.org/projects/dnschef/"

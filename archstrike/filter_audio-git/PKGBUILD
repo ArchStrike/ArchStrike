@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=${_pkgname}-git
 pkgver=r95.ada2f4f
-pkgrel=2
+pkgrel=3
 pkgdesc='An easy to use audio filtering library made from webrtc code'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/irungentoo/filter_audio'

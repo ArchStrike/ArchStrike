@@ -9,7 +9,7 @@ buildarch=220
 
 pkgname=ncpfs
 pkgver=2.2.6
-pkgrel=7
+pkgrel=8
 pkgdesc="Allows you to mount volumes of NetWare servers under Linux."
 url="http://www.novell.com/"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')

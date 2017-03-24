@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-elasticsearch
 pkgver=5.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python client for Elasticsearch"
 url="https://github.com/elastic/elasticsearch-py"
 depends=('python2-urllib3')

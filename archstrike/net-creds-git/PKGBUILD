@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=net-creds-git
 pkgver=20170213.r71
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="Sniffs sensitive data from interface or pcap"
 arch=('any')

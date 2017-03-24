@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=origami
 pkgver=2.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Aims at providing a scripting tool to generate and analyze malicious PDF files.'
 groups=('archstrike' 'archstrike-malware')
 arch=('any')

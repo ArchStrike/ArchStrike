@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-image
 pkgver=1.5.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Django application that provides cropping, resizing, thumbnailing, overlays and masking for images and videos with the ability to set the center of attention,"
 url="https://github.com/francescortiz/image"
 depends=('python2')

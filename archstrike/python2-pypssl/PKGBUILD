@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-pypssl
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python API for PSSL."
 url="https://github.com/adulau/crl-monitor/tree/master/client"
 depends=('python2')

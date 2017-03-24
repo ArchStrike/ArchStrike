@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=sipshock-git
 pkgver=7.6ab5591
-pkgrel=1
+pkgrel=2
 pkgdesc="A scanner for SIP proxies vulnerable to Shellshock"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 _url="github.com/zaf/sipshock"

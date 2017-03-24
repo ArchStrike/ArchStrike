@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='kippo'
 pkgver='0.9'
-pkgrel=2
+pkgrel=3
 pkgdesc='A medium interaction SSH honeypot designed to log brute force attacks and most importantly, the entire shell interaction by the attacker.'
 arch=('any')
 url='https://github.com/desaster/kippo'

@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-ntplib
 pkgver=0.3.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python NTP library"
 arch=('any')
 url="http://code.google.com/p/ntplib/"

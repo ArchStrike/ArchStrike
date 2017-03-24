@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=fierce-git
 pkgver=20170117.r9
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A DNS scanner"
 arch=('any')

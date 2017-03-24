@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=rtpmixsound
 pkgver=3.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-voip')
 pkgdesc="A tool to mix pre-recorded audio in real-time with the audio (i.e. RTP) in the specified target audio stream."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=metacoretex
 pkgver=0.8.0
-pkgrel=2
+pkgrel=3
 pkgdesc="MetaCoretex is an entirely JAVA vulnerability scanning framework for databases."
 url="http://metacoretex.sourceforge.net/"
 groups=('archstrike' 'archstrike-database')

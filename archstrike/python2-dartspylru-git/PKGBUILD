@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-dartspylru-git
 pkgver=20130715.r7
-pkgrel=1
+pkgrel=2
 pkgdesc="An LRUDict is basically a simple dictionary, which has a defined maximum capacity"
 arch=('any')
 url='https://github.com/deterministic-arts/DartsPyLRU'

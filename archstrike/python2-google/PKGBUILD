@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-google
 pkgver=1.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Python bindings to the Google search engine."
 url="http://breakingcode.wordpress.com/"
 depends=('python2' 'python2-beautifulsoup4')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=websploit-git
 pkgver=20140922.r5
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-social-engineering' 'archstrike-scanners')
 arch=('any')
 pkgdesc="advanced MITM framework"

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname="libsmdev"
 pkgver="20160320"
-pkgrel=3
+pkgrel=4
 pkgdesc="Library to access to storage media devices"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libsmdev'

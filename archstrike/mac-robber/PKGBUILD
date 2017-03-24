@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=mac-robber
 pkgver=1.02
-pkgrel=2
+pkgrel=3
 pkgdesc="Forensic tool that collects data from allocated files in a mounted file system. Useful together with sleuthkit."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.sleuthkit.org/mac-robber/index.php"

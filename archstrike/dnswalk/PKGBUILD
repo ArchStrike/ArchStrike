@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnswalk
 pkgver=2.0.2
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
 pkgdesc="A DNS debugging"
 url='http://sourceforge.net/projects/dnswalk/'

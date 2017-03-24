@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=mybff-git
 pkgver=20170103.r94
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-bruteforce')
 arch=('any')
 pkgdesc="A web application brute force framework"

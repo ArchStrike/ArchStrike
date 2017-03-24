@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=python-aiohttp
 pkgver=0.22.5
-pkgrel=2
+pkgrel=3
 pkgdesc="http client/server for asyncio"
 url="https://github.com/KeepSafe/aiohttp/"
 depends=('python' 'python-chardet' 'python-multidict')

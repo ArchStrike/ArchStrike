@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=iphoneanalyzer
 pkgver=2.1.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Allows you to forensically examine or recover date from in iOS device."
 url="http://www.crypticbit.com/zen/products/iphoneanalyzer"

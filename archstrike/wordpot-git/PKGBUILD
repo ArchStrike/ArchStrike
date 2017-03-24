@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wordpot-git
 pkgver=r38.ca12cb5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="A Wordpress Honeypot"
 arch=('any')

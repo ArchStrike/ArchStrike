@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=shard
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
 pkgdesc="A command line tool to detect shared passwords"

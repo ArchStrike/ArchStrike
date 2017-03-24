@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=cewl
 pkgver=4.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-crackers')
 pkgdesc='A custom word list generator'
 arch=('any')

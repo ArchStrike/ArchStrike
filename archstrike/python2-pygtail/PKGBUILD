@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-pygtail
 pkgver=0.7.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Reads log file lines that have not been read."
 url="http://github.com/bgreenlee/pygtail"
 depends=('python2')

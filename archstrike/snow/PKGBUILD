@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=snow
 pkgver=20130616
-pkgrel=5
+pkgrel=6
 pkgdesc="Steganography program for concealing messages in text files"
 groups=('archstrike')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

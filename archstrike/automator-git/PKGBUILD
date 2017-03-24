@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=automator-git
 pkgver=r88.42548cf
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="IP URL and MD5 OSINT Analysis"
 arch=('any')

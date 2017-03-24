@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-apache-log-parser
 pkgver=1.6.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse lines from an apache log file"
 url="https://pypi.python.org/pypi/apache-log-parser"
 depends=('python2' )

@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=python2-wsgiref
 pkgver=0.1.2
-pkgrel=3
+pkgrel=4
 pkgdesc="WSGI (PEP 333) Reference Library"
 arch=(any)
 url=http://cheeseshop.python.org/pypi/wsgiref

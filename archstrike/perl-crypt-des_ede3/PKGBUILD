@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=perl-crypt-des_ede3
 pkgver=0.01
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl module for triple-DES EDE encryption/decryption"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://search.cpan.org/~btrott/Crypt-DES_EDE3'

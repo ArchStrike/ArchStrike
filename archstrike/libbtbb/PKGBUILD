@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=libbtbb
 pkgver=2015.10.R1
-pkgrel=1
+pkgrel=2
 pkgdesc="A library to decode Bluetooth baseband packets, as produced by the Ubertooth and GR-Bluetooth projects."
 url="https://greatscottgadgets.com/ubertoothone"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

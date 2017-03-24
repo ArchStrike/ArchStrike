@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-devel-overloadinfo
 pkgver=0.004
-pkgrel=1
+pkgrel=2
 pkgdesc="introspect overloaded operators"
 arch=('any')
 license=('PerlArtistic' 'GPL')

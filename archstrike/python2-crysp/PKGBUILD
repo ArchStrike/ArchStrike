@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-crysp
 pkgver=0.9
-pkgrel=1
+pkgrel=2
 pkgdesc="A crypto related pkg for amoco"
 arch=('any')
 url='https://github.com/bdcht/crysp'

@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-foursquare
 pkgver=2016.9.12
-pkgrel=1
+pkgrel=2
 pkgdesc="easy-as-pie foursquare wrapper library"
 url="http://github.com/mLewisLogic/foursquare"
 depends=('python2' )

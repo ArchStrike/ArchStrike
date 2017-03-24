@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=vfeed-git
 pkgver=20161103.r73
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Open Source Cross Linked and Aggregated Local Vulnerability Database main repository"

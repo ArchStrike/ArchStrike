@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=angr
 pkgver=6.7.1.31
-pkgrel=1
+pkgrel=2
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
 depends=('python2-capstone' 'python2-cachetools' 'python2-networkx' 'python2-rpyc' 'python2-futures' 'python2-progressbar' 'python2-mulpyplexer' 'python2-cooldict' 'python2-ana' 'python2-archinfo' 'python2-pyvex' 'python2-claripy' 'python2-simuvex' 'python2-cle' 'python2-pyelftools' 'python2-cffi' 'python2-bintrees' 'python2-dpkt')

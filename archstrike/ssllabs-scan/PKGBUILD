@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=ssllabs-scan
 pkgver=1.4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Test whether a host is vulnerable to the Heartbleed attack"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 groups=("archstrike")

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname="libsigscan"
 pkgver="20160312"
-pkgrel=1
+pkgrel=2
 pkgdesc="Library for binary signature scanning."
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libsigscan'

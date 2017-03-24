@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=smod
 pkgver=1.0.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-hardware')
 arch=('any')
 pkgdesc="Modular framework with every kind of diagnostic and offensive feature you could need in order to pentest modbus protocol."

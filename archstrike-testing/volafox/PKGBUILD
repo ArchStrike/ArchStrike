@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=volafox
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-analysis')
 arch=('any')
 pkgdesc="Mac OS X Memory Analysis Toolkit"

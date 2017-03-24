@@ -3,7 +3,7 @@
 
 pkgname=python-xdis
 pkgver=3.2.4
-pkgrel=2
+pkgrel=3
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
 url="https://github.com/rocky/python-xdis/"

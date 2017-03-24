@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=xssf
 pkgver=3.0
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Cross-Site Scripting Framework for metasploit"
 arch=('any')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=stackflow-git
 pkgver=0.r2.2af525d
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Universal stack-based buffer overfow exploitation tool"
 arch=('any')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=artlas-git
 pkgver=20160614.r140
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-analysis' 'archstrike-defense')
 arch=('any')
 pkgdesc="Apache Real Time Logs Analyzer System"

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='multiinjector'
 pkgver='0.3'
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='Automatic SQL injection utility using a lsit of URI addresses to test parameter manipulation.'
 arch=('any')

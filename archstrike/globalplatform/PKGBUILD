@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=globalplatform
 pkgver=6.0.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Global Platform libraries"
 license=('GPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

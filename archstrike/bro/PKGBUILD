@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=bro
 pkgver=2.4.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A highly configurable IDS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://bro-ids.org/"

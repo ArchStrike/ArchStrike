@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=mail-crawl
 pkgver=20160504
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='Tool to harvest emails from website'
 url="https://raw.githubusercontent.com/galkan/tools/master/mail-crawl/"

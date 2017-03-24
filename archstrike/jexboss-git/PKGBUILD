@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=jexboss-git
 pkgver=20161230.r80
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="Jboss verify and Exploitation Tool"

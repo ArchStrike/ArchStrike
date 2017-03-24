@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-amoco
 pkgver=2.4.6
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="yet another tool for analysing binaries"
 arch=('any')

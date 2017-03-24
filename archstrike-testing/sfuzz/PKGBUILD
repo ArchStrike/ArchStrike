@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=sfuzz
 pkgver=0.7.0
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="Simple Fuzzer is a simple fuzzer"
 url='http://aconole.brad-x.com/programs/sfuzz.html'

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=exitmap
 pkgver=2016.04.21
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-recon')
 arch=('any')
 pkgdesc="A fast and modular scanner for Tor exit relays"

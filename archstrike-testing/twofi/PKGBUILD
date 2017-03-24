@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=twofi
 pkgver=2.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='Twitter Words of Interest'
 arch=('any')

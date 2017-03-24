@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=svn-extractor-git
 pkgver=r34.bc6da4d
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A simple script to extract all web resources by means of .SVN folder exposed over network."
 arch=('any')

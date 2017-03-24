@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sshatter
 pkgver=1.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Password bruteforcer for SSH"
 url="http://www.nth-dimension.org.uk/downloads.php?id=34"
 groups=('archstrike' 'archstrike-crackers')

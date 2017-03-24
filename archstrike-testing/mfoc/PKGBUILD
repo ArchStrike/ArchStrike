@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=mfoc
 pkgver=0.10.7
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc="Mifare Classic Offline Cracker"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

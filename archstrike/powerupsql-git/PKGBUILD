@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=powerupsql-git
 pkgver=20170216.r513
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-misc')
 arch=('any')
 pkgdesc="Powershell Toolkit for Attacking SQL Server"

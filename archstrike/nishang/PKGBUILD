@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=nishang
 pkgver=0.6.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A PowerShell framework and collection of scripts and payloads for offensive security and pentesting"
 url="https://github.com/samratashok/${pkgname}"
 license=('GPL3')

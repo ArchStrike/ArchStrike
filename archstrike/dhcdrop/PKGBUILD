@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=dhcdrop
 pkgver=0.5
-pkgrel=4
+pkgrel=5
 pkgdesc="Remove illegal dhcp servers with IP-pool underflow. Stable version"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.netpatch.ru/dhcdrop.html"

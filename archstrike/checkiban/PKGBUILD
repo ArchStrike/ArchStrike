@@ -7,7 +7,7 @@ buildarch=220
 
 pkgname=checkiban
 pkgver=0.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Checks an the validity of an International Bank Account Number (IBAN)"
 url="http://kernel.embedromix.ro/us/"
 license=('LGPL')

@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-tzlocal
 pkgver=1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="tzinfo object for the local timezone"
 url="https://github.com/regebro/tzlocal"
 depends=('python2')

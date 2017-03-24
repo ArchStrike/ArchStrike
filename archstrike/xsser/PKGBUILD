@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=xsser
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A penetration testing tool for detecting and exploiting XSS vulnerabilites."
 arch=('any')

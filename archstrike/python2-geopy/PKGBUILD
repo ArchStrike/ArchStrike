@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-geopy
 pkgver=1.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Geocoding Toolbox"
 url="https://github.com/geopy/geopy"
 depends=('python2')

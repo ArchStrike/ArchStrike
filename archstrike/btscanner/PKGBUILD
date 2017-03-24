@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=btscanner
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-bluetooth' 'archstrike-scanners')
 pkgdesc="Bluetooth device scanner."
 url='http://www.pentest.co.uk'

@@ -6,7 +6,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname=secure-delete
 pkgver=3.1
-pkgrel=3
+pkgrel=4
 depends=('bash')
 groups=('archstrike' 'archstrike-defense' 'archstrike-forensics')
 pkgdesc='Secure file, disk, swap, memory erasure toolkit'

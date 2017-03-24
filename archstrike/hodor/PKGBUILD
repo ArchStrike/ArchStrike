@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=hodor
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-analysis' 'archstrike-recon')
 arch=('any')
 pkgdesc="A MQTT client, that automatically subscribes to #"

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-maec
 pkgver=4.1.0.13
-pkgrel=1
+pkgrel=2
 pkgdesc="An API for parsing and creating MAEC content."
 url="https://github.com/MAECProject/python-maec"
 depends=('python2' 'python2-cybox' 'python2-lxml')

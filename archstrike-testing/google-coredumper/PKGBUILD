@@ -5,7 +5,7 @@ buildarch=200
 
 pkgname=google-coredumper
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-debugging')
 pkgdesc='Library can be compiled into applications to create core dumps of the running program -- without terminating.'
 url='https://code.google.com/p/google-coredumper/'

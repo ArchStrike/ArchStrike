@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='zerowine'
 pkgver='0.0.2'
-pkgrel=1
+pkgrel=2
 pkgdesc='Malware Analysis Tool - research project to dynamically analyze the behavior of malware'
 url='http://zerowine.sf.net/'
 groups=('archstrike' 'archstrike-malware' 'archstrike-reverse')

@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=dmitry
 pkgver=1.3a
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Deepmagic Information Gathering Tool with the ability to gather as much information as possible about a host'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

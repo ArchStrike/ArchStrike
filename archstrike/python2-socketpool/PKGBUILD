@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-socketpool
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Socket pool is a simple socket pool that suports multiple factories and backends. It can easily be used by gevent, eventlet or any other library."
 arch=('any')
 url="https://github.com/benoitc/socketpool"

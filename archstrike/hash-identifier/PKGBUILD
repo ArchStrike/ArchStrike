@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=hash-identifier
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="Identifies the different types of hashes used to encrypt data, especially passwords"
 arch=('any')

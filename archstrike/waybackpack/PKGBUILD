@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=waybackpack
 pkgver=0.3.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Command-line tool that lets you download the entire Wayback Machine archive for a given URL."
 url="http://github.com/jsvine/waybackpack"
 depends=('python-requests')

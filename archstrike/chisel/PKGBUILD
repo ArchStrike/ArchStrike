@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=chisel
 pkgver=1.1.4
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-networking' 'archstrike-tunnel')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="A fast TCP tunnel over HTTP"

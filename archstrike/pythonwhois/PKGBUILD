@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=pythonwhois
 pkgver=2.4.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Module for retrieving and parsing the WHOIS data for a domain. Supports most domains. No dependencies."
 url="http://cryto.net/pythonwhois"
 depends=('python2')

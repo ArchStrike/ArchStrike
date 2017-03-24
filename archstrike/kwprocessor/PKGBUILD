@@ -4,7 +4,7 @@ buildarch=200
 
 pkgname=kwprocessor
 pkgver=1.00
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc='Advanced keyboard-walk generator with configureable basechars, keymap and routes'
 arch=('i686' 'x86_64' 'aarch64')

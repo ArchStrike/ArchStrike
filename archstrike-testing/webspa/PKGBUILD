@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=webspa
 pkgver=0.8
-pkgrel=1
+pkgrel=2
 pkgdesc="A web knocking tool, sending a single HTTP/S to run O/S commands"
 arch=('any')
 url="http://sourceforge.net/projects/webspa/"

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=waidps-git
 pkgver=20141225.r16
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="Wireless Auditing, Intrusion Detection & Prevention System"
 arch=('any')

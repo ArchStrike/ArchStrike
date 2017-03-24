@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=python2-pypcap
 pkgver=1.1.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python extension module for libpcap."
 url="https://github.com/dugsong/pypcap"
 license=('custom')

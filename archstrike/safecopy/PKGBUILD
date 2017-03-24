@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=safecopy
 pkgver=1.7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A disk data recovery tool to extract data from damaged media"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

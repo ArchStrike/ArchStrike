@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=zgrab
 pkgver=0.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Application layer scanner that operates with ZMap"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/zmap/zgrab"

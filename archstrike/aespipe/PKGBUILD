@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=aespipe
 pkgver=2.4d
-pkgrel=3
+pkgrel=4
 pkgdesc="Reads data from stdin and outputs encrypted or decrypted results to stdout"
 url="http://loop-aes.sourceforge.net/aespipe"
 license=('GPL')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-pyexiftool-git
 pkgver=20141008.r29
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library to communicate with an instance of Phil Harvey's excellent ExifTool command-line application."
 arch=('any')
 url='https://github.com/smarnach/pyexiftool'

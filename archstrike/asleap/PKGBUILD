@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=asleap
 pkgver=2.2
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Actively recover LEAP/PPTP passwords."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

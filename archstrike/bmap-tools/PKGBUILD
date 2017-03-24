@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bmap-tools
 pkgver=3.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Tool for copying largely sparse files using information from a block map file"
 arch=('any')
 url="https://github.com/01org/bmap-tools"

@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='ent'
 pkgver='1.0'
-pkgrel=2
+pkgrel=3
 pkgdesc='Pseudorandom number sequence test.'
 url='http://www.fourmilab.ch/random'
 license=('Public Domain')

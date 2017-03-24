@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=gophish
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Open-source phishing toolkit designed for businesses and penetration testers. It provides the ability to quickly and easily setup and execute phishing engagements and security awareness training."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/gophish/gophish"

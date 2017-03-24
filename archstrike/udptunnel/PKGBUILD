@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=udptunnel
 pkgver=19
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-tunnel' 'archstrike-networking')
 pkgdesc="Tunnels TCP over UDP packets."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

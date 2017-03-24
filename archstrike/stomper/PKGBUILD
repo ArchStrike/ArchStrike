@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=stomper
 pkgver=0.2.4
-pkgrel=4
+pkgrel=5
 pkgdesc="A transport neutral client implementation of the STOMP protocol."
 arch=('any')
 url='http://code.google.com/p/stomper/'

@@ -5,7 +5,7 @@ buildarch=200
 
 pkgname=cpublaster
 pkgver=0.10
-pkgrel=4
+pkgrel=5
 pkgdesc='This library tries to intercept the memory allocations to skew the allocations to different offsets, so the performance penalty to disappear'
 url='http://kernel.embedromix.ro/us/'
 license=('GPL3')

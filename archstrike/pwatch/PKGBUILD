@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=pwatch
 pkgver=0.0.6
-pkgrel=3
+pkgrel=4
 pkgdesc="An ncurses tool that can be run by root to give information about processes"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL')

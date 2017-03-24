@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=intrace-git
 pkgver=20161120.r27
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Traceroute-like application piggybacking on existing TCP connections"
 url='https://github.com/robertswiecki/intrace'

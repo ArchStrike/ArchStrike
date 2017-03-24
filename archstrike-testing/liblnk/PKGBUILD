@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname="liblnk"
 pkgver="20160420"
-pkgrel=3
+pkgrel=4
 pkgdesc="Library and tools to access the Windows Shortcut File (LNK) format"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/liblnk'

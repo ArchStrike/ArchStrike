@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-geocoder
 pkgver=1.20.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Geocoder is a simple and consistent geocoding library."
 url="https://github.com/DenisCarriere/geocoder"
 depends=('python2-requests' 'python2-click' 'python2-six' 'python2-ratelim')

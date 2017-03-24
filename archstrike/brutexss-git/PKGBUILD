@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=brutexss-git
 pkgver=20161123.r54
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit' 'archstrike-webapps')
 arch=('any')
 pkgdesc="Cross-Site Scripting BruteForcer"

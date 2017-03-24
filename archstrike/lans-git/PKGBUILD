@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=lans-git
 pkgver=20151122.r168
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-spoof')
 pkgdesc="A Multithreaded asynchronous packet parsing/injecting arp spoofer."
 url="https://github.com/DanMcInerney/LANs.py"

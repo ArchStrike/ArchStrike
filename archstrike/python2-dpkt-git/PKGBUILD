@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-dpkt-git
 pkgver=20170223.r369
-pkgrel=1
+pkgrel=2
 pkgdesc='This is a Python library for interacting with and creating packets.'
 arch=('any')
 url='https://github.com/kbandla/dpkt'

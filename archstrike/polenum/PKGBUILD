@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=polenum
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="a python script to extract the password policy information from a windows machine."
 arch=('any')
 url="https://github.com/Wh1t3Fox/polenum"

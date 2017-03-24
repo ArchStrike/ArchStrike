@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=libvidcap
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A cross-platform library for capturing video from webcams and other video capture devices."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://libvidcap.sourceforge.net"

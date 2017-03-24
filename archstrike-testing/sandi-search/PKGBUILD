@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=sandi-search
 pkgver=13
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="An open source project for search the exploits from exploit databases ..."
 arch=('any')

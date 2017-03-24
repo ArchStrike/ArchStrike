@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python2-validictory
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="general purpose python data validator"
 url="http://github.com/jamesturk/validictory"
 depends=('python2')

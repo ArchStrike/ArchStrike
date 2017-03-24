@@ -6,7 +6,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname=bokken
 pkgver=1.8
-pkgrel=2
+pkgrel=3
 pkgdesc="GUI for radare2 and pyew"
 arch=('any')
 url="http://bokken.re"

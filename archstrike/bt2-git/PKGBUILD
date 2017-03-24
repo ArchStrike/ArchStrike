@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bt2-git
 pkgver=20160527.r18
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
 pkgdesc="A post-exploitation tool that leverages the infrastructure of Telegram as a C&C"

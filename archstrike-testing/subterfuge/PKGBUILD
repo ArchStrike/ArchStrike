@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=subterfuge
 pkgver=5.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Automated Man-in-the-Middle Attack Framework"
 url='http://kinozoa.com'

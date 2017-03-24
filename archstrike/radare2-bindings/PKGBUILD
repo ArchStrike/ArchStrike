@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=radare2-bindings
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Language bindings of the radare2 api for Valabind and friends"
 url="http://radare.org"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=$_pkgname-git
 pkgver=r342.b9e7560
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-malware')
 pkgdesc='A tool to retrieve malware directly from the source for security researchers.'
 arch=('any')

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-tweepy
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc="A python library for the Twitter API. OAuth, complete coverage, streaming API"
 url='http://github.com/m00n/tweepy'

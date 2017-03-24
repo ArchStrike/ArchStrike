@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=driftnet
 pkgver=1.1.5
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-scanners' 'archstrike-sniffers')
 pkgdesc="Listens to network traffic and picks out images from TCP streams it observes"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')

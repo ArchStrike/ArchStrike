@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=bruteforce-wallet
 pkgver=1.4.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-bruteforce')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="Tries to decrypt one of the encrypted addresses in the wallet by trying all the possible passwords"
