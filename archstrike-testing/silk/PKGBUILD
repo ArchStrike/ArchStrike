@@ -5,13 +5,13 @@ buildarch=220
 
 pkgname=silk
 pkgver=3.14.0
-pkgrel=2
+pkgrel=3
 pkgdesc='CERT netflow tools.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'armv8' 'aarch64')
 url='http://tools.netsa.cert.org/silk'
 license=('GPL')
 groups=('archstrike' 'archstrike-networking')
-depends=('libfixbuf' 'lzo2' 'libpcap' 'python2' 'gnutls' 'c-ares' 'adns' 'snappy')
+depends=('libfixbuf' 'lzo' 'libpcap' 'python2' 'gnutls' 'c-ares' 'adns' 'snappy')
 makedepends=('perl' 'flex' 'bison')
 install="$pkgname.install"
 source=("http://tools.netsa.cert.org/releases/$pkgname-$pkgver.tar.gz")
@@ -22,7 +22,7 @@ prepare(){
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
   export LIBS="-lpthread"
   ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --enable-ipv6 --with-python=$(which python2) --with-pcap \
   --with-pic --with-libfixbuf --with-gnutls --enable-output-compression --enable-localtime --enable-data-rootdir=/usr/share/$pkgname
@@ -30,8 +30,8 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
   # Fixing python
-  sed -i 's|python$|python2|' $pkgdir/usr/bin/rwidsquery $pkgdir/usr/bin/rwpcut
+  sed -i 's|python$|python2|' "${pkgdir}/usr/bin/rwidsquery" "${pkgdir}/usr/bin/rwpcut"
 }
