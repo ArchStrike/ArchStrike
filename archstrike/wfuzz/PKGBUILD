@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=wfuzz
-pkgver=2.1.4
-pkgrel=2
+pkgver=2.1.5
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
-pkgdesc="Utility to bruteforce web applications to find their not linked resources"
+pkgdesc="Utility to fuzz web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
 arch=('any')
 license=('GPL')
 depends=('python2-pycurl')
 source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz")
-sha512sums=('12a5ec4b7d0a6a7c17b4d754ed389513efc7fd538ea87441e9c56fe01132c9b465f0c80995cbff9bed46b38d36e6b39454145c8f2ee83b1e7c97699d6ce605d6')
+sha512sums=('aac9c2f4289b09504652a8a1180a859c7cf71dba8f6207072e778d93dbd70a13e79d76659ea422db8e89ad634e72bd2da6f264d02933dc95ebe11b69d0f20b99')
 
 prepare() {
   cd $pkgname-$pkgver
