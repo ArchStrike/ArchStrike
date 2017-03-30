@@ -4,25 +4,29 @@
 buildarch=220
 
 pkgname=chkrootkit
-pkgver=0.51
-pkgrel=2
+pkgver=0.52
+pkgrel=1
 groups=('archstrike' 'archstrike-defense' 'archstrike-forensics')
 pkgdesc="Checks for rootkits on a system"
 url="http://www.chkrootkit.org/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-license=('GPL2')
+license=('BSD')
 depends=('bash')
-source=("ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz")
-sha512sums=('adef6823d069b32305605d0eaa3d3701c6a87900646d9509cebe0fd8a2fec0523595d0dcb4576b32245e7638388d3b43858dbc42be68de9971ac8461fcfdeb34')
+source=("ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz"
+        "chkrootkit-path.patch")
+sha512sums=('45d66227c185c60166c9ea2a1f89f4594fa7c943c280fd6da5b59b5b355d5fe0d36806ef133fb29f9b2cac0bc05e9c10773ed4fae923a7115cc900818a596d42'
+            '3701cd5833fd5cc6902ee8a94f5d75287092c60ea8ff2d620b543fe4cbc089ad02495e30033043d1144f8a26e113510e00dc37711a71f4fc7765a6716ab67978')
 
 build(){
   cd "chkrootkit-${pkgver}"
+  patch -Np1 -i "${srcdir}/chkrootkit-path.patch"
   make
 }
 
 package() {
   cd "chkrootkit-${pkgver}"
 
+  install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
   install -Dm755 chkdirs "${pkgdir}/usr/bin/chkdirs"
   install -Dm755 chklastlog "${pkgdir}/usr/bin/chklastlog"
   install -Dm755 chkproc "${pkgdir}/usr/bin/chkproc"
