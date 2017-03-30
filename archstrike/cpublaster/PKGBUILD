@@ -5,13 +5,14 @@ buildarch=200
 
 pkgname=cpublaster
 pkgver=0.10
-pkgrel=6
+pkgrel=7
 pkgdesc='This library tries to intercept the memory allocations to skew the allocations to different offsets, so the performance penalty to disappear'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://kernel.embedromix.ro/us/'
 license=('GPL3')
 groups=('archstrike')
-depends=('lib32-glibc')
+depends=('glibc')
+depends_x86_64+=('lib32-glibc')
 source=(
   "http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz"
   'libdir.patch'
