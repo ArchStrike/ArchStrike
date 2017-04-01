@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=gitminer-git
-pkgver=20160627.r29
-pkgrel=2
+pkgver=20170328.r31
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-info')
 arch=('any')
 pkgdesc="Tool for advanced mining for content on Github"
