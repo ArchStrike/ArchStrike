@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=airgeddon-git
-pkgver=20170222.r456
-pkgrel=2
+pkgver=20170321.r526
+pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc="Multi-use bash script for Linux systems to audit wireless networks."
 url="https://github.com/v1s1t0r1sh3r3/airgeddon"
 license=('GPL')
-depends=('bash' 'iw' 'gawk' 'aircrack-ng' 'xterm' 'reaver-wps-fork-t6x-git')
+depends=('bash' 'iw' 'gawk' 'aircrack-ng' 'xterm' 'reaver-wps-fork-t6x-git' 'iproute2' 'pciutils')
 optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git" "remove-update.patch")
@@ -34,9 +34,11 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
-  cd "$pkgdir/usr/share/$pkgname"
-  chmod 755 airgeddon.sh
-  rm LICENSE.md
 
-  ln -s "/usr/share/$pkgname/airgeddon.sh" "$pkgdir/usr/bin/airgeddon"
+cat > "${pkgdir}/usr/bin/airgeddon" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+bash airgeddon.sh "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/airgeddon"
 }
