@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=honeypy-git
-pkgver=20170214.r292
-pkgrel=2
+pkgver=20170404.r345
+pkgrel=1
 pkgdesc="A low interaction Honeypot"
 arch=('any')
 url="https://github.com/foospidy/HoneyPy"
