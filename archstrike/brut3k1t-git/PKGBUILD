@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=brut3k1t-git
 _pkgname=brut3k1t
-pkgver=20170206.r56
-pkgrel=2
+pkgver=20170224.r59
+pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
 pkgdesc="Brute-force attack that supports multiple protocols and services"
