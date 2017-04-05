@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=plasma-git
-pkgver=20161225.r859
-pkgrel=2
+pkgver=20170325.r863
+pkgrel=1
 groups=('archstrike' 'archstrike-analysis')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 pkgdesc="Interactive disassembler for x86/ARM/MIPS. Generates indented pseudo-code with colored syntax code."
