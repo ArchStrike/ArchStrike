@@ -4,8 +4,8 @@ _pkgname=pysnmp
 buildarch=1
 
 pkgname=python2-$_pkgname
-pkgver=4.3.3
-pkgrel=2
+pkgver=4.3.5
+pkgrel=1
 pkgdesc="SNMP library for Python"
 url='https://github.com/etingof/pysnmp'
 license=('BSD')
@@ -16,7 +16,7 @@ optdepends=("python2-pysnmp-mibs")
 conflicts=('pysnmp')
 provides=('pysnmp')
 source=(https://github.com/etingof/pysnmp/archive/v${pkgver}.tar.gz)
-sha512sums=('9763ad0a1b1f4348a6af394a5a9e073c989e1d1d816d3fa07fcdfb18d4333baacccabd95225bda4925decdad18753cfd5b14c0835d18ed81e5ede3cb05a1e31d')
+sha512sums=('05dd8cb79f2f332f11e4b2dbd553efe58a7b5ea4c6673102a6dd11b6a91e4f8742f7da947876886b2b61a321a81dd4d005df576d6d64e8de2928ffa41ae0f892')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
