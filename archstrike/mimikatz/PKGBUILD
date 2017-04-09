@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=mimikatz
-pkgver=2.1.0.20170227
-pkgrel=2
+pkgver=2.1.1.20170328
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="A little tool to play with Windows security"
 url="https://github.com/gentilkiwi/mimikatz"
 license=('custom')
 options=(!strip)
-source=("https://github.com/gentilkiwi/mimikatz/archive/${pkgver/0./0-}.tar.gz" 'LICENSE')
-sha512sums=('f700b8e5442c853294c15ff357f4722cbb0acf6e37f1124b9581179010f90635c7ac1da0082bc594b80ea533b0cf480ba2f5622e22b91afe366d9f9da11983cf'
+source=("https://github.com/gentilkiwi/mimikatz/archive/${pkgver/.2/-2}.tar.gz" 'LICENSE')
+sha512sums=('49674b57581a00d082e1836b9a882ad5d66e4fbf38ed6c59e72c4604206b85b804d37b0df686c19fcdc6df48b70f0c7ec7d7d8dd47a5730097cf0a0a5bc8f53f'
             '4ac4bba96e2c65e4499913f14c1161e22d67c930529fbcfa74f9c691f96537370ca4f60446ed273288ce372b97974f6c22df145db68a42c373dbe3c0caba5dec')
 
 package() {
