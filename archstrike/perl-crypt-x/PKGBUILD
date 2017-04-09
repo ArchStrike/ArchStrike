@@ -6,8 +6,8 @@ _perlmod='CryptX'
 buildarch=220
 
 pkgname=perl-crypt-x
-pkgver=0.044
-pkgrel=2
+pkgver=0.047
+pkgrel=1
 pkgdesc="Cryptographically secure random number generator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://search.cpan.org/~mik/CryptX-$pkgver/"
@@ -15,7 +15,7 @@ license=('custom')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIK/CryptX-$pkgver.tar.gz")
-sha512sums=('b28a73fa97f15695c75e5570ae969df69b4f08320f090034bfd1f680ae3b386004c20b305c2f470f252686948f6912f4de61ac9beeccc45d94c6f9da5152dbbd')
+sha512sums=('7f4a146673fd116578b4a3ec3b18b48c6be1057d3369cd71fa5da78afd4bfd158b604260cead559034f5764453afbcf6822ee32e757e200f0d4bc5ffa29a554b')
 
 prepare() {
   cd "$srcdir/$_perlmod-$pkgver"
