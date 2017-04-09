@@ -4,8 +4,8 @@
 buildarch=220
 
 pkgname=multimon-ng
-pkgver=1.1.0
-pkgrel=3
+pkgver=1.1.1
+pkgrel=1
 pkgdesc="An sdr decoder, supports pocsag, ufsk, clipfsk, afsk, hapn, fsk, dtmf, zvei."
 url="http://dekar.wc3edit.net/2012/05/24/multimonng/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,11 +14,11 @@ license=("GPL2")
 depends=('libpulse')
 makedepends=('qt4')
 optdepends=('sox: wav conversion')
-source=("https://github.com/EliasOenal/multimon-ng/archive/$pkgver.tar.gz")
-sha512sums=('f12cda7b87078455464113bef586cb38c2953ea652ba6a7ac65da12714748c6141ea3642ba8b35dba35b45bc9be0528af92360242f22f8a65c2472135a6c9822')
+source=("https://github.com/EliasOenal/multimon-ng/archive/${pkgver}.tar.gz")
+sha512sums=('8f2b538ba2e805697ec71ecc3b41518504b45f166633d4cb512cc16e99fdfb51a7251b4d53643e0642269c50d5057645452f4463efab15c6a8834f7e66be7008')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd ${pkgname}-${pkgver}
 
   qmake-qt4 PREFIX=/usr multimon-ng.pro
   sed -i 's/-lpulse-simple/& -lpulse/' Makefile
@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  install -Dm755 multimon-ng "$pkgdir/usr/bin/multimon-ng"
+  cd ${pkgname}-${pkgver}
+  install -Dm755 multimon-ng "${pkgdir}/usr/bin/multimon-ng"
 }
