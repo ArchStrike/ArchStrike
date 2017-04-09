@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=shellme-git
-pkgver=r3.8c7919d
-pkgrel=3
+pkgver=r5.d5206f0
+pkgrel=1
 pkgdesc="Because sometimes you just need shellcode and opcodes quickly"
 url="https://github.com/hatRiot/shellme"
 arch=('any')
