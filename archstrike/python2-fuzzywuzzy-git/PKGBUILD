@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python2-fuzzywuzzy-git
-pkgver=r305.2df7b43
-pkgrel=2
+pkgver=r309.7df7581
+pkgrel=1
 pkgdesc="Fuzzy string matching in python"
 arch=('any')
 url="https://pypi.python.org/pypi/fuzzywuzzy/0.2"
