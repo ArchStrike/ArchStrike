@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=cansina-git
-pkgver=r157.b9c19cb
-pkgrel=2
+pkgver=r169.593934c
+pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A python-based Web Content Discovery Tool"
