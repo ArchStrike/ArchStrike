@@ -5,8 +5,8 @@ _pkgname=thezoo
 buildarch=1
 
 pkgname=${_pkgname}-git
-pkgver=20170224.r119
-pkgrel=2
+pkgver=20170406.r130
+pkgrel=1
 pkgdesc="A project created to make the possibility of malware analysis open and available to the public"
 url="https://github.com/ytisf/theZoo"
 arch=('any')
