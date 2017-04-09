@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=eyewitness-git
-pkgver=r597.5723751
+pkgver=r599.6237e2a
 pkgrel=1
 pkgdesc="designed to take screenshots of websites, provide some server header info, and identify default credentials is possible"
 arch=('any')
