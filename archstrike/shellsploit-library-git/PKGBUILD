@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=shellsploit-library-git
-pkgver=20161118.r7
-pkgrel=2
+pkgver=20170311.r2
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="Exploit development library for python users"
