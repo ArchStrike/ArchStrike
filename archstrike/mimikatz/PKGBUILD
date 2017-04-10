@@ -16,7 +16,7 @@ sha512sums=('49674b57581a00d082e1836b9a882ad5d66e4fbf38ed6c59e72c4604206b85b804d
             '4ac4bba96e2c65e4499913f14c1161e22d67c930529fbcfa74f9c691f96537370ca4f60446ed273288ce372b97974f6c22df145db68a42c373dbe3c0caba5dec')
 
 package() {
-  cd ${pkgname}-${pkgver/0./0-}
+  cd ${pkgname}-${pkgver/.2/-2}
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
