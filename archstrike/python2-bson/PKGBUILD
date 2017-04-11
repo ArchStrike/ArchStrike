@@ -5,10 +5,10 @@ buildarch=1
 pkgname=python2-bson
 _pkgname=bson
 pkgver=0.4.6
-pkgrel=3
+pkgrel=4
 pkgdesc="BSON codec for Python"
 url="https://github.com/py-bson/bson"
-depends=('python2' 'python2-pytz')
+depends=('python2' 'python2-pytz' 'python2-pymongo')
 makedepends=('python2-setuptools' 'python2-pip')
 license=('BSD')
 arch=('any')
@@ -28,4 +28,7 @@ package() {
   cd ${_pkgname}-${pkgver}
   python2 setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+
+  #fix conflict with python2-pymongo
+  rm -f ${pkgdir}/usr/lib/python2.7/site-packages/bson/__init__*
 }
