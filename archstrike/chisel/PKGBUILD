@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=chisel
-pkgver=1.1.4
-pkgrel=3
+pkgver=1.2.1
+pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-tunnel')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="A fast TCP tunnel over HTTP"
@@ -13,9 +13,9 @@ license=('MIT')
 depends+=('glibc')
 depends_x86_64=('lib32-glibc')
 makedepends=('go' 'git')
-source=("https://github.com/jpillora/chisel/archive/1.1.4.tar.gz"
+source=("${url}/archive/${pkgver}.tar.gz"
         "LICENSE")
-sha512sums=('72e99379e1a375201065fafc167df97a5b17a052aa2f388ce740ee4f9f355da8f6c173abd5141aaa9f7efe6e38e077e0d4976886cc3023238077f9f7fe7ac853'
+sha512sums=('a3b12a2b52fc769be7237201715198dfb4d7eb9ada4fcef3c5304db8af04b98e0ba474605cfd5787d3a4ef3a0034d040adde509a878e5aa9f587922dc5c48bf2'
             '4450bb1b51fc9660d861e959139aced1756a6879a53ed6ed8ac836a57475eb65640498c73a7a9cd76e30f97e66484568713a549de07caac40b111b7c72193280')
 
 prepare() {
@@ -26,7 +26,7 @@ prepare() {
 build() {
   cd "${pkgname}-${pkgver}"
   export GOPATH="${srcdir}"
-  go build
+  go build -ldflags "-X github.com/jpillora/${pkgname}/share.BuildVersion=${pkgver}"
 }
 
 package() {
