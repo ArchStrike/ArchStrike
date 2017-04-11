@@ -3,8 +3,9 @@
 buildarch=220
 
 pkgname=evilgrade-git
-pkgver=r27.7488d21
-pkgrel=2
+_pkgname=evilgrade
+pkgver=r28.c80707c
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Modular framework that takes advantage of poor upgrade implementations by injecting fake updates"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,33 +16,34 @@ makedepends=('git')
 provides=('evilgrade')
 replaces=('evilgrade')
 conflicts=('evilgrade')
-source=("git+https://github.com/infobyte/evilgrade.git"
-        'evilgrade.desktop')
-sha512sums=('SKIP'
-            '15ed1c924ba862a3d4c356cb4fbaff2df7b0aaab8a20aa819d9e2efa00f7e5d112a2c3e0cc5cd1d4f6c72789f1be5f43868c43a53123f865eb5412b474e753fb')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/evilgrade"
+  cd ${pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/evilgrade"
+  cd ${pkgname}
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/share/evilgrade"
-  install -dm755 "$pkgdir/usr/share/doc/evilgrade"
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm644 "$srcdir/evilgrade.desktop" "$pkgdir/usr/share/applications/evilgrade.desktop"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
 
-  cp --no-preserve=ownership -r agent evilgrade include isrcore modules \
-     "$pkgdir/usr/share/evilgrade"
+  #install docs
+  cp -a --no-preserve=ownership docs "${pkgdir}/usr/share/doc/${pkgname}"
+  rm -rf docs
 
-  install -m644 docs/{AUTHOR,CHANGES,CONTRIBUTORS,FILES,README} "$pkgdir/usr/share/doc/evilgrade"
-cat > "$pkgdir/usr/bin/evilgrade" << EOF
-#!/bin/sh
-cd /usr/share/evilgrade
+  #install files
+  cp --no-preserve=ownership -a * "${pkgdir}/usr/share/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
 ./evilgrade "\$@"
 EOF
-chmod +x "$pkgdir/usr/bin/evilgrade"
+
+chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
