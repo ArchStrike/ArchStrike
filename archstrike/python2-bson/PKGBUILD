@@ -3,27 +3,29 @@
 buildarch=1
 
 pkgname=python2-bson
+_pkgname=bson
 pkgver=0.4.6
-pkgrel=2
+pkgrel=3
 pkgdesc="BSON codec for Python"
-url="http://github.com/martinkou/bson"
-depends=('python2')
-makedepends=('python2-setuptools')
+url="https://github.com/py-bson/bson"
+depends=('python2' 'python2-pytz')
+makedepends=('python2-setuptools' 'python2-pip')
 license=('BSD')
 arch=('any')
-source=("https://github.com/py-bson/bson/archive/${pkgver}.tar.gz")
+source=("${url}/archive/${pkgver}.tar.gz")
 sha512sums=('98765170637b40630dd669436a3943061db6fc18bd102645dff9eda7e5fc825469a2b6ea2195c90995b6eb79839e8060cdf31750443341e2f943781f2c74d21a')
 
+prepare() {
+  grep -iRl 'python' ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
+}
+
 build() {
-  cd $srcdir/bson-$pkgver
+  cd ${_pkgname}-${pkgver}
   python2 setup.py build
 }
 
 package() {
-  cd $srcdir/bson-$pkgver
-  python2 setup.py install --root="$pkgdir" -O1 --skip-build
-  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  rm "$pkgdir"/usr/lib/python2.7/site-packages/bson/__init__*
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
