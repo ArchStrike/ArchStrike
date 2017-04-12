@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=stomper
-pkgver=0.2.4
-pkgrel=5
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A transport neutral client implementation of the STOMP protocol."
 arch=('any')
-url='http://code.google.com/p/stomper/'
+url='https://github.com/oisinmulvihill/stomper'
 license=('apache')
 depends=('python2')
 groups=('archstrike')
 makedepends=('python2-distribute')
-source=("http://stomper.googlecode.com/files/stomper-$pkgver.tar.gz")
-sha512sums=('61ffe4b4bc163be6370ebf52e79e2e93ad8f3b85787468968ae1d841f675d55fad281f3db12bcae6176d6921e86131cb1f1bab32045bda1a872a4e51badeff0b')
+source=("https://github.com/oisinmulvihill/stomper/archive/$pkgver.tar.gz")
+sha512sums=('a60a8089a0e75a39af3a33284d1243044021a02d23fd5be7c417fa70ff3c4ebf0354f162a34bf358b017f52c9a959a150ddd9bf22e1922c146d0983af9794bf9')
 
 package() {
   cd $srcdir/stomper-$pkgver
