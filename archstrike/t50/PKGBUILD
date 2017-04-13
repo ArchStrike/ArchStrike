@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=t50
-pkgver=5.6.7
-pkgrel=2
+pkgver=5.6.8
+pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,15 +12,15 @@ url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
 source=("http://downloads.sourceforge.net/project/t50/t50-5.6/t50-${pkgver}.tar.gz")
-sha512sums=('a3fdf600dd0fddbc5645e6b4c453f6cdea48f1450ce14718f4e63e0d5a0b6bb5e5ba64f84146f7e6df637476e59ea24451d97746e5aaabcb5495f334275075d3')
+sha512sums=('e6598739102017bdbb1498f7e0ed22d4cde8b89c6f3f4c603922079d7213a0704e351b8d222560e659129b395c630740bd7e6efc7f2a1e86873de848b9127c09')
 
 build() {
-  cd "$pkgname-$pkgver-fix1"
+  cd "${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver-fix1"
-  make DESTDIR=$pkgdir install
+  cd "${pkgname}-${pkgver}"
+  make DESTDIR=${pkgdir} install
 }
