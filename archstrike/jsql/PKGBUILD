@@ -3,32 +3,32 @@
 buildarch=1
 
 pkgname=jsql
-pkgver=0.78
+pkgver=0.79
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A lightweight application used to find database information from a distant server."
 arch=('any')
 url="https://github.com/ron190/jsql-injection"
-license=('GPL3')
+license=('GPL2')
 depends=('java-environment' 'bash')
-source=("https://github.com/ron190/jsql-injection/releases/download/v$pkgver/jsql-injection-v$pkgver.jar")
+source=("${url}/releases/download/v${pkgver}/jsql-injection-v${pkgver}.jar")
 noextract=("jsql-injection-v${pkgver}.jar")
-sha512sums=('8cb282fe580e2cb90cbe3db716fef12ad26d04287cf837e6f580e800c486c4c0c4dd8ae191b9494713329ad696769d9904dfc391c94a845eb7ada9fda5c97b05')
+sha512sums=('39d5af9feb673a51ab2c24533ffe8cb485e8114c2f36a5aefa50f8ded72e51fa260632618a91a1fedf338fbbdb6206665279aa5ce7d9feb6bdad9396fd25cb7d')
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}"
 
   #Base directories
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/jsql"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/jsql"
 
   #Bins
-  install -Dm755 "jsql-injection-v$pkgver.jar" "$pkgdir/usr/share/jsql"
+  install -Dm755 "jsql-injection-v${pkgver}.jar" "${pkgdir}/usr/share/jsql"
 
-cat > "$pkgdir/usr/bin/jsql" << EOF
+cat > "${pkgdir}/usr/bin/jsql" << EOF
 #!/bin/sh
-java -jar /usr/share/jsql/jsql-injection-v$pkgver.jar "\$@"
+java -jar /usr/share/jsql/jsql-injection-v${pkgver}.jar "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/jsql"
+chmod 755 "${pkgdir}/usr/bin/jsql"
 }
 
