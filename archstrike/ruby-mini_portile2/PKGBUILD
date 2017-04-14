@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_gemname=mini_portile2
+pkgname=ruby-$_gemname
+pkgver=2.2.0.rc1
+pkgrel=1
+pkgdesc="Simplistic port-like solution for developers"
+arch=('any')
+license=('MIT')
+makedepends=('ruby')
+conflicts=('ruby-mini_portile')
+url='https://github.com/flavorjones/mini_portile'
+source=("http://rubygems.org/downloads/$_gemname-$pkgver.gem")
+sha512sums=('67fbfd69824b72c7f3fdefc4e5defe9e3dea1264dffe16efebe6cb434743b6701b7d2e1cd6da247f5370f3b860049edbf52fe04066ed236afbaa88c18d1fa2c0')
+noextract=("$_gemname-$pkgver.gem")
+
+package() {
+  cd "$srcdir"
+  local _gemdir=$(ruby -e 'puts Gem.default_dir')
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
+  fi
+}
