@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-stix
-pkgver=1.2.0.2
-pkgrel=2
+pkgver=1.2.0.3
+pkgrel=1
 pkgdesc="An API for parsing and generating STIX content."
 url="http://stix.mitre.org"
-depends=('python2')
+depends=('python2' 'python2-mixbox' 'python2-ordered-set' 'python2-lxml' 'python2-dateutil' 'python2-cybox')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 source=("https://github.com/STIXProject/python-stix/archive/v${pkgver}.tar.gz")
-sha512sums=('f7168c8fb4346a5771a43399052a68e9dc17cf0e00bb6aa4c8595b89ad2d09c4d020663504a591352364fbdb979a0dfa97d0c072891799ce908d570ffad8b92a')
+sha512sums=('9a952ff9a1a0efb698c6d0825556afe1c32e7df4d97408b37d9e9433a9f6d3d278eab4e49fa5e51a1afb10639eccbd4089e38c01c9db5154a80b5daad0731f6d')
 
 build() {
   cd python-stix-"${pkgver}"
