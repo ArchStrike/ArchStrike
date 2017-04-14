@@ -1,7 +1,6 @@
 # ArchStrike
 
-![alt text][logo]
-[logo]: https://archstrike.org/img/archstrike.svg "ArchStrike"
+![logo](https://archstirke.org/img/archstrike.svg)
 
 ###An Arch Linux repository for security professionals and enthusiasts.
 
