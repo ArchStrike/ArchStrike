@@ -5,8 +5,8 @@ buildarch=1
 
 pkgname=python2-binaryornot
 _pkgname=binaryornot
-pkgver=0.4.0
-pkgrel=3
+pkgver=0.4.3
+pkgrel=1
 pkgdesc="Ultra-lightweight pure Python package to check if a file is binary or text"
 arch=('any')
 url="https://github.com/audreyr/binaryornot"
@@ -15,7 +15,7 @@ groups=()
 depends=('python2')
 options=(!emptydirs)
 source=("https://github.com/audreyr/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('b63123a1496168142aa7d9119ac6d910682b8fe28bde1624f933b2368f884d8a6552608238e2dd64779fb035a20ecd8d16d7777f3f0eaf48674750eae2f3ef10')
+sha512sums=('bdb918b921fc46d056572b84126dbdc6605ec98cf13aac84f6f64ce07d083839be40bf7a08185eaabfbe136a9bcf0c1acc8041a23a6bb2843e8e72981222ebaa')
 
 package() {
       cd "$srcdir/${_pkgname}-${pkgver}"
