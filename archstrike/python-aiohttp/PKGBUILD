@@ -4,26 +4,27 @@
 buildarch=220
 
 pkgname=python-aiohttp
-pkgver=0.22.5
-pkgrel=3
+_pkgname=aiohttp
+pkgver=2.0.7
+pkgrel=1
 pkgdesc="http client/server for asyncio"
 url="https://github.com/KeepSafe/aiohttp/"
-depends=('python' 'python-chardet' 'python-multidict')
+depends=('python' 'python-chardet' 'python-multidict' 'cython' 'python-pytest' 'twine' 'python-async' 'python-yarl' 'python-async_timeout')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=("https://github.com/KeepSafe/aiohttp/archive/v${pkgver}.tar.gz" "LICENSE")
-sha512sums=('8d669494e0b08627588c2db96b2d1d77a7a8b8d1cd731991755a192d5bcf48c4e0c55f5e01b9d6d29e644d8ad578e8428b85b7e23d92dcdc47f41a7c4a6ca156'
+source=("https://github.com/KeepSafe/aiohttp/archive/${pkgver}.tar.gz" "LICENSE")
+sha512sums=('8dca80b84186c75bdad35ea0705002692021daccb0ffc45087c001edb51a18dfaaaf0099d58e9eb713e07faded467232524932db30e102610addf3f68df7e02d'
             '1a306b212a69701ff569509f4c8e9169233edc4d32076ce416062e5d20dc34ec0e85c130c94f19041ac3c1e928ebef579ddff409e111254a7ddff3b655aa2dcd')
 
 build() {
-    cd $srcdir/aiohttp-${pkgver}
+    cd ${_pkgname}-${pkgver}
     python setup.py build
 }
 
 package() {
-    cd $srcdir/aiohttp-${pkgver}
+    cd ${_pkgname}-${pkgver}
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+    python setup.py install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
     install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }

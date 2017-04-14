@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-async_timeout
+_pkgname=async-timeout
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="Timeout context manager for asyncio programs"
+url="https://github.com/aio-libs/async_timeout/"
+depends=('python')
+makedepends=('python-setuptools')
+license=('Apache2')
+arch=('any')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('ec6cafc666dea27228e3047c9f2f30fca36fa767f7283c51df2f7eeb2e3af593cf57887dd570cf6d244f710755f65a0570e8b375de4161d9f8f2ee20f905d171')
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  python setup.py build
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python setup.py install --root="$pkgdir" -O1 --skip-build
+}

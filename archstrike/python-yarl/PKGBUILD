@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-yarl
+_pkgname=yarl
+pkgver=0.10.0
+pkgrel=1
+pkgdesc="Yet another URL library"
+url="https://github.com/aio-libs/yarl/"
+depends=('python' 'python-multidict')
+makedepends=('python-setuptools')
+license=('Apache2')
+arch=('any')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('d4abe676161c37c1b5316fa5cee63e0e3b6d71562584189ea2c75147bb1a733c425dd1fa95e2073f8bb83dfd0b12bdcb7a783804512a75c576798dbb6bde558d')
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  python setup.py build
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python setup.py install --root="$pkgdir" -O1 --skip-build
+}
