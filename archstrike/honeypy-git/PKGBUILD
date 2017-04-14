@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=honeypy-git
-pkgver=20170409.r346
+pkgver=20170411.r347
 pkgrel=1
 pkgdesc="A low interaction Honeypot"
 arch=('any')
