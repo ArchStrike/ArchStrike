@@ -4,6 +4,7 @@ buildarch=1
 
 pkgname=pocsuite
 _pkgname=Pocsuite
+epoch=1
 pkgver=2.0.4.2
 pkgrel=1
 pkgdesc="An open-sourced remote vulnerability testing framework developed by the Knownsec Security Team."
