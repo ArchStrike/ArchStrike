@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=airgeddon-git
-pkgver=20170403.r537
+pkgver=20170416.r590
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
@@ -13,12 +13,12 @@ license=('GPL')
 depends=('bash' 'iw' 'gawk' 'aircrack-ng' 'xterm' 'reaver-wps-fork-t6x-git' 'iproute2' 'pciutils')
 optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git" "remove-update.patch")
+source=("${pkgname}::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git" "remove-update.patch")
 sha512sums=('SKIP'
             '7fa7f37d081c869e72ec07df88d8e89773eac88c76190a90cb3f66bdb78cf32a3762b33391e1f28cfcc503d4b85116c2b678d67dfd3cf6dad6b5bd3da506ae97')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname}
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
@@ -28,12 +28,15 @@ prepare() {
 }
 
 package() {
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+  #remove unneeded kali stuffs
+  rm -rf "${pkgdir}/usr/share/${pkgname}/binaries"
 
 cat > "${pkgdir}/usr/bin/airgeddon" <<EOF
 #!/usr/bin/env bash
