@@ -3,25 +3,26 @@
 buildarch=220
 
 pkgname='pdfcrack'
-pkgver='0.15'
-pkgrel=3
+pkgver='0.16'
+pkgrel=1
 pkgdesc='Password recovery tool for PDF-files.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://pdfcrack.sourceforge.net/"
 license=('GPL')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/pdfcrack/pdfcrack-$pkgver.tar.gz")
+source=("http://downloads.sourceforge.net/pdfcrack/${pkgname}-${pkgver}.tar.gz")
 groups=('archstrike' 'archstrike-crackers')
-sha512sums=('9eef648fcb8c9cd4fb70af3ad4ce1b8da892edc98919104bbee70947d7f93262f44cb6e8854ff10b0e4680fcf0c3abfc258d0d14428d261744ed4b28c792a966')
+sha512sums=('460113f28249d1ea1cefc6dac8ff22b33849ccff50f61830144e41eeec47c4b9113845bb955d26757adb0552d8c0dfa43b3f5666c1419afe4063037a1e1c933d')
 
 build() {
-  cd "$srcdir"/pdfcrack-$pkgver
+  cd ${pkgname}-${pkgver}
 
   make
 }
 
 package() {
-  cd "$srcdir"/pdfcrack-$pkgver
+  cd ${pkgname}-${pkgver}
 
-  install -D -m755 "pdfcrack" "$pkgdir/usr/bin/pdfcrack"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 "pdfcrack" "${pkgdir}/usr/bin/pdfcrack"
 }
