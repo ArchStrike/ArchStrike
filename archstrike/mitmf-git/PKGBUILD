@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=mitmf
 pkgname=$_pkgname-git
-pkgver=20161212.r440
-pkgrel=2
+pkgver=20170418.r444
+pkgrel=1
 groups=('archstrike' 'archstrike-proxy' 'archstrike-spoof')
 pkgdesc='Framework for Man-In-The-Middle attacks'
 arch=('any')
