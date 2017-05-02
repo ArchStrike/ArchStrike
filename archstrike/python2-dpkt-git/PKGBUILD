@@ -3,13 +3,13 @@
 buildarch=1
 
 pkgname=python2-dpkt-git
-pkgver=20170417.r422
+pkgver=20170423.r423
 pkgrel=1
 pkgdesc='This is a Python library for interacting with and creating packets.'
 arch=('any')
 url='https://github.com/kbandla/dpkt'
 license=('custom')
-depends=('python2')
+depends=('python2' 'python2-mock' 'python2-sphinx')
 makedepends=('git' 'python2-setuptools')
 replaces=('python2-dpkt')
 provides=('python2-dpkt')
