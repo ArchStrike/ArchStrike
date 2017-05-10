@@ -4,11 +4,11 @@
 buildarch=220
 
 pkgname=tomb
-pkgver=2.3
-pkgrel=2
+pkgver=2.4
+pkgrel=1
 pkgdesc="A system for easy encryption and backup of personal files"
 url="http://www.dyne.org/software/${pkgname}"
-groups=('archstrike')
+groups=('archstrike' 'archstrike-crypto')
 license=('GPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('cryptsetup' 'pinentry' 'sudo' 'gnupg' 'zsh' 'gtk2' 'libnotify')
@@ -21,7 +21,7 @@ optdepends=('dcfldd: Replacement for dd with hashing support'
             'qrencode: Create paper backups of keys as QR codes')
 
 source=("https://files.dyne.org/tomb/Tomb-${pkgver}.tar.gz")
-sha512sums=('251a38dd28871767b52eda3069161da2f0d54d66372ff2a0dc9ae1e3e74b215c8d93bce9b5249f95b87851cc6d2b2543e9013d89a37a1e79e02cf56ad4f7dbb4')
+sha512sums=('f80bc7511feb5c9cbb6afb62239f9ade7d07afbb00ff7faee57a9deedbb7a0fe6c49af4b76b903d8bc4e3a3db2973b318cde7e2e385121a67b71cacc0c7c2ac8')
 
 prepare() {
     sed -i 's/^#!\/bin\/zsh/#!\/usr\/bin\/env\ zsh/g' Tomb-${pkgver}/${pkgname}
