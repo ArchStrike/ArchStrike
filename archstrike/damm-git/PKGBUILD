@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=damm-git
-pkgver=20151203.r30
-pkgrel=3
+pkgver=20170416.r32
+pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="Differential Analysis of Malware in Memory"
 arch=('any')
 url='https://github.com/504ensicsLabs/DAMM'
 license=('GPL2')
-depends=('python2')
+depends=('python2' 'volatility')
 makedepends=('git')
 provides=('damm')
 source=("${pkgname}::git+https://github.com/504ensicsLabs/DAMM.git")
@@ -25,17 +25,16 @@ package() {
   cd "${pkgname}"
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/share/damm"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/damm"
+  install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/damm"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/damm"
 
-cat > "$pkgdir/usr/bin/damm" << EOF
-#!/bin/sh
+cat > "${pkgdir}/usr/bin/damm" << EOF
+#!/usr/bin/env bash
 cd /usr/share/damm
 python2 damm.py "\$@"
 EOF
 
-chmod +x "$pkgdir/usr/bin/damm"
-
+chmod 755 "${pkgdir}/usr/bin/damm"
 }
