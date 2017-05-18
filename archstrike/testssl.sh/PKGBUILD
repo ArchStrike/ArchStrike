@@ -4,16 +4,16 @@
 buildarch=1
 
 pkgname='testssl.sh'
-pkgver=2.6
-pkgrel=4
+pkgver=2.8
+pkgrel=1
 pkgdesc="Testing TLS/SSL encryption"
 arch=('any')
 groups=('archstrike')
 url="https://github.com/drwetter/testssl.sh"
 license=("GPL")
-depends=('coreutils' 'util-linux' 'openssl')
+depends=('coreutils' 'util-linux' 'openssl' 'bind-tools')
 source=("testssl-${pkgver}.sh::${url}/raw/v${pkgver}/testssl.sh")
-sha512sums=('e924dde492f680994fcc1a7c898599326a3e964a059ff95d5e81f071f7c85d85345c8d886572e68b4c431590020cbd9cd73ccd80f3721e907657e3412cd45dd5')
+sha512sums=('59817b324c018bc51972e0dae22fef20b55793312630ff202c82b4b9158f549221d17347ccc0a06f92be6200d15a3097f316485f88ae1b1597a98b80b157b1ff')
 
 package() {
   cd "${srcdir}"
