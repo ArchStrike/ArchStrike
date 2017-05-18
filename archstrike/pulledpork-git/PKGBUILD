@@ -5,14 +5,14 @@ _pkgname=pulledpork
 buildarch=1
 
 pkgname=$_pkgname-git
-pkgver=20161130.r306
-pkgrel=2
+pkgver=20170515.r311
+pkgrel=1
 pkgdesc="Snort rule management"
 arch=('any')
 url="https://github.com/shirkdog/pulledpork"
 license=('GPL2')
 groups=('archstrike' 'archstrike-misc')
-depends=('perl')
+depends=('perl' 'perl-lwp-protocol-https' 'perl-crypt-ssleay' 'perl-bytes-random-secure')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/shirkdog/pulledpork.git")
 sha512sums=('SKIP')
