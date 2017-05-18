@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=backdoor-factory-git
-pkgver=0.r196.78570a5
-pkgrel=2
+pkgver=0.r197.d144cc2
+pkgrel=1
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
 url="https://github.com/secretsquirrel/the-backdoor-factory"
@@ -21,12 +21,12 @@ source=("${pkgname}::git+https://github.com/secretsquirrel/the-backdoor-factory.
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$pkgname/osslsigncode"
+  cd "${pkgname}/osslsigncode"
   ./autogen.sh
 }
 
@@ -43,7 +43,7 @@ build() {
 }
 
 package() {
-  cd "$pkgname/osslsigncode"
+  cd "${pkgname}/osslsigncode"
   make DESTDIR=$pkgdir install
 
   if [[ "$CARCH" = 'x86_64' ]] || [[ "$CARCH" = 'i686' ]]; then
