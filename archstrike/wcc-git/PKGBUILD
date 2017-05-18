@@ -3,7 +3,7 @@
 buildarch=128
 
 pkgname=wcc-git
-pkgver=20170411.r34
+pkgver=20170511.r45
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 arch=('x86_64')
