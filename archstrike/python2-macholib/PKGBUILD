@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-macholib
+_pkgname=macholib
+pkgver=1.8
+pkgrel=1
+pkgdesc="Mach-O header analysis and editing"
+url="http://bitbucket.org/ronaldoussoren/macholib"
+depends=('python2')
+makedepends=('python2-setuptools')
+license=('MIT')
+arch=('any')
+source=("${url}/get/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('6e987b054696c6d488faa74f9859b0f39311f4d8474dbbe7b3376884395cdd2f4efbb27cda52ca5586b19c00cde3e00922063fad17566f1c8a8c92600f5704dc')
+
+build() {
+  #change this accordingly to version
+  cd ronaldoussoren-macholib-8066e0db30be
+  python2 setup.py build
+}
+
+package() {
+  cd ronaldoussoren-macholib-8066e0db30be
+  python2 setup.py install --root="${pkgdir}" --skip-build -O1
+}
