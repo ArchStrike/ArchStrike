@@ -3,35 +3,35 @@
 buildarch=220
 
 pkgname=3proxy
-pkgver=0.8.8
-pkgrel=2
+pkgver=0.8.9
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc='Tiny free proxy server'
 url='http://3proxy.ru'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('glibc' 'openssl')
-source=("https://github.com/z3APA3A/3proxy/archive/3proxy-$pkgver.tar.gz")
-sha512sums=('ea35ae862f006428950264a673266cff016ad35f3fcbfc842438fef8b1f484c665cfdf30ad1346527c1b18d0c552e3f806416a73f5cc1d35fc1045e322ea4e3d')
+source=("https://github.com/z3APA3A/3proxy/archive/${pkgver}.tar.gz")
+sha512sums=('35153882fec7077b05b23f9cea91443126a8a9faf9818915612e0739196a8bd1f00e0bcefb339a86bad10bb0c1b9891bd06847934787f4758ec55e6cc2e9e815')
 
 prepare() {
-  cd $pkgname-$pkgname-$pkgver
+  cd ${pkgname}-${pkgver}
   sed -i 's|/usr/bin/install|/bin/install|g' Makefile.Linux
   sed -i 's|/usr/local|/usr|g' Makefile.Linux
   sed -i 's|-s ||g' Makefile.Linux
-  sed -i "s|-Wall -g -O2|$CFLAGS|g" Makefile.Linux
+  sed -i "s|-Wall -g -O2|${CFLAGS}|g" Makefile.Linux
   sed -i 's|\$(prefix)/etc/|/etc/|g' Makefile.Linux
 }
 
 build() {
-  cd $pkgname-$pkgname-$pkgver
-  export CFLAGS+="$CFLAGS"
+  cd ${pkgname}-${pkgver}
+  export CFLAGS+="${CFLAGS}"
   make -f Makefile.Linux prefix=/usr
 }
 
 package() {
-  cd $pkgname-$pkgname-$pkgver
-  make -f Makefile.Linux install DESTDIR="$pkgdir"
-  find "$pkgdir/etc/$pkgname" -type f | xargs chmod 644
-  mv "$pkgdir/usr/bin/proxy" "$pkgdir/usr/bin/$pkgname"
+  cd ${pkgname}-${pkgver}
+  make -f Makefile.Linux install DESTDIR="${pkgdir}"
+  find "${pkgdir}/etc/${pkgname}" -type f | xargs chmod 644
+  mv "${pkgdir}/usr/bin/proxy" "${pkgdir}/usr/bin/${pkgname}"
 }
