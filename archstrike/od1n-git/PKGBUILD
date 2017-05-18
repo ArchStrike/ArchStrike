@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=od1n-git
-pkgver=20170402.r198
+pkgver=20170418.r200
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-webapps')
 pkgdesc="A Web security tool to make fuzzing at HTTP inputs, made in C with libCurl"
@@ -28,6 +28,6 @@ build(){
 
 package() {
   cd "${pkgname}"
-  install -dm755 "$pkgdir/usr/bin/"
-  install -Dm755 0d1n "$pkgdir/usr/bin/"
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -Dm755 0d1n "${pkgdir}/usr/bin/"
 }
