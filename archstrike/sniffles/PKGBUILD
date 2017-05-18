@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=sniffles
-pkgver=3.2.0
-pkgrel=3
+pkgver=3.3.1
+pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A Packet Capture Generator for IDS and Regular Expression Evaluation"
@@ -12,18 +12,18 @@ url='https://github.com/petabi/sniffles'
 license=('GPL3')
 depends=('python-sortedcontainers')
 makedepends=('python-setuptools')
-source=("https://github.com/petabi/sniffles/archive/$pkgver.tar.gz")
-sha512sums=('77202b2476cabdfb5e902a47b47deaa295c6c6a6b0a10da6362f3d0ecbd406cbe4d16c08fc1541bf66626de965857cdaaf6ec5a76203d5687f2535a72cfec361')
+source=("https://github.com/petabi/sniffles/archive/${pkgver}.tar.gz")
+sha512sums=('495bd72ec3accab7781da1a3c5175e26e67afb38b94adaf9d6bcd01b255568458ce617fe078d65754de945b763a786e11c2074a8d2c29a69b20d357a66394005')
 
 
 build() {
-  cd $pkgname-$pkgver
+  cd ${pkgname}-${pkgver}
   python setup.py build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python setup.py install --root="$pkgdir" --optimize=1 
+  cd "${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
   # fix conflict issue
-  mv $pkgdir/usr/bin/rulegen $pkgdir/usr/bin/${pkgname}-rulegen
+  mv ${pkgdir}/usr/bin/rulegen ${pkgdir}/usr/bin/${pkgname}-rulegen
 }
