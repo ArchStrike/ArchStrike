@@ -7,7 +7,7 @@ buildarch=220
 
 _pkgname=cryptsetup
 pkgname=$_pkgname-nuke-keys
-pkgver=1.7.4
+pkgver=1.7.5
 pkgrel=1
 pkgdesc='A patched cryptsetup which adds the option to nuke all keyslots given a certain passphrase'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -30,7 +30,7 @@ source=(
   'setup.c.patch'
 )
 
-sha512sums=('c5f58227b38dcc2e2858c4bbcb641acead3b6bcdad0d8d76e5f46936669e4aff4dbc20a2980040341320d35d39f029725a9f20607753cad44f64ac0443b64b71'
+sha512sums=('d473f7b06d705a3868a70f3767fafc664436b5897ba59025ea1268f815cb80a9076841ff9ff96cc130fb83ba18b03c1eee38cfaf1b471fdd883a3e126b771439'
             '27fe07cb8098534a1666f579920d4ac49c3b688e6a50320e98e3f6520e641a1c965541a19292e5872858d86c0a9df052496c3d81637bf6e1da3c1b43884a401d'
             '9a98b696de6d0ea10018dd0aabbc04af3f75407261d91a0299a339715b0278638868d44e4ca6d35bb9ce9575285491ae78f932f8468a34084b185483ddab3fd0'
             '76892c8f6fb2143c4964cb1233bb4dda44de0a26909e4da65be6f702ebe4b242a74c93f7910f57d1ca8f1ac322dbf926e215ad42181632f6ef535cf92c6e7a91'
