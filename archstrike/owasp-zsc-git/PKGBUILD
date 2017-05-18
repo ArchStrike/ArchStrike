@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=owasp-zsc-git
-pkgver=20161229.r278
-pkgrel=2
+pkgver=20170503.r279
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="Shellcode/Obfuscate Code Generator"
