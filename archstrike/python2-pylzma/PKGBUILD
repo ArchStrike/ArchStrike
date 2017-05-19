@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname=pylzma
+pkgname=python2-$_pkgname
+pkgver=0.4.8
+pkgrel=1
+pkgdesc='Python bindings for the LZMA library'
+arch=('any')
+license=('LGPL')
+url='https://www.joachim-bauch.de/projects/pylzma/'
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('27f9ba035f326fddbfd72b186bf272986838ff88f603f397a8dd503b99681cdf197848ff0e47e1035bd7c3fd40fd2c09026afec30728fd58f065602b0078fbeb')
+
+build() {
+  cd $_pkgname-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+}
