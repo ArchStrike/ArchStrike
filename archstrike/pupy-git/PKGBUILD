@@ -2,31 +2,27 @@
 
 buildarch=1
 
-pkgname=pupy-git
-pkgver=20170222.r941
+_pkgname=pupy
+pkgname=$_pkgname-git
+pkgver=20170518.r7112
 pkgrel=1
-pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python.'
+pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python'
 url='https://github.com/n1nj4sec/pupy'
 license=('custom')
 arch=('any')
-depends=('python2-pefile' 'python2-rpyc' 'python2-crypto' 'python2-yaml' 'python2-future' 'python2-rsa' 'python2-netaddr' 'python2-image' 'python2-netifaces')
+depends=('python2-crypto' 'python2-future' 'python2-http-parser' 'python2-image' 'python2-m2crypto' 'python2-netaddr' 'python2-netifaces' 'python2-pefile' 'python2-pylzma' 'python2-rpyc'  'python2-rsa' 'python2-tinyec' 'python2-yaml')
 makedepends=('git')
-provides=('pupy-binaries-git')
-replaces=('pupy-binaries-git')
-conflicts=('pupy-binaries-git')
 groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
 options=('!strip')
 
 source=(
-  "$pkgname::git+https://github.com/n1nj4sec/pupy.git"
-  'pupy-binaries.git::git+https://github.com/n1nj4sec/pupy-binaries.git'
+  "$pkgname::git+https://github.com/n1nj4sec/$_pkgname"
   'git+https://github.com/AlessandroZ/LaZagne'
-  'git+https://github.com/gaffe23/linux-inject.git'
-  'git+https://github.com/CoreSecurity/impacket'
-  'git+https://github.com/secdev/scapy'
+  'git+https://github.com/gaffe23/linux-inject'
+  'payload_templates::git+https://github.com/n1nj4sec/pupy-binaries'
 )
 
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
   cd $pkgname
@@ -36,62 +32,50 @@ pkgver() {
 prepare() {
   cd $pkgname
 
-  # python to python2
-  grep -iRl 'python' ${srcdir}/${pkgname} | xargs sed -i 's|python$|python2|g'
-
   # remove each submodule to replace with the pkg version
-  for i in LaZagne impacket scapy;
-    do
-    git submodule deinit -f pupy/external/${i};
-    git rm pupy/external/${i};
-    rm -rf .git/modules/pupy/external/${i};
-    rm -rf ../${i}/.git;
-    mv ../${i} pupy/external/${i};
+  for submodule in 'pupy/external/LaZagne' 'client/sources-linux/linux-inject' 'pupy/payload_templates'; do
+    submodule_name="${submodule/*\/}"
+    git submodule deinit -f "$submodule"
+    git rm "$submodule"
+    rm -rf "$srcdir/$submodule_name/.git"
+    mv "$srcdir/$submodule_name" "$submodule"
   done
-
-  # do that for linux-inject
-  git submodule deinit -f client/sources-linux/linux-inject
-  git rm client/sources-linux/linux-inject
-  rm -rf .git/modules/client/sources-linux/linux-inject
-  rm -rf ../linux-inject/.git
-  mv ../linux-inject client/sources-linux/linux-inject
 
   # update and clone the remaining submodules
   git submodule sync
   git submodule foreach git fetch --all
   git submodule update --init --recursive
-  
+
+  # fix python2 hash bangs
+  while read -r; do
+    sed -i -re 's|^\s*#!\s*(/usr\|/user)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+  done < <(egrep -rl '^\s*#!\s*(/usr|/user)?(/local)?/bin/.*python')
 }
 
 package() {
   cd $pkgname
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/pupy"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/pupy"
 
-cat > "$pkgdir/usr/bin/pp.py" <<EOF
-#!/usr/bin/env bash
-cd /usr/share/pupy/pupy
-python2 pp.py "\$@"
-EOF
+  # delete unnecessary files and folders
+  rm -rf .git .gitignore .gitmodules .travis.yml
+  find . -type f -name '.git' -exec rm '{}' \;
 
-  chmod 755 "$pkgdir/usr/bin/pp.py"
+  # create required directories
+  install -dm755 "$pkgdir"/usr/{bin,share/$_pkgname,share/licenses/$pkgname}
 
-cat > "$pkgdir/usr/bin/pupygen" <<EOF
-#!/usr/bin/env bash
-cd /usr/share/pupy/pupy
-python2 pupygen.py "\$@"
-EOF
+  # move the license to the licenses folder for the package
+  mv LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
-  chmod 755 "$pkgdir/usr/bin/pupygen"
+  # install the package files
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
 
-cat > "$pkgdir/usr/bin/pupysh" <<EOF
-#!/usr/bin/env bash
-cd /usr/share/pupy/pupy
-python2 pupysh.py "\$@"
-EOF
+  # create executables
+  for exe in pp.py pupygen.py pupysh.py; do
+    printf '%s\n%s\n%s\n' \
+      '#!/usr/bin/env bash' \
+      "cd /usr/share/$_pkgname/pupy" \
+      'python2 '"$exe"' "$@"' \
+        > "$pkgdir/usr/bin/$exe"
 
-  chmod 755 "$pkgdir/usr/bin/pupysh"
+    chmod 755 "$pkgdir/usr/bin/$exe"
+  done
 }
