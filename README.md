@@ -16,9 +16,11 @@ Our team is working very hard to maintain the repository and give you the best A
 
 If you find any issues, please don't hesitate to contact us via github, IRC, twitter or email. Any feedback is appreciated.
 
+## Contact Info
+
 Email us at: <team@archstrike.org>
 
-Join the chat: #archstrike on freenode
+Join the chat: #archstrike@freenode,net
 
 Follow us on twitter: <https://twitter.com/ArchStrike>
 
@@ -26,7 +28,7 @@ Send us a pull request: <https://github.com/ArchStrike/ArchStrike>
 
 Check out our subreddit: <https://reddit.com/r/archstrike>
 
-Read our [wiki pages](https://archstrike.org/wiki) before you ask!
+Please read our [wiki pages](https://archstrike.org/wiki) before you ask something!
 
 ## Contributing
 
@@ -52,7 +54,7 @@ A: Send us a mail, join our IRC channel or contact us via github.
 
 **Q: I am having trouble installing ArchStrike, can you help me?**
 
-A: Sure! Send us an email or join our IRC channel.
+A: Sure! Send us an email or join our IRC channel to get help from the developers.
 
 **Q: What is the archstrike-testing repository and do I need it?**
 
