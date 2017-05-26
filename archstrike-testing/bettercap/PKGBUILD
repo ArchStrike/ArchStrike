@@ -4,36 +4,41 @@ buildarch=220
 
 pkgname=bettercap
 pkgver=1.6.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-sniffers' 'archstrike-exploit' 'archstrike-networking')
 pkgdesc='A complete, modular, portable and easily extensible MITM framework.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/evilsocket/bettercap'
 license=('GPL3')
-depends=('ruby-rspec-core' 'libpcap' 'net-tools')
-source=("https://github.com/evilsocket/bettercap/archive/v$pkgver.tar.gz")
-sha512sums=('f5ee26e61753889b7d345e035fc929a656c3a09848677538fa51a83e6f93889bcc85557c0cac1ccbe374b9d1e03fd244352dca6803618039b97a321573115fb7')
+depends=('ruby-rspec-core' 'libpcap' 'net-tools' 'ruby-packetfu' 'ruby-colorize' 'ruby-pcaprub' 'ruby-rubydns' 'ruby-network_interface' 'ruby-net-dns' 'ruby-em-proxy')
+source=("https://github.com/evilsocket/bettercap/archive/v${pkgver}.tar.gz" "ruby-conflicts.patch")
+sha512sums=('f5ee26e61753889b7d345e035fc929a656c3a09848677538fa51a83e6f93889bcc85557c0cac1ccbe374b9d1e03fd244352dca6803618039b97a321573115fb7'
+            'edc02ffeade5ac3fc8bbd4bd460c617e867db66a35ab419331414ff263df89bfbb089c583e1a4e15721ba277d55ee41cf5fc5d990710e3a8ed483919dea4a80d')
+
+prepare() {
+  cd "${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/ruby-conflicts.patch"
+}
 
 build() {
-  cd "$pkgname-$pkgver"
-
+  cd "${pkgname}-${pkgver}"
   gem build bettercap.gemspec
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
 
-  gem install --no-user-install -n "$pkgdir/usr/bin" -i "$pkgdir/$_gemdir" bettercap*.gem
+  gem install --no-user-install -n "${pkgdir}/usr/bin" -i "${pkgdir}/${_gemdir}" bettercap*.gem
 
   # fix $pkgdir reference by deleting gem_make.out files
   find ${pkgdir}/${_gemdir} -name gem_make.out | xargs rm -rf
 
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
