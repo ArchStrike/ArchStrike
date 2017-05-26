@@ -20,7 +20,7 @@ If you find any issues, please don't hesitate to contact us via github, IRC, twi
 
 Email us at: <team@archstrike.org>
 
-Join the chat: irc://#archstrike@freenode.net
+Join the chat: irc://chat.freenode.net/#archstrike
 
 Follow us on twitter: <https://twitter.com/ArchStrike>
 
