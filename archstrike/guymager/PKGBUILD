@@ -3,24 +3,26 @@
 buildarch=220
 
 pkgname=guymager
-pkgver=0.8.1
-pkgrel=5
+pkgver=0.8.4
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='A forensic imager for media acquisition'
 url='http://guymager.sourceforge.net'
 license=('GPL')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 depends=('libguytools' 'libewf' 'libbfio' 'parted')
-makedepends=('qtchooser' 'qt5-tools')
+makedepends=('qt5-tools')
 options=('!strip')
 backup=("etc/$pkgname/$pkgname.cfg")
+
 source=(
   "http://downloads.sourceforge.net/project/$pkgname/$pkgname/LatestSource/$pkgname-$pkgver.tar.gz"
   "$pkgname.desktop"
   'build-fix.patch'
 )
+
 sha512sums=(
-  '3c17d04efcb13f41f00cb0a6a772c3fe58fe9cee5503c32af18e909be623c7d30359d7b27e8e6ae9a713a6ff97a04061334d591d2d83851ce34e6c98264495cb'
+  'c58d85dea2ddf7ea80831966817b4f576073354a1f5d73697da75445054cecc4e0b5711792b54d02c3228e87efff80bcce34c4d5a632463720941d525f41c520'
   '2f3de7257590ec00d6a5d222813ac9169a38b49832b863bdea7f2177eeda60ff4d98ad6656d15552e59884bfbf73cee960cb69cd1c1412bd633331025ccd9a81'
   '854f0849ab4c726cc15f0e6c0ff56a9e1e4d8029f774e05c0d85ecfbd8d5f13919c944e4fce38678cd01585968b9c8011ef8e5f7ee729d6f7a0232e55b722558'
 )
