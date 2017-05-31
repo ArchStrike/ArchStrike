@@ -4,20 +4,24 @@
 buildarch=1
 
 pkgname=apache-tika
-pkgver=1.14
-pkgrel=2
+pkgver=1.15
+pkgrel=1
 pkgdesc='Toolkit for detecting and extracting metadata and structured text content'
 arch=('any')
 license=('Apache')
 url='https://tika.apache.org'
 depends=('java-environment' 'bash')
 noextract=("tika-server-$pkgver.jar")
+
 source=(
   "http://central.maven.org/maven2/org/apache/tika/tika-server/$pkgver/tika-server-$pkgver.jar"
   "$pkgname.service"
 )
-sha512sums=('3b3c128cd71413bf1d7f81d865038b267e37f7710005c775d082a14fb7cdc6518b157246247edb9c55c7324d5b60d4f8bb984c010ca63378f194c064c4fb8228'
-            'e46522bfcc86ada8776c4f12cf645a81c34492b1c86e9bd1258d7fa248fb8fed9c2bd57e5971c5c9a4687f35626f872f63920649279cfaba5498a55c3331bcf5')
+
+sha512sums=(
+  'a5adcb71fab79cac7beb1c8585d0f08b277c1038cb59e200e0fdba6120972d0e5d8ffb6ded2a29d8608bdeb8b53eaa99423ff0985220bd672584271f61a4eb24'
+  'e46522bfcc86ada8776c4f12cf645a81c34492b1c86e9bd1258d7fa248fb8fed9c2bd57e5971c5c9a4687f35626f872f63920649279cfaba5498a55c3331bcf5'
+)
 
 package() {
   install -dm755 "$pkgdir/usr/bin"
