@@ -5,22 +5,23 @@ buildarch=220
 _pkgname=alfred
 pkgname=batman-$_pkgname
 groups=('archstrike' 'archstrike-wireless')
-pkgver=2017.0
-pkgrel=2
-pkgdesc="Almighty Lightweight Fact Remote Exchange Daemon"
+pkgver=2017.1
+pkgrel=1
+pkgdesc='Almighty Lightweight Fact Remote Exchange Daemon'
+url='http://www.open-mesh.org'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://www.open-mesh.org"
 license=('GPL')
 depends=('gpsd' 'libnl')
 makedepends=('hardening-wrapper')
 source=("http://downloads.open-mesh.org/batman/releases/batman-adv-$pkgver/$_pkgname-$pkgver.tar.gz")
-sha512sums=('fd87807f2fbac079b23a3429f9957e75773194ce1d65e15947f3f037b774210e3cb8fd00ec501f8494ddb6f7be4e6f1ec9362a404e8af74745f7c7b323c62c72')
+sha512sums=('9071d567390129763cc93904c8aeef545e1f11aec81a79ec889c3b17abc37448aa3031589386c4940b6a1850f119f581b36d7e0dbd2824c78974e9322ba83d14')
 
 build(){
-    cd $_pkgname-$pkgver
-    make
+  cd $_pkgname-$pkgver
+  make
 }
+
 package() {
-    cd $_pkgname-$pkgver
-    make DESTDIR=$pkgdir PREFIX=/usr SBINDIR=/usr/bin install
+  cd $_pkgname-$pkgver
+  make DESTDIR="$pkgdir" PREFIX=/usr SBINDIR=/usr/bin install
 }
