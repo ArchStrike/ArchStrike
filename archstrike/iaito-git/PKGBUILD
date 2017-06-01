@@ -1,0 +1,39 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: strayArch <j.a.stronz@gmail.com>
+
+buildarch=220
+
+_pkgname=iaito
+pkgname=${_pkgname}-git
+pkgver=r254.b7e9afc
+pkgrel=1
+pkgdesc="A Qt and C++ GUI for radare2 reverse engineering framework"
+url="http://www.iaito.re"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+groups=('archstrike' 'archstrike-analysis' 'archstrike-reverse')
+license=('GPL3')
+depends=('qt5-base' 'qt5-tools' 'qt5-webengine' 'radare2')
+makedepends=('git')
+provides=("bokken")
+replaces=("bokken")
+conflicts=("bokken")
+source=("${_pkgname}::git+https://github.com/hteso/${_pkgname}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${_pkgname}"
+  qmake PREFIX=/usr src/
+  make -j$(nproc)
+}
+
+package() {
+  cd "${_pkgname}"
+  make INSTALL_ROOT=${pkgdir} install
+}
+
+# vim: ts=2 sw=2 et:
