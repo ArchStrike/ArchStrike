@@ -2,39 +2,41 @@
 
 buildarch=1
 
-pkgname=commix-git
-pkgver=20170518.r837
+_pkgname=commix
+pkgname=$_pkgname-git
+pkgver=20170531.r847
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
-pkgdesc="Find and exploit a command injection vulnerability in a certain vulnerable parameter or string."
-url="https://github.com/stasinopoulos/commix"
+pkgdesc='Find and exploit a command injection vulnerability in a certain vulnerable parameter or string'
+url='https://github.com/stasinopoulos/commix'
 depends=('python2-urllib3' 'python2-httplib2')
 makedepends=('git')
 license=('GPL3')
 arch=('any')
-source=("${pkgname}::git+${url}.git")
+source=("$pkgname::git+$url.git")
 sha512sums=('SKIP')
 
 pkgver() {
-cd "$pkgname"
-printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  cd $pkgname
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
+  grep -iRl 'python' $pkgname | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
-  cd ${pkgname}
-  install -dm755 "${pkgdir}/usr/share/${pkgname}/"
-  install -dm755 "${pkgdir}/usr/bin/"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}/"
-  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' $pkgdir/usr/share/commix-git/src/core/modules/shellshock/shellshock.py
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
+  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "$pkgdir/usr/share/$_pkgname/src/core/modules/shellshock/shellshock.py"
 
-cat > "${pkgdir}/usr/bin/commix" <<EOF
+cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}
-python2 commix.py "\$@"
+cd /usr/share/$_pkgname
+python2 $_pkgname.py "\$@"
 EOF
-chmod 755 "${pkgdir}/usr/bin/commix"
+
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
 }
