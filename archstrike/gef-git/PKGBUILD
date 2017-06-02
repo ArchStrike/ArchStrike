@@ -2,34 +2,53 @@
 
 buildarch=1
 
-pkgname=gef-git
 _pkgname=gef
-pkgver=r984.9f81df2
+pkgname=${_pkgname}-git
+pkgver=r1022.eb8886f
 pkgrel=1
-pkgdesc="Provides additional features to GDB using the Python API to assist during the process of dynamic analysis or exploit development."
+pkgdesc='Provides additional features to GDB using the Python API to assist during the process of dynamic analysis or exploit development'
 url='https://github.com/hugsy/gef'
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 license=('MIT')
-depends=('python2' 'gdb' 'python2-capstone' 'ropgadget' 'radare2' 'python2-keystone' 'unicorn' 'ropper' 'keystone' 'python-unicorn')
+depends=('python2' 'gdb' 'python2-capstone' 'ropgadget' 'radare2' 'python2-keystone' 'unicorn' 'python2-ropper' 'keystone' 'python2-unicorn')
 makedepends=('git')
-install='gef-git.install'
+install="${pkgname}.install"
 source=("${pkgname}::git+https://github.com/hugsy/gef.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd $pkgname
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' "$pkgname" | xargs sed -i 's|python$|python2|g'
+  grep -iRl 'python' $pkgname | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
-  cd "$pkgname"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cd $pkgname
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
+  rm "$pkgdir/usr/share/$_pkgname/${_pkgname}.sh"
+
+cat > "${pkgdir}/usr/bin/${_pkgname}-setup" <<EOF
+#!/usr/bin/env bash
+
+install -Dm644 /usr/share/${_pkgname}/${_pkgname}.py "$HOME/.gdbinit-gef.py"
+printf '%s\n' "Installed $_pkgname to $HOME/.gdbinit-gef.py"
+
+[[ -f "$HOME/.gdbinit" ]] && {
+  mv "$HOME/.gdbinit" "$HOME/.gdbinit.old"
+  printf '%s\n' "Moved $HOME/.gdbinit to $HOME/.gdbinit.old"
+}
+
+printf '%s\n' "source $HOME/.gdbinit-gef.py" > "$HOME/.gdbinit"
+printf '%s\n' "Created $HOME/.gdbinit"
+EOF
+
+  chmod 755 "${pkgdir}/usr/bin/${_pkgname}-setup"
 }
