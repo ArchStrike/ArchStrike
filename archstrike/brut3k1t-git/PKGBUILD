@@ -2,44 +2,41 @@
 
 buildarch=1
 
-pkgname=brut3k1t-git
 _pkgname=brut3k1t
-pkgver=20170418.r64
+pkgname=${_pkgname}-git
+pkgver=20170526.r67
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
-pkgdesc="Brute-force attack that supports multiple protocols and services"
-url="https://github.com/ex0dus-0x/brut3k1t"
-license=('MIT')
+pkgdesc='Brute-force attack that supports multiple protocols and services'
+url='https://github.com/ex0dus-0x/brut3k1t'
+license=('GPL3')
 depends=('python2' 'python2-pip' 'python2-selenium' 'python2-paramiko' 'python2-skpy' 'python2-mechanize' 'geckodriver' 'xmpppy')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd $pkgname
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd ${pkgname}
+  cd $pkgname
   grep -iRl 'python' . | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
-  cd ${pkgname}
+  cd $pkgname
   install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"; rm LICENSE
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}
-python2 brut3k1t.py "\$@"
+cd /usr/share/${_pkgname}
+python2 ${_pkgname} "\$@"
 EOF
 
-chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+  chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
