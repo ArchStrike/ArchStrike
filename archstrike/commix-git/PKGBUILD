@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=commix
 pkgname=$_pkgname-git
-pkgver=20170531.r847
+pkgver=20170602.r849
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='Find and exploit a command injection vulnerability in a certain vulnerable parameter or string'
@@ -30,6 +30,8 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$_pkgname"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
+
+  #fix error in namcap
   sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' "$pkgdir/usr/share/$_pkgname/src/core/modules/shellshock/shellshock.py"
 
 cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
