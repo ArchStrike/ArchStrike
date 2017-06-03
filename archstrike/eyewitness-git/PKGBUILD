@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=eyewitness-git
-pkgver=r604.b735e70
+pkgver=r605.537d82a
 pkgrel=1
 pkgdesc="designed to take screenshots of websites, provide some server header info, and identify default credentials is possible"
 arch=('any')
@@ -30,15 +30,15 @@ prepare() {
 
 package() {
   cd ${pkgname}
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/${pkgname}"
 
-cat > "$pkgdir/usr/bin/eyewitness" <<EOF
+cat > "${pkgdir}/usr/bin/eyewitness" <<EOF
 #!/usr/bin/env bash
 python2 /usr/share/${pkgname}/EyeWitness.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/eyewitness"
+chmod 755 "${pkgdir}/usr/bin/eyewitness"
 }
 
