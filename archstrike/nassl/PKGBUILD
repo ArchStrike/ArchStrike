@@ -3,8 +3,8 @@
 buildarch=192
 
 pkgname=nassl
-pkgver=0.15.1
-pkgrel=2
+pkgver=0.16.3
+pkgrel=1
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto')
 pkgdesc='Experimental Python wrapper for OpenSSL'
 arch=('i686' 'x86_64')
@@ -12,11 +12,20 @@ url='https://github.com/nabla-c0d3/nassl'
 license=('GPL')
 depends=('python2')
 makedepends=('openssl' 'python2-setuptools')
-source=("https://github.com/nabla-c0d3/nassl/archive/${pkgver}.tar.gz")
-sha512sums=('eec8c088424478d6adbf8145f7628dd828a672ec0fe4d2e7c386a51adcdc8e3be026f421b767f0fccc56556f5c7d22d5359f21ace9fd51cb51d525d6d177610d')
+source=(
+  "${pkgname}-${pkgver}.tar.gz::https://github.com/nabla-c0d3/nassl/archive/${pkgver}.tar.gz"
+  "${pkgname}-lfs-${pkgver}.tar.gz::https://github.com/ArchStrike/nassl-lfs/archive/${pkgver}.tar.gz"
+)
+
+sha512sums=(
+  'f5ecbb3e4e5a0877df9ffd55d7b5939d131571bd700982e82129e41ed5aa05d8d368cc0ebb3b3afa08a47c7f5f705901516bb6c6aa2e50c0ced81fe5fa5f5048'
+  '6a24a6046e450a4a9b9f859faa4141d4c5ecd4f13d3414d795d58c70ee0b986d5cda4991cf7bc0956a9a467f6f39cd72e656361a417a308af68c610cb7e04595'
+)
 
 prepare() {
-  grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
+  cp -r ${pkgname}-lfs-${pkgver}/bin ${pkgname}-${pkgver}/
+  cd ${pkgname}-${pkgver}
+  grep -iRl python | xargs sed -i 's|python$|python2|g'
 }
 
 build() {
@@ -26,5 +35,5 @@ build() {
 
 package() {
   cd ${pkgname}-${pkgver}
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="$pkgdir" --optimize=1
 }
