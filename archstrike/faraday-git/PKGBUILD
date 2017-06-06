@@ -2,54 +2,54 @@
 
 buildarch=220
 
-pkgname=faraday-git
-pkgver=20170329.r3629
+_pkgname=faraday
+pkgname=${_pkgname}-git
+pkgver=20170526.r3850
 pkgrel=1
-pkgdesc="A new concept (IPE) Integrated Penetration-Test Environment a multiuser Penetration test IDE. Designed for distribution, indexation and analyze of the generated data during the process of a security audit."
+pkgdesc='An Integrated Multiuser Pentest Environment that maps and leverages all the knowledge you generate in real time'
 groups=('archstrike' 'archstrike-misc')
-url="http://www.faradaysec.com/"
-depends_x86_64+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'lib32-glibc' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
-depends_i686+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
-depends_armv6h+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
-depends_armv7h+=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
+url='http://www.faradaysec.com'
+depends=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
+depends_x86_64+=('lib32-glibc')
 makedepends=('git')
 options=('!strip')
 license=('GPL')
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('any')
 source=("${pkgname}::git+https://github.com/infobyte/faraday.git")
-replaces=('faraday')
-conflicts=('faraday')
-provides=('faraday')
-install="${pkgname}.install"
+replaces=("$_pkgname")
+conflicts=("$_pkgname")
+provides=("$_pkgname")
+install=${pkgname}.install
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
-  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  cd $pkgname
+  printf '%s.r%s' "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  grep -iRl 'python' "${pkgname}" | xargs sed -i 's|python$|python2|g'
+  cd $pkgname
+  grep -iRl python | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
-  cd "${pkgname}"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
+  cd $pkgname
   install -dm755 "$pkgdir/usr/bin"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  install -dm755 "$pkgdir/usr/share/${_pkgname}"
+  cp -a --no-preserve=ownership * "$pkgdir/usr/share/${_pkgname}"
 
-cat > "$pkgdir/usr/bin/faraday" << EOF
+  cat > "$pkgdir/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
-cd /usr/share/faraday-git/
-python2 faraday.py "\$@"
+cd /usr/share/${_pkgname}
+python2 ${_pkgname}.py "\$@"
 EOF
 
-cat > "$pkgdir/usr/bin/faraday-server" <<EOF
+cat > "$pkgdir/usr/bin/${_pkgname}-server" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/faraday-git/
-python2 faraday-server.py "\$@"
+cd /usr/share/${_pkgname}
+python2 ${_pkgname}-server.py "\$@"
 EOF
 
-for i in faraday faraday-server; do chmod 755 $pkgdir/usr/bin/$i; done
+  chmod 755 "$pkgdir"/usr/bin/{${_pkgname},${_pkgname}-server}
 }
 
