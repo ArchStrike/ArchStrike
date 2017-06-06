@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=220
+buildarch=1
 
 _pkgname=faraday
 pkgname=${_pkgname}-git
