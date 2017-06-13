@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=xsspy-git
-pkgver=20170222.r39
-pkgrel=2
+pkgver=20170418.r50
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="A python tool for finding Cross Site Scripting vulnerabilities in websites"
