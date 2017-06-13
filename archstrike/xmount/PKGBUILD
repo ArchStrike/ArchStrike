@@ -1,29 +1,29 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: kfgz <kfgz at interia pl>
 
-buildarch=220
+buildarch=1
 
 pkgname=xmount
-pkgver=0.7.4
-pkgrel=2
+pkgver=0.7.5
+pkgrel=1
 pkgdesc="Tool to crossmount between multiple input and output harddisk image files"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('any')
 groups=('archstrike' 'archstrike-analysis')
 license=('GPL')
-url="https://github.com/eaas-framework/xmount"
+url="https://code.pinguin.lu/diffusion/XMOUNT/"
 depends=('libewf' 'afflib' 'zlib' 'fuse')
 makedepends=('cmake')
-source=("https://github.com/eaas-framework/xmount/archive/v${pkgver}.tar.gz")
-sha512sums=('d44937bddf927f2970ed7b8d274b3c25788b9385b42cdd1f8d4720bde4359bcc4726d7d6a5f0e987c5ceaef60b0c2b8363007912068eeff8ac50cc1aac890ae4')
+source=("http://files.pinguin.lu/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('729ac5062d3111fee561d33b08f5afc399c8dcada2045514c17259f9da0510c28d006045d844720cc8bc4f2580a3075d605ab5cd20a37bfb1aab8449ec72fc69')
 
 build() {
-  cd "${pkgname}-${pkgver}/trunk"
+  cd "${pkgname}-${pkgver}"
   mkdir build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release ..
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}/trunk/build"
+  cd "${pkgname}-${pkgver}/build"
   make DESTDIR="${pkgdir}" install
 }
