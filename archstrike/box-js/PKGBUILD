@@ -15,7 +15,7 @@ provides=('boxjs-git')
 replaces=('boxjs-git')
 conflicts=('boxjs-git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('941734898e1e60a69377ae0e3d0f33dc22c5c7e8d529773bf27e302af0aa2326b1e2c3b1afb4001c28e4986148ac766dee0846013026278daefb6ec360716ede')
+sha512sums=('a578ca97c5282745860a619463e45fb04eb8114a8a7ffb7a0f18a43826f8c7982fc5bea34da68b343f405d14c2c33dcdf43dff62f29b195fa2429f616af2dcd3')
 
 package() {
   cd ${pkgname}-${pkgver}
