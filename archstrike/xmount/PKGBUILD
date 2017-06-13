@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: kfgz <kfgz at interia pl>
 
-buildarch=1
+buildarch=220
 
 pkgname=xmount
 pkgver=0.7.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Tool to crossmount between multiple input and output harddisk image files"
-arch=('any')
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 groups=('archstrike' 'archstrike-analysis')
 license=('GPL')
 url="https://code.pinguin.lu/diffusion/XMOUNT/"
