@@ -3,30 +3,34 @@
 buildarch=1
 
 pkgname=angr
-pkgver=6.7.1.31
-pkgrel=2
+pkgver=6.7.6.9
+pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
-depends=('python2-capstone' 'python2-cachetools' 'python2-networkx' 'python2-rpyc' 'python2-futures' 'python2-progressbar' 'python2-mulpyplexer' 'python2-cooldict' 'python2-ana' 'python2-archinfo' 'python2-pyvex' 'python2-claripy' 'python2-simuvex' 'python2-cle' 'python2-pyelftools' 'python2-cffi' 'python2-bintrees' 'python2-dpkt')
+depends=('python2-capstone' 'python2-cachetools' 'python2-networkx' 'python2-rpyc'
+         'python2-futures' 'python2-progressbar' 'python2-mulpyplexer' 'python2-cooldict'
+         'python2-ana' 'python2-archinfo' 'python2-pyvex' 'python2-claripy' 'python2-simuvex'
+         'python2-cle' 'python2-pyelftools' 'python2-cffi' 'python2-bintrees' 'python2-dpkt')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-install="$pkgname.install"
-source=("https://pypi.python.org/packages/5b/f4/136ef18497c1058663fef284db5305628265a5564c0a5b99ceb2e2001b52/angr-${pkgver}.tar.gz" "LICENSE")
-sha512sums=('fa164c46cfce3fec6dcfe61ceea92c18c539d57cca5ce51ba673d7649b0df4fcdc2128af4b7a9db3a3cbdf53d5872af6d28b6830e5d2512978f71ec91420d09e'
+install="${pkgname}.install"
+source=("https://pypi.python.org/packages/60/f1/f2e5c86fc65233cc9d23ff05ca5d82cd9d09e4290b1ea6cafcff5e4524d5/${pkgname}-${pkgver}.tar.gz"
+        "LICENSE")
+sha512sums=('f68298d162231f671b1080695978d30eb963589c59e6886cceed73edd5761c7d4ae498b99c081b218578f507fd6fc2fde695d28f4d23247141de6e809fa26787'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 prepare() {
-  grep -iRl 'python' $pkgname-$pkgver | xargs sed -i 's|python$|python2|'
+  grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
 }
 
 build() {
-  cd $pkgname-$pkgver
+  cd ${pkgname}-${pkgver}
   python2 setup.py build
 }
 
 package() {
-  cd $pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir" -O1 --skip-build
-  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${pkgname}-${pkgver}
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
