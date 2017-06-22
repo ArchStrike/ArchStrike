@@ -4,17 +4,18 @@ buildarch=1
 
 pkgname=xsser
 pkgver=1.7
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A penetration testing tool for detecting and exploiting XSS vulnerabilites."
 arch=('any')
 url='https://xsser.03c8.net/'
 license=('GPL3')
-depends=('orbited' 'python2-beautifulsoup3' 'python2-pycurl' 'twisted' 'pygtk')
+depends=('orbited' 'python2-beautifulsoup3' 'python2-pycurl' 'python2-twisted'
+         'pygtk')
 makedepends=('subversion' 'python2-setuptools')
-optdepends=('pygtkmoz')
+optdepends=('python2-extras')
 source=("https://xsser.03c8.net/xsser/${pkgname}_${pkgver}-1.tar.gz")
-sha512sums=("235723bf82a6d6c11c4520fcd4a945e3a8eb4542ea343098e5c454344fa960c731fd41eb571635e81aeaf2c633070355ae66af4c041fa885f4756aa783be44b3")
+sha512sums=('235723bf82a6d6c11c4520fcd4a945e3a8eb4542ea343098e5c454344fa960c731fd41eb571635e81aeaf2c633070355ae66af4c041fa885f4756aa783be44b3')
 
 package() {
   cd "${srcdir}/${pkgname}_${pkgver}-1/${pkgname}-public"
