@@ -4,17 +4,18 @@ buildarch=1
 
 pkgname=lans-git
 pkgver=20151122.r168
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-spoof')
 pkgdesc="A Multithreaded asynchronous packet parsing/injecting arp spoofer."
 url="https://github.com/DanMcInerney/LANs.py"
 arch=('any')
 license=('GPL')
-depends=('scapy' 'python2-nfqueue' 'aircrack-ng' 'twisted' 'nbtscan' 'python2-requests' 'nmap')
+depends=('scapy' 'python2-nfqueue' 'aircrack-ng' 'python2-twisted' 'nbtscan'
+         'python2-requests' 'nmap')
 makedepends=('git')
 replaces=('lans')
 provides=('lans')
-optsdepends=('beef')
+optdepends=('beef-git: for BeEF hook URL')
 source=("$pkgname::git+https://github.com/DanMcInerney/LANs.py.git")
 sha512sums=('SKIP')
 
