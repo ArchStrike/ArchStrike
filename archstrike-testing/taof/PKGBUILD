@@ -4,15 +4,15 @@ buildarch=1
 
 pkgname=taof
 pkgver=0.3.2
-pkgrel=4
-pkgdesc="Taof is a GUI cross-platform Python generic network protocol fuzzer."
-url="http://taof.sf.net"
+pkgrel=5
+pkgdesc="A GUI cross-platform Python generic network protocol fuzzer."
+url="https://sourceforge.net/projects/taof/"
 groups=('archstrike' 'archstrike-fuzzers')
 license=('GPL')
-depends=('python>=2.4' 'twisted' 'pygtk')
+depends=('python>=2.4' 'python2-twisted' 'pygtk')
 arch=(any)
 source=(http://downloads.sourceforge.net/taof/taof-$pkgver.tgz)
-md5sums=('7041666f4f7f7a3c6879fa046b924055')
+sha512sums=('f01c77533f93f5bd462eb52e47b84c490fe939b0cf7eee6aebb0b999cf42a2d4d47a96aaeb1f6c2f518cb5b133480f47a82c2a1c541bf04178510543d431c82c')
 
 package() {
   cd "$srcdir/taof-$pkgver"
