@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname='arpalert'
-pkgver='2.0.11'
-pkgrel=3
+pkgver='2.0.12'
+pkgrel=1
 epoch=1
 pkgdesc='Monitor ARP changes in ethernet networks.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ depends=('libpcap')
 options=('!emptydirs')
 groups=('archstrike' 'archstrike-defense')
 source=("http://www.arpalert.org/src/arpalert-$pkgver.tar.gz")
-sha512sums=('8593b5f87c8435bc0dfb6b1d48b72705a109425410039341fddb49beddacb30c87e2b30a1f86cca17bb64aa407060ee5b9437ff2801b9869261ed91f6f5e141f')
+sha512sums=('0bbc5285db47a0ab130850d000850ef0ae6b825f3ed89ebe7788ca258c127108019e50f63d6b6f6ddfe8f164a2808a7940242eb0d23db343bc2632d775bf8752')
 
 build() {
   cd "$srcdir/arpalert-$pkgver"
