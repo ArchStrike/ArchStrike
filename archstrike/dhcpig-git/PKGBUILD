@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=dhcpig-git
-pkgver=r87.67f9137
+pkgver=r92.9fd8df5
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fuzzers' 'archstrike-recon' 'archstrike-networking')
