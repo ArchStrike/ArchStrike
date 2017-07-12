@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=davoset
-pkgver=1.2.9
-pkgrel=2
+pkgver=1.3.4
+pkgrel=1
 pkgdesc="A tool for using Open Proxy, Abuse of Functionality, and XML External Entities vulnerabilities on some websites to attack others"
 arch=('any')
 url="http://websecurity.com.ua/davoset/"
@@ -13,8 +13,8 @@ groups=('archstrike' 'archstrike-dos')
 depends=('perl-io-socket-socks')
 makedepends=('unrar' 'dos2unix')
 options=('!emptydirs')
-source=("$pkgname-$pkgver.rar::http://websecurity.com.ua/uploads/2016/DAVOSET_v.$pkgver.rar")
-sha512sums=('a072361d89f45214a42f98e6a80386772c671779903b8a38ab75cc2685a62c098a572a156f14c265875db867f4fb7aa41f0f7886eaaefa4f74ede99ef1170fdb')
+source=("$pkgname-$pkgver.rar::http://websecurity.com.ua/uploads/2017/DAVOSET_v.$pkgver.rar")
+sha512sums=('1ffab6fe9adbd7f8f2d8fb483bc5aae36719c3f7e70af4093845c1394468ed1425cc96db72e353ceb574e81540d714eaeb0178ad509e020a930ab80ff9ad1817')
 noextract=("davoset-$pkgver.rar")
 install="davoset.install"
 
