@@ -2,35 +2,36 @@
 
 buildarch=1
 
-pkgname=mrtparse-git
-pkgver=r460.e062c5c
+_pkgname=mrtparse
+pkgname=${_pkgname}-git
+pkgver=r464.9851c48
 pkgrel=1
 groups=('archstrike')
 pkgdesc="a module to read and analyze the MRT format data."
 arch=('any')
 url='https://github.com/YoshiyukiYamauchi/mrtparse'
 license=('APACHE')
-provides=('mrtparse')
-conflicts=('mrtparse')
-replaces=('mrtparse')
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
+replaces=("${_pkgname}")
 depends=('python2')
 makedepends=('git')
-source=("mrtparse::git+https://github.com/YoshiyukiYamauchi/mrtparse.git")
+source=("${pkgname}::git+https://github.com/YoshiyukiYamauchi/mrtparse.git")
 sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/mrtparse"
+  cd ${pkgname}
   sed -i 's|env python$|env python2|' *.py
   python2 setup.py build
 }
 
 pkgver() {
-  cd "$srcdir/mrtparse"
+  cd ${pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$srcdir/mrtparse"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd ${pkgname}
+  python2 setup.py install --root="$pkgdir/" -O1 --skip-build
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
 }
