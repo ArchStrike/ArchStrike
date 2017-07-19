@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=owasp-zsc-git
-pkgver=20170503.r279
+pkgver=20170719.r304
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
