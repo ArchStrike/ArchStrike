@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=t50
-pkgver=5.6.13
+pkgver=5.6.15
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
@@ -12,7 +12,7 @@ url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-5.6/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('4e75d5787dc223be61cc7a745b3dcec46793a5372d0cc5e6e93344114fefe400de4525ab135384bbbd6c155a4c48f5cd3ec9b67887655f9f3aced9d76624044f')
+sha512sums=('5cadb3c927b83b2fcd729808159652662c21817dbc9fe98c030b7da4fd4f0048bf9a551c8d827e2260f3f7ab8bf2db540b1be09cc7c1e991f103e39ac7fc1243')
 
 build() {
   cd "${pkgname}-${pkgver}"
