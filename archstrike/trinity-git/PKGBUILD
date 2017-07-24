@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=trinity-git
-pkgver=v1.7.190.gd14f212a
+pkgver=v1.7.267.g37ae2cce
 pkgrel=1
 epoch=1
 pkgdesc="A Linux System call fuzzer"
