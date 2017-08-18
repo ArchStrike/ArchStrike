@@ -11,7 +11,6 @@ Server = https://us.mirror.archstrike.org/archstrike/$arch/$repo
 Server = http://mirror.keystealth.org/archstrike/$arch/$repo
 Server = http://archstrike.outerworld.org/$arch/$repo
 Server = http://mirror.i3d.net/pub/archstrike/$arch/$repo
-Server = http://mirror.jmu.edu/pub/archstrike/$arch/$repo
 Server = http://www.mirrorservice.org/sites/mirror.archstrike.org/$arch/$repo
 Server = https://www.mirrorservice.org/sites/mirror.archstrike.org/$arch/$repo
 Server = https://mirror.umd.edu/archstrike/$arch/$repo
