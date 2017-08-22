@@ -13,7 +13,8 @@ url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL')
 depends=('bash>=4.2' 'iw' 'net-tools' 'wireless_tools' 'gawk' 'aircrack-ng'
          'xterm' 'reaver-wps-fork-t6x-git' 'iproute2' 'xorg-xdpyinfo'
-         'ethtool' 'pciutils' 'usbutils' 'rfkill' 'wget' 'ccze' 'curl')
+         'ethtool' 'pciutils' 'usbutils' 'rfkill' 'wget' 'ccze' 'curl'
+         'xorg-xset')
 optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3' 'hostapd' 'lighttpd'
          'iptables' 'beef-git' 'ettercap' 'sslstrip' 'dhcpcd' 'dsniff'
          'bully' 'pixiewps' 'expect' 'bettercap-git')
