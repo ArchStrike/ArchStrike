@@ -1,11 +1,10 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2017-03-22
+# Generated on 2017-09-05
 #
 
 ## Official Mirrors
 Server = https://mirror.archstrike.org/$arch/$repo
-Server = https://us.mirror.archstrike.org/archstrike/$arch/$repo
 
 ## Community Mirrors
 Server = http://mirror.keystealth.org/archstrike/$arch/$repo
