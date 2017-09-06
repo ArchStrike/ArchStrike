@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=burst
 pkgname=$_pkgname-git
-pkgver=20150703.r223
-pkgrel=3
+pkgver=20170829.r224
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc='An open source HTTP framework'
 arch=('any')
