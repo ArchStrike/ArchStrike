@@ -1,0 +1,11 @@
+--- src/ferret/build/gcc4/Makefile
++++ src/ferret/build/gcc4/Makefile
+@@ -26,7 +26,7 @@
+ 
+ OBJ = $(addprefix $(TMPDIR)/, $(notdir $(addsuffix .o, $(basename $(SRC)))))
+ 
+-$(DSTDIR)/hamster: $(OBJ)
++$(DSTDIR)/ferret: $(OBJ)
+ 	$(CC) $(CFLAGS) -o $@ $(OBJ) $(LIBS) -lstdc++
+ 
+ depend:
