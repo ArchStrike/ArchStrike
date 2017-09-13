@@ -1,0 +1,46 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=ssldump-git
+pkgver=20170612.r47
+pkgrel=1
+groups=('archstrike' 'archstrike-sniffers')
+pkgdesc="an SSLv3/TLS network protocol analyzer"
+url="https://github.com/adulau/ssldump"
+license=('custom')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+makedepends=('git')
+depends=('libpcap' 'openssl')
+provides=('ssldump')
+replaces=('ssldump')
+conflicts=('ssldump')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+build() {
+  cd ${pkgname}
+
+  # Arch64 fixes.
+  ./configure --prefix=/usr \
+              --build=i686-pc-linux-gnu \
+              --host=i686-pc-linux-gnu \
+              "--sbindir=${pkgdir}/usr/bin" \
+              "--mandir=${pkgdir}/usr/share/man"
+
+  make
+}
+
+package() {
+  cd ${pkgname}
+
+  make "prefix=${pkgdir}/usr" install
+
+  # Install license.
+  install -Dm644 COPYRIGHT $pkgdir/usr/share/licenses/${pkgname}/LICENSE
+}
