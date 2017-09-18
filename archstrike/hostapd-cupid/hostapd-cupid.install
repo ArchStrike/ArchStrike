@@ -1,3 +1,0 @@
-post_install() {
-  echo "> More info: https://github.com/lgrangeia/cupid"
-}
