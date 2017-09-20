@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=backdoorme-git
-pkgver=20170103.r277
-pkgrel=2
+pkgver=20170105.r306
+pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
 pkgdesc="Powerful utility capable of backdooring Unix machines with a slew of backdoors"
