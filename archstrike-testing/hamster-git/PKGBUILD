@@ -1,0 +1,70 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname=hamster
+pkgname="${_pkgname}-git"
+pkgver=20131120.r3
+pkgrel=1
+groups=('archstrike' 'archstrike-exploit')
+pkgdesc="Tool for HTTP session sidejacking."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url='https://github.com/robertdavidgraham/hamster'
+license=('GPL')
+depends=('gcc-libs')
+makedepends=('git')
+provides=('hamster')
+replaces=('hamster')
+conflicts=('hamster')
+source=("${pkgname}/hamster::git+${url}.git"
+  "${pkgname}/ferret::git+https://github.com/robertdavidgraham/ferret.git"
+  "ferret_pixie_gnu_allversions.patch"
+  "ferret_bin_name.patch"
+  "remove_libm.patch")
+sha512sums=('SKIP'
+            'SKIP'
+            '4c6fb90267b884b45d94275631283f5142908c8a1c236829d38f330492134363c9d6443a38bf5b75f189f2099a5ffcf5f408b0de8384a682fc09ecdb6806a0cb'
+            '2c4afc25fa2749c594f03682396ab613171bd87a391bb55485199605a9ce207c851282be024a2d469eae53076d65eb41065f749d3de541a6cae7944ec79e7fde'
+            'a84595005d6f2bc1d5c306b8f0307dfa8710d4a36050caee66444991f85278d803737e11ac6df2b2c2c341f48c6eba1478e2cacf0a8d9e08abe434431739fcb5')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}"
+
+  # execvp looks for commands in PATH
+  sed -i 's/execv/execvp/g' "hamster/src/pixie.c"
+}
+
+build() {
+  cd "${srcdir}"
+
+  mkdir -p "hamster/tmp"
+
+  mkdir -p "ferret/bin"
+  mkdir -p "ferret/tmp"
+
+  patch -Np1 -i "${srcdir}/remove_libm.patch"
+
+  # ferret does not have a Makefile, let's use the one in hamster.
+  cp -r "hamster/build" "ferret/"
+  patch -Np1 -i "${srcdir}/ferret_pixie_gnu_allversions.patch"
+  patch -Np1 -i "${srcdir}/ferret_bin_name.patch"
+
+  cd "${srcdir}/hamster/build/gcc4"
+  make
+
+  cd "${srcdir}/ferret/build/gcc4"
+  make
+}
+
+package() {
+  cd "${srcdir}"
+
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 "hamster/bin/hamster" "${pkgdir}/usr/bin/hamster"
+  install -Dm755 "ferret/bin/ferret" "${pkgdir}/usr/bin/ferret"
+}

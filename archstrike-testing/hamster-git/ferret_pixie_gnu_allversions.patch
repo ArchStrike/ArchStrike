@@ -1,0 +1,11 @@
+--- src/ferret/src/pixie.c
++++ src/ferret/src/pixie.c
+@@ -681,7 +681,7 @@
+ {
+ #if defined(_MSC_VER)
+     return InterlockedExchangeAdd((long*)lhs, rhs);
+-#elif defined(__GNUC__) && __GNUC__ == 4 
++#elif defined(__GNUC__)
+ 	return (unsigned)__sync_fetch_and_add(lhs, rhs);
+ #if 0 && defined(__i386__)
+     unsigned ret;

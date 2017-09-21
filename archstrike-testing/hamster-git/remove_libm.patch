@@ -1,0 +1,11 @@
+--- src/hamster/build/gcc4/Makefile
++++ src/hamster/build/gcc4/Makefile
+@@ -27,7 +27,7 @@
+ OBJ = $(addprefix $(TMPDIR)/, $(notdir $(addsuffix .o, $(basename $(SRC)))))
+ 
+ $(DSTDIR)/hamster: $(OBJ)
+-	$(CC) $(CFLAGS) -o $@ $(OBJ) -lm $(LIBS) -lstdc++
++	$(CC) $(CFLAGS) -o $@ $(OBJ) $(LIBS) -lstdc++
+ 
+ depend:
+ 	makedepend $(CFLAGS) -Y $(SRC)
