@@ -1,0 +1,50 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: strayArch <j.a.stronz@gmail.com>
+
+buildarch=1
+
+_pkgname="rekall"
+pkgname="python2-${_pkgname}"
+pkgver="1.6.0"
+pkgrel=1
+pkgdesc="A Memory Forensic Framework"
+url="https://www.rekall-forensic.com/"
+arch=("any")
+groups=("archstrike" "archstrike-analysis" "archstrike-forensics")
+license=("GPL2")
+depends=("python2")
+makedepends=("python2-setuptools" "python2-virtualenv")
+source=("https://pypi.python.org/packages/6e/1a/a34c540b33541c12caac3abf5052c18860701c1e36ef1048bbce86d868cc/rekall-${pkgver}.zip"
+        "https://raw.githubusercontent.com/google/rekall/master/LICENSE.txt")
+sha512sums=("ab1ab316359bbc44cdaafa7bf41acc4e0ad9771f22737016c318ed539ee65a69c61e31d3be71c9bf46b85470a2528b3568fc6372282b612c6fcea9ce1900b2a1"
+            "7d9f37a715aa7ddb47f60b26e8eea7048a01bb8b914c9190515eee93e49a2d27a87c25687f702ac57fcd33bf97a85f3446ea0ddbe42b4f8c75ca86654f6a0be7")
+
+prepare(){
+  grep -iRl 'python$' "${_pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${_pkgname}-${pkgver}"
+  # Create virtualenv to install into and source it
+  virtualenv2 "${pkgdir}/usr/share/${_pkgname}/virtualenv/${pkgver}-${pkgrel}"
+  source "${pkgdir}/usr/share/${_pkgname}/virtualenv/${pkgver}-${pkgrel}/bin/activate"
+  # Install package into vitrualenv
+  python2 setup.py install -O1 --skip-build
+  # Create script to call it's doppelgaenger in venv
+  install -dm755 "${pkgdir}/usr/bin"
+  for fname in rekall rekal rekal.py; do
+  cat > "${pkgdir}/usr/bin/${fname}" << EOF
+#!/usr/bin/env bash
+source /usr/share/${_pkgname}/virtualenv/${pkgver}-${pkgrel}/bin/activate
+python2 /usr/share/${_pkgname}/virtualenv/${pkgver}-${pkgrel}/bin/${fname}
+EOF
+  chmod 755 "${pkgdir}/usr/bin/${fname}"
+done
+  # Install license
+  install -Dm644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${_pkgname}/LICENSE"
+}
