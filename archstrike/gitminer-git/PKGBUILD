@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=gitminer-git
-pkgver=20170328.r31
+pkgver=20170919.r32
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-info')
 arch=('any')
@@ -12,24 +12,24 @@ url="https://github.com/UnkL4b/GitMiner"
 license=('GPL3')
 depends=('python2' 'python2-requests' 'python2-lxml')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/UnkL4b/GitMiner.git")
+source=("${pkgname}::git+https://github.com/UnkL4b/GitMiner.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname}
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -dm755 "$pkgdir/usr/bin"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
-cat > "$pkgdir/usr/bin/gitminer" <<EOF
-#!/bin/sh
-cd /usr/share/$pkgname
+cat > "${pkgdir}/usr/bin/gitminer" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
 python2 git_miner.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/gitminer"
+chmod 755 "${pkgdir}/usr/bin/gitminer"
 }
