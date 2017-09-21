@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="Empire"
 pkgname=empire
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
@@ -14,7 +14,7 @@ license=('custom')
 install="${pkgname}.install"
 depends=('python2-m2crypto' 'swig' 'python2-crypto' 'python2-flask' 'python2-pydispatcher' 'python2-iptools' 'python2-pyopenssl' 'python2-netifaces' 'python2-dropbox' 'pyinstaller' 'python2-macholib' 'python2-zlib_wrapper')
 source=("https://github.com/PowerShellEmpire/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('bbc43ec33319ce70547d7ad18abc93a65a7344811824737db1b46ccbe23249594b1b0c75402ddb6b96fdd0700d559de268c14bcf727648fd0b37e474ab8fe53d')
+sha512sums=('b7ea176f23049e6f47d72fcff068587cef75d131375a7e9df1c97abd6ab0eaf2246cfadcb6752216f418c74b143cf1fdf1fd0a745aa4355ac22053a6ddb8cdb7')
 
 prepare(){
   grep -iRl 'python' ${_pkgname}-$pkgver | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
