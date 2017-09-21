@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=dirsearch
-pkgver=0.3.7
-pkgrel=2
+pkgver=0.3.8
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='A HTTP(S) directory/file brute forcer'
 arch=('any')
@@ -15,7 +15,7 @@ provides=('dirs3arch')
 replaces=('dirs3arch')
 conflicts=('dirs3arch')
 source=("https://github.com/maurosoria/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('1605e232a9f15dd6548fdef70ef1966c3db36c13421f60bcd95319b383d1950f1505ed991bc0266657c5cbb532d860360d013de8c6b358d5ccbf16238617205c')
+sha512sums=('c4a9fe46f839daeb82e4ba50eae085c0bf7b62c3fd4ed6d9f54cf6b940c3b6f008e0e9e7894cfe96e8af790b2cc9b58ac6df7caa08b17ccbfb54a91ecd65454e')
 
 package() {
   cd $pkgname-$pkgver
