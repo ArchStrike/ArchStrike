@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=commix
 pkgname=$_pkgname-git
-pkgver=20170921.r915
+pkgver=20170927.r919
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='Find and exploit a command injection vulnerability in a certain vulnerable parameter or string'
