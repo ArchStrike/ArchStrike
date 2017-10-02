@@ -3,21 +3,16 @@
 buildarch=220
 
 pkgname=aiengine
-pkgver=1.7.0
-pkgrel=2
+pkgver=1.8.1
+pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A packet inspection engine with capabilities of learning without any human intervention."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://bitbucket.org/camp0/aiengine"
 license=('GPL3')
-if [[ ${CARCH} == 'x86_64' ]]; then
-     makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx-svn' 'python2' 'gcc-libs-multilib')
-else
-     makedepends=('boost' 'boost-bloom-filters-git' 'log4cxx-svn' 'python2' 'gcc-libs')
-fi
-depends=('libpcap' 'boost-libs' 'python2' 'log4cxx-svn' 'pcre')
+depends=('libpcap' 'boost' 'boost-libs' 'boost-bloom-filters' 'python2' 'log4cxx-svn' 'pcre' 'gcc-libs')
 source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-${pkgver}.tar.gz")
-sha512sums=('f708e2dc542bb485e4853deb269fc77285f74b3d904be65c989d8c52175d42b0eecf43aa4c95612825d976fdd443f88f0df77ba803c8ae3d9c66dbb25095b794')
+sha512sums=('2d362c0df13f560c4f7b3d8d84475c301786aecb2165b056a52d4f7694fc5ac0b058fa3ccd0554b77cf6389fadd0ec3d3b9e74a14cff6a97b7e85fc7adea3659')
 
 prepare(){
    grep -iRl 'python' "${pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
