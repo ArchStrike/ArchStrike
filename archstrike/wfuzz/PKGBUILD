@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=wfuzz
-pkgver=2.1.5
+pkgver=2.2.3
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
 pkgdesc="Utility to fuzz web applications to find their not linked resources"
@@ -11,27 +11,23 @@ url="https://github.com/xmendez/wfuzz"
 arch=('any')
 license=('GPL')
 depends=('python2-pycurl')
-source=("https://github.com/xmendez/wfuzz/archive/v$pkgver.tar.gz")
-sha512sums=('aac9c2f4289b09504652a8a1180a859c7cf71dba8f6207072e778d93dbd70a13e79d76659ea422db8e89ad634e72bd2da6f264d02933dc95ebe11b69d0f20b99')
+source=("https://github.com/xmendez/wfuzz/archive/v${pkgver}.tar.gz")
+sha512sums=('0c5c7d4f83f65072d99af5c7c41abf36ee5966d2be68860fab820668d7d1374e46155ba0b2c2c3357d75923c9b7ac0afab710dde85de699dcc2f9605dcbbeb20')
 
 prepare() {
-  cd $pkgname-$pkgver
-  while read -r; do
-      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
-  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
+  grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd ${pkgname}-${pkgver}
   install -dm755 ${pkgdir}/usr/share/${pkgname}/
   install -dm755 ${pkgdir}/usr/bin
   cp -a --no-preserve=ownership * ${pkgdir}/usr/share/${pkgname}/
   # fix python issues
-  sed -i 's|python$|python2|' $pkgdir/usr/share/wfuzz/wfuzz.py
   cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
-#!/bin/bash
+#!/usr/bin/env bash
 cd /usr/share/${pkgname}
-python2 ${pkgname}.py "\$@"
+python2 ${pkgname}-cli.py "\$@"
 EOF
-  chmod +x ${pkgdir}/usr/bin/${pkgname}
+  chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
