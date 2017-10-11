@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=exabgp
-pkgver=3.4.18
-pkgrel=2
+pkgver=4.0.2
+pkgrel=1
 pkgdesc='The BGP swiss army knife of networking'
 arch=('any')
 license=('custom')
@@ -16,7 +16,7 @@ backup=('etc/exabgp.conf')
 makedepends=('python2-setuptools')
 source=("https://github.com/Exa-Networks/${pkgname}/archive/${pkgver}.zip"
         'exabgp.service')
-sha512sums=('23bf951dab875790b0f92119486535906deaf07e86f381ee4b32ec8dd41b75f53cc1a69d0a2a4163fa4b122c0ed241c9af79b460443d146b99e699b7e4c27a39'
+sha512sums=('d0d6b5ce84c65ca6a35e33520fe1d01b62232a162d975f1f6ce4b3b8f25b11f6867eb91e98b6cd887c72c3f620ab6893db2c88bdaf4f79badc0a9f021f8a7cf5'
             '225726cf424d9c2a23a2c0e9d3c7ed8c5cf03993f9518efd8e45079822b2d8cbc4d6fd18b49794beee522530478b57e5e3b268b3abd92442680cdd695504360d')
 
 build() {
@@ -37,6 +37,4 @@ package() {
         "$pkgdir/usr/lib/systemd/system/$pkgname.service"
     # install empty config file
     install -D -m 644 /dev/null "$pkgdir/etc/$pkgname.conf"
-    # move data in a more private directory
-    mv "$pkgdir/etc/$pkgname" "$pkgdir/usr/share/$pkgname"
 }
