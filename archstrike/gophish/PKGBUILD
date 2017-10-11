@@ -4,8 +4,8 @@
 buildarch=220
 
 pkgname=gophish
-pkgver=0.3.0
-pkgrel=2
+pkgver=0.4.0
+pkgrel=1
 pkgdesc="Open-source phishing toolkit designed for businesses and penetration testers. It provides the ability to quickly and easily setup and execute phishing engagements and security awareness training."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/gophish/gophish"
@@ -13,26 +13,27 @@ groups=('archstrike' 'archstrike-social-engineering')
 license=("MIT")
 depends=('glibc' 'bash')
 makedepends=('go' 'git')
-source=("https://github.com/gophish/gophish/archive/v$pkgver.tar.gz")
-sha512sums=('027c199f1a8fa20df49d43fbdb53ac1f4aceb9d03b04ff99c6a6a365df29dd6c0e9a1b567aa4a6e507519433834ab2cac99c3fc1b748d31f2134ea68d82bfdbd')
+source=("https://github.com/gophish/gophish/archive/v${pkgver}.tar.gz")
+sha512sums=('74b0130f88b6041e65e1a13763c722aa4696174a237fff39ed23707d3558f2ee6ffb7c873fa4c1720f148f54172b2e7c4602a4a4550e41dd700306a94e78a838')
 
 build() {
-  cd "$pkgname-$pkgver"
-  GOPATH="$srcdir" go get -d -t github.com/gophish/gophish
+  cd ${pkgname}-${pkgver}
+  GOPATH="${srcdir}" go get -d -t github.com/gophish/gophish
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  GOPATH="$srcdir" go build -v github.com/gophish/gophish
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
-cat > "$pkgdir/usr/bin/gophish" << EOF
-#!/bin/bash
+  cd "${pkgname}-${pkgver}"
+  GOPATH="${srcdir}" go build -v github.com/gophish/gophish
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}/"
+
+cat > "${pkgdir}/usr/bin/gophish" << EOF
+#!/usr/bin/env bash
 cd /usr/share/gophish
 ./gophish "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/gophish"
+  chmod 755 "${pkgdir}/usr/bin/gophish"
 }
