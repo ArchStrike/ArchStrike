@@ -2,23 +2,30 @@
 
 buildarch=1
 
-pkgname=xsser
-pkgver=1.7
-pkgrel=3
+_pkgname=xsser
+pkgname=${_pkgname}-git
+pkgver=r31.4a55fc8
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A penetration testing tool for detecting and exploiting XSS vulnerabilites."
 arch=('any')
 url='https://xsser.03c8.net/'
 license=('GPL3')
-depends=('orbited' 'python2-beautifulsoup3' 'python2-pycurl' 'python2-twisted'
+depends=('orbited' 'python2-beautifulsoup4' 'python2-pycurl' 'python2-twisted'
          'pygtk')
-makedepends=('subversion' 'python2-setuptools')
+makedepends=('git' 'python2-setuptools')
 optdepends=('python2-extras')
-source=("https://xsser.03c8.net/xsser/${pkgname}_${pkgver}-1.tar.gz")
-sha512sums=('235723bf82a6d6c11c4520fcd4a945e3a8eb4542ea343098e5c454344fa960c731fd41eb571635e81aeaf2c633070355ae66af4c041fa885f4756aa783be44b3')
+source=("${pkgname}::git+https://github.com/epsylon/xsser.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 
 package() {
-  cd "${srcdir}/${pkgname}_${pkgver}-1/${pkgname}-public"
+  cd "${pkgname}/${_pkgname}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/python2|'
+  find "${pkgdir}" -type f -name 'crawler.py' | xargs sed -i 's|from BeautifulSoup|from bs4|'
 }
