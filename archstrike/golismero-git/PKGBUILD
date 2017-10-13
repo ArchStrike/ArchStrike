@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=golismero-git
-pkgver=20170121.r50
-pkgrel=2
+pkgver=20170717.r61
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Opensource web security testing framework"
 url="https://github.com/golismero/golismero"
 license=('custom')
 arch=('any')
-depends=('python2' 'python2-beautifulsoup3' 'python2-colorizer'
+depends=('python2' 'python2-beautifulsoup4' 'python2-colorizer'
          'python2-decorator' 'python2-django>=1.5' 'python2-dnspython'
          'python2-netaddr' 'python2-nltk' 'python2-cjson' 'python2-requests'
          'python2-requests_ntlm' 'python2-texttable' 'python2-tldextract')
