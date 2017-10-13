@@ -18,6 +18,8 @@ for dir in archstrike/*; do
             testing_deps=()
 
             for dep in "${depends[@]}"; do
+                dep=$(sed 's|[<>=].*||' <<< "$dep")
+
                 [[ -f "archstrike-testing/$dep/PKGBUILD" ]] \
                     && testing_deps=("${testing_deps[@]}" "$dep")
             done
