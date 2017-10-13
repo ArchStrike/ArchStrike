@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+for dir in archstrike/*; do
+    [[ -f "$dir/PKGBUILD" ]] && {
+        package="${dir/*\/}"
+        depends=()
+        depends_string='depends=('
+
+        for var in depends makedepends optdepends; do
+            depends_string="$depends_string $(awk "/^${var}=\(/,/\)/" "$dir/PKGBUILD" | sed ':a;N;$!ba;s|\n| |g' | sed 's|   *| |g' | sed 's|^[^(]*(||;s|).*||')"
+        done
+
+        depends_string="$depends_string)"
+
+        eval "$depends_string"
+
+        [[ -n "${depends[*]}" ]] && {
+            testing_deps=()
+
+            for dep in "${depends[@]}"; do
+                [[ -f "archstrike-testing/$dep/PKGBUILD" ]] \
+                    && testing_deps=("${testing_deps[@]}" "$dep")
+            done
+
+            [[ -n "${testing_deps[*]}" ]] && {
+                printf '%s ' "$package:"
+
+                for testing_dep in "${testing_deps[@]}"; do
+                    printf '%s ' "$testing_dep"
+                done
+
+                printf '\n'
+            }
+        }
+    }
+done
