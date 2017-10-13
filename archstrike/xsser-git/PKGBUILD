@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=xsser
 pkgname=${_pkgname}-git
 pkgver=r31.4a55fc8
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A penetration testing tool for detecting and exploiting XSS vulnerabilites."
 arch=('any')
@@ -15,6 +15,7 @@ depends=('orbited' 'python2-beautifulsoup4' 'python2-pycurl' 'python2-twisted'
          'pygtk')
 makedepends=('git' 'python2-setuptools')
 optdepends=('python2-extras')
+replaces=('xsser')
 source=("${pkgname}::git+https://github.com/epsylon/xsser.git")
 sha512sums=('SKIP')
 
