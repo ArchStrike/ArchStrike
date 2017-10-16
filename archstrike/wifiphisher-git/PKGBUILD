@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=wifiphisher
 pkgname=${_pkgname}-git
-pkgver=20170824.r564
+pkgver=20171006.r596
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc='A tool for Fast automated phishing attacks against WPA networks'
@@ -37,7 +37,7 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
