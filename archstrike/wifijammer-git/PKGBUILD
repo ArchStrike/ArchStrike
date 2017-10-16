@@ -2,8 +2,9 @@
 
 buildarch=1
 
-pkgname=wifijammer-git
-pkgver=20170411.r74
+_pkgname=wifijammer
+pkgname=${_pkgname}-git
+pkgver=20171006.r79
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A python script to continuosly jam all wifi clients within range"
@@ -29,16 +30,16 @@ package() {
   cd "${pkgname}"
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/wifijammer"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
 
   #Docs
-  install -Dm644 README.md "$pkgdir/usr/share/wifijammer"
+  install -Dm644 README.md "${pkgdir}/usr/share/${_pkgname}"
 
   #License
-  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/README.md"
 
   #Bin
-  install -Dm755 wifijammer.py "$pkgdir/usr/bin/wifijammer"
+  install -Dm755 wifijammer.py "${pkgdir}/usr/bin/${_pkgname}"
 
 }
