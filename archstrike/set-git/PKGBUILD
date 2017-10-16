@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname='set-git'
-pkgver=7.7.r0.g22c9a6b9d
+pkgver=7.7.2.r0.gd501722de
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-exploit')
@@ -12,18 +12,16 @@ arch=('any')
 url='https://www.trustedsec.com/downloads/social-engineer-toolkit'
 license=('BSD')
 makedepends=('git')
-depends=('python2' 'python2-beautifulsoup3' 'python2-pexpect'
-  'java-environment')
+depends=('python2' 'python2-pexpect' 'python2-pexpect' 'python2-pillow'
+         'python2-qrcode' 'python2-pefile' 'impacket' 'java-environment'
+         'python2-pyopenssl' 'python2-requests' 'python2-crypto')
 optdepends=('ettercap: DNS spoofing and ARP cache poisoning capabilities'
             'sendmail: email address spoofing'
-            'python2-pefile: advanced AV evasion via hijacking a legit digital certificate'
             'apache: increase speed of web attack vectors'
-            'openssl: create self-signed SSL certificates'
             'xterm: default terminal for SET command center'
             'upx: executable packer for better AV evasion'
             'aircrack-ng: rouge access point capabilities'
             'dsniff: DNS spoofing capabilities'
-            'python2-cryptography: Encrypted communications'
             'metasploit: metasploit exploit payloads')
 options=('!strip')
 conflicts=('set')
@@ -75,6 +73,9 @@ package() {
   sed -i -e "s|/usr/bin/python$|/usr/bin/python2|" \
       -i -e "s|/usr/bin/env python$|/usr/bin/env python2|" \
       $(find "${pkgdir}" -type f)
+
+  # Fix BeautifulSoup from
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|from BeautifulSoup|from bs4|'
 
   # Joint script to handle default configuration.
 cat > "$pkgdir/usr/bin/setoolkit" << EOF
