@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=waybackpack
-pkgver=0.3.4
-pkgrel=2
+pkgver=0.3.5
+pkgrel=1
 pkgdesc="Command-line tool that lets you download the entire Wayback Machine archive for a given URL."
 url="http://github.com/jsvine/waybackpack"
 depends=('python-requests')
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/jsvine/waybackpack/archive/v$pkgver.tar.gz" "LICENSE.txt")
-sha512sums=('d8f66324d22ab3f0071ce66182181005b6ff856724aee5fda44931bd7a88038f564078c927789eab3e7062c80be8c8f73bb34bc352a0204c566ad68b889f440f'
+sha512sums=('df3e9bcaca98c2fa362d065907164e683ae8430927754955f4c24be5ab8b56c1b60eced894d4750f8d143b8feaef1575d9dac974b59d547afe1923919145b090'
             '61f308cbaa9c46adc880732efdb9f8bcbe3e14848a8f073c1582ce3fd41dec8c9845bfae03dc9a0986ce109f5c08b11204f85621829f7347e183ffc33b3a8aa7')
 
 build() {
