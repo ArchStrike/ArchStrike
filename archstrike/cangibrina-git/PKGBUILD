@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Franco Colombino <franco.c.colombino@gmail.com>
 
-_pkgname=cangibrina
 
 buildarch=1
 
-pkgname=$_pkgname-git
-pkgver=20170307.r118.acf96c4
+_pkgname=cangibrina
+pkgname=${_pkgname}-git
+pkgver=20170823.r120.3dfe416
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-scanners' 'archstrike-webapps')
 pkgdesc='Fast and powerfull dashboard (admin) finder'
@@ -19,25 +19,25 @@ source=("git+$url")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd ${_pkgname}
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd $_pkgname
+  cd ${_pkgname}
   while read -r; do
     sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
   done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
 }
 
 package() {
-  install -dm755 "$pkgdir"/usr/{bin,share/}
-  cp -r --no-preserve=ownership $_pkgname "$pkgdir/usr/share/"
-  rm -rf "$pkgdir/usr/share/$_pkgname/linux_install.sh" "$pkgdir/usr/share/$_pkgname/.git"
-cat > "$pkgdir/usr/bin/$pkgname" << EOF
+  install -dm755 "${pkgdir}"/usr/{bin,share/}
+  cp -r --no-preserve=ownership ${_pkgname} "${pkgdir}/usr/share/"
+  rm -rf "${pkgdir}/usr/share/${_pkgname}/linux_install.sh" "${pkgdir}/usr/share/${_pkgname}/.git"
+cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/bin/sh
 cd /usr/share/cangibrina
 python2 cangibrina.py "\$@"
 EOF
-chmod +x "$pkgdir/usr/bin/$pkgname"
+chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 }
