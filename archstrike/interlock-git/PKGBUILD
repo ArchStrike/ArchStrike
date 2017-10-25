@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=interlock-git
 _pkgname=interlock
-pkgver=20170905.r357
+pkgver=20171018.r359
 pkgrel=1
 groups=('archstrike' 'archstrike-crypto')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
