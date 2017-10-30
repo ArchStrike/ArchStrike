@@ -1,20 +1,19 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=220
 
 pkgname=pyinstaller
 _pkgname=PyInstaller
-pkgver=3.2.1
-pkgrel=2
+pkgver=3.3
+pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package."
 url="https://github.com/pyinstaller/pyinstaller"
-depends+=('python2' 'python2-crypto' 'binutils')
-depends_x86_64=('lib32-zlib' 'gcc-multilib' 'lib32-glibc')
+depends+=('python2' 'python2-crypto' 'binutils' 'zlib' 'gcc' 'glibc')
 makedepends=('python2-setuptools')
 license=('GPL')
-arch=('any')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('e91a8ed2b31a0902d083c47d6364f653fe9e2563e150bfe531e1578ad2aef2b56619aff01475b0a325b34a8f1d2ad41a1d7d5fa068f0377dfb7b576938cbb195')
+sha512sums=('4f8cb99f6bfbb38c5fa8d04f2ed7e3d6b4e0ec8e5768047666246b0d916167a012db01e81fb3f8ad2edf9743a592fd48db6d6cd5b7f720a7f87047d428829bf9')
 
 build() {
   cd ${_pkgname}-${pkgver}
