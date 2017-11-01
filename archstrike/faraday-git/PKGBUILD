@@ -4,13 +4,17 @@ buildarch=1
 
 _pkgname=faraday
 pkgname=${_pkgname}-git
-pkgver=20170526.r3850
-pkgrel=2
+pkgver=20171017.r3951
+pkgrel=1
 pkgdesc='An Integrated Multiuser Pentest Environment that maps and leverages all the knowledge you generate in real time'
 groups=('archstrike' 'archstrike-misc')
 url='http://www.faradaysec.com'
-depends=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask' 'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn' 'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh' 'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy' 'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection' 'gobject-introspection-runtime')
-depends_x86_64+=('lib32-glibc')
+depends=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flask'
+         'python2-tornado' 'python2-dateutil'  'python2-colorama' 'couchdb' 'python2-pysvn'
+         'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh'
+         'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy'
+         'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection'
+         'gobject-introspection-runtime' 'python2-beautifulsoup4' 'glibc')
 makedepends=('git')
 options=('!strip')
 license=('GPL')
