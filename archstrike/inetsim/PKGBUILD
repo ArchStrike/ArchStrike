@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=inetsim
-pkgver=1.2.6
-pkgrel=2
+pkgver=1.2.7
+pkgrel=1
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="A software suite for simulating common internet services in a lab environment, e.g. for analyzing the network behaviour of unknown malware samples"
 url="http://www.inetsim.org"
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('perl' 'perl-net-dns' 'perl-net-server' 'perl-ipc-shareable' 'openssl')
 install=inetsim.install
 source=("http://www.inetsim.org/downloads/inetsim-$pkgver.tar.gz")
-sha512sums=('d8460deda14fc8d110307ec025348855982abf2bfc0c19efe2b07a93fdfb54d7245a9750087344fa9b4816f412eb7c8ac93d040dbeb5642a93bf07207e3365f1')
+sha512sums=('237e2a7dd4cab559d5ee44a84221e007c7cef38eb1568d96d82601ef49e7e552b8af0e20a705c77065a5aed78a338865e8db7c3e167d91d81fa476fdb1767b06')
 
 package() {
   cd "$srcdir/inetsim-$pkgver"
