@@ -3,28 +3,28 @@
 buildarch=220
 
 pkgname=codecrypt
-pkgver=1.7.6
+pkgver=1.8
 pkgrel=1
 pkgdesc="A GnuPG-like program for encryption and signing that uses only quantum-computer-resistant algorithms"
-url="https://github.com/exaexa/$pkgname"
+url="https://github.com/exaexa/${pkgname}"
 license=('GPL3')
 groups=('archstrike-crypto')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('crypto++' 'gmp' 'fftw')
 makedepends=('libtool' 'automake' 'autoconf')
-source=("https://github.com/exaexa/codecrypt/archive/v$pkgver.tar.gz")
-sha512sums=('0ff131619c55daedac40697e15e1086d66ab0c043ba56b08096764fac5b24fb8143fcf797be00b8dc56ad97338a9219b40cb64949f214726e7e3639c01f7c5cc')
+source=("https://github.com/exaexa/codecrypt/archive/v${pkgver}.tar.gz")
+sha512sums=('e6b30fd06b9ac271c04da9e1052c9ffbc2827337a25902bb41c30f81e040d28678f9565d2fc647dc45352b72576a823151cc841c58e080b0df987f1cc7f5b463')
 
 build() {
-    LDFLAGS="$LDFLAGS -pthread"
+    LDFLAGS="${LDFLAGS} -pthread"
 
-    cd "$pkgname-$pkgver"
+    cd "${pkgname}-${pkgver}"
     ./autogen.sh
     ./configure --prefix=/usr
     make
 }
 
 package() {
-    cd "$pkgname-$pkgver"
-    make DESTDIR="$pkgdir" install
+    cd "${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
