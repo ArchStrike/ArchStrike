@@ -3,25 +3,26 @@
 buildarch=1
 
 pkgname=shodan
-pkgver=1.6.5
+_pkgname=${pkgname}-python
+pkgver=1.7.3
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2 library for Shodan.io'
 url='http://github.com/achillean/shodan-python'
-depends=('python2-click' 'python2-click-plugins' 'python2-colorama' 'python2-requests' 'python2-simplejson')
+depends=('python2-click' 'python2-click-plugins' 'python2-colorama' 'python2-requests' 'python2-simplejson' 'python2-xlsxwriter')
 license=('MIT')
 arch=('any')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/ae/c8/510acdc63b093cca499023a5d33079c000c743ab2f526f37848b4a63a2f7/shodan-${pkgver}.tar.gz")
-sha512sums=('2e3dae43b0ee26680d834e7799b2bbe67bdbe1fd54d26193ffc64c6b56f5b9a1850652758895d224226290146443305a53775777a69eb33986e1d6a9bb2d9b65')
+source=("https://github.com/achillean/shodan-python/archive/${pkgver}.tar.gz")
+sha512sums=('697cee953b7758688fcf028e9dab5c1d86bc9d301a81d961aa468f635afe5525c60bac628777474584cb90b6cb7db70a463c12cf655192b2a8b1c37040033247')
 
 build() {
-  cd $pkgname-$pkgver
+  cd ${_pkgname}-${pkgver}
   python2 setup.py build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd ${_pkgname}-${pkgver}
   python2 setup.py install --root="$pkgdir" -O1 --skip-build
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/shodan/cli/worldmap.py
