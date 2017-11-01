@@ -3,19 +3,21 @@
 buildarch=1
 
 pkgname=pdfid
-pkgver=0.2.1
-pkgrel=4
+pkgver=0.2.2
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="scan a file to look for certain PDF keywords"
 arch=('any')
 url='http://blog.didierstevens.com/programs/pdf-tools/'
 license=('custom')
-source=("http://didierstevens.com/files/software/pdfid_v0_2_1.zip" "LICENSE")
-depends=('python')
-sha256sums=('f1b4728dd2ce455b863b930e12c6dec952cb95c0bb3d6924136a6e49aca877c2'
-            '04f6ad0e913c5674ff466e858d251333dc4f104fa0c5da46ff7f5f821233fa00')
-sha512sums=('9eabf972d1ec049d5addbd7fb0ab55b882194d009a923ba4b062db69419cf466fd5345651a5d64cd6e48e55e1d8fd772952108842c214b49cae40f94103df052'
+source=("http://didierstevens.com/files/software/pdfid_v0_2_2.zip" "LICENSE")
+depends=('python2' 'python2-configparser')
+sha512sums=('a0f818ed78b5195c1b56614d569dc35243d6da2239156a5e562d4b4d0a310ea628d6dd8d746d1ace18d90922ad1d9d22e8f108ff874b8597064fd955b8747924'
             'c22cd4975b68420afec20111262d92b9d0690aadd366777d1f20fe557aecf95cebea9dfc9ff9ebe4ebfde98736bb02a4ecbf56d469407a96e44f6416e76ebbf2')
+
+prepare() {
+  grep -iRl 'python' ${srcdir} | xargs sed -i 's|python$|python2|g'
+}
 
 package() {
   cd "${srcdir}"
