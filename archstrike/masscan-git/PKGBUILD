@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=masscan-git
-pkgver=20170823.r476
+pkgver=20171021.r484
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-crackers')
@@ -12,7 +12,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/robertdavidgraham/masscan'
 license=('AGPL')
 depends=('libpcap')
-makedepends=('git')
+makedepends=('git' 'clang')
 conflicts=('masscan')
 provides=('masscan')
 replaces=('masscan')
