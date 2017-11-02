@@ -4,15 +4,14 @@ buildarch=220
 
 pkgname=masscan-git
 pkgver=20171021.r484
-pkgrel=1
-epoch=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners' 'archstrike-crackers')
 pkgdesc="TCP port scanner, spews SYN packets asynchronously, scanning entire Internet in under 5 minutes"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/robertdavidgraham/masscan'
 license=('AGPL')
 depends=('libpcap')
-makedepends=('git' 'clang')
+makedepends=('git')
 conflicts=('masscan')
 provides=('masscan')
 replaces=('masscan')
@@ -28,6 +27,7 @@ pkgver() {
 
 build() {
   cd "${pkgname}"
+  sed -i 's|CC = clang|CC = gcc|g' Makefile
   make
 }
 
