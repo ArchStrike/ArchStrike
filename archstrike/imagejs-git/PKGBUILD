@@ -3,15 +3,15 @@
 buildarch=220
 
 pkgname=imagejs-git
-pkgver=20170217.r51
-pkgrel=2
+pkgver=20171101.r53
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="A Small tool to package javascript into a valid image file."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/jklmnn/imagejs'
 license=('GPL3')
 depends=('glibc')
-makedepends=('git')
+makedepends=('git' 'cmake')
 provides=('imagejs')
 source=("${pkgname}::git+https://github.com/jklmnn/imagejs.git")
 sha512sums=('SKIP')
@@ -23,12 +23,12 @@ pkgver() {
 
 build(){
   cd "$pkgname"
-  make
+  mkdir build && cd build && cmake .. && make
 }
 
 package() {
   cd "$pkgname"
   install -dm755 "$pkgdir/usr/bin"
-  install -Dm755 imagejs "$pkgdir/usr/bin/imagejs"
+  install -Dm755 build/imagejs "$pkgdir/usr/bin/imagejs"
 
 }
