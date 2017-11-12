@@ -4,13 +4,13 @@ buildarch=220
 
 pkgname=bluediving
 pkgver=0.9
-pkgrel=12
+pkgrel=13
 pkgdesc="A Bluetooth penetration testing suite"
 url='http://bluediving.sourceforge.net/'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-bluetooth')
-depends=('bluez-utils' 'sox' 'obexftp' 'readline' 'expat' 'perl-xml-simple' 'openobex' 'libxml2' 'perl-switch' 'redfang' 'carwhisperer' 'bss' 'mpg123')
+depends=('bluez-utils-compat' 'sox' 'obexftp' 'readline' 'expat' 'perl-xml-simple' 'openobex' 'libxml2' 'perl-switch' 'redfang' 'carwhisperer' 'bss' 'mpg123')
 install=bluediving.install
 source=("http://downloads.sourceforge.net/sourceforge/bluediving/bluediving-$pkgver.tgz"
         "btftp.patch"
