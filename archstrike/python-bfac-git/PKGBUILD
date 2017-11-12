@@ -1,0 +1,56 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="bfac"
+pkgbase="python-${_pkgname}-git"
+
+pkgname=("python-${_pkgname}-git" "python2-${_pkgname}-git")
+pkgver=20171108.r41
+pkgrel=1
+pkgdesc="Advanced Backup-File Artifacts Testing for Web-Applications"
+arch=('any')
+url="https://github.com/mazen160/${_pkgname}"
+license=('GPL3')
+makedepends=("python" "python-setuptools" "python-colorama" "python-requests"
+             "python2" "python2-setuptools" "python2-colorama" "python2-requests" "git")
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}"
+  cp -a ${_pkgname}{,-py2}
+  grep -ZRil 'python' "${_pkgname}-py2" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-py2"
+  python2 setup.py build
+}
+
+package_python-bfac-git() {
+  depends=("python" "python-setuptools" "python-colorama" "python-requests")
+  cd "${_pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-bfac-git() {
+  depends=("python2" "python2-setuptools" "python2-colorama" "python2-requests")
+  cd "${_pkgname}-py2"
+  install -dm755 "${pkgdir}/usr/bin"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}-py2"
+}
+
+# vim:se ts=2 sw=2 et:
