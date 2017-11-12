@@ -1,0 +1,65 @@
+# Maintainer: David Thurstenson <thurstylark@gmail.com>
+# Contributor: Tom Gundersen <teg@jklm.no>
+# Contributor: Andrea Scarpino <andrea@archlinux.org>
+# Contributor: Geoffroy Carrier <geoffroy@archlinux.org>
+
+buildarch=220
+
+_pkgname='bluez'
+pkgname='bluez-utils-compat'
+pkgver=5.47
+pkgrel=1
+url="http://www.bluez.org/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+license=('GPL2')
+pkgdesc="Development and debugging utilities for the bluetooth protocol stack. Includes deprecated tools."
+depends=('dbus' 'systemd' 'glib2')
+conflicts=('bluez-hcidump' 'bluez-utils')
+provides=('bluez-hcidump' 'bluez-utils')
+replaces=('bluez-hcidump' 'bluez<=4.101')
+makedepends=('dbus' 'libical' 'systemd')
+source=("https://www.kernel.org/pub/linux/bluetooth/${_pkgname}-${pkgver}.tar.xz")
+sha512sums=('86fa1baae1593d4824038db8418358b0be624c81fc23ee8f96ec08979d309a2377be3924ab53cc0fcb712aec8e696360e9a9f4de4c12cc31b14de5cf495a11a6')
+
+build() {
+  cd "${_pkgname}-${pkgver}"
+  ./configure \
+          --prefix=/usr \
+          --mandir=/usr/share/man \
+          --sysconfdir=/etc \
+          --localstatedir=/var \
+          --libexecdir=/usr/lib \
+          --enable-sixaxis \
+          --enable-experimental \
+          --enable-library \
+          --enable-deprecated # to enable deprectated tools
+  make
+}
+
+check() {
+  cd "${_pkgname}-${pkgver}"
+  make check
+}
+
+package() {
+  cd "${_pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install-binPROGRAMS install-man1
+
+  # add missing tools FS#41132, FS#41687, FS#42716
+  for files in `find tools/ -type f -perm -755`; do
+    filename=$(basename $files)
+    install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/tools/${filename}" "${pkgdir}/usr/bin/${filename}"
+  done
+
+  # add gatttool usefulbdaddr with Bluetooth 4.0LE 
+  install -Dm755 "${srcdir}/${_pkgname}-${pkgver}/attrib/gatttool" "${pkgdir}/usr/bin/gatttool"
+  
+  # libbluetooth.so* are part of libLTLIBRARIES and binPROGRAMS targets
+  #make DESTDIR=${pkgdir} uninstall-libLTLIBRARIES
+  rm -rf "${pkgdir}/usr/lib"
+  
+  # move the hid2hci man page out
+  mv "${pkgdir}/usr/share/man/man1/hid2hci.1" "${srcdir}/"
+}
+
+# vim:se ts=2 sw=2 et:
