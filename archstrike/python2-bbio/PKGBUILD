@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=python2-bbio
-pkgver=1.0.3
-pkgrel=2
+pkgver=1.0.7
+pkgrel=1
 pkgdesc="A module to control BeagleBone IO channels"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=("MIT")
@@ -12,7 +12,7 @@ url="https://github.com/adafruit/adafruit-beaglebone-io-python"
 depends=("python2")
 makedepends=("python2-setuptools")
 source=("https://github.com/adafruit/adafruit-beaglebone-io-python/archive/$pkgver.tar.gz")
-sha512sums=('1a5a67aeac753be598498d75621a08898ac5d2ca14b44cff2779457b6455efd90781bb4c18a291ecc3460295596e6250ecdf0a9f91d8ff5a6117dd7c726ba0b8')
+sha512sums=('74436bef5de8ac74abef6c722ffd0ec7f485bcaf3e3b878f22c143f6276518f5082fc4bfe88006b0df7be0b96280620cacbe9bf0c3985156680f1103517debda')
 
 build() {
   cd "${srcdir}/adafruit-beaglebone-io-python-${pkgver}"
@@ -23,5 +23,5 @@ package() {
   cd "${srcdir}/adafruit-beaglebone-io-python-${pkgver}"
   python2 setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
-  install -Dm644 README.rst "$pkgdir/usr/share/licenses/$pkgname/README.rst"
+  install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.rst"
 }
