@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=cms-explorer
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-fingerprinting' 'archstrike-webapps')
 pkgdesc="Designed to reveal the specific modules, plugins, components and themes that various cms driven websites are running"
 arch=('any')
 url='http://code.google.com/p/cms-explorer'
 license=('GPL3')
 depends=('perl')
-source=("https://cms-explorer.googlecode.com/files/cms-explorer-$pkgver.tar.bz2")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/cms-explorer/cms-explorer-$pkgver.tar.bz2")
 sha512sums=('095c780565446d723c7c3f6ae18eaf5d7cce66ad25f8421483d35c187f41150c3d82c2a4762dc0e0529fe9f1d173fa34b5c902d4e4eb9ab51ce8481fc38b5628')
 
 package() {
