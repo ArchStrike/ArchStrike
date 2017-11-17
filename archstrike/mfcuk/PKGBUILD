@@ -4,14 +4,14 @@ buildarch=220
 
 pkgname=mfcuk
 pkgver=0.3.8
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="MIFARE Classic Universal toolKit"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/mfcuk/'
 license=('GPL2')
 depends=("libnfc")
-source=("http://mfcuk.googlecode.com/files/mfcuk-$pkgver.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/mfcuk/mfcuk-$pkgver.tar.gz")
 md5sums=('14fb27e7d33129add85ee76373d9cc28')
 
 prepare() {
