@@ -5,7 +5,7 @@ buildarch=200
 
 pkgname=google-coredumper
 pkgver=1.2.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-debugging')
 pkgdesc='Library can be compiled into applications to create core dumps of the running program -- without terminating.'
 url='https://code.google.com/p/google-coredumper/'
@@ -14,7 +14,7 @@ arch=('i686' 'x86_64' 'aarch64')
 depends=('glibc')
 # Upstream is currently broken.
 # Here are fixs for upstream https://github.com/anatol/google-coredumper
-source=(https://google-coredumper.googlecode.com/files/coredumper-$pkgver.tar.gz
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/google-coredumper/coredumper-$pkgver.tar.gz
         fixes.diff)
 sha512sums=('8270f6727b4be3b08d9bef943491cbc21a220c9795d8d0d08765f9a22098b0134cb5f95b6e862636f202c1308fe9f035a731cf9f961f0e64bf677dad8dbb216b'
             'f064eeb362fd9bf97c951eed7bf79a1837f766f11717422635aa62de06260b9b8d4fdb11d399960f992affaeef6d05265f9459f2e166cc6279f7611ceb0423e0')
