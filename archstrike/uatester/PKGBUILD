@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=uatester
 pkgver=1.06
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-misc' 'archstrike-webapps')
 pkgdesc="User Agent String Tester"
 url="http://code.google.com/p/ua-tester/"
 arch=('any')
 license=('BSD')
 depends=('python2')
-source=("http://ua-tester.googlecode.com/files/UAtester_$pkgver.py")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/ua-tester/UAtester_$pkgver.py")
 sha512sums=('4ba49c9cc6fdb94a299f42038792216beefb6b54ee5bddaa91341d4c817521c7ffa5187dd284ae9796b10e5e88b1707d3a1529bf7d1229a63995936c61ed1093')
 
 prepare() {
