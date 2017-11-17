@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=obkey
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc='Openbox Key Editor'
 arch=('any')
 url="http://code.google.com/p/obkey"
@@ -12,7 +12,7 @@ depends=('python2' 'pygtk')
 license=('GPL')
 conflicts=('obkey-git')
 replaces=('obkey-dev')
-source=(http://obkey.googlecode.com/files/$pkgname-$pkgver.tar.gz)
+source=(https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/obkey/$pkgname-$pkgver.tar.gz)
 md5sums=('fd11d473d79055af1e68f40c354d233b')
 
 package() {
