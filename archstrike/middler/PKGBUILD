@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='middler'
 pkgver='1.0'
-pkgrel=3
+pkgrel=4
 pkgdesc='A Man in the Middle tool to demonstrate protocol middling attacks.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://code.google.com/p/middler/'
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('libpcap' 'python2' 'scapy' 'libdnet')
 makedepends=('python2')
 groups=('archstrike' 'archstrike-networking')
-source=("http://middler.googlecode.com/files/middler-$pkgver.tgz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/middler/middler-$pkgver.tgz")
 sha512sums=('5ef1ded73446ff1ab39ad2640ab3469aa3153a6301a9975aee3dfd48a619834df88224ceedc6ec4b3f4771f539e8a3e008fc391b4aad29924b9bcb8d7e6a58cc')
 
 prepare() {
