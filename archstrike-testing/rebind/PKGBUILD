@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=rebind
 pkgver=0.3.4
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="DNS Rebinding Tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ url="http://code.google.com/p/rebind/"
 license=('MIT')
 depends=('sqlite3' 'readline')
 makedepends=('python2' 'subversion')
-source=("https://rebind.googlecode.com/files/rebind_${pkgver//./-}.tar.gz")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/rebind/rebind_${pkgver//./-}.tar.gz")
 md5sums=('aadb50e55ebb25827c075949c3808276')
 
 prepare(){
