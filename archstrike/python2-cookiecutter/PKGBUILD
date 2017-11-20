@@ -5,8 +5,8 @@ buildarch=1
 
 pkgname=python2-cookiecutter
 _pkgname=cookiecutter
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.6.0
+pkgrel=1
 pkgdesc="A command-line utility that creates projects from project templates"
 arch=('any')
 url="https://github.com/audreyr/cookiecutter"
@@ -14,16 +14,14 @@ license=('BSD')
 depends=('python2-jinja' 'python2-yaml' 'python2-binaryornot')
 makedepends=('python2-setuptools')
 source=("https://github.com/audreyr/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('f40c38c0162ba7e2b5b65685509955d7949bca9497b18cbddcbf98926cd3afdc4b9cca5cf62fe1d4ee80175429df124b483c32912b883c34b13a783c227188d2')
+sha512sums=('0a06ae8fe7aceeeb0bcb98b5981d743b2e2e5d5f121c2e0703bb76399b0433816beaddb64c92f28d50f1781737db25907a10ec7b59f6c02c17171cfb56fb12f4')
 
 prepare(){
-  grep -iRl 'python' "$srcdir/$_pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${srcdir}/${_pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-      cd "$srcdir/${_pkgname}-${pkgver}"
-      python2 setup.py install --root="$pkgdir/" --optimize=1
-      install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+      cd "${srcdir}/${_pkgname}-${pkgver}"
+      python2 setup.py install --root="${pkgdir}/" --optimize=1
+      install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
