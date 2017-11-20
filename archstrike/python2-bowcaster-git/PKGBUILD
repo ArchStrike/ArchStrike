@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python2-bowcaster-git
-pkgver=20150429.r172
-pkgrel=2
+pkgver=20171027.r174
+pkgrel=1
 groups=('archstrike')
 pkgdesc="An open-source forensic framework written in Python/GTK that manages cases and case items, providing an abstract interface for developing extensions."
 arch=('any')
