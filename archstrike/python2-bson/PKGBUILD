@@ -4,16 +4,16 @@ buildarch=1
 
 pkgname=python2-bson
 _pkgname=bson
-pkgver=0.4.6
-pkgrel=4
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="BSON codec for Python"
 url="https://github.com/py-bson/bson"
 depends=('python2' 'python2-pytz' 'python2-pymongo')
 makedepends=('python2-setuptools' 'python2-pip')
-license=('BSD')
+license=('Apache')
 arch=('any')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('98765170637b40630dd669436a3943061db6fc18bd102645dff9eda7e5fc825469a2b6ea2195c90995b6eb79839e8060cdf31750443341e2f943781f2c74d21a')
+source=("https://pypi.python.org/packages/62/03/5315c1bba25c90ba97574c9f0f15dc4bd7a545cae7594f6ee0f0ec46da3d/bson-0.5.0.tar.gz")
+sha512sums=('cb3e21be6d8c225df6be34d64c5c0590f06a2c0f74411c525291d175da56e2cd132c558141e63bff566b8bed76431158f40dcbd63b78e9f41d75d49f210cb706')
 
 prepare() {
   grep -iRl 'python' ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
@@ -27,7 +27,6 @@ build() {
 package() {
   cd ${_pkgname}-${pkgver}
   python2 setup.py install --root="${pkgdir}" -O1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   #fix conflict with python2-pymongo
   rm -f ${pkgdir}/usr/lib/python2.7/site-packages/bson/__init__*
