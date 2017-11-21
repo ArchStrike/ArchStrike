@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=cuckoo
-pkgver=2.0.1
+pkgver=2.0.4.4
 pkgrel=1
 pkgdesc="A malware analysis system"
 url="http://cuckoosandbox.org/"
@@ -12,12 +12,11 @@ license=('GPL3')
 install='cuckoo.install'
 options=('!emptydirs')
 groups=('archstrike' 'archstrike-malware')
-depends=('python2-sqlalchemy' 'python2-bson' 'python2-dpkt-git'
-   'python2-jinja' 'python2-django' 'volatility' 'python2-maec'
-   'python2-magic' 'libvirt' 'python2-bottle' 'python2-pefile'
-   'python2-pymongo' 'tcpdump' 'yara' 'python2-yara'
-   'python2-chardet' 'python2-requests' 'python2-dateutil')
-optdepends=('python2-pydeep')
+depends=('python2' 'python2-sqlalchemy' 'python2-dpkt-git' 'python2-jinja'
+         'python2-django' 'volatility' 'python2-maec' 'python2-magic'
+         'libvirt' 'python2-bottle' 'python2-pefile' 'python2-pymongo'
+         'tcpdump' 'python2-chardet' 'python2-requests' 'python2-dateutil')
+optdepends=('python2-pydeep' 'yara' 'python2-yara')
 source=("https://downloads.cuckoosandbox.org/cuckoo-current.tar.gz"
   'cuckoo.desktop')
 sha512sums=('a2853abcb7a8af9a197423b899f07fbb44763cfc8cd8415e42a0703bed59a1517fa8941417f92abdeff57222f1e5e671c9131a0a14f7df8546dc2900c9358399'
