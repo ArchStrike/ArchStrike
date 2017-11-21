@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=faraday
 pkgname=${_pkgname}-git
-pkgver=20171017.r3951
+pkgver=20171117.r3995
 pkgrel=1
 pkgdesc='An Integrated Multiuser Pentest Environment that maps and leverages all the knowledge you generate in real time'
 groups=('archstrike' 'archstrike-misc')
@@ -14,7 +14,7 @@ depends=('zsh' 'java-environment' 'python2-pip' 'python2-argparse' 'python2-flas
          'python2-ipy' 'libpqxx' 'python2-couchdbkit' 'python2-requests' 'python2-whoosh'
          'python2-psycopg2' 'python2-restkit' 'python2-mockito' 'ruby' 'python2-ipy'
          'python2-sqlalchemy' 'python2-service-identity' 'python2-twisted' 'gobject-introspection'
-         'gobject-introspection-runtime' 'python2-beautifulsoup4' 'glibc')
+         'gobject-introspection-runtime' 'python2-beautifulsoup4' 'glibc' 'make')
 makedepends=('git')
 options=('!strip')
 license=('GPL')
