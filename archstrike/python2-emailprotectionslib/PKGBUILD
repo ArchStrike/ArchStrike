@@ -4,16 +4,16 @@
 buildarch=1
 
 pkgname=python2-emailprotectionslib
-pkgver=0.8.2
-pkgrel=2
+pkgver=0.8.3
+pkgrel=1
 pkgdesc="Python library to interact with SPF and DMARC"
 url="https://github.com/lunarca/pyemailprotectionslib"
 depends=('python2' 'python2-tldextract' 'python2-dnslib')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/b5/92/3ba18afc84db932312720b26bbe69b678b1a325b0ac19d262b8ff310ece3/emailprotectionslib-${pkgver}.tar.gz")
-sha512sums=('72db53be2fcb6a83a3bd05fd47c8d0b8acb9b222be8c800dff83b4b319a78ea58aad5446ce82f9a3f9c9aa8de185b643e142286344c88f1e0e248cb968e42b53')
+source=("https://pypi.python.org/packages/4e/0e/3e1eccf63c9b6307ee2b4d81a01aa51369891bfb966d6063da11cad81147/emailprotectionslib-0.8.3.tar.gz")
+sha512sums=('529523a1af1d5a803133d69a31cb14a339477b6e1418bf40a3733b0a8b5f08bf707236101852dd3cd79bf6d427e567f953fc6050eba0cf05c18c3efbe4984fd3')
 
 build() {
     cd $srcdir/emailprotectionslib-$pkgver
