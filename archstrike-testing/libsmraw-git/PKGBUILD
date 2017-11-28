@@ -2,24 +2,37 @@
 
 buildarch=220
 
-pkgname=libsmraw
-pkgver=20160424
-pkgrel=4
+_pkgname=libsmraw
+pkgname=${_pkgname}-git
+pkgver=r203.29c8155
+pkgrel=2
 pkgdesc="Library and tools to access the (split) RAW image format"
-url="https://github.com/libyal/libsmraw"
+url="https://github.com/libyal/${_pkgname}"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
-depends=('fuse' 'libcsystem' 'python2' 'libbfio')
-source=("https://github.com/libyal/libsmraw/releases/download/20160424/libsmraw-alpha-$pkgver.tar.gz")
-sha512sums=('a6ff7ba5ad37b2fe532cf480f67b635fe01ae4c317e0a3ee074e3a9358c21988268c30a2006634a6a43a4d830eb85e1cb7263223da528ceac1e7c3c7efad57ac')
+depends=('fuse' 'libcsystem' 'libbfio' 'python2')
+makedepends=('git' 'python2')
+provides=('libsmraw')
+conflicts=('libsmraw')
+replaces=('libsmraw')
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
 
-build(){
-  cd $srcdir/$pkgname-$pkgver
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}"
+  ./synclibs.sh
+  ./autogen.sh
   PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python --with-pyprefix=2
   make
 }
 
-package(){
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+package() {
+  cd "${srcdir}/${_pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
+# vim:se ts=2 sw=2 et:
