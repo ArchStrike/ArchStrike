@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=fern-wifi-cracker
 pkgname=$_pkgname-git
-pkgver=20170504.r242.2faa928
+pkgver=20170907.r256
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
@@ -29,7 +29,7 @@ sha512sums=('SKIP'
 
 pkgver() {
   cd $_pkgname
-  printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
