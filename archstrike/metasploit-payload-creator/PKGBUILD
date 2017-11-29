@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=metasploit-payload-creator
-pkgver=1.4.3
-pkgrel=2
+pkgver=1.4.4
+pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
 pkgdesc="A wrapper to generate multiple types of payloads, based on users choice."
@@ -15,12 +15,12 @@ provides=('mpc-git')
 replaces=('mpc-git')
 conflicts=('mpc-git')
 source=("https://github.com/g0tmi1k/mpc/archive/v${pkgver}.tar.gz")
-sha512sums=('758c6d40961d45315c9b3d0184dbf277e4fb74e0d5bc5c2103d4d0916bf1dd7ef3fa00371e5caee1f0d1d9d49f91651a44f8f316f614aa830340782b9a4b4b8e')
+sha512sums=('d1850f4a7d2219ab55f8fdc232d30ff00d797fd63bf6ea0fb13cced7a992796a45e1526bef9c644a568aa653bf869cfa361b83ce817323daac09fe9194d19a11')
 
 package() {
   cd mpc-$pkgver
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm755 mpc.sh "$pkgdir/usr/bin/metasploit-payload-creator"
+  install -Dm755 msfpc.sh "$pkgdir/usr/bin/msfpc"
 }
