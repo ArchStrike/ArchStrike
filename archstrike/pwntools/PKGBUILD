@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pwntools
-pkgver=3.9.2
+pkgver=3.10.0
 pkgrel=1
 pkgdesc='CTF framework and exploit development library'
 arch=('any')
@@ -18,7 +18,7 @@ makedepends=('python2-setuptools')
 replaces=('binjitsu-git')
 provides=('binjitsu-git')
 source=("https://github.com/Gallopsled/pwntools/archive/$pkgver.tar.gz")
-sha512sums=('5f62e222d87ff5063d773ae31f53ed6019e9c7036048bd5c953085781d18e6ceec89e366166f638807df8b90bb2e0320b63c899e65f16e48630d3b4b2b821cc9')
+sha512sums=('e023a22c88e8cd98f7864357b96c909b962e66688412f776903cde160bd539745b77e0761a04cba0e6500304439704bdd8db9699b937dedef66a70cf4ac2b9d9')
 
 prepare() {
   cd "$pkgname-$pkgver"
@@ -32,7 +32,7 @@ build(){
 
 package() {
     cd "$pkgname-$pkgver"
-    python2 setup.py install --root="$pkgdir/" --optimize=1
+    python2 setup.py install --root="$pkgdir/" -O1 --skip-build
 
     # install license
     install -Dm644 LICENSE-pwntools.txt "$pkgdir/usr/share/licenses/$pkgname/license-pwntools.txt"
