@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=nishang
-pkgver=0.6.7
-pkgrel=2
+pkgver=0.7.6
+pkgrel=1
 pkgdesc="A PowerShell framework and collection of scripts and payloads for offensive security and pentesting"
 url="https://github.com/samratashok/${pkgname}"
 license=('GPL3')
@@ -13,7 +13,7 @@ arch=('any')
 groups=('archstrike')
 source=("https://github.com/samratashok/${pkgname}/archive/v${pkgver}.zip"
         "${pkgname}.7")
-sha512sums=('94b507462b5e2dff6d02c364f90ea315abf0387d3b61d023d582a11340facdbcfd988a9508af04770d727bfbbce8cd277d382ca3e2298c6709cc0ccfbbb19e7f'
+sha512sums=('4faa209254e6d4f8a4e3e021313626d7ea4ea207e3f79e469a25ee5b78c449d4f08b3627e6160a145c366c9bba5a8994593ae88e3676cbb6ddce4752903e4efa'
             'd36d8227a0885c588212fc8457baca7b8ae99bae0a8a3ce7b847dd8ccbc663ac74fd1dff226e5492fa50504b5e61ca9bd3523a1b6e31719223a1f674f938eb7c')
 
 package() {
