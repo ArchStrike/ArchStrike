@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="Empire"
 pkgname=empire
-pkgver=2.1
+pkgver=2.3
 pkgrel=1
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
@@ -13,14 +13,18 @@ url="https://github.com/PowerShellEmpire/Empire"
 license=('custom')
 install="${pkgname}.install"
 depends=('python2-m2crypto' 'swig' 'python2-crypto' 'python2-flask' 'python2-pydispatcher' 'python2-iptools' 'python2-pyopenssl' 'python2-netifaces' 'python2-dropbox' 'pyinstaller' 'python2-macholib' 'python2-zlib_wrapper')
-source=("https://github.com/PowerShellEmpire/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('b7ea176f23049e6f47d72fcff068587cef75d131375a7e9df1c97abd6ab0eaf2246cfadcb6752216f418c74b143cf1fdf1fd0a745aa4355ac22053a6ddb8cdb7')
+makedepends=('git')
+source=("https://github.com/PowerShellEmpire/${_pkgname}/archive/${pkgver}.tar.gz"
+        "c1da4a06.patch") # allow new pyOpenSSL, somewhat "better" fix for #697
+sha512sums=('0ede63e211b7dfb44c0c049587485f90046b2755699a0a2aa026c1349ef06bb6575ad524c5c9a97f8d01a33c50f5ee978e1d2b44db2822f6d6649f5a5ac7d58e'
+            '9f26432c6ace104dbd639e7d15f75366e525de7d4e74c5622180cc9152f81d3121d775ddda0fb2ece448d635079847005181031ae4d9fa5da0c07cf5afd168f0')
 
 prepare(){
   grep -iRl 'python' ${_pkgname}-$pkgver | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
   cd ${_pkgname}-${pkgver}
   sed -i 's|../data/empire.db|/usr/share/empire/data/empire.db|' setup/setup_database.py
   sed -i 's|../data/empire.pem|/usr/share/empire/data/empire.pem|' setup/cert.sh
+  patch -p1 -i ../c1da4a06.patch
 }
 
 package() {
