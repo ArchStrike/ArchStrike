@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=python2-poyo
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="A minimal YAML Parser for Python"
 url="https://github.com/hackebrot/poyo"
 depends=('python2')
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/hackebrot/poyo/archive/$pkgver.tar.gz")
-sha512sums=('93991b9d0f7983e99ef10ef9cc1ac62acbbf2cd24ef78480debf4eb3f4b64744c9e6bbb3fa83bee38fd58a9c1a373369e5eb60c185c0ebe67d7a1475c5b1996e')
+sha512sums=('4c558251a4de82bed4a832c5bf8ba68e6a8fc6fad6a32d6056d1b8c4f8955a4122a24b78e5aef8158254ca62a15eb4b650fdd2a6822bf44ae52dafee6a9ad456')
 
 build() {
     cd $srcdir/poyo-$pkgver
@@ -22,6 +22,6 @@ build() {
 
 package() {
     cd $srcdir/poyo-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
