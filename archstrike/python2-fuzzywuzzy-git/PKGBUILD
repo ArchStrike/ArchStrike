@@ -2,8 +2,9 @@
 
 buildarch=1
 
+epoch=1
 pkgname=python2-fuzzywuzzy-git
-pkgver=r324.326abdb
+pkgver=20171209.r326
 pkgrel=1
 pkgdesc="Fuzzy string matching in python"
 arch=('any')
@@ -19,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
-  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
