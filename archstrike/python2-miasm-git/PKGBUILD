@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=python2-miasm-git
-pkgver=20170907.r2444
+pkgver=20171211.r2464
 pkgrel=1
 pkgdesc="A  Reverse engineering framework in Python"
 groups=("archstrike" "archstrike-analysis" "archstrike-decompile")
@@ -22,7 +22,7 @@ pkgver() {
 
 package() {
   cd "${pkgname}"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" -O1
   install -Dm644 "LICENCE" "$pkgdir/usr/share/licenses/$pkgname/LICENCE"
 }
 
