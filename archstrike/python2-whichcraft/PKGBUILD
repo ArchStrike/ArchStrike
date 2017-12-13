@@ -4,24 +4,24 @@
 buildarch=1
 
 pkgname=python2-whichcraft
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 pkgdesc="This package provides cross-platform cross-python shutil.which functionality."
 url="https://github.com/pydanny/whichcraft"
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/6b/73/c38063b84519a2597c0a57e472d28970d2f8ad991fde18612ff3708fda0c/whichcraft-$pkgver.tar.gz")
-sha512sums=('167495e858e67a2c6374e56ca9a85f52a8167f9276d80723f270d14fe292f4a1f7f8fd2fc651965f77f0cdd1edeed1ff3f695a3d2367bc018bb424efdd273e18')
+source=("https://github.com/pydanny/whichcraft/archive/${pkgver}.tar.gz")
+sha512sums=('92633be99badd0ce06cf28b23366f89f2104ef2364ec8f637230fe46b378d1398a64f4d8b367358c833a2038159debc70b0498e94d2729918b95847defd59cae')
 
 build() {
-    cd $srcdir/whichcraft-$pkgver
+    cd whichcraft-$pkgver
     python2 setup.py build
 }
 
 package() {
     cd $srcdir/whichcraft-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
