@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=packetsender
-pkgver=5.3.2
+pkgver=5.5.1
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A utility to allow sending and receiving TCP and UDP packets."
@@ -12,7 +12,7 @@ url='http://packetsender.com/'
 license=('GPL2')
 depends=('qt5-base')
 source=("https://github.com/dannagle/PacketSender/archive/v$pkgver.tar.gz")
-sha512sums=('9cc204d16512001cf6feaaf6f5cc23fb58d2d8273c75c26753ce2a3f31f7621179a7d8f4510ba2f623c70967b4b41a37c08233737827270707525a0618519d1c')
+sha512sums=('aecde0b7a190a1338b4ddd3e1fc13958f1ccf0d0a9e442083c3bd50a48e2790c4d5bf89c5d5c9a1596e9e8404305723412d541b2d6746ccaab8aaaad37efb135')
 
 build(){
   cd "$srcdir/PacketSender-$pkgver/src"
