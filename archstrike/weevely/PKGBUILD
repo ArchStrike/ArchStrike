@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=weevely
 _pkgname=weevely3
-pkgver=3.4
-pkgrel=2
+pkgver=3.5
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="A Stealth tiny web shell that provides a telnet-like console."
 arch=('any')
@@ -13,10 +13,10 @@ url='http://epinna.github.io/Weevely3'
 depends=('python2-dateutil' 'python2-pysocks' 'python2-mako' 'python2-prettytable' 'python2-yaml')
 license=('GPL')
 source=("https://github.com/epinna/weevely3/archive/v${pkgver}.tar.gz")
-sha512sums=('b2149a925f0c37aabc5956d463aeddb3b3607e96b41506584d0f22a5ae6bd417991eb2eac27ab869c84081cc6d939907f6bdbad406f7585e84a34e39437529ad')
+sha512sums=('a75ec92dfd9753bfebb9be89e68d87e8a2ce03d756921f461b79dd90873ac25dd584c81a8393114e61eb7926b0f1ff555b33d4016132bca35fc78cd233ac8c4c')
 
 prepare(){
-  grep -iRl 'python' "${srcdir}/${_pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${_pkgname}-${pkgver}" | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
@@ -27,17 +27,14 @@ package() {
   install -dm755 "${pkgdir}/usr/share/doc/weevely"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -R --no-preserve=ownership utils bd testsuite core modules weevely.py "${pkgdir}/usr/share/weevely"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/weevely"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/weevely"
-  # fixing small issue
-  sed -i 's|python22|python2|' ${pkgdir}/usr/share/weevely/utils/ipaddr.py
-  sed -i 's|python|python2|' ${pkgdir}/usr/share/weevely/modules/audit/_linuxprivchecker/linuxprivchecker.py
 
 cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/${pkgname}
 python2 weevely.py "\$@"
 EOF
 
-chmod +x "${pkgdir}/usr/bin/${pkgname}"
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
