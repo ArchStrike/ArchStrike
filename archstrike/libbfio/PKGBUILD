@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=libbfio
-pkgver="20160108"
-pkgrel=4
+pkgver="20170123"
+pkgrel=1
 pkgdesc="Library to provide basic file input/output abstraction"
 url="https://github.com/libyal/libbfio"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('glibc')
 install="$pkgname.install"
 source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz")
-sha512sums=('7b8c0bd712dea36976f87607452d34d4f2d62f92fab97d08700e6d73f21a48c1446b1b00ea4b4b2ae21395663e6e658994895647ae3f09469975355260cb8309')
+sha512sums=('e6d9fbc6d29d9a1906b0a0812efc07526d9d30a6d1dfb0a071cba9338fcb2da91f88a244520b89e594ae8f0d6a33b4f074a0fc4cd81490b6a290d3a2947c21a2')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
