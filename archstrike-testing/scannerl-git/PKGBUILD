@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=scannerl-git
-pkgver=20171208.r46
+pkgver=20171213.r52
 pkgrel=1
 groups=('archstrike' 'archstrike-scanner')
 arch=('any')
