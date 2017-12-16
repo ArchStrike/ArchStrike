@@ -4,20 +4,16 @@
 buildarch=1
 
 pkgname=python2-simuvex
-pkgver=5.6.12.3
-pkgrel=2
+pkgver=7.7.9.8
+pkgrel=1
 pkgdesc="A symbolic execution engine for the VEX IR"
 url="https://github.com/angr/simuvex"
 depends=('python2' )
 makedepends=('python2-setuptools' )
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/04/e8/9d02507ab114486fe0fa8450b3d52dcb09936a3f1b7df272e5ddc9b9a867/simuvex-$pkgver.tar.gz")
-sha512sums=('913a84b5013fc74b4dd3f2b8d3cfd0df65d5ad3d88472ebc017314120f5cb215b0f4b48ef699d3c057b7f94502c61511627908761404ca76dd542df758e4aa24')
-
-prepare() {
-    grep -iRl 'python' simuvex-$pkgver | xargs sed -i 's|python|python2|'
-}
+source=("https://pypi.python.org/packages/fe/63/4185f130e1f4d1ae5a0e1219aa57a0fc6563544236b2e14a236aa8286cd1/simuvex-${pkgver}.tar.gz")
+sha512sums=('dfec36635449b7b1b4f4541d639101cc7c63fe3a3be337da6a62e41801513a592ac3909ff9a0e35cc40093cc233ce2af8883c26c04a625cdb04157fc29922597')
 
 build() {
     cd $srcdir/simuvex-$pkgver
@@ -27,4 +23,5 @@ build() {
 package() {
     cd $srcdir/simuvex-$pkgver
     python2 setup.py install --root="$pkgdir" -O1 --skip-build
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
