@@ -4,16 +4,18 @@
 buildarch=1
 
 pkgname=python2-cle
-pkgver=5.6.12.3
-pkgrel=2
+pkgver=7.7.9.21
+pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
-url="https://pypi/python.org/pypi/cle"
+url="https://github.com/angr/cle"
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/72/1f/6abca1914d7190bf061427c3e41a1d6019e3424b1833b3499e9ea9588167/cle-${pkgver}.tar.gz")
-sha512sums=('d7f9cc919fcd62bba7c58bf9869b4a0f087bacb2c7d906ac298a6ce7110b43ada4c497d8b97a2b2a1e757780b06391159a82c4d457e590e569fce81cb186e5bd')
+source=("https://pypi.python.org/packages/c6/c9/97532224a49d0f919051a65dd99952d50bcb6bc0975a1690c94933d9524a/cle-${pkgver}.tar.gz"
+        "https://raw.githubusercontent.com/angr/cle/master/LICENSE")
+sha512sums=('b817c13e25e2cd0ce1799276adc5ea218232e2052a90107489b983fe9dc274333b8dafb7da9bd7e08785ad43f33cc1c916ac524ebe9acde917719daee4f3eb83'
+            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
     cd $srcdir/cle-$pkgver
@@ -23,4 +25,5 @@ build() {
 package() {
     cd $srcdir/cle-$pkgver
     python2 setup.py install --root="$pkgdir" -O1 --skip-build
+    install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
