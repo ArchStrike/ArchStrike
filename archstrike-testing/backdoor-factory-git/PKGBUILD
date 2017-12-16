@@ -3,14 +3,14 @@
 buildarch=220
 
 pkgname=backdoor-factory-git
-pkgver=0.r197.d144cc2
+pkgver=0.r198.87bd28d
 pkgrel=1
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Patch win32/64 binaries with shellcode"
 url="https://github.com/secretsquirrel/the-backdoor-factory"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
-depends=('capstone' 'python2-pefile' 'curl' 'libgsf')
+depends=('python2-capstone' 'python2-pefile' 'curl' 'libgsf' 'openssl-1.0')
 depends_x86_64+=('lib32-glibc')
 makedepends=('git' 'autoconf')
 replaces=('backdoor-factory')
@@ -32,7 +32,9 @@ prepare() {
 
 build() {
   cd "$pkgname/osslsigncode"
-  ./configure --prefix=/usr
+  export PKG_CONFIG_PATH="/usr/lib/openssl-1.0/pkgconfig/"
+  ./configure --prefix=/usr --mandir=/usr/share/man \
+              --sbindir=/usr/bin --bindir=/usr/bin
   make
 
   if [[ "$CARCH" = 'x86_64' ]] || [[ "$CARCH" = 'i686' ]]; then
