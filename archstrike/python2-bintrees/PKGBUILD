@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=python2-bintrees
-pkgver=2.0.6
+pkgver=2.0.7
 pkgrel=1
 pkgdesc="Package provides Binary-, RedBlack- and AVL-Trees in Python and Cython."
 url="http://bitbucket.org/mozman/bintrees"
@@ -11,8 +11,12 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('CUSTOM')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=("https://pypi.python.org/packages/62/a8/40c9d26030826c96e868138b0734ab62e757b87b790e9669bd93698f95ff/bintrees-${pkgver}.zip")
-sha512sums=('29a86cb1760556a4e58133fc69f9ff9f8c255f18cb2c2a66cfb53f717eeaf50b7ce1089939a7a88ac7761958939e7bf14f2dfab71a2f611b884c4ba5977497c5')
+source=("https://pypi.python.org/packages/14/d7/eedfbbcfd3d60bdf1c7f266830889a6d96ea574037426c2e0dd037cc9a3f/bintrees-${pkgver}.zip")
+sha512sums=('73eca2dd76e45158048781952b45ae0925eec52347aa481594c57acfbb4c83a58b764921d690c458b3cfbc276566b70d32461c66f4e07f735b310fa64a9e1488')
+
+prepare() {
+    grep -ZRil 'python' "bintrees-$pkgver" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!    /usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
+}
 
 build() {
     cd $srcdir/bintrees-$pkgver
@@ -23,6 +27,4 @@ package() {
     cd $srcdir/bintrees-$pkgver
     python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
-    #fix python issues
-    grep -iRl 'python' "$pkgdir" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python|#!/usr/bin/env python2|'
 }
