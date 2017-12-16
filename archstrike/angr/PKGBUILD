@@ -21,7 +21,7 @@ sha512sums=('4cc35f0c77489f3f8b235bffb4aee49aa280d92477ee499ac7e235b713a4840b77e
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 prepare() {
-    grep -ZRil 'python' "angr-$pkgver" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!    /usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
+    grep -ZRil 'python' "angr-$pkgver" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
 }
 
 build() {
