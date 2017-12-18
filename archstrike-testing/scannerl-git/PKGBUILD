@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=scannerl-git
 pkgver=20171213.r52
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanner')
 arch=('any')
 pkgdesc="The modular distributed fingerprinting engine"
 url="https://github.com/kudelskisecurity/scannerl"
 license=('GPL3')
-depends=('erlang-nox')
+depends=('erlang-nox' 'openssh')
 makedepends=('git' 'rebar')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
