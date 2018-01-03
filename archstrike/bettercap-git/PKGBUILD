@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname=bettercap
 pkgname=${_pkgname}-git
-pkgver=946.6fcade8
+pkgver=1015.3946fdd
 pkgrel=1
 groups=('archstrike' 'archstrike-sniffers' 'archstrike-exploit'
         'archstrike-networking')
