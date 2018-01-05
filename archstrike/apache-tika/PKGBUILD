@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=apache-tika
-pkgver=1.16
+pkgver=1.17
 pkgrel=1
 pkgdesc='Toolkit for detecting and extracting metadata and structured text content'
 arch=('any')
@@ -18,7 +18,7 @@ source=(
   "$pkgname.service"
 )
 
-sha512sums=('9ffb6bad7bfb7cae87dd79c8cdbcdf665248a0edb286e834d2bf53880d79f4ccf221e2a81b0495d41ef9ec40e3e25e161921a2374241433a00fafd07258ad514'
+sha512sums=('2fdce4157a8d23d1d4d53400cc402bc61986a86ad42b57e5f1231a7a43f8416df0619f3248ae6f39e2977be834f756cdd8688d9c73e8d6cbc365f17a0acae98f'
             'e46522bfcc86ada8776c4f12cf645a81c34492b1c86e9bd1258d7fa248fb8fed9c2bd57e5971c5c9a4687f35626f872f63920649279cfaba5498a55c3331bcf5')
 
 package() {
