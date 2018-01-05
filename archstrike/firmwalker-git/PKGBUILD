@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=firmwalker-git
-pkgver=20170831.r84
+pkgver=20180104.r90
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Simple bash script for searching the extracted or mounted firmware file system"
