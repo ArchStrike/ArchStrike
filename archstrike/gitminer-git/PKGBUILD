@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=gitminer-git
-pkgver=20171122.r35
+pkgver=20171229.r40
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-info')
 arch=('any')
