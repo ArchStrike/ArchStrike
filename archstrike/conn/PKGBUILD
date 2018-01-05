@@ -5,23 +5,23 @@ buildarch=220
 
 _pkgname=Conn
 pkgname=conn
-pkgver=1.0.36
-pkgrel=3
+pkgver=1.0.37
+pkgrel=1
 pkgdesc='Small C library usefull to easy build ipv4/ipv6 network daemons/clients'
 url='http://kernel.embedromix.ro/us/'
 license=('LGPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('glibc')
-source=("http://kernel.embedromix.ro/us/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('367eb4dc54955262914c3d184686ea18c00e5ea84ca6607cb9872ecdd27ea0cf88f343c68f715d309607886d647a7352ce4365e5e8090ed79073ffedd710269a')
+source=("http://kernel.embedromix.ro/us/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('bed0cb73f2eea2e8cea9f750d5cd6d13e1d09a0c53c9956b505290010a36303c1375852497d09b8f70ad1de0d64f281f91f621fc3ec53bf3f8f0ad7b627faa3a')
 
 build() {
-  cd $_pkgname-$pkgver
+  cd ${_pkgname}-${pkgver}
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $_pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd ${_pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
 }
