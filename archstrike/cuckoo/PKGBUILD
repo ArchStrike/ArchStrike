@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=cuckoo
-pkgver=2.0.4.4
+pkgver=2.0.5.2
 pkgrel=1
 pkgdesc="A malware analysis system"
 url="http://cuckoosandbox.org/"
