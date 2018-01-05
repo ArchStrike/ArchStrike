@@ -2,8 +2,9 @@
 
 buildarch=1
 
-pkgname=backdoorme-git
-pkgver=20170105.r306
+_pkgname=backdoorme
+pkgname=${_pkgname}-git
+pkgver=20171220.r308
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 arch=('any')
@@ -11,16 +12,17 @@ pkgdesc="Powerful utility capable of backdooring Unix machines with a slew of ba
 url="https://github.com/Kkevsterrr/backdoorme"
 license=('MIT')
 depends=('python2-cffi' 'python2-ecdsa' 'python2-future' 'python2-idna' 'python2-pexpect' 
-         'python2-pefile' 'python2-pyasn1' 'python2-pycparser' 'python2-six' 
+         'python2-pefile' 'python2-pyasn1' 'python2-pycparser' 'python2-six' 'python2-cryptography'
          'python2-plumbum' 'python2-colorama' 'python2-paramiko' 'python2-scp' 'python2-rpyc'
-	 'pupy-git' 'nmap' 'metasploit' 'php' 'perl')
+	 'python2-nose' 'python2-nose-exclude' 'python2-netifaces' 'pupy-git' 'nmap' 'metasploit'
+         'php' 'perl')
 makedepends=('git')
 options=("!strip")
-source=("$pkgname::git+https://github.com/Kkevsterrr/backdoorme.git")
+source=("${pkgname}::git+https://github.com/Kkevsterrr/${_pkgname}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname}
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
@@ -29,17 +31,17 @@ prepare() {
 }
 
 package() {
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
-cat > "$pkgdir/usr/bin/backdoorme" <<EOF
+cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/bin/sh
-cd /usr/share/$pkgname
+cd /usr/share/${pkgname}
 python2 master.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/backdoorme"
+chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
