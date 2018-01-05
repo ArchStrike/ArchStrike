@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=featherduster-git
 _pkgname=featherduster
-pkgver=20170104.r122
-pkgrel=2
+pkgver=20171030.r169
+pkgrel=1
 groups=('archstrike' 'archstrike-crypto')
 arch=('any')
 pkgdesc="An automated, modular cryptanalysis tool"
