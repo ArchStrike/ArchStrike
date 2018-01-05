@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=honeypy-git
-pkgver=20170821.r396
+pkgver=20171125.r498
 pkgrel=1
 pkgdesc="A low interaction Honeypot"
 arch=('any')
@@ -24,7 +24,7 @@ pkgver() {
 }
 
 prepare() {
-  sed -i 's|python|python2|' ${pkgname}/Honey.py
+  sed -i 's|python$|python2|' ${pkgname}/Honey.py
 }
 
 package() {
