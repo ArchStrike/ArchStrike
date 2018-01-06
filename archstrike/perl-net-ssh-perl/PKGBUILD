@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=perl-net-ssh-perl
-pkgver=2.01
-pkgrel=4
+pkgver=2.14
+pkgrel=1
 pkgdesc="Perl client interface to SSH"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL' 'custom')
@@ -16,7 +16,7 @@ depends=('perl-convert-pem>=0.05' 'perl-crypt-dh>=0.01' 'perl-crypt-dsa>=0.11'
          'perl-string-crc32>=1.2')
 url='http://search.cpan.org/dist/Net-SSH-Perl'
 source=("http://search.cpan.org/CPAN/authors/id/S/SC/SCHWIGON/Net-SSH-Perl-$pkgver.tar.gz")
-sha512sums=('4d32711323df5e0098decbb42f134a9a79e7fc216508aa23ae59a2807d2fbe983bfe0a9e50cfc128ef22adc6bd878a71f419f2546419acf9e15cf037b8984cf4')
+sha512sums=('49fee3e7969260a97453adfdac7ed3852130a7404ca5016f6d16549e478b8f2808f47c5801f2dbf991cfb33b5f2653d55360ba938d9b36016620a46e1ffea879')
 _distdir="Net-SSH-Perl-$pkgver"
 
 build() {
