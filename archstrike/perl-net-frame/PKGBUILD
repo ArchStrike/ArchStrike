@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname='perl-net-frame'
-pkgver='1.16'
-pkgrel=4
+pkgver='1.17'
+pkgrel=1
 pkgdesc='The base framework for frame crafting.'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -13,7 +13,7 @@ depends=('perl-bit-vector' 'perl-class-gomor' 'perl-net-ipv6addr'
 'perl-socket6')
 url='http://search.cpan.org/dist/Net-Frame'
 source=("http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/Net-Frame-$pkgver.tar.gz")
-sha512sums=('da51915da18117464528c1f0f3c0e376d904b9d23d6d32d0a454358aaa00759312043d3993e7391fb0f3fbe28fa8dcbc255c65fc286e78d921226a1543fc6bae')
+sha512sums=('f035ecd0e9e798b8ff572a8311525903f8b9570459ee570c5f66acde03f9586326685378454f41643a87384e726a1ee7c32b4ab96f4fbd4d478b586ba70e18c3')
 _distdir="Net-Frame-$pkgver"
 
 prepare() {
