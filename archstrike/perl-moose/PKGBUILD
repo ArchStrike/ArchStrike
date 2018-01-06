@@ -4,8 +4,8 @@ buildarch=220
 
 pkgname=perl-moose
 _cpanname=Moose
-pkgver='2.2004'
-pkgrel=2
+pkgver='2.2009'
+pkgrel=1
 pkgdesc="A postmodern object system for Perl 5"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('PerlArtistic' 'GPL')
@@ -21,7 +21,7 @@ depends=('perl-class-load>=0.09' 'perl-class-load-xs>=0.01'
 makedepends=('perl-dist-checkconflicts>=0.02' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05' 'perl-test-without-module')
 url="https://metacpan.org/release/$_cpanname"
 source=("http://cpan.metacpan.org/authors/id/E/ET/ETHER/$_cpanname-$pkgver.tar.gz")
-sha512sums=('30db47b7416347e059b0a43ac4c95c253aac9391a999cb5a484a040b9ce9e33404ae89b34cd28e0cce35506cdfe3a576b91fc941c4dbbe601f4a7d97a01867e9')
+sha512sums=('dc3c0cd4cdea39436f98d7849cfb268ac8168617970b23ce3217ad11715777266208ca623297a5a2dbd2a19c00909fe9a81b1f102ed5f8a7e13845c31751c05d')
 
 build() {
   cd "$srcdir/$_cpanname-$pkgver"
