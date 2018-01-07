@@ -4,35 +4,35 @@ _pkgname=hyperfox
 buildarch=220
 
 pkgname=hyperfox-git
-pkgver=20161115.r60
-pkgrel=2
+pkgver=20170923.r65
+pkgrel=1
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="A security tool for proxying and recording HTTP and HTTPs traffic."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
-_url="github.com/xiam/hyperfox"
+_url="github.com/malfunkt/hyperfox"
 url="https://$_url"
 license=("custom")
 depends=('glibc')
 makedepends=('go' 'git')
-source=("$_url::git://github.com/xiam/hyperfox.git" "https://raw.githubusercontent.com/xiam/hyperfox/master/LICENSE")
+source=("$_url::git://github.com/malfunkt/hyperfox.git" "https://raw.githubusercontent.com/xiam/hyperfox/master/LICENSE")
 sha512sums=('SKIP'
             '24a3e733c61dba72fac1b216620219817ab64b372606f8ebb71991d712d0f7486c67b42255de501832e5903255ae8370e4d3d57f8be223ec68543d80b08fac63')
 
 pkgver() {
   cd "$srcdir/$_pkgname"
-        printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
   cd "$srcdir"
   # makepkg doesn't support extracting sources to a specific directory
   mkdir -p src/$_url && rm -rf src/$_url && mv $_pkgname src/$_url && cd src/$_url
-  GOPATH="$srcdir" go get -d -t github.com/xiam/hyperfox
+  GOPATH="$srcdir" go get -d -t github.com/malfunkt/hyperfox
 }
 
 package() {
   cd "$srcdir"
-  GOPATH="$srcdir" go build -v github.com/xiam/hyperfox
+  GOPATH="$srcdir" go build -v github.com/malfunkt/hyperfox
 
   mkdir -p "$pkgdir/usr/bin"
   cp "$srcdir/hyperfox" "$pkgdir/usr/bin/hyperfox"
