@@ -12,8 +12,14 @@ url='http://kernel.embedromix.ro/us/'
 license=('LGPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('glibc')
-source=("http://kernel.embedromix.ro/us/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('bed0cb73f2eea2e8cea9f750d5cd6d13e1d09a0c53c9956b505290010a36303c1375852497d09b8f70ad1de0d64f281f91f621fc3ec53bf3f8f0ad7b627faa3a')
+source=("http://kernel.embedromix.ro/us/${_pkgname}/${_pkgname}-${pkgver}.tar.gz" "libdir.patch")
+sha512sums=('bed0cb73f2eea2e8cea9f750d5cd6d13e1d09a0c53c9956b505290010a36303c1375852497d09b8f70ad1de0d64f281f91f621fc3ec53bf3f8f0ad7b627faa3a'
+            '78240d20439aa6772badaa4e0bbb0d1045ecdb69dfd2ed549003e4835e985f2621f903a41711d1b04088d5af0d793e84a185fb37b1a2803f1ce2da9b20d95bd1')
+
+prepare() {
+  cd ${_pkgname}-${pkgver}
+  patch -Np1 -i ${srcdir}/libdir.patch
+}
 
 build() {
   cd ${_pkgname}-${pkgver}
