@@ -3,14 +3,16 @@
 buildarch=192
 
 pkgname="meltdown-git"
-pkgver=20180110.r37
+pkgver=20180111.r46
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('i686' 'x86_64')
 pkgdesc="Meltdown Proof-of-Concept"
 url="https://github.com/IAIK/meltdown"
 license=('custom')
-makedepends=('git')
+depends=('linux>=4.14' 'linux<4.15')
+makedepends=('git' 'linux-headers>=4.14' 'linux-headers<4.15')
+_extramodules=extramodules-4.14-ARCH
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
@@ -20,10 +22,14 @@ pkgver() {
 }
 
 build() {
-  cd "${pkgname}"
-
+  cd "${srcdir}/${pkgname}"
   make
-  make -C libkdump
+
+  cd "${srcdir}/${pkgname}/libkdump"
+  make
+
+  cd "${srcdir}/${pkgname}/kaslr_offset/kernel_module"
+  make
 }
 
 package() {
@@ -42,4 +48,10 @@ package() {
   install -Dm755 "secret" "${pkgdir}/usr/bin/meltdown_secret"
   install -Dm755 "physical_reader" "${pkgdir}/usr/bin/meltdown_physical_reader"
   install -Dm755 "memdump" "${pkgdir}/usr/bin/meltdown_memdump"
+
+  install -Dm644 kaslr_offset/kernel_module/direct_physical_map.ko "${pkgdir}/usr/lib/modules/${_extramodules}/direct_physical_map.ko"
+  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/direct_physical_map.ko"
+
+  install -d "${pkgdir}/usr/lib/modules-load.d/"
+  echo direct_physical_map > "${pkgdir}/usr/lib/modules-load.d/direct_physical_map.conf"
 }
