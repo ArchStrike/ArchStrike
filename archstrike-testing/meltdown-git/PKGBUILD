@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname="meltdown-git"
 pkgver=20180111.r46
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 arch=('i686' 'x86_64')
 pkgdesc="Meltdown Proof-of-Concept"
@@ -13,12 +13,19 @@ license=('custom')
 depends=('linux>=4.14' 'linux<4.15')
 makedepends=('git' 'linux-headers>=4.14' 'linux-headers<4.15')
 _extramodules=extramodules-4.14-ARCH
-source=("${pkgname}::git+${url}.git")
-sha512sums=('SKIP')
+source=("${pkgname}::git+${url}.git"
+        "module_kversion.patch")
+sha512sums=('SKIP'
+            'bd23233b6bd1a8ac7847dfe05b57853db660dd52977a14ecfbc1d710d032a469a3ca40504cb089bd78846c0d9c741fcd040e84649030c4f495cba99d61bcda7d')
 
 pkgver() {
   cd "${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd "${pkgname}"
+  patch -p1 -i "${srcdir}/module_kversion.patch"
 }
 
 build() {
@@ -29,7 +36,7 @@ build() {
   make
 
   cd "${srcdir}/${pkgname}/kaslr_offset/kernel_module"
-  make
+  make KVERSION="$(cat /usr/lib/modules/$_extramodules/version)"
 }
 
 package() {
