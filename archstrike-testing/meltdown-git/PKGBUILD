@@ -3,29 +3,20 @@
 buildarch=192
 
 pkgname="meltdown-git"
-pkgver=20180111.r46
-pkgrel=2
+pkgver=20180113.r49
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('i686' 'x86_64')
 pkgdesc="Meltdown Proof-of-Concept"
 url="https://github.com/IAIK/meltdown"
 license=('custom')
-depends=('linux>=4.14' 'linux<4.15')
-makedepends=('git' 'linux-headers>=4.14' 'linux-headers<4.15')
-_extramodules=extramodules-4.14-ARCH
-source=("${pkgname}::git+${url}.git"
-        "module_kversion.patch")
-sha512sums=('SKIP'
-            'bd23233b6bd1a8ac7847dfe05b57853db660dd52977a14ecfbc1d710d032a469a3ca40504cb089bd78846c0d9c741fcd040e84649030c4f495cba99d61bcda7d')
+makedepends=('git')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd "${pkgname}"
-  patch -p1 -i "${srcdir}/module_kversion.patch"
 }
 
 build() {
@@ -34,9 +25,6 @@ build() {
 
   cd "${srcdir}/${pkgname}/libkdump"
   make
-
-  cd "${srcdir}/${pkgname}/kaslr_offset/kernel_module"
-  make KVERSION="$(cat /usr/lib/modules/$_extramodules/version)"
 }
 
 package() {
@@ -49,16 +37,7 @@ package() {
   install -Dm755 libkdump/libkdump.so "${pkgdir}/usr/lib/libkdump.so"
   install -Dm644 libkdump/libkdump.h "${pkgdir}/usr/include/libkdump.h"
 
-  install -Dm755 "test" "${pkgdir}/usr/bin/meltdown_test"
-  install -Dm755 "kaslr" "${pkgdir}/usr/bin/meltdown_kaslr"
-  install -Dm755 "reliability" "${pkgdir}/usr/bin/meltdown_reliability"
-  install -Dm755 "secret" "${pkgdir}/usr/bin/meltdown_secret"
-  install -Dm755 "physical_reader" "${pkgdir}/usr/bin/meltdown_physical_reader"
-  install -Dm755 "memdump" "${pkgdir}/usr/bin/meltdown_memdump"
-
-  install -Dm644 kaslr_offset/kernel_module/direct_physical_map.ko "${pkgdir}/usr/lib/modules/${_extramodules}/direct_physical_map.ko"
-  gzip "${pkgdir}/usr/lib/modules/${_extramodules}/direct_physical_map.ko"
-
-  install -d "${pkgdir}/usr/lib/modules-load.d/"
-  echo direct_physical_map > "${pkgdir}/usr/lib/modules-load.d/direct_physical_map.conf"
+  for i in test kaslr reliability secret physical_reader memdump; do
+    install -Dm755 "${i}" "${pkgdir}/usr/bin/meltdown_${i}"
+  done
 }
