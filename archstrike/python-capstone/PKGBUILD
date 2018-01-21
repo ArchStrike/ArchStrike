@@ -1,0 +1,47 @@
+# Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
+# Contributor: M0Rf30
+
+pkgbase=capstone
+pkgname=('capstone' 'python-capstone' 'python2-capstone')
+pkgver=3.0.5
+pkgrel=1
+pkgdesc='A lightweight multi-platform, multi-architecture disassembly framework'
+url='http://www.capstone-engine.org/index.html'
+arch=('x86_64')
+license=('BSD')
+makedepends=('glibc' 'python' 'python-setuptools' 'python2' 'python2-setuptools')
+options=('staticlibs')
+source=(${pkgname}-${pkgver}.tar.gz::https://github.com/aquynh/capstone/archive/${pkgver}-rc3.tar.gz)
+sha512sums=('1327fc570fc2310f71c4d7329528c05e30b9ad68ea50254b9a8c4b3b113f5165c2e0474ec99bbe1e6e46f2820379f388e4c2082c156027e117d88a8f1908acfe')
+
+prepare() {
+  mv ${pkgbase}-${pkgver}-rc3 ${pkgbase}-${pkgver}
+}
+
+build() {
+  cd ${pkgbase}-${pkgver}
+  make
+}
+
+package_capstone() {
+  depends=('glibc')
+  cd ${pkgbase}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+  install -Dm 644 LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python-capstone() {
+  depends=('capstone' 'python')
+  cd ${pkgbase}-${pkgver}/bindings/python
+  python setup.py install -O1 --root="${pkgdir}" --prefix=/usr
+  install -Dm 644 ../../LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-capstone() {
+  depends=('capstone' 'python2')
+  cd ${pkgbase}-${pkgver}/bindings/python
+  python2 setup.py install -O1 --root="${pkgdir}" --prefix=/usr
+  install -Dm 644 ../../LICENSE.TXT "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+# vim: ts=2 sw=2 et:
