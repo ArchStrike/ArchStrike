@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname="meltdown-git"
-pkgver=20180117.r69
+pkgver=20180118.r73
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('i686' 'x86_64')
