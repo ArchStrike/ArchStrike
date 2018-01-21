@@ -4,27 +4,23 @@ buildarch=1
 
 _pkgname="Empire"
 pkgname=empire
-pkgver=2.3
+pkgver=2.4
 pkgrel=1
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
 groups=('archstrike' 'archstrike-exploit' 'archstrike-backdoors')
-url="https://github.com/PowerShellEmpire/Empire"
+url="https://github.com/EmpireProject/${_pkgname}"
 license=('custom')
 install="${pkgname}.install"
-depends=('python2-m2crypto' 'swig' 'python2-crypto' 'python2-flask' 'python2-pydispatcher' 'python2-iptools' 'python2-pyopenssl' 'python2-netifaces' 'python2-dropbox' 'pyinstaller' 'python2-macholib' 'python2-zlib_wrapper')
 makedepends=('git')
-source=("https://github.com/PowerShellEmpire/${_pkgname}/archive/${pkgver}.tar.gz"
-        "c1da4a06.patch") # allow new pyOpenSSL, somewhat "better" fix for #697
-sha512sums=('0ede63e211b7dfb44c0c049587485f90046b2755699a0a2aa026c1349ef06bb6575ad524c5c9a97f8d01a33c50f5ee978e1d2b44db2822f6d6649f5a5ac7d58e'
-            '9f26432c6ace104dbd639e7d15f75366e525de7d4e74c5622180cc9152f81d3121d775ddda0fb2ece448d635079847005181031ae4d9fa5da0c07cf5afd168f0')
+depends=('pyinstaller' 'python2-crypto' 'python2-dropbox' 'python2-flask' 'python2-iptools' 'python2-jinja' 'python2-m2crypto' 'python2-macholib' 'python2-netifaces' 'python2-pydispatcher' 'python2-pyopenssl' 'python2-setuptools' 'python2-urllib3' 'python2-zlib_wrapper' 'swig')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('57ab3ba4ae70a385a67685f795d55bdcac3b2ca9f26356b426701cd13dcb58611aad2889f9e1796824977676f366be39350fae9c5c8fe4b661cef2cc55bde7fa')
 
 prepare(){
   grep -iRl 'python' ${_pkgname}-$pkgver | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
   cd ${_pkgname}-${pkgver}
-  sed -i 's|../data/empire.db|/usr/share/empire/data/empire.db|' setup/setup_database.py
-  sed -i 's|../data/empire.pem|/usr/share/empire/data/empire.pem|' setup/cert.sh
-  patch -p1 -i ../c1da4a06.patch
+  sed -i 's|\.\./data/empire.pem|/usr/share/empire/data/empire.pem|' setup/cert.sh
 }
 
 package() {
