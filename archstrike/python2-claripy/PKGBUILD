@@ -15,7 +15,7 @@ arch=('any')
 source=("https://pypi.python.org/packages/8a/41/7cd5909523486fe9168a6d90e610ce84861d9d8c30137ded9c702f4d8720/claripy-7.7.12.16.tar.gz"
         "https://raw.githubusercontent.com/angr/claripy/master/LICENSE")
 sha512sums=('03c1009d07752e333e28f8d3a3ff088a71914379a7f2cd82fa270203a35209a6017c815ef944c40bf3600ca2c7fc890269e3b79e5d801f0beb540d9c572ded29'
-            '95dcaed7758e6dc2ba37429e423f259c38382c80bd0d36b2119e57a005a886aafd66d30bfbcc307b91f356dc7021006088f097cc62b83b361ecf0024f5670cd1')
+            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 prepare() {
     grep -iRl 'python' claripy-$pkgver | xargs sed -i 's|python$|python2|'
