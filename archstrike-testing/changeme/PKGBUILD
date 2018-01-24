@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=changeme
 pkgver=0.4.5
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A default credential scanner"
 arch=('any')
 url='https://github.com/ztgrace/changeme'
 license=('GPL3')
-depends=('python2-requests' 'python2-logutils' 'python2-yaml' 'python2-netaddr' 'python2-responses' 'python2-nose' 'python2-lxml' 'python2-cerberus' 'shodan' 'python2-libnmap')
+depends=('python2-requests' 'python2-logutils' 'python2-yaml' 'python2-netaddr' 'python2-responses' 'python2-nose' 'python2-lxml' 'python2-cerberus' 'shodan' 'python2-libnmap' 'python2-jinja' 'python2-tabulate')
 source=("https://github.com/ztgrace/changeme/archive/$pkgver.tar.gz")
 sha512sums=('60c90947da36765e6d998a3c0079545e23e9114a45cfe933c003732b8347ba08e22daffb139a8557d0fa8d41a989ac227f6ef7437508958443c02dbc984a0f59')
 
@@ -26,7 +26,7 @@ package() {
   for i in creds tests; do install -dm755 $i $pkgdir/usr/share/$pkgname/$i; cp -a --no-preserve=ownership $i/* "$pkgdir/usr/share/$pkgname/$i/";done
 
 cat > $pkgdir/usr/bin/$pkgname <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/$pkgname
 python2 $pkgname.py "\$@"
 EOF
