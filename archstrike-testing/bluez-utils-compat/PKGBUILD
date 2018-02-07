@@ -7,7 +7,7 @@ buildarch=220
 
 _pkgname='bluez'
 pkgname='bluez-utils-compat'
-pkgver=5.47
+pkgver=5.48
 pkgrel=1
 url="http://www.bluez.org/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ provides=('bluez-hcidump' 'bluez-utils')
 replaces=('bluez-hcidump' 'bluez<=4.101')
 makedepends=('dbus' 'libical' 'systemd')
 source=("https://www.kernel.org/pub/linux/bluetooth/${_pkgname}-${pkgver}.tar.xz")
-sha512sums=('86fa1baae1593d4824038db8418358b0be624c81fc23ee8f96ec08979d309a2377be3924ab53cc0fcb712aec8e696360e9a9f4de4c12cc31b14de5cf495a11a6')
+sha512sums=('38cb20b8acee8adaab286a0b042efa770df367e7a69556117961fcc46d9e0a0e2a48059c7df9511bb00fe7fc37e916e34c928df9372b45051fcc57c8965b0bb7')
 
 build() {
   cd "${_pkgname}-${pkgver}"
