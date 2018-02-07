@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=autosploit
 pkgname=${_pkgname}-git
-pkgver=r25.e03e7f2
-pkgrel=2
+pkgver=r33.7cfcb4e
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Automate the exploitation of remote hosts"
 arch=('any')
@@ -13,9 +13,8 @@ url='https://github.com/NullArray/AutoSploit'
 license=('GPL3')
 depends=('python2' 'shodan' 'python2-blessings' 'metasploit' 'sudo')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git" 'service.patch')
-sha512sums=('SKIP'
-            'd47a0907443be9f7dd4304016bdcd032df96045742200e2580f4ae1ee13504dbc5a119b123817a916242e64260515de1e7c9da6c4a36df272a727126f210ac79')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
@@ -25,9 +24,12 @@ pkgver() {
 prepare(){
   grep -iRl 'python' "${srcdir}/${pkgname}" | xargs sed -i 's|python$|python2|g'
 
-  # patch services for arch
-  cd ${pkgname}
-  patch -Np1 -i ${srcdir}/service.patch
+  # Fix services
+  cd "${srcdir}/${pkgname}"
+  sed -i "s|service postgresql status|systemctl status postgresql|" autosploit.py
+  sed -i "s|service apache2 status|systemctl status httpd|" autosploit.py
+  sed -i "s|service postgresql start|systemctl start postgresql|g" autosploit.py
+  sed -i "s|service apache2 start|systemctl start httpd|g" autosploit.py
 }
 
 package() {
