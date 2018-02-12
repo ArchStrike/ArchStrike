@@ -2,25 +2,25 @@
 # Contributor: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-xdis
-pkgver=3.2.4
-pkgrel=3
+pkgver=3.6.8
+pkgrel=1
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
 url="https://github.com/rocky/python-xdis/"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/rocky/python-xdis/archive/release-$pkgver.tar.gz")
-sha512sums=('d799398aaa558c86dcee72fb725a0718ab44a4614c4a2503563be496a2de9208508dea2950f5aca629ca767ea88d287434d9a6ccef5add49b1888bd322b030bc')
+source=("https://github.com/rocky/python-xdis/archive/release-${pkgver}.tar.gz")
+sha512sums=('f6cddff30b1c0042526257dd62c6ec1e1c134e42526efda6139bed6b598f2f76495db9b07b3be3cebef03ce7f9aca014a154dd3c6bfd3bec2eee134ff5a3283e')
 
 build() {
-    cd "$srcdir/$pkgname-release-${pkgver}"
+    cd "${srcdir}/${pkgname}-release-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname-release-${pkgver}"
-    python setup.py install --root="$pkgdir"
-    install -Dm644 LICENSE.mit $pkgdir/usr/share/licenses/$pkgname/LICENSE.mit
-    install -Dm644 LICENSE.gpl2 $pkgdir/usr/share/licenses/$pkgname/LICENSE.gpl2
+    cd "${srcdir}/${pkgname}-release-${pkgver}"
+    python setup.py install --root="${pkgdir}"
+    install -Dm644 LICENSE.mit ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.mit
+    install -Dm644 LICENSE.gpl2 ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.gpl2
 }
