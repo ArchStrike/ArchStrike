@@ -3,8 +3,8 @@
 buildarch=192
 
 _pkgname=beef
-pkgname=$_pkgname-git
-pkgver=20180104.r2976
+pkgname=${_pkgname}-git
+pkgver=20180217.r2999
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
@@ -13,33 +13,34 @@ arch=('i686' 'x86_64')
 url='http://beefproject.com'
 license=('Apache')
 options=('!emptydirs')
-provides=("$_pkgname")
-conflicts=("$_pkgname")
+provides=("${_pkgname}")
+conflicts=("${_pkgname}")
 depends=('ruby2.3' 'ruby2.3-bundler' 'java-environment' 'python2' 'imagemagick')
 makedepends=('git')
-source=("$pkgname::git+http://github.com/beefproject/beef.git")
+source=("${pkgname}::git+http://github.com/beefproject/beef.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname}
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd $pkgname
+  cd ${pkgname}
 
   # Install the package files
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/$_pkgname"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
-  cd "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
+  cd "${pkgdir}/usr/share/${_pkgname}"
   bundle-2.3 install --path vendor/bundle
+  sed -i 's|python|python2|' ${pkgdir}/usr/share/beef/vendor/bundle/ruby/2.3.0/gems/geoip-1.6.3/test/csvORG2dat.py
 
-cat > "$pkgdir/usr/bin/$_pkgname" << EOF
+cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
-cd /usr/share/$_pkgname
+cd /usr/share/${_pkgname}
 unset GEM_HOME
-/usr/bin/ruby-2.3 ./$_pkgname "\$@"
+/usr/bin/ruby-2.3 ./${_pkgname} "\$@"
 EOF
-chmod 0755 "$pkgdir/usr/bin/$_pkgname"
+chmod 0755 "${pkgdir}/usr/bin/${_pkgname}"
 }
