@@ -3,13 +3,13 @@
 buildarch=1
 
 pkgname=artillery-git
-pkgver=20170527.r193
+pkgver=20171219.r211
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="A combination of a honeypot, file-system monitoring, system hardening, and overall health of a server to create a comprehensive way to secure a system"
 arch=('any')
-url='https://www.trustedsec.com/downloads/artillery/'
+url='https://github.com/BinaryDefense/artillery'
 license=('BSD')
 makedepends=('git')
 depends=('python2')
@@ -33,8 +33,8 @@ prepare() {
   sed -i "s|/etc|${pkgdir}/etc|g" setup.py
   sed -i "s|/var/artillery|/usr/share/${pkgname}|g" artillery.py src/ssh_monitor.py src/monitor.py restart_server.py src/core.py src/email_handler.py src/ftp_monitor.py src/monitor.py src/startup_artillery
   sed -i "s|/var/log/apache|/var/log/httpd|g" src/apache_monitor.py
-  find $srcdir -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-  find $srcdir -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+  find ${srcdir} -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find ${srcdir} -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
 }
 
 package() {
@@ -43,7 +43,7 @@ package() {
   install -dm0755 ${pkgdir}/usr/share/${pkgname}
   install -Dm0644 readme/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
   mv ${pkgdir}/var/artillery/* ${pkgdir}/usr/share/${pkgname}
-  install -Dm0644 $srcdir/artillery.service ${pkgdir}/usr/lib/systemd/system/artillery.service
+  install -Dm0644 ${srcdir}/artillery.service ${pkgdir}/usr/lib/systemd/system/artillery.service
   install -dm755 ${pkgdir}/usr/bin
   cat > ${pkgdir}/usr/bin/artillery <<EOF
 #!/bin/sh
