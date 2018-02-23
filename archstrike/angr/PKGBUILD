@@ -3,22 +3,25 @@
 buildarch=1
 
 pkgname=angr
-pkgver=7.7.12.16
+pkgver=7.8.2.21
 pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
-depends=('python2-capstone' 'python2-cachetools' 'python2-networkx' 'python2-rpyc'
-         'python2-futures' 'python2-progressbar' 'python2-mulpyplexer' 'python2-cooldict'
-         'python2-ana' 'python2-archinfo' 'python2-pyvex' 'python2-claripy' 'python2-simuvex'
-         'python2-cle' 'python2-pyelftools' 'python2-cffi' 'python2-bintrees' 'python2-dpkt-git')
+depends=('python2-ana' 'python2-archinfo' 'python2-bintrees' 'python2-cachetools'
+         'python2-capstone' 'python2-cffi' 'python2-claripy' 'python2-cle'
+         'python2-cooldict' 'python2-dpkt-git' 'python2-futures' 'python2-mulpyplexer'
+         'python2-networkx' 'python2-progressbar' 'python2-pyelftools' 'python2-pygit2'
+         'python2-pyvex' 'python2-rpyc' 'python2-simuvex' 'python2-unicorn')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 install="${pkgname}.install"
-source=("https://pypi.python.org/packages/83/dd/c95a444e30190d9c71aeda39213570ea368de310cea277f93d06121b1e99/angr-7.7.12.16.tar.gz"
-        "https://raw.githubusercontent.com/angr/angr/master/LICENSE")
-sha512sums=('3b4bd9ad0ff9b95d0e6bcad9a6b491dfface754983eb6bc1a5e8ea35d6b546647c89acd825c06fdd9f20e207e64200eaa9b95e292e2b4e7b7b3c05009615d0fa'
-            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
+source=("https://pypi.python.org/packages/4c/9a/74b52028e9b0bfa7de4c7af2f2c0d3cae48c4fa6dad719032b214703c419/angr-7.8.2.21.tar.gz"
+        "https://raw.githubusercontent.com/angr/angr/master/LICENSE"
+        "${pkgname}.install")
+sha512sums=('74694e929c89b86778e96ede81e136a8060023938bee0e77025f0dbc41524e7cb7d3fe592afad16638e796c2cc239b640a7ff2d49ac1805e355c58bbb78d6bdf'
+            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340'
+            '3e5a33f78a27d5abd22eee426e08f9742e706acc3408cc4812d97d2e7fcf968ad59aace8845687cfb5d4c7d3d9a8b24cba40ac6d879266b13308f5f4d06b3aaa')
 
 prepare() {
     grep -ZRil 'python' "angr-$pkgver" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
