@@ -20,3 +20,5 @@ Server = https://ftp.acc.umu.se/mirror/archstrike.org/$arch/$repo
 Server = https://ftp.yzu.edu.tw/Linux/archstrike/$arch/$repo
 Server = http://mirror.team-cymru.org/archstrike/$arch/$repo
 Server = https://mirror.aarnet.edu.au/pub/archstrike/archstrike/$arch/$repo
+Server = https://mirror.hackingand.coffee/archstrike/$arch/$repo
+Server = http://mirror.hackingand.coffee/archstrike/$arch/$repo
