@@ -4,12 +4,12 @@ buildarch=220
 
 pkgname=aimage
 pkgver=3.2.5
-pkgrel=8
+pkgrel=9
 pkgdesc='A program to create aff-images'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.afflib.org'
 license=('custom')
-depends=('afflib')
+depends=('afflib' 'openssl-1.0')
 groups=('archstrike' 'archstrike-forensics')
 source=("http://pkgs.fedoraproject.org/repo/pkgs/$pkgname/$pkgname-$pkgver.tar.gz/07a11d653cdd1d7a5aefe4d99cdbd408/$pkgname-$pkgver.tar.gz" "gcc6.1.fixes.patch")
 sha512sums=('dc26f0e4ce1d336390aa0cc3ebeeb3388435ff2992b2f25217ad7fe61e05231f51359d5f8917b8a157fdaf6294903bb6c7e019ab3e116703c210ab93907a76db'
