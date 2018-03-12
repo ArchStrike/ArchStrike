@@ -3,23 +3,18 @@
 buildarch=220
 
 pkgname=afflib
-pkgver=3.7.7
-pkgrel=4
+pkgver=3.7.16
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='An extensible open format for the storage of disk images and related forensic information'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/sshock/AFFLIBv3/'
 license=('custom')
 install="$pkgname.install"
+makedepends=('cython2')
 depends=('fuse' 'openssl' 'expat' 'zlib' 'python2' 'curl' 'libtool' 'readline')
-source=("https://github.com/sshock/AFFLIBv3/archive/v$pkgver.tar.gz" "fix_spacing_issues.patch")
-sha512sums=('8698d66ab84601e5dcd64fcedf2087d5a8227895ed4009d314958eb223c56e0e59aa3e76d57f854a911f79194ae9c1ffc8af8e686310752744b43030c9e84e80'
-            'b3c78fdd519bcc2ab314a0c5ea5e19087a4eb3afba7451c561a768b4df9fbbfea9c6b42dc9fe1572d711d8da89d541c2c123c11a5aed9ba7309d2e1732941a65')
-
-prepare() {
- cd AFFLIBv3-$pkgver
- patch -Np1 -i $srcdir/fix_spacing_issues.patch
-}
+source=("https://github.com/sshock/AFFLIBv3/archive/v$pkgver.tar.gz")
+sha512sums=('19eb77d25f939e0bc941cc4106809e23a89f3f07fd0ddb8dfb03b2ddfa24e22c544deb011a5e4247a955529289de0e7ffc4b196c943f8cc352525fcc2b05a279')
 
 build() {
   cd AFFLIBv3-$pkgver
