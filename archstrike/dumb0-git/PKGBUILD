@@ -2,41 +2,40 @@
 
 buildarch=1
 
-pkgname=dumb0-git
-pkgver=r19.1493e74
-pkgrel=4
+_pkgname=dumb0
+pkgname=${_pkgname}-git
+pkgver=r21.7f2ca01
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-webapps')
 pkgdesc="A simple tool to dump users in popular forums and CMS :)"
 arch=('any')
 url='https://github.com/0verl0ad/Dumb0'
 license=('GPL2')
-depends=('perl')
+depends=('python2' 'python2-requests' 'python2-argparse')
 makedepends=('git')
-provides=('dumb0')
-replaces=('dumb0')
-conflicts=('dumb0')
-source=("dumb0::git+https://github.com/0verl0ad/Dumb0.git")
+provides=("${_pkgname}")
+replaces=("${_pkgname}")
+conflicts=("${_pkgname}")
+source=("${_pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/dumb0"
+  cd "${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  cd "$srcdir/dumb0"
-
-  sed -i '1i\#!/usr/bin/perl' Dumb0.pl
+  sed -i '1i\#!/usr/bin/python2' ${_pkgname}/Dumb0.py
 }
 
 package() {
-  cd "$srcdir/dumb0"
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share"
-  install -dm755 "$pkgdir/usr/share/licenses/dumb0"
+  cd "${_pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share"
+  install -dm755 "${pkgdir}/usr/share/licenses/dumb0"
 
-  install -Dm755 Dumb0.pl "$pkgdir/usr/bin/dumb0"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/dumb0/"
-  install -Dm644 README.md "$pkgdir/usr/share/dumb0/README.md"
+  install -Dm755 Dumb0.py "${pkgdir}/usr/bin/dumb0"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/dumb0/"
+  install -Dm644 README.md "${pkgdir}/usr/share/dumb0/README.md"
 
 }
