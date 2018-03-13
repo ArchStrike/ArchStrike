@@ -7,7 +7,7 @@ buildarch=220
 
 pkgname=reaver-wps-fork-t6x-git
 _pkgname=reaver-wps-fork-t6x
-pkgver=1.6.3.r74.g1fbdf8d
+pkgver=1.6.4.r20.ge13598a
 pkgrel=1
 pkgdesc="Brute force attack against Wifi Protected Setup forked w/ added Pixie Dust Attack"
 arch=('arm' 'armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -38,6 +38,6 @@ package() {
   install -dm755 "${pkgdir}/usr/share/doc/reaver"
   install -dm755 "${pkgdir}/usr/share/man/man1"
   install -Dm644 "${srcdir}/${pkgname}/docs/README" "$pkgdir/usr/share/doc/reaver/README"
-  install -Dm644 "${srcdir}/${pkgname}/docs/reaver.1.gz" "$pkgdir/usr/share/man/man1/reaver.1.gz"
+  install -Dm644 "${srcdir}/${pkgname}/docs/reaver.1" "$pkgdir/usr/share/man/man1/reaver.1"
   make install
 }
