@@ -5,7 +5,7 @@ buildarch=1
 pkgname=lazagne
 _pkgname=LaZagne
 pkgver=2.3.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-misc' 'archstrike-forensics')
 arch=('any')
 pkgdesc="An open source application used to retrieve lots of passwords stored on a local computer."
@@ -27,7 +27,7 @@ package() {
 
 cat >> ${pkgdir}/usr/bin/lazagne << EOF
 #!/usr/bin/env bash
-cd ${pkgdir}/usr/share/${pkgname}
+cd /usr/share/${pkgname}
 python2 laZagne.py "\$@"
 EOF
 
