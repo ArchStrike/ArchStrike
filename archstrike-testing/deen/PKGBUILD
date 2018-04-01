@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=deen
-pkgver=0.7.10
+pkgver=0.9.12
 pkgrel=1
 groups=('archstrike' 'archstrike-crypto' 'archstrike-misc')
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('python' 'python-pyqt5')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('06511cf66025b58a66f7bcbefe5d86189f9913c9e7630abc1d4e782ff76594ae32b171d635e777c7c1be20d7fb7c306aa0b906c3fe52e9f38c0d47a766aaf221')
+sha512sums=('5a24b9095206786c7e9ddf7376e2a4b996829c5fed14c4dad42936dd0242c9cadc474fe3cedc9180d200844844e115e25c4ce5fa8eef5c8a685f821fcab8ee58')
 
 build() {
   cd ${pkgname}-${pkgver}
