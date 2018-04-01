@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=onioff
-pkgver=0.1
-pkgrel=2
+pkgver=2.0
+pkgrel=1
 groups=('archstrike' 'archstrike-misc' 'archstrike-scanners')
 arch=('any')
 pkgdesc="An onion url inspector for inspecting deep web links"
 url="https://github.com/k4m4/onioff"
 license=('MIT')
-depends=('python2' 'python2-requests' 'python2-pysocks' 'python2-beautifulsoup4')
+depends=('python2' 'python2-requests' 'python2-pysocks' 'python2-beautifulsoup4' 'python2-termcolor')
 source=("https://github.com/k4m4/onioff/archive/v${pkgver}.tar.gz")
-sha512sums=('c9a0ea3a07ca6a641cb46bde63de748187897334707e56510acd87877ccf403cac7e2196b02fcfa382fa8ad478909808a2e592d5599370300e824e46d6f6e613')
+sha512sums=('aba9c8d2443a3d6e3610f84241bb2e965935e19702cda88210b7f0e7d3b397ab0f96aeb58e75fe61a7fa7c865ca81de24aef4ae852264397cd72cc039b171085')
 
 prepare() {
   cd ${pkgname}-${pkgver}
@@ -25,7 +25,7 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"; rm -f LICENSE
+  install -Dm644 license "${pkgdir}/usr/share/licenses/${pkgname}"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
