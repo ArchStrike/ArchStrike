@@ -5,10 +5,10 @@ buildarch=1
 
 pkgname=python2-cle
 pkgver=7.8.2.21
-pkgrel=1
+pkgrel=2
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
 url="https://github.com/angr/cle"
-depends=('python2' 'python2-pefile')
+depends=('python2' 'python2-archinfo' 'python2-cffi' 'python2-pefile' 'python2-pyelftools' 'python2-pyvex')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
