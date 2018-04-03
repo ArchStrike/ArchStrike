@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-archinfo
-pkgver=7.7.12.16
+pkgver=7.8.2.21
 pkgrel=1
 pkgdesc="none"
 url="https://pypi.python.org/pypi/archinfo"
@@ -12,9 +12,9 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/96/a0/a03e3ab124ff80469f9408ebb2a250c011a70ed66a821f24b879b002306a/archinfo-7.7.12.16.tar.gz"
+source=("https://pypi.python.org/packages/71/cd/219ffc955d56987a281a2e9ea8a4d02c0e5c792e6d1567f871184268c06e/archinfo-7.8.2.21.tar.gz"
         "https://raw.githubusercontent.com/angr/archinfo/master/LICENSE")
-sha512sums=('ada00a8030c8db08495ddae46ebfef9a3590512c12f74644eb25838e7ac4cf3de6d8a0d64c428af04b7829e0d9e2a9d73e124583f4fe67f6aa4d9c5e34401676'
+sha512sums=('50d7bedf9c01debfdb98ea3a7e0e84251102ecddb218b004d2219147df950308e6eab91b8934fd2fe4b5ad16f5ecf98402c8c8e44394447eaf74bbdc86583e63'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
