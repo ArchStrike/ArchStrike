@@ -4,17 +4,17 @@
 buildarch=1
 
 pkgname=python2-claripy
-pkgver=7.7.12.16
-pkgrel=2
+pkgver=7.8.2.21
+pkgrel=1
 pkgdesc="An abstraction layer for constraint solvers"
 url="https://github.com/angr/claripy"
 depends=('python2' 'python2-ana' 'python2-z3-solver')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/8a/41/7cd5909523486fe9168a6d90e610ce84861d9d8c30137ded9c702f4d8720/claripy-7.7.12.16.tar.gz"
+source=("https://pypi.python.org/packages/91/5f/2a8e413a68b21926d89b7aeb3bfc0d36e86a984c86e7489e85b0caa79a5d/claripy-7.8.2.21.tar.gz"
         "https://raw.githubusercontent.com/angr/claripy/master/LICENSE")
-sha512sums=('03c1009d07752e333e28f8d3a3ff088a71914379a7f2cd82fa270203a35209a6017c815ef944c40bf3600ca2c7fc890269e3b79e5d801f0beb540d9c572ded29'
+sha512sums=('32c097c67a52a5c79b6aee3a608d45b5e51cfbad0fe1c9400fed3387c1e7dccad7e33d6ab51e9245f8c4ec6d9f812f0576a34a0479fef9de5038fb7190a312bc'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 prepare() {
