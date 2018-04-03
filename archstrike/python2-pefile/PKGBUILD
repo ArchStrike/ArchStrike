@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=python2-pefile
-pkgver=2016.3.28
-pkgrel=4
+pkgver=2017.11.5
+pkgrel=1
 pkgdesc="This is a Python library for PE file support and investigation."
 arch=('any')
 url='https://github.com/erocarrera/pefile'
 license=('MIT')
 depends=('python2-future')
 makedepends=('python2-setuptools')
-source=("https://github.com/erocarrera/pefile/files/192316/pefile-$pkgver.tar.gz"
+source=("https://github.com/erocarrera/pefile/releases/download/v2017.11.5/pefile-2017.11.5.tar.gz"
         "http://research.pandasecurity.com/blogs/images/userdb.txt" )
-sha512sums=('f27918634507fd839b3bc71677b57676f1b2e46c43970dba158b1b4cb4202344de41fef53fffd294dd70f89b1a52aec0124e835a410ff7f0bec9b11ece425201'
+sha512sums=('d50e14960beba403a728ef8d7a2b0ec155ca5f41959df0b957a26439f1024f9127b9e083be614da306049fb66d08187e4a6a6f3965c9326a6bd613c306a9932d'
             'e23030b87c029911bb1fed9dfd245b645ffcb70781c3a0aa8f1dd0ecc5e3f02e36261ac69d1a25a6eee4622954217b4830a87feb8446483bc394a579d7bbb0ad')
 
 prepare() {
