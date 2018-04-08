@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=oletools
+pkgname=python2-${_pkgname}
+pkgver=0.52
+pkgrel=1
+pkgdesc="Python tools to analyze security characteristics of MS Office and OLE files"
+depends=('python2')
+arch=('any')
+url="https://github.com/decalage2/oletools"
+license=('BSD')
+source=("https://github.com/decalage2/oletools/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('e620138e1a760444327f32619829caa695019888d482394a2969bcb09432ff345a0e7a42120051d628c9c8b7db95ee7b24dc4d41c0017e31c4d0661bb85184dc')
+
+prepare() {
+  grep -iRl 'python' ${_pkgname}-${pkgver}/${_pkgname} | xargs sed -i 's|python$|python2|'
+}
+
+build() {
+  cd "${_pkgname}-${pkgver}/"
+  python2 setup.py build
+}
+
+package() {
+  cd "${_pkgname}-${pkgver}/"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+}
