@@ -4,7 +4,7 @@ _pkgname=wifite
 buildarch=1
 
 pkgname=${_pkgname}-git
-pkgver=20170515.r139.918a499
+pkgver=20180406.r153.876289c
 pkgrel=1
 groups=('archstrike')
 pkgdesc="A tool to attack multiple WEP and WPA encrypted networks at the same time"
