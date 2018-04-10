@@ -3,15 +3,14 @@
 buildarch=128
 
 pkgname=wcc-git
-pkgver=20170522.r46
+pkgver=20180405.r55
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 arch=('x86_64')
 pkgdesc="The Witchcraft Compiler Collection"
 url="https://github.com/endrazine/wcc"
 license=('MIT')
-depends=('glibc' 'zlib' 'libelf' 'uthash' 'capstone' 'gsl' 'ccache' 'lua')
-depends_x86_64+=('lib32-glibc' 'lib32-zlib')
+depends=('glibc' 'zlib' 'libelf' 'uthash' 'capstone' 'gsl' 'ccache' 'lua' 'glibc' 'zlib')
 makedepends=('git' 'clang')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
