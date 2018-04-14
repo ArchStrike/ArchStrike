@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=powerupsql-git
-pkgver=20180313.r704
+pkgver=20180405.r708
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-misc')
 arch=('any')
