@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=pyinstaller
 _pkgname=PyInstaller
-pkgver=3.3
+pkgver=3.3.1
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package."
 url="https://github.com/pyinstaller/pyinstaller"
@@ -13,16 +13,18 @@ makedepends=('python2-setuptools')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('4f8cb99f6bfbb38c5fa8d04f2ed7e3d6b4e0ec8e5768047666246b0d916167a012db01e81fb3f8ad2edf9743a592fd48db6d6cd5b7f720a7f87047d428829bf9')
+sha512sums=('d990c67e92e12a6a5d2b95d2139478824ba0485f5ceee93a27aac63ed80ae13b8acca947742b6a9b5b1489888cfa5ee4ce8a4ae05bc994be4ef726914db1746a')
 
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-    cd ${_pkgname}-${pkgver}
+  cd "${_pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}"
   python2 setup.py install --root="${pkgdir}" -O1 --skip-build
 }
+
+# vim:se ts=2 sw=2 sts=2 et:
