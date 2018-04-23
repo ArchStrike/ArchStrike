@@ -4,7 +4,7 @@ buildarch=192
 
 _pkgname=beef
 pkgname=${_pkgname}-git
-pkgver=20180217.r2999
+pkgver=20180410.r3107
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
@@ -34,7 +34,6 @@ package() {
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
   cd "${pkgdir}/usr/share/${_pkgname}"
   bundle-2.3 install --path vendor/bundle
-  sed -i 's|python|python2|' ${pkgdir}/usr/share/beef/vendor/bundle/ruby/2.3.0/gems/geoip-1.6.3/test/csvORG2dat.py
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
