@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=aiengine
-pkgver=1.8.2
+pkgver=1.8.3
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A network intrusion detection engine with capabilities of learning without any human intervention."
@@ -12,7 +12,7 @@ url="https://bitbucket.org/camp0/aiengine"
 license=('GPL3')
 depends=('libpcap' 'boost' 'boost-libs' 'boost-bloom-filters' 'python2' 'log4cxx-svn' 'pcre' 'gcc-libs')
 source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-${pkgver}.tar.gz")
-sha512sums=('429acfad4c4bedf0321cb1ad3e86d564a76c1a56bafef547b7eee0eeb5c37aeed5954e65ea001f85fb6f37c45801619a534ca28f51404981e1ad2a99b3bbe309')
+sha512sums=('084aa8e9a23dd7998d80a6d55771856ed5e299bf3613ddb847033d8d4b640056fde3550aa6f2d1ada941cfa051ffa5d2f89e3c2e8d11a29aad7dd0712c9165fd')
 
 prepare(){
    grep -iRl 'python' "${pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
@@ -25,7 +25,7 @@ build() {
   export PYTHON=/usr/bin/python2.7
   ./autogen.sh
   ./configure --prefix=/usr --enable-adaptor --enable-bloomfilter --enable-tcpqos \
-   --enable-reject --enable-fscompress --enable-pythongil --with-pic --with-boost-python --with-pcre
+  --enable-fscompress --enable-pythongil --with-pic --with-boost-python --with-pcre
   make
 }
 
