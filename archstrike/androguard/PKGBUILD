@@ -4,7 +4,7 @@
 buildarch=192
 
 pkgname='androguard'
-pkgver='3.1.0'
+pkgver='3.1.2'
 pkgrel=1
 pkgdesc='Python framework for Android application analysis.'
 arch=('x86_64' 'i686')
@@ -21,7 +21,7 @@ optdepends=(
     'psyco2-svn: acceleration support'
 )
 source=("https://github.com/androguard/androguard/archive/v$pkgver.tar.gz")
-sha512sums=('626b6a29bc810fe4c4229cbb8b461b3a0faf0e3f7dd05f0064b51cbf24a34a3793442c4f2c9a46cc530a98c5345765924bdf815245b1dce0e09dd4c498fbc411')
+sha512sums=('879ba92e52b92281fd7816db8a2e85eb7ceb62cdb73e2c65f8288f42894e5832c04b251657656878d3db3f9934cde593d7d9b910690a06943cda9a907388b357')
 
 build() {
    cd "$srcdir/androguard-$pkgver"
