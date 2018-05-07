@@ -3,18 +3,18 @@
 buildarch=192
 
 pkgname=rr
-pkgver=4.5.0
-pkgrel=2
+pkgver=5.1.0
+pkgrel=1
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto' 'archstrike-analysis')
 pkgdesc="A Record and Replay Framework"
 arch=('i686' 'x86_64')
 url='https://github.com/mozilla/rr'
-makedepends=("cmake" "python2-pexpect" "gdb")
+makedepends=("cmake" "python2-pexpect" "gdb" "capnproto")
 license=('custom')
 depends_x86_64+=('libpfm4' 'lib32-gcc-libs' 'bash' 'lib32-zlib' 'python2' 'gcc-multilib')
 depends_i686+=('libpfm4' 'bash' 'zlib' 'python2')
 source=("https://github.com/mozilla/rr/archive/$pkgver.tar.gz")
-sha512sums=('8e9b7c6eaa9908e75853b5e19f61954b57e6e5afa7a8b6fe55f31aee36bab6ff315b5c3511d14c93dca5da19055a7879b6f3b9f51c349b1bb9acea130187a5e6')
+sha512sums=('8cb7da20ddb2bfbeaf57d9bca76a3b5495d4bd74a00092c40c948570a2cda3dca6cb1e73ed65af099fe405a4d29ff1a852496baf0fcb6119258443649a65766a')
 
 build(){
   cd "$srcdir/rr-$pkgver"
