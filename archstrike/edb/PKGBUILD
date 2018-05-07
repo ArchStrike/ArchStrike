@@ -3,20 +3,19 @@
 buildarch=192
 
 pkgname=edb
-pkgver=0.9.21
-pkgrel=2
+pkgver=1.0.0
+pkgrel=0
 groups=('archstrike' 'archstrike-reverse' 'archstrike-debugging')
 pkgdesc="A QT4-based binary mode debugging with the goal of having usability on par with OllyDbg."
 arch=('i686' 'x86_64')
 url='https://github.com/eteran/edb-debugger'
 license=('GPL2')
-depends=('qt5-xmlpatterns' 'capstone' 'graphviz')
+depends=('qt5-xmlpatterns' 'capstone' 'graphviz' 'qt5-svg')
 makedepends=('boost>=1.35.0' 'cmake')
 conflicts=('edb-debugger')
 provides=('edb-debugger')
-source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz" "edb.desktop")
-sha512sums=('de921fa866da7d83efad92797bebcac3544ba1ffd5b3a015865b9bd554e8bc2e43539a9e4648517aff37f7d2497fdc4e1f6dc63df5cb0663012662626b1964f7'
-            '0d138537f72fd3392f2535e9a017e5027b89030d93c8f39f338a2c1d42f028e0db9e9626a1215c516be25ea948216ff3c6f26b2a446b7ac3e853d565889f0730')
+source=("https://github.com/eteran/edb-debugger/releases/download/$pkgver/edb-debugger-$pkgver.tgz")
+sha512sums=('d15a3d167b90b70227f273c416eae56f7ad174daae608081364284021c7da7aecb6cb42f9c5bcd85f9df70f07cba213d8345ef9d62e8d13c79e7edede38a04a9')
 
 build() {
   cd $srcdir/edb-debugger-$pkgver
