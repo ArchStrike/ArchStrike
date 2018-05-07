@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 PKG="$1"
 [[ -z "$PKG" ]] && echo "Please provide a package to search for." && exit 1
-DIR=$(find .. -maxdepth 2 -regex ".*$PKG")
+DIR=$(find .. -maxdepth 2 -regex ".*/$PKG")
 [[ -z "$DIR" ]] && echo "Package not found..." && exit 1
 eval $(pcregrep -M '^depends=([^)]*)' $DIR/PKGBUILD | sed ':a;N;$!ba;s/\n/ /g' | sed -E 's/[ ]+/ /g')
 SPATTERN=$(echo "${depends[@]}" | sed -E 's/ (python2?-)?/|/g' | sed -E 's/python2?-//g'|sed -E 's/(.*)/(python2?-)?\(\1\)/g')
