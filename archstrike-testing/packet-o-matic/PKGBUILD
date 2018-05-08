@@ -4,20 +4,21 @@ buildarch=220
 
 pkgname='packet-o-matic'
 _pkgname='pom-ng'
-pkgver='0.0.18'
-pkgrel=2
+pkgver='0.0.19'
+pkgrel=1
 pkgdesc='A real time packet processor. Reads the packet from an input module, match the packet using rules and connection tracking information and then send it to a target module.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.packet-o-matic.org/'
 license=('GPL')
 groups=('archstrike' 'archstrike-networking' 'archstrike-tunnel')
 depends=('libpcap' 'libjpeg-turbo' 'libmicrohttpd' 'postgresql-libs' 'file' 'sqlite' 'lua51' 'libexif' 'xmlrpc-c')
-makedepends=('uthash')
+makedepends=('uthash' 'lua51')
 source=("https://github.com/gmsoft-tuxicoman/pom-ng/archive/v$pkgver.tar.gz")
-sha512sums=('446471405c59210ac4839fc8f6ec8ab23a07a9176c40fc55a274ebfe8c68f3e905aa67bceecc0ed16895dfd01bca2b9f6e0023e6bc1685fd1c0a98a929479ec9')
+sha512sums=('652117e65148f8fa827ca7ca3c283b427551bf3844fd15d124a8c398236255b8b1761d6e7cba3172610eb2c62e2256ccc56235396f00f94997cf53de6ae23b8a')
 
 prepare() {
   cd "$srcdir/$_pkgname-$pkgver"
+  grep -ZRil 'lua5.1' . | xargs -0 sed -i 's|lua5.1|lua51|g'
   touch config.h.in
   libtoolize --force --copy
   aclocal
