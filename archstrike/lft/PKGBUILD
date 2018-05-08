@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=lft
 pkgver=3.80
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A layer four traceroute implementing numerous other features"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,13 +17,13 @@ sha512sums=('13ea176362096cc8c20500d61969483642f5d003263b529ec8d601786f621341107
             '7b0f3c1a588ff3a55fa949039102a388a77dc12b276023501bd46bef9a44f747423919cac5322596ee6eb4360972ac5ca543c98b12211e65e94f7cfd7f6820bb')
 
 prepare() {
-  cd "$pkgname-${pkgver/0//}"
+  cd "$pkgname-${pkgver/0/}"
   patch -Np1 -i $srcdir/define_default_source.patch
   patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
 }
 
 build() {
-  cd "$pkgname-${pkgver/0//}"
+  cd "$pkgname-${pkgver/0/}"
   export CFLAGS+=" -fPIE"
   export CFLAGS+=" -z now -pie"
   ./configure --prefix=/usr
@@ -31,9 +31,9 @@ build() {
 }
 
 package() {
-  cd "$pkgname-${pkgver/0//}"
+  cd "$pkgname-${pkgver/0/}"
   make "prefix=$pkgdir/usr" install
-  install -Dm644 "$srcdir/lft-${pkgver/0//}"/COPYING \
+  install -Dm644 "$srcdir/lft-${pkgver/0/}"/COPYING \
     "$pkgdir"/usr/share/licenses/lft/LICENSE
 
   # Removing setuid on bin
