@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=lft
 pkgver=3.80
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A layer four traceroute implementing numerous other features"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
