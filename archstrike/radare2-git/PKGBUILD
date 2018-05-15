@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=220
+buildarch=128
 
 _pkgname=radare2
 pkgname=${_pkgname}-git
 pkgver=r18049.610733958
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced commandline hexadecimal editor, disassembler and debugger'
 url='https://github.com/radare/radare2'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('x86_64')
 license=('GPL3' 'LGPL3')
 depends=('capstone' 'openssl' 'libzip')
 makedepends=('git')
