@@ -5,13 +5,13 @@ buildarch=128
 _pkgname=radare2-cutter
 pkgname=${_pkgname}-git
 pkgver=r875.8ac598f
-pkgrel=2
+pkgrel=3
 pkgdesc='A Qt and C++ GUI for radare2 reverse engineering framework (originally named Iaito)'
 url='https://github.com/radareorg/cutter'
 arch=('x86_64')
 groups=('archstrike' 'archstrike-analysis' 'archstrike-reverse')
 license=('GPL3')
-depends=('radare2-git' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu')
+depends=('radare2-git' 'capstone' 'qt5-base' 'qt5-svg' 'qt5-webengine' 'icu' 'python')
 makedepends=('git' 'cmake' 'ffmpeg>=4.0')
 provides=("bokken" "iaito")
 replaces=("bokken" "iaito")
