@@ -1,0 +1,39 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname=radare2
+pkgname=${_pkgname}-git
+pkgver=r18049.610733958
+pkgrel=1
+pkgdesc='Advanced commandline hexadecimal editor, disassembler and debugger'
+url='https://github.com/radare/radare2'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+license=('GPL3' 'LGPL3')
+depends=('capstone' 'openssl' 'libzip')
+makedepends=('git')
+provides=("${_pkgname}")
+replaces=("${_pkgname}")
+conflicts=("${_pkgname}")
+options=('!emptydirs')
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${_pkgname}"
+  ./configure --prefix=/usr --with-syscapstone --with-syszip --with-openssl
+  make -j4
+}
+
+package() {
+  cd "${_pkgname}"
+  make -j4 DESTDIR="${pkgdir}" install
+  install -D -m644 man/* "${pkgdir}/usr/share/man/man1" 
+}
+
+# vim:se sts=2 ts=2 sw=2 et:
