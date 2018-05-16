@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=canto-curses
-pkgver=0.9.6
-pkgrel=3
+pkgver=0.9.9
+pkgrel=1
 pkgdesc="An ncurses UI for the Canto Atom/RSS feed reader"
 url="http://codezen.org/canto-ng/"
 license=('GPL')
@@ -13,7 +13,7 @@ depends=('canto-daemon>=0.9.1')
 replaces=('canto')
 conflicts=('canto')
 source=("https://github.com/themoken/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('940acce8a68438527c7809985964596c096e2a03af6e689a1ea7c9fb7e8b06bb3cfe2976871a2eb0a92f9b151a2e8ce0ae9a0d608c7b029bd2a5afee40fac05f')
+sha512sums=('2a88631506c1fda7278bb3ac376c2b67b4f2e5e1f443e49fe3035f542b66ac4b232fa66e7ae1b40e86b0a5cde3c38d11a0953754e5c5c7ed572a0da74656d798')
 
 package() {
     cd $pkgname-$pkgver
