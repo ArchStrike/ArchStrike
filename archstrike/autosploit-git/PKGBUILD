@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=autosploit
 pkgname=${_pkgname}-git
-pkgver=r126.f178eff
+pkgver=r164.e046c8f
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Automate the exploitation of remote hosts"
