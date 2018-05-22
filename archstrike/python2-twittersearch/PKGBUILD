@@ -4,16 +4,16 @@
 buildarch=1
 
 pkgname=python2-twittersearch
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.2
+pkgrel=1
 pkgdesc="A library to easily iterate tweets found by the Twitter API"
 url="http://github.com/ckoepp/TwitterSearch"
-depends=('python2')
+depends=('python2' 'python2-requests' 'python2-requests-oauthlib')
 makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/ed/0d/b2af1ae0f9342f10a3e9836a8fac0c3ce8f46948eee619a7afe7b996a56d/TwitterSearch-$pkgver.tar.gz")
-sha512sums=('9084862264ba101c463202b8a4a82c1cc11a07ad68ca3ae8a194ec595eb036a2c9ca4e2afb73840e75a8c5b01f6bc6f3859a4756bb51ec9027f43231f8656fa1')
+source=("https://github.com/ckoepp/TwitterSearch/archive/v${pkgver}.tar.gz")
+sha512sums=('d01dee00298c5c0a0aa2af38ce0c5640f324d616b5fc18da6f85e1044cd70ca19f26cbb20b8a8a7cb81b6d5fdc9dfe244f2eb6ded6c0a6647cb6ec5ce0564281')
 
 build() {
     cd $srcdir/TwitterSearch-$pkgver
@@ -22,5 +22,5 @@ build() {
 
 package() {
     cd $srcdir/TwitterSearch-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" --skip-build -O1
 }
