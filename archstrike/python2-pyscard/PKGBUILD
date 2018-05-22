@@ -5,8 +5,8 @@
 buildarch=220
 
 pkgname=python2-pyscard
-pkgver=1.9.5
-pkgrel=2
+pkgver=1.9.6
+pkgrel=1
 pkgdesc="A Python module adding smart cards support to Python"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://pyscard.sourceforge.net/"
@@ -16,7 +16,7 @@ conflicts=('pyscard')
 replaces=('pyscard')
 makedepends=('python2-setuptools' 'swig')
 source=("http://downloads.sourceforge.net/project/pyscard/pyscard/pyscard%20${pkgver}/pyscard-$pkgver.tar.gz")
-sha512sums=('a0c5cd4ccbe8437ffd37afcf95c71f7d1d6c3ae364063cf81907095625d2062da8e7335ebfd15d1f952e8a8d9395e990b351b1308ab07fa456a7ee10658db4f9')
+sha512sums=('47b45c4ac1bb73b84bce53c6a4b547be89ae78c181e10ce2195b9b561a481ce36cd2680bb3eedcd815508d21c89dfb1c22fa7c7a0c3194b3aa1bfecb061697f7')
 
 build() {
   cd "$srcdir/pyscard-$pkgver"
