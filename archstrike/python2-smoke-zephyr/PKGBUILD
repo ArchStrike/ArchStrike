@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python2-smoke-zephyr
-pkgver=1.1.0
-pkgrel=2
+pkgver=1.2.0
+pkgrel=1
 pkgdesc="Python utility collection"
 url="https://github.com/zeroSteiner/smoke-zephyr"
 depends=('python2')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://github.com/zeroSteiner/smoke-zephyr/archive/v$pkgver.tar.gz")
-sha512sums=('0e745ae0842c0ce01c1e38790dc6b51420fc6f964ee2bb0495138adf74e1e9af1c9f00e50ec24580ba4dbbf0b01dd20db7af5996d378cec6a10ad24b3936fb7a')
+sha512sums=('2b12568e20938c929c0ccc73dc85ead55ca7c3ba83c130169f7ed3d348d34f97874397deb68093a408f889fab6a0ec2fadd24242ae81707cbfbbabf129580e99')
 
 build() {
     cd $srcdir/smoke-zephyr-$pkgver
