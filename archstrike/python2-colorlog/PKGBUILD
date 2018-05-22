@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-colorlog
-pkgver=3.1.0
+pkgver=3.1.4
 pkgrel=1
 pkgdesc="Log formatting with colors!"
 url="https://github.com/borntyping/python-colorlog"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/borntyping/python-colorlog/archive/v${pkgver}.tar.gz")
-sha512sums=('7ffaba1b17a3c093a30961e253b94aa3540ea94de04fbfc37a74a7539f0e1d3a3825f1b18281f114cdf671a453837fe762aedf9eb0958e3fe2b781492b9cf1c4')
+sha512sums=('e55fc9bc8d1696b5ae877ce2716c0747d12d606c6eec143ce74fa08f088002efeff6cedf3445b63ba4b3d6b7d978f6290d8674f5b88c9bac77bdd16773fbf35f')
 
 build() {
     cd ${srcdir}/python-colorlog-${pkgver}
