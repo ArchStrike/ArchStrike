@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-cluster
-pkgver=1.4.0
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="Allows grouping a list of arbitrary objects into related groups (clusters)"
 arch=('any')
@@ -12,7 +12,7 @@ license=('LGPL')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://github.com/exhuma/python-cluster/archive/v$pkgver.tar.gz")
-sha512sums=('7de3d8751c62392d9127ae0aecda37bb143766857511b2be07bc78eb080ddefe39c8d908c15d9e7bb90262da3a6a0a2ef5eeccb0ebb9d5bbcc96bc0a03b56a25')
+sha512sums=('51dd00b45f4dfa8d96a19029cd689e0eb101ab2f2b3d0009588d1bfec21c3c87315f49ca87de3039f1a07ec74fcecdb8eba53076d4a1d354f99e0eb20805b444')
 
 prepare() {
   cd "$srcdir/python-cluster-$pkgver"
