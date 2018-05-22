@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-cachetools
-pkgver=2.0.1
+pkgver=2.1.0
 pkgrel=1
 pkgdesc="Extensible memoizing collections and decorators"
 url="https://github.com/tkem/cachetools"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/tkem/cachetools/archive/v$pkgver.tar.gz")
-sha512sums=('b8591cd2191f0257deb12c4632f31d416b3cb7b7e212f1dcea8fcde056e0d7ebca14fcfa51fa2d105c44361618924b710dc264a46c56af55993da455fb61870f')
+sha512sums=('359f0b57c34af96d4c8cfac19daa591e357db19c592ce89449001593f3044affb6e6109e1d2b63666dd8c95c6c496387032759d2ef01e5d5ae93eef39df15d72')
 
 build() {
     cd $srcdir/cachetools-$pkgver
