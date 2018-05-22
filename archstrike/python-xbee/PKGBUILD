@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python-xbee
-pkgver=2.3.1
-pkgrel=4
+pkgver=2.3.2
+pkgrel=1
 pkgdesc='Python tools for working with XBee radios'
 url='https://pypi.python.org/pypi/XBee'
 arch=('any')
 license=('MIT')
 depends=('python-pyserial')
 makedepends=('python-setuptools')
-source=("https://pypi.python.org/packages/51/01/f62100cace4bba7ffecf3dd28baaf579c26b2ba70e0f0cf7e2316f0a954d/XBee-${pkgver}.tar.gz")
-sha512sums=('2a642d474eeb7207b4c90a5f21769dfe835118013284f895d1d2a10df6d0b96233ae3edeb1eddeaf5e4dc135a12373f3612f032ece1c5a31fb9cd198f4e22cdc')
+source=("https://files.pythonhosted.org/packages/4e/6b/34a1a5a0c45c662f8ae033a0d077b0fcc45b3e0e71e0b17522b2861e0090/XBee-${pkgver}.tar.gz")
+sha512sums=('d4ecc8025784978bf546ff7ac1a2563b6a329819d1976c5a4e591e0007c5cc85a76f5b98af3a1bcbf6068641fe771a90dd5dceb5cd9f69b4e67e8c36a7ad713c')
 
 prepare() {
   cd XBee-${pkgver}
@@ -22,6 +22,6 @@ prepare() {
 
 package() {
   cd XBee-${pkgver}
-  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+  python setup.py install --prefix=/usr --root="${pkgdir}" -O1
   install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
 }
