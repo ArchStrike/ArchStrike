@@ -5,8 +5,8 @@ buildarch=1
 _pkgname=phply
 
 pkgname=python2-${_pkgname}
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.2.4
+pkgrel=1
 pkgdesc="PHP parser written in Python using PLY"
 arch=('any')
 url="https://github.com/ramen/phply"
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('python2-ply')
 makedepends=('python2-setuptools')
 source=("https://github.com/viraptor/phply/archive/${pkgver}.tar.gz")
-sha512sums=('85acf53d713ebfa2cfeef104ba48bfc7d8ff7da3cdb277dab39ddb658bf5714b76346dde101e17cb7dbf3e92de69ab9fa036dfafd5e8ff89854b919fdad9b422')
+sha512sums=('dd44379479063b37a6035a88587097a41cf9edf5626ceed024c3bcf33a156a4c3cef3a68e64256df5c86efb3809e8a4240dc1778881d6ddfd2f422eb984a60c1')
 
 build() {
   cd ${_pkgname}-${pkgver}
