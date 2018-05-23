@@ -4,16 +4,16 @@
 buildarch=1
 
 pkgname=python2-ruamel.ordereddict
-pkgver=0.4.9
-pkgrel=3
+pkgver=0.4.13
+pkgrel=1
 pkgdesc="a version of dict that keeps keys in insertion resp. sorted order"
 url="https://bitbucket.org/ruamel/ordereddict"
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/b1/17/97868578071068fe7d115672b52624d421ff24e5e802f65d6bf3ea184e8f/ruamel.ordereddict-${pkgver}.tar.gz")
-sha512sums=('556988c457b60b8763b4eeffad4a8f44d96c22f8aca702ac6f883bd9ddf13af38aa46f804f95e256b900f9f25e473beb1c86a62f6da66d19ca770878dc8ca3ca')
+source=("https://files.pythonhosted.org/packages/b1/8f/3b1b407ff387e006a4a33e62182b212077bed41676451d60327955a50c3c/ruamel.ordereddict-0.4.13.tar.gz")
+sha512sums=('d345e3e388618c76323605497c104cc2c8fc1f14f8cd6ba2bc942a9f034135a5be25b46ff5e0cdf94a5b496991ae3af4d1c34a8dd7314dddd5bc952148f01ede')
 
 build() {
     cd $srcdir/ruamel.ordereddict-${pkgver}
