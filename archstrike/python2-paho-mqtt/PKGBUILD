@@ -7,14 +7,14 @@ buildarch=1
 pkgbase=paho-mqtt
 _pkgname=paho.mqtt.python
 pkgname=(python-$pkgbase python2-$pkgbase)
-pkgver=1.2
-pkgrel=3
+pkgver=1.3.1
+pkgrel=1
 url="http://www.eclipse.org/paho/clients/python"
 license=('EPL')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/eclipse/paho.mqtt.python/archive/v${pkgver}.tar.gz")
-sha512sums=('c1db1ac287ca15e9e4af03c09e73c1abc502204641ac1be72d3e1c0ef0fbcb4bc4f97afd2b17410e3d196f0441daaa3c4ffda644d33e92ec014f94848e2e7b81')
+sha512sums=('95adeeaffbbd4b39d19fbd46feb39ec4a2ac923addd3c754a474b7a91d620bfca1678645c1a09c925e38a33995575944b873e3b2300d7bc2f3c5be3005c74d4c')
 
 prepare() {
    cp -r $_pkgname-${pkgver} python2-$_pkgname-${pkgver}
