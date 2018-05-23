@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python2-ordered-set
-pkgver=2.0.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 pkgdesc="A MutableSet that remembers its order, so that every entry has an index."
 arch=('any')
 url="http://pypi.python.org/pypi/ordered-set/"
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/o/ordered-set/ordered-set-${pkgver}.tar.gz")
-sha512sums=('1229bcf079a508cdd7b78460f3325cfa8d0f8a7476cd723694349402aca113affb36657502e7fdabfbf0f1415c14398d78253336ee9c7430d560d015fbc592ac')
+sha512sums=('47369faf275e99665a5d04f20465a868174164ebbe32f775433bd3ba9b5a6e0fe1c3562c891f21de7489ea6c248fe967663c45b26f4fd21ba2d058cd0102a093')
 
 build(){
   cd "${srcdir}/ordered-set-${pkgver}"
@@ -21,5 +21,5 @@ build(){
 
 package() {
   cd "${srcdir}/ordered-set-${pkgver}"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --skip-build -O1
 }
