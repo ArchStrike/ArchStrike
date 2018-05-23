@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-bacpypes
-pkgver=0.16.6
+pkgver=0.17.0
 pkgrel=1
 pkgdesc="BACpypes provides a BACnet application layer and network layer written in Python for daemons, scripting, and graphical interfaces."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2' 'python2-wheel')
 makedepends=('python2-setuptools')
 source=("https://github.com/JoelBender/bacpypes/archive/v${pkgver}.tar.gz")
-sha512sums=('c2a03e0154506cecf935c1a095a85e80019cad3e752adb322b2800fd8343df990212d7b31842807597b0090e93562f7577beb9399fb37dc31c0905cf7a5445c6')
+sha512sums=('4e25559761e710946249babe716a5a012e16348273b04a7829e349be399630ed74c340ce56aa44ebc35ee4bba4d3110556bd068c2b1ddb8d1c508d35ca98b0f2')
 
 build(){
   cd "${srcdir}/bacpypes-${pkgver}"
@@ -24,6 +24,6 @@ package() {
 
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" --skip-build -O1
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
 }
