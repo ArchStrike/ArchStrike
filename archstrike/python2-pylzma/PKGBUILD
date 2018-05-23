@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname=pylzma
 pkgname=python2-$_pkgname
-pkgver=0.4.8
+pkgver=0.4.9
 pkgrel=1
 pkgdesc='Python bindings for the LZMA library'
 arch=('any')
@@ -12,8 +12,8 @@ license=('LGPL')
 url='https://www.joachim-bauch.de/projects/pylzma/'
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('27f9ba035f326fddbfd72b186bf272986838ff88f603f397a8dd503b99681cdf197848ff0e47e1035bd7c3fd40fd2c09026afec30728fd58f065602b0078fbeb')
+source=("https://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
+sha512sums=('b0132351bc484fd37c2b1d87f11bbbede71f7f01f1d8547b332fd22bd1da6fe66dac4d8013ed3804e727729f7a903ab04f3be7a03c6a723182fc8a46e19e73c1')
 
 build() {
   cd $_pkgname-$pkgver
