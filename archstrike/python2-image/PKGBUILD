@@ -4,16 +4,16 @@
 buildarch=1
 
 pkgname=python2-image
-pkgver=1.5.5
-pkgrel=2
+pkgver=1.5.24
+pkgrel=1
 pkgdesc="Django application that provides cropping, resizing, thumbnailing, overlays and masking for images and videos with the ability to set the center of attention,"
 url="https://github.com/francescortiz/image"
 depends=('python2')
 makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/34/2b/7a313ed85fb44638756b582ea16e07a2682a83c2c9a26ed93b9bb22a395a/image-$pkgver.tar.gz")
-sha512sums=('8d1139189270dde4b3c2fa6ea340ac0523d988b413af4ef1931e1f5078e197fddaa3c6b9ffc79f5158d2fa7a89c0013d452ec5c50e08f292d41a51b51543c428')
+source=("https://files.pythonhosted.org/packages/3a/44/2fd9ba8a27b289389de47d85f50de0fadeb409fe1c448f59d4ae7787dadb/image-1.5.24.tar.gz")
+sha512sums=('173b9bea1eb87ec4c4bb2b2b4cf118824b35acf98e15350d9509aba4f7f9fc0280e93408987ff8243a18e2cd3585b0bf4612f74f55226d3be718b7fbd6b83087')
 
 build() {
     cd $srcdir/image-$pkgver
@@ -22,6 +22,6 @@ build() {
 
 package() {
     cd $srcdir/image-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" --skip-build -O1
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
