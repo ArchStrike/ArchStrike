@@ -6,15 +6,15 @@ buildarch=220
 
 pkgname=libevent-static
 _pkgname=libevent
-pkgver=2.0.22
-pkgrel=3
+pkgver=2.1.8
+pkgrel=1
 pkgdesc="An event notification library static libs"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://libevent.org"
 license=('BSD')
 options=('staticlibs')
 source=(https://github.com/${_pkgname}/${_pkgname}/releases/download/release-${pkgver}-stable/${_pkgname}-${pkgver}-stable.tar.gz)
-sha512sums=('990637f12e890bfa7f86c194c8b112701436e92b60afb829194879efb85d558b986261e6508fe29bde73981feada874438e2d442cec8ea5730c889954f9bc907')
+sha512sums=('a2fd3dd111e73634e4aeb1b29d06e420b15c024d7b47778883b5f8a4ff320b5057a8164c6d50b53bd196c79d572ce2639fe6265e03a93304b09c22b41e4c2a17')
 
 build() {
   cd ${_pkgname}-${pkgver}-stable
