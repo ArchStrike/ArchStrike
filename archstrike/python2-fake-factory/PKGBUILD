@@ -3,25 +3,26 @@
 buildarch=1
 
 pkgname=python2-fake-factory
-pkgver=0.4.2
+_pkgname=faker
+pkgver=0.8.15
 pkgrel=1
 pkgdesc="Faker is a Python package that generates fake data for you."
 url="http://github.com/joke2k/faker"
-depends=('python2' )
+depends=('python2' 'python2-dateutil' 'python2-text-unidecode' 'python2-ipaddress')
 makedepends=('python2-distribute' )
 license=('CUSTOM')
 arch=('any')
 provides=('faker' 'python2-faker')
-source=("https://pypi.python.org/packages/source/f/fake-factory/fake-factory-${pkgver}.tar.gz")
-sha512sums=('73b66a168dc330c1a2f16241695ac68cedac45567d856ee8b5afbf508b4bd2b1c227b7637164261aec09dcdf7bc5365572f25e63715821ca79957f0b57f377e8')
+source=("https://github.com/joke2k/faker/archive/v${pkgver}.tar.gz")
+sha512sums=('dbcc44a8d5e17a5d444e9c1e923796c8bad9a1cb19fcea18c5c9a8526952474be33b3cf26f0e46e5d7d7c2a65facbe5b24f80cd9eb0aff39e5aff8668aba65ba')
 
 build() {
-    cd ${pkgname#python2-}"-${pkgver}"
+    cd ${_pkgname}"-${pkgver}"
     python2 setup.py build
 }
 
 package() {
-    cd ${pkgname#python2-}"-${pkgver}"
-    python2 setup.py install --root="${pkgdir}" --optimize=1
+    cd ${_pkgname}"-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --skip-build -O1
     install -Dm0644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
 }
