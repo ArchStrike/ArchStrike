@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python2-mixbox
-pkgver=1.0.1
-pkgrel=2
+pkgver=1.0.3
+pkgrel=1
 pkgdesc="Utility library for cybox, maec, and stix packages"
 url="http://github.com/CybOXProject/mixbox"
 depends=('python2')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 source=("https://github.com/CybOXProject/mixbox/archive/v${pkgver}.tar.gz")
-sha512sums=('b96a7749094854b4b1a01f3f53eaf86aa7b48f5da74e023a46686fd8650e5af7d22ba2c64b8911ed71c83c932fd9c63916a2d6d2c9ee39400e73a11cb98cf9cf')
+sha512sums=('845f29f0772e4443b6d7bd525a89c11f40af876bb7f2336b4f13292ead3e01be6b1fcf4be054c4fc6f0b4394a184293d1b8e10d9deaeb8646593bd0f0e773e3f')
 
 build() {
     cd $srcdir/mixbox-$pkgver
