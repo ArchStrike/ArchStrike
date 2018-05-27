@@ -5,7 +5,8 @@ buildarch=220
 
 pkgname=ghostpdl
 pkgver=9.23
-pkgrel=1 pkgdesc='An interpreter for the Postscript language and for PDF - GhostPCL (PCL-5, and PCL-XL), GhostXPS (XPS), GhostPDF and ghostscript'
+pkgrel=2
+pkgdesc='An interpreter for the Postscript language and for PDF - GhostPCL (PCL-5, and PCL-XL), GhostXPS (XPS), GhostPDF and ghostscript'
 url='http://www.artifex.com'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -24,6 +25,16 @@ prepare() {
 
 build() {
   cd $pkgname-$pkgver
+  OPTVALUE=0
+  case $(uname -m) in 
+    armv*|aarch65)
+        OPTVALUE=2
+        ;;
+    *)
+        OPTVALUE=0
+        ;;
+  esac
+  CPPFLAGS="-DPNG_ARM_NEON_OPT=$OPTVALUE"
   ./configure --prefix=/usr --build=$(uname -m)
   make -j4
 }
