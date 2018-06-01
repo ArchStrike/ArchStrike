@@ -4,8 +4,8 @@ _pkgname=mkdirp
 buildarch=1
 
 pkgname=node-$_pkgname
-pkgver=0.5.0
-pkgrel=3
+pkgver=0.5.1
+pkgrel=1
 pkgdesc='Recursively mkdir, like mkdir -p, but in node.js'
 arch=('any')
 url='https://github.com/substack/node-mkdirp'
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('nodejs')
 makedepends=('npm')
 source=("$url/archive/$pkgver.tar.gz")
-sha512sums=('1ddf96c96b60501d4b60a1ce0b943cc48942e04b8ba493cd06486328e51a4930e3e1323f1ba7d3e2ddf92e2b82acb2a34307c47e00da7bfbb5d516fa00dc57c7')
+sha512sums=('53224522b139ec76e550ce8045087f05a880f1d2ee5dc838f59898ac7f3f7195a24c12ca74e3167d71d09af4b873db5645f5a6bd0416f13f66d02ab44e81654e')
 
 prepare() {
   # Install node dependencies
