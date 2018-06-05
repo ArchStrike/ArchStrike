@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=dfvfs
-pkgver=20160510
-pkgrel=2
+pkgver=20180507
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Python module that provides read-only access to file-system objects from various storage media types and file formats."
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache')
 depends=('python2-six' 'python2-construct' 'python2-protobuf' 'libewf' 'libqcow' 'libbde' 'libsmdev' 'libsmraw' 'libvhdi' 'libvmdk' 'libvshadow')
 makedepends=('python2-setuptools')
 source=("https://github.com/log2timeline/dfvfs/archive/$pkgver.tar.gz")
-sha512sums=('efcd0a72d305cae4aeb803748ce42f19ec24cd8f8f47b2da6f30955a39cbbefb5435fa6f4921d4c3b7563bc5e4c4f6241e1622ab07e1daf215c7f25367f30a45')
+sha512sums=('eb0487ad28678c2e3aa947a93b1cf656899edc33e5064041ea353c8675933fad375ef73374be77551d716b245c99295b2374f6589159ac8516dee9049201caa9')
 
 prepare(){
   grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
