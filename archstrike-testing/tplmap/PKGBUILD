@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=tplmap
-pkgver=0.3.1
-pkgrel=2
+pkgver=0.4.1
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Automatic Server-Side Template Injection Detection and Exploitation Tool"
@@ -12,10 +12,10 @@ url="https://github.com/epinna/tplmap"
 license=('GPL3')
 depends=('python2' 'python2-yaml' 'python2-requests')
 source=("https://github.com/epinna/tplmap/archive/v${pkgver}.tar.gz")
-sha512sums=('bd8752f4afdd299c17b896310306cc5ea92fc54ee8f2a25441d646f87a4fcf68e251f7240160fed738449abd894217f00fa26b0160c404b3196d957a80021eb7')
+sha512sums=('80710481a4e276b7965ac319d61cb41198910da1e83b7956c80431644975ead5f37a86c444c0a6c2d0c278c87d233c794a34dd0e5dae01a0f29f66533bb73c5c')
 
 prepare() {
-  grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
+  grep -ZRil 'python' ${pkgname}-${pkgver} | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
 }
 
 package() {
