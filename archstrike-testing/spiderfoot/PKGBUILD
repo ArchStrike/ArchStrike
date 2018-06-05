@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=spiderfoot
-pkgver=2.8.0
-pkgrel=2
+pkgver=2.11.0
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='The Open Source Footprinting Tool'
 url='http://spiderfoot.net'
 arch=('any')
 license=('GPL2')
-depends=('python2-lxml' 'python2-mako' 'python2-cherrypy' 'python2-m2crypto' 'python2-netaddr' 'python2-requests')
+depends=('python2-lxml' 'python2-mako' 'python2-cherrypy' 'python2-m2crypto' 'python2-netaddr' 'python2-requests' 'python2-beautifulsoup4')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}-src.tar.gz")
-sha512sums=('dbf65176c1f1c5dcb8e009f79ac5c8d6d022f240c197a6f35385832fcdeb311b8e1842f9701d995afebd32adbd9159915f1eda3e74ae6496b65fd0fc1f41f61b')
+sha512sums=('42d86ae035c92a779df9c6fad7baf96cb632594fe5062710e32e7e3330a84d094aca472642151053852247c68ffb676c54adb17a7f40b171064c78a0af790fb0')
 
 prepare() {
   grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
