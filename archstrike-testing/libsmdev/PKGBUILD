@@ -3,15 +3,15 @@
 buildarch=220
 
 pkgname="libsmdev"
-pkgver="20160320"
-pkgrel=4
+pkgver=20171112
+pkgrel=1
 pkgdesc="Library to access to storage media devices"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libsmdev'
 license=('GPL3')
 depends=('libcsystem' 'python2')
-source=("https://github.com/libyal/libsmdev/releases/download/20160320/libsmdev-alpha-$pkgver.tar.gz")
-sha512sums=('bf6ebb3dccc1746739c5d394250a051e56fcb29423882f5daceefabb406445c59a0cb6d7b800149d4ca512cd67570111f2d415c17db5c3107309149b20d6c949')
+source=("https://github.com/libyal/libsmdev/releases/download/$pkgver/libsmdev-alpha-$pkgver.tar.gz")
+sha512sums=('e61f7c5cc18a8f7ddc8f20bd6394d7aa132341ad3f4b6e8beaf7db9fff2922f71d25477e71bf49925200f3c501467e7a9ba8572e0530abfefcdf244d3e55e46d')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
