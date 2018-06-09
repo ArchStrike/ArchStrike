@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=python2-pluginbase
-pkgver=0.5
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc="A support library for building plugins sytems in Python."
 url="http://github.com/mitsuhiko/pluginbase"
 depends=('python2')
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 source=("https://github.com/mitsuhiko/pluginbase/archive/${pkgver}.tar.gz" 'LICENSE')
-sha512sums=('96c38401a616721a73e05f40480aca698582ecf5299d169cb834639f4a7ec81c202762dd9a98acc3f1954a097ae966d3052d225afcb54583969f842ed0afaa4b'
+sha512sums=('f88829a49413622831ca47b32126fd2f437e280a3889b57a125243c39a3a7509a8ae583aa886133519224010c014e97246c8489dd1b65d3efbb69549c0516f9e'
             'ad7d8ac57aefe1ca45e3bdbd0f02ebd35efb74ad360503094f0c7f8ccad6ec23f04985159f3b1fa3db30e6b24cbccee7993a4b5e8242e591f25e08e5d41c4225')
 
 build() {
