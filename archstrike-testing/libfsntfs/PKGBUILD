@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname="libfsntfs"
-pkgver="20160418"
-pkgrel=4
+pkgver=20170315
+pkgrel=1
 pkgdesc="iLibrary and tools to access the New Technology File System (NTFS)."
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libfsntfs'
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('libcsystem' 'libbfio' 'python2')
 install="$pkgname.install"
 source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-experimental-$pkgver.tar.gz")
-sha512sums=('3c5f869d6194391f853ac95bc9e46eeb9b9ad1cc7ec28c8d5438710af67a036b467dd4e7d3efa676bccbb03e68368371e3b0ae900028d2302fb6475884cf9a94')
+sha512sums=('a80cb3bb5033e3a9320f052a0921f58cabf00686311dd6398fcae9416cd454fbd380ca4ccaaf6b8294fe813d497756a851797c4698c8ba40aeb09dedf38850a3')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
