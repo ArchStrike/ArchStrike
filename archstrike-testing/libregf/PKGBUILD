@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname="libregf"
-pkgver="20160424"
-pkgrel=4
+pkgver=20170130
+pkgrel=1
 pkgdesc="Library and tools to access the Windows NT Registry File (REGF) format"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libregf'
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('fuse' 'libcsystem' 'libbfio' 'python2' 'libfwsi')
 install="${pkgname}.install"
 source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz")
-sha512sums=('30ea0491188355c694a255954eec18982e45deefd7fd1f9215a7e2432632bf5444f2eb9bd7994c60a20c9a7654ac479fc7dd59cb07004141f38eb581e8816328')
+sha512sums=('38a0aa01f46e0a9f276caf9ead6572f71ddad9a610ab37dcb1a4c0f6d8bbbcecf59da40d0a03a99a71b901e0b1181c464a6ab9315cd8ab46e7755f814ecb2e75')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
