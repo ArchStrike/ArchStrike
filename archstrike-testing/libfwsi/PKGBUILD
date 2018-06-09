@@ -3,15 +3,15 @@
 buildarch=220
 
 pkgname="libfwsi"
-pkgver="20160110"
-pkgrel=4
+pkgver=20180408
+pkgrel=1
 pkgdesc="Library to access the Windows Shell Item format"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='https://github.com/libyal/libfwsi'
 license=('GPL3')
 depends=('libcsystem' 'libbfio' 'python2')
 source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-experimental-${pkgver}.tar.gz")
-sha512sums=('447ad682822bea854f871858c01ba73b9523fcb5e95941ca7db5a0d1ee84812d340f486bf916275f1e3ecaf18a1ab752cdc351851736c558ab88f113d3f3e9c2')
+sha512sums=('b75d679d73a20e3a994123cfa3315e582da6dee8bab332d921e48b9ca23120f1dd014564e88152ea1bde161c9c23da9a655464093606845ad50d07848f4896af')
 
 build() {
   cd "$srcdir/$pkgname-$pkgver"
