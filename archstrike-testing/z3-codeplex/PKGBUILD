@@ -4,8 +4,8 @@
 buildarch=220
 
 pkgname=z3-codeplex
-pkgver=4.5.0
-pkgrel=2
+pkgver=4.7.1
+pkgrel=1
 pkgdesc="Z3 is a high-performance theorem prover being developed at Microsoft Research (built from Codeplex sources, libraries only)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/Z3Prover/z3"
@@ -17,7 +17,7 @@ else
       depends=('gcc-libs')
 fi
 source=("https://github.com/Z3Prover/z3/archive/z3-$pkgver.tar.gz")
-sha512sums=('1ebc2c908d90b6b879f1e819c864ff894613276af47a440f27cf94968c195656952434754c3eb20f4bdbdd8497d227d22e1b4821c0d320b11052b5648d9e2dc7')
+sha512sums=('4c8c856691134298c4b5e465d6fadfe446532dfcd8c92aed7c9a6bbfc8557074a45cd7316dbfa5045824e2504db159afeb8ff676d4bfc942496623cf31d11aa0')
 
 build() {
   cd "z3-z3-$pkgver"
