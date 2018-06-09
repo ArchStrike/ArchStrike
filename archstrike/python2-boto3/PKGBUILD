@@ -5,7 +5,7 @@ buildarch=1
 pkgbase=python2-boto3
 
 pkgname=(python2-boto3 python-boto3)
-pkgver=1.7.25
+pkgver=1.7.35
 pkgrel=1
 pkgdesc="The AWS SDK for Python"
 url="https://github.com/boto/boto3"
@@ -14,7 +14,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 license=('APACHE')
 arch=('any')
 source=("https://github.com/boto/boto3/archive/$pkgver.tar.gz")
-sha512sums=('8cee65a71578fc77d3e157747a42a48183112a62311ea9579c52b5ab3a0f0872a56bb7da765a2cb021455a5595763aede223c135626b688c3f85841901977c72')
+sha512sums=('c007317bcfd167fc78ae216ea2db5a9ae76dcd4e76cd80bc2e4bef11e4525f1b0c87d6f14cf66dff49bb5e0c4c22b2062a514e8f47c83cf1a1bbd592f6aa7658')
 
 prepare() {
   cp -a boto3-$pkgver{,-py2}
