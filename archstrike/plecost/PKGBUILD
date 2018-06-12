@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=plecost
-pkgver=1.0.1
-pkgrel=3
+pkgver=1.1.2
+pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-fingerprinting' 'archstrike-webapps')
 pkgdesc="Wordpress finger printer tool search and retrieve information about the plugins versions installed in Wordpress systems."
@@ -14,7 +14,7 @@ license=('BSD')
 depends=('python-chardet' 'python-aiohttp' 'python-termcolor' 'python-beautifulsoup4' 'python-sphinx_rtd_theme')
 makedepends=('python-setuptools')
 source=("https://github.com/iniqua/plecost/archive/v${pkgver}.tar.gz")
-sha512sums=('92e3fd659016bc09da55386a23ffa5f5abc02cc2334be850736704d31da5b27a2d76722472f7f165969bb9eda52bd697015257e61a7251cc871cd68f5aabbb12')
+sha512sums=('f8e7cb4ff938321840226ac6a34607a0922aebd07117483eaac4ac64a5c3a298f785dcc709741982fbeda0148712e6986e5827def6fb0a58c9c448ecc38f518f')
 
 build() {
     cd $srcdir/${pkgname}-${pkgver}
