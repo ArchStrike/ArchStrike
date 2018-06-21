@@ -4,8 +4,8 @@ buildarch=220
 
 _pkgname=libsmraw
 pkgname=${_pkgname}-git
-pkgver=r203.29c8155
-pkgrel=2
+pkgver=r208.56b99ce
+pkgrel=1
 pkgdesc="Library and tools to access the (split) RAW image format"
 url="https://github.com/libyal/${_pkgname}"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
