@@ -4,23 +4,23 @@
 buildarch=220
 
 pkgname="libfixbuf"
-pkgver="1.7.1"
-pkgrel=3
+pkgver="2.0.0"
+pkgrel=1
 pkgdesc="IPFIX Message Format Implementation"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 url='http://tools.netsa.cert.org/fixbuf/'
 license=('GPL')
 depends=('glib2')
-source=("http://tools.netsa.cert.org/releases/$pkgname-$pkgver.tar.gz")
-sha512sums=('eba7e88a191ff844ed88bc3be7e35e4e95dc1b04aac66ed1b5da4c5214d39eaa566da1b390b268e6586e89bda9a4d9df248c50ed864a47ed1d2cbab462c28897')
+source=("https://tools.netsa.cert.org/releases/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('d5298030f3e692da9a59b7848bf223bc7a938603f0719827a0bda53be3b928774caab354000fee0475e61bb2d32c290cd1ce484692561b94b406b134a2fa6475')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
 }
