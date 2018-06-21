@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname=libsocket
 pkgname=${_pkgname}-git
-pkgver=r546.8332600
+pkgver=r554.7602985
 pkgrel=1
 pkgdesc="The ultimate socket library for C and C++"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
