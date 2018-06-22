@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-bacpypes
-pkgver=0.17.0
+pkgver=0.17.2
 pkgrel=1
 pkgdesc="BACpypes provides a BACnet application layer and network layer written in Python for daemons, scripting, and graphical interfaces."
 arch=('any')
@@ -12,7 +12,7 @@ license=('MIT')
 depends=('python2' 'python2-wheel')
 makedepends=('python2-setuptools')
 source=("https://github.com/JoelBender/bacpypes/archive/v${pkgver}.tar.gz")
-sha512sums=('4e25559761e710946249babe716a5a012e16348273b04a7829e349be399630ed74c340ce56aa44ebc35ee4bba4d3110556bd068c2b1ddb8d1c508d35ca98b0f2')
+sha512sums=('57b3409729ddc68722078d41b6f4daadb41855b7b140672d94e1a2fe00ae27a80fa5509b846d850bc9eed45cf61c9d8241cef1aeaf6f75d2a51e3c086af21759')
 
 build(){
   cd "${srcdir}/bacpypes-${pkgver}"
