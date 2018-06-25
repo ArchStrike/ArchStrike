@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=simple-email-spoofer-git
-pkgver=20161120.r50
-pkgrel=3
+pkgver=20171217.r53
+pkgrel=1
 groups=('archstrike' 'archstrike-spoof')
 arch=('any')
 pkgdesc="A simple Python CLI to spoof emails."
