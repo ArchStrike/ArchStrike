@@ -3,21 +3,21 @@
 buildarch=1
 
 pkgname=termineter
-pkgver=0.2.6
-pkgrel=2
+pkgver=1.0.4
+pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="Smart meter testing framework"
 url="https://github.com/securestate/termineter"
 arch=('any')
 license=('GPL3')
 depends=('python2-pyserial' 'python2-pyasn1' 'python2-smoke-zephyr' 'python2-crcelk')
-makedepends=('python2-setuptools')
+makedepends=('python2-setuptools' 'python2-pypandoc')
 source=("https://github.com/securestate/termineter/archive/v$pkgver.tar.gz")
-sha512sums=('6b7a5bf2c553d7f4e49f3f09a8e14f9824da73f510b61bd9c520c743f77e1da9cb5ec22f0cd204dbffcb038605dd3f9b6aa5bf4d5f76df675d046dd8589c5c46')
+sha512sums=('108b80c12c5ea5621d93896c4e77b41db317bed20b8f3a7daba2e0c8f25ae3c2b3137d9374ea807cf783a7e1572dca340bd322e90489175e2304f8242c4f0be1')
 
 prepare() {
   cd "$pkgname-$pkgver"
-  sed -i '/from __future__/d' setup.py
+  sed -i '/#!\/usr\/bin\/env python3/a from __future__ import print_function' setup.py
 }
 
 package() {
