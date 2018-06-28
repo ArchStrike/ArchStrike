@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=termineter
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="Smart meter testing framework"
 url="https://github.com/securestate/termineter"
 arch=('any')
 license=('GPL3')
 depends=('python2-pyserial' 'python2-pyasn1' 'python2-smoke-zephyr' 'python2-crcelk')
-makedepends=('python2-setuptools' 'python2-pypandoc')
+makedepends=('python2-setuptools')
 source=("https://github.com/securestate/termineter/archive/v$pkgver.tar.gz")
 sha512sums=('108b80c12c5ea5621d93896c4e77b41db317bed20b8f3a7daba2e0c8f25ae3c2b3137d9374ea807cf783a7e1572dca340bd322e90489175e2304f8242c4f0be1')
 
