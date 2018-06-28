@@ -6,14 +6,14 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname=amap
 pkgver=5.4
-pkgrel=7
+pkgrel=8
 pkgdesc="Next-generation tool for assisting network penetration testing."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('GPL2' 'custom')
 groups=('archstrike')
 depends=('pcre' 'openssl')
-url="https://www.thc.org/thc-amap/"
-source=("https://www.thc.org/releases/amap-$pkgver.tar.gz"
+url="https://github.com/vanhauser-thc/THC-Archive"
+source=("https://raw.githubusercontent.com/vanhauser-thc/THC-Archive/master/Tools/${pkgname}-${pkgver}.tar.gz"
         "pcre.patch"
         'amap.desktop')
 sha512sums=('e1a9f03940eded3eedad0028786f4ea6c18077072d52eb2f843ef0b4ff736bf1766c4bdb4eff52d3a8f6038d8f795e39be1c15bcae8283ddae8f40a7fff8647d'
@@ -21,7 +21,7 @@ sha512sums=('e1a9f03940eded3eedad0028786f4ea6c18077072d52eb2f843ef0b4ff736bf1766
             'c01312aa25cacd8ebdad4f90afb7d4769272fe16ef813dc8cba975dcb6933a45acbbf7df4583465244e914dc4e104ba954041a2c03838cefdc6aa135133be740')
 
 prepare(){
-  cd ${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
   sed -i -e "s:etc/:share/amap/:g" amap-lib.c
   # Above change requires below change. See sources...
   sed -i '/strlen(AMAP_PREFIX/s: 5 : 12 :' amap-lib.c
@@ -33,7 +33,7 @@ prepare(){
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${srcdir}/${pkgname}-${pkgver}
   ./configure
   sed -i \
       -e '/^XDEFINES=/s:=.*:=:' \
@@ -51,13 +51,13 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  install -Dm755 amap "$pkgdir/usr/bin/amap"
-  ln -s "/usr/bin/amap" "$pkgdir/usr/bin/amap6"
-  install -Dm755 amapcrap "$pkgdir/usr/bin/amapcrap"
-  install -dm755 "$pkgdir/usr/share/amap"
-  install -Dm644 appdefs.* "$pkgdir/usr/share/amap/"
-  install -Dm644 amap.1 "$pkgdir/usr/share/man/man1/amap.1"
-  install -Dm644 LICENCE.AMAP "$pkgdir/usr/share/licenses/amap/LICENCE"
-  install -Dm644 "$srcdir/amap.desktop" "$pkgdir/usr/share/applications/amap.desktop"
+  cd ${srcdir}/${pkgname}-${pkgver}
+  install -Dm755 amap "${pkgdir}/usr/bin/amap"
+  ln -s "/usr/bin/amap" "${pkgdir}/usr/bin/amap6"
+  install -Dm755 amapcrap "${pkgdir}/usr/bin/amapcrap"
+  install -dm755 "${pkgdir}/usr/share/amap"
+  install -Dm644 appdefs.* "${pkgdir}/usr/share/amap/"
+  install -Dm644 amap.1 "${pkgdir}/usr/share/man/man1/amap.1"
+  install -Dm644 LICENCE.AMAP "${pkgdir}/usr/share/licenses/amap/LICENCE"
+  install -Dm644 "${srcdir}/amap.desktop" "${pkgdir}/usr/share/applications/amap.desktop"
 }
