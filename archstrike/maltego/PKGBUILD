@@ -3,40 +3,39 @@
 buildarch=1
 
 pkgname=maltego
-_pkgname=MaltegoCommunity_4.0.11CE
-pkgver=4.0.11.9358
-pkgrel=2
+pkgver=4.1.6.11045
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics' 'archstrike-recon' 'archstrike-scanners')
 pkgdesc="An open source intelligence and forensics application, enabling to easily gather information about DNS, domains, IP addresses, websites, persons, etc."
 arch=('any')
 url='http://www.paterva.com/web5'
 license=('GPL')
 depends=('java-environment' 'giflib' 'python2')
-source=("https://www.paterva.com/malv4/community/MaltegoCE.v${pkgver}.zip"
+source=("http://www.paterva.com/malv41/${pkgname}_${pkgver}.zip"
         "https://www.paterva.com/web7/docs/M3GuideGUI.pdf")
-sha512sums=('4857ce2616d0fef73edb1ed3a0c54d20a7b7acc17ac62c752516a28371ec967cf27e57cec4bb3f71749cdf6dcffb8c5a2291c45b893ac3d22493ad0a762698f1'
+sha512sums=('0697f036745e6ca69eadc8a3c30e2d8d4c680d1918f26abb6e23b9e271957b009b84b2259f0ef92e377cc515d3d398844f1e3e3c7a6487b5da3d53ac6c24972d'
             '20dda5f7bbf211bb227ef740ae664037e33a0849b15a5e47f9ae4f39bd2b276ef116b492b9be57a44c89f3ffc23ee63d39c6f465136b917c6aeeb08dfe94c6e1')
 
 prepare() {
-  grep -iRl 'python' ${_pkgname} | xargs sed -i 's|python$|python2|g'
+  grep -iRl 'python' ${pkgname}_${pkgver} | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
-  cd ${_pkgname}
+  cd ${pkgname}_${pkgver}
 
   # Create base directories.
-  install -dm755 "$pkgdir/usr/share/${pkgname}"
-  install -dm755 "$pkgdir/usr/share/doc/${pkgname}"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
 
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
-  install -Dm644 "$srcdir/M3GuideGUI.pdf" "$pkgdir/usr/share/doc/${pkgname}/M3GuideGUI.pdf"
+  install -Dm644 "$srcdir/M3GuideGUI.pdf" "${pkgdir}/usr/share/doc/${pkgname}/M3GuideGUI.pdf"
 
 # Create joint script.
-cat > $pkgdir/usr/bin/maltego <<EOF
+cat > ${pkgdir}/usr/bin/maltego <<EOF
 #!/usr/bin/env bash
 cd /usr/share/maltego/bin
 ./maltego "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/maltego"
+chmod 755 "${pkgdir}/usr/bin/maltego"
 }
