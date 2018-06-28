@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=canari
-pkgver=1.1
-pkgrel=3
+pkgver=3.2.2
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics' 'archstrike-recon' 'archstrike-scanners')
 pkgdesc="A transform framework for maltego"
 url="http://www.canariproject.com"
@@ -12,16 +12,16 @@ arch=('any')
 license=('GPL2')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("http://pypi.canariproject.com/canari/canari-latest.tar.gz")
-sha512sums=('124afe8fbd1e1bbc96d95d6f6b61296cc4aa6e1911be0d2aa1410eb32fb92d8e4560b8134197e111d3929f2fe55565a060fc8a3b571422b066e33db42069dd5a')
+source=("https://files.pythonhosted.org/packages/bf/ed/5103b19ba19a048c1bdf0ae42b0c03517eacc7cee5bcc63b8e020125ae72/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('a94e9d96dd97668e1de58f8f0d1f14cb7af035278eb342f5b97928c170242d35c8c986824af8793c8afc2128a55da3216cc4fa394fb5114a849b89c47689274b')
 
 build(){
-  cd "$srcdir/canari-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/canari-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python2 setup.py install --root="$pkgdir/" --optimize=1
   find "${pkgdir}" -type f -name '*.plate' -o -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
 }
