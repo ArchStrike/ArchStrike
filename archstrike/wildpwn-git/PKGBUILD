@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=wildpwn-git
-pkgver=20160726.r10
-pkgrel=2
+pkgver=20180525.r11
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 arch=('any')
 pkgdesc="unix wildcard attacks"
