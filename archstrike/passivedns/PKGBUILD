@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=passivedns
-pkgver=1.2.0
-pkgrel=2
+pkgver=1.2.1
+pkgrel=1
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A network sniffer that logs all DNS server replies for use in a passive DNS setup."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('libpcap' 'ldns')
 makedepends=('autoconf')
 source=("https://github.com/gamelinux/passivedns/archive/$pkgver.tar.gz")
-sha512sums=('2fcbf4337b0c9c531b575e730ba19c8354bfdac990b25a65ce72c16477da3379ebcc5cedb8f9509fffaf7cafb80d8038ba1a75a6cba666a0c1458ffd60b11452')
+sha512sums=('369d404d08583c3d1ddd01c45bd5789e5e69396b81e81929c5498bdd177ba316b3c52db59d39a0c83739a96d6b93924272ef16274d5ea2018aa74a15f3f7cd7f')
 
 build(){
   cd "$srcdir/passivedns-$pkgver/"
