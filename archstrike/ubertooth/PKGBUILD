@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=ubertooth
-pkgver=2017.03.R2
+pkgver=2018.06.R1
 pkgrel=1
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc='A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only'
@@ -17,10 +17,8 @@ source=(
   "https://github.com/greatscottgadgets/$pkgname/archive/${pkgver//./-}.tar.gz"
   'specan_ui.patch'
 )
-sha512sums=(
-  '2684e7d70e5008eeb37403077d8a6eae80d13ee963e91d70deba9dd9b46f980aeeeba2f9a54dcbdfbfcc472cbd01260799d49ae802abcd451977b00b182e5770'
-  'c89cf605005d1fe5030d7e05f3cc9899294065699907b93d64c1adfa3b21d6ef337baa153f01b7ed4e208f3fd767554fe294610d36562e46bb7434f87c4ef47d'
-)
+sha512sums=('61e137a7b51eba494bfde000217dcf38d2809df897d05166099cff115b9f4ce976fb84277352bc0eebe7f94f9f1cb769be872927a68228550760d96e51edf92f'
+            'c89cf605005d1fe5030d7e05f3cc9899294065699907b93d64c1adfa3b21d6ef337baa153f01b7ed4e208f3fd767554fe294610d36562e46bb7434f87c4ef47d')
 
 prepare(){
   cd $pkgname-${pkgver//./-}/host/python/specan_ui
