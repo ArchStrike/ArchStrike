@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=libbtbb
-pkgver=2017.03.R2
+pkgver=2018.06.R1
 pkgrel=1
 pkgdesc="A library to decode Bluetooth baseband packets, as produced by the Ubertooth and GR-Bluetooth projects."
 url="https://greatscottgadgets.com/ubertoothone"
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('libpcap' 'python')
 makedepends=('cmake' 'libpcap')
 source=("https://github.com/greatscottgadgets/libbtbb/archive/${pkgver//./-}.tar.gz")
-sha512sums=('bb7b58a33198fd64fba5f0254cfbb71120c70476d594a7aaf82c77f770d1a6e89b4571f42d3d15c1d93d5246c9145c33ba8724a5ee5ad84e96f748d9f32275b5')
+sha512sums=('1a112bb352b96f301f0272ce33fc3f669f5e62d613705a527dde919badfbfbb4d0f8bef5a31ac330c1a372f7ed17d6b8aaa6672cee2593cc97f236e6073740dc')
 
 prepare() {
   mkdir "$srcdir/libbtbb-${pkgver//./-}/build"
