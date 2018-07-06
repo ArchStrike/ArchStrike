@@ -4,16 +4,16 @@ buildarch=1
 
 pkgname=underscorejs
 _script=underscore
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 pkgdesc="Underscore is a utility-belt library for JavaScript that provides a lot of the functional programming support that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects."
 arch=(any)
 url="http://underscorejs.org"
 license=('MIT')
 source=("${url}/${_script}.js" "${url}/${_script}-min.js" "${url}/LICENSE")
-sha512sums=('ef3d2bc4df4f4c87188ebb7b539605cca96e1a67865e7291a173b2d24ea568331e6487430032b92ab69b8fd3cbfccaba7e41c4e7c8b488858eb5b72ab4973944'
-            '3d16b76b8cef152dea292eb2acd2ea1fd9c496f9cad8113af66fe8f668e443c28f50701dffea1ad6960b6555debd5004426f64fc220067ce03aa8ff894402816'
-            'b9d0637fa89f1d33c6bc4907129c488331a7f12324ad8f108db8876921ce85826978a85ab2e0f4d50ab3badab6a784cea55fd37eb21816356066ac3daa76efc6')
+sha512sums=('24a0129fdc43e87b9df8c8c2c58098368ef578d6b9f24be657db0b66334ffd5b05cc6529be5f590bf14ec0f032f0b10543d246aa0e690f068749fe2c3d9dbb45'
+            '7bade1241e3f57546349eb144f8476a0eab8df7229e2f53a658a75511c9e3fca3c0376b95b4b1c8e0fb8d882e76ec2baa793835946d1fbdae90ce5a244cf2321'
+            '6eb623c835d9bd02af03dc962870f568094f58ff369712f22e6aeffe21c63df3d71d955f56aced635abc7ddd156a422db184526a184582f9d7a01671156e0e40')
 
 package() {
   cd "${srcdir}"
