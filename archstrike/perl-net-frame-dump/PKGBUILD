@@ -5,7 +5,7 @@ _perlmod='Net-Frame-Dump'
 buildarch=1
 
 pkgname='perl-net-frame-dump'
-pkgver='1.16'
+pkgver=1.17
 pkgrel=1
 pkgdesc='Base-class for a tcpdump like implementation.'
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl>=5.10.0')
 makedepends=('perl-net-pcap' 'perl-class-gomor' 'perl-net-frame')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/G/GO/$_author/$_perlmod-$pkgver.tar.gz")
-sha512sums=('ca07cbdb15e846b049355df127b2489f8aed5415d5713094b650b374816a6178b56ffbc91e38fdf09908fdf62aa9a0e2ca7bdf48d4cc4da258a709033d7e6fbd')
+sha512sums=('69d69f6e966ea0b138a8df693e3808f1b7808231283b9bb95f13e785b46f5712d022c30f161c1d4599050e1c14d4af2689137bc1cdb504f44354ec0ece8053d7')
 
 prepare() {
   cd "$srcdir/$_perlmod-$pkgver"
