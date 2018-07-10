@@ -1,0 +1,31 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_gemname=ipaddress
+pkgname=ruby-$_gemname
+pkgver=0.8.3
+pkgrel=1
+pkgdesc='IPv4/IPv6 addresses manipulation library'
+arch=('any')
+url="http://github.com/bluemonk/$_gemname"
+license=('MIT')
+depends=('ruby')
+makedepends=('rubygems')
+source=("http://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+sha512sums=('c1b274b056650390689360c9856f2180')
+
+package() {
+  cd "$srcdir"
+  local _gemdir="$(ruby -e'puts Gem.default_dir')"
+  gem install --ignore-dependencies --no-user-install -i "$pkgdir$_gemdir" $_gemname-$pkgver.gem
+  if [[ $CARCH == arm* ]]; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri \
+                -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies \
+                -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  fi
+}
+#vim se: ts=2 sw=2 sts=2 et:

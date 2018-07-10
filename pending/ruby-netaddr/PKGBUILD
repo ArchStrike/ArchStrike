@@ -1,0 +1,33 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_gemname=netaddr
+pkgname=ruby-${_gemname}
+pkgver=2.0.3
+pkgrel=1
+pkgdesc='Ruby library for performing calculations on IPv4 and IPv6 subnets'
+arch=('any')
+url='https://rubygems.org/gems/netaddr'
+license=('Apache')
+depends=('ruby')
+makedepends=('ruby-rdoc')
+options=(!emptydirs)
+source=("https://rubygems.org/downloads/$_gemname-$pkgver.gem")
+noextract=("$_gemname-$pkgver.gem")
+sha512sums=('9841cd4d76a3d72c3c38d5048210b74403d541fc1550e5de9e5eea42f52033b02e83b1865930ffb094db627790f4e00ee94d9050e9f6a36e1973618ebac525bd')
+
+package() {
+  cd "$srcdir"
+  local _gemdir="$(ruby -e 'puts Gem.default_dir')"
+  if [[ $CARCH == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri \
+                -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  else
+    gem install --no-user-install --ignore-dependencies \
+                -i "$pkgdir$_gemdir" -n "$pkgdir/usr/bin" $_gemname-$pkgver.gem
+  fi
+  rm "$pkgdir/$_gemdir/cache/$_gemname-$pkgver.gem"
+}
+
+#vim se: ts=2 sw=2 sts=2 et:
