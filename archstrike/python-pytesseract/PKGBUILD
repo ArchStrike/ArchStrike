@@ -1,0 +1,50 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+epoch=1
+_pkgname=pytesseract
+pkgbase=python-${_pkgname}
+pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgver=0.2.2
+pkgrel=1
+arch=('any')
+url="https://github.com/madmaze/pytesseract"
+license=('custom')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+source=(${pkgname}::https://github.com/madmaze/${_pkgname}/archive/v${pkgver}.tar.gz
+        pytesseract.install)
+sha512sums=('ad18f603b55d9d0795e7982fdec0b0f3094ca0146df5768937a9a5659c14656f3f12cd5083dc4fcc802d45bf35ba7465ec77d295d81e39277860fa6728734c39'
+            '1bb0119995d658dcf461a6744f6167a1ba574a9fead4fbb07b124c61e5bc6443ca330498e2470330f84cf5def0301854d139c9495e43c3169b5e3c7fcda00b78')
+
+prepare(){
+  cp -a ${_pkgname}-${pkgver}{,-py2}
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py build
+}
+
+package_python-pytesseract() {
+  pkgdesc="Optical character recognition (OCR) tool for Python 3.x"
+  depends=('python' 'python-pillow' 'python-numpy' 'tesseract')
+  install="${_pkgname}.install"
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python3 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-pytesseract() {
+  pkgdesc="Optical character recognition (OCR) tool for Python 2.x"
+  depends+=('python2' 'python2-pillow' 'python2-numpy' 'tesseract')
+  install="${_pkgname}.install"
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
