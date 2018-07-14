@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=ipaudit
-pkgver=1.0BETA2
-pkgrel=4
+pkgver=1.1
+pkgrel=1
 pkgdesc="Monitors network activity on a network."
 url="http://ipaudit.sourceforge.net"
 depends=('libpcap')
@@ -12,14 +12,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-networking')
 options=('!emptydirs')
 license=('GPL')
-source=("http://downloads.sourceforge.net/sourceforge/ipaudit/ipaudit-$pkgver.tar.gz" "gcc6.1.fixes.patch")
-sha512sums=('3a8890821c515aea95762eeb2cc7a649533ff739984c944bcb26acb72434e1f2b453a98365719fce9e062d6262b9d76ac389f149ad2a19361422783bc0b55e09'
-            '74953fc89d84bbc0dec1b13b6216e2658c9d8337efe0e20f9d61099f031ef08a4d04279c75e14ab69a50bbf89157b75d167646ca7aad262eb82bf6de2e9d313a')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -Np1 -i $srcdir/gcc6.1.fixes.patch
-}
+source=("http://downloads.sourceforge.net/sourceforge/ipaudit/ipaudit-$pkgver.tar.gz")
+sha512sums=('5eb1971b454c8c96c02dc260e537a9a627554b7c9d1e269be9de2ffdb5cbfed00272b643de7b15865659cef0db482e4c460f96b1545bcd6c4f208c96d7401ef9')
 
 build() {
   cd $pkgname-$pkgver
