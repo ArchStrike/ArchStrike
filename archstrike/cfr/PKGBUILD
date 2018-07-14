@@ -5,7 +5,7 @@
 buildarch=1
 
 pkgname=cfr
-pkgver=129
+pkgver=132
 pkgrel=1
 groups=('archstrike' 'archstrike-decompile')
 pkgdesc='Another Java decompiler'
@@ -16,7 +16,7 @@ depends=('java-runtime' 'java-environment' 'bash')
 source=("http://www.benf.org/other/cfr/cfr_0_${pkgver}.jar"
         'LICENSE')
 noextract=("cfr_0_${pkgver}.jar")
-sha512sums=('b9663aee2e76ca6bb599583e3eeab99e25d7487d554ab789b6dca90148b0db940dbe0e65c15200a10644e55452ecdd5344350c4b62634140fc9b097f782dcca1'
+sha512sums=('e8ee911eb80e3c15456742b489d55143769f863102bbb374fc83ed5f256ce944ce4128b8abffe32d21a88b42c5f5e15d4951a89197969c4e6ce1699beba3da49'
             '34f760447784493317b1715d975c649107765325443dd4aa1806cc8278dfb50bb1ced120b467a67438efd0f8db81049f2b1497f9b7752d445be5f53dddfebbaa')
 
 package() {
