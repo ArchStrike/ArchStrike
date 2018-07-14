@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=goatrider-git
-pkgver=20160125.r3
-pkgrel=2
+pkgver=20180608.r4
+pkgrel=1
 groups=('archstrike' 'archstrike-analysis' 'archstrike-misc')
 arch=('any')
 pkgdesc="simple tool for doing a comparison of IP addresses or hostnames to BDS Artillery Feeds, OTX, Alexa Top 1M, and TOR"
@@ -22,7 +22,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  sed -i 's|python$|python2|' goatrider.py
+  sed -i 's|python2.7b|python2|' goatrider.py
 }
 
 package() {
