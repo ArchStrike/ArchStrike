@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=indxparse-git
-pkgver=r167.868ae16
-pkgrel=2
+pkgver=r169.1b32736
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A Tool suite for inspecting NTFS artifacts."
 arch=('any')
@@ -46,7 +46,7 @@ cd /usr/share/indxparse
 python2 ./INDXParse.py "\$@"
 EOF
 
-chmod +x $pkgdir/usr/bin/indxparse
+chmod 755 $pkgdir/usr/bin/indxparse
 
 }
 
