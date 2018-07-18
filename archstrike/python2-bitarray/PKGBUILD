@@ -4,8 +4,8 @@
 buildarch=220
 
 pkgname=python2-bitarray
-pkgver=0.8.1
-pkgrel=2
+pkgver=0.8.3
+pkgrel=1
 pkgdesc="Efficient arrays of booleans for Python"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/ilanschnell/bitarray"
@@ -13,8 +13,8 @@ license=('PSF')
 depends=('python2')
 makedepends=('python2-distribute')
 options=(!emptydirs)
-source=(http://pypi.python.org/packages/source/b/bitarray/bitarray-${pkgver}.tar.gz)
-sha512sums=('10f4872243b92cd5a1a77e1e2aca80135d31904e17cb3de4eb2c3f2c4d3f00ad0573b6bc4b9c9379594e2912cb0e5d5870fb4e59eb298e269ecb3778fbae7d1f')
+source=(https://pypi.python.org/packages/source/b/bitarray/bitarray-${pkgver}.tar.gz)
+sha512sums=('67e634fba3672faf986117534e9260566b7596c7fddc67d7195fce4c9cc13bf491f94b6d25005143aee1cbbfbce168be0c7a833bc1f293cdbb30149b29855372')
 
 build() {
   cd "$srcdir"/bitarray-$pkgver
