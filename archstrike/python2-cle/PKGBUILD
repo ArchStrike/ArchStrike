@@ -4,17 +4,17 @@
 buildarch=1
 
 pkgname=python2-cle
-pkgver=7.8.2.21
-pkgrel=2
+pkgver=7.8.7.1
+pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
 url="https://github.com/angr/cle"
 depends=('python2' 'python2-archinfo' 'python2-cffi' 'python2-pefile' 'python2-pyelftools' 'python2-pyvex')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/42/c6/31cdaac4f1b54b98e78154eea97737b1aaf359c1db983dd2aab5cfe8178d/cle-7.8.2.21.tar.gz"
+source=("https://files.pythonhosted.org/packages/67/aa/da5e70d704dd73c9800962bbce36af4b0b0f3213720df1e5b87bc5abb477/cle-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/cle/master/LICENSE")
-sha512sums=('4cae1ba876595f611dbced1a07cb6f7728309a9bf96aca3d2f94b54ce5c899c34d1525b9e64a73342c4d0fc52d53e4c425b5214d970f1b28a7a79bd9f82994e6'
+sha512sums=('61f08d343ab01331fd9c93db98042d6480d929e0c6bd2467b277006afd5e4f7d587a060e00f8a253cd639d86dc17b5121a4a4a2df01b3e2972a750021983c86c'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
