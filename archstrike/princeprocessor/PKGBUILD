@@ -3,8 +3,8 @@
 buildarch=136
 
 pkgname=princeprocessor
-pkgver=0.21
-pkgrel=3
+pkgver=0.22
+pkgrel=1
 pkgdesc="Standalone password candidate generator using the PRINCE algorithm"
 arch=('x86_64' 'aarch64')
 url="https://github.com/jsteube/princeprocessor"
@@ -12,7 +12,7 @@ groups=('archstrike')
 license=('MIT')
 depends=('gmp')
 source=("https://github.com/jsteube/princeprocessor/archive/v${pkgver}.tar.gz")
-sha512sums=('1cd3a1640fd0d8f8373596fc9c54d6bdf48ba074205f4a070b39dc00a25700b85972d4e71950ffecba332202f060530afeb645483f0231cb6cba6de9bf0e8850')
+sha512sums=('8b73867b3f8a83601cde9d6d17e917d0ba468873eda8c47e3c4de7a0511fe35bedb44c68897df9fcc48b1737c1f2c026117e9398f5ff4202611a001fe33990df')
 
 build(){
    cd "$srcdir/$pkgname-$pkgver/src"
