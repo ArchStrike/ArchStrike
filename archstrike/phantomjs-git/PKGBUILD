@@ -1,11 +1,11 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=192
 
 _pkgname=phantomjs
 pkgname=${_pkgname}-git
 pkgver=2.1.0.r38.g466ae257a
-pkgrel=1
+pkgrel=2
 pkgdesc="Headless WebKit with JavaScript API"
 url="http://www.phantomjs.org/"
 license=('BSD' 'LGPL' 'MIT')
