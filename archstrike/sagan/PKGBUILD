@@ -1,0 +1,45 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor : Sebastien Duquette <ekse.0x@gmail.com>
+
+buildarch=220
+
+pkgname=sagan
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="a snort-like log analysis engine"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+groups=('archstrike' 'archstrike-analysis')
+url="https://quadrantsec.com/sagan_log_analysis_engine/"
+license=('GPL')
+depends=('libdnet' 'libesmtp' 'liblognorm' 'geoip' 'libyaml')
+optdepends=('sagan-rules: rules for sagan')
+options=('!makeflags' '!emptydirs')
+source=("https://quadrantsec.com/download/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('c597b632292ec16bc68b986897dd9cd3f63aa1107c2089230698c275002ab99b2090ca5c08b529abf2eb2c4c2a862c89d481aa7be07f574341ce17612caef95c')
+
+build() {
+  cd ${pkgname}-${pkgver}
+  ./autogen.sh
+
+  if [[ $CARCH == i686 ]] || [[ $CARCH == armv6h ]] || [[ $CARCH == armv7h ]] || [[ $CARCH == aarch64 ]]; then
+        ./configure --enable-esmtp \
+                    --enable-geoip \
+                    --prefix=/usr \
+                    --sysconfdir=/etc \
+                    --sbindir=/usr/bin \
+                    --enable-system-strstr
+  else
+       ./configure --enable-esmtp --enable-geoip --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin
+  fi
+
+  make
+
+  sed "s:^var RULE_PATH.*$:var RULE_PATH /usr/share/sagan-git/rules/:" etc/sagan.yaml > etc/sagan.yaml.new
+  mv etc/sagan.yaml.new etc/sagan.yaml
+
+}
+
+package() {
+  cd ${pkgname}-$pkgver
+  make DESTDIR="${pkgdir}" install
+}
