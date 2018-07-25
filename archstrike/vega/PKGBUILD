@@ -4,13 +4,13 @@ buildarch=220
 
 pkgname=vega
 pkgver=1.0.devel.130
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="An open source platform to test the security of web applications"
-url="https://github.com/subgraph/Vega/wiki"
+url="https://github.com/subgraph/Vega"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL2')
-depends=('java-environment' 'webkitgtk')
+depends=('java-environment' 'webkit2gtk')
 makedepends=('unzip')
 source_x86_64=("https://support.subgraph.com/downloads/VegaBuild-linux.gtk.x86_64.zip")
 source=("https://support.subgraph.com/downloads/VegaBuild-linux.gtk.x86.zip")
