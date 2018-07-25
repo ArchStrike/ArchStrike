@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Limao Luo <luolimao+AUR@gmail.com>
+# Contributor: Brian Knox <taotetek@gmail.com>
+
+buildarch=220
+
+pkgname=liblognorm
+pkgver=2.0.5
+pkgrel=1
+pkgdesc="log normalization library for rsyslog"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url=http://www.liblognorm.com
+license=('GPL2')
+depends=('json-c' 'libfastjson' 'python2-sphinx' 'pcre' 'libestr')
+makedepends=('gcc' 'autoconf')
+source=("http://www.liblognorm.com/files/download/liblognorm-${pkgver}.tar.gz")
+sha512sums=('2b36fabfa8b751127d47f307833414d339ae43bad5b687ce6ac42a961021f9a515703ca0c4808e098ef49be3a943abdbf307f90995a2331c6e266167ef041d00')
+
+build() {
+  cd "${pkgname}"-"${pkgver}"
+  export CFLAGS=${CFLAGS}
+  ./configure --prefix=/usr --enable-regexp --enable-docs
+  make
+}
+
+package() {
+  cd "${pkgname}"-"${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}
