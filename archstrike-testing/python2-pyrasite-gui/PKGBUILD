@@ -5,15 +5,16 @@ buildarch=1
 
 pkgname=python2-pyrasite-gui
 pkgver=2.0beta7
-pkgrel=2
+pkgrel=3
 pkgdesc="Code injection and introspection of running Python processes"
 groups=('archstrike' 'archstrike-misc')
 arch=('any')
 url="http://pyrasite.com"
 license=('GPL3')
-depends=('python2-pyrasite' 'python2-meliae' 'python2-psutil' 'libwebkit3' 'graphviz' 'python2-gobject' 'python2-pycallgraph')
+depends=('python2-pyrasite' 'python2-meliae' 'python2-psutil' 'webkit2gtk'
+         'graphviz' 'python2-gobject' 'python2-pycallgraph')
 makedepends=('python2-setuptools')
-source=(http://pypi.python.org/packages/source/p/pyrasite-gui/pyrasite-gui-$pkgver.tar.gz)
+source=("https://files.pythonhosted.org/packages/66/79/f5e2aa7b85261bf5ae75de23f5361735a98f9527e71d194aae348756605d/pyrasite-gui-2.0beta7.tar.gz")
 sha512sums=('72df3e2c0071a324b2a42b73e3413af109d0ad991da742fa9846a602b96673f13b8611389c9080e28efa8ca5670bf3ab297c834804e002103ad54d5e226d0bec')
 
 prepare(){
