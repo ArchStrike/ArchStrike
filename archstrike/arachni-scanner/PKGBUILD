@@ -4,16 +4,13 @@ buildarch=220
 
 pkgname=arachni-scanner
 pkgver=1.5.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc='A feature-full, modular, high-performance Ruby framework aimed towards helping penetration testers and administrators evaluate the security of web applications.'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('custom')
 url="https://www.arachni-scanner.com"
-depends=('ruby2.3' 'ruby2.3-bundler' 'curl' 'phantomjs' 'libxslt' 'libxml2')
-replaces=('arachni')
-conflicts=('arachni')
-provides=('arachni')
+depends=('ruby2.3' 'ruby2.3-bundler' 'curl' 'phantomjs-git' 'libxslt' 'libxml2')
 source=("https://github.com/Arachni/arachni/archive/v${pkgver}.tar.gz")
 sha512sums=('bc9cbe8865ec1f26d40f887ecfcf46329340ac88c1c74c485ad997c48441d3ee7b51a5c4a940c2511c6c2e65f006c20d72c50ffe96f8256c1ba0dfe6f6c94017')
 
