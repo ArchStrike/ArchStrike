@@ -4,8 +4,7 @@ buildarch=1
 
 pkgname=artillery-git
 pkgver=20171219.r211
-pkgrel=1
-epoch=1
+pkgrel=2
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="A combination of a honeypot, file-system monitoring, system hardening, and overall health of a server to create a comprehensive way to secure a system"
 arch=('any')
@@ -14,9 +13,6 @@ license=('BSD')
 makedepends=('git')
 depends=('python2')
 options=('!emptydirs')
-provides=('artillery')
-conflicts=('artillery')
-replaces=('artillery')
 source=("${pkgname}::git+https://github.com/BinaryDefense/artillery.git"
   "artillery.service")
 sha512sums=('SKIP'
