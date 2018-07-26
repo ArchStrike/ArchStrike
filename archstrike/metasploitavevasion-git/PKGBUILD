@@ -3,19 +3,19 @@
 
 buildarch=1
 
-pkgname=metasploitavevasion-git
 _pkgname=metasploitavevasion
+pkgname=metasploitavevasion-git
 pkgver=2.0.20151222.r29
-pkgrel=6
+pkgrel=7
 pkgdesc="Metasploit payload generator that avoids most Anti-Virus products."
-url="https://github.com/nccgroup/${pkgname}"
+url="https://github.com/nccgroup/${_pkgname}"
 license=('AGPL3')
 arch=('any')
 groups=('archstrike' 'archstrike-exploit')
-depends=('metasploit' 'mingw-w64-gcc' 'wget')
+depends=('metasploit' 'gcc' 'wget')
 makedepends=('git')
 provides=('metasploitavevasion')
-source=("$pkgname::git+https://github.com/nccgroup/${_pkgname}.git#branch=master"
+source=("${pkgname}::git+https://github.com/nccgroup/${_pkgname}.git#branch=master"
         "${_pkgname}.sh"
         "${_pkgname}.desktop"
         "${_pkgname}.png")
@@ -25,22 +25,22 @@ sha512sums=('SKIP'
             'dce7096d395b791cfc1b44d6256ea6a138c0a2db87ed17fedbbd86c815bd8eb31d8a6631e55e9d81afc339090ae4c45696b0b7ccead74478ebcd2c263c436d84')
 
 pkgver() {
-    cd ${pkgname}
-    grep -e "^VERSION=" avoid.sh > version.sh
-    source version.sh
-    printf "%s.%s.r%s" "$VERSION" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  cd ${pkgname}
+  grep -e "^VERSION=" avoid.sh > version.sh
+  source version.sh
+  printf "%s.%s.r%s" "$VERSION" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-    cd ${pkgname}
-    find . -type f -exec sed -i 's|i586-mingw32msvc-gcc|i686-w64-mingw32-gcc|g' '{}' \;
+  cd ${pkgname}
+  find . -type f -exec sed -i 's|i586-mingw32msvc-gcc|i686-w64-mingw32-gcc|g' '{}' \;
 }
 
 package() {
-    install -dm755 "$pkgdir/usr/bin"
-    install -dm755 "$pkgdir/usr/share/applications/${pkgname}"
-    install -Dm755 ${pkgname}/avoid.sh "${pkgdir}/usr/bin/avoid.sh"
-    install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
-    install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
-    install -Dm644 ${_pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/applications/${pkgname}"
+  install -Dm755 ${pkgname}/avoid.sh "${pkgdir}/usr/bin/avoid.sh"
+  install -Dm755 ${_pkgname}.sh "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 ${_pkgname}.desktop "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 ${_pkgname}.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
 }
