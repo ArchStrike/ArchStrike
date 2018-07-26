@@ -4,24 +4,24 @@ buildarch=220
 
 pkgname=bletchley
 pkgver=0.0.1
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="A collection of practical application cryptanalyze tools."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="https://code.google.com/p/bletchley/"
+url="https://code.blindspotsecurity.com/trac/bletchley"
 license=('GPL')
-depends=('python')
-makedepends=('scons')
-source=("https://googledrive.com/host/0B6HCWPzk_jKoVHI5WV9EMURfbms/bletchley-src-$pkgver.tar.gz")
-sha512sums=('4e87e485d40cbde828a51f1142d361a47b12f33e2d3f20a77b00cf1e81386235fb7fafdc0e6e7d90cb71e39dced10c629abdfe671b4cf33a6815740800fba2ec')
+depends=('python' 'python-requests')
+makedepends=('scons' 'subversion' 'gcc')
+source=("${pkgname}::svn+https://code.blindspotsecurity.com/dav/bletchley/trunk/")
+sha512sums=('SKIP')
 
 build() {
-  cd "$srcdir/bletchley-src-$pkgver"
+  cd ${pkgname}
   scons -Q PREFIX=/usr
 }
 
 package() {
-  cd "$srcdir/bletchley-src-$pkgver"
+  cd ${pkgname}
 
   export PYTHONSITE=`python -c "import site; print(site.getsitepackages()[0])"`
 
@@ -29,11 +29,11 @@ package() {
   install -dm755 "${pkgdir}/usr/lib"
   install -dm755 "${pkgdir}${PYTHONSITE}"
   install -dm755 "${pkgdir}${PYTHONSITE}/bletchley"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/bin"
 
   # Install Python3 site-packages files and folders
   cp -a --no-preserve=ownership -R lib/bletchley ${pkgdir}`python -c "import site; print(site.getsitepackages()[0])"`
 
   # Install Bins
-  PREFIX=/usr DESTDIR="$pkgdir" scons install
+  PREFIX=/usr DESTDIR="${pkgdir}" scons install
 }
