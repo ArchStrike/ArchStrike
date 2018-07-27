@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-rpyc
-pkgver=3.4.4
+pkgver=4.0.1
 pkgrel=1
 pkgdesc="Remote Python Call (RPyC), a transparent and symmetric RPC library"
 url="http://rpyc.readthedocs.org"
@@ -12,8 +12,8 @@ depends=('python2' )
 makedepends=('python2-distribute' )
 license=('MIT')
 arch=('any')
-source=("https://pypi.python.org/packages/b2/91/6610549271f13fb8026f795a6b0307102073077175edf144c71f28355920/rpyc-3.4.4.tar.gz")
-sha512sums=('0a176b05df28d92e67cb45372b46260611c1bc89f997c5a6760a760dff8792d5bb93505fdeccbd25c5ae7b04cf7aeeb7fd8964d4f124b00e50fbd3d55d7ba7b1')
+source=("https://files.pythonhosted.org/packages/6c/84/a7e670a714bef2b542b216ea2735edbfcdbaba2dc52f2e8904b764435559/rpyc-${pkgver}.tar.gz")
+sha512sums=('4331aeb546bf4e22e94939e753b90450a40ecb8280ae9af209799fdf52aac625d92e9d5208bbcfd041c14f21e1be92526f44a8b365280f569d189f627b7a1125')
 
 build() {
     cd $srcdir/rpyc-$pkgver
@@ -22,5 +22,5 @@ build() {
 
 package() {
     cd $srcdir/rpyc-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
 }
