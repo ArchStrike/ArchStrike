@@ -1,11 +1,11 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=128
 
 _pkgname="sleuthkit"
 pkgname="${_pkgname}-java"
 pkgver=4.6.1
-pkgrel=1
+pkgrel=2
 pkgdesc='Java dependencies for The Sleuth Kit.'
 arch=('x86_64')
 url='http://www.sleuthkit.org/sleuthkit'
