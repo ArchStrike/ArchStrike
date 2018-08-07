@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=skypefreak-git
 pkgver=r33.9347a65
-pkgrel=4
+pkgrel=5
 pkgdesc="A Forensic Framework for Skype"
 url="https://github.com/OsandaMalith/SkypeFreak"
 arch=('any')
@@ -28,7 +28,7 @@ package() {
   cd ${pkgname}
   install -dm755 "${pkgdir}/usr/bin/"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  install -dm755 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/"
   install -m755 source/SkypeFreakNew.py "${pkgdir}"/usr/share/${pkgname}/SkypeFreakNew.py
   cat > "${pkgdir}"/usr/bin/skypefreak <<EOF
