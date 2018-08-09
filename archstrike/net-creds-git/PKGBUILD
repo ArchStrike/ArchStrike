@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=net-creds-git
-pkgver=20170213.r71
-pkgrel=2
+pkgver=20180807.r84
+pkgrel=1
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="Sniffs sensitive data from interface or pcap"
 arch=('any')
 url='https://github.com/DanMcInerney/net-creds'
 license=('GPL3')
-depends=('scapy' 'python2-wsgiref')
+depends=('scapy' 'python2-wsgiref' 'python2-scapy' 'iproute2' 'net-tools')
 makedepends=('git')
 provides=('net-creds')
 source=("${pkgname}::git+https://github.com/DanMcInerney/net-creds.git")
