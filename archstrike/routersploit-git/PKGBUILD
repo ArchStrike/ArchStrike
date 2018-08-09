@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=20180227.r660
+pkgver=20180709.r737
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='The Router Exploitation Framework'
 arch=('any')
 url='https://github.com/reverse-shell/routersploit'
 license=('GPL3')
-depends=('python2-requests' 'python2-paramiko' 'python2-beautifulsoup4')
+depends=('python-requests' 'python-paramiko' 'python-beautifulsoup4' 'python-future')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/reverse-shell/routersploit.git")
 sha512sums=('SKIP')
@@ -19,10 +19,6 @@ sha512sums=('SKIP')
 pkgver() {
   cd $pkgname
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
