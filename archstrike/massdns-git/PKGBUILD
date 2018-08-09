@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=massdns-git
-pkgver=20170818.r97
+pkgver=20180719.r157
 pkgrel=1
 groups=('archstrike' 'archstrike-dns' 'archstrike-networking')
 pkgdesc='A high-performance DNS stub resolver in C'
@@ -31,9 +31,9 @@ package() {
   cd $pkgname
   install -dm755 $pkgdir/usr/share/$pkgname
   install -Dm755 bin/massdns $pkgdir/usr/bin/massdns
-  install -Dm644 *.txt $pkgdir/usr/share/$pkgname/
-  install -Dm755 *.py $pkgdir/usr/share/$pkgname/
+  cp -a --no-preserve=ownership lists scripts tests modules "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 README.md $pkgdir/usr/share/$pkgname/README.md
+
   # fix python issues
-  sed -i 's|python|python2|' $pkgdir/usr/share/$pkgname/{ptr,subbrute}.py 
+  grep -iRl python ${pkgdir}/usr/share/${pkgname} | xargs sed -i 's|python$|python2|g'
 }
