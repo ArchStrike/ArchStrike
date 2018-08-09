@@ -4,7 +4,7 @@ _name='portspoof'
 buildarch=220
 
 pkgname="${_name}-git"
-pkgver=1.3.22.gebac0d0
+pkgver=1.3.25.ga15bca7
 pkgrel=1
 pkgdesc='A lightweight, fast, portable and secure addition to any firewall system or security infrastructure.'
 url='http://portspoof.org/'
