@@ -1,0 +1,43 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-instalooter
+pkgver=2.0.0
+pkgrel=1
+epoch=1
+pkgdesc="A program that can download any picture or video associated from an Instagram profile"
+url='https://github.com/althonos/InstaLooter'
+license=('GPL3')
+arch=('any')
+makedepends=('python2-setuptools'
+             'python2-coloredlogs'
+             'python2-dateutil'
+             'python2-docopt'
+             'python2-fake-useragent'
+             'python2-fs'
+             'python2-requests'
+             'python2-six'
+             'python2-tqdm'
+             'python2-tenacity'
+             'python2-typing'
+             'python2-verboselogs')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('9604c375401c40855243475a5868ab1eaf9d7ba797821922590756dc1e3227140315f22148bebb607cd3036873d5cdf34f699f03413aa241e0ff40dafa04e2f1')
+
+prepare() {
+    cd "InstaLooter-$pkgver"
+    grep -ZRil -n -P "[\x80-\xFF]" ./ | xargs -0 sed -i -E 's/(\xc2|\xa0|\xb2)//g'
+    grep -ZRil 'python' ./ | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
+    sed -i 's/~=/>=/g' ./setup.cfg
+}
+
+build() {
+  cd "$srcdir/InstaLooter-$pkgver"
+  python2 setup.py build
+}
+
+package() {
+  cd "$srcdir/InstaLooter-$pkgver"
+  python2 setup.py install --root=$pkgdir --optimize=1
+}
