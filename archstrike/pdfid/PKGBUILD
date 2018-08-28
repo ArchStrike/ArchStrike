@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pdfid
-pkgver=0.2.4
+pkgver=0.2.5
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="scan a file to look for certain PDF keywords"
@@ -12,7 +12,7 @@ url='http://blog.didierstevens.com/programs/pdf-tools/'
 license=('custom')
 source=("https://didierstevens.com/files/software/pdfid_v${pkgver//./_}.zip" "LICENSE")
 depends=('python2' 'python2-configparser')
-sha512sums=('6bbaf74a419e817fb1bc5942f3a5ca024b5f9053edb14ae88aefe3203caeb664052fbdf2f6c6619a2449f20f8f5f0e68e33dfd504691b6c4e2baddf433cd5860'
+sha512sums=('a0186bd2e9db6d1dea0566091f94983cf27650abe1cfcb41c12ab82e95a2e592f6a0a81a70fc1f6407435b5307170b038be9746c16eecb8bc6b1711f94e5958b'
             'c22cd4975b68420afec20111262d92b9d0690aadd366777d1f20fe557aecf95cebea9dfc9ff9ebe4ebfde98736bb02a4ecbf56d469407a96e44f6416e76ebbf2')
 
 prepare() {
