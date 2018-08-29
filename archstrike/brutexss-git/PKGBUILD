@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=brutexss-git
-pkgver=20161123.r54
-pkgrel=2
+pkgver=20170321.r35
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit' 'archstrike-webapps')
 arch=('any')
 pkgdesc="Cross-Site Scripting BruteForcer"
-url="https://github.com/shawarkhanethicalhacker/BruteXSS"
+url="https://github.com/rajeshmajumdar/BruteXSS"
 license=('GPL3')
 depends=('python2-colorama' 'python2-mechanize')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/shawarkhanethicalhacker/BruteXSS.git")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -32,7 +32,7 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
 
   cp -a --no-preserve=ownership brutexss.py wordlist.txt "$pkgdir/usr/share/$pkgname"
-  install -Dm644 License.txt "$pkgdir/usr/share/licenses/$pkgname"
+  # install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 
 cat > "$pkgdir/usr/bin/brutexss" <<EOF
 #!/bin/sh
