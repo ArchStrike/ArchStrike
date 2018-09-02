@@ -1,0 +1,42 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=parameth
+pkgname=$_pkgname-git
+pkgver=20180902.r54
+pkgrel=1
+groups=('archstrike' 'archstrike-bruteforce' 'archstrike-webapps')
+pkgdesc="GET & POST parameter bruteforce"
+url="https://github.com/comrumino/${_pkgname}"
+license=('MIT')
+makedepends=('git')
+depends=('python2' 'python2-numpy' 'python2-requests' 'python2-fuzzywuzzy-git' 'python2-levenshtein')
+arch=('any')
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd "$srcdir"
+  grep -ZRil 'python' "$_pkgname" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$srcdir/$_pkgname"
+
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  cp -a --no-preserve=ownership lists "$pkgdir/usr/share/$_pkgname"
+
+  install -dm755 "$pkgdir/usr/bin"
+cat > "$pkgdir/usr/bin/$_pkgname" << EOF
+#!/usr/bin/env sh
+cd /usr/share/$_pkgname
+python2 ${_pkgname}.py "\$@"
+EOF
+chmod 755 "$pkgdir/usr/bin/$_pkgname"
+}
