@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
-pkgver=20180816.r1258
+pkgver=20180821.r1260
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
