@@ -5,7 +5,7 @@
 buildarch=1
 
 pkgname=sec
-pkgver=2.7.12
+pkgver=2.8.0
 pkgrel=1
 pkgdesc="A logfile monitoring tool with support for event correlation, written in perl"
 arch=('any')
@@ -15,7 +15,7 @@ depends=('perl')
 groups=('archstrike' 'archstrike-misc' 'archstrike-defense')
 source=("http://downloads.sourceforge.net/simple-evcorr/${pkgname}/${pkgver}/${pkgname}-${pkgver}.tar.gz"
   'sec.service')
-sha512sums=('927ce602057c58993d7abd0aca0a7cde7ce6f77af01f72a414d165b93326a8e0a12bb5bc8c1f8d7737416beb16de92911db5ea20a8109e343e2e26e8efc649bd'
+sha512sums=('e0a4bdc07c80ef6b061b20d4b444ff8dc406a63cf48a77defa3563d6980f5b5bc9f6ff8d70b2ff51e9f40955655ad3c750be5a01726a848b80a84aec0d6d1bad'
             '49ba9dfda023b615cb8c3312a2000eadbe5798deb4f7232ee3927ecd9ea5ee1751e35a430a135f52850336e9a02e3c309187d60b2db9b64e5ba84af5a17102d4')
 
 package() {
