@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-fake-factory
 _pkgname=faker
-pkgver=0.8.17
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Faker is a Python package that generates fake data for you."
 url="http://github.com/joke2k/faker"
@@ -14,7 +14,7 @@ license=('CUSTOM')
 arch=('any')
 provides=('faker' 'python2-faker')
 source=("https://github.com/joke2k/faker/archive/v${pkgver}.tar.gz")
-sha512sums=('eabb0913aadc31441f4a183c2f5fd5d6b1228cda7beb2755a260fbb9c960631da7113dc1017fa810ff52447f6e672b0107260607d5cdf8d66bfeb1d322bc598c')
+sha512sums=('259b64a0d99da9b4e5048e372a801ca75c3eab0fdd0004b341e10c251417dcc059cf92eedf1d3a3780e1c938a507f40932986b636f6ec428beeb70c47eb4f967')
 
 build() {
     cd ${_pkgname}"-${pkgver}"
