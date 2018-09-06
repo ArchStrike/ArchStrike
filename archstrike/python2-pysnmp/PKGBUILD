@@ -4,7 +4,7 @@ _pkgname=pysnmp
 buildarch=1
 
 pkgname=python2-$_pkgname
-pkgver=4.4.4
+pkgver=4.4.5
 pkgrel=1
 pkgdesc="SNMP library for Python"
 url='https://github.com/etingof/pysnmp'
@@ -16,7 +16,7 @@ optdepends=("python2-pysnmp-mibs")
 conflicts=('pysnmp')
 provides=('pysnmp')
 source=(https://github.com/etingof/pysnmp/archive/v${pkgver}.tar.gz)
-sha512sums=('8ac888dc61c986407e0f5f750237a7268d7d83b37a2830c2942324d9f5e33c69fc6aadb8c975bd01fc42b9642b6623d26a9a48555a18df94f0e87595dd7c6774')
+sha512sums=('64e7fad231f41ff0b92d9c1a8d72485d6ad8f5fb09c5f9e4dd0c57c3192c6d43ca93806462b0a314782d988575db431298bb86c14baccdc800a23d744ac21397')
 
 build() {
   cd "$srcdir/$_pkgname-$pkgver"
@@ -26,7 +26,7 @@ build() {
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
   python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-  install -Dm644 LICENSE.txt "$pkgdir"/usr/share/licenses/python2-pysnmp/LICENSE.txt
+  install -Dm644 LICENSE.rst "$pkgdir"/usr/share/licenses/python2-pysnmp/LICENSE.rst
   # Package python module only.
   rm -fr "$pkgdir"/usr/bin
 }
