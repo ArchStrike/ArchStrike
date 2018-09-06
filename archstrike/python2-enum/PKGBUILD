@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python2-enum
-pkgver=0.4.6
-pkgrel=3
+pkgver=0.4.7
+pkgrel=1
 pkgdesc="Robust enumerated type support in Python."
 url="http://pypi.python.org/pypi/enum/"
 depends=('python2')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 license=('GPL2')
 arch=('any')
 source=("https://pypi.python.org/packages/source/e/enum/enum-${pkgver}.tar.gz")
-sha512sums=('b3ccc5bd7cc613f7683f12247a26aae9dacde37e60616c3078c7505fb1defbb512451a2e3e8cd1db3e84d115af01420e3ceaea0d58ae38975f40220e59531227')
+sha512sums=('421eeead18ec1d1b98ec3bdb409f6cadcca086f723e114c9c867c93c1d4fe719afff12acd64400840d14c12e8eb5e63e0cbaed93197d84e49ec1381319c655f1')
 
 build() {
   cd enum-${pkgver}
@@ -21,5 +21,5 @@ build() {
 
 package() {
   cd enum-${pkgver}
-  python2 setup.py install --root="${pkgdir}" --optimize=1
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
 }
