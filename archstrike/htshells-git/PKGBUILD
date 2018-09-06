@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=htshells-git
-pkgver=20150702.r79.399feaa
-pkgrel=3
+pkgver=20180718.r87.fcdca17
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Self contained web shells and other attacks via .htaccess files."
 url="https://github.com/wireghoul/htshells"
