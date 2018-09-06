@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=sniffles
-pkgver=3.4.0
+pkgver=3.4.2
 pkgrel=1
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-networking')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python-sortedcontainers')
 makedepends=('python-setuptools')
 source=("https://github.com/petabi/sniffles/archive/${pkgver}.tar.gz")
-sha512sums=('a871ff193bed687fbbc5b20ef5ec3ed7d8eb283da308a2c4a75568f6d67e160ba9f37e6895fd4146f08f8d2efd6279a1a3e4bcd14db3bba180ead0da153ac9f6')
+sha512sums=('fe924f91cbcdffff2ac59add2be459d397db11e070e69f2525216380051f9b13bb7b518c59c22cbc8fd2f12643caa75d48f4d645968e3848400935b4e21c9199')
 
 
 build() {
