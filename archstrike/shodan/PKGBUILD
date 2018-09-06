@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=shodan
 _pkgname=${pkgname}-python
-pkgver=1.8.1
+pkgver=1.10.0
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2 library for Shodan.io'
@@ -14,7 +14,7 @@ license=('MIT')
 arch=('any')
 makedepends=('python2-setuptools')
 source=("https://github.com/achillean/shodan-python/archive/${pkgver}.tar.gz")
-sha512sums=('e6fb68ea47ad235f609e6ef95b5423eb404bac497a1dbbd4e0fa23e78bcbd0eba093d7e0bead8199eb1a74526dbbfe28f55c295914c2e9bfb74c2cc9f5400853')
+sha512sums=('904f28a44299174963b8a6d56fe68d007711a45343b082c1775656710be3d08dc570e06e644580132d0ce14640a3b46c115df16a8b810c46a49a2c3d0ad1bae6')
 
 build() {
   cd ${_pkgname}-${pkgver}
