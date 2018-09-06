@@ -3,22 +3,27 @@
 buildarch=1
 
 pkgname=rsmangler
-pkgver=1.4
-pkgrel=4
+pkgver=1.5
+pkgrel=1
 groups=('archstrike' 'archstrike-autonomous')
 pkgdesc='Takes a wordlist and perform various manipulations on it similar to those done by John the Ripper with a few extras.'
 url='https://github.com/digininja/RSMangler'
 arch=('any')
 license=('CCPL')
 depends=('ruby')
-source=("https://github.com/digininja/RSMangler/archive/v$pkgver.tar.gz")
-sha512sums=('5dfd444f5f8df7ea5487297af3bddb0669827ec35c1e62b98cd6c3167b123fa8ff4fd7d4ee4c8e25d359bee705f04b28f77f13421df92a7de450808112129242')
+source=("https://github.com/digininja/RSMangler/archive/${pkgver}.tar.gz")
+sha512sums=('63b28108f08c3ac2903cbe1bf279e85bdd48be8cf70390caabd8040461e1d0dede4a04cd23b0bf6410223e28eefeb86ea880e9619b290c8a0529aa15ae52c8d3')
 
 package() {
-  cd $srcdir/RSMangler-${pkgver}
-  install -dm755 $pkgdir/usr/share/rsmangler
-  install -dm755 $pkgdir/usr/bin
-  cp -r * $pkgdir/usr/share/rsmangler/
-  echo -e "#!/bin/bash\nruby /usr/share/rsmangler/rsmangler.rb \$@" > $pkgdir/usr/bin/rsmangler
-  chmod a+x $pkgdir/usr/bin/rsmangler
+  cd ${srcdir}/RSMangler-${pkgver}
+  install -dm755 ${pkgdir}/usr/share/rsmangler
+  install -dm755 ${pkgdir}/usr/bin
+  cp -a --no-preserve=ownership * ${pkgdir}/usr/share/rsmangler/
+
+cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
+#!/usr/bin/env bash
+ruby /usr/share/rsmangler/rsmangler.rb "\$@"
+EOF
+
+chmod 755 ${pkgdir}/usr/bin/rsmangler
 }
