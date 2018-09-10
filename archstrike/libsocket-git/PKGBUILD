@@ -1,0 +1,33 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname=libsocket
+pkgname=${_pkgname}-git
+pkgver=r555.42da080
+pkgrel=1
+pkgdesc="The ultimate socket library for C and C++"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/dermesser/${_pkgname}"
+license=('custom')
+depends=('gcc-libs')
+makedepends=('cmake' 'git')
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${_pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${_pkgname}"
+  cmake CMakeLists.txt
+  make
+}
+
+package() {
+  cd "${_pkgname}"
+  make install DESTDIR="${pkgdir}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
