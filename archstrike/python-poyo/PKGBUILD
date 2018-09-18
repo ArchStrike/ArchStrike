@@ -1,0 +1,46 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=poyo
+pkgbase=python-${_pkgname}
+pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgver=0.4.1
+pkgrel=1
+arch=('any')
+url="https://github.com/pydanny/poyo"
+license=('BSD')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+replaces=('python2-poyo')
+source=("${pkgname}::https://files.pythonhosted.org/packages/9f/7a/d92b5cc1d2f6bf0f1c1cd427e1665a3b3889563ba25fbb66f50356954c45/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('e2dfc504ec9cea8e43363556b875f9b01fbda506ee8e70916d4a018941e4e347a4e8a78a245f980b9c41b20731948fc9e5e131b415856b31593e44b805acc768')
+
+prepare(){
+  cp -a ${_pkgname}-${pkgver}{,-py2}
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py build
+}
+
+package_python-poyo() {
+  pkgdesc="A lightweight YAML Parser for Python"
+  depends=('python')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python3 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-poyo() {
+  pkgdesc="A lightweight YAML Parser for Python"
+  depends+=('python2')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
