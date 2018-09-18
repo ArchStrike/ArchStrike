@@ -1,0 +1,46 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=whichcraft
+pkgbase=python-${_pkgname}
+pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgver=0.4.1
+pkgrel=1
+arch=('any')
+url="https://github.com/pydanny/whichcraft"
+license=('BSD')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+replaces=('python2-whichcraft')
+source=("${pkgname}::https://files.pythonhosted.org/packages/e5/cd/7fb54d4b3d43ed59ecb704fb96876831e0b493c4e24eecddd4ecb2442f5e/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('703c8be2ed5e633b13d2447088cffbfbc3174ae965e352240daca70b99eef50b0cad484439200269413f6fa97314e776779f96636d59f96dea372a185d1eb934')
+
+prepare(){
+  cp -a ${_pkgname}-${pkgver}{,-py2}
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py build
+}
+
+package_python-whichcraft() {
+  pkgdesc="provides cross-platform cross-python shutil.which functionality"
+  depends=('python')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python3 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-whichcraft() {
+  pkgdesc="provides cross-platform cross-python shutil.which functionality"
+  depends+=('python2')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
