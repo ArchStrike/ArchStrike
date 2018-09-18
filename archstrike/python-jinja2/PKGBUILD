@@ -1,0 +1,45 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=jinja2
+pkgbase=python-${_pkgname}
+pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgver=2.10
+pkgrel=1
+arch=('any')
+url="http://jinja.pocoo.org/"
+license=('BSD')
+makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
+source=("${pkgname}::https://files.pythonhosted.org/packages/56/e6/332789f295cf22308386cf5bbd1f4e00ed11484299c5d7383378cf48ba47/Jinja2-2.10.tar.gz")
+sha512sums=('0ea7371be67ffcf19e46dfd06523a45a0806e678a407d54f5f2f3e573982f0959cf82ec5d07b203670309928a62ef71109701ab16547a9bba2ebcdc178cb67f2')
+
+prepare(){
+  cp -a Jinja2-${pkgver}{,-py2}
+}
+
+build() {
+  cd "${srcdir}/Jinja2-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/Jinja2-${pkgver}-py2"
+  python2 setup.py build
+}
+
+package_python-jinja2() {
+  pkgdesc="a template engine written in pure Python"
+  depends=('python' 'python-markupsafe')
+
+  cd "${srcdir}/Jinja2-${pkgver}"
+  python3 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-jinja2() {
+  pkgdesc="a template engine written in pure Python"
+  depends+=('python2' 'python2-markupsafe')
+
+  cd "${srcdir}/Jinja2-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
