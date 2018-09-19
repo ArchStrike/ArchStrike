@@ -6,7 +6,7 @@ _pkgname=cookiecutter
 pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
 pkgver=1.6.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 url="https://github.com/hackebrot/cookiecutter"
 license=('BSD')
@@ -32,7 +32,7 @@ package_python-cookiecutter() {
   depends=('python' 'python-future' 'python-binaryornot' 'python-jinja2' 'python-click' 'python-whichcraft' 'python-poyo' 'python-jinja2-time' 'python-requests')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py install --root="${pkgdir}/" --optimize=1
+  python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
@@ -41,6 +41,7 @@ package_python2-cookiecutter() {
   depends+=('python2' 'python2-future' 'python2-binaryornot' 'python2-jinja2' 'python2-click' 'python2-whichcraft' 'python2-poyo' 'python2-jinja2-time' 'python2-requests')
 
   cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}2"
 }
