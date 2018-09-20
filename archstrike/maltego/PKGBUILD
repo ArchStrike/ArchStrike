@@ -4,13 +4,14 @@ buildarch=1
 
 pkgname=maltego
 pkgver=4.1.13.11516
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics' 'archstrike-recon' 'archstrike-scanners')
 pkgdesc="An open source intelligence and forensics application, enabling to easily gather information about DNS, domains, IP addresses, websites, persons, etc."
 arch=('any')
 url='http://www.paterva.com/web5'
 license=('GPL')
 depends=('java-environment' 'giflib' 'python2')
+provides=('casefile')
 source=("https://www.paterva.com/malv41/Maltego.v${pkgver}.linux.zip"
         "https://www.paterva.com/web7/docs/M3GuideGUI.pdf")
 sha512sums=('9c6b434ee5883a93de0a9d9809901b8b601dd002412aa302de4c03d6baf76b68a584a5122a35e77d0c7ac2f54e130faab54613c80b5040041f16d2e4434420dd'
