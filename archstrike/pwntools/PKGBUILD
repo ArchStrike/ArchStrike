@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team archstrike org>
 
-buildarch=1
+buildarch=196
 
 pkgname=pwntools
 pkgver=3.12.1
-pkgrel=1
+pkgrel=2
 pkgdesc='CTF framework and exploit development library'
-arch=('any')
+arch=('armv7' 'i686' 'x86_64')
 url='https://github.com/Gallopsled/pwntools'
 license=('MIT')
 groups=('archstrike' 'archstrike-exploit' 'archstrike-misc')
