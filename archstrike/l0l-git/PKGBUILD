@@ -3,12 +3,12 @@
 buildarch=220
 
 pkgname=l0l-git
-pkgver=20170913.r322
+pkgver=20180920.r7
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('i686' 'x86_64' 'armv6h' 'arm7h' 'aarch64')
 pkgdesc="The Exploit Development Kit"
-url="https://github.com/m3pt0r/l0l"
+url="https://github.com/xorond/l0l"
 license=('MIT')
 depends=('python2')
 makedepends=('git')
