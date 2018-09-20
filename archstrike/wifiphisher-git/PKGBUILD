@@ -4,12 +4,12 @@ buildarch=1
 
 _pkgname=wifiphisher
 pkgname=${_pkgname}-git
-pkgver=20180719.r690
+pkgver=20180826.r699
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc='A tool for Fast automated phishing attacks against WPA networks'
 arch=('any')
-url='https://github.com/sophron/wifiphisher'
+url='https://github.com/wifiphisher/wifiphisher'
 license=('GPL3')
 depends=('scapy' 'hostapd' 'aircrack-ng' 'dnsmasq' 'python2' 'python2-jinja'
          'python2-pyric' 'net-tools' 'procps-ng' 'python2-blessings'
