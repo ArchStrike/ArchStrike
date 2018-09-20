@@ -2,9 +2,10 @@
 
 buildarch=1
 
-pkgname=sslcaudit-git
+_pkgname=sslcaudit
+pkgname=${_pkgname}-git
 pkgver=r524.f218b9b
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Utility to perform security audits of SSL/TLS clients"
 url='https://github.com/abbbe/sslcaudit'
@@ -12,23 +13,20 @@ arch=('any')
 license=('GPL3')
 depends=('python2-m2crypto')
 makedepends=('git' 'python2-setuptools')
-source=('sslcaudit::git+https://github.com/abbbe/sslcaudit.git')
-provides=('sslcaudit')
-replaces=('sslcaudit')
-conflicts=('sslcaudit')
+source=("${pkgname}::git+https://github.com/abbbe/sslcaudit.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/sslcaudit"
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/sslcaudit"
+  cd "${srcdir}/${pkgname}"
   python2 setup.py build
 }
 
 package() {
-  cd "$srcdir/sslcaudit"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
 }
