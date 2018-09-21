@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=davoset
-pkgver=1.3.5
+pkgver=1.3.6
 pkgrel=1
 pkgdesc="A tool for using Open Proxy, Abuse of Functionality, and XML External Entities vulnerabilities on some websites to attack others"
 arch=('any')
@@ -13,8 +13,8 @@ groups=('archstrike' 'archstrike-dos')
 depends=('perl-io-socket-socks')
 makedepends=('unrar' 'dos2unix')
 options=('!emptydirs')
-source=("${pkgname}-${pkgver}.rar::http://websecurity.com.ua/uploads/2017/DAVOSET_v.${pkgver}.rar")
-sha512sums=('248704e6a6804627969ef058e3e2f87ece4c4a0600527a94b57ff2a90f6dfb20866cdd9a340951be77abaa8bb7dc077c8b735d1a70f0fe0d64051b390dcf19f9')
+source=("${pkgname}-${pkgver}.rar::http://websecurity.com.ua/uploads/2018/DAVOSET_v.${pkgver}.rar")
+sha512sums=('ea546afbd781b6616a9dc7decb614894bc1161ad3e022cf3953fe0bb7b322407e1eef06c998255c4542b74b13bab49dac3b505d8fd4cf7ad86cdc9e4744bf7bd')
 noextract=("davoset-${pkgver}.rar")
 install="davoset.install"
 
@@ -33,9 +33,9 @@ package() {
   install -Dm755 davoset.pl "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 *.txt "${pkgdir}/usr/share/${pkgname}"
   cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/davoset
-./davoset.pl
+perl davoset.pl "\$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
