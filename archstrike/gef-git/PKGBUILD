@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=gef
 pkgname=${_pkgname}-git
-pkgver=r1225.265ac26
+pkgver=r1442.a9f698e
 pkgrel=1
 pkgdesc='Provides additional features to GDB using the Python API to assist during the process of dynamic analysis or exploit development'
 url='https://github.com/hugsy/gef'
@@ -33,21 +33,20 @@ package() {
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
-  rm "$pkgdir/usr/share/$_pkgname/${_pkgname}.sh"
 
 cat > "${pkgdir}/usr/bin/${_pkgname}-setup" <<EOF
 #!/usr/bin/env bash
 
-install -Dm644 /usr/share/${_pkgname}/${_pkgname}.py "$HOME/.gdbinit-gef.py"
-printf '%s\n' "Installed $_pkgname to $HOME/.gdbinit-gef.py"
+install -Dm644 /usr/share/${_pkgname}/${_pkgname}.py "\$HOME/.gdbinit-gef.py"
+printf '%s\n' "Installed $_pkgname to \$HOME/.gdbinit-gef.py"
 
-[[ -f "$HOME/.gdbinit" ]] && {
-  mv "$HOME/.gdbinit" "$HOME/.gdbinit.old"
-  printf '%s\n' "Moved $HOME/.gdbinit to $HOME/.gdbinit.old"
+[[ -f "\$HOME/.gdbinit" ]] && {
+  mv "\$HOME/.gdbinit" "\$HOME/.gdbinit.old"
+  printf '%s\n' "Moved \$HOME/.gdbinit to \$HOME/.gdbinit.old"
 }
 
-printf '%s\n' "source $HOME/.gdbinit-gef.py" > "$HOME/.gdbinit"
-printf '%s\n' "Created $HOME/.gdbinit"
+printf '%s\n' "source \$HOME/.gdbinit-gef.py" > "\$HOME/.gdbinit"
+printf '%s\n' "Created \$HOME/.gdbinit"
 EOF
 
   chmod 755 "${pkgdir}/usr/bin/${_pkgname}-setup"
