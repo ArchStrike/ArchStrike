@@ -1,23 +1,18 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=200
+buildarch=136
 
 pkgname=rainbowcrack
-pkgver=1.6.1
-pkgrel=2
+pkgver=1.7
+pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="Password cracker based on the faster time-memory trade-off. With MySQL and Cisco PIX Algorithm patches"
-arch=('i686' 'x86_64' 'aarch64')
+arch=('x86_64' 'aarch64')
 url="http://project-rainbowcrack.com/"
 license=('custom')
-depends_x86_64+=('gcc-libs-multilib')
-source_x86_64+=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux64.zip" "rainbowcrack.desktop")
-sha512sums_i686=('0fc163c4a8a875149b479d74fbabbfbb5247b9e621e5362a27a8fb6d5dd64263ce89213b5f5a578ce09018cb2c93f2af51eae954e19fd448c490bcd0524612dd'
-                 '3082d1952f321a3e07a938f2abd2fb1acea536ceecd8d494406bbcda2810be62ca226d924887fd70a37db19425b33c626cbaffc506e428d1770f77c13fd12558')
-sha512sums_x86_64=('6fd5a0356b76ed5e8062888aeb26755588d11aa5dab7fbb54ea92dbeac02e606b082e00b93a44203c158ee620d61c0f9051ecf62b60d8a83c4fca852af22144d'
-                   '3082d1952f321a3e07a938f2abd2fb1acea536ceecd8d494406bbcda2810be62ca226d924887fd70a37db19425b33c626cbaffc506e428d1770f77c13fd12558')
-depends_i686+=('gcc-libs')
-source_i686+=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux32.zip" "rainbowcrack.desktop")
+depends=('gcc-libs-multilib')
+source=("http://project-rainbowcrack.com/rainbowcrack-$pkgver-linux64.zip")
+sha512sums=('068fe9d31004e08c0fcbe5a11500bd6248eca2f204a8d99a7343824ebc1dd847a01eb459f28d77fdd84eae98b05169a69e10b8893b9b5dd027381965c19b7bdb')
 
 package() {
   if [[ $CARCH == 'x86_64' ]]; then
@@ -30,7 +25,6 @@ package() {
         # data
         install -dm755 $pkgdir/usr/share/$pkgname
         install -Dm644 charset.txt readme.txt "$pkgdir/usr/share/rainbowcrack"
-        install -Dm644 "$srcdir/rainbowcrack.desktop" "$pkgdir/usr/share/applications/rainbowcrack.desktop"
 
         #lib
         install -Dm755 alglib0.so "$pkgdir/usr/lib/alglib0.so"
