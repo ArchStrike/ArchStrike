@@ -1,15 +1,15 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: strayArch <j.a.stronz@gmail.com>
 
-buildarch=1
+buildarch=192
 
 _pkgname=ps1encode
 pkgname=${_pkgname}-git
 pkgver=r41.68d7778
-pkgrel=3
+pkgrel=4
 pkgdesc="A tool to generate and encode a PowerShell based Metasploit payloads"
 url="https://github.com/CroweCybersecurity/ps1encode"
-arch=('any')
+arch=('i686' 'x86_64')
 groups=('archstrike' 'archstrike-exploit' 'archstrike-malware')
 license=('MIT')
 depends=('ruby' 'metasploit')
