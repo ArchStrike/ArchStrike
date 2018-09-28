@@ -6,7 +6,7 @@ buildarch=192
 _pkgname=ps1encode
 pkgname=${_pkgname}-git
 pkgver=r41.68d7778
-pkgrel=4
+pkgrel=5
 pkgdesc="A tool to generate and encode a PowerShell based Metasploit payloads"
 url="https://github.com/CroweCybersecurity/ps1encode"
 arch=('i686' 'x86_64')
@@ -16,7 +16,6 @@ depends=('ruby' 'metasploit')
 #comment out optdepends for a while until we figure this out
 #optdepends=('mingw-w64-gcc')
 makedepends=('git')
-replaces=('ps1encode-git')
 source=("${_pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
