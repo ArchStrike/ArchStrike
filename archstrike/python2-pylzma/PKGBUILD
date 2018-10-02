@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname=pylzma
 pkgname=python2-$_pkgname
-pkgver=0.4.9
+pkgver=0.5.0
 pkgrel=1
 pkgdesc='Python bindings for the LZMA library'
 arch=('any')
@@ -13,7 +13,7 @@ url='https://www.joachim-bauch.de/projects/pylzma/'
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://pypi.python.org/packages/source/p/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('b0132351bc484fd37c2b1d87f11bbbede71f7f01f1d8547b332fd22bd1da6fe66dac4d8013ed3804e727729f7a903ab04f3be7a03c6a723182fc8a46e19e73c1')
+sha512sums=('c4956d84d9e1cbc152c68208acf21f11e6e4ba094b914bf8baeb0522bf8ab7b18dcdbcf114a1b2d1bf29c1cd91808d66c7dd61758686d340ff89cd82fba53ad2')
 
 build() {
   cd $_pkgname-$pkgver
@@ -22,6 +22,6 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
   install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
 }
