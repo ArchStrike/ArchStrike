@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-geopy
-pkgver=1.14.0
+pkgver=1.17.0
 pkgrel=1
 pkgdesc="Python Geocoding Toolbox"
 url="https://github.com/geopy/geopy"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/geopy/geopy/archive/${pkgver}.tar.gz")
-sha512sums=('b8fe57514c201967723fee20349951ebdd6939b35e8f08022613cd17faa446be28c0f90b1f457aa7256d7c8d5cdcd28e93877a2cb67c433aa25ee7c28bfbe12f')
+sha512sums=('09269025ba344f379ebf572f12590185d915915ac8d84e6725846c18287d568d2e655820295b950da24d7446279b507e714b63228faacaa69a6b5f7f4ad634d4')
 
 build() {
     cd $srcdir/geopy-$pkgver
