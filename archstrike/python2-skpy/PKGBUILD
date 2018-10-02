@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-skpy
 _pkgname=SkPy
-pkgver=0.8.2
+pkgver=0.9
 pkgrel=1
 pkgdesc="An unofficial Python library for interacting with the Skype HTTP API."
 url="https://skpy.t.allofti.me"
@@ -12,8 +12,8 @@ depends=('python2' 'python2-beautifulsoup4' 'python2-requests')
 makedepends=('python2-setuptools' )
 license=('custom')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/7d/fc/e9ae690d309db3b69db65fa6aca31c338fbae43db5a58fd314e6a3d149f7/SkPy-0.8.2.tar.gz")
-sha512sums=('e84c0a37618fbbadd6afa072edbccdfa5a2558739d9d2cbedef00aa9077b1dacb7a83010e433cbb0d2cc17fb49c3c81da3cac7017fc91782449bb37f2a8c8166')
+source=("https://files.pythonhosted.org/packages/source/S/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('b9a634096fc6c2727bb79faac7ccd6e48f74741cc1f6bf3a99c784805fc04a3734bfb98b9c3b7eb62cbc63a5c24b84dc848fdba4332865116bdc5c712226e7a0')
 
 build() {
   cd ${_pkgname}-${pkgver}
