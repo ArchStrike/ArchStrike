@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-macholib
 _pkgname=macholib
-pkgver=1.9
+pkgver=1.11
 pkgrel=1
 pkgdesc="Mach-O header analysis and editing"
 url="http://bitbucket.org/ronaldoussoren/macholib"
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("${url}/get/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('854784b5074ade65f15c5ff172f21d494322d919c43b201809b8716c31319ea93dd6a6d7f17f4770c13bc3e20876b660fa1b516e574f70fcfb6835fce45f0732')
+sha512sums=('ee5431eb20408a78fae6ed9e65c356c8549128948dbf9c244a7ecfcae652544cc480a5dd36ca51c4d60530b0729f64ebb3051721eda99cce112e1e57f8cf790d')
 
 
 build() {
