@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=python2-pygtail
-pkgver=0.8.0
+pkgver=0.9.0
 pkgrel=1
 pkgdesc="Reads log file lines that have not been read."
 url="http://github.com/bgreenlee/pygtail"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('GPL')
 arch=('any')
-source=("https://github.com/bgreenlee/pygtail/archive/${pkgver}.tar.gz")
-sha512sums=('355d91ffe1eeddd68a25009e7b2c8051fcf558182b8188812f5c8401b34cbd0054388c913e9d28a154613044008f3a5f1721e056bc550879099c42be5be2a5bf')
+source=("https://files.pythonhosted.org/packages/source/p/pygtail/pygtail-${pkgver}.tar.gz")
+sha512sums=('94da8ea2812c3f6b2ca3c6c40c3cccdbfb7ad087e5349fdd2d4682a792e3094536f1e6e01eebec6e847d2d36aba97acaa6c55049a5ae30d043920472c176fe66')
 
 prepare() {
     cd $srcdir/pygtail-$pkgver
