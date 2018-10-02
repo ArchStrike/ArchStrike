@@ -2,9 +2,10 @@
 
 buildarch=220
 
-pkgname=python2-uefi-firmware-parser
-pkgver=1.6
-pkgrel=2
+_pkgname=uefi-firmware-parser
+pkgname=python2-${_pkgname}
+pkgver=1.8
+pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc="Parse BIOS/Intel ME/UEFI firmware related structures: Volumes, FileSystems, Files, etc"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,15 +13,15 @@ url='https://github.com/theopolis/uefi-firmware-parser'
 license=('custom')
 depends=('python2-pefile')
 makedepends=('python2-setuptools')
-source=("https://github.com/theopolis/uefi-firmware-parser/archive/v$pkgver.tar.gz")
-sha512sums=('1e7e162e74fda21e5b55074cb65a7ca7062399606c1b1c04f74fd2d873d3c37619d76cc6fd2f436b3e3e9e07162f347c441dfc060ef0b80363a1759f65132e09')
+source=("${url}/archive/v$pkgver.tar.gz")
+sha512sums=('090679faf30f1db28f75164711e27f27784c1f560c5e861ca4f666e237597ba11e264b250dbe51b6ca74da8aa1e81a3604b395918aef8fe3f684ed55108e7e09')
 
 prepare(){
-  grep -iRl 'python' "$srcdir/uefi-firmware-parser-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' ${_pkgname}-${pkgver} | xargs sed -i 's/python$/python2/g'
 }
 
 package() {
-  cd "$srcdir/uefi-firmware-parser-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install --root="$pkgdir" -O1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
