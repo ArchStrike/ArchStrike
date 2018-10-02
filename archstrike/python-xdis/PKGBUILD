@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-xdis
-pkgver=3.8.6
+pkgver=3.8.7
 pkgrel=1
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/rocky/python-xdis/archive/release-${pkgver}.tar.gz")
-sha512sums=('dee3b599a58551b88b5690b8776ad42d8ec1e214f25b7282528eb7efb251a1f607be7da57ad301b74042d0d978051ad5f4df99e445d7dbf7719b1e3303de03a5')
+sha512sums=('6300ef502bc31b2b41a3b4771db1aed3ac00bb69dbd5d0698988fb7264183108b9fb1083edf748623fb71ba4bfca80cc191519b185b6449837708e2172eea696')
 
 build() {
     cd "${srcdir}/${pkgname}-release-${pkgver}"
@@ -20,6 +20,6 @@ build() {
 
 package() {
     cd "${srcdir}/${pkgname}-release-${pkgver}"
-    python setup.py install --root="${pkgdir}"
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
     install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
