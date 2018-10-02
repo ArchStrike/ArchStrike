@@ -4,27 +4,25 @@ buildarch=1
 
 pkgname=airoscript-git
 pkgver=45.0a122ee
-pkgrel=4
+pkgrel=5
 epoch=1
 pkgdesc='Script to simplify the use of aircrack-ng tools'
 arch=('any')
-url='http://midnightresearch.com/projects/wicrawl/'
+url='https://github.com/patrickhno/Airoscript'
 groups=('archstrike' 'archstrike-wireless')
 license=('GPL')
 depends=('mdk3' 'aircrack-ng' 'dhclient' 'perl-yaml-syck')
 options=('!makeflags')
 makedepends=('git')
 source=(
-  "$pkgname::git+http://github.com/patrickhno/Airoscript"
+  "$pkgname::git+${url}.git"
   "Makefile.patch"
 )
 replaces=('airoscript')
 provides=('airoscript')
 conflicts=('airoscript')
-sha512sums=(
-  'SKIP'
-  'c7b9eb321243ff436c3bd0887cf11400bedc206c097d6abfc102f4fba4920aa6223b39f978cb64a4c032adb70940c815a4241b7ec4eb017f6b51e0e34fd13bca'
-)
+sha512sums=('SKIP'
+            'c7b9eb321243ff436c3bd0887cf11400bedc206c097d6abfc102f4fba4920aa6223b39f978cb64a4c032adb70940c815a4241b7ec4eb017f6b51e0e34fd13bca')
 
 pkgver() {
   cd $pkgname
