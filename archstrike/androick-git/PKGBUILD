@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname='androick-git'
 _pkgname='Androick'
-pkgver=r5.35048d7
-pkgrel=3
+pkgver=20180704.r8
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A python tool to help in forensics analysis on android."
 arch=('any')
@@ -22,19 +22,16 @@ sha512sums=('SKIP'
             '2b5a9627000852151717f01d72df9697151b7c2266c5689b9c4f61e513f22f97f86ab86a6c56fb619bdcf3d1e8df22e3a2503a44501712b5807d8b3960379d81')
 
 pkgver() {
-  cd "$_pkgname"
-    ( set -o pipefail
-      git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
-      printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-    )
+  cd ${_pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' "$srcdir/$_pkgname" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${_pkgname}" | xargs sed -i 's|python$|python2|g'
 }
 
 package() {
-  cd "$srcdir/$_pkgname"
+  cd "${_pkgname}"
 
   # Make base directories.
   install -dm755 "$pkgdir/usr/share/$pkgname"
@@ -44,11 +41,11 @@ package() {
   install -Dm644 changelog "$pkgdir/usr/share/$pkgname/"
   install -Dm644 $srcdir/license.txt "$pkgdir/usr/share/licenses/$pkgname/license.txt"
 
-cat > "$pkgdir/usr/bin/androick" << EOF
-#!/bin/sh
-cd /usr/share/$pkgname
-./androick.py "\$@"
+cat > "${pkgdir}/usr/bin/androick" << EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+python2 androick.py "\$@"
 EOF
 
-  chmod +x "$pkgdir/usr/bin/androick"
+  chmod 755 "${pkgdir}/usr/bin/androick"
 }
