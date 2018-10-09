@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pwndbg-git
-pkgver=20180827.r722
+pkgver=20180930.r729
 pkgrel=1
 groups=('archstrike' 'archstrike-decompile')
 pkgdesc="A collection of python that makes debugging with gdb suck less"
