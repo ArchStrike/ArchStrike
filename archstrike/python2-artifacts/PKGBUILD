@@ -4,16 +4,16 @@ buildarch=1
 
 _pkgname=artifacts
 pkgname=python2-artifacts
-pkgver=20180628
+pkgver=20180827
 pkgrel=1
-pkgdesc="A free, community-sourced, machine-readable knowledge base of forensic artifacts that the world can use both as an information source and within other tools."
+pkgdesc="Digital Forensics Artifact Repository"
 url="https://github.com/ForensicArtifacts/artifacts"
 arch=('any')
 license=('Apache')
 depends=('python2' 'python2-pyaml' 'python2-pip')
 makedepends=('python2-setuptools')
 source=("https://github.com/ForensicArtifacts/artifacts/releases/download/$pkgver/artifacts-$pkgver.tar.gz")
-sha512sums=('4721b48aa8b08bb8e8edef0535459b99f2d6c0062a0c357fe7023aba54a9c935fe60d79e13118b992c42f9e1e947551e7bab58340c3d09f04ca2263aa696d85b')
+sha512sums=('03266cac324cfa1aafdf27c0c642a2f51bbe2da8c392e278cab97c378f55ab4e696e26525d3397770fee36718072b2a521a439274286e24046b1475518dc70c3')
 
 build() {
   cd $srcdir/${_pkgname}-${pkgver}
