@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=golismero-git
-pkgver=20170717.r61
+pkgver=20180821.r68
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="Opensource web security testing framework"
@@ -39,7 +39,7 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/golismero"
 
 cat > "$pkgdir/usr/bin/golismero" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/golismero
 python2 golismero.py "\$@"
 EOF
