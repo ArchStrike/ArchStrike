@@ -6,7 +6,7 @@ _pkgname=jinja2-time
 pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
 pkgver=0.2.0
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/hackebrot/jinja2-time"
 license=('BSD')
@@ -28,7 +28,7 @@ build() {
 
 package_python-jinja2-time() {
   pkgdesc="Jinja2 Extension for Dates and Times"
-  depends=('python' 'python-jinja2' 'python-arrow')
+  depends=('python' 'python-jinja' 'python-arrow')
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
@@ -37,7 +37,7 @@ package_python-jinja2-time() {
 
 package_python2-jinja2-time() {
   pkgdesc="Jinja2 Extension for Dates and Times"
-  depends+=('python2' 'python2-jinja2' 'python2-arrow')
+  depends+=('python2' 'python2-jinja' 'python2-arrow')
 
   cd "${srcdir}/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
