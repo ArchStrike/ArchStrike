@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=roguehostapd
 pkgname=python2-${_pkgname}
-pkgver=1.1.6
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Hostapd wrapper for hostapd"
 url="https://github.com/wifiphisher/roguehostapd"
@@ -12,8 +12,8 @@ depends=('python2')
 makedepends=('python2-setuptools' 'libnl')
 license=('BSD')
 arch=('any')
-source=("https://pypi.python.org/packages/09/34/6c1da3209ade42410bd875fbd50c8d008474a9d83906f8d0afad34a99a5c/roguehostapd-${pkgver}.tar.gz")
-sha512sums=('2954ecea5226121d3c51edab4b18150245afb221db2b1b709faf53e87759395f110e686356afa5668aaea4402cf411c09c194b64a99f833bd6d28bb91483db10')
+source=("https://files.pythonhosted.org/packages/source/r/roguehostapd/roguehostapd-${pkgver}.tar.gz")
+sha512sums=('d4c15f986d471fd101833d5f44aa447f636dffa476b51b05a9f5c42652138df78728204fc058e6313354ffb54b78ad134a31863ab13a3e14687c765fff99bfcd')
 
 prepare() {
   grep -iRl 'python' ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
