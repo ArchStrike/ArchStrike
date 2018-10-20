@@ -152,7 +152,7 @@ class KaryNode(object):
 re_depends = re.compile(r'^depends=\((?:[^)]*?)\)', re.M)
 re_depends2 = re.compile(r'\(([^)]*?)\)', re.M)
 pkgbuild = 'PKGBUILD'
-repo = os.path.dirname(os.path.dirname(__file__))
+repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 folders = {'archstrike': None, 'archstrike-testing': None}
 
 
