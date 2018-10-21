@@ -3,8 +3,9 @@
 
 buildarch=1
 
-pkgname=python2-ana
-pkgver=0.03
+_pkgname=ana
+pkgname=python2-${_pkgname}
+pkgver=0.05
 pkgrel=1
 pkgdesc="unknown"
 url="https://pypi.python.org/pypi/ana"
@@ -12,8 +13,8 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://pypi.python.org/packages/6b/1a/7f609ff9867056d2cbabed5e3f98792a55189e37f6c8cfa585e4391775b9/ana-${pkgver}.zip")
-sha512sums=('6d86bc246de67031ef6b455cf5c939906c52a152bb817e588b7b7fee4bc15f867482b9cdc6b203d6bce11ace825d81bad12c76c243cd96b7feb0af6547a513d4')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('98eaf9f6db5eaadfa2907b6b611ed04c0216197130761a4959fb37facb4f3b6cf100243a65e32c106f6d60225599080e11a2d0477cb87be34e28fae14aab8e30')
 
 build() {
     cd $srcdir/ana-$pkgver
