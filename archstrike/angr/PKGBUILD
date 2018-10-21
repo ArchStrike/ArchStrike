@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=angr
-pkgver=7.8.2.21
+pkgver=7.8.9.26
 pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
@@ -11,15 +11,16 @@ depends=('python2-ana' 'python2-archinfo' 'python2-bintrees' 'python2-cachetools
          'python2-capstone' 'python2-cffi' 'python2-claripy' 'python2-cle'
          'python2-cooldict' 'python2-dpkt-git' 'python2-futures' 'python2-mulpyplexer'
          'python2-networkx' 'python2-progressbar' 'python2-pyelftools' 'python2-pygit2'
-         'python2-pyvex' 'python2-rpyc' 'python2-simuvex' 'python2-unicorn')
+         'python2-pyvex' 'python2-rpyc' 'python2-simuvex' 'python2-unicorn'
+         'python2-sortedcontainers')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
 install="${pkgname}.install"
-source=("https://pypi.python.org/packages/4c/9a/74b52028e9b0bfa7de4c7af2f2c0d3cae48c4fa6dad719032b214703c419/angr-7.8.2.21.tar.gz"
+source=("https://files.pythonhosted.org/packages/68/7b/cfa45e5194f08f31481f418fc994628d716814a00237feb77f6564391286/angr-7.8.9.26.tar.gz"
         "https://raw.githubusercontent.com/angr/angr/master/LICENSE"
         "${pkgname}.install")
-sha512sums=('74694e929c89b86778e96ede81e136a8060023938bee0e77025f0dbc41524e7cb7d3fe592afad16638e796c2cc239b640a7ff2d49ac1805e355c58bbb78d6bdf'
+sha512sums=('ef90d12ff1029fdd20ba884ee95fb7ce97bad6b9cfd530e983922b36e396b0c587728f98fc2bec1e7422f272b5e27a3df12c282038b01b157230ba265b1c1c1e'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340'
             '3e5a33f78a27d5abd22eee426e08f9742e706acc3408cc4812d97d2e7fcf968ad59aace8845687cfb5d4c7d3d9a8b24cba40ac6d879266b13308f5f4d06b3aaa')
 
