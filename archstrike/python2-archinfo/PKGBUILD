@@ -3,8 +3,9 @@
 
 buildarch=1
 
-pkgname=python2-archinfo
-pkgver=7.8.7.1
+_pkgname=archinfo
+pkgname=python2-${_pkgname}
+pkgver=7.8.9.26
 pkgrel=1
 pkgdesc=""
 url="https://pypi.python.org/pypi/archinfo"
@@ -12,9 +13,9 @@ depends=('python2' 'python2-future')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/7f/94/ba112bf06683676c84aab11cdc404305bc0937eb1d3eb2989f7e1783b95d/archinfo-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/archinfo/master/LICENSE")
-sha512sums=('a4cb92a0f7fff90deb0b4ffa37f231fd8fd0bb7df2eb8d8e606c116eaa0afb072209d86f38370e66268cf8f7f798d29e775c0c85376ab8e2b533081c8e0d31e0'
+sha512sums=('7f77caed8bd0dd66519313f377e7c8d465066c4293a9224f818000333d9c1a93384db366cc755fff8a2dd6389ddcac06864db4306e4146b049e1085e1cbe1f43'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
