@@ -3,8 +3,9 @@
 
 buildarch=1
 
-pkgname=python2-pyvex
-pkgver=7.8.7.1
+_pkgname=pyvex
+pkgname=python2-${_pkgname}
+pkgver=7.8.9.26
 pkgrel=1
 pkgdesc="A Python interface to libVEX and VEX IR."
 url="https://pypi.python.org/pypi/pyvex"
@@ -12,9 +13,9 @@ depends=('python2-pycparser' 'python2-archinfo' 'python2-cffi' 'python2-future')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/59/d0/8d9ad7bf1afff5ee74c0360a1053692a4d58791caa1c0b5aa3ac02dbe129/pyvex-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/pyvex/master/LICENSE")
-sha512sums=('79268d0b93b04df3e70d89d7057c933412a32af6ca363c81877d675878be7054e56ea515cc545bcdf277a5ef0c0dd4e3abc48a51f7b99ed872530d0cb1ad8d5d'
+sha512sums=('a61022b89a7ee92d4a625c6a522a83ab00cee75606f29084b8a7d3cac4e14d2564818f050e2b8568206c9e06ac35c4692820e37f32499754ce102a6a78d64b8d'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
