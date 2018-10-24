@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=dscanner-git
-pkgver=20181007.r1329
+pkgver=20181013.r1331
 pkgrel=1
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
