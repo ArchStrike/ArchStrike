@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=evilgrade-git
 _pkgname=evilgrade
-pkgver=r28.c80707c
+pkgver=r33.fa5f796
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Modular framework that takes advantage of poor upgrade implementations by injecting fake updates"
@@ -16,12 +16,20 @@ makedepends=('git')
 provides=('evilgrade')
 replaces=('evilgrade')
 conflicts=('evilgrade')
-source=("${pkgname}::git+${url}.git")
-sha512sums=('SKIP')
+source=("${pkgname}::git+${url}.git" "isrcore.patch")
+sha512sums=('SKIP'
+            '6e3c4ee980a04e9489449f7a26dd2fd6b5f78ae75f85a173033a9334e8a7855909f820e6a76b891e6fc152399877edac7b80fddc1da03fb4fff43069043251b6')
 
 pkgver() {
   cd ${pkgname}
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+
+  # patch for error "Can't locate isrcore/Shell.pm in @INC"
+  patch -Np1 -i "${srcdir}/isrcore.patch"
 }
 
 package() {
