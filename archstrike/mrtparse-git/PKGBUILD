@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=mrtparse
 pkgname=${_pkgname}-git
-pkgver=r464.9851c48
+pkgver=r468.1549311
 pkgrel=1
 groups=('archstrike')
 pkgdesc="a module to read and analyze the MRT format data."
@@ -33,5 +33,5 @@ pkgver() {
 package() {
   cd ${pkgname}
   python2 setup.py install --root="$pkgdir/" -O1 --skip-build
-  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|python$|python2|g'
 }
