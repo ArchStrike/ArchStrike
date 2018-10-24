@@ -4,14 +4,14 @@ buildarch=220
 
 pkgname=inception-git
 _pkgname=inception
-pkgver=r445.176e8c9
+pkgver=r450.ffe83ee
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers')
-pkgdesc="A FireWire physical memory manipulation and hacking tool exploiting IEEE 1394 SBP-2 DMA. "
+pkgdesc="FireWire physical memory manipulation and hacking tool exploiting IEEE 1394 SBP-2 DMA. "
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/carmaa/inception'
 license=('LGPL' 'GPLV3')
-depends=('python' 'libforensic1394')
+depends=('python' 'python-libforensic1394' 'libforensic1394')
 makedepends=('git' 'gcc' 'cmake' 'python-setuptools')
 provides=('inception')
 source=("git+https://github.com/carmaa/inception.git")
@@ -25,5 +25,5 @@ pkgver() {
 
 package() {
   cd ${_pkgname}
-  python setup.py install --root=$pkgdir/ --optimize=1
+  python setup.py install --root=$pkgdir/ -O1
 }
