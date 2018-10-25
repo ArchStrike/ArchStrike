@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=shocker-git
-pkgver=20160318.r60
-pkgrel=2
+pkgver=20180611.r63
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="Tool to find and exploit servers vulnerable to Shellshock"
