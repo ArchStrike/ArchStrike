@@ -4,17 +4,17 @@ buildarch=1
 
 _gemname=mini_exiftool
 pkgname=ruby-${_gemname}
-pkgver=2.8.0
-pkgrel=3
+pkgver=2.9.0
+pkgrel=1
 pkgdesc='This library is a wrapper for the ExifTool command-line application (http://www.sno.phy.queensu.ca/~phil/exiftool).'
 arch=('any')
 url='https://github.com/janfri/mini_exiftool'
 license=('GPL')
-depends=(ruby 'exiftool')
+depends=('ruby' 'ruby-rdoc' 'perl-image-exiftool')
 options=(!emptydirs)
 source=("https://rubygems.org/downloads/${_gemname}-${pkgver}.gem")
 noextract=(${_gemname}-${pkgver}.gem)
-sha512sums=('9f097bf9c9d7dfe4e026c00db529f9628b0e1ccee69ace4e4f4efb7f2d448aec9ac81d8ab07f74986723d1a77d1ffd0267f35c23ee2884bde744dcdf3121449f')
+sha512sums=('ecffeeec7586bcef220e48e89534f26eebc8291ee91364768688a0c09556d78e77918fc1a3366e1f803ed3910ea734c8149eb5caddc53e181d050b0d6bbf8668')
 
 package() {
   local _gemdir="$(ruby -e'puts Gem.default_dir')"
