@@ -3,13 +3,13 @@
 buildarch=1
 
 pkgname=sublist3r-git
-pkgver=20171130.r115
+pkgver=20181016.r124
 pkgrel=1
 arch=('any')
 groups=('archstrike' 'archstrike-dns' 'archstrike-scanners')
 pkgdesc="A Fast subdomains enumeration tool for penetration testers"
 license=('GPL2')
-depends=('python2-argparse' 'python2-dnspython' 'python2-requests')
+depends=('python-argparse' 'python-dnspython' 'python-requests')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/aboul3la/Sublist3r.git")
 sha512sums=('SKIP')
@@ -19,22 +19,19 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
-prepare(){
-  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
-}
-
 package() {
   cd "$pkgname"
 
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$pkgname"
 
+
   cp -a --no-preserve=ownership * $pkgdir/usr/share/$pkgname/
 
 cat > "$pkgdir"/usr/bin/sublist3r <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/$pkgname
-python2 ./sublist3r.py "\$@"
+python ./sublist3r.py "\$@"
 EOF
 chmod 755 "$pkgdir"/usr/bin/sublist3r
 }
