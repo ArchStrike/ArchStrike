@@ -3,38 +3,34 @@
 buildarch=1
 
 pkgname=angr
-pkgver=7.8.9.26
+pkgver=8.18.10.5
 pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
-depends=('python2-ana' 'python2-archinfo' 'python2-bintrees' 'python2-cachetools'
-         'python2-capstone' 'python2-cffi' 'python2-claripy' 'python2-cle'
-         'python2-cooldict' 'python2-dpkt-git' 'python2-futures' 'python2-mulpyplexer'
-         'python2-networkx' 'python2-progressbar' 'python2-pyelftools' 'python2-pygit2'
-         'python2-pyvex' 'python2-rpyc' 'python2-simuvex' 'python2-unicorn'
-         'python2-sortedcontainers')
-makedepends=('python2-setuptools')
+depends=('python-ana' 'python-archinfo' 'python-bintrees' 'python-cachetools'
+         'python-capstone' 'python-cffi' 'python-claripy' 'python-cle'
+         'python-cooldict' 'python-dpkt-git' 'python-mulpyplexer'
+         'python-networkx' 'python-progressbar' 'python-pyelftools' 'python-pygit2'
+         'python-pyvex' 'python-rpyc' 'python-simuvex' 'python-unicorn'
+         'python-sortedcontainers' 'python-ailment')
+makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
 install="${pkgname}.install"
-source=("https://files.pythonhosted.org/packages/68/7b/cfa45e5194f08f31481f418fc994628d716814a00237feb77f6564391286/angr-7.8.9.26.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/a/angr/angr-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/angr/master/LICENSE"
         "${pkgname}.install")
-sha512sums=('ef90d12ff1029fdd20ba884ee95fb7ce97bad6b9cfd530e983922b36e396b0c587728f98fc2bec1e7422f272b5e27a3df12c282038b01b157230ba265b1c1c1e'
+sha512sums=('44093b5e19e0c1a847b560b961c084087e145e083c5e2aa68570494ba760c60625faa4a2c9c8ce7cb58e301458b15b90c2990c9f2b11b17cd9fccb6138fdca17'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340'
             '3e5a33f78a27d5abd22eee426e08f9742e706acc3408cc4812d97d2e7fcf968ad59aace8845687cfb5d4c7d3d9a8b24cba40ac6d879266b13308f5f4d06b3aaa')
 
-prepare() {
-    grep -ZRil 'python' "angr-$pkgver" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
-}
-
 build() {
   cd ${pkgname}-${pkgver}
-  python2 setup.py build
+  python setup.py build
 }
 
 package() {
   cd ${pkgname}-${pkgver}
-  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
