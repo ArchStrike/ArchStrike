@@ -1,6 +1,5 @@
 post_install() {
   grep -q 'dotdotpwn' /etc/group || groupadd dotdotpwn
-  chgrp dotdotpwn /usr/share/dotdotpwn/retrieved_files
   chgrp dotdotpwn /usr/share/dotdotpwn/Reports
 }
 
