@@ -1,15 +1,15 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=200
 
 pkgname='air'
 pkgver='2.0.0'
-pkgrel=10
+pkgrel=11
 pkgdesc='A GUI front-end to dd/dc3dd designed for easily creating forensic images.'
-url='http://air-imager.sourceforge.net/'
+url='https://sourceforge.net/projects/air-imager/'
 groups=('archstrike' 'archstrike-forensics')
 license=('GPL')
-arch=('any')
+arch=('i686' 'x86_64' 'aarch64')
 depends=('perl-tk' 'sharutils' 'mt-st-git')
 install='air.install'
 source=("http://downloads.sourceforge.net/air-imager/air-${pkgver}.tar.gz" "air.install")
