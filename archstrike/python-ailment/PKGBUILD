@@ -4,27 +4,27 @@
 buildarch=1
 
 _pkgname=ailment
-pkgname=python2-${_pkgname}
-pkgver=7.8.9.26
+pkgname=python-${_pkgname}
+pkgver=8.18.10.5
 pkgrel=1
 pkgdesc="AIL is the angr intermediate language."
 url="https://pypi.python.org/pypi/pyvex"
-depends=('python2-pycparser' 'python2-archinfo' 'python2-cffi' 'python2-future')
-makedepends=('python2-setuptools')
+depends=('python-pycparser' 'python-archinfo' 'python-cffi' 'python-future' 'python-pyvex')
+makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/pyvex/master/LICENSE")
-sha512sums=('07cede918b1febad2bc0a12878dbcec7d5f363744884f6461098080f1aa4997fa972a7e71fd247ee52660ed211683355df1a3e1ad8bb7f164c3d77ba553b1017'
+sha512sums=('b026ba3bea3c2632c5054071fc6f8076f2be93a4d9b467b2362a5124236701c499bfe1a0448270ba17c874468ed0465fd3b0ef62d25dc55d5b23c3d65940dff3'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
     cd ${srcdir}/ailment-${pkgver}
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd ${srcdir}/ailment-${pkgver}
-    python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
     install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
