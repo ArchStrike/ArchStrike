@@ -1,0 +1,33 @@
+# Maintainer: ArchStrike <team archstrike org>
+
+buildarch=1
+
+pkgname=changeme
+pkgver=1.1.1
+pkgrel=1
+groups=('archstrike' 'archstrike-scanners')
+pkgdesc="A default credential scanner"
+arch=('any')
+url='https://github.com/ztgrace/changeme'
+license=('GPL3')
+depends=('python2-requests' 'python2-logutils' 'python2-yaml' 'python2-netaddr' 'python2-responses' 'python2-nose' 'python2-lxml' 'python2-cerberus' 'shodan' 'python2-libnmap' 'python2-jinja' 'python2-tabulate' 'python2-paramiko' 'python2-psycopg2' 'python2-pymongo' 'python2-pyodbc' 'python2-pysnmp' 'python2-libnmap' 'python2-memcached' 'python2-redis' 'python2-selenium' 'python2-sqlalchemy')
+source=("https://github.com/ztgrace/changeme/archive/v$pkgver.tar.gz")
+sha512sums=('17048b5f66ad5ac405e81055f4d405a7db9cac827e26ee20fc9a95f5095cecedace3261958494c86046d41e659efa2bfe0284eb188948b21a68e3eedeb7b8295')
+
+prepare(){
+  grep -iRl 'python' "$pkgname-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  install -dm755 $pkgdir/usr/share/$pkgname
+  install -dm755 $pkgdir/usr/bin
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+cat > $pkgdir/usr/bin/$pkgname <<EOF
+#!/usr/bin/env bash
+cd /usr/share/$pkgname
+python2 $pkgname.py "\$@"
+EOF
+chmod 755 $pkgdir/usr/bin/$pkgname
+}
