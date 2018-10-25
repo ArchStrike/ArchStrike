@@ -3,39 +3,32 @@
 buildarch=1
 
 pkgname=cewl
-pkgver=4.3
-pkgrel=2
+_pkgname=CeWL
+pkgver=5.2
+pkgrel=1
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-crackers')
 pkgdesc='A custom word list generator'
 arch=('any')
-url="http://www.digininja.org/projects/cewl.php"
+url="https://github.com/digininja/CeWL"
 license=('CCPL')
 depends=('ruby' 'ruby-spider' 'ruby-mini_exiftool' 'ruby-nokogiri'
-         'ruby-http_configuration' 'ruby-rubyzip' 'ruby-zip' 'ruby-mime-types')
-source=("http://www.digininja.org/files/cewl_4.3.tar.bz2"
-        "fix-modules-invocation.patch"
-        "fix-usage.patch")
-md5sums=('ace5e53a1485016ccc37a52a46ea7ff2'
-         'b3774510769f075bc451dd634e170685'
-         'ca224d8ef80283df54a1104e792d903d')
-
-prepare() {
-  cd "$srcdir/cewl"
-
-  patch -Np1 -i "$srcdir/fix-modules-invocation.patch"
-  patch -Np1 -i "$srcdir/fix-usage.patch"
-}
+         'ruby-http_configuration' 'ruby-rubyzip' 'ruby-zip' 'ruby-mime' 'ruby-mime-types')
+source=("https://github.com/digininja/CeWL/archive/${pkgver}.tar.gz")
+sha512sums=('4c7f317d2fc40ddda78728684c92967af40af5a09a8a6726b34bea3bcd2863cf6d5deec61667281e0415aac5859cc302e6f26410538464f01d4255eb90606b63')
 
 package() {
-  cd "$srcdir/cewl"
+  cd ${_pkgname}-${pkgver}
 
-  # Base directories.
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/doc/cewl"
-  install -dm755 "$pkgdir/usr/lib/ruby/vendor_ruby/cewl"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  install -m755 "$srcdir/cewl/cewl.rb" "$pkgdir/usr/bin/cewl"
-  install -m755 "$srcdir/cewl/fab.rb" "$pkgdir/usr/bin/cewl-fab"
-  install -m644 "$srcdir/cewl/README" "$pkgdir/usr/share/doc/cewl/README"
-  install -m644 "$srcdir/cewl/cewl_lib.rb" "$pkgdir/usr/lib/ruby/vendor_ruby/cewl/cewl_lib.rb"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+cat > ${pkgdir}/usr/bin/${pkgname} << EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+ruby cewl.rb "\$@"
+EOF
+
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
