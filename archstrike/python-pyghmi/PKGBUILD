@@ -1,0 +1,46 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=pyghmi
+pkgbase=python-${_pkgname}
+pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgver=1.2.14
+pkgrel=1
+arch=('any')
+url="https://github.com/openstack/pyghmi"
+license=('Apache')
+depends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("https://files.pythonhosted.org/packages/81/59/7989f034b668955bab3be0a76742ba15626ed5bb2051e515d3572f136d45/pyghmi-1.2.14.tar.gz")
+sha512sums=('3a6e1d5b99ad4f0244110aa3ded1dbadc3a36c4744b265c71adf36c2152c824b76fc5b74d2cf4e7acaf6bdfbe798144bdc31e6c5299eac0fe9121009dd7d93ed')
+
+prepare(){
+  cp -a ${_pkgname}-${pkgver}{,-py2}
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py build
+}
+
+package_python-pyghmi() {
+  pkgdesc="a pure Python (mostly IPMI) server management library"
+  depends=('python' 'python-cryptography')
+  makedepends=('git' 'python-setuptools' 'python-pbr')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python3 setup.py install --root="${pkgdir}/" -O1
+}
+
+package_python2-pyghmi() {
+  pkgdesc="a pure Python (mostly IPMI) server management library"
+  depends=('python2' 'python2-cryptography')
+  makedepends=('git' 'python2-setuptools' 'python2-pbr')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}/" -O1
+}
