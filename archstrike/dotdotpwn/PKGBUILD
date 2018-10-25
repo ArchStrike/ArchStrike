@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dotdotpwn
 pkgver=3.0.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="The Transversal Directory Fuzzer"
 url="https://github.com/wireghoul/dotdotpwn"
