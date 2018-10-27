@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=pyew-git
-pkgver=20170206.r104
-pkgrel=2
+pkgver=20181025.r107
+pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="a (command line) python tool to analyse malware."
 arch=('any')
 url="https://github.com/joxeankoret/pyew"
 license=('GPL2')
-depends=('distorm' 'python2' 'java-environment')
+depends=('distorm' 'python2' 'java-environment' 'python2-capstone' 'python2-setuptools')
 makedepends=('git')
 conflicts=('pyew')
 provides=('pyew')
