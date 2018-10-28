@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-scp
-pkgver=0.11.0
+pkgver=0.12.1
 pkgrel=1
 pkgdesc="scp module for paramiko"
 url="https://github.com/jbardin/scp.py"
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 license=('LGPL')
 arch=('any')
 source=("https://github.com/jbardin/scp.py/archive/v${pkgver}.tar.gz")
-sha512sums=('b8f17682f32e6ec52fed724041cb4d042c4e3b93df9adb98f8dd99bfa465c76a11469fcf099181a975ee971eb74f75d469100027a459d48cd45da2c1a1a4799e')
+sha512sums=('63680680aa2e274ae7f1718b60fe327246010f0344efb42e3314b41136801cd0793a9bd55c7afed08bc0641e395f609238114da1990843348b1813868f1addc2')
 
 build() {
     cd $srcdir/scp.py-$pkgver
