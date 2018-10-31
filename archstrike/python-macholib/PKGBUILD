@@ -5,10 +5,10 @@ buildarch=1
 pkgname=python-macholib
 _pkgname=macholib
 pkgver=1.11
-pkgrel=1
+pkgrel=2
 pkgdesc="Mach-O header analysis and editing"
 url="https://pypi.org/project/macholib/"
-depends=('python')
+depends=('python' 'python-altgraph')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
@@ -23,5 +23,11 @@ build() {
 
 package() {
   cd ${_pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/bin"
   python setup.py install --root="${pkgdir}" --skip-build -O1
+
+  # fix conflict with python2-macholib
+  for i in dump find standalone; do
+    mv ${pkgdir}/usr/bin/macho_${i} ${pkgdir}/usr/bin/macho_${i}3
+  done
 }
