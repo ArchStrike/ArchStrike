@@ -4,8 +4,7 @@ buildarch=1
 
 pkgname='set-git'
 pkgver=7.7.9.r3.g75158666e
-pkgrel=1
-epoch=1
+pkgrel=2
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-exploit')
 pkgdesc="Social-engineer toolkit. Aimed at penetration testing around Social-Engineering"
 arch=('any')
@@ -24,9 +23,7 @@ optdepends=('ettercap: DNS spoofing and ARP cache poisoning capabilities'
             'dsniff: DNS spoofing capabilities'
             'metasploit: metasploit exploit payloads')
 options=('!strip')
-conflicts=('set')
 provides=('set')
-replaces=('set')
 source=('git+https://github.com/trustedsec/social-engineer-toolkit/')
 sha512sums=('SKIP')
 
