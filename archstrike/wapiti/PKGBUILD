@@ -3,21 +3,22 @@
 buildarch=1
 
 pkgname=wapiti
-pkgver=2.3.0
-pkgrel=5
-groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
+pkgver=3.0.1
+pkgrel=1
 pkgdesc="A vulnerability scanner for web applications. It currently search vulnerabilities like XSS, SQL and XPath injections, file inclusions, command execution, LDAP injections, CRLF injections..."
+arch=('any')
 url='http://wapiti.sourceforge.net/'
 license=('GPL')
-depends=('python2')
-makedepends=('python2-requests' 'python2-setuptools')
-arch=('any')
-source=(http://downloads.sourceforge.net/sourceforge/wapiti/wapiti-$pkgver.tar.gz)
-sha512sums=('a72e87f4c2aec3884d5de7018c7fe1ab32721fc86420167c0b7636f31d9718661c787ff3d4ee66cc27e3932497543d0324b0bd238c33ce16f41f39213c119af2')
+groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers')
+depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-lxml' 'python-tld'
+         'python-yaswfp' 'python-mako' 'python-pysocks' 'python-html5lib')
+makedepends=('python-requests' 'python-setuptools')
+source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}${pkgver::1}-${pkgver}.tar.gz")
+sha512sums=('596df444d19cc2b98dd88f033c66ac65bcc8ab6e34508c1fa201503d2e61ca053ecddaa7a0814329c87e1e10c013306dd7dd4b56e644d4b5dab5924d75c6f4d7')
 
 package() {
-  cd "$srcdir/wapiti-$pkgver"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
+  cd "$srcdir/wapiti3-$pkgver"
+  python setup.py install --prefix=/usr --root="$pkgdir" --optimize=1
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
 }
