@@ -1,0 +1,20 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-mechanicalsoup
+pkgver=0.11.0
+pkgrel=1
+pkgdesc="A Python library for automating interaction with websites"
+arch=('any')
+url="https://github.com/hickford/MechanicalSoup"
+license=('MIT')
+depends=('python' 'python-beautifulsoup4' 'python-requests' 'python-six' 'python-lxml')
+makedepends=('python-setuptools')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('d45303523d46e241769ca763d970044c8eee5278e4546720b3b2088577e05ffd269a1e40fd53168894906d3ee75b441f5591e162fa0d39ceea9f479283135f5e')
+
+package(){
+  cd MechanicalSoup-$pkgver 
+  python setup.py install --root="$pkgdir/" -O1
+}
