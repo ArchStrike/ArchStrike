@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=whatweb-git
 _pkgname=WhatWeb
-pkgver=r4258.a59845ff
+pkgver=r4260.e142cc61
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-recon')
 pkgdesc="Next generation web scanner that identifies what websites are running."
