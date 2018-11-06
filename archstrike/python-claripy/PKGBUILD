@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=claripy
 pkgname=python-${_pkgname}
-pkgver=8.18.10.5
+pkgver=8.18.10.25
 pkgrel=1
 pkgdesc="An abstraction layer for constraint solvers"
 url="https://github.com/angr/claripy"
@@ -14,7 +14,7 @@ license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/claripy/master/LICENSE")
-sha512sums=('0e77003e65717a45a6683f3c571125d120bb5b427cc2b00c3cbefb3193ee7de1e6b2118d5d0b47b68d278a197e22075142982581a3258a978920446822feb799'
+sha512sums=('075e586a31a1d8ceb66135519cdd2c76b1891f053bae99a5dc2fe39aec6cadda266e74784b9480ed5b21055368e0ccfc2d98a3d5e25716f224daae7408a5023a'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
