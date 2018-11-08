@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=angr
-pkgver=8.18.10.5
+pkgver=8.18.10.25
 pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
@@ -20,7 +20,7 @@ install="${pkgname}.install"
 source=("https://files.pythonhosted.org/packages/source/a/angr/angr-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/angr/master/LICENSE"
         "${pkgname}.install")
-sha512sums=('44093b5e19e0c1a847b560b961c084087e145e083c5e2aa68570494ba760c60625faa4a2c9c8ce7cb58e301458b15b90c2990c9f2b11b17cd9fccb6138fdca17'
+sha512sums=('808bad423f6221eed3c3cbcc995896c2b2c0df1c2c3364909fe4057ad990555ead8cdcfe70d4f607d6fb7c8a13736606d19959b32ef251a08dc510a4f0dd3df8'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340'
             '3e5a33f78a27d5abd22eee426e08f9742e706acc3408cc4812d97d2e7fcf968ad59aace8845687cfb5d4c7d3d9a8b24cba40ac6d879266b13308f5f4d06b3aaa')
 
