@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=cooldict
 pkgname=python-cooldict
-pkgver=1.03
+pkgver=1.04
 pkgrel=1
 pkgdesc="Some useful dict-like structures"
 url="https://github.com/zardus/cooldict"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('62e90d4218837a38c960eef85d2ce4c0f204b427e79b2dbc27114d835fc33534bcdb2c3beda470a29451d24eee5bc437c4dba86c672fa7206fc24c46f7bfa649')
+sha512sums=('ad23eb05167582a3d8772ff8680f29651614e2694a452316e5b5c5d7f6dc50281b86ffc821015abd79ba49f78411a023f63645617491a241a1e1428140afd4d1')
 
 build() {
     cd $srcdir/cooldict-$pkgver
