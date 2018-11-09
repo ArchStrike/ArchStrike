@@ -3,16 +3,17 @@
 buildarch=1
 
 pkgname=wfuzz
-pkgver=2.2.11
+pkgver=2.3
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
 pkgdesc="Utility to fuzz web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
 arch=('any')
 license=('GPL')
-depends=('python2-pycurl')
+depends=('python2-pycurl' 'python2-six' 'python2-future' 'python2-configparser' 'python2-wxpython3')
+makedepends=('python2-setuptools')
 source=("https://github.com/xmendez/wfuzz/archive/v${pkgver}.tar.gz")
-sha512sums=('2203582d275dd93b1a2a456088b2975d717b3e9eff92b85f986845111e72ced0c69b2531e1b0735eb959b69efe3d8c7d128f9f7e95cee25e1253cd72e37ce051')
+sha512sums=('a5adeafecef42b208c99ae53d72ccb1f20a0d09489fc65682dbf8c11b653e4692426bd4f9e26a73e12388d56997673f5644b44d75ada68048e20f645d26c54ae')
 
 prepare() {
   grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
@@ -20,14 +21,5 @@ prepare() {
 
 package() {
   cd ${pkgname}-${pkgver}
-  install -dm755 ${pkgdir}/usr/share/${pkgname}/
-  install -dm755 ${pkgdir}/usr/bin
-  cp -a --no-preserve=ownership * ${pkgdir}/usr/share/${pkgname}/
-  # fix python issues
-  cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
-#!/usr/bin/env bash
-cd /usr/share/${pkgname}
-python2 ${pkgname}-cli.py "\$@"
-EOF
-  chmod 755 ${pkgdir}/usr/bin/${pkgname}
+  python2 setup.py install --root=${pkgdir} -O1
 }
