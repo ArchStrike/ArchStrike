@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=wfuzz
-pkgver=2.3
+pkgver=2.3.1
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
 pkgdesc="Utility to fuzz web applications to find their not linked resources"
 url="https://github.com/xmendez/wfuzz"
 arch=('any')
 license=('GPL')
-depends=('python2-pycurl' 'python2-six' 'python2-future' 'python2-configparser' 'python2-wxpython3')
+depends=('python2-pycurl' 'python2-six' 'python2-future' 'python2-configparser' 'python2-wxpython3' 'python2-chardet')
 makedepends=('python2-setuptools')
 source=("https://github.com/xmendez/wfuzz/archive/v${pkgver}.tar.gz")
-sha512sums=('a5adeafecef42b208c99ae53d72ccb1f20a0d09489fc65682dbf8c11b653e4692426bd4f9e26a73e12388d56997673f5644b44d75ada68048e20f645d26c54ae')
+sha512sums=('6706cb18ca8c78ea7ab3cdc4a10c02ff778e0da62cec2f0e47d108d5f9f9de763390d5453f9299c261e9b5476d14a0e6b48476472ed80300e8aac60efbaf928c')
 
 prepare() {
   grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
