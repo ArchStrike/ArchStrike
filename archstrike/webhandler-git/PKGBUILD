@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=webhandler-git
-pkgver=r334.bcc9f0d
-pkgrel=2
+pkgver=r344.a7490cf
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A handler for PHP system functions & also an alternative 'netcat' handler."
 url="https://github.com/lnxg33k/webhandler"
@@ -38,9 +38,9 @@ package() {
   install -m644 README.md "$pkgdir"/usr/share/$pkgname/README.md
   cp -a --no-preserve=ownership core modules "$pkgdir/usr/share/$pkgname"
 
-  cat > "$pkgdir"/usr/bin/webhandler.py << EOF
-#!/bin/sh
+  cat > "$pkgdir"/usr/bin/webhandler << EOF
+#!/usr/bin/env bash
 python2 /usr/share/$pkgname/webhandler.py "\$@"
 EOF
-  chmod +x "$pkgdir"/usr/bin/webhandler.py
+  chmod 755 "$pkgdir"/usr/bin/webhandler
 }
