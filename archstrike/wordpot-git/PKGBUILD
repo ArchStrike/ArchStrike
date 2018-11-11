@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=wordpot-git
-pkgver=r38.ca12cb5
-pkgrel=2
+pkgver=r44.e96889b
+pkgrel=1
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="A Wordpress Honeypot"
 arch=('any')
@@ -35,10 +35,10 @@ package() {
   install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 
 cat > "$pkgdir/usr/bin/wordpot" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/wordpot
 python2 wordpot.py "\$@"
 EOF
 
-chmod +x $pkgdir/usr/bin/wordpot
+chmod 755 $pkgdir/usr/bin/wordpot
 }
