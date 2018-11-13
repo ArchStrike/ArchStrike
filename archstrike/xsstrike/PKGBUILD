@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=xsstrike
+pkgver=3.0.1
+pkgrel=1
+pkgdesc='Most advanced XSS detection suite'
+groups=('archstrike' 'archstrike-webapp' 'archstrike-scanner')
+arch=('any')
+url='https://github.com/s0md3v/XSStrike'
+license=('MIT')
+depends=('python' 'python-requests' 'python-fuzzywuzzy' 'python-tld')
+source=("$url/archive/$pkgver.tar.gz")
+sha512sums=('69b56ef5ab74f1172099ec544d11c8be4a7bd24fe6eb5ad86bf4ea8565e8d665393a07b9173b8868c407b2de2c58c18a28afaf72afbb806d0c266bac320859fe')
+
+package() {
+  cd "$srcdir/XSStrike-$pkgver"
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/xsstrike"
+  install -Dm644 -t "$pkgdir/usr/share/doc/xsstrike/" README.md
+  cp -a ./{core,xsstrike.py} "$pkgdir/usr/share/xsstrike"
+
+  cat > "$pkgdir/usr/bin/xsstrike" << EOF
+#!/usr/bin/env sh
+cd /usr/share/$pkgname
+exec python $pkgname.py "\${@}"
+EOF
+  chmod a+x "$pkgdir/usr/bin/xsstrike"
+}
