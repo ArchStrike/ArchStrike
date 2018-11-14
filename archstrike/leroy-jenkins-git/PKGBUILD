@@ -4,10 +4,10 @@ buildarch=1
 
 pkgname=leroy-jenkins-git
 pkgver=0.r3.bdc3965
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A python tool that will allow remote execution of commands on a Jenkins server and its nodes."
-url="https://github.com/captainhooligan/Leroy-Jenkins"
+url="https://github.com/el-barbado/Leroy-Jenkins"
 arch=('any')
 license=('GPL3')
 depends=('python2' 'python2-pycurl' 'pygtk')
@@ -15,7 +15,7 @@ makedepends=('git')
 replaces=('leroy-jenkins')
 provides=('leroy-jenkins')
 conflicts=('leroy-jenkins')
-source=("${pkgname}::git+https://github.com/captainhooligan/Leroy-Jenkins.git")
+source=("${pkgname}::git+https://github.com/el-barbado/Leroy-Jenkins.git")
 sha512sums=('SKIP')
 
 pkgver() {
