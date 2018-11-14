@@ -4,11 +4,11 @@ buildarch=1
 
 pkgname=matroschka-git
 pkgver=20160720.r52
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-stego')
 arch=('any')
 pkgdesc="Python steganography tool to hide images or text in images"
-url="https://github.com/fgrimme/Matroschka"
+url="https://github.com/fbngrm/Matroschka"
 license=('GPL')
 depends=('python2' 'python2-pillow')
 makedepends=('git')
