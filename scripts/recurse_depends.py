@@ -1,8 +1,10 @@
 #!/usr/bin/env python2
 # -*- coding: utf-8 -*-
 from __future__ import print_function
+import argparse
 import os
 import re
+import traceback
 
 __all__ = ['KaryNode']
 
@@ -149,7 +151,7 @@ class KaryNode(object):
         return
 
 
-re_depends = re.compile(r'^depends=\((?:[^)]*?)\)', re.M)
+re_depends = re.compile(r'^ *depends=\((?:[^)]*?)\)', re.M)
 re_depends2 = re.compile(r'\(([^)]*?)\)', re.M)
 pkgbuild = 'PKGBUILD'
 repo = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -160,9 +162,13 @@ def get_depends(pkgname):
     abspath = os.path.join(repo, pkgname, pkgbuild)
     with open(abspath, 'r') as fhandle:
         content = fhandle.read()
-    found = re_depends.findall(content)[0]
-    found = re_depends2.search(found).group(1)
-    depends = [dep for dep in found.replace('\n', ' ').replace('"', '').replace("'", '').split(" ") if dep]
+    pkg_depends = re_depends.findall(content)
+    if pkg_depends:
+        found = pkg_depends[0]
+        found = re_depends2.search(found).group(1)
+        depends = [dep for dep in found.replace('\n', ' ').replace('"', '').replace("'", '').split(" ") if dep]
+    else:
+        depends = []
     return depends
 
 
@@ -189,8 +195,40 @@ def map_package(folders, root, abs_pkgname):
 
 
 if __name__ == '__main__':
-    abs_pkgname = 'archstrike/angr'
-    tree = KaryNode(abs_pkgname)
+    re_up_pacman = re.compile(r'^(?P<pkgname>[^ \[]*) * up:.* pacman:')
+
+    params = argparse.ArgumentParser(description='Create a dependency tree of ArchStrike packages.')
+    params.add_argument('-p', '--pkgupdates', nargs='?', type=argparse.FileType('r'), help='File location for pkgupdates output')
+    params.add_argument('pkgs', metavar='N', type=str, nargs=argparse.REMAINDER,
+                        help='One or more ArchStrike packages to create a dependency tree for.')
+    args = params.parse_args()
     folders = get_folders()
-    map_package(folders, tree, abs_pkgname)
-    print(unicode(tree))
+    if args.pkgupdates:
+        lines = args.pkgupdates.readlines()
+        for line in lines:
+            matching = re_up_pacman.match(line)
+            if matching:
+                args.pkgs.append(matching.group('pkgname'))
+
+    if not args.pkgs:
+        params.print_help()
+        os._exit(1)
+
+    for abs_pkgname in args.pkgs:
+        try:
+            if '/' not in abs_pkgname:
+                nabs_pkgname = get_abs_pkgname(folders, abs_pkgname)
+                if nabs_pkgname is None:
+                    err_msg = 'ERROR: Failed to get absolute package name for "{}". '
+                    err_msg += 'Most likely the directory for it does not exist'
+                    print(err_msg.format(abs_pkgname))
+                    continue
+                abs_pkgname = nabs_pkgname
+            tree = KaryNode(abs_pkgname)
+            map_package(folders, tree, abs_pkgname)
+            print(unicode(tree))
+        except Exception:
+            print('Failed to create tree for "{}"'.format(abs_pkgname))
+            traceback.print_exc()
+        finally:
+            print('')
