@@ -1,6 +1,4 @@
-#!/usr/bin/env python2
-# -*- coding: utf-8 -*-
-from __future__ import print_function
+#!/usr/bin/env python
 import argparse
 import os
 import re
@@ -51,8 +49,8 @@ def check_type(given_object, expected_type, expected_subtype=None):
 class KaryNode(object):
     def __init__(self, name, depends=[], ancestors=None):
         self._root = ancestors is None
-        self.name = check_type(name, basestring)
-        check_type(depends, list, basestring)
+        self.name = check_type(name, str)
+        check_type(depends, list, str)
         self.depends = {}  # initialize, then add
         self.add(depends)
         self._ancestors = [] if ancestors is not None else ancestors  # at initialization assume that only their existence matters
@@ -63,14 +61,14 @@ class KaryNode(object):
     def __iter__(self, include_self=True, reverse=False):
         # only include self in iteration for search when root to avoid double counting
         if self.is_root() and include_self:
-            result = [self] + self.depends.values()
+            result = [self] + list(self.depends.values())
         else:
-            result = self.depends.values()
+            result = list(self.depends.values())
         if reverse:
             result = reversed(result)
         return iter(result)
 
-    def __unicode__(self):
+    def __str__(self):
         if self.is_leaf():
             return self.name
         else:
@@ -79,7 +77,7 @@ class KaryNode(object):
             new_frame = []
             for node in self.__iter__(include_self=False, reverse=True):
                 node_frame_rows = []
-                frame_rows = unicode(node).split('\n')
+                frame_rows = str(node).split('\n')
                 first_row = frame_rows.pop(0)
                 node_frame_rows.append(frame_join.format(first_row))
                 for frame_row in frame_rows:
@@ -226,7 +224,7 @@ if __name__ == '__main__':
                 abs_pkgname = nabs_pkgname
             tree = KaryNode(abs_pkgname)
             map_package(folders, tree, abs_pkgname)
-            print(unicode(tree))
+            print(tree)
         except Exception:
             print('Failed to create tree for "{}"'.format(abs_pkgname))
             traceback.print_exc()
