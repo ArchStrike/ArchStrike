@@ -5,15 +5,15 @@ buildarch=1
 _pkgname=whichcraft
 pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=0.4.1
-pkgrel=2
+pkgver=0.5.2
+pkgrel=1
 arch=('any')
 url="https://github.com/pydanny/whichcraft"
 license=('BSD')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 replaces=('python2-whichcraft')
-source=("${pkgname}::https://files.pythonhosted.org/packages/e5/cd/7fb54d4b3d43ed59ecb704fb96876831e0b493c4e24eecddd4ecb2442f5e/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('703c8be2ed5e633b13d2447088cffbfbc3174ae965e352240daca70b99eef50b0cad484439200269413f6fa97314e776779f96636d59f96dea372a185d1eb934')
+source=("${pkgname}::https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('28b7be346b781f69c8fef419efd91fc2daa6b337c1eda0a2fc47d04134c479a5ded6eed3583825b111a48d7a79667676b6ce49693552233e78c7d517ac91a73c')
 
 prepare(){
   cp -a ${_pkgname}-${pkgver}{,-py2}
