@@ -4,7 +4,7 @@ buildarch=1
 
 pkgbase=odfpy
 pkgname=("python-${pkgbase}" "python2-${pkgbase}")
-pkgver=1.3.6
+pkgver=1.4.0
 pkgrel=1
 pkgdesc="Python API and tools to manipulate OpenDocument files"
 url="https://github.com/eea/odfpy"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 license=('GPL')
 arch=('any')
 source=("${url}/archive/release-${pkgver}.tar.gz")
-sha512sums=('da63c7b13de86823e4bb978c1dd7bc0fc2e617a6f27c64d5167f90043d03d98555e925b2c6f57c03ddf89439be2620e45700593a64791fdf30ef78bd207b8bcc')
+sha512sums=('dbabf1917075d6b1ff7a4923ad79d404e972e35686ad90316db692f22109d6c2ef47b1fbe49f522212adf3906bf9401472641be8824a7fa29c3895d032824eb9')
 
 prepare() {
   cp -r ${pkgbase}-release-${pkgver} python2-${pkgbase}-release-${pkgver}
