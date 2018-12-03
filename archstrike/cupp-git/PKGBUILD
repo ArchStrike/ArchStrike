@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname='cupp-git'
-pkgver=20180830.r32
+pkgver=20181121.r59
 pkgrel=1
 pkgdesc='Common User Password Profiler'
 url="https://github.com/Mebus/cupp"
@@ -35,7 +35,7 @@ package() {
 cat > "${pkgdir}/usr/bin/cupp" << EOF
 #!/usr/bin/env bash
 cd /usr/share/${pkgname}
-python cupp3.py "\$@"
+python cupp.py "\$@"
 EOF
 
 chmod 755 "${pkgdir}/usr/bin/cupp"
