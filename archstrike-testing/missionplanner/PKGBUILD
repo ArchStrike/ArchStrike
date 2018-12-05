@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=missionplanner
-pkgver=1.2.55
-pkgrel=4
+pkgver=1.3.61
+pkgrel=1
 groups=('archstrike-drone')
 pkgdesc="A GroundControl Station for Ardupilot"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,9 +13,9 @@ license=('GPL3')
 depends=('mono')
 makedepends=('unzip')
 options=('!strip')
-source=("https://ardupilot-mega.googlecode.com/files/MissionPlanner-$pkgver.zip" "missionplanner.desktop")
-md5sums=('f1a8f770dfe85ae7e09b58023a21ecaf'
-         'bb438b9634c51951c1d9fa556621f9db')
+source=("http://firmware.ardupilot.org/Tools/MissionPlanner/MissionPlanner-$pkgver.zip" "missionplanner.desktop")
+md5sums=('6d95a23dcc0e9e91be4c01933161dc17'
+         'a3b919ac40caab40816a5b700e32ce5a')
 
 package() {
   cd "$srcdir/"
@@ -29,7 +29,7 @@ package() {
 cat > "$pkgdir/usr/bin/missionplanner" << EOF
 #!/bin/sh
 cd /usr/share/missionplanner
-mono ArdupilotMegaPlanner10.exe
+mono MissionPlanner.exe
 EOF
 
 chmod +x "$pkgdir/usr/bin/missionplanner"
