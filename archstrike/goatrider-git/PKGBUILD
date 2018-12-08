@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=goatrider-git
-pkgver=20180608.r4
+pkgver=20181120.r6
 pkgrel=1
 groups=('archstrike' 'archstrike-analysis' 'archstrike-misc')
 arch=('any')
