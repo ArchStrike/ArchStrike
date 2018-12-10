@@ -1,6 +1,6 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2018-04-14
+# Generated on 2018-12-10
 #
 
 ## Official Mirrors
@@ -23,3 +23,4 @@ Server = https://mirror.aarnet.edu.au/pub/archstrike/archstrike/$arch/$repo
 Server = https://mirror.hackingand.coffee/archstrike/$arch/$repo
 Server = http://mirror.hackingand.coffee/archstrike/$arch/$repo
 Server = https://as.arlm.tyzoid.com/$arch/$repo
+Server = http://mirror.stro.nz/archstrike/$arch/$repo
