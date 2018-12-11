@@ -5,7 +5,7 @@ buildarch=1
 _pkgname="Empire"
 pkgname=empire
 pkgver=2.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
 groups=('archstrike' 'archstrike-exploit' 'archstrike-backdoors')
@@ -71,7 +71,7 @@ if [[ -f "/usr/share/empire/data/empire.db" ]]; then
 fi
 echo "DB not found continuing with setup"
 cd /usr/share/empire/setup
-./setup_database.py
+python2 setup_database.py
 ./cert.sh
 EOF
 chmod 755 "${pkgdir}/usr/bin/empire-setup"
