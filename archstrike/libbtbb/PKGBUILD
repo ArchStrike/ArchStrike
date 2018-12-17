@@ -4,28 +4,28 @@
 buildarch=220
 
 pkgname=libbtbb
-pkgver=2018.08.R1
+pkgver=2018.12.R1
 pkgrel=1
 pkgdesc="A library to decode Bluetooth baseband packets, as produced by the Ubertooth and GR-Bluetooth projects."
-url="https://greatscottgadgets.com/ubertoothone"
+url="https://github.com/greatscottgadgets/libbtbb"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('libpcap' 'python')
 makedepends=('cmake' 'libpcap')
 source=("https://github.com/greatscottgadgets/libbtbb/archive/${pkgver//./-}.tar.gz")
-sha512sums=('63fa995b51f2246b6f27d8aa1bd7a5c0276414df9d13d432d9a1a7ad78ac06e4c67fe3dcf00cf1634f11d6e999f13633591a3347d4e533fff4f131f8deee922e')
+sha512sums=('5c41bb4f0fdeedc1064de973daa4d396f73ff10b6e28266a43f029cbfa8a7f2db5e3b764410efb50ef79c56ba1fac0d242bb547c0a883d0dc3c06cc9e993332c')
 
 prepare() {
-  mkdir "$srcdir/libbtbb-${pkgver//./-}/build"
+  mkdir "${srcdir}/libbtbb-${pkgver//./-}/build"
 }
 
 build() {
-  cd "$srcdir/libbtbb-${pkgver//./-}/build"
+  cd "${srcdir}/libbtbb-${pkgver//./-}/build"
   cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" ..
   make
 }
 
 package() {
-  cd "$srcdir/libbtbb-${pkgver//./-}/build"
+  cd "${srcdir}/libbtbb-${pkgver//./-}/build"
   make install
 }
