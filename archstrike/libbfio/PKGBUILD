@@ -3,24 +3,24 @@
 buildarch=220
 
 pkgname=libbfio
-pkgver="20170123"
+pkgver="20180910"
 pkgrel=1
 pkgdesc="Library to provide basic file input/output abstraction"
 url="https://github.com/libyal/libbfio"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL3')
 depends=('glibc')
-install="$pkgname.install"
-source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz")
-sha512sums=('e6d9fbc6d29d9a1906b0a0812efc07526d9d30a6d1dfb0a071cba9338fcb2da91f88a244520b89e594ae8f0d6a33b4f074a0fc4cd81490b6a290d3a2947c21a2')
+install="${pkgname}.install"
+source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-alpha-${pkgver}.tar.gz")
+sha512sums=('4466d14c0972ad98eb2ab48ebc4621ab6deb9c6e644e6c51087653c5a91fae95caf48665c7f014d96ca94bdf8a0a1beda2e0612e9090c01df1bb5bc0d0ae3bcb')
 
 build(){
-  cd $srcdir/$pkgname-$pkgver
+  cd ${srcdir}/${pkgname}-${pkgver}
   ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output
   make
 }
 
 package(){
-  cd $srcdir/$pkgname-$pkgver
-  make DESTDIR=$pkgdir install
+  cd ${srcdir}/${pkgname}-${pkgver}
+  make DESTDIR=${pkgdir} install
 }
