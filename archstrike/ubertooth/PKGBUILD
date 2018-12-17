@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=ubertooth
-pkgver=2018.08.R1
+pkgver=2018.12.R1
 pkgrel=1
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc='A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only'
@@ -14,26 +14,23 @@ license=('GPL')
 makedepends=('cmake' 'libpcap')
 depends=('libusbx' 'libbtbb' 'bluez-libs' 'python-numpy' 'python-pyusb' 'libpcap')
 source=(
-  "https://github.com/greatscottgadgets/$pkgname/archive/${pkgver//./-}.tar.gz"
-  'specan_ui.patch'
+  "https://github.com/greatscottgadgets/${pkgname}/archive/${pkgver//./-}.tar.gz"
 )
-sha512sums=('59d801718d98fd3c8f08108f3cce715cb5f11b247e3ff13823146ee4f9393086abc0cfbe9182213e4acd562738ea4e429fe28b3a8b5a0b6842f8d3d6275037af'
-            'c89cf605005d1fe5030d7e05f3cc9899294065699907b93d64c1adfa3b21d6ef337baa153f01b7ed4e208f3fd767554fe294610d36562e46bb7434f87c4ef47d')
+sha512sums=('b7d1ac06c826261c8089a8e3714354b067ed83447ddca1ca7047078c2dbc9a077fd158cd2075611a23a313ab51034f42352dba16002802ffb30690d9bd3df99f')
 
 prepare(){
-  cd $pkgname-${pkgver//./-}/host/python/specan_ui
-  patch CMakeLists.txt < "$srcdir/specan_ui.patch"
+  cd ${pkgname}-${pkgver//./-}/host/python/specan_ui
 }
 
 build() {
-  cd $pkgname-${pkgver//./-}/host
+  cd ${pkgname}-${pkgver//./-}/host
   install -dm755 build
   cd build
-  cmake -DCMAKE_INSTALL_PREFIX="$pkgdir/usr" -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
+  cmake -DCMAKE_INSTALL_PREFIX="${pkgdir}/usr" -DPYTHON_EXECUTABLE=/usr/bin/python3 ..
   make
 }
 
 package() {
-  cd $pkgname-${pkgver//./-}/host/build
+  cd ${pkgname}-${pkgver//./-}/host/build
   make clock_debug=true install
 }
