@@ -5,7 +5,7 @@ buildarch=1
 pkgname=pocsuite
 _pkgname=Pocsuite
 epoch=1
-pkgver=2.0.6
+pkgver=2.0.8
 pkgrel=1
 pkgdesc="An open-sourced remote vulnerability testing framework developed by the Knownsec Security Team."
 url="https://github.com/knownsec/Pocsuite"
@@ -15,7 +15,7 @@ makedepends=('python2-setuptools')
 license=('GPL')
 arch=('any')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('82b69ac38f8e7af028d6b3368f362bd8891f8aaea05b2e7118237ee434daa0a9e070d0bd1b4ab3b772f135172caa2933297a550ebed95a33b13c7a7abf73f61e')
+sha512sums=('268a22342d34b7eed7fddbf55239e76ec26471835d392b264de28d80a654fdf10d8b50738a9d50b0443d9ba35117d0c34f852ddf656fe2c8e5aa53e45341850a')
 
 prepare() {
   grep -iRl 'python' $_pkgname-$pkgver | xargs sed -i 's|python$|python2|'
@@ -28,7 +28,7 @@ build() {
 
 package() {
   cd $_pkgname-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" -O1 --skip-build
   # fix weird python issue
   sed -i 's|python|python2|' ${pkgdir}/usr/lib/python2.7/site-packages/pocsuite/thirdparty/pyparsing/setup.py
 }
