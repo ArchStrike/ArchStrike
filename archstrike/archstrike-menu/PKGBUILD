@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=archstrike-menu
-pkgver=1.1
+pkgver=1.2
 pkgrel=1
 arch=('any')
 pkgdesc="ArchStrike menu for XFCE"
 url="https://github.com/ArchStrike/archstrike-menu"
 license=('GPL')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('d9edf235c153049327c3ce5a882272581a9a07f415c2a19573af177bd2451bbffa2afda239055ae977ca98c4db29813b66500a8f398fb119d7e94d195b5bf5f3')
+sha512sums=('b65ced72c295585b13de0d0b01742d794ba01ee6c77ef6ee9eb8cf6de4a209cac18792337727d27fa97622b48a7f2ff09afa4b2eb1b31ed24691058442c19588')
 
 package() {
   cd ${pkgname}-${pkgver}
