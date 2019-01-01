@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=theharvester-git
 _pkgname=theHarvester
-pkgver=20181220.r281
+pkgver=20190101.r417
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers)"
 url='https://github.com/laramies/theHarvester'
 arch=('any')
 license=('GPL2')
-depends=('python-requests' 'python-beautifulsoup4')
+depends=('python-requests' 'python-beautifulsoup4' 'python-plotly')
 replaces=('theharvester')
 provides=('theharvester')
 makedepends=('git')
@@ -33,13 +33,18 @@ package() {
   install -dm755 $pkgdir/usr/share/licenses/${pkgname}
 
   # Install docs.
-  install -m644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
-  install -m644 LICENSES ${pkgdir}/usr/share/licenses/${pkgname}/LICENSES
+  install -Dm644 README.md ${pkgdir}/usr/share/doc/${pkgname}/README.md
+  install -Dm644 LICENSES ${pkgdir}/usr/share/licenses/${pkgname}/LICENSES
 
   # Install sharable.
-  cp --no-preserve=ownership -r discovery lib *.txt $pkgdir/usr/share/${pkgname}
-  install -m755 *.py $pkgdir/usr/share/${pkgname}
+  cp --no-preserve=ownership -a * "${pkgdir}/usr/share/${pkgname}"
 
   # Link to bin.
-  ln -s ../share/${pkgname}/${_pkgname}.py $pkgdir/usr/bin/theharvester
+cat > ${pkgdir}/usr/bin/theharvester << EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+python ${_pkgname}.py "\$@"
+EOF
+
+chmod 755 "${pkgdir}/usr/bin/theharvester"
 }
