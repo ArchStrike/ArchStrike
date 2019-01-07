@@ -2,28 +2,48 @@
 
 buildarch=1
 
-pkgname=shodan
-_pkgname=${pkgname}-python
+pkgbase=shodan
+pkgname=('python-shodan' 'python2-shodan')
+_pkgname=${pkgbase}-python
 pkgver=1.10.4
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
-pkgdesc='A Python2 library for Shodan.io'
+pkgdesc='A Python2/3 library for Shodan.io'
 url='http://github.com/achillean/shodan-python'
-depends=('python2-click' 'python2-click-plugins' 'python2-colorama' 'python2-requests' 'python2-simplejson' 'python2-xlsxwriter')
 license=('MIT')
 arch=('any')
-makedepends=('python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/achillean/shodan-python/archive/${pkgver}.tar.gz")
 sha512sums=('2976f9174ebc58a648e81b57cd63962326a42af089415b594bd65e4709cb72e11640c5cc545b59344dbf13f76268588fa057f3984d5328ac6f60326910b00e8f')
 
-build() {
-  cd ${_pkgname}-${pkgver}
-  python2 setup.py build
+prepare() {
+  cp -r ${_pkgname}-${pkgver} ${_pkgname}2-${pkgver}
+
+  grep -iRl 'python' ${_pkgname}2-${pkgver} | xargs sed -i 's|python$|python2|g'
 }
 
-package() {
+build() {
+  cd ${srcdir}/${_pkgname}-${pkgver}
+  python setup.py build
+
+  cd ${srcdir}/${_pkgname}2-${pkgver}
+  python2 setup.py build
+
+}
+
+package_python-shodan() {
+depends=('python-click' 'python-click-plugins' 'python-colorama' 'python-requests' 'python-simplejson' 'python-xlsxwriter')
+  cd ${_pkgname}-${pkgver}
+  python setup.py install --root="$pkgdir" -O1 --skip-build
+  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
+
+package_python2-shodan() {
+depends=('python2-click' 'python2-click-plugins' 'python2-colorama' 'python2-requests' 'python2-simplejson' 'python2-xlsxwriter')
   cd ${_pkgname}-${pkgver}
   python2 setup.py install --root="$pkgdir" -O1 --skip-build
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/shodan/cli/worldmap.py
+
+  # move executable
+  mv ${pkgdir}/usr/bin/shodan ${pkgdir}/usr/bin/shodan2
 }
