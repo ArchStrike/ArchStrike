@@ -5,11 +5,8 @@ buildarch=1
 pkgbase=shodan
 pkgname=('python-shodan' 'python2-shodan')
 _pkgname=${pkgbase}-python
-conflicts=('shodan')
-replaces=('shodan')
-provides=('shodan')
 pkgver=1.10.4
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2/3 library for Shodan.io'
 url='http://github.com/achillean/shodan-python'
@@ -42,6 +39,9 @@ depends=('python-click' 'python-click-plugins' 'python-colorama' 'python-request
 }
 
 package_python2-shodan() {
+conflicts=('shodan')
+replaces=('shodan')
+provides=('shodan')
 depends=('python2-click' 'python2-click-plugins' 'python2-colorama' 'python2-requests' 'python2-simplejson' 'python2-xlsxwriter')
   cd ${_pkgname}-${pkgver}
   python2 setup.py install --root="$pkgdir" -O1 --skip-build
