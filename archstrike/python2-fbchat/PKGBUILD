@@ -2,7 +2,7 @@
 
 pkgname=python2-fbchat
 _pkgname=fbchat
-pkgver=1.4.1
+pkgver=1.4.2
 pkgrel=1
 pkgdesc="Facebook Chat (Messenger) for Python"
 url="https://github.com/carpedm20/fbchat/"
@@ -11,7 +11,7 @@ makedepends=('python2-setuptools')
 license=('CUSTOM')
 arch=('any')
 source=("https://github.com/carpedm20/fbchat/archive/v${pkgver}.tar.gz")
-sha512sums=('fec1dad476a0b5db7723d67b5130f417e485fa86117d923cf2f6e112643c513445c84f5b0f34a11364c162fc22f77d5530b1f1118264e0ba22f373cf4ad01521')
+sha512sums=('965a3616cdb29310d0f38cc54e809337c6f55d9a93eea2c8d599524e33aa76dd72c15408e12cd7cdf09bdb3fbdfa316955eb90cfd23b98a2aa1075ee49f0acc0')
 
 build() {
     cd ${_pkgname}-${pkgver}
