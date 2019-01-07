@@ -4,14 +4,14 @@ buildarch=1
 
 _pkgname=autosploit
 pkgname=${_pkgname}-git
-pkgver=r164.e046c8f
+pkgver=r222.7fcb2dc
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Automate the exploitation of remote hosts"
 arch=('any')
 url='https://github.com/NullArray/AutoSploit'
 license=('GPL3')
-depends=('python2' 'shodan' 'python2-blessings' 'python2-psutil' 'metasploit' 'sudo')
+depends=('python2' 'python2-shodan' 'python2-blessings' 'python2-psutil' 'metasploit' 'sudo' 'python2-beautifulsoup4')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
