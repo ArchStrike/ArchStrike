@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=Js2Py
 pkgname=python2-${_pkgname,,}
-pkgver=0.59
+pkgver=0.60
 pkgrel=1
 pkgdesc="Fast javascript parser (based on esprima.js)"
 url="https://github.com/PiotrDabkowski/${_pkgname,,}"
@@ -12,8 +12,8 @@ depends=('python2' 'python2-pyjsparser')
 makedepends=('python2-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/ef/1d/763ddc32da7519de26249a47483587741cc0a93ed1ddf71b2ac2c98c4e84/Js2Py-0.59.tar.gz")
-sha512sums=('fd6c59259af431436eb99794492a9dbee03e68458f5e72aa67f5ead04e0dc7913fa45b9261ed756c235de4fbe45c1de61a49bc8c37be522ec4e063857d3a9e42')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('adca62e8313db18b5cfce15ae8d40d45d65a3e5ea02fbe77f91a5e1e0ab90aa664cb852859cad935e63781e48df63dbbbf0cd5f87633d5d01e286179b539b023')
 
 build() {
   cd ${_pkgname}-${pkgver}
