@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=deen
-pkgver=1.6.4
+pkgver=1.6.6
 pkgrel=1
 groups=('archstrike' 'archstrike-crypto' 'archstrike-misc')
 arch=('any')
@@ -16,7 +16,7 @@ optdepends=('python-pyopenssl' 'python-jsbeautifier' 'python-keystone'
             'python-xmltodict' 'python-dicttoxml' 'python-jose')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('0a05dad171abcbd355387822703cff6315f586d6e6d196787c34c10f3b9a574fda49e681305d337b96c8c6c61c3295750e84ac353694653a50110ea366d044b5')
+sha512sums=('f11128f8d0dd23724f0cf64c179341756615dd2632f8d711a6245dd4ea1273c9cb180281f2ba1ef47af618c65696ba409d565243ecc54f7feec56114eb9c596d')
 
 build() {
   cd ${pkgname}-${pkgver}
