@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=xsser
 pkgname=${_pkgname}-git
-pkgver=r31.4a55fc8
-pkgrel=2
+pkgver=r36.9f196b7
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="A penetration testing tool for detecting and exploiting XSS vulnerabilites."
 arch=('any')
