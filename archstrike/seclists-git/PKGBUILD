@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=seclists-git
-pkgver=r587.719bdb0
+pkgver=r623.7ed3f89
 pkgrel=1
 pkgdesc="A collection of multiple types of lists used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more."
 arch=('any')
@@ -11,9 +11,6 @@ license=('GPL2' 'custom')
 groups=('archstrike')
 depends=('bash')
 makedepends=('git')
-replaces=('seclists')
-conflicts=('seclists')
-provides=('seclists')
 url='https://github.com/danielmiessler/SecLists'
 source=("${pkgname}::git+https://github.com/danielmiessler/SecLists")
 sha512sums=('SKIP')
