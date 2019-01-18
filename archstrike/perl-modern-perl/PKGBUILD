@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=perl-modern-perl
-pkgver=1.20180701
+pkgver=1.20181021
 pkgrel=1
 pkgdesc="enable all of the features of Modern Perl with one command"
 arch=(any)
@@ -12,22 +12,22 @@ license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 makedepends=('perl-module-build')
 options=(!emptydirs)
-source=(http://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-$pkgver.tar.gz)
-sha512sums=('0c4674ff58c58b57be34207d6588be7aab05743a849d2d6b20dcdf94f0c73bf526e80031313deafc8d179d0e398b6fd8dbae53de5f251fff7dbeb3d7c938921b')
+source=(http://cpan.metacpan.org/authors/id/C/CH/CHROMATIC/Modern-Perl-${pkgver}.tar.gz)
+sha512sums=('382e1005c2d0c6551f742dcf46d8a6b7ee8b021288c122eb1dd318170d4c8ca99581162eec826d79f2e7faed1cdc8e7485c58fa9a4cc308a9319dfb16d056172')
 
 build() {
-  cd "$srcdir/Modern-Perl-$pkgver"
+  cd "${srcdir}/Modern-Perl-${pkgver}"
 
   # for packages with Build.PL, do this instead:
-   perl Build.PL installdirs=vendor destdir="$pkgdir/"
-   perl Build
+   perl Makefile.PL installdirs=vendor destdir="${pkgdir}/"
+   make
 }
 
 package() {
-   cd "$srcdir/Modern-Perl-$pkgver"
-   perl Build install
+   cd "${srcdir}/Modern-Perl-${pkgver}"
+   make install
 
   # remove perllocal.pod and .packlist
-  find "$pkgdir" -name perllocal.pod -delete
-  find "$pkgdir" -name .packlist -delete
+  find "${pkgdir}" -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -delete
 }
