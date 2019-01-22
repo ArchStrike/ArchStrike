@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=rfidiot-git
 _gitname=RFIDIOt
-pkgver=20181119.r81
+pkgver=20190118.r95
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-wireless')
@@ -16,31 +16,31 @@ depends=('python2' 'openssl' 'python2-pyscard')
 arch=('any')
 replaces=('rfidiot')
 provides=('rfidiot')
-source=("$pkgname::git+https://github.com/AdamLaurie/RFIDIOt")
+source=("${pkgname}::git+https://github.com/AdamLaurie/RFIDIOt")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname}
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "${pkgname}"
   # Change shebang lines.
   find . -type f -name '*.py' -exec sed -i '1s/python\r\?$/python2/' '{}' \;
 }
 
 package() {
-  cd "$pkgname"
-  python2 setup.py install --root="$pkgdir/" --optimize=1
+  cd "${pkgname}"
+  python2 setup.py install --root="${pkgdir}/" --optimize=1
 
-  cd "$pkgdir/usr/bin"
+  cd "${pkgdir}/usr/bin"
 
   # Remove test scripts.
   rm -f *.sh
 
   # Strip extensions and add the 'rfidiot-' prefix.
-  install -Dm755 rfidiot-cli.py "$pkgdir/usr/bin/rfidiot-cli"
+  install -Dm755 rfidiot-cli.py "${pkgdir}/usr/bin/rfidiot-cli"
   rm rfidiot-cli.py
   for file in *.py ; do
     # Remove extension. Add prefix.
