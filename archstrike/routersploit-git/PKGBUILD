@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=20181103.r767
+pkgver=20190121.r770
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='The Router Exploitation Framework'
 arch=('any')
 url='https://github.com/threat9/routersploit'
 license=('GPL3')
-depends=('python-requests' 'python-paramiko' 'python-beautifulsoup4' 'python-future')
+depends=('python-requests' 'python-paramiko' 'python-future' 'python-pysnmp' 'python-pycryptodome')
 makedepends=('git')
 source=("$pkgname::git+${url}.git")
 sha512sums=('SKIP')
