@@ -3,23 +3,23 @@
 buildarch=220
 
 pkgname=php-mt-seed
-pkgver=3.2
-pkgrel=3
+pkgver=4.0
+pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="PHP mt_rand() seed cracker"
 url="http://www.openwall.com/php_mt_seed/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 depends=('php')
-source=("http://www.openwall.com/php_mt_seed/php_mt_seed-3.2.tar.gz")
-md5sums=('d6abea4d9e5ad5b5f887c67b7b8fc5e3')
+source=("http://www.openwall.com/php_mt_seed/php_mt_seed-${pkgver}.tar.gz")
+sha512sums=('b7986ef1fa49170ddd683c41af195402835b54c0af2074c24ac7529d5fe28bdadd4115b7d2c411950f8a04e91e9ea89cd024cc263ccc86797562b248152f9228')
 build() {
-  cd "$srcdir/php_mt_seed-$pkgver"
+  cd "${srcdir}/php_mt_seed-${pkgver}"
   make
 }
 
 package() {
-  cd "$srcdir/php_mt_seed-$pkgver"
-  install -Dm755 php_mt_seed "$pkgdir/usr/bin/php_mt_seed"
-  install -Dm644 README "$pkgdir/usr/share/php_mt_seed/README"
+  cd "${srcdir}/php_mt_seed-${pkgver}"
+  install -Dm755 php_mt_seed "${pkgdir}/usr/bin/php_mt_seed"
+  install -Dm644 README "${pkgdir}/usr/share/php_mt_seed/README"
 }
