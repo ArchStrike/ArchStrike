@@ -1,11 +1,11 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: William Robertson <wkr@wkr.name>
 
-buildarch=192
+buildarch=1
 
 pkgname='androguard'
 pkgver=3.3.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Python framework for Android application analysis.'
 arch=('any')
 url='https://code.google.com/p/androguard/'
