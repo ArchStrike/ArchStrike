@@ -1,0 +1,54 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=mrbob
+pkgbase=python-${_pkgname}
+pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgver=0.2.3
+pkgrel=1
+arch=('any')
+url="https://github.com/domenkozar/mr.bob"
+license=('BSD')
+depends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("https://files.pythonhosted.org/packages/7f/4c/be579dc311e76791b75c3d45df7c4c2a2cc1d0379c2aca66f98976bd8888/mr.bob2-${pkgver}.tar.gz")
+sha512sums=('97e8fea4a480448df06b211c181880f4b6d4b82c72e306d13d692d470254d0e573b113ab7cb2d3ef7633634cb878ed9c80a54e1e9b8d39256c08e6f0c6df1a68')
+
+prepare(){
+  sed -i "s/\.get_distribution('mr\.bob')/.get_distribution('mr.bob2')/g" "${srcdir}/mr.bob2-${pkgver}/mrbob/cli.py"
+  cp -a mr.bob2-${pkgver}{,-py2}
+}
+
+build() {
+  cd "${srcdir}/mr.bob2-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/mr.bob2-${pkgver}-py2"
+  python2 setup.py build
+}
+
+package_python-mrbob() {
+  pkgdesc="creates directory skeletons"
+  depends=('python' 'python-six' 'python-jinja' 'python-rednose'
+           'flake8' 'python-coverage' 'python-mock')
+  makedepends=('python-setuptools')
+
+  cd "${srcdir}/mr.bob2-${pkgver}"
+  python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
+}
+
+package_python2-mrbob() {
+  pkgdesc="creates directory skeletons"
+  depends=('python2' 'python2-six' 'python2-jinja' 'python2-rednose'
+           'python2-flake8' 'python2-coverage' 'python2-mock')
+  makedepends=('python2-setuptools')
+
+  cd "${srcdir}/mr.bob2-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
+
+  # fix conflict
+  for i in mrbob; do
+    mv ${pkgdir}/usr/bin/${i} ${pkgdir}/usr/bin/${i}2
+  done
+}
