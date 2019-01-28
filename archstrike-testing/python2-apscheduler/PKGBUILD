@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributer: Dobroslaw Kijowski [dobo] <dobo90_at_gmail.com>
+
+buildarch=1
+
+pkgname=python-apscheduler
+_pkgname=APScheduler
+pkgver=3.5.3
+pkgrel=1
+pkgdesc="Advanced Python Scheduler, a light but powerful in-process task scheduler"
+arch=('any')
+url='http://pypi.python.org/pypi/APScheduler'
+license=(MIT)
+depends=('python-six' 'python-pytz' 'python-tzlocal')
+makedepends=(python-setuptools)
+source=("https://files.pythonhosted.org/packages/source/A/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('dd3e98d0f474511851bdc109a1c65f7f97d221f95d086603d12b3f280285460234724369f05816e1754d58d94adadbec0deb8a0fa63fcd6531914d4a1f4fb3fc')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --optimize=1
+}
