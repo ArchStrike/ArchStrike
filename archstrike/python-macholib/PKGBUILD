@@ -2,32 +2,48 @@
 
 buildarch=1
 
-pkgname=python-macholib
 _pkgname=macholib
+pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=1.11
-pkgrel=2
+pkgrel=3
 pkgdesc="Mach-O header analysis and editing"
 url="https://pypi.org/project/macholib/"
-depends=('python' 'python-altgraph')
-makedepends=('python-setuptools')
+depends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('626cb564ea22e61a5b395c5ffbe9b17df0c341f2355bd0def88faabab52d2bc43f8f61871b50e7bd53147965627b4d3399f96a651bd985418e32b519b7bb03bb')
 
-
-build() {
-  cd ${_pkgname}-${pkgver}
-  python setup.py build
+prepare(){
+  cp -a ${_pkgname}-${pkgver}{,-py2}
 }
 
-package() {
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py build
+}
+
+package_python-macholib() {
+  depends=('python' 'python-altgraph')
+
   cd ${_pkgname}-${pkgver}
   install -dm755 "${pkgdir}/usr/bin"
-  python setup.py install --root="${pkgdir}" --skip-build -O1
+  python3 setup.py install --root="${pkgdir}" -O1 --skip-build
 
   # fix conflict with python2-macholib
   for i in dump find standalone; do
     mv ${pkgdir}/usr/bin/macho_${i} ${pkgdir}/usr/bin/macho_${i}3
   done
+}
+
+package_python2-macholib() {
+  depends=('python2' 'python2-altgraph')
+
+  cd ${_pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/bin"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
 }
