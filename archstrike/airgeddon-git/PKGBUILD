@@ -4,20 +4,19 @@ buildarch=1
 
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
-pkgver=20181105.r1298
+pkgver=20190129.r1496
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL')
-depends=('bash>=4.2' 'iw' 'net-tools' 'wireless_tools' 'gawk' 'aircrack-ng'
-         'xterm' 'reaver-wps-fork-t6x-git' 'iproute2' 'xorg-xdpyinfo'
-         'ethtool' 'pciutils' 'usbutils' 'rfkill' 'wget' 'ccze' 'curl'
-         'xorg-xset')
-optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3' 'hostapd' 'lighttpd'
-         'iptables' 'beef-git' 'ettercap' 'sslstrip' 'dhcpcd' 'dsniff'
-         'bully' 'pixiewps' 'expect' 'bettercap-git')
+depends=('bash>=4.2' 'iw' 'net-tools' 'wireless_tools' 'gawk' 'aircrack-ng' 'xterm'
+         'reaver-wps-fork-t6x-git' 'iproute2' 'xorg-xdpyinfo' 'ethtool' 'pciutils'
+         'usbutils' 'rfkill' 'wget' 'ccze' 'curl' 'xorg-xset')
+optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3' 'hostapd' 'lighttpd' 'iptables'
+            'beef-git' 'ettercap' 'sslstrip' 'dhcpcd' 'dsniff' 'bully' 'pixiewps'
+            'expect' 'bettercap-git' 'john' 'asleap' 'hostapd-wpe')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git")
 sha512sums=('SKIP')
@@ -30,7 +29,7 @@ pkgver() {
 
 prepare() {
   cd ${pkgname}
-  sed -i 's|auto_update=1|auto_update=0|' ${_pkgname}.sh
+  sed -i 's|AIRGEDDON_AUTO_UPDATE=true|AIRGEDDON_AUTO_UPDATE=false|' .airgeddonrc
 }
 
 package() {
@@ -39,6 +38,7 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm644 .airgeddonrc "${pkgdir}/usr/share/${_pkgname}/.airgeddonrc"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
 
   # remove unneeded kali stuffs
