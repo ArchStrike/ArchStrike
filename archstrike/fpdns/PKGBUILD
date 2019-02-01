@@ -3,37 +3,28 @@
 buildarch=1
 
 pkgname=fpdns
-pkgver=20130404
-pkgrel=4
+pkgver=20190131
+pkgrel=1
 pkgdesc="Program that remotely determines DNS server versions"
 url="https://github.com/kirei/fpdns"
-depends=('perl')
+depends=('perl' 'perl-net-dns')
 license=('BSD')
 options=('!emptydirs')
 arch=('any')
 groups=('archstrike' 'archstrike-analysis')
-source=("https://github.com/kirei/fpdns/archive/$pkgver.tar.gz")
-sha512sums=('1a4d9c1cb666efa3f48dcca2b5cd04793e92727359652095572b17479f5343479c57d2937f1fff8070c071a2698eda5c4dff981caf86436f184f0b076b0fa0b3')
+source=("https://github.com/kirei/fpdns/archive/${pkgver}.tar.gz")
+sha512sums=('cde6e3ae9661b82456b65e1b309c1190b63b83406fcc75971b2903d7b38a16cf46b2e2c3d9b3f577c20a8f7ffc077243414fc5e53bed962c85512e2ea6aec15b')
 
 build() {
-  cd "$pkgname-$pkgver"
+  cd "${pkgname}-${pkgver}"
 
-  eval $(perl -V:archname)
-
-  /usr/bin/perl Makefile.PL \
-    INSTALLARCHLIB=/usr/lib/perl5/current/$archname \
-    INSTALLSITELIB=/usr/lib/perl5/site_perl/ \
-    INSTALLSITEARCH=/usr/lib/perl5/site_perl/$archname
-
-  /usr/bin/make
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  make pure_install DESTDIR="$pkgdir"
-  mv $pkgdir/usr/bin/site_perl/$pkgname $pkgdir/usr/bin/$pkgname
-  find $pkgdir -name '.packlist' -delete
-  find $pkgdir -name '*.pod' -delete
+  cd "${pkgname}-${pkgver}"
 
-  install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  make DESTDIR="$pkgdir" install
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
