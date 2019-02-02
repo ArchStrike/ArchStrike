@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=python2-easyprocess
-pkgver=0.2.3
-pkgrel=2
+pkgver=0.2.5
+pkgrel=1
 pkgdesc="Easy to use python subprocess interface."
 url="https://github.com/ponty/easyprocess"
 depends=('python2')
@@ -13,7 +13,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://github.com/ponty/EasyProcess/archive/$pkgver.tar.gz")
-sha512sums=('eb994680347ef5d4f792e21439a4cc83c296a33b63ac380be38cda4fe85d2c1b1d679cf7122c1b24523bff7c04fbb3b9b2c5614071ab40c7926497d29d9e2f9f')
+sha512sums=('482a344bc4a21b1372f15ec1eb5e22f6979053ef7cc3fe4fcbdafa0e40636448b9166b82c62bb89bd34d0d4dc1c789317fcc939ed3f9addca1ef546ea927a1fa')
 
 build() {
     cd $srcdir/EasyProcess-$pkgver
@@ -22,6 +22,6 @@ build() {
 
 package() {
     cd $srcdir/EasyProcess-$pkgver
-    python2 setup.py install --root="$pkgdir" --optimize=1
+    python2 setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE.txt $pkgdir/usr/share/licenses/$pkgname/LICENSE.txt
 }
