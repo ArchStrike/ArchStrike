@@ -2,8 +2,8 @@
 
 buildarch=1
 
-pkgname='perl-nmap-parser'
-pkgver=1.36
+pkgname=perl-nmap-parser
+pkgver=1.37
 pkgrel=1
 pkgdesc="Nmap::Parser"
 arch=('any')
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl-xml-twig>=3.16')
 options=('!emptydirs')
 source=("http://www.cpan.org/authors/id/A/AP/APERSAUD/Nmap-Parser-$pkgver.tar.gz")
-sha512sums=('f5f15b520a6fc3b6b001f61e8c4632ae0cb4c3998b278a0a8d96ec4677d74627cd19ae0ca29f6007e5c3bfeb6aea5d56f6270c84b736dcc7964a6fbff957713a')
+sha512sums=('9820c556989ebfd6e29c50f093cbc4dcd6e6e039751c2e92e35521a233495092b71f176448efd240decf1ccd223befb25f136452d2136226a00cf9ccd3fe45e1')
 
 prepare() {
   cd "$srcdir/Nmap-Parser-$pkgver"
