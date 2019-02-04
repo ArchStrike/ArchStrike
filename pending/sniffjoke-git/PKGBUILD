@@ -1,0 +1,48 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=sniffjoke-git
+_pkgname=sniffjoke
+pkgver=20150102.r771
+pkgrel=2
+license=('GPL')
+groups=('archstrike' 'archstrike-defense')
+pkgdesc="Injects packets in the transmission flow that are able to seriously disturb passive analyze like sniffing, interception and low level information theft"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url='https://github.com/vecna/sniffjoke'
+depends=('iptables' 'tcpdump')
+makedepends=('cmake' 'git')
+provides=('sniffjoke')
+replaces=('sniffjoke')
+conflicts=('sniffjoke')
+source=("${pkgname}::git+${url}.git" 'cmake.patch')
+sha512sums=('SKIP'
+            '945e55e7c4effcb2e6beda38a03f6e15c8ef7b6a239455bdae2919e99ddf3e4162da1f0e8f16ee5ed9c98c05cff39a656623a2a4f24a0807bb0c49df75c8ec4d')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd ${pkgname}
+  patch -Np1 -i ${srcdir}/cmake.patch
+}
+
+build() {
+  cd ${pkgname}
+  [[ -d build ]] || mkdir build
+  cd build
+
+  cmake -DCMAKE_INSTALL_PREFIX=/usr ..
+  make
+}
+
+package() {
+  cd ${pkgname}
+  cd build
+
+  make DESTDIR=${pkgdir} install
+}
+

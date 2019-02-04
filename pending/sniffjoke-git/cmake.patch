@@ -1,0 +1,31 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2fdbf74..e4809a6 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -2,7 +2,7 @@ CMAKE_MINIMUM_REQUIRED( VERSION 2.4 )
+ 
+ PROJECT( sniffjoke )
+ 
+-SET( PREFIX "/usr/local" )
++SET( PREFIX "/usr" )
+ SET( VERSION_MAJOR 0 )
+ SET( VERSION_MINOR 4 )
+ SET( SUFFIX "-1" )
+diff --git a/conf/CMakeLists.txt b/conf/CMakeLists.txt
+index 473464e..111fa5f 100644
+--- a/conf/CMakeLists.txt
++++ b/conf/CMakeLists.txt
+@@ -1 +1 @@
+-INSTALL(DIRECTORY generic DESTINATION ${CMAKE_INSTALL_PREFIX}/var/sniffjoke)
++INSTALL(DIRECTORY generic DESTINATION ${CMAKE_INSTALL_PREFIX}/etc/sniffjoke)
+diff --git a/src/service/CMakeLists.txt b/src/service/CMakeLists.txt
+index e3f7277..c5c2137 100644
+--- a/src/service/CMakeLists.txt
++++ b/src/service/CMakeLists.txt
+@@ -25,5 +25,5 @@ ADD_EXECUTABLE(sniffjoke
+ 
+ TARGET_LINK_LIBRARIES(sniffjoke "-ldl")
+ 
+-INSTALL(TARGETS sniffjoke RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/sbin)
++INSTALL(TARGETS sniffjoke RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+ 
