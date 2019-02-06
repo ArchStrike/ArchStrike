@@ -5,7 +5,8 @@
 buildarch=220
 
 pkgname=cryptmount
-pkgver=5.3
+_release=5.3
+pkgver=5.3.1
 pkgrel=1
 pkgdesc='Utility which allows an ordinary user to mount an encrypted file system'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,9 +14,9 @@ groups=('archstrike' 'archstrike-crypto')
 url="http://cryptmount.sourceforge.net/"
 license=('GPL')
 depends=('cryptsetup')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-${pkgver}/$pkgname-$pkgver.tar.gz" "config.guess-for-aarch64.patch")
+source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/$pkgname-${_release}/$pkgname-$pkgver.tar.gz" "config.guess-for-aarch64.patch")
 backup=('etc/cryptmount/cmtab')
-sha512sums=('7dc53443eb505ac82da4167fa7ee10202ac9def92cd6c64ea7c2577acb5b4c80a04182bc43c980c82223492d69ae74d09283d6b41b4d7d6c490b614253258a7b'
+sha512sums=('c4bfb7a2bd2f672dfed014d3a4b1feaa4d20237f9b658ea981a0a054e83ad4d0282089a006ceb769ee05e0cf6ecd004c97b48d69973ed630330e77bf13925680'
             'a39c41ccec15cbcffca93735489ee3b868ed9dfb6f49873931df25edf81e3456c91a81f2d30105bc76608aa3b2b00c854c5c880f75b2b6da3907c7a3c8f55a32')
 
 prepare() {
