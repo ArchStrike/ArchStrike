@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-amoco
-pkgver=2.5.3
+pkgver=2.6.0
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="yet another tool for analysing binaries"
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('python2-pygments' 'python2-pyparsing' 'python2-ply' 'python2-crysp' 'python2-grandalf' 'python2-sqlalchemy' 'python2-future')
 makedepends=('python2-setuptools')
 source=("https://github.com/bdcht/amoco/archive/v$pkgver.tar.gz")
-sha512sums=('af239f603a776ff0c783b351168fde9c52334a009aaa3147f26a94ed5a0ce3e5dd1cef2ff377549f03764b8fc79ffe7c20c31fd07012a0a593543a19f4e6a7ad')
+sha512sums=('7c3fde9a54b028fbbb701f818fe72b2ba16c10a0284c74ac9eb9d4bcfd3c6caf773ba28d694714bfc63ccd75f700599d7c043e038b880caeec654e46872eba1b')
 
 prepare(){
   grep -iRl python amoco-${pkgver} | xargs sed -i 's/python$/python2/g'
