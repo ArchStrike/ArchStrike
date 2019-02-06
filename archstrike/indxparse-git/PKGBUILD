@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=indxparse-git
-pkgver=r169.1b32736
+pkgver=r170.ca08236
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A Tool suite for inspecting NTFS artifacts."
