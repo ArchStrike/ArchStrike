@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=archinfo
 pkgname=python-${_pkgname}
-pkgver=8.18.10.25
+pkgver=8.19.2.4
 pkgrel=1
 pkgdesc=""
 url="https://pypi.python.org/pypi/archinfo"
@@ -13,16 +13,9 @@ makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/angr/archinfo/master/LICENSE"
-        "import.patch")
-sha512sums=('998eeee3e5e3c20386d6f172bbb60a1fb8ef90beb9995737561d0d60b94f6acc84642ba65aebc8ea625709ba59b7f8f2815e42c3b2d3c1094064d68829e19cf4'
-            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340'
-            'e85788fb39b5bf8571cdacb84fd2a59d4b5634d62105dac034d19f6bf8b1b2eeca7f4d13f00ef5d6b52dae838ce6bfe07f58e397ca309c0d7e097fb3c8337a57')
-
-prepare() {
-  cd archinfo-${pkgver}
-  patch -Np1 -i ${srcdir}/import.patch
-}
+        "https://raw.githubusercontent.com/angr/archinfo/master/LICENSE")
+sha512sums=('0c5a0a9c35629da799317e8c0aa1f6646971b8a172e13f3f568bed39eec5e92dd14f39c58c05b1851971f1ba63d32dd9a9bd8f756555da3e5a076f64c671485e'
+            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
     cd archinfo-${pkgver}
