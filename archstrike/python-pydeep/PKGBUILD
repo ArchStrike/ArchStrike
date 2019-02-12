@@ -2,28 +2,42 @@
 
 buildarch=220
 
-pkgname=python-pydeep
-pkgver=0.2
-pkgrel=7
+_pkgname="pydeep"
+pkgbase="python-${_pkgname}"
+pkgname=("python-${_pkgname}" "python2-${_pkgname}")
+pkgver=0.4
+pkgrel=1
 pkgdesc='This is the Python interface to ssdeep'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://pypi.python.org/pypi/pydeep'
 license=('custom:PSF')
-depends=('python' 'ssdeep')
-makedepends=('python-setuptools' 'ssdeep')
-source=("http://pypi.python.org/packages/source/p/pydeep/pydeep-$pkgver.tar.gz" 'LICENSE')
-sha512sums=(
-  '78bcf181d35bb7a1ab3f1eefae9cc03408f96dcbb36aeec78f4437d6b90f3f20d623e427c0f57047dff4b5b087539a3f056167e4c9f9da688ed8a6ca737aff98'
-  '88330e6f805b5e8522f6da8610816c58d8d147d9fe6825819a70147e6ef1966d67439d0f695e3212bdf28d00385755e20184baffd981c2a0ae77feb71c18a6fe'
-)
+depends=('python' 'python2' 'ssdeep')
+makedepends=('python-setuptools' 'python2-setuptools' 'ssdeep')
+source=("https://files.pythonhosted.org/packages/60/7b/7fa895d023dc11385625311f81f1e2da6a9f3b10bcf6c0bca6113710e558/${_pkgname}-${pkgver}.tar.gz"
+        'LICENSE')
+sha512sums=('f924eb61dfba173704b7d8345bf14a8a01a78229b2733309861869f69cd1807325512ada440c7d7ff247fe2ceeca3ac3df2203cb55a5671b658734cb550146f1'
+            '88330e6f805b5e8522f6da8610816c58d8d147d9fe6825819a70147e6ef1966d67439d0f695e3212bdf28d00385755e20184baffd981c2a0ae77feb71c18a6fe')
 
-build() {
-  cd pydeep-$pkgver
-  python setup.py build
+prepare(){
+  cp -a ${_pkgname}-${pkgver}{,-py2}
 }
 
-package() {
-  cd pydeep-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
-  install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+package_python-pydeep() {
+  pkgdesc='This is the Python interface to ssdeep'
+  depends=('python' 'ssdeep')
+  makedepends=('python-setuptools' 'ssdeep')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" -O1
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-pydeep() {
+  pkgdesc='This is the Python interface to ssdeep'
+  depends=('python2' 'ssdeep')
+  makedepends=('python2-setuptools' 'ssdeep')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py install --root="${pkgdir}" -O1
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
