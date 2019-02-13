@@ -1,0 +1,37 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=nfcutils-git
+pkgver=r61.49aa178
+pkgrel=1
+groups=('archstrike' 'archstrike-nearfield')
+pkgdesc="Provides a simple 'lsnearfield' command that list tags which are in your NFC device field"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="http://nfc-tools.org"
+license=('LGPL3')
+depends=('libnfc')
+makedepends=('git')
+source=("${pkgname}::git+https://github.com/nfc-tools/nfcutils.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+
+  aclocal
+  automake --add-missing
+  autoconf
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd "${pkgname}"
+
+  make DESTDIR="${pkgdir}/" install
+}
