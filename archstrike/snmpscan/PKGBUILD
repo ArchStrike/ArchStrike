@@ -4,9 +4,9 @@ buildarch=1
 
 pkgname=snmpscan
 pkgver=0.1
-pkgrel=4
+pkgrel=5
 pkgdesc="A free, multi-processes SNMP scanner"
-url="http://www.nothink.org/perl/snmpscan/index.php"
+url="http://www.nothink.org/codes/snmpscan/index.php"
 groups=('archstrike' 'archstrike-scanners')
 license=('GPL')
 arch=('any')
