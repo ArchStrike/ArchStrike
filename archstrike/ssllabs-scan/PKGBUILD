@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=ssllabs-scan
-pkgver=1.4.0
-pkgrel=2
+pkgver=1.5.0
+pkgrel=1
 pkgdesc="Test whether a host is vulnerable to the Heartbleed attack"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 groups=("archstrike")
@@ -13,7 +13,7 @@ license=("APACHE")
 depends=('glibc')
 makedepends=('go' 'git')
 source=("https://github.com/ssllabs/ssllabs-scan/archive/v$pkgver.tar.gz")
-sha512sums=('1f2f3cb4d477c8e77ab550787b98783c5c448ece49712522bc22a3e0b444381a29b07cbf8cebae76bb56101ed5c7b9cc5cd1176564a2738f0fde9862a88acbcd')
+sha512sums=('a57fc27b224d6a194e39b8d70856f800ea02d433617ca2ded5f4e87ed73e1f37f18d1fd1b4a176abecca823fb61ebc9aec966d6509d78492ee65ec524a64cf8b')
 
 build() {
 	cd "$pkgname-$pkgver"
