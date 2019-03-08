@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=archstrike-mirrorlist
-pkgver=20190207
+pkgver=20190308
 pkgrel=1
 pkgdesc='ArchStrike mirror list for use by pacman'
 url='http://archstrike.org'
