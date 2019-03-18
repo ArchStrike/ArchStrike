@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname='androguard'
-pkgver=3.3.4
+pkgver=3.3.5
 pkgrel=1
 pkgdesc='Python framework for Android application analysis.'
 arch=('any')
@@ -12,7 +12,7 @@ url='https://code.google.com/p/androguard/'
 license=('Apache')
 groups=('archstrike')
 depends=('python2' 'python2-pyqt5' 'python2-pyperclip' 'python2-networkx' 'ipython2' 'python2-future' 'python2-pyasn1'
-         'python2-cryptography' 'python2-magic' 'python2-pydot' 'python2-lxml' 'python2-click' 'python2-matplotlib'
+         'python2-cryptography' 'python2-magic-git' 'python2-pydot' 'python2-lxml' 'python2-click' 'python2-matplotlib'
          'python2-colorama')
 makedepends=('python2-setuptools' 'muparser' 'sparsehash' 'snappy')
 optdepends=(
@@ -20,7 +20,7 @@ optdepends=(
     'psyco2-svn: acceleration support'
 )
 source=("https://github.com/androguard/androguard/archive/v${pkgver}.tar.gz")
-sha512sums=('d1c51000fd0afc7e1b0e55767a4016e7ae464610e9899f60d824824f47ae4d21716559cdfe461664632952993c9d16896b8568e55e24dbb3a42e4ba44736e23d')
+sha512sums=('a818b6772f7637abb2f27efe817becf25f92696cf7f7479368f3eeafe80dd30a92b6db274037a704c62ce9332e7151bb859c50ccf7f60a6d8720d5771812e982')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
