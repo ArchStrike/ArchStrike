@@ -1,0 +1,33 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgbase=magic-git
+_pkgname="python-magic"
+pkgname=("python-${pkgbase}" "python2-${pkgbase}")
+pkgdesc='A python wrapper for libmagic'
+arch=('any')
+pkgver=20190303.r190
+pkgrel=1
+url="https://github.com/ahupp/${_pkgname}"
+license=('MIT')
+makedepends=('python-setuptools' 'python2-setuptools' 'git')
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+package_python2-magic-git() {
+  cd ${_pkgname}
+  python2 setup.py install --root="${pkgdir}" -O1
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
+
+package_python-magic-git() {
+  cd ${_pkgname}
+  python setup.py install --root="${pkgdir}" -O1
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}
