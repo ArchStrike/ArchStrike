@@ -5,7 +5,7 @@ buildarch=192
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 arch=('x86_64' 'i686')
 url='https://www.archstrike.org/'
 license=('GPL')
@@ -100,7 +100,7 @@ package_archstrike-meta-upstream-all() {
     valgrind
     veracrypt
     wireshark-cli
-    wireshark-gtk
+    wireshark-qt
     wpscan
     xl2tpd
     zaproxy
