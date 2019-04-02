@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
-pkgver=20190131.r1518
+pkgver=20190330.r1551
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
@@ -14,9 +14,9 @@ license=('GPL')
 depends=('bash>=4.2' 'iw' 'net-tools' 'wireless_tools' 'gawk' 'aircrack-ng' 'xterm'
          'reaver-wps-fork-t6x-git' 'iproute2' 'xorg-xdpyinfo' 'ethtool' 'pciutils'
          'usbutils' 'rfkill' 'wget' 'ccze' 'curl' 'xorg-xset')
-optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk3' 'hostapd' 'lighttpd' 'iptables'
+optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk4' 'hostapd' 'lighttpd' 'iptables'
             'beef-git' 'ettercap' 'sslstrip' 'dhcpcd' 'dsniff' 'bully' 'pixiewps'
-            'expect' 'bettercap-git' 'john' 'asleap' 'hostapd-wpe')
+            'expect' 'bettercap-git' 'john' 'asleap' 'hostapd-wpe' 'nftables')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git")
 sha512sums=('SKIP')
