@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=dpkt-git
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=20190110.r494
+pkgver=20190322.r496
 pkgrel=1
 pkgdesc='Python library for interacting with and creating packets.'
 arch=('any')
@@ -24,14 +24,6 @@ pkgver() {
 prepare(){
   cp -a ${pkgname}{,-py2}
 }
-
-#build() {
-#  cd ${srcdir}/python-dpkt-git
-#  python setup.py build
-
-#  cd ${srcdir}/python-dpkt-git-py2
-#  python2 setup.py build
-#}
 
 package_python-dpkt-git() {
   depends=('python' 'python-mock' 'python-sphinx')
