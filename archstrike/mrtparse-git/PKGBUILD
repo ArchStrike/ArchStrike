@@ -4,19 +4,16 @@ buildarch=1
 
 _pkgname=mrtparse
 pkgname=${_pkgname}-git
-pkgver=r468.1549311
+pkgver=r469.492d13b
 pkgrel=1
 groups=('archstrike')
 pkgdesc="a module to read and analyze the MRT format data."
 arch=('any')
-url='https://github.com/YoshiyukiYamauchi/mrtparse'
+url='https://github.com/t2mune/mrtparse'
 license=('APACHE')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
-replaces=("${_pkgname}")
 depends=('python2')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/YoshiyukiYamauchi/mrtparse.git")
+source=("${pkgname}::git+https://github.com/t2mune/mrtparse.git")
 sha512sums=('SKIP')
 
 build() {
