@@ -6,7 +6,7 @@ _pkgname=stem
 pkgbase=python-$_pkgname-git
 
 pkgname=(python-$_pkgname-git python2-$_pkgname-git)
-pkgver=20190305.r3403
+pkgver=20190410.r3410
 pkgrel=1
 epoch=1
 pkgdesc='A controller library for Tor'
