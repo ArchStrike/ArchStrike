@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pompem-git
-pkgver=r138.da342a1
+pkgver=r141.3ebe768
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A python exploit tool finder"
