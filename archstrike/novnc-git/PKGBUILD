@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=novnc-git
-pkgver=r1740.18439b0
+pkgver=r1803.9fe2fd0
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="VNC client using HTML5 (Web Sockets, Canvas) with encryption (wss://) support."
 arch=('any')
-url='https://github.com/kanaka/noVNC'
+url='https://github.com/novnc/noVNC'
 license=('custom')
 makedepends=('git')
 depends=('bash' 'python2' 'websockify' 'nodejs' 'net-tools')
 provides=('novnc')
-source=("${pkgname}::git+https://github.com/kanaka/noVNC.git")
+source=("${pkgname}::git+https://github.com/novnc/noVNC.git")
 sha512sums=('SKIP')
 
 pkgver() {
