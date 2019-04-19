@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname='cupp-git'
-pkgver=20181121.r59
+pkgver=20190328.r62
 pkgrel=1
 pkgdesc='Common User Password Profiler'
 url="https://github.com/Mebus/cupp"
