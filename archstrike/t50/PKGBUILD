@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=t50
-pkgver=5.8.3
+pkgver=5.8.4
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
@@ -11,7 +11,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
-sha512sums=('48214e313b23ee9faf882858da32692e56527d001432c0592cf4bfdde1489452efed66a23330c4f97f61dd15cd0bc72b12a19c19e421b47abb8270867bcf9721'
+sha512sums=('9abec73ce550a7a841b0f3c96e23bda539b0af83931f0fb1cb13147532146bdc003408a34b47b0a5643062991565bb19dc6cdbff209bdd2279d3c3c8988e7d8c'
             '8fbcc56a3e1cfbd3277483cf4c91c7f164e3271652a7bd631ad0348c9f15a326be152a885ff532a5e0c1c225a6167435879f7b8125b2dad20b2b158f04f9eb3b')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-5.8/${pkgname}-${pkgver}.tar.gz" "destdir.patch")
 
