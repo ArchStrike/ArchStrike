@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname=detectsniffer-git
-pkgver=20160520.r148
-pkgrel=2
+pkgver=20180327.r151
+pkgrel=1
 groups=('archstrike' 'archstrike-defense')
 pkgdesc='Tool that detects sniffers in the network'
 url='https://github.com/galkan/tools/tree/master/detect_sniffer'
