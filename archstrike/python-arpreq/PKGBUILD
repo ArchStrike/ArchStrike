@@ -1,0 +1,27 @@
+
+# Contributor: winnie <aur@msgpeek.net>
+
+pkgname=python-arpreq
+pkgver=0.3.3
+pkgrel=1
+pkgdesc="Python C extension to query the Kernel ARP cache for the MAC address of a given IP address."
+arch=('any')
+url="https://pypi.python.org/pypi/arpreq/"
+license=('MIT')
+depends=("python")
+makedepends=("python-setuptools")
+options=(!emptydirs)
+source=($pkgname-$pkgver.tar.gz::https://github.com/sebschrader/$pkgname/archive/v$pkgver.tar.gz)
+provides=($pkgname)
+sha512sums=('70b9d3e264176b00b68e835868beab30e8fbf9945ced4391a49c4691118a2f15db167f7362d5613db20ff85d7d74b2d62cf49e7df98caae4891b5e71d8022864')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py build
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  python setup.py install --root="$pkgdir" --optimize=1
+  install -Dpm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}
