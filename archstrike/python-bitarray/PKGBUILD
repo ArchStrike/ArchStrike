@@ -1,0 +1,43 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Andrzej Giniewicz <gginiu@gmail.com>
+
+buildarch=220
+
+_pkgname=bitarray
+pkgname=("python-${_pkgname}" "python2-${_pkgname}")
+pkgver=0.9.0
+pkgrel=1
+pkgdesc="Efficient arrays of booleans for Python"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="https://github.com/ilanschnell/bitarray"
+license=('PSF')
+makedepends=('python2-distribute' 'python-distribute')
+options=(!emptydirs)
+source=(https://pypi.python.org/packages/source/b/bitarray/bitarray-${pkgver}.tar.gz)
+sha512sums=('54db87f2618c7721797ef59094437e6dcaf700533145119cf73757a7e98f32a6a8af52c618d2f0c4d954e58e319e8974f50b520b887618890ba15b1db1dca922')
+
+prepare(){
+  cp -a ${_pkgname}-${pkgver}{,-py2}
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  python2 setup.py build
+}
+
+package_python-bitarray() {
+  depends=('python')
+
+  cd ${_pkgname}-${pkgver}
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
+}
+
+package_python2-bitarray() {
+  depends=('python2')
+
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+}
