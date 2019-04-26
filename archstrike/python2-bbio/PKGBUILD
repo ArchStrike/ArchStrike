@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=python2-bbio
-pkgver=1.0.10
+pkgver=1.1.0
 pkgrel=1
 pkgdesc="A module to control BeagleBone IO channels"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -12,7 +12,12 @@ url="https://github.com/adafruit/adafruit-beaglebone-io-python"
 depends=("python2")
 makedepends=("python2-setuptools")
 source=("https://github.com/adafruit/adafruit-beaglebone-io-python/archive/$pkgver.tar.gz")
-sha512sums=('112a528e6587cb0f15dcf91f92f5286520dc43ed5e5ba16dcdc625973f316a2b635bb1c7a6f0b3795ac97bd2c3da5e9253caac7444f237fc845d6b49948698e0')
+sha512sums=('fd8451bb02372d6d018e38814b2f9c7a80af56c18b8a91f1ea011aa301c55d0af10086f2d6578f193b52c4745506c6c38ae560034d7a79ec0d0315f5227de341')
+
+prepare() {
+  cd "${srcdir}/adafruit-beaglebone-io-python-${pkgver}"
+  sed -i "s/^\(CFLAGS = \['-Wall',\) '-Werror',/\1/1" setup.py
+}
 
 build() {
   cd "${srcdir}/adafruit-beaglebone-io-python-${pkgver}"
