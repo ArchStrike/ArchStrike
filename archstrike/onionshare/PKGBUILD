@@ -1,27 +1,38 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Simon Hanna <simon dot hanna at serve-me dot info>
+# Contributor: Ye Shu <shuye02@outlook.com>
 
 buildarch=1
 
 pkgname=onionshare
-pkgver=1.1
+pkgver=2.0
 pkgrel=1
 pkgdesc="Securely and anonymously share a file of any size"
 groups=('archstrike' 'archstrike-misc')
 url="https://github.com/micahflee/onionshare"
 arch=('any')
 license=('GPL3')
-depends=('python-stem-git' 'python-flask' 'python-pyqt5')
+depends=('stem' 'python-flask' 'tor' 'python-pycryptodome' 'python-pysocks' 'python-requests' 'python-pyqt5')
 makedepends=('python-setuptools')
-source=("https://github.com/micahflee/onionshare/archive/v${pkgver}.tar.gz")
-sha512sums=('6c8030cf610932ec003622738754116410649fbaacdca91475030f1f92c1359922d42a8555ddaae4a10ed30fe6b1f27d5eff2c9f30a1f03cc9c25504c18bc6c3')
 
-package() {
-  cd ${pkgname}-${pkgver}
-  python setup.py install --root="$pkgdir/" -O1
-  install -Dm644 install/onionshare.desktop "${pkgdir}/usr/share/applications/"
-  install -Dm644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/"
-  chmod 755 ${pkgdir}/usr/bin/onionshare ${pkgdir}/usr/bin/onionshare-gui
+source=(
+  "https://github.com/micahflee/onionshare/archive/v${pkgver}.tar.gz"
+  'custom-settings.patch'
+)
+
+sha512sums=(
+  '1c3dbe90b52b1147f5dbe686453e518100fe7d71428a14231451c3e4a6f2aa8b4d1e5ea64cbb753ce2d7c3789f1479b9a715d2a68288dcf33e50070fb693520d'
+  'e1a89a0b2322973242bda9a32b3590c0788fdb0aa93a688e0c27e2d45db680ce6bd77af10e17c629e033171dd2145cbcc20891c6edaf2cd4d2bd3b5e531ceee5'
+)
+
+prepare() {
+  cd $pkgname-$pkgver
+  git apply ../custom-settings.patch
 }
 
-# vim:set ts=2 sw=2 et:
+package() {
+  cd $pkgname-$pkgver
+  python setup.py install --root="$pkgdir" -O1
+  install -Dm644 install/onionshare.desktop "$pkgdir/usr/share/applications/"
+  install -Dm644 install/onionshare80.xpm "$pkgdir/usr/share/pixmaps/"
+}
