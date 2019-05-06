@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=leo
-pkgver=5.8
+pkgver=5.9
 pkgrel=1
 pkgdesc="Literate programmer's editor, outliner, and project manager"
 arch=('any')
@@ -13,8 +13,8 @@ depends=('python-pyqt5')
 optdepends=('python-pyenchant: For Spelling support')
 makedepends=('unzip' 'python-setuptools')
 groups=('archstrike' 'archstrike-misc')
-source=("https://github.com/leo-editor/leo-editor/archive/${pkgver}.tar.gz")
-sha512sums=('88fb9480ba62a50bde587129fbc1af7ca1ad9740e4c581b76a7e17eb443b951c5935133bec38b412149ae07c22253da22a7d6169d29435aa23b384a61020ce98')
+source=("https://github.com/leo-editor/leo-editor/archive/v${pkgver}.tar.gz")
+sha512sums=('f8bf9641ed70fa75954d8d133dfd5b03fd66fa645572a34c43b2a6341fb3083f045b59421c404441d494ddb44254f6334e3fc5c7d6509183e4f66afb3b984256')
 
 package() {
   cd ${pkgname}-editor-${pkgver}
