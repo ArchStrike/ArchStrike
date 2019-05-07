@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname="libbde"
-pkgver=20180806
+pkgver=20190317
 pkgrel=1
 pkgdesc="Library and tools to access the BitLocker Drive Encryption (BDE) encrypted volumes"
 arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
@@ -12,7 +12,7 @@ license=('GPL3')
 depends=('fuse' 'libcsystem' 'libbfio' 'python2')
 install="$pkgname.install"
 source=("https://github.com/libyal/libbde/releases/download/${pkgver}/libbde-alpha-${pkgver}.tar.gz")
-sha512sums=('0b460016bdda3a3c4e2b761adef5fdb92fb0598da7266535374a6c040219985b6247e5e64b5765ca49affcca53b235119a457922979f7b33cbb70121f0c72302')
+sha512sums=('8c725d8074a2ec2ddbd0d6289aec1b91d19dd441ed8bca330db613711aeda47bf95d753f4c1e7b1079fe4fd2616c689a1a7d4d5340e50e99a7ec8c5e412d8f58')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
