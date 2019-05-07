@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python-async_timeout
 _pkgname=async-timeout
-pkgver=1.2.0
+pkgver=3.0.1
 pkgrel=1
 pkgdesc="Timeout context manager for asyncio programs"
 url="https://github.com/aio-libs/async_timeout/"
@@ -12,8 +12,8 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('Apache2')
 arch=('any')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('ec6cafc666dea27228e3047c9f2f30fca36fa767f7283c51df2f7eeb2e3af593cf57887dd570cf6d244f710755f65a0570e8b375de4161d9f8f2ee20f905d171')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('4fcf9bf199ac593e10a54800aabd6447425f2bcdf12bba3f16b7c4819e1d1b92c21f804007d003583e48cac3fd472e55ca805a5c25e238e78c3dfb217dc3f7a4')
 
 build() {
   cd ${_pkgname}-${pkgver}
