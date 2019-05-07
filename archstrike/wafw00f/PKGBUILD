@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=wafw00f
-pkgver=0.9.6
+pkgver=1.0.0
 pkgrel=1
 pkgdesc="Identifies and fingerprints Web Application Firewall (WAF) products."
 url="https://github.com/sandrogauci/wafw00f"
@@ -13,7 +13,7 @@ license=('custom')
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 source=("https://github.com/EnableSecurity/wafw00f/archive/v${pkgver}.tar.gz")
-sha512sums=('8d156378edefeac165e73ef4a3482195916a23beaa4500d8d2b84c248d1372c8efed6172dc6234814b65be901738e001c147a4b9e1a19b6c380e588923d39d2a')
+sha512sums=('9a5a0e1d0cbdc1eb47e67730b53632f41e3e8102c76307129fa2b2c11613bcf3c167db65ad93eb8a32e895bb9082b2be1c1924ac6fabf36f349f5cad62c43e20')
 
 prepare() {
     grep -iRl 'python' $srcdir/wafw00f-$pkgver | xargs sed -i 's|python$|python2|'
