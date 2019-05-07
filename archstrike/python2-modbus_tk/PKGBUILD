@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-modbus_tk
-pkgver=0.5.9
+pkgver=0.5.11
 pkgrel=1
 pkgdesc="Implementation of modbus protocol in python"
 url="https://github.com/ljean/modbus-tk"
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 license=('LGPL')
 arch=('any')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('38a4e522b4d0ef7551763bf304ea06119ffdb27c8db2e691f8c84587e4676bf6383804dbd85666a4d911e316d545145f11d62c2b14fbc804137f77fd617adcca')
+sha512sums=('5b8cfbdaa6ed88cb03a5c9d2836ed8e1f1c7b83443b51dd25ab6d92038ebaad9c9268f68ce9054ff86b4c0423028d625acdfadf2022e6ef5f12adabee0d82670')
 
 build() {
     cd modbus-tk-"${pkgver}"
