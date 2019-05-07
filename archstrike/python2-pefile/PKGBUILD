@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-pefile
-pkgver=2018.8.8
+pkgver=2019.4.18
 pkgrel=1
 pkgdesc="A Python library for PE file support and investigation."
 arch=('any')
@@ -13,7 +13,7 @@ depends=('python2-future')
 makedepends=('python2-setuptools')
 source=("https://github.com/erocarrera/pefile/releases/download/v${pkgver}/pefile-${pkgver}.tar.gz"
         "http://research.pandasecurity.com/blogs/images/userdb.txt" )
-sha512sums=('44e8ed40f03e795badcc17cc6567165b3430aa80034f1b02b35fc15c94ce6b544ac195dedcea5858664c169fc4241e999df09a36f1a8a6635ce536af40284d29'
+sha512sums=('33c53120fd6a0fde22f4076c19ed8f69fc2b53b16d0c581133446d0d770e290dcb2ddd1e9941e8d8debc28c1cb4ff64ff055c2b8c0958015d9121de72ae20c76'
             'e23030b87c029911bb1fed9dfd245b645ffcb70781c3a0aa8f1dd0ecc5e3f02e36261ac69d1a25a6eee4622954217b4830a87feb8446483bc394a579d7bbb0ad')
 
 prepare() {
