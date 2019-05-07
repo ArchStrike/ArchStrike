@@ -3,20 +3,20 @@
 buildarch=1
 
 pkgname=python2-facepy
-pkgver=1.0.8
-pkgrel=3
+pkgver=1.0.10
+pkgrel=1
 pkgdesc="makes it really easy to interact with Facebook's Graph API"
 arch=(any)
 url="https://github.com/jgorset/facepy"
 license=('MIT')
-depends=('python2')
+depends=('python2' 'python2-requests')
 makedepends=('python2-setuptools')
 source=("https://github.com/jgorset/facepy/archive/v$pkgver.tar.gz")
-sha512sums=('8d14625878730f38ab21bc54120874c967903a4690c8d7dc985486ce106bef7919f2fe9163e15dea5923100fb40218a512d79b196d415c5bcf44aa34665170df')
+sha512sums=('a8cb4bf9c4a77120949f60a9d02a3c0d2c831dc898f420d4643f405989fb28a12387cad308f23f47be4a5c5aa795b90923bc7f139260b231cb8f30e7a64ed63a')
 
 package() {
   cd "$srcdir/facepy-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" -O1
   install -Dm644 "LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
