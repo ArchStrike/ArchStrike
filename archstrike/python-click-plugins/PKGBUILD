@@ -2,7 +2,7 @@
 
 pkgbase=click-plugins
 pkgname=("python2-${pkgbase}" "python-${pkgbase}")
-pkgver=1.0.4
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="Extension module for click to enable registering CLI commands."
 url="https://github.com/click-contrib/click-plugins"
@@ -10,7 +10,7 @@ makedepends=('python2-setuptools' 'python-setuptools')
 license=('New BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/c/click-plugins/click-plugins-${pkgver}.tar.gz")
-sha512sums=('97e2f0f2b78d31d079fc5f2cc0c526ad68c62f769e8e9892771214678a2879624f0be1635b05e49340888d179f44a45433eb38b68571a714ff5e85e65e7195ce')
+sha512sums=('bbd838f50603ac4e76daf3535fd5d27a17e17549addbc8b582df6d6193b4f07d743101ce52f0b71f326995fdfeac159805025770350ca2e7697f212dce0c4b1a')
 
 prepare() {
     cp -r ${pkgbase}-${pkgver} ${pkgbase}2-${pkgver}
