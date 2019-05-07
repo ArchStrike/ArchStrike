@@ -4,19 +4,21 @@
 buildarch=220
 
 pkgname=libqcow
-pkgver=20170222
+pkgver=20181227
 pkgrel=1
 pkgdesc="Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility"
 url="http://code.google.com/p/libqcow/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('LGPL3')
-depends=('fuse' 'libcsystem' 'python2' 'libbfio')
+depends=('fuse' 'libcsystem' 'python2' 'python' 'libbfio' 'fuse' 'openssl-1.0')
+makedepends=('zlib' 'openssl-1.0' 'python2' 'python')
 source=("https://github.com/libyal/libqcow/releases/download/$pkgver/libqcow-alpha-$pkgver.tar.gz")
-sha512sums=('3b60cb649864c9385d7e98c085fa8908e530926f9ed02a1c107085f13e2f1c2543f789aa66e70d1e0a54828fc7d26f2cc2d8608bcb93ec79853764375fb59c46')
+sha512sums=('01b8f7eb83f1c11dd14b5c6fccbd336ecb196cea9e3e9c439f584c95bc8d836cefe9a72a3cebf2f410f81a11b0fafca321de09988cc573d7f88bd1680fc00b6a')
 
 build(){
   cd $srcdir/$pkgname-$pkgver
-  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --with-openssl --with-libfuse --enable-verbose-output --enable-debug-output --enable-python --with-pyprefix=2
+  # --with-openssl seems to break this build :(
+  ./configure --prefix=/usr --with-libfuse --enable-verbose-output --enable-debug-output --enable-python2 --enable-python3 --enable-wide-character-type
   make
 }
 
