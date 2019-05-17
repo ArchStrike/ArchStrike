@@ -4,18 +4,18 @@
 buildarch=220
 
 pkgname=ghostpdl
-pkgver=9.23
-pkgrel=2
+pkgver=9.27
+pkgrel=1
 pkgdesc='An interpreter for the Postscript language and for PDF - GhostPCL (PCL-5, and PCL-XL), GhostXPS (XPS), GhostPDF and ghostscript'
 url='http://www.artifex.com'
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 depends=('libxt' 'libxext' 'python' 'tcl')
-source=("https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs923/ghostpdl-$pkgver.tar.gz"
+source=("https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs927/ghostpdl-$pkgver.tar.gz"
         "config.guess-for-aarch64.patch")
-sha512sums=('477862b41c6546540d048ae0af078b4ade65509ad0533f21b79f9692d6b818bfb58fb2a29dd3f3dba5b722ac4c4273a4f6dc7935f46bbfbb336e41bf21deed26'
-            '1216f676bfe4d9c007e9f615181602cf11a461ec7ee07da039cf2472a919339d75077c3463834a8c5818b46f442f907c716d0965816d859f6d6aef20f97a45f4')
+sha512sums=('a07f0f9ab49571c815484f7d54e01d169722bf8904e23f428d87a2d44976fce8968f6f925af8d3b1ba120fa90613dc6e2c8b553b18ecbc202063195ef6c6224d'
+            'f4edc4ea70f51094f120a66764aa46ba86364443d96bca9fd8bc6af06cda5e37abb792391ea69407f4c0ba1ce2bbea0bcc4d87ddd59d7209017b36a056878638')
 
 prepare() {
   cd $pkgname-$pkgver

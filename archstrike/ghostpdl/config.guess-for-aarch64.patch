@@ -1,6 +1,7 @@
-diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
---- ghostpdl-9.19.orig/ijs/config.guess	2016-08-26 14:17:03.554095695 -0400
-+++ ghostpdl-9.19/ijs/config.guess	2016-08-26 14:17:55.633361305 -0400
+diff --git ghostpdl-9.23/ijs/config.guess ghostpdl-9.23/ijs/config.guess
+index b79252d..c4bd827 100755
+--- ghostpdl-9.23/ijs/config.guess
++++ ghostpdl-9.23/ijs/config.guess
 @@ -1,8 +1,8 @@
  #! /bin/sh
  # Attempt to guess a canonical system name.
@@ -12,7 +13,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  
  # This file is free software; you can redistribute it and/or modify it
  # under the terms of the GNU General Public License as published by
-@@ -24,12 +24,12 @@
+@@ -24,12 +24,12 @@ timestamp='2013-06-10'
  # program.  This Exception is an additional permission under section 7
  # of the GNU General Public License, version 3 ("GPLv3").
  #
@@ -28,7 +29,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  
  
  me=`echo "$0" | sed -e 's,.*/,,'`
-@@ -50,7 +50,7 @@
+@@ -50,7 +50,7 @@ version="\
  GNU config.guess ($timestamp)
  
  Originally written by Per Bothner.
@@ -37,7 +38,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  
  This is free software; see the source for copying conditions.  There is NO
  warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
-@@ -149,7 +149,7 @@
+@@ -149,7 +149,7 @@ Linux|GNU|GNU/*)
  	LIBC=gnu
  	#endif
  	EOF
@@ -46,7 +47,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	;;
  esac
  
-@@ -168,19 +168,29 @@
+@@ -168,19 +168,29 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
  	# Note: NetBSD doesn't particularly care about the vendor
  	# portion of the name.  We always set it to "unknown".
  	sysctl="sysctl -n hw.machine_arch"
@@ -79,7 +80,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	    arm*|i386|m68k|ns32k|sh3*|sparc|vax)
  		eval $set_cc_for_build
  		if echo __ELF__ | $CC_FOR_BUILD -E - 2>/dev/null \
-@@ -197,6 +207,13 @@
+@@ -197,6 +207,13 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
  		os=netbsd
  		;;
  	esac
@@ -93,7 +94,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	# The OS release
  	# Debian GNU/NetBSD machines have a different userland, and
  	# thus, need a distinct triplet. However, they do not need
-@@ -207,13 +224,13 @@
+@@ -207,13 +224,13 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
  		release='-gnu'
  		;;
  	    *)
@@ -109,7 +110,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	exit ;;
      *:Bitrig:*:*)
  	UNAME_MACHINE_ARCH=`arch | sed 's/Bitrig.//'`
-@@ -223,6 +240,10 @@
+@@ -223,6 +240,10 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
  	UNAME_MACHINE_ARCH=`arch | sed 's/OpenBSD.//'`
  	echo ${UNAME_MACHINE_ARCH}-unknown-openbsd${UNAME_RELEASE}
  	exit ;;
@@ -120,7 +121,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
      *:ekkoBSD:*:*)
  	echo ${UNAME_MACHINE}-unknown-ekkobsd${UNAME_RELEASE}
  	exit ;;
-@@ -235,6 +256,9 @@
+@@ -235,6 +256,9 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
      *:MirBSD:*:*)
  	echo ${UNAME_MACHINE}-unknown-mirbsd${UNAME_RELEASE}
  	exit ;;
@@ -130,7 +131,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
      alpha:OSF1:*:*)
  	case $UNAME_RELEASE in
  	*4.0)
-@@ -251,42 +275,42 @@
+@@ -251,42 +275,42 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
  	ALPHA_CPU_TYPE=`/usr/sbin/psrinfo -v | sed -n -e 's/^  The alpha \(.*\) processor.*$/\1/p' | head -n 1`
  	case "$ALPHA_CPU_TYPE" in
  	    "EV4 (21064)")
@@ -189,7 +190,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	# Reset EXIT trap before exiting to avoid spurious non-zero exit code.
  	exitcode=$?
  	trap '' 0
-@@ -359,16 +383,16 @@
+@@ -359,16 +383,16 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
  	exit ;;
      i86pc:SunOS:5.*:* | i86xen:SunOS:5.*:*)
  	eval $set_cc_for_build
@@ -210,7 +211,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	    fi
  	fi
  	echo ${SUN_ARCH}-pc-solaris2`echo ${UNAME_RELEASE}|sed -e 's/[^.]*//'`
-@@ -393,7 +417,7 @@
+@@ -393,7 +417,7 @@ case "${UNAME_MACHINE}:${UNAME_SYSTEM}:${UNAME_RELEASE}:${UNAME_VERSION}" in
  	exit ;;
      sun*:*:4.2BSD:*)
  	UNAME_RELEASE=`(sed 1q /etc/motd | awk '{print substr($5,1,3)}') 2>/dev/null`
@@ -219,7 +220,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	case "`/bin/arch`" in
  	    sun3)
  		echo m68k-sun-sunos${UNAME_RELEASE}
-@@ -579,8 +603,9 @@
+@@ -579,8 +603,9 @@ EOF
  	else
  		IBM_ARCH=powerpc
  	fi
@@ -231,7 +232,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	else
  		IBM_REV=${UNAME_VERSION}.${UNAME_RELEASE}
  	fi
-@@ -617,13 +642,13 @@
+@@ -617,13 +642,13 @@ EOF
  		    sc_cpu_version=`/usr/bin/getconf SC_CPU_VERSION 2>/dev/null`
  		    sc_kernel_bits=`/usr/bin/getconf SC_KERNEL_BITS 2>/dev/null`
  		    case "${sc_cpu_version}" in
@@ -250,7 +251,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  			esac ;;
  		    esac
  		fi
-@@ -662,11 +687,11 @@
+@@ -662,11 +687,11 @@ EOF
  		    exit (0);
  		}
  EOF
@@ -264,7 +265,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	then
  	    eval $set_cc_for_build
  
-@@ -679,12 +704,12 @@
+@@ -679,12 +704,12 @@ EOF
  	    # $ CC_FOR_BUILD="cc +DA2.0w" ./config.guess
  	    # => hppa64-hp-hpux11.23
  
@@ -280,7 +281,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	    fi
  	fi
  	echo ${HP_ARCH}-hp-hpux${HPUX_REV}
-@@ -789,14 +814,14 @@
+@@ -789,14 +814,14 @@ EOF
  	echo craynv-cray-unicosmp${UNAME_RELEASE} | sed -e 's/\.[^.]*$/.X/'
  	exit ;;
      F30[01]:UNIX_System_V:*:* | F700:UNIX_System_V:*:*)
@@ -299,7 +300,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	echo "sparc-fujitsu-${FUJITSU_SYS}${FUJITSU_REL}"
  	exit ;;
      i*86:BSD/386:*:* | i*86:BSD/OS:*:* | *:Ascend\ Embedded/OS:*:*)
-@@ -826,7 +851,7 @@
+@@ -826,7 +851,7 @@ EOF
      *:MINGW*:*)
  	echo ${UNAME_MACHINE}-pc-mingw32
  	exit ;;
@@ -308,7 +309,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	echo ${UNAME_MACHINE}-pc-msys
  	exit ;;
      i*:windows32*:*)
-@@ -878,7 +903,7 @@
+@@ -878,7 +903,7 @@ EOF
  	exit ;;
      *:GNU/*:*:*)
  	# other systems with GNU libc and userland
@@ -317,7 +318,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	exit ;;
      i*86:Minix:*:*)
  	echo ${UNAME_MACHINE}-pc-minix
-@@ -901,7 +926,7 @@
+@@ -901,7 +926,7 @@ EOF
  	  EV68*) UNAME_MACHINE=alphaev68 ;;
  	esac
  	objdump --private-headers /bin/sh | grep -q ld.so.1
@@ -326,7 +327,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
  	exit ;;
      arc:Linux:*:* | arceb:Linux:*:*)
-@@ -932,6 +957,9 @@
+@@ -932,6 +957,9 @@ EOF
      crisv32:Linux:*:*)
  	echo ${UNAME_MACHINE}-axis-linux-${LIBC}
  	exit ;;
@@ -336,7 +337,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
      frv:Linux:*:*)
  	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
  	exit ;;
-@@ -944,6 +972,9 @@
+@@ -944,6 +972,9 @@ EOF
      ia64:Linux:*:*)
  	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
  	exit ;;
@@ -346,7 +347,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
      m32r*:Linux:*:*)
  	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
  	exit ;;
-@@ -969,10 +1000,10 @@
+@@ -969,10 +1000,10 @@ EOF
  	eval `$CC_FOR_BUILD -E $dummy.c 2>/dev/null | grep '^CPU'`
  	test x"${CPU}" != x && { echo "${CPU}-unknown-linux-${LIBC}"; exit; }
  	;;
@@ -360,7 +361,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
  	exit ;;
      padre:Linux:*:*)
-@@ -1020,7 +1051,7 @@
+@@ -1020,7 +1051,7 @@ EOF
  	echo ${UNAME_MACHINE}-dec-linux-${LIBC}
  	exit ;;
      x86_64:Linux:*:*)
@@ -369,7 +370,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	exit ;;
      xtensa*:Linux:*:*)
  	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
-@@ -1099,7 +1130,7 @@
+@@ -1099,7 +1130,7 @@ EOF
  	# uname -m prints for DJGPP always 'pc', but it prints nothing about
  	# the processor, so we play safe by assuming i586.
  	# Note: whatever this is, it MUST be the same as what config.sub
@@ -378,7 +379,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	# this is a cross-build.
  	echo i586-pc-msdosdjgpp
  	exit ;;
-@@ -1248,6 +1279,9 @@
+@@ -1248,6 +1279,9 @@ EOF
      SX-8R:SUPER-UX:*:*)
  	echo sx8r-nec-superux${UNAME_RELEASE}
  	exit ;;
@@ -388,7 +389,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
      Power*:Rhapsody:*:*)
  	echo powerpc-apple-rhapsody${UNAME_RELEASE}
  	exit ;;
-@@ -1260,22 +1294,32 @@
+@@ -1260,22 +1294,32 @@ EOF
  	if test "$UNAME_PROCESSOR" = unknown ; then
  	    UNAME_PROCESSOR=powerpc
  	fi
@@ -431,7 +432,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  		UNAME_PROCESSOR=i386
  		UNAME_MACHINE=pc
  	fi
-@@ -1306,7 +1350,7 @@
+@@ -1306,7 +1350,7 @@ EOF
  	# "uname -m" is not consistent, so use $cputype instead. 386
  	# is converted to i386 for consistency with other x86
  	# operating systems.
@@ -440,7 +441,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	    UNAME_MACHINE=i386
  	else
  	    UNAME_MACHINE="$cputype"
-@@ -1348,7 +1392,7 @@
+@@ -1348,7 +1392,7 @@ EOF
  	echo i386-pc-xenix
  	exit ;;
      i*86:skyos:*:*)
@@ -449,7 +450,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  	exit ;;
      i*86:rdos:*:*)
  	echo ${UNAME_MACHINE}-pc-rdos
-@@ -1359,171 +1403,25 @@
+@@ -1359,171 +1403,25 @@ EOF
      x86_64:VMkernel:*:*)
  	echo ${UNAME_MACHINE}-unknown-esx
  	exit ;;
@@ -632,9 +633,10 @@ diff -aur ghostpdl-9.19.orig/ijs/config.guess ghostpdl-9.19/ijs/config.guess
  
  config.guess timestamp = $timestamp
  
-diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
---- ghostpdl-9.19.orig/ijs/config.sub	2016-08-26 14:17:03.554095695 -0400
-+++ ghostpdl-9.19/ijs/config.sub	2016-08-26 14:18:11.513137378 -0400
+diff --git ghostpdl-9.23/ijs/config.sub ghostpdl-9.23/ijs/config.sub
+index 9633db7..a1f8229 100755
+--- ghostpdl-9.23/ijs/config.sub
++++ ghostpdl-9.23/ijs/config.sub
 @@ -1,8 +1,8 @@
  #! /bin/sh
  # Configuration validation subroutine script.
@@ -646,7 +648,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  
  # This file is free software; you can redistribute it and/or modify it
  # under the terms of the GNU General Public License as published by
-@@ -25,7 +25,7 @@
+@@ -25,7 +25,7 @@ timestamp='2013-08-10'
  # of the GNU General Public License, version 3 ("GPLv3").
  
  
@@ -655,7 +657,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  #
  # Configuration subroutine to validate and canonicalize a configuration type.
  # Supply the specified configuration type as an argument.
-@@ -33,7 +33,7 @@
+@@ -33,7 +33,7 @@ timestamp='2013-08-10'
  # Otherwise, we print the canonical config type on stdout and succeed.
  
  # You can get the latest version of this script from:
@@ -664,7 +666,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  
  # This file is supposed to be the same for all GNU packages
  # and recognize all the CPU types, system types and aliases
-@@ -53,8 +53,7 @@
+@@ -53,8 +53,7 @@ timestamp='2013-08-10'
  me=`echo "$0" | sed -e 's,.*/,,'`
  
  usage="\
@@ -674,7 +676,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  
  Canonicalize a configuration name.
  
-@@ -68,7 +67,7 @@
+@@ -68,7 +67,7 @@ Report bugs and patches to <config-patches@gnu.org>."
  version="\
  GNU config.sub ($timestamp)
  
@@ -683,7 +685,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  
  This is free software; see the source for copying conditions.  There is NO
  warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
-@@ -117,7 +116,7 @@
+@@ -117,7 +116,7 @@ maybe_os=`echo $1 | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\2/'`
  case $maybe_os in
    nto-qnx* | linux-gnu* | linux-android* | linux-dietlibc | linux-newlib* | \
    linux-musl* | linux-uclibc* | uclinux-uclibc* | uclinux-gnu* | kfreebsd*-gnu* | \
@@ -692,7 +694,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
    kopensolaris*-gnu* | \
    storm-chaos* | os2-emx* | rtmk-nova*)
      os=-$maybe_os
-@@ -255,16 +254,18 @@
+@@ -255,16 +254,18 @@ case $basic_machine in
  	| arc | arceb \
  	| arm | arm[bl]e | arme[lb] | armv[2-8] | armv[3-8][lb] | armv7[arm] \
  	| avr | avr32 \
@@ -713,7 +715,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	| le32 | le64 \
  	| lm32 \
  	| m32c | m32r | m32rle | m68000 | m68k | m88k \
-@@ -282,8 +283,10 @@
+@@ -282,8 +283,10 @@ case $basic_machine in
  	| mips64vr5900 | mips64vr5900el \
  	| mipsisa32 | mipsisa32el \
  	| mipsisa32r2 | mipsisa32r2el \
@@ -724,7 +726,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	| mipsisa64sb1 | mipsisa64sb1el \
  	| mipsisa64sr71k | mipsisa64sr71kel \
  	| mipsr5900 | mipsr5900el \
-@@ -295,14 +298,14 @@
+@@ -295,14 +298,14 @@ case $basic_machine in
  	| nds32 | nds32le | nds32be \
  	| nios | nios2 | nios2eb | nios2el \
  	| ns16k | ns32k \
@@ -742,7 +744,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	| sh64 | sh64le \
  	| sparc | sparc64 | sparc64b | sparc64v | sparc86x | sparclet | sparclite \
  	| sparcv8 | sparcv9 | sparcv9b | sparcv9v \
-@@ -310,6 +313,7 @@
+@@ -310,6 +313,7 @@ case $basic_machine in
  	| tahoe | tic4x | tic54x | tic55x | tic6x | tic80 | tron \
  	| ubicom32 \
  	| v850 | v850e | v850e1 | v850e2 | v850es | v850e2v3 \
@@ -750,7 +752,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	| we32k \
  	| x86 | xc16x | xstormy16 | xtensa \
  	| z8k | z80)
-@@ -324,7 +328,10 @@
+@@ -324,7 +328,10 @@ case $basic_machine in
  	c6x)
  		basic_machine=tic6x-unknown
  		;;
@@ -762,7 +764,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  		basic_machine=$basic_machine-unknown
  		os=-none
  		;;
-@@ -369,18 +376,20 @@
+@@ -369,18 +376,20 @@ case $basic_machine in
  	| alphapca5[67]-* | alpha64pca5[67]-* | arc-* | arceb-* \
  	| arm-*  | armbe-* | armle-* | armeb-* | armv*-* \
  	| avr-* | avr32-* \
@@ -784,7 +786,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	| le32-* | le64-* \
  	| lm32-* \
  	| m32c-* | m32r-* | m32rle-* \
-@@ -400,8 +409,10 @@
+@@ -400,8 +409,10 @@ case $basic_machine in
  	| mips64vr5900-* | mips64vr5900el-* \
  	| mipsisa32-* | mipsisa32el-* \
  	| mipsisa32r2-* | mipsisa32r2el-* \
@@ -795,7 +797,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	| mipsisa64sb1-* | mipsisa64sb1el-* \
  	| mipsisa64sr71k-* | mipsisa64sr71kel-* \
  	| mipsr5900-* | mipsr5900el-* \
-@@ -413,16 +424,18 @@
+@@ -413,16 +424,18 @@ case $basic_machine in
  	| nios-* | nios2-* | nios2eb-* | nios2el-* \
  	| none-* | np1-* | ns16k-* | ns32k-* \
  	| open8-* \
@@ -815,7 +817,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	| tahoe-* \
  	| tic30-* | tic4x-* | tic54x-* | tic55x-* | tic6x-* | tic80-* \
  	| tile*-* \
-@@ -430,6 +443,7 @@
+@@ -430,6 +443,7 @@ case $basic_machine in
  	| ubicom32-* \
  	| v850-* | v850e-* | v850e1-* | v850es-* | v850e2-* | v850e2v3-* \
  	| vax-* \
@@ -823,7 +825,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	| we32k-* \
  	| x86-* | x86_64-* | xc16x-* | xps100-* \
  	| xstormy16-* | xtensa*-* \
-@@ -506,6 +520,9 @@
+@@ -506,6 +520,9 @@ case $basic_machine in
  		basic_machine=i386-pc
  		os=-aros
  		;;
@@ -833,7 +835,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	aux)
  		basic_machine=m68k-apple
  		os=-aux
-@@ -626,6 +643,14 @@
+@@ -626,6 +643,14 @@ case $basic_machine in
  		basic_machine=m68k-bull
  		os=-sysv3
  		;;
@@ -848,7 +850,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	ebmon29k)
  		basic_machine=a29k-amd
  		os=-ebmon
-@@ -767,6 +792,9 @@
+@@ -767,6 +792,9 @@ case $basic_machine in
  		basic_machine=m68k-isi
  		os=-sysv
  		;;
@@ -858,7 +860,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	m68knommu)
  		basic_machine=m68k-unknown
  		os=-linux
-@@ -822,6 +850,10 @@
+@@ -822,6 +850,10 @@ case $basic_machine in
  		basic_machine=powerpc-unknown
  		os=-morphos
  		;;
@@ -869,7 +871,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	msdos)
  		basic_machine=i386-pc
  		os=-msdos
-@@ -998,7 +1030,7 @@
+@@ -998,7 +1030,7 @@ case $basic_machine in
  	ppc-* | ppcbe-*)
  		basic_machine=powerpc-`echo $basic_machine | sed 's/^[^-]*-//'`
  		;;
@@ -878,7 +880,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  		basic_machine=powerpcle-unknown
  		;;
  	ppcle-* | powerpclittle-*)
-@@ -1008,7 +1040,7 @@
+@@ -1008,7 +1040,7 @@ case $basic_machine in
  		;;
  	ppc64-*) basic_machine=powerpc64-`echo $basic_machine | sed 's/^[^-]*-//'`
  		;;
@@ -887,7 +889,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  		basic_machine=powerpc64le-unknown
  		;;
  	ppc64le-* | powerpc64little-*)
-@@ -1354,27 +1386,28 @@
+@@ -1354,27 +1386,28 @@ case $os in
  	      | -hpux* | -unos* | -osf* | -luna* | -dgux* | -auroraux* | -solaris* \
  	      | -sym* | -kopensolaris* | -plan9* \
  	      | -amigaos* | -amigados* | -msdos* | -newsos* | -unicos* | -aof* \
@@ -921,7 +923,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	# Remember, each alternative MUST END IN *, to match a version number.
  		;;
  	-qnx*)
-@@ -1506,6 +1539,8 @@
+@@ -1506,6 +1539,8 @@ case $os in
  		;;
  	-nacl*)
  		;;
@@ -930,7 +932,7 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	-none)
  		;;
  	*)
-@@ -1592,9 +1627,6 @@
+@@ -1592,9 +1627,6 @@ case $basic_machine in
  	mips*-*)
  		os=-elf
  		;;
@@ -940,924 +942,21 @@ diff -aur ghostpdl-9.19.orig/ijs/config.sub ghostpdl-9.19/ijs/config.sub
  	or32-*)
  		os=-coff
  		;;
-diff -aur ghostpdl-9.19.orig/jpeg/config.guess ghostpdl-9.19/jpeg/config.guess
---- ghostpdl-9.19.orig/jpeg/config.guess	2016-08-26 14:17:03.374098233 -0400
-+++ ghostpdl-9.19/jpeg/config.guess	2016-08-26 14:23:53.128320130 -0400
-@@ -1,8 +1,8 @@
- #! /bin/sh
- # Attempt to guess a canonical system name.
--#   Copyright 1992-2013 Free Software Foundation, Inc.
-+#   Copyright 1992-2016 Free Software Foundation, Inc.
- 
--timestamp='2013-11-29'
-+timestamp='2016-05-15'
- 
- # This file is free software; you can redistribute it and/or modify it
- # under the terms of the GNU General Public License as published by
-@@ -24,12 +24,12 @@
- # program.  This Exception is an additional permission under section 7
- # of the GNU General Public License, version 3 ("GPLv3").
- #
--# Originally written by Per Bothner.
-+# Originally written by Per Bothner; maintained since 2000 by Ben Elliston.
- #
- # You can get the latest version of this script from:
--# http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
-+# http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess
- #
--# Please send patches with a ChangeLog entry to config-patches@gnu.org.
-+# Please send patches to <config-patches@gnu.org>.
- 
- 
- me=`echo "$0" | sed -e 's,.*/,,'`
-@@ -50,7 +50,7 @@
- GNU config.guess ($timestamp)
- 
- Originally written by Per Bothner.
--Copyright 1992-2013 Free Software Foundation, Inc.
-+Copyright 1992-2016 Free Software Foundation, Inc.
- 
- This is free software; see the source for copying conditions.  There is NO
- warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
-@@ -149,7 +149,7 @@
- 	LIBC=gnu
- 	#endif
- 	EOF
--	eval `$CC_FOR_BUILD -E $dummy.c 2>/dev/null | grep '^LIBC'`
-+	eval `$CC_FOR_BUILD -E $dummy.c 2>/dev/null | grep '^LIBC' | sed 's, ,,g'`
- 	;;
- esac
- 
-@@ -168,19 +168,29 @@
- 	# Note: NetBSD doesn't particularly care about the vendor
- 	# portion of the name.  We always set it to "unknown".
- 	sysctl="sysctl -n hw.machine_arch"
--	UNAME_MACHINE_ARCH=`(/sbin/$sysctl 2>/dev/null || \
--	    /usr/sbin/$sysctl 2>/dev/null || echo unknown)`
-+	UNAME_MACHINE_ARCH=`(uname -p 2>/dev/null || \
-+	    /sbin/$sysctl 2>/dev/null || \
-+	    /usr/sbin/$sysctl 2>/dev/null || \
-+	    echo unknown)`
- 	case "${UNAME_MACHINE_ARCH}" in
- 	    armeb) machine=armeb-unknown ;;
- 	    arm*) machine=arm-unknown ;;
- 	    sh3el) machine=shl-unknown ;;
- 	    sh3eb) machine=sh-unknown ;;
- 	    sh5el) machine=sh5le-unknown ;;
-+	    earmv*)
-+		arch=`echo ${UNAME_MACHINE_ARCH} | sed -e 's,^e\(armv[0-9]\).*$,\1,'`
-+		endian=`echo ${UNAME_MACHINE_ARCH} | sed -ne 's,^.*\(eb\)$,\1,p'`
-+		machine=${arch}${endian}-unknown
-+		;;
- 	    *) machine=${UNAME_MACHINE_ARCH}-unknown ;;
- 	esac
- 	# The Operating System including object format, if it has switched
--	# to ELF recently, or will in the future.
-+	# to ELF recently (or will in the future) and ABI.
- 	case "${UNAME_MACHINE_ARCH}" in
-+	    earm*)
-+		os=netbsdelf
-+		;;
- 	    arm*|i386|m68k|ns32k|sh3*|sparc|vax)
- 		eval $set_cc_for_build
- 		if echo __ELF__ | $CC_FOR_BUILD -E - 2>/dev/null \
-@@ -197,6 +207,13 @@
- 		os=netbsd
- 		;;
- 	esac
-+	# Determine ABI tags.
-+	case "${UNAME_MACHINE_ARCH}" in
-+	    earm*)
-+		expr='s/^earmv[0-9]/-eabi/;s/eb$//'
-+		abi=`echo ${UNAME_MACHINE_ARCH} | sed -e "$expr"`
-+		;;
-+	esac
- 	# The OS release
- 	# Debian GNU/NetBSD machines have a different userland, and
- 	# thus, need a distinct triplet. However, they do not need
-@@ -207,13 +224,13 @@
- 		release='-gnu'
- 		;;
- 	    *)
--		release=`echo ${UNAME_RELEASE}|sed -e 's/[-_].*/\./'`
-+		release=`echo ${UNAME_RELEASE} | sed -e 's/[-_].*//' | cut -d. -f1,2`
- 		;;
- 	esac
- 	# Since CPU_TYPE-MANUFACTURER-KERNEL-OPERATING_SYSTEM:
- 	# contains redundant information, the shorter form:
- 	# CPU_TYPE-MANUFACTURER-OPERATING_SYSTEM is used.
--	echo "${machine}-${os}${release}"
-+	echo "${machine}-${os}${release}${abi}"
- 	exit ;;
-     *:Bitrig:*:*)
- 	UNAME_MACHINE_ARCH=`arch | sed 's/Bitrig.//'`
-@@ -223,6 +240,10 @@
- 	UNAME_MACHINE_ARCH=`arch | sed 's/OpenBSD.//'`
- 	echo ${UNAME_MACHINE_ARCH}-unknown-openbsd${UNAME_RELEASE}
- 	exit ;;
-+    *:LibertyBSD:*:*)
-+	UNAME_MACHINE_ARCH=`arch | sed 's/^.*BSD\.//'`
-+	echo ${UNAME_MACHINE_ARCH}-unknown-libertybsd${UNAME_RELEASE}
-+	exit ;;
-     *:ekkoBSD:*:*)
- 	echo ${UNAME_MACHINE}-unknown-ekkobsd${UNAME_RELEASE}
- 	exit ;;
-@@ -235,6 +256,9 @@
-     *:MirBSD:*:*)
- 	echo ${UNAME_MACHINE}-unknown-mirbsd${UNAME_RELEASE}
- 	exit ;;
-+    *:Sortix:*:*)
-+	echo ${UNAME_MACHINE}-unknown-sortix
-+	exit ;;
-     alpha:OSF1:*:*)
- 	case $UNAME_RELEASE in
- 	*4.0)
-@@ -251,42 +275,42 @@
- 	ALPHA_CPU_TYPE=`/usr/sbin/psrinfo -v | sed -n -e 's/^  The alpha \(.*\) processor.*$/\1/p' | head -n 1`
- 	case "$ALPHA_CPU_TYPE" in
- 	    "EV4 (21064)")
--		UNAME_MACHINE="alpha" ;;
-+		UNAME_MACHINE=alpha ;;
- 	    "EV4.5 (21064)")
--		UNAME_MACHINE="alpha" ;;
-+		UNAME_MACHINE=alpha ;;
- 	    "LCA4 (21066/21068)")
--		UNAME_MACHINE="alpha" ;;
-+		UNAME_MACHINE=alpha ;;
- 	    "EV5 (21164)")
--		UNAME_MACHINE="alphaev5" ;;
-+		UNAME_MACHINE=alphaev5 ;;
- 	    "EV5.6 (21164A)")
--		UNAME_MACHINE="alphaev56" ;;
-+		UNAME_MACHINE=alphaev56 ;;
- 	    "EV5.6 (21164PC)")
--		UNAME_MACHINE="alphapca56" ;;
-+		UNAME_MACHINE=alphapca56 ;;
- 	    "EV5.7 (21164PC)")
--		UNAME_MACHINE="alphapca57" ;;
-+		UNAME_MACHINE=alphapca57 ;;
- 	    "EV6 (21264)")
--		UNAME_MACHINE="alphaev6" ;;
-+		UNAME_MACHINE=alphaev6 ;;
- 	    "EV6.7 (21264A)")
--		UNAME_MACHINE="alphaev67" ;;
-+		UNAME_MACHINE=alphaev67 ;;
- 	    "EV6.8CB (21264C)")
--		UNAME_MACHINE="alphaev68" ;;
-+		UNAME_MACHINE=alphaev68 ;;
- 	    "EV6.8AL (21264B)")
--		UNAME_MACHINE="alphaev68" ;;
-+		UNAME_MACHINE=alphaev68 ;;
- 	    "EV6.8CX (21264D)")
--		UNAME_MACHINE="alphaev68" ;;
-+		UNAME_MACHINE=alphaev68 ;;
- 	    "EV6.9A (21264/EV69A)")
--		UNAME_MACHINE="alphaev69" ;;
-+		UNAME_MACHINE=alphaev69 ;;
- 	    "EV7 (21364)")
--		UNAME_MACHINE="alphaev7" ;;
-+		UNAME_MACHINE=alphaev7 ;;
- 	    "EV7.9 (21364A)")
--		UNAME_MACHINE="alphaev79" ;;
-+		UNAME_MACHINE=alphaev79 ;;
- 	esac
- 	# A Pn.n version is a patched version.
- 	# A Vn.n version is a released version.
- 	# A Tn.n version is a released field test version.
- 	# A Xn.n version is an unreleased experimental baselevel.
- 	# 1.2 uses "1.2" for uname -r.
--	echo ${UNAME_MACHINE}-dec-osf`echo ${UNAME_RELEASE} | sed -e 's/^[PVTX]//' | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz'`
-+	echo ${UNAME_MACHINE}-dec-osf`echo ${UNAME_RELEASE} | sed -e 's/^[PVTX]//' | tr ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz`
- 	# Reset EXIT trap before exiting to avoid spurious non-zero exit code.
- 	exitcode=$?
- 	trap '' 0
-@@ -359,16 +383,16 @@
- 	exit ;;
-     i86pc:SunOS:5.*:* | i86xen:SunOS:5.*:*)
- 	eval $set_cc_for_build
--	SUN_ARCH="i386"
-+	SUN_ARCH=i386
- 	# If there is a compiler, see if it is configured for 64-bit objects.
- 	# Note that the Sun cc does not turn __LP64__ into 1 like gcc does.
- 	# This test works for both compilers.
--	if [ "$CC_FOR_BUILD" != 'no_compiler_found' ]; then
-+	if [ "$CC_FOR_BUILD" != no_compiler_found ]; then
- 	    if (echo '#ifdef __amd64'; echo IS_64BIT_ARCH; echo '#endif') | \
--		(CCOPTS= $CC_FOR_BUILD -E - 2>/dev/null) | \
-+		(CCOPTS="" $CC_FOR_BUILD -E - 2>/dev/null) | \
- 		grep IS_64BIT_ARCH >/dev/null
- 	    then
--		SUN_ARCH="x86_64"
-+		SUN_ARCH=x86_64
- 	    fi
- 	fi
- 	echo ${SUN_ARCH}-pc-solaris2`echo ${UNAME_RELEASE}|sed -e 's/[^.]*//'`
-@@ -393,7 +417,7 @@
- 	exit ;;
-     sun*:*:4.2BSD:*)
- 	UNAME_RELEASE=`(sed 1q /etc/motd | awk '{print substr($5,1,3)}') 2>/dev/null`
--	test "x${UNAME_RELEASE}" = "x" && UNAME_RELEASE=3
-+	test "x${UNAME_RELEASE}" = x && UNAME_RELEASE=3
- 	case "`/bin/arch`" in
- 	    sun3)
- 		echo m68k-sun-sunos${UNAME_RELEASE}
-@@ -579,8 +603,9 @@
- 	else
- 		IBM_ARCH=powerpc
- 	fi
--	if [ -x /usr/bin/oslevel ] ; then
--		IBM_REV=`/usr/bin/oslevel`
-+	if [ -x /usr/bin/lslpp ] ; then
-+		IBM_REV=`/usr/bin/lslpp -Lqc bos.rte.libc |
-+			   awk -F: '{ print $3 }' | sed s/[0-9]*$/0/`
- 	else
- 		IBM_REV=${UNAME_VERSION}.${UNAME_RELEASE}
- 	fi
-@@ -617,13 +642,13 @@
- 		    sc_cpu_version=`/usr/bin/getconf SC_CPU_VERSION 2>/dev/null`
- 		    sc_kernel_bits=`/usr/bin/getconf SC_KERNEL_BITS 2>/dev/null`
- 		    case "${sc_cpu_version}" in
--		      523) HP_ARCH="hppa1.0" ;; # CPU_PA_RISC1_0
--		      528) HP_ARCH="hppa1.1" ;; # CPU_PA_RISC1_1
-+		      523) HP_ARCH=hppa1.0 ;; # CPU_PA_RISC1_0
-+		      528) HP_ARCH=hppa1.1 ;; # CPU_PA_RISC1_1
- 		      532)                      # CPU_PA_RISC2_0
- 			case "${sc_kernel_bits}" in
--			  32) HP_ARCH="hppa2.0n" ;;
--			  64) HP_ARCH="hppa2.0w" ;;
--			  '') HP_ARCH="hppa2.0" ;;   # HP-UX 10.20
-+			  32) HP_ARCH=hppa2.0n ;;
-+			  64) HP_ARCH=hppa2.0w ;;
-+			  '') HP_ARCH=hppa2.0 ;;   # HP-UX 10.20
- 			esac ;;
- 		    esac
- 		fi
-@@ -662,11 +687,11 @@
- 		    exit (0);
- 		}
- EOF
--		    (CCOPTS= $CC_FOR_BUILD -o $dummy $dummy.c 2>/dev/null) && HP_ARCH=`$dummy`
-+		    (CCOPTS="" $CC_FOR_BUILD -o $dummy $dummy.c 2>/dev/null) && HP_ARCH=`$dummy`
- 		    test -z "$HP_ARCH" && HP_ARCH=hppa
- 		fi ;;
- 	esac
--	if [ ${HP_ARCH} = "hppa2.0w" ]
-+	if [ ${HP_ARCH} = hppa2.0w ]
- 	then
- 	    eval $set_cc_for_build
- 
-@@ -679,12 +704,12 @@
- 	    # $ CC_FOR_BUILD="cc +DA2.0w" ./config.guess
- 	    # => hppa64-hp-hpux11.23
- 
--	    if echo __LP64__ | (CCOPTS= $CC_FOR_BUILD -E - 2>/dev/null) |
-+	    if echo __LP64__ | (CCOPTS="" $CC_FOR_BUILD -E - 2>/dev/null) |
- 		grep -q __LP64__
- 	    then
--		HP_ARCH="hppa2.0w"
-+		HP_ARCH=hppa2.0w
- 	    else
--		HP_ARCH="hppa64"
-+		HP_ARCH=hppa64
- 	    fi
- 	fi
- 	echo ${HP_ARCH}-hp-hpux${HPUX_REV}
-@@ -789,14 +814,14 @@
- 	echo craynv-cray-unicosmp${UNAME_RELEASE} | sed -e 's/\.[^.]*$/.X/'
- 	exit ;;
-     F30[01]:UNIX_System_V:*:* | F700:UNIX_System_V:*:*)
--	FUJITSU_PROC=`uname -m | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz'`
--	FUJITSU_SYS=`uname -p | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz' | sed -e 's/\///'`
-+	FUJITSU_PROC=`uname -m | tr ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz`
-+	FUJITSU_SYS=`uname -p | tr ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz | sed -e 's/\///'`
- 	FUJITSU_REL=`echo ${UNAME_RELEASE} | sed -e 's/ /_/'`
- 	echo "${FUJITSU_PROC}-fujitsu-${FUJITSU_SYS}${FUJITSU_REL}"
- 	exit ;;
-     5000:UNIX_System_V:4.*:*)
--	FUJITSU_SYS=`uname -p | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz' | sed -e 's/\///'`
--	FUJITSU_REL=`echo ${UNAME_RELEASE} | tr 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'abcdefghijklmnopqrstuvwxyz' | sed -e 's/ /_/'`
-+	FUJITSU_SYS=`uname -p | tr ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz | sed -e 's/\///'`
-+	FUJITSU_REL=`echo ${UNAME_RELEASE} | tr ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz | sed -e 's/ /_/'`
- 	echo "sparc-fujitsu-${FUJITSU_SYS}${FUJITSU_REL}"
- 	exit ;;
-     i*86:BSD/386:*:* | i*86:BSD/OS:*:* | *:Ascend\ Embedded/OS:*:*)
-@@ -826,7 +851,7 @@
-     *:MINGW*:*)
- 	echo ${UNAME_MACHINE}-pc-mingw32
- 	exit ;;
--    i*:MSYS*:*)
-+    *:MSYS*:*)
- 	echo ${UNAME_MACHINE}-pc-msys
- 	exit ;;
-     i*:windows32*:*)
-@@ -878,7 +903,7 @@
- 	exit ;;
-     *:GNU/*:*:*)
- 	# other systems with GNU libc and userland
--	echo ${UNAME_MACHINE}-unknown-`echo ${UNAME_SYSTEM} | sed 's,^[^/]*/,,' | tr '[A-Z]' '[a-z]'``echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'`-${LIBC}
-+	echo ${UNAME_MACHINE}-unknown-`echo ${UNAME_SYSTEM} | sed 's,^[^/]*/,,' | tr "[:upper:]" "[:lower:]"``echo ${UNAME_RELEASE}|sed -e 's/[-(].*//'`-${LIBC}
- 	exit ;;
-     i*86:Minix:*:*)
- 	echo ${UNAME_MACHINE}-pc-minix
-@@ -901,7 +926,7 @@
- 	  EV68*) UNAME_MACHINE=alphaev68 ;;
- 	esac
- 	objdump --private-headers /bin/sh | grep -q ld.so.1
--	if test "$?" = 0 ; then LIBC="gnulibc1" ; fi
-+	if test "$?" = 0 ; then LIBC=gnulibc1 ; fi
- 	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
- 	exit ;;
-     arc:Linux:*:* | arceb:Linux:*:*)
-@@ -932,6 +957,9 @@
-     crisv32:Linux:*:*)
- 	echo ${UNAME_MACHINE}-axis-linux-${LIBC}
- 	exit ;;
-+    e2k:Linux:*:*)
-+	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
-+	exit ;;
-     frv:Linux:*:*)
- 	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
- 	exit ;;
-@@ -944,6 +972,9 @@
-     ia64:Linux:*:*)
- 	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
- 	exit ;;
-+    k1om:Linux:*:*)
-+	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
-+	exit ;;
-     m32r*:Linux:*:*)
- 	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
- 	exit ;;
-@@ -969,10 +1000,10 @@
- 	eval `$CC_FOR_BUILD -E $dummy.c 2>/dev/null | grep '^CPU'`
- 	test x"${CPU}" != x && { echo "${CPU}-unknown-linux-${LIBC}"; exit; }
- 	;;
--    or1k:Linux:*:*)
--	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
-+    openrisc*:Linux:*:*)
-+	echo or1k-unknown-linux-${LIBC}
- 	exit ;;
--    or32:Linux:*:*)
-+    or32:Linux:*:* | or1k*:Linux:*:*)
- 	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
- 	exit ;;
-     padre:Linux:*:*)
-@@ -1020,7 +1051,7 @@
- 	echo ${UNAME_MACHINE}-dec-linux-${LIBC}
- 	exit ;;
-     x86_64:Linux:*:*)
--	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
-+	echo ${UNAME_MACHINE}-pc-linux-${LIBC}
- 	exit ;;
-     xtensa*:Linux:*:*)
- 	echo ${UNAME_MACHINE}-unknown-linux-${LIBC}
-@@ -1099,7 +1130,7 @@
- 	# uname -m prints for DJGPP always 'pc', but it prints nothing about
- 	# the processor, so we play safe by assuming i586.
- 	# Note: whatever this is, it MUST be the same as what config.sub
--	# prints for the "djgpp" host, or else GDB configury will decide that
-+	# prints for the "djgpp" host, or else GDB configure will decide that
- 	# this is a cross-build.
- 	echo i586-pc-msdosdjgpp
- 	exit ;;
-@@ -1248,6 +1279,9 @@
-     SX-8R:SUPER-UX:*:*)
- 	echo sx8r-nec-superux${UNAME_RELEASE}
- 	exit ;;
-+    SX-ACE:SUPER-UX:*:*)
-+	echo sxace-nec-superux${UNAME_RELEASE}
-+	exit ;;
-     Power*:Rhapsody:*:*)
- 	echo powerpc-apple-rhapsody${UNAME_RELEASE}
- 	exit ;;
-@@ -1261,9 +1295,9 @@
- 	    UNAME_PROCESSOR=powerpc
- 	fi
- 	if test `echo "$UNAME_RELEASE" | sed -e 's/\..*//'` -le 10 ; then
--	    if [ "$CC_FOR_BUILD" != 'no_compiler_found' ]; then
-+	    if [ "$CC_FOR_BUILD" != no_compiler_found ]; then
- 		if (echo '#ifdef __LP64__'; echo IS_64BIT_ARCH; echo '#endif') | \
--		    (CCOPTS= $CC_FOR_BUILD -E - 2>/dev/null) | \
-+		    (CCOPTS="" $CC_FOR_BUILD -E - 2>/dev/null) | \
- 		    grep IS_64BIT_ARCH >/dev/null
- 		then
- 		    case $UNAME_PROCESSOR in
-@@ -1285,7 +1319,7 @@
- 	exit ;;
-     *:procnto*:*:* | *:QNX:[0123456789]*:*)
- 	UNAME_PROCESSOR=`uname -p`
--	if test "$UNAME_PROCESSOR" = "x86"; then
-+	if test "$UNAME_PROCESSOR" = x86; then
- 		UNAME_PROCESSOR=i386
- 		UNAME_MACHINE=pc
- 	fi
-@@ -1316,7 +1350,7 @@
- 	# "uname -m" is not consistent, so use $cputype instead. 386
- 	# is converted to i386 for consistency with other x86
- 	# operating systems.
--	if test "$cputype" = "386"; then
-+	if test "$cputype" = 386; then
- 	    UNAME_MACHINE=i386
- 	else
- 	    UNAME_MACHINE="$cputype"
-@@ -1358,7 +1392,7 @@
- 	echo i386-pc-xenix
- 	exit ;;
-     i*86:skyos:*:*)
--	echo ${UNAME_MACHINE}-pc-skyos`echo ${UNAME_RELEASE}` | sed -e 's/ .*$//'
-+	echo ${UNAME_MACHINE}-pc-skyos`echo ${UNAME_RELEASE} | sed -e 's/ .*$//'`
- 	exit ;;
-     i*86:rdos:*:*)
- 	echo ${UNAME_MACHINE}-pc-rdos
-@@ -1369,171 +1403,25 @@
-     x86_64:VMkernel:*:*)
- 	echo ${UNAME_MACHINE}-unknown-esx
- 	exit ;;
--esac
--
--eval $set_cc_for_build
--cat >$dummy.c <<EOF
--#ifdef _SEQUENT_
--# include <sys/types.h>
--# include <sys/utsname.h>
--#endif
--main ()
--{
--#if defined (sony)
--#if defined (MIPSEB)
--  /* BFD wants "bsd" instead of "newsos".  Perhaps BFD should be changed,
--     I don't know....  */
--  printf ("mips-sony-bsd\n"); exit (0);
--#else
--#include <sys/param.h>
--  printf ("m68k-sony-newsos%s\n",
--#ifdef NEWSOS4
--	"4"
--#else
--	""
--#endif
--	); exit (0);
--#endif
--#endif
--
--#if defined (__arm) && defined (__acorn) && defined (__unix)
--  printf ("arm-acorn-riscix\n"); exit (0);
--#endif
--
--#if defined (hp300) && !defined (hpux)
--  printf ("m68k-hp-bsd\n"); exit (0);
--#endif
--
--#if defined (NeXT)
--#if !defined (__ARCHITECTURE__)
--#define __ARCHITECTURE__ "m68k"
--#endif
--  int version;
--  version=`(hostinfo | sed -n 's/.*NeXT Mach \([0-9]*\).*/\1/p') 2>/dev/null`;
--  if (version < 4)
--    printf ("%s-next-nextstep%d\n", __ARCHITECTURE__, version);
--  else
--    printf ("%s-next-openstep%d\n", __ARCHITECTURE__, version);
--  exit (0);
--#endif
--
--#if defined (MULTIMAX) || defined (n16)
--#if defined (UMAXV)
--  printf ("ns32k-encore-sysv\n"); exit (0);
--#else
--#if defined (CMU)
--  printf ("ns32k-encore-mach\n"); exit (0);
--#else
--  printf ("ns32k-encore-bsd\n"); exit (0);
--#endif
--#endif
--#endif
--
--#if defined (__386BSD__)
--  printf ("i386-pc-bsd\n"); exit (0);
--#endif
--
--#if defined (sequent)
--#if defined (i386)
--  printf ("i386-sequent-dynix\n"); exit (0);
--#endif
--#if defined (ns32000)
--  printf ("ns32k-sequent-dynix\n"); exit (0);
--#endif
--#endif
--
--#if defined (_SEQUENT_)
--    struct utsname un;
--
--    uname(&un);
--
--    if (strncmp(un.version, "V2", 2) == 0) {
--	printf ("i386-sequent-ptx2\n"); exit (0);
--    }
--    if (strncmp(un.version, "V1", 2) == 0) { /* XXX is V1 correct? */
--	printf ("i386-sequent-ptx1\n"); exit (0);
--    }
--    printf ("i386-sequent-ptx\n"); exit (0);
--
--#endif
--
--#if defined (vax)
--# if !defined (ultrix)
--#  include <sys/param.h>
--#  if defined (BSD)
--#   if BSD == 43
--      printf ("vax-dec-bsd4.3\n"); exit (0);
--#   else
--#    if BSD == 199006
--      printf ("vax-dec-bsd4.3reno\n"); exit (0);
--#    else
--      printf ("vax-dec-bsd\n"); exit (0);
--#    endif
--#   endif
--#  else
--    printf ("vax-dec-bsd\n"); exit (0);
--#  endif
--# else
--    printf ("vax-dec-ultrix\n"); exit (0);
--# endif
--#endif
--
--#if defined (alliant) && defined (i860)
--  printf ("i860-alliant-bsd\n"); exit (0);
--#endif
--
--  exit (1);
--}
--EOF
--
--$CC_FOR_BUILD -o $dummy $dummy.c 2>/dev/null && SYSTEM_NAME=`$dummy` &&
--	{ echo "$SYSTEM_NAME"; exit; }
--
--# Apollos put the system type in the environment.
--
--test -d /usr/apollo && { echo ${ISP}-apollo-${SYSTYPE}; exit; }
--
--# Convex versions that predate uname can use getsysinfo(1)
--
--if [ -x /usr/convex/getsysinfo ]
--then
--    case `getsysinfo -f cpu_type` in
--    c1*)
--	echo c1-convex-bsd
--	exit ;;
--    c2*)
--	if getsysinfo -f scalar_acc
--	then echo c32-convex-bsd
--	else echo c2-convex-bsd
--	fi
--	exit ;;
--    c34*)
--	echo c34-convex-bsd
--	exit ;;
--    c38*)
--	echo c38-convex-bsd
-+    amd64:Isilon\ OneFS:*:*)
-+	echo x86_64-unknown-onefs
- 	exit ;;
--    c4*)
--	echo c4-convex-bsd
--	exit ;;
--    esac
--fi
-+esac
- 
- cat >&2 <<EOF
- $0: unable to guess system type
- 
--This script, last modified $timestamp, has failed to recognize
--the operating system you are using. It is advised that you
--download the most up to date version of the config scripts from
-+This script (version $timestamp), has failed to recognize the
-+operating system you are using. If your script is old, overwrite
-+config.guess and config.sub with the latest versions from:
- 
--  http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess;hb=HEAD
-+  http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.guess
- and
--  http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
-+  http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub
- 
--If the version you run ($0) is already up to date, please
--send the following data and any information you think might be
--pertinent to <config-patches@gnu.org> in order to provide the needed
--information to handle your system.
-+If $0 has already been updated, send the following data and any
-+information you think might be pertinent to config-patches@gnu.org to
-+provide the necessary information to handle your system.
- 
- config.guess timestamp = $timestamp
- 
-diff -aur ghostpdl-9.19.orig/jpeg/config.sub ghostpdl-9.19/jpeg/config.sub
---- ghostpdl-9.19.orig/jpeg/config.sub	2016-08-26 14:17:03.374098233 -0400
-+++ ghostpdl-9.19/jpeg/config.sub	2016-08-26 14:23:55.678284172 -0400
-@@ -1,8 +1,8 @@
- #! /bin/sh
- # Configuration validation subroutine script.
--#   Copyright 1992-2013 Free Software Foundation, Inc.
-+#   Copyright 1992-2016 Free Software Foundation, Inc.
- 
--timestamp='2013-10-01'
-+timestamp='2016-08-25'
- 
- # This file is free software; you can redistribute it and/or modify it
- # under the terms of the GNU General Public License as published by
-@@ -25,7 +25,7 @@
- # of the GNU General Public License, version 3 ("GPLv3").
- 
- 
--# Please send patches with a ChangeLog entry to config-patches@gnu.org.
-+# Please send patches to <config-patches@gnu.org>.
- #
- # Configuration subroutine to validate and canonicalize a configuration type.
- # Supply the specified configuration type as an argument.
-@@ -33,7 +33,7 @@
- # Otherwise, we print the canonical config type on stdout and succeed.
- 
- # You can get the latest version of this script from:
--# http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub;hb=HEAD
-+# http://git.savannah.gnu.org/gitweb/?p=config.git;a=blob_plain;f=config.sub
- 
- # This file is supposed to be the same for all GNU packages
- # and recognize all the CPU types, system types and aliases
-@@ -53,8 +53,7 @@
- me=`echo "$0" | sed -e 's,.*/,,'`
- 
- usage="\
--Usage: $0 [OPTION] CPU-MFR-OPSYS
--       $0 [OPTION] ALIAS
-+Usage: $0 [OPTION] CPU-MFR-OPSYS or ALIAS
- 
- Canonicalize a configuration name.
- 
-@@ -68,7 +67,7 @@
- version="\
- GNU config.sub ($timestamp)
- 
--Copyright 1992-2013 Free Software Foundation, Inc.
-+Copyright 1992-2016 Free Software Foundation, Inc.
- 
- This is free software; see the source for copying conditions.  There is NO
- warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
-@@ -117,7 +116,7 @@
- case $maybe_os in
-   nto-qnx* | linux-gnu* | linux-android* | linux-dietlibc | linux-newlib* | \
-   linux-musl* | linux-uclibc* | uclinux-uclibc* | uclinux-gnu* | kfreebsd*-gnu* | \
--  knetbsd*-gnu* | netbsd*-gnu* | \
-+  knetbsd*-gnu* | netbsd*-gnu* | netbsd*-eabi* | \
-   kopensolaris*-gnu* | \
-   storm-chaos* | os2-emx* | rtmk-nova*)
-     os=-$maybe_os
-@@ -255,12 +254,13 @@
- 	| arc | arceb \
- 	| arm | arm[bl]e | arme[lb] | armv[2-8] | armv[3-8][lb] | armv7[arm] \
- 	| avr | avr32 \
-+	| ba \
- 	| be32 | be64 \
- 	| bfin \
- 	| c4x | c8051 | clipper \
- 	| d10v | d30v | dlx | dsp16xx \
--	| epiphany \
--	| fido | fr30 | frv \
-+	| e2k | epiphany \
-+	| fido | fr30 | frv | ft32 \
- 	| h8300 | h8500 | hppa | hppa1.[01] | hppa2.0 | hppa2.0[nw] | hppa64 \
- 	| hexagon \
- 	| i370 | i860 | i960 | ia64 \
-@@ -283,8 +283,10 @@
- 	| mips64vr5900 | mips64vr5900el \
- 	| mipsisa32 | mipsisa32el \
- 	| mipsisa32r2 | mipsisa32r2el \
-+	| mipsisa32r6 | mipsisa32r6el \
- 	| mipsisa64 | mipsisa64el \
- 	| mipsisa64r2 | mipsisa64r2el \
-+	| mipsisa64r6 | mipsisa64r6el \
- 	| mipsisa64sb1 | mipsisa64sb1el \
- 	| mipsisa64sr71k | mipsisa64sr71kel \
- 	| mipsr5900 | mipsr5900el \
-@@ -296,14 +298,14 @@
- 	| nds32 | nds32le | nds32be \
- 	| nios | nios2 | nios2eb | nios2el \
- 	| ns16k | ns32k \
--	| open8 \
--	| or1k | or32 \
-+	| open8 | or1k | or1knd | or32 \
- 	| pdp10 | pdp11 | pj | pjl \
- 	| powerpc | powerpc64 | powerpc64le | powerpcle \
- 	| pyramid \
-+	| riscv32 | riscv64 \
- 	| rl78 | rx \
- 	| score \
--	| sh | sh[1234] | sh[24]a | sh[24]aeb | sh[23]e | sh[34]eb | sheb | shbe | shle | sh[1234]le | sh3ele \
-+	| sh | sh[1234] | sh[24]a | sh[24]aeb | sh[23]e | sh[234]eb | sheb | shbe | shle | sh[1234]le | sh3ele \
- 	| sh64 | sh64le \
- 	| sparc | sparc64 | sparc64b | sparc64v | sparc86x | sparclet | sparclite \
- 	| sparcv8 | sparcv9 | sparcv9b | sparcv9v \
-@@ -311,6 +313,7 @@
- 	| tahoe | tic4x | tic54x | tic55x | tic6x | tic80 | tron \
- 	| ubicom32 \
- 	| v850 | v850e | v850e1 | v850e2 | v850es | v850e2v3 \
-+	| visium \
- 	| we32k \
- 	| x86 | xc16x | xstormy16 | xtensa \
- 	| z8k | z80)
-@@ -325,6 +328,9 @@
- 	c6x)
- 		basic_machine=tic6x-unknown
- 		;;
-+	leon|leon[3-9])
-+		basic_machine=sparc-$basic_machine
-+		;;
- 	m6811 | m68hc11 | m6812 | m68hc12 | m68hcs12x | nvptx | picochip)
- 		basic_machine=$basic_machine-unknown
- 		os=-none
-@@ -370,12 +376,13 @@
- 	| alphapca5[67]-* | alpha64pca5[67]-* | arc-* | arceb-* \
- 	| arm-*  | armbe-* | armle-* | armeb-* | armv*-* \
- 	| avr-* | avr32-* \
-+	| ba-* \
- 	| be32-* | be64-* \
- 	| bfin-* | bs2000-* \
- 	| c[123]* | c30-* | [cjt]90-* | c4x-* \
- 	| c8051-* | clipper-* | craynv-* | cydra-* \
- 	| d10v-* | d30v-* | dlx-* \
--	| elxsi-* \
-+	| e2k-* | elxsi-* \
- 	| f30[01]-* | f700-* | fido-* | fr30-* | frv-* | fx80-* \
- 	| h8300-* | h8500-* \
- 	| hppa-* | hppa1.[01]-* | hppa2.0-* | hppa2.0[nw]-* | hppa64-* \
-@@ -402,8 +409,10 @@
- 	| mips64vr5900-* | mips64vr5900el-* \
- 	| mipsisa32-* | mipsisa32el-* \
- 	| mipsisa32r2-* | mipsisa32r2el-* \
-+	| mipsisa32r6-* | mipsisa32r6el-* \
- 	| mipsisa64-* | mipsisa64el-* \
- 	| mipsisa64r2-* | mipsisa64r2el-* \
-+	| mipsisa64r6-* | mipsisa64r6el-* \
- 	| mipsisa64sb1-* | mipsisa64sb1el-* \
- 	| mipsisa64sr71k-* | mipsisa64sr71kel-* \
- 	| mipsr5900-* | mipsr5900el-* \
-@@ -415,16 +424,18 @@
- 	| nios-* | nios2-* | nios2eb-* | nios2el-* \
- 	| none-* | np1-* | ns16k-* | ns32k-* \
- 	| open8-* \
-+	| or1k*-* \
- 	| orion-* \
- 	| pdp10-* | pdp11-* | pj-* | pjl-* | pn-* | power-* \
- 	| powerpc-* | powerpc64-* | powerpc64le-* | powerpcle-* \
- 	| pyramid-* \
-+	| riscv32-* | riscv64-* \
- 	| rl78-* | romp-* | rs6000-* | rx-* \
- 	| sh-* | sh[1234]-* | sh[24]a-* | sh[24]aeb-* | sh[23]e-* | sh[34]eb-* | sheb-* | shbe-* \
- 	| shle-* | sh[1234]le-* | sh3ele-* | sh64-* | sh64le-* \
- 	| sparc-* | sparc64-* | sparc64b-* | sparc64v-* | sparc86x-* | sparclet-* \
- 	| sparclite-* \
--	| sparcv8-* | sparcv9-* | sparcv9b-* | sparcv9v-* | sv1-* | sx?-* \
-+	| sparcv8-* | sparcv9-* | sparcv9b-* | sparcv9v-* | sv1-* | sx*-* \
- 	| tahoe-* \
- 	| tic30-* | tic4x-* | tic54x-* | tic55x-* | tic6x-* | tic80-* \
- 	| tile*-* \
-@@ -432,6 +443,7 @@
- 	| ubicom32-* \
- 	| v850-* | v850e-* | v850e1-* | v850es-* | v850e2-* | v850e2v3-* \
- 	| vax-* \
-+	| visium-* \
- 	| we32k-* \
- 	| x86-* | x86_64-* | xc16x-* | xps100-* \
- 	| xstormy16-* | xtensa*-* \
-@@ -508,6 +520,9 @@
- 		basic_machine=i386-pc
- 		os=-aros
- 		;;
-+	asmjs)
-+		basic_machine=asmjs-unknown
-+		;;
- 	aux)
- 		basic_machine=m68k-apple
- 		os=-aux
-@@ -628,6 +643,14 @@
- 		basic_machine=m68k-bull
- 		os=-sysv3
- 		;;
-+	e500v[12])
-+		basic_machine=powerpc-unknown
-+		os=$os"spe"
-+		;;
-+	e500v[12]-*)
-+		basic_machine=powerpc-`echo $basic_machine | sed 's/^[^-]*-//'`
-+		os=$os"spe"
-+		;;
- 	ebmon29k)
- 		basic_machine=a29k-amd
- 		os=-ebmon
-@@ -769,6 +792,9 @@
- 		basic_machine=m68k-isi
- 		os=-sysv
- 		;;
-+	leon-*|leon[3-9]-*)
-+		basic_machine=sparc-`echo $basic_machine | sed 's/-.*//'`
-+		;;
- 	m68knommu)
- 		basic_machine=m68k-unknown
- 		os=-linux
-@@ -824,6 +850,10 @@
- 		basic_machine=powerpc-unknown
- 		os=-morphos
- 		;;
-+	moxiebox)
-+		basic_machine=moxie-unknown
-+		os=-moxiebox
-+		;;
- 	msdos)
- 		basic_machine=i386-pc
- 		os=-msdos
-@@ -1000,7 +1030,7 @@
- 	ppc-* | ppcbe-*)
- 		basic_machine=powerpc-`echo $basic_machine | sed 's/^[^-]*-//'`
- 		;;
--	ppcle | powerpclittle | ppc-le | powerpc-little)
-+	ppcle | powerpclittle)
- 		basic_machine=powerpcle-unknown
- 		;;
- 	ppcle-* | powerpclittle-*)
-@@ -1010,7 +1040,7 @@
- 		;;
- 	ppc64-*) basic_machine=powerpc64-`echo $basic_machine | sed 's/^[^-]*-//'`
- 		;;
--	ppc64le | powerpc64little | ppc64-le | powerpc64-little)
-+	ppc64le | powerpc64little)
- 		basic_machine=powerpc64le-unknown
- 		;;
- 	ppc64le-* | powerpc64little-*)
-@@ -1356,27 +1386,28 @@
- 	      | -hpux* | -unos* | -osf* | -luna* | -dgux* | -auroraux* | -solaris* \
- 	      | -sym* | -kopensolaris* | -plan9* \
- 	      | -amigaos* | -amigados* | -msdos* | -newsos* | -unicos* | -aof* \
--	      | -aos* | -aros* \
-+	      | -aos* | -aros* | -cloudabi* | -sortix* \
- 	      | -nindy* | -vxsim* | -vxworks* | -ebmon* | -hms* | -mvs* \
- 	      | -clix* | -riscos* | -uniplus* | -iris* | -rtu* | -xenix* \
- 	      | -hiux* | -386bsd* | -knetbsd* | -mirbsd* | -netbsd* \
--	      | -bitrig* | -openbsd* | -solidbsd* \
-+	      | -bitrig* | -openbsd* | -solidbsd* | -libertybsd* \
- 	      | -ekkobsd* | -kfreebsd* | -freebsd* | -riscix* | -lynxos* \
- 	      | -bosx* | -nextstep* | -cxux* | -aout* | -elf* | -oabi* \
- 	      | -ptx* | -coff* | -ecoff* | -winnt* | -domain* | -vsta* \
- 	      | -udi* | -eabi* | -lites* | -ieee* | -go32* | -aux* \
- 	      | -chorusos* | -chorusrdb* | -cegcc* \
- 	      | -cygwin* | -msys* | -pe* | -psos* | -moss* | -proelf* | -rtems* \
--	      | -mingw32* | -mingw64* | -linux-gnu* | -linux-android* \
-+	      | -midipix* | -mingw32* | -mingw64* | -linux-gnu* | -linux-android* \
- 	      | -linux-newlib* | -linux-musl* | -linux-uclibc* \
--	      | -uxpv* | -beos* | -mpeix* | -udk* \
-+	      | -uxpv* | -beos* | -mpeix* | -udk* | -moxiebox* \
- 	      | -interix* | -uwin* | -mks* | -rhapsody* | -darwin* | -opened* \
- 	      | -openstep* | -oskit* | -conix* | -pw32* | -nonstopux* \
- 	      | -storm-chaos* | -tops10* | -tenex* | -tops20* | -its* \
- 	      | -os2* | -vos* | -palmos* | -uclinux* | -nucleus* \
- 	      | -morphos* | -superux* | -rtmk* | -rtmk-nova* | -windiss* \
- 	      | -powermax* | -dnix* | -nx6 | -nx7 | -sei* | -dragonfly* \
--	      | -skyos* | -haiku* | -rdos* | -toppers* | -drops* | -es*)
-+	      | -skyos* | -haiku* | -rdos* | -toppers* | -drops* | -es* \
-+	      | -onefs* | -tirtos* | -phoenix*)
- 	# Remember, each alternative MUST END IN *, to match a version number.
- 		;;
- 	-qnx*)
-@@ -1508,6 +1539,8 @@
- 		;;
- 	-nacl*)
- 		;;
-+	-ios)
-+		;;
- 	-none)
- 		;;
- 	*)
-@@ -1594,9 +1627,6 @@
- 	mips*-*)
- 		os=-elf
- 		;;
--	or1k-*)
--		os=-elf
--		;;
- 	or32-*)
- 		os=-coff
- 		;;
-diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/config.sub
---- ghostpdl-9.19.orig/tiff/config/config.sub	2016-08-26 14:17:03.380764806 -0400
-+++ ghostpdl-9.19/tiff/config/config.sub	2016-08-26 14:23:26.935356154 -0400
+diff --git ghostpdl-9.23/tiff/config/config.sub ghostpdl-9.23/tiff/config/config.sub
+index 6759825..a1f8229 100755
+--- ghostpdl-9.23/tiff/config/config.sub
++++ ghostpdl-9.23/tiff/config/config.sub
 @@ -1,44 +1,40 @@
  #! /bin/sh
  # Configuration validation subroutine script.
 -#   Copyright (C) 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999,
 -#   2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
 -#   Free Software Foundation, Inc.
--
++#   Copyright 1992-2016 Free Software Foundation, Inc.
+ 
 -timestamp='2008-01-16'
--
++timestamp='2016-08-25'
+ 
 -# This file is (in principle) common to ALL GNU software.
 -# The presence of a machine in this file suggests that SOME GNU software
 -# can handle that machine.  It does not imply ALL GNU software can.
@@ -1865,10 +964,6 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
 -# This file is free software; you can redistribute it and/or modify
 -# it under the terms of the GNU General Public License as published by
 -# the Free Software Foundation; either version 2 of the License, or
-+#   Copyright 1992-2016 Free Software Foundation, Inc.
-+
-+timestamp='2016-08-25'
-+
 +# This file is free software; you can redistribute it and/or modify it
 +# under the terms of the GNU General Public License as published by
 +# the Free Software Foundation; either version 3 of the License, or
@@ -1913,7 +1008,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  # This file is supposed to be the same for all GNU packages
  # and recognize all the CPU types, system types and aliases
  # that are meaningful with *any* GNU software.
-@@ -57,8 +53,7 @@
+@@ -57,8 +53,7 @@ timestamp='2008-01-16'
  me=`echo "$0" | sed -e 's,.*/,,'`
  
  usage="\
@@ -1923,7 +1018,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  
  Canonicalize a configuration name.
  
-@@ -72,8 +67,7 @@
+@@ -72,8 +67,7 @@ Report bugs and patches to <config-patches@gnu.org>."
  version="\
  GNU config.sub ($timestamp)
  
@@ -1933,7 +1028,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  
  This is free software; see the source for copying conditions.  There is NO
  warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
-@@ -120,12 +114,18 @@
+@@ -120,12 +114,18 @@ esac
  # Here we must recognize all the valid KERNEL-OS combinations.
  maybe_os=`echo $1 | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\2/'`
  case $maybe_os in
@@ -1954,7 +1049,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
    *)
      basic_machine=`echo $1 | sed 's/-[^-]*$//'`
      if [ $basic_machine != $1 ]
-@@ -148,10 +148,13 @@
+@@ -148,10 +148,13 @@ case $os in
  	-convergent* | -ncr* | -news | -32* | -3600* | -3100* | -hitachi* |\
  	-c[123]* | -convex* | -sun | -crds | -omron* | -dg | -ultra | -tti* | \
  	-harris | -dolphin | -highlevel | -gould | -cbm | -ns | -masscomp | \
@@ -1969,7 +1064,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	-sim | -cisco | -oki | -wec | -winbond)
  		os=
  		basic_machine=$1
-@@ -166,10 +169,10 @@
+@@ -166,10 +169,10 @@ case $os in
  		os=-chorusos
  		basic_machine=$1
  		;;
@@ -1983,7 +1078,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	-hiux*)
  		os=-hiuxwe2
  		;;
-@@ -214,6 +217,12 @@
+@@ -214,6 +217,12 @@ case $os in
  	-isc*)
  		basic_machine=`echo $1 | sed -e 's/86-.*/86-pc/'`
  		;;
@@ -1996,7 +1091,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	-lynx*)
  		os=-lynxos
  		;;
-@@ -238,59 +247,91 @@
+@@ -238,59 +247,91 @@ case $basic_machine in
  	# Some are omitted here because they have special meanings below.
  	1750a | 580 \
  	| a29k \
@@ -2104,7 +1199,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		basic_machine=$basic_machine-unknown
  		os=-none
  		;;
-@@ -300,6 +341,21 @@
+@@ -300,6 +341,21 @@ case $basic_machine in
  		basic_machine=mt-unknown
  		;;
  
@@ -2126,7 +1221,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	# We use `pc' rather than `unknown'
  	# because (1) that's what they normally are, and
  	# (2) the word "unknown" tends to confuse beginning users.
-@@ -314,64 +370,85 @@
+@@ -314,64 +370,85 @@ case $basic_machine in
  	# Recognize the basic CPU types with company name.
  	580-* \
  	| a29k-* \
@@ -2227,7 +1322,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		;;
  	# Recognize the basic CPU types without company name, with glob match.
  	xtensa*)
-@@ -393,7 +470,7 @@
+@@ -393,7 +470,7 @@ case $basic_machine in
  		basic_machine=a29k-amd
  		os=-udi
  		;;
@@ -2236,7 +1331,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		basic_machine=abacus-unknown
  		;;
  	adobe68k)
-@@ -439,6 +516,13 @@
+@@ -439,6 +516,13 @@ case $basic_machine in
  		basic_machine=m68k-apollo
  		os=-bsd
  		;;
@@ -2250,7 +1345,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	aux)
  		basic_machine=m68k-apple
  		os=-aux
-@@ -455,10 +539,27 @@
+@@ -455,10 +539,27 @@ case $basic_machine in
  		basic_machine=bfin-`echo $basic_machine | sed 's/^[^-]*-//'`
  		os=-linux
  		;;
@@ -2278,7 +1373,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	convex-c1)
  		basic_machine=c1-convex
  		os=-bsd
-@@ -487,7 +588,7 @@
+@@ -487,7 +588,7 @@ case $basic_machine in
  		basic_machine=craynv-cray
  		os=-unicosmp
  		;;
@@ -2287,7 +1382,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		basic_machine=cr16-unknown
  		os=-elf
  		;;
-@@ -526,6 +627,10 @@
+@@ -526,6 +627,10 @@ case $basic_machine in
  		basic_machine=m88k-motorola
  		os=-sysv3
  		;;
@@ -2298,7 +1393,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	djgpp)
  		basic_machine=i586-pc
  		os=-msdosdjgpp
-@@ -538,6 +643,14 @@
+@@ -538,6 +643,14 @@ case $basic_machine in
  		basic_machine=m68k-bull
  		os=-sysv3
  		;;
@@ -2313,7 +1408,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	ebmon29k)
  		basic_machine=a29k-amd
  		os=-ebmon
-@@ -641,7 +754,6 @@
+@@ -641,7 +754,6 @@ case $basic_machine in
  	i370-ibm* | ibm*)
  		basic_machine=i370-ibm
  		;;
@@ -2321,7 +1416,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	i*86v32)
  		basic_machine=`echo $1 | sed -e 's/86.*/86-pc/'`
  		os=-sysv32
-@@ -680,6 +792,9 @@
+@@ -680,6 +792,9 @@ case $basic_machine in
  		basic_machine=m68k-isi
  		os=-sysv
  		;;
@@ -2331,7 +1426,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	m68knommu)
  		basic_machine=m68k-unknown
  		os=-linux
-@@ -699,8 +814,15 @@
+@@ -699,8 +814,15 @@ case $basic_machine in
  		basic_machine=ns32k-utek
  		os=-sysv
  		;;
@@ -2348,7 +1443,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		os=-mingw32
  		;;
  	mingw32ce)
-@@ -728,6 +850,10 @@
+@@ -728,6 +850,10 @@ case $basic_machine in
  		basic_machine=powerpc-unknown
  		os=-morphos
  		;;
@@ -2359,7 +1454,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	msdos)
  		basic_machine=i386-pc
  		os=-msdos
-@@ -735,10 +861,18 @@
+@@ -735,10 +861,18 @@ case $basic_machine in
  	ms1-*)
  		basic_machine=`echo $basic_machine | sed -e 's/ms1-/mt-/'`
  		;;
@@ -2378,7 +1473,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	ncr3000)
  		basic_machine=i486-ncr
  		os=-sysv4
-@@ -803,6 +937,12 @@
+@@ -803,6 +937,12 @@ case $basic_machine in
  	np1)
  		basic_machine=np1-gould
  		;;
@@ -2391,7 +1486,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	nsr-tandem)
  		basic_machine=nsr-tandem
  		;;
-@@ -885,11 +1025,12 @@
+@@ -885,11 +1025,12 @@ case $basic_machine in
  		;;
  	power)	basic_machine=power-ibm
  		;;
@@ -2407,7 +1502,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		basic_machine=powerpcle-unknown
  		;;
  	ppcle-* | powerpclittle-*)
-@@ -899,7 +1040,7 @@
+@@ -899,7 +1040,7 @@ case $basic_machine in
  		;;
  	ppc64-*) basic_machine=powerpc64-`echo $basic_machine | sed 's/^[^-]*-//'`
  		;;
@@ -2416,7 +1511,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		basic_machine=powerpc64le-unknown
  		;;
  	ppc64le-* | powerpc64little-*)
-@@ -912,7 +1053,11 @@
+@@ -912,7 +1053,11 @@ case $basic_machine in
  		basic_machine=i586-unknown
  		os=-pw32
  		;;
@@ -2429,7 +1524,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		basic_machine=i386-pc
  		os=-rdos
  		;;
-@@ -981,6 +1126,9 @@
+@@ -981,6 +1126,9 @@ case $basic_machine in
  		basic_machine=i860-stratus
  		os=-sysv4
  		;;
@@ -2439,7 +1534,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	sun2)
  		basic_machine=m68000-sun
  		;;
-@@ -1037,20 +1185,8 @@
+@@ -1037,20 +1185,8 @@ case $basic_machine in
  		basic_machine=t90-cray
  		os=-unicos
  		;;
@@ -2461,7 +1556,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		os=-linux-gnu
  		;;
  	tx39)
-@@ -1120,6 +1256,9 @@
+@@ -1120,6 +1256,9 @@ case $basic_machine in
  	xps | xps100)
  		basic_machine=xps100-honeywell
  		;;
@@ -2471,7 +1566,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	ymp)
  		basic_machine=ymp-cray
  		os=-unicos
-@@ -1128,6 +1267,10 @@
+@@ -1128,6 +1267,10 @@ case $basic_machine in
  		basic_machine=z8k-unknown
  		os=-sim
  		;;
@@ -2482,7 +1577,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	none)
  		basic_machine=none-none
  		os=-none
-@@ -1166,7 +1309,7 @@
+@@ -1166,7 +1309,7 @@ case $basic_machine in
  	we32k)
  		basic_machine=we32k-att
  		;;
@@ -2491,7 +1586,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		basic_machine=sh-unknown
  		;;
  	sparc | sparcv8 | sparcv9 | sparcv9b | sparcv9v)
-@@ -1213,9 +1356,12 @@
+@@ -1213,9 +1356,12 @@ esac
  if [ x"$os" != x"" ]
  then
  case $os in
@@ -2506,7 +1601,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	-solaris1 | -solaris1.*)
  		os=`echo $os | sed -e 's|solaris1|sunos4|'`
  		;;
-@@ -1236,29 +1382,32 @@
+@@ -1236,29 +1382,32 @@ case $os in
  	# Each alternative MUST END IN A *, to match a version number.
  	# -sysv* is not here because it comes later, after sysvr4.
  	-gnu* | -bsd* | -mach* | -minix* | -genix* | -ultrix* | -irix* \
@@ -2548,7 +1643,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	# Remember, each alternative MUST END IN *, to match a version number.
  		;;
  	-qnx*)
-@@ -1297,7 +1446,7 @@
+@@ -1297,7 +1446,7 @@ case $os in
  	-opened*)
  		os=-openedition
  		;;
@@ -2557,7 +1652,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		os=-os400
  		;;
  	-wince*)
-@@ -1346,7 +1495,7 @@
+@@ -1346,7 +1495,7 @@ case $os in
  	-sinix*)
  		os=-sysv4
  		;;
@@ -2566,7 +1661,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		os=-tpf
  		;;
  	-triton*)
-@@ -1382,12 +1531,16 @@
+@@ -1382,12 +1531,16 @@ case $os in
  	-aros*)
  		os=-aros
  		;;
@@ -2586,7 +1681,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  	-none)
  		;;
  	*)
-@@ -1410,10 +1563,10 @@
+@@ -1410,10 +1563,10 @@ else
  # system, and we'll never get to this point.
  
  case $basic_machine in
@@ -2599,7 +1694,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		os=-elf
  		;;
  	*-acorn)
-@@ -1425,8 +1578,23 @@
+@@ -1425,8 +1578,23 @@ case $basic_machine in
  	arm*-semi)
  		os=-aout
  		;;
@@ -2625,7 +1720,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		;;
  	# This must come before the *-dec entry.
  	pdp10-*)
-@@ -1446,14 +1614,11 @@
+@@ -1446,14 +1614,11 @@ case $basic_machine in
  		;;
  	m68000-sun)
  		os=-sunos3
@@ -2641,7 +1736,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		os=-elf
  		;;
  	mips*-cisco)
-@@ -1480,7 +1645,7 @@
+@@ -1480,7 +1645,7 @@ case $basic_machine in
  	*-ibm)
  		os=-aix
  		;;
@@ -2650,7 +1745,7 @@ diff -aur ghostpdl-9.19.orig/tiff/config/config.sub ghostpdl-9.19/tiff/config/co
  		os=-mmixware
  		;;
  	*-wec)
-@@ -1585,7 +1750,7 @@
+@@ -1585,7 +1750,7 @@ case $basic_machine in
  			-sunos*)
  				vendor=sun
  				;;
