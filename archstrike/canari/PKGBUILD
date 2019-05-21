@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=canari
 pkgver=3.3.9
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics' 'archstrike-recon' 'archstrike-scanners')
 pkgdesc="A transform framework for maltego"
 url="http://www.canariproject.com"
@@ -14,7 +14,6 @@ depends=('python' 'python-virtualenv' 'python-mrbob' 'python-flask' 'python-twis
 'python-service-identity' 'python-pyasn1' 'python-boto3' 'python-safedexml' 'python-lxml'
 'python-six' 'python-future' 'python-click' 'python-colorama' 'python-stringcase')
 makedepends=('python-setuptools')
-replaces=('canari')
 source=("https://files.pythonhosted.org/packages/4a/d9/c66b011acdc3c439ac2d1a6771aad35b1a229b07847f82ef971e63cf31ce/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('05f32085aae6ba60deeca6e6827fd2816da156e4def6ec6344dd6de91a0d2f31498bfc45c0c0a5f1817235a06cf88e0de20d34b628b00506ad5d2311b73894ee')
 
