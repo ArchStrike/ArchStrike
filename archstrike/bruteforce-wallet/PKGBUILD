@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=bruteforce-wallet
-pkgver=1.5.1
+pkgver=1.5.2
 pkgrel=1
 groups=('archstrike' 'archstrike-bruteforce')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,7 +12,7 @@ url="https://github.com/glv2/bruteforce-wallet"
 license=('GPL3')
 depends=('openssl' 'db')
 source=("https://github.com/glv2/bruteforce-wallet/archive/${pkgver}.tar.gz")
-sha512sums=('42d711d2bf3e6f3d7e63e9aff9c73f5c2f7396b85b824e42b90bd7897e167caa9b36a26ff9f9b47d6859a8881fa60bc5cf67c10e9053a8dabb25052786e15eff')
+sha512sums=('01a0184fc79a5cdbbc5b28412c80b1e9f00700fe0dc6071c22c2bfd502945f932c7170d82d1fb6c352db2895b38bf84d4367a3e8228e8df74b08ef33ccbc5c99')
 
 build() {
   cd ${pkgname}-${pkgver}
