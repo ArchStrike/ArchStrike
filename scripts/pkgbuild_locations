@@ -4,7 +4,9 @@ PKG="$1"
 DIR=$(find .. -maxdepth 2 -regex ".*/$PKG")
 [[ -z "$DIR" ]] && echo "Package not found..." && exit 1
 eval $(pcregrep -M '^depends=([^)]*)' $DIR/PKGBUILD | sed ':a;N;$!ba;s/\n/ /g' | sed -E 's/[ ]+/ /g')
-SPATTERN=$(echo "${depends[@]}" | sed -E 's/ (python2?-)?/|/g' | sed -E 's/python2?-//g'|sed -E 's/(.*)/(python2?-)?\(\1\)/g')
+eval $(pcregrep -M '^makedepends=([^)]*)' $DIR/PKGBUILD | sed ':a;N;$!ba;s/\n/ /g' | sed -E 's/[ ]+/ /g')
+alldepends=( "${depends[@]}" "${makedepends[@]}" )
+SPATTERN=$(echo "${alldepends[@]}" | sed -E 's/ (python2?-)?/|/g' | sed -E 's/python2?-//g'|sed -E 's/(.*)/(python2?-)?\(\1\)/g')
 SRESULTS=( $(pacman -Ss "$SPATTERN" | grep -E "[-a-z]/$SPATTERN " | grep -oE '^[^ ]*') )
 ASRESULTS=( $( for sres in "${SRESULTS[@]}"; do echo $sres | grep -E "^archstrike(-testing)?/" ;done) )
 REVTREE="$(pactree -sr $PKG)"
