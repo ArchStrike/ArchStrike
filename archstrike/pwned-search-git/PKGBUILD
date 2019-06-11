@@ -1,0 +1,38 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=pwned-search
+pkgname="${_pkgname}-git"
+pkgdesc='Pwned Password API lookup'
+arch=('any')
+pkgver=20190531.r29
+pkgrel=1
+url="https://github.com/mikepound/${_pkgname}"
+license=('Unlicense')
+makedepends=('git')
+depends=('python' 'python-requests')
+source=("${_pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${_pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+package(){
+  cd "${_pkgname}"
+
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 pwned.py ${pkgdir}/usr/share/${pkgname}/
+
+cat > ${pkgdir}/usr/bin/pwned-search << EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+python ./pwned.py "\$@"
+EOF
+
+chmod 755 ${pkgdir}/usr/bin/pwned-search
+}
