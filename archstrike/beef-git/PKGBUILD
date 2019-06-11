@@ -4,7 +4,7 @@ buildarch=192
 
 _pkgname=beef
 pkgname=${_pkgname}-git
-pkgver=20181016.r3150
+pkgver=20190505.r3281
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
@@ -15,7 +15,7 @@ license=('Apache')
 options=('!emptydirs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('ruby2.3' 'ruby2.3-bundler' 'java-environment' 'python2' 'imagemagick')
+depends=('ruby2.5' 'ruby2.5-bundler' 'java-environment' 'python2' 'imagemagick')
 makedepends=('git')
 source=("${pkgname}::git+http://github.com/beefproject/beef.git")
 sha512sums=('SKIP')
@@ -33,13 +33,13 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
   cd "${pkgdir}/usr/share/${_pkgname}"
-  bundle-2.3 install --path vendor/bundle
+  bundle-2.5 install --path vendor/bundle
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
 cd /usr/share/${_pkgname}
 unset GEM_HOME
-/usr/bin/ruby-2.3 ./${_pkgname} "\$@"
+/usr/bin/ruby-2.5 ./${_pkgname} "\$@"
 EOF
 chmod 0755 "${pkgdir}/usr/bin/${_pkgname}"
 }
