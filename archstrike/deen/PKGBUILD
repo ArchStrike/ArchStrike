@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=deen
 pkgver=1.7.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crypto' 'archstrike-misc')
 arch=('any')
 pkgdesc="Generic data encoding/decoding application built with PyQt5"
@@ -14,7 +14,6 @@ depends=('python' 'python-pyqt5' 'python-pyopenssl' 'python-jsbeautifier' 'pytho
          'python-capstone' 'python-pyjwt' 'python-bcrypt' 'python-xmltodict' 'python-dicttoxml'
          'python-jose')
 makedepends=('python-setuptools')
-replaces=('deen')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('80be69060d4686920bb7f2c6d1f64b7dda5f4deb63fc99d219e4af3c8adea116e581ef71ca393d213da960e522d9a2fc27a3eb8fb78afbc860d73b7827751d04')
 
