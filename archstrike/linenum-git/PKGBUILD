@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=linenum-git
-pkgver=20190416.r56.7981dca
+pkgver=20190709.r59.6b8236b
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
