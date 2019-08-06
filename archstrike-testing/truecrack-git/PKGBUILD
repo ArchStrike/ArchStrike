@@ -5,14 +5,14 @@ buildarch=136
 _pkgname=truecrack
 pkgname=${_pkgname}-git
 pkgver=20150326.r64
-pkgrel=1
+pkgrel=2
 groups=('archstrike')
 pkgdesc="Password cracking for truecrypt(c) volumes."
 url="https://github.com/lvaccaro/truecrack"
 arch=('x86_64' 'aarch64')
 license=('GPL3')
-depends=('cuda')
-makedepends=('git')
+optdepends=('cuda')
+makedepends=('git' 'gcc')
 provides=('truecrack')
 conflicts=('truecrack')
 replaces=('truecrack')
@@ -29,7 +29,7 @@ build() {
 
   export PATH=$PATH:/opt/cuda/bin
 
-  ./configure --enable-cpu
+  ./configure --prefix=/usr --enable-cpu
   make
 }
 
