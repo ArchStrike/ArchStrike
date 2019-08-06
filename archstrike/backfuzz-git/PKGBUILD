@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=backfuzz-git
-pkgver=20180525.r38.c650cbf
+pkgver=20190610.r1.b0648de
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-fuzzers')
