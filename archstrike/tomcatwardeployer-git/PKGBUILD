@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=tomcatwardeployer-git
-pkgver=20190408.r89
+pkgver=20190627.r91
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
