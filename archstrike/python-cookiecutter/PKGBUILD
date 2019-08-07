@@ -3,45 +3,26 @@
 buildarch=1
 
 _pkgname=cookiecutter
-pkgbase=python-${_pkgname}
-pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgname=(python-${_pkgname})
 pkgver=1.6.0
-pkgrel=3
+pkgrel=4
+pkgdesc="creating a Python package project from a Python package project template"
 arch=('any')
 url="https://github.com/hackebrot/cookiecutter"
 license=('BSD')
-makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
-replaces=('python2-cookiecutter')
+depends=('python' 'python-future' 'python-binaryornot' 'python-jinja' 'python-click'
+         'python-whichcraft' 'python-poyo' 'python-jinja2-time' 'python-requests')
+makedepends=('python' 'python-setuptools')
 source=("${pkgname}::https://files.pythonhosted.org/packages/b5/97/581470d950361dd15b4009218420409ecc42ff1a5523544b945ac310b029/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('347b0f45fd0bcaaa1a8d7f04bf010d8cf526e816d9a772653dc81fbda3871cff02113ed4781f8897877724321a7d612c9ba26462f148a3ace93ec1acf15e0efe')
-
-prepare(){
-  cp -a ${_pkgname}-${pkgver}{,-py2}
-}
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-  python2 setup.py build
 }
 
-package_python-cookiecutter() {
-  pkgdesc="creating a Python package project from a Python package project template"
-  depends=('python' 'python-future' 'python-binaryornot' 'python-jinja' 'python-click' 'python-whichcraft' 'python-poyo' 'python-jinja2-time' 'python-requests')
-
+package() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
+  python setup.py install --root="${pkgdir}/" -O1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-cookiecutter() {
-  pkgdesc="creating a Python package project from a Python package project template"
-  depends+=('python2' 'python2-future' 'python2-binaryornot' 'python2-jinja' 'python2-click' 'python2-whichcraft' 'python2-poyo' 'python2-jinja2-time' 'python2-requests')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}2"
 }
