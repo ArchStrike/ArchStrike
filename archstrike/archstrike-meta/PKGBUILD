@@ -5,7 +5,7 @@ buildarch=192
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
 pkgver=1.1
-pkgrel=5
+pkgrel=6
 arch=('x86_64' 'i686')
 url='https://www.archstrike.org/'
 license=('GPL')
@@ -68,10 +68,8 @@ package_archstrike-meta-upstream-all() {
     nethogs
     ngrep
     nmap
-    openvas-cli
-    openvas-libraries
-    openvas-manager
-    openvas-scanner
+    greenbone-security-assistant
+    openvas
     openvpn
     ophcrack
     pdnsd
