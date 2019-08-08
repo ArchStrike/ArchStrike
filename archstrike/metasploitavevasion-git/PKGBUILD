@@ -12,7 +12,7 @@ url="https://github.com/nccgroup/${_pkgname}"
 license=('AGPL3')
 arch=('any')
 groups=('archstrike' 'archstrike-exploit')
-depends=('metasploit' 'gcc' 'wget')
+depends=('metasploit-framework' 'gcc' 'wget')
 makedepends=('git')
 provides=('metasploitavevasion')
 source=("${pkgname}::git+https://github.com/nccgroup/${_pkgname}.git#branch=master"
