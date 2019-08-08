@@ -1,0 +1,62 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=metasploit-framework
+pkgver=5.0.39
+pkgrel=1
+pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
+url='https://www.metasploit.com/'
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+license=('BSD')
+depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'libxml2' 'git')
+makedepends=('make')
+options=('!strip' '!emptydirs')
+conflicts=('metasploit')
+source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/rapid7/metasploit-framework/archive/"${pkgver}".tar.gz)
+sha512sums=('5e65a65c55343784ff110d301f7b286fcf6ef8fb43b97cc42f1410ce3fbdf49c050d020403e0d2d06800ce4411073c52af637d8b8cc908894402b041c1237287')
+
+prepare() {
+  cd ${pkgname}-${pkgver} || exit
+
+  # https://github.com/bundler/bundler/issues/6882
+  sed -e '/BUNDLED WITH/,+1d' -i Gemfile.lock
+
+  bundle config build.nokogiri --use-system-libraries
+  sed 's|git ls-files|find -type f|' -i metasploit-framework.gemspec
+}
+
+build() {
+  cd ${pkgname}-${pkgver} || exit
+  CFLAGS+=" -I/usr/include/libxml2"
+  bundle install -j"$(nproc)" --no-cache --deployment
+  find vendor/bundle/ruby -exec chmod o+r '{}' \;
+  find vendor/bundle/ruby \( -name gem_make.out -or -name mkmf.log \) -delete
+}
+
+package() {
+  cd ${pkgname}-${pkgver} || exit
+
+  install -d "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin"
+  cp -r . "${pkgdir}/opt/${pkgname}"
+
+  for f in "${pkgdir}"/opt/"${pkgname}"/msf*; do
+    _msffile="${pkgdir}"/usr/bin/$(basename "${f}")
+    echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/$(basename "${f}") \"\$@\"" > "${_msffile}"
+    chmod 755 "${_msffile}"
+  done
+
+  (cd "${pkgdir}/opt/${pkgname}" || exit
+    for f in tools/*/*.rb; do
+      install -Dm 755 "${f}" ".${f}"
+      echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/.${f} \"\$@\"" > "${f}"
+      chmod 755 "${f}"
+    done
+  )
+
+  install -Dm 644 external/zsh/_* -t "${pkgdir}/usr/share/zsh/site-functions"
+  install -Dm 644 LICENSE COPYING -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d "${pkgdir}/usr/share/doc"
+  mv "${pkgdir}/opt/${pkgname}/documentation" "${pkgdir}/usr/share/doc/${pkgname}"
+  rm "${pkgdir}/usr/bin/msfupdate"
+}
