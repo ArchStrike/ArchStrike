@@ -5,7 +5,7 @@ buildarch=192
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
 pkgver=1.1
-pkgrel=6
+pkgrel=7
 arch=('x86_64' 'i686')
 url='https://www.archstrike.org/'
 license=('GPL')
@@ -42,7 +42,7 @@ package_archstrike-meta-upstream-all() {
     fcrackzip
     fping
     gdb
-    greenbone-security-assistant
+    greenbone-vulnerability-manager
     hexedit
     hping
     httping
@@ -68,8 +68,6 @@ package_archstrike-meta-upstream-all() {
     nethogs
     ngrep
     nmap
-    greenbone-security-assistant
-    openvas
     openvpn
     ophcrack
     pdnsd
