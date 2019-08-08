@@ -5,7 +5,7 @@ buildarch=192
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 arch=('x86_64' 'i686')
 url='https://www.archstrike.org/'
 license=('GPL')
@@ -58,7 +58,7 @@ package_archstrike-meta-upstream-all() {
     lsof
     ltrace
     macchanger
-    metasploit
+    metasploit-framework
     mtr
     nasm
     nbtscan
