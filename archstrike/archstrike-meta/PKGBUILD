@@ -5,7 +5,7 @@ buildarch=192
 pkgbase=archstrike-meta
 pkgname=('archstrike-meta-upstream-all')
 pkgver=1.1
-pkgrel=8
+pkgrel=9
 arch=('x86_64' 'i686')
 url='https://www.archstrike.org/'
 license=('GPL')
@@ -16,7 +16,6 @@ package_archstrike-meta-upstream-all() {
   depends=(
     afl
     aircrack-ng
-    arm
     arp-scan
     audit
     binwalk
@@ -32,8 +31,6 @@ package_archstrike-meta-upstream-all() {
     dnscrypt-proxy
     dnstracer
     dsniff
-    ebizzy
-    envoy
     etherape
     ettercap
     exiv2
@@ -66,7 +63,6 @@ package_archstrike-meta-upstream-all() {
     nasm
     nbtscan
     ncrack
-    nemesis
     net-snmp
     nethogs
     ngrep
@@ -77,7 +73,6 @@ package_archstrike-meta-upstream-all() {
     pdnsd
     perf
     perl-image-exiftool
-    playpen
     privoxy
     proxychains
     proxytunnel
