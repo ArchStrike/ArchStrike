@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=20190504.r776
+pkgver=20190713.r777
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='The Router Exploitation Framework'
@@ -13,27 +13,27 @@ url='https://github.com/threat9/routersploit'
 license=('GPL3')
 depends=('python-requests' 'python-paramiko' 'python-future' 'python-pysnmp' 'python-pycryptodome')
 makedepends=('git')
-source=("$pkgname::git+${url}.git")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname} || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/share/$_pkgname"
-  install -dm755 "$pkgdir/usr/bin"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname/"
+  cd ${pkgname} || exit
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}/"
   # Move license to the package license directory
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # Create launcher script
-cat > "$pkgdir/usr/bin/routersploit" << EOF
+cat > "${pkgdir}/usr/bin/routersploit" << EOF
 #!/usr/bin/env bash
 cd /usr/share/routersploit
 ./rsf.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/$_pkgname"
+chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
