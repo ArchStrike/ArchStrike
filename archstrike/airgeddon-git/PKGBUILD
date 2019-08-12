@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
-pkgver=20190525.r1731
+pkgver=20190812.r1818
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
@@ -16,33 +16,35 @@ depends=('bash>=4.2' 'iw' 'net-tools' 'wireless_tools' 'gawk' 'aircrack-ng' 'xte
          'usbutils' 'rfkill' 'wget' 'ccze' 'curl' 'xorg-xset' 'tmux')
 optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk4' 'hostapd' 'lighttpd' 'iptables'
             'beef-git' 'ettercap' 'sslstrip' 'dhcpcd' 'dsniff' 'bully' 'pixiewps'
-            'expect' 'bettercap-git' 'john' 'asleap' 'hostapd-wpe' 'nftables')
+            'expect' 'bettercap-git' 'john' 'asleap' 'hostapd-wpe' 'nftables'
+            'openssl' 'mdk3')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd ${pkgname} || exit
   printf '%s.r%s' "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
   "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd ${pkgname}
+  cd ${pkgname} || exit
   sed -i 's|AIRGEDDON_AUTO_UPDATE=true|AIRGEDDON_AUTO_UPDATE=false|' .airgeddonrc
+  rm -rf {*.md,.github,binaries,imgs,Dockerfile,pindb_checksum.txt,.editorconfig}
 }
 
 package() {
-  cd ${pkgname}
+  cd ${pkgname} || exit
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
   install -Dm644 .airgeddonrc "${pkgdir}/usr/share/${_pkgname}/.airgeddonrc"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}"
 
   # remove unneeded kali stuffs
-  rm -rf "${pkgdir}/usr/share/${_pkgname}/binaries"
+#  rm -rf "${pkgdir}/usr/share/${_pkgname}/binaries"
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/usr/bin/env bash
