@@ -5,34 +5,26 @@
 buildarch=1
 
 pkgname=onionshare
-pkgver=2.0
+pkgver=2.1
 pkgrel=1
 pkgdesc="Securely and anonymously share a file of any size"
 groups=('archstrike' 'archstrike-misc')
 url="https://github.com/micahflee/onionshare"
 arch=('any')
 license=('GPL3')
-depends=('stem' 'python-flask' 'tor' 'python-pycryptodome' 'python-pysocks' 'python-requests' 'python-pyqt5')
+depends=('python-altgraph' 'python-certifi' 'python-chardet' 'python-click' 'tor'
+         'python-flask' 'python-flask-httpauth' 'python-future' 'python-idna'
+         'python-itsdangerous' 'python-jinja' 'python-macholib' 'python-markupsafe'
+         'python-pefile' 'python-pycryptodome' 'python-pyqt5' 'python-sip-pyqt5'
+         'python-pysocks' 'python-requests' 'stem' 'python-urllib3' 'python-werkzeug')
 makedepends=('python-setuptools')
+source=("https://github.com/micahflee/onionshare/archive/v${pkgver}.tar.gz")
 
-source=(
-  "https://github.com/micahflee/onionshare/archive/v${pkgver}.tar.gz"
-  'custom-settings.patch'
-)
-
-sha512sums=(
-  '1c3dbe90b52b1147f5dbe686453e518100fe7d71428a14231451c3e4a6f2aa8b4d1e5ea64cbb753ce2d7c3789f1479b9a715d2a68288dcf33e50070fb693520d'
-  'e1a89a0b2322973242bda9a32b3590c0788fdb0aa93a688e0c27e2d45db680ce6bd77af10e17c629e033171dd2145cbcc20891c6edaf2cd4d2bd3b5e531ceee5'
-)
-
-prepare() {
-  cd $pkgname-$pkgver
-  git apply ../custom-settings.patch
-}
+sha512sums=('d42a5cb5d114e5024ebd50bc8e0318a2b38fd9094245485a1cb24961c9e37abefe3d777731e0b89eb629bcbecd9c4993c195047fa98c116ccd634292d3ec26e8')
 
 package() {
-  cd $pkgname-$pkgver
-  python setup.py install --root="$pkgdir" -O1
-  install -Dm644 install/onionshare.desktop "$pkgdir/usr/share/applications/"
-  install -Dm644 install/onionshare80.xpm "$pkgdir/usr/share/pixmaps/"
+  cd ${pkgname}-${pkgver}
+  python setup.py install --root="${pkgdir}" -O1
+  install -Dm644 install/onionshare.desktop "${pkgdir}/usr/share/applications/"
+  install -Dm644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/"
 }
