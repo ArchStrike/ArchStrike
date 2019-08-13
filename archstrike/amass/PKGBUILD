@@ -1,0 +1,46 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="Amass"
+pkgname="amass"
+pkgver=3.0.27
+pkgrel=1
+pkgdesc=" tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery"
+arch=('any')
+url="https://github.com/OWASP/Amass"
+license=('Apache')
+makedepends=('go' 'git')
+source=("https://github.com/OWASP/Amass/archive/v${pkgver}.tar.gz")
+sha512sums=('febe588ae396ee2dccaabe5a2aae6684f171e6afa9859841d4219d6723ac1150f43039a7045e35b7c9a89f46380680d99aaf83c365534f2a9b6a7471b9f38182')
+
+
+prepare() {
+  mkdir -vp "${srcdir}/github.com/OWASP"
+  mv "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/github.com/OWASP/${_pkgname}"
+
+  export GOPATH="${srcdir}"
+  cd "${GOPATH}/github.com/OWASP/${_pkgname}" || exit
+  go get -d ./...
+}
+
+check() {
+  cd "${srcdir}/github.com/OWASP/${_pkgname}" || exit
+  export GOPATH="${srcdir}"
+  go test ./...
+}
+
+build() {
+  cd "${srcdir}/github.com/OWASP/${_pkgname}" || exit
+  export GOPATH="${srcdir}"
+  go install -v ./...
+}
+
+package() {
+  export GOPATH="${srcdir}"
+  cd "${GOPATH}/bin" || exit
+  install -dm 755 "${pkgdir}/usr/share/${pkgname}"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+  cp -a --no-preserve=ownership "${GOPATH}/github.com/OWASP/${_pkgname}/"{wordlists/,examples/} "${pkgdir}/usr/share/${pkgname}"
+  chmod 644 "${pkgdir}/usr/share/${pkgname}/"{wordlists/*,examples/*}
+}
