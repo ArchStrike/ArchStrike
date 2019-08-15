@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=simple-email-spoofer-git
 pkgver=20171217.r53
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-spoof')
 arch=('any')
 pkgdesc="A simple Python CLI to spoof emails."
 url="https://github.com/lunarca/SimpleEmailSpoofer"
 license=('MIT')
-depends=('python2' 'python2-argparse' 'python2-colorama')
+depends=('python2' 'python2-dnspython' 'python2-colorama')
 makedepends=('git')
 source=("$pkgname::git+https://github.com/lunarca/SimpleEmailSpoofer.git")
 sha512sums=('SKIP')
