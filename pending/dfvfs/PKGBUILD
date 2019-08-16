@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=dfvfs
+pkgver=20190421
+pkgrel=1
+groups=('archstrike' 'archstrike-forensics')
+pkgdesc="Python module that provides read-only access to file-system objects from various storage media types and file formats."
+arch=('any')
+url='https://github.com/log2timeline/dfvfs'
+license=('Apache')
+depends=('python2-six' 'python2-protobuf' 'libewf' 'libqcow'
+         'libbde' 'libsmdev' 'libsmraw' 'libvhdi' 'libvmdk' 'libvshadow')
+makedepends=('python2-setuptools')
+source=("https://github.com/log2timeline/dfvfs/archive/${pkgver}.tar.gz")
+sha512sums=('5126f79d93037ee3f1307e3f28f564e2f03b0f3015c2710635963b0bb993ac2a3610fb8798b528e9fe72dec4e895d87bffeb5fe15cff047119c0a7fae4e6ad69')
+
+prepare(){
+  grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's|python$|python2|'
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py install --root=${pkgdir} -O1
+}

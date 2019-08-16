@@ -1,0 +1,39 @@
+# Maintainer: ArchStrike <team[at]archstrike[dot]org
+
+pkgbase=click-plugins
+pkgname=("python2-${pkgbase}" "python-${pkgbase}")
+pkgver=1.1.1
+pkgrel=1
+pkgdesc="Extension module for click to enable registering CLI commands."
+url="https://github.com/click-contrib/click-plugins"
+makedepends=('python2-setuptools' 'python-setuptools')
+license=('New BSD')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/c/click-plugins/click-plugins-${pkgver}.tar.gz")
+sha512sums=('bbd838f50603ac4e76daf3535fd5d27a17e17549addbc8b582df6d6193b4f07d743101ce52f0b71f326995fdfeac159805025770350ca2e7697f212dce0c4b1a')
+
+prepare() {
+    cp -r ${pkgbase}-${pkgver} ${pkgbase}2-${pkgver}
+}
+
+build() {
+    cd ${srcdir}/${pkgbase}2-${pkgver}
+    python2 setup.py build
+
+    cd ${srcdir}/${pkgbase}-${pkgver}
+    python setup.py build
+}
+
+package_python2-click-plugins() {
+depends=('python2-click')
+    cd ${srcdir}/${pkgbase}2-${pkgver}
+    python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+}
+
+package_python-click-plugins() {
+depends=('python-click')
+    cd ${srcdir}/${pkgbase}-${pkgver}
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -Dm644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+}

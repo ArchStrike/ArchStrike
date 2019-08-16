@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=dfdatetime
+pkgname=python2-${_pkgname}
+pkgver=20190116
+pkgrel=1
+pkgdesc="Provides date and time objects to preserve accuracy and precision"
+url="https://github.com/log2timeline/dfdatetime"
+depends=('python2' 'python2-pip')
+makedepends=('python2-setuptools')
+license=('Apache')
+arch=('any')
+source=("https://github.com/log2timeline/${_pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('4f2f609d2857ebc7a90668f06bc8ad066a57c07409e97e52c815e7c7256eccad6a89599835b44b70f334afa76def523981c4216417755d39079cca2bac1a8dbf')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package_python2-dfdatetime() {
+  cd ${_pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/bin"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+}
