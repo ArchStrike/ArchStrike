@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=suricata
 pkgver=4.1.4
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://openinfosecfoundation.org/index.php/download-suricata"
@@ -14,7 +14,6 @@ depends=('nss' 'jansson' 'libcap-ng' 'libnetfilter_queue' 'pcre' 'libdaq-static'
          'libnet' 'libpcap' 'libyaml' 'python2-magic' 'file' 'luajit' 'geoip'
          'libnetfilter_log' 'hiredis')
 optdepends=('snort: suricata can use rulesets provided by snort')
-replaces=('suricata')
 backup=('etc/suricata/suricata.yaml')
 install=${pkgname}.install
 source=("http://openinfosecfoundation.org/download/${pkgname}-${pkgver}.tar.gz"
