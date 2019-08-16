@@ -4,17 +4,17 @@ buildarch=1
 
 _pkgname="Bluto"
 pkgname="bluto"
-pkgver=2.4.6
+pkgver=2.4.13
 pkgrel=1
 pkgdesc="Recon, Subdomain Bruting, Zone Transfers"
 arch=('any')
 groups=('archstrike' 'archstrike-recon' 'archstrike-dns')
 url="https://github.com/darryllane/Bluto"
 license=("GPL3")
-depends=("python2-termcolor" "python2-lxml" "python2-beautifulsoup4" "python2-requests" "pythonwhois" "python2-dnspython" "python2-docopt" "python2-oletools" "python2-pdfminer")
+depends=("python2-termcolor" "python2-lxml" "python2-beautifulsoup4" "python2-requests" "pythonwhois" "python2-dnspython" "python2-docopt" "python2-oletools" "pdfminer")
 makedepends=("python2-setuptools")
-source=("https://github.com/darryllane/Bluto/archive/v${pkgver}.tar.gz")
-sha512sums=('111f4605afe93e60c994929f3ca017aeb379cafe30da0d4c49a2460a364b491efe1ec718590c6197bc68aabc1d1f826e9dc22607d98c196e345237b876d26cd5')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('f9b550b3c3f0e0033d1bbfbf2023e257574d9949620518f5858ec408662cf8233ffb64912ce62e71842df5cb2badda165b9c908925901584551090a63a5fb2e8')
 
 prepare() {
   grep -iRl 'python' ${_pkgname}-${pkgver}/${_pkgname}/modules | xargs sed -i 's|python$|python2|'
