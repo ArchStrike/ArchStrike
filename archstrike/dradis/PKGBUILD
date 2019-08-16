@@ -1,0 +1,43 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=128
+
+pkgname=dradis
+pkgver=3.6.0
+pkgrel=1
+pkgdesc="An open source framework to enable effective information sharing."
+groups=('archstrike' 'archstrike-misc')
+url="http://dradisframework.org/"
+license=('GPL')
+depends=('ruby' 'redis')
+arch=('x86_64')
+options=(!strip)
+replaces=('dradis')
+source=("http://downloads.sourceforge.net/dradis/dradis-${pkgver}-linux-x86_64.tar.gz")
+sha512sums=('91e3bfce25bcd1cac12406cccb27d43e74f89ffee1d6ac31997bd0485b5219fb4d88eed0afffd59aa364a62c12fc45275efa605cdd530686e34be77ec8697ad0')
+
+package() {
+
+  cd ${pkgname}-${pkgver}-linux-x86_64 || exit
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
+
+  cd "${pkgdir}/usr/bin"
+
+  # Joint scripts.
+  cat > dradis-webapp << EOF
+#!/bin/sh
+cd /usr/share/${pkgname}
+./dradis-webapp "\$@"
+EOF
+
+  cat > dradis-worker << EOF
+#!/bin/sh
+cd /usr/share/${pkgname}
+./dradis-worker "\$@"
+EOF
+
+  chmod 755 dradis-webapp dradis-worker
+}
