@@ -4,7 +4,7 @@ buildarch=200
 
 pkgname=netmap
 pkgver=0.1.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Can be used to make a graphical representation of the surounding network."
 url="http://netmap.sourceforge.net"
 arch=('i686' 'x86_64' 'aarch64')
