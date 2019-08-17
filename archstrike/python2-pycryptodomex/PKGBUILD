@@ -18,12 +18,12 @@ source=("https://pypi.org/packages/source/p/pycryptodomex/pycryptodomex-${pkgver
 sha512sums=('3d9707fa7e74ef4aebbf1496b1142dba411639526dc3c9777054e0cd35869c98006956e8b138ceb1481bda75cf1df60f91d9c2f8553e785d8ff2d4b6bbc35307')
 
 build() {
-    cd ${_pkgname}
+    cd ${_pkgname}-${pkgver}
 	python2 setup.py build
 }
 
 package() {
-    cd ${_pkgname}
+    cd ${_pkgname}-${pkgver}
 	python2 setup.py install --root="$pkgdir" -O1 --skip-build
 	install -Dm644 LICENSE.rst "$pkgdir"/usr/share/licenses/$pkgname/LICENSE.rst
 }
