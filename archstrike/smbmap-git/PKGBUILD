@@ -1,0 +1,33 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=smbmap-git
+pkgver=20180508.r67
+pkgrel=1
+groups=('archstrike' 'archstrike-enumeration')
+pkgdesc="A handy SMB enumeration tool"
+url='https://github.com/ShawnDEvans/smbmap'
+license=("GPL3")
+makedepends=('git')
+depends=('python2' 'impacket' 'python2-pycryptodomex')
+arch=('any')
+source=("${pkgname}::git+${url}.git")
+replaces=('smbmap')
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+prepare(){
+  cd ${pkgname}
+  sed -i 's|#pwi! /usr/bin/env python2|#!/usr/bin/env python2|' smbmap.py
+}
+
+package() {
+  cd ${pkgname}
+  install -Dm755 smbmap.py "$pkgdir/usr/bin/smbmap"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/smbmap/README.md"
+}
