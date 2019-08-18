@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=responder
-pkgver=2.3.0
-pkgrel=4
+pkgver=2.3.4.0
+pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A LLMNR and NBT-NS poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication."
-url="https://github.com/SpiderLabs/Responder"
+url="https://github.com/lgandx/Responder"
 license=('custom')
 arch=('any')
 depends=('python2')
 makedepends=('unzip')
-source=("https://github.com/SpiderLabs/Responder/archive/v$pkgver.zip" 'LICENSE')
-sha512sums=('acb30a9209baa488a53a21c402608ebd03e1eda4169338966bfc18a798e2c498c07fb49f1127f2966de317b1921c742ff305c795531430e601327c6d8bf30267'
+source=("${url}/archive/v$pkgver.zip" 'LICENSE')
+sha512sums=('587f92af79b0a3a3e3d7b2838dd6131227419f4c18d1e02c0d8ebe2e2fc099d74e0a95976f7b62c1f7c6b83a8e6c3215385dc67853f2b69a32e45817e3730ae0'
             '49254b769f161d19ade5858a4eb4eba7ce791051cb04bdabba4184ee8409e7bb83e3ec0941dfe3fc71d09fe5abff6d6d8b22b4ec8ffaa82f63a3dd91cc979551')
 
 prepare() {
@@ -36,11 +36,10 @@ package() {
   install -Dm644 "$srcdir"/LICENSE "$pkgdir"/usr/share/licenses/responder/LICENSE
   sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python|#!/usr/bin/env python2|' $pkgdir/usr/share/responder/servers/HTTP.py
   cat > "$pkgdir/usr/bin/responder" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/responder
 python2 Responder.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/responder"
-
+  chmod 755 "$pkgdir/usr/bin/responder"
 }
 
