@@ -1,0 +1,21 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=chart-studio
+pkgname=python-chart-studio
+pkgdesc="An interactive, browser-based graphing library for Python"
+pkgver=1.0.0
+pkgrel=1
+url="https://pypi.org/project/chart-studio/"
+license=("MIT")
+arch=("any")
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('f92b7c77bd14ddee251a3ae877d6216087dde7903140cd19348729707f503ecf0f5217a974e5879402b39250139b3d8b50598e7dd794a75b97d69e36f198da2e')
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python setup.py install --root=${pkgdir} -O1
+}
