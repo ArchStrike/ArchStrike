@@ -1,20 +1,21 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=220
+buildarch=28
 
 pkgname=metasploit-framework
-pkgver=5.0.39
+pkgver=5.0.41
 pkgrel=1
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
+groups=('archstrike' 'archstrike-exploits' 'archstrike-fuzzers' 'archstrike-scanners')
 url='https://www.metasploit.com/'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+arch=('armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'libxml2' 'git')
 makedepends=('make')
 options=('!strip' '!emptydirs')
 conflicts=('metasploit')
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/rapid7/metasploit-framework/archive/"${pkgver}".tar.gz)
-sha512sums=('5e65a65c55343784ff110d301f7b286fcf6ef8fb43b97cc42f1410ce3fbdf49c050d020403e0d2d06800ce4411073c52af637d8b8cc908894402b041c1237287')
+sha512sums=('113f0129ce703af506d733f1fc17ee7ebe77d2fd06470298bc58321cb889bc46076d8a8975556b1dde6085954955b99da3faac374d7fb4940eb2a08c410e78a4')
 
 prepare() {
   cd ${pkgname}-${pkgver} || exit
