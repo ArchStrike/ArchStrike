@@ -1,0 +1,8 @@
+post_install(){
+  echo "*DEPENDENCY* Before using this tool you will need to download the android-sdk package from the AUR."
+}
+
+post_upgrade(){
+  post_install
+}
+
