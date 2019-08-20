@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=libguytools
-pkgver=2.0.4
-pkgrel=4
+pkgver=2.1.0
+pkgrel=1
 pkgdesc='A small programming toolbox for Guymager'
 url='https://sourceforge.net/projects/libguytools'
 license=('GPL')
@@ -12,7 +12,7 @@ arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 depends=('qt5-base')
 options=('!strip')
 source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname/LatestSource/tools-$pkgver.tar.gz")
-sha512sums=('22e6784a9bcd0019b0cdef4b6d5b32f4c946ba731095131a47c6e3530bdba341258719afecc3265c6504fe217a383d507846c29c5119463eb0ca6b68a1a92c49')
+sha512sums=('466fa1171924b219d8c54bbc0df2d5e0c0f516c3ba9a734693f1447033feceb844b483a9b53c56223a4ea0df90feee15ec4902bf29dafd6c185060ee3a26bfa8')
 
 build() {
   cd tools-$pkgver
