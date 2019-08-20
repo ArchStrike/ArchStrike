@@ -1,14 +1,14 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=28
+buildarch=220
 
 pkgname=metasploit-framework
 pkgver=5.0.41
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
 groups=('archstrike' 'archstrike-exploits' 'archstrike-fuzzers' 'archstrike-scanners')
 url='https://www.metasploit.com/'
-arch=('armv6h' 'armv7h' 'aarch64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
 depends=('ruby' 'libpcap' 'postgresql-libs' 'ruby-bundler' 'sqlite' 'libxslt' 'libxml2' 'git')
 makedepends=('make')
