@@ -1,0 +1,21 @@
+# Maintainer: ArchStrike <team archstrike org>
+
+buildarch=1
+
+pkgname=python-crysp
+pkgver=0.9
+pkgrel=1
+pkgdesc="A crypto related pkg for amoco"
+arch=('any')
+url='https://github.com/bdcht/crysp'
+license=('GPL2')
+depends=('python-matplotlib' 'python-grandalf')
+makedepends=('python-setuptools')
+source=("https://github.com/bdcht/crysp/archive/v${pkgver}.tar.gz")
+sha512sums=('d32e92758eefc98ac8f29426b4a37a47621588f578ef021407f5eeaf8b573f3a4e47c03258a4f12539bd77ccd4dc630185cd65f2cfbd7399212f9c14d692035e')
+
+package() {
+  cd "${srcdir}/crysp-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}" -O1
+}
+
