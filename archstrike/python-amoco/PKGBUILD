@@ -1,0 +1,22 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-amoco
+pkgver=2.6.3
+pkgrel=1
+groups=('archstrike' 'archstrike-malware')
+pkgdesc="yet another tool for analysing binaries"
+arch=('any')
+url='https://github.com/bdcht/amoco'
+license=('GPL2')
+depends=('python-pygments' 'python-pyparsing' 'python-ply' 'python-crysp' 'python-grandalf'
+         'python-sqlalchemy' 'python-future' 'python-z3')
+makedepends=('python-setuptools' 'python-pytest-runner')
+source=("https://github.com/bdcht/amoco/archive/v${pkgver}.tar.gz")
+sha512sums=('b4a88e6c84e2593856f8da84fea0fdc4f60ec14fe8557d9a1922ee7547719562e80e59eda93bf8dc0cec2a26c3adc95bff3acc93ae7a99591751ebca97df8c00')
+
+package() {
+  cd "${srcdir}/amoco-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}" -O1
+}
