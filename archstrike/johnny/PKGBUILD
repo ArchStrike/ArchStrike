@@ -5,14 +5,14 @@ buildarch=200
 
 pkgname=johnny
 pkgver=2.2
-pkgrel=4
+pkgrel=5
 epoch=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc='GUI for John the Ripper'
 url='http://openwall.info/wiki/john/johnny'
 arch=('i686' 'x86_64' 'aarch64')
 license=('BSD')
-depends=('qt4' 'john')
+depends=('qt5-base' 'john')
 source=(
   "https://github.com/shinnok/$pkgname/archive/v$pkgver.tar.gz"
   "$pkgname.desktop"
@@ -24,7 +24,7 @@ sha512sums=(
 
 build() {
   cd $pkgname-$pkgver
-  qmake-qt4
+  qmake-qt5
   make
 }
 
