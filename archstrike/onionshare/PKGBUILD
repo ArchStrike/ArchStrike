@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=onionshare
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Securely and anonymously share a file of any size"
 groups=('archstrike' 'archstrike-misc')
 url="https://github.com/micahflee/onionshare"
@@ -16,7 +16,7 @@ depends=('python-altgraph' 'python-certifi' 'python-chardet' 'python-click' 'tor
          'python-flask' 'python-flask-httpauth' 'python-future' 'python-idna'
          'python-itsdangerous' 'python-jinja' 'python-macholib' 'python-markupsafe'
          'python-pefile' 'python-pycryptodome' 'python-pyqt5' 'python-sip-pyqt5'
-         'python-pysocks' 'python-requests' 'stem' 'python-urllib3' 'python-werkzeug')
+         'python-pysocks' 'python-requests' 'python-stem-git' 'python-urllib3' 'python-werkzeug')
 makedepends=('python-setuptools')
 source=("https://github.com/micahflee/onionshare/archive/v${pkgver}.tar.gz")
 
