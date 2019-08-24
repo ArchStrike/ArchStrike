@@ -1,0 +1,22 @@
+# Maintainer: Archstrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-pyusb
+_pkgname=pyusb
+pkgver=1.0.2
+pkgrel=3
+pkgdesc="Easy USB access from Python"
+arch=('any')
+url="https://github.com/pyusb/pyusb/"
+license=('BSD')
+depends=('python2' 'libusb')
+makedepends=('python2-setuptools')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('6a264b796e17612004196a7a526a7c6df99feac9062f8354540221016411a78a65d413731aea2fc1206ed5ea2b84787078898b9ca3754164f1dfe2a9878b75a5')
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install --prefix=/usr --root="$pkgdir/" -O1
+}
+
