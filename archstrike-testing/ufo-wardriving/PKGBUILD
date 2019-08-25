@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=ufo-wardriving
-pkgver=4
-pkgrel=4
+pkgver=5.0.0
+pkgrel=1
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc="Allows you to test the security of wireless networks by detecting their passwords based on the router model"
 url="http://www.ufo-wardriving.com/"
 arch=('any')
 license=('GPL2')
-depends=('python2' 'python2-pyqt4')
-source=("https://bitbucket.org/asterixthc/ufo-wardriving-4/downloads/ufo-wardriving-$pkgver.zip")
-md5sums=('e884108abcbfb78bc2480716704a1b49')
+depends=('python' 'python-pyqt5' 'wireless_tools')
+source=("https://github.com/comrumino/ufo-wardriving/archive/$pkgver.zip")
+sha512sums=('6dc128d0914552248d95b432d0ebbe2c56e637a1faf1eeaaa1add0ce80aad01ff8d7653c547d7da64b2a2e885e4f0f50ef92d170ea306658122394c4bc60b1ca')
 
 package() {
   cd "$srcdir/ufo-wardriving-$pkgver"
