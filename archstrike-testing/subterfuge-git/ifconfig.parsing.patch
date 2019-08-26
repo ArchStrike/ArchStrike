@@ -1,0 +1,116 @@
+diff --git a/attackctrl.py b/attackctrl.py
+index 0981c44..4bebf9f 100644
+--- a/attackctrl.py
++++ b/attackctrl.py
+@@ -299,7 +299,8 @@ def autoconfig():
+     temp = ''
+     gw.append(temp)
+     for interface in result:
+-       f = os.popen("ifconfig " + interface + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++       f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
++       f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
+        temp2 = ''
+        temp3 = ''
+        temp = f.readline().rstrip('\n')
+@@ -319,7 +320,8 @@ def autoconfig():
+     conf = f.readlines()
+          
+         #Get the Local IP Address
+-    f = os.popen("ifconfig " + result[0] + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++    f = os.popen("ifconfig " + result[0] + " | grep \"inet \" | awk \'{print $3}\'")
++    f = os.popen("ifconfig " + result[0] + " | grep \"inet \" | awk \'{print $3}\'")
+     temp2 = ''
+     temp3 = ''
+     temp = f.readline().rstrip('\n')
+diff --git a/attackctrl.py~ b/attackctrl.py~
+index 89db23a..8388327 100644
+--- a/attackctrl.py~
++++ b/attackctrl.py~
+@@ -299,7 +299,8 @@ def autoconfig():
+     temp = ''
+     gw.append(temp)
+     for interface in result:
+-       f = os.popen("ifconfig " + interface + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++       f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
++       f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
+        temp2 = ''
+        temp3 = ''
+        temp = f.readline().rstrip('\n')
+@@ -319,7 +320,8 @@ def autoconfig():
+     conf = f.readlines()
+          
+         #Get the Local IP Address
+-    f = os.popen("ifconfig " + result[0] + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++    f = os.popen("ifconfig " + result[0] + " | grep \"inet \" | awk \'{print $3}\'")
++    f = os.popen("ifconfig " + result[0] + " | grep \"inet \" | awk \'{print $3}\'")
+     temp2 = ''
+     temp3 = ''
+     temp = f.readline().rstrip('\n')
+diff --git a/main/views.py b/main/views.py
+index a3a2c68..1a809dd 100644
+--- a/main/views.py
++++ b/main/views.py
+@@ -313,7 +313,8 @@ def conf(request, module):
+ 
+          #Get the Local IP Address
+       try:
+-         f = os.popen("ifconfig " + request.POST["iface"] + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++         f = os.popen("ifconfig " + request.POST["iface"] + " | grep \"inet \" | awk \'{print $3}\'")
++         f = os.popen("ifconfig " + request.POST["iface"] + " | grep \"inet \" | awk \'{print $3}\'")
+          temp2 = ''
+          temp3 = ''
+          temp = f.readline().rstrip('\n')
+@@ -470,7 +471,8 @@ def settings(request):
+          temp = ''
+          gw.append(temp)
+          for interface in result:
+-           f = os.popen("ifconfig " + interface + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++           f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
++           f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
+            temp2 = ''
+            temp3 = ''
+            try:
+@@ -549,7 +551,8 @@ def resetpwn(request):
+ def gate(request):
+    if request.is_ajax():
+       print "Loading Default Gateway"
+-      f = os.popen("ifconfig " + interface + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++      f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
++      f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
+       temp = ''
+       temp2 = ''
+       temp3 = ''
+diff --git a/main/views.py~ b/main/views.py~
+index 107f7e9..b58c2c2 100644
+--- a/main/views.py~
++++ b/main/views.py~
+@@ -307,7 +307,8 @@ def conf(request, module):
+ 
+          #Get the Local IP Address
+       try:
+-         f = os.popen("ifconfig " + request.POST["iface"] + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++         f = os.popen("ifconfig " + request.POST["iface"] + " | grep \"inet \" | awk \'{print $3}\'")
++         f = os.popen("ifconfig " + request.POST["iface"] + " | grep \"inet \" | awk \'{print $3}\'")
+          temp2 = ''
+          temp3 = ''
+          temp = f.readline().rstrip('\n')
+@@ -464,7 +465,8 @@ def settings(request):
+          temp = ''
+          gw.append(temp)
+          for interface in result:
+-           f = os.popen("ifconfig " + interface + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++           f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
++           f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
+            temp2 = ''
+            temp3 = ''
+            try:
+@@ -543,7 +545,8 @@ def resetpwn(request):
+ def gate(request):
+    if request.is_ajax():
+       print "Loading Default Gateway"
+-      f = os.popen("ifconfig " + interface + " | grep \"inet addr\" | sed -e \'s/.*addr://;s/ .*//\'")
++      f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
++      f = os.popen("ifconfig " + interface + " | grep \"inet \" | awk \'{print $3}\'")
+       temp = ''
+       temp2 = ''
+       temp3 = ''
