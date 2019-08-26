@@ -15,6 +15,7 @@ makedepends=('arptables' 'python2-twisted' 'python2-scapy' 'sqlite3' 'python2'
              'python2-virtualenv' 'net-tools' 'dhcpcd' 'dhcp' 'dhclient' 'nmap'
              'subversion' 'iptables' 'xterm' 'aircrack-ng' 'git')
 optdepends=('metasploit-framework: browser_autopwn support')
+replaces=("$_pkgname")
 source=("$_pkgname::git+https://github.com/Subterfuge-Framework/Subterfuge.git#branch=git-setup"
         "ifconfig.parsing.patch")
 sha512sums=('SKIP'
