@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=websploit-git
 pkgver=20171206.r7
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-social-engineering' 'archstrike-scanners')
 arch=('any')
 pkgdesc="advanced MITM framework"
 url="https://github.com/websploit/websploit"
 license=('GPL3')
-depends=('python2' 'python2-scapy' 'metasploit' 'ruby-bundler' 'apache' 'driftnet'
+depends=('python2' 'python2-scapy' 'metasploit-framework' 'ruby-bundler' 'apache' 'driftnet'
          'python2-future' 'xterm' 'aircrack-ng' 'ettercap' 'dsniff')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
