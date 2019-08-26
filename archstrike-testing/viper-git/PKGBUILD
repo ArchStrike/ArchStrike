@@ -4,7 +4,7 @@ pkgbase=viper-git
 buildarch=1
 
 pkgname=(viper-git viper-git-docs)
-pkgver=r1935.28b2513
+pkgver=r1994.ac85712
 pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="A Binary analysis framework"
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package_viper-git() {
-  depends=('python-magic' 'python-bottle' 'python-pefile' 'python-pydeep' 'python-requests' 'python-sqlalchemy' 'python-crypto' 'python-beautifulsoup4' 'python-olefile' 'python-prettytable' 'python-pyelftools' 'python-dnspython' 'python-m2crypto' 'python-pyasn1' 'python-terminaltables' 'python-future' 'python-yara' 'python-dateutil' 'python-r2pipe' 'python-pbkdf2' 'python-virustotal-api')
+  depends=('python-magic-git' 'python-bottle' 'python-pefile' 'python-pydeep' 'python-requests' 'python-sqlalchemy' 'python-crypto' 'python-beautifulsoup4' 'python-olefile' 'python-prettytable' 'python-pyelftools' 'python-dnspython' 'python-m2crypto' 'python-pyasn1' 'python-terminaltables' 'python-future' 'python-yara' 'python-dateutil' 'python-r2pipe' 'python-pbkdf2' 'python-virustotal-api')
   optdepends=('androguard: APK support'
               'cuckoo: Cuckoo support'
               'python-beautifulsoup4: html parsing'
