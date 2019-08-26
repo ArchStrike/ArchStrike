@@ -1,17 +1,17 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=136
 
 pkgname=snmp-brute-git
 pkgver=20151002.r15
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc="SNMP brute force, enumeration, CISCO config downloader and password cracking script."
 url="https://github.com/SECFORCE/SNMP-Brute"
 depends=('python2' 'john' 'metasploit-framework' 'net-snmp')
 makedepends=('git')
 license=('GPL3')
-arch=('any')
+arch=('x86_64' 'aarch64')
 source=("$pkgname::git+https://github.com/SECFORCE/SNMP-Brute.git")
 sha512sums=('SKIP')
 
