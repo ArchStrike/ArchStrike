@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=sploitego
 pkgver=r153.d9568dc
-pkgrel=3
+pkgrel=4
 epoch=1
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="Maltego Penetration Testing Transforms"
 url="https://github.com/allfro/sploitego"
 arch=('any')
 license=('GPL2')
-depends=('python2' 'nmap' 'p0f' 'amap' 'metasploit')
+depends=('python2' 'nmap' 'p0f' 'amap' 'metasploit-framework')
 makedepends=('git' 'python2-setuptools')
 optdepends=('nessus')
 install='sploitego.install'
