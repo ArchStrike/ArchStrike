@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=arpon
 pkgver=3.0
-pkgrel=2
+pkgrel=3
 pkgdesc='A portable handler daemon that make ARP protocol secure in order to avoid the Man In The Middle (MITM) attack through ARP Spoofing, ARP Cache Poisoning or ARP Poison Routing (APR) attacks.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://arpon.sourceforge.net/'
@@ -26,7 +26,7 @@ sha512sums=('e6338018d65f3f8300958e168a9eb6f6be85cba21ae0aee4b03e9838a29a06afbf2
             'd902e0bc37c922f73ea8c70b388620d86e43e61676ce46011b5c006bef0c09638dd06493e10f911068f0d436439f1da3c365902c386379ddc2a9dfe34c206039')
 
 build() {
-  cd "${srcdir}/ArpON-${pkgver}-ng"
+  cd "${srcdir}/ArpON-${pkgver}-ng" || exit
   [ -d build ] || mkdir build
   cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr ..
@@ -34,7 +34,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/ArpON-${pkgver}-ng/build"
+  cd "${srcdir}/ArpON-${pkgver}-ng/build" || exit
   make DESTDIR="${pkgdir}" install
   install -Dm644 "../LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm755 "${srcdir}/arpon" "${pkgdir}/etc/rc.d/arpon"
