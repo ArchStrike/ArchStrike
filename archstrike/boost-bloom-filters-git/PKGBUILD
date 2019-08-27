@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=boost-bloom-filters-git
 pkgver=20130409.r190
-pkgrel=3
+pkgrel=4
 pkgdesc="A collection of generic, C++ Bloom Filter classes developed for the Boost C++ Libraries."
 arch=('any')
 url='https://github.com/cabrera/boost-bloom-filters'
@@ -16,12 +16,12 @@ source=("${pkgname}::git+https://github.com/cabrera/boost-bloom-filters.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd "${pkgname}" || exit
     printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   install -dm755 "${pkgdir}/usr/include/boost"
   cp -a --no-preserve=ownership boost/* "${pkgdir}/usr/include/boost/"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
