@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='arpalert'
 pkgver='2.0.12'
-pkgrel=1
+pkgrel=2
 epoch=1
 pkgdesc='Monitor ARP changes in ethernet networks.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,11 +13,11 @@ license=('GPL')
 depends=('libpcap')
 options=('!emptydirs')
 groups=('archstrike' 'archstrike-defense')
-source=("http://www.arpalert.org/src/arpalert-$pkgver.tar.gz")
+source=("http://www.arpalert.org/src/arpalert-${pkgver}.tar.gz")
 sha512sums=('0bbc5285db47a0ab130850d000850ef0ae6b825f3ed89ebe7788ca258c127108019e50f63d6b6f6ddfe8f164a2808a7940242eb0d23db343bc2632d775bf8752')
 
 build() {
-  cd "$srcdir/arpalert-$pkgver"
+  cd "${srcdir}/arpalert-${pkgver}" || exit
   export CFLAGS+=" -fPIC"
   ./configure --prefix=/usr \
               --sysconfdir=/etc \
@@ -28,6 +28,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/arpalert-$pkgver"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/arpalert-${pkgver}" || exit
+  make DESTDIR="${pkgdir}" install
 }
