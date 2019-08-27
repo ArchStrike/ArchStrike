@@ -4,18 +4,18 @@ buildarch=220
 
 pkgname=argus-clients
 pkgver=3.0.8.2
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-networking' 'archstrike-defense')
 pkgdesc="Network monitoring client for Argus"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://qosient.com/argus/"
 depends=('geoip' 'libsasl' 'pcre')
 license=('GPL3')
-source=("http://qosient.com/argus/src/argus-clients-$pkgver.tar.gz")
+source=("http://qosient.com/argus/src/argus-clients-${pkgver}.tar.gz")
 sha512sums=('1e172abc976f4391eba78389e998c83fe0f669551693cefe54dd219d899054ad12aba8c9262419983f90803bcee1c616b94667976ad49f25eda5769fe6054e95')
 
 build() {
-  cd $srcdir/argus-clients-$pkgver
+  cd ${srcdir}/argus-clients-${pkgver} || exit
   ./configure --prefix=/usr \
               --sbindir=/usr/bin \
               --with-sasl \
@@ -29,9 +29,9 @@ build() {
 }
 
 package() {
-  cd $srcdir/argus-clients-$pkgver
-  make DESTDIR=$pkgdir install
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  mv $pkgdir/usr/argus $pkgdir/usr/share/argus
-  chmod 644 $pkgdir/usr/lib/argus_*.a
+  cd ${srcdir}/argus-clients-${pkgver} || exit
+  make DESTDIR=${pkgdir} install
+  install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  mv ${pkgdir}/usr/argus ${pkgdir}/usr/share/argus
+  chmod 644 ${pkgdir}/usr/lib/argus_*.a
 }
