@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=azazel
 pkgname=${_pkgname}-git
 pkgver=r14.e6a12a2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc='A userland rootkit based off of the original LD_PRELOAD technique from Jynx rootkit'
 arch=('any')
@@ -25,12 +25,12 @@ prepare(){
 }
 
 pkgver() {
-  cd ${pkgname}
+  cd ${pkgname} || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd ${pkgname}
-  install -dm755 "$pkgdir/usr/share/${_pkgname}"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/${_pkgname}/"
+  cd ${pkgname} || exit
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}/"
 }
