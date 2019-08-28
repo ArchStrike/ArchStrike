@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=$_pkgname-git
 pkgver=v1.1.r15.g4f7c086
-pkgrel=3
+pkgrel=4
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-exploit')
 pkgdesc="SQL injection exploit tool"
@@ -15,9 +15,6 @@ url="https://github.com/neohapsis/bbqsql"
 license=('BSD')
 depends=('python2-requests' 'python2-gevent')
 makedepends=('git' 'python2-setuptools')
-conflicts=('bbqsql')
-provides=('bbqsql')
-replaces=('bbqsql')
 source=("${pkgname}::git+$url")
 sha512sums=('SKIP')
 
@@ -41,7 +38,7 @@ build() {
 
 package() {
   cd ${pkgname}
-  python2 setup.py install --root="$pkgdir" -O1 --skip-build
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname/LICENSE.md"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
 }
