@@ -4,7 +4,7 @@ buildarch=128
 
 pkgname=autopsy
 pkgver=4.7.0
-pkgrel=4
+pkgrel=5
 groups=("archstrike" "archstrike-forensics")
 pkgdesc="A digital forensics platform and GUI for tools such as The Sleuth Kit"
 arch=("x86_64")
@@ -17,14 +17,14 @@ source=("https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${
 sha512sums=('6720e1a21c906b42870ea533e55329a07c72b7689f94f264b2cbf10daae44daa27e65212107a68ee3f41faaf52d5419fe8d137594e2e3bb76b49882a70512cf9')
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${pkgname}-${pkgver}" || exit
 
-  mkdir -p $pkgdir/opt/${pkgname}
+  mkdir -p ${pkgdir}/opt/${pkgname}
   chmod 755 bin/autopsy
   rm bin/autopsy.exe bin/autopsy64.exe autopsy/modules/ext/sleuthkit-postgresql-4.6.1.jar
-  cp -a --no-preserve=owner * $pkgdir/opt/${pkgname}/
-  ln -s /usr/share/java/sleuthkit-4.6.1.jar $pkgdir/opt/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-4.6.1.jar
+  cp -a --no-preserve=owner * ${pkgdir}/opt/${pkgname}/
+  ln -s /usr/share/java/sleuthkit-4.6.1.jar ${pkgdir}/opt/${pkgname}/${pkgname}/modules/ext/sleuthkit-postgresql-4.6.1.jar
 
-  mkdir -p $pkgdir/usr/share/pixmaps
-  cp icon.ico $pkgdir/usr/share/pixmaps/autopsy.ico
+  mkdir -p ${pkgdir}/usr/share/pixmaps
+  cp icon.ico ${pkgdir}/usr/share/pixmaps/autopsy.ico
 }
