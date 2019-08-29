@@ -18,15 +18,15 @@ Please contact us if issues are encountered via github, IRC, twitter, or email -
 
 ## Contact Info
 
-Email us at: <team@archstrike.org>
+Email: <team@archstrike.org>
 
-Join the chat: irc://chat.freenode.net/#archstrike
+Internet Relay Chat (IRC): irc://chat.freenode.net/#archstrike
 
-Follow us on twitter: <https://twitter.com/ArchStrike>
+Twitter: <https://twitter.com/ArchStrike>
 
-Send us a pull request: <https://github.com/ArchStrike/ArchStrike>
+Pull request: <https://github.com/ArchStrike/ArchStrike>
 
-Check out our subreddit: <https://reddit.com/r/archstrike>
+Reddit: <https://reddit.com/r/archstrike>
 
 Please read our [wiki pages](https://archstrike.org/wiki) before you ask something!
 
