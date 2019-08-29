@@ -24,7 +24,7 @@ src/
 *.iso
 *.jar
 *.log
-*.lzma
+#*.lzma
 *.part
 *.pdf
 *.rar

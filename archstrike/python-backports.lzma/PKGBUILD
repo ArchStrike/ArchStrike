@@ -1,0 +1,23 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgmain=backports.lzma
+pkgname=python-${_pkgmain}
+pkgver=0.0.12
+pkgrel=1
+pkgdesc="Backport of Python 3 standard library module lzma for LZMA/XY compressed files"
+arch=('any')
+url="https://github.com/peterjc/backports.lzma"
+license=('BSD')
+depends=('python')
+makedepends=('python-setuptools')
+options=(!emptydirs)
+source=("${_pkgmain}-${pkgver}.tar.gz::https://github.com/peterjc/backports.lzma/archive/${_pkgmain}.v${pkgver}.tar.gz")
+sha512sums=('521e6b3c003a225d6a4c63519638ca0602e4a02a53532f4d54501da44a914bcdd16398fb0b2ab1210c92991c96b2c16d0a0288ed79c4bc9de6a5f6a66b430fb2')
+
+package() {
+  cd "${srcdir}/${_pkgmain}-${_pkgmain}.v${pkgver}" || exit
+  python setup.py install --root="${pkgdir}/" -O1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
