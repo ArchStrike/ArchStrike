@@ -10,11 +10,11 @@ Done the Arch Way and optimized for i686, x86_64, ARMv6, ARMv7, and ARMv8.
 
 [Our Twitter](https://twitter.com/ArchStrike)
 
-[ArchStrike](https://archstrike.org) is a penetration testing and security layer on top of Arch Linux. We follow the Arch Linux standards very closely in order to keep our packages clean, proper and easy to maintain.
+[ArchStrike](https://archstrike.org) is a penetration testing and security repository for users of Arch Linux, following Arch Linux standards to keep our packages clean, proper, and easy to maintain.
 
-Our team is working very hard to maintain the repository and give you the best ArchStrike experience.
+We do our best to maintain the repository and give users a quality ArchStrike experience.
 
-If you find any issues, please don't hesitate to contact us via github, IRC, twitter or email. Any feedback is appreciated.
+Please contact us if issues are encountered via github, IRC, twitter, or email - we welcome feedback that helps us improve.
 
 ## Contact Info
 
@@ -32,31 +32,31 @@ Please read our [wiki pages](https://archstrike.org/wiki) before you ask somethi
 
 ## Contributing
 
-Contributions are very welcome. You can contribute at our [github page](https://github.com/ArchStrike/ArchStrike)
+Contributions are welcome. You can contribute through pull requests (PRs) via our [github page](https://github.com/ArchStrike/ArchStrike)
 
-Just clone our repository with `git clone https://github.com/ArchStrike/ArchStrike.git` then make your changes and submit it back to us via a pull request.
+Just clone our repository with `git clone https://github.com/ArchStrike/ArchStrike.git`, make changes, and submit via a pull request.
 
 If you have more questions regarding contribution, you can check out our [wiki page about this](https://archstrike.org/wiki/contributing)
 
 ## FAQ
 
-**Q: What's the difference between ArchStrike and other security-based repositories?**
+**Q1: What's the difference between ArchStrike and other security-based repositories?**
 
 A: We try and follow the Arch Linux standards when making our packages, so they can install or remove easily without affecting an existing Arch Linux installation. Bascially, you can use the repository as an extension to your already existing Arch Linux repositories.
 
-**Q: Where can I download an ISO/OVA file?**
+**Q2: Where can I download an ISO/OVA file?**
 
 A: You can [download the latest releases from here](https://archstrike.org/downloads).
 **NOTE: We're trying to consolidate our main and testing repositories while Arch Linux is in the process of meeting the Python 2 EOL timeline. So, the ISO and OVA files might be outdated.
 
-**Q: How can I contact you?**
+**Q3: How can I contact you?**
 
-A: Send us an email, join our IRC channel, or contact us via github.
+A: See Contact Info above.
 
-**Q: I am having trouble installing ArchStrike, can you help me?**
+**Q4: I am having trouble installing ArchStrike, can you help me?**
 
-A: Yes! Send us an email or join our IRC channel to get help from the developers.
+A: Yes! Our contact information is above.
 
-**Q: What is the archstrike-testing repository and do I need it?**
+**Q5: What is the archstrike-testing repository and do I need it?**
 
 A: The testing repository is merely a quality control mechanism we have in place. When new tools are added, they stay in testing until they are verified to be functioning correctly. The time a package spends in the testing repository depends on if the package was tested properly or not (so if you want something moved out of testing, test it and report it) . Most of the packages in testing build and work fine but some may have problems. If you want to have the full range of tools that we provide, go ahead and add the testing repository as well.
