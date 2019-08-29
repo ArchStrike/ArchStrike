@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname="libvmdk"
+pkgver=20181227
+pkgrel=1
+pkgdesc="Library and tools to access the VMware Virtual Disk (VMDK) format"
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
+url='https://github.com/libyal/libvmdk'
+license=('GPL3')
+depends=('libcsystem' 'python' 'libbfio' 'fuse')
+install="${pkgname}.install"
+source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-alpha-${pkgver}.tar.gz")
+sha512sums=('e1953178b700bbf93774c190d234f88e37bd4bca01522fd3240e8326622d50c5bc5efe518ccec4d846909b9a8f521e50fe1c1f58ccc019f0c4e180c4b200b3ca')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  PYTHON_VERSION="3" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
+}
