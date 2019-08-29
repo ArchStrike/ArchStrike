@@ -3,23 +3,24 @@
 buildarch=1
 
 pkgname=windows-binaries
-pkgver=0.5
-pkgrel=3
+pkgver=0.6.9
+pkgrel=1
 groups=('archstrike')
 pkgdesc="A colleciton of pentesting Windows binaries"
 arch=('any')
 license=('GPL2')
 url="http://ftp.cc.uoc.gr/mirrors/linux/kali/kali/pool/non-free/w/windows-binaries/"
-source=("http://ftp.cc.uoc.gr/mirrors/linux/kali/kali/pool/non-free/w/windows-binaries/windows-binaries_$pkgver.orig.tar.gz")
+#source=("http://ftp.cc.uoc.gr/mirrors/linux/kali/kali/pool/non-free/w/windows-binaries/windows-binaries_${pkgver}.orig.tar.gz")
+source=("http://ftp.cc.uoc.gr/mirrors/linux/kali/kali/pool/non-free/w/windows-binaries/windows-binaries_0.6.9.tar.xz")
 options=('!strip')
-sha512sums=('a0e6bda2ee96b3a9bd682d48383eaf4fc067d41c645a1b26c321f23574051806d3aaa727b749ce42acc1f1a831aa0152d359db85e15185856365d49ab6022f2b')
+sha512sums=('5dd848c4820c6c078de0c6ebb01a3c9a35362d7c85aa4f1220050a1093f9105994fd1caf93927af8ad88feb873d41cc58ffd11fa08343ff6c92f2903e196ba38')
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/share/windows-binaries"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/windows-binaries"
+  install -dm755 "${pkgdir}/usr/share/windows-binaries"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/windows-binaries"
   # Removing debian crap
-  rm -rf "$pkgdir/usr/share/windows-binaries/debian"
+  rm -rf "${pkgdir}/usr/share/windows-binaries/debian"
 }
