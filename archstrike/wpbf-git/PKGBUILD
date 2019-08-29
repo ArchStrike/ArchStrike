@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wpbf-git
 pkgver=r7.11b6ac1
-pkgrel=3
+pkgrel=4
 pkgdesc="Multithreaded WordPress brute forcer"
 url="https://github.com/dejanlevaja/wpbf"
 arch=('any')
@@ -15,11 +15,11 @@ makedepends=('git')
 provides=('wpbf')
 conflicts=('wpbf')
 replaces=('wpbf')
-source=("$pkgname::git+https://github.com/dejanlevaja/wpbf.git")
+source=("${pkgname}::git+https://github.com/dejanlevaja/wpbf.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd ${pkgname} || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -28,18 +28,18 @@ prepare() {
 }
 
 package() {
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 README.md "$pkgdir/usr/share/$pkgname/README.md"
-  install -Dm644 wpbf.py "$pkgdir/usr/share/$pkgname/wpbf.py"
+  cd ${pkgname} || exit
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 README.md "${pkgdir}/usr/share/${pkgname}/README.md"
+  install -Dm644 wpbf.py "${pkgdir}/usr/share/${pkgname}/wpbf.py"
 
-cat > "$pkgdir/usr/bin/wpbf" <<EOF
+cat > "${pkgdir}/usr/bin/wpbf" <<EOF
 #!/bin/sh
-cd /usr/share/$pkgname
+cd /usr/share/${pkgname}
 python2 wpbf.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/wpbf"
+chmod 755 "${pkgdir}/usr/bin/wpbf"
 }
 
