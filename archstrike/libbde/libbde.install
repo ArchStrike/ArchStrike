@@ -1,5 +1,5 @@
 post_install(){
- libtool --finish /usr/lib/python2.7/site-packages >/dev/null
+ libtool --finish /usr/lib/python3.7/site-packages >/dev/null
  libtool --finish /usr/lib > /dev/null
 }
 
