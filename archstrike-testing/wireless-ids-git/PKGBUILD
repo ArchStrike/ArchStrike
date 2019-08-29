@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wireless-ids-git
 pkgver=r24.b132071
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-defense')
 pkgdesc="Ability to detect suspicious activity such as (WEP/WPA/WPS) attack by sniffing the air for wireless packets."
 arch=('any')
@@ -20,25 +20,25 @@ source=("wireless-ids::git+https://github.com/SYWorks/wireless-ids.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/wireless-ids"
+  cd "${srcdir}/wireless-ids" || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' "$srcdir/wireless-ids" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${srcdir}/wireless-ids" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-  cd "$srcdir/wireless-ids"
-  install -dm755 $pkgdir/usr/share/$pkgname
-  install -dm755 $pkgdir/usr/bin
-  install -Dm755 wids.py $pkgdir/usr/share/$pkgname
-  install -Dm644 mac-oui.db $pkgdir/usr/share/$pkgname
+  cd "${srcdir}/wireless-ids" || exit
+  install -dm755 ${pkgdir}/usr/share/${pkgname}
+  install -dm755 ${pkgdir}/usr/bin
+  install -Dm755 wids.py ${pkgdir}/usr/share/${pkgname}
+  install -Dm644 mac-oui.db ${pkgdir}/usr/share/${pkgname}
 
-cat > $pkgdir/usr/bin/wireless-ids <<EOF
+cat > ${pkgdir}/usr/bin/wireless-ids <<EOF
 #!/bin/sh
-cd /usr/share/$pkgname
+cd /usr/share/${pkgname}
 python2 ./wids.py "\$@"
 EOF
-chmod 755 $pkgdir/usr/bin/wireless-ids
+chmod 755 ${pkgdir}/usr/bin/wireless-ids
 }
