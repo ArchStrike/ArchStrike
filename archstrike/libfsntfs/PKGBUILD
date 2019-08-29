@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname="libfsntfs"
+pkgver=20190104
+pkgrel=1
+pkgdesc="iLibrary and tools to access the New Technology File System (NTFS)."
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
+url='https://github.com/libyal/libfsntfs'
+license=('GPL3')
+depends=('libcsystem' 'libbfio' 'python')
+install="${pkgname}.install"
+source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-experimental-${pkgver}.tar.gz")
+sha512sums=('b2be8723c9796f267c9b0d3265ac439418f2cd47e92d22604add641eed5e90662464bffb4792346fa3f6d3ac989cb1a6578cc5c056c43029bb63888fb6d597f9')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  PYTHON_VERSION="3" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  make DESTDIR="${pkgdir}/" install
+}
