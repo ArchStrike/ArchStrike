@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=wmat
-pkgver=20160717
-pkgrel=2
+pkgver=20190829
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-crackers')
 pkgdesc="Automatic tool for testing webmail accounts"
 arch=('any')
@@ -20,7 +20,7 @@ pkgver() {
 }
 
 prepare() {
-  cd "$srcdir/wmat"
+  cd "${srcdir}/wmat" || exit
 
   sed -i 's/env python/env python2/' wmat.py
   sed -i '2i# -*- coding: utf-8 -*-' wmat.py
@@ -29,19 +29,19 @@ prepare() {
 }
 
 package() {
-  cd "$srcdir/wmat"
+  cd "${srcdir}/wmat" || exit
 
   # Base directories.
-  install -dm755 "$pkgdir/usr/share/wmat"
-  install -dm755 "$pkgdir/usr/bin"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  install -dm755 "${pkgdir}/usr/share/wmat"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
-  cp -r * "$pkgdir/usr/share/wmat"
-  chmod +x "$pkgdir/usr/share/wmat/wmat.py"
+  cp -r ./* "${pkgdir}/usr/share/wmat"
+  chmod +x "${pkgdir}/usr/share/wmat/wmat.py"
 
-  cat > "$pkgdir/usr/bin/wmat" <<EOF
+  cat > "${pkgdir}/usr/bin/wmat" <<EOF
 #!/bin/sh
 python2 /usr/share/wmat/wmat.py "\$@"
 EOF
-  chmod 755 "$pkgdir/usr/bin/wmat"
+  chmod 755 "${pkgdir}/usr/bin/wmat"
 }
