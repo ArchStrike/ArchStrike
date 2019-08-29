@@ -1,6 +1,6 @@
 post_install() {
 	libtool --finish /usr/lib
-	libtool --finish /usr/lib/python2.7/site-packages	
+	libtool --finish /usr/lib/python3.7/site-packages	
 }
 
 post_upgrade() {
