@@ -40,23 +40,23 @@ If you have more questions regarding contribution, you can check out our [wiki p
 
 ## FAQ
 
-**Q: What difference does ArchStrike have from other penetration distributions?**
+**Q: What's the difference between ArchStrike and other security-based repositories?**
 
-A: We are a layer on top of ArchLinux that you can install and remove easily (so, you can use the repository as an extension to your already existing Archlinux repositories). We try and follow the Arch Linux standards when making our packages.
+A: We try and follow the Arch Linux standards when making our packages, so they can install or remove easily without affecting an existing Arch Linux installation. Bascially, you can use the repository as an extension to your already existing Arch Linux repositories.
 
 **Q: Where can I download an ISO/OVA file?**
 
 A: You can [download the latest releases from here](https://archstrike.org/downloads).
+**NOTE: We're trying to consolidate our main and testing repositories while Arch Linux is in the process of meeting the Python 2 EOL timeline. So, the ISO and OVA files might be outdated.
 
 **Q: How can I contact you?**
 
-A: Send us a mail, join our IRC channel or contact us via github.
+A: Send us an email, join our IRC channel, or contact us via github.
 
 **Q: I am having trouble installing ArchStrike, can you help me?**
 
-A: Sure! Send us an email or join our IRC channel to get help from the developers.
+A: Yes! Send us an email or join our IRC channel to get help from the developers.
 
 **Q: What is the archstrike-testing repository and do I need it?**
 
 A: The testing repository is merely a quality control mechanism we have in place. When new tools are added, they stay in testing until they are verified to be functioning correctly. The time a package spends in the testing repository depends on if the package was tested properly or not (so if you want something moved out of testing, test it and report it) . Most of the packages in testing build and work fine but some may have problems. If you want to have the full range of tools that we provide, go ahead and add the testing repository as well.
-
