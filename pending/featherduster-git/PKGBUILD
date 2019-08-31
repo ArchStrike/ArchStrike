@@ -1,0 +1,48 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=featherduster-git
+_pkgname=featherduster
+pkgver=20171030.r169
+pkgrel=1
+groups=('archstrike' 'archstrike-crypto')
+arch=('any')
+pkgdesc="An automated, modular cryptanalysis tool"
+url="https://github.com/nccgroup/featherduster"
+license=('BSD')
+depends=('python2' 'python2-ishell' 'python2-gmpy' 'python2-crypto' 'readline' 'ncurses')
+makedepends=('python2-setuptools' 'git')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd ${pkgname}
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
+}
+
+build() {
+  cd ${pkgname}
+  python2 setup.py build
+}
+
+package() {
+  cd ${pkgname}
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+python2 featherduster.py "\$@"
+EOF
+
+chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+}
