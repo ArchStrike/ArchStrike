@@ -6,7 +6,7 @@ _pkgname=pwned-search
 pkgname="${_pkgname}-git"
 pkgdesc='Pwned Password API lookup'
 arch=('any')
-pkgver=20190531.r29
+pkgver=20190819.r31
 pkgrel=1
 url="https://github.com/mikepound/${_pkgname}"
 license=('Unlicense')
@@ -16,12 +16,12 @@ source=("${_pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname}
+  cd ${_pkgname} || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 package(){
-  cd "${_pkgname}"
+  cd "${_pkgname}" || exit
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
