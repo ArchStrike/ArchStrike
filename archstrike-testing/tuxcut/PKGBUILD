@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=tuxcut
 pkgver=6.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="Netcut-like program for Linux written in PyQt"
 url='https://github.com/a-atalla/tuxcut/'
@@ -16,7 +16,8 @@ depends=('iproute2' 'dsniff' 'arp-scan' 'arptables'
          'python-packaging' 'python-pefile' 'python-pylint'
          'python-pyparsing' 'python-pytz' 'python-requests'
          'python-scapy' 'python-setproctitle' 'python-six'
-         'python-tzlocal' 'python-wxpython' 'python-packaging')
+         'python-tzlocal' 'python-wxpython' 'python-packaging'
+         'python-apscheduler')
 makedepends=('pyinstaller')
 source=("${url}/archive/${pkgver}.tar.gz")
 sha512sums=('cb6eae1819be7c598dc4a7fb362a26fc908b695041a3321195da233ef23a4cb99960d85664cee32c71311c197bc73cce56ae3de27d52f3479e2f8af0ab801dbf')
