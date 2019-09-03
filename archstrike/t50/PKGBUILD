@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=t50
-pkgver=5.8.4
+pkgver=5.8.5
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="Experimental Multi-protocol Packet Injector Tool"
@@ -11,8 +11,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://t50.sourceforge.net/'
 license=('GPL2')
 depends=('glibc')
-sha512sums=('9abec73ce550a7a841b0f3c96e23bda539b0af83931f0fb1cb13147532146bdc003408a34b47b0a5643062991565bb19dc6cdbff209bdd2279d3c3c8988e7d8c'
-            '8fbcc56a3e1cfbd3277483cf4c91c7f164e3271652a7bd631ad0348c9f15a326be152a885ff532a5e0c1c225a6167435879f7b8125b2dad20b2b158f04f9eb3b')
+sha512sums=('e98a610ada833290661ea60acd330c5ee1cf1dcc57c16ff52648cfcc01f185605d6189266bdd9835fb3e2d96fa17807d53bd58e55a182c9588c0f7f16bd1d12b'
+            '5b8cc4a3808a4ce199ec80717d6f2b6f1a909d89ed1ae4edda2af2aa45a4de57e5a458f90ab2ff8d9885e48c809bb69dc0fd1bb99c4a7a27bcfdfc42b88041c6')
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-5.8/${pkgname}-${pkgver}.tar.gz" "destdir.patch")
 
 prepare() {
@@ -26,6 +26,6 @@ build() {
 
 package() {
   install -dm755 "${pkgdir}/usr/share/man/man8/"
-  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/bin/"
   make DESTDIR=${pkgdir} install
 }
