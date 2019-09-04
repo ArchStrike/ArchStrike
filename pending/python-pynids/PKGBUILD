@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=python-pynids
+pkgver=0.6.3
+pkgrel=1
+pkgdesc="A Python wrapper for libnids."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="http://jon.oberheide.org/pynids/"
+license=('GPL')
+makedepends=('gcc')
+depends=('python' 'libpcap' 'libnet')
+source=("https://github.com/comrumino/pynids/archive/$pkgver.tar.gz" "config.guess-for-aarch64.patch")
+sha512sums=('5e0971212ea83d28b185326cbc188a473829e830104fdafe114d09e0d6d5ddf79e36db60162d10c9b7aaa7455714a71f85ab8556982d5d78cebc89cf2d5f6daf'
+            'b61896fe1e48b72f95017b912fe2c28a8a64f068d1bf1c11cfcdbb8033e9b5ac378e0451800ba5c2e607c9fa102155a33d042931e6b767e5fac257288045f434')
+
+prepare() {
+  cd "$srcdir/pynids-$pkgver"
+  sed -i 's/"nidsmodule"/"nids"/g' setup.py
+  patch -i $srcdir/config.guess-for-aarch64.patch
+}
+
+build() {
+  cd "$srcdir/pynids-$pkgver"
+  python setup.py build
+}
+
+package() {
+  cd "$srcdir/pynids-$pkgver"
+  python setup.py install --root="$pkgdir/"
+}
