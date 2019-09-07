@@ -3,8 +3,8 @@
 buildarch=192
 
 pkgname=ipscan
-pkgver=3.6.0
-pkgrel=2
+pkgver=3.6.1
+pkgrel=1
 pkgdesc="Angry IP scanner is a very fast IP address and port scanner."
 arch=('i686' 'x86_64')
 groups=('archstrike' 'archstrike-scanners')
@@ -14,8 +14,8 @@ depends=('java-runtime>=7')
 source=()
 source_i686+=("https://github.com/angryip/${pkgname}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.jar")
 source_x86_64+=("https://github.com/angryip/${pkgname}/releases/download/${pkgver}/${pkgname}-linux64-${pkgver}.jar")
-sha512sums_i686=('92fbaea066f13dbc4378f9d6acd38af111218111c9ebfe97cf000c97e2707fb0b1076df2a1dfc51cf545fb72bb22863486f7a1c04b53ecf84fef0ec35fe4da84')
-sha512sums_x86_64=('4a1383cfa37d169fdb6b7056ce4312171300f60f4295c747c8d11386dea55d89d824be0d5b4f0f820c564d853e08deb8f7b13a2709d7250bd4c73986f047347c')
+sha512sums_i686=('ebee0bb66da2c0de3b045987e24db74436ad084d54438c89412a295919235cfd24fbefdd0fd6b8ab6c36b2a5922d782af04b0e03bcb98620f0cc3b8a867926a1')
+sha512sums_x86_64=('cccbe9cf96e8ede5812af707a87b37c65378e22e9eb9cb746a803f60a8dadbf92e00315658cf51de1b76c56b512e9a53b1c9ec79c860b9db568b41bf60c50fcd')
 
 package() {
   cd "${srcdir}" || exit
