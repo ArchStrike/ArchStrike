@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
-pkgver=20190812.r1818
-pkgrel=2
+pkgver=20190908.r1881
+pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
@@ -16,7 +16,7 @@ depends=('bash>=4.2' 'iw' 'net-tools' 'wireless_tools' 'gawk' 'aircrack-ng' 'xte
          'usbutils' 'rfkill' 'wget' 'ccze' 'curl' 'xorg-xset' 'tmux')
 optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk4' 'hostapd' 'lighttpd' 'iptables'
             'beef-git' 'ettercap' 'sslstrip' 'dhcpcd' 'dsniff' 'bully' 'pixiewps'
-            'expect' 'bettercap-git' 'john' 'asleap' 'hostapd-wpe' 'nftables'
+            'bettercap-git' 'john' 'asleap' 'hostapd-wpe' 'nftables'
             'openssl' 'mdk3')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git")
