@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=cryptcat
 pkgver=1.2.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="A lightweight version of netcat with integrated transport encryption capabilities."
 arch=('any')
@@ -16,11 +16,11 @@ source=("http://downloads.sourceforge.net/cryptcat/cryptcat-unix-${pkgver}.tar")
 md5sums=('fc4afff350f3dd5e4fe51b0dd01a8e21')
 
 build() {
-  cd "$srcdir/unix"
+  cd "${srcdir}/unix"
   make linux
 }
 
 package() {
-  cd "$srcdir/unix"
-  install -Dm755 "cryptcat" "$pkgdir/usr/bin/cryptcat"
+  cd "${srcdir}/unix"
+  install -Dm755 "cryptcat" "${pkgdir}/usr/bin/cryptcat"
 }
