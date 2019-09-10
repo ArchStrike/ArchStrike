@@ -5,7 +5,7 @@ _pkgname=buildhosts
 
 buildarch=1
 
-pkgname=$_pkgname-git
+pkgname=${_pkgname}-git
 pkgver=20170524.r12.99ed481
 pkgrel=1
 pkgdesc='Download and use custom hosts sources to build /etc/hosts'
@@ -19,14 +19,14 @@ source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $_pkgname
+  cd ${_pkgname} || exit
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd $_pkgname
-  install -Dm755 $_pkgname "$pkgdir/usr/bin/$_pkgname"
-  install -Dm755 p2p-to-hosts "$pkgdir/usr/bin/p2p-to-hosts"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$_pkgname/README.md"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd ${_pkgname} || exit
+  install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm755 p2p-to-hosts "${pkgdir}/usr/bin/p2p-to-hosts"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
