@@ -4,7 +4,7 @@ buildarch=136
 
 pkgname=cryptohazemultiforcer
 pkgver=1.31
-pkgrel=4
+pkgrel=5
 pkgdesc="High performance multihash brute forcer with CUDA support"
 url="http://www.cryptohaze.com/multiforcer.php"
 license=('custom')
@@ -16,7 +16,7 @@ source=("http://downloads.sourceforge.net/project/cryptohaze/Cryptohaze-Linux_x6
 sha512sums=('d374516793ed513e20684f0ebbbd544c3ef895bc1b556316ae4892a7f219fddb9195cf29e91014f2ef00405077527e5a7cf3fefcd49906252e2471d2b8fc6e28')
 
 package() {
-  cd "${srcdir}/Cryptohaze-Linux"
+  cd "${srcdir}/Cryptohaze-Linux" || exit
   install -dm755 "${pkgdir}/opt/${pkgname}/"
   cp -rv ./* "${pkgdir}/opt/${pkgname}/"
   install -dm755 "${pkgdir}/usr/bin/"
