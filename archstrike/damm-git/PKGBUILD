@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=damm-git
 pkgver=20170416.r32
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="Differential Analysis of Malware in Memory"
 arch=('any')
@@ -17,18 +17,18 @@ source=("${pkgname}::git+https://github.com/504ensicsLabs/DAMM.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
 
   # Make base directories.
   install -dm755 "${pkgdir}/usr/share/damm"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/damm"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/damm"
 
 cat > "${pkgdir}/usr/bin/damm" << EOF
 #!/usr/bin/env bash
