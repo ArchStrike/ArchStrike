@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=beleth-git
 pkgver=0.r36.0963699
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A Multi-threaded Dictionary based SSH cracker"
 url="https://github.com/chokepoint/Beleth"
@@ -12,33 +12,31 @@ arch=('armv7h' 'armv6h' 'i686' 'x86_64' 'aarch64')
 license=('custom')
 depends=('libssh2')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/chokepoint/Beleth.git")
-replaces=('beleth')
+source=("${pkgname}::git+https://github.com/chokepoint/Beleth.git")
 provides=('beleth')
-conflicts=('beleth')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${pkgname}" || exit
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
-  cd "$pkgname"
+  cd "${pkgname}" || exit
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}" || exit
 
   # Base directories.
-  install -dm755 "$pkgdir/usr/share/beleth"
-  install -dm755 "$pkgdir/usr/bin/"
+  install -dm755 "${pkgdir}/usr/share/beleth"
+  install -dm755 "${pkgdir}/usr/bin/"
 
   # Doc.
-  install -Dm644 wordlist.txt "$pkgdir/usr/share/beleth"
-  install -Dm644 README.md "$pkgdir/usr/share/beleth"
+  install -Dm644 wordlist.txt "${pkgdir}/usr/share/beleth"
+  install -Dm644 README.md "${pkgdir}/usr/share/beleth"
 
   # Bin.
-  install -Dm755 beleth "$pkgdir/usr/bin/beleth"
+  install -Dm755 beleth "${pkgdir}/usr/bin/beleth"
 }
