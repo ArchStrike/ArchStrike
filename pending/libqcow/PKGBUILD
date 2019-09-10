@@ -1,0 +1,28 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: David McIlwraith <archaios at archaios dot net>
+
+buildarch=220
+
+pkgname=libqcow
+pkgver=20181227
+pkgrel=2
+pkgdesc="Library and tools to support QEMU copy-on-write image format (QCOW, QCOW2), including a FUSE-based mount utility"
+url="http://code.google.com/p/libqcow/"
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+license=('LGPL3')
+depends=('fuse' 'libcsystem' 'python' 'libbfio' 'fuse' 'openssl-1.0')
+makedepends=('zlib')
+source=("https://github.com/libyal/libqcow/releases/download/${pkgver}/libqcow-alpha-${pkgver}.tar.gz")
+sha512sums=('01b8f7eb83f1c11dd14b5c6fccbd336ecb196cea9e3e9c439f584c95bc8d836cefe9a72a3cebf2f410f81a11b0fafca321de09988cc573d7f88bd1680fc00b6a')
+
+build(){
+  cd ${srcdir}/${pkgname}-${pkgver} || exit
+  # --with-openssl seems to break this build :(
+  PYTHON_VERSION="3" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package(){
+  cd ${srcdir}/${pkgname}-${pkgver} || exit
+  make DESTDIR=${pkgdir} install
+}

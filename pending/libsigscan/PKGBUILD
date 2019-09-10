@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname="libsigscan"
+pkgver="20190629"
+pkgrel=1
+pkgdesc="Library for binary signature scanning."
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
+url='https://github.com/libyal/libsigscan'
+license=('GPL3')
+depends=('libcsystem' 'python')
+source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-experimental-${pkgver}.tar.gz")
+sha512sums=('803e900043fa1df6d9c207b5761d7ef82b9e6792a2a68cdb0f274f5ba579b755563a7de6e4b74324be1e74f119943073d47e007f2c90520abab5584cccd17ad3')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  PYTHON_VERSION="3" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
+}

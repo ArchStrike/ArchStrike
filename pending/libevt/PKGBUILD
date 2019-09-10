@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname="libevt"
+pkgver=20181227
+pkgrel=1
+pkgdesc="Library and tooling to access the Windows Event Log (EVT) format"
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
+url='https://github.com/libyal/libevt'
+license=('GPL3')
+depends=('libcsystem' 'libbfio' 'python2' 'libregf')
+install="$pkgname.install"
+source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz")
+sha512sums=('6c65c6499b2456c65cc5f862aa3fbe62074e07ec588b0cf7e3d5b1ada7f5b137f87f7551629535578b1c0e894dd0b248e904410a7b7ea09b18df6a8beb4f8a06')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}

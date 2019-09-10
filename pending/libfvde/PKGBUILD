@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname="libfvde"
+pkgver=20190104
+pkgrel=1
+pkgdesc="iLibrary and tools to access the New Technology File System (NTFS)."
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
+url='https://github.com/libyal/libfvde'
+license=('GPL3')
+depends=('libcsystem' 'libbfio' 'python')
+install="${pkgname}.install"
+source=("https://github.com/libyal/${pkgname}/releases/download/${pkgver}/${pkgname}-experimental-${pkgver}.tar.gz")
+sha512sums=('edfe7d4952359fce5937c0d90e5cdf914006c4875323579c29665a485451a57be3913473b01e03aa1b457093def969d3bc813ea7f25b6e7f452a90b375806461')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  PYTHON_VERSION="3" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  make DESTDIR="${pkgdir}/" install
+}

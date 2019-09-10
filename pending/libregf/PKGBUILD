@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname="libregf"
+pkgver=20190303
+pkgrel=1
+pkgdesc="Library and tools to access the Windows NT Registry File (REGF) format"
+arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
+url='https://github.com/libyal/libregf'
+license=('GPL3')
+depends=('fuse' 'libcsystem' 'libbfio' 'python2' 'libfwsi')
+install="${pkgname}.install"
+source=("https://github.com/libyal/$pkgname/releases/download/$pkgver/$pkgname-alpha-$pkgver.tar.gz")
+sha512sums=('661f03c5f586209de58e0101a3b008370cdd157b84244204d51dea138de54d99d8524fa2d91989b9c47d29986f93d2cf03b270f6710bb33ba55a0becdfff2dc9')
+
+build() {
+  cd "$srcdir/$pkgname-$pkgver"
+  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "$srcdir/$pkgname-$pkgver"
+  make DESTDIR="$pkgdir/" install
+}

@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=libolecf
+pkgver=20181231
+pkgrel=1
+pkgdesc="Library and tools to access the OLE 2 Compound File (OLECF) format"
+url="https://github.com/libyal/libolecf"
+license=('LGPL3')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+depends=('fuse' 'python2' 'libcsystem' 'libbfio')
+source=(https://github.com/libyal/libolecf/releases/download/$pkgver/libolecf-alpha-$pkgver.tar.gz)
+sha512sums=('b7210fa0f63c24975d1fd08717dfc07e168ae35bf1a10de13465b445d646dae7b3abdf8e8411928e87802e27339f3634ff4941c307cc555c210e5393a7f081bc')
+
+build() {
+  cd "$srcdir"/${pkgname}-${pkgver}
+  PYTHON_VERSION="2" ./configure --prefix=/usr --disable-rpath --enable-verbose-output --enable-debug-output --enable-python
+  make
+}
+
+package() {
+  cd "$srcdir"/${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+}
