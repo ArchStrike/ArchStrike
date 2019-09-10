@@ -11,67 +11,67 @@ license=("GPL")
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fingerprinting')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('c-ares' 'libnet' 'python2' 'libpcap' 'curl')
-source=(http://downloads.sourceforge.net/complemento/complemento-$pkgver.tar.gz)
+source=(http://downloads.sourceforge.net/complemento/complemento-${pkgver}.tar.gz)
 sha512sums=('f26e0c11fd0521fb77a4e64db2e7db87435933443ce0b3b04eafdf2401862c0905b15e21c1a8d93c726f840caeb2867e9a3026ff341ce89d43f4a7f996ffa2a7')
 
 prepare() {
-  cd "$pkgname/letdown"
+  cd "${pkgname}/letdown" || exit
   sed -i 's/python-config/python2-config/g' Makefile
 
-  cd "$srcdir/complemento/httsquash/"
+  cd "${srcdir}/complemento/httsquash/"
   sed -i 's/python2.5/python2/g' Makefile
 
-  cd "$srcdir/complemento/reverseraider/"
+  cd "${srcdir}/complemento/reverseraider/"
   sed -i 's/python2.5/python2/g' Makefile
 }
 
 build() {
-  cd "$pkgname"
-  export CFLAGS=$CFLAGS
-  export LDFLAGS=$LDFLAGS
+  cd "${pkgname}" || exit
+  export CFLAGS=${CFLAGS}
+  export LDFLAGS=${LDFLAGS}
   make clean
   make
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}" || exit
   # Base directories
-  install -dm755 "$pkgdir/usr/share/complemento/reverseraider/wordlists"
-  install -dm755 "$pkgdir/usr/share/complemento/letdown/payloads"
-  install -dm755 "$pkgdir/usr/share/doc/complemento"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/complemento/reverseraider/wordlists"
+  install -dm755 "${pkgdir}/usr/share/complemento/letdown/payloads"
+  install -dm755 "${pkgdir}/usr/share/doc/complemento"
+  install -dm755 "${pkgdir}/usr/bin"
 
   # Doc
-  install -Dm644 readme "$pkgdir/usr/share/doc/complemento/readme"
+  install -Dm644 readme "${pkgdir}/usr/share/doc/complemento/readme"
 
   # --- LETDOWN ---
 
-  cd "$srcdir/$pkgname/letdown"
+  cd "${srcdir}/${pkgname}/letdown"
 
   # Bin
-  install -Dm755 letdown "$pkgdir/usr/bin/letdown"
+  install -Dm755 letdown "${pkgdir}/usr/bin/letdown"
 
   # Doc
-  install -Dm644 README "$pkgdir/usr/share/doc/complemento/readme-letdown"
+  install -Dm644 README "${pkgdir}/usr/share/doc/complemento/readme-letdown"
 
   # Payloads
-  install -Dm644 payloads/* "$pkgdir/usr/share/complemento/letdown/payloads"
+  install -Dm644 payloads/* "${pkgdir}/usr/share/complemento/letdown/payloads"
 
   # --- HTTSQUASH ---
 
-  cd "$srcdir/$pkgname/httsquash"
+  cd "${srcdir}/${pkgname}/httsquash"
 
   # Bin
-  install -Dm755 httsquash "$pkgdir/usr/bin/httsquash"
+  install -Dm755 httsquash "${pkgdir}/usr/bin/httsquash"
 
   # --- REVERSERAIDER ---
 
-  cd "$srcdir/$pkgname/reverseraider"
+  cd "${srcdir}/${pkgname}/reverseraider"
 
   # Bin
-  install -Dm755 reverseraider "$pkgdir/usr/bin/reverseraider"
+  install -Dm755 reverseraider "${pkgdir}/usr/bin/reverseraider"
 
   # Wordlists
-  install -m644 wordlists/* "$pkgdir/usr/share/complemento/reverseraider/wordlists"
+  install -m644 wordlists/* "${pkgdir}/usr/share/complemento/reverseraider/wordlists"
 
 }
