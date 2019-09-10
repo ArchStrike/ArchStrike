@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ciphertest-git
 pkgver=22.e33eb4a
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="A better SSL cipher checker using gnutls"
 arch=('any')
@@ -13,18 +13,16 @@ license=('custom:unknown')
 depends=('bash' 'bind-tools')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/OpenSecurityResearch/ciphertest")
-conflicts=('ciphertest')
-replaces=('ciphertest')
 provides=('ciphertest')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   echo $(git rev-list HEAD --count).$(git describe --always | sed 's|-|.|g')
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   install -dm755 "${pkgdir}/usr/bin/"
   install -dm755 "${pkgdir}/usr/share/ciphertest"
   install -dm755 "${pkgdir}/usr/share/doc/ciphertest"
