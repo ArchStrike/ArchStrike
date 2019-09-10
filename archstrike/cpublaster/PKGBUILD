@@ -5,14 +5,13 @@ buildarch=200
 
 pkgname=cpublaster
 pkgver=0.10
-pkgrel=7
+pkgrel=8
 pkgdesc='This library tries to intercept the memory allocations to skew the allocations to different offsets, so the performance penalty to disappear'
 arch=('i686' 'x86_64' 'aarch64')
 url='http://kernel.embedromix.ro/us/'
 license=('GPL3')
 groups=('archstrike')
 depends=('glibc')
-depends_x86_64+=('lib32-glibc')
 source=(
   "http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz"
   'libdir.patch'
@@ -23,18 +22,18 @@ sha512sums=('d4a0ba99908de411102abff130a012021c4392ae24ad533a0c93a55c02486e0680f
             '8432cb0c3f4a0782bad9ac80fbb8e81010274faca10d94704cb70a98bd95cd6e776f0fc48a17a1b30761ddd3d8b7244bd395755947415a9d08aceafec4ef94e5')
 
 prepare() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver} || exit
   patch -Np1 -i ${srcdir}/libdir.patch
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver} || exit
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd ${pkgname}-${pkgver} || exit
   install -Dm644 ${srcdir}/${pkgname}.1 "${pkgdir}/usr/share/man/man1/${pkgname}.1"
   make DESTDIR="$pkgdir" install
 }
