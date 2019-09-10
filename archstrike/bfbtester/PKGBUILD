@@ -4,24 +4,24 @@ buildarch=220
 
 pkgname=bfbtester
 pkgver=2.0.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Performs checks of single and multiple argument command line overflows and environment variable overflows"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://sourceforge.net/projects/bfbtester/'
 license=('GPL2')
 depends=('glibc')
-source=("http://downloads.sourceforge.net/project/bfbtester/bfbtester/$pkgver/bfbtester-$pkgver.tar.gz")
+source=("http://downloads.sourceforge.net/project/bfbtester/bfbtester/${pkgver}/bfbtester-${pkgver}.tar.gz")
 sha512sums=('5942d3c5a2815a77bec064bd574f2879951452ebef18d05d6207eef20b8275624b3147b21c57bdfb88f704bb330e60139e4dda13f7021fa73bc25328b7d0c8e9')
 
 build() {
-  cd "$srcdir/bfbtester-$pkgver"
+  cd "${srcdir}/bfbtester-${pkgver}"
   # _FORTIFY_SOURCE breaks things
   CPPFLAGS= ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/bfbtester-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/bfbtester-${pkgver}"
+  make DESTDIR="${pkgdir}/" install
 }
