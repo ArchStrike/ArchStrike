@@ -4,22 +4,22 @@ buildarch=1
 
 pkgname=bing-ip2hosts
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='Enumerates all hostnames which Bing has indexed for a specific IP address.'
 arch=('any')
 url='http://www.morningstarsecurity.com/research/bing-ip2hosts'
 license=('GPL3')
-source=("http://www.morningstarsecurity.com/downloads/bing-ip2hosts-$pkgver.tar.gz")
+source=("http://www.morningstarsecurity.com/downloads/bing-ip2hosts-${pkgver}.tar.gz")
 sha512sums=('67064ea708f1a34f98c6afb525d68155b54a567181175f4fff5eca9e6f67c31e00de73128f9294d28830c73dca02f3672d29dbf943f71babfce48fcd56c0afa3')
 
 package() {
-  cd "$srcdir/bing-ip2hosts-$pkgver"
+  cd "${srcdir}/bing-ip2hosts-${pkgver}" || exit
   # Base directories
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/doc/bing-ip2hosts"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/doc/bing-ip2hosts"
   # Bin
-  install -m755 bing-ip2hosts "$pkgdir/usr/bin"
+  install -m755 bing-ip2hosts "${pkgdir}/usr/bin"
   # Doc
-  install -m644 README CHANGELOG "$pkgdir/usr/share/doc/bing-ip2hosts"
+  install -m644 README CHANGELOG "${pkgdir}/usr/share/doc/bing-ip2hosts"
 }
