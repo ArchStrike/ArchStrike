@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=dbpwaudit
 pkgver=0.8
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-defense' 'archstrike-crackers')
 pkgdesc="A Java tool that allows you to perform online audits of password quality for several database engines"
 url='http://www.cqure.net/wp/dbpwaudit/'
@@ -12,24 +12,24 @@ license=('GPL')
 depends=('java-runtime')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=(http://www.cqure.net/tools/dbpwaudit_${pkgver//./_}.zip)
-sha512sums=('74b2ab5d0a142f0f03d6c67452dba6b2')
+sha512sums=('3b6ddfdd736b5547f2ca2b5b8b6a96fe5bab7717c71cd7f7ddb88f9329d214a90200963294a156b45ad2b9baee9f06cd947966ef53a14564924b05c70a7e2eea')
 
 prepare() {
-  cd "$srcdir/DBPwAudit"
+  cd "${srcdir}/DBPwAudit" || exit
   sed -i "1a\cd /usr/share/dbpwaudit" *.sh
 }
 
 package() {
-  cd "$srcdir/DBPwAudit"
+  cd "${srcdir}/DBPwAudit" || exit
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/share/dbpwaudit"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/dbpwaudit"
+  install -dm755 "${pkgdir}/usr/bin"
 
-  cp --no-preserve=ownership -r * "$pkgdir/usr/share/dbpwaudit"
-  install -m755 dbpwaudit.sh "$pkgdir/usr/bin/dbpwaudit"
+  cp --no-preserve=ownership -r ./* "${pkgdir}/usr/share/dbpwaudit"
+  install -m755 dbpwaudit.sh "${pkgdir}/usr/bin/dbpwaudit"
 
   # This isn't Windows.
-  rm "$pkgdir/usr/share/dbpwaudit"/*.cmd
-  chmod -x "$pkgdir/usr/share/dbpwaudit"/*.conf
+  rm "${pkgdir}/usr/share/dbpwaudit"/*.cmd
+  chmod -x "${pkgdir}/usr/share/dbpwaudit"/*.conf
 }
