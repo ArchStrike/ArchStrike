@@ -5,29 +5,29 @@ buildarch=220
 
 pkgname=ddrutility
 pkgver=2.8
-pkgrel=2
+pkgrel=3
 pkgdesc="Set of utilities for use with GNU ddrescue to aid with data recovery"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 url="http://sourceforge.net/projects/ddrutility/"
 license=('GPL3')
-install="$pkgname.install"
+install="${pkgname}.install"
 depends=('bash' 'sleuthkit')
-source=("http://downloads.sourceforge.net/project/$pkgname/$pkgname-$pkgver.tar.gz" "prefix.patch")
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}-${pkgver}.tar.gz" "prefix.patch")
 sha512sums=('10699b1b91210bea75a462421630e9fd8f1c1e5be11e466a8f5df401c5083511071506098ffd273678bc3adfe5c078a09b124580484a28c821d37a4ff2cc3fce'
 'c4e1e422544629110e07a64ef23ef515ba4717060de53cc2f21ed0e5706849fa43cd3316850d861ff41a0db67b878bbef71d428f71fccd3dbd46436b503c71a6')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i $srcdir/prefix.patch
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  patch -Np1 -i ${srcdir}/prefix.patch
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  make DESTDIR="${pkgdir}/" install
 }
