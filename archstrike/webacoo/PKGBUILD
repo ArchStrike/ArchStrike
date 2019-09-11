@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=webacoo
 pkgver=0.2.3
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="Web Backdoor Cookie Script-Kit"
 url="https://github.com/anestisb/WeBaCoo"
@@ -24,8 +24,8 @@ package() {
   cp -a * "${pkgdir}/usr/share/${pkgname}"
 
   cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
-#!/bin/sh
+#!/usr/bin/env bash
 perl /usr/share/${pkgname}/${pkgname}.pl "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/${pkgname}"
+  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
