@@ -4,26 +4,26 @@ buildarch=1
 
 pkgname=eapmd5pass
 pkgver=1.4
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc="An implementation of an offline dictionary attack against the EAP-MD5 protocol"
 url="http://www.willhackforsushi.com/?page_id=67"
 arch=('any')
 depends=('libpcap' 'openssl')
 license=('GPL2')
-source=("http://www.willhackforsushi.com/code/eapmd5pass/1.4/eapmd5pass-$pkgver.tgz")
-md5sums=('b7e1d44395c068140d9243f0f4408e04')
+source=("http://www.willhackforsushi.com/code/eapmd5pass/1.4/eapmd5pass-${pkgver}.tgz")
+sha512sums=('07ff71f8f7be60eacb97413110949858a60b974286b6a4db37ca6135cb394ca154aef3c44cba380263e5ddd92dd9debc7f839b9847ffb8572021cb300dcf755f')
 
 build() {
-  cd "$srcdir/eapmd5pass"
+  cd "${srcdir}/eapmd5pass" || exit
   make utils.o
   make
 }
 
 package() {
-  cd "$srcdir/eapmd5pass"
+  cd "${srcdir}/eapmd5pass" || exit
 
   # Base directories.
-  install -Dm644 README "$pkgdir/usr/share/eapmd5pass/README"
-  install -Dm755 eapmd5pass "$pkgdir/usr/bin/eapmd5pass"
+  install -Dm644 README "${pkgdir}/usr/share/eapmd5pass/README"
+  install -Dm755 eapmd5pass "${pkgdir}/usr/bin/eapmd5pass"
 }
