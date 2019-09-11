@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=webpwn3r-git
-pkgver=0.r35.3fb27bb
-pkgrel=3
+pkgver=20140521.r35
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A python based Web Applications Security Scanner"
 url='https://github.com/zigoo0/webpwn3r'
@@ -20,7 +20,7 @@ sha512sums=('SKIP')
 
 pkgver() {
   cd "$srcdir/webpwn3r"
-  printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
@@ -35,7 +35,7 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/webpwn3r"
 
 cat > "$pkgdir/usr/bin/webpwn3r" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/webpwn3r
 python2 scan.py "\$@"
 EOF
