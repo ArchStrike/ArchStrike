@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=dns-spoof-git
 pkgver=r12.3918a10
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-dns')
 pkgdesc="DNS Spoof"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,20 +14,20 @@ depends=('libpcap')
 makedepends=('git')
 provides=('dnsspoof')
 source=("git+https://github.com/maurotfilho/dns-spoof.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/dns-spoof"
+  cd "${srcdir}/dns-spoof" || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
-  cd "$srcdir/dns-spoof"
+  cd "${srcdir}/dns-spoof" || exit
   make
 }
 
 package() {
-  cd "$srcdir/dns-spoof"
+  cd "${srcdir}/dns-spoof" || exit
 
-  install -Dm755 dns-spoof $pkgdir/usr/bin/dns-spoof
+  install -Dm755 dns-spoof ${pkgdir}/usr/bin/dns-spoof
 }
