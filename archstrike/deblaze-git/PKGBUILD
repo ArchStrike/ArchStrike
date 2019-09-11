@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=deblaze
 pkgname=${_pkgname}-git
 pkgver=20101207.r1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A remote method enumeration tool for flex servers"
 url="https://github.com/SpiderLabs/deblaze"
@@ -18,28 +18,28 @@ source=("${pkgname}::git+https://github.com/SpiderLabs/deblaze.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd "$pkgname"
+  cd "${pkgname}" || exit
   sed -i 's|python|python2|' ${_pkgname}.py
   sed -i 's/import\ Image/from\ PIL\ import\ Image/' ${_pkgname}.py
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
 
-  install -dm755 "$pkgdir/usr/share/${_pkgname}"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a * "$pkgdir/usr/share/${_pkgname}"
+  cp -a ./* "${pkgdir}/usr/share/${_pkgname}"
 
-  cat > "$pkgdir/usr/bin/${_pkgname}" <<EOF
+  cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/bin/sh
 cd /usr/share/${_pkgname}
 python2 ${_pkgname}.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/${_pkgname}"
+  chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 }
