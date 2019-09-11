@@ -4,29 +4,29 @@ buildarch=220
 
 pkgname=dirbuster
 pkgver=1.0_RC1
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-scanners' 'archstrike-webapps')
 pkgdesc="An application designed to brute force directories and files names on web/application servers"
 url='http://www.owasp.org/index.php/Category:OWASP_DirBuster_Project'
 license=('LGPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-depends=('java-runtime')
+depends=('java-runtime=8')
 source=("http://downloads.sourceforge.net/dirbuster/DirBuster-${pkgver/_/-}.tar.bz2")
 md5sums=('1e53740d6761fa2305dc13986145c43a')
 
 package() {
-  cd "$srcdir/DirBuster-${pkgver/_/-}"
+  cd "${srcdir}/DirBuster-${pkgver/_/-}"
 
   # Base directories.
-  install -dm755 "$pkgdir/usr/share/dirbuster"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/dirbuster"
+  install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/dirbuster"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/dirbuster"
 
-  cat > "$pkgdir/usr/bin/dirbuster" <<EOF
+  cat > "${pkgdir}/usr/bin/dirbuster" <<EOF
 #!/bin/sh
 cd /usr/share/dirbuster
 java -jar DirBuster-${pkgver/_/-}.jar "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/dirbuster"
+  chmod +x "${pkgdir}/usr/bin/dirbuster"
 }
