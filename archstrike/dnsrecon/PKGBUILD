@@ -3,40 +3,32 @@
 buildarch=1
 
 pkgname=dnsrecon
-pkgver=0.8.9
-pkgrel=3
+pkgver=0.9.1
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='DNS Enumeration Script '
 url='https://github.com/darkoperator/dnsrecon'
 license=('GPL2')
 arch=('any')
-depends=('python2-netaddr' 'python2-dnspython')
-source=("https://github.com/darkoperator/$pkgname/archive/v$pkgver.tar.gz")
-sha512sums=('f014500e3950c001e0fe79782ff37f82ef562aec9475a7287dc2461bf53297eaf277d7395efb84a34e239e4517d6cc407d4846d1e988d79649ac376fa09572ef')
-
-prepare() {
-  cd $pkgname-$pkgver
-
-  while read -r; do
-      sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
-  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
-}
+depends=('python-netaddr' 'python-dnspython' 'python-lxml')
+source=("https://github.com/darkoperator/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('1b0ed1b405e58f8df7a8e1fb8a2dd07713bf5e8434ccfbced316cac8b16966b88a98f583be122c35bfbc540753bd44e5e47474aa58544dbea77e73d0cddc4c6b')
 
 package() {
-  cd $pkgname-$pkgver
+  cd "${pkgname}-${pkgver}" || exit
 
   # create required directories
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
 
   # copy package files to the shared folder
-  cp -r --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
-  cp -r --no-preserve=ownership .idea "$pkgdir/usr/share/$pkgname/"
+  cp -r --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}/"
+  cp -r --no-preserve=ownership .idea "${pkgdir}/usr/share/${pkgname}/"
 
   printf '%s\n\n%s\n%s\n' \
     '#!/usr/bin/env bash' \
     'cd /usr/share/dnsrecon' \
-    'python2 dnsrecon.py "$@"' \
-       > "$pkgdir/usr/bin/$pkgname"
-  chmod 755 "$pkgdir/usr/bin/$pkgname"
+    'python dnsrecon.py "$@"' \
+       > "${pkgdir}/usr/bin/${pkgname}"
+  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
