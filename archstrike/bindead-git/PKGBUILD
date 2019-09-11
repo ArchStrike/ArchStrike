@@ -5,14 +5,14 @@ buildarch=1
 _pkgname=bindead
 pkgname=${_pkgname}-git
 pkgver=20151012.r4504.67019b97b
-pkgrel=3
+pkgrel=4
 pkgdesc='A static analysis tool for binaries'
 url='https://bitbucket.org/mihaila/bindead'
 license=('GPL3')
 arch=('any')
 groups=('archstrike' 'archstrike-analysis')
-depends=('bash' 'jdk8-openjdk')
-makedepends=('maven' 'git')
+depends=('bash' 'java-runtime=8')
+makedepends=('maven' 'git' 'java-environment=8')
 provides=("${_pkgname}")
 source=("git+https://bitbucket.org/mihaila/${_pkgname}")
 sha512sums=('SKIP')
