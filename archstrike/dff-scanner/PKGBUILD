@@ -4,19 +4,19 @@ buildarch=1
 
 pkgname='dff-scanner'
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 pkgdesc='Tool for finding path of predictable resource locations.'
 arch=('any')
-url='http://security-net.biz/70/tools.html'
+url='https://github.com/Ivan-Markovic/DFF'
 license=('gpl3')
 depends=('php')
 groups=('archstrike' 'archstrike-webapps')
 source=("http://security-net.biz/files/dff/DFF.zip")
-sha512sums=('34d5298e3d32f1562982a6706bb56969319790822d9fa2a1f32e158a6da3ce3f07f4aee7b6440852e42b114a243d318cc11f727c879adf163a4ca81124e0c301')
+sha512sums=('ab160f53bc513afbf1a2f6a6fdb9a0c2225e6b039878783ee61d06c23b1364dbe957adfcb69bac0053faed555d5a3895cc63bcd217bc89986d03a3f1489f1960')
 
 package() {
-  cd "$srcdir/DFF"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -dm755 $pkgdir/usr/share/dff-scanner/
-  cp -r * $pkgdir/usr/share/dff-scanner/
+  cd "${srcdir}/DFF" || exit
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -dm755 ${pkgdir}/usr/share/dff-scanner/
+  cp -r ./* ${pkgdir}/usr/share/dff-scanner/
 }
