@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Bulk-extractor
+Comment=Bulk Email and URL extraction tool
+Exec=bulk-extractor
+Icon=archstrike-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchStrike;ArchStrikeForensic;ArchStrikeMisc;
