@@ -5,7 +5,7 @@ buildarch=1
 pkgname=dnsbf-git
 _pkgname=dnsbf
 pkgver=20160116.r7
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Search for available domain names in an IP range'
 arch=('any')
@@ -13,18 +13,16 @@ url='https://github.com/strayArch/dnsbf'
 license=('BSD')
 depends=('python2')
 makedepends=('git')
-replaces=('dnsbf')
 provides=('dnsbf')
-conflicts=('dnsbf')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   install -Dm755 dnsbf.py "${pkgdir}/usr/bin/${_pkgname}"
 }
