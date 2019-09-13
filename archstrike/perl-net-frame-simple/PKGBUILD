@@ -6,30 +6,30 @@ buildarch=1
 
 pkgname='perl-net-frame-simple'
 pkgver='1.09'
-pkgrel=1
+pkgrel=2
 pkgdesc='Frame crafting made easy.'
 arch=('any')
-url='http://search.cpan.org/~gomor/Net-Frame-Simple-1.05/lib/Net/Frame/Simple.pm'
+url='https://metacpan.org/pod/Net::Frame::Simple'
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/G/GO/$_author/$_perlmod-$pkgver.tar.gz")
+source=("http://search.cpan.org/CPAN/authors/id/G/GO/${_author}/${_perlmod}-${pkgver}.tar.gz")
 sha512sums=('a4346516dadd690bdc7e095b8c15f823ff91ccc37c42910791c8969094bfee52f74208b17a91f3a67d7c58f4a29c239bd3fe8df206474329d8aa1cee53e1431b')
 
 prepare() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
 
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
 
   make
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
 
-  make install DESTDIR="$pkgdir/"
+  make install DESTDIR="${pkgdir}/"
 }
