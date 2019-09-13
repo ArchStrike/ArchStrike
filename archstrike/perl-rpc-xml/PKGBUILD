@@ -4,39 +4,33 @@ buildarch=1
 
 pkgname='perl-rpc-xml'
 pkgver='0.80'
-pkgrel=3
+pkgrel=4
 pkgdesc="A set of classes for core data, message and XML handling"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl-xml-parser>=2.31' 'perl-libwww' 'perl' 'perl-xml-libxml')
-url='http://search.cpan.org/dist/RPC-XML'
-source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJRAY/RPC-XML-$pkgver.tar.gz")
+url='https://metacpan.org/pod/RPC::XML'
+source=("http://search.cpan.org/CPAN/authors/id/R/RJ/RJRAY/RPC-XML-${pkgver}.tar.gz")
 sha512sums=('a91586ea903b3e633f85ca8d9048181a7c3aedcff6788c7ae5fb4971e8552c421c86f30254517c25caa35f1991146dcceb34301bb49002e4ec75a2ee9c195992')
-_distdir="RPC-XML-$pkgver"
+_distdir="RPC-XML-${pkgver}"
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR=${pkgdir}"     \
+      PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "${srcdir}/${_distdir}" || exit
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
-
-# Local Variables:
-# mode: shell-script
-# sh-basic-offset: 2
-# End:
-# vim:set ts=2 sw=2 et:
