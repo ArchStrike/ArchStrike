@@ -5,31 +5,31 @@ _perlmod='Net-Libdnet6'
 buildarch=1
 
 pkgname='perl-net-libdnet6'
-pkgver='0.27'
-pkgrel=3
+pkgver='0.28'
+pkgrel=1
 pkgdesc='Adds IPv6 support to Net::Libdnet.'
 arch=('any')
-url='http://search.cpan.org/~gomor/Net-Libdnet6-0.26/lib/Net/Libdnet6.pm'
+url='https://metacpan.org/pod/Net::Libdnet6'
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/G/GO/$_author/$_perlmod-$pkgver.tar.gz")
-sha512sums=('28376d8a7eb60a27a1b81cdf57b2fdb0481a9b5a782965242bb1ef5f4f307c1a8e0e06ca85d3b871771f482877cc88bab3417b4f1586e1a83954807b40d62b62')
+source=("http://search.cpan.org/CPAN/authors/id/G/GO/$_author/${_perlmod}-${pkgver}.tar.gz")
+sha512sums=('285804c9f8eaecd4ed26ff4f5c3ea6b58bc985e808fdd7955278b7252b9607b338ef63e22cb589de4f9db01f2100cea2c79df521f4fc55e4c6d8c58bdc3c941b')
 
 prepare() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
 
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
 
   make
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
 
-  make install DESTDIR="$pkgdir/"
+  make install DESTDIR="${pkgdir}/"
 }
