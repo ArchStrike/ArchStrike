@@ -4,12 +4,12 @@ buildarch=1
 
 pkgname='perl-cisco-copyconfig'
 pkgver='1.4'
-pkgrel=3
+pkgrel=4
 pkgdesc="IOS running-config manipulation"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-net-snmp')
+depends=('perl-net-snmp' 'perl-module-install')
 makedepends=()
 url='http://search.cpan.org/dist/Cisco-CopyConfig'
 source=('http://search.cpan.org/CPAN/authors/id/A/AA/AARONSCA/Cisco-CopyConfig-1.4.tgz')
@@ -19,25 +19,25 @@ _distdir="Cisco-CopyConfig-1.4"
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR=${pkgdir}"     \
+      PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "${srcdir}/${_distdir}" || exit
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
