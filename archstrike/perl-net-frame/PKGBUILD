@@ -3,36 +3,35 @@
 buildarch=1
 
 pkgname='perl-net-frame'
-pkgver='1.19'
+pkgver='1.21'
 pkgrel=1
 pkgdesc='The base framework for frame crafting.'
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
-depends=('perl-bit-vector' 'perl-class-gomor' 'perl-net-ipv6addr'
-'perl-socket6')
-url='http://search.cpan.org/dist/Net-Frame'
-source=("http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/Net-Frame-$pkgver.tar.gz")
-sha512sums=('86b8b3d701d5aececdcb3409a8caec78b404ea1b8514deba177d8feed33df27b38ca6a671f2e9a9aa770c0c8bfb82297a4e13c8e5db925be98c51b0debf914cb')
-_distdir="Net-Frame-$pkgver"
+depends=('perl-bit-vector' 'perl-class-gomor' 'perl-net-ipv6addr' 'perl-socket6')
+url='https://metacpan.org/pod/Net::Frame'
+source=("http://search.cpan.org/CPAN/authors/id/G/GO/GOMOR/Net-Frame-${pkgver}.tar.gz")
+sha512sums=('a0c8a8a7825bd82b5ef7bcb1872a53b38199adcc601fbf7a16653f57923659fd46454539b616a1aacb17a175363c005a88ef2948f41cecf32d6edbf46cdcca4f')
+_distdir="Net-Frame-${pkgver}"
 
 prepare() {
-  cd "$srcdir/$_distdir"
-  export PERL_MM_USE_DEFAULT=1 PERL5LIB="" \
-    PERL_AUTOINSTALL=--skipdeps \
-    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'" \
-    PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+  cd "${srcdir}/${_distdir}" || exit
+  export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                   \
+    PERL_AUTOINSTALL=--skipdeps                              \
+    PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='${pkgdir}'"     \
+    PERL_MB_OPT="--installdirs vendor --destdir '${pkgdir}'" \
     MODULEBUILDRC=/dev/null
   /usr/bin/perl Makefile.PL
 }
 
 build() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   make
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   make install
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
