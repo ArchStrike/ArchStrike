@@ -1,29 +1,29 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 _author=VIPUL
-_perlmod=Tie-EncryptedHash
+_realname=Tie-EncryptedHash
 
 buildarch=1
 
 pkgname=perl-tie-encryptedhash
 pkgver=1.24
-pkgrel=5
+pkgrel=6
 pkgdesc="Hashes (and objects based on hashes) with encrypting fields"
 arch=('any')
-url='http://search.cpan.org/~VIPUL/Tie-EncryptedHash-1.24/'
+url='https://metacpan.org/pod/Tie::EncryptedHash'
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0', 'gmp')
 options=(!emptydirs)
-source=(http://cpan.perl.org/modules/by-authors/id/V/VI/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('da2bd8aa366c6454b168b72f2635491e')
+source=(http://cpan.perl.org/modules/by-authors/id/V/VI/$_author/$_realname-${pkgver}.tar.gz)
+sha512sums=('1b86af7ed2854f8b5a9f03f22484ecb08021efd87993b3f5786a56764478e022d5e2f2cbb87d4a832743a05e1983174481b95d3545175106a44b9911fc8adef7')
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/$_realname-${pkgver}" || exit
 
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
+  cd "${srcdir}/$_realname-${pkgver}" || exit
+  make install DESTDIR="${pkgdir}/"
 }
