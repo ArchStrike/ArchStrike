@@ -1,35 +1,34 @@
 # Maintainer: ArchStrike <team@archstrike.org>
-_author='RCLAMP'
-_perlmod='Algorithm-GenerateSequence'
 
 buildarch=1
 
 pkgname='perl-algorithm-generatesequence'
-pkgver='0.02'
-pkgrel=3
+pkgver='1.11'
+pkgrel=1
 pkgdesc='A sequence generator.'
 arch=('any')
-url='http://search.cpan.org/~gomor/Net-Frame-Layer-ICMPv6-1.08/lib/Net/Frame/Layer/ICMPv6.pm'
+url='https://metacpan.org/pod/Net::Frame::Layer::ICMPv6'
 license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=(!emptydirs)
-source=("http://search.cpan.org/CPAN/authors/id/R/RC/$_author/$_perlmod-$pkgver.tar.gz")
-md5sums=('2abf3378195a7d1c056f113eab1476b6')
+source=("https://cpan.metacpan.org/authors/id/G/GO/GOMOR/Net-Frame-Layer-ICMPv6-1.11.tar.gz")
+sha512dsums=('2abf3378195a7d1c056f113eab1476b6')
 
 prepare() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/Net-Frame-Layer-ICMPv6-${pkgver}" || exit
 
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/Net-Frame-Layer-ICMPv6-${pkgver}" || exit
 
   make
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/Net-Frame-Layer-ICMPv6-${pkgver}" || exit
 
-  make install DESTDIR="$pkgdir/"
+  make install DESTDIR="${pkgdir}/"
 }
+md5sums=('8591ccd01874436c3c9dff14865052b1')
