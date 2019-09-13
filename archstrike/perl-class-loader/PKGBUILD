@@ -6,18 +6,18 @@ buildarch=1
 
 pkgname=perl-class-loader
 pkgver=2.03
-pkgrel=5
+pkgrel=6
 pkgdesc="Loads modules and creates objects on demand"
 arch=('any')
-url='http://search.cpan.org/~VIPUL/Class-Loader-2.03/'
+url='https://metacpan.org/pod/Class::Loader'
 license=('GPL' 'PerlArtistic')
 depends=('perl>=5.10.0', 'gmp')
 options=(!emptydirs)
-source=(http://cpan.perl.org/modules/by-authors/id/V/VI/$_author/$_perlmod-$pkgver.tar.gz)
-md5sums=('2e2ace3429380e2dad2f0e82137511b8')
+source=(http://cpan.perl.org/modules/by-authors/id/V/VI/$_author/$_perlmod-${pkgver}.tar.gz)
+sha512sums=('1ca245ea55b6fb101c5a6000c833c5a7b6885619811882a693916d4bf9225ecb55127e340647c8d6ff70b18ee5b8ba9f15184c2a70e8b6737762fcd5baf76adc')
 
 build() {
-  cd "$srcdir/$_perlmod-$pkgver"
+  cd "${srcdir}/$_perlmod-${pkgver}" || exit
 
   # Install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  cd "$srcdir/$_perlmod-$pkgver"
-  make install DESTDIR="$pkgdir/"
+  cd "${srcdir}/$_perlmod-${pkgver}" || exit
+  make install DESTDIR="${pkgdir}/"
 }
