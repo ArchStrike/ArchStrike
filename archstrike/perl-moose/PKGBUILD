@@ -5,7 +5,7 @@ buildarch=220
 pkgname=perl-moose
 _cpanname=Moose
 pkgver='2.2011'
-pkgrel=1
+pkgrel=2
 pkgdesc="A postmodern object system for Perl 5"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('PerlArtistic' 'GPL')
@@ -19,18 +19,18 @@ depends=('perl-class-load>=0.09' 'perl-class-load-xs>=0.01'
          'perl-sub-exporter>=0.980' 'perl-sub-name>=0.05' 'perl-task-weaken'
          'perl-test-checkdeps' 'perl-try-tiny>=0.02')
 makedepends=('perl-dist-checkconflicts>=0.02' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05' 'perl-test-without-module')
-url="https://metacpan.org/release/$_cpanname"
-source=("http://cpan.metacpan.org/authors/id/E/ET/ETHER/$_cpanname-$pkgver.tar.gz")
+url="https://metacpan.org/pod/Moose"
+source=("http://cpan.metacpan.org/authors/id/E/ET/ETHER/${_cpanname}-${pkgver}.tar.gz")
 sha512sums=('f94ed23c45a860b9afa8defe7f5067a65fdd9d457d94a85e4ea192640d09ad73bc336a2e54c4c663643ec0efa32872f4b2aa69083e99093e420cecf5430f34a3')
 
 build() {
-  cd "$srcdir/$_cpanname-$pkgver"
+  cd "${srcdir}/${_cpanname}-${pkgver}" || exit
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd "$srcdir/$_cpanname-$pkgver"
-  make install DESTDIR="$pkgdir"
-  find "$pkgdir" -name '.packlist' -o -name '*.pod' -delete
+  cd "${srcdir}/${_cpanname}-${pkgver}" || exit
+  make install DESTDIR="${pkgdir}"
+  find "${pkgdir}" -name '.packlist' -o -name '*.pod' -delete
 }
