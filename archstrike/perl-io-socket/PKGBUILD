@@ -3,25 +3,25 @@
 buildarch=220
 
 pkgname='perl-io-socket'
-pkgver='1.2301'
-pkgrel=4
-pkgdesc="IO::Socket - Object interface to socket communications for perl"
+pkgver='1.39'
+pkgrel=1
+pkgdesc="Object interface to socket communications"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl')
 makedepends=()
-url="http://search.cpan.org/~gbarr/IO-$pkgver/lib/IO/Socket.pm"
-source=("http://search.cpan.org/CPAN/authors/id/G/GB/GBARR/IO-$pkgver.tar.gz")
-sha512sums=('248272c7dbf7be58002b3c14e1c83e14c90ae43c91915ba487a3cee84772326810e8a6e5b87fb86197376017d909c67e5903c2c17e7da249093ced8b3ad6c24f')
+url="https://metacpan.org/pod/IO::Socket"
+source=("https://cpan.metacpan.org/authors/id/T/TO/TODDR/IO-${pkgver}.tar.gz")
+sha512sums=('5f42be505d75d712eef488b5604666964740bfe0f136e9d7edfe334463d19b582c2f0bf6a32878187aef64b9f435ee1f8f1ae49dd1c5f80445284df0016cf40d')
 
 build() {
-    cd "$srcdir/IO-$pkgver"
+    cd "${srcdir}/IO-${pkgver}"
     perl Makefile.PL INSTALLDIRS=vendor
     make
 }
 
 package(){
-    cd "$srcdir/IO-$pkgver"
-    make DESTDIR=$pkgdir install
+    cd "${srcdir}/IO-${pkgver}"
+    make DESTDIR=${pkgdir} install
 }
