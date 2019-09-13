@@ -6,33 +6,33 @@ _perlmod='CryptX'
 buildarch=220
 
 pkgname=perl-crypt-x
-pkgver=0.063
+pkgver=0.064
 pkgrel=1
 pkgdesc="Cryptographically secure random number generator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://search.cpan.org/~mik/CryptX-0.054/lib/CryptX.pm"
+url="https://metacpan.org/pod/CryptX"
 license=('custom')
 depends=('perl>=5.10.0')
 options=(!emptydirs)
 source=("http://search.cpan.org/CPAN/authors/id/M/MI/MIK/CryptX-${pkgver}.tar.gz")
-sha512sums=('8dc445495cfe02c509980e989d95cdfb71d57609afe7fb619579c5b49f14a9c6fae04cd01ba607ab1aade71cf1f02175eab0d3284f6b7601bc1f71e446dcaeb2')
+sha512sums=('b153512d1036461de795cd40b71b55f32908ac84101079e3e62c2690736de102046fe1f66007c4b0af6ded797709e1f06934d171f349bf983d53a2f1ab1f0d1d')
 
 build() {
-  cd "${srcdir}/${_perlmod}-${pkgver}"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
 
   perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 check() {
-  cd "${srcdir}/${_perlmod}-${pkgver}"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
   make test
 }
 
 package() {
-  cd "${srcdir}/${_perlmod}-${pkgver}"
+  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
 
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   make install DESTDIR="${pkgdir}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
