@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-devel-overloadinfo
 pkgver=0.005
-pkgrel=1
+pkgrel=2
 pkgdesc="introspect overloaded operators"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,7 +14,7 @@ options=('!emptydirs')
 depends=('perl-mro-compat' 'perl-package-stash>=0.14' 'perl-sub-identify' 'perl>=5.006')
 makedepends=()
 checkdepends=('perl-test-fatal')
-url='https://metacpan.org/release/Devel-OverloadInfo'
+url='https://metacpan.org/pod/Devel::OverloadInfo'
 source=("http://search.cpan.org/CPAN/authors/id/I/IL/ILMARI/Devel-OverloadInfo-${pkgver}.tar.gz")
 sha512sums=('66ff0869ecd34b2a80e6c8052e9ba7cf396b85e25f2efa92e42447ae3164ac50f703ca4dbee38ac676b70caf19ce189a6d2a1d6322cf3af342d4edd5c0b336e7')
 _distdir="Devel-OverloadInfo-0.005"
@@ -22,26 +22,26 @@ _distdir="Devel-OverloadInfo-0.005"
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR=${pkgdir}"     \
+      PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "${srcdir}/${_distdir}" || exit
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
