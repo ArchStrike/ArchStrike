@@ -5,7 +5,7 @@ buildarch=1
 pkgname=perl-algorithm-c3
 _cpanname=Algorithm-C3
 pkgver=0.08
-pkgrel=4
+pkgrel=5
 pkgdesc="Algorithm::C3"
 arch=('any')
 url="http://search.cpan.org/~FLORA/${_cpanname}"
@@ -17,14 +17,14 @@ source=(http://www.cpan.org/authors/id/F/FL/FLORA/${_cpanname}-${pkgver}.tar.gz)
 sha512sums=('feaf8b49ff9382eb0415536a1b384b690b33956705ebc3889c0f27dbae77eaec8e0179c1d103ed2ec53158de26c7e33ac7e6dfc920c64415f16baa360ab7b9b2')
 
 build() {
-  cd $srcdir/${_cpanname}-${pkgver}
-  perl Build.PL installdirs=vendor destdir=$pkgdir
+  cd ${srcdir}/${_cpanname}-${pkgver} || exit
+  perl Build.PL installdirs=vendor destdir=${pkgdir}
   perl Build
 }
 
 package(){
-  cd $srcdir/${_cpanname}-${pkgver}
+  cd ${srcdir}/${_cpanname}-${pkgver} || exit
   perl Build install
-  find $pkgdir -name '.packlist' -delete
-  find $pkgdir -name '*.pod' -delete
+  find ${pkgdir} -name '.packlist' -delete
+  find ${pkgdir} -name '*.pod' -delete
 }
