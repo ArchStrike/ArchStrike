@@ -4,29 +4,29 @@ buildarch=1
 
 pkgname=perl-io-socket-socks
 pkgver=0.74
-pkgrel=1
+pkgrel=2
 pkgdesc='Provides a way to create socks client or server both 4 and 5 version'
-url='http://search.cpan.org/~oleg/IO-Socket-Socks-0.68'
+url='https://metacpan.org/pod/IO::Socket::Socks'
 depends=('perl')
 arch=('any')
 license=('GPL')
 options=('!emptydirs')
-source=("http://search.cpan.org/CPAN/authors/id/O/OL/OLEG/IO-Socket-Socks-$pkgver.tar.gz")
+source=("http://search.cpan.org/CPAN/authors/id/O/OL/OLEG/IO-Socket-Socks-${pkgver}.tar.gz")
 sha512sums=('db6154f3c7f532c6c8a04242e0d301bd124154ebbbc9bbcf0812dda5350bebc501a833057533edeb6b634141bfab5c92b4c1714c348226be1c967aa7b4f2ebe5')
 
 build() {
-  cd  "$srcdir/IO-Socket-Socks-$pkgver"
+  cd  "${srcdir}/IO-Socket-Socks-${pkgver}" || exit
 
   perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd  "$srcdir/IO-Socket-Socks-$pkgver"
+  cd  "${srcdir}/IO-Socket-Socks-${pkgver}" || exit
 
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}/" install
 
   # Removing unnecessary items.
-  find "$pkgdir" -type f -name 'perllocal.pod' -delete;
-  find "$pkgdir" -type f -name '.packlist' -delete;
+  find "${pkgdir}" -type f -name 'perllocal.pod' -delete;
+  find "${pkgdir}" -type f -name '.packlist' -delete;
 }
