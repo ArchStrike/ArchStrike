@@ -4,26 +4,26 @@ buildarch=1
 
 pkgname=perl-digest-crc
 pkgver=0.22.2
-pkgrel=1
+pkgrel=2
 pkgdesc="Generic interface to CRC algorithms"
 arch=('any')
 license=('PerlArtistic')
 options=('!emptydirs')
 depends=('perl')
-url="http://search.cpan.org/dist/Digest-CRC/"
-source=("http://search.cpan.org/CPAN/authors/id/O/OL/OLIMAUL/Digest-CRC-$pkgver.tar.gz")
+url="https://metacpan.org/pod/Digest::CRC"
+source=("http://search.cpan.org/CPAN/authors/id/O/OL/OLIMAUL/Digest-CRC-${pkgver}.tar.gz")
 sha512sums=('983dfb3a39ca054819906bd67251f0e275a55d4ab1873146a8bbe36dee3d979e67a36f3fc53ce18608873a1c68ba30d6de8c59b58ae57a7e36e6816551752875')
 _distdir="Digest-CRC-0.22"
 
 build() {
-  cd $srcdir/${_distdir}
-  perl Makefile.PL installdirs=vendor destdir=$pkgdir
+  cd ${srcdir}/${_distdir} || exit
+  perl Makefile.PL installdirs=vendor destdir=${pkgdir}
   make
 }
 
 package(){
-  cd $srcdir/${_distdir}
+  cd ${srcdir}/${_distdir} || exit
   make install
-  find $pkgdir -name '.packlist' -delete
-  find $pkgdir -name '*.pod' -delete
+  find ${pkgdir} -name '.packlist' -delete
+  find ${pkgdir} -name '*.pod' -delete
 }
