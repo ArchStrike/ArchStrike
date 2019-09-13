@@ -5,41 +5,41 @@ buildarch=1
 pkgname='perl-io-socket-ip'
 pkgver='0.39'
 _distdir="IO-Socket-IP-${pkgver}"
-pkgrel=1
+pkgrel=2
 pkgdesc="Family-neutral IP socket supporting both IPv4 and IPv6"
 arch=('any')
 license=('PerlArtistic' 'GPL')
 options=('!emptydirs')
 depends=('perl>=0')
 makedepends=()
-url='http://search.cpan.org/dist/IO-Socket-IP'
+url='https://metacpan.org/pod/IO::Socket::IP'
 source=("http://search.cpan.org/CPAN/authors/id/P/PE/PEVANS/${_distdir}.tar.gz")
 sha512sums=('8bc700ef0b4ae42887289947490354e807a47547b9f2473b194db25948c3b552485b63c4b4c7e0262d07195556a5d9cb71796e5eceb2b890af551c99967b910a')
 
 build() {
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
-      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='$pkgdir'"     \
-      PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
+      PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR=${pkgdir}"     \
+      PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "$srcdir/$_distdir"
+    cd "${srcdir}/${_distdir}" || exit
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "$srcdir/$_distdir"
+  cd "${srcdir}/${_distdir}" || exit
   make install
 
-  find "$pkgdir" -name .packlist -o -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
 
