@@ -4,27 +4,27 @@ buildarch=220
 
 pkgname=afflib
 pkgver=3.7.18
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='An extensible open format for the storage of disk images and related forensic information'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/sshock/AFFLIBv3/'
 license=('custom')
-install="$pkgname.install"
+install="${pkgname}.install"
 makedepends=('cython2')
 depends=('fuse' 'openssl' 'expat' 'zlib' 'python2' 'curl' 'libtool' 'readline')
-source=("https://github.com/sshock/AFFLIBv3/archive/v$pkgver.tar.gz")
+source=("https://github.com/sshock/AFFLIBv3/archive/v${pkgver}.tar.gz")
 sha512sums=('47ab74c86bbaedc2494558962f99463066e267f7a3f583902a53e1f488085a309b0d871093c67439033272c3ebf03d213649886930b9812013e66782ea84df85')
 
 build() {
-  cd AFFLIBv3-$pkgver
+  cd "AFFLIBv3-${pkgver}" || exit
   ./bootstrap.sh
   PYTHON=/usr/bin/python2 ./configure --prefix=/usr --sysconfdir=/etc --enable-python=yes --enable-s3=yes
   make
 }
 
 package() {
-  cd AFFLIBv3-$pkgver
-  make DESTDIR="$pkgdir" install
-  install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "AFFLIBv3-${pkgver}" || exit
+  make DESTDIR="${pkgdir}" install
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
