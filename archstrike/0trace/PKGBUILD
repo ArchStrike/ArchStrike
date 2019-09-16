@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=0trace
 pkgver=20070125
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='A hop enumeration tool'
 url='https://jon.oberheide.org/0trace'
@@ -15,9 +15,9 @@ source=('https://jon.oberheide.org/files/0trace.py')
 sha512sums=('790d8d96c98fffe0e79890688d137ad8e97ed6e9661cc3b764ec62ea74f4897c28a7f2e71d17720bb7957c4ee39decb3b6bceeb29d339e7fe765c3f12a7aa677')
 
 prepare() {
-  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' $pkgname.py
+  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' ${pkgname}.py
 }
 
 package() {
-  install -Dm755 $pkgname.py "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 ${pkgname}.py "${pkgdir}/usr/bin/${pkgname}"
 }
