@@ -4,22 +4,23 @@ buildarch=1
 
 pkgname=archstrike-i3-config
 pkgver=1.2
-pkgrel=3
+pkgrel=4
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="i3wm configs for ArchStrike"
 url="https://github.com/ArchStrike/archstrike-i3-config"
 license=('GPL3')
-depends=('i3-wm' 'i3lock' 'i3status' 'rofi' 'compton' 'notify-osd' 'ttf-hack' 'feh' 'scrot' 'imagemagick' 'ttf-font-awesome' 'arc-gtk-theme' 'firefox' 'terminator' 'thunar' 'ranger' 'thunderbird' 'hexchat' 'weechat')
+depends=('i3-wm' 'i3lock' 'i3status' 'rofi' 'compton' 'notify-osd' 'ttf-hack' 'feh' 'scrot'
+         'imagemagick' 'ttf-font-awesome' 'arc-gtk-theme' 'firefox' 'terminator' 'thunar'
+         'ranger' 'thunderbird' 'hexchat' 'weechat')
 source=("https://github.com/ArchStrike/archstrike-i3-config/archive/${pkgver}.tar.gz")
 install="${pkgname}.install"
 sha512sums=('f41a105c4020096ae6ef9f6876b2e3e7d9b5860a613a96a920ba073393229c982c8da3ca43a6b6cb3d7e7bdaa7ba1d004cb361dc4c3d870be4f7cc7cab46afcd')
 
 package() {
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  install -dm755 ${pkgdir}/usr/share/${pkgname}
-
-  cd ${pkgname}-${pkgver}
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cd "${pkgname}-${pkgver}" || exit
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
 }
