@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=arpoison
 pkgver=0.7
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-exploit' 'archstrike-spoof')
 pkgdesc='Sends out a custom ARP REPLY packet with the hardware and
  10 protocol address information of your choosing'
