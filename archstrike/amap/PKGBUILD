@@ -6,7 +6,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname=amap
 pkgver=5.4
-pkgrel=8
+pkgrel=9
 pkgdesc="Next-generation tool for assisting network penetration testing."
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('GPL2' 'custom')
@@ -21,7 +21,7 @@ sha512sums=('e1a9f03940eded3eedad0028786f4ea6c18077072d52eb2f843ef0b4ff736bf1766
             'c01312aa25cacd8ebdad4f90afb7d4769272fe16ef813dc8cba975dcb6933a45acbbf7df4583465244e914dc4e104ba954041a2c03838cefdc6aa135133be740')
 
 prepare(){
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
   sed -i -e "s:etc/:share/amap/:g" amap-lib.c
   # Above change requires below change. See sources...
   sed -i '/strlen(AMAP_PREFIX/s: 5 : 12 :' amap-lib.c
@@ -33,7 +33,7 @@ prepare(){
 }
 
 build() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
   ./configure
   sed -i \
       -e '/^XDEFINES=/s:=.*:=:' \
@@ -46,12 +46,12 @@ build() {
        -e '/^XDEFINES=/s:=:=-DOPENSSL:' \
        -e '/^XLIBS=/s:=:=-lcrypto -lssl:' \
        Makefile
-  export CFLAGS=$CFLAGS
+  export CFLAGS="$CFLAGS"
   make
 }
 
 package() {
-  cd ${srcdir}/${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
   install -Dm755 amap "${pkgdir}/usr/bin/amap"
   ln -s "/usr/bin/amap" "${pkgdir}/usr/bin/amap6"
   install -Dm755 amapcrap "${pkgdir}/usr/bin/amapcrap"
