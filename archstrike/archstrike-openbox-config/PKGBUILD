@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=archstrike-openbox-config
 pkgver=1.1
-pkgrel=2
+pkgrel=3
 groups=('archstrike-desktop')
 arch=('any')
 pkgdesc="ArchStrike config files for OpenBox"
@@ -16,9 +16,9 @@ install="${pkgname}.install"
 sha512sums=('d4e1924ab16e27d8d91df1dbffdc69810c4a1dc2b677013f078552f675d2f1a27bea379bfe4208f8ce97a624cf30f905645f2bb08dad09457c884d18e959b9b5')
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}" || exit
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
 }
