@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=argtable
 pkgver=2.13
-pkgrel=4
+pkgrel=5
 pkgdesc="ANSI C command line parser"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://argtable.sourceforge.net/"
@@ -22,8 +22,8 @@ sha512sums=('3d8303f3ba529e3241d918c0127a16402ece951efb964d14a06a3a7d29a252812ad
 
 prepare() {
   cd "${srcdir}/argtable${pkgver/./-}" || exit
-  patch -Np1 -i ${srcdir}/gcc6.1.fixes.patch
-  patch -Np1 -i ${srcdir}/config.guess-for-aarch64.patch
+  patch -Np1 -i "${srcdir}/gcc6.1.fixes.patch"
+  patch -Np1 -i "${srcdir}/config.guess-for-aarch64.patch"
 }
 
 build() {
