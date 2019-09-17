@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=archstrike-menu
 pkgver=1.2
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="ArchStrike menu for XFCE"
 url="https://github.com/ArchStrike/archstrike-menu"
@@ -13,7 +13,7 @@ source=("${url}/archive/${pkgver}.tar.gz")
 sha512sums=('b65ced72c295585b13de0d0b01742d794ba01ee6c77ef6ee9eb8cf6de4a209cac18792337727d27fa97622b48a7f2ff09afa4b2eb1b31ed24691058442c19588')
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}" || exit
   for i in icons/hicolor applications desktop-directories; do
     install -dm755 "${pkgdir}/usr/share/${i}"
   done
