@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=artlas-git
 pkgver=20160614.r140
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-analysis' 'archstrike-defense')
 arch=('any')
 pkgdesc="Apache Real Time Logs Analyzer System"
@@ -17,16 +17,16 @@ install="${pkgname}.install"
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname} || exit
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
+  grep -iRl 'python' "${pkgname}" | xargs sed -i 's|python$|python2|'
 }
 
 package() {
-  cd ${pkgname} || exit
+  cd "${pkgname}" || exit
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
@@ -38,7 +38,7 @@ package() {
 
 cat > "${pkgdir}/usr/bin/artlas" <<EOF
 #!/bin/sh
-cd /usr/share/${pkgname}
+cd "/usr/share/${pkgname}"
 python2 artlas.py "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/artlas"
