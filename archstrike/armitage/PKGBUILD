@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=armitage
 pkgver=150813
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A graphical cyber attack management tool for Metasploit"
 url='http://www.fastandeasyhacking.com/'
@@ -18,7 +18,7 @@ sha512sums=('29743c32ff13e62e5cb4a97cf60b3f5e5a4c5ac01a014ff709abc1be4f1b9d79597
             'c986d01c29de2b8a2b4541433063cbce4ec82a55508bcf74877614ccc9809a8751462b2467aba296a679ff146ba1e6fe60c405cfa18cb6705bc2f6fd595dd998')
 
 package() {
-  cd "$srcdir/$pkgname"
+  cd "$srcdir/$pkgname" || exit
   install -dm755 "$pkgdir/usr/share/$pkgname"
   install -dm755 "$pkgdir/usr/bin"
   install -Dm755 armitage "$pkgdir/usr/share/armitage/armitage"
@@ -38,8 +38,7 @@ cat > "$pkgdir/usr/bin/teamserver" <<EOF
 ./teamserver "\$@"
 EOF
 
-chmod +x $pkgdir/usr/bin/armitage
-chmod +x $pkgdir/usr/bin/teamserver
+chmod +x "$pkgdir/usr/bin/armitage"
+chmod +x "$pkgdir/usr/bin/teamserver"
 
 }
-
