@@ -5,7 +5,7 @@ noautobuild=1
 
 pkgname=archstrike-keyring
 pkgver=20170321
-pkgrel=1
+pkgrel=2
 pkgdesc='ArchStrike PGP keyring'
 url='https://archstrike.org'
 license=('GPL3')
@@ -14,14 +14,14 @@ depends=('gnupg')
 makedepends=('git')
 source=('git+https://github.com/ArchStrike/archstrike-keyring.git')
 sha512sums=('SKIP')
-install=$pkgname.install
+install=${pkgname}.install
 
 pkgver() {
-  cd $pkgname
+  cd "${pkgname}" || exit
   head -n 1 Makefile | sed 's|^V=||'
 }
 
 package() {
-  cd $pkgname
-  make PREFIX=/usr DESTDIR="$pkgdir" install
+  cd "${pkgname}" || exit
+  make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
