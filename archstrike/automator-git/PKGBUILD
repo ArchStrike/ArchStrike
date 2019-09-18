@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=automator-git
 pkgver=r88.42548cf
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="IP URL and MD5 OSINT Analysis"
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname}::git+https://github.com/1aN0rmus/TekDefense-Automater.git")
 sha256sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname} || exit
+  cd "${pkgname}" || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -25,7 +25,7 @@ prepare(){
 }
 
 package() {
-  cd ${pkgname} || exit
+  cd "${pkgname}" || exit
 
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/automator"
@@ -54,4 +54,3 @@ EOF
 chmod +x "${pkgdir}/usr/bin/automater"
 
 }
-
