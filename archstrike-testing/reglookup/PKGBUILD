@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=reglookup
 pkgver=1.0.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="Command line utility for reading and querying Windows NT registries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -12,12 +12,12 @@ url='http://projects.sentinelchicken.org/reglookup'
 license=('GPL')
 depends=('talloc' 'bash')
 makedepends=('scons' 'docbook2x')
-source=(http://reglookup.googlecode.com/files/reglookup-src-$pkgver.tar.gz
-        SConstruct.patch
-        pyregfi-distutils.py.patch)
-md5sums=('c451c2dba904db8ae5b0531ca303e322'
-         'a1d31fb09fbce3864abde8babf4c63eb'
-         '930850125e505b3b3c49990f908a4a19')
+source=("http://projects.sentinelchicken.org/data/downloads/reglookup-src-1.0.1.tar.gz"
+        "SConstruct.patch"
+        "pyregfi-distutils.py.patch")
+sha512sums=('1750655e27f634b7632f67bfab25182cdada33a6e36fa7d70a21c039f036a8c65c23256ebb76e90325ecd0472a57aac08168fa1b096ef51edc248d12feef9469'
+            'd71e5c99c2a53bacfa7b3f0a92bc14520cb073e5fdd51f0507b71c50219e4333b0895aae08779acb2570793c7e96f78ceae5940fdef317745eac0ffb82c4662d'
+            'b209b4265e385fdfd00caa875c83b740bac363a1f7de9c7a21ec0929090afc330a8592ca0bdc4fb728cf9162af306b312f46663360481b2b497f6d87a7813a54')
 
 prepare() {
   cd "$srcdir/reglookup-src-$pkgver"
