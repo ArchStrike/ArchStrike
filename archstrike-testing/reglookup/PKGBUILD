@@ -12,7 +12,7 @@ url='http://projects.sentinelchicken.org/reglookup'
 license=('GPL')
 depends=('talloc' 'bash')
 makedepends=('scons' 'docbook2x')
-source=("http://projects.sentinelchicken.org/data/downloads/reglookup-src-1.0.1.tar.gz"
+source=("http://projects.sentinelchicken.org/data/downloads/reglookup-src-${pkgver}.tar.gz"
         "SConstruct.patch"
         "pyregfi-distutils.py.patch")
 sha512sums=('1750655e27f634b7632f67bfab25182cdada33a6e36fa7d70a21c039f036a8c65c23256ebb76e90325ecd0472a57aac08168fa1b096ef51edc248d12feef9469'
