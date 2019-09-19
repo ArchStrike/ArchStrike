@@ -1,60 +1,48 @@
-diff --git a/Gemfile b/Gemfile
-index 8f1277d..8103ba0 100644
---- a/Gemfile
-+++ b/Gemfile
-@@ -1,4 +1,6 @@
- # A sample Gemfile
- source "https://rubygems.org"
- 
--gem "twitter"
-+gem "twitter", :require => 'twitter'
-+require 'yaml'
-+require 'getoptlong'
 diff --git a/Gemfile.lock b/Gemfile.lock
-index e69de29..6de62f1 100644
---- a/Gemfile.lock
+new file mode 100644
+index 0000000..d7b4bbc
+--- /dev/null
 +++ b/Gemfile.lock
-@@ -0,0 +1,49 @@
+@@ -0,0 +1,48 @@
 +GEM
 +  remote: https://rubygems.org/
 +  specs:
-+    addressable (2.4.0)
++    addressable (2.7.0)
++      public_suffix (>= 2.0.2, < 5.0)
 +    buftok (0.2.0)
-+    domain_name (0.5.20160826)
++    domain_name (0.5.20190701)
 +      unf (>= 0.0.5, < 1.0.0)
-+    equalizer (0.0.10)
-+    faraday (0.9.2)
-+      multipart-post (>= 1.2, < 3)
-+    http (1.0.4)
++    equalizer (0.0.11)
++    http (3.3.0)
 +      addressable (~> 2.3)
 +      http-cookie (~> 1.0)
-+      http-form_data (~> 1.0.1)
++      http-form_data (~> 2.0)
 +      http_parser.rb (~> 0.6.0)
-+    http-cookie (1.0.2)
++    http-cookie (1.0.3)
 +      domain_name (~> 0.5)
-+    http-form_data (1.0.1)
++    http-form_data (2.1.1)
 +    http_parser.rb (0.6.0)
-+    json (1.8.3)
 +    memoizable (0.4.2)
 +      thread_safe (~> 0.3, >= 0.3.1)
-+    multipart-post (2.0.0)
++    multipart-post (2.1.1)
 +    naught (1.1.0)
++    public_suffix (4.0.1)
 +    simple_oauth (0.3.1)
-+    thread_safe (0.3.5)
-+    twitter (5.16.0)
++    thread_safe (0.3.6)
++    twitter (6.2.0)
 +      addressable (~> 2.3)
 +      buftok (~> 0.2.0)
-+      equalizer (= 0.0.10)
-+      faraday (~> 0.9.0)
-+      http (~> 1.0)
++      equalizer (~> 0.0.11)
++      http (~> 3.0)
++      http-form_data (~> 2.0)
 +      http_parser.rb (~> 0.6.0)
-+      json (~> 1.8)
 +      memoizable (~> 0.4.0)
++      multipart-post (~> 2.0)
 +      naught (~> 1.0)
 +      simple_oauth (~> 0.3.0)
 +    unf (0.1.4)
 +      unf_ext
-+    unf_ext (0.0.7.2)
++    unf_ext (0.0.7.6)
 +
 +PLATFORMS
 +  ruby
@@ -63,21 +51,4 @@ index e69de29..6de62f1 100644
 +  twitter
 +
 +BUNDLED WITH
-+   1.13.1
-diff --git a/twofi.rb b/twofi.rb
-index 5a3d42f..a8e9a32 100755
---- a/twofi.rb
-+++ b/twofi.rb
-@@ -14,9 +14,9 @@
- # Licence:: Creative Commons Attribution-Share Alike 2.0
- #
- 
--require 'yaml'
--require 'twitter'
--require 'getoptlong'
-+require 'rubygems'
-+require 'bundler/setup'
-+Bundler.require(:default)
- 
- opts = GetoptLong.new(
- 	[ '--help', '-h', GetoptLong::NO_ARGUMENT ],
++   2.0.2

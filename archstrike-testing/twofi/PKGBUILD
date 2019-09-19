@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=twofi
 pkgver=2.0
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='Twitter Words of Interest'
 arch=('any')
@@ -13,7 +13,7 @@ license=('CCPL')
 depends=('ruby' 'ruby-bundler')
 source=("http://www.digininja.org/files/twofi_$pkgver-beta.tar.bz2" 'bundler.patch')
 sha512sums=('e1907abe4333fe039aa0fcb2571a9dbe617fd74bea39243d21592a39892d771591b0fb6912602d4ae5a74b4448030782dfe455d9ee7685be34abff4dee5601b4'
-            '8a66540f7675c72b42b1f96b2d883b5f3066c34054ae913b8494205f240fe1cdf74c553b088486a632f7ffc57346a65d9bc7db1d0a589df8bbef1c19435a876b')
+            'b1df3fe4c9db94681a5f25e50014679a767f93ab792debde96202b524a083aa14b4acc16cf864db6269d41f11c6fb6984883e90d08c8810ce923c70ae1efe2e4')
 
 prepare() {
   cd ${pkgname}
@@ -34,7 +34,7 @@ package() {
 cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/usr/bin/env bash
 cd /usr/share/${pkgname}
-ruby twofi.rb "\$@"
+bundler exec twofi.rb "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
