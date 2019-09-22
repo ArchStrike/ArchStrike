@@ -2,8 +2,9 @@
 
 buildarch=220
 
-pkgname=python-pynids
-pkgver=1.0.0
+_pkgname=pynids
+pkgname="python-${_pkgname}-git"
+pkgver=r28.2d38aee
 pkgrel=1
 pkgdesc="A Python wrapper for libnids."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,22 +12,27 @@ url="http://jon.oberheide.org/pynids/"
 license=('GPL')
 makedepends=('gcc')
 depends=('python' 'libpcap' 'libnet')
-source=("https://github.com/comrumino/pynids/archive/$pkgver.tar.gz" "config.guess-for-aarch64.patch")
-sha512sums=('bf011478648b909b3ea1362e2fd8d8587b432c8dfa843e0e64341f749abf00d462c8ada2b6e3d0e3d3e16582a914fd16d79e0433ffa6ca1a007c7715668951f7'
+source=("git+https://github.com/comrumino/$_pkgname.git"
+        "config.guess-for-aarch64.patch")
+sha512sums=('SKIP'
             'b61896fe1e48b72f95017b912fe2c28a8a64f068d1bf1c11cfcdbb8033e9b5ac378e0451800ba5c2e607c9fa102155a33d042931e6b767e5fac257288045f434')
 
+pkgver() {
+  cd "$_pkgname"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
 prepare() {
-  cd "$srcdir/pynids-$pkgver"
+  cd "$_pkgname"
   sed -i 's/"nidsmodule"/"nids"/g' setup.py
   patch -i $srcdir/config.guess-for-aarch64.patch
 }
 
 build() {
-  cd "$srcdir/pynids-$pkgver"
+  cd "$_pkgname"
   python setup.py build
 }
 
 package() {
-  cd "$srcdir/pynids-$pkgver"
+  cd "$_pkgname"
   python setup.py install --root="$pkgdir/"
 }
