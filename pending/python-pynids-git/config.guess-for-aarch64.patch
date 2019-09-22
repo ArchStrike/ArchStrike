@@ -1,0 +1,14 @@
+diff --git setup.py setup.py
+index 9b76260..d6c55c8 100644
+--- setup.py
++++ setup.py
+@@ -37,6 +37,8 @@ class nidsMaker(build):
+ 
+         spawn(['tar', '-zxf', self.NIDSTAR], search_path = 1)
+         os.chdir(self.NIDSDIR)
++        spawn([pathjoin('/usr/bin/','curl'), 'http://git.savannah.gnu.org/cgit/config.git/plain/config.guess', '-O'])
++        spawn([pathjoin('/usr/bin/','curl'), 'http://git.savannah.gnu.org/cgit/config.git/plain/config.sub', '-O'])
+         spawn([pathjoin('.','configure'), 'CFLAGS=-fPIC', '--disable-libglib', '--disable-libnet'])
+         spawn(['make'], search_path = 1)
+         os.chdir('..')
+
