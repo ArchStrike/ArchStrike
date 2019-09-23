@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ufo-wardriving
 pkgver=5.0.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc="Allows you to test the security of wireless networks by detecting their passwords based on the router model"
 url="http://www.ufo-wardriving.com/"
@@ -24,8 +24,8 @@ package() {
  cp -a * "$pkgdir/usr/share/ufo-wardriving"
 
   cat > "$pkgdir/usr/bin/ufo-wardriving" <<EOF
-#!/bin/sh
-python2 /usr/share/ufo-wardriving/ufo.py "\$@"
+#!/usr/bin/env bash
+python3 /usr/share/ufo-wardriving/ufo.py "\$@"
 EOF
-  chmod +x "$pkgdir/usr/bin/ufo-wardriving"
+  chmod 755 "$pkgdir/usr/bin/ufo-wardriving"
 }
