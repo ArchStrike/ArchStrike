@@ -23,7 +23,6 @@ pkgver() {
 }
 prepare() {
   cd "$_pkgname"
-  sed -i 's/"nidsmodule"/"nids"/g' setup.py
   patch -i $srcdir/config.guess-for-aarch64.patch
 }
 
