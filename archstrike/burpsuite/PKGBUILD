@@ -1,21 +1,22 @@
 # Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Lukas Kempf <archstrike@lukas-kempf.de>
 
 buildarch=1
 
 pkgname=burpsuite
-pkgver=1.7.36
+pkgver=2.1.04
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers' 'archstrike-proxy')
 pkgdesc="An integrated platform for attacking web applications (free edition)."
 url='http://portswigger.net/burp/'
-depends=('java-environment' 'bash')
+depends=('jre11-openjdk' 'bash')
 arch=('any')
 license=('custom')
 noextract=("burpsuite.jar")
-source=("burpsuite.jar::https://portswigger.net/Burp/Releases/Download?productId=100&version=${pkgver}&type=Jar" "LICENSE")
-sha512sums=('9788720feed1227f196adc7b4de78793de9a2e4602bdf066a37d482bc2f5a9d7c04773ca8325f953591db81125b7d117f77f7a8f9c8dc461e795ea44af4e1cab'
-            '37abc24b19571bfd2941e3dd7aa8a8a330bd3bbbafb3d1f813035ab0313e189c1f4a43a68f820a32656b86dd29cca94afcaefc6a4bfb4219ef18dc0fc4923b86')
-
+source=("burpsuite.jar::https://portswigger.net/Burp/Releases/Download?productId=100&version=${pkgver}&type=Jar" "LICENSE" "burpsuite.desktop")
+sha512sums=('77ee9fc73eeb99745b05a917709bbba0fd125a107889380a8b3e47f0c9380a281c28079a17a5854fd631fbf7efa9bccc810bfd1c6077548e7c642af8643ffc75'
+            '3bc6083224e3b6fd777b0fbb2aea73ce6fdd21011d1c6ceb0a5298c6278d04d35f7e5f6fd7e5dd621331fa4060eceb0655ffd63d6a5214833f6fbaa6f14a3681'
+            '076f2f7ca3096a44a3ccf8b9f723384e0c335b3f4391f26b4d8d652716a1e2b7325e4aa1ad7ea3d711073a77292fa19857e2881dbd909d547d28a806fc65e0cf')
 package() {
   cd ${srcdir}
 
@@ -27,10 +28,13 @@ package() {
   install -Dm755 burpsuite.jar $pkgdir/usr/share/${pkgname}/burpsuite.jar
   install -Dm644 LICENSE $pkgdir/usr/share/licenses/${pkgname}
 
+  install -Dm644 "$pkgname.desktop" "$pkgdir/usr/share/applications/$pkgname.desktop"
+
 # Make joint script.
 cat > ${pkgdir}/usr/bin/burpsuite <<EOF
 #!/usr/bin/env bash
-exec \$JAVA_HOME/bin/java -jar /usr/share/${pkgname}/burpsuite.jar "\$@"
+export PATH=/usr/lib/jvm/java-11-openjdk/bin/:\$PATH
+exec java -jar /usr/share/${pkgname}/burpsuite.jar "\$@"
 EOF
 chmod 755 ${pkgdir}/usr/bin/burpsuite
 }
