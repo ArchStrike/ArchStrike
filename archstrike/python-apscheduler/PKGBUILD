@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python-apscheduler
 _pkgname=APScheduler
-pkgver=3.5.3
+pkgver=3.6.1
 pkgrel=1
 pkgdesc="Advanced Python Scheduler, a light but powerful in-process task scheduler"
 arch=('any')
@@ -14,7 +14,7 @@ license=(MIT)
 depends=('python-six' 'python-pytz' 'python-tzlocal')
 makedepends=(python-setuptools)
 source=("https://files.pythonhosted.org/packages/source/A/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('dd3e98d0f474511851bdc109a1c65f7f97d221f95d086603d12b3f280285460234724369f05816e1754d58d94adadbec0deb8a0fa63fcd6531914d4a1f4fb3fc')
+sha512sums=('99eadea5edacb4484d56382ada1fe83bfeec13001c9d10706b96855787af2d1a6aad876239b65bc2b1f4a4793f44af8701d3ddb4f8af47cefe1b20f2ba6f199a')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
