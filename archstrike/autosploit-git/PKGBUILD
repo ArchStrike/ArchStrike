@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=autosploit
 pkgname=${_pkgname}-git
-pkgver=r222.7fcb2dc
-pkgrel=2
+pkgver=r279.8ee8ea1
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="Automate the exploitation of remote hosts"
 arch=('any')
@@ -17,7 +17,7 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}" || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -25,7 +25,7 @@ prepare(){
   grep -iRl 'python' "${srcdir}/${pkgname}" | xargs sed -i 's|python$|python2|g'
 
   # Fix services
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}" || exit
   sed -i "s|service postgresql status|systemctl status postgresql|" autosploit.py
   sed -i "s|service apache2 status|systemctl status httpd|" autosploit.py
   sed -i "s|service postgresql start|systemctl start postgresql|g" autosploit.py
@@ -33,12 +33,12 @@ prepare(){
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}" || exit
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a * "${pkgdir}/usr/share/${pkgname}"
+  cp -a ./* "${pkgdir}/usr/share/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
