@@ -3,51 +3,50 @@
 buildarch=220
 
 pkgname=mavlink-git
-pkgver=20170603.r2370
+pkgver=20191001.r2894
 pkgrel=1
 pkgdesc="MAVLink micro air vehicle marshalling / communication libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://qgroundcontrol.org/mavlink/"
+url="http://mavlink.io/"
 groups=('archstrike-drone')
 license=('LGPL')
-depends=("python2-future" "bash")
-makedepends=('git' 'cmake' 'python2-setuptools')
-provides=('python2-mavlink')
-source=("$pkgname"::'git://github.com/mavlink/mavlink.git')
-md5sums=('SKIP')
+depends=("python-future" "bash")
+makedepends=('git' 'cmake' 'python-setuptools')
+provides=('python-mavlink')
+source=("${pkgname}"::'git://github.com/mavlink/mavlink.git')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$pkgname"
-  # Use the tag of the last commit
+  cd "${srcdir}/${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}" || exit
   git submodule init
   git submodule update
 }
 
 build() {
-  cp "$srcdir/$pkgname/pymavlink/generator/C/include_v1.0/mavlink_conversions.h" "$srcdir/$pkgname/pymavlink/generator/C/include_v0.9/mavlink_conversions.h"
-  mkdir -p "$srcdir/$pkgname-build"
-  cd "$srcdir/$pkgname-build"
-  cmake "$srcdir/$pkgname" -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python2
+  mkdir -p "${srcdir}/${pkgname}-build"
+
+  cd "${srcdir}/${pkgname}-build" || exit
+  cmake "${srcdir}/${pkgname}" -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python
   make
-  cd "$srcdir/$pkgname/pymavlink"
-  python2 setup.py build
+
+  cd "${srcdir}/${pkgname}/pymavlink" || exit
+  python setup.py build
 }
 
 package() {
-  cd "$srcdir/$pkgname-build"
-  make DESTDIR="$pkgdir/" install
-  cd "$srcdir/$pkgname/pymavlink"
-  python2 setup.py install --prefix=/usr --root="$pkgdir" -O1 --skip-build
-  install -Dm0644 "$srcdir/$pkgname/pymavlink/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  cd "${srcdir}/${pkgname}-build" || exit
+  make DESTDIR="${pkgdir}/" install
+
+  cd "${srcdir}/${pkgname}/pymavlink" || exit
+  python setup.py install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
+  install -Dm0644 "${srcdir}/${pkgname}/pymavlink/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   if [[ -d "${pkgdir}"/usr/lib64 ]] ; then
     mv "${pkgdir}"/usr/lib64 "${pkgdir}"/usr/lib
   fi
-  # Fix python issues
-  grep -iRl 'python' "$pkgdir" | xargs sed -i 's|python$|python2|'
 }
 
