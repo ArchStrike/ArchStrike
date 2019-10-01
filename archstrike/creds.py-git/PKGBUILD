@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=creds.py-git
 pkgver=r17.1ec8297
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc="Harvest FTP/POP/IMAP/HTTP/IRC credentials along with interesting data from each of the protocols."
 arch=('any')
@@ -14,10 +14,10 @@ depends=('scapy')
 makedepends=('git' 'python2')
 provides=('creds.py')
 source=("git+https://github.com/DanMcInerney/creds.py.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/creds.py"
+  cd "${srcdir}/creds.py" || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -26,9 +26,8 @@ prepare(){
 }
 
 package() {
-  cd "${srcdir}/creds.py"
+  cd "${srcdir}/creds.py" || exit
 
-  # Make base directories.
   install -Dm644 README.md "${pkgdir}/usr/share/licenses/creds.py-git"
   install -Dm755 creds.py "${pkgdir}/usr/bin/creds.py"
 
