@@ -4,8 +4,9 @@
 buildarch=220
 
 _pkgname=bitarray
+pkgbase=python-bitarray
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=0.9.2
+pkgver=1.0.1
 pkgrel=1
 pkgdesc="Efficient arrays of booleans for Python"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +15,7 @@ license=('PSF')
 makedepends=('python2-setuptools' 'python-setuptools')
 options=(!emptydirs)
 source=(https://pypi.python.org/packages/source/b/bitarray/bitarray-${pkgver}.tar.gz)
-sha512sums=('4703d85b9b2890f37e6942a248f4552b528a740946efb167975684d9ad3daca647902ec24acc53b72a31c1ec90fa070fb557ef4bab7dd42a7aa8f1d7b6dde68c')
+sha512sums=('1fb1f1c2037ab598ff0c845d59eb68c3fa7e741fcfcb2ecb78c6b5d06c118f5fadb79af292191d19bf58c4da1aacec1fb8c21e61d353b5068742ded8d4baf476')
 
 prepare(){
   cp -a ${_pkgname}-${pkgver}{,-py2}
