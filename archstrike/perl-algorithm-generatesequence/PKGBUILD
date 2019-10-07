@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='perl-algorithm-generatesequence'
 pkgver='1.11'
-pkgrel=1
+pkgrel=2
 pkgdesc='A sequence generator.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Frame::Layer::ICMPv6'
@@ -12,7 +12,7 @@ license=('GPL' 'PerlArtistic')
 depends=('perl')
 options=(!emptydirs)
 source=("https://cpan.metacpan.org/authors/id/G/GO/GOMOR/Net-Frame-Layer-ICMPv6-1.11.tar.gz")
-sha512dsums=('2abf3378195a7d1c056f113eab1476b6')
+sha512sums=('719e4fe0ad12968f4e05ba606024644c4883eb112ff9722460cec76324c65c4ea26ab87f1e04687a50d97b097b8c7420d897d65b71b83fc0e72296345716e9db')
 
 prepare() {
   cd "${srcdir}/Net-Frame-Layer-ICMPv6-${pkgver}" || exit
@@ -31,4 +31,3 @@ package() {
 
   make install DESTDIR="${pkgdir}/"
 }
-md5sums=('8591ccd01874436c3c9dff14865052b1')
