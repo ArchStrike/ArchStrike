@@ -4,21 +4,21 @@ buildarch=1
 
 pkgname=goofile
 pkgver=1.5
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Command line filetype search"
 url="https://code.google.com/p/goofile/"
 license=('MIT')
 arch=('any')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/goofile/goofilev$pkgver.zip")
-md5sums=('a32a5884501d289e633fe9103d6046da')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/goofile/goofilev${pkgver}.zip")
+sha512sums=('134166c7d1808f70b116769a932c414ed7bcfbad597712c65c500f4fa0f2e0cd940bf76b6d6098a659c52e820abe5469b3e69060ffc2711632796a8f774d1535')
 
 prepare () {
-  cd "$srcdir/goofilev$pkgver"
+  cd "${srcdir}/goofilev${pkgver}" || exit
   sed -i 's/env python/env python2/' *.py
 }
 
 package() {
-  cd "$srcdir/goofilev$pkgver"
-  install -Dm755 "goofile.py" "$pkgdir/usr/bin/goofile"
+  cd "${srcdir}/goofilev${pkgver}" || exit
+  install -Dm755 "goofile.py" "${pkgdir}/usr/bin/goofile"
 }
