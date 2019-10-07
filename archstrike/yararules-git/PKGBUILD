@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=yararules
 pkgname=${_pkgname}-git
-pkgver=20190814.r1619
+pkgver=20190911.r1620
 pkgrel=1
 pkgdesc='A Repository of yara rules'
 arch=('any')
@@ -16,13 +16,13 @@ source=("${pkgname}::git+https://github.com/Yara-Rules/rules.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   install -dm755 ${pkgdir}/usr/share/${_pkgname}
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}/"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}/"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
 }
