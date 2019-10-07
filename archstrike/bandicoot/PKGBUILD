@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bandicoot
 pkgver=0.5.3
-pkgrel=2
+pkgrel=3
 pkgdesc="A toolbox to analyze mobile phone metadata."
 url="https://github.com/yvesalexandre/bandicoot"
 depends=('python')
@@ -18,12 +18,12 @@ sha512sums=('b920e458493d3a06e889863921c6ec84ded06084df9fdb8a61dc3b8ada4a698c1a4
             '04156225bd357a35ef7866f412b50274f48782917f0ae8e8dadd0cc5a83a88183f8e5ff6d4fa5fead814ee6c923614d31a301bbb414ee3df454c2cf78ffaba0d')
 
 build() {
-    cd ${srcdir}/bandicoot-${pkgver}
+    cd ${srcdir}/bandicoot-${pkgver} || exit
     python setup.py build
 }
 
 package() {
-    cd ${srcdir}/bandicoot-${pkgver}
+    cd ${srcdir}/bandicoot-${pkgver} || exit
     python setup.py install --root="${pkgdir}" --optimize=1
 
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
