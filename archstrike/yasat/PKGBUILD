@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=yasat
 pkgver=848
-pkgrel=3
+pkgrel=4
 pkgdesc='A simple stupid audit tool'
 arch=('any')
 license=('GPL3')
