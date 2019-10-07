@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bamfdetect
 pkgver=1.6.12
-pkgrel=4
+pkgrel=5
 pkgdesc="Identifies and extracts information from bots and other malware"
 url="https://github.com/bwall/bamfdetect"
 arch=('any')
