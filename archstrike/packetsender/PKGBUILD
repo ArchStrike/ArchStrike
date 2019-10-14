@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=packetsender
-pkgver=6.2.3
+pkgver=6.2.6
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A utility to allow sending and receiving TCP and UDP packets."
@@ -12,7 +12,7 @@ url='http://packetsender.com/'
 license=('GPL2')
 depends=('qt5-base')
 source=("https://github.com/dannagle/PacketSender/archive/v$pkgver.tar.gz")
-sha512sums=('773e18eaf0806e1b17fbd27b9a7a2fae9867d0659e15a9149d71c7efa247f4a56d049751a24c3ef224bb780e91fe6a81a5b2010e5cf8388d9c5797bdb08ccae2')
+sha512sums=('7847b9d4f3f8697f6f42eec1c454ace69422e8db0bac9c7b218bb8d71e00c43d2087bc32265ec116f3ca4602cf20d37738c3c32f371a9b3b2c71cc6b82c9e5ba')
 
 build(){
   cd "$srcdir/PacketSender-$pkgver/src"
@@ -26,5 +26,5 @@ package() {
   install -dm755 "$pkgdir/usr/share/$pkgname/screenshots"
   install -Dm644 screenshots/* "$pkgdir/usr/share/$pkgname/screenshots/"
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 src/PacketSender "$pkgdir/usr/bin/$pkgname"
+  install -Dm755 src/packetsender "$pkgdir/usr/bin/$pkgname"
 }
