@@ -5,8 +5,8 @@
 buildarch=1
 
 pkgname=onionshare
-pkgver=2.1
-pkgrel=2
+pkgver=2.2
+pkgrel=1
 pkgdesc="Securely and anonymously share a file of any size"
 groups=('archstrike' 'archstrike-misc')
 url="https://github.com/micahflee/onionshare"
@@ -20,11 +20,12 @@ depends=('python-altgraph' 'python-certifi' 'python-chardet' 'python-click' 'tor
 makedepends=('python-setuptools')
 source=("https://github.com/micahflee/onionshare/archive/v${pkgver}.tar.gz")
 
-sha512sums=('d42a5cb5d114e5024ebd50bc8e0318a2b38fd9094245485a1cb24961c9e37abefe3d777731e0b89eb629bcbecd9c4993c195047fa98c116ccd634292d3ec26e8')
+sha512sums=('1c2575bc8254d6123294dc9a47e700e0a346e3ba22b71994546853a34377d7fef5abb38c78cfd08badce35d16ae55633ea52d42589323e6dd484a192a8993c38')
 
 package() {
   cd ${pkgname}-${pkgver}
   python setup.py install --root="${pkgdir}" -O1
-  install -Dm644 install/onionshare.desktop "${pkgdir}/usr/share/applications/"
+  install -Dm644 install/org.onionshare.OnionShare.desktop "${pkgdir}/usr/share/applications/onionshare.desktop"
+  install -dm755 "${pkgdir}/usr/share/pixmaps"
   install -Dm644 install/onionshare80.xpm "${pkgdir}/usr/share/pixmaps/"
 }
