@@ -5,7 +5,7 @@ buildarch=220
 _pkgname=pygraphviz
 pkgname=("python2-${_pkgname}" "python-${_pkgname}")
 pkgver=1.5
-pkgrel=2
+pkgrel=3
 pkgdesc='PyGraphviz is a Python interface to the Graphviz graph layout and visualization package.'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('LGPL')
@@ -33,6 +33,9 @@ package_python2-pygraphviz() {
 
   # Patch to use python2
   find "${pkgdir}" -type f \( -name '*.py' -or -executable \) -exec sed -i -e 's|#![ ]*/usr/bin/python$|#!/usr/bin/python2|' -e 's|#![ ]*/usr/bin/env python$|#!/usr/bin/env python2|' {} \;
+
+  # Move files so the two packages don't conflict
+  mv "$pkgdir/usr/share/doc/pygraphviz-1.5" "$pkgdir/usr/share/doc/python2-pygraphviz-1.5"
 }
 
 package_python-pygraphviz() {
@@ -40,4 +43,7 @@ package_python-pygraphviz() {
   cd ${_pkgname}-${pkgver}
   python setup.py install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+
+  # Move files so the two packages don't conflict
+  mv "$pkgdir/usr/share/doc/pygraphviz-1.5" "$pkgdir/usr/share/doc/python-pygraphviz-1.5"
 }
