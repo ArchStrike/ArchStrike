@@ -5,7 +5,7 @@ buildarch=1
 pkgname=perl-net-socks
 _cpanname=SOCKS
 pkgver=0.03
-pkgrel=6
+pkgrel=7
 pkgdesc="TCP/IP access through firewalls using SOCKS"
 arch=('any')
 url='https://metacpan.org/pod/Net::SOCKS'
@@ -15,7 +15,7 @@ options=('!emptydirs')
 conflicts=('perl-socks')
 provides=('perl-socks')
 source=(http://www.cpan.org/authors/id/C/CL/CLINTDW/${_cpanname}-${pkgver}.tar.gz)
-md5sums=('81f63a1fb252d211a083909fbdc1611b')
+sha512sums=('2c8aa16ec519db17f992e76a3d198b038a74e4978f56ecd41a3723eb2e0717b958ddf829e7e8973f8dcc1d47b88215e8b8ffa787cf293f193d1120f16a5418b5')
 
 build() {
   cd "${srcdir}/${_cpanname}-${pkgver}" || exit
