@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-tftp
 pkgver=1.0b3
-pkgrel=7
+pkgrel=8
 groups=('archstrike' 'archstrike-networking' 'archstrike-misc')
 pkgdesc="TFTP - TFTP Client class for perl"
 arch=('any')
@@ -13,10 +13,10 @@ options=('!emptydirs')
 depends=('perl')
 url="https://metacpan.org/pod/TFTP"
 source=("http://search.cpan.org/CPAN/authors/id/G/GS/GSM/TFTP-${pkgver}.tar.gz")
-md5sums=('0c62ec431f745ca177ab01df3292c803')
+sha512sums=('45b117c55bd6f5954debcb35fd0250e6c002a119e3a44e68e529911db797882c35202b31c94e2aeea8e5400625eaf06f31a39122c30dffcc9e8a12919a4db32a')
 
 package() {
-  cd "${srcdir}/TFTP-${pkgver}"
+  cd "${srcdir}/TFTP-${pkgver}" || exit
 
   perl Makefile.PL INSTALLDIRS=vendor
   make
