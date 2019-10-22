@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=tomb
-pkgver=2.6
+pkgver=2.7
 pkgrel=1
 pkgdesc="A system for easy encryption and backup of personal files"
 url="http://www.dyne.org/software/${pkgname}"
@@ -21,7 +21,7 @@ optdepends=('dcfldd: Replacement for dd with hashing support'
             'qrencode: Create paper backups of keys as QR codes')
 
 source=("https://files.dyne.org/tomb/Tomb-${pkgver}.tar.gz")
-sha512sums=('ea4849a8eb0edc7b9b0dbd20ff3c044b7f8d04adcdf7bf509dfdae46cc7850d404771f895235b003e23c4019178f085f79ba31672e1dcfe85236bb8859eb5755')
+sha512sums=('dbe9d7e2658ca787ba267a1a43065ce5d8af79699e166226b863b0867813a1b6434e08b4a076e9710b20ce52d20e29bc04266dc4ba76a8f5c51a34ac80743240')
 
 prepare() {
     sed -i 's/^#!\/bin\/zsh/#!\/usr\/bin\/env\ zsh/g' Tomb-${pkgver}/${pkgname}
