@@ -3,21 +3,24 @@
 buildarch=192
 
 pkgname=vmcloak
-pkgver=0.4.4
+pkgver=0.4.8
 pkgrel=1
 pkgdesc='Automated Virtual Machine Generation and Cloaking for Cuckoo Sandbox'
-url='https://github.com/jbremer/vmcloak'
+url='https://github.com/hatching/vmcloak'
 arch=('x86_64' 'i686')
 license=('GPL3')
 groups=('archstrike' 'archstrike-malware')
-depends=('cdrtools' 'virtualbox' 'dmidecode' 'lshw' 'python2-lockfile' 'python2-sphinx')
+depends=('cdrtools' 'virtualbox' 'dmidecode' 'lshw' 'python2-lockfile' 'python2-sphinx' 'python2-click' 'python2-jinja' 'python2-pyaml' 'python2-sqlalchemy' 'python2-alembic' 'python2-pefile' 'python2-cryptography' 'python2-pyopenssl')
 makedepends=('python2-setuptools' 'unzip')
-source=("https://github.com/jbremer/${pkgname}/archive/${pkgver}.zip")
-sha512sums=('0ed114e3707309047be72f5a2f2abc4288de351a77b5f78bdf05e1a8f3fcce8b9731d2c3ddf55a8bdfc0272c3a5e9619e90d02319cb1e3b0f35e489ccf47eb42')
+source=("${url}/archive/${pkgver}.zip" 'setup_versions.patch')
+sha512sums=('61e3b71bc703e0c837f06d25c989977e124748c163478c5066274a43b5d7cb2673d3eba4e649fd19d1d1569549f2e3ed1e8bedda9f9260ac06d08178afa25f74'
+            '802d57b77472afc44fc5a987982e08ee2466f79adae59a2c4d069e5579a107855894fbdfa0aa1fd120462436eddcf5c4c81f5cf68d7f8abd2da5a1d9d6dd5df0')
 
 prepare() {
+  cd ${pkgname}-${pkgver}
   find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
   find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+  patch -Np1 -i "${srcdir}/setup_versions.patch"
 }
 
 package() {
