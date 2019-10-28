@@ -6,7 +6,7 @@ _pkgname=stem
 pkgbase=python-$_pkgname-git
 
 pkgname=(python-$_pkgname-git python2-$_pkgname-git)
-pkgver=20190605.r3452
+pkgver=20191008.r3588
 pkgrel=1
 epoch=1
 pkgdesc='A controller library for Tor'
@@ -50,5 +50,6 @@ package_python2-stem-git() {
   cd "$srcdir/python-stem-git-py2"
   python2 setup.py install --root="$pkgdir/" -O1 --skip-build
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mv $pkgdir/usr/bin/tor-prompt $pkgdir/usr/bin/tor-prompt2
 }
 
