@@ -5,7 +5,7 @@ buildarch=1
 _pkgname="Bluto"
 pkgname="bluto"
 pkgver=2.4.13
-pkgrel=1
+pkgrel=2
 pkgdesc="Recon, Subdomain Bruting, Zone Transfers"
 arch=('any')
 groups=('archstrike' 'archstrike-recon' 'archstrike-dns')
@@ -21,13 +21,13 @@ prepare() {
 }
 
 build() {
-  cd "${_pkgname}-${pkgver}/"
+  cd "${_pkgname}-${pkgver}/" || exit
   python2 setup.py build
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}/"
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  cd "${_pkgname}-${pkgver}/" || exit
+  python2 setup.py install --root="${pkgdir}/" -O1
   # fixing python
-  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/Bluto/bluto
+  sed -i 's|python|python2|' "${pkgdir}"/usr/lib/python2.7/site-packages/Bluto/bluto
 }
