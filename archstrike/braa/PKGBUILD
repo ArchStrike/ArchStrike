@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=braa
 pkgver=0.82
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A mass snmp scanner"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
