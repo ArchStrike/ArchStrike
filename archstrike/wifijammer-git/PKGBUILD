@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=wifijammer
 pkgname=${_pkgname}-git
 pkgver=20180621.r90
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A python script to continuosly jam all wifi clients within range"
 arch=('any')
@@ -15,10 +15,10 @@ depends=('python2' 'scapy')
 makedepends=('git')
 provides=('wifijammer')
 source=("${pkgname}::git+https://github.com/DanMcInerney/wifijammer.git")
-md5sums=('SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
@@ -27,7 +27,7 @@ prepare(){
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
 
   # Make base directories.
   install -dm755 "${pkgdir}/usr/bin"
