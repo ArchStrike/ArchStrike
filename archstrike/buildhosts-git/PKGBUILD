@@ -7,7 +7,7 @@ buildarch=1
 
 pkgname=${_pkgname}-git
 pkgver=20170524.r12.99ed481
-pkgrel=2
+pkgrel=3
 pkgdesc='Download and use custom hosts sources to build /etc/hosts'
 url='https://github.com/prurigro/buildhosts'
 license=('MIT')
