@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=bruteforce-wallet
 pkgver=1.5.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-bruteforce')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="Tries to decrypt one of the encrypted addresses in the wallet by trying all the possible passwords"
@@ -15,16 +15,15 @@ source=("https://github.com/glv2/bruteforce-wallet/archive/${pkgver}.tar.gz")
 sha512sums=('01a0184fc79a5cdbbc5b28412c80b1e9f00700fe0dc6071c22c2bfd502945f932c7170d82d1fb6c352db2895b38bf84d4367a3e8228e8df74b08ef33ccbc5c99')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}" || exit
   ./autogen.sh
   ./configure --prefix=/usr
-
 }
 
 package() {
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}" || exit
 
   make DESTDIR="${pkgdir}" install
 
@@ -32,5 +31,6 @@ package() {
   do
     install -Dm644 $i "${pkgdir}/usr/share/doc/${pkgname}"
   done
+
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}"
 }
