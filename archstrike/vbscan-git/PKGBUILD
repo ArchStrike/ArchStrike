@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=vbscan-git
-pkgver=20170215.r25
-pkgrel=2
+pkgver=20190616.r39
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Black Box vBulletin Vulnerability Scanner"
@@ -27,9 +27,10 @@ package() {
   cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
 
 cat > "$pkgdir/usr/bin/vbscan" <<EOF
-#!/bin/sh
+#!/usr/bin/env bash
 cd /usr/share/$pkgname
 perl vbscan.pl "\$@"
 EOF
+
 chmod 755 "$pkgdir/usr/bin/vbscan"
 }
