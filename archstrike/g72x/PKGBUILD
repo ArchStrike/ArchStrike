@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='g72x'
 pkgver='1'
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc='Decoder for the g72x++ codec.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
