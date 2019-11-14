@@ -1,6 +1,6 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2019-11-09
+# Generated on 2019-11-14
 #
 
 ## Official Mirrors
@@ -24,6 +24,4 @@ Server = http://mirror.stro.nz/archstrike/$arch/$repo
 Server = https://mirror.cedia.org.ec/archstrike/$arch/$repo
 Server = https://mirror.uce.edu.ec/archstrike/$arch/$repo
 Server = https://mirror.epn.edu.ec/archstrike/$arch/$repo
-
-# Obsolete
-#Server = http://archstrike.outerworld.org/$arch/$repo
+Server = http://archstrike.outerworld.org/$arch/$repo
