@@ -3,35 +3,35 @@
 buildarch=1
 
 pkgname=xsspy-git
-pkgver=20181020.r56
+pkgver=20190809.r58
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="A python tool for finding Cross Site Scripting vulnerabilities in websites"
 url="https://github.com/faizann24/XssPy"
 license=('MIT')
-depends=('python2' 'python2-mechanize')
+depends=('python2' 'python2-mechanize' 'python2-six' 'python2-webencodings' 'python2-html5lib')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/faizann24/XssPy.git")
+source=("${pkgname}::git+https://github.com/faizann24/XssPy.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 
 }
 
 prepare() {
-  cd $pkgname
+  cd "${pkgname}" || exit
   sed -i '1i\#!/usr/bin/env python2' XssPy.py
 }
 
 package() {
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  install -dm755 "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm644 LICENSE.md "$pkgdir/usr/share/licenses/$pkgname"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname"
-  install -Dm755 XssPy.py "$pkgdir/usr/bin/xsspy"
+  cd "${pkgname}" || exit
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm755 XssPy.py "${pkgdir}/usr/bin/xsspy"
 }
