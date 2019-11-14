@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=yaf
 pkgver=2.11.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Yet Another Flowmeter"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://tools.netsa.cert.org/yaf/'
@@ -13,20 +13,20 @@ groups=('archstrike' 'archstrike-misc')
 license=('GPL')
 depends=('libltdl' 'libpcap' 'libfixbuf>=1.7.0')
 makedepends=('p0f' 'doxygen' 'graphviz')
-install=$pkgname.install
-source=("http://tools.netsa.cert.org/releases/yaf-$pkgver.tar.gz")
+install=${pkgname}.install
+source=("http://tools.netsa.cert.org/releases/yaf-${pkgver}.tar.gz")
 sha512sums=('3f102cc99e3e90455f9177d01c19b02acc010185125fb94baeb84044cb98413c3ca6d311c5f7f7074d7eb2f3fc035eb6545ccd20629613b5a58fbf1c53eaef2b')
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
   export LIBS="-lpthread"
   ./configure --prefix=/usr --enable-applabel --enable-mpls --enable-plugins --enable-entropy --enable-localtime --enable-nonip --with-pic
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make DESTDIR="$pkgdir/" install
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  make DESTDIR="${pkgdir}/" install
   # fixing  /etc path
-  mv $pkgdir/usr/etc $pkgdir/etc
+  mv ${pkgdir}/usr/etc ${pkgdir}/etc
 }
