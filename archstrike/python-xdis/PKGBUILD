@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-xdis
-pkgver=3.8.9
+pkgver=4.1.2
 pkgrel=1
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
@@ -10,16 +10,17 @@ url="https://github.com/rocky/python-xdis/"
 license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
-source=("https://github.com/rocky/python-xdis/archive/release-${pkgver}.tar.gz")
-sha512sums=('57b305217d050912c3a33f0ecfec399e2e12d5a13e1a0a0aeb2202ffc666bdef2507e3de05780d2fd77f7cf937b6ecbe552f3dcc8012a3848ce6e575a19aa86f')
+source=("https://github.com/rocky/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('819999710b80c62df6dd644a4eda666f3d2ebad2168a79a28d3f8d2a3cc6af700baa3862c828c4ece46996814776029bf68e1cfc2fcf8c07c04d4edc21d8a81a')
+
 
 build() {
-    cd "${srcdir}/${pkgname}-release-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/${pkgname}-release-${pkgver}"
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" -O1 --skip-build
     install -Dm644 COPYING ${pkgdir}/usr/share/licenses/${pkgname}/COPYING
 }
