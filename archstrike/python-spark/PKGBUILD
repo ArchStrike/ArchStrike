@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-spark
-pkgver=1.8.7
+pkgver=1.8.9
 pkgrel=1
 epoch=1
 pkgdesc="An Early-Algorithm Context-free grammar Parser"
@@ -11,16 +11,16 @@ url="https://github.com/rocky/python-spark/"
 license=('MIT')
 depends=('python' 'python-click')
 makedepends=('python-setuptools')
-source=("https://github.com/rocky/python-spark/archive/release-$pkgver.tar.gz")
-sha512sums=('f8d16e49b627a6a7b852b34eefa680c55f267e9af15e3b69f313991832b52d8d210be81bb86bf72b0040401cd970e3a8890fdad3777665e3a3f5cdb3af2d4bde')
+source=("https://github.com/rocky/python-spark/archive/$pkgver.tar.gz")
+sha512sums=('b11c3039f32988a122d00ec1b21bae0773ee357b1daacc15fe795746c1a42ed79ab88f7badf3e09a44382ad1315d4f271ff880455f2177d24e85f2940ad6bd42')
 
 build() {
-    cd "$srcdir/${pkgname}-release-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "$srcdir/${pkgname}-release-${pkgver}"
+    cd "$srcdir/${pkgname}-${pkgver}"
     python setup.py install --root="$pkgdir" -O1 --skip-build
     install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
