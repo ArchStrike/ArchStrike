@@ -5,7 +5,7 @@ buildarch=1
 pkgname=weevely
 _pkgname=weevely3
 pkgver=3.7.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="A Stealth tiny web shell that provides a telnet-like console."
 arch=('any')
@@ -20,14 +20,14 @@ prepare(){
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
 
   # Base directories.
   install -dm755 "${pkgdir}/usr/share/weevely"
   install -dm755 "${pkgdir}/usr/share/doc/weevely"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/weevely"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/weevely"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/weevely"
 
 cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
