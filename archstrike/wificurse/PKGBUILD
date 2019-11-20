@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=wificurse
 pkgver=0.3.9
-pkgrel=5
+pkgrel=6
 pkgdesc="WiFi Jammer via fake deauthentication packets"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=(GPL)
@@ -16,6 +16,6 @@ sha512sums=('71b991d672b524a244b41d1861f7d971f580a569f4caac6f66d403d5a4449a09dbe
 
 package()
 {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}" || exit
   make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
