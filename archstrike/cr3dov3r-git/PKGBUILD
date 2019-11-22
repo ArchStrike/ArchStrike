@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=cr3dov3r-git
-pkgver=20180922.r45
+pkgver=20181103.r46
 pkgrel=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-recon')
 arch=('any')
@@ -16,15 +16,15 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
 cat > ${pkgdir}/usr/bin/cr3dov3r << EOF
 #!/usr/bin/env bash
