@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname='cupp-git'
-pkgver=20190328.r62
+pkgver=20190501.r63
 pkgrel=1
 pkgdesc='Common User Password Profiler'
 url="https://github.com/Mebus/cupp"
@@ -16,18 +16,18 @@ sha512sums=('SKIP')
 source=("${pkgname}::git+${url}.git")
 
 pkgver(){
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
 
   # Base directories
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/cupp" << EOF
 #!/usr/bin/env bash
