@@ -4,10 +4,10 @@
 buildarch=220
 
 pkgname=silk
-pkgver=3.18.2
+pkgver=3.19.0
 pkgrel=1
 pkgdesc='CERT netflow tools.'
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'armv8' 'aarch64')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://tools.netsa.cert.org/silk'
 license=('GPL')
 groups=('archstrike' 'archstrike-networking')
@@ -15,7 +15,7 @@ depends=('libfixbuf' 'lzo' 'libpcap' 'python' 'gnutls' 'c-ares' 'adns' 'snappy')
 makedepends=('perl' 'flex' 'bison')
 install="$pkgname.install"
 source=("http://tools.netsa.cert.org/releases/$pkgname-$pkgver.tar.gz")
-sha512sums=('f285ad1409b377f6da2b789362f9d70b66e5233b6f74d092860fb2f691a9f727c789d200cd2f3d577b4603c1821930c703064e2e3f6efe1f6d634aad8b65a307')
+sha512sums=('cb4ad3dcf7d34763251e3ede3389b5e85bc4b139aa234660a27278950f17c8e24877e831cd6b878a99dc1a06001a8c6d151d0e6ff43f8d8941d566e1e58df247')
 
 build() {
   cd "${pkgname}-${pkgver}"
