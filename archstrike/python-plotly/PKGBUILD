@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=plotly
 pkgname=python-plotly
 pkgdesc="An interactive, browser-based graphing library for Python"
-pkgver=4.1.0
+pkgver=4.3.0
 pkgrel=1
 url="https://plot.ly/python/"
 license=("MIT")
@@ -13,7 +13,7 @@ arch=("any")
 depends=('python' 'python-requests' 'python-pytz' 'python-decorator' 'python-six' 'python-retrying')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('b7249ce8acc98d642ede4eec3f18cdd251969d8da9a1dba467afed40d84b568ac2f3c8471bb98b386dde82d027c1f9f03cdab6d8271fa85349a428f1a507dde1')
+sha512sums=('8e959323bc547f8f46fc165a5d712e541a3f27418bbd146572bf92064d4ca7d0a08fd637b5aa84f2647f82cae5b669a6c307b327c9641056ac5307abdedde6bb')
 
 package() {
   cd ${_pkgname}-${pkgver}
