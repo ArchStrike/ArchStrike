@@ -4,41 +4,38 @@ buildarch=1
 
 _pkgname=dpkt-git
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=20190503.r501
-pkgrel=2
+pkgver=20191025.r503
+pkgrel=1
 pkgdesc='Python library for interacting with and creating packets.'
 arch=('any')
 url='https://github.com/kbandla/dpkt'
 license=('custom')
 makedepends=('git' 'python-setuptools' 'python2-setuptools')
 replaces=('python2-dpkt')
-provides=('python2-dpkt')
 source=("${pkgname}::git+https://github.com/kbandla/dpkt.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
-  cp -a ${pkgname}{,-py2}
+  cp -a "${pkgname}"{,-py2}
 }
 
 package_python-dpkt-git() {
   depends=('python' 'python-mock' 'python-sphinx')
-  makedepends=('python-setuptools')
 
-  cd ${srcdir}/python-dpkt-git
+  cd "${srcdir}/python-dpkt-git" || exit
   python setup.py install "--root=${pkgdir}" -O1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-dpkt-git() {
   depends=('python2' 'python2-mock' 'python2-sphinx')
-  makedepends=('python2-setuptools')
 
-  cd ${srcdir}/python-dpkt-git-py2
+  cd "${srcdir}/python-dpkt-git-py2" || exit
   python2 setup.py install "--root=${pkgdir}" -O1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
