@@ -6,7 +6,7 @@ _pkgname="pydeep"
 pkgbase="python-${_pkgname}"
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=0.4
-pkgrel=2
+pkgrel=3
 pkgdesc='This is the Python interface to ssdeep'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://pypi.python.org/pypi/pydeep'
@@ -23,21 +23,17 @@ prepare(){
 }
 
 package_python-pydeep() {
-  pkgdesc='This is the Python interface to ssdeep'
   depends=('python' 'ssdeep')
-  makedepends=('python-setuptools' 'ssdeep')
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
   python setup.py install --root="${pkgdir}" -O1
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-pydeep() {
-  pkgdesc='This is the Python interface to ssdeep'
   depends=('python2' 'ssdeep')
-  makedepends=('python2-setuptools' 'ssdeep')
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
   python2 setup.py install --root="${pkgdir}" -O1
   install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
