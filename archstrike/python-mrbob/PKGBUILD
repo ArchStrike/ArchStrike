@@ -4,9 +4,9 @@ buildarch=1
 
 _pkgname=mrbob
 pkgbase=python-${_pkgname}
-pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=0.2.3
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/domenkozar/mr.bob"
 license=('BSD')
@@ -21,10 +21,10 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}/mr.bob2-${pkgver}"
+  cd "${srcdir}/mr.bob2-${pkgver}" || exit
   python setup.py build
 
-  cd "${srcdir}/mr.bob2-${pkgver}-py2"
+  cd "${srcdir}/mr.bob2-${pkgver}-py2" || exit
   python2 setup.py build
 }
 
@@ -32,9 +32,8 @@ package_python-mrbob() {
   pkgdesc="creates directory skeletons"
   depends=('python' 'python-six' 'python-jinja' 'python-rednose'
            'flake8' 'python-coverage' 'python-mock')
-  makedepends=('python-setuptools')
 
-  cd "${srcdir}/mr.bob2-${pkgver}"
+  cd "${srcdir}/mr.bob2-${pkgver}" || exit
   python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
 }
 
@@ -42,9 +41,8 @@ package_python2-mrbob() {
   pkgdesc="creates directory skeletons"
   depends=('python2' 'python2-six' 'python2-jinja' 'python2-rednose'
            'python2-flake8' 'python2-coverage' 'python2-mock')
-  makedepends=('python2-setuptools')
 
-  cd "${srcdir}/mr.bob2-${pkgver}-py2"
+  cd "${srcdir}/mr.bob2-${pkgver}-py2" || exit
   python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
 
   # fix conflict
