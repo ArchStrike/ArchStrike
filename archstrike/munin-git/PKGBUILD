@@ -5,7 +5,7 @@ buildarch=1
 _pkgname="munin"
 pkgname="${_pkgname}-git"
 pkgver=20190830.r156
-pkgrel=2
+pkgrel=3
 pkgdesc="Online hash checker for Virustotal and other services"
 url="https://github.com/Neo23x0/munin"
 arch=('any')
@@ -26,13 +26,22 @@ package() {
   cd "${srcdir}/${pkgname}" || exit
   install -dm755 "${pkgdir}"/usr/bin/
   install -dm755 "${pkgdir}"/usr/share/${pkgname}
-
+  echo "stop 1"
   cp -a ./* "${pkgdir}/usr/share/${pkgname}"
 
-  cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
+# Create main executable
+  cat > "${pkgdir}/usr/bin/${_pkgname}.py" <<EOF
 #!/bin/sh
 cd "/usr/share/${pkgname}"
 python "${_pkgname}.py" "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/${pkgname}"
+  chmod +x "${pkgdir}/usr/bin/${_pkgname}.py"
+
+# Create host executable
+  cat > "${pkgdir}/usr/bin/${_pkgname}-host.py" <<EOF
+#!/bin/sh
+cd "/usr/share/${pkgname}"
+python "${_pkgname}-host.py" "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/${_pkgname}-host.py"
 }
