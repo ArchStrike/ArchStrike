@@ -6,7 +6,7 @@ _pkgname=pysmb
 _pkgver="rel-1-1-27"
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=1.1.27
-pkgrel=2
+pkgrel=3
 pkgdesc="An experimental SMB/CIFS library written in Python"
 arch=('any')
 url="https://miketeo.net/wp/index.php/projects/pysmb"
@@ -21,25 +21,23 @@ prepare(){
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}" || exit
   python setup.py build
 
-  cd "${srcdir}/${_pkgname}-${_pkgver}-py2"
+  cd "${srcdir}/${_pkgname}-${_pkgver}-py2" || exit
   python2 setup.py build
 }
 
 package_python-pysmb() {
   depends=('python')
-  makedepends=('python-setuptools')
 
-  cd "${srcdir}/${_pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgver}" || exit
   python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
 }
 
 package_python2-pysmb() {
   depends=('python2')
-  makedepends=('python2-setuptools')
 
-  cd "${srcdir}/${_pkgname}-${_pkgver}-py2"
+  cd "${srcdir}/${_pkgname}-${_pkgver}-py2" || exit
   python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
 }
