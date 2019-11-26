@@ -5,7 +5,7 @@ buildarch=1
 _pkgname="munin"
 pkgname="${_pkgname}-git"
 pkgver=20190830.r156
-pkgrel=1
+pkgrel=2
 pkgdesc="Online hash checker for Virustotal and other services"
 url="https://github.com/Neo23x0/munin"
 arch=('any')
@@ -14,7 +14,6 @@ groups=('archstrike')
 depends=('python' 'python-colorama' 'python-future' 'python-requests'
          'python-pymisp' 'python-flask' 'python-flask-caching' 'python-cfscrape')
 makedepends=('git')
-provides=('munin')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
@@ -30,10 +29,10 @@ package() {
 
   cp -a ./* "${pkgdir}/usr/share/${pkgname}"
 
-  cat > "${pkgdir}"/usr/bin/munin <<EOF
+  cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/sh
-cd /usr/share/${pkgname}
-python munin.py "\$@"
+cd "/usr/share/${pkgname}"
+python "${_pkgname}.py" "\$@"
 EOF
-  chmod +x "${pkgdir}"/usr/bin/munin
+  chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
