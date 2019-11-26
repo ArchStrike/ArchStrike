@@ -7,7 +7,7 @@ pkgbase="python-${_pkgname}"
 
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python code minifier, obfuscator, and compressor"
 arch=('any')
 url="https://github.com/liftoff/${_pkgname}"

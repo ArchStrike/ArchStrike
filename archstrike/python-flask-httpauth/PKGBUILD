@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python-flask-httpauth
 pkgver=3.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Simple extension that provides Basic and Digest HTTP authentication for Flask routes"
 url="https://github.com/miguelgrinberg/Flask-HTTPAuth"
 license=('MIT')

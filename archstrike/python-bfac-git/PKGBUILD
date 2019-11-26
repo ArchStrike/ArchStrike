@@ -7,7 +7,7 @@ pkgbase="python-${_pkgname}-git"
 
 pkgname=("python-${_pkgname}-git" "python2-${_pkgname}-git")
 pkgver=20180521.r45
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Backup-File Artifacts Testing for Web-Applications"
 arch=('any')
 url="https://github.com/mazen160/${_pkgname}"

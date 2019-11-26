@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python-mechanicalsoup
 pkgver=0.12.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for automating interaction with websites"
 arch=('any')
 url="https://github.com/MechanicalSoup/MechanicalSoup"

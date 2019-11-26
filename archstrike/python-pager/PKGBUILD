@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=python-pager
 pkgver=3.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Terminal/console pager module for Python"
 arch=('any')
 url="http://pypi.python.org/pypi/pager"
