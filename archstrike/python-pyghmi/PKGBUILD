@@ -6,7 +6,7 @@ _pkgname=pyghmi
 pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
 pkgver=1.2.16
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://github.com/openstack/pyghmi"
 license=('Apache')
@@ -16,36 +16,34 @@ source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgnam
 sha512sums=('a5ea3daea64355fc072238ed6bb0def36ec89a99bfd655d246bb390f87fbc46a32744e0f196c15cb11eca4ad47fee8a94ec9dd06902e021e5fdc203c1bd50d60')
 
 prepare(){
-  cp -a ${_pkgname}-${pkgver}{,-py2}
+  cp -a "${_pkgname}-${pkgver}"{,-py2}
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
   python setup.py build
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
   python2 setup.py build
 }
 
 package_python-pyghmi() {
   pkgdesc="a pure Python (mostly IPMI) server management library"
   depends=('python' 'python-cryptography')
-  makedepends=('git' 'python-setuptools' 'python-pbr')
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
   python3 setup.py install --root="${pkgdir}/" -O1
 }
 
 package_python2-pyghmi() {
   pkgdesc="a pure Python (mostly IPMI) server management library"
   depends=('python2' 'python2-cryptography')
-  makedepends=('git' 'python2-setuptools' 'python2-pbr')
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
   python2 setup.py install --root="${pkgdir}/" -O1
 
   # fix conflict
   for i in fakebmc pyghmicons pyghmiutil virshbmc; do
-    mv ${pkgdir}/usr/bin/${i} ${pkgdir}/usr/bin/${i}2
+    mv "${pkgdir}/usr/bin/${i}" "${pkgdir}/usr/bin/${i}2"
   done
 }
