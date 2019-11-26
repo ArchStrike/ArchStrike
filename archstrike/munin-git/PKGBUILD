@@ -1,0 +1,39 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="munin"
+pkgname="${_pkgname}-git"
+pkgver=20190830.r156
+pkgrel=1
+pkgdesc="Online hash checker for Virustotal and other services"
+url="https://github.com/Neo23x0/munin"
+arch=('any')
+license=('Apache')
+groups=('archstrike')
+depends=('python' 'python-colorama' 'python-future' 'python-requests'
+         'python-pymisp' 'python-flask' 'python-flask-caching' 'python-cfscrape')
+makedepends=('git')
+provides=('munin')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${srcdir}/${pkgname}" || exit
+  install -dm755 "${pkgdir}"/usr/bin/
+  install -dm755 "${pkgdir}"/usr/share/${pkgname}
+
+  cp -a ./* "${pkgdir}/usr/share/${pkgname}"
+
+  cat > "${pkgdir}"/usr/bin/munin <<EOF
+#!/bin/sh
+cd /usr/share/${pkgname}
+python munin.py "\$@"
+EOF
+  chmod +x "${pkgdir}"/usr/bin/munin
+}
