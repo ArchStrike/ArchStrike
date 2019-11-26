@@ -7,7 +7,7 @@ pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
 pkgdesc="A defusedxml version of dead-simple Object-XML mapper for Python"
 pkgver=0.5.1
-pkgrel=2
+pkgrel=3
 arch=('any')
 url="https://pypi.org/project/safedexml/"
 license=('MIT')
@@ -22,18 +22,16 @@ prepare(){
 
 package_python-safedexml() {
   depends=('python' 'python-defusedxml')
-  makedepends=('python-setuptools')
 
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
   python3 setup.py install --root="${pkgdir}/" -O1
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
 
 package_python2-safedexml() {
   depends=('python2' 'python2-defusedxml')
-  makedepends=('python2-setuptools')
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
   python2 setup.py install --root="${pkgdir}/" -O1
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
