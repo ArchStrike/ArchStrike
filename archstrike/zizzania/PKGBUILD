@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=zizzania
-pkgver='0.1.0'
+pkgver='0.2.0'
 pkgrel=1
 pkgdesc='An Automated wireless DeAuth attack'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -11,18 +11,18 @@ url='https://github.com/cyrus-and/zizzania'
 license=('custom')
 groups=('archstrike' 'archstrike-wireless')
 depends=('libpcap')
-makedepends=('cmake')
+makedepends=('wget')
 source=("https://github.com/cyrus-and/zizzania/archive/v$pkgver.tar.gz")
-sha512sums=('b9fc317709a5f724dcba03ff496c797d17918f7cf27ccd3a88532fca6bb0e9bb9df81723736fae55498b9d6c65311b70ed190cd1f5d20e479930a8ce2e022d27')
+sha512sums=('67035f5fad6df495db552678c880981877cba81604858382312efe78d2502c5be0caa13c0b408f610cd35d3dfa6a46a10bec48d875a7fce7738d5d55c57a798e')
 
 build() {
-  cd "$pkgname-$pkgver/src"
-  cmake -DCMAKE_BUILD_TYPE=Release ..
+  cd "$pkgname-$pkgver"
+  make -f config.Makefile
   make
 }
 
 package() {
-  cd "$pkgname-$pkgver/src"
+  cd "$pkgname-$pkgver"
   install -Dm755 src/zizzania $pkgdir/usr/bin/zizzania
-  install -Dm644 ../LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+  install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
 }
