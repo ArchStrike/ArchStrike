@@ -3,10 +3,10 @@
 buildarch=1
 
 _pkgname=pysmb
-_pkgver="rel-1-1-27"
+_pkgver="rel-1-1-28"
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=1.1.27
-pkgrel=3
+pkgver=1.1.28
+pkgrel=1
 pkgdesc="An experimental SMB/CIFS library written in Python"
 arch=('any')
 url="https://miketeo.net/wp/index.php/projects/pysmb"
@@ -14,7 +14,7 @@ license=('GPL')
 depends=('python' 'python2')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://github.com/miketeo/pysmb/archive/${_pkgver}.tar.gz")
-sha512sums=('87e07c35b332b493d982e6f3b40e822d64b0ff94ff116371e390bcd804c798c1fc5a29d64c7024b4162df11c0bf1939f2c75b1c01caa1ed354e6d84e8f6b512c')
+sha512sums=('30862ba4240254e781b673f8982e057a3011ee50fed926c3de844142d5bdd40f0332b58c57fe43ae8f8624e6c5a5f6e4542cb4bd45dac944aafb38d7a2dd151f')
 
 prepare(){
   cp -a ${_pkgname}-${_pkgver}{,-py2}
