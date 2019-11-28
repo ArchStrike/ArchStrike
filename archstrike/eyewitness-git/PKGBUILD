@@ -1,0 +1,40 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="EyeWitness"
+pkgname="eyewitness-git"
+pkgver=20191120.r807
+pkgrel=1
+pkgdesc="Take screenshots of websites, provide some server header info, and identify default credentials if possible"
+url="https://github.com/FortyNorthSecurity/EyeWitness"
+arch=('any')
+license=('Apache')
+groups=('archstrike')
+depends=('python' 'python-fuzzywuzzy' 'python-selenium' 'python-levenshtein'
+         'python-pyasn1' 'python-pyvirtualdisplay' 'python-beautifulsoup4'
+         'python-pytesseract' 'python-netaddr' 'xorg-xdpyinfo' 'geckodriver'
+         'python-paramiko' 'firefox' 'python-xvfbwrapper')
+makedepends=('git')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+package() {
+  cd "${srcdir}/${pkgname}" || exit
+  install -dm755 "${pkgdir}"/usr/bin/
+  install -dm755 "${pkgdir}"/usr/share/${pkgname}
+
+  cp -a ./* "${pkgdir}/usr/share/${pkgname}"
+
+  cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
+#!/bin/sh
+cd "/usr/share/${pkgname}"
+python "${_pkgname}.py" "\$@"
+EOF
+  chmod +x "${pkgdir}/usr/bin/${pkgname}"
+}
