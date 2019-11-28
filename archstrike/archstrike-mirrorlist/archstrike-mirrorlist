@@ -1,6 +1,6 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2019-11-14
+# Generated on 2019-11-28
 #
 
 ## Official Mirrors
@@ -19,9 +19,11 @@ Server = https://ftp.acc.umu.se/mirror/archstrike.org/$arch/$repo
 Server = https://ftp.yzu.edu.tw/Linux/archstrike/$arch/$repo
 Server = http://mirror.team-cymru.com/archstrike/$arch/$repo
 Server = https://mirror.aarnet.edu.au/pub/archstrike/archstrike/$arch/$repo
-Server = https://as.arlm.tyzoid.com/$arch/$repo
 Server = http://mirror.stro.nz/archstrike/$arch/$repo
 Server = https://mirror.cedia.org.ec/archstrike/$arch/$repo
 Server = https://mirror.uce.edu.ec/archstrike/$arch/$repo
 Server = https://mirror.epn.edu.ec/archstrike/$arch/$repo
 Server = http://archstrike.outerworld.org/$arch/$repo
+
+# Obsolete
+#Server = https://as.arlm.tyzoid.com/$arch/$repo
