@@ -1,0 +1,41 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname="gowitness"
+pkgname="${_pkgname}-git"
+pkgver=20191101.r90
+pkgrel=1
+groups=('archstrike' 'archstrike-recon')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+pkgdesc="A golang web screenshot utility using Chrome Headless"
+url="https://github.com/sensepost/gowitness"
+_url="github.com/sensepost/gowitness"
+license=('GPL3')
+depends=('glibc' 'chromium')
+makedepends=('go' 'git')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}" || exit
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  export GOPATH="${srcdir}"
+  go get -d -u "${_url}"
+}
+
+build() {
+  cd "${pkgname}" || exit
+  export GOPATH="${srcdir}"
+  go build -ldflags "-X ${url}/share.BuildVersion=${pkgver}"
+}
+
+package() {
+  cd "${pkgname}" || exit
+
+  # binary
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
