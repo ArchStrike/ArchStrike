@@ -5,12 +5,12 @@ buildarch=1
 _pkgname="EyeWitness"
 pkgname="eyewitness-git"
 pkgver=20191120.r807
-pkgrel=1
+pkgrel=2
 pkgdesc="Take screenshots of websites, provide some server header info, and identify default credentials if possible"
 url="https://github.com/FortyNorthSecurity/EyeWitness"
 arch=('any')
 license=('Apache')
-groups=('archstrike')
+groups=('archstrike' 'archstrike-recon')
 depends=('python' 'python-fuzzywuzzy' 'python-selenium' 'python-levenshtein'
          'python-pyasn1' 'python-pyvirtualdisplay' 'python-beautifulsoup4'
          'python-pytesseract' 'python-netaddr' 'xorg-xdpyinfo' 'geckodriver'
