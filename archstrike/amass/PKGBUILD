@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="Amass"
 pkgname="amass"
-pkgver=3.2.3
+pkgver=3.4.0
 pkgrel=1
 pkgdesc=" tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery"
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
 source=("https://github.com/OWASP/Amass/archive/v${pkgver}.tar.gz")
-sha512sums=('0c2c82d7c6f19980fbbfb79528a5ba77542b7d19c5725eecf364b2dfea8bef92e6de143df586d8e15c06eaee04840e9a3568de542ab36208a9e8845d64ef7e3d')
+sha512sums=('1697aa3847947a7ec449ffea807ea17ce126517a1498754cd61737a95b469bbefec429d1175ec5597b4d790cca010c8df6a59da20cc19f3631c732f69fc1c4a2')
 
 prepare() {
   mkdir -vp "${srcdir}/github.com/OWASP"
