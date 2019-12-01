@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=deen
-pkgver=1.7.1
-pkgrel=2
+pkgver=2.0.2
+pkgrel=1
 groups=('archstrike' 'archstrike-crypto' 'archstrike-misc')
 arch=('any')
 pkgdesc="Generic data encoding/decoding application built with PyQt5"
@@ -15,15 +15,10 @@ depends=('python' 'python-pyqt5' 'python-pyopenssl' 'python-jsbeautifier' 'pytho
          'python-jose')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('80be69060d4686920bb7f2c6d1f64b7dda5f4deb63fc99d219e4af3c8adea116e581ef71ca393d213da960e522d9a2fc27a3eb8fb78afbc860d73b7827751d04')
-
-build() {
-  cd ${pkgname}-${pkgver}
-  python setup.py build
-}
+sha512sums=('8e36eba2940b10e14069eaa438ac4e56191bec32a3de1e9a3de8082e5aa8c097eb036601a415d56c5731da2dfc4b7c0123bb76a908bc3b5e6eb07c8b359a2c0e')
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm644 "${pkgname}/media/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${pkgname}/media/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
