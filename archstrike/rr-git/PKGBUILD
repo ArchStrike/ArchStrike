@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=rr-git
 pkgver=20191130.r4908
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto' 'archstrike-analysis')
 pkgdesc="A Record and Replay Framework"
 arch=('i686' 'x86_64')
@@ -25,13 +25,13 @@ build(){
   cd "${pkgname}" || exit
   export CFLAGS+=" -fPIC"
   mkdir build && cd build
-  if [ "$CARCH" == 'x86_64' ] || [ "$CARCH" == 'aarch64' ]; then
+
+if [ "$CARCH" == 'x86_64' ]; then
     cmake -Ddisable32bit=ON -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python ..
   else
     cmake -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python ..
   fi
-  
-  
+
   make
 }
 
