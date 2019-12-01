@@ -5,41 +5,36 @@
 buildarch=200
 
 pkgname=libpfm4
-pkgver=4.7.0
-pkgrel=3
+pkgver=4.10.0
+pkgrel=1
 pkgdesc="The hardware-based performance monitoring interface for Linux."
 arch=('x86_64' 'i686' 'aarch64')
 url="http://perfmon2.sourceforge.net/"
 license=('MIT')
-if [[ $CARCH == 'x86_64' ]]; then
-      depends=('lib32-glibc')
-else
-      depends=('glibc')
-fi
-source=("http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-$pkgver.tar.gz"
+depends=('glibc')
+
+source=("http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-${pkgver}.tar.gz"
         'config.mk')
-sha512sums=('140cb32fbe4e12062b72257122b87e89b91e02537f77224b1e8d5ace52c679521d24e238ee5a3aba09d006634e7e56b4acad0af2e36461fb555ca727b257a98b'
+sha512sums=('c2e1a7d389efebc27a32dd3a5a6f3e8e8d624347616e06daf7bf06c0d5b8ca39cee5821ad5cf23330d47ed987697fcc05aa54660b8f6899f62aad9cd05e908f9'
             '5639f98d9e5821d1bf9304c8c799353412c07b66e070cc37220c08242a6c72f07392a93ca3c41e000363809f57a93843cea7a2f377fc46de998a3eee15d0a57c')
 
 build() {
-  cd "$srcdir/libpfm-$pkgver"
+  cd "${srcdir}/libpfm-${pkgver}" || exit
   cp "${srcdir}/config.mk" .
-  make OPTIM="-m32 -O3"
+  make OPTIM="-O3"
 }
 
 check () {
-  cd "$srcdir/libpfm-$pkgver/tests"
+  cd "${srcdir}/libpfm-${pkgver}/tests" || exit
   ./validate
 }
 
 package() {
-  cd "$srcdir/libpfm-$pkgver"
+  cd "${srcdir}/libpfm-${pkgver}" || exit
 
   # Install libraries
-  make DESTDIR="$pkgdir/" install
+  make DESTDIR="${pkgdir}/" install
 
   # Install license
-  install -D -m0644 COPYING "${pkgdir}"/usr/share/licenses/$pkgname/LICENSE
+  install -D -m0644 COPYING "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
 }
-
-# vim:set ts=2 sw=2 et:
