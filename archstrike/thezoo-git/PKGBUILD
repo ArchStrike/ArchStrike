@@ -1,11 +1,10 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-_pkgname=thezoo
-
 buildarch=1
 
+_pkgname=thezoo
 pkgname=${_pkgname}-git
-pkgver=20190414.r189
+pkgver=20190904.r200
 pkgrel=1
 pkgdesc="A project created to make the possibility of malware analysis open and available to the public"
 url="https://github.com/ytisf/theZoo"
@@ -18,27 +17,27 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd ${pkgname}
+    cd "${pkgname}" || exit
     printf "%s.r%s" \
         "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
         "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-    cd ${pkgname}
+    cd "${pkgname}" || exit
     find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
     find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
 }
 
 package() {
-    cd ${pkgname}
-    install -dm0755 "${pkgdir}"/usr/{bin,share/${_pkgname}}
-    cp -a --no-preserve=ownership * "${pkgdir}"/usr/share/${_pkgname}
+    cd "${pkgname}" || exit
+    install -dm0755 "${pkgdir}"/usr/{bin,share/"${_pkgname}"}
+    cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}"
 
-cat > "${pkgdir}"/usr/bin/${_pkgname} << EOF
+cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
 cd /usr/share/thezoo
 /usr/bin/python2 ./theZoo.py "\$@"
 EOF
-chmod 755 "${pkgdir}"/usr/bin/${_pkgname}
+chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
