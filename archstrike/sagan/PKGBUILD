@@ -4,24 +4,24 @@
 buildarch=220
 
 pkgname=sagan
-pkgver=1.2.0
+pkgver=1.2.2
 pkgrel=1
 pkgdesc="a snort-like log analysis engine"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike' 'archstrike-analysis')
 url="https://quadrantsec.com/sagan_log_analysis_engine/"
 license=('GPL')
-depends=('libdnet' 'libesmtp' 'liblognorm' 'geoip' 'libyaml')
+depends=('libdnet' 'libesmtp' 'liblognorm' 'geoip' 'libyaml' 'libmaxminddb')
 optdepends=('sagan-rules: rules for sagan')
 options=('!makeflags' '!emptydirs')
 source=("https://quadrantsec.com/download/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('c597b632292ec16bc68b986897dd9cd3f63aa1107c2089230698c275002ab99b2090ca5c08b529abf2eb2c4c2a862c89d481aa7be07f574341ce17612caef95c')
+sha512sums=('17767beffa2059fa8a89347c0cb4f44e28b42fcf797c082ce1af1d168bbbf790362b8005137cbe24246ea7ce7e7f8615230ca5c5305b9d7476d83712f8d59e25')
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}" || exit
   ./autogen.sh
 
-  if [[ $CARCH == i686 ]] || [[ $CARCH == armv6h ]] || [[ $CARCH == armv7h ]] || [[ $CARCH == aarch64 ]]; then
+  if [[ "${CARCH}" == i686 ]] || [[ "${CARCH}" == armv6h ]] || [[ "${CARCH}" == armv7h ]] || [[ "${CARCH}" == aarch64 ]]; then
         ./configure --enable-esmtp \
                     --enable-geoip \
                     --prefix=/usr \
@@ -40,6 +40,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-$pkgver
+  cd "${pkgname}-${pkgver}" || exit
   make DESTDIR="${pkgdir}" install
 }
