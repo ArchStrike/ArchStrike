@@ -5,7 +5,7 @@
 buildarch=200
 
 pkgname=libpfm4
-pkgver=4.10.0
+pkgver=4.10.1
 pkgrel=1
 pkgdesc="The hardware-based performance monitoring interface for Linux."
 arch=('x86_64' 'i686' 'aarch64')
@@ -15,7 +15,7 @@ depends=('glibc')
 
 source=("http://downloads.sourceforge.net/project/perfmon2/libpfm4/libpfm-${pkgver}.tar.gz"
         'config.mk')
-sha512sums=('c2e1a7d389efebc27a32dd3a5a6f3e8e8d624347616e06daf7bf06c0d5b8ca39cee5821ad5cf23330d47ed987697fcc05aa54660b8f6899f62aad9cd05e908f9'
+sha512sums=('33d99824216b4d83784e0db9f1aae3b39f84c2ba42dee64dde0b3c43cc5ee3a18c206d9044e75bf10867768add7cb9967c6318f7aa196f178f334271fa05e1aa'
             '5639f98d9e5821d1bf9304c8c799353412c07b66e070cc37220c08242a6c72f07392a93ca3c41e000363809f57a93843cea7a2f377fc46de998a3eee15d0a57c')
 
 build() {
