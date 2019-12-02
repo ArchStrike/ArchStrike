@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=leo
-pkgver=6.0
+pkgver=6.1
 pkgrel=1
 pkgdesc="Literate programmer's editor, outliner, and project manager"
 arch=('any')
@@ -14,12 +14,12 @@ optdepends=('python-pyenchant: For Spelling support')
 makedepends=('unzip' 'python-setuptools')
 groups=('archstrike' 'archstrike-misc')
 source=("https://github.com/leo-editor/leo-editor/archive/v${pkgver}.tar.gz")
-sha512sums=('2a038bc2c8cd467310d23bc00934c69bcbc97258cb026deb4cb2332b002ac476acb5d356f671426c00ac7377bcb6fc4fec925432219f498dbde9a6ee88111e0b')
+sha512sums=('9512f474484a3bbc7997408dece3d7b9f2471e046c435a0f8779ace4e30f6c650b8323ac07fec1796521ac976fd05f9b68dd941eb8db6ed2958e09803260bb88')
 
 package() {
-  cd ${pkgname}-editor-${pkgver}
+  cd "${pkgname}-editor-${pkgver}" || exit
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}/"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}/"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 "${pkgdir}/usr/bin"
   printf '%s\n%s\n' '#!/usr/bin/env bash' 'python /usr/share/leo/launchLeo.py "$1"' > "${pkgdir}/usr/bin/${pkgname}"
