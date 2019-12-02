@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=jd-gui
-pkgver=1.6.3
+pkgver=1.6.5
 pkgrel=1
 groups=('archstrike' 'archstrike-reverse' 'archstrike-decompile')
 pkgdesc='A standalone graphical utility that displays Java source codes of .class files'
@@ -11,21 +11,21 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/java-decompiler/jd-gui"
 license=('GPL')
 depends=('gtk2' 'jdk8-openjdk' 'java-environment')
-depends_x86_64+=('lib32-gtk2' 'lib32-libsm' 'lib32-libxxf86vm')
+#depends_x86_64+=('lib32-gtk2' 'lib32-libsm' 'lib32-libxxf86vm')
 options=('!strip')
 source=("${url}/releases/download/v${pkgver}/jd-gui-${pkgver}.jar")
-sha512sums=('5c03138840354a8da924af68b5871e0ba0e859a8a9e1be0dcf24edc2cf7433b09d99bede357a1d06970cc5fa8dc33d5b496436c96f1caf812ceecb2f12d04fe1')
+sha512sums=('20548917cba0ed5d24837daa9484e733d04d8396fd8ab8102ade1f27889a9bb75af0ccb9abbae2943621d7a940112566a243844058d4437346018546f09f242b')
 
 package() {
-  cd ${srcdir}
+  cd "${srcdir}" || exit
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  install -Dm755 jd-gui-${pkgver}.jar "${pkgdir}/usr/share/${pkgname}/jd-gui.jar"
+  install -Dm755 "jd-gui-${pkgver}.jar" "${pkgdir}/usr/share/${pkgname}/jd-gui.jar"
 
 cat > "${pkgdir}/usr/bin/${pkgname}"<<EOF
 #!/usr/bin/env bash
-java -jar /usr/share/${pkgname}/jd-gui.jar "\$@"
+java -jar "/usr/share/${pkgname}/jd-gui.jar" "\$@"
 EOF
 
 chmod 755 "${pkgdir}/usr/bin/${pkgname}"
