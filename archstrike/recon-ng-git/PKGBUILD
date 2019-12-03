@@ -2,29 +2,29 @@
 
 buildarch=1
 
-_pkgname=recon-ng
-pkgname=${_pkgname}-git
-pkgver=20190622.r913
+pkgname=recon-ng-git
+pkgver=20191028.r1007
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
 arch=('any')
-url='https://bitbucket.org/LaNMaSteR53/recon-ng'
+url="https://github.com/lanmaster53/recon-ng"
 license=('GPL3')
-depends=('python2-unicodecsv' 'python2-dicttoxml' 'python2-pypdf2' 'python2-lxml'
-         'python2-slowaes' 'python2-dnspython' 'python2-jsonrpclib-pelix'
-		     'python2-xlsxwriter' 'python2-olefile')
+depends=('python' 'python-pyaml' 'python-dnspython' 'python-lxml'
+         'python-mechanize' 'python-requests' 'python-flask'
+         'python-flask-restful' 'python-flasgger' 'python-dicttoxml'
+         'python-xlsxwriter' 'python-unicodecsv' 'python-rq')
 makedepends=('git')
-source=("${pkgname}::git+https://bitbucket.org/LaNMaSteR53/${_pkgname}.git")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
 
   while read -r; do
     sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
@@ -32,12 +32,11 @@ prepare() {
 }
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   cp -R * "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  ln -sf /usr/share/${pkgname}/recon-cli "${pkgdir}/usr/bin/recon-cli"
-  ln -sf /usr/share/${pkgname}/recon-ng "${pkgdir}/usr/bin/recon-ng"
-  ln -sf /usr/share/${pkgname}/recon-rpc "${pkgdir}/usr/bin/recon-rpc"
-  ln -sf /usr/share/${pkgname}/recon-web "${pkgdir}/usr/bin/recon-web"
+  ln -sf "/usr/share/${pkgname}/recon-cli" "${pkgdir}/usr/bin/recon-cli"
+  ln -sf "/usr/share/${pkgname}/recon-ng" "${pkgdir}/usr/bin/recon-ng"
+  ln -sf "/usr/share/${pkgname}/recon-web" "${pkgdir}/usr/bin/recon-web"
 }
