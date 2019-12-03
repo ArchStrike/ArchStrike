@@ -2,9 +2,9 @@
 
 buildarch=220
 
+#_gemname=nokogiri
 pkgname=ruby-nokogiri
-_gemname=nokogiri
-pkgver=1.10.3
+pkgver=1.10.5
 pkgrel=1
 pkgdesc="HTML, XML, SAX, and Reader parser"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -13,16 +13,16 @@ makedepends=('ruby')
 depends=('ruby-mini_portile2' 'ruby-rdoc')
 options=('!distcc' '!emptydirs')
 url='http://nokogiri.org'
-source=("http://rubygems.org/downloads/nokogiri-$pkgver.gem")
-sha512sums=('a73b613964cfa712c574cc8b8366f461ba51647a001ccb1845853c5846de450f1631311d1ea6c776d74c0f06a146869cc283d670cb99de229945c8743be6cbc8')
-noextract=("nokogiri-$pkgver.gem")
+source=("http://rubygems.org/downloads/nokogiri-${pkgver}.gem")
+sha512sums=('e7e110312686aa2ee9fe5845fc8f8a3ebe5b25dfd09c68fb58d169aaff6297af98304675de7bd97adb136702388e42b72dbc581a09632c1a37909bf2685fc6c0')
+noextract=("nokogiri-${pkgver}.gem")
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}" || exit
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
-  if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "$pkgdir$_gemdir" nokogiri-$pkgver.gem
+  if [[ ${CARCH} == arm* ]] ; then
+    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "${pkgdir}${_gemdir}" nokogiri-${pkgver}.gem
   else
-    gem install --no-user-install --ignore-dependencies -i "$pkgdir$_gemdir" nokogiri-$pkgver.gem
+    gem install --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" nokogiri-${pkgver}.gem
   fi
 }
