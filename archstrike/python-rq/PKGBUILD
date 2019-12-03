@@ -1,0 +1,21 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=("python-rq")
+pkgver=1.1.0
+pkgdesc="Simple job queues for Python"
+pkgrel=1
+arch=('any')
+url="https://github.com/rq/rq"
+license=('BSD')
+depends=('python' 'redis' 'python-click' 'python-mock' 'python-pytest')
+makedepends=('python-setuptools')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('da6795f905ef26f564e799fc876eba4a7b23bbe171b11d563f882a48db314665757cd85a4dde5daaca49aee6b319bddc0943b2627bae7968af024b8591e34f05')
+
+package() {
+  cd "rq-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}" -O1
+  install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
