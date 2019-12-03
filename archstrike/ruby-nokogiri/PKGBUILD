@@ -5,7 +5,7 @@ buildarch=220
 #_gemname=nokogiri
 pkgname=ruby-nokogiri
 pkgver=1.10.5
-pkgrel=1
+pkgrel=2
 pkgdesc="HTML, XML, SAX, and Reader parser"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 license=('MIT')
@@ -20,9 +20,5 @@ noextract=("nokogiri-${pkgver}.gem")
 package() {
   cd "${srcdir}" || exit
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
-  if [[ ${CARCH} == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-rdoc --no-ri -i "${pkgdir}${_gemdir}" nokogiri-${pkgver}.gem
-  else
-    gem install --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" nokogiri-${pkgver}.gem
-  fi
+  gem install --no-user-install --ignore-dependencies -i "${pkgdir}${_gemdir}" nokogiri-${pkgver}.gem
 }
