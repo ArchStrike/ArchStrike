@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=204
 
 pkgname=archstrike-openbox-config
 pkgver=1.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike-desktop')
-arch=('any')
+arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 pkgdesc="ArchStrike config files for OpenBox"
 url="https://github.com/ArchStrike/archstrike-openbox-config"
 license=('GPL3')
