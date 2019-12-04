@@ -6,8 +6,8 @@ buildarch=1
 
 _pkgname=bitstring
 pkgname=python-bitstring
-pkgver=3.1.5
-pkgrel=2
+pkgver=3.1.6
+pkgrel=1
 pkgdesc='Python module designed to help make the creation, manipulation and analysis of binary data as simple and natural as possible'
 arch=('any')
 url="https://pypi.python.org/pypi/bitstring/"
@@ -15,26 +15,24 @@ license=('MIT')
 depends=('python')
 makedepends=('unzip' 'python-setuptools')
 options=(!emptydirs)
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.zip")
-sha512sums=('a147c5da1b230299435b7903d991f9a5daf1144cf441bdedbceffd94ea1bcf3c7e27fca94aa624ab0b8b3abba5278e56720b85d7f33b9ebf3099e9ee4ffdb3f3')
+source=("https://files.pythonhosted.org/packages/f4/87/fe6f7093088f4396e84c1b5d5dfb08c4840487ad46ff4805b7008c8f5ffc/bitstring-${pkgver}.tar.gz")
+sha512sums=('ff471ad1469e2bd7a0716484ddc3d6ce1bf979b7bcef4c393b61f47211d22a66edcbcb8bed299ca72dc59ddae24e568d718b98d30f4348a3478aac98e781282b')
 
 prepare(){
-  sed -i '/README.rst/d' $srcdir/bitstring-$pkgver/setup.py
-  sed -i '/kwds/d' $srcdir/bitstring-$pkgver/setup.py
+  sed -i '/README.rst/d' "${srcdir}/bitstring-${pkgver}/setup.py"
+  sed -i '/kwds/d' "${srcdir}/bitstring-${pkgver}/setup.py"
 
   # get license file
-  cd ${_pkgname}-${pkgver}
-  python -c "import bitstring; print(bitstring.__licence__)" >> ${srcdir}/LICENSE
+  cd "${_pkgname}-${pkgver}" || exit
+  python -c "import bitstring; print(bitstring.__licence__)" >> "${srcdir}/LICENSE"
 }
 
 package() {
-  cd ${srcdir}/bitstring-${pkgver}
+  cd "${srcdir}/bitstring-${pkgver}" || exit
 
   # build
-  python setup.py install --root=${pkgdir}/ -O1
+  python setup.py install --root="${pkgdir}" -O1
 
   #install license
-  install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-# vim:set ts=2 sw=2 et:
