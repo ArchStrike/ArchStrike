@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=204
 
 pkgname=archstrike-i3-config
 pkgver=1.2
-pkgrel=4
+pkgrel=5
 groups=('archstrike-desktop')
-arch=('any')
+arch=('armv7h' 'aarch64' 'i686' 'x86_64')
 pkgdesc="i3wm configs for ArchStrike"
 url="https://github.com/ArchStrike/archstrike-i3-config"
 license=('GPL3')
