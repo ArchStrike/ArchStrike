@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=xsser
 pkgver=1.8.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc='An automatic -framework- to detect, exploit and report XSS vulnerabilities in web-based applications'
 arch=('any')
 url='https://xsser.03c8.net'
 license=('GPL3')
 depends=('python-pycurl' 'python-beautifulsoup4' 'python-geoip' 'python-geoip2' 'python-gobject' 'python-cairocffi')
-makedepends=('git' 'python-setuptools')
+makedepends=('python-setuptools')
 replaces=("${pkgname}-git")
 conflicts=("${pkgname}-git")
 source=("https://github.com/epsylon/$pkgname/archive/v${pkgver}.tar.gz")
