@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=knock-git
-pkgver=20180502.r274
+pkgver=20190429.r275
 pkgrel=1
 groups=('archstrike' 'archstrike-dns' 'archstrike-scanners' 'archstrike-bruteforce' 'archstrike-intel' 'archstrike-info' 'archstrike-enumeration')
 arch=('any')
@@ -17,7 +17,7 @@ install="${pkgname}.install"
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
 # weird branch name but such is life
   printf "%s.r%s" "$(git show -s --format=%ci 4.1 | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
@@ -27,6 +27,6 @@ prepare() {
 }
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   python2 setup.py install -O1 --root="${pkgdir}"
 }
