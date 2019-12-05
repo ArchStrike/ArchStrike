@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname="meltdown-git"
-pkgver=20190103.r82
+pkgver=20191026.r84
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('i686' 'x86_64')
@@ -15,20 +15,20 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}" || exit
   make
 
-  cd "${srcdir}/${pkgname}/libkdump"
+  cd "${srcdir}/${pkgname}/libkdump" || exit
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
 
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
