@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=linenum-git
-pkgver=20191018.r64.54402e9
+pkgver=20191121.r70.23ac9f7
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-scanners')
@@ -13,26 +13,24 @@ arch=('any')
 license=('GPL3')
 depends=('bash')
 makedepends=('git')
-provides=('linenum')
-replaces=('linenum')
-source=("$pkgname::git+https://github.com/rebootuser/LinEnum.git")
+source=("${pkgname}::git+https://github.com/rebootuser/LinEnum.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${pkgname}" || exit
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//  g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}" || exit
 
   # Base directories.
-  install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
   #Bin
-  ln -s /usr/share/$pkgname/LinEnum.sh $pkgdir/usr/bin/linenum
-  ln -s /usr/share/$pkgname/LinEnumv0.2_legacy.sh $pkgdir/usr/bin/linenumv0.2_legacy.sh
+  ln -s "/usr/share/${pkgname}/LinEnum.sh" "${pkgdir}/usr/bin/linenum"
+  ln -s "/usr/share/${pkgname}/LinEnumv0.2_legacy.sh" "${pkgdir}/usr/bin/linenumv0.2_legacy.sh"
 }
