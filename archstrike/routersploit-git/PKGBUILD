@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=20190909.r781
+pkgver=20191112.r783
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='The Router Exploitation Framework'
@@ -17,15 +17,15 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname} || exit
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd ${pkgname} || exit
+  cd "${pkgname}" || exit
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}/"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}/"
   # Move license to the package license directory
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
