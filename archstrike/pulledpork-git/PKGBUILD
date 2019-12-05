@@ -1,11 +1,10 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-_pkgname=pulledpork
-
 buildarch=1
 
-pkgname=$_pkgname-git
-pkgver=20170729.r318
+_pkgname=pulledpork
+pkgname="${_pkgname}-git"
+pkgver=20190728.r361
 pkgrel=1
 pkgdesc="Snort rule management"
 arch=('any')
@@ -14,30 +13,30 @@ license=('GPL2')
 groups=('archstrike' 'archstrike-misc')
 depends=('perl' 'perl-lwp-protocol-https' 'perl-crypt-ssleay' 'perl-bytes-random-secure')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/shirkdog/pulledpork.git")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "$pkgname"
+  cd "${pkgname}" || exit
 
-  install -dm755 "$pkgdir/usr/share/$pkgname/"
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/etc/pulledpork"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}/"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/etc/pulledpork"
 
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$pkgname/"
-  cd "$pkgdir/usr/share/$pkgname/etc/"
-  cp -a --no-preserve=ownership * "$pkgdir/etc/pulledpork"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}/"
+  cd "${pkgdir}/usr/share/${pkgname}/etc/"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/etc/pulledpork"
 
-cat > "$pkgdir/usr/bin/$_pkgname" <<EOF
+cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/$pkgname
+cd "/usr/share/${pkgname}"
 perl pulledpork.pl "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/$_pkgname"
+chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
 
