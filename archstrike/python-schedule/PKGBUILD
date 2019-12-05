@@ -1,0 +1,22 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=schedule
+pkgname=("python-${_pkgname}")
+pkgver=0.6.0
+pkgrel=1
+pkgdesc='Python job scheduling for humans'
+arch=('any')
+url='https://github.com/dbader/schedule'
+license=('MIT')
+depends=("python")
+makedepends=('python-setuptools' 'python2-setuptools')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('SKIP')
+
+package() {
+  cd "${_pkgname}-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}/" -O1
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
