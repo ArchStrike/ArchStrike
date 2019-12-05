@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=matroschka-git
-pkgver=20160720.r52
-pkgrel=3
+pkgver=20191109.r58
+pkgrel=1
 groups=('archstrike' 'archstrike-stego')
 arch=('any')
 pkgdesc="Python steganography tool to hide images or text in images"
@@ -16,25 +16,25 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   sed -i '1 i\#!/usr/bin/env python2' *.py
 }
 
 package() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/matroschka" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}
+"cd /usr/share/${pkgname}"
 python2 matroschka.py "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/matroschka"
