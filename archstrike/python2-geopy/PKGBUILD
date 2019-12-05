@@ -2,24 +2,44 @@
 
 buildarch=1
 
-pkgname=python2-geopy
+_pkgname="geopy"
+pkgbase="python-${_pkgname}"
+pkgname=("python-${_pkgname}" "python2-${_pkgname}")
 pkgver=1.19.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python Geocoding Toolbox"
 url="https://github.com/geopy/geopy"
-depends=('python2')
-makedepends=('python2-setuptools')
+depends=('python' 'python2')
+makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/geopy/geopy/archive/${pkgver}.tar.gz")
 sha512sums=('c1cfbb3404c62168c964ad6d1252567c6e9b4d92657b2a170f0f4db7f2035f486e0205250cd9f7adf68e012e095070d511982f04409d145a1c8c03a5c99dabf0')
 
-build() {
-    cd $srcdir/geopy-$pkgver
-    python2 setup.py build
+prepare() {
+  cp -a "${_pkgname}-${pkgver}"{,-py2}
 }
 
-package() {
-    cd $srcdir/geopy-$pkgver
-    python2 setup.py install --root="$pkgdir" --skip-build -O1
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  python setup.py build
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
+  python2 setup.py build
+}
+
+package_python-geopy() {
+  depends=('python')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}/" -O1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
+
+package_python2-geopy() {
+  depends=('python2')
+
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
+  python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
