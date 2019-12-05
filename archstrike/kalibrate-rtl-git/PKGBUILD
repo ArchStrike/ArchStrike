@@ -4,34 +4,33 @@
 buildarch=220
 
 pkgname=kalibrate-rtl-git
-pkgver=20131214.r11
-pkgrel=4
+pkgver=20191125.r65
+pkgrel=1
 pkgdesc='Fork of http://thre.at/kalibrate/ for use with rtl-sdr devices'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 groups=('archstrike')
 license=('custom')
 url='https://github.com/steve-m/kalibrate-rtl'
-provides=('kalibrate-rtl')
 depends=("rtl-sdr" "fftw")
-makedepends=('git')
+makedepends=('git' 'autoconf')
 source=("${pkgname}::git+https://github.com/steve-m/kalibrate-rtl")
 sha512sums=('SKIP')
 
 pkgver() {
-    cd "${pkgname}"
+    cd "${pkgname}" || exit
     printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
-  ./bootstrap
+  cd "${srcdir}/${pkgname}" || exit
+  ./bootstrap && CXXFLAGS='-W -Wall -O3'
   ./configure --prefix=/usr
   make
 
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${pkgname}" || exit
   make DESTDIR="${pkgdir}" install
-        install -Dm644 COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
