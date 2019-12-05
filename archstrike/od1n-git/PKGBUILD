@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=od1n-git
-pkgver=20190407.r209
+pkgver=20191116.r211
 pkgrel=1
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-webapps')
 pkgdesc="A Web security tool to make fuzzing at HTTP inputs, made in C with libCurl"
@@ -12,22 +12,21 @@ url='https://github.com/CoolerVoid/0d1n'
 license=('GPL3')
 depends=('curl')
 makedepends=('git')
-provides=('od1n')
 source=("${pkgname}::git+https://github.com/CoolerVoid/0d1n.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build(){
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   make
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   install -dm755 "${pkgdir}/usr/bin/"
   install -Dm755 0d1n "${pkgdir}/usr/bin/"
 }
