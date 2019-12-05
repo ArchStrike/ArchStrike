@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname="twint"
+pkgver=2.1.8
+pkgrel=1
+groups=('archstrike' 'archstrike-recon')
+pkgdesc="An advanced Twitter scraping & OSINT tool written in Python that doesn't use Twitter's API"
+url="https://github.com/twintproject/twint"
+depends=('python' 'python-aiohttp' 'python-aiodns' 'python-beautifulsoup4'
+         'python-cchardet' 'python-elasticsearch' 'python-pysocks'
+         'python-pandas' 'python-aiohttp-socks' 'python-schedule'
+         'python-geopy' 'python-fake-useragent' 'python-googletransx')
+makedepends=('python-setuptools')
+license=('MIT')
+arch=('any')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('afcca1ebb99752f47ddc2e024c2054a4afed1000fa06b7ade1dc98fe60a7eb62e798683a10355014fb8f8e4b854152c7b6eb4034db85460e6442142c56904d0d')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}/" -O1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
