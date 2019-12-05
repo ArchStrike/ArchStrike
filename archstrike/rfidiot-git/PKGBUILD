@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=rfidiot-git
 _gitname=RFIDIOt
-pkgver=20190118.r95
+pkgver=20190708.r97
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-wireless')
@@ -20,18 +20,18 @@ source=("${pkgname}::git+https://github.com/AdamLaurie/RFIDIOt")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   # Change shebang lines.
   find . -type f -name '*.py' -exec sed -i '1s/python\r\?$/python2/' '{}' \;
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${pkgname}" || exit
   python2 setup.py install --root="${pkgdir}/" --optimize=1
 
   cd "${pkgdir}/usr/bin"
@@ -46,7 +46,7 @@ package() {
     # Remove extension. Add prefix.
     new_file=rfidiot-$(basename "${file%.*}")
     # '_' -> '-'
-    new_file=${new_file/_/-}
+    new_file="${new_file/_/-}"
     install -Dm755 "$file" "$new_file"
     rm -f "$file"
   done
