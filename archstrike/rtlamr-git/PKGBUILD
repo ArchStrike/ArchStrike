@@ -1,10 +1,10 @@
 # Maintainer: ArchStrike <team@archstrike.org>
-_pkgname=rtlamr
 
 buildarch=220
 
+_pkgname=rtlamr
 pkgname=rtlamr-git
-pkgver=364.v0.9.1.r11.gc933ed8a
+pkgver=365.v0.9.1.r12.gf28675b9
 pkgrel=1
 groups=('archstrike' 'archstrike-hardware')
 pkgdesc="An rtl-sdr receiver for smart meters operating in the 900MHz ISM band."
@@ -23,18 +23,21 @@ pkgver() {
   echo "$(git rev-list --count HEAD).$(git describe --always | sed -r 's/([^-]*-g)/r\1/;s/-/./g')"
 }
 
+prepare() {
+  export GOPATH="${srcdir}"
+  go get -d -u "${_url}"
+}
+
 build() {
-  cd "${srcdir}"
-  # makepkg doesn't support extracting sources to a specific directory
-  mkdir -p src/$_url && rm -rf src/$_url && mv ${_pkgname} src/$_url && cd src/$_url
-  GOPATH="${srcdir}" go get -d -t github.com/bemasher/rtlamr
+  cd "${srcdir}/${_pkgname}" || exit
+  export GOPATH="${srcdir}"
+  go build -ldflags "-X ${url}/share.BuildVersion=${pkgver}"
 }
 
 package() {
-  cd "${srcdir}"
-  GOPATH="${srcdir}" go build -v github.com/bemasher/rtlamr
+  cd "${srcdir}/${_pkgname}" || exit
 
-  mkdir -p "${pkgdir}/usr/bin"
-  cp "${srcdir}/rtlamr" "${pkgdir}/usr/bin/rtlamr"
+  # binary
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
   install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/rtlamr-git/LICENSE
 }
