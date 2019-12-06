@@ -4,9 +4,9 @@
 buildarch=1
 
 _pkgname="APScheduler"
-pkgname="python-${_pkgname}"
+pkgname="python-apscheduler"
 pkgver=3.6.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Python Scheduler, a light but powerful in-process task scheduler"
 arch=('any')
 url='https://github.com/agronholm/apscheduler'
