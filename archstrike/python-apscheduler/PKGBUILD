@@ -3,25 +3,25 @@
 
 buildarch=1
 
-pkgname=python-apscheduler
-_pkgname=APScheduler
-pkgver=3.6.1
-pkgrel=2
+_pkgname="APScheduler"
+pkgname="python-${_pkgname}"
+pkgver=3.6.3
+pkgrel=1
 pkgdesc="Advanced Python Scheduler, a light but powerful in-process task scheduler"
 arch=('any')
-url='http://pypi.python.org/pypi/APScheduler'
+url='https://github.com/agronholm/apscheduler'
 license=(MIT)
 depends=('python-six' 'python-pytz' 'python-tzlocal')
 makedepends=(python-setuptools)
-source=("https://files.pythonhosted.org/packages/source/A/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('99eadea5edacb4484d56382ada1fe83bfeec13001c9d10706b96855787af2d1a6aad876239b65bc2b1f4a4793f44af8701d3ddb4f8af47cefe1b20f2ba6f199a')
+source=("https://files.pythonhosted.org/packages/89/3d/f65972547c5aa533276ada2bea3c2ef51bb4c4de55b67a66129c111b89ad/APScheduler-3.6.3.tar.gz")
+sha512sums=('4c348a4f37a7973633554a69635f334b3c293c8942fe853b309b4b65335f5d4d553d7d42fd4661b0e6a36f5e97446d296a2c8971bdb51dad3bc8ee6b6d3b20ba')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}"
-  python setup.py install --root="${pkgdir}" --optimize=1
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}" -O1
 }
