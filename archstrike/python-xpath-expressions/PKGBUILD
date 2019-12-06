@@ -1,0 +1,22 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=xpath-expressions
+pkgname=("python-${_pkgname}")
+pkgver=1.0.1
+pkgrel=1
+pkgdesc='Treat XPath expressions as Python objects'
+arch=('any')
+url='https://pypi.org/project/xpath-expressions/'
+license=('MIT')
+depends=('python' 'python-requests' 'python-h2')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/de/22/2798fcbe0ea8d632615ef629a2834caff2cce9c8cd389e7852c2d8d95bad/xpath-expressions-1.0.1.tar.gz")
+sha512sums=('a87f11c8f915c72d17bcf871cd576d4f44a6e7239b4d170fc74a169213681a7b752a95f877224cf04c32ea7fc6291374e4a44aa8eee4836236e07cc70bded301')
+
+package() {
+  cd "${_pkgname}-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}/" -O1
+#  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
