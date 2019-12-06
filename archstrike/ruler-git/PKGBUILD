@@ -1,11 +1,10 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-_pkgname=ruler
-
 buildarch=220
 
+_pkgname=ruler
 pkgname=ruler-git
-pkgver=20180822.r271
+pkgver=20191123.r274
 pkgrel=1
 pkgdesc="A tool that allows you to interact with Exchange servers through the MAPI/HTTP protocol."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -19,22 +18,24 @@ source=("$_url::git+https://github.com/sensepost/ruler.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/$_pkgname"
+  cd "${srcdir}/${_pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
+prepare() {
+  export GOPATH="${srcdir}"
+  go get -d -u "${_url}"
+}
+
 build() {
-  cd "$srcdir"
-  # makepkg doesn't support extracting sources to a specific directory
-  mkdir -p src/$_url && rm -rf src/$_url && mv $_pkgname src/$_url && cd src/$_url
-  GOPATH="$srcdir" go get -d -t github.com/sensepost/ruler
+  cd "${srcdir}/${_pkgname}" || exit
+  export GOPATH="${srcdir}"
+  go build -ldflags "-X ${url}/share.BuildVersion=${pkgver}"
 }
 
 package() {
-  cd "$srcdir"
-  install -dm755 "${pkgdir}/usr/bin"
-  GOPATH="$srcdir" go build -v github.com/sensepost/ruler
+  cd "${srcdir}/${_pkgname}" || exit
 
-  cp "${srcdir}/ruler" "${pkgdir}/usr/bin/ruler"
-  install -Dm644 $srcdir/src/github.com/sensepost/ruler/LICENSE "$pkgdir"/usr/share/licenses/$pkgname/LICENSE
+  # binary
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 }
