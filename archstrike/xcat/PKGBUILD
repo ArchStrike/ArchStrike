@@ -3,28 +3,29 @@
 buildarch=1
 
 pkgname=xcat
-pkgver=0.7.1
-pkgrel=6
+pkgver=1.0.2
+pkgrel=1
+groups=('archstrike' 'archstrike-exploit')
 pkgdesc='A command line tool to automate the exploitation of blind XPath injection vulnerabilities'
 url='https://github.com/orf/xcat'
-depends=('python-ipgetter' 'python-colorama' 'python-xmltodict' 'python-click' 'python-logbook' 'python-aiohttp')
+depends=('python' 'python-xpath-expressions' 'python-aiohttp'
+         'python-aiodns' 'python-cchardet' 'python-colorama'
+         'python-prompt_toolkit' 'python-click' 'python-appdirs')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-groups=('archstrike')
-
-source=(
-  "https://pypi.python.org/packages/source/x/${pkgname}/${pkgname}-${pkgver}.zip")
-
-sha512sums=('b875f3b237d390cc336ae15161946ebfcd37b554d4ae4be2d2adeb89c7b42895d69654a6aef8f65f473fdcdb22ce2c2535eda941d993a5a2c06742734de5decd')
+source=("https://files.pythonhosted.org/packages/9a/b7/6e2a3b63e73152b392c6645eb748a2cf79e17fedf4ae4db6ff53b6dc9441/xcat-1.0.2.tar.gz"
+        "LICENSE")
+sha512sums=('02c7f16a979da57a7c7e3fa9ac66eb03a8efbc9dce928413e3094fddde2ff707ee44c0f365d64320373cf7054ccc5c1e25178f5549b99276b5590aa021aaac1b'
+            '3981c60a944c550fa363acc22a9c65897806891c97644df978f1049b049c175bbd036aad69d00602bf9286eec7767f8f907ad1abcd1b691dc20e865cd4463a5e')
 
 build() {
-  cd xcat-${pkgver} || exit
+  cd "${srcdir}/xcat-${pkgver}" || exit
   python setup.py build
 }
 
 package() {
-  cd xcat-${pkgver} || exit
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/xcat/LICENSE"
+  cd "${srcdir}/xcat-${pkgver}" || exit
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/xcat/LICENSE"
   python setup.py install --root="${pkgdir}" -O1
 }
