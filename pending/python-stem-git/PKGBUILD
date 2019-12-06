@@ -1,0 +1,54 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=stem
+pkgbase="python-${_pkgname}-git"
+pkgname=("python-${_pkgname}-git" "python2-${_pkgname}-git")
+pkgver=20191204.r3681
+pkgrel=1
+epoch=1
+pkgdesc='A controller library for Tor'
+arch=('any')
+url='https://stem.torproject.org/'
+license=('LGPL3')
+makedepends=('git' 'python-setuptools' 'python2-setuptools')
+source=("${pkgname}::git+http://git.torproject.org/stem.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cp -a "${pkgname}"{,-py2}
+}
+
+build() {
+  cd "${srcdir}/${pkgname}" || exit
+  python3 setup.py build
+
+  cd "${srcdir}/${pkgname}-py2" || exit
+  python2 setup.py build
+}
+
+package_python-stem-git() {
+  depends=('python')
+
+  cd "${srcdir}/${pkgname}" || exit
+  python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  # fix duplicate file issue with tor_prompt
+  mv "${pkgdir}/usr/bin/tor-prompt" "${pkgdir}/usr/bin/tor-prompt3"
+}
+
+package_python2-stem-git() {
+  depends=('python2')
+
+  cd "${srcdir}/python-stem-git-py2" || exit
+  python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mv "${pkgdir}/usr/bin/tor-prompt" "${pkgdir}/usr/bin/tor-prompt2"
+}
+
