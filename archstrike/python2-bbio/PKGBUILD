@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=python2-bbio
-pkgver=1.1.0
+pkgver=1.1.1
 pkgrel=1
 pkgdesc="A module to control BeagleBone IO channels"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -11,22 +11,22 @@ license=("MIT")
 url="https://github.com/adafruit/adafruit-beaglebone-io-python"
 depends=("python2")
 makedepends=("python2-setuptools")
-source=("https://github.com/adafruit/adafruit-beaglebone-io-python/archive/$pkgver.tar.gz")
-sha512sums=('fd8451bb02372d6d018e38814b2f9c7a80af56c18b8a91f1ea011aa301c55d0af10086f2d6578f193b52c4745506c6c38ae560034d7a79ec0d0315f5227de341')
+source=("https://files.pythonhosted.org/packages/53/2b/b0e3dce6113225aae9beb886b2addd4fd5c140ba93c9503d7e4a97021bcc/Adafruit_BBIO-1.1.1.tar.gz")
+sha512sums=('c28c65737b9e49158ada89d3c9d303e35c03231ef282e266c6dc704efa500b0fef543251b8e17de201d24c903afe142027a9c88f8cd2b8f633e9f1a81c8cc846')
 
 prepare() {
-  cd "${srcdir}/adafruit-beaglebone-io-python-${pkgver}"
+  cd "${srcdir}/Adafruit_BBIO-${pkgver}" || exit
   sed -i "s/^\(CFLAGS = \['-Wall',\) '-Werror',/\1/1" setup.py
 }
 
 build() {
-  cd "${srcdir}/adafruit-beaglebone-io-python-${pkgver}"
+  cd "${srcdir}/Adafruit_BBIO-${pkgver}" || exit
   python2 setup.py build
 }
 
 package() {
-  cd "${srcdir}/adafruit-beaglebone-io-python-${pkgver}"
-  python2 setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
+  cd "${srcdir}/Adafruit_BBIO-${pkgver}" || exit
+  python2 setup.py install --root="${pkgdir}" --prefix=/usr -O1
   find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
   install -Dm644 README.md "$pkgdir/usr/share/licenses/$pkgname/README.rst"
 }
