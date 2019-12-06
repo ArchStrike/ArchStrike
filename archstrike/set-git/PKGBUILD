@@ -4,17 +4,17 @@ buildarch=1
 
 pkgname='set-git'
 _pkgname=social-engineer-toolkit
-pkgver=8.0.1.r6.ge8ace04b0
+pkgver=8.0.1.r8.g65e3101f1
 pkgrel=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-exploit')
 pkgdesc="Social-engineer toolkit. Aimed at penetration testing around Social-Engineering"
 arch=('any')
-url='https://www.trustedsec.com/downloads/social-engineer-toolkit'
+url="https://www.trustedsec.com/tools/the-social-engineer-toolkit-set/"
 license=('BSD')
 makedepends=('git')
 depends=('python' 'python-pexpect' 'python-pillow' 'python-beautifulsoup4'
          'python-qrcode' 'python-pefile' 'impacket' 'jdk8-openjdk'
-         'python-requests' 'python-pycryptodome')
+         'python-requests' 'python-pycryptodome' 'python-pyopenssl')
 optdepends=('ettercap: DNS spoofing and ARP cache poisoning capabilities'
             'sendmail: email address spoofing'
             'apache: increase speed of web attack vectors'
@@ -31,14 +31,14 @@ sha512sums=('SKIP'
             '486e966d9e22658e5da9ca799f8024e87989942e60634dd5b3a59e30581302a91028d8071ec0929546abcb995b71b4545c39b2e1c88ced1746e0ba0381835302')
 
 pkgver() {
-  cd ${_pkgname}
+  cd "${srcdir}/${_pkgname}" || exit
   git describe --long --tags | sed -r 's/([^-]*-g)/r\1/;s/-/./g'
 }
 
 prepare() {
-  cd ${_pkgname}
+  cd "${srcdir}/${_pkgname}" || exit
 
-  patch -Np1 -i ${srcdir}/config.patch
+  patch -Np1 -i "${srcdir}/config.patch"
 
   # Fix tab-space inconsistencies.
   sed -i 's/\t/    /g' se*
@@ -46,13 +46,13 @@ prepare() {
 }
 
 package() {
-  cd ${_pkgname}
+  cd "${srcdir}/${_pkgname}" || exit
 
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/set"
   install -dm755 "${pkgdir}/usr/share/doc/set"
 
-  cp --no-preserve=ownership -R * "${pkgdir}/usr/share/set"
+  cp --no-preserve=ownership -R ./* "${pkgdir}/usr/share/set"
   cp --no-preserve=ownership -R readme/* "${pkgdir}/usr/share/doc/set"
 
 cat > "${pkgdir}/usr/bin/setoolkit" << EOF
