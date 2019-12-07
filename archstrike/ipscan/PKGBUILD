@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=ipscan
-pkgver=3.6.1
+pkgver=3.6.2
 pkgrel=1
 pkgdesc="Angry IP scanner is a very fast IP address and port scanner."
 arch=('i686' 'x86_64')
@@ -14,20 +14,20 @@ depends=('java-runtime>=7')
 source=()
 source_i686+=("https://github.com/angryip/${pkgname}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.jar")
 source_x86_64+=("https://github.com/angryip/${pkgname}/releases/download/${pkgver}/${pkgname}-linux64-${pkgver}.jar")
-sha512sums_i686=('ebee0bb66da2c0de3b045987e24db74436ad084d54438c89412a295919235cfd24fbefdd0fd6b8ab6c36b2a5922d782af04b0e03bcb98620f0cc3b8a867926a1')
-sha512sums_x86_64=('cccbe9cf96e8ede5812af707a87b37c65378e22e9eb9cb746a803f60a8dadbf92e00315658cf51de1b76c56b512e9a53b1c9ec79c860b9db568b41bf60c50fcd')
+sha512sums_i686=('da33f2aa92fb042aaa269af889ab595ad6dd9a7262f5a5a801caef9ce0bed0e281dc51ac8e9ade1614d2a6136330a532063e9f0b266a281d5adcc95d52bda525')
+sha512sums_x86_64=('dd1594dd9647f404a0c89c3a3a121c759ba6f4892cc8f4f2185e6d317a6c6a31673534ec0407af77bb7d6ffda1192c900e52cc1701272b67c689634aaf8b33ff')
 
 package() {
   cd "${srcdir}" || exit
-  [[ ${CARCH} == "i686" ]] && _SRC=ipscan-linux-${pkgver}.jar
-  [[ ${CARCH} == "x86_64" ]] && _SRC=ipscan-linux64-${pkgver}.jar
+  [[ "${CARCH}" == "i686" ]] && _SRC="ipscan-linux-${pkgver}.jar"
+  [[ "${CARCH}" == "x86_64" ]] && _SRC="ipscan-linux64-${pkgver}.jar"
   _DST="${pkgdir}/usr/share/java/ipscan/${_SRC}"
   _BIN="${pkgdir}/usr/bin/ipscan"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/java/ipscan"
   cat > "${_BIN}" << EOF
 #!/usr/bin/env sh
-java -jar /usr/share/java/ipscan/${_SRC} "\$@"
+java -jar "/usr/share/java/ipscan/${_SRC}" "\$@"
 EOF
   chmod 755 "${_BIN}"
   install -Dm644 "${_SRC}" "${_DST}"
