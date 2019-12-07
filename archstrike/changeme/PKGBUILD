@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=changeme
 pkgver=1.2.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A default credential scanner"
 arch=('any')
