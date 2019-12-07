@@ -12,7 +12,7 @@ license=('custom')
 arch=('any')
 makedepends=('python2-setuptools')
 source=("https://github.com/m00n/tweepy/archive/$pkgver.tar.gz")
-md5sums=('66e523fb88cb5df3147b8256066c42f0')
+sha512sums=('6774bd5910319bd18ea972b3b50597c74d30bf6f8d1a32108b19cd636c079683bb4dd693ae2404692920f5c0e834a7e00ef7ccfbdc583df8a8217aeb35e9b09e')
 
 build() {
   cd "$srcdir/tweepy-$pkgver"
@@ -22,6 +22,6 @@ build() {
 package() {
   cd "$srcdir/tweepy-$pkgver"
   install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  python2 setup.py install --root=$pkgdir --optimize=1
+  python2 setup.py install --root=$pkgdir -O1
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname"
 }
