@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=fpdns
 pkgver=20190131
-pkgrel=1
+pkgrel=2
 pkgdesc="Program that remotely determines DNS server versions"
 url="https://github.com/kirei/fpdns"
 depends=('perl' 'perl-net-dns')
