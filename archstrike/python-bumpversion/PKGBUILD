@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="bumpversion"
+pkgname="python-${_pkgname}"
+pkgver=0.5.3
+pkgrel=1
+pkgdesc="Version-bump your software with a single command"
+url="https://github.com/peritus/bumpversion"
+depends=('python')
+makedepends=('python-setuptools')
+license=('MIT')
+arch=('any')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('0dd0f508aa24fe79a387422e1c2a5dd2ad1e955c0654e50965f3db313368cc64364776f61c4dbb1331280665bd8479160446ddf30f3c39938b4e359762d91ad0')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm0644 LICENSE.rst "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.rxt
+}
