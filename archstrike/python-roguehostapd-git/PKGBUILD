@@ -1,0 +1,21 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=roguehostapd
+pkgname="python-${_pkgname}-git"
+pkgver=1.2.3
+pkgrel=1
+pkgdesc="Hostapd wrapper for hostapd"
+url="https://github.com/wifiphisher/roguehostapd"
+depends=('python')
+makedepends=('python-setuptools' 'libnl' 'git')
+license=('BSD')
+arch=('any')
+source=("git+${url}.git")
+sha512sums=('SKIP')
+
+package() {
+  cd "${srcdir}/${_pkgname}" || exit
+  python setup.py install --root="${pkgdir}" -O1
+}
