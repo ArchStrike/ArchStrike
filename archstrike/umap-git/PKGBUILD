@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=umap-git
 pkgver=r25.3ad8121
-pkgrel=7
+pkgrel=8
 pkgdesc="The USB host security assessment tool"
 url="https://github.com/nccgroup/umap"
 arch=('any')
@@ -16,12 +16,12 @@ source=("${pkgname}::git+https://github.com/nccgroup/umap.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}"/umap-git
+  cd "${srcdir}/${pkgname}" || exit
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}"/umap-git
+  cd "${srcdir}/${pkgname}" || exit
   install -dm755 "${pkgdir}"/usr/bin/
   install -dm755 "${pkgdir}"/usr/share/umap-git
   cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
@@ -29,7 +29,7 @@ package() {
 
 cat > "${pkgdir}"/usr/bin/umap <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}
+cd "/usr/share/${pkgname}"
 python umap.py "\$@"
 EOF
 chmod 755 "${pkgdir}"/usr/bin/umap
