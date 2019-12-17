@@ -4,28 +4,28 @@ buildarch=1
 
 pkgname=webacoo
 pkgver=0.2.3
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="Web Backdoor Cookie Script-Kit"
 url="https://github.com/anestisb/WeBaCoo"
 arch=('any')
 license=('GPL3')
 depends=('perl-io-socket-socks' 'perl-uri-fetch')
-source=("https://github.com/anestisb/WeBaCoo/archive/v${pkgver}.tar.gz")
+source=("${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('2ed6656acf0123d16486087a9bf74b026b2016cb3bdbb4391a32ac7bf95a027ac138de6b09932b9536dc8626c03a116ee033f720f60415d53e536d539e295ef4')
 
 package() {
-  cd "${srcdir}/WeBaCoo-${pkgver}"
+  cd "${srcdir}/WeBaCoo-${pkgver}" || exit
 
   # Base directories.
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  cp -a * "${pkgdir}/usr/share/${pkgname}"
+  cp -a ./* "${pkgdir}/usr/share/${pkgname}"
 
   cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/usr/bin/env bash
-perl /usr/share/${pkgname}/${pkgname}.pl "\$@"
+perl "/usr/share/${pkgname}/${pkgname}.pl" "\$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
