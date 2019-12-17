@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-libtaxii
+pkgver=1.1.113
+pkgrel=1
+pkgdesc="TAXII Library."
+url="https://github.com/TAXIIProject/libtaxii"
+depends=('python2-lxml' 'python2-dateutil')
+makedepends=('python2-setuptools')
+license=('custom')
+arch=('any')
+source=("https://github.com/TAXIIProject/libtaxii/archive/$pkgver.tar.gz")
+sha512sums=('cf727958df5314afbea5daae198f9764480cc8744c13f451f36367d70266d6aa0a3ef3e81b1151803bc289732a3ef1102feddca5a967636efdd98e647bfee59c')
+
+build() {
+  cd libtaxii-"${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd libtaxii-"${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm0644 LICENSE.txt "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.txt
+  find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+}
