@@ -2,9 +2,10 @@
 
 buildarch=1
 
-pkgname=webpwn3r-git
+_pkgname="webpwn3r"
+pkgname="${_pkgname}-git"
 pkgver=20140521.r35
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A python based Web Applications Security Scanner"
 url='https://github.com/zigoo0/webpwn3r'
@@ -12,32 +13,29 @@ arch=('any')
 license=('GPL2')
 depends=('python2')
 makedepends=('git')
-provides=('webpwn3r')
-replaces=('webpwn3r')
-conflicts=('webpwn3r')
-source=("webpwn3r::git+https://github.com/zigoo0/webpwn3r.git")
+source=("webpwn3r::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/webpwn3r"
+  cd "${srcdir}/${_pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' "$srcdir/webpwn3r" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${srcdir}/${_pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-  cd $srcdir/webpwn3r
-  install -dm755 "$pkgdir/usr/share/webpwn3r"
-  install -dm755 "$pkgdir/usr/bin"
+  cd "${srcdir}/${_pkgname}" || exit
+  install -dm755 "${pkgdir}/usr/share/webpwn3r"
+  install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/webpwn3r"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/webpwn3r"
 
-cat > "$pkgdir/usr/bin/webpwn3r" <<EOF
+cat > "${pkgdir}/usr/bin/webpwn3r" <<EOF
 #!/usr/bin/env bash
 cd /usr/share/webpwn3r
 python2 scan.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/webpwn3r"
+chmod 755 "${pkgdir}/usr/bin/webpwn3r"
 }
