@@ -1,0 +1,24 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+pkgname=libhtp
+pkgver=0.5.32
+pkgrel=1
+pkgdesc="LibHTP is a security-aware parser for the HTTP protocol and the related bits and pieces"
+arch=('i686' 'x86_64')
+url="https://github.com/OISF/libhtp"
+license=('GPL2')
+depends=('zlib')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('3df877b158b40a2c59bc66c0caf589d51b20d1d3ca27dab82f516693c22bfb9d6845305cfd42bf1a61c5df98a05fcad25850cc78cf948047600d6783ace7fc63')
+
+build() {
+  cd ${pkgname}-${pkgver}
+  ./autogen.sh
+  ./configure --prefix=/usr
+  make
+}
+
+package() {
+  cd ${pkgname}-${pkgver}
+  make DESTDIR="${pkgdir}" install
+}
