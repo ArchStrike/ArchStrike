@@ -4,14 +4,14 @@ buildarch=1
 
 _pkgname=fern-wifi-cracker
 pkgname=$_pkgname-git
-pkgver=20190804.r266
+pkgver=20191018.r282
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
 arch=('any')
 url='https://github.com/savio-code/fern-wifi-cracker'
 license=('GPL')
-depends=('python2-pyqt5' 'macchanger' 'xterm' 'aircrack-ng' 'scapy')
+depends=('python-pyqt5' 'macchanger' 'xterm' 'aircrack-ng' 'scapy')
 makedepends=('git')
 provides=("$_pkgname")
 conflicts=("$_pkgname")
@@ -28,18 +28,13 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
-prepare() {
-  cd $_pkgname
-  sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|' Fern-Wifi-Cracker/execute.py
-}
-
 package() {
   install -Dm644 "$_pkgname.desktop" "$pkgdir/usr/share/applications/$_pkgname.desktop"
 
   install -d "$pkgdir/usr/bin"
-  echo -e '#!/usr/bin/env bash\n\ncd /usr/share/fern-wifi-cracker\npython2 ./execute.py "\$@"' > "$pkgdir/usr/bin/$_pkgname"
+  echo -e '#!/usr/bin/env bash\n\ncd /usr/share/fern-wifi-cracker\npython ./execute.py "\$@"' > "$pkgdir/usr/bin/$_pkgname"
   chmod 755 "$pkgdir/usr/bin/$_pkgname"
 
   install -d "$pkgdir/usr/share/$_pkgname"
-  cp -R --no-preserve=ownership $_pkgname/Fern-Wifi-Cracker/* "$pkgdir/usr/share/$_pkgname/"
+  cp -a --no-preserve=ownership $_pkgname/Fern-Wifi-Cracker/* "$pkgdir/usr/share/$_pkgname/"
 }
