@@ -5,15 +5,15 @@ buildarch=1
 _pkgname=poyo
 pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=0.4.2
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 arch=('any')
 url="https://github.com/pydanny/poyo"
 license=('BSD')
 makedepends=('python' 'python2' 'python-setuptools' 'python2-setuptools')
 replaces=('python2-poyo')
 source=("${pkgname}::https://files.pythonhosted.org/packages/source/p/poyo/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('8c34fa816e7c4a919f7e2b221df2983458a0e7dc70d73f5184bab9cd6add42581b48ca9b7eb83188b529559787a54e1a779fce55717346b3a0fa8d3866a8028f')
+sha512sums=('aad4334a2aaf63cafab0ecdbdd6f94e9e3d412e6476d7ac13a4399b4af0f43b1eb910e6a3cc7438e84262bc39413fadbe91674534e1e66f446d738c1328b9905')
 
 prepare(){
   cp -a ${_pkgname}-${pkgver}{,-py2}
