@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ruby-rubyzip
 _gemname=rubyzip
-pkgver=1.2.2
+pkgver=2.0.0
 pkgrel=1
 pkgdesc="A ruby module for reading and writing zip files."
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('ruby' 'ruby-rdoc')
 source=(http://rubygems.org/downloads/${_gemname}-${pkgver}.gem)
 noextract=(${_gemname}-${pkgver}.gem)
-sha512sums=('2adbf775e8480a90bd25de7fc9a4094079a7b1f81266a3866b163da47dcc5d5b08a39ec4e00f892212d3849bd8974ce9179b44c06d447d3b0f984dec305724b8')
+sha512sums=('f02aae8028ed871241607de4b1b8283c0a45dd8c488ce0808f2d0f60f8360346b9065a7b321da2dc5b5d3087ac238f8b58a59a0669dd23b2176fc257ee6e2a88')
 
 package() {
   cd $srcdir
