@@ -4,45 +4,44 @@ buildarch=1
 
 _pkgname=wifiphisher
 pkgname=${_pkgname}-git
-pkgver=20191108.r755
+pkgver=20191215.r777
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc='A tool for Fast automated phishing attacks against WPA networks'
 arch=('any')
 url='https://github.com/wifiphisher/wifiphisher'
 license=('GPL3')
-depends=('scapy' 'hostapd' 'aircrack-ng' 'dnsmasq' 'python2' 'python2-jinja'
-         'python2-pyric' 'net-tools' 'procps-ng' 'python2-blessings'
-         'python2-tornado' 'python2-dbus' 'python2-pbkdf2' 'python2-roguehostapd'
-         'python2-scapy')
+depends=('scapy' 'hostapd' 'aircrack-ng' 'dnsmasq' 'python' 'python-jinja'
+         'python-pyric' 'net-tools' 'procps-ng' 'python-blessings'
+         'python-tornado' 'python-dbus' 'python-pbkdf2'
+         'python-roguehostapd-git' 'python-scapy')
 makedepends=('git')
-provides=("${_pkgname}")
 source=("${pkgname}::git+https://github.com/${_pkgname}/${_pkgname}.git")
 sha512sums=('SKIP')
 
 prepare(){
-  grep -iRl python ${pkgname} | xargs sed -i 's|python$|python2|g'
-  sed -i 's|/usr/sbin/|/usr/bin/|g' ${pkgname}/${_pkgname}/pywifiphisher.py
+  grep -iRl python "${pkgname}" | xargs sed -i 's|python$|python|g'
+  sed -i 's|/usr/sbin/|/usr/bin/|g' "${pkgname}/${_pkgname}/pywifiphisher.py"
 }
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
   "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}" || exit
 
   # Make base directories.
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
-python2 /usr/share/${pkgname}/bin/${_pkgname} "\$@"
+python "/usr/share/${pkgname}/bin/${_pkgname}" "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
