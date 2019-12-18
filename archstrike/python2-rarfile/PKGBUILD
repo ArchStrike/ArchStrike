@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python2-rarfile
-pkgver=3.0
-pkgrel=2
+pkgver=3.1
+pkgrel=1
 pkgdesc="RAR archive reader for Python"
 url="https://github.com/markokr/rarfile"
 depends=('python2')
@@ -12,7 +12,7 @@ makedepends=('python2-setuptools')
 license=('ISC')
 arch=('any')
 source=("https://github.com/markokr/rarfile/archive/rarfile_${pkgver/./_}.tar.gz")
-sha512sums=('3ff17ac143297f305b80dc37112b38164f03bfdc180cf2368dc0710b847aa966ac9c3d0efe6f0a9e627ddb003b6f60a493025dea67d1aa2a320e1173cc9abf3d')
+sha512sums=('f966c9a704827827af9d75796730677dbb5a55ddb0a83ad57e9ee8a2c0cb4e48c1fb1bb620506612388ab9929eb356badb7752acaf703b1db1bcb179ad465aaf')
 
 build() {
     cd $srcdir/rarfile-rarfile_${pkgver/./_}
