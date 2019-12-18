@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=samhain
-pkgver=4.3.2
+pkgver=4.4.0
 pkgrel=1
 pkgdesc="File integrity / intrusion detection system"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ source=("http://la-samhna.de/${pkgname}/${pkgname}-current.tar.gz"
         "${pkgname}rc.linux.patch"
         "${pkgname}.tmpfiles.conf"
         "${pkgname}.service")
-sha512sums=('aaa4c9e384715fffaa55d3d5838bf137f199bd7a8da2f2005e165ead03f82c401de74806c4a2687eaa217927d50c5400417805ac37dfd36c4b0ad959c3bf2d1e'
+sha512sums=('21152a2a01d216f72729237403f5bd5e7c323a78f91ce7d05045655addad1415dad47183b0a7828d8b5dd4283a4436cfa5ba1c0b5aa95256a3da41293a151ff8'
             '60711b05211aebe4a12368ca54e4a5516a0a04bbae838b95811bb5823ad6d307d2b8bc9e5b36f23b0a3cae8919712dfac2ba7acf5b27238a23b9f8f5dce6e8fd'
             '7b173400586412f08d5f55a1eeaf2454d19fbb9df5b5958e22e336d6e9daec09a694af6242d5f84a506d7f143180aa30cca7c53af3021638778e64851e6ac428'
             'ddc65ab92cc9acc5be43603bfbfaf5ad58aedf345164c2cb86be61d2d75ae0c6e231d56be88f1ce195d30ce01fb6f3d8094d7adb46deb4f2ed45890e89a9b0c0')
