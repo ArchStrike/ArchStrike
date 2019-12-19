@@ -15,7 +15,7 @@ license=('Apache')
 options=('!emptydirs')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
-depends=('ruby2.5' 'ruby2.5-bundler' 'java-environment' 'python2' 'imagemagick')
+depends=('ruby' 'ruby-rdoc' 'ruby-bundler' 'java-environment' 'python' 'imagemagick' 'nodejs' 'sqlite' 'libtool' 'openssl' 'gcc' 'readline' 'zlib' 'libyaml' 'bzip2' 'autoconf' 'automake' 'bison')
 makedepends=('git')
 source=("${pkgname}::git+http://github.com/beefproject/beef.git")
 sha512sums=('SKIP')
@@ -33,13 +33,13 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
   cd "${pkgdir}/usr/share/${_pkgname}"
-  bundle-2.5 install --path vendor/bundle
+  bundle install --path vendor/bundle --without test development
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
 cd /usr/share/${_pkgname}
 unset GEM_HOME
-/usr/bin/ruby-2.5 ./${_pkgname} "\$@"
+/usr/bin/ruby ./${_pkgname} "\$@"
 EOF
 chmod 0755 "${pkgdir}/usr/bin/${_pkgname}"
 }
