@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=archstrike-installer
-pkgver=2.2.2
+pkgver=2.2.3
 pkgrel=1
 arch=('any')
 pkgdesc="Full ArchStike installer for the ArchStrike live environment"
@@ -11,7 +11,7 @@ url="https://github.com/ArchStrike/archstrike-installer"
 license=('MIT')
 depends=('python2' 'arch-install-scripts' 'gptfdisk' 'util-linux' 'lvm2' 'cryptsetup' 'mkinitcpio' 'wpa_supplicant')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('7bf7933b21966b6f84c8aaa68cd57a1531f27a094f83f73b2f14c26c4ffbf4db500cbf47f89f4aa6deb10b946ae5cdf883b71b16fbba36f74b57cc8e4704255c')
+sha512sums=('4b840efe6ea317b60df9ed9ab740f60e529a54c1aeca81e84aeb1d90f17207ea40aaf763fa8b3dbf279cc84f0286b43a2fed28b3fdfa24309f4f7c763a77ce6e')
 
 package() {
   cd "${pkgname}-${pkgver}" || exit
