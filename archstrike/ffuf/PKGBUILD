@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=ffuf
 pkgver=0.12
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast web fuzzer in Go'
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url='https://github.com/ffuf/ffuf'
@@ -17,13 +17,13 @@ sha512sums=('7feb812ce8f59707b07e9edaee2037a9a33088cc79bbaa5b78a07b137b0144fdff0
 
 build() {
   cd "$pkgname-$pkgver"
-  GOPATH="${srcdir}" go get -fix -v -x "${ffuf#https://}"
+  GOPATH="${srcdir}" go get -fix -v -x "${url#https://}"
 }
 
 package() {
   cd "$pkgname-$pkgver"
   install -dm755 "${pkgdir}/usr/bin"
-  GOPATH="${srcdir}" go build -v "${ffuf#https://}"
+  GOPATH="${srcdir}" go build -v "${url#https://}"
 
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
