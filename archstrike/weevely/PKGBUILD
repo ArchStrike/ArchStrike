@@ -4,20 +4,16 @@ buildarch=1
 
 pkgname=weevely
 _pkgname=weevely3
-pkgver=3.7.0
+pkgver=4.0.0
 pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="A Stealth tiny web shell that provides a telnet-like console."
 arch=('any')
-url='http://epinna.github.io/Weevely3'
-depends=('python2-dateutil' 'python2-pysocks' 'python2-mako' 'python2-prettytable' 'python2-yaml')
+url='https://github.com/epinna/weevely3'
+depends=('python-dateutil' 'python-pysocks' 'python-mako' 'python-prettytable' 'python-yaml' 'php')
 license=('GPL')
-source=("https://github.com/epinna/weevely3/archive/v${pkgver}.tar.gz")
-sha512sums=('18c8bf6bee84e638afd80841df32333e4848f65ad8549528f3c0f984c62b92011a44ac95971a339e51ecbef39e67873e5834ded03b8b39068ed7ff07f1c8fc21')
-
-prepare(){
-  grep -iRl 'python' "${_pkgname}-${pkgver}" | xargs sed -i 's|python$|python2|g'
-}
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('5b04aa5bbba09f4ced36331ef4bed2a29b0ce47bc96caf832aa2ff2e93940a9fe341a9dfa11f3ee994932c90fc875d8366daadd7ea9709827b23b39864c27d2c')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}" || exit
@@ -33,7 +29,7 @@ package() {
 cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/usr/bin/env bash
 cd /usr/share/${pkgname}
-python2 weevely.py "\$@"
+python weevely.py "\$@"
 EOF
 
 chmod 755 "${pkgdir}/usr/bin/${pkgname}"
