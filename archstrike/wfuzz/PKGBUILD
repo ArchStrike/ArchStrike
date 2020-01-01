@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=wfuzz
-pkgver=2.4.2
+pkgver=2.4.4
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-fuzzers')
 pkgdesc="Utility to fuzz web applications to find their not linked resources"
@@ -12,10 +12,10 @@ arch=('any')
 license=('GPL')
 depends=('python-pycurl' 'python-six' 'python-future' 'python-wxpython' 'python-chardet' 'python-shodan')
 makedepends=('python-setuptools')
-source=("https://github.com/xmendez/wfuzz/archive/v.${pkgver}.tar.gz")
-sha512sums=('30b7b87d3acb73d50a55b878326f6d211a6050c4236d71a5ed41f3b0797ca795b915c1e50cf2d663a0ac10da75105f89fdd3bc1338f56d3c768f9425761159bf')
+source=("https://github.com/xmendez/wfuzz/archive/v${pkgver}.tar.gz")
+sha512sums=('1e77d0dbf845733dbe9c49b67b5029ddda45fd27646ecd26be1c3b8621fb458efa6004337f6ae5102ebec5eff246be15116a34bc9b981ae77543f3a49de571cd')
 
 package() {
-  cd "${pkgname}-v.${pkgver}" || exit
+  cd "${pkgname}-${pkgver}" || exit
   python setup.py install --root="${pkgdir}" -O1
 }
