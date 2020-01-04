@@ -5,20 +5,49 @@ buildarch=1
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
 pkgver=20191103.r2023
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
-license=('GPL')
+license=('GPL3')
 depends=('bash>=4.2' 'iw' 'net-tools' 'wireless_tools' 'gawk' 'aircrack-ng' 'xterm'
          'reaver-wps-fork-t6x-git' 'iproute2' 'xorg-xdpyinfo' 'ethtool' 'pciutils'
-         'usbutils' 'rfkill' 'wget' 'ccze' 'curl' 'xorg-xset' 'tmux' 'procps-ng')
-optdepends=('wpaclean' 'crunch' 'hashcat' 'mdk4' 'hostapd' 'lighttpd' 'iptables'
-            'beef-git' 'ettercap' 'sslstrip' 'dhcpcd' 'dsniff' 'bully' 'pixiewps'
-            'bettercap-git' 'john' 'asleap' 'hostapd-wpe' 'nftables'
-            'openssl' 'mdk3')
-makedepends=('git')
+         'usbutils' 'rfkill' 'wget' 'ccze' 'curl' 'xorg-xset' 'tmux' 'procps-ng'
+         'coreutils' 'sed' 'xterm')
+optdepends=(
+  'asleap: Actively recover LEAP/PPTP passwords'
+  'bettercap: Complete, modular, portable and easily extensible MITM framework'
+  'bully: Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
+  'ccze: Robust and modular log colorizer with many plugins'
+  'crunch: A wordlist generator where you can specify a standard character set or a character set you specify and generate all possible combinations and permutations'
+  'curl: An URL retrieval utility and library'
+  'dhcp: A DHCP server, client, and relay agent'
+  'dsniff: Collection of tools for network auditing and penetration testing'
+  'ethtool: Utility for controlling network drivers and hardware'
+  'ettercap: A network sniffer/interceptor/logger for ethernet LANs'
+  'hashcat: Multithreaded advanced password recovery utility'
+  'hostapd: IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
+  'hostapd-wpe: Modified hostapd to facilitate AP impersonation attacks'
+  'john: John the Ripper password cracker'
+  'iptables: Linux kernel packet control tool'
+  'lighttpd: A secure, fast, compliant and very flexible web-server'
+  'mdk3: WLAN penetration tool'
+  'mdk4: WLAN penetration tool'
+  'nftables: This software provides an in-kernel packet classification framework'
+  'openssl: The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+  'pixiewps: Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs'
+  'reaver: Brute force attack against Wifi Protected Setup'
+  'rfkill: Tool for enabling and disabling wireless devices'
+  'sslstrip: Python tool to hijack HTTPS connections during a MITM attack'
+  'usbutils: USB Device Utilities'
+  'wget: A network utility to retrieve files from the Web'
+  'xorg-xdpyinfo: Display information utility for X'
+  'xorg-xset: User preference utility for X'
+)
+makedepends=('binutils' 'coreutils' 'git')
+conflict=('airgeddon-git')
+provides=('airgeddon-git')
 source=("${pkgname}::git+https://github.com/v1s1t0r1sh3r3/airgeddon.git")
 sha512sums=('SKIP')
 
