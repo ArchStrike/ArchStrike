@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=aiengine
-pkgver=1.9.0
+pkgver=1.9.1
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A network intrusion detection engine with capabilities of learning without any human intervention."
@@ -11,15 +11,20 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://bitbucket.org/camp0/aiengine"
 license=('GPL3')
 depends=('libpcap' 'boost' 'boost-libs' 'boost-bloom-filters' 'python2' 'log4cxx-svn' 'pcre' 'gcc-libs')
-source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-${pkgver}.tar.gz")
-sha512sums=('ddd62de0e09d76d9f888fca5ec951949973c3ae8fa1cab7ce93c22b90ee364484d3cf2bee84bf5000f2a063b88aa24e53d666b1e35ef1918729e4aa52192260f')
+source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-${pkgver}.tar.gz"
+        "1.9.1-only.diff")
+sha512sums=('3070718544563b0200232b09fb0c461a97b52ed870962ee807c00ce4cdc39e75f0f18b82c1925452a0ebc5413efdaea0570cae5884af6a64cf30bd58cc331940'
+            '218bc1f09df15246ec51b03baf069305d82a117091aa1d770774ac9f452051e29d97c18d74f6f39632a7b1ba5ce925b1ebd751610d04c0effe5d1f1ba676f710')
 
 prepare(){
-   grep -iRl 'python' "${pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  # Remove patch for 1.9.2+
+
+  patch -d "${pkgname}-${pkgver}" -p1 < 1.9.1-only.diff
 }
 
 build() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   ./autogen.sh
   export CXXFLAGS="-llog4cxx"
   export PYTHON=/usr/bin/python2.7
@@ -30,6 +35,6 @@ build() {
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
