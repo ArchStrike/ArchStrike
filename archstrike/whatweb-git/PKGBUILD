@@ -2,24 +2,22 @@
 
 buildarch=1
 
-pkgname=whatweb-git
 _pkgname=WhatWeb
-pkgver=r4263.1420e9fa
+pkgname=whatweb-git
+pkgver=r4698.cc536c4a
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-recon')
 pkgdesc="Next generation web scanner that identifies what websites are running."
 arch=('any')
 url='https://github.com/urbanadventurer/WhatWeb'
 license=('GPL')
-conflicts=('whatweb')
-provides=('whatweb')
-depends=('ruby')
-makedepends=('git')
-source=("$pkgname::git+https://github.com/urbanadventurer/$_pkgname.git")
+depends=('ruby' 'ruby-bundler')
+makedepends=('git' 'rubygems')
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname}" || exit
   ( set -o pipefail
     git describe --long 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g' ||
     printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
@@ -27,6 +25,19 @@ pkgver() {
 }
 
 package() {
-  cd "$srcdir/$pkgname"
-  make DESTDIR=$pkgdir install
+  cd "${srcdir}/${pkgname}" || exit
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/whatweb"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/whatweb"
+  cd "${pkgdir}/usr/share/whatweb"
+  bundle install --path vendor/bundle
+
+cat > "${pkgdir}/usr/bin/whatweb" << EOF
+#!/usr/bin/env bash
+cd /usr/share/whatweb
+unset GEM_HOME
+/usr/bin/bundler exec ./whatweb "\$@"
+EOF
+
+chmod 0755 "${pkgdir}/usr/bin/whatweb"
 }
