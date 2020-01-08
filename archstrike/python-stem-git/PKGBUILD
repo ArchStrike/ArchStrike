@@ -1,0 +1,38 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname="python-stem-git"
+pkgver=20200105.r3730
+pkgrel=1
+epoch=1
+pkgdesc='A controller library for Tor'
+arch=('any')
+url='https://stem.torproject.org/'
+license=('LGPL3')
+depends=('python' 'python-mock'  'python-pyflakes' 'python-pycodestyle'
+         'python-tox' 'python-cryptography')
+makedepends=('git' 'python-setuptools')
+source=("${pkgname}::git+http://git.torproject.org/stem.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}" || exit
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  cd "${srcdir}/${pkgname}" || exit
+  rm -rf {LICENSE}
+}
+
+build() {
+  cd "${srcdir}/${pkgname}" || exit
+  python setup.py build
+}
+
+package() {
+
+  cd "${srcdir}/${pkgname}" || exit
+  python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
+}
