@@ -5,12 +5,12 @@ buildarch=1
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
 pkgver=20200108.r2063
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
-license=('GPL')
+license=('GPL3')
 depends=('bash>=4.2' 'iw' 'gawk' 'aircrack-ng' 'xterm' 'reaver-wps-fork-t6x-git'
          'iproute2' 'xorg-xdpyinfo' 'ethtool' 'pciutils' 'usbutils' 'rfkill'
          'wget' 'ccze' 'curl' 'xorg-xset' 'tmux' 'procps-ng')
@@ -46,7 +46,7 @@ prepare() {
   cd "${srcdir}/${pkgname}" || exit
   sed -i 's|AIRGEDDON_AUTO_UPDATE=true|AIRGEDDON_AUTO_UPDATE=false|' .airgeddonrc
   sed -i 's|AIRGEDDON_MDK_VERSION=mdk4|AIRGEDDON_MDK_VERSION=mdk3|' .airgeddonrc
-  rm -rf {*.md,.github,binaries,imgs,Dockerfile,pindb_checksum.txt,.editorconfig}
+  rm -rf {binaries,imgs,Dockerfile,pindb_checksum.txt,LICENSE}
 }
 
 package() {
