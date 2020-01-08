@@ -1,0 +1,31 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=mdk4
+pkgver=4.1
+pkgrel=1
+groups=('archstrike' 'archstrike-wireless' 'archstrike-exploit')
+pkgdesc="Proof-of-concept tool to exploit common IEEE 802.11 protocol weaknesses"
+url="https://github.com/aircrack-ng/mdk4"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
+license=('GPL3')
+depends=('glibc' 'make')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('b1472458ca02bf94f8717ac70b631f994c38cb67012fc38df0b6859778790b220447e6c1b3f15558e8f203da06ffa83bd36e5f037cb704e893c3fcf329022adc')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  sed -i 's|sbin|bin|g' src/Makefile
+  sed -i 's|/usr/local|/usr|g' Makefile
+  sed -i 's|PREFIX:|PREFIX|g' Makefile
+}
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  make
+}
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  make DESTDIR="${pkgdir}" install
+}
