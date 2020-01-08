@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
 pkgver=20200108.r2063
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
@@ -56,6 +56,7 @@ package() {
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -Dm644 .airgeddonrc "${pkgdir}/usr/share/${_pkgname}/.airgeddonrc"
   cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}"
+  sed -i 's|AIRGEDDON_MDK_VERSION=mdk4|AIRGEDDON_MDK_VERSION=mdk3|' "${pkgdir}/usr/share/${_pkgname}/.airgeddonrc"
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/usr/bin/env bash
