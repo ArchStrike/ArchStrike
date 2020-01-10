@@ -1,6 +1,6 @@
 #
 # ArchStrike repository mirrorlist
-# Generated on 2019-11-28
+# Generated on 2020-01-10
 #
 
 ## Official Mirrors
@@ -24,6 +24,7 @@ Server = https://mirror.cedia.org.ec/archstrike/$arch/$repo
 Server = https://mirror.uce.edu.ec/archstrike/$arch/$repo
 Server = https://mirror.epn.edu.ec/archstrike/$arch/$repo
 Server = http://archstrike.outerworld.org/$arch/$repo
+Server = https://archstrike.unixpeople.org/$arch/$repo
 
 # Obsolete
 #Server = https://as.arlm.tyzoid.com/$arch/$repo

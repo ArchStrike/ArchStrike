@@ -11,7 +11,7 @@ license=('GPL3')
 arch=('any')
 backup=("etc/pacman.d/${pkgname}")
 source=("${pkgname}")
-sha512sums=('e33c6185c81a900c5947e701aed223aafdef988784d8acbe286ac974e7050d959153d56099ed10a599df511bbffa7109fd2b442aa5c691dc39be876b835853ff')
+sha512sums=('6f591eabee795f38191df651e16968f3c11cbd6d09c627e7a2e950d670cd0cb523240e7a3afb4a593c6a213c1af641bf56c7c2ef7443e43ead6881ae8d0f7c84')
 
 package() {
   install -dm755 "${pkgdir}/etc/pacman.d"
