@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=sublist3r-git
-pkgver=20191022.r133
+pkgver=20200105.r134
 pkgrel=1
 arch=('any')
 groups=('archstrike' 'archstrike-dns' 'archstrike-scanners')
