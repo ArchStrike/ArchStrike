@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=cewl
 _pkgname=CeWL
-pkgver=5.4.6
+pkgver=5.4.7
 pkgrel=1
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-crackers')
 pkgdesc='A custom word list generator'
@@ -14,7 +14,7 @@ license=('CCPL')
 depends=('ruby' 'ruby-spider' 'ruby-mini_exiftool' 'ruby-nokogiri'
          'ruby-http_configuration' 'ruby-rubyzip' 'ruby-zip' 'ruby-mime' 'ruby-mime-types')
 source=("https://github.com/digininja/CeWL/archive/${pkgver}.tar.gz")
-sha512sums=('841aa0cce1cf8993c39d9c799b14f23d44e0dfe8933c932eaa76332b3f912f6af5398c0d320fd825c8979b3df9da05f04df7ebdb187ece6a374822113cf681e4')
+sha512sums=('abbb9cddefc45727bdc887fbc9f26dab4d130ae8d082ca1f96bec40a94f6ec7adcb1892c218d65a33953d73e901f30705582cfc7de4cb960a51e29c3997ae205')
 
 package() {
   cd "${_pkgname}-${pkgver}" || exit
