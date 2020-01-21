@@ -3,7 +3,7 @@
 buildarch=196
 
 pkgname=pwntools
-pkgver=3.13.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc='CTF framework and exploit development library'
 arch=('armv7' 'i686' 'x86_64')
@@ -11,28 +11,23 @@ url='https://github.com/Gallopsled/pwntools'
 license=('MIT')
 groups=('archstrike' 'archstrike-exploit' 'archstrike-misc')
 depends_x86_64+=('lib32-glibc')
-depends=('python2-dateutil' 'python2-paramiko' 'python2-mako' 'python2-pyelftools' 'capstone' 'ropgadget' 'python2-pyserial' 
-         'python2-requests' 'python2-pygments' 'python2-pysocks' 'python2-tox' 'python2-pip' 'python2-psutil' 'python2-unicorn'
-         'python2-intervaltree' 'python2-pypandoc' 'python2-sortedcontainers')
-makedepends=('python2-setuptools')
+depends=('python-dateutil' 'python-paramiko' 'python-mako' 'python-pyelftools' 'capstone' 'ropgadget' 'python-pyserial' 
+         'python-requests' 'python-pygments' 'python-pysocks' 'python-tox' 'python-pip' 'python-psutil' 'python-unicorn'
+         'python-intervaltree' 'python-pypandoc' 'python-sortedcontainers')
+makedepends=('python-setuptools')
 replaces=('binjitsu-git')
 provides=('binjitsu-git')
 source=("https://github.com/Gallopsled/pwntools/archive/$pkgver.tar.gz")
-sha512sums=('6480fef7a2ed2b9dcee15fb8cddbbb4f33fbb9e61648faad2e6736e15218022187d22bb41d832148c76ebae07f512e46784c08994a040fd330856dfb810a033d')
-
-prepare() {
-  cd "$pkgname-$pkgver"
-  sed -i 's|python|python2|' pwnlib/elf/datatypes.py
-}
+sha512sums=('23c566ff5682bea2e0bb0b6b39ff2d211e4cba5a47a6b7d1d9870eef5ffaaf8d37f2826106d7821ef3969de76b6e0e994bd3d27314c837d4be2e5702d0925852')
 
 build(){
     cd "$pkgname-$pkgver"
-    python2 setup.py build
+    python setup.py build
 }
 
 package() {
     cd "$pkgname-$pkgver"
-    python2 setup.py install --root="$pkgdir/" -O1 --skip-build
+    python setup.py install --root="$pkgdir/" -O1 --skip-build
 
     # install license
     install -Dm644 LICENSE-pwntools.txt "$pkgdir/usr/share/licenses/$pkgname/license-pwntools.txt"
