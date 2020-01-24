@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=pyinstaller
 _pkgname=PyInstaller
-pkgver=3.5
+pkgver=3.6
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package."
 url="https://github.com/pyinstaller/pyinstaller"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('bdb2a138af1f402dea8d89c7e317600896d3139742a12c6335aeff7c56e99977b8fa258c5a626dbf73d22f3e2b6064bf1d4494a021300fcadc051dde8712ed01')
+sha512sums=('97e7ac3632b5a84a85268c68cb3f3a404ca9f2786396f31016313a15c81c9c453983fd9d0376de0e7543401d3ad8af58b839dde7cefb0dfe7cbb9f3ac360f3e0')
 
 build() {
   cd "${_pkgname}-${pkgver}"
