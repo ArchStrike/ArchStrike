@@ -4,8 +4,8 @@ buildarch=1
 
 pkgname=weevely
 _pkgname=weevely3
-pkgver=4.0.0
-pkgrel=2
+pkgver=4.0.1
+pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-backdoors')
 pkgdesc="A Stealth tiny web shell that provides a telnet-like console."
 arch=('any')
@@ -13,7 +13,7 @@ url='https://github.com/epinna/weevely3'
 depends=('python-dateutil' 'python-pysocks' 'python-mako' 'python-prettytable' 'python-yaml' 'php')
 license=('GPL')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('5b04aa5bbba09f4ced36331ef4bed2a29b0ce47bc96caf832aa2ff2e93940a9fe341a9dfa11f3ee994932c90fc875d8366daadd7ea9709827b23b39864c27d2c')
+sha512sums=('a352caa1bc4ee8e2889f4ad61642d97ccfe64e54cd03809e8920b93987b8d6e84388d7b27de149ae6551ced7af886cb7881dcf78d504397c044b7d6a4047d486')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}" || exit
