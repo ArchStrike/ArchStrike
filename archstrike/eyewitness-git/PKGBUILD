@@ -36,5 +36,5 @@ package() {
 cd "/usr/share/${pkgname}"
 python "${_pkgname}.py" "\$@"
 EOF
-  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+  chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
