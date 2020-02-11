@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=exabgp
-pkgver=4.1.2
+pkgver=4.2.6
 pkgrel=1
 pkgdesc='The BGP swiss army knife of networking'
 arch=('any')
@@ -16,7 +16,7 @@ backup=('etc/exabgp.conf')
 makedepends=('python2-setuptools')
 source=("https://github.com/Exa-Networks/${pkgname}/archive/${pkgver}.zip"
         'exabgp.service')
-sha512sums=('101f61e292f8ec78b10163825fdb94ac359348576edbfe3459ab96eb60ba2ed18599d933bd1395caa45c09ccf8f0cbd914feb740590247226fc76ab42b18f875'
+sha512sums=('bd81e3d881b3c7fe2d763a8b0153d0f2748fdc5fc7121fbda11d0f3ba2b11f4b97c94bdfce6fd76a545d17d86565b49baa9d66faed3d75b73c078bbb7ff45c23'
             '225726cf424d9c2a23a2c0e9d3c7ed8c5cf03993f9518efd8e45079822b2d8cbc4d6fd18b49794beee522530478b57e5e3b268b3abd92442680cdd695504360d')
 
 build() {
@@ -30,7 +30,7 @@ package() {
     # upstream installer
     python2 setup.py install --root="$pkgdir" --install-data=/
     # install license
-    install -D -m 644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    install -D -m 644 LICENCE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
     popd
     # systemd
     install -D -m 644 $pkgname.service \
