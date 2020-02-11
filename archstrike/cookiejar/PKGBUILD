@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=cookiejar
-pkgver=0.0.2
-pkgrel=2
+pkgver=0.0.3
+pkgrel=1
 pkgdesc="Cookiecutter templates discovery and management."
 arch=('any')
 url="https://github.com/fcurella/cookiejar"
@@ -12,8 +12,8 @@ groups=('archstrike')
 license=('BSD')
 depends=('python-poyo' 'python-pager' 'python-cookiecutter' 'python-future' 'python-whichcraft')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/75/90/e87d2fba62697d37469eedbbfa0f81dd84912c6fd5f34fff77afa56fa2f9/cookiejar-0.0.2.tar.gz")
-sha512sums=('292b9223600d583ad28583c19c93d97b84a346c6ba16af04435f7d63322965a0af467eebf5b773bb78983ceaa386ae6e48d5829d2aadab9d14bd011f237e31f3')
+source=("https://github.com/fcurella/cookiejar/archive/v${pkgver}.tar.gz")
+sha512sums=('f6fe88ca951b7b699323b7fe0145f5c9504c4fd27c52c309831e65908050cfc6b1506851209bde63b8bf39521922231f66e6b86c6b4bb82d2392c2e20c97b277')
 
 package() {
       cd "${srcdir}/${pkgname}-${pkgver}"
