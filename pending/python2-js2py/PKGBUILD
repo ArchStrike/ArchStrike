@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=Js2Py
+pkgname=python2-${_pkgname,,}
+pkgver=0.63
+pkgrel=1
+pkgdesc="Fast javascript parser (based on esprima.js)"
+url="https://github.com/PiotrDabkowski/${_pkgname,,}"
+depends=('python2' 'python2-pyjsparser')
+makedepends=('python2-setuptools')
+license=('MIT')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('44e1fd1bf9b31a86e8cb5ef317de8dbe15585f8539c6a16d636fcd051e07d2939377dfa5ecd821af2a693c3e6bfbb03956b9569a1399657256e9faa315afa304')
+
+build() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py build
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  python2 setup.py install --root="$pkgdir" -O1 --skip-build
+}

@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-flask-httpauth
+pkgver=3.3.0
+pkgrel=2
+pkgdesc="Simple extension that provides Basic and Digest HTTP authentication for Flask routes"
+url="https://github.com/miguelgrinberg/Flask-HTTPAuth"
+license=('MIT')
+arch=('any')
+depends=('python' 'python-flask')
+makedepends=('python-setuptools')
+source=("https://github.com/miguelgrinberg/Flask-HTTPAuth/archive/v${pkgver}.tar.gz")
+sha512sums=('1303351a278799eb885afc9160d4569f73d13212cab2defbc818df6c39ad9284703da703f52c63fb032096a9773f429216e47cc26513730389585761b8f9953b')
+
+build() {
+  cd "${srcdir}/Flask-HTTPAuth-${pkgver}" || exit
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/Flask-HTTPAuth-${pkgver}" || exit
+  python setup.py install --root="${pkgdir}/" -O1 --skip-build
+  install -D -m644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
