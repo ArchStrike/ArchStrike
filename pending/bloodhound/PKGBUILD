@@ -1,0 +1,75 @@
+# This file is part of BlackArch Linux ( https://www.blackarch.org/ ).
+# See COPYING for license details.
+
+_npmname=BloodHound
+pkgname=bloodhound
+pkgver=705.124ecee
+pkgrel=1
+pkgdesc='Six Degrees of Domain Admin'
+groups=('archstrike')
+arch=('any')
+url='https://github.com/BloodHoundAD/BloodHound'
+license=('GPL3')
+depends=('nodejs' 'neo4j-community' 'alsa-lib' 'gtk2' 'libxss' 'gconf' 'nss' 'libxtst')
+makedepends=('git' 'nodejs-electron-packager' 'npm')
+optdepends=('python: for some scripts' 'powershell: for PowerShell ingestion')
+source=('git+https://github.com/BloodHoundAD/BloodHound.git' 'multi_arch.patch')
+options=(!strip)
+sha512sums=('SKIP' 'def465fd091d4c62b1ba6c829062fc9f9bcd90e9c262a0ec057348eca777bc70c71323e818829c838cf3b36d2ce79795b1e6b6dc37f2a91665e40c486724c039')
+
+if [ "$arch" = "x86_64" ]; then
+  _npm_arch='64'
+  _bin_path='BloodHound-linux-x64'
+elif [ "$arch" = "armv7h" ]; then
+  _npm_arch='arm'
+  _bin_path='BloodHound-linux-armv7l'
+elif [ "$arch" = 'aarch64' ]; then
+  _npm_arch='arm'
+  _bin_path='BloodHound-linux-armv7l'
+fi
+
+pkgver() {
+  cd "$_npmname"
+
+  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+}
+
+prepare() {
+  cd "$_npmname"
+
+  patch -Np2 -i ../multi_arch.patch
+}
+
+build() {
+  cd "$_npmname"
+
+  npm install
+
+  npm run "linuxbuild_$_npm_arch"
+}
+
+package() {
+  cd "$_npmname"
+
+  install -dm 755 "$pkgdir/usr/bin"
+  install -dm 755 "$pkgdir/usr/share/$pkgname"
+
+  install -Dm 644 -t "$pkgdir/usr/share/licenses/$pkgname/" LICENSE*.md
+  install -Dm 644 -t "$pkgdir/usr/share/doc/$pkgname/" *.md
+
+  rm *.md
+
+  cp -a *.js *.json *.sh *.html *.yml src $_bin_path *.graphdb dist "$pkgdir/usr/share/$pkgname"
+
+  cat > "$pkgdir/usr/bin/$pkgname" << EOF
+#!/bin/sh
+cd /usr/share/$pkgname/$_bin_path
+exec ./BloodHound "\$@"
+EOF
+
+  chmod +x "$pkgdir/usr/bin/$pkgname"
+  chmod +x "$pkgdir/usr/share/$pkgname/$_bin_path/BloodHound"
+
+  echo "\e[93m[INFO]\e[0m Don't forget to start and log in to Neo4j database once"
+  echo "\e[93m[INFO]\e[0m in order to set the first Neo4j password before bloodhound can be started."
+}
