@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-stix
+pkgver=1.2.0.7
+pkgrel=1
+pkgdesc="An API for parsing and generating STIX content."
+url="http://stix.mitre.org"
+depends=('python' 'python-maec' 'python-nose' 'python-sphinx' 'python-sphinx_rtd_theme' 'python-tox'
+         'python-six' 'python-cybox' 'python-lxml' 'python-mixbox' 'python-dateutil')
+makedepends=('python-setuptools')
+license=('custom')
+arch=('any')
+source=("https://github.com/STIXProject/python-stix/archive/v${pkgver}.tar.gz")
+sha512sums=('d8782c79914a4db80155b812643675358c77eced8216ea5f6e6083cafb537d68ad05cf47e3176bcc5886046cb88f4bfc678c9d1848d261e8114b2071d2a51ee6')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE.txt
+}
