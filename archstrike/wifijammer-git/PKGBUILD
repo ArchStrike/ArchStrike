@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=wifijammer
 pkgname=${_pkgname}-git
-pkgver=20180621.r90
-pkgrel=2
+pkgver=20191218.r92
+pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A python script to continuosly jam all wifi clients within range"
 arch=('any')
