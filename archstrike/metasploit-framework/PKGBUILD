@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=metasploit-framework
 pkgver=5.0.74
-pkgrel=1
+pkgrel=2
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
 groups=('archstrike' 'archstrike-exploits' 'archstrike-fuzzers' 'archstrike-scanners')
 url='https://www.metasploit.com/'
@@ -18,7 +18,18 @@ source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/rapid7/metasploit-fr
 sha512sums=('7723144525d830ed79d5740bf3c06fc33cb657cadc59f1bfaae9fe3fd164cec909e13a4f1076152bbb25e58557ecb066cbefe1b9771e1a1f7f813a509657ac6b')
 
 prepare() {
-  cd ${pkgname}-${pkgver} || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
+
+  # Ready for upcoming Bundler changes
+  mkdir -p .bundle
+cat > ".bundle/config" <<EOF
+BUNDLE_DEPLOYMENT: "true"
+BUNDLE_CACHE_ALL: "false"
+BUNDLE_JOBS: "NPROC"
+
+EOF
+  sed -i "s|NPROC|$(nproc)|" .bundle/config
+
 
   # https://github.com/bundler/bundler/issues/6882
   sed -e '/BUNDLED WITH/,+1d' -i Gemfile.lock
@@ -28,15 +39,15 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}-${pkgver} || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
   CFLAGS+=" -I/usr/include/libxml2"
-  bundle install -j"$(nproc)" --no-cache --deployment
+  bundle install
   find vendor/bundle/ruby -exec chmod o+r '{}' \;
   find vendor/bundle/ruby \( -name gem_make.out -or -name mkmf.log \) -delete
 }
 
 package() {
-  cd ${pkgname}-${pkgver} || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -d "${pkgdir}/opt/${pkgname}" "${pkgdir}/usr/bin"
   cp -r . "${pkgdir}/opt/${pkgname}"
@@ -47,7 +58,7 @@ package() {
     chmod 755 "${_msffile}"
   done
 
-  (cd "${pkgdir}/opt/${pkgname}" || exit
+  (cd "${pkgdir}/opt/${pkgname}"
     for f in tools/*/*.rb; do
       install -Dm 755 "${f}" ".${f}"
       echo -e "#!/bin/sh\nBUNDLE_GEMFILE=/opt/${pkgname}/Gemfile bundle exec ruby /opt/${pkgname}/.${f} \"\$@\"" > "${f}"
