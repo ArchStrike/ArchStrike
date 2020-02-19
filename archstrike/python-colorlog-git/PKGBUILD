@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="python-colorlog"
 pkgname="${_pkgname}-git"
-pkgver=20191021.r145
+pkgver=20200102.r150
 pkgrel=1
 pkgdesc="Log formatting with colors!"
 url="https://github.com/borntyping/python-colorlog"
