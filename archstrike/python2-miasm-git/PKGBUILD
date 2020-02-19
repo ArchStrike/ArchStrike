@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=python2-miasm-git
-pkgver=20191204.r3367
+pkgver=20200219.r3414
 pkgrel=1
 pkgdesc="A  Reverse engineering framework in Python"
 groups=("archstrike" "archstrike-analysis" "archstrike-decompile")
