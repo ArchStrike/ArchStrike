@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ridenum-git
 _pkgname=ridenum
-pkgver=r71.a23f63d
+pkgver=r73.54e955a
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="RID cycling attack that attempts to enumerate user accounts through
