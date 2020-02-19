@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='set-git'
 _pkgname=social-engineer-toolkit
-pkgver=8.0.1.r12.g09b56b105
+pkgver=8.0.3.r4.gbc1459567
 pkgrel=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-exploit')
 pkgdesc="Social-engineer toolkit. Aimed at penetration testing around Social-Engineering"
