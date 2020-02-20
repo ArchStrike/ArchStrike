@@ -1,0 +1,21 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=uvloop
+pkgname=python-uvloop
+pkgver=0.14.0
+pkgrel=1
+pkgdesc=""
+arch=('any')
+url='http://pypi.python.org/pypi/uvloop'
+license=('BSD')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://pypi.python.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('8a9a64c91fd34c65a1c40d8d76ad7dbd7e959d45188ef81cdc06995312f52106b2c648a504d51b64b470e54dfc4854dcf9a05cafa3d4a42f1bc1e31766114d61')
+
+package() {
+  cd "$srcdir/${_pkgname}-${pkgver}" || exit
+  python setup.py install --prefix=/usr --root="$pkgdir" -O1
+}
