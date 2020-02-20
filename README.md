@@ -42,7 +42,7 @@ If you have more questions regarding contribution, you can check out our [wiki p
 
 **Q1: What's the difference between ArchStrike and other security-based repositories?**
 
-A: We try and follow the Arch Linux standards when making our packages, so they can install or remove easily without affecting an existing Arch Linux installation. Bascially, you can use the repository as an extension to your already existing Arch Linux repositories.
+A: We try and follow the Arch Linux standards when making our packages, so they can install or remove easily without affecting an existing Arch Linux installation. Basically, you can use the repository as an extension to your already existing Arch Linux repositories.
 
 **Q2: Where can I download an ISO/OVA file?**
 
