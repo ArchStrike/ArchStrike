@@ -1,0 +1,19 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-termcolor
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="ANSII Color formatting for output in terminal"
+arch=('any')
+license=('GPL')
+url="https://pypi.python2.org/pypi/termcolor"
+depends=('python2')
+source=("https://pypi.python.org/packages/source/t/termcolor/termcolor-${pkgver}.tar.gz")
+sha512sums=('4bd06bf4405a9ef6c005cd4d159ef602f7fc7fccb3e57586da1187c402f4d0b9051ef930cae423065c51ff4be8a22ceae556a61a6b3c8c519d623c066c340b53')
+
+package() {
+  cd "${srcdir}/termcolor-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1
+}
