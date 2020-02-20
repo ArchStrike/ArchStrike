@@ -1,0 +1,39 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="stem"
+pkgname="python2-${_pkgname}"
+pkgver=1.8.0
+pkgrel=1
+pkgdesc='Python controller library for Tor'
+url='https://stem.torproject.org/'
+arch=('any')
+license=('LGPL3')
+depends=('python2' 'python2-cryptography' 'python2-pynacl' 'procps-ng')
+checkdepends=('tor' 'python2-mock')
+optdepends=('tor: tor-server to talk to')
+replaces=('stem')
+provides=('stem')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('aa2033567b79aef960f8321e4c6cbc28105c59d6513ff49a9f12509d8f97b1a2e8a3b04dc28abb07fad59b0f6ba66443b92bbefa0d08b26038bbaf24f7f2846d')
+
+prepare() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  # remove flaky integration tests
+  sed -i test/settings.cfg \
+    -e '/|test.integ.client.connection.TestConnection/d' \
+    -e '/|test.integ.process.TestProcess/d' \
+    -e '/|test.integ.installation.TestInstallation/d'
+  rm test/integ/{client/connection,{installation,process}}.py
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install -O1 --root="${pkgdir}" --skip-build
+}
