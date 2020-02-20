@@ -1,0 +1,21 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python2-magic
+pkgver=5.37
+pkgrel=1
+pkgdesc="Python bindings to the magic library"
+arch=('any')
+url='https://darwinsys.com/file/'
+depends=('python2')
+makedepends=('python2-setuptools')
+license=('custom')
+source=("ftp://ftp.astron.com/pub/file/file-${pkgver}.tar.gz")
+sha512sums=('bf153c15aebdd00329806231d20f295077b8b99efd0181d01279bcf3734a1718567df38cf75bc929eb8015ac98d29bb4bf1228d7ece8bfdfe14dd976391dd06d')
+
+package() {
+  cd "${srcdir}/file-${pkgver}/python"
+  python2 setup.py install --root="${pkgdir}" -O1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
