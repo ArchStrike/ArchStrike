@@ -1,0 +1,21 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=aiosqlite
+pkgname=python-aiosqlite
+pkgver=0.3.0
+pkgrel=1
+pkgdesc=""
+arch=('any')
+url='http://pypi.python.org/pypi/aiosqlite'
+license=('BSD')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://pypi.python.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('f6cfadea2ac032b803c3c2b144685a4447cf02afc825135f638f7b9a5260d06804ae3eefe92c9cae6545232a7a0c54b725f8bf3505c441cd20a864600dfc1c04')
+
+package() {
+  cd "$srcdir/${_pkgname}-${pkgver}" || exit
+  python setup.py install --prefix=/usr --root="$pkgdir" -O1
+}
