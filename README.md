@@ -57,7 +57,3 @@ A: See Contact Info above.
 **Q4: I am having trouble installing ArchStrike, can you help me?**
 
 A: Yes! Our contact information is above.
-
-**Q5: What is the archstrike-testing repository and do I need it?**
-
-A: The testing repository is merely a quality control mechanism we have in place. When new tools are added, they stay in testing until they are verified to be functioning correctly. The time a package spends in the testing repository depends on if the package was tested properly or not (so if you want something moved out of testing, test it and report it) . Most of the packages in testing build and work fine but some may have problems. If you want to have the full range of tools that we provide, go ahead and add the testing repository as well.
