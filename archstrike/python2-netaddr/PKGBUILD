@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=netaddr
+pkgname="python2-${_pkgname}"
+pkgver=0.7.19
+pkgrel=1
+pkgdesc='Pure Python network address representation and manipulation library'
+url='https://github.com/drkjam/netaddr'
+arch=('any')
+license=('BSD')
+depends=('python2')
+makedepends=('python2-sphinx' 'python2-setuptools')
+optdepends=('ipython2: netaddr interractive command support')
+options=('!makeflags')
+source=("https://github.com/drkjam/${_pkgname}/archive/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('f07fb4de08aef4925dbc429b4ee93b25855273f083405d4e763c2fbc996ee35b09b87b10117040b073d45ac9f51512083116883ff48216e68aa1e429f83d5278')
+
+package_python2-netaddr() {
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+  python2 setup.py install -O1 --root="${pkgdir}"
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm 644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+  mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}2"
+}
