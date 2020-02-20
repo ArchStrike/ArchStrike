@@ -14,7 +14,7 @@ license=('GPL2')
 depends=('python-requests' 'python-beautifulsoup4' 'python-plotly' 'python-shodan'
          'python-texttable' 'python-pytest' 'python-yaml' 'python-gevent'
          'python-grequests' 'python-chart-studio' 'python-dnspython' 'python-netaddr'
-         'python-aiodns')
+         'python-aiodns' 'python-aiohttp' 'python-aiosqlite' 'python-uvloop')
 makedepends=('git')
 source=("${_pkgname}::git+${url}.git")
 sha512sums=('SKIP')
@@ -35,7 +35,6 @@ package() {
 
   # Install docs.
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
-  install -Dm644 LICENSES "${pkgdir}/usr/share/licenses/${pkgname}/LICENSES"
 
   # Install sharable.
   cp --no-preserve=ownership -a ./* "${pkgdir}/usr/share/${pkgname}"
