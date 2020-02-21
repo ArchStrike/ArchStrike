@@ -4,18 +4,23 @@ buildarch=1
 
 pkgname=exitmap
 pkgver=2019.05.30
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 arch=('any')
 pkgdesc="A fast and modular scanner for Tor exit relays"
 url="https://github.com/NullHypothesis/exitmap"
 license=('GPL')
-depends=('python2' 'python2-dnspython' 'python2-stem-git' 'tor')
+depends=('python2' 'python2-dnspython' 'python2-stem' 'tor')
 source=("${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('2472f343fa1ddf137f31db420e20b5f0d07f7fee2f11018cc6ada315f21a4f48bcea5562403b0d8f8153d21b2c726554e492a08b7e5c7f1a4e72efd792503485')
 
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's|completion_percent=80|completion_percent=75|' ./src/exitmap.py
+}
+
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
@@ -23,7 +28,7 @@ package() {
 
 cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}/bin
+cd "/usr/share/${pkgname}/bin"
 python2 exitmap "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${pkgname}"
