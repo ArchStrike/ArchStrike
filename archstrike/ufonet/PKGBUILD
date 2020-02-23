@@ -3,20 +3,16 @@
 buildarch=1
 
 pkgname=ufonet
-pkgver=1.3
+pkgver=1.4.1
 pkgrel=1
 pkgdesc="A tool designed to launch DDoS attacks against a target, using 'Open Redirect' vectors on third party web applications, like botnet."
 arch=('any')
 url="https://ufonet.03c8.net/"
 license=('GPL3')
 groups=('archstrike' 'archstrike-ddos')
-depends=('python2-pycurl' 'python2-geoip' 'python2-requests' 'tor' 'python2-scapy')
+depends=('python-pycurl' 'python-geoip' 'python-requests' 'tor' 'python-scapy')
 source=("https://downloads.sourceforge.net/project/ufonet/ufonet-v${pkgver}.zip")
-sha512sums=('eb6f688094503c9adfd5ee4b598f3f572719f41ea1cd2068dae70bf55be2a0b43d4672598f26c33a93a9034873d75bdc72823e6e2e45bbd3e67e5317cffb63db')
-
-prepare() {
-  grep -iRl 'python' ${srcdir} | xargs sed -i 's|python|python2|'
-}
+sha512sums=('99773acaffdcb587aef8843827ff04abe733e48121413c46de3cb3ebfcfb2bade3244c00d9691b2ec92080affe59e0a705d3a5d2645bb8311c2c39b237079ff2')
 
 package() {
   cd ${srcdir}
@@ -27,7 +23,7 @@ package() {
 cat > "$pkgdir/usr/bin/ufonet" <<EOF
 #!/bin/sh
 cd /usr/share/ufonet
-python2 ufonet "\$@"
+python ufonet "\$@"
 EOF
 chmod 755 "$pkgdir/usr/bin/ufonet"
 }
