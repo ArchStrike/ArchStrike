@@ -4,18 +4,18 @@ buildarch=1
 
 _pkgname=('PyMISP')
 pkgname=('python-pymisp')
-pkgver=2.4.117.3
+pkgver=2.4.121.1
 pkgrel=1
 pkgdesc="Python library using the MISP Rest API"
 arch=('any')
 url="https://github.com/MISP/PyMISP/"
 license=('custom')
 depends=('python' 'python-requests' 'python-six' 'python-dateutil' 'python-jsonschema'
-         'python-dateutil' 'python-deprecated' 'python-magic' 'python-pydeep' 'python-reportlab'
+         'python-dateutil' 'python-deprecated' 'python-magic-git' 'python-pydeep' 'python-reportlab'
 	 'python-beautifulsoup4' 'python-sphinx-autodoc-typehints' 'python-recommonmark')
 makedepends=('python-setuptools')
 source=("https://github.com/MISP/PyMISP/archive/v${pkgver}.tar.gz")
-sha512sums=('2a2b75b90d058d222c72809f684a6c96338c3143af42aa331eb2d5e71f3b4718b112e1227575d44570dc3f91ffa2e87947385a41d9cab56aece90f137c8d4fb5')
+sha512sums=('9f9a237a8bff4ca663bfe5a3d71cb63a42186a1124ae5a5da25de17c1919c29f4fb85ef946858042390eb3cefc946c979d16742d87362187039875122d8ea86b')
 
 package() {
   cd "${srcdir}/${_pkgname}-${pkgver}" || exit
