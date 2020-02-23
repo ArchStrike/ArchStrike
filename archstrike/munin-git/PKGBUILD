@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname="munin"
 pkgname="${_pkgname}-git"
-pkgver=20190830.r156
-pkgrel=4
+pkgver=20200220.r158
+pkgrel=1
 pkgdesc="Online hash checker for Virustotal and other services"
 url="https://github.com/Neo23x0/munin"
 arch=('any')
@@ -32,17 +32,17 @@ package() {
 
 # Create main executable
   cat > "${pkgdir}/usr/bin/${_pkgname}.py" <<EOF
-#!/bin/sh
+#!//usr/bin/env bash
 cd "/usr/share/${pkgname}"
 python "${_pkgname}.py" "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/${_pkgname}.py"
+  chmod 755 "${pkgdir}/usr/bin/${_pkgname}.py"
 
 # Create host executable
   cat > "${pkgdir}/usr/bin/${_pkgname}-host.py" <<EOF
-#!/bin/sh
+#!//usr/bin/env bash
 cd "/usr/share/${pkgname}"
 python "${_pkgname}-host.py" "\$@"
 EOF
-  chmod +x "${pkgdir}/usr/bin/${_pkgname}-host.py"
+  chmod 755 "${pkgdir}/usr/bin/${_pkgname}-host.py"
 }
