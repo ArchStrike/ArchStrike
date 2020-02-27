@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=hotpatch-git
 pkgver=20200110.r90.fd2baf1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc="Hot patches executables on Linux using .so file injection"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -16,32 +16,24 @@ source=("${pkgname}::git+https://github.com/vikasnkumar/hotpatch")
 sha512sums=('SKIP')
 
 pkgver() {
-     cd $pkgname
+     cd ${pkgname}
      printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "$srcdir/${pkgname}"
+  cd "${srcdir}/${pkgname}"
   export PREFIX=/usr
   export CFLAGS+=" -std=gnu99"
-  if [[ ${CARCH} == x86_64 ]]; then
-        make
-  else
-        make ARCH=i386
-  fi
+  make
 }
 
 check() {
-  cd "$pkgname"
-  if [[ ${CARCH} == "x86_64" ]]; then
-        make test
-  else
-        make test ARCH=i386
-  fi
+  cd "${srcdir}/${pkgname}"
+  make
 }
 
 package() {
-  cd "$srcdir/${pkgname}"
-  make DESTDIR="$pkgdir/" install
-  install -Dm644 COPYRIGHT "$pkgdir/usr/share/licenses/$pkgname/COPYRIGHT"
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}/" install
+  install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
 }
