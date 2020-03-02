@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=apache-tika
 pkgver=1.23
-pkgrel=1
+pkgrel=2
 pkgdesc='Toolkit for detecting and extracting metadata and structured text content'
 arch=('any')
 license=('Apache')
@@ -14,21 +14,28 @@ depends=('java-environment' 'bash')
 noextract=("tika-server-${pkgver}.jar")
 source=(
   "http://us.mirrors.quenda.co/apache/tika/tika-server-${pkgver}.jar"
+  "http://us.mirrors.quenda.co/apache/tika/tika-app-${pkgver}.jar"
   "${pkgname}.service"
 )
-
 sha512sums=('4e1b8418aed496eb1ee5bf32921580e855672ab701bffdd642261ac27ae011913f36fdd70b725adef4dec55a53fa04cf0f3b8a3b45e15026dd76c8d312b62291'
+            '902bacadf56bd54594634662bdf953fe6e0b5ff2231655eba755be424b3e9168308eaf5749ab5655689c5eb9e1ed9d18a8aa8c54cb67560333e160194be1c488'
             'e46522bfcc86ada8776c4f12cf645a81c34492b1c86e9bd1258d7fa248fb8fed9c2bd57e5971c5c9a4687f35626f872f63920649279cfaba5498a55c3331bcf5')
 
 package() {
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm755 "tika-server-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/tika-server-${pkgver}.jar"
+  install -Dm755 "tika-server-${pkgver}.jar" "${pkgdir}/usr/share/java/${pkgname}/tika-app-${pkgver}.jar"
   install -Dm644 "${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
 
-cat > "${pkgdir}/usr/bin/tika" <<EOF
+cat > "${pkgdir}/usr/bin/tika-server" <<EOF
 #!/usr/bin/env bash
 java -jar "/usr/share/java/${pkgname}/tika-server-${pkgver}.jar" "\$@"
 EOF
+  chmod 755 "${pkgdir}/usr/bin/tika-server"
 
-  chmod 755 "${pkgdir}/usr/bin/tika"
+cat > "${pkgdir}/usr/bin/tika-app" <<EOF
+#!/usr/bin/env bash
+java -jar "/usr/share/java/${pkgname}/tika-app-${pkgver}.jar" "\$@"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/tika-app"
 }
