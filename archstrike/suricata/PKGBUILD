@@ -4,14 +4,14 @@ buildarch=220
 
 pkgname=suricata
 pkgver=5.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://suricata-ids.org/"
 license=('GPL2')
 groups=('archstrike')
 depends=('nss' 'jansson' 'libcap-ng' 'libnetfilter_queue' 'pcre' 'libdaq-static'
-         'libnet' 'libpcap' 'libyaml' 'python-magic' 'file' 'luajit' 'geoip'
+         'libnet' 'libpcap' 'libyaml' 'python-magic-git' 'file' 'luajit' 'geoip'
          'libnetfilter_log' 'hiredis' 'libmaxminddb' 'rust')
 optdepends=('snort: suricata can use rulesets provided by snort')
 backup=('etc/suricata/suricata.yaml')
