@@ -4,26 +4,25 @@ buildarch=1
 
 _pkgname="Empire"
 pkgname=empire
-pkgver=2.5
-pkgrel=3
+pkgver=3.1.0
+pkgrel=1
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
 groups=('archstrike' 'archstrike-exploit' 'archstrike-backdoors')
-url="https://github.com/EmpireProject/${_pkgname}"
+url="https://github.com/BC-SECURITY/${_pkgname}"
 license=('custom')
 install="${pkgname}.install"
 makedepends=('git')
-depends=('swig' 'pyinstaller' 'python2-crypto' 'python2-dropbox' 'python2-flask' 'python2-iptools' 'python2-jinja' 'python2-m2crypto'
-         'python2-macholib' 'python2-netifaces' 'python2-pydispatcher' 'python2-pyopenssl' 'python2-setuptools' 'python2-urllib3' 
-         'python2-zlib_wrapper' 'python2-pyminifier' 'python2-xlutils' 'python2-pefile')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('aeb3f861d407971376e26b970d597716bdd6e3668dc5208de09c3e9ccf23f11d8467ab5f29c76cc192bb33de95a89388c382a5aae55f8629bff1c638228a4b81')
+depends=('swig' 'pyinstaller' 'python-crypto' 'python-dropbox' 'python-flask' 'python-iptools' 'python-jinja' 'python-m2crypto'
+         'python-macholib' 'python-netifaces' 'python-pydispatcher' 'python-pyopenssl' 'python-setuptools' 'python-urllib3' 
+         'python-zlib_wrapper' 'python-pyminifier' 'python-xlutils' 'python-pefile' 'python-bcrypt' 'python-simplejson')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('e9da997a5aaa4a55af349454885cd65112a9d470ba61eba30603b385fa7bfb192d67e1bdfb8a66431bbf9ebfd6c5a0d855323e5a1f726a9a3987103f3e79ce53')
 
 prepare(){
-  grep -iRl 'python' ${_pkgname}-$pkgver | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
   cd ${_pkgname}-${pkgver}
   sed -i 's|\.\./data/empire.pem|/usr/share/empire/data/empire.pem|' setup/cert.sh
-  sed -i 's|python \./setup_database.py|python2 \./setup_database.py|g' setup/reset.sh
+  sed -i 's|python \./setup_database.py|python \./setup_database.py|g' setup/reset.sh
 }
 
 package() {
@@ -40,7 +39,7 @@ package() {
 cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/usr/bin/env bash
 cd /usr/share/${pkgname}
-python2 ${pkgname} "\$@"
+python ${pkgname} "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
@@ -71,7 +70,7 @@ if [[ -f "/usr/share/empire/data/empire.db" ]]; then
 fi
 echo "DB not found continuing with setup"
 cd /usr/share/empire/setup
-python2 setup_database.py
+python setup_database.py
 ./cert.sh
 EOF
 chmod 755 "${pkgdir}/usr/bin/empire-setup"
