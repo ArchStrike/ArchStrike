@@ -3,8 +3,8 @@
 buildarch=128
 
 pkgname=dradis
-pkgver=3.15.0
-pkgrel=2
+pkgver=3.16.0
+pkgrel=1
 pkgdesc="An open source framework to enable effective information sharing."
 groups=('archstrike' 'archstrike-misc')
 url="http://dradisframework.org/"
@@ -13,11 +13,11 @@ depends=('ruby' 'redis')
 arch=('x86_64')
 options=(!strip)
 source=("https://github.com/dradis/dradis-ce/archive/v${pkgver}.tar.gz")
-sha512sums=('553cddf55838f1333b866cc90664807ecb26999d5fbdefd53e6c551dbb4a190e697db22c281c0bd0e08685be6ca567f0c341d261f67e8546151cc831a666f0b1')
+sha512sums=('aa4b6f7f8a5c704a4072a47f1c366ff9d9c771b9bf70c650c7f5c13c32b598ed6aaef32e609db80b4b982aeb951ff153e65eebf3306ee176605d0031bb87101b')
 
 package() {
 
-  cd "${pkgname}-ce-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}-ce-${pkgver}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
