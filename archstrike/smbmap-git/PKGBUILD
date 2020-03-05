@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=smbmap-git
-pkgver=20200219.r104
+pkgver=20200304.r114
 pkgrel=1
 groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="A handy SMB enumeration tool"
