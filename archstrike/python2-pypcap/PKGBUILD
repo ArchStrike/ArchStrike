@@ -3,16 +3,16 @@
 buildarch=220
 
 pkgname=python2-pypcap
-pkgver=1.2.2
+pkgver=1.2.3
 pkgrel=1
 pkgdesc="Python extension module for libpcap."
-url="https://github.com/dugsong/pypcap"
+url="https://github.com/pynetwork/pypcap"
 license=('custom')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-depends=('python2' 'libpcap')
+depends=('python2' 'libpcap' 'python2-sphinx' 'python2-mock')
 makedepends=('python2-setuptools')
-source=("https://github.com/pynetwork/pypcap/archive/v${pkgver}.tar.gz")
-sha512sums=('fa5b2ba37cafa83b9586d52345bba62ab6203c46a97a7b114ce166864be0e0947737d5bb79d9c12e054255aa9cb9f675a152c78b7e7b1c5a63dd6b54575b7282')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('e4f701b6637fbcaf847d72eddc1ed344438008c2f8cbd334c9ce5fe17c9ec36f1f2cb1a146a218b8e464a7eb9a57217a8834a82a035ee96c3c1b56ec70e53bff')
 
 build() {
   cd "${srcdir}/pypcap-${pkgver}"
