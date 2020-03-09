@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=tld
 pkgname=python-${_pkgname}
-pkgver=0.7.9
-pkgrel=2
+pkgver=0.11.10
+pkgrel=1
 pkgdesc='Extracts the top level domain (TLD) from the URL given'
 arch=('any')
 url="https://github.com/barseghyanartur/tld"
@@ -14,7 +14,7 @@ groups=('archstrike')
 depends=('python' 'python-six')
 makedepends=('python-setuptools')
 source=("https://github.com/barseghyanartur/tld/archive/${pkgver}.tar.gz")
-sha512sums=('294157567c57c99eafa97cadb9522e49adaa9d13323df18a76422e4ffa17b5ce6d5fb5f7b7663e3390e92dbffd51287e978c7856892be377d0265f10d7d06061')
+sha512sums=('c2eeaddd52d0e6e1aa42b6018cc4ce2e80630371c1223217bfc8761440231630fedb26ef3714a33c978c546045a08b36b90a8f2591af146ee2282b24b283c308')
 
 package() {
   cd "$srcdir/$_pkgname-$pkgver"
