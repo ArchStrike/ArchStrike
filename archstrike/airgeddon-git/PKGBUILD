@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
-pkgver=20200108.r2063
-pkgrel=4
+pkgver=20200319.r2119
+pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
@@ -37,20 +37,20 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf '%s.r%s' "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" \
   "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   sed -i 's|AIRGEDDON_AUTO_UPDATE=true|AIRGEDDON_AUTO_UPDATE=false|' .airgeddonrc
   sed -i 's|AIRGEDDON_MDK_VERSION=mdk4|AIRGEDDON_MDK_VERSION=mdk3|' .airgeddonrc
   rm -rf {binaries,imgs,Dockerfile,pindb_checksum.txt,LICENSE}
 }
 
 package() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -Dm644 .airgeddonrc "${pkgdir}/usr/share/${_pkgname}/.airgeddonrc"
