@@ -5,7 +5,7 @@ buildarch=1
 pkgbase=shodan
 pkgname=('python-shodan' 'python2-shodan')
 _pkgname=${pkgbase}-python
-pkgver=1.21.3
+pkgver=1.22.0
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2/3 library for Shodan.io'
@@ -14,7 +14,7 @@ license=('MIT')
 arch=('any')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/s/shodan/shodan-${pkgver}.tar.gz")
-sha512sums=('64b30d977f1a210b43974b3bc9609a2ac352b21e9b50aa62c4871846e96c622c2e27a2e3f0df63fad5c678c9e0b29b38094a03debafed58bdfeb5cae1e0a911b')
+sha512sums=('600148fe3d468695e061cd79b739ffe7b5f280c4d638ea8f7ca7f8c1d3f08aade2d99014813e655286ddc1b671c156adfb0e8d28aaf115a377253161688df1ae')
 
 prepare() {
   cp -r shodan-${pkgver} shodan2-${pkgver}
