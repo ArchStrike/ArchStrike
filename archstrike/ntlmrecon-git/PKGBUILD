@@ -3,27 +3,25 @@
 
 pkgname=ntlmrecon-git
 _pkgname=ntlmrecon
-pkgver=34.554da37
+pkgver=20200315.r42
 pkgrel=1
 groups=('archstrike' 'archstrike-recon' 'archstrike-scanner')
 pkgdesc='A tool to enumerate information from NTLM authentication enabled web endpoints.'
 arch=('any')
 url='https://github.com/sachinkamath/ntlmrecon'
 license=('MIT')
-depends=('python3')
+depends=('python' 'python-iptools' 'python-termcolor' 'python-colorama' 'python-requests')
 makedepends=('git' 'python-setuptools')
 source=("git+https://github.com/sachinkamath/$_pkgname.git")
 sha512sums=('SKIP')
 
 pkgver() {
   cd $_pkgname
-
-  echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
   cd $_pkgname
-
   python setup.py build
 }
 
