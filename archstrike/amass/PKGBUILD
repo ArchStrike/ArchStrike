@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="Amass"
 pkgname="amass"
-pkgver=3.4.4
+pkgver=3.5.2
 pkgrel=1
 pkgdesc=" tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery"
 arch=('any')
@@ -12,32 +12,32 @@ url="https://github.com/OWASP/Amass"
 license=('Apache')
 makedepends=('go' 'git')
 source=("https://github.com/OWASP/Amass/archive/v${pkgver}.tar.gz")
-sha512sums=('47f99b8b817ea18b3068ff3dc0f2be5f2302041636f075d4f51ca41bf72ca508f694586e6a8feb9ac31e7244fefc7a8d0c75e067207f59a22739c5bccf496ba1')
+sha512sums=('e45aa224351126a4410af314733e084a768a6160ce0fd996e9f6bc96cede7cbf90f5a95bf01aa9a7ffd7cdfca8a4159a4f4833cc2847e244a57e0c1ef19ad028')
 
 prepare() {
   mkdir -vp "${srcdir}/github.com/OWASP"
   mv "${srcdir}/${_pkgname}-${pkgver}" "${srcdir}/github.com/OWASP/${_pkgname}"
 
   export GOPATH="${srcdir}"
-  cd "${GOPATH}/github.com/OWASP/${_pkgname}" || exit
+  cd "${GOPATH}/github.com/OWASP/${_pkgname}"
   go get -d ./...
 }
 
 check() {
-  cd "${srcdir}/github.com/OWASP/${_pkgname}" || exit
+  cd "${srcdir}/github.com/OWASP/${_pkgname}"
   export GOPATH="${srcdir}"
   go test ./...
 }
 
 build() {
-  cd "${srcdir}/github.com/OWASP/${_pkgname}" || exit
+  cd "${srcdir}/github.com/OWASP/${_pkgname}"
   export GOPATH="${srcdir}"
   go install -v ./...
 }
 
 package() {
   export GOPATH="${srcdir}"
-  cd "${GOPATH}/bin" || exit
+  cd "${GOPATH}/bin"
   install -dm 755 "${pkgdir}/usr/share/${pkgname}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
   cp -a --no-preserve=ownership "${GOPATH}/github.com/OWASP/${_pkgname}/"{wordlist/,examples/} "${pkgdir}/usr/share/${pkgname}"
