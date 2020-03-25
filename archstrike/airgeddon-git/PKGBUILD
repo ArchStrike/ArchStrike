@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
-pkgver=20200319.r2119
-pkgrel=2
+pkgver=20200324.r2134
+pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
