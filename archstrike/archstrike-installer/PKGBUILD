@@ -3,30 +3,25 @@
 buildarch=1
 
 pkgname=archstrike-installer
-pkgver=2.2.4
+pkgver=2.2.5
 pkgrel=1
 arch=('any')
 pkgdesc="Full ArchStike installer for the ArchStrike live environment"
 url="https://github.com/ArchStrike/archstrike-installer"
 license=('MIT')
-depends=('python2' 'arch-install-scripts' 'gptfdisk' 'util-linux' 'lvm2' 'cryptsetup' 'mkinitcpio' 'wpa_supplicant')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('76c241b75c34395fdcbc1167bef782e1f3089279a7a5ae85d9e0bf27945ee2f210fc4e37eb35d816d701caf8433202407624a852cc284c4130ba7e985bb8bad5')
+makedepends=('python-setuptools' 'python')
+depends=('python' 'arch-install-scripts' 'gptfdisk' 'util-linux' 'lvm2' 'cryptsetup' 'mkinitcpio' 'wpa_supplicant' 'pyalpm')
+source=("https://github.com/ArchStrike/archstrike-installer/archive/${pkgver}.tar.gz")
+sha512sums=('225df6cb6cc4e70c1cfed6780647e21c4a20634c8f77910e9d0e5b4a596fa75d09b5fec7e48367a7ca56c97d4afbc5a96733c3e906b771330c31a742665ff1e5')
+
+build() {
+  cd "${pkgname}-${pkgver}" || exit
+  python setup.py build
+}
 
 package() {
   cd "${pkgname}-${pkgver}" || exit
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-
-  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
-
-cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
-#!/usr/bin/env bash
-cd "/usr/share/${pkgname}"
-python2 as-installer.py "\$@"
-EOF
-chmod 755 "${pkgdir}/usr/bin/${pkgname}"
-
 }
