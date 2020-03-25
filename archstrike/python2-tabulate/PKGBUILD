@@ -4,23 +4,24 @@ buildarch=1
 
 _pkgname=tabulate
 pkgname=python2-${_pkgname}
-pkgver=0.8.3
+pkgver=0.8.7
 pkgrel=1
 pkgdesc="Pretty-print tabular data in python2, a library and a command-line utility."
 arch=('any')
-url="https://bitbucket.org/astanin/python-tabulate"
+url="https://github.com/astanin/python-tabulate"
 license=('MIT')
 depends=('python2' 'python2-numpy')
 makedepends=('python2-setuptools')
-source=("https://files.pythonhosted.org/packages/c2/fd/202954b3f0eb896c53b7b6f07390851b1fd2ca84aa95880d7ae4f434c4ac/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('7f0205a4d80ed0b426a45622a3b8ec0a9b77cf6d67c1207db7fbc20a12e83a15748e63d5f8e5e65fa348b6265fd0cac93be4d04f9c1c182476b93507e1131cbf')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('77eb619d3115bbd574ff72b82d55e09f1e2bfe29da0b937b72930b3e65423135722bdc54bed818adf2e25cb49a58f8f85d0ca3b3ed0fcfcfda34a25e54781d0c')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
+  cd "python-${_pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 package_python2-tabulate() {
-  cd "${_pkgname}-${pkgver}"
+  cd "python-${_pkgname}-${pkgver}"
   python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
+  mv ${pkgdir}/usr/bin/tabulate ${pkgdir}/usr/bin/tabulate2
 }
