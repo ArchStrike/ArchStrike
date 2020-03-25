@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=rsa
 pkgname=python2-rsa
 pkgver=4.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Pure-Python RSA implementation"
 arch=(any)
 url="https://stuvel.eu/rsa"
@@ -25,4 +25,7 @@ package() {
 	rm -rf build; ln -s ../buildpy3 build
 	python2 setup.py install --skip-build -O1 --root="${pkgdir}"
 	install -m0644 -D "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+	for i in decrypt encrypt keygen priv2pub sign verify; do
+		mv ${pkgdir}/usr/bin/pyrsa-${i} ${pkgdir}/usr/bin/pyrsa-${i}2
+	done
 }
