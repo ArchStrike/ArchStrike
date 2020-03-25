@@ -6,7 +6,7 @@ _pkgname=dicttoxml
 pkgbase="python-$_pkgname"
 pkgname=("python-$_pkgname" "python2-$_pkgname")
 pkgver=1.7.4
-pkgrel=3
+pkgrel=4
 pkgdesc='Converts a Python dictionary or other native data type into a valid XML string'
 url='https://pypi.python.org/pypi/dicttoxml'
 license=('GPL')
@@ -31,11 +31,11 @@ build() {
 package_python-dicttoxml() {
   depends=('python')
   cd dicttoxml-$pkgver
-  python setup.py install --root="$pkgdir" --optimize=1
+  python setup.py install --root="$pkgdir" -O1
 }
 
 package_python2-dicttoxml() {
   depends=('python2')
   cd dicttoxml-$pkgver-py2
-  python2 setup.py install --root="$pkgdir" --optimize=1
+  python2 setup.py install --root="$pkgdir" -O1
 }
