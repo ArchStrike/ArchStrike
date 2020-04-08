@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=archstrike-installer
-pkgver=2.2.5
+pkgver=2.2.7
 pkgrel=1
 arch=('any')
 pkgdesc="Full ArchStike installer for the ArchStrike live environment"
