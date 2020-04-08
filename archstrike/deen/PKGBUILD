@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=deen
-pkgver=2.0.2
+pkgver=2.1.0
 pkgrel=1
 groups=('archstrike' 'archstrike-crypto' 'archstrike-misc')
 arch=('any')
@@ -15,10 +15,10 @@ depends=('python' 'python-pyqt5' 'python-pyopenssl' 'python-jsbeautifier' 'pytho
          'python-jose')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('8e36eba2940b10e14069eaa438ac4e56191bec32a3de1e9a3de8082e5aa8c097eb036601a415d56c5731da2dfc4b7c0123bb76a908bc3b5e6eb07c8b359a2c0e')
+sha512sums=('236d04add5e37f9b41769b0fa1bab5348d6fd0c1effc8192154e7ea3cb32a129e1eef6acb8e30155315f35abc558ff9a799808b835e8cf99d80d76cc82210d07')
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm644 "${pkgname}/media/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
   install -Dm644 "${pkgname}/media/icon.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
