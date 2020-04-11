@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=edb
-pkgver=1.1.0
+pkgver=1.2.0
 pkgrel=1
 groups=('archstrike' 'archstrike-reverse' 'archstrike-debugging')
 pkgdesc="A QT4-based binary mode debugging with the goal of having usability on par with OllyDbg."
@@ -13,16 +13,16 @@ license=('GPL2')
 depends=('qt5-xmlpatterns' 'capstone' 'graphviz' 'qt5-svg')
 makedepends=('boost>=1.35.0' 'cmake')
 source=("https://github.com/eteran/edb-debugger/releases/download/${pkgver}/edb-debugger-${pkgver}.tgz")
-sha512sums=('5834cf091cd6d84ecc10cec277ec954b936dc61b0809d5f434ba4d604fae63c06ac10852f1a4ea81f150dea82645fa0861d8842eea227cbde681a895c465d744')
+sha512sums=('c04b8d3972497ac170c740f2625301ee7d3ea52b81b29084628aa0091d7cd7df12a34ae707be629cde6e0dea54254bfde25e290aba1d6bad2635eff704282ea9')
 
 build() {
-  cd "${srcdir}/${pkgname}-debugger" || exit
+  cd "${srcdir}/${pkgname}-debugger"
   mkdir build && cd build
   cmake -DCMAKE_INSTALL_PREFIX=/usr/ -DCMAKE_BUILD_TYPE="Release" ..
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-debugger/build" || exit
+  cd "${srcdir}/${pkgname}-debugger/build"
   make DESTDIR="${pkgdir}" install
 }
