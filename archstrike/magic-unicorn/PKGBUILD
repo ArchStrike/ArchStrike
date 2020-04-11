@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=unicorn
 pkgname=magic-${_pkgname}
-pkgver=3.8.2
+pkgver=3.8.7
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='A simple tool for using a PowerShell downgrade attack and inject shellcode straight into memory'
@@ -13,10 +13,10 @@ url='https://github.com/trustedsec/unicorn'
 license=('custom')
 depends=('python' 'metasploit-framework')
 source=("https://github.com/trustedsec/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('e77e1e6b068b504f0dd72ec311283dc7bf5d95e549d86d5acfed251b8d8e8f06e8d52d902d03903067623a44eaae3cd4fb79627d52705aa8878eca215cc4f5aa')
+sha512sums=('20c2fffe1c21e8d2c954648aa9801ea866954c1222276a050f535cd2ea9dc5461f8b1377f6c869d74f713aae49dc03d751a2b6dacda2bcd7c77cb1dd440ccb8f')
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
   install -Dm644 CHANGELOG.txt "${pkgdir}/usr/share/doc/${pkgname}/CHANGELOG.txt"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
