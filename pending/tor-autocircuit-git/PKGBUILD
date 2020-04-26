@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname=tor-autocircuit
+pkgname=${_pkgname}-git
+pkgver=r2.f3174e0
+pkgrel=1
+groups=('archstrike' 'archstrike-defense')
+pkgdesc="Tor Autocircuit was developed to give users a finer control over Tor circuit creation. The tool exposes the functionality of TorCtl library which allows its users to control circuit length, speed, geolocation, and other parameters."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url='https://github.com/iphelix/tor-autocircuit'
+license=('custom')
+depends=('tor' 'python2-pytorctl' 'python2-elixir' 'python2-geoip')
+makedepends=('git')
+replaces=('tor-autocircuit')
+source=("git+https://github.com/iphelix/tor-autocircuit.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}" || exit
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  sed 's/usr\/bin\/python/usr\/bin\/env python2/g' -i "${srcdir}/${_pkgname}/${_pkgname}.py"
+}
+
+package() {
+  cd ${srcdir}/${_pkgname} || exit
+  install -Dm755 "${srcdir}/${_pkgname}/${_pkgname}.py" "${pkgdir}/usr/bin/${_pkgname}"
+}
