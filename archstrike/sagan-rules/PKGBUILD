@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=sagan-rules
-pkgver=20170725
+pkgver=20190703
 pkgrel=1
 epoch=1
 pkgdesc="Rules package for Sagan"
@@ -12,7 +12,7 @@ arch=('any')
 url="https://quadrantsec.com/sagan_log_analysis_engine/"
 license=('GPL')
 source=("https://quadrantsec.com/rules/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('df61303489cf5d8f98a852cd81f2ea1fe8e5961296b96ca3637ea1bb16e6cb8f3129bec64acfff5e3c2ecf7834e0b15d8347d0d7f9422737827b8c5e0f2cc63c')
+sha512sums=('0caf1db9bbe7e47558e72f6a041b276f1afc5bd3de16684ba657c9209e194ce05348d19e2536aa792d56d66d2f854051ec8d284a4f84c0cbb43471a8193a8d0f')
 
 package() {
   install -dm0755 "${pkgdir}"/usr/share/sagan-git/rules
