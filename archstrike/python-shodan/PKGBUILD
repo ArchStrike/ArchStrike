@@ -2,51 +2,28 @@
 
 buildarch=1
 
-pkgbase=shodan
-pkgname=('python-shodan' 'python2-shodan')
-_pkgname=${pkgbase}-python
-pkgver=1.22.0
+_pkgname='shodan'
+pkgname=("python-${_pkgname}")
+pkgver=1.23.0
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2/3 library for Shodan.io'
 url='http://github.com/achillean/shodan-python'
 license=('MIT')
 arch=('any')
-makedepends=('python-setuptools' 'python2-setuptools')
+depends=('python-click' 'python-click-plugins' 'python-colorama' 'python-requests'
+         'python-simplejson' 'python-xlsxwriter')
+makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/s/shodan/shodan-${pkgver}.tar.gz")
-sha512sums=('600148fe3d468695e061cd79b739ffe7b5f280c4d638ea8f7ca7f8c1d3f08aade2d99014813e655286ddc1b671c156adfb0e8d28aaf115a377253161688df1ae')
-
-prepare() {
-  cp -r shodan-${pkgver} shodan2-${pkgver}
-
-  grep -iRl 'python' shodan2-${pkgver} | xargs sed -i 's|python$|python2|g'
-}
+sha512sums=('79af2164e9fd61cd60ce01ac8874255322e89c0966a73ff2239036e76c1181b28e9f504fbf2db862cf881ee9a76cfe9a1501fe848939482fd9aea5ca9034cb64')
 
 build() {
-  cd ${srcdir}/shodan-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
-
-  cd ${srcdir}/shodan2-${pkgver}
-  python2 setup.py build
-
 }
 
-package_python-shodan() {
-depends=('python-click' 'python-click-plugins' 'python-colorama' 'python-requests' 'python-simplejson' 'python-xlsxwriter')
-  cd shodan-${pkgver}
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="$pkgdir" -O1 --skip-build
   install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-}
-
-package_python2-shodan() {
-conflicts=('shodan')
-replaces=('shodan')
-provides=('shodan')
-depends=('python2-click' 'python2-click-plugins' 'python2-colorama' 'python2-requests' 'python2-simplejson' 'python2-xlsxwriter' 'python2-ipaddress')
-  cd shodan2-${pkgver}
-  python2 setup.py install --root="$pkgdir" -O1 --skip-build
-  install -Dm0644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-
-  # move executable
-  mv ${pkgdir}/usr/bin/shodan ${pkgdir}/usr/bin/shodan2
 }
