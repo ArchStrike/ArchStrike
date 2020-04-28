@@ -2,17 +2,17 @@
 
 buildarch=1
 
-pkgname=rfidiot-git
 _gitname=RFIDIOt
-pkgver=20190708.r97
+pkgname=rfidiot-git
+pkgver=20200405.r105
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="An open source python library for exploring RFID devices."
 url='http://rfidiot.org'
 license=('GPL')
-makedepends=('git' 'python2-setuptools' 'python2-crypto')
 depends=('python2' 'openssl' 'python2-pyscard')
+makedepends=('git' 'python2-setuptools' 'python2-crypto')
 arch=('any')
 replaces=('rfidiot')
 provides=('rfidiot')
@@ -20,19 +20,19 @@ source=("${pkgname}::git+https://github.com/AdamLaurie/RFIDIOt")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   # Change shebang lines.
   find . -type f -name '*.py' -exec sed -i '1s/python\r\?$/python2/' '{}' \;
 }
 
 package() {
-  cd "${pkgname}" || exit
-  python2 setup.py install --root="${pkgdir}/" --optimize=1
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py install --root="${pkgdir}/" -O1
 
   cd "${pkgdir}/usr/bin"
 
