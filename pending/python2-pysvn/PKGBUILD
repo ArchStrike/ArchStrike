@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=python2-pysvn
+pkgver=1.9.0
+pkgrel=2
+pkgdesc="Python2 SVN Extension."
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+url="http://pysvn.tigris.org"
+license=('APACHE')
+makedepends=('python2-setuptools')
+depends=('subversion')
+conflicts=('pysvn<=1.7.4-3' 'pysvn-py2')
+replaces=('pysvn-py2')
+provides=('pysvn-py2')
+source=("http://tigris.org/files/documents/1233/49509/pysvn-$pkgver.tar.gz")
+sha512sums=('ef5c41770d070f61e23ff2c457a6aadedab1c306d04ea3de489e88d06381813a0e4bdb793da80b803a3b017d71c0739010cca16e62df253e66c4f1223e04908c')
+
+build() {
+  cd $srcdir/pysvn-$pkgver/Source
+  python2 setup.py configure --norpath
+  make
+}
+
+package() {
+  _pyver=`python2 -V 2>&1|sed -e 's/.* 2\.\([0-9]\).*/\1/'`
+  cd $srcdir/pysvn-$pkgver/Source
+  install -D -m644 pysvn/__init__.py $pkgdir/usr/lib/python2.${_pyver}/site-packages/pysvn/__init__.py
+  install -D -m755 pysvn/_pysvn_2_${_pyver}.so $pkgdir/usr/lib/python2.${_pyver}/site-packages/pysvn/_pysvn_2_${_pyver}.so
+}
+
