@@ -5,25 +5,23 @@
 buildarch=220
 
 pkgname=python2-pyscard
-pkgver=1.9.7
+pkgver=1.9.9
 pkgrel=1
 pkgdesc="A Python module adding smart cards support to Python"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://pyscard.sourceforge.net/"
 license=('LGPL')
-depends=('pcsclite')
-conflicts=('pyscard')
-replaces=('pyscard')
+depends=('python2' 'pcsclite')
 makedepends=('python2-setuptools' 'swig')
-source=("http://downloads.sourceforge.net/project/pyscard/pyscard/pyscard%20${pkgver}/pyscard-$pkgver.tar.gz")
-sha512sums=('339d6efd5fcaa361e30029e736d4e2e98e05acd701c39574b40960b4bcec4782ca9c1d6927cea0b3641c5e6a137d0b9fbd961b58422a4151cfbdfa067dcd4b4a')
+source=("http://downloads.sourceforge.net/project/pyscard/pyscard/pyscard%20${pkgver}/pyscard-${pkgver}.tar.gz")
+sha512sums=('88c7314c10153f509eb9bf6318e62210c7182e51b531af752a402bf8d05cfa2658cc1a4e7b9385a474038ddfa5a1bfbf1f208fcd9abe02a60161ce7c757c67b2')
 
 build() {
-  cd "$srcdir/pyscard-$pkgver"
+  cd "${srcdir}/pyscard-${pkgver}"
   python2 setup.py build_ext
 }
 
 package() {
-  cd "$srcdir/pyscard-$pkgver"
-  python2 setup.py install --root=$pkgdir --optimize=1
+  cd "${srcdir}/pyscard-${pkgver}"
+  python2 setup.py install --root=${pkgdir} -O1
 }
