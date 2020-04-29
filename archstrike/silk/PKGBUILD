@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=silk
-pkgver=3.19.0
+pkgver=3.19.1
 pkgrel=1
 pkgdesc='CERT netflow tools.'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,10 +15,10 @@ depends=('libfixbuf' 'lzo' 'libpcap' 'python' 'gnutls' 'c-ares' 'adns' 'snappy')
 makedepends=('perl' 'flex' 'bison')
 install="$pkgname.install"
 source=("http://tools.netsa.cert.org/releases/$pkgname-$pkgver.tar.gz")
-sha512sums=('cb4ad3dcf7d34763251e3ede3389b5e85bc4b139aa234660a27278950f17c8e24877e831cd6b878a99dc1a06001a8c6d151d0e6ff43f8d8941d566e1e58df247')
+sha512sums=('6496421921e70d42289f29eb518ef1f09806a6a1c0eec67c413744df43c2ba6b54e02751c71256b878f4bdb88438b1ae2148f0e5dba0ba27f2a9a0c5fd735e7b')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   export LIBS="-lpthread"
   ./configure --prefix=/usr --sysconfdir=/etc --sbindir=/usr/bin --enable-ipv6 --with-python=$(which python) --with-pcap \
   --with-pic --with-libfixbuf --with-gnutls --enable-output-compression --enable-localtime --enable-data-rootdir=/usr/share/$pkgname
@@ -26,6 +26,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
