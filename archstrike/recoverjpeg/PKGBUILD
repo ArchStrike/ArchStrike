@@ -3,28 +3,28 @@
 buildarch=220
 
 pkgname=recoverjpeg
-pkgver=2.6.1
-pkgrel=2
+pkgver=2.6.3
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='Recover jpegs from damaged devices'
-url='http://www.rfc1149.net/devel/recoverjpeg.html'
+url='https://rfc1149.net/devel/recoverjpeg.html'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('bash' 'python')
-optdepends=(
-  'libexif: needed for sort-pictures'
-  'imagemagick: needed for sort-pictures'
-)
-source=("http://www.rfc1149.net/download/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('820ab1b4e9f06526c5b2e2ab882f55aff513d4041b0516f9f9a3e27c2520acf980cb486ae193a5390c2b2781174cb28c6df5ce17471a64a2775a335e357d0dd7')
+makedepends=('autoconf' 'pandoc')
+optdepends=('libexif: needed for sort-pictures'
+            'imagemagick: needed for sort-pictures')
+source=("https://github.com/samueltardieu/${pkgname}/archive/v${pkgver}.tar.gz")
+sha512sums=('485f0008bc5520d0c76e312d264cf5e09249c43f96440049570718eabee9abaa7df5b711bf859bdb34e16c63f41129ea4a600c68d9cfeb97e7ca694df69aa70f')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  autoreconf -is
   ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
