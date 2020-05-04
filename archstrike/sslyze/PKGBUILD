@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=sslyze
-pkgver=2.1.4
+pkgver=3.0.3
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations"
@@ -13,15 +13,15 @@ license=('GPL2')
 depends=('python')
 makedepends=('nassl' 'python-setuptools')
 source=("https://github.com/nabla-c0d3/sslyze/archive/${pkgver}.zip")
-sha512sums=('0df7085b8d981831a439317354b2cd1e7e36b12d2c7bb386516b70783f7f0d2d8f8b6d2f4b63cd2d8c86a0f0ccec9d793fa37052e843344aed563ad24867729a')
+sha512sums=('e3415bf0b6d58cbe8db9358fa671f85693349447a1d6d65ddb9567a7f8551b64230023254217f5ff4f69ac86c84a54d2af4e4ad885b5889f138b5f9abc4222c1')
 
 build(){
-  cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd $pkgname-$pkgver
+  cd "${srcdir}/$pkgname-$pkgver"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
