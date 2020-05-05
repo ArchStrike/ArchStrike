@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=suricata
-pkgver=5.0.2
-pkgrel=2
+pkgver=5.0.3
+pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://suricata-ids.org/"
@@ -18,14 +18,8 @@ backup=('etc/suricata/suricata.yaml')
 install=${pkgname}.install
 source=("http://openinfosecfoundation.org/download/${pkgname}-${pkgver}.tar.gz"
         "$install")
-sha512sums=('e288f6aee9f8fafb8fa811d2c83a89a29434edc24e05542e172852dc139b9d0bb474d35ddbdc4723df04e7a8b4e70e181c822a4fb1315ba2879c3c7a5c16ef16'
+sha512sums=('4e0ad2ae33537cb074d549b3cc162c5ed115605cb142a96cbf66d1341799eaad96b307fd6ad4679e344e51d00065b3573bfb26bd60468f12addb144b112e4f72'
             '6c5fb66251e88be0c8feae2bb9b0ed561722b6c3b43df0a407afe302669a70624fec551428b7a4bd0d5a26dad60f006d9018176585dc7ad1ebc395ba6a6ddd0f')
-
-#prepare() {
-#  cd "${srcdir}/${pkgname}-${pkgver}"
-#  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python|'
-#  find "${srcdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python|'
-#}
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
