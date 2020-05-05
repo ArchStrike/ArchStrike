@@ -4,9 +4,9 @@ buildarch=1
 
 _pkgname=archinfo
 pkgname=python-${_pkgname}
-pkgver=8.19.4.5
-pkgrel=2
-pkgdesc=""
+pkgver=8.20.1.7
+pkgrel=1
+pkgdesc="Classes with architecture-specific information useful to other projects"
 url="https://pypi.python.org/pypi/archinfo"
 depends=('python' 'python-future')
 makedepends=('python-setuptools')
@@ -14,16 +14,16 @@ license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/archinfo/master/LICENSE")
-sha512sums=('2d3b02e69e9b3872114f6e64bf583838f34f47a83bc838518e7e6536e0fe83c637366f6318ea86993ec91427a94d85d08ed50ea388f506a33653633ee5ab1104'
+sha512sums=('ce57fbb8688aefca6e9ebbd3c8fb76278c027f8688beb0457e7c418d6f837003d5e94af59a71f2a47b51c95f3aa9639d093f24b87249374d8b57413fd47c5d02'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
-    cd archinfo-${pkgver}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd archinfo-${pkgver}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" -O1 --skip-build
     install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
