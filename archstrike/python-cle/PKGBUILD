@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=cle
 pkgname=python-${_pkgname}
-pkgver=8.19.2.4
-pkgrel=2
+pkgver=8.20.1.7
+pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
 url="https://github.com/angr/cle"
 depends=('python' 'python-archinfo' 'python-cffi' 'python-pefile' 'python-pyelftools' 'python-pyvex' 'python-sortedcontainers')
@@ -14,16 +14,16 @@ license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/cle/master/LICENSE")
-sha512sums=('fce8f435b8afb9530f169f984c20ad3b730477c3199b528054ff6a7d301b29c0d06c5e16f68203bb462b8a823075306fce8aa4517a4533abe6393be68194df5e'
+sha512sums=('3e5f9efe8b5c7fbd062c60ecd60696280ac30e24c781a76337b5f14528cfdca6953f8316f56fe2f94f4197cfd66f68554b9a4d3b0aaf759ed2ed292d939a37e7'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
-    cd $srcdir/cle-$pkgver
+    cd "${srcdir}/cle-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd $srcdir/cle-$pkgver
-    python setup.py install --root="$pkgdir" -O1 --skip-build
-    install -Dm644 $srcdir/LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+    cd "${srcdir}/cle-${pkgver}"
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
