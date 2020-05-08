@@ -3,26 +3,25 @@
 buildarch=1
 
 pkgname=maltego
-pkgver=4.2.3.12223
+pkgver=4.2.9.12898
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics' 'archstrike-recon' 'archstrike-scanners')
 pkgdesc="An open source intelligence and forensics application, enabling to easily gather information about DNS, domains, IP addresses, websites, persons, etc."
 arch=('any')
 url='http://www.paterva.com/web5'
 license=('GPL')
-depends=('java-environment' 'giflib' 'python2')
+depends=('java-environment' 'giflib')
 provides=('casefile')
-source=("https://www.paterva.com/malv423/Maltego.v4.2.3.12223.linux.zip"
-        "https://www.paterva.com/web7/docs/M3GuideGUI.pdf")
-sha512sums=('a1e77d440256aadca7f74c2b02534fe235fd19b8e10beb357a41c08b5d67e34b0d7e92694de95882989ae492efb99735faa634c57f86b13bea62799204589f61'
-            '20dda5f7bbf211bb227ef740ae664037e33a0849b15a5e47f9ae4f39bd2b276ef116b492b9be57a44c89f3ffc23ee63d39c6f465136b917c6aeeb08dfe94c6e1')
+source=("https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v4.2.9.12898.linux.zip")
+sha512sums=('1c11a4726e3e0c6f08755ed3b9d1936aca34639688c0ae880128dc9dab1f8abb020df8ab7dce8d0119d722d782709fe825c78633ec72132bf6e8d82e822781a8')
 
-prepare() {
-  grep -iRl 'python' ${pkgname}_${pkgver} | xargs sed -i 's|python$|python2|g'
-}
+#prepare() {
+#  cd "${srcdir}/${pkgname}_4.2.9"
+#  grep -iRl 'python' ${pkgname}_${pkgver} | xargs sed -i 's|python$|python2|g'
+#}
 
 package() {
-  cd ${pkgname}_${pkgver}
+  cd "${srcdir}/${pkgname}_4.2.9"
 
   # Create base directories.
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
@@ -30,7 +29,6 @@ package() {
   install -dm755 "${pkgdir}/usr/bin"
 
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
-  install -Dm644 "$srcdir/M3GuideGUI.pdf" "${pkgdir}/usr/share/doc/${pkgname}/M3GuideGUI.pdf"
 
 # Create joint script.
 cat > ${pkgdir}/usr/bin/maltego <<EOF
