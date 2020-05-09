@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=elasticsearch-py
+pkgname=python2-elasticsearch
+pkgver=7.7.0a2
+pkgrel=1
+arch=('any')
+pkgdesc='Official Python low-level client for Elasticsearch'
+url='https://github.com/elastic/elasticsearch-py'
+license=('Apache')
+depends=('python2-urllib3' 'python2-certifi' 'elasticsearch')
+makedepends=('python2-setuptools')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('807f4c5900c65911f2da3247199a3a6321d51bdcad46e285b76b6d0f387e9e6c62dd983a4650c2a2792cb826af6ebcefde5c704421922b85696cda6a630b65f2')
+
+build() {
+  cd "${srcdir}/elasticsearch-py-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/elasticsearch-py-${pkgver}"
+  python2 setup.py install --root "${pkgdir}" -O1 --skip-build
+}
