@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=gobuster
 pkgver=3.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Directory/file & DNS busting tool written in Go"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/OJ/gobuster"
@@ -12,18 +12,17 @@ groups=('archstrike' 'archstrike-webapps' 'archstrike-enumeration')
 license=("APACHE")
 depends=('glibc')
 makedepends=('go' 'git')
-source=("https://github.com/OJ/gobuster/archive/v$pkgver.tar.gz")
+source=("https://github.com/OJ/gobuster/archive/v${pkgver}.tar.gz")
 sha512sums=('52afcadb26863a111c3aae1902a06c44307ec3f705f076e1cba8169c265e85059f75bc3ddf6c0ca1007753f0603dbf65ceea7414bfc8f236df3f79d99d98361c')
 
 build() {
-  cd "$pkgname-$pkgver"
-  GOPATH="${srcdir}" go get -fix -v -x github.com/OJ/gobuster
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  GOPATH="${srcdir}" go get && go build
 }
 
 package() {
-  cd "$pkgname-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/bin"
-  GOPATH="${srcdir}" go build -v github.com/OJ/gobuster
 
   install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
 }
