@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=netcommander-git
 pkgver=20111208.r21
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-spoof')
 pkgdesc="An easy-to-use arp spoofing tool"
 arch=('any')
@@ -12,7 +12,7 @@ url='https://github.com/sin5678/NetCommander'
 license=('GPL3')
 depends=('python2' 'scapy')
 makedepends=('git')
-source=("$pkgname::git+https://github.com/sincoder/NetCommander.git")
+source=("$pkgname::git+${url}.git")
 sha512sums=('SKIP')
 pkgver() {
   cd "$pkgname" || exit
