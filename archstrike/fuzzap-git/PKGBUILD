@@ -4,18 +4,18 @@ buildarch=1
 
 pkgname=fuzzap-git
 pkgver=r17.057002b
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc="A python script for obfuscating wireless networks"
 arch=('any')
-url='https://github.com/lostincynicism/FuzzAP'
+url='https://github.com/PlantDaddy/FuzzAP'
 license=('custom')
 depends=('python2' 'python2-scapy')
 makedepends=('git')
 provides=('fuzzap')
 conflicts=('fuzzap')
 replaces=('fuzzap')
-source=("fuzzap::git+https://github.com/lostincynicism/FuzzAP.git")
+source=("fuzzap::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
