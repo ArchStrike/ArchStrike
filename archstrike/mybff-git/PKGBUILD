@@ -4,11 +4,11 @@ buildarch=1
 
 pkgname=mybff-git
 pkgver=20170103.r94
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-bruteforce')
 arch=('any')
 pkgdesc="A web application brute force framework"
-url="https://github.com/MooseDojo/myBFF"
+url="https://github.com/rapid7/myBFF"
 license=('MIT')
 depends=('python2-requests' 'python2-lxml' 'python2-pysmb')
 makedepends=('git')
