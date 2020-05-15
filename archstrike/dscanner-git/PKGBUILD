@@ -4,10 +4,10 @@ buildarch=192
 
 pkgname=dscanner-git
 pkgver=20200414.r1405
-pkgrel=1
+pkgrel=2
 pkgdesc="Swiss-army knife for D source code"
 arch=('i686' 'x86_64')
-url="https://github.com/Hackerpilot/Dscanner"
+url="https://github.com/dlang-community/D-Scanner"
 license=('custom')
 depends=('gcc-libs')
 groups=('archstrike' 'archstrike-debugging')
@@ -15,7 +15,7 @@ makedepends=('git' 'libphobos-devel' 'dmd')
 provides=('dscanner')
 conflicts=('dscanner')
 options=('!strip')
-source=("${pkgname}::git+https://github.com/Hackerpilot/Dscanner.git")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
