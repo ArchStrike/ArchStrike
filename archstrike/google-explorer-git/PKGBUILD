@@ -4,11 +4,11 @@ buildarch=1
 
 pkgname=google-explorer-git
 pkgver=20181201.r140
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Google mass exploit robot in python"
-url="https://github.com/anarcoder/google_explorer"
+url="https://github.com/paralelo14/google_explorer"
 license=('MIT')
 depends=('python' 'python-docopt' 'python-beautifulsoup4' 'python-lxml' 'python-selenium' 'python-requests' 'chromium')
 makedepends=('git')

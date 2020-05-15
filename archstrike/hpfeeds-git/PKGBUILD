@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=hpfeeds-git
 pkgver=20191031.r349
-pkgrel=1
+pkgrel=2
 pkgdesc="Honeynet Project generic authenticated datafeed protocol"
-url="https://github.com/rep/hpfeeds"
+url="https://github.com/hpfeeds/hpfeeds"
 depends=('python2')
 makedepends=('git' 'python2-distribute')
 license=('GPL3')
 arch=('any')
-source=("${pkgname}::git+${url}")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
