@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=ssldump-git
-pkgver=20191228.r111
+pkgver=20200428.r122
 pkgrel=1
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="an SSLv3/TLS network protocol analyzer"
