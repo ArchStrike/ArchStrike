@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=ssma-git
-pkgver=20190514.r208
-pkgrel=3
+pkgver=20200421.r215
+pkgrel=1
 groups=('archstrike' 'archstrike-analysis' 'archstrike-malware')
 arch=('any')
 pkgdesc="Simple Static Malware Analyzer"
