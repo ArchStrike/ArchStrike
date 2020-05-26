@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-tldextract
+pkgver=2.2.2
+pkgrel=1
+pkgdesc="Accurately separate the TLD from the registered domain andsubdomains of a URL, using the Public Suffix List."
+url="https://github.com/john-kurkowski/tldextract"
+depends=('python-requests-file')
+makedepends=('python-setuptools')
+license=('custom')
+arch=('any')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('d8bd876910cb5ac2d66286eac965cc726f1bd786469da35bff1e1da32664b1c21eeb0c8f29a77f1393791285c1fc40cdf95b15d0c9d03ef77e91587bebf5b20b')
+
+build() {
+    cd "${srcdir}/tldextract-${pkgver}"
+    python setup.py build
+}
+
+package() {
+    cd "${srcdir}/tldextract-${pkgver}"
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+}
