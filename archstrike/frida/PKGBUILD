@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=frida
-pkgver=12.8.20
+pkgver=12.9.4
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android"
 url="http://www.frida.re"
@@ -13,16 +13,16 @@ license=('custom')
 arch=('i686' 'x86_64')
 source=("https://files.pythonhosted.org/packages/source/f/frida/frida-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/frida/frida/master/COPYING")
-sha512sums=('09de26454259fe3ce18ce547b3384583fa7ce79802b6c1dc74e885a5404f84b70ba5492d50d31e212775ab080b5013e464d990b53f312fbb1317332acfd1eb04'
+sha512sums=('af74c97688fad39343abda3bc2fbad7177ebae81ad712e6d9fa57d76957473d1d46f5f678601ba92272116241ae6909d485c7641469490808f2497bd0b1bd79b'
             'e36c8d5a0538fa4bb3575a60322057f7a687aab04c13deed25399462ba0be74ce6071cc41d967e23b9a96e552462d210280427a945c6cc956919b062878efc9a')
 
 build() {
-    cd $pkgname-$pkgver
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd $pkgname-$pkgver
-    python setup.py install --root="$pkgdir" -O1 --skip-build
-    install -Dm644 $srcdir/COPYING "$pkgdir/usr/share/licenses/$pkgname/COPYING"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -Dm644 ${srcdir}/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
