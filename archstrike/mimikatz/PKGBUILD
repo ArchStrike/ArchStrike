@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=mimikatz
-pkgver=2.2.0.20200502
+pkgver=2.2.0.20200519
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
@@ -12,7 +12,7 @@ url="https://github.com/gentilkiwi/mimikatz"
 license=('custom')
 options=(!strip)
 source=("https://github.com/gentilkiwi/mimikatz/archive/${pkgver/0.2/0-2}.tar.gz" "LICENSE")
-sha512sums=('86df781f041e7122a3a3cf2b329d0c09a64385ef39909eebae56751f44e32059e92db4e93a677cada7b10c3be22c8a85b0948510b03e90d7f0a31c7dcacfbd2d'
+sha512sums=('f1aee206b3c063973c172b6b55c2437e5af2a5f40e354b95aa47119deed70a52227af2ca108139afd977d8e857c27915e71e77cb640ec23b1772a562717f2591'
             '4ac4bba96e2c65e4499913f14c1161e22d67c930529fbcfa74f9c691f96537370ca4f60446ed273288ce372b97974f6c22df145db68a42c373dbe3c0caba5dec')
 
 package() {
