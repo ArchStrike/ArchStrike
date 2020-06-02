@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=gophish
-pkgver=0.9.0
+pkgver=0.10.1
 pkgrel=1
 pkgdesc="Open-source phishing toolkit designed for businesses and penetration testers. It provides the ability to quickly and easily setup and execute phishing engagements and security awareness training."
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -14,7 +14,7 @@ license=("MIT")
 depends=('glibc' 'bash')
 makedepends=('go' 'git')
 source=("https://github.com/gophish/gophish/archive/v${pkgver}.tar.gz")
-sha512sums=('050673fe4126beb353592b38e0aa08461aaafeefc0222b985669faafa0c1ed8cfcb6314629d04c4718e808fb65251d4a39955581e13cb22ecd70a3cf68a7b3f2')
+sha512sums=('67a71bbf36218a44755a20715aaee3dc61e85d323db0dae88130092337672d8964611dd5bc8db94b34eee78df2f7aca4230143682d21f4647cd299c6907d58e9')
 
 build() {
   cd ${pkgname}-${pkgver}
