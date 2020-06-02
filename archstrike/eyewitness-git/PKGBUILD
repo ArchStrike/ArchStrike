@@ -4,7 +4,7 @@ buildarch=204
 
 _pkgname="EyeWitness"
 pkgname="eyewitness-git"
-pkgver=20200122.r822
+pkgver=20200504.r852
 pkgrel=1
 pkgdesc="Take screenshots of websites, provide some server header info, and identify default credentials if possible"
 url="https://github.com/FortyNorthSecurity/EyeWitness"
@@ -33,7 +33,7 @@ package() {
 
   cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/usr/bin/env bash
-cd "/usr/share/${pkgname}"
+cd "/usr/share/${pkgname}/Python"
 python "${_pkgname}.py" "\$@"
 EOF
   chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
