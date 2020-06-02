@@ -1,25 +1,21 @@
-# Maintainer: ArchStrike <team archstrike org>
+# Maintainer: ArchStrike <team@archstrike.org>
 
 buildarch=1
 
 pkgname=changeme
-pkgver=1.2.1
-pkgrel=2
+pkgver=1.2.3
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A default credential scanner"
 arch=('any')
 url='https://github.com/ztgrace/changeme'
 license=('GPL3')
-depends=('python2-requests' 'python2-logutils' 'python2-yaml' 'python2-netaddr' 'python2-responses' 'python2-nose'
-         'python2-lxml' 'python2-cerberus' 'python2-shodan' 'python2-libnmap' 'python2-jinja' 'python2-tabulate'
-         'python2-paramiko' 'python2-psycopg2' 'python2-pymongo' 'python2-pyodbc' 'python2-pysnmp' 'python2-libnmap'
-         'python2-memcached' 'python2-redis' 'python2-selenium' 'python2-sqlalchemy')
+depends=('python-requests' 'python-logutils' 'python-yaml' 'python-netaddr' 'python-responses' 'python-nose'
+         'python-lxml' 'python-cerberus' 'python-shodan' 'python-libnmap' 'python-jinja' 'python-tabulate'
+         'python-paramiko' 'python-psycopg2' 'python-pymongo' 'python-pyodbc' 'python-pysnmp' 'python-libnmap'
+         'python-memcached' 'python-redis' 'python-selenium' 'python-sqlalchemy')
 source=("https://github.com/ztgrace/changeme/archive/v${pkgver}.tar.gz")
-sha512sums=('e30d8f82a15a83f144fba80e749ef78ae9b518911936cffedbf493f75290c5484763b4ebec59d61a4cf97c8f3fb4658f83cf41f4a8f7d380c93efbac738a70ce')
-
-prepare(){
-  grep -iRl 'python' "${pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
-}
+sha512sums=('1b68ba86c61e83de2f2028edf87ace387ea9b301ee67dff8d59d4e4d451ad61a4c08a26169e3696d411ab655e18eb52f3c36001ef238c4d1b5d085c255d0dcdb')
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -30,7 +26,7 @@ package() {
 cat > ${pkgdir}/usr/bin/${pkgname} <<EOF
 #!/usr/bin/env bash
 cd /usr/share/${pkgname}
-python2 ${pkgname}.py "\$@"
+python ${pkgname}.py "\$@"
 EOF
-chmod 755 ${pkgdir}/usr/bin/${pkgname}
+  chmod 755 ${pkgdir}/usr/bin/${pkgname}
 }
