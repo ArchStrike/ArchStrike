@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=knock-git
-pkgver=20191227.r276
+pkgver=20200601.r279
 pkgrel=1
 groups=('archstrike' 'archstrike-dns' 'archstrike-scanners' 'archstrike-bruteforce' 'archstrike-intel' 'archstrike-info' 'archstrike-enumeration')
 arch=('any')
