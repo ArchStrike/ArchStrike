@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=imagejs-git
-pkgver=20171101.r53
+pkgver=20180314.r54
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="A Small tool to package javascript into a valid image file."
