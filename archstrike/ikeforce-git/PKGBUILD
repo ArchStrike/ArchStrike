@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=ikeforce
 pkgname=$_pkgname-git
-pkgver=r27.ea88d54
-pkgrel=2
+pkgver=r30.575af15
+pkgrel=1
 groups=('archstrike' 'archstrike-bruteforce')
 pkgdesc='A command line IPSEC VPN brute forcing tool for Linux that allows group name/ID enumeration and XAUTH brute forcing capabilities'
 arch=('any')
