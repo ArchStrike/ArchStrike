@@ -4,8 +4,8 @@ _pkgname=i2pd
 
 buildarch=220
 
-pkgname=$_pkgname-git
-pkgver=20200323.r5626
+pkgname=${_pkgname}-git
+pkgver=20200602.r5755
 pkgrel=1
 pkgdesc='I2P router written in C++'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -14,24 +14,24 @@ license=('GPL2')
 groups=('archstrike')
 depends=('crypto++' 'boost-libs' 'systemd' 'miniupnpc')
 makedepends=('cmake' 'git' 'boost')
-backup=("etc/default/$_pkgname.conf")
-install=$pkgname.install
-source=("$pkgname::git+https://github.com/PurpleI2P/i2pd.git"
-        "$_pkgname.service"
-        "$_pkgname.tmpfiles.conf"
-        "$_pkgname.conf")
+backup=("etc/default/${_pkgname}.conf")
+install=${pkgname}.install
+source=("${pkgname}::git+https://github.com/PurpleI2P/i2pd.git"
+        "${_pkgname}.service"
+        "${_pkgname}.tmpfiles.conf"
+        "${_pkgname}.conf")
 sha512sums=('SKIP'
             '268f9405491c521b1385dd103d242c96f4a78c5c33414d350b0e4cb6099bb5ef6b86485799fb3ad5701a6e7ad52f08d1fa08257d757b709afe0433cb07827817'
             '1129068d9788ea0abc2966ce563c094aae554c58d0a4726a7892bc6966f119b8a86fc45018748106a9a706124daa678c5fd0613db9ec32b3b09f03ba840592c9'
             '2e816538c766ae15ee405ac751c64e7512765e81f7e7b56dab1c96fe8efd2969c688e5545d2672c97d4f09612089762ca45dd27cb9676aca512cd7b22448e4af')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci openssl | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd $pkgname/build
+  cd "${srcdir}/${pkgname}/build"
   if [[ $CARCH == "x86_64" ]] || [[ $CARCH == "i686" ]]; then
      cmake -DCMAKE_INSTALL_PREFIX="/usr" -DCMAKE_INSTALL_LIBDIR="/usr/lib" -DCMAKE_BUILD_TYPE="Release" -DWITH_HARDENING="on"\
      -DWITH_AESNI="on" -DWITH_UPNP="on" -DWITH_MESHNET="on"
@@ -45,14 +45,13 @@ build() {
 }
 
 package(){
-  cd $pkgname/build
+  cd "${srcdir}/${pkgname}/build"
   make DESTDIR=${pkgdir} install
   # clean up messing stuff
-  rm -rf $pkgdir/usr/src
-  install -Dm644 $pkgdir/usr/LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
-  rm $pkgdir/usr/LICENSE
-  install -Dm644 $srcdir/$_pkgname.service "$pkgdir/usr/lib/systemd/system/$_pkgname.service"
-  install -Dm644 $srcdir/$_pkgname.tmpfiles.conf "$pkgdir/usr/lib/tmpfiles.d/$_pkgname.conf"
-  install -Dm644 $srcdir/$_pkgname.conf "$pkgdir/etc/default/$_pkgname.conf"
+  rm -rf "${pkgdir}/usr/src"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${_pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${_pkgname}.service"
+  install -Dm644 "${srcdir}/${_pkgname}.tmpfiles.conf" "${pkgdir}/usr/lib/tmpfiles.d/${_pkgname}.conf"
+  install -Dm644 "${srcdir}/${_pkgname}.conf" "${pkgdir}/etc/default/${_pkgname}.conf"
 }
 
