@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=massdns-git
-pkgver=20200322.r182
+pkgver=20200430.r193
 pkgrel=1
 groups=('archstrike' 'archstrike-dns' 'archstrike-networking')
 pkgdesc='A high-performance DNS stub resolver in C'
@@ -12,27 +12,25 @@ url='https://github.com/blechschmidt/massdns'
 license=('GPL3')
 depends=('ldns' 'python2')
 makedepends=('git')
-provides=("massdns")
-replaces=("massdns")
-source=("$pkgname::git+https://github.com/blechschmidt/massdns.git")
+source=("${pkgname}::git+https://github.com/blechschmidt/massdns.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   make
 }
 
 package() {
-  cd $pkgname
-  install -dm755 $pkgdir/usr/share/$pkgname
-  install -Dm755 bin/massdns $pkgdir/usr/bin/massdns
-  cp -a --no-preserve=ownership lists scripts tests modules "${pkgdir}/usr/share/${pkgname}"
-  install -Dm644 README.md $pkgdir/usr/share/$pkgname/README.md
+  cd "${srcdir}/${pkgname}"
+  install -dm755 ${pkgdir}/usr/share/${pkgname}
+  install -Dm755 bin/massdns ${pkgdir}/usr/bin/massdns
+  cp -a --no-preserve=ownership lists scripts tests src "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 README.md ${pkgdir}/usr/share/${pkgname}/README.md
 
   # fix python issues
   grep -iRl python ${pkgdir}/usr/share/${pkgname} | xargs sed -i 's|python$|python2|g'
