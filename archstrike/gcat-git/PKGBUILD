@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=gcat-git
-pkgver=20160609.r28
-pkgrel=2
+pkgver=20181116.r29
+pkgrel=1
 groups=('archstrike' 'archstrike-malware' 'archstrike-exploit')
 arch=('any')
 pkgdesc="A fully featured backdoor that uses Gmail as a C&C server"
