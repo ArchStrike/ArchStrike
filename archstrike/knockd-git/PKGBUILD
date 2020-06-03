@@ -9,8 +9,8 @@ buildarch=220
 
 pkgname=knockd-git
 _pkgname=knock
-pkgver=r88.258a27e
-pkgrel=3
+pkgver=r92.c54d3cc
+pkgrel=1
 pkgdesc="A simple port-knocking daemon and client"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.zeroflux.org/projects/knock"
