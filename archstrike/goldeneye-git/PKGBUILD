@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=goldeneye-git
-pkgver=r21.5a97622
+pkgver=r23.02953dd
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-dos')
 pkgdesc="HTTP DoS Test Tool"
