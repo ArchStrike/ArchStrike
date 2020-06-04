@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=dpkt-git
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=20191130.r504
+pkgver=20200424.r510
 pkgrel=1
 pkgdesc='Python library for interacting with and creating packets.'
 arch=('any')
@@ -16,7 +16,7 @@ source=("${pkgname}::git+https://github.com/kbandla/dpkt.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}" || exit
+  cd "${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
@@ -27,7 +27,7 @@ prepare(){
 package_python-dpkt-git() {
   depends=('python' 'python-mock' 'python-sphinx')
 
-  cd "${srcdir}/python-dpkt-git" || exit
+  cd "${srcdir}/python-dpkt-git"
   python setup.py install "--root=${pkgdir}" -O1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
@@ -35,7 +35,7 @@ package_python-dpkt-git() {
 package_python2-dpkt-git() {
   depends=('python2' 'python2-mock' 'python2-sphinx')
 
-  cd "${srcdir}/python-dpkt-git-py2" || exit
+  cd "${srcdir}/python-dpkt-git-py2"
   python2 setup.py install "--root=${pkgdir}" -O1
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
