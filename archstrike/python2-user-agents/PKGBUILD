@@ -3,24 +3,24 @@
 buildarch=1
 
 pkgname=python2-user-agents
-pkgver=1.1.0
-pkgrel=2
+pkgver=2.1.0
+pkgrel=1
 pkgdesc="A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings"
 url="https://github.com/selwin/python-user-agents"
 depends=('python2-yaml' 'python2-ua-parser')
 makedepends=('python2-setuptools')
 license=('custom')
 arch=('any')
-source=("https://github.com/selwin/python-user-agents/archive/v1.1.0.tar.gz")
-sha512sums=('025b25bbdbbb4e8314e5cd7d8648e0b19aac767db578262766f383542de3f5eae3f0604291f3f7061b664c55ac3fac4a19722804a0176758efc399ba3da0c5a9')
+source=("https://github.com/selwin/python-user-agents/archive/v${pkgver}.tar.gz")
+sha512sums=('4151fe2cceba54c33f0dd7a6c0506ebbb937114a192a3883c7269b20e4c4088a9e444dcc97e5ee3a9a4864a358d566ed5eb2ab8f8f89eecd4c35dd3248b6b7d4')
 
 build() {
-    cd $srcdir/python-user-agents-${pkgver}
+    cd "${srcdir}/python-user-agents-${pkgver}"
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/python-user-agents-${pkgver}
-    python2 setup.py install --root="$pkgdir" -O1 --skip-build
-    install -Dm0644 LICENSE.txt ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt
+    cd "${srcdir}/python-user-agents-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -Dm0644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
