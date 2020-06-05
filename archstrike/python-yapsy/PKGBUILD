@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=python-yapsy
+_pyname=Yapsy
+pkgver=1.12.2
+pkgrel=1
+pkgdesc='Yet another plugin system'
+arch=('any')
+url='https://pypi.org/project/Yapsy/'
+license=('BSD')
+depends=('python')
+makedepends=('python-setuptools')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/Y/Yapsy/${_pyname}-${pkgver}.tar.gz")
+sha512sums=('3fdb4de1a6d8f836e22d82354492b99ec9883443c389393d25ea40a08bb0b6ae03db9c947af55237b67764facd4d55a09a36cdba107c8d9202f3700fd55c31fa')
+
+prepare() {
+  cd "${srcdir}/${_pyname}-${pkgver}"
+
+  # python shebang
+  sed -i 's|bin/python$|&2|' `grep -rl bin/python`
+}
+
+package() {
+  cd "${srcdir}/${_pyname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" -O1
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
