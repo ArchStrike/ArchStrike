@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-ua-parser
-pkgver=0.8.0
+pkgver=0.10.0
 pkgrel=1
 pkgdesc="Python port of Browserscope's user agent parser"
 url="https://github.com/ua-parser/uap-python"
@@ -11,17 +11,17 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('APACHE')
 arch=('any')
-source=("https://github.com/ua-parser/uap-python/archive/$pkgver.tar.gz")
-sha512sums=('a9db658fab7f7eb154909d564fbaa1931a40ccbd0f5fc9a1ee26112fbda2d5ae7e1ae6d4974f9c23c0ca769f98f619714566a2c245e88058a4665fa9a01620be')
+source=("https://github.com/ua-parser/uap-python/archive/${pkgver}.tar.gz")
+sha512sums=('aafeed5c9143cf34b9917b28c777bf7295d7c934b3d38e5a3521efb0d224a5e6ad5e50780c099ff87c21610672381605190233e73adc3394f316ff76d71b0be0')
 
 build() {
-    cd $srcdir/uap-python-${pkgver}
+    cd "${srcdir}/uap-python-${pkgver}"
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/uap-python-${pkgver}
-    python2 setup.py install --root="$pkgdir" -O1 --skip-build
+    cd "${srcdir}/uap-python-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" -O1 --skip-build
     find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python2.5|#!/usr/bin/python2|'
     find "${pkgdir}" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
 }
