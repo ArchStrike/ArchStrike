@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=bindead
 pkgname=${_pkgname}-git
 pkgver=20151012.r4504.67019b97b
-pkgrel=5
+pkgrel=6
 pkgdesc='A static analysis tool for binaries'
 url='https://bitbucket.org/mihaila/bindead'
 license=('GPL3')
@@ -18,19 +18,19 @@ source=("git+https://bitbucket.org/mihaila/${_pkgname}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${_pkgname} || exit
+  cd "${srcdir}/${_pkgname}"
   printf "%s.r%s.%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd ${_pkgname} || exit
+  cd "${srcdir}/${_pkgname}"
   unset _JAVA_OPTIONS
   export MAVEN_OPTS="-Dmaven.repo.local=${srcdir} -Xms256m -Xmx512m"
   bash build.sh
 }
 
 package() {
-  cd ${_pkgname} || exit
+  cd "${srcdir}/${_pkgname}"
   # Documentation
   install -Dm644 README.md "${pkgdir}/usr/share/doc/${_pkgname}/README.md"
   install -Dm644 CHANGELOG.md "${pkgdir}/usr/share/doc/${_pkgname}/CHANGELOG.md"
