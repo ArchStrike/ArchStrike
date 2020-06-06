@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=archinfo
 pkgname=python-${_pkgname}
-pkgver=8.20.1.7
+pkgver=8.20.6.1
 pkgrel=1
 pkgdesc="Classes with architecture-specific information useful to other projects"
 url="https://pypi.python.org/pypi/archinfo"
@@ -12,10 +12,9 @@ depends=('python' 'python-future')
 makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/angr/archinfo/master/LICENSE")
-sha512sums=('ce57fbb8688aefca6e9ebbd3c8fb76278c027f8688beb0457e7c418d6f837003d5e94af59a71f2a47b51c95f3aa9639d093f24b87249374d8b57413fd47c5d02'
-            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+#        "https://raw.githubusercontent.com/angr/archinfo/master/LICENSE")
+sha512sums=('8bb549eaceac82f74f7bf0bc262f4a8c533285e42a27404038f2ad6804915a879b237cf3e6274b97a7df5bb9f12c1c9e11593e96f21f28d335d30e5f4836c84f')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -25,5 +24,5 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" -O1 --skip-build
-    install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
