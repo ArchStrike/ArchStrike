@@ -7,7 +7,7 @@ pkgname=python-${_pkgname}
 pkgver=8.20.1.7
 pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
-url="https://github.com/angr/cle"
+url="https://pypi.org/project/cle/"
 depends=('python' 'python-archinfo' 'python-cffi' 'python-pefile' 'python-pyelftools' 'python-pyvex' 'python-sortedcontainers')
 makedepends=('python-setuptools')
 license=('custom')
@@ -18,12 +18,12 @@ sha512sums=('3e5f9efe8b5c7fbd062c60ecd60696280ac30e24c781a76337b5f14528cfdca6953
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
-    cd "${srcdir}/cle-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/cle-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" -O1 --skip-build
     install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
