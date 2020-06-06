@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=cle
 pkgname=python-${_pkgname}
-pkgver=8.20.1.7
+pkgver=8.20.6.1
 pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
 url="https://pypi.org/project/cle/"
@@ -12,10 +12,8 @@ depends=('python' 'python-archinfo' 'python-cffi' 'python-pefile' 'python-pyelft
 makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/angr/cle/master/LICENSE")
-sha512sums=('3e5f9efe8b5c7fbd062c60ecd60696280ac30e24c781a76337b5f14528cfdca6953f8316f56fe2f94f4197cfd66f68554b9a4d3b0aaf759ed2ed292d939a37e7'
-            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('6bd33fb09e7fdf6bf9e41ea14ff7501f43fe1b522f93656f8ed00900b7bc3d038b4cd2cf49ce87842b6207b7b12afe50896810181a3e30aa88659e90e0c0dcec')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -25,5 +23,5 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" -O1 --skip-build
-    install -Dm644 ${srcdir}/LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+    install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
