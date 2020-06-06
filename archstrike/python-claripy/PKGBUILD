@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=claripy
 pkgname=python-${_pkgname}
-pkgver=8.20.1.7
+pkgver=8.20.6.1
 pkgrel=1
 pkgdesc="An abstraction layer for constraint solvers"
 url="https://github.com/angr/claripy"
@@ -14,16 +14,16 @@ license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/claripy/master/LICENSE")
-sha512sums=('7d316847b428bf5654cf941a0699dc8e0bdca06ec822c27206e45d6b642ebc33a31d26f4a6365a36136a05b7bd00aca86dd9711b9eed896b68ff364d40622690'
+sha512sums=('feccc8eac935cc09719420de229c3e6dce2163ba8e29dc8634bb43d26aaf422c6829316f0998f0701676446abb170e6b9f60e976dcb81868368de761211e8d91'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
-    cd "${srcdir}/claripy-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd "${srcdir}/claripy-${pkgver}"
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" -O1 --skip-build
     install -Dm644 ${srcdir}/LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
 }
