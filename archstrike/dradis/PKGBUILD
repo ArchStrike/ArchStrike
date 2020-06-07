@@ -3,7 +3,7 @@
 buildarch=128
 
 pkgname=dradis
-pkgver=3.16.0
+pkgver=3.17.0
 pkgrel=1
 pkgdesc="An open source framework to enable effective information sharing."
 groups=('archstrike' 'archstrike-misc')
@@ -13,7 +13,7 @@ depends=('ruby' 'redis')
 arch=('x86_64')
 options=(!strip)
 source=("https://github.com/dradis/dradis-ce/archive/v${pkgver}.tar.gz")
-sha512sums=('aa4b6f7f8a5c704a4072a47f1c366ff9d9c771b9bf70c650c7f5c13c32b598ed6aaef32e609db80b4b982aeb951ff153e65eebf3306ee176605d0031bb87101b')
+sha512sums=('a248ed7783de0852efa0758b18a08cfb9371acb73b0b303a84849f6bc37f9f8d91ad58f1c12e3ec82861a9e184b6bcf0ca921db03aaab9dac9290b0ddc870939')
 
 package() {
 
@@ -28,13 +28,13 @@ package() {
   # Joint scripts.
   cat > dradis-webapp << EOF
 #!/bin/sh
-cd /usr/share/${pkgname}
+cd "/usr/share/${pkgname}"
 ./dradis-webapp "\$@"
 EOF
 
   cat > dradis-worker << EOF
 #!/bin/sh
-cd /usr/share/${pkgname}
+cd "/usr/share/${pkgname}"
 ./dradis-worker "\$@"
 EOF
 
