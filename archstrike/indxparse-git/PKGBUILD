@@ -8,45 +8,40 @@ pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc="A Tool suite for inspecting NTFS artifacts."
 arch=('any')
-url='http://www.williballenthin.com/forensics/mft/indxparse/'
+url='https://github.com/williballenthin/INDXParse'
 license=('APACHE')
 depends=('wxpython' 'python2-jinja' 'python2-fuse')
 makedepends=('git')
-provides=('indxparse')
-conflicts=('indxparse')
-replaces=('indxparse')
 source=("${pkgname}::git+https://github.com/williballenthin/INDXParse.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' "$pkgname" | xargs sed -i 's|#!.*/bin/python|#!/usr/bin/env python2|;s|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${pkgname}" | xargs sed -i 's|#!.*/bin/python|#!/usr/bin/env python2|;s|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package(){
-  cd "$pkgname"
-  install -dm755 "$pkgdir/usr/share/indxparse"
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
+  cd "${srcdir}/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/indxparse"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  for py in *.py; do install -Dm755 $py $pkgdir/usr/share/indxparse/$py;done
+  for py in *.py; do install -Dm755 "${py}" "${pkgdir}/usr/share/indxparse/$py";done
 
   #docs
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm644 CHANGELOG "$pkgdir/usr/share/indxparse/CHANGELOG"
-  install -Dm644 CONTRIBUTORS.txt "$pkgdir/usr/share/indxparse/CONTRIBUTORS.txt"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 CHANGELOG "${pkgdir}/usr/share/indxparse/CHANGELOG"
+  install -Dm644 CONTRIBUTORS.txt "${pkgdir}/usr/share/indxparse/CONTRIBUTORS.txt"
 
-cat > "$pkgdir/usr/bin/indxparse" <<EOF
+cat > "${pkgdir}/usr/bin/indxparse" <<EOF
 #!/bin/sh
 cd /usr/share/indxparse
 python2 ./INDXParse.py "\$@"
 EOF
 
-chmod 755 $pkgdir/usr/bin/indxparse
-
+chmod 755 "${pkgdir}/usr/bin/indxparse"
 }
-
