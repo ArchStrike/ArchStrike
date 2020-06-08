@@ -3,12 +3,12 @@
 buildarch=1
 
 pkgname=o-saft-git
-pkgver=r3783.57bcf5a
+pkgver=r4021.212a16f
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Shows informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations'
 arch=('any')
-url='https://www.owasp.org/index.php/O-Saft'
+url='https://github.com/OWASP/O-Saft'
 license=('GPL')
 depends=('ruby' 'perl-net-dns' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-io-socket-inet6' 'tk' 'coreutils')
 makedepends=('git')
@@ -19,12 +19,12 @@ source=("${pkgname}::git+https://github.com/OWASP/O-Saft.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}/"
