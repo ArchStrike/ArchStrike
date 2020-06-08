@@ -1,0 +1,93 @@
+diff --git a/src/net/azib/ipscan/Main.java b/src/net/azib/ipscan/Main.java
+index b630ef62..0dbac2a1 100644
+--- a/src/net/azib/ipscan/Main.java
++++ b/src/net/azib/ipscan/Main.java
+@@ -10,7 +10,6 @@ import net.azib.ipscan.di.Injector;
+ import net.azib.ipscan.gui.GUI;
+ import net.azib.ipscan.gui.InfoDialog;
+ import net.azib.ipscan.gui.MacApplicationMenu;
+-import net.azib.ipscan.util.GoogleAnalytics;
+ 
+ import java.security.Security;
+ import java.util.Locale;
+@@ -64,12 +63,10 @@ public class Main {
+ 		}
+ 		catch (UnsatisfiedLinkError e) {
+ 			e.printStackTrace();
+-			new GoogleAnalytics().report(e);
+ 			swingErrorDialog("Failed to load native code: " + e.getMessage() + "\n\nProbably you are using a binary built for wrong OS or CPU. If 64-bit binary doesn't work for you, try 32-bit version, or vice versa.");
+ 		}
+ 		catch (NoClassDefFoundError e) {
+ 			e.printStackTrace();
+-			new GoogleAnalytics().report(e);
+ 			swingErrorDialog("SWT GUI toolkit not available: " + e.toString() + "\n\nIf you are using platform-neutral build, make sure you provide SWT built for your platform manually (e.g. install libswt packages), or please use a platform specific binary.");
+ 		}
+ 		catch (Throwable e) {
+@@ -79,7 +76,6 @@ public class Main {
+ 
+ 	private static void handleFatalError(GUI gui, Throwable e) {
+ 		e.printStackTrace();
+-		new GoogleAnalytics().report(e);
+ 		if (gui != null)
+ 			gui.showMessage(0, "Fatal Error", e + "\nPlease submit a bug report mentioning your OS and what exactly were you doing.");
+ 		else
+diff --git a/src/net/azib/ipscan/gui/GUI.java b/src/net/azib/ipscan/gui/GUI.java
+index f15c8f82..d0752395 100644
+--- a/src/net/azib/ipscan/gui/GUI.java
++++ b/src/net/azib/ipscan/gui/GUI.java
+@@ -4,7 +4,6 @@ import net.azib.ipscan.config.LoggerFactory;
+ import net.azib.ipscan.config.Version;
+ import net.azib.ipscan.core.UserErrorException;
+ import net.azib.ipscan.di.Injector;
+-import net.azib.ipscan.util.GoogleAnalytics;
+ import org.eclipse.swt.SWT;
+ import org.eclipse.swt.SWTError;
+ import org.eclipse.swt.SWTException;
+@@ -33,7 +32,6 @@ public class GUI implements AutoCloseable {
+ 		catch (SWTError e) {
+ 			if (e.getMessage().contains("gtk_init_check")) {
+ 				System.err.println(e.toString() + " - probably you are running as `root` and/or don't have access to the X Server. Please run as normal user or with sudo.");
+-				new GoogleAnalytics().report(e);
+ 			}
+ 			else throw e;
+ 		}
+@@ -68,7 +66,6 @@ public class GUI implements AutoCloseable {
+ 		messageBox.setText(title);
+ 		messageBox.setMessage(localizedMessage);
+ 		messageBox.open();
+-		new GoogleAnalytics().report(localizedMessage, (Throwable) null);
+ 	}
+ 
+ 	@Override public void close() {
+diff --git a/src/net/azib/ipscan/gui/Startup.java b/src/net/azib/ipscan/gui/Startup.java
+index fbf4e9ff..f69667c2 100644
+--- a/src/net/azib/ipscan/gui/Startup.java
++++ b/src/net/azib/ipscan/gui/Startup.java
+@@ -5,7 +5,6 @@ import net.azib.ipscan.config.Labels;
+ import net.azib.ipscan.config.Platform;
+ import net.azib.ipscan.config.Version;
+ import net.azib.ipscan.gui.actions.HelpMenuActions.CheckVersion;
+-import net.azib.ipscan.util.GoogleAnalytics;
+ import org.eclipse.swt.widgets.Display;
+ import org.eclipse.swt.widgets.Shell;
+ 
+@@ -22,7 +21,6 @@ public class Startup {
+ 
+ 	public void onStart() {
+ 		if (guiConfig.isFirstRun) {
+-			new GoogleAnalytics().asyncReport("First run");
+ 			Display.getCurrent().asyncExec(() -> {
+ 				GettingStartedDialog dialog = new GettingStartedDialog();
+ 				if (Platform.CRIPPLED_WINDOWS)
+@@ -35,11 +33,9 @@ public class Startup {
+ 			});
+ 		}
+ 		else if (!Version.getVersion().equals(guiConfig.lastRunVersion)) {
+-			new GoogleAnalytics().asyncReport("Update " + guiConfig.lastRunVersion + " to " + Version.getVersion());
+ 			guiConfig.lastRunVersion = Version.getVersion();
+ 		}
+ 		else if (System.currentTimeMillis() - guiConfig.lastVersionCheck > 30L * 24 * 3600 * 1000) {
+-			new GoogleAnalytics().asyncReport("Version check " + Version.getVersion());
+ 			checkForLatestVersion();
+ 		}
+ 	}

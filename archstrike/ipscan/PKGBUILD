@@ -3,32 +3,51 @@
 buildarch=192
 
 pkgname=ipscan
-pkgver=3.6.2
+pkgver=3.7.2
 pkgrel=1
-pkgdesc="Angry IP scanner is a very fast IP address and port scanner."
+pkgdesc='Fast and friendly network scanner'
 arch=('i686' 'x86_64')
 groups=('archstrike' 'archstrike-scanners')
 license=('GPL2')
-url="http://www.angryziber.com"
-depends=('java-runtime>=7')
-source=()
-source_i686+=("https://github.com/angryip/${pkgname}/releases/download/${pkgver}/${pkgname}-linux-${pkgver}.jar")
-source_x86_64+=("https://github.com/angryip/${pkgname}/releases/download/${pkgver}/${pkgname}-linux64-${pkgver}.jar")
-sha512sums_i686=('da33f2aa92fb042aaa269af889ab595ad6dd9a7262f5a5a801caef9ce0bed0e281dc51ac8e9ade1614d2a6136330a532063e9f0b266a281d5adcc95d52bda525')
-sha512sums_x86_64=('dd1594dd9647f404a0c89c3a3a121c759ba6f4892cc8f4f2185e6d317a6c6a31673534ec0407af77bb7d6ffda1192c900e52cc1701272b67c689634aaf8b33ff')
+url='https://angryip.org'
+depends=('java-runtime')
+makedepends=('jre11-openjdk' 'jdk11-openjdk' 'git')
+
+source=(
+  "git+https://github.com/angryip/ipscan#tag=$pkgver"
+  'build-fix.patch'
+  'google-analytics-removal.patch'
+  "$pkgname.sh"
+  "$pkgname.desktop"
+)
+
+sha512sums=(
+  'SKIP'
+  'f572a1bd593fef2dabb4282241842317c70c7e0a4993967fd4af1681f152aeabfa57c46e47f08bfb81f46d78dbdf6a611903ed0f9673776f0c7f278281cba210'
+  'eb961f77bdbbec4396ba042e2a6f13204a687303252f93948020d3fdf3afbb2fd85b550b730019337dfb0bfce0ace6e09a64e0226762f2d9c61d032533e989d7'
+  '6a9545ee20dd64cbb27fe15f3913ad386e12f71b9ea1bac9ed6489ec111ad69d0e84302f2b933089a0ee25fe832f2d320bd406c45d92b2df47448cab13e8572d'
+  '0e3e47dc0bc97695221977a077548e8ada397d264581411d9018e562b782113a1dbde9d0b017ae61418d61e0e6e9182feca04e88c335f942926164b0acbc09f8'
+)
+
+prepare() {
+  cd $pkgname
+  git apply ../build-fix.patch
+  git apply ../google-analytics-removal.patch
+  sed -i "s|^version = .*|version = '$pkgver'|" build.gradle
+  sed -i -E "s|^( *'Version':) version,|\1 '3.7.2',|g" build.gradle
+}
+
+build() {
+  cd $pkgname
+  unset _JAVA_OPTIONS
+  export PATH=/usr/lib/jvm/java-11-openjdk/bin:$PATH
+  GRADLE_USER_HOME="$srcdir" ./gradlew current
+}
 
 package() {
-  cd "${srcdir}" || exit
-  [[ "${CARCH}" == "i686" ]] && _SRC="ipscan-linux-${pkgver}.jar"
-  [[ "${CARCH}" == "x86_64" ]] && _SRC="ipscan-linux64-${pkgver}.jar"
-  _DST="${pkgdir}/usr/share/java/ipscan/${_SRC}"
-  _BIN="${pkgdir}/usr/bin/ipscan"
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/java/ipscan"
-  cat > "${_BIN}" << EOF
-#!/usr/bin/env sh
-java -jar "/usr/share/java/ipscan/${_SRC}" "\$@"
-EOF
-  chmod 755 "${_BIN}"
-  install -Dm644 "${_SRC}" "${_DST}"
+  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
+  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
+  cd $pkgname
+  install -Dm644 resources/images/icon256.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
+  install -Dm644 build/libs/ipscan-*-$pkgver.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
 }

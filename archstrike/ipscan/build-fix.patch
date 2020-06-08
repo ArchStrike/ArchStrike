@@ -1,0 +1,25 @@
+diff --git a/build.gradle b/build.gradle
+index 4d6067c..c86f767 100644
+--- a/build.gradle
++++ b/build.gradle
+@@ -168,9 +168,6 @@ def deb(def platform, def arch, def moreDeps = '') {
+     ant.exec(executable: "chmod", dir: dist, failonerror: true) {
+         ant.arg(line: "a+x usr/bin/ipscan usr/lib/ipscan/${project.name}-${platform}-${version}.jar")
+     }
+-    ant.exec(executable: 'fakeroot', dir: dist + '/..', failonerror: true) {
+-        ant.arg(line: "dpkg-deb -b deb ${project.name}_${version}_${arch}.deb")
+-    }
+     ant.delete(dir: dist)
+ }
+ 
+@@ -185,10 +182,6 @@ def rpm(def platform, def arch) {
+         ant.replacefilter(token: "RPM_VERSION", value: rpmVersion)
+         ant.replacefilter(token: "VERSION", value: version)
+     }
+-    ant.exec(executable: "rpmbuild", dir: dist, failonerror: true) {
+-        ant.arg(line: "--target ${arch} --define \"_topdir ${new File(dist).absolutePath}\" --define \"platform ${platform}\" -bb SPECS/ipscan.spec")
+-    }
+-    ant.move(file: "${dist}/RPMS/${arch}/ipscan-${rpmVersion}-1.${arch}.rpm", todir:'build/libs')
+     ant.delete(dir: dist)
+ }
+ 
