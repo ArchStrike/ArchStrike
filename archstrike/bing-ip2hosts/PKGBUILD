@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=bing-ip2hosts
-pkgver=1.0.2
+pkgver=1.0.3
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='Enumerates all hostnames which Bing has indexed for a specific IP address.'
@@ -11,15 +11,12 @@ arch=('any')
 url="https://github.com/urbanadventurer/bing-ip2hosts/"
 license=('GPL3')
 source=("https://github.com/urbanadventurer/bing-ip2hosts/archive/v${pkgver}.tar.gz")
-sha512sums=('a9393c37cd3d3951b0886e4fa5ebcf1c4de215c128ac1e7d5972722aa27adfb76c4a03c25ab5dee74ebe7df307c00ff174f9b998c4f111489821c437a85608c1')
+sha512sums=('eb2a0531e53893b942bebf43ca2f2ced3a5d323d8223685443ef6c45c2678c7d060839759770c3a586143636b79bd98bb0598877cbc3d85a840588669dadaf10')
 
 package() {
-  cd "${srcdir}/bing-ip2hosts-${pkgver}"
-  # Base directories
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/doc/bing-ip2hosts"
-  # Bin
-  install -m755 bing-ip2hosts "${pkgdir}/usr/bin"
-  # Doc
-  install -m644 README.md CHANGELOG "${pkgdir}/usr/share/doc/bing-ip2hosts"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -m755 "${pkgname}" "${pkgdir}/usr/bin"
+  install -m644 README.md CHANGELOG "${pkgdir}/usr/share/doc/${pkgname}"
 }
