@@ -4,8 +4,8 @@
 buildarch=192
 
 pkgname=chipsec
-pkgver=1.4.4
-pkgrel=4
+pkgver=1.5.1
+pkgrel=1
 groups=('archstrike' 'archstrike-hardware' 'archstrike-forensics')
 pkgdesc="A framework for analyzing security of PC platforms including hardware, system firmware including BIOS/UEFI and the configuration of platform components."
 arch=('i686' 'x86_64' )
@@ -16,17 +16,17 @@ makedepends=('python2-setuptools')
 install="${pkgname}.install"
 source=("https://github.com/chipsec/chipsec/archive/${pkgver}.tar.gz"
         "chipsec.install")
-sha512sums=('57bd1dcb145f874b9eb764feb0dd253210374492851fdb7a0789a7ebf4027f6d03d0ad7f857a5872960432a90fc9fc5d2579ce2f9ff4d2578a7961b68a7a970e'
+sha512sums=('08f506ec92d40a3d9aa417ae6ec71b832f66af720a405faec345a1d6a3a543858f2a39632448f7928aa3deecc9eccb11699822434d6f5c79b9ca5a04a5f47e8d'
             '87b84cf017f008678bdb5aafe0e5465231b5b167b2a2273786966dce0c2d85c2d2016016f3d629fd9df6c251fc2249d1b6f6e1f3c8e27a9938a7848b684e70b5')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}/"
 
   install -dm755 "${pkgdir}/usr/src/${pkgname}"
   install -dm755 "${pkgdir}/usr/src/${pkgname}/${pkgver}"
   install -Dm644 drivers/linux/dkms.conf \
   "${pkgdir}/usr/src/${pkgname}/${pkgver}/dkms.conf"
-  
+
   # Link pkgver sub-directory to a pkgname-pkgver directory for dkms
   ln -s "/usr/src/${pkgname}/${pkgver}" \
   "${pkgdir}/usr/src/${pkgname}-${pkgver}"
