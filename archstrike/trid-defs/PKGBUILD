@@ -3,9 +3,8 @@
 buildarch=1
 
 pkgname=trid-defs
-pkgver=03.07.18
+pkgver=09.06.20
 pkgrel=1
-epoch=2
 pkgdesc="Definitions DB for trid that describes recurring patterns in supported file types"
 arch=('any')
 url="http://mark0.net/soft-trid-e.html"
@@ -13,10 +12,11 @@ license=('CUSTOM')
 makedepends=('unzip')
 source=("http://mark0.net/download/triddefs.zip"
         "LICENSE")
-sha512sums=('08060009aa63de85564e2a52163ecbb8fa722b04b53555d1f5fde37c06e0c1904144057751293a7ba3520f180f6d5efed32814bf1a69780d30b2eb01fd870350'
+sha512sums=('9ae6d4969f6619a91665c2d49264657c0312fa5d6dcd9a5e32f01a7f5956000ba06467c9d606f9afd7751bf36113b069d90531917d34aeb8e7ab5c918ed3aa20'
             '201bc568f534e2f7ad3c4288f2a0aaf3392285eb9cbe65de0fdcdecc69ddf9e850dfab0830538dba0b76909862c8fee3281a4fb138fabe4b8222dd525e1916c9')
 
 package() {
-    install -Dm644 triddefs.trd "$pkgdir"/usr/share/trid/triddefs.trd
-    install -Dm644 LICENSE "$pkgdir"/usr/share/licenses/${pkgname}/LICENSE
+  cd "${srcdir}"
+  install -Dm644 triddefs.trd "${pkgdir}/usr/share/trid/triddefs.trd"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
