@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=angr
-pkgver=8.19.7.25
+pkgver=8.20.6.8
 pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
@@ -18,19 +18,17 @@ license=('custom')
 arch=('any')
 install="${pkgname}.install"
 source=("https://files.pythonhosted.org/packages/source/a/angr/angr-${pkgver}.tar.gz"
-        "https://raw.githubusercontent.com/angr/angr/master/LICENSE"
         "${pkgname}.install")
-sha512sums=('eecea2400d6b9a247b48d9d57e3355bda286fb039114eb6c2d7722c61e2ab12e48b8e649b1686457af3c658f995df79a53048ae2b47e61f5776c7ea3c2c209af'
-            '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340'
+sha512sums=('fbe5a54bac403e353bd52cea92c091cf829a89536d20b341de0c219f844dd82afc76f481e22d128046cfef7bdebfc462beb9a216443786cbeb2fe3fa09027be9'
             '3e5a33f78a27d5abd22eee426e08f9742e706acc3408cc4812d97d2e7fcf968ad59aace8845687cfb5d4c7d3d9a8b24cba40ac6d879266b13308f5f4d06b3aaa')
 
 build() {
-  cd "${pkgname}-${pkgver}" || exit
+  cd "${pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}" || exit
+  cd "${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
-  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
