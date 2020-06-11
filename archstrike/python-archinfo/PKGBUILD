@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=archinfo
 pkgname=python-${_pkgname}
-pkgver=8.20.6.1
+pkgver=8.20.6.8
 pkgrel=1
 pkgdesc="Classes with architecture-specific information useful to other projects"
 url="https://pypi.python.org/pypi/archinfo"
@@ -13,8 +13,7 @@ makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-#        "https://raw.githubusercontent.com/angr/archinfo/master/LICENSE")
-sha512sums=('8bb549eaceac82f74f7bf0bc262f4a8c533285e42a27404038f2ad6804915a879b237cf3e6274b97a7df5bb9f12c1c9e11593e96f21f28d335d30e5f4836c84f')
+sha512sums=('9fb66cf2d062bad2e23a55d8664fa97c33fa024accc29b38160ed4ef747c2b32bda7c51132bf7e7b574e28a780bd3f844022785434481046b9b4ab886e56a28e')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
