@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="bumpversion"
 pkgname="python-${_pkgname}"
-pkgver=0.5.3
+pkgver=0.6.0
 pkgrel=1
 pkgdesc="Version-bump your software with a single command"
 url="https://github.com/peritus/bumpversion"
@@ -12,16 +12,17 @@ depends=('python')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('0dd0f508aa24fe79a387422e1c2a5dd2ad1e955c0654e50965f3db313368cc64364776f61c4dbb1331280665bd8479160446ddf30f3c39938b4e359762d91ad0')
+#source=("${url}/archive/v${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('8b657a23fcb60a06526205958446d3e410b2b779cfe3be77a5eb09ce5617650b705c8f350f7d36629b09be61bbbec9badf23bc2c39218d57ca33edaf910fcb43')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
-  install -Dm0644 LICENSE.rst "${pkgdir}"/usr/share/licenses/"${pkgname}"/LICENSE.rxt
+  install -Dm0644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
