@@ -1,0 +1,10 @@
+diff --git a/Gemfile.lock b/Gemfile.lock
+index 750e980..941cf01 100644
+--- a/Gemfile.lock
++++ b/Gemfile.lock
+@@ -24,4 +24,4 @@ DEPENDENCIES
+   zip
+ 
+ BUNDLED WITH
+-   1.17.2
++   2.1.4
