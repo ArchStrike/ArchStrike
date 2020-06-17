@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=python-libpcap
+pkgver=0.2.3
+pkgrel=1
+pkgdesc="Cython libpcap"
+url="https://github.com/caizhengxin/python-libpcap"
+license=('BSD')
+arch=('armv7h' 'armv6h' 'x86_64' 'i686' 'aarch64')
+depends=('python' 'libpcap' 'cython')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('6a5b50a0c780dadb138d0bb8c9b32ff001afbc1a61f080ceb10683a128a874aadd91d2a261e298e734101dc6585c42c3551e0a7ff8adeb72f1707b324b6c158f')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py config
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" --optimize=1
+}
