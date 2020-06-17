@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=sslyze
-pkgver=3.0.3
+pkgver=3.0.7
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python tool for analyzing the configuration of SSL servers and for identifying misconfigurations"
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('python')
 makedepends=('nassl' 'python-setuptools')
 source=("https://github.com/nabla-c0d3/sslyze/archive/${pkgver}.zip")
-sha512sums=('e3415bf0b6d58cbe8db9358fa671f85693349447a1d6d65ddb9567a7f8551b64230023254217f5ff4f69ac86c84a54d2af4e4ad885b5889f138b5f9abc4222c1')
+sha512sums=('7ebeeda71f297e3d9b7708d78c6de35a90836e614b99ffa9b846d4c9f184e32c3063749f0a12365ce5e39e174842e505242112de8e8f70ddfce759a7805744c5')
 
 build(){
   cd "${srcdir}/${pkgname}-${pkgver}"
