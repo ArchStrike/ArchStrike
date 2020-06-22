@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=canari
 pkgver=3.3.10
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics' 'archstrike-recon' 'archstrike-scanners')
 pkgdesc="A transform framework for maltego"
 url="http://www.canariproject.com"
@@ -14,7 +14,7 @@ depends=('python' 'python-virtualenv' 'python-mrbob' 'python-flask' 'python-twis
 'python-service-identity' 'python-pyasn1' 'python-boto3' 'python-safedexml' 'python-lxml'
 'python-six' 'python-future' 'python-click' 'python-colorama' 'python-stringcase')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/4a/d9/c66b011acdc3c439ac2d1a6771aad35b1a229b07847f82ef971e63cf31ce/${pkgname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('38e920d36ec3cee27ec34f260c51bf7d3ac664187bd144b43e4cabd062bb621b6298fa4467d41d5d7cd3549e0b8b29e5840d31e5263823b3b57c25c570cc6940')
 
 build() {
@@ -24,6 +24,6 @@ build() {
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  python setup.py install --root="$pkgdir/" -O1 --skip-build
-  sed -i "s|mr.bob|mr.bob2|" ${pkgdir}/usr/lib/python3.7/site-packages/canari-3.3.9-py3.7.egg-info/requires.txt
+  python setup.py install --root="${pkgdir}/" -O1 --skip-build
+  find "${pkgdir}" -name "requires.txt" -exec sed -i "s|mr.bob|mr.bob2|" {} \;
 }
