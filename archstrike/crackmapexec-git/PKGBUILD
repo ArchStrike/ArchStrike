@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=crackmapexec-git
 _pkgname=crackmapexec
-pkgver=20200509.r542
+pkgver=20200626.r569
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
@@ -35,6 +35,7 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   virtualenv --system-site-packages "${pkgdir}/usr/share/${pkgname}/virtualenv"
   source "${pkgdir}/usr/share/${pkgname}/virtualenv/bin/activate"
+  pip install -r requirements.txt
   python setup.py install -O1
 
   # Install the license
