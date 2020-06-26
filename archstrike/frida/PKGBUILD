@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=frida
-pkgver=12.9.7
+pkgver=12.10.4
 pkgrel=1
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android"
 url="http://www.frida.re"
@@ -13,7 +13,7 @@ license=('custom')
 arch=('i686' 'x86_64')
 source=("https://files.pythonhosted.org/packages/source/f/frida/frida-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/frida/frida/master/COPYING")
-sha512sums=('395e767af88750002d04fcc547fc76790f85db0950a1d18452ca975c2ce06d80da81d249c30b29fe4f9e0d5103b5ef12771ab01abedac24e763894a7ef46a2d8'
+sha512sums=('8b23dbe20bcd9a5cb4b06af8abd2cbcade02ed33d2f3039bdaaed22bd80d7c5707d89643e343a9a37463abea58f2cdc12682e488a97a7ac94d0513d3224dfa56'
             'e36c8d5a0538fa4bb3575a60322057f7a687aab04c13deed25399462ba0be74ce6071cc41d967e23b9a96e552462d210280427a945c6cc956919b062878efc9a')
 
 build() {
