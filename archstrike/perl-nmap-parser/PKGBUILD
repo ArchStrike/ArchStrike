@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-nmap-parser
 pkgver=1.37
-pkgrel=2
+pkgrel=3
 pkgdesc="Nmap::Parser"
 arch=('any')
 url='https://metacpan.org/pod/Nmap::Parser'

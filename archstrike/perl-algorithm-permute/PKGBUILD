@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=perl-algorithm-permute
 pkgver=0.16
-pkgrel=3
+pkgrel=4
 pkgdesc="Perl module for handy and fast permutations with object oriented interface"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=("GPL")

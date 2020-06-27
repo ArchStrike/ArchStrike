@@ -7,7 +7,7 @@ buildarch=220
 
 pkgname=perl-crypt-x
 pkgver=0.068
-pkgrel=1
+pkgrel=2
 pkgdesc="Cryptographically secure random number generator"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://metacpan.org/pod/CryptX"

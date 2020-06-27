@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-digest-crc
 pkgver=0.22.2
-pkgrel=2
+pkgrel=3
 pkgdesc="Generic interface to CRC algorithms"
 arch=('any')
 license=('PerlArtistic')

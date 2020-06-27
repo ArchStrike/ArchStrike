@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=perl-digest-md2
 pkgver=2.04
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl interface to the MD2 Algorithm"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
 url='https://metacpan.org/pod/Digest::MD2'

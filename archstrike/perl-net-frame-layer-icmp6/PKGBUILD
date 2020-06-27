@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-frame-layer-icmp6'
 pkgver='1.11'
-pkgrel=1
+pkgrel=2
 pkgdesc='Internet Control Message Protocol v6 layer object.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Frame::Layer::ICMPv6'
