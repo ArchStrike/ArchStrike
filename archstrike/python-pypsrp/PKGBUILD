@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname="pypsrp"
+pkgname="python-${_pkgname}"
+pkgver=0.4.0
+pkgrel=1
+pkgdesc="Python client for the PowerShell Remoting Protocol (PSRP) and Windows Remove Management (WinRM) service"
+url="https://pypi.org/project/${_pkgname}/"
+license=('MIT')
+arch=('armv7h' 'armv6h' 'x86_64' 'i686' 'aarch64')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('ec70e787d0f206c49582aae0366ae860a11b4deabf8e2998892250ec83c7cf4239c6b1ff7b8e3f8dbf4ae94832c47a5d05a237769531f6b43925c48fa20bc3ec')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" -O1
+}
