@@ -1,0 +1,33 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname="pylnk3"
+pkgver=0.3.0
+pkgrel=1
+pkgdesc="Python library for reading and writing Windows shortcut files"
+url="https://pypi.org/project/${_pkgname}/"
+license=('GPL3')
+arch=('any')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('412609067836e12bdc366c1c2c288329adc59d92d016d8adb809f92905b360f2c49fc457094f16fe70e574f628966d0401a679a311ae265d7dd57fcaa90543c2')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" -O1
+
+  install -dm 755 "${pkgdir}/usr/bin"
+  install -dm 755 "${pkgdir}/usr/share/${pkgname}"
+  cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
+#!/usr/bin/env bash
+python "/usr/share/${pkgname}/${pkgname}.py" "\$@"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+}
