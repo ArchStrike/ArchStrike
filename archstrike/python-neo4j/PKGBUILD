@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="neo4j"
+pkgname="python-${_pkgname}"
+pkgver=4.0.0
+pkgrel=1
+pkgdesc="Neo4j Bolt Driver for Python"
+url="https://pypi.org/project/neo4j/"
+license=('APACHE')
+arch=('any')
+depends=('python' 'python-pytz')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('b50d3c4b99ecc5c3bb7f9ec5e0b9649bd79a58a0d69494182317d252ab1e4298406c43c7804b4e9e8cebdbb555006eb5d6f3f246eed419f5e99400227eb71244')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" -O1
+}
