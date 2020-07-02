@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname="ldapdomaindump"
+pkgver=0.9.3
+pkgrel=1
+pkgdesc="Active Directory information dumper via LDAP"
+url="https://pypi.org/project/ldapdomaindump/"
+license=('MIT')
+arch=('armv7h' 'armv6h' 'x86_64' 'i686' 'aarch64')
+depends=('python' 'python-dnspython' 'python-ldap3')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('b24083d271033e3c38e280d8cedd822ca503840716cd21361b1956595179dd6d67a9d75f0e3e4b47d8d21e313ee1f4e370d20c5453a3703ed370b75ba7d505e1')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py config
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" -O1
+
+  cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
+#!/usr/bin/env bash
+python "/usr/share/${pkgname}/${pkgname}.py" "\$@"
+EOF
+  chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+}
