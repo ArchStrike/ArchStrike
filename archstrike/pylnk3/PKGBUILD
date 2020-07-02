@@ -4,9 +4,9 @@ buildarch=1
 
 pkgname="pylnk3"
 pkgver=0.3.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library for reading and writing Windows shortcut files"
-url="https://pypi.org/project/${_pkgname}/"
+url="https://pypi.org/project/${pkgname}/"
 license=('GPL3')
 arch=('any')
 depends=('python')
