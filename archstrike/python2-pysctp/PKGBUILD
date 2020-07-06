@@ -2,27 +2,28 @@
 
 buildarch=220
 
-pkgname=python2-pysctp
-pkgver=0.6
-pkgrel=2
+_pkgname="pysctp"
+pkgname="python2-${_pkgname}"
+pkgver=0.6.1
+pkgrel=1
 pkgdesc="A python module for the SCTP protocol stack and library."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='https://pypi.python.org/pypi/pysctp/0.6'
+url='https://pypi.org/project/pysctp/'
 license=('LGPL')
 depends=('python2' 'lksctp-tools')
 makedepends=('python2-setuptools')
-source=(https://pypi.python.org/packages/source/p/pysctp/pysctp-$pkgver.tar.gz)
-sha512sums=('620cd4ee38b46fc59297ba0a195d38f09abee73da35c1c09a45ef78bd4447dae1c7bddc0888416d3442d54a5575e8961cb10b23f242c3c8f68fe9d80ad131222')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('ef0f9ba24e835015d7731a024e959afd7e1afca291a24f7abfa42d915a5be28b772526c472bff605d6d200ad762ccdb837663992f71d96097738837dbf59ca0b')
 
 prepare(){
- cd "$srcdir/pysctp-$pkgver/"
+ cd "${srcdir}/${_pkgname}-${pkgver}/"
  sed -i 's|env python$|env python2|' *.py
 }
 
 package() {
-  cd "${srcdir}/pysctp-${pkgver}/"
-  python2 setup.py install --root=$pkgdir --optimize=1
-  install -Dm644 $pkgdir/usr/_sctp.h $pkgdir/usr/include/$pkgname/_sctp.h
+  cd "${srcdir}/${_pkgname}-${pkgver}/"
+  python2 setup.py install --root=${pkgdir} -O1
+  install -Dm644 ${pkgdir}/usr/include/_sctp.h ${pkgdir}/usr/include/${pkgname}/_sctp.h
   # clean up
-  rm -rf $pkgdir/usr/_sctp.h
+  rm -rf ${pkgdir}/usr/_sctp.h
 }
