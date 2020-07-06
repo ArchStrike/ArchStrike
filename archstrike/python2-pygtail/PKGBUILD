@@ -2,8 +2,9 @@
 
 buildarch=1
 
-pkgname=python2-pygtail
-pkgver=0.10.1
+_pkgname="pygtail"
+pkgname="python2-${_pkgname}"
+pkgver=0.11.1
 pkgrel=1
 pkgdesc="Reads log file lines that have not been read."
 url="http://github.com/bgreenlee/pygtail"
@@ -11,20 +12,20 @@ depends=('python2')
 makedepends=('python2-setuptools')
 license=('GPL')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/p/pygtail/pygtail-${pkgver}.tar.gz")
-sha512sums=('c712bc0cd485f1cb89c9c5957ce8359a83df20c354094983f1ddf517006038e0a94dbcb2db4afdf87499140efb8e50f39944d98f6f63e8d64a8e5579edbc5652')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('93954e1aa08ba4e889666bd6cf648e944436266a5b97a8ae63c0f1eab36f64c2cd360e20a799f2c314c723b44df5271bd62d17258be87fffd550d595616b6364')
 
 prepare() {
-    cd $srcdir/pygtail-$pkgver
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     sed -i 's|python$|python2|' *.py
 }
 
 build() {
-    cd $srcdir/pygtail-$pkgver
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/pygtail-$pkgver
-    python2 setup.py install --root="$pkgdir" --skip-build -O1
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" --skip-build -O1
 }
