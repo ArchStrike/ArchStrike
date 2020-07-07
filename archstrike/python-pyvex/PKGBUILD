@@ -4,16 +4,16 @@ buildarch=1
 
 _pkgname=pyvex
 pkgname=python-${_pkgname}
-pkgver=8.20.6.8
+pkgver=8.20.7.6
 pkgrel=1
 pkgdesc="A Python interface to libVEX and VEX IR."
-url="https://pypi.python.org/pypi/pyvex"
+url="https://pypi.org/project/pyvex/"
 depends=('python-pycparser' 'python-archinfo' 'python-cffi' 'python-future' 'python-bitstring')
 makedepends=('python-setuptools')
-license=('custom')
+license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('a4bd0202d1ea1a28210ebf8220a670c7e05538f78fc78de38c265e2b64f9551118ad7def63a7f21c6334158c3155b1f9c8db7780eed471de9c8a09798f148089')
+sha512sums=('72c46bbce1745cd0dff52bab9cc4150647bd74dadfce2937a2ce21f7a60fa523cfe5297181716f305dd8fd50d4434ce18ce654417c20e375c59336f8164f7c7b')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
