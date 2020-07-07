@@ -3,32 +3,32 @@
 buildarch=1
 
 pkgname=angr
-pkgver=8.20.6.8
+pkgver=8.20.7.6
 pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
-depends=('python-ana' 'python-archinfo' 'python-bintrees' 'python-cachetools'
-         'python-capstone' 'python-cffi' 'python-claripy' 'python-cle'
-         'python-cooldict' 'python-dpkt-git' 'python-mulpyplexer'
-         'python-networkx' 'python-progressbar' 'python-pyelftools' 'python-pygit2'
-         'python-pyvex' 'python-rpyc' 'python-simuvex' 'python-unicorn'
-         'python-sortedcontainers' 'python-ailment')
+depends=('python-ailment' 'python-ana' 'python-archinfo' 'python-bintrees' 'python-cachetools'
+         'python-capstone' 'python-cffi' 'python-claripy' 'python-cle' 'python-cooldict'
+         'python-cppheaderparser' 'python-dpkt-git' 'python-gitpython' 'python-itanium_demangler'
+         'python-mulpyplexer' 'python-networkx' 'python-progressbar' 'python-protobuf'
+         'python-psutil' 'python-pycparser' 'python-pyelftools' 'python-pygit2' 'python-pyvex'
+         'python-rpyc' 'python-simuvex' 'python-sortedcontainers' 'python-unicorn')
 makedepends=('python-setuptools')
-license=('custom')
+license=('BSD')
 arch=('any')
 install="${pkgname}.install"
-source=("https://files.pythonhosted.org/packages/source/a/angr/angr-${pkgver}.tar.gz"
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.install")
-sha512sums=('fbe5a54bac403e353bd52cea92c091cf829a89536d20b341de0c219f844dd82afc76f481e22d128046cfef7bdebfc462beb9a216443786cbeb2fe3fa09027be9'
+sha512sums=('1291b62dba5dafa3ccfb8c48e790b1ad278ccf6cb4f909f732a3cd858230cf04f1bdc73c20d886339bff12319ce9c34d7c8f9e5caf64f83adddd952aa6ca042d'
             '3e5a33f78a27d5abd22eee426e08f9742e706acc3408cc4812d97d2e7fcf968ad59aace8845687cfb5d4c7d3d9a8b24cba40ac6d879266b13308f5f4d06b3aaa')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
