@@ -4,22 +4,20 @@ buildarch=192
 
 _pkgname=beef
 pkgname=${_pkgname}-git
-pkgver=20200604.r3859
+pkgver=20200710.r3878
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='Pentesting framework that focuses on web-browser exploitation'
 arch=('i686' 'x86_64')
-url='http://github.com/beefproject/beef'
+url='https://github.com/beefproject/beef'
 license=('Apache')
 options=('!emptydirs')
-provides=("${_pkgname}")
-conflicts=("${_pkgname}")
 depends=('ruby' 'ruby-rdoc' 'ruby-bundler' 'java-environment' 'python' 'imagemagick'
          'nodejs' 'sqlite' 'libtool' 'openssl' 'gcc' 'readline' 'zlib' 'libyaml' 'bzip2'
          'autoconf' 'automake' 'bison')
 makedepends=('git')
-source=("${pkgname}::git+http://github.com/beefproject/beef.git")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
