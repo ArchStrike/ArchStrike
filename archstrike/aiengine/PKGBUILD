@@ -3,28 +3,22 @@
 buildarch=220
 
 pkgname=aiengine
-pkgver=1.9.2
+pkgver=2.0.0
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A network intrusion detection engine with capabilities of learning without any human intervention."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://bitbucket.org/camp0/aiengine"
 license=('GPL3')
-depends=('libpcap' 'boost' 'boost-libs' 'boost-bloom-filters' 'python2' 'log4cxx-svn' 'pcre' 'gcc-libs')
-source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-${pkgver}.tar.gz"
-        "1.9.1-only.diff")
-sha512sums=('eacdd283e6bfe41b1ebdbb25e776ca4d8eab407fb5274dc5bed42c4d671271a549bec0db717c57226e4305a0ea857e14ebd35c98c7a0c9d8358d71a5e821ac91'
-            '218bc1f09df15246ec51b03baf069305d82a117091aa1d770774ac9f452051e29d97c18d74f6f39632a7b1ba5ce925b1ebd751610d04c0effe5d1f1ba676f710')
-
-prepare(){
-  grep -iRl 'python' "${pkgname}-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
-}
+depends=('libpcap' 'boost' 'boost-libs' 'boost-bloom-filters' 'python' 'log4cxx-svn' 'pcre' 'gcc')
+source=("https://bitbucket.org/camp0/aiengine/downloads/aiengine-${pkgver}.tar.gz")
+sha512sums=('51788f2c61d5ca78fc5569ac954d621ac684f68f78ca0ada7b4a87b13bab85d7f2397515c656f41eb6dcd54989f5b9c0ad7c461e355b7cadd1b54f6f367d95b1')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./autogen.sh
   export CXXFLAGS="-llog4cxx"
-  export PYTHON=/usr/bin/python2.7
+  export PYTHON=/usr/bin/python
   ./autogen.sh
   ./configure --prefix=/usr --enable-adaptor --enable-bloomfilter --enable-tcpqos \
   --enable-fscompress --enable-pythongil --with-pic --with-boost-python --with-pcre
@@ -32,6 +26,6 @@ build() {
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
 }
