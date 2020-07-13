@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=metasploit-framework
-pkgver=5.0.95
+pkgver=5.0.98
 pkgrel=1
 pkgdesc='Advanced open-source platform for developing, testing, and using exploit code'
 groups=('archstrike' 'archstrike-exploits' 'archstrike-fuzzers' 'archstrike-scanners')
@@ -15,7 +15,7 @@ makedepends=('make')
 options=('!strip' '!emptydirs')
 conflicts=('metasploit')
 source=("${pkgname}"-"${pkgver}".tar.gz::https://github.com/rapid7/metasploit-framework/archive/"${pkgver}".tar.gz)
-sha512sums=('39044e8838013d711ef11540006d9fcb25fdf3bed9c800afff5e68b483c86adb186dbf063a982ad614b0483d095698dcbacb1707da810deecc8423ceb538e6a7')
+sha512sums=('5cb6041bc91e160b008485ee8f3dcc2c6918c1862c341d795ee5215bfca77d7e2fbd20c2ea4048804fdf3b74c8ba1ac347f3f11f91a1144f0ccf6bfe130d6463')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
