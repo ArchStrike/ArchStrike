@@ -3,32 +3,26 @@
 buildarch=220
 
 pkgname=sipsak
-pkgver=0.9.6
-pkgrel=3
+pkgver=0.9.7
+pkgrel=1
 groups=('archstrike' 'archstrike-voip')
 pkgdesc="A small command line tool for developers and administrators of Session Initiation Protocol (SIP) applications."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='http://sourceforge.net/projects/sipsak.berlios/'
+url=''https://github.com/nils-ohlmeier/sipsak
 license=('GPL')
-depends=('c-ares' 'openssl')
-source=("http://downloads.sourceforge.net/project/sipsak.berlios/sipsak-$pkgver-1.tar.gz" "config.guess-for-aarch64.patch")
-sha512sums=('c2d62ddaf2ecc9616941cf002a0494d2f9c43747e6b527f8b1542e9b5ae143fc69b18fc140bd3f255896b0e8eb02f7d198cc1799a4041e2d0c95d90b653591fe'
-            'd538f73c74e532fc675c4e257bd4ddbb4e838124879ffb5d23a2d518b590468aecdc41140b1d7359287815fe30b5913e8defcc07cb3cc3ac1ee70d42287102bc')
-
-prepare() {
-  cd $srcdir/sipsak-$pkgver
-  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
-}
+depends=('c-ares' 'openssl' 'gnutls')
+#makedepends=('pkgconf' 'automake' 'autoconf' 'libtool')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('088da5b5b81e7ff89bdc920dc8fdfc559ba36d599de9ba5ca22c35f2bea24f0c7c76e10125baa8ae517c3f03b1b936adacde4e236be8a13797651adc624f14a7')
 
 build() {
-  cd $srcdir/sipsak-$pkgver
-  export CFLAGS="-Wall -O3 -Wcpp -g -std=gnu89"
-  ./configure --prefix=/usr --mandir="/usr/share/man"
-  make
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  autoreconf -i
+  ./configure --prefix=/usr --mandir="/usr/share/man" --disable-dependency-tracking
+  make LDFLAGS="-z muldefs"
 }
 
 package() {
-  cd $srcdir/sipsak-$pkgver
-
-  make DESTDIR=$pkgdir install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
