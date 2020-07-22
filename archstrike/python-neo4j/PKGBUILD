@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="neo4j"
 pkgname="python-${_pkgname}"
-pkgver=4.0.1
+pkgver=4.0.2
 pkgrel=1
 pkgdesc="Neo4j Bolt Driver for Python"
 url="https://pypi.org/project/neo4j/"
@@ -13,7 +13,7 @@ arch=('any')
 depends=('python' 'python-pytz')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('68a0f65f45518437e1c2597dab822ec540bcd4a2e5d7f0c838889adb121618f227a27d6f6af13c147ba710293db24dbbd354a0b8dcafcd792c8918058341788a')
+sha512sums=('d5a179a2e8e4cf630c192b3077dd65b737987991ac85994561772b7bcbf059afe4a3dbb1c47cf30fc12f71c12be9f438ee60ba98768937af214a6f06def03553')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
