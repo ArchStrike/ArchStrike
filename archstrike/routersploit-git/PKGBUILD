@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=routersploit-git
 _pkgname=routersploit
-pkgver=20191215.r784
+pkgver=20200612.r788
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc='The Router Exploitation Framework'
@@ -17,12 +17,12 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}/"
