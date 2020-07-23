@@ -3,9 +3,8 @@
 buildarch=1
 
 pkgname="python-stem-git"
-pkgver=20200516.r3822
-pkgrel=2
-epoch=1
+pkgver=20200722.r3975
+pkgrel=1
 pkgdesc='A controller library for Tor'
 arch=('any')
 url='https://stem.torproject.org/'
