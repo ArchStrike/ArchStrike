@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=python2-pyrtlsdr-git
-pkgver=r331.190d3ac
+pkgver=r368.85f27ab
 pkgrel=1
 pkgdesc="A Python wrapper for librtlsdr (a driver for Realtek RTL2832U based SDR's)"
 depends=('python2' 'rtl-sdr')
@@ -12,19 +12,20 @@ makedepends=('git' 'python2-setuptools')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="https://github.com/roger-/pyrtlsdr"
 license=('GPL3')
-source=("${pkgname}::git+https://github.com/roger-/pyrtlsdr.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
-  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
+  cd "${srcdir}"
+  grep -iRl 'python' "${srcdir}/${pkgname}" | xargs sed -i 's|python$|python2|'
 }
 
 package(){
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   python2 setup.py install --root=${pkgdir} -O1
 }
