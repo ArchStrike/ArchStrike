@@ -4,7 +4,7 @@ buildarch=1
 
 _gitname=RFIDIOt
 pkgname=rfidiot-git
-pkgver=20200405.r105
+pkgver=20200701.r107
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-wireless')
@@ -14,9 +14,7 @@ license=('GPL')
 depends=('python2' 'openssl' 'python2-pyscard')
 makedepends=('git' 'python2-setuptools' 'python2-crypto')
 arch=('any')
-replaces=('rfidiot')
-provides=('rfidiot')
-source=("${pkgname}::git+https://github.com/AdamLaurie/RFIDIOt")
+source=("${pkgname}::git+https://github.com/AdamLaurie/RFIDIOt.git")
 sha512sums=('SKIP')
 
 pkgver() {
