@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=smbmap-git
-pkgver=20200529.r133
+pkgver=20200707.r136
 pkgrel=1
 groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="A handy SMB enumeration tool"
@@ -17,12 +17,12 @@ replaces=('smbmap')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   install -Dm755 smbmap.py "$pkgdir/usr/bin/smbmap"
   install -Dm644 README.md "$pkgdir/usr/share/doc/smbmap/README.md"
 }
