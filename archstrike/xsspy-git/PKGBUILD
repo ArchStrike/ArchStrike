@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=xsspy-git
-pkgver=20190809.r58
+pkgver=20200613.r60
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
@@ -12,22 +12,22 @@ url="https://github.com/faizann24/XssPy"
 license=('MIT')
 depends=('python2' 'python2-mechanize' 'python2-six' 'python2-webencodings' 'python2-html5lib')
 makedepends=('git')
-source=("${pkgname}::git+https://github.com/faizann24/XssPy.git")
+source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 
 }
 
 prepare() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   sed -i '1i\#!/usr/bin/env python2' XssPy.py
 }
 
 package() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
