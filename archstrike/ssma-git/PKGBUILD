@@ -16,26 +16,26 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   sed -i '2i # -*- coding: utf-8 -*-' ssma.py
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
   chmod 755 ${pkgdir}/usr/share/${pkgname}/ssma.py
 
 cat > "${pkgdir}/usr/bin/ssma" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}
+cd "/usr/share/${pkgname}"
 ./ssma.py "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/ssma"
