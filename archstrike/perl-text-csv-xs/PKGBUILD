@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname='perl-text-csv-xs'
-pkgver=1.43
-pkgrel=2
+pkgver=1.44
+pkgrel=1
 pkgdesc="comma-separated values manipulation routines"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('PerlArtistic' 'GPL')
@@ -12,7 +12,7 @@ options=('!emptydirs')
 depends=('perl')
 url='https://metacpan.org/pod/Text::CSV_XS'
 source=("http://search.cpan.org/CPAN/authors/id/H/HM/HMBRAND/Text-CSV_XS-${pkgver}.tgz")
-sha512sums=('96dabb3e2436dd8629db22e13995048b27728d21f48fc774a4b7d912ec43706514543fd4d713244d21c99ae22b62b2d4b4e8cffc31ae7a06e02b4412beb5665f')
+sha512sums=('7f5ded1f6f617c2f3e6aaeb03c639be2231bcc9643f7362b8a09051d98aad1a796f900cac0078eafc1a0be28e431c5a0f94ecd8f1e3514505e9ab3a0ee492eb8')
 _distdir="Text-CSV_XS-${pkgver}"
 
 build() {
