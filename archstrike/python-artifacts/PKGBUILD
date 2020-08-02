@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team [at] archstrike [dot] org>
+
+buildarch=1
+
+_pkgname="artifacts"
+pkgname="python-${_pkgname}"
+pkgver=20200515
+pkgrel=1
+pkgdesc="Digital Forensics Artifact Repository"
+url="https://github.com/ForensicArtifacts/artifacts"
+arch=('any')
+license=('Apache')
+depends=('python' 'python-pyaml' 'python-pip')
+makedepends=('python-setuptools')
+source=("https://github.com/ForensicArtifacts/artifacts/releases/download/${pkgver}/artifacts-${pkgver}.tar.gz")
+sha512sums=('eb4d4b08ab0e5b1f89faf04f8283cfdeb73afea55d27b1732bc0c9b4205c42899dcc2df1d0aa0d7118877c0ff96481e61f126d14b0ef5a4e3819748c4c41d8f0')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE ${pkgdir}/usr/share/licenses/${pkgname}/LICENSE
+}
