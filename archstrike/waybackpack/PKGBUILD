@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=waybackpack
-pkgver=0.3.5
+pkgver=0.3.6
 pkgrel=1
 pkgdesc="Command-line tool that lets you download the entire Wayback Machine archive for a given URL."
 url="http://github.com/jsvine/waybackpack"
@@ -11,19 +11,18 @@ depends=('python-requests')
 makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
-source=("https://github.com/jsvine/waybackpack/archive/v$pkgver.tar.gz" "LICENSE.txt")
-sha512sums=('df3e9bcaca98c2fa362d065907164e683ae8430927754955f4c24be5ab8b56c1b60eced894d4750f8d143b8feaef1575d9dac974b59d547afe1923919145b090'
-            '61f308cbaa9c46adc880732efdb9f8bcbe3e14848a8f073c1582ce3fd41dec8c9845bfae03dc9a0986ce109f5c08b11204f85621829f7347e183ffc33b3a8aa7')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('24bf9f49470a77fad0662c24badeb655eb1c869c31e66ce773deac5036fd5cb3aeadbb06b15f75d53b2b6f4eb9147a278671820aadcbe4085189e15be10fbec1')
 
 build() {
-    cd ${srcdir}/waybackpack-${pkgver}
+    cd "${srcdir}/${pkgname}-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd ${srcdir}/waybackpack-${pkgver}
-    python setup.py install --root="${pkgdir}" --optimize=1
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" -O1
 
     install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-    install -Dm644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}"
+    install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/"
 }
