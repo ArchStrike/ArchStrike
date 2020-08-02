@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="bacpypes"
+pkgname="python-${_pkgname}"
+pkgver=0.18.1
+pkgrel=1
+pkgdesc="BACpypes provides a BACnet application layer and network layer written in Python for daemons, scripting, and graphical interfaces."
+arch=('any')
+url="https://github.com/JoelBender/bacpypes"
+license=('MIT')
+depends=('python' 'python-wheel')
+makedepends=('python-setuptools')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('1504574299b834ce885e864c746ac228fa1347a9ad3b2e4019b8749d7b7ec3a1b4f3ead1c1971abe3719a1df48d7d6512efed90a895a11559e8087ce433885b9')
+
+build(){
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+
+  python setup.py install --root="${pkgdir}" --skip-build -O1
+  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}"
+}
