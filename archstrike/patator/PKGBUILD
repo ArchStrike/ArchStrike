@@ -3,32 +3,23 @@
 buildarch=1
 
 pkgname=patator
-pkgver=0.8
+pkgver=0.9
 pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A multi-purpose bruteforcer"
 arch=('any')
 url='https://github.com/lanjelot/patator'
 license=('GPL2')
-depends=('python')
-optdepends=('python-paramiko: SSH'
-            'python-pycurl: HTTP'
-            'openldap: LDAP'
-            'impacket: SMB'
-            'python-cx_oracle: Oracle'
-            'mysql-python: MySQL'
-            'python-psycopg2: PostgreSQL'
-            'python-cryptography: VNC'
-            'python-pydns: DNS'
-            'python-pysnmp: SNMP'
-            'python-ipy: NETx keywords'
-            'java-runtime: keystore files'
-            'unzip: zip archives')
-source=("https://github.com/lanjelot/patator/archive/$pkgver.tar.gz")
-sha512sums=('1c69e9663dd9afb9328bc053d28a0846ca1cfe28f2c7565b254451a77dbd17b9ac0a444999b7fff4e0f0cceff6c4796405e6ad075f6542566778528c615c92b4')
+depends=('python' 'python-paramiko' 'python-pycurl' 'python-ajpy' 'impacket'
+         'python-pyopenssl' 'python-cx_oracle' 'python-mysqlclient'
+         'python-psycopg2' 'python-pycryptodome' 'python-dnspython'
+         'python-ipy' 'python-pysnmp' 'python-pyasn1')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('2b89a7928e0671760cde1b5e217093979b482c8d5151bfaa0c6eb7517e18749ed55194da103a8736ec6f8b959eccb64c20d2ac32adbcd4e1c3f00fba27c429b1')
 
 package() {
-  install -D -m 0755 "$srcdir/$pkgname-$pkgver/patator.py" "$pkgdir/usr/bin/patator"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -D -m 0755 "${srcdir}/${pkgname}-${pkgver}/patator.py" "${pkgdir}/usr/bin/patator"
 
   _modules=(
     'ftp_login'
@@ -58,7 +49,6 @@ package() {
     'keystore_pass'
   )
   for module in ${_modules[@]}; do
-    ln -s /usr/bin/patator "$pkgdir/usr/bin/$module"
+    ln -s /usr/bin/patator "${pkgdir}/usr/bin/$module"
   done
 }
-
