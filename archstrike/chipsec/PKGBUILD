@@ -4,7 +4,7 @@
 buildarch=192
 
 pkgname=chipsec
-pkgver=1.5.2
+pkgver=1.5.3
 pkgrel=1
 groups=('archstrike' 'archstrike-hardware' 'archstrike-forensics')
 pkgdesc="A framework for analyzing security of PC platforms including hardware, system firmware including BIOS/UEFI and the configuration of platform components."
@@ -14,13 +14,13 @@ license=('GPL2')
 depends=('gcc' 'linux' 'python2' 'nasm' 'linux-headers' 'dkms')
 makedepends=('python2-setuptools')
 install="${pkgname}.install"
-source=("https://github.com/chipsec/chipsec/archive/${pkgver}.tar.gz"
+source=("${url}/archive/${pkgver}.tar.gz"
         "chipsec.install")
-sha512sums=('013fc3c0bc46acf7a5ffe57f577d72a8140bb5b59402533281b019db2b2d3b2a149e9c470a1808453902a2d52a85ce4c805fbfd7896d3a93036c17d22fe06df5'
+sha512sums=('d148bf004c98e7f6b2014c5ef5ceb185330a3f0131055e805ceef0c866394ea41e12d619897441eee67f765e03360570ce4d3cc9b2bf61afd5babe0e97463efe'
             '87b84cf017f008678bdb5aafe0e5465231b5b167b2a2273786966dce0c2d85c2d2016016f3d629fd9df6c251fc2249d1b6f6e1f3c8e27a9938a7848b684e70b5')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}/"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/src/${pkgname}"
   install -dm755 "${pkgdir}/usr/src/${pkgname}/${pkgver}"
