@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=trid-defs
-pkgver=22.06.20
+pkgver=29.07.20 
 pkgrel=1
 pkgdesc="Definitions DB for trid that describes recurring patterns in supported file types"
 arch=('any')
@@ -12,7 +12,7 @@ license=('CUSTOM')
 makedepends=('unzip')
 source=("http://mark0.net/download/triddefs.zip"
         "LICENSE")
-sha512sums=('c958519dc7de5f6d537e2b576eacf323b05fd6a61e9983bc44328309dbe2f0135d4d3e82be621ff45bf16242d36abedc04681be3e4c7a52a92169be79c6446a5'
+sha512sums=('d470ade0b3e822824cc94c654c248fc8704efa36655ec48e33d3187e09ed33378809f5db8fa689a5b9483bcc2742d49632283f3d5041bed93ecbfa61358c574f'
             '201bc568f534e2f7ad3c4288f2a0aaf3392285eb9cbe65de0fdcdecc69ddf9e850dfab0830538dba0b76909862c8fee3281a4fb138fabe4b8222dd525e1916c9')
 
 package() {
