@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname="Adafruit_BBIO"
+pkgname="python-bbio"
+pkgver=1.2.0
+pkgrel=1
+pkgdesc="A module to control BeagleBone IO channels"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
+license=("MIT")
+url="https://github.com/adafruit/adafruit-beaglebone-io-python"
+depends=("python")
+makedepends=("python-setuptools")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('f0f9da2bf70fac2e663bad749635fc519351f04458f59116a9fff75621218a44bd1277731111caa3c9aab33daef9817c9980597a2fc5230bf68e72b655e8f204')
+
+#prepare() {
+#  cd "${srcdir}/${_pkgname}-${pkgver}"
+#  sed -i "s/^\(CFLAGS = \['-Wall',\) '-Werror',/\1/1" setup.py
+#}
+
+#build() {
+#  cd "${srcdir}/${_pkgname}-${pkgver}"
+#  python setup.py build
+#}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --prefix=/usr -O1
+  install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/README.rst"
+}
