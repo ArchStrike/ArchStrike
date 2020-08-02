@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname="cx_Oracle"
+pkgname="python-cx_oracle"
+pkgver=8.0.0
+pkgrel=1
+pkgdesc="Python interface to Oracle Database conforming to the Python DB API 2.0 specification"
+url="https://pypi.org/project/cx-Oracle"
+license=('BSD')
+arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('81f151f60c81c86621a7dd5c1eb5931f6b03013a9ebeb851adfa40f51bf3a1ee3f3c1fc29e41cdb185bb830dbbaf556eb110fd31bcfef92f1052fd6438571baf')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" -O1
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  mv "${pkgdir}/usr/cx_Oracle-doc" "${pkgdir}/usr/share/${pkgname}/"
+}
