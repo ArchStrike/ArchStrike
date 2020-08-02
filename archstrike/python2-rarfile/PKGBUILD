@@ -2,25 +2,26 @@
 
 buildarch=1
 
-pkgname=python2-rarfile
-pkgver=3.1
+_pkgname="rarfile"
+pkgname="python2-${_pkgname}"
+pkgver=3.3
 pkgrel=1
 pkgdesc="RAR archive reader for Python"
 url="https://github.com/markokr/rarfile"
-depends=('python2')
+depends=('python2' 'python2-cryptography')
 makedepends=('python2-setuptools')
 license=('ISC')
 arch=('any')
-source=("https://github.com/markokr/rarfile/archive/rarfile_${pkgver/./_}.tar.gz")
-sha512sums=('f966c9a704827827af9d75796730677dbb5a55ddb0a83ad57e9ee8a2c0cb4e48c1fb1bb620506612388ab9929eb356badb7752acaf703b1db1bcb179ad465aaf')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('6c66efae84d960bdda09e4d379744ebca7f5e280dcdc287183e22e7e633bbfd9b25f0672910e0ae80f4434b336aee6aa1036325786cbf82639bcff11ee34a02d')
 
 build() {
-    cd $srcdir/rarfile-rarfile_${pkgver/./_}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/rarfile-rarfile_${pkgver/./_}
-    python2 setup.py install --root="$pkgdir" -O1 --skip-build
-    install -Dm644 LICENSE $pkgdir/usr/share/licenses/$pkgname/LICENSE
+    cd "${srcdir}/${_pkgname}-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
