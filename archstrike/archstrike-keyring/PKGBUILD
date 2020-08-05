@@ -5,7 +5,7 @@ noautobuild=1
 
 pkgname=archstrike-keyring
 pkgver=20170321
-pkgrel=2
+pkgrel=3
 pkgdesc='ArchStrike PGP keyring'
 url='https://archstrike.org'
 license=('GPL3')
@@ -17,11 +17,11 @@ sha512sums=('SKIP')
 install=${pkgname}.install
 
 pkgver() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   head -n 1 Makefile | sed 's|^V=||'
 }
 
 package() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   make PREFIX=/usr DESTDIR="${pkgdir}" install
 }
