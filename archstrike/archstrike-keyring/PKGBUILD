@@ -1,11 +1,11 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
 buildarch=1
-noautobuild=1
+#noautobuild=1
 
 pkgname=archstrike-keyring
 pkgver=20200805
-pkgrel=1
+pkgrel=2
 pkgdesc='ArchStrike PGP keyring'
 url='https://archstrike.org'
 license=('GPL3')
