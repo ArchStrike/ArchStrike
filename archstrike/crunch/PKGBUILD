@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=crunch
 pkgver=3.6
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-crackers')
 pkgdesc="A wordlist generator for all combinations/permutations of a given character set"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,12 +15,12 @@ source=("http://downloads.sourceforge.net/crunch-wordlist/crunch-${pkgver}.tgz")
 sha512sums=('85a2a12bb481988ab27a19602122abc29bb307de0af279132dcc0565dfc4ba44ab9f7ca15d876001f2e6dcf7be77ed50168cb066fc6a65bf06ec5cf9d798e81f')
 
 build() {
-  cd "${srcdir}/crunch-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/crunch-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/crunch"
   install -dm755 "${pkgdir}/usr/share/man/man1"
