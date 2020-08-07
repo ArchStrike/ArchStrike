@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=crackle-git
 pkgver=104.0fc1938
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-crackers' 'archstrike-bluetooth')
 pkgdesc="Crack and decrypt BLE encryption"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,22 +14,22 @@ depends=('libpcap')
 makedepends=('git')
 replaces=('crackle')
 provides=('crackle')
-source=("$pkgname::git+https://github.com/mikeryan/crackle/")
+source=("${pkgname}::git+https://github.com/mikeryan/crackle/")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   echo $(git rev-list --count HEAD).$(git rev-parse --short HEAD)
 }
 
 build() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname}"
   CPPFLAGS=${CPPFLAGS/-D_FORTIFY_SOURCE=2/}
   make
 }
 
 package() {
-  cd "$pkgname"
-  install -dm755 "$pkgdir/usr/bin"
-  make "INSTALL_DIR=$pkgdir/usr/bin" install
+  cd "${srcdir}/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  make "INSTALL_DIR=${pkgdir}/usr/bin" install
 }
