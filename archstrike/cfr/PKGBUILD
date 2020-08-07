@@ -5,7 +5,7 @@
 buildarch=1
 
 pkgname=cfr
-pkgver=134
+pkgver=150
 pkgrel=1
 groups=('archstrike' 'archstrike-decompile')
 pkgdesc='Another Java decompiler'
@@ -13,14 +13,15 @@ arch=('any')
 url="http://www.benf.org/other/cfr/"
 license=('MIT')
 depends=('java-runtime' 'java-environment' 'bash')
-source=("http://www.benf.org/other/cfr/cfr_0_${pkgver}.jar"
+source=("https://github.com/leibnitz27/${pkgname}/releases/download/0.${pkgver}/${pkgname}-0.${pkgver}.jar"
         'LICENSE')
-noextract=("cfr_0_${pkgver}.jar")
-sha512sums=('23bda8a7330f9360c8a17dc0e584b2023cb2d600bf9bf74f01fffe7d5104c5d092fba08b3284aef09b163077188085745684892596a99cf25c5d671cd8c7f1d4'
+noextract=("cfr-0.${pkgver}.jar")
+sha512sums=('f22a4591b695fe297242ef4eb5f27efac880024d8d382de52903a1445183e61620b48481eebdca2c37ba601c679b38305e8484c69b19b9aa4f44d136ca87f039'
             '34f760447784493317b1715d975c649107765325443dd4aa1806cc8278dfb50bb1ced120b467a67438efd0f8db81049f2b1497f9b7752d445be5f53dddfebbaa')
 
 package() {
-  install -Dm644 "cfr_0_${pkgver}.jar" "${pkgdir}/usr/share/${pkgname}/cfr.jar"
+  cd "${srcdir}"
+  install -Dm644 "cfr-0.${pkgver}.jar" "${pkgdir}/usr/share/${pkgname}/cfr.jar"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   install -dm755 "${pkgdir}/usr/bin"
 cat > "${pkgdir}/usr/bin/cfr" << EOF
