@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=crypthook-git
-pkgver=r17.0728cd1
-pkgrel=3
+pkgver=r18.690dcae
+pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="A TCP/UDP symmetric encryption tunnel wrapper"
 arch=('any')
@@ -14,16 +14,16 @@ depends=('openssl')
 makedepends=('git')
 install=${pkgname}.install
 provides=('crypthook')
-source=("crypthook::git+https://github.com/chokepoint/CryptHook.git")
+source=("crypthook::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/crypthook" || exit
+  cd "${srcdir}/crypthook"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd "${srcdir}/crypthook" || exit
+  cd "${srcdir}/crypthook"
   install -Dm644 Makefile "${pkgdir}/usr/share/crypthook/Makefile"
   install -Dm644 README.md "${pkgdir}/usr/share/crypthook/README.md"
   install -Dm644 crypthook.c "${pkgdir}/usr/share/crypthoo/crypthook.c"
