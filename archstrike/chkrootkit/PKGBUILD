@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=chkrootkit
 pkgver=0.53
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-defense' 'archstrike-forensics')
 pkgdesc="Checks for rootkits on a system"
 url="http://www.chkrootkit.org/"
@@ -18,13 +18,13 @@ sha512sums=('f8de19d0a61ccb6ac184ad6642d78041729cba799eedcc8088cb6d2c5cf4de0574c
             '3701cd5833fd5cc6902ee8a94f5d75287092c60ea8ff2d620b543fe4cbc089ad02495e30033043d1144f8a26e113510e00dc37711a71f4fc7765a6716ab67978')
 
 build(){
-  cd "chkrootkit-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/chkrootkit-path.patch"
   make
 }
 
 package() {
-  cd "chkrootkit-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -Dm644 COPYRIGHT "${pkgdir}/usr/share/licenses/${pkgname}/COPYRIGHT"
   install -Dm755 chkdirs "${pkgdir}/usr/bin/chkdirs"
