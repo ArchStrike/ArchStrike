@@ -4,7 +4,7 @@ buildarch=128
 
 pkgname=autopsy
 pkgver=4.12.0
-pkgrel=2
+pkgrel=3
 groups=("archstrike" "archstrike-forensics")
 pkgdesc="A digital forensics platform and GUI for tools such as The Sleuth Kit"
 arch=("x86_64")
