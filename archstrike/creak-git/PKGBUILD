@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=creak-git
 pkgver=20170106.r40
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-mitm')
 arch=('any')
 pkgdesc="Poison, reset, spoof, redirect MITM script"
@@ -16,7 +16,7 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
@@ -25,7 +25,7 @@ prepare() {
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
