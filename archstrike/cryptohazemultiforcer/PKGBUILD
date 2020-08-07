@@ -3,27 +3,27 @@
 buildarch=136
 
 pkgname=cryptohazemultiforcer
-pkgver=1.31
-pkgrel=5
+pkgver=1.31a
+pkgrel=1
 pkgdesc="High performance multihash brute forcer with CUDA support"
-url="http://www.cryptohaze.com/multiforcer.php"
+url="https://sourceforge.net/projects/cryptohaze/"
 license=('custom')
 arch=('x86_64' 'aarch64')
 optdepends=('cuda: cuda support')
 depends=('bash' 'ocl-icd')
 groups=('archstrike')
 source=("http://downloads.sourceforge.net/project/cryptohaze/Cryptohaze-Linux_x64_${pkgver/./_}.tar.bz2")
-sha512sums=('d374516793ed513e20684f0ebbbd544c3ef895bc1b556316ae4892a7f219fddb9195cf29e91014f2ef00405077527e5a7cf3fefcd49906252e2471d2b8fc6e28')
+sha512sums=('9455a1311369a7fd850751c5155e4cfe6887879a5b13b9ca2266420936ccc54dbf51a16063f6c9a5f0c542642e07e16426a0210a919672b76ed3311e84039ebb')
 
 package() {
-  cd "${srcdir}/Cryptohaze-Linux" || exit
+  cd "${srcdir}/Cryptohaze-Linux"
   install -dm755 "${pkgdir}/opt/${pkgname}/"
   cp -rv ./* "${pkgdir}/opt/${pkgname}/"
   install -dm755 "${pkgdir}/usr/bin/"
-cat > "$pkgdir/usr/bin/$pkgname" << EOF
+cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/sh
 cd /opt/cryptohazemultiforcer
 ./Cryptohaze-Multiforcer "\$@"
 EOF
-chmod +x "$pkgdir/usr/bin/$pkgname"
+chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
