@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=cisco-router-config
 pkgver=1.0
-pkgrel=6
+pkgrel=7
 pkgdesc="copy-router-config and merge-router-config to copy and merge Cisco Routers Configuration"
 groups=('archstrike' 'archstrike-misc')
 license=('GPL')
