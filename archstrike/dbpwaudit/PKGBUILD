@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=dbpwaudit
 pkgver=0.8
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-defense' 'archstrike-crackers')
 pkgdesc="A Java tool that allows you to perform online audits of password quality for several database engines"
 url='http://www.cqure.net/wp/dbpwaudit/'
@@ -15,12 +15,12 @@ source=(http://www.cqure.net/tools/dbpwaudit_${pkgver//./_}.zip)
 sha512sums=('3b6ddfdd736b5547f2ca2b5b8b6a96fe5bab7717c71cd7f7ddb88f9329d214a90200963294a156b45ad2b9baee9f06cd947966ef53a14564924b05c70a7e2eea')
 
 prepare() {
-  cd "${srcdir}/DBPwAudit" || exit
+  cd "${srcdir}/DBPwAudit"
   sed -i "1a\cd /usr/share/dbpwaudit" *.sh
 }
 
 package() {
-  cd "${srcdir}/DBPwAudit" || exit
+  cd "${srcdir}/DBPwAudit"
 
   # Make base directories.
   install -dm755 "${pkgdir}/usr/share/dbpwaudit"
