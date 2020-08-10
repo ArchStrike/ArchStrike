@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=deblaze
 pkgname=${_pkgname}-git
-pkgver=20101207.r1
-pkgrel=4
+pkgver=20200807.r3
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A remote method enumeration tool for flex servers"
 url="https://github.com/SpiderLabs/deblaze"
