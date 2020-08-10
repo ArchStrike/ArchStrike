@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dex2jar
 pkgver=2.0
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-hardware' 'archstrike-reverse')
 pkgdesc="A tool for converting Android's .dex format to Java's .class format"
 arch=('any')
@@ -15,17 +15,17 @@ source=("http://downloads.sourceforge.net/dex2jar/${pkgname}-${pkgver}.zip")
 sha512sums=('c4a6c72ea09b58a44fcb8918cfada600467f10f99a02b53d2436ac68295e73c8daf9ba0a8bc7160ba1e28e87f032ee034435ebe40af35b6e2fe9fa4607581358')
 
 package() {
-  cd "${srcdir}/dex2jar-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Make base directories.
   install -dm755 "${pkgdir}/usr/bin"
   # This package provides all of its own libraries.
-  install -dm755 "${pkgdir}/usr/share/dex2jar/lib"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}/lib"
 
-  install -m644 lib/*.jar "${pkgdir}/usr/share/dex2jar/lib"
-  install -m755 ./*.sh "${pkgdir}/usr/share/dex2jar"
+  install -m644 lib/*.jar "${pkgdir}/usr/share/${pkgname}/lib"
+  install -m755 ./*.sh "${pkgdir}/usr/share/${pkgname}"
 
   for bin in d2j-*.sh ; do
-    ln -s "/usr/share/dex2jar/${bin}" "${pkgdir}/usr/bin/${bin%.*}"
+    ln -s "/usr/share/${pkgname}/${bin}" "${pkgdir}/usr/bin/${bin%.*}"
   done
 }
