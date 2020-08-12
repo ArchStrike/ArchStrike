@@ -1,13 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 # Contributor: Prurigro
 
-_pkgname=DinoUML
-
 buildarch=220
 
+_pkgname=DinoUML
 pkgname=dinouml
 pkgver=0.9.5
-pkgrel=2
+pkgrel=3
 pkgdesc="A network simulation tool, based on UML (User Mode Linux) that can simulate big Linux networks on a single PC"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL')
