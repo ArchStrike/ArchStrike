@@ -5,22 +5,22 @@ buildarch=220
 
 pkgname=dupdump
 pkgver=0.5
-pkgrel=2
+pkgrel=3
 pkgdesc='Finds duplicat files and directories and outputs a parsable list that can be used to delete them'
 url='http://kernel.embedromix.ro/us/'
 depends=('openssl')
 license=('GPL3')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-source=("http://kernel.embedromix.ro/us/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('5f63643d24fb1f2fa9b85a3e773b50f8169c749d0087750ad9c824cd3ed1c3a48d093f3fc9f7adbd80feb3abdf311bdeb9db5a3d56df56bd98018c01880c8719')
+source=("http://kernel.embedromix.ro/us/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('d6963c0b29c518be2df2bf1ae567f36b44295642d93f88d4f4ed21083d7fad3d9fd6e6b2fd40c6f41170e8d4417da9988080dd3f2361adb5d61506f470372b81')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
