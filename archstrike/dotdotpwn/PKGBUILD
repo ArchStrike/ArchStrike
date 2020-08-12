@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dotdotpwn
 pkgver=3.0.2
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-fuzzers' 'archstrike-exploit')
 pkgdesc="The Transversal Directory Fuzzer"
 url="https://github.com/wireghoul/dotdotpwn"
@@ -16,19 +16,19 @@ source=("${url}/archive/${pkgver}.tar.gz")
 sha512sums=('2621e6fd45b2ace56d83d634ee702fce4ec0dec5fd8819bd33ecfa2b5fa286249744377931a512c574f907426fdfdf4a1069f46b07a83b73a1bc00f1045cc973')
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   # Base directories.
   install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/dotdotpwn"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
 
-  cp -a * "${pkgdir}/usr/share/dotdotpwn"
+  cp -a * "${pkgdir}/usr/share/${pkgname}"
 
   # Joint Script
-cat > "${pkgdir}/usr/bin/dotdotpwn" << EOF
+cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/usr/bin/env bash
-cd /usr/share/dotdotpwn
-perl dotdotpwn.pl "\$@"
+cd "/usr/share/${pkgname}"
+perl "${pkgname}.pl" "\$@"
 EOF
-chmod 755 "${pkgdir}/usr/bin/dotdotpwn"
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
