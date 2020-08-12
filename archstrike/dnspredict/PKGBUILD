@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnspredict
 pkgver=0.0.2
-pkgrel=5
+pkgrel=6
 pkgdesc="DNS prediction"
 url="http://johnny.ihackstuff.com"
 groups=('archstrike' 'archstrike-scanners')
@@ -15,7 +15,7 @@ source=(dnspredict.pl)
 sha512sums=('402baf087cf4f76c6690b1ba6592589bcc9c62fb817564485e54f9c15ee994074adf9ce2fd4cdb6447bae1ce506911ce3a60ae666ff30389cdc7085aaf1d0251')
 
 package() {
-  cd "${srcdir}" || exit
+  cd "${srcdir}"
 
   install -d ${pkgdir}/usr/bin
   install -Dm755 dnspredict.pl ${pkgdir}/usr/bin/dnspredict
