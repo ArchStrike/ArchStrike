@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=dhcdrop
 pkgver=0.5
-pkgrel=6
+pkgrel=7
 pkgdesc="Remove illegal dhcp servers with IP-pool underflow. Stable version"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://www.netpatch.ru/dhcdrop.html"
@@ -17,17 +17,17 @@ sha512sums=('11ac0ca6dcb65f696936e47e43cfbdd59083b607b26b5d12274cc04577be257dda9
 groups=('archstrike' 'archstrike-misc')
 
 prepare() {
-  cd "${srcdir}/dhcdrop-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   patch -Np1 -i "${srcdir}/config.guess-for-aarch64.patch"
 }
 
 build() {
-  cd "${srcdir}/dhcdrop-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr --sbindir=/usr/bin
   make
 }
 
 package(){
-  cd "${srcdir}/dhcdrop-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
