@@ -2,36 +2,31 @@
 
 buildarch=220
 
-pkgname=elettra
+pkgname="elettra"
 pkgver=1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="Encryption utility by Julia Identity"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('custom')
-url="http://www.winstonsmith.info/julia/elettra/"
+url="http://www.winstonsmith.info/julia/${pkgname}/"
 depends=('glibc' 'libmcrypt' 'mhash' 'zlib')
 makedepends=('cmake')
 groups=('archstrike' 'archstrike-misc')
-source=(http://www.winstonsmith.info/julia/elettra/elettra-src.tar.gz)
+source=(http://www.winstonsmith.info/julia/${pkgname}/${pkgname}-src.tar.gz)
 sha512sums=('341a83436d9c163391eabbc06600b29e8ee837bb805f2f9ea922ffa8d8dcb9ec53e50ae475e13e2810ac69419b86072cd7e6c44d13c80e43ee67071e6864d5b3')
 
 build(){
-   cd $srcdir/elettra/src
-   mkdir build
-   cd build
-   cmake ..
-   make
+  cd "${srcdir}/${pkgname}/src"
+  mkdir build
+  cd build
+  cmake ..
+  make
 }
 package() {
-    cd $srcdir/elettra
+  cd "${srcdir}/${pkgname}"
 
-    #base directories
-    install -dm755 $pkgdir/usr/bin
-    install -dm755 $pkgdir/usr/share/doc/elettra
-
-    # Docs
-    install -Dm644 README $pkgdir/usr/share/doc/elettra/README
-
-   # Bin
-   install -Dm755  src/build/elettra $pkgdir/usr/bin/elettra
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
+  install -Dm644 README "${pkgdir}/usr/share/doc/${pkgname}/README"
+  install -Dm755  "src/build/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
