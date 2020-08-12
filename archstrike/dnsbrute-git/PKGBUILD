@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnsbrute-git
 pkgver=0.r2.b1dc84a
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-dns')
 pkgdesc="Multi theaded DNS bruteforcing"
 arch=('any')
@@ -17,7 +17,7 @@ source=("git+https://github.com/d4rkcat/dnsbrute.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/dnsbrute" || exit
+  cd "${srcdir}/dnsbrute"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
@@ -26,7 +26,7 @@ prepare(){
 }
 
 package() {
-  cd "${srcdir}/dnsbrute" || exit
+  cd "${srcdir}/dnsbrute"
 
   # Base directories.
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
