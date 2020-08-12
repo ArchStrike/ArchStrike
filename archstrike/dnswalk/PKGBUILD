@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnswalk
 pkgver=2.0.2
-pkgrel=7
+pkgrel=8
 groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
 pkgdesc="A DNS debugging"
 url='http://sourceforge.net/projects/dnswalk/'
@@ -17,13 +17,13 @@ sha512sums=('23e5408149ae65f69dbb6d0ecaf5b10233e2279a502f6e19f0dacde0e270ed4eed0
             'e8413c7bbffa041be3e97993567265990ca14b46a5826e85d8272cf3521b7ff7f6a228ed693fc2931b68be987aa1e9b532c77b4bbb85904f4179a2fb113d5f5d')
 
 prepare() {
-  cd "${srcdir}" || exit
+  cd "${srcdir}"
   patch < ${srcdir}/dnswalk.patch
   sed -i 's|/usr/contrib/bin/perl|/usr/bin/perl|' dnswalk
 }
 
 package() {
-  cd "${srcdir}" || exit
+  cd "${srcdir}"
 
   # Make base directories.
   install -dm755 ${pkgdir}/usr/bin
