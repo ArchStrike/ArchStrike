@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnmap
 pkgver=0.6
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="The distributed nmap framwork"
 url="http://sourceforge.net/projects/dnmap/"
@@ -16,12 +16,12 @@ source=("http://downloads.sourceforge.net/project/dnmap/dnmap_v${pkgver}.tgz")
 sha512sums=('f1d7569f9e1d04a7915f1229302c7e48108f1120fa4984d4f7dbd78a3b3e167840b8ae71aed2b0d906b6ad7e1ca6e1daeadb24cec78c502bac0323a3f84534b6')
 
 prepare() {
-  cd "${srcdir}/dnmap_v${pkgver}" || exit
+  cd "${srcdir}/dnmap_v${pkgver}"
   sed -i 's/env python/env python2/' *.py
 }
 
 package() {
-  cd "${srcdir}/dnmap_v${pkgver}" || exit
+  cd "${srcdir}/dnmap_v${pkgver}"
 
   # Base directories.
   install -dm755 "${pkgdir}/usr/bin"
