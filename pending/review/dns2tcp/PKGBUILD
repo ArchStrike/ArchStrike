@@ -4,31 +4,32 @@ buildarch=220
 
 pkgname=dns2tcp
 pkgver=0.5.2
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-tunnel')
 pkgdesc="A tool for relaying TCP connections over DNS"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://www.hsc.fr/ressources/outils/dns2tcp/index.html.en'
 license=('GPL')
 depends=('glibc')
-source=("http://www.hsc.fr/ressources/outils/dns2tcp/download/dns2tcp-$pkgver.tar.gz" "config.guess-for-aarch64.patch")
-sha512sums=('2f8dfb671853374be0aa8105f22456ae56d9e56fc270475740ab8704d1e202abe34faf36a25d820283aa672c8d2d1f168907537f4fede115e1935a0920570584'
+source=("https://github.com/alex-sector/${pkgname}/archive/v${pkgver}.tar.gz"
+        "config.guess-for-aarch64.patch")
+sha512sums=('2b8cb84142ed23b62df4d33c8287e9dae0a8df7483661d4a9c3042f5417d010f0da33bf7b0d36f4b8b2ebb0e51aba99dd9aff936d82324fbcc2a2fb5829d1b62'
             '733648e8dade3c13259ab275dc795bf678c1d5001a7e15f8e1a4cc9e518cdc0b465bc9c7d5bcf4f48e7619366b11fea6a14ca694e5b70c4a5fcdf46353b60688')
 
 prepare() {
- cd "$srcdir/dns2tcp-$pkgver"
- patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+ cd "${srcdir}/${pkgname}-${pkgver}"
+ patch -Np1 -i ${srcdir}/config.guess-for-aarch64.patch
 }
 
 build() {
-  cd "$srcdir/dns2tcp-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/dns2tcp-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
 }
