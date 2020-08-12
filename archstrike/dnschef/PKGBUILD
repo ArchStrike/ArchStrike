@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=dnschef
 pkgver=0.4
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-proxy')
 pkgdesc="A highly configurable DNS proxy for pentesters"
 url="http://thesprawl.org/projects/dnschef/"
@@ -17,7 +17,7 @@ source=("https://github.com/iphelix/dnschef/archive/master.zip")
 sha512sums=('214258c96a094b45319ae0fd2b9dbeedda2b230df02d0b6212cb1cad6888eceefe7e4168c75aa70db7c4435e17e47a90a7f6845a828f0644f9a14e2a1b44aa28')
 
 package() {
-  cd "${srcdir}/dnschef-master" || exit
+  cd "${srcdir}/dnschef-master"
 
   # Base directories.
   install -dm755 "${pkgdir}/usr/bin"
