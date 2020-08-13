@@ -2,43 +2,52 @@
 
 buildarch=1
 
-_pkgname=pupy
-pkgname=$_pkgname-git
+noautobuild=1
+_pkgname="pupy"
+pkgname=${_pkgname}-git
 pkgver=20170518.r7112
 pkgrel=1
 pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python'
-url='https://github.com/n1nj4sec/pupy'
+url='https://github.com/n1nj4sec/${_pkgname}'
 license=('custom')
 arch=('any')
-depends=('python2-crypto' 'python2-future' 'python2-http-parser' 'python2-image' 'python2-m2crypto' 'python2-netaddr' 'python2-netifaces' 'python2-pefile' 'python2-pylzma' 'python2-rpyc'  'python2-rsa' 'python2-tinyec' 'python2-yaml')
+depends=('defusedxml' 'flake8' 'impacket' 'python-cerberus' 'python-chardet' 'python-colorama'
+         'python-dateparser' 'python-dnslib' 'python-dukpy' 'python-ecdsa' 'python-ed25519'
+         'python-hexdump' 'python-http-parser' 'python-logutils' 'python-m2Crypto' 'python-msgpack'
+         'python-mss' 'python-netaddr' 'python-netifaces' 'python-paramiko' 'python-pefile'
+         'python-poster-git' 'python-psutil' 'python-pyaes' 'python-pycryptodome' 'python-pyelftools'
+         'python-pygments' 'python-pylzma-git' 'python-pyOpenSSL' 'python-pypykatz-git'
+         'python-pyuv-git' 'python-pyyaml' 'python-requests' 'python-rsa' 'python-scapy'
+         'python-secretstorage' 'python-tinyec-git' 'python-tornado' 'python-win_inet_pton-git'
+         'python-xattr' 'python-filemagic' 'python-flake8-per-file-ignores' 'python-fusepy'
+         'python-http_request' 'python-keyboard' 'python-puttykeys' 'python-pykcp-git'
+         'python-scandir' 'python-urllib-auth-git')
 makedepends=('git')
 groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
 options=('!strip')
 
-source=(
-  "$pkgname::git+https://github.com/n1nj4sec/$_pkgname"
-  'git+https://github.com/AlessandroZ/LaZagne'
-  'git+https://github.com/gaffe23/linux-inject'
-  'payload_templates::git+https://github.com/n1nj4sec/pupy-binaries'
-)
+source=("${pkgname}::git+https://github.com/n1nj4sec/${_pkgname}")
+#  'git+https://github.com/AlessandroZ/LaZagne'
+#  'git+https://github.com/gaffe23/linux-inject'
+#  'payload_templates::git+https://github.com/n1nj4sec/${_pkgname}-binaries')
 
 sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
 
   # remove each submodule to replace with the pkg version
-  for submodule in 'pupy/external/LaZagne' 'client/sources-linux/linux-inject' 'pupy/payload_templates'; do
+  for submodule in '${_pkgname}/external/LaZagne' 'client/sources-linux/linux-inject' '${_pkgname}/payload_templates'; do
     submodule_name="${submodule/*\/}"
     git submodule deinit -f "$submodule"
     git rm "$submodule"
-    rm -rf "$srcdir/$submodule_name/.git"
-    mv "$srcdir/$submodule_name" "$submodule"
+    rm -rf "${srcdir}/$submodule_name/.git"
+    mv "${srcdir}/$submodule_name" "$submodule"
   done
 
   # update and clone the remaining submodules
@@ -46,36 +55,36 @@ prepare() {
   git submodule foreach git fetch --all
   git submodule update --init --recursive
 
-  # fix python2 hash bangs
+  # fix python hash bangs
   while read -r; do
-    sed -i -re 's|^\s*#!\s*(/usr\|/user)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
+    sed -i -re 's|^\s*#!\s*(/usr\|/user)?(/local)?/bin/.*python.*$|#!/usr/bin/env python|g' "$REPLY"
   done < <(egrep -rl '^\s*#!\s*(/usr|/user)?(/local)?/bin/.*python')
 }
 
 package() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
 
   # delete unnecessary files and folders
   rm -rf .git .gitignore .gitmodules .travis.yml
   find . -type f -name '.git' -exec rm '{}' \;
 
   # create required directories
-  install -dm755 "$pkgdir"/usr/{bin,share/$_pkgname,share/licenses/$pkgname}
+  install -dm755 "${pkgdir}"/usr/{bin,share/${_pkgname},share/licenses/${pkgname}}
 
   # move the license to the licenses folder for the package
-  mv LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  mv LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 
   # install the package files
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/$_pkgname"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}"
 
   # create executables
-  for exe in pp.py pupygen.py pupysh.py; do
+  for exe in pp.py "${_pkgname}gen.py" "${_pkgname}sh.py"; do
     printf '%s\n%s\n%s\n' \
       '#!/usr/bin/env bash' \
-      "cd /usr/share/$_pkgname/pupy" \
-      'python2 '"$exe"' "$@"' \
-        > "$pkgdir/usr/bin/$exe"
+      "cd /usr/share/${_pkgname}/${_pkgname}" \
+      'python '"$exe"' "$@"' \
+        > "${pkgdir}/usr/bin/$exe"
 
-    chmod 755 "$pkgdir/usr/bin/$exe"
+    chmod 755 "${pkgdir}/usr/bin/$exe"
   done
 }
