@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=fakenetbios-git
 pkgver=r7.b83701e
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-fuzzers')
 pkgdesc="A Simulation of NetBIOS hosts (Windows-like) "
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,22 +17,22 @@ source=("git+https://github.com/mubix/FakeNetBIOS.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/FakeNetBIOS"
+  cd "${srcdir}/FakeNetBIOS"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 build(){
-  cd "$srcdir/FakeNetBIOS/Sources"
+  cd "${srcdir}/FakeNetBIOS/Sources"
   make -f Makefile.linux
 }
 
 package() {
-  cd "$srcdir/FakeNetBIOS"
+  cd "${srcdir}/FakeNetBIOS"
 
-  install -Dm755 Sources/FakeNetbiosDGM "$pkgdir/usr/bin/FakeNetbiosDGM"
-  install -Dm755 Sources/FakeNetbiosNS  "$pkgdir/usr/bin/FakeNetbiosNS"
+  install -Dm755 Sources/FakeNetbiosDGM "${pkgdir}/usr/bin/FakeNetbiosDGM"
+  install -Dm755 Sources/FakeNetbiosNS  "${pkgdir}/usr/bin/FakeNetbiosNS"
 
-  for i in $(ls *.txt); do install -Dm644 $i "$pkgdir/usr/share/fakenetbios/$i";done
-  install -Dm644 License.txt "$pkgdir/usr/share/licenses/fakenetbios-git/License.txt"
+  for i in $(ls *.txt); do install -Dm644 $i "${pkgdir}/usr/share/fakenetbios/$i";done
+  install -Dm644 License.txt "${pkgdir}/usr/share/licenses/fakenetbios-git/License.txt"
 
 }
