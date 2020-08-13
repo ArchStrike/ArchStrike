@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="cppy"
+pkgname="python2-${_pkgname}"
+pkgver=1.0.2
+pkgrel=1
+pkgdesc="A collection of C++ headers which make it easier to write Python C extension modules"
+url="https://github.com/nucleic/${_pkgname}"
+license=('BSD')
+arch=('any')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('a413ee976213518badff868c3afeb2ec41d5d423b1cb2cf1b2be9105a194f55f5a00ef977a1d25cb579b0d801cefd70e21c7cc99b58a90223a66211300203a25')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1
+  install -Dm644 LICENSE -t "${pkgdir}"/usr/share/licenses/${pkgname}/
+}
