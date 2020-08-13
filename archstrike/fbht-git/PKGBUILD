@@ -2,54 +2,55 @@
 
 buildarch=1
 
-pkgname=fbht-git
+_pkgname="fbht"
+pkgname="${_pkgname}-git"
 pkgver=r70.d75ae93
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc="A Facebook Hacking Tool"
 arch=('any')
-url='https://github.com/chinoogawa/fbht'
+url="https://github.com/chinoogawa/${_pkgname}"
 license=('custom')
 depends=('python2' 'python2-mechanize' 'python2-networkx' 'python2-matplotlib' 'python2-numpy' 'python2-selenium' 'python2-simplejson')
 makedepends=('git')
-provides=('fbht')
-source=("git+https://github.com/chinoogawa/fbht.git")
+provides=("${_pkgname}")
+source=("git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "$srcdir/fbht"
+  cd "${srcdir}/${_pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' "$srcdir/fbht" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${srcdir}/${_pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-  cd "$srcdir/fbht"
+  cd "${srcdir}/${_pkgname}"
 
   # Make base directories.
-  install -dm755 "$pkgdir/usr/share/fbht"
-  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
 
   # Licences and docs
-  install -dm755 "$pkgdir/usr/share/fbht/dumps"
-  install -dm755 "$pkgdir/usr/share/fbht/logs"
-  install -Dm644 "License" "$pkgdir/usr/share/licenses/$pkgname/License"
-  install -Dm644 "README.md" "$pkgdir/usr/share/fbht/"
-  cp -a --no-preserve=ownership dumps/* "$pkgdir/usr/share/fbht/dumps/"
-  cp -a --no-preserve=ownership logs/* "$pkgdir/usr/share/fbht/logs/"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}/dumps"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}/logs"
+  install -Dm644 "License" "${pkgdir}/usr/share/licenses/${pkgname}/License"
+  install -Dm644 "README.md" "${pkgdir}/usr/share/${_pkgname}/"
+  cp -a --no-preserve=ownership dumps/* "${pkgdir}/usr/share/${_pkgname}/dumps/"
+  cp -a --no-preserve=ownership logs/* "${pkgdir}/usr/share/${_pkgname}/logs/"
 
   #Bin
-  install -m755 {MyParser,community,database,handlers,main,mainFunc,mainLib}.py "$pkgdir/usr/share/fbht/"
-  install -m644 "fb_db.db" "$pkgdir/usr/share/fbht/"
+  install -m755 {MyParser,community,database,handlers,main,mainFunc,mainLib}.py "${pkgdir}/usr/share/${_pkgname}/"
+  install -m644 "fb_db.db" "${pkgdir}/usr/share/${_pkgname}/"
 
-cat > "$pkgdir/usr/bin/fbht" << EOF
+cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/bin/sh
-cd /usr/share/fbht
+cd /usr/share/${_pkgname}
 python2 main.py "\$@"
 EOF
 
-chmod +x "$pkgdir/usr/bin/fbht"
+chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 }
 
