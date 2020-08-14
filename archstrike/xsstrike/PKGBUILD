@@ -3,19 +3,19 @@
 buildarch=1
 
 pkgname=xsstrike
-pkgver=3.1.4
+pkgver=3.1.5
 pkgrel=1
 pkgdesc='Most advanced XSS detection suite'
 groups=('archstrike' 'archstrike-webapp' 'archstrike-scanner')
 arch=('any')
 url='https://github.com/s0md3v/XSStrike'
 license=('MIT')
-depends=('python' 'python-requests' 'python-fuzzywuzzy' 'python-tld')
+depends=('python' 'python-requests' 'python-fuzzywuzzy-git' 'python-tld')
 source=("$url/archive/${pkgver}.tar.gz")
-sha512sums=('37132b1ff3ccb21df0f9403c5cb6e1a5b32871546d3dbb2993494603cc840706ba87f785621ccae23e81fd6e7fdd23558708160e04affb36dda9c48a966e3838')
+sha512sums=('f02ff229605666c782001ce3557408746ed8ee7a1c309b91599de26f3679a85990204f10f6fc99d56b2dabe5624d826a72cda2e4a86946cf455533e004723d75')
 
 package() {
-  cd "${srcdir}/XSStrike-${pkgver}" || exit
+  cd "${srcdir}/XSStrike-${pkgver}"
   install -dm 755 "${pkgdir}/usr/bin"
   install -dm 755 "${pkgdir}/usr/share/xsstrike"
   install -Dm644 -t "${pkgdir}/usr/share/doc/xsstrike/" README.md
