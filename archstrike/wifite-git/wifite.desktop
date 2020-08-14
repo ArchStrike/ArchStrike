@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=wifite
-Comment=Automated wireless auditor
-Exec=su -c '/usr/bin/wifite; ${SHELL:-bash}'
-Icon=wifite
-Terminal=true
-Categories=ArchStrike;ArchStrikeWireless;ArchStrikeCracker;
