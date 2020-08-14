@@ -4,14 +4,14 @@ buildarch=204
 
 _pkgname="EyeWitness"
 pkgname="eyewitness-git"
-pkgver=20200504.r852
+pkgver=20200806.r856
 pkgrel=1
 pkgdesc="Take screenshots of websites, provide some server header info, and identify default credentials if possible"
 url="https://github.com/FortyNorthSecurity/EyeWitness"
 arch=('armv7' 'aarch64' 'i686' 'x86_64')
 license=('Apache')
 groups=('archstrike' 'archstrike-recon')
-depends=('python' 'python-fuzzywuzzy' 'python-selenium' 'python-levenshtein'
+depends=('python' 'python-fuzzywuzzy-git' 'python-selenium' 'python-levenshtein'
          'python-pyasn1' 'python-pyvirtualdisplay' 'python-beautifulsoup4'
          'python-pytesseract' 'python-netaddr' 'xorg-xdpyinfo' 'geckodriver'
          'python-paramiko' 'firefox' 'python-xvfbwrapper')
@@ -25,7 +25,7 @@ pkgver() {
 }
 
 package() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}"/usr/bin/
   install -dm755 "${pkgdir}"/usr/share/${pkgname}
 
