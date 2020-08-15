@@ -4,30 +4,24 @@
 buildarch=1
 
 pkgname=fs
-pkgver=0.5.4
-pkgrel=2
+pkgver=2.4.11
+pkgrel=1
 pkgdesc="Filesystem abstraction layer"
 arch=('any')
 url="http://pyfilesystem.org"
 license=('BSD')
-depends=('python2')
-makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/04/36/d9d564bd96ef2bffb3e493bbb03f363cbdc3a0b19676621053999be78ea4/$pkgname-$pkgver.tar.gz")
-sha512sums=('d67c85f2816cf1a84c25664a6cf71dac551c3eec4eb34154bc92d52eb0efa9739adca6d0ec86b9978ff6af408cfa17b913ee8fd4c143cd2adf862ca0a1dd4c5d')
-
-prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  find "$srcdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
-  find "$srcdir" -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
-}
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('8a4e25b47427d8467e697ac5eff645130f159f0479386c958ebcc87839e6b8d4b2d46c3bb078208eb067629078960fde551fa14842cf65ff29afb0238911b4f5')
 
 build() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python2 setup.py build
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py build
 }
 
 package() {
-    cd "$srcdir/$pkgname-$pkgver"
-    python2 setup.py install --root="$pkgdir" --optimize=1
-    install -D -m 644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    python setup.py install --root="${pkgdir}" --optimize=1
+    install -D -m 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
