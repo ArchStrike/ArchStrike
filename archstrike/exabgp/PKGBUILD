@@ -4,37 +4,25 @@
 buildarch=1
 
 pkgname=exabgp
-pkgver=4.2.10
+pkgver=4.2.11
 pkgrel=1
 pkgdesc='The BGP swiss army knife of networking'
 arch=('any')
 license=('custom')
 groups=('archstrike' 'archstrike-networking')
 url='https://github.com/Exa-Networks/exabgp'
-depends=('python2-ipaddress' 'python2-nose' 'python2-psutil')
+depends=('python')
 backup=('etc/exabgp.conf')
-makedepends=('python2-setuptools')
-source=("https://github.com/Exa-Networks/${pkgname}/archive/${pkgver}.zip"
+makedepends=('python-setuptools')
+source=("${url}/archive/${pkgver}.zip"
         'exabgp.service')
-sha512sums=('13870e0b8574d983d988547a887f33dc2af43d9daa6c6ce564aed1c3eb526f73f4d63c247b4adc795afdf5bcf4b81200c2d8980dc9ac9b67e156357310dfd5f5'
+sha512sums=('3979f62e43d3aa9251625fef2492eb260a33375766ef424987ee971504175b8c7751b54222ceece8567ba11be6a3838030f1454dd699a37a9894fa784b07fba2'
             '225726cf424d9c2a23a2c0e9d3c7ed8c5cf03993f9518efd8e45079822b2d8cbc4d6fd18b49794beee522530478b57e5e3b268b3abd92442680cdd695504360d')
 
-build() {
-    # arch python2
-    find $pkgname-$pkgver -type f -exec \
-        sed -i '1s,^#!/usr/bin/\(env \|\)python$,#!/usr/bin/python2,' {} \; -print
-}
-
 package() {
-    pushd $pkgname-$pkgver
-    # upstream installer
-    python2 setup.py install --root="$pkgdir" --install-data=/
-    # install license
-    install -D -m 644 LICENCE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-    popd
-    # systemd
-    install -D -m 644 $pkgname.service \
-        "$pkgdir/usr/lib/systemd/system/$pkgname.service"
-    # install empty config file
-    install -D -m 644 /dev/null "$pkgdir/etc/$pkgname.conf"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" --install-data=/
+  install -D -m 644 LICENCE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -D -m 644 "${srcdir}/${pkgname}.service" "${pkgdir}/usr/lib/systemd/system/${pkgname}.service"
+  install -D -m 644 /dev/null "${pkgdir}/etc/${pkgname}.conf"
 }
