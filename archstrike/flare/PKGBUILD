@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=flare
 pkgver=0.6
-pkgrel=5
+pkgrel=6
 pkgdesc="Flare processes an SWF and extracts all scripts from it."
 url="http://www.nowrap.de/flare.html"
 groups=('archstrike' 'archstrike-misc')
@@ -22,11 +22,9 @@ sha512sums_i686=('87fd32bc68019567a65719c39afa58da7002e02cb8bc73f315af7744d9890d
 sha512sums_x86_64=('005c9b33f4eb87c8347ab8609792d1777fc5c1ccb2b520d7eef91a0517847bbb7ca2f39d0836b38a7f67f638b86eec77290d3cd027239613881a634f3f354d00')
 
 package() {
-  cd "$srcdir"
-  install -Dm755 flare $pkgdir/usr/bin/flare
-
-  mkdir -p $pkgdir/usr/share/doc/flare
-  install -Dm644 classic.css flare.html logo.gif $pkgdir/usr/share/doc/flare/
-
-  install -Dm644 LICENSE.TXT $pkgdir/usr/share/licenses/flare/LICENSE.TXT
+  cd "${srcdir}"
+  install -Dm755 flare "${pkgdir}/usr/bin/flare"
+  mkdir -p "${pkgdir}/usr/share/doc/flare"
+  install -Dm644 classic.css flare.html logo.gif "${pkgdir}/usr/share/doc/flare/"
+  install -Dm644 LICENSE.TXT "${pkgdir}/usr/share/licenses/flare/LICENSE.TXT"
 }
