@@ -11,12 +11,12 @@ url="http://vsecurity.com/resources/tool"
 license=('GPL')
 depends=("python2")
 groups=('archstrike' 'archstrike-fuzzers')
-source=("https://fuzzdiff.googlecode.com/files/fuzzdiff")
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/fuzzdiff/fuzzdiff")
 sha512sums=('11bf04ac141416f6d82cfd05672da917a3f506cf426abcf50e088f8b4f4c60c06a788cc717b4df160545ad48baff2e994084cfb6e6f9cfbc6e15d866d67f73d1')
 
 package() {
-  cd "$srcdir"
+  cd "${srcdir}"
   sed -i 's:/usr/bin/python:/usr/bin/env python2:' fuzzdiff
-  install -Dm755 fuzzdiff $pkgdir/usr/bin/fuzzdiff
+  install -Dm755 fuzzdiff "${pkgdir}/usr/bin/fuzzdiff"
 }
 
