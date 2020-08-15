@@ -2,9 +2,9 @@
 
 buildarch=1
 
-pkgname=flunym0us
+pkgname="flunym0us"
 pkgver=2.0
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Flunym0us is a Vulnerability Scanner for Wordpress and Moodle."
 arch=('any')
@@ -15,16 +15,16 @@ source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 sha512sums=('99ed23f2a9b5833ed64582ebad5cbd1198b29a49427efb90044198436248d49e290eb1b46b66d84dda2a8bae84c129819e9970300ad3bf0e137ac78c7a8903bc')
 
 package(){
-  cd "$srcdir"
-  install -dm755 $pkgdir/usr/share/$pkgname
-  install -dm755 $pkgdir/usr/bin
+  cd "${srcdir}"
+  install -dm755 ${pkgdir}/usr/share/${pkgname}
+  install -dm755 ${pkgdir}/usr/bin
 
   cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
 
-cat > $pkgdir/usr/bin/flunym0us <<EOF
+cat > ${pkgdir}/usr/bin/flunym0us <<EOF
 #!/usr/bin/env bash
 cd /usr/share/flunym0us
 python2 ./flunym0us.py "\$@"
 EOF
-chmod 755 $pkgdir/usr/bin/flunym0us
+chmod 755 ${pkgdir}/usr/bin/flunym0us
 }
