@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=burpsuite
-pkgver=2020.7
+pkgver=2020.8
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers' 'archstrike-proxy')
 pkgdesc="An integrated platform for attacking web applications (free edition)."
@@ -18,7 +18,7 @@ source=("burpsuite.jar::https://portswigger.net/burp/releases/download?product=c
 	"burpsuite.desktop"
 	)
 
-sha512sums=('943621e23d9299fc5bb228a5bf29d35382eeb526cb93bb65c308e21bdbedf318b8ddf1444bae9843d1dcdb76b383a4009ebb65876f6487df74d13ef0f0cd53b8'
+sha512sums=('850b25b76b21cb3f2cf4d08c046d38456067af34f35cf28bd70c8315437900f756cf6198c06552dfbdb686bf7281afa0a5888750bcd8a0f7f9ad07eb5f6ab154'
             '3bc6083224e3b6fd777b0fbb2aea73ce6fdd21011d1c6ceb0a5298c6278d04d35f7e5f6fd7e5dd621331fa4060eceb0655ffd63d6a5214833f6fbaa6f14a3681'
             '076f2f7ca3096a44a3ccf8b9f723384e0c335b3f4391f26b4d8d652716a1e2b7325e4aa1ad7ea3d711073a77292fa19857e2881dbd909d547d28a806fc65e0cf')
 package() {
