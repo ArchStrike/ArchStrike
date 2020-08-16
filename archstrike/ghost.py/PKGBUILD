@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=ghost.py
 pkgver=0.2.3
-pkgrel=5
+pkgrel=6
 pkgdesc="Webkit based webclient."
 url="https://github.com/jeanphix/Ghost.py"
 groups=('archstrike')
@@ -16,19 +16,17 @@ source=("${url}/archive/${pkgver}.tar.gz")
 sha512sums=('247096a61529258d4821ea63caa71fb54db98be2f67d25da22dfd95acf707611425e274e88e38487accbd67fd2b62a4243cd24c883f243866246a70fdc68d909')
 
 prepare() {
-  grep -iRl 'python' Ghost.py-${pkgver} | xargs sed -i 's|python$|python2|'
+  grep -iRl 'python' "Ghost.py-${pkgver}" | xargs sed -i 's|python$|python2|'
 }
 
 build() {
-  cd $srcdir/Ghost.py-$pkgver
+  cd "${srcdir}/Ghost.py-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd $srcdir/Ghost.py-$pkgver
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  # move dir to correct place
-  mv ${pkgdir}/usr/ghost ${pkgdir}/usr/share
-  # clean up conflict with ptp
-  rm -rf $pkgdir/usr/lib/python2.7/site-packages/tests/__init__.py*
+  cd "${srcdir}/Ghost.py-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" --optimize=1
+  mv "${pkgdir}/usr/ghost" "${pkgdir}/usr/share"
+  rm -rf "${pkgdir}"/usr/lib/python2.7/site-packages/tests/__init__.py*
 }
