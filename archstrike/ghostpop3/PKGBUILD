@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=ghostpop3
 pkgver=0.1.0
-pkgrel=4
+pkgrel=5
 pkgdesc="A program that simulates an 'always no messages' POP3 server"
 url="http://kernel.embedromix.ro/us/"
 license=('GPL')
