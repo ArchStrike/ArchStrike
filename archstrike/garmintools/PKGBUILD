@@ -4,13 +4,13 @@ buildarch=220
 
 pkgname=garmintools
 pkgver=0.10
-pkgrel=6
+pkgrel=7
 pkgdesc="This software provides Linux users with the ability to communicate with the Garmin Forerunner 305 via the USB interface."
 depends=('libusb-compat')
 install="garmintools.install"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
-source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/$pkgname/$pkgname-$pkgver.tar.gz"
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "array-size.patch"
         "config.guess-for-aarch64.patch")
 options=('!libtool')
@@ -20,18 +20,18 @@ sha512sums=('c0a01c0e73983635501b4d63d7f08f9c3e512c4c899beae96d3fbb69c1e1ff0f5a4
             'd6f40a97ea395f32c5bcac2c4de6831d37c77ece87aa0b0ac79e3a2a78c54ef65d2db5855a86c13fdf15b28d568db1c718aef5ad5bd44ee7724637cb0a1a7d8d')
 
 prepare() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/config.guess-for-aarch64.patch"
 }
 
 build() {
-  cd "$srcdir/$pkgname-$pkgver"
-  patch -p0 -i "$srcdir/array-size.patch"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p0 -i "${srcdir}/array-size.patch"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "$srcdir/$pkgname-$pkgver"
-  make "prefix=$pkgdir/usr" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make "prefix=${pkgdir}/usr" install
 }
