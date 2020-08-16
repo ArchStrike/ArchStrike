@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=128
+buildarch=220
 
 pkgname=autopsy
 pkgver=4.12.0
-pkgrel=3
+pkgrel=4
 groups=("archstrike" "archstrike-forensics")
 pkgdesc="A digital forensics platform and GUI for tools such as The Sleuth Kit"
-arch=("x86_64")
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://www.sleuthkit.org/autopsy/"
 license=("Apache")
 provides=("autopsy")
@@ -17,7 +17,7 @@ source=("https://github.com/sleuthkit/${pkgname}/releases/download/${pkgname}-${
 sha512sums=('f80be7076eb98af898067211796eaa84e808baf0b167398fa45ee36c2fc32219ff7c25ef91b55919b833dd9a070c46211ddada4a8697f0a1164847fd81e2af21')
 
 package() {
-  cd "${pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   mkdir -p "${pkgdir}/opt/${pkgname}"
   chmod 755 bin/autopsy
