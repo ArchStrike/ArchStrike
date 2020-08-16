@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=hash-identifier
 pkgver=1.1
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-crypto')
 pkgdesc="Identifies the different types of hashes used to encrypt data, especially passwords"
 arch=('any')
@@ -12,22 +12,24 @@ url='http://code.google.com/p/hash-identifier'
 license=('GPL3')
 makedepends=('subversion' 'dos2unix')
 depends=('python2')
-source=("$pkgname::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/hash-identifier/Hash_ID_v$pkgver.py")
+source=("${pkgname}::https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/hash-identifier/Hash_ID_v${pkgver}.py")
 sha512sums=('af889ebd84d2bd73c9a9623b5573bbb8a4cf5d3ffa6de75b272644905c4c1fa7e5bfcfb24d5ac75ffd73e4305447dd357f16b6248a16424094fc8b8cffca378d')
 
 prepare() {
-  grep -iRl 'python' "$pkgname" | xargs sed -i 's|python$|python2|'
+  cd "${srcdir}"
+  grep -iRl 'python' "${pkgname}" | xargs sed -i 's|python$|python2|'
 }
 
 package() {
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  cp $pkgname "$pkgdir/usr/share/$pkgname"
+  cd "${srcdir}"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp "${pkgname}" "${pkgdir}/usr/share/${pkgname}"
 
-cat > "$pkgdir/usr/bin/hashid" <<EOF
+cat > "${pkgdir}/usr/bin/hashid" <<EOF
 #!/bin/sh
-python2 /usr/share/$pkgname/$pkgname "\$@"
+python2 "/usr/share/${pkgname}/${pkgname}" "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/hashid"
+chmod 755 "${pkgdir}/usr/bin/hashid"
 }
 
