@@ -2,22 +2,24 @@
 
 buildarch=1
 
-pkgname=python2-webunit
+_pkgname="webunit"
+pkgname="python2-${_pkgname}"
 pkgver=1.3.10
-pkgrel=2
+pkgrel=3
 pkgdesc="Unit test your websites with code that acts like a web browser."
 arch=('any')
-url="http://mechanicalcat.net/tech/webunit/"
+url="https://pypi.org/project/${_pkgname}/"
 license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/source/w/webunit/webunit-$pkgver.tar.gz" "LICENSE")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
+        "LICENSE")
 sha512sums=('a4968b56956866805066b71db49c36b7b77e73e8073b671745ad322bc1b61a9d12db8110f1ee92d0ca341e0f77ddb196818ef9911c7bd14d5e14e56546a164ff'
             'd5af5e67f1b025e9b1231cc70f00aab75aa2daf72b91517ec2c70d250bf919d3681f61dfb16ed4278c42eb5fa55202e628039f198be46009c83720053f093bb2')
 
 package() {
-  cd "$srcdir/webunit-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  install -Dm0644 "$srcdir/LICENSE" "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1
+  install -Dm0644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
