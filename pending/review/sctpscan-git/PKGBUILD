@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=sctpscan-git
 pkgver=20140205.r34
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
 pkgdesc="A network scanner for discovery and security"
 url="http://www.p1sec.com/"
@@ -17,21 +17,21 @@ sha512sums=('SKIP'
             '9b2c10235a67abf847c0f9eb07887f4a2044ffc036be73f9e6b00a55ea585b5644b1bf4e93a485ee7ba1b7bf273d791766d5ca359b402a32b1b6926edd441022')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd $pkgname
-  patch < $srcdir/setpgrp.patch
+  cd "${srcdir}/${pkgname}"
+  patch < "${srcdir}/setpgrp.patch"
 }
 
 build() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   make
 }
 
 package() {
-  cd $pkgname
-  install -Dm755 sctpscan "$pkgdir/usr/bin/sctpscan"
+  cd "${srcdir}/${pkgname}"
+  install -Dm755 sctpscan "${pkgdir}/usr/bin/sctpscan"
 }
