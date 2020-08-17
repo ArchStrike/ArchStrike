@@ -2,31 +2,31 @@
 
 buildarch=220
 
-pkgname=phrasendrescher
+pkgname="phrasendrescher"
 pkgver=1.2.2
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A modular and multi processing pass phrase cracking tool"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url='http://www.leidecker.info/projects/phrasendrescher/'
+url='http://www.leidecker.info/projects/${pkgname}/'
 license=('BSD')
 depends=('openssl' 'libssh2' 'gpgme')
 options=('!libtool')
-source=("http://www.leidecker.info/projects/phrasendrescher/phrasendrescher-$pkgver.tar.gz"
-        "phrasendrescher.patch"
+source=("http://www.leidecker.info/projects/${pkgname}/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.patch"
         "config.guess-for-aarch64.patch")
 sha512sums=('30a87bf70435c11ff0255b73d46d6bc619bed444b4447ca69a91ff4d06dde0a47b078092619c4381f6621eaec14dea61f5b0f530462e81e5563be3f0f430b6ab'
             '9acce92048e3bb5f57c5a3a1abdba855543fb070bda6f24fc0af99b42f6b6d1e7432c370bead2976f2ef1757f77a84765168d2c774e911a7249eaa06fa402f2c'
             '4ad55260f24b93f9e1584710223481d8392f9a46741790814b18dfd57bfa97eb7b34dad6ae18df9dacc1a5b786fdae64b20ecbc2f3c14ba55c852a52021bc03d')
 
 prepare() {
-  cd "$srcdir/phrasendrescher-$pkgver"
-  patch -Np1 -i $srcdir/config.guess-for-aarch64.patch
-  patch -p0 -i ../phrasendrescher.patch
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -Np1 -i "${srcdir}/config.guess-for-aarch64.patch"
+  patch -p0 -i ../"${pkgname}.patch"
 }
 
 build() {
-  cd "$srcdir/phrasendrescher-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   ./configure --prefix=/usr --with-plugins
   if [[ $CARCH == 'x86_64' ]]; then
@@ -37,12 +37,12 @@ build() {
 }
 
 package() {
-  cd "$srcdir/phrasendrescher-$pkgver"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR=$pkgdir install
+  make DESTDIR="${pkgdir}" install
 
   # Fix conflict with community/pd.
-  mv "$pkgdir/usr/bin/pd" "$pkgdir/usr/bin/phrasendrescher"
-  mv "$pkgdir/usr/share/man/man1/pd.1" "$pkgdir/usr/share/man/man1/phrasendrescher.1"
-  install -Dm644 COPYING $pkgdir/usr/share/licenses/$pkgname/COPYING
+  mv "${pkgdir}/usr/bin/pd" "${pkgdir}/usr/bin/${pkgname}"
+  mv "${pkgdir}/usr/share/man/man1/pd.1" "${pkgdir}/usr/share/man/man1/${pkgname}.1"
+  install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
 }
