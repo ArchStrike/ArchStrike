@@ -2,12 +2,12 @@
 
 buildarch=220
 
-pkgname=ratproxy
+pkgname="ratproxy"
 pkgver=1.58
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-webapps' 'archstrike-proxy' 'archstrike-scanners' 'archstrike-fuzzers')
 pkgdesc="A passive web application security assessment tool"
-url="http://code.google.com/p/ratproxy/"
+url="http://code.google.com/p/${pkgname}/"
 license=('APACHE')
 arch=('x86_64' 'i686' 'arvm6h' 'armv7h' 'aarch64')
 depends=('openssl' 'bash')
@@ -15,19 +15,19 @@ source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.go
 sha512sums=('432189c5863e0937f4dea92087847e6af1563e7a49a6b91b3f610ceb5aa1e25ac24a3bd837298abccfece7b1ad088ffe20cbfcb540dee164a4264bcb10ce89a2')
 
 build() {
-  cd "$srcdir/ratproxy"
+  cd "${srcdir}/${pkgname}"
   make
 }
 
 package() {
-  cd "$srcdir/ratproxy"
+  cd "${srcdir}/${pkgname}"
 
   # create directories and install files
-  install -d -Dm755 "$pkgdir/usr/share/ratproxy"
-  install -d -Dm755 "$pkgdir/usr/share/licenses/ratproxy"
-  install -d -Dm755 "$pkgdir/usr/bin"
-  install -m755 ratproxy "$pkgdir/usr/bin/ratproxy"
-  install -m755 ratproxy-report.sh "$pkgdir/usr/share/ratproxy/ratproxy-report.sh"
-  install -m644 doc/COPYING "$pkgdir/usr/share/licenses/ratproxy/LICENSE"
-  install -m755 "$srcdir/ratproxy/ratproxy-back.png" "$pkgdir/usr/share/ratproxy/ratproxy-back.png"
+  install -d -Dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -d -Dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -d -Dm755 "${pkgdir}/usr/bin"
+  install -m755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+  install -m755 ${pkgname}-report.sh "${pkgdir}/usr/share/${pkgname}/${pkgname}-report.sh"
+  install -m644 doc/COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m755 "${srcdir}/${pkgname}/${pkgname}-back.png" "${pkgdir}/usr/share/${pkgname}/${pkgname}-back.png"
 }
