@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=recoverjpeg
 pkgver=2.6.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='Recover jpegs from damaged devices'
 url='https://rfc1149.net/devel/recoverjpeg.html'
