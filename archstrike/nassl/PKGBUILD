@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=nassl
 pkgver=3.0.0
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto')
 pkgdesc='Experimental Python wrapper for OpenSSL'
 arch=('i686' 'x86_64')
