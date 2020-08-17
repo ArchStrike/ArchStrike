@@ -2,28 +2,29 @@
 
 buildarch=220
 
-pkgname=argus
+pkgname="argus"
 pkgver=3.0.8.2
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-networking' 'archstrike-defense')
 pkgdesc="Network monitoring tool with flow control"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://qosient.com/argus/"
+url="http://qosient.com/${pkgname}/"
 depends=('bash' 'libpcap' 'libsasl' 'zlib')
 license=('GPL3')
 options=('!emptydirs')
-source=("http://qosient.com/argus/src/argus-${pkgver}.tar.gz")
+source=("http://qosient.com/${pkgname}/src/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('146795880d8697e065ed23d2fbab226846d55db0b71945c5a4cab2896e48ceb6e1671ccb4e00dc3b0f984525bac4ced3773f3b9e70c3ea5f7c6972fe9bd94313')
 
 build() {
-  cd "${srcdir}/argus-${pkgver}" || exit
-  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man --docdir=/usr/share/doc/argus --pdfdir=/usr/share/argus/pdf --with-sasl
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr --sbindir=/usr/bin --sysconfdir=/etc --localstatedir=/var --mandir=/usr/share/man \
+    --docdir="/usr/share/doc/${pkgname}" --pdfdir="/usr/share/${pkgname}/pdf" --with-sasl
   make
 }
 
 package() {
-  cd "${srcdir}/argus-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR=${pkgdir} install
   install -Dm644 COPYING "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  mv "${pkgdir}/usr/argus" "${pkgdir}/usr/share/"
+  mv "${pkgdir}/usr/${pkgname}" "${pkgdir}/usr/share/"
 }
