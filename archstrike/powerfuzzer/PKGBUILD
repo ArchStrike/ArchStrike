@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=powerfuzzer
 pkgver=1_beta
-pkgrel=4
+pkgrel=5
 pkgdesc="A highly automated web fuzzer based on many other Open Source fuzzers available (incl. cfuzzer, fuzzled, fuzzer.pl, jbrofuzz, webscarab, wapiti, Socket Fuzzer). It can detect XSS, Injections (SQL, LDAP, commands, code, XPATH) and others."
 url="http://www.powerfuzzer.com"
 arch=('any')
@@ -15,18 +15,18 @@ source=("http://downloads.sourceforge.net/powerfuzzer/${pkgname}_v${pkgver}_patc
 sha512sums=('c31301a2c5dd4c8cff96235cda33e84e3c78b2325c51e94c5c2f86e079604e5d4333521d77db0db3e9244a7c551058438e297e52d8c0a19553f53bd5e68ff3cf')
 
 prepare(){
-  grep -iRl 'python' "$srcdir/${pkgname}_v${pkgver}_patched" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${srcdir}/${pkgname}_v${pkgver}_patched" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-  cd "$srcdir/${pkgname}_v${pkgver}_patched"
-  install -dm755 "$pkgdir/usr/bin"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  cp -a --no-preserve=ownership * "$pkgdir/usr/share/powerfuzzer/"
+  cd "${srcdir}/${pkgname}_v${pkgver}_patched"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/powerfuzzer/"
 
-cat > "$pkgdir/usr/bin/$pkgname" <<EOF
+cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/bin/sh
-python2 /usr/share/$pkgname/$pkgname.py "\$@"
+python2 /usr/share/${pkgname}/${pkgname}.py "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/$pkgname"
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 }
