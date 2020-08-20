@@ -4,14 +4,14 @@ buildarch=1
 
 pkgname=cisco-torch
 pkgver=0.4b
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-scanners' 'archstrike-fingerprinting' 'archstrike-exploit')
 pkgdesc="Cisco Torch mass scanning, fingerprintinging, and exploit tool."
 url="http://www.arhont.com"
 license=('LGPL')
 depends=('perl' 'perl-net-telnet' 'perl-net-snmp' 'perl-net-ssh-perl' 'perl-net-ssleay' 'perl-crypt-x')
 arch=('any')
-source=("http://www.hackingciscoexposed.com/tools/cisco-torch-${pkgver}.tar.gz")
+source=("https://github.com/Cthulu201/pkg_srcs/raw/master/${pkgname}/${pkgname}-${pkgver}.tar.gz")
 sha512sums=('dcd9be4d0b733020127401f6b1aefa4b222fcf0164649fdfba242e5a18328f984d66c8e9649776ba83135980dec6398611c9a1bfa82faef98d225a38bdb6cb0d')
 
 package() {
