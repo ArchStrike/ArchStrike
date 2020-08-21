@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='perl-rpc-xml'
 pkgver='0.80'
-pkgrel=5
+pkgrel=6
 pkgdesc="A set of classes for core data, message and XML handling"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -22,14 +22,14 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/${_distdir}" || exit
+    cd "${srcdir}/${_distdir}"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 package() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   make install
 
   find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
