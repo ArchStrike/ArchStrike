@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=fpdns
 pkgver=20190131
-pkgrel=2
+pkgrel=3
 pkgdesc="Program that remotely determines DNS server versions"
 url="https://github.com/kirei/fpdns"
 depends=('perl' 'perl-net-dns')
@@ -16,15 +16,15 @@ source=("https://github.com/kirei/fpdns/archive/${pkgver}.tar.gz")
 sha512sums=('cde6e3ae9661b82456b65e1b309c1190b63b83406fcc75971b2903d7b38a16cf46b2e2c3d9b3f577c20a8f7ffc077243414fc5e53bed962c85512e2ea6aec15b')
 
 build() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
   perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  make DESTDIR="$pkgdir" install
+  make DESTDIR="${pkgdir}" install
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
