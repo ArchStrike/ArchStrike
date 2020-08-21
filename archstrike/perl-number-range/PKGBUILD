@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='perl-number-range'
 pkgver='0.12'
-pkgrel=6
+pkgrel=7
 pkgdesc="Perl extension defining ranges of numbers and testing if a"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -23,21 +23,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/Number-Range-${pkgver}" || exit
+    cd "${srcdir}/Number-Range-${pkgver}"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "${srcdir}/Number-Range-${pkgver}" || exit
+  cd "${srcdir}/Number-Range-${pkgver}"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "${srcdir}/Number-Range-${pkgver}" || exit
+  cd "${srcdir}/Number-Range-${pkgver}"
   make install
   find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
