@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-uri-fetch'
 pkgver='0.13'
-pkgrel=4
+pkgrel=5
 pkgdesc="Smart URI fetching/caching"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -25,14 +25,14 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/${_distdir}" || exit
+    cd "${srcdir}/${_distdir}"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 package() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   make install
 
   find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
