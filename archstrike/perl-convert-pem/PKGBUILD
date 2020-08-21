@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-convert-pem
 pkgver=0.08
-pkgrel=10
+pkgrel=11
 pkgdesc="Read/write encrypted ASN.1 PEM files"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -23,21 +23,21 @@ build() {
       PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/${_distdir}" || exit
+    cd "${srcdir}/${_distdir}"
     /usr/bin/perl Makefile.PL
     make
   )
 }
 
 check() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""
     make test
   )
 }
 
 package() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   make install
 
   find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
