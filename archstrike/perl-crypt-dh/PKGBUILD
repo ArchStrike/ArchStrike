@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-crypt-dh
 pkgver=0.07
-pkgrel=10
+pkgrel=11
 pkgdesc="Perl/CPAN Module Crypt::DH: Diffie-Hellman key exchange system"
 _cpan_name=Crypt-DH-${pkgver}
 url='https://metacpan.org/pod/Crypt::DH'
@@ -16,18 +16,18 @@ source=("http://search.cpan.org/CPAN/authors/id/M/MI/MITHALDU/${_cpan_name}.tar.
 sha512sums=('60e58403e513535463290255989e9f2263107aeae6831d51d761e18527b1745baa45c16f655452fd618a0fb0e98413d5ed68f3926247ab2ad2da4032863b8ee7')
 
 build() {
-  cd "${srcdir}/${_cpan_name}" || exit
+  cd "${srcdir}/${_cpan_name}"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
-check() {
-  cd "${srcdir}/${_cpan_name}" || exit
-  make test
-}
+#check() {
+#  cd "${srcdir}/${_cpan_name}"
+#  make test
+#}
 
 package() {
-  cd "${srcdir}/${_cpan_name}" || exit
+  cd "${srcdir}/${_cpan_name}"
   make pure_install DESTDIR="${pkgdir}"
 
   cd "${pkgdir}"
