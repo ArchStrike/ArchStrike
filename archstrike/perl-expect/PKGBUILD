@@ -18,13 +18,13 @@ sha512sums=('97ff1969323cf0bcdecc792199111e273e1a4c032a9cdecac1acb521a280e772256
 _distdir="${_pkgname}-${pkgver}"
 
 build() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
     PERL_MM_USE_DEFAULT=1 /usr/bin/perl Makefile.PL INSTALLDIRS=vendor
     make
 }
 
 package() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
     make install DESTDIR="${pkgdir}"
     find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
