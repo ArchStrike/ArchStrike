@@ -4,13 +4,14 @@ buildarch=220
 
 pkgname=perl-math-pari
 pkgver=2.030518
-pkgrel=2
+pkgrel=3
 pkgdesc="Perl interface to PARI"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 epoch='1'
 url='https://metacpan.org/pod/Math::Pari'
 license=('GPL Artistic')
 depends=('perl')
+makedepends=('perl-lwp-protocol-https')
 options=('!emptydirs' '!distcc')
 source=("https://cpan.metacpan.org/authors/id/I/IL/ILYAZ/modules/Math-Pari-${pkgver}.zip")
 sha512sums=('9bb5d789b5789b38c1d2f07b400f394f8b94872321e9b4de8177e0546fde5f13c277a268f707fbd4c35b336d5f1f86c62744e8a8d0a7d54acece89f1125a89a2')
@@ -22,7 +23,7 @@ build() {
     PERL_MB_OPT="--installdirs vendor --destdir '$pkgdir'" \
     MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/Math-Pari-${pkgver}" || exit
+    cd "${srcdir}/Math-Pari-${pkgver}"
 
     /usr/bin/perl Makefile.PL
 
@@ -31,12 +32,12 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/Math-Pari-${pkgver}" || exit
+  cd "${srcdir}/Math-Pari-${pkgver}"
   make test
 }
 
 package() {
-  cd "${srcdir}/Math-Pari-${pkgver}" || exit
+  cd "${srcdir}/Math-Pari-${pkgver}"
 
   make install "DESTDIR=${pkgdir}"
 
