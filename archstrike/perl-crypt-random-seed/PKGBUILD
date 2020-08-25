@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=perl-crypt-random-seed
 pkgver=0.03
-pkgrel=6
+pkgrel=7
 pkgdesc='Simple method to get strong randomness.'
 _dist=Crypt-Random-Seed
 arch=('any')
