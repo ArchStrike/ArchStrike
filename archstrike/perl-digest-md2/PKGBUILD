@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=perl-digest-md2
 pkgver=2.04
-pkgrel=5
+pkgrel=6
 pkgdesc="Perl interface to the MD2 Algorithm"
 arch=('x86_64' 'i686' 'armv7h' 'armv6h' 'aarch64')
 url='https://metacpan.org/pod/Digest::MD2'
@@ -17,13 +17,13 @@ source=(http://cpan.perl.org/modules/by-authors/id/G/GA/${_author}/${_perlmod}-$
 sha512sums=('780ee79830fe8fcb3a844f67517c90d49a1e5e869dc8efd208d3eb73ccf6e56d3d112fcbd1effa083c4d77e5bddaab096b8aff9528707b235287761622b80433')
 
 build() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
 
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
   make install DESTDIR="${pkgdir}/"
 }
