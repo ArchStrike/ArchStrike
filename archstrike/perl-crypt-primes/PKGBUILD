@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-crypt-primes
 pkgver=0.50
-pkgrel=7
+pkgrel=8
 pkgdesc="Provable Prime Number Generator suitable for Cryptographic Applications"
 arch=('any')
 url='https://metacpan.org/pod/Crypt::Primes'
@@ -17,13 +17,13 @@ source=(http://cpan.perl.org/modules/by-authors/id/V/VI/${_author}/${_perlmod}-$
 sha512sums=('82e6c3eb5dacf7897c82284b33d18d08c82cd5c3d1f8bc1287ce0f918de655b1bd1f8639863969e5732cb01feb4733da347fa9529986f6fee035d73c0c810739')
 
 build() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
 
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 
 package() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
   make install DESTDIR="${pkgdir}/"
 }
