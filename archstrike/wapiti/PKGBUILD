@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wapiti
 pkgver=3.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="A vulnerability scanner for web applications. It currently search vulnerabilities like XSS, SQL and XPath injections, file inclusions, command execution, LDAP injections, CRLF injections..."
 arch=('any')
 url='http://wapiti.sourceforge.net/'
@@ -17,6 +17,6 @@ source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}/${pk
 sha512sums=('ed135a97ee0c2431fa15d87888eca424db389e9e54b1426e0efe7a83299ee110cb9895916c5f5f3690a99f81034e8ad0d97e3e432b2d478b89a3ba14534ddb96')
 
 package() {
-  cd "$srcdir/wapiti3-$pkgver"
-  python setup.py install --prefix=/usr --root="$pkgdir" -O1
+  cd "${srcdir}/wapiti3-${pkgver}"
+  python setup.py install --prefix=/usr --root="${pkgdir}" -O1
 }
