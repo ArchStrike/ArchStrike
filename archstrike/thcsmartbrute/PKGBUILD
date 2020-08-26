@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=thcsmartbrute
 pkgver=1.0
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-crackers')
 pkgdesc="A tool that finds undocumented and secret commands implemented in a smartcard."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -15,12 +15,12 @@ source=("https://raw.githubusercontent.com/vanhauser-thc/THC-Archive/master/Tool
 sha512sums=('461f9c2b61bc77b5d4c5ccf7bef5ef079fe81d5564273abedb15e59b500d9c878b813344002440425806b0a0dcb51cdd557badf729d07ee5ed54f37c95456e88')
 
 build() {
-  cd "${pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make DESTDIR="${pkgdir}" install
 }
