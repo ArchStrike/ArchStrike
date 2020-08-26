@@ -3,9 +3,10 @@
 
 buildarch=220
 
-pkgname=tomb
+_pkgname="Tomb"
+pkgname="tomb"
 pkgver=2.7
-pkgrel=1
+pkgrel=2
 pkgdesc="A system for easy encryption and backup of personal files"
 url="http://www.dyne.org/software/${pkgname}"
 groups=('archstrike')
@@ -20,32 +21,33 @@ optdepends=('dcfldd: Replacement for dd with hashing support'
             'swish-e: Support file content indexing'
             'qrencode: Create paper backups of keys as QR codes')
 
-source=("https://files.dyne.org/tomb/Tomb-${pkgver}.tar.gz")
+source=("https://files.dyne.org/tomb/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('dbe9d7e2658ca787ba267a1a43065ce5d8af79699e166226b863b0867813a1b6434e08b4a076e9710b20ce52d20e29bc04266dc4ba76a8f5c51a34ac80743240')
 
 prepare() {
-    sed -i 's/^#!\/bin\/zsh/#!\/usr\/bin\/env\ zsh/g' Tomb-${pkgver}/${pkgname}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  sed -i 's/^#!\/bin\/zsh/#!\/usr\/bin\/env\ zsh/g' "${pkgname}"
 }
 
 build() {
-    cd Tomb-${pkgver}/extras/gtk-tray
-    make
+  cd "${srcdir}/${_pkgname}-${pkgver}/extras/gtk-tray"
+  make
 
-    cd ../kdf-keys
-    make
+  cd ../kdf-keys
+  make
 }
 
 package() {
-    cd Tomb-${pkgver}
+    cd "${srcdir}/${_pkgname}-${pkgver}"
 
-    # Install tomb
-    make DESTDIR="${pkgdir}" PREFIX="/usr" install
-    chmod 644 "${pkgdir}/usr/share/man/man1/tomb.1"
+  # Install tomb
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  chmod 644 "${pkgdir}/usr/share/man/man1/tomb.1"
 
-    # Install the gtk tray icon
-    install -Dm755 extras/gtk-tray/tomb-gtk-tray "${pkgdir}/usr/bin/tomb-gtk-tray"
+  # Install the gtk tray icon
+  install -Dm755 extras/gtk-tray/tomb-gtk-tray "${pkgdir}/usr/bin/tomb-gtk-tray"
 
-    # Install kdf-keys
-    cd extras/kdf-keys
-    make DESTDIR="${pkgdir}" PREFIX="/usr" install
+  # Install kdf-keys
+  cd extras/kdf-keys
+  make DESTDIR="${pkgdir}" PREFIX="/usr" install
 }
