@@ -4,32 +4,34 @@ buildarch=1
 
 pkgname=tplmap
 pkgver=0.5
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Automatic Server-Side Template Injection Detection and Exploitation Tool"
 url="https://github.com/epinna/tplmap"
 license=('GPL3')
-depends=('python2' 'python2-yaml' 'python2-requests')
+depends=('python2' 'python2-yaml' 'python2-requests' 'python2-certifi' 'python2-chardet' 'python2-idna'
+         'python2-urllib3' 'python2-wsgiref')
 source=("https://github.com/epinna/tplmap/archive/v${pkgver}.tar.gz")
 sha512sums=('9b551dd4950fb542aabb3f7d4d0b5d3363aa93c183fa1847898a0fdc788383f5a356d62f32a14ef8bc4f97b1171303156f218cb528477d13fe9f30f0a80ced49')
 
 prepare() {
-  grep -iRl 'python' ${pkgname}-${pkgver} | xargs sed -i 's/python$/python2/g'
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  grep -iRl 'python' ./ | xargs sed -i 's/python$/python2/g'
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}
+cd "/usr/share/${pkgname}"
 python2 tplmap.py "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${pkgname}"
