@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=packetsender
-pkgver=6.2.6
+pkgver=7.0.5
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 pkgdesc="A utility to allow sending and receiving TCP and UDP packets."
@@ -11,20 +11,20 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='http://packetsender.com/'
 license=('GPL2')
 depends=('qt5-base')
-source=("https://github.com/dannagle/PacketSender/archive/v$pkgver.tar.gz")
-sha512sums=('7847b9d4f3f8697f6f42eec1c454ace69422e8db0bac9c7b218bb8d71e00c43d2087bc32265ec116f3ca4602cf20d37738c3c32f371a9b3b2c71cc6b82c9e5ba')
+source=("https://github.com/dannagle/PacketSender/archive/v${pkgver}.tar.gz")
+sha512sums=('3f3637e3a0a59ccdb975fd702695ed222aabe003e5e94673139696a236ec24414633eda1e611c86ec00c666a5768814a2ba55a9ebf3a2362585287c5bd6c6831')
 
 build(){
-  cd "$srcdir/PacketSender-$pkgver/src"
+  cd "${srcdir}/PacketSender-${pkgver}/src"
   qmake PacketSender.pro
   make
 }
 
 package() {
-  cd "$srcdir/PacketSender-$pkgver/"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  install -dm755 "$pkgdir/usr/share/$pkgname/screenshots"
-  install -Dm644 screenshots/* "$pkgdir/usr/share/$pkgname/screenshots/"
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
-  install -Dm755 src/packetsender "$pkgdir/usr/bin/$pkgname"
+  cd "${srcdir}/PacketSender-${pkgver}/"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}/screenshots"
+  install -Dm644 screenshots/* "${pkgdir}/usr/share/${pkgname}/screenshots/"
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 src/packetsender "${pkgdir}/usr/bin/${pkgname}"
 }
