@@ -2,18 +2,25 @@
 
 buildarch=1
 
-pkgname=python2-esmre
-pkgver=0.3.1
-pkgrel=4
+_pkgname="esmre"
+pkgname="python2-${_pkgname}"
+pkgver=0.5.2
+pkgrel=1
 pkgdesc="Modules used to accelerate execution of a large collection of regular expressions using the Aho-Corasick algorithms"
 arch=('any')
-url="https://pypi.python.org/pypi/esmre"
+url="https://pypi.org/project/${_pkgname}/"
 license=('LGPL')
-depends=('python2' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/50/b0/17401277ddaa334622c047f9c9a083956e67f8b08c7b8b43ade0b588f349/esmre-${pkgver}.tar.gz")
-sha512sums=('446c8470b658db6be8d97b70071c7586fcc61bd740488133b57fb71ae2e668d93698916f3249bc9fa417451279f5b84379c88ba9d54907262c77010054a5c0b1')
+depends=('python2' 'cython2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('6e8c2860e57feb8c747a5a6e93f6b3af70e7587682c7824a54c15a84cf7966b2d9d91063f4caa733a80cd71d8eefde8a75ac01b05d7b1cee8342596d4c382b8d')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
 
 package() {
-  cd "${srcdir}/esmre-${pkgver}" || exit
-  python2 setup.py install "--root=${pkgdir}" -O1
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install "--root=${pkgdir}" -O1 --skip-build
 }
