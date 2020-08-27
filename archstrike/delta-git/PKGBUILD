@@ -5,29 +5,30 @@ buildarch=1
 pkgname=delta-git
 _pkgname=delta
 pkgver=20160608.r5
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-recon' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Track the changes of a website"
 url="https://github.com/pangbo-1988/data_diff"
 license=('GPL3')
-depends=('python2' 'python2-urllib3' 'python2-elasticsearch' 'python2-mmh3' 'scrapy' 'elasticsearch')
+depends=('python2' 'python2-urllib3' 'python2-elasticsearch-py' 'python2-mmh3' 'scrapy' 'elasticsearch')
 makedepends=('git')
 source=("${pkgname}::git+https://github.com/pangbo-1988/data_diff")
 install=${pkgname}.install
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname} || exit
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
+  cd "${srcdir}/${pkgname}"
+  grep -iRl 'python' ./ | xargs sed -i 's|python$|python2|'
 }
 
 package() {
-  cd ${pkgname} || exit
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/share/doc/${_pkgname}"
