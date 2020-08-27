@@ -4,20 +4,20 @@ buildarch=220
 
 pkgname=suricata
 pkgver=5.0.3
-pkgrel=2
+pkgrel=3
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="https://suricata-ids.org/"
 license=('GPL2')
 groups=('archstrike')
 depends=('nss' 'jansson' 'libcap-ng' 'libnetfilter_queue' 'pcre' 'libdaq-static'
-         'libnet' 'libpcap' 'libyaml' 'python-magic-git' 'file' 'luajit' 'geoip'
-         'libnetfilter_log' 'hiredis' 'libmaxminddb' 'rust')
+         'libnet' 'libpcap' 'libyaml' 'file' 'luajit' 'geoip' 'rust' 'hiredis'
+         'libnetfilter_log' 'libmaxminddb' 'libnfnetlink' 'python' 'python-distlib')
 optdepends=('snort: suricata can use rulesets provided by snort')
 backup=('etc/suricata/suricata.yaml')
-install=${pkgname}.install
+install="${pkgname}.install"
 source=("http://openinfosecfoundation.org/download/${pkgname}-${pkgver}.tar.gz"
-        "$install")
+        "${install}")
 sha512sums=('4e0ad2ae33537cb074d549b3cc162c5ed115605cb142a96cbf66d1341799eaad96b307fd6ad4679e344e51d00065b3573bfb26bd60468f12addb144b112e4f72'
             '6c5fb66251e88be0c8feae2bb9b0ed561722b6c3b43df0a407afe302669a70624fec551428b7a4bd0d5a26dad60f006d9018176585dc7ad1ebc395ba6a6ddd0f')
 
@@ -36,7 +36,8 @@ build() {
   --enable-geoip \
   --disable-coccinelle \
   --enable-old-barnyard2 \
-  --with-pie
+  --with-pie \
+  --enable-rust
   make
 }
 
