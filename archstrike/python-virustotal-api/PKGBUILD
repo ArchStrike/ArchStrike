@@ -4,11 +4,8 @@
 buildarch=1
 
 _pkgname=virustotal-api
-pkgbase=python2-${_pkgname}
-
-
 pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=1.1.10
+pkgver=1.1.11
 pkgrel=1
 pkgdesc="Virus Total Public/Private/Intel API"
 url="https://github.com/blacktop/virustotal-api"
@@ -16,7 +13,7 @@ makedepends=('python-setuptools' 'python2-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('724b1defc46677795d80b49c9cfead8a9cf9d6dff27ca076ada60cb3f2be2718ffec975f0cf4cd088098c22dcfcd03356deb78a13189744f3c618fd5687e4f19')
+sha512sums=('af29d4f5600753fc7d07a7a0b2846463dc484c4068151844fdbdc8a9c949556b1f4849175f7a4d0bce20cfd37a419f7f000aa5235003716a31dd9cf1899e2991')
 
 
 prepare() {
