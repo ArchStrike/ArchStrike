@@ -2,8 +2,8 @@
 # Contributor: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-uncompyle6
-pkgver=3.5.0
-pkgrel=2
+pkgver=3.7.3
+pkgrel=1
 pkgdesc="Python byte-code disassembler and source-code converter."
 arch=('any')
 url="https://github.com/rocky/python-uncompyle6/"
@@ -11,8 +11,8 @@ license=('GPL3')
 makedepends=('python-setuptools')
 groups=('archstrike' 'archstrike-decompile')
 depends=('python-spark' 'python-xdis')
-source=("https://github.com/rocky/$pkgname/archive/$pkgver.tar.gz")
-sha512sums=('36c5d55cb6a83b9c2cc75a907365d3f65fa298affa74c204a3ab248180ec545e5c18ae590cb0915a70b69225c0118eec2a5bc3e60b379ed0d749d2b5985ac317')
+source=("https://github.com/rocky/${pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('dd9a557f4f365b968a8179a0fea4f39b5b905f27f695eb57102ecf86e9d83c5dd2fb171827e084c72a8a9fc520509cdd4bbe068ea136c35db7a29a854095dcef')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
