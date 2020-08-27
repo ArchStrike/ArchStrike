@@ -1,7 +1,7 @@
 # Maintainer: ArchStrike <team[at]archstrike[dot]org>
 
 pkgname=python2-intervaltree
-pkgver=3.0.2
+pkgver=3.1.0
 pkgrel=1
 pkgdesc="Editable interval tree data structure for Python 2 and 3"
 url="https://github.com/chaimleib/intervaltree"
@@ -9,16 +9,16 @@ depends=('python2' 'python2-sortedcontainers')
 makedepends=('python2-setuptools')
 license=('APACHE')
 arch=('any')
-source=("https://github.com/chaimleib/intervaltree/archive/${pkgver}.tar.gz")
-sha512sums=('a34058b83fdf94c629f0ef85da269a2fb42676cfbd14553d0e4fe6e93b606891823ff35785f27928458acf9d1ec515d5d8ae3a605e7c9306b693483ce1a4a211')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('96dd7710bb5b02470cb7d1b479d905d5e4a18abb9aef055fa55de6b7c25dcad46260f76e5d042bec599b02de2045d8ba03ff1900fff9562227dff5a76b45a070')
 
 build() {
-    cd $srcdir/intervaltree-${pkgver}
+    cd "${srcdir}/intervaltree-${pkgver}"
     python2 setup.py build
 }
 
 package() {
-    cd $srcdir/intervaltree-${pkgver}
-    python2 setup.py install --root="$pkgdir" -O1 --skip-build
-    install -Dm644 LICENSE.txt "$pkgdir/usr/share/licenses/$pkgname/LICENSE.txt"
+    cd "${srcdir}/intervaltree-${pkgver}"
+    python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+    install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
