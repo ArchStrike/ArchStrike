@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=dnsenum
 pkgver=1.2.4.2
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-scanners' 'archstrike-recon')
 pkgdesc="Perl script that enumerates DNS information from a domain, attempts zone transfers, performs a brute force dictionary style attack, and then performs reverse look-ups on the results"
 arch=('any')
@@ -16,16 +16,11 @@ source=("https://github.com/fwaeytens/dnsenum/archive/${pkgver}.zip")
 sha512sums=('9644134426a0cf4c1f264152dbcd84a2ec9214fd0865749cb82164cf5edfc55559c2b7b2878d99a263a01072043e74176b52cd7b52b69865217a0823a6bfb1b6')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${pkgname}-${pkgver}"
 
-  # Base directories.
   install -dm755 ${pkgdir}/usr/bin
   install -dm755 ${pkgdir}/usr/share/doc/dnsenum
-
-  # Docs.
   install -Dm644 README.md ${pkgdir}/usr/share/doc/dnsenum/README.md
-
-  # Script.
   install -Dm755 dnsenum.pl ${pkgdir}/usr/share/dnsenum/dnsenum.pl
 
   # Brute-force list.
