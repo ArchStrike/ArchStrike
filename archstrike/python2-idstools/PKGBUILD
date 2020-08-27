@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-idstools
-pkgver=0.6.3
+pkgver=0.6.4
 pkgrel=1
 pkgdesc="A collection of Python libraries for working with IDS systems (typically Snort and Suricata)."
 arch=('any')
@@ -12,15 +12,15 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools')
 groups=('archstrike' 'archstrike-networking')
-source=("https://github.com/jasonish/py-idstools/archive/$pkgver.tar.gz")
-sha512sums=('c337b79285d15984349255299aa458ba50e537f27dfdf692aa4b580dd2ec35e138e1c930739187a8a50b329d022ec9d32c17844b07ba8eaeb3ba037a58619b4f')
+source=("https://github.com/jasonish/py-idstools/archive/${pkgver}.tar.gz")
+sha512sums=('6dd8dc239e3a0b1cd546090267e74159fac49b4e9f4593ed97c6b6d00a7be00a7f18bd1c3ff711a82c0c81712e73a7d70dee926242f7bc31c8f5cf8a8f1b0275')
 
 prepare(){
-  grep -iRl 'python' "$srcdir/py-idstools-$pkgver" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${srcdir}/py-idstools-${pkgver}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
   cd "${srcdir}/py-idstools-${pkgver}"
-  python2 setup.py install --root=$pkgdir --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  python2 setup.py install --root=${pkgdir} -O1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
