@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname="PyNaCl"
+pkgname="python2-pynacl"
+pkgver=1.4.0
+pkgrel=1
+pkgdesc="Python binding to libsodium"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
+url="https://pypi.org/project/${_pkgname}/"
+license=('Apache')
+depends=('python2' 'libsodium' 'python2-six' 'python2-cffi')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('355b974010f94d551f631a2dd5ae792da3d4d0abf8ed70b6decc78aad24a9f965636988aebd14947b137ea14cdcbb73531775f08b1b4d5a9d72b5df3dba0b022')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+}
+
