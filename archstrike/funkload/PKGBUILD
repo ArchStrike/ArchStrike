@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=funkload
 pkgver=1.17.1
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A functional and load web tester, written in Python"
 arch=('any')
@@ -14,24 +14,24 @@ depends=('python2-webunit')
 optdepends=('tcpwatch: to use recorder'
             'gnuplot: to produce charts')
 makedepends=('python2-setuptools')
-source=("https://pypi.python.org/packages/source/f/funkload/funkload-$pkgver.tar.gz" "patch_for_ez_setup_issues.patch")
+source=("https://pypi.python.org/packages/source/f/funkload/funkload-${pkgver}.tar.gz" "patch_for_ez_setup_issues.patch")
 sha512sums=('ff0e02d069d9bacc79e067e771f77809ab32cb2a4b43f657fc2025851bdc1f7d17309345a3e41801efe1920e6e85665087ae0ae467911af3f82cc41995eccd02'
             'c2737da3d6aab023b9944dbb8e08206b3b4ab90ba051e3071a6b365cb1dd25306f80ee796d761683c75aa80ef6fc87f7413b1cb2b49202b17fd68aeaaa8fc6a2')
 
 prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 -i $srcdir/patch_for_ez_setup_issues.patch
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  patch -p1 -i ${srcdir}/patch_for_ez_setup_issues.patch
   # fixing retarded fuckup
   sed -i '/long_description/d' setup.py
 }
 
 package() {
-  cd "$pkgname-$pkgver"
-  python2 setup.py install --root="$pkgdir" --optimize=1
-  sed -i 's|python|python2|' $pkgdir/usr/lib/python2.7/site-packages/funkload/Distributed.py \
-                             $pkgdir/usr/lib/python2.7/site-packages/funkload/FunkLoadHTTPServer.py \
-                             $pkgdir/usr/lib/python2.7/site-packages/funkload/BenchRunner.py \
-                             $pkgdir/usr/lib/python2.7/site-packages/funkload/TestRunner.py  \
-                             $pkgdir/usr/lib/python2.7/site-packages/funkload/apdex.py \
-                             $pkgdir/usr/lib/python2.7/site-packages/funkload/tests/test_apdex.py
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1
+  sed -i 's|python|python2|' ${pkgdir}/usr/lib/python2.7/site-packages/funkload/Distributed.py \
+                             ${pkgdir}/usr/lib/python2.7/site-packages/funkload/FunkLoadHTTPServer.py \
+                             ${pkgdir}/usr/lib/python2.7/site-packages/funkload/BenchRunner.py \
+                             ${pkgdir}/usr/lib/python2.7/site-packages/funkload/TestRunner.py  \
+                             ${pkgdir}/usr/lib/python2.7/site-packages/funkload/apdex.py \
+                             ${pkgdir}/usr/lib/python2.7/site-packages/funkload/tests/test_apdex.py
 }
