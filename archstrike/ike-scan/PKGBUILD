@@ -4,18 +4,18 @@ buildarch=220
 
 pkgname=ike-scan
 pkgver=1.9.4
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Discover and fingerprint IKE hosts (IPsec VPN Servers)'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://github.com/royhills/ike-scan'
 license=('GPL')
 depends=('openssl')
-source=("https://github.com/royhills/$pkgname/archive/$pkgver.tar.gz")
+source=("https://github.com/royhills/${pkgname}/archive/${pkgver}.tar.gz")
 sha512sums=('d7dde6d3d76a2e3ddeb9ed1f0dee3e2c3a13d4afa57ebb8ff19f6af094f7334b464509cee6ffc385d2703bcf9bc1c503bc604506279518f692f82c8f12f146be')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
   aclocal
   autoheader
   automake --add-missing
@@ -25,6 +25,6 @@ build() {
 }
 
 package() {
-  cd $pkgname-$pkgver
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
 }
