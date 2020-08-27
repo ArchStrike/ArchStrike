@@ -2,25 +2,26 @@
 
 buildarch=1
 
-_pkgname=elasticsearch-py
-pkgname=python2-elasticsearch
-pkgver=7.8.1
+_pkgname="elasticsearch-py"
+pkgname="python2-${_pkgname}"
+pkgver=7.9.1
 pkgrel=1
 arch=('any')
 pkgdesc='Official Python low-level client for Elasticsearch'
-url='https://github.com/elastic/elasticsearch-py'
+url="https://github.com/elastic/${_pkgname}"
 license=('Apache')
 depends=('python2-urllib3' 'python2-certifi' 'elasticsearch')
 makedepends=('python2-setuptools')
+replaces=('python2-elasticsearch')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('46f4295bca0da9b1fb4e8dea6ef511e4f37c342394e24c36712f63e3c75bc76c60f37a81350b7873465e129a635cbf70dd7039daae13e851cfbcc995f91bd432')
+sha512sums=('aad80b384f63814553f99f4f39f686b469e56c46117db5e3925656f3cf90a65a77e82c34f0496255907268a4123a432ace3083d3bc1091b411a7e86cd20e7fd7')
 
 build() {
-  cd "${srcdir}/elasticsearch-py-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd "${srcdir}/elasticsearch-py-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install --root "${pkgdir}" -O1 --skip-build
 }
