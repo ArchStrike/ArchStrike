@@ -1,0 +1,28 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="future"
+pkgname="python2-${_pkgname}"
+pkgver=0.18.2
+pkgrel=1
+pkgdesc="Missing compatibility layer between Python 2 and Python 3"
+arch=('any')
+url="https://pypi.org/project/${_pkgname}/"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('91c025f7d94bcdf93df838fab67053165a414fc84e8496f92ecbb910dd55f6b6af5e360bbd051444066880c5a6877e75157bd95e150ead46e5c605930dfc50f2')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm0644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+}
+
