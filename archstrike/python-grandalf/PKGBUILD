@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python-grandalf
-pkgver=0.6
-pkgrel=2
+pkgver=0.7
+pkgrel=1
 pkgdesc="A graph and drawing algorithms framework"
 arch=('any')
 url='https://github.com/bdcht/grandalf'
 license=('GPL2')
 depends=('python' 'python-pyparsing' 'python-future')
-makedepends=('python2-setuptools' 'python-pytest-runner')
+makedepends=('python-setuptools' 'python-pytest-runner')
 source=("https://github.com/bdcht/grandalf/archive/v${pkgver}.tar.gz")
-sha512sums=('2527112676207c64e9e846e85be345a010ff1d3972b2c8a7821cc1d3f9d0cf6a6607884d08ee6dd967242e6ad18387b424a41031db6de856945d3ac3feaced73')
+sha512sums=('a129e7bd6f0d2a88749bf72c5e03ba917cd28be505bceac07c4c60e0c1a2fff5970d0f48ae760c1936944965b5fdb3cdd4e00cf331094cb97431283f0298fdba')
 
 package() {
   cd "${srcdir}/grandalf-${pkgver}"
