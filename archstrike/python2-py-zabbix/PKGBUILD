@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-py-zabbix
-pkgver=1.1.4
+pkgver=1.1.7
 pkgrel=1
 arch=('any')
 pkgdesc="Python modules for work with zabbix."
@@ -12,7 +12,7 @@ license=('GPL')
 depends=('python2')
 makedepends=('python2-setuptools')
 source=("https://github.com/blacked/py-zabbix/archive/${pkgver}.tar.gz")
-sha512sums=('be92b91eb7556a3eaa97e217722fea97453a54ec522d6eb388b441fa9c8038112f823164390f0ecfe693b9749c7296f2e81bebbbab94efbd8e5ff2274ae92cbb')
+sha512sums=('c4a399e49fe07daf90bae7cffa99f2fd2b854fa8d215b84c2ea7a664e536178604f8eac20cd77d7ccf5d3454e5e590b81ceafa38a05aa6fe4c05e807ffea97d2')
 
 prepare() {
   grep -iRl 'python' py-zabbix-${pkgver} | xargs sed -i 's|python$|python2|'
