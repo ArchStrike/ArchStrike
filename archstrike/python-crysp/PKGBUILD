@@ -3,19 +3,19 @@
 buildarch=1
 
 pkgname=python-crysp
-pkgver=0.9
-pkgrel=2
+pkgver=1.2
+pkgrel=1
 pkgdesc="A crypto related pkg for amoco"
 arch=('any')
 url='https://github.com/bdcht/crysp'
 license=('GPL2')
 depends=('python-matplotlib' 'python-grandalf')
-makedepends=('python-setuptools')
+makedepends=('python-setuptools' 'python-pytest-runner')
 source=("https://github.com/bdcht/crysp/archive/v${pkgver}.tar.gz")
-sha512sums=('d32e92758eefc98ac8f29426b4a37a47621588f578ef021407f5eeaf8b573f3a4e47c03258a4f12539bd77ccd4dc630185cd65f2cfbd7399212f9c14d692035e')
+sha512sums=('7c35a6a3db798b36b9dce06fea19f3fe7ae69db86ed578c599159b45796f4adcaf06fc85ca495ed2f6470884577d8cb5bb645a540d8f60fd31d04f30004f4979')
 
 package() {
-  cd "${srcdir}/crysp-${pkgver}" || exit
+  cd "${srcdir}/crysp-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1
 }
 
