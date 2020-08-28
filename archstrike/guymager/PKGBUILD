@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=guymager
-pkgver=0.8.11
+pkgver=0.8.12
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='A forensic imager for media acquisition'
@@ -13,34 +13,23 @@ arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 depends=('libguytools' 'libewf' 'libbfio' 'parted')
 makedepends=('qt5-tools')
 options=('!strip')
-backup=("etc/$pkgname/$pkgname.cfg")
-
-source=(
-  "http://downloads.sourceforge.net/project/$pkgname/$pkgname/LatestSource/$pkgname-$pkgver.tar.gz"
-  "$pkgname.desktop"
-  'build-fix.patch'
-)
-
-sha512sums=('cf68c7d153a2106581010af6f0b4ff3accd6335494f65203e6e741beb94c38afb4947b9f579d8e8cbdf16054815d58af9acbde1045d6410d8424d9461c2b716f'
-            '2f3de7257590ec00d6a5d222813ac9169a38b49832b863bdea7f2177eeda60ff4d98ad6656d15552e59884bfbf73cee960cb69cd1c1412bd633331025ccd9a81'
-            '05223b16d1acbbe34b37ae29626a727a0bfd3ce56d7dd6f0f98a9f2c1b8a5023f3a68c4800da23719d0e19370538a6ef8cf1c3609bcbb9247be3bfca6defa828')
-
-prepare() {
-  cd $pkgname-$pkgver
-  patch -p1 < ../build-fix.patch
-}
+backup=("etc/${pkgname}/${pkgname}.cfg")
+source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/LatestSource/${pkgname}-${pkgver}.tar.gz"
+        "${pkgname}.desktop")
+sha512sums=('79131abc41fae197012fcb4c915ef739b3709e78024f72f68b00d33778bfa4fa36b87d1f64fbde0cb6f9dd992e3852e429031eabe9aa5ec1d9cef541f470ce7f'
+            '2f3de7257590ec00d6a5d222813ac9169a38b49832b863bdea7f2177eeda60ff4d98ad6656d15552e59884bfbf73cee960cb69cd1c1412bd633331025ccd9a81')
 
 build() {
-  cd $pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
   qmake
   make
   lrelease guymager.pro
 }
 
 package() {
-  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  cd $pkgname-$pkgver
-  install -Dm644 ${pkgname}_128.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 $pkgname.cfg "$pkgdir/etc/$pkgname/$pkgname.cfg"
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm644 "${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 "${pkgname}_128.png" "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 "${pkgname}.cfg" "${pkgdir}/etc/${pkgname}/${pkgname}.cfg"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
