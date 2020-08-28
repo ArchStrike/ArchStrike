@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=python2-user-agents
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="A library to identify devices (phones, tablets) and their capabilities by parsing (browser/HTTP) user agent strings"
 url="https://github.com/selwin/python-user-agents"
 depends=('python2-yaml' 'python2-ua-parser')
 makedepends=('python2-setuptools')
-license=('custom')
+license=('MIT')
 arch=('any')
-source=("https://github.com/selwin/python-user-agents/archive/v${pkgver}.tar.gz")
-sha512sums=('4151fe2cceba54c33f0dd7a6c0506ebbb937114a192a3883c7269b20e4c4088a9e444dcc97e5ee3a9a4864a358d566ed5eb2ab8f8f89eecd4c35dd3248b6b7d4')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('c20999151b6d1d376d2c240d3e2fc00f5a9ce1b04a823950602c225e8236c41eb1a3e8f6070bbce4efc3b27e8ca010759a174385f70009fc91f04cb9a096b2b6')
 
 build() {
     cd "${srcdir}/python-user-agents-${pkgver}"
