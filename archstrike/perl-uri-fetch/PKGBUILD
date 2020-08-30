@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-uri-fetch'
 pkgver='0.13'
-pkgrel=5
+pkgrel=6
 pkgdesc="Smart URI fetching/caching"
 arch=('any')
 license=('PerlArtistic' 'GPL')
