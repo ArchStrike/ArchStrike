@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-class-errorhandler
 pkgver=0.04
-pkgrel=5
+pkgrel=6
 pkgdesc="Base class for error handling"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -16,13 +16,13 @@ sha512sums=('9e235da1c2091f9422723af4528305b8ed2b50920a865e6fee76380a8c512fcd837
 _distdir="Class-ErrorHandler-${pkgver}"
 
 build() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   perl Makefile.PL installdirs=vendor destdir=${pkgdir}
   make
 }
 
 package(){
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   make install
   find ${pkgdir} -name '.packlist' -delete
   find ${pkgdir} -name '*.pod' -delete
