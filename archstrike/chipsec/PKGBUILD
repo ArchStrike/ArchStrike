@@ -4,7 +4,7 @@
 buildarch=192
 
 pkgname=chipsec
-pkgver=1.5.3
+pkgver=1.5.4
 pkgrel=1
 groups=('archstrike' 'archstrike-hardware' 'archstrike-forensics')
 pkgdesc="A framework for analyzing security of PC platforms including hardware, system firmware including BIOS/UEFI and the configuration of platform components."
@@ -16,7 +16,7 @@ makedepends=('python2-setuptools')
 install="${pkgname}.install"
 source=("${url}/archive/${pkgver}.tar.gz"
         "chipsec.install")
-sha512sums=('d148bf004c98e7f6b2014c5ef5ceb185330a3f0131055e805ceef0c866394ea41e12d619897441eee67f765e03360570ce4d3cc9b2bf61afd5babe0e97463efe'
+sha512sums=('0b132a81a41a7e05a6666a778fa64b6c74bd95c982f19b3dd6742494f29bf37bf603dd2c3c021d7711bfcc30e9cc84fdb09e7c41c37f8f0d74c6af6ba928d8ed'
             '87b84cf017f008678bdb5aafe0e5465231b5b167b2a2273786966dce0c2d85c2d2016016f3d629fd9df6c251fc2249d1b6f6e1f3c8e27a9938a7848b684e70b5')
 
 package() {
