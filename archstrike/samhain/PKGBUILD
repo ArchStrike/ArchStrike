@@ -4,11 +4,12 @@ buildarch=220
 
 pkgname=samhain
 pkgver=4.4.2
-pkgrel=1
+pkgrel=2
 pkgdesc="File integrity / intrusion detection system"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://la-samhna.de/${pkgname}"
 license=('GPL')
+groups=('archstrike' 'archstrike-networking' 'archstrike-scanners' 'archstrike-autonomous')
 depends=('audit' 'systemd')
 makedepends=('procps-ng')
 backup=("etc/${pkgname}rc")
