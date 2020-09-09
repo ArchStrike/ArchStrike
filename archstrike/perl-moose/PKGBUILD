@@ -5,7 +5,7 @@ buildarch=220
 pkgname=perl-moose
 _cpanname=Moose
 pkgver='2.2013'
-pkgrel=2
+pkgrel=3
 pkgdesc="A postmodern object system for Perl 5"
 url="https://metacpan.org/pod/Moose"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -19,7 +19,7 @@ depends=('perl-class-load>=0.09' 'perl-class-load-xs>=0.01'
          'perl-package-stash-xs>=0.24' 'perl-params-util>=1.00'
          'perl-sub-exporter>=0.980' 'perl-sub-name>=0.05' 'perl-task-weaken'
          'perl-test-checkdeps' 'perl-try-tiny>=0.02')
-makedepends=('perl-dist-checkconflicts>=0.02' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05' 'perl-test-without-module')
+makedepends=('perl-dist-checkconflicts>=0.02' 'perl-test-fatal>=0.001' 'perl-test-requires>=0.05' 'perl-test-without-module' 'libxcrypt')
 source=("http://cpan.metacpan.org/authors/id/E/ET/ETHER/${_cpanname}-${pkgver}.tar.gz")
 sha512sums=('9e177019930d6bae4fdd90713e3c95b16e6bc91e229ab2aacc03e14a5efbedf6c944b93fefbbcc4586ffb18cc786f323c4102f76d84af949c8f328acf69a5ec3')
 
