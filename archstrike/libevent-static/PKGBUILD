@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=libevent-static
 _pkgname=libevent
-pkgver=2.1.8
+pkgver=2.1.12
 pkgrel=1
 pkgdesc="An event notification library static libs"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,25 +14,25 @@ url="http://libevent.org"
 license=('BSD')
 options=('staticlibs')
 source=(https://github.com/${_pkgname}/${_pkgname}/releases/download/release-${pkgver}-stable/${_pkgname}-${pkgver}-stable.tar.gz)
-sha512sums=('a2fd3dd111e73634e4aeb1b29d06e420b15c024d7b47778883b5f8a4ff320b5057a8164c6d50b53bd196c79d572ce2639fe6265e03a93304b09c22b41e4c2a17')
+sha512sums=('88d8944cd75cbe78bc4e56a6741ca67c017a3686d5349100f1c74f8a68ac0b6410ce64dff160be4a4ba0696ee29540dfed59aaf3c9a02f0c164b00307fcfe84f')
 
 build() {
-  cd ${_pkgname}-${pkgver}-stable
+  cd "${srcdir}/${_pkgname}-${pkgver}-stable"
   ./configure --prefix=/usr --sysconfdir=/etc --disable-shared
   make
 }
 
 check() {
-  cd ${_pkgname}-${pkgver}-stable
+  cd "${srcdir}/${_pkgname}-${pkgver}-stable"
 #  make check
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}-stable
+  cd "${srcdir}/${_pkgname}-${pkgver}-stable"
   make DESTDIR="${pkgdir}" install-am
   # remnoving uneeded bindir
-  rm -rf $pkgdir/usr/bin 2>/dev/null
-  rm -rf $pkgdir/usr/include 2>/dev/null
-  rm -rf $pkgdir/usr/lib/pkgconfig 2>/dev/null
-  install -Dm 644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  rm -rf "$pkgdir/usr/bin" 2>/dev/null
+  rm -rf "$pkgdir/usr/include" 2>/dev/null
+  rm -rf "$pkgdir/usr/lib/pkgconfig" 2>/dev/null
+  install -Dm 644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
