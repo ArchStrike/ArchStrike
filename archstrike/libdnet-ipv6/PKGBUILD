@@ -7,12 +7,12 @@ buildarch=220
 _pkgname=libdnet
 pkgname=${_pkgname}-ipv6
 pkgver=1.12
-pkgrel=13
+pkgrel=14
 pkgdesc='A simplified, portable interface to several low-level networking routines (with ipv6 support)'
 url="https://github.com/ofalk/libdnet"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('python2' 'bash')
-makedepends=('python2' 'python2-pyrex')
+makedepends=('python2' 'python2-pyrex' 'libxcrypt')
 license=('BSD')
 source=("${url}/archive/${_pkgname}-${pkgver}.tar.gz"
         "${_pkgname}-1.12.pyrex2.7.patch"
