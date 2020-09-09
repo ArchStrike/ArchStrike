@@ -3,9 +3,9 @@
 buildarch=220
 
 _pkgname="Pyrex"
-pkgname="python-pyrex"
+pkgname="python2-pyrex"
 pkgver=0.9.9
-pkgrel=1
+pkgrel=2
 pkgdesc='Lets you write code that mixes Python and C data types'
 url="https://www.csse.canterbury.ac.nz/greg.ewing/python/Pyrex/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
