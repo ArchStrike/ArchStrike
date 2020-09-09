@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="paramiko"
 pkgname="python2-${_pkgname}"
-pkgver=2.7.1
+pkgver=2.7.2
 pkgrel=1
 pkgdesc="Library for making SSH2 connections"
 arch=('any')
@@ -13,7 +13,7 @@ license=('LGPL')
 depends=('python2' 'python2-bcrypt' 'python2-cryptography' 'python2-pynacl')
 makedepends=('python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('80068c8f72ab8c98d84188caa074deecead9fb459b1a71cedb3cfa627736730928a2b9c6eb2b5a8b60acb9bccb0f68aefbef9d0d55554001c835b5cf897751ab')
+sha512sums=('230522734379b9861da5e9fc4baf5b7386ea35990430ba320c6d55d04beebeaefdd7d000a2be23d1178d7fd96ba400702ffe0ab03e8856c604456108876545bd')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
