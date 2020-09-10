@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=azazel
 pkgname=${_pkgname}-git
-pkgver=r14.e6a12a2
-pkgrel=3
+pkgver=r15.a41fbb5
+pkgrel=1
 groups=('archstrike' 'archstrike-backdoors')
 pkgdesc='A userland rootkit based off of the original LD_PRELOAD technique from Jynx rootkit'
 arch=('any')
@@ -13,9 +13,6 @@ url='https://github.com/chokepoint/azazel'
 license=('GPL2')
 depends=('python2')
 makedepends=('git')
-provides=("$_pkgname")
-replaces=("$_pkgname")
-conflicts=("$_pkgname")
 install=${pkgname}.install
 source=("${pkgname}::git+https://github.com/chokepoint/azazel.git")
 sha512sums=('SKIP')
@@ -25,12 +22,12 @@ prepare(){
 }
 
 pkgver() {
-  cd ${pkgname} || exit
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 package() {
-  cd ${pkgname} || exit
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}/"
 }
