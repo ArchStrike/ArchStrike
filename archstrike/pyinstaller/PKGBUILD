@@ -4,27 +4,23 @@ buildarch=220
 
 pkgname=pyinstaller
 _pkgname=PyInstaller
-pkgver=3.6
+pkgver=4.0
 pkgrel=1
 pkgdesc="Bundles a Python application and all its dependencies into a single package."
 url="https://github.com/pyinstaller/pyinstaller"
-depends=('python' 'python-altgraph' 'python-crypto' 'python-pefile' 'python-macholib' 'binutils' 'zlib' 'gcc' 'glibc')
+depends=('python' 'python-altgraph' 'python-crypto' 'python-pefile' 'python-macholib' 'binutils' 'zlib' 'clang' 'waf')
 makedepends=('python-setuptools')
 license=('GPL')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('97e7ac3632b5a84a85268c68cb3f3a404ca9f2786396f31016313a15c81c9c453983fd9d0376de0e7543401d3ad8af58b839dde7cefb0dfe7cbb9f3ac360f3e0')
+sha512sums=('d0cff91a5cb1cfe297e33dc89013849f139161a000c0449b590b0ac1c4bb0ccd01e8dc6bf10ed3b5b6fb21a280e567d23dbaed8cab8bf0ec50db5ff5a09a5a19')
 
 build() {
-  cd "${_pkgname}-${pkgver}"
-  python setup.py build
+  cd "${srcdir}/${pkgname}-${pkgver}/bootloader"
+  python waf distclean all --clang
 }
 
 package() {
-  cd "${_pkgname}-${pkgver}"
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -Dm644 COPYING.txt "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
 }
-
-# vim:se ts=2 sw=2 sts=2 et:
