@@ -5,7 +5,7 @@ buildarch=192
 
 pkgname=chipsec
 pkgver=1.5.4
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-hardware' 'archstrike-forensics')
 pkgdesc="A framework for analyzing security of PC platforms including hardware, system firmware including BIOS/UEFI and the configuration of platform components."
 arch=('i686' 'x86_64' )
@@ -19,11 +19,17 @@ source=("${url}/archive/${pkgver}.tar.gz"
 sha512sums=('0b132a81a41a7e05a6666a778fa64b6c74bd95c982f19b3dd6742494f29bf37bf603dd2c3c021d7711bfcc30e9cc84fdb09e7c41c37f8f0d74c6af6ba928d8ed'
             '87b84cf017f008678bdb5aafe0e5465231b5b167b2a2273786966dce0c2d85c2d2016016f3d629fd9df6c251fc2249d1b6f6e1f3c8e27a9938a7848b684e70b5')
 
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
 
   install -dm755 "${pkgdir}/usr/src/${pkgname}"
   install -dm755 "${pkgdir}/usr/src/${pkgname}/${pkgver}"
+  install -dm755 "${pkgdir}/usr/share/doc/${pkgname}"
   install -Dm644 drivers/linux/dkms.conf \
   "${pkgdir}/usr/src/${pkgname}/${pkgver}/dkms.conf"
 
@@ -34,5 +40,8 @@ package() {
   cp -a "${srcdir}/${pkgname}-${pkgver}"/drivers/linux/* \
   "${pkgdir}/usr/src/${pkgname}/${pkgver}/"
 
-  python2 setup.py install --skip-driver --root="${pkgdir}"
+  python2 setup.py install --skip-driver --prefix=/usr --root="${pkgdir}" -O1 --skip-build
+
+  mv "${pkgdir}/usr/chipsec-manual.pdf" "${pkgdir}/usr/share/doc/${pkgname}/"
+
 }
