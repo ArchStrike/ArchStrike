@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="Empire"
 pkgname=empire
-pkgver=3.1.0
+pkgver=3.3.4
 pkgrel=1
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
@@ -17,35 +17,35 @@ depends=('swig' 'pyinstaller' 'python-crypto' 'python-dropbox' 'python-flask' 'p
          'python-macholib' 'python-netifaces' 'python-pydispatcher' 'python-pyopenssl' 'python-setuptools' 'python-urllib3' 
          'python-zlib_wrapper' 'python-pyminifier' 'python-xlutils' 'python-pefile' 'python-bcrypt' 'python-simplejson')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('e9da997a5aaa4a55af349454885cd65112a9d470ba61eba30603b385fa7bfb192d67e1bdfb8a66431bbf9ebfd6c5a0d855323e5a1f726a9a3987103f3e79ce53')
+sha512sums=('9b0fbdc72dec75700618339a8cbb73efb8cbf75348e2bbf75f7dcfb35d85917368e1d5e64bdf13928fb031503a9d9b1e51e51bfe7925fab15a3c3c015064f0c5')
 
 prepare(){
-  cd ${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   sed -i 's|\.\./data/empire.pem|/usr/share/empire/data/empire.pem|' setup/cert.sh
   sed -i 's|python \./setup_database.py|python \./setup_database.py|g' setup/reset.sh
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  cp -a --no-preserve=ownership * ${pkgdir}/usr/share/${pkgname}/
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"/
 
   # remove kali stuffs
-  cd ${pkgdir}/usr/share/${pkgname}/setup
+  cd "${pkgdir}/usr/share/${pkgname}/setup"
   rm install.sh
 
 cat >"${pkgdir}/usr/bin/${pkgname}" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}
-python ${pkgname} "\$@"
+cd "/usr/share/${pkgname}"
+python "${pkgname}" "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${pkgname}"
 
 cat >"${pkgdir}/usr/bin/${pkgname}-reset" <<EOF
 #!/usr/bin/env bash
-cd /usr/share/${pkgname}
+cd "/usr/share/${pkgname}"
 ./setup/reset.sh "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${pkgname}-reset"
@@ -75,5 +75,3 @@ python setup_database.py
 EOF
 chmod 755 "${pkgdir}/usr/bin/empire-setup"
 }
-
-# vim:se ts=2 sw=2 sts=2 et:
