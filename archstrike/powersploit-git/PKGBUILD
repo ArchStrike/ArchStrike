@@ -3,15 +3,15 @@
 buildarch=1
 
 pkgname=powersploit-git
-pkgver=r476.c7985c9
-pkgrel=3
+pkgver=r591.d943001
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A PowerShell Post-Exploitation Framework"
 url="https://github.com/PowerShellMafia/PowerSploit"
 arch=(any)
 license=('custom')
 makedepends=('git')
-source=("git+https://github.com/PowerShellMafia/PowerSploit.git")
+source=("git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -25,5 +25,5 @@ package() {
   # Base directories.
   install -dm755 "${pkgdir}/usr/share/powersploit"
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/powersploit-git/LICENSE"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/powersploit"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/powersploit"
 }
