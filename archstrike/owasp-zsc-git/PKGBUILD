@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=owasp-zsc-git
-pkgver=20180424.r314
+pkgver=20200503.r315
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
@@ -16,26 +16,26 @@ source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|'
+  grep -iRl 'python' "${srcdir}/${pkgname}" | xargs sed -i 's|python$|python2|'
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
 
   install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
 cat > "${pkgdir}/usr/bin/zsc" <<EOF
 #!/bin/sh
-cd /usr/share/${pkgname}
+cd "/usr/share/${pkgname}"
 python2 zsc.py "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/zsc"
