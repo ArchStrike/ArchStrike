@@ -4,8 +4,8 @@ buildarch=220
 
 pkgname=interlock-git
 _pkgname=interlock
-pkgver=20200204.r410
-pkgrel=2
+pkgver=20200902.r415
+pkgrel=1
 groups=('archstrike' 'archstrike-crypto')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 pkgdesc="File encryption front-end"
@@ -24,12 +24,12 @@ sha512sums=('SKIP'
             '2310da21590c1bc1088b564249713621229a5c2263ba7bb3acc1ffc270bdc85ea13c0cff8440f42f6c05519148b01a33116229993964e77d4c6c2f94d3273c64')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   sed -i "s#\"debug\": true,#\"debug\": false,#" interlock.conf.default
   sed -i "s#\"static_path\": \"static\",#\"static_path\": \"/usr/share/${pkgname}/static\",#" interlock.conf.default
   sed -i "s#certs/cert.pem#/var/lib/${_pkgname}/cert.pem#" interlock.conf.default
@@ -38,19 +38,16 @@ prepare() {
 }
 
 build() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   export GOPATH="${srcdir}"
-  make with_signal
+  make
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
 
   # binary
-  install -Dm755 ${_pkgname} "${pkgdir}/usr/bin/${_pkgname}"
-
-  # licence
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm755 "${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}"
 
   # static files
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
