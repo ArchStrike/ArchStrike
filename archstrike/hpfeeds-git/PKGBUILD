@@ -3,29 +3,28 @@
 buildarch=1
 
 pkgname=hpfeeds-git
-pkgver=20191031.r349
-pkgrel=2
+pkgver=20200817.r396
+pkgrel=1
 pkgdesc="Honeynet Project generic authenticated datafeed protocol"
 url="https://github.com/hpfeeds/hpfeeds"
-depends=('python2')
-makedepends=('git' 'python2-distribute')
+depends=('python')
+makedepends=('git' 'python-distribute')
 license=('GPL3')
 arch=('any')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}" || exit
-  python2 setup.py build
+  cd "${srcdir}/${pkgname}"
+  python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}" || exit
-  python2 setup.py install --root="${pkgdir}" --optimize=1
-  install -Dm0644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"/LICENSE.txt
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
 }
