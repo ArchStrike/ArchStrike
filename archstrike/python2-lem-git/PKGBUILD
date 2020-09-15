@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="lem"
 pkgname=python2-${_pkgname}-git
-pkgver=0.3.2.r1.ga38bb1d7
+pkgver=0.3.2.r6.g69ef2ccc
 pkgrel=1
 pkgdesc="Linux Exploit Mapper correlates CVEs local to a Linux system with known exploits"
 arch=('any')
@@ -12,7 +12,8 @@ url="https://github.com/redteam-project/${_pkgname}"
 license=('GPL3')
 makedepends=("python2" "python2-setuptools" "git" "python2-requests" "python2-dateutil" "python2-argparse"
              "python2-redteamcore-git" "python2-cpe-git" "exploit-curation-git" "arch-audit")
-source=("${_pkgname}::git+${url}.git")
+source=("${_pkgname}::git+${url}")
+options=('!emptydirs')
 sha512sums=('SKIP')
 
 pkgver() {
@@ -34,7 +35,5 @@ package() {
   cd "${srcdir}/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   python2 setup.py install --root="${pkgdir}" -O1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  rm -rf "${pkgdir}/build"
 }
-
-# vim:se ts=2 sw=2 et:
