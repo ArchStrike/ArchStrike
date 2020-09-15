@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=python2-exscript-git
-pkgver=20200115.r1792
+pkgver=20200220.r1793
 pkgrel=1
 pkgdesc="A Python module making Telnet and SSH easy"
 arch=('any')
@@ -11,19 +11,20 @@ url="https://github.com/knipknap/exscript"
 license=('GPL2')
 depends=('python2-crypto' 'python2-paramiko' 'python2-future' 'python2-configparser')
 makedepends=('git' 'python2-setuptools')
-source=("${pkgname}::git+https://github.com/knipknap/exscript.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' "${pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  cd "${srcdir}/${pkgname}"
+  grep -iRl 'python' ./* | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgname}"
   python2 setup.py install --prefix=/usr --root="${pkgdir}" -O1
 }
