@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=pulledpork
 pkgname="${_pkgname}-git"
-pkgver=20200204.r368
+pkgver=20200911.r388
 pkgrel=1
 pkgdesc="Snort rule management"
 arch=('any')
@@ -13,16 +13,16 @@ license=('GPL2')
 groups=('archstrike' 'archstrike-misc')
 depends=('perl' 'perl-lwp-protocol-https' 'perl-crypt-ssleay' 'perl-bytes-random-secure')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}" || exit
+  cd "${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}" || exit
+  cd "${pkgname}"
 
   install -dm755 "${pkgdir}/usr/share/${pkgname}/"
   install -dm755 "${pkgdir}/usr/bin"
@@ -39,4 +39,3 @@ perl pulledpork.pl "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
 }
-
