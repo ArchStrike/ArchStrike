@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=powerupsql-git
-pkgver=20200520.r858
+pkgver=20200720.r872
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-misc')
 arch=('any')
@@ -11,20 +11,19 @@ pkgdesc="Powershell Toolkit for Attacking SQL Server"
 url="https://github.com/NetSPI/PowerUpSQL"
 license=('custom')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 
 }
 
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
-  rm LICENSE
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 }
