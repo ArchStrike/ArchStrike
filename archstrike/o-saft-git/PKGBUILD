@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=o-saft-git
-pkgver=r4021.212a16f
+pkgver=r4037.0e396cc
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Shows informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations'
@@ -13,9 +13,7 @@ license=('GPL')
 depends=('ruby' 'perl-net-dns' 'perl-io-socket-ssl' 'perl-net-ssleay' 'perl-io-socket-inet6' 'tk' 'coreutils')
 makedepends=('git')
 provides=('o-saft')
-replaces=('o-saft')
-conflicts=('o-saft')
-source=("${pkgname}::git+https://github.com/OWASP/O-Saft.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
