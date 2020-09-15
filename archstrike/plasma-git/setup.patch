@@ -1,12 +1,14 @@
-diff --git a/setup.py b/setup.py
-index 58019bd..6e7263c 100644
---- a/setup.py
-+++ b/setup.py
-@@ -6,23 +6,9 @@ except ImportError:
+--- a/setup.py	2020-09-15 11:22:32.820548820 -0400
++++ b/setup.py	2020-09-15 11:25:26.457112822 -0400
+@@ -5,27 +5,9 @@
+ except ImportError:
      from distutils.core import setup
  
- 
--from pip.req import parse_requirements
+-try:
+-    from pip._internal.req import parse_requirements
+-except ImportError:
+-    from pip.req import parse_requirements
+-
  from distutils.core import Extension
  import plasma
  
@@ -26,7 +28,7 @@ index 58019bd..6e7263c 100644
  x86_analyzer = Extension('plasma.lib.arch.x86.analyzer',
      sources = ['plasma/lib/arch/x86/analyzer.c'])
  
-@@ -56,7 +42,6 @@ setup(
+@@ -59,7 +41,6 @@
                'plasma.scripts',
      ],
      package_dir={'plasma':'plasma'},

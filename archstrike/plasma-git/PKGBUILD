@@ -3,33 +3,38 @@
 buildarch=220
 
 pkgname=plasma-git
-pkgver=20171121.r897
-pkgrel=2
+pkgver=20190304.r922
+pkgrel=1
 groups=('archstrike' 'archstrike-analysis')
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 pkgdesc="Interactive disassembler for x86/ARM/MIPS. Generates indented pseudo-code with colored syntax code."
 url="https://github.com/plasma-disassembler/plasma"
 license=('GPL3')
-depends=('python-keystone' 'python-capstone' 'python-pyelftools' 'python-future' 'python-msgpack' 'binutils' 'python-pefile')
+depends=('python-keystone' 'python-capstone' 'python-pyelftools' 'python-future' 'python-msgpack'
+         'binutils' 'python-pefile' 'python-nose')
 optdepends=('python-pyqt4: For memory map')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git" "setup.patch")
+source=("${pkgname}::git+${url}"
+        "setup.patch")
 sha512sums=('SKIP'
-            'bde461b04ab2b54d5c03a3f3e374295a0f99d27f5f51cd22652d4ab7a25b19acb7b16b76dcba478ef6e398dd2ae7415c43d8c05252d4490c0bae472803811678')
+            '440dc377f11206b3719a135dd71a58358fd31eeec856854c063b0687ee0cc8f3e8c9f9022ad5a1a98d5032f1cddcead2452ad8435b71fa1e6a3dc074ec3f46fe')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   patch -Np1 -i ${srcdir}/setup.patch
 }
 
+build() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py build
+}
+
 package() {
-  cd ${pkgname}
-  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  python setup.py install --root "${pkgdir}" --optimize=1
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}"
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}" -O1
 }
