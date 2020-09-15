@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=dvcs-ripper-git
-pkgver=20181022.r52
+pkgver=20200817.r54
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Rip web accessible (distributed) version control systems: SVN/GIT/..."
@@ -22,12 +22,12 @@ source=("${pkgname}::git+https://github.com/kost/dvcs-ripper.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}"
+  cd "${srcdir}/${pkgname}"
 
   # Make base directories.
   install -dm755 "$pkgdir/usr/share/${pkgname}"
