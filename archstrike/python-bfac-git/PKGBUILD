@@ -6,15 +6,14 @@ _pkgname="bfac"
 pkgbase="python-${_pkgname}-git"
 
 pkgname=("python-${_pkgname}-git" "python2-${_pkgname}-git")
-pkgver=20190331.r50
+pkgver=20200814.r51
 pkgrel=1
 pkgdesc="Advanced Backup-File Artifacts Testing for Web-Applications"
 arch=('any')
 url="https://github.com/mazen160/${_pkgname}"
 license=('GPL3')
-makedepends=("python" "python-setuptools" "python-colorama" "python-requests"
-             "python2" "python2-setuptools" "python2-colorama" "python2-requests" "git")
-source=("${_pkgname}::git+${url}.git")
+makedepends=("python-setuptools" "python2-setuptools" "git")
+source=("${_pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -37,20 +36,16 @@ build() {
 }
 
 package_python-bfac-git() {
-  depends=("python" "python-setuptools" "python-colorama" "python-requests")
+  depends=("python" "python-colorama" "python-requests")
   cd "${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_python2-bfac-git() {
-  depends=("python2" "python2-setuptools" "python2-colorama" "python2-requests")
+  depends=("python2" "python2-colorama" "python2-requests")
   cd "${_pkgname}-py2"
   install -dm755 "${pkgdir}/usr/bin"
   python2 setup.py install --root="${pkgdir}" -O1 --skip-build
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
   mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}-py2"
 }
-
-# vim:se ts=2 sw=2 et:
