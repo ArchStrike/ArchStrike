@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=gef
 pkgname=${_pkgname}-git
-pkgver=r1827.c206d37
+pkgver=r1845.f461bc0
 pkgrel=1
 pkgdesc='Provides additional features to GDB using the Python API to assist during the process of dynamic analysis or exploit development'
 url='https://github.com/hugsy/gef'
@@ -19,16 +19,12 @@ source=("${pkgname}::git+https://github.com/hugsy/gef.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
-prepare(){
-  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
-}
-
 package() {
-  cd ${pkgname}
+  cd "${srcdir}/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/$_pkgname"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
