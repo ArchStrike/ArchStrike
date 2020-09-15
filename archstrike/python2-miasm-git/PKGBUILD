@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=python2-miasm-git
-pkgver=20200219.r3414
+pkgver=20200909.r3613
 pkgrel=1
 pkgdesc="A  Reverse engineering framework in Python"
 groups=("archstrike" "archstrike-analysis" "archstrike-decompile")
@@ -12,16 +12,16 @@ url="https://github.com/cea-sec/miasm"
 license=('MIT')
 depends=('python2' 'tcc' 'python2-elfesteem')
 makedepends=('git' 'python2-setuptools')
-source=("${pkgname}::git+https://github.com/cea-sec/miasm.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd "${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   python2 setup.py install --root="${pkgdir}" -O1
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENCE"
 }
