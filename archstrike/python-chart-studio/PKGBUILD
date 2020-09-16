@@ -5,17 +5,17 @@ buildarch=1
 _pkgname=chart-studio
 pkgname=python-chart-studio
 pkgdesc="An interactive, browser-based graphing library for Python"
-pkgver=1.0.0
-pkgrel=2
+pkgver=1.1.0
+pkgrel=1
 url="https://pypi.org/project/chart-studio/"
 license=("MIT")
 arch=("any")
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('f92b7c77bd14ddee251a3ae877d6216087dde7903140cd19348729707f503ecf0f5217a974e5879402b39250139b3d8b50598e7dd794a75b97d69e36f198da2e')
+sha512sums=('1ee049b79df9e5f781cf279f03df718597ef4c0cc0dc02975a16b5a8f34f9330636453868f54e12e9ec8484a23c3481dc6a367995b359e1a4c2363860a962256')
 
 package() {
-  cd ${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root=${pkgdir} -O1
 }
