@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=smbmap-git
-pkgver=20200707.r136
+pkgver=20200903.r138
 pkgrel=1
 groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="A handy SMB enumeration tool"
@@ -12,8 +12,7 @@ license=("GPL3")
 makedepends=('git')
 depends=('python' 'impacket' 'python-pycryptodomex')
 arch=('any')
-source=("${pkgname}::git+${url}.git")
-replaces=('smbmap')
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -23,6 +22,6 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm755 smbmap.py "$pkgdir/usr/bin/smbmap"
-  install -Dm644 README.md "$pkgdir/usr/share/doc/smbmap/README.md"
+  install -Dm755 smbmap.py "${pkgdir}/usr/bin/smbmap"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/smbmap/README.md"
 }
