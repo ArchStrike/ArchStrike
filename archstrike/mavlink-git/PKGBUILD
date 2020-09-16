@@ -4,14 +4,14 @@ buildarch=220
 
 pkgname=mavlink-git
 pkgver=20200916.r3116
-pkgrel=1
+pkgrel=2
 pkgdesc="MAVLink micro air vehicle marshalling / communication libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://mavlink.io/"
 groups=('archstrike-drone')
 license=('LGPL')
 depends=("python-future" "bash")
-makedepends=('git' 'cmake' 'python-setuptools')
+makedepends=('git' 'cmake' 'python-setuptools' 'libxcrypt')
 provides=('python-mavlink')
 source=("${pkgname}"::'git://github.com/mavlink/mavlink.git')
 sha512sums=('SKIP')
