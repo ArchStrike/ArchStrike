@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=seclists-git
-pkgver=r957.e3d31ed
+pkgver=r985.ca6bf04
 pkgrel=1
 groups=('archstrike')
 pkgdesc="A collection of multiple types of lists used during security assessments. List types include usernames, passwords, URLs, sensitive data grep strings, fuzzing payloads, and many more."
