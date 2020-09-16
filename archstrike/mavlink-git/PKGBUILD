@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=mavlink-git
-pkgver=20200603.r3055
+pkgver=20200916.r3116
 pkgrel=1
 pkgdesc="MAVLink micro air vehicle marshalling / communication libraries"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -17,34 +17,34 @@ source=("${pkgname}"::'git://github.com/mavlink/mavlink.git')
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 prepare() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   git submodule init
   git submodule update
+  sed -i '/slugs.xml/d' CMakeLists.txt
 }
 
 build() {
   mkdir -p "${srcdir}/${pkgname}-build"
 
-  cd "${srcdir}/${pkgname}-build" || exit
+  cd "${srcdir}/${pkgname}-build"
   cmake "${srcdir}/${pkgname}" -DCMAKE_INSTALL_PREFIX=/usr -DPYTHON_EXECUTABLE=/usr/bin/python
   make
 
-  cd "${srcdir}/${pkgname}/pymavlink" || exit
+  cd "${srcdir}/${pkgname}/pymavlink"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-build" || exit
+  cd "${srcdir}/${pkgname}-build"
   make DESTDIR="${pkgdir}/" install
 
-  cd "${srcdir}/${pkgname}/pymavlink" || exit
+  cd "${srcdir}/${pkgname}/pymavlink"
   python setup.py install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
-  install -Dm0644 "${srcdir}/${pkgname}/pymavlink/COPYING" "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
   if [[ -d "${pkgdir}"/usr/lib64 ]] ; then
     mv "${pkgdir}"/usr/lib64 "${pkgdir}"/usr/lib
   fi
