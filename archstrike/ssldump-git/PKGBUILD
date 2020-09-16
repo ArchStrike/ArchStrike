@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=ssldump-git
-pkgver=20200428.r122
+pkgver=20200903.r142
 pkgrel=1
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="an SSLv3/TLS network protocol analyzer"
@@ -13,9 +13,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 makedepends=('git')
 depends=('libpcap' 'openssl')
 provides=('ssldump')
-replaces=('ssldump')
-conflicts=('ssldump')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
@@ -25,14 +23,8 @@ pkgver() {
 
 build() {
   cd "${srcdir}/${pkgname}"
-
-  # Arch64 fixes.
-  ./configure --prefix=/usr \
-              --build=i686-pc-linux-gnu \
-              --host=i686-pc-linux-gnu \
-              "--sbindir=${pkgdir}/usr/bin" \
-              "--mandir=${pkgdir}/usr/share/man"
-
+  ./autogen.sh
+  ./configure --prefix=/usr "--sbindir=${pkgdir}/usr/bin" "--mandir=${pkgdir}/usr/share/man"
   make
 }
 
