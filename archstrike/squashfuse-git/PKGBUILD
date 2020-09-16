@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=squashfuse-git
-pkgver=20200229.r379
+pkgver=20200907.r383
 pkgrel=1
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="FUSE filesystem to mount squashfs archives"
@@ -13,23 +13,23 @@ url="https://github.com/vasi/squashfuse"
 license=('BSD')
 depends=('fuse' 'zlib' 'lzo' 'xz' 'lz4')
 makedepends=('git' 'autoconf' 'automake' 'libtool')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   autoreconf -fi
   ./configure --prefix=/usr
   make
 }
 
 package() {
-  cd "${srcdir}/${pkgname}" || exit
+  cd "${srcdir}/${pkgname}"
   make DESTDIR="$pkgdir" install
   install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
