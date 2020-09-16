@@ -5,7 +5,7 @@ buildarch=1
 _pkgname='shodan'
 pkgname=("python-${_pkgname}")
 pkgver=1.23.1
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A Python2/3 library for Shodan.io'
 url='http://github.com/achillean/shodan-python'
@@ -14,7 +14,7 @@ arch=('any')
 depends=('python-click' 'python-click-plugins' 'python-colorama' 'python-requests'
          'python-simplejson' 'python-xlsxwriter')
 makedepends=('python-setuptools')
-source=("https://files.pythonhosted.org/packages/source/s/shodan/shodan-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('3f543d17530c13885cc62c49a4817012d767d20067409ba35420279e54be83c98875145b422455dd8f317257a200729ea8a42c6bfe29b52bd16aa64569311689')
 
 build() {
