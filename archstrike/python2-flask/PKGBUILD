@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Erik Johnson <palehose at gmail dot com>
+
+buildarch=1
+
+_pkgname="flask"
+pkgname=("python2-${_pkgname}")
+pkgver=1.1.2
+pkgrel=1
+pkgdesc='A lightweight WSGI web application framework'
+url="http://${_pkgname}.pocoo.org/"
+arch=('any')
+license=('custom:BSD')
+depends=('python2-werkzeug' 'python2-jinja' 'python2-itsdangerous' 'python2-click')
+makedepends=('python2-setuptools')
+source=("https://github.com/pallets/${_pkgname}/archive/${pkgver}.tar.gz")
+sha512sums=('390baaea8e3500724a4a7755d930e078cfc072357af15f2180f35983cc86d224827afd9180a466e3ad546405a8b8a94d752c19eda716f2f06c1716e4f19c4fbc')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rst"
+  mv "${pkgdir}"/usr/bin/${_pkgname}{,2}
+}
