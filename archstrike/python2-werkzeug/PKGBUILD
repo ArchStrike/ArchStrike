@@ -1,12 +1,11 @@
 # Maintainer: ArchStrike <team@archstrike.org>
-# Contributor: Erik Johnson <palehose at gmail dot com>
 
 buildarch=1
 
 _pkgname="werkzeug"
 pkgname=("python2-${_pkgname}")
 pkgver=1.0.1
-pkgrel=1
+pkgrel=2
 pkgdesc='a comprehensive WSGI web application library'
 url="https://palletsprojects.com/p/werkzeug"
 arch=('any')
