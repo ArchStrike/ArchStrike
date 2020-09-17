@@ -2,41 +2,42 @@
 
 buildarch=1
 
-pkgname=climber-git
+_pkgname="climber"
+pkgname="${_pkgname}-git"
 pkgver=0.r30.5530a78
-pkgrel=4
+pkgrel=5
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="Check UNIX/Linux systems for privilege escalation"
-url='https://github.com/raffaele-forte/climber'
+url="https://github.com/raffaele-forte/${_pkgname}"
 arch=('any')
 license=('GPL3')
 depends=('python2' 'python2-crypto' 'python2-mako' 'python2-paramiko' 'python2-exscript-git')
 makedepends=('git')
-provides=('climber')
-source=("climber::git+https://github.com/raffaele-forte/climber.git")
+provides=("${_pkgname}")
+source=("${_pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/climber" || exit
+  cd "${srcdir}/${_pkgname}"
   printf "0.r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare(){
-  grep -iRl 'python' "${srcdir}/climber" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  grep -iRl 'python' "${srcdir}/${_pkgname}" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
 }
 
 package() {
-  cd ${srcdir}/climber || exit
-  install -dm755 "${pkgdir}/usr/share/climber"
+  cd "${srcdir}/${_pkgname}"
+  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
 
-  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/climber"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}"
 
-cat > "${pkgdir}/usr/bin/climber" <<EOF
+cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
 #!/bin/sh
-cd /usr/share/climber
-python2 climber.py "\$@"
+cd "/usr/share/${_pkgname}"
+python2 "${_pkgname}.py" "\$@"
 EOF
 
-chmod +x "${pkgdir}/usr/bin/climber"
+chmod +x "${pkgdir}/usr/bin/${_pkgname}"
 }
