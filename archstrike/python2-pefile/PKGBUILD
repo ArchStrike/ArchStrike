@@ -2,33 +2,34 @@
 
 buildarch=1
 
-pkgname=python2-pefile
+_pkgname="pefile"
+pkgname="python2-${_pkgname}"
 pkgver=2019.4.18
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python library for PE file support and investigation."
 arch=('any')
-url='https://github.com/erocarrera/pefile'
+url='https://github.com/erocarrera/${_pkgname}'
 license=('MIT')
 depends=('python2-future')
 makedepends=('python2-setuptools')
-source=("https://github.com/erocarrera/pefile/releases/download/v${pkgver}/pefile-${pkgver}.tar.gz"
+source=("${url}/releases/download/v${pkgver}/${_pkgname}-${pkgver}.tar.gz"
         "http://research.pandasecurity.com/blogs/images/userdb.txt" )
 sha512sums=('33c53120fd6a0fde22f4076c19ed8f69fc2b53b16d0c581133446d0d770e290dcb2ddd1e9941e8d8debc28c1cb4ff64ff055c2b8c0958015d9121de72ae20c76'
             'e23030b87c029911bb1fed9dfd245b645ffcb70781c3a0aa8f1dd0ecc5e3f02e36261ac69d1a25a6eee4622954217b4830a87feb8446483bc394a579d7bbb0ad')
 
 prepare() {
-  cd "pefile-${pkgver}"
-  sed -i 's|python$|python2|' pefile.py
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  sed -i 's|python$|python2|' ${_pkgname}.py
 }
 
 build() {
-  cd "pefile-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 package() {
-  cd "pefile-${pkgver}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py install -O1 --skip-build --root="${pkgdir}" --prefix="/usr"
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/COPYING"
-  install -Dm644 ${srcdir}/userdb.txt ${pkgdir}/usr/share/pefile/UserDB.TXT
+  install -Dm644 ${srcdir}/userdb.txt ${pkgdir}/usr/share/${_pkgname}/UserDB.TXT
 }
