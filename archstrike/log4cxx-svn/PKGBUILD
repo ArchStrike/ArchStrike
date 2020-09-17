@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=log4cxx-svn
-pkgver=1763465
-pkgrel=2
+pkgver=1881790
+pkgrel=1
 pkgdesc="A C++ port of Log4j"
 url="http://logging.apache.org/log4cxx"
 license=("APACHE")
@@ -18,18 +18,18 @@ replaces=("log4cxx")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   svnversion | tr -d [A-z]
 }
 
 build() {
-  cd "$pkgname"
+  cd "${srcdir}/${pkgname}"
   ./autogen.sh
   ./configure --prefix=/usr --disable-static
   make
 }
 
 package() {
-  cd "$pkgname"
-  make DESTDIR="$pkgdir" install
+  cd "${srcdir}/${pkgname}"
+  make DESTDIR="${pkgdir}" install
 }
