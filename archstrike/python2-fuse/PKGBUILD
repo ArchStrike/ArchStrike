@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname="python-fuse"
+pkgname="python2-fuse"
+pkgver=1.0.0
+pkgrel=1
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
+pkgdesc="Python bindings for FUSE"
+url="https://github.com/libfuse/python-fuse"
+license=('LGPL')
+makedepends=('python2-setuptools' 'fuse2')
+depends=('fuse2' 'python2')
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('d5e91be3e43065988053390d97ca6483ce38924bf9a49f694bf911080b7e75c836224e83d09dcbc6fab8d63781b4cd3ae016d66b65b88dd53106b06f91a6ad5c')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --prefix=/usr --root="${pkgdir}" -O1 --skip-build
+}
