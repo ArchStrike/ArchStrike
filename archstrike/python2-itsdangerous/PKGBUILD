@@ -1,12 +1,11 @@
 # Maintainer: ArchStrike <team@archstrike.org>
-# Contributor: Erik Johnson <palehose at gmail dot com>
 
 buildarch=1
 
 _pkgname="itsdangerous"
 pkgname=("python2-${_pkgname}")
 pkgver=1.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc='Various helpers to pass data to untrusted environments and to get it back safe and sound'
 url="https://palletsprojects.com/p/itsdangerous/"
 arch=('any')
