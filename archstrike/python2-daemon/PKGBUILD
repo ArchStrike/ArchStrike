@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="python-daemon"
+pkgname="python2-daemon"
+pkgver=2.2.4
+pkgrel=1
+pkgdesc='This library implements the well-behaved daemon specification of PEP 3143'
+url="https://pagure.io/python-daemon/"
+arch=('any')
+license=('Apache')
+depends=('python2' 'python2-lockfile' 'python2-docutils')
+makedepends=('python2-setuptools' 'python2-pip' 'python2-wheel')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('9a7a4e23e126f05e4c1c503f15401cddd758c5f9195c370997060ca1bbfe71cc51d82d3ae16bcf0023c28fa50b0b8d6cd406e515b27725ffa9fec10fde3ed64a')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+}
