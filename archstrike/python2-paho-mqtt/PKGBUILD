@@ -1,0 +1,31 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="paho-mqtt"
+pkgname="python2-paho-mqtt"
+pkgver=1.5.0
+pkgrel=1
+pkgdesc='Provides a client class which enable applications to connect to an MQTT broker to publish messages, and to subscribe to topics and receive published messages'
+url="http://eclipse.org/paho"
+arch=('any')
+license=('EPL')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('01c23df02f86fe48f261ad136580f822f00be9909e203285f233b05377ee397dd73d16e8703b19ef13d7c7b0efdfc9905da46a50d8603e03bf708b4639432ab3')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/opt"
+  install -dm755 "${pkgdir}/opt/${pkgname}"
+
+  python2 setup.py install --root="${pkgdir}" -O1
+
+  cp -a --no-preserve=ownership examples "${pkgdir}/opt/${pkgname}"
+  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
+}
