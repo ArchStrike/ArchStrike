@@ -2,29 +2,30 @@
 
 buildarch=1
 
-pkgname=python2-nose-exclude
+_pkgname="nose-exclude"
+pkgname="python2-${_pkgname}"
 pkgver=0.5.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Exclude specific directories from nosetests runs"
 arch=('any')
-url="https://github.com/kgrandis/nose-exclude"
+url="https://github.com/kgrandis/${_pkgname}"
 license=('LGPL')
 depends=('python2-nose')
 makedepends=('python2-setuptools')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/kgrandis/nose-exclude/archive/${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::${url}/archive/${pkgver}.tar.gz")
 sha512sums=('0d8a21687831c825524c0cbb2da5b2195482558e2d2b0088944ccdf2d74787353f350ebbece8c4ce80f576426767ecb670afccbaf9f850e8476e1d2260bcc381')
 
 build() {
-  cd nose-exclude-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py build
 }
 
 check() {
-  cd nose-exclude-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python2 setup.py test
 }
 
 package() {
-  cd nose-exclude-${pkgver}
-  python2 setup.py install --root="${pkgdir}" -O1
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
 }
