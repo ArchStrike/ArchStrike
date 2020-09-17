@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-utidylib-git
 pkgver=20100108.r2
-pkgrel=2
+pkgrel=3
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python2 bindings for Tidy HTML parser/cleaner."
 arch=('any')
@@ -15,17 +15,17 @@ makedepends=('python2' 'python2-setuptools' 'git')
 replaces=('python-utidylib')
 provides=('python-utidylib')
 conflicts=('python-utidylib')
-source=("$pkgname::git+https://github.com/xdissent/utidylib.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
 package() {
-  cd $pkgname
-  install -dm755 "$pkgdir/usr/share/licenses/$pkgname"
-  python2 setup.py install --root="$pkgdir" --prefix=/usr --optimize=1
-  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cd "${srcdir}/${pkgname}"
+  install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
+  python2 setup.py install --root="${pkgdir}" --prefix=/usr --optimize=1
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
