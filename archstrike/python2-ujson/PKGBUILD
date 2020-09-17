@@ -4,8 +4,8 @@ buildarch=28
 
 _pkgname="ultrajson"
 pkgname="python2-ujson"
-pkgver=3.2.0
-pkgrel=2
+pkgver=2.0.3
+pkgrel=1
 pkgdesc="Ultra fast JSON encoder and decoder for python2"
 url="https://github.com/ultrajson/ultrajson"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -13,8 +13,8 @@ license=('BSD')
 depends=('python2')
 makedepends=('python2-setuptools' 'python2-pip')
 source=("${url}/archive/${pkgver}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('ec234917e59952390ec48e51137b896084e8be3312718bdd661536a453459ba29f7ae2141fee4b3135f2077fc43ee418407e459a6dc0be8833c6a3c2f1147d06')
-b2sums=('f68f95609894ff9413118a68179bf28fc23fcc5b89cf28f0500857e0759ce1678c6ba332bd0d4fb6bff6c35458e2a8702c533910526a1fbcf348809f3625a3e1')
+sha512sums=('31ccee759847424de1d683bb8b55554898ea2b358a3c48524f4f455aa0c5d732d0edf84bd5fa0c203ca9c58b4fbc6d94130f447c1cbae564dc60e4863b17dad8')
+b2sums=('063aa628c9d06f0dcebd73ee044ec3458d0613d2ff7e97b33d7b187ebc9557e9ab53d7db5ba987e2acf374ed3c2a9e7d0d5163a22e2d2bd691789711487ce52a')
 
 prepare() {
   sed '/setup_requires=\["setuptools_scm"\],/d' -i "${_pkgname}-${pkgver}"/setup.py
