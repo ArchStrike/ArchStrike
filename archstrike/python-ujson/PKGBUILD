@@ -1,0 +1,34 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=28
+
+_pkgname="ultrajson"
+pkgname="python-ujson"
+pkgver=3.2.0
+pkgrel=1
+pkgdesc="Ultra fast JSON encoder and decoder for Python"
+url="https://github.com/ultrajson/ultrajson"
+arch=('armv6h' 'armv7h' 'aarch64')
+license=('BSD')
+depends=('python')
+makedepends=('python-setuptools' 'python-pip')
+source=("${url}/archive/$pkgver/$pkgname-$pkgver.tar.gz")
+sha512sums=('ec234917e59952390ec48e51137b896084e8be3312718bdd661536a453459ba29f7ae2141fee4b3135f2077fc43ee418407e459a6dc0be8833c6a3c2f1147d06')
+b2sums=('f68f95609894ff9413118a68179bf28fc23fcc5b89cf28f0500857e0759ce1678c6ba332bd0d4fb6bff6c35458e2a8702c533910526a1fbcf348809f3625a3e1')
+
+prepare() {
+  sed '/setup_requires=\["setuptools_scm"\],/d' -i "${_pkgname}-${pkgver}"/setup.py
+  sed "s/{version}/$pkgver/" "${_pkgname}-${pkgver}"/python/version_template.h > "${_pkgname}-${pkgver}"/python/version.h
+}
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --skip-build -O1 --root="${pkgdir}"
+  install -Dm 644 LICENSE.txt -t "${pkgdir}/usr/share/licenses/${pkgname}"
+  install -Dm 644 README.rst -t "${pkgdir}/usr/share/doc/${pkgname}"
+}
