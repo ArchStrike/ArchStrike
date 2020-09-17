@@ -1,12 +1,11 @@
 # Maintainer: ArchStrike <team@archstrike.org>
-# Contributor: Erik Johnson <palehose at gmail dot com>
 
 buildarch=1
 
 _pkgname="flask"
 pkgname=("python2-${_pkgname}")
 pkgver=1.1.2
-pkgrel=1
+pkgrel=2
 pkgdesc='A lightweight WSGI web application framework'
 url="http://${_pkgname}.pocoo.org/"
 arch=('any')
