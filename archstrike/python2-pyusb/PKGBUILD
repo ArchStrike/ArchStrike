@@ -4,19 +4,24 @@ buildarch=1
 
 pkgname=python2-pyusb
 _pkgname=pyusb
-pkgver=1.0.2
-pkgrel=3
+pkgver=1.1.0
+pkgrel=1
 pkgdesc="Easy USB access from Python"
 arch=('any')
 url="https://github.com/pyusb/pyusb/"
 license=('BSD')
 depends=('python2' 'libusb')
-makedepends=('python2-setuptools')
-source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('6a264b796e17612004196a7a526a7c6df99feac9062f8354540221016411a78a65d413731aea2fc1206ed5ea2b84787078898b9ca3754164f1dfe2a9878b75a5')
+makedepends=('python2-setuptools' 'python2-setuptools-scm')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('0769670e6ebd8b31f2494258eca5d6e470ad3cb17663cc14b8b3a8136ea24caa23f86d81c60c501b88a9bc94b0de6a45aac43c6c5f140e65fd03a589b4d18179')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
 
 package() {
-  cd ${_pkgname}-${pkgver}
-  python2 setup.py install --prefix=/usr --root="$pkgdir/" -O1
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --prefix=/usr --root="$pkgdir/" -O1 --skip-build
 }
 
