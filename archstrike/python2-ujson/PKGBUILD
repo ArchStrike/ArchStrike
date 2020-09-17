@@ -5,7 +5,7 @@ buildarch=28
 _pkgname="ultrajson"
 pkgname="python2-ujson"
 pkgver=3.2.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Ultra fast JSON encoder and decoder for python2"
 url="https://github.com/ultrajson/ultrajson"
 arch=('armv6h' 'armv7h' 'aarch64')
@@ -18,7 +18,7 @@ b2sums=('f68f95609894ff9413118a68179bf28fc23fcc5b89cf28f0500857e0759ce1678c6ba33
 
 prepare() {
   sed '/setup_requires=\["setuptools_scm"\],/d' -i "${_pkgname}-${pkgver}"/setup.py
-  sed "s/{version}/${pkgver}/" "${_pkgname}-${pkgver}"/python2/version_template.h > "${_pkgname}-${pkgver}"/python2/version.h
+  sed "s/{version}/${pkgver}/" "${_pkgname}-${pkgver}"/python/version_template.h > "${_pkgname}-${pkgver}"/python/version.h
 }
 
 build() {
