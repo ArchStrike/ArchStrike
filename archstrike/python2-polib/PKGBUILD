@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="polib"
+pkgname="python2-${_pkgname}"
+pkgver=1.1.0
+pkgrel=1
+pkgdesc="a library to manipulate, create, modify gettext files (pot, po and mo files)"
+arch=('any')
+url="https://pypi.org/project/polib/"
+license=('MIT')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('74681585b4d7252e107acd7d73f49f7e91c90adcd180722d39d35c40ec158434798af0124a16788cf564c73b84f52a040aefeb58355a1a3cd85848c3f6a5e67f')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
