@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=192
 
 pkgname=trid-defs
 pkgver=13.09.20
-pkgrel=1
+pkgrel=2
 pkgdesc="Definitions DB for trid that describes recurring patterns in supported file types"
-arch=('any')
+arch=('i686' 'x86_64')
 url="http://mark0.net/soft-trid-e.html"
 license=('CUSTOM')
 makedepends=('unzip')
