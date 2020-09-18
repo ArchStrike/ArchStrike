@@ -1,0 +1,39 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=evil-winrm
+pkgver=2.3
+pkgrel=1
+groups=('archstrike' 'archstrike-networking')
+arch=('any')
+pkgdesc="The ultimate WinRM shell for hacking/pentesting"
+url="https://github.com/Hackplayers/evil-winrm"
+license=('LGPL3')
+depends=('ruby')
+makedepends=('ruby-bundler')
+source=("$url/archive/v$pkgver.tar.gz")
+sha512sums=('e390c0d162c57066f30afc31b846318197a21dbd83867d419add38db5d672b8becfdcf2970d52b2b39df6cc3f8578a31dfbc3cd0228d0b8595fe9e2509aca93e')
+
+package() {
+  cd $pkgname-$pkgver
+  # install files to proper places here
+  install -dm755 "$pkgdir/usr/bin"
+  install -dm755 "$pkgdir/usr/share/$pkgname"
+  install -dm644 "$pkgdir/usr/share/licenses/$pkgname"
+  cp -a --no-preserve=ownership ./* $pkgdir/usr/share/$pkgname/
+  cd $pkgdir/usr/share/$pkgname
+  bundle install --path vendor/bundle
+  find vendor/bundle/ruby -exec chmod o+r '{}' \;
+  find vendor/bundle/ruby \( -name gem_make.out -or -name mkmf.log \) -delete
+
+
+cat > $pkgdir/usr/bin/$pkgname << EOF
+#!/usr/bin/env bash
+BUNDLE_GEMFILE=/usr/share/$pkgname/Gemfile
+cd /usr/share/$pkgname
+unset GEM_HOME
+bundle exec evil-winrm.rb \$@
+EOF
+chmod 755 $pkgdir/usr/bin/$pkgname
+}
