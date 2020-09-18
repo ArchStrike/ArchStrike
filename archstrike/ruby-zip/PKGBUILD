@@ -5,7 +5,7 @@ buildarch=1
 pkgname=ruby-zip
 _gemname=zip
 pkgver=2.0.2
-pkgrel=8
+pkgrel=9
 pkgdesc="Ruby library for reading and writing Zip files"
 arch=('any')
 license=('BSDL')
@@ -21,7 +21,7 @@ package() {
   cd "${srcdir}"
   local _gemdir=$(ruby -e 'puts Gem.default_dir')
   if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-ri -i "${pkgdir}$_gemdir" zip-${pkgver}.gem
+    gem install --no-user-install --ignore-dependencies --no-document -i "${pkgdir}$_gemdir" zip-${pkgver}.gem
   else
     gem install --no-user-install --ignore-dependencies -i "${pkgdir}$_gemdir" zip-${pkgver}.gem
   fi
