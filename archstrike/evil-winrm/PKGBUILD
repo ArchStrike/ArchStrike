@@ -4,13 +4,13 @@ buildarch=1
 
 pkgname=evil-winrm
 pkgver=2.3
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc="The ultimate WinRM shell for hacking/pentesting"
 url="https://github.com/Hackplayers/evil-winrm"
 license=('LGPL3')
-depends=('ruby')
+depends=('ruby' 'ruby-bundler')
 makedepends=('ruby-bundler')
 source=("$url/archive/v$pkgver.tar.gz")
 sha512sums=('e390c0d162c57066f30afc31b846318197a21dbd83867d419add38db5d672b8becfdcf2970d52b2b39df6cc3f8578a31dfbc3cd0228d0b8595fe9e2509aca93e')
