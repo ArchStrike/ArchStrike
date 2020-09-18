@@ -5,7 +5,7 @@ buildarch=1
 pkgname=ruby-mime
 _gemname=mime
 pkgver=0.4.4
-pkgrel=3
+pkgrel=4
 pkgdesc="library for building RFC compliant Multipurpose Internet Mail Extensions (MIME) messages."
 arch=('any')
 license=('MIT')
@@ -20,7 +20,7 @@ package() {
   cd ${srcdir}
   local _gemdir="$(ruby -r rubygems -e'puts Gem.default_dir')"
   if [[ $CARCH == arm* ]] ; then
-    gem install --no-user-install --ignore-dependencies --no-ri -i "${pkgdir}$_gemdir" ${_gemname}-${pkgver}.gem
+    gem install --no-user-install --ignore-dependencies --no-document -i "${pkgdir}$_gemdir" ${_gemname}-${pkgver}.gem
   else
     gem install --no-user-install --ignore-dependencies -i "${pkgdir}$_gemdir" ${_gemname}-${pkgver}.gem
   fi
