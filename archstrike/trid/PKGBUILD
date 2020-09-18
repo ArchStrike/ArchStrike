@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=trid
 pkgver=2.24
-pkgrel=4
+pkgrel=5
 pkgdesc="Utility to identify file types using their binary signatures"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url="http://mark0.net/soft-trid-e.html"
@@ -17,7 +17,6 @@ source=("http://mark0.net/download/trid_linux.zip"
 sha512sums=('63f732241214e0975413191e60dd94a3b008af9c5b93eeeef7bf13ee43dedc4b6cbf50484fcd46378342fb26f369c3b1b8ca82ce618e9dfabeae841255b8e077'
             '4a5484cb0b47436dc58a3132d76ff2ec2c4f3c564af5c827854571bafce5b82bb2ef023b387b465cbb114cfaf1b47d54666da7bd2a954a9160e95a41a74930a8')
 sha512sums_x86_64=('8ff64d41580ce911d95274609926afcb8d6c95e3fb5ecd0f2922cbb0103c99d0b826d124941e2792730d33e520f0e971288c8a6dc57c195d4cbb124870a315c1')
-sha512sums_aarch64=('8ff64d41580ce911d95274609926afcb8d6c95e3fb5ecd0f2922cbb0103c99d0b826d124941e2792730d33e520f0e971288c8a6dc57c195d4cbb124870a315c1')
 
 package() {
   install -dm755 "${pkgdir}/usr/bin"
