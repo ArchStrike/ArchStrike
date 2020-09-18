@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=220
+buildarch=192
 
 pkgname=trid
 pkgver=2.24
-pkgrel=5
+pkgrel=6
 pkgdesc="Utility to identify file types using their binary signatures"
-arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
+arch=('i686' 'x86_64')
 url="http://mark0.net/soft-trid-e.html"
 groups=('archstrike')
 license=('CUSTOM')
