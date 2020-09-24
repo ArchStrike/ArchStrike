@@ -3,8 +3,8 @@
 buildarch=192
 
 pkgname=trid-defs
-pkgver=13.09.20
-pkgrel=2
+pkgver=23.09.20
+pkgrel=1
 pkgdesc="Definitions DB for trid that describes recurring patterns in supported file types"
 arch=('i686' 'x86_64')
 url="http://mark0.net/soft-trid-e.html"
@@ -12,7 +12,7 @@ license=('CUSTOM')
 makedepends=('unzip')
 source=("http://mark0.net/download/triddefs.zip"
         "LICENSE")
-sha512sums=('8d8113d239e7eea877ceed112561e177b91ca1087f21469bc35a55c0901c8537064b3d5a19e6e31ce1e0fa2cd47a419c1013e4740285757c45d86760e68d0a54'
+sha512sums=('56d781c9e10cce0917970bacdcea92b37690c1266f73999fa72390885cf342780ebfde7e8315abf4271faed755a2f17bef5a5008fca198aba651a12c1393838c'
             '201bc568f534e2f7ad3c4288f2a0aaf3392285eb9cbe65de0fdcdecc69ddf9e850dfab0830538dba0b76909862c8fee3281a4fb138fabe4b8222dd525e1916c9')
 
 package() {
