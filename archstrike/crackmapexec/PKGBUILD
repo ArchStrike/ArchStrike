@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=crackmapexec
+pkgver=5.1.1dev
+pkgrel=1
+groups=('archstrike' 'archstrike-exploit')
+pkgdesc='A swiss army knife for pentesting Windows/Active Directory environments'
+arch=('any')
+url='https://github.com/byt3bl33d3r/CrackMapExec'
+license=('GPL3')
+depends=('python')
+source=("https://github.com/byt3bl33d3r/CrackMapExec/releases/download/v${pkgver}/cme-ubuntu-latest.zip"
+	"https://github.com/byt3bl33d3r/CrackMapExec/releases/download/v${pkgver}/cmedb-ubuntu-latest.zip")
+provides=('crackmapexec' 'crackmapexec-git')
+replaces=('crackmapexec' 'crackmapexec-git')
+sha512sums=('273c008bae4375c887234430f92317c253acc0554376d6a01aa72f39d46c9571b0a0f91fe1ef22e05155935b5dc87b2e4cee562e2a55da9ba335245db945ed13'
+            'ec356b63fd03873ff140148eba0f861a740da5f04f79c03797265afa035e3bb613513483652d69d1d28436893e05430a234ce1d8cff78dd68ee922d43a1a2c8a')
+
+package() {
+  install -dm755 "${pkgdir}/usr/bin"
+  install -Dm755 cme "${pkgdir}/usr/bin/cme"
+  install -Dm755 cme "${pkgdir}/usr/bin/cmedb"
+}
