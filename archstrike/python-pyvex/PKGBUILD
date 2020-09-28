@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname=pyvex
 pkgname=python-${_pkgname}
-pkgver=9.0.4378
+pkgver=9.0.4446
 pkgrel=1
 pkgdesc="A Python interface to libVEX and VEX IR."
 url="https://pypi.org/project/pyvex/"
