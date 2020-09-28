@@ -1,6 +1,6 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=220
 
 _pkgname=pyvex
 pkgname=python-${_pkgname}
@@ -11,7 +11,7 @@ url="https://pypi.org/project/pyvex/"
 depends=('python-pycparser' 'python-archinfo' 'python-cffi' 'python-future' 'python-bitstring')
 makedepends=('python-setuptools')
 license=('BSD')
-arch=('any')
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('13c8a8e3bb9f6408c7b8d011b96a67a8ac70e375e5ddeef49861937e032daf1ea4bfc8f24ea88ee3679e3635c018baa649a8c034a63c13af38c02b21221a2daa')
 
