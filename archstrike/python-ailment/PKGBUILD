@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="ailment"
 pkgname="python-${_pkgname}"
-pkgver=9.0.4378
+pkgver=9.0.4446
 pkgrel=1
 pkgdesc="AIL is the angr intermediate language."
 url="https://pypi.org/project/ailment/"
@@ -14,7 +14,7 @@ license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
         "https://raw.githubusercontent.com/angr/ailment/master/LICENSE")
-sha512sums=('ee33d9737aedabc727fc41e164777e6f66b2c22926158080028e92c99dd61d3920c608cdb098c2ec11afe8eb1d153938139f59ee43c21069d5a834c32aaa5de5'
+sha512sums=('50617217b4aa029b6c6cf5a62745f0aba6f56a86b94c6a68037106c9c0c522fb86ef84417c8671510f02eda6f27702a05ea152d6c1490361ed3ff3f7abf20dd4'
             '8a94d011bb35da762d22d68505e8a58b250aa31e77b99ed0671de6f010d935087b7ee04e06ca47f61062309323f140448ff42e913a23e64f5c69d2c988c5f340')
 
 build() {
