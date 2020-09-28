@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=archinfo
 pkgname=python-${_pkgname}
-pkgver=9.0.4378
+pkgver=9.0.4446
 pkgrel=1
 pkgdesc="Classes with architecture-specific information useful to other projects"
 url="https://pypi.org/project/archinfo/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('a8cbc3769c71c0843bfa1fc5033deae2947f44af3411d7964b739c0ef3188ec1e1e16658a0cfd09109507026e588180fae590be9e5ea60b23e568edb8bb198de')
+sha512sums=('ff72d9192e737e0ce5270e040304f8b0cd8b07735266c88b31dc9ec972b061b38843a7e0bd15c8bedce914025682ebad519f32011fdaed017a1851cfc2951322')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
