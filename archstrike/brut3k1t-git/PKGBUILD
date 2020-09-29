@@ -2,41 +2,44 @@
 
 buildarch=1
 
-_pkgname=brut3k1t
-pkgname=${_pkgname}-git
-pkgver=20170924.r80
-pkgrel=3
+_pkgname="brut3k1t"
+pkgname="${_pkgname}-git"
+pkgver=20200916.r99
+pkgrel=1
 groups=('archstrike' 'archstrike-crackers')
 arch=('any')
 pkgdesc='Brute-force attack that supports multiple protocols and services'
-url='https://github.com/ex0dus-0x/brute'
+url="https://github.com/ex0dus-0x/brute"
 license=('GPL3')
-depends=('python2' 'python2-pip' 'python2-selenium' 'python2-paramiko' 'python2-skpy' 'python2-mechanize' 'geckodriver' 'python2-xmpppy')
+#depends=('python' 'python-pip' 'python-requests' 'python-mechanize' 'python-paramiko' 'python-selenium' 'python-beautifulsoup4')
+depends=('python-appdirs' 'python-astroid' 'python-attrs' 'python-bcrypt'
+         'python-beautifulsoup4' 'python-black' 'python-certifi' 'python-cffi' 
+         'python-chardet' 'python-click' 'python-cryptography' 'python-html5lib'
+         'python-idna' 'python-isort' 'python-lazy-object-proxy' 'python-mccabe'
+         'python-mechanize' 'python-mock' 'python-more-itertools' 'mypy'
+         'python-mypy_extensions' 'python-packaging' 'python-paramiko' 
+         'python-pathspec' 'python-pluggy' 'python-py' 'python-pycparser'
+         'python-pylint' 'python-pynacl' 'python-pyparsing' 'python-pytest'
+         'python-regex' 'python-requests' 'python-selenium' 'python-six'
+         'python-soupsieve' 'python-toml' 'python-typed-ast' 'python-typing-extensions'
+         'python-urllib3' 'python-wcwidth' 'python-webencodings' 'python-wrapt')
 makedepends=('git')
-source=("${pkgname}::git+${url}.git")
+source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
 }
 
-prepare() {
-  cd $pkgname
-  grep -iRl 'python' . | xargs sed -i 's|python$|python2|g'
+build() {
+  cd "${srcdir}/${pkgname}"
+  python setup.py build
 }
 
 package() {
-  cd $pkgname
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/${_pkgname}"
-  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${_pkgname}"
-
-cat > "${pkgdir}/usr/bin/${_pkgname}" <<EOF
-#!/usr/bin/env bash
-cd /usr/share/${_pkgname}
-python2 ${_pkgname} "\$@"
-EOF
-
-  chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+  cd "${srcdir}/${pkgname}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
+  mv "${pkgdir}/usr/bin/brute" "${pkgdir}/usr/bin/${_pkgname}"
+  install -Dm644 "LICENSE.md" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
 }
