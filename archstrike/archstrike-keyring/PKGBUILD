@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=archstrike-keyring
 pkgver=20200930
-pkgrel=1
+pkgrel=2
 pkgdesc='ArchStrike PGP keyring'
 url='https://archstrike.org'
 license=('GPL3')
