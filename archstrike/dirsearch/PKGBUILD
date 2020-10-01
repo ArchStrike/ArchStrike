@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=dirsearch
-pkgver=0.3.9
+pkgver=0.4.0
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='A HTTP(S) directory/file brute forcer'
@@ -12,10 +12,10 @@ url='https://github.com/maurosoria/dirsearch'
 license=('custom')
 depends=('python')
 source=("https://github.com/maurosoria/${pkgname}/archive/v${pkgver}.tar.gz")
-sha512sums=('c774e939ff1bf9d110bc3b62e344814f4371b9fdf06ccf70ac25866437c262f7aea46d83a3f176a6e736abc949d5cfec49fe3fc4fcb8aa69ffacb83aa62f4b5c')
+sha512sums=('155108d5b78dd2e889b5a39957c79b61e92470c29c97c9a236f706e022ec3c315ebcc955e1cbbb059ba7a7042bb907b28b53403d9ba72edfdb504344613bd80f')
 
 package() {
-  cd "${pkgname}-${pkgver}" || exit
+  cd "${pkgname}-${pkgver}"
 
   # Make base directories.
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
