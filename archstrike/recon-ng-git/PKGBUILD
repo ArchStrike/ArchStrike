@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=recon-ng-git
 pkgver=20200623.r1017
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='A full-featured Web Reconnaissance framework written in Python'
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python' 'python-pyaml' 'python-dnspython' 'python-lxml'
          'python-mechanize' 'python-requests' 'python-flask'
          'python-flask-restful' 'python-flasgger' 'python-dicttoxml'
-         'python-xlsxwriter' 'python-unicodecsv' 'python-rq')
+         'python-xlsxwriter' 'python-unicodecsv' 'python-rq' 'readline')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
@@ -21,14 +21,6 @@ sha512sums=('SKIP')
 pkgver() {
   cd "${srcdir}/${pkgname}"
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
-}
-
-prepare() {
-  cd "${srcdir}/${pkgname}"
-
-  while read -r; do
-    sed -i -re 's|#!\s*(/usr)?(/local)?/bin/.*python.*$|#!/usr/bin/env python2|g' "$REPLY"
-  done < <(egrep -rl '^\s*#!\s*(/usr)?(/local)?/bin/.*python')
 }
 
 package() {
