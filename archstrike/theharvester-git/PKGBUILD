@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=theHarvester
 pkgname=theharvester-git
-pkgver=20200914.r2022
+pkgver=20201006.r2053
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers)"
