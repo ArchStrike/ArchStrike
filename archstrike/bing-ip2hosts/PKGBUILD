@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=bing-ip2hosts
-pkgver=1.0.3
+pkgver=1.0.4
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='Enumerates all hostnames which Bing has indexed for a specific IP address.'
@@ -11,7 +11,7 @@ arch=('any')
 url="https://github.com/urbanadventurer/bing-ip2hosts/"
 license=('GPL3')
 source=("https://github.com/urbanadventurer/bing-ip2hosts/archive/v${pkgver}.tar.gz")
-sha512sums=('eb2a0531e53893b942bebf43ca2f2ced3a5d323d8223685443ef6c45c2678c7d060839759770c3a586143636b79bd98bb0598877cbc3d85a840588669dadaf10')
+sha512sums=('cad68905b316decb404ae5cb7b16ced406a4564e376bc020d796acad3342096a4cfeb7de9639096735723767f38e83be4c16577ca4be86d391f86d5efe455d2e')
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
