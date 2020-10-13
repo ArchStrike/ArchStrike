@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=captipper-git
-pkgver=20170226.r70
-pkgrel=4
+pkgver=20201002.r74
+pkgrel=1
 pkgdesc="A python-based HTTP traffic explorer tool used to analyze, explore and revive HTTP malicious traffic"
 arch=('any')
 url="https://github.com/omriher/captipper"
