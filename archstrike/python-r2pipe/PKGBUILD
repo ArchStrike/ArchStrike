@@ -1,46 +1,27 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-_pkgname=r2pipe
-pkgbase=python-$_pkgname
-
 buildarch=1
 
-pkgname=(python-$_pkgname python2-$_pkgname)
-pkgver=1.4.2
+_pkgname=r2pipe
+pkgname="python-$_pkgname"
+pkgver=1.5.0
 pkgrel=1
 pkgdesc="A Pipe interface for radare2"
 url="https://pypi.python.org/pypi/r2pipe/"
 arch=('any')
 license=('MIT')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://files.pythonhosted.org/packages/b7/de/15c6bee12323c673ce6771dba3b26d8deb09721763c1ea89656dd91b2255/r2pipe-1.4.2.tar.gz")
-sha512sums=('93991407090e5ac1f454f98e38d614804c131d7c7047e29752d595b0f9e68c10f0e85942f1a4d061884402b005d3d01ffcd482b6a3c09b005b9bd862d292e9a0')
-
-prepare() {
-  cp -a "$_pkgname-${pkgver}"{,-py2}
-}
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('90d3bb6bfc9cb5adc8afd5c86d21b7be173847b5aad422c0a9145bfe09ee0bca1a94eab377b620f168723e91a01dc0da4cf60fab2076e1924d6a32414f676c49')
 
 build() {
-  cd "${srcdir}/$_pkgname-${pkgver}" || exit
+  cd "${srcdir}/$_pkgname-${pkgver}"
   python3 setup.py build
-
-  cd "${srcdir}/$_pkgname-${pkgver}-py2" || exit
-  python2 setup.py build
 }
 
 package_python-r2pipe() {
-  depends=('python')
-
-  cd "${srcdir}/$_pkgname-${pkgver}" || exit
+  cd "${srcdir}/$_pkgname-${pkgver}"
   python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-r2pipe() {
-  depends=('python2')
-
-  cd "${srcdir}/$_pkgname-${pkgver}-py2" || exit
-  python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  sed -i 's|env python|env python2|' "${pkgdir}/usr/lib/python2.7/site-packages/r2pipe/__init__.py"
 }
