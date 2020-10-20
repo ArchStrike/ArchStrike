@@ -4,8 +4,8 @@
 buildarch=1
 
 pkgname='perl-string-random'
-pkgver='0.30'
-pkgrel=4
+pkgver='0.31'
+pkgrel=1
 pkgdesc="Perl module to generate random strings based on a pattern"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,7 +14,7 @@ depends=('perl')
 makedepends=('perl-module-build')
 url='https://metacpan.org/pod/String::Random'
 source=("http://search.cpan.org/CPAN/authors/id/S/SH/SHLOMIF/String-Random-${pkgver}.tar.gz")
-sha512sums=('1c520d124f2937c86970aa29c4189ba420fb936509bf067de2bbf7fac232b94ef7d7307f3c96b3eea3ecd2a11e8da92fd0d700288c431d87c3869127a1e17b7e')
+sha512sums=('6430fee321ff92142bd24df02145984979cdae2f6cd21c4570fc2ea498b1f308080b25b576cc62dff5d07a7dcb6c61e2108badbe93d41989d6ea92a13ceae6a2')
 _distdir="String-Random-${pkgver}"
 
 build() {
