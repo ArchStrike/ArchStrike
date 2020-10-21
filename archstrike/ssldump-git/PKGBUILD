@@ -3,15 +3,15 @@
 buildarch=220
 
 pkgname=ssldump-git
-pkgver=20200922.r163
+pkgver=20201014.r186
 pkgrel=1
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="an SSLv3/TLS network protocol analyzer"
 url="https://github.com/adulau/ssldump"
 license=('custom')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-makedepends=('git')
-depends=('libpcap' 'openssl')
+depends=('libpcap' 'openssl' 'libnet')
+makedepends=('git' 'autoconf')
 provides=('ssldump')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
