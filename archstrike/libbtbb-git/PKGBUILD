@@ -13,6 +13,8 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('GPL')
 depends=('libpcap' 'python')
 makedepends=('cmake' 'libpcap' 'git')
+conflicts=('libbtbb')
+replaces=('libbtbb')
 source=("git+https://github.com/greatscottgadgets/${_pkgname}.git")
 sha512sums=('SKIP')
 
