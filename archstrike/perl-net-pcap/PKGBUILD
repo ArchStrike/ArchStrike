@@ -2,41 +2,38 @@
 
 buildarch=220
 
-pkgname=perl-net-pcap
-_realname=Net-Pcap
+pkgname="perl-net-pcap"
+_realname="Net-Pcap"
 pkgver=0.18
-pkgrel=4
+pkgrel=5
 pkgdesc="Perl/CPAN Module Net::Pcap"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://metacpan.org/release/Net-Pcap'
 license=("GPL" "PerlArtistic")
 options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/S/SA/SAPER/$_realname-$pkgver.tar.gz"
-        listdatalinks.patch)
+source=("http://cpan.metacpan.org/authors/id/S/SA/SAPER/${_realname}-${pkgver}.tar.gz"
+        'perl-net-pcap.patch')
 depends=('perl' 'libpcap')
+makedepends=('make')
 sha512sums=('63cc216345eb65b1e76efa657623c9d444d20f4b54ab0c75e787483baaa4f1de7e3a9294967aa7eccbdca04c60b089194dd7e0d19838f899b332c5881a8c7f6d'
-            'd5c59c7c0bbc2549c3338b5c22aeea2ca91c9bf79acf72787ebd8edd65140465a2aabcd77e35212a5846aad4146a74aeadf5013970065572d82bb05d2ac5e758'
-            'cf67d0be2cdb5c55913bd016474cbc35c7ff483a21fa6d3e947745d91ea1bb1208a42ee1aba93b53b98d3dba7b493a5b9c271f4bc752e86211b21d384341be17')
+            'c6e5e1f1d20dd3e072f93b082515cb9a8183ef036e347a924efb6d34736203fcb7d8249e36442a061667131907a2b28659cdc7bc5807c482513f2c51151a0e74')
 
 prepare() {
-  cd $srcdir/$_realname-$pkgver
-
-  patch -p1 <../listdatalinks.patch
+  cd "${srcdir}/${_realname}-${pkgver}"
+  patch -p0 <../perl-net-pcap.patch
 }
 
 build() {
-  cd $srcdir/$_realname-$pkgver
-
-  # Install module in vendor directories.
-  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  cd "${srcdir}/${_realname}-${pkgver}"
+  perl Makefile.PL INSTALLDIRS=vendor
   make
 }
 package() {
-  cd $srcdir/$_realname-$pkgver
+  cd "${srcdir}/${_realname}-${pkgver}"
 
-  make install DESTDIR=$pkgdir/
+  make install DESTDIR="${pkgdir}"/
 
   # Remove perllocal.pod and .packlist.
-  find $pkgdir -name perllocal.pod -delete
-  find $pkgdir -name .packlist -delete
+  find "${pkgdir}" -name perllocal.pod -delete
+  find "${pkgdir}" -name .packlist -delete
 }
