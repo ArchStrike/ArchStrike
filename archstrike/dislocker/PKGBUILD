@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=dislocker
-pkgver=0.7.1
-pkgrel=4
+pkgver=0.7.3
+pkgrel=1
 pkgdesc="Read BitLocker encrypted volumes under Linux"
 arch=('armv6h' 'i686' 'armv7h' 'x86_64' 'aarch64')
 url="https://github.com/Aorimn/dislocker"
@@ -13,16 +13,16 @@ groups=('archstrike')
 depends=('fuse' 'mbedtls' 'ruby')
 makedepends=('cmake')
 source=("https://github.com/Aorimn/dislocker/archive/v${pkgver}.tar.gz")
-sha512sums=('8852ba3e363fdea992eebecfe1e4dad2b85404f57c57ce6b2937a9859d03cfa88d969926c9e11e6d22596c6d96805b7d1737893ae2c5a957448ab26708bce226')
+sha512sums=('c62241d70d51f6445a2f6d0f08e099bbc1a4257ca98232471fc43ec63e69d62ae5f702c995ec00b7e1db7d33f4bb3a31ea05bc13862bf3b539feb301a0e034ff')
 
 build() {
-  cd "${pkgname}-${pkgver}/"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release .
   make
 }
 
 package() {
-  cd "${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}"/usr/bin
   install -dm755 "${pkgdir}"/usr/lib
   install -dm755 "${pkgdir}"/usr/share/man/man1
