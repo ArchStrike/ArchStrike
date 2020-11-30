@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=ipscan
 pkgver=3.7.3
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and friendly network scanner'
 arch=('i686' 'x86_64')
 groups=('archstrike' 'archstrike-scanners')
@@ -34,7 +34,7 @@ prepare() {
   git apply ../build-fix.patch
   git apply ../google-analytics-removal.patch
   sed -i "s|^version = .*|version = '$pkgver'|" build.gradle
-  sed -i -E "s|^( *'Version':) version,|\1 '3.7.2',|g" build.gradle
+  sed -i -E "s|^( *'Version':) version,|\1 '$pkgver',|g" build.gradle
 }
 
 build() {
