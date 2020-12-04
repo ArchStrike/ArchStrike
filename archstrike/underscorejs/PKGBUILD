@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=underscorejs
 _script=underscore
-pkgver=1.11.0
+pkgver=1.12.0
 pkgrel=1
 pkgdesc="Underscore is a utility-belt library for JavaScript that provides a lot of the functional programming support that you would expect in Prototype.js (or Ruby), but without extending any of the built-in JavaScript objects."
 arch=(any)
@@ -13,8 +13,8 @@ license=('MIT')
 source=("${url}/${_script}.js"
         "${url}/${_script}-min.js"
         "${url}/LICENSE")
-sha512sums=('bdc0a8fc9d34852cc5aa455948421c8f5ca70b28743414cfe16d6b8f525d8afaeaa95ae08689f896e9b0fe0e7d8cfabb5e600bcb67d3ec716f45ce17eb1a6047'
-            'c0188d26dd495de03fadaf45f0ada3c8ee019f1af47513eccbb25a32a4a5c6a4e35061ded59f859b91cc8c25aa90862fa7fa026dd2448af679a4bbc0b4ad1cb1'
+sha512sums=('68c747805b1055f88eec7775e553db01cb4f44781ad53a11408c7e8b44018c32cf268dfdf4e342e0c4249cb9c15e435734e9516a21f33121c716d5e8d2813f26'
+            '0435c65d2bd878bc5a95d41e609655597266922b20325102a1f5855caa56c179df729fd1ef4f27aecfc1b4d2c7e5c6ffe5313b69e6114c30515eeea444be1579'
             'ddd62c71aaf23fc4577f1bf933c8ed5bc420901f878fcb5e0ab00f8a61c2e4fe8e0f659701c7afec8006f8504b750afaaa74bfcf29746d5a4c386a67bab96160')
 
 package() {
