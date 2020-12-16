@@ -18,7 +18,7 @@ source=("burpsuite.jar::https://portswigger.net/burp/releases/download?product=c
 	"burpsuite.desktop"
 	)
 
-sha512sums=('afaa91de246e98aec2fd4bc8ab2a9531c71eefad0b92c281a7bf6492b7dc3e9bae8e81bdf0027609351e2f5aa097421aa975511d9195d0a8416da5e1c944ce02'
++sha512sums=('74f93cad4ab4d5d25694d8f92a27a2733671debe9270019c5d70b68f3adf261e25c0a88c88acee3e33533b9b7a21081cbd8dd69a04e898e4b7a5aa9d8522e47b'
             '3bc6083224e3b6fd777b0fbb2aea73ce6fdd21011d1c6ceb0a5298c6278d04d35f7e5f6fd7e5dd621331fa4060eceb0655ffd63d6a5214833f6fbaa6f14a3681'
             '076f2f7ca3096a44a3ccf8b9f723384e0c335b3f4391f26b4d8d652716a1e2b7325e4aa1ad7ea3d711073a77292fa19857e2881dbd909d547d28a806fc65e0cf')
 package() {
