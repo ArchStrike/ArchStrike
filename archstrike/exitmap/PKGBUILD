@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=exitmap
-pkgver=2019.05.30
-pkgrel=2
+pkgver=2020.11.23
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 arch=('any')
 pkgdesc="A fast and modular scanner for Tor exit relays"
 url="https://github.com/NullHypothesis/exitmap"
 license=('GPL')
-depends=('python2' 'python2-dnspython' 'python2-stem' 'tor')
+depends=('python2' 'python2-dnspython' 'python2-stem' 'python2-configparser' 'python2-pysocks' 'tor')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('2472f343fa1ddf137f31db420e20b5f0d07f7fee2f11018cc6ada315f21a4f48bcea5562403b0d8f8153d21b2c726554e492a08b7e5c7f1a4e72efd792503485')
+sha512sums=('124f55a0ea780853b8501574e2b402bea0b59ff99d78dda757c2872476d230bc6b4fe967a65cc653395eaabe7de8bc1d22b85a151c52593f0e882891bb54e6e2')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
