@@ -1,5 +1,7 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
+buildarch=192
+
 pkgname=sasquatch-git
 _squashfs_version="4.3"
 pkgver=20180522.r58
