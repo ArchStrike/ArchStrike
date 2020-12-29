@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=archstrike-installer
 pkgver=2.3.0
-pkgrel=1
+pkgrel=2
 arch=('any')
 pkgdesc="Full ArchStike installer for the ArchStrike live environment"
 url="https://github.com/ArchStrike/archstrike-installer"
