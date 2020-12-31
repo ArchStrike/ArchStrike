@@ -4,16 +4,16 @@ buildarch=1
 
 _pkgname=altgraph
 pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=0.16.1
-pkgrel=3
+pkgver=0.17
+pkgrel=1
 pkgdesc='Fork of graphlib: a graph (network) package for constructing graphs'
 arch=('any')
-url="https://pypi.python.org/pypi/altgraph"
+url="https://pypi.org/project/altgraph/"
 license=('MIT')
 depends=('python' 'python2')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('9c605a9f84d262fe2c83244091203d89491de0b3043e3c14a356e2c0e6e16a8b943a660c1dde9397b5ff9d2342a4e81aabee61e7833cb0eaa6188410408463be')
+sha512sums=('1f6c17f4539bc0793c24bce22dabb597aef4ad0269f755ada8a7fb472d67fe1ea8f7fc510e2f1540c28bc2717ddbd2465be7a7d5703ac285be347ed670cb1dd7')
 
 prepare(){
   cp -a ${_pkgname}-${pkgver}{,-py2}
