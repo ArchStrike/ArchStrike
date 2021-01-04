@@ -2,19 +2,18 @@
 
 buildarch=220
 
-#_gemname=nokogiri
 pkgname=ruby-nokogiri
-pkgver=1.10.10
+pkgver=1.11.0
 pkgrel=1
 pkgdesc="HTML, XML, SAX, and Reader parser"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 license=('MIT')
 makedepends=('ruby')
-depends=('ruby-mini_portile2' 'ruby-rdoc' 'libxslt')
+depends=('ruby-mini_portile2' 'ruby-rdoc' 'libxslt' 'libxml2' 'zlib')
 options=('!distcc' '!emptydirs')
 url='http://nokogiri.org'
 source=("http://rubygems.org/downloads/nokogiri-${pkgver}.gem")
-sha512sums=('b4628df47dbd8b9123a6f0625829e745a19d26539d54b2748c985d6fdda978072bdcd136df2f47535984186eae7fb318b67d59f1ea413777f1a146bc78e0dae2')
+sha512sums=('bc02f3d845d5615f481d9e507f5c37ff8e05ab0e8e1dca2846c341c8b1de47e000183ead0207019fa2dbd8904dd1fa4b562ecd3ce1bc4f6dc6d537373057afeb')
 noextract=("nokogiri-${pkgver}.gem")
 
 package() {
