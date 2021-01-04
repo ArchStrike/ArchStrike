@@ -6,7 +6,7 @@ buildarch=1
 _pkgname="APScheduler"
 pkgname="python-apscheduler"
 pkgver=3.6.3
-pkgrel=2
+pkgrel=3
 pkgdesc="Advanced Python Scheduler, a light but powerful in-process task scheduler"
 arch=('any')
 url='https://github.com/agronholm/apscheduler'
@@ -17,11 +17,11 @@ source=("https://files.pythonhosted.org/packages/89/3d/f65972547c5aa533276ada2be
 sha512sums=('4c348a4f37a7973633554a69635f334b3c293c8942fe853b309b4b65335f5d4d553d7d42fd4661b0e6a36f5e97446d296a2c8971bdb51dad3bc8ee6b6d3b20ba')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1
 }
