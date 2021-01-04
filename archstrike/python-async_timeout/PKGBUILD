@@ -5,7 +5,7 @@ buildarch=1
 pkgname=python-async_timeout
 _pkgname=async-timeout
 pkgver=3.0.1
-pkgrel=2
+pkgrel=3
 pkgdesc="Timeout context manager for asyncio programs"
 url="https://github.com/aio-libs/async_timeout/"
 depends=('python')
@@ -16,11 +16,11 @@ source=("${url}/archive/v${pkgver}.tar.gz")
 sha512sums=('4fcf9bf199ac593e10a54800aabd6447425f2bcdf12bba3f16b7c4819e1d1b92c21f804007d003583e48cac3fd472e55ca805a5c25e238e78c3dfb217dc3f7a4')
 
 build() {
-  cd ${_pkgname}-${pkgver}
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 }
 
 package() {
-  cd ${_pkgname}-${pkgver}
-  python setup.py install --root="$pkgdir" -O1 --skip-build
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
 }
