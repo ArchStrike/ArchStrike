@@ -5,17 +5,15 @@ buildarch=1
 _pkgname="CppHeaderParser"
 pkgname="python-cppheaderparser"
 pkgver=2.7.4
-pkgrel=1
+pkgrel=2
 pkgdesc="Parse C++ header files and generate a data structure representing the class"
 url="http://senexcanis.com/open-source/cppheaderparser/"
 depends=('python' 'python-ply')
 makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
-source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz"
-        "https://bitbucket.org/senex/cppheaderparser/raw/6613bc9718009a3bd90b9de2f64e0e94eec5afcc/LICENSE.txt")
-sha512sums=('223550add1e391eb535d1b8be08a54b9d6fe97ca6dbfc54407cdc17a5530a91ef6be4ac920d6841b9f479bcbd6c823512b08565ad433f62a87e993cf393932a2'
-            'f3c2768fb290377a3f301fe2d40ad8c05452c3cdb9f1151c435b7a75404fd681ce66a91be6fc710c0aa93308e5b673a8bf325d4d3ffc523ad6404eec256c5d4d')
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('223550add1e391eb535d1b8be08a54b9d6fe97ca6dbfc54407cdc17a5530a91ef6be4ac920d6841b9f479bcbd6c823512b08565ad433f62a87e993cf393932a2')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
@@ -25,5 +23,4 @@ build() {
 package() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
     python setup.py install --root="${pkgdir}" -O1 --skip-build
-    install -Dm644 "${srcdir}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
