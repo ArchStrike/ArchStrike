@@ -7,10 +7,10 @@ pkgbase="python-${_pkgname}-git"
 
 pkgname=("python-${_pkgname}-git" "python2-${_pkgname}-git")
 pkgver=20200814.r51
-pkgrel=1
+pkgrel=2
 pkgdesc="Advanced Backup-File Artifacts Testing for Web-Applications"
 arch=('any')
-url="https://github.com/mazen160/${_pkgname}"
+url="https://github.com/mazen160/bfac"
 license=('GPL3')
 makedepends=("python-setuptools" "python2-setuptools" "git")
 source=("${_pkgname}::git+${url}")
