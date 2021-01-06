@@ -4,24 +4,19 @@ buildarch=220
 
 _pkgname=bintrees
 pkgname=python-bintrees
-pkgver=2.1.0
+pkgver=2.2.0
 pkgrel=1
 pkgdesc="Package provides Binary-, RedBlack- and AVL-Trees in Python and Cython."
 url="https://github.com/mozman/bintrees"
-depends=('python')
+depends=('python' 'cython')
 makedepends=('python-setuptools')
 license=('CUSTOM')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.zip")
-sha512sums=('56d83e826992915c4085d76daa767e033a221ff346cac307c0a820d692d85e503517f1c339deccf315d0985ff6b4a8ebd139c173d054802586a9b68a7783bc01')
-
-build() {
-    cd "${srcdir}/bintrees-${pkgver}"
-    python setup.py build
-}
+sha512sums=('897109b658354c91c0a04cb79d928048c787a4f63b70b557390ea7898fdb63bf6742c52891f1b2c2d6cc170f0e89e0269c8904cc958532e7295aba9d42cbf764')
 
 package() {
     cd "${srcdir}/bintrees-${pkgver}"
-    python setup.py install --root="${pkgdir}" -O1 --skip-build
+    python setup.py install --root="${pkgdir}" -O1
     install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
