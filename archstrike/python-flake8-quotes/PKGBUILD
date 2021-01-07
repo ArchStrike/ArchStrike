@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname=("flake8-quotes")
 pkgname=("python-${_pkgname}")
-pkgver=2.1.1
+pkgver=3.2.0
 pkgdesc="Flake8 extension for checking quotes in python"
 pkgrel=1
 arch=('any')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('python' 'flake8')
 makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('3773393c44467ad28fa9fdf5874bf9a21c409c35ced3141813ae320920059292567d73d1117dfc0a72cfe7dbdbf81c9385d2b96753503b0219c82a022d1c65d5')
+sha512sums=('9d56403d3ba2d84a14b670f339604c2762a90bd75b60f43e4b72316e2d87654cfaaba46d9b3f3bd3902ab0a86a5fe03cab70fd99e3888dc0a1a22f948e02249b')
 
 package() {
   cd "${_pkgname}-${pkgver}"
