@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname="python-ed25519"
 pkgver=1.5
-pkgrel=1
+pkgrel=2
 pkgdesc='Python Bindings to the Ed25519 Digital Signature System'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('custom')
