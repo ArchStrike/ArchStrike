@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python-emailprotectionslib
 pkgver=0.8.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Python library to interact with SPF and DMARC"
 url="https://github.com/lunarca/pyemailprotectionslib"
 depends=('python' 'python-tldextract' 'python-dnslib')
