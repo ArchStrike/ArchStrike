@@ -4,18 +4,18 @@
 buildarch=220
 
 pkgname=chkrootkit
-pkgver=0.53
-pkgrel=2
+pkgver=0.54
+pkgrel=1
 groups=('archstrike' 'archstrike-defense' 'archstrike-forensics')
 pkgdesc="Checks for rootkits on a system"
 url="http://www.chkrootkit.org/"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('BSD')
-depends=('bash')
+depends=('bash' 'procps' 'net-tools')
 source=("ftp://ftp.pangeia.com.br/pub/seg/pac/chkrootkit.tar.gz"
         "chkrootkit-path.patch")
-sha512sums=('f8de19d0a61ccb6ac184ad6642d78041729cba799eedcc8088cb6d2c5cf4de0574c6083caad364576a601265322e61c183b266304f00667527bf29fdc51359c7'
-            '3701cd5833fd5cc6902ee8a94f5d75287092c60ea8ff2d620b543fe4cbc089ad02495e30033043d1144f8a26e113510e00dc37711a71f4fc7765a6716ab67978')
+sha512sums=('fe8955ac33abaabf304f5580b6f12929f8bf02329ab442380eaa6298440cf1cb0eee2db8e5667ea7d78b89ee2bceb82c10ebb732a71d6bcdda9400569cd587fd'
+            '44d759bf108363212f89e097400cda06e5ee8aaf4ef661d63d2cb3a453902eee99c5690d8c83d2d7813d31a74565d1576e40d04649c0f2247194c0887260d63d')
 
 build(){
   cd "${srcdir}/${pkgname}-${pkgver}"
