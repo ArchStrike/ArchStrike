@@ -3,14 +3,14 @@
 buildarch=1
 
 pkgname=smbmap-git
-pkgver=20200903.r138
+pkgver=20210113.r145
 pkgrel=1
 groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="A handy SMB enumeration tool"
 url='https://github.com/ShawnDEvans/smbmap'
 license=("GPL3")
 makedepends=('git')
-depends=('python' 'impacket' 'python-pycryptodomex')
+depends=('python' 'impacket' 'python-pycryptodomex' 'python-termcolor')
 arch=('any')
 source=("${pkgname}::git+${url}")
 sha512sums=('SKIP')
