@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=see-surf-git
-pkgver=20190911.r76.8f881b6
+pkgver=20210114.r88.32e1bec
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 arch=('any')
