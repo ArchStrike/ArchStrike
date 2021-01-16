@@ -5,8 +5,8 @@ buildarch=220
 
 _pkgname="ubertooth"
 pkgname="${_pkgname}-git"
-pkgver=r1261.c2cc373
-pkgrel=2
+pkgver=r1320.d1feecc
+pkgrel=1
 groups=('archstrike' 'archstrike-bluetooth')
 pkgdesc='A 2.4 GHz wireless development board suitable for Bluetooth experimentation. Open source hardware and software. Tools only'
 url='https://greatscottgadgets.com/ubertoothone'
