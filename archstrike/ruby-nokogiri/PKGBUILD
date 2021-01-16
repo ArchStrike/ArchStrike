@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=ruby-nokogiri
-pkgver=1.11.0
+pkgver=1.11.1
 pkgrel=1
 pkgdesc="HTML, XML, SAX, and Reader parser"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -13,7 +13,7 @@ depends=('ruby-mini_portile2' 'ruby-rdoc' 'libxslt' 'libxml2' 'zlib')
 options=('!distcc' '!emptydirs')
 url='http://nokogiri.org'
 source=("http://rubygems.org/downloads/nokogiri-${pkgver}.gem")
-sha512sums=('bc02f3d845d5615f481d9e507f5c37ff8e05ab0e8e1dca2846c341c8b1de47e000183ead0207019fa2dbd8904dd1fa4b562ecd3ce1bc4f6dc6d537373057afeb')
+sha512sums=('6d73cde64190afd0850eca9bedb41ceccd34919f04bd83726ba41cf1bda1bab3ecd56a5c4d391f1eb9f7e407a80ec65c922a2ebf8c7854ffc8a08bbd284f6827')
 noextract=("nokogiri-${pkgver}.gem")
 
 package() {
