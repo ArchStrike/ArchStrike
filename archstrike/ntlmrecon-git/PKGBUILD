@@ -2,17 +2,17 @@
 # Contributor: Sachin Kamath <mail@skamath.me>
 
 pkgname=ntlmrecon-git
-_pkgname=ntlmrecon
-pkgver=20200315.r42
+_pkgname=NTLMRecon
+pkgver=20201222.r69
 pkgrel=1
 groups=('archstrike' 'archstrike-recon' 'archstrike-scanner')
 pkgdesc='A tool to enumerate information from NTLM authentication enabled web endpoints.'
 arch=('any')
-url='https://github.com/sachinkamath/ntlmrecon'
+url="https://github.com/pwnfoo/NTLMRecon"
 license=('MIT')
 depends=('python' 'python-iptools' 'python-termcolor' 'python-colorama' 'python-requests')
 makedepends=('git' 'python-setuptools')
-source=("git+https://github.com/sachinkamath/$_pkgname.git")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 pkgver() {
