@@ -5,7 +5,7 @@ buildarch=1
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
 pkgver=v10.40.r0.g8ee008c
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
@@ -14,7 +14,7 @@ url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
 depends=('bash>=4.2' 'iw' 'gawk' 'aircrack-ng' 'xterm' 'reaver-wps-fork-t6x-git'
          'iproute2' 'xorg-xdpyinfo' 'ethtool' 'pciutils' 'usbutils' 'rfkill'
-         'wget' 'ccze' 'curl' 'xorg-xset' 'tmux' 'procps-ng' 'mdk4')
+         'wget' 'ccze' 'curl' 'xorg-xset' 'tmux' 'procps-ng')
 optdepends=('asleap:    Actively recover LEAP/PPTP passwords'
             'beef-git:  Pentesting framework that focuses on web-browser exploitation'
             'bettercap: Swiss army knife for network attacks and monitoring'
@@ -30,7 +30,8 @@ optdepends=('asleap:    Actively recover LEAP/PPTP passwords'
             'iptables:  Linux kernel packet control tool'
             'john:      John the Ripper password cracker'
             'lighttpd:  A secure, fast, compliant and very flexible web-server'
-            'mdk3:      WLAN penetration tool'
+	    'mdk3:      WLAN penetration tool'
+	    'mdk4:      WLAN penetration tool'
             'nftables:  Netfilter tables userspace tools'
             'openssl:   The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
             'pixiewps:  Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs')
@@ -46,6 +47,7 @@ pkgver() {
 prepare() {
   cd "${srcdir}/${pkgname}"
   sed -i 's|AIRGEDDON_AUTO_UPDATE=true|AIRGEDDON_AUTO_UPDATE=false|' .airgeddonrc
+  sed -i 's|AIRGEDDON_MDK_VERSION=mdk4|AIRGEDDON_MDK_VERSION=mdk3|' .airgeddonrc
   rm -rf {binaries,imgs,Dockerfile,pindb_checksum.txt,LICENSE}
 }
 
