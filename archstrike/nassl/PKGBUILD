@@ -3,8 +3,8 @@
 buildarch=192
 
 pkgname=nassl
-pkgver=3.0.0
-pkgrel=2
+pkgver=4.0.0
+pkgrel=1
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto')
 pkgdesc='Experimental Python wrapper for OpenSSL'
 arch=('i686' 'x86_64')
@@ -14,7 +14,7 @@ depends=('python')
 makedepends=('openssl' 'openssl-1.0' 'zlib' 'python-setuptools' 'python-invoke' 'python-pipenv')
 source=("${pkgname}-${pkgver}.tar.gz::https://github.com/nabla-c0d3/nassl/archive/${pkgver}.tar.gz")
 
-sha512sums=('bbaaee5564931901576f353944a00177bf09bd4d25a8c8bc1d2ea8877922848454987acf93f91ca3018cb5366a5967cb2865995a314f036696c7eeb5a2634bdb')
+sha512sums=('7653cea596d349267599fd0657ae1c0428a79609405294b02d402cef63d9dd48a3ce587eef84224f638699fb58aa7d8a95fd9a8f8c445dea0541ed740801875e')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
