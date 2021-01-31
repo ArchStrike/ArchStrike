@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=bing-ip2hosts
 pkgver=1.0.4
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='Enumerates all hostnames which Bing has indexed for a specific IP address.'
 arch=('any')
