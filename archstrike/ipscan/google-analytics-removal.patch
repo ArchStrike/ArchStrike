@@ -1,5 +1,5 @@
 diff --git a/src/net/azib/ipscan/Main.java b/src/net/azib/ipscan/Main.java
-index b630ef62..0dbac2a1 100644
+index cb349d07..a6bacfac 100644
 --- a/src/net/azib/ipscan/Main.java
 +++ b/src/net/azib/ipscan/Main.java
 @@ -10,7 +10,6 @@ import net.azib.ipscan.di.Injector;
@@ -32,7 +32,7 @@ index b630ef62..0dbac2a1 100644
  			gui.showMessage(0, "Fatal Error", e + "\nPlease submit a bug report mentioning your OS and what exactly were you doing.");
  		else
 diff --git a/src/net/azib/ipscan/gui/GUI.java b/src/net/azib/ipscan/gui/GUI.java
-index f15c8f82..d0752395 100644
+index 7f22c6e6..9748f74d 100644
 --- a/src/net/azib/ipscan/gui/GUI.java
 +++ b/src/net/azib/ipscan/gui/GUI.java
 @@ -4,7 +4,6 @@ import net.azib.ipscan.config.LoggerFactory;
@@ -51,16 +51,18 @@ index f15c8f82..d0752395 100644
  			}
  			else throw e;
  		}
-@@ -68,7 +66,6 @@ public class GUI implements AutoCloseable {
- 		messageBox.setText(title);
- 		messageBox.setMessage(localizedMessage);
- 		messageBox.open();
--		new GoogleAnalytics().report(localizedMessage, (Throwable) null);
+@@ -58,9 +56,6 @@ public class GUI implements AutoCloseable {
+ 				String localizedMessage = getLocalizedMessage(e);
+ 				showMessage(e instanceof UserErrorException ? SWT.ICON_WARNING : SWT.ICON_ERROR,
+ 					getLabel(e instanceof UserErrorException ? "text.userError" : "text.error"), localizedMessage);
+-
+-				if (!(e instanceof UserErrorException) || e.getCause() != null)
+-					new GoogleAnalytics().report(e);
+ 			}
+ 		}
  	}
- 
- 	@Override public void close() {
 diff --git a/src/net/azib/ipscan/gui/Startup.java b/src/net/azib/ipscan/gui/Startup.java
-index fbf4e9ff..f69667c2 100644
+index ad705d3d..5689a892 100644
 --- a/src/net/azib/ipscan/gui/Startup.java
 +++ b/src/net/azib/ipscan/gui/Startup.java
 @@ -5,7 +5,6 @@ import net.azib.ipscan.config.Labels;
@@ -86,7 +88,7 @@ index fbf4e9ff..f69667c2 100644
 -			new GoogleAnalytics().asyncReport("Update " + guiConfig.lastRunVersion + " to " + Version.getVersion());
  			guiConfig.lastRunVersion = Version.getVersion();
  		}
- 		else if (System.currentTimeMillis() - guiConfig.lastVersionCheck > 30L * 24 * 3600 * 1000) {
+ 		else if (guiConfig.versionCheckEnabled && System.currentTimeMillis() - guiConfig.lastVersionCheck > 30L * 24 * 3600 * 1000) {
 -			new GoogleAnalytics().asyncReport("Version check " + Version.getVersion());
  			checkForLatestVersion();
  		}
