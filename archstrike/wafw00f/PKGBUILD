@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=wafw00f
 pkgver=2.1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Identifies and fingerprints Web Application Firewall (WAF) products."
 url="https://github.com/sandrogauci/wafw00f"
 depends=('python' 'python-beautifulsoup4' 'python-pluginbase' 'python-requests')
