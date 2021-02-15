@@ -32,7 +32,7 @@ index cb349d07..a6bacfac 100644
  			gui.showMessage(0, "Fatal Error", e + "\nPlease submit a bug report mentioning your OS and what exactly were you doing.");
  		else
 diff --git a/src/net/azib/ipscan/gui/GUI.java b/src/net/azib/ipscan/gui/GUI.java
-index 7f22c6e6..9748f74d 100644
+index c2f46fda..4ad7ed02 100644
 --- a/src/net/azib/ipscan/gui/GUI.java
 +++ b/src/net/azib/ipscan/gui/GUI.java
 @@ -4,7 +4,6 @@ import net.azib.ipscan.config.LoggerFactory;
@@ -43,15 +43,19 @@ index 7f22c6e6..9748f74d 100644
  import org.eclipse.swt.SWT;
  import org.eclipse.swt.SWTError;
  import org.eclipse.swt.SWTException;
-@@ -33,7 +32,6 @@ public class GUI implements AutoCloseable {
+@@ -33,11 +32,9 @@ public class GUI implements AutoCloseable {
  		catch (SWTError e) {
  			if (e.getMessage().contains("gtk_init_check")) {
- 				System.err.println(e.toString() + " - probably you are running as `root` and/or don't have access to the X Server. Please run as normal user or with sudo.");
+ 				System.err.println(e.toString() + ": probably you are running as `root` and/or don't have access to the X Server. Please run as normal user or with sudo.");
+-				new GoogleAnalytics().report(e);
+ 			}
+ 			else if (e.getMessage().contains("Invalid thread access")) {
+ 				System.err.println(e.toString() + ": you need to start Java with -XstartOnFirstThread on a Mac");
 -				new GoogleAnalytics().report(e);
  			}
  			else throw e;
  		}
-@@ -58,9 +56,6 @@ public class GUI implements AutoCloseable {
+@@ -62,9 +59,6 @@ public class GUI implements AutoCloseable {
  				String localizedMessage = getLocalizedMessage(e);
  				showMessage(e instanceof UserErrorException ? SWT.ICON_WARNING : SWT.ICON_ERROR,
  					getLabel(e instanceof UserErrorException ? "text.userError" : "text.error"), localizedMessage);
