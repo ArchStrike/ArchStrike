@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=wuzz
-pkgver=0.4.0
-pkgrel=2
+pkgver=0.5.0
+pkgrel=1
 pkgdesc="Interactive cli tool for HTTP inspection"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
 url="https://github.com/asciimoo/wuzz"
@@ -13,7 +13,7 @@ license=("AGPL")
 depends=('glibc')
 makedepends=('go' 'git')
 source=("https://github.com/asciimoo/wuzz/archive/v${pkgver}.tar.gz")
-sha512sums=('9e7a2f88ea24ada95fbdadc4a64b4d4c93a3048481f20e33a041f1833e27a135e496969bd569694b606eda0461dc2cb7df618a650101c10e51bbfad34a0eea66')
+sha512sums=('dbed0076d15e87e4b13d817fc02cf853a4c1fa96b6c3647507a86e47a26619f40120b72c8df8a4b6afd2472e552998d5fad292efa0d62ce9d63149e4379d7715')
 
 prepare() {
   mkdir -p ${srcdir}/src/github.com/asciimoo/
