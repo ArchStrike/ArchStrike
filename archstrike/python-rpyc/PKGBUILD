@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=rpyc
 pkgname=python-${_pkgname}
-pkgver=4.1.5
+pkgver=5.0.1
 pkgrel=1
 pkgdesc="Remote Python Call (RPyC), a transparent and symmetric RPC library"
 url="http://rpyc.readthedocs.org"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://github.com/tomerfiliba/rpyc/archive/${pkgver}.tar.gz")
-sha512sums=('27f67c7e7bf6f1e94815b3124f300da5f1317e7b454280953d85eca8c7146afc33937ac66a1bb8ac2344b73532ae232b190a647ef90aa723b8b5173b96877454')
+sha512sums=('57b0d6b2dba33c7f6c9d204b4deae8ab08ed56e5799aa2c7ae4bcb8ab98486055090e3079d8b0d615fcd517111a6e02893dff85607aaca5497ae76429abe3148')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
