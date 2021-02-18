@@ -3,26 +3,26 @@
 buildarch=1
 
 pkgname=bmap-tools
-pkgver=3.5
-pkgrel=2
+pkgver=3.6
+pkgrel=1
 pkgdesc="Tool for copying largely sparse files using information from a block map file"
 arch=('any')
 url="https://github.com/01org/bmap-tools"
 license=('GPL2')
-depends=('python2')
-makedepends=('python2-setuptools')
+depends=('python')
+makedepends=('python-setuptools')
 groups=('archstrike')
 source=("https://github.com/01org/bmap-tools/archive/v${pkgver}.tar.gz")
-sha512sums=('8e15ea7c410565f7c240fae6364842ac03f0c52082c2bdf783932d260db2c6661b7369845dc9e0fb2b6ded4511b9ee31214c4d46cc486ded42425d71552b395d')
+sha512sums=('a55fe88d8f136b39f2bb92690322ae65d66ae1ae0454050d74bd37a39d69dca6428ba05ff42d2faf8e83f8f8342d882caaf8bb45aa00c74bbd5e4b12289a406a')
 
 
 build() {
-  cd "${pkgname}-${pkgver}" || exit
-  python2 setup.py build
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py build
 }
 
 package() {
-  cd "${pkgname}-${pkgver}" || exit
-  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm644 docs/man1/bmaptool.1 "${pkgdir}/usr/share/man/man1/bmaptool.1"
 }
