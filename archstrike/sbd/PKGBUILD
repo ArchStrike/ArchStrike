@@ -6,7 +6,7 @@ DLAGENTS=('https::/usr/bin/curl -k -o %o %u')
 
 pkgname="sbd"
 pkgver=1.36
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-networking' 'archstrike-crypto')
 pkgdesc="Netcat-clone, portable, offers strong encryption - features AES-128-CBC + HMAC-SHA1 encryption, program execution (-e), choosing source port, continuous reconnaissancenection with delay + more"
 url='https://packetstormsecurity.com/UNIX/netcat/'

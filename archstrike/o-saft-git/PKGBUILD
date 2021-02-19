@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=o-saft-git
 pkgver=r4037.0e396cc
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc='Shows informations about SSL certificate and tests the SSL connection according given list of ciphers and various SSL configurations'
 arch=('any')

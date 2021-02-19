@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=mimikatz
 pkgver=2.2.0.20200917
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="A little tool to play with Windows security"

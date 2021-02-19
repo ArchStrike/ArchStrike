@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-exscript-git
 pkgver=20200220.r1793
-pkgrel=1
+pkgrel=2
 pkgdesc="A Python module making Telnet and SSH easy"
 arch=('any')
 url="https://github.com/knipknap/exscript"

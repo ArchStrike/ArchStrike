@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python2-utidylib-git
 pkgver=20100108.r2
-pkgrel=3
+pkgrel=4
 groups=('archstrike' 'archstrike-misc')
 pkgdesc="Python2 bindings for Tidy HTML parser/cleaner."
 arch=('any')
