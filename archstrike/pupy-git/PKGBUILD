@@ -11,17 +11,17 @@ pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi functi
 url='https://github.com/n1nj4sec/${_pkgname}'
 license=('custom')
 arch=('any')
-depends=('defusedxml' 'flake8' 'impacket' 'python-cerberus' 'python-chardet' 'python-colorama'
+depends=('python-defusedxml' 'flake8' 'impacket' 'python-cerberus' 'python-chardet' 'python-colorama'
          'python-dateparser' 'python-dnslib' 'python-dukpy' 'python-ecdsa' 'python-ed25519'
-         'python-hexdump' 'python-http-parser' 'python-logutils' 'python-m2Crypto' 'python-msgpack'
+         'python-hexdump' 'python-http-parser' 'python-logutils' 'python-m2crypto' 'python-msgpack'
          'python-mss' 'python-netaddr' 'python-netifaces' 'python-paramiko' 'python-pefile'
          'python-poster-git' 'python-psutil' 'python-pyaes' 'python-pycryptodome' 'python-pyelftools'
-         'python-pygments' 'python-pylzma-git' 'python-pyOpenSSL' 'python-pypykatz-git'
+         'python-pygments' 'python-pylzma-git' 'python-pyopenssl' 'python-pypykatz-git'
          'python-pyuv-git' 'python-pyyaml' 'python-requests' 'python-rsa' 'python-scapy'
          'python-secretstorage' 'python-tinyec-git' 'python-tornado' 'python-win_inet_pton-git'
          'python-xattr' 'python-filemagic' 'python-flake8-per-file-ignores' 'python-fusepy'
          'python-http_request' 'python-keyboard' 'python-puttykeys' 'python-pykcp-git'
-         'python-scandir' 'python-urllib-auth-git')
+         'python-scandir' 'python-urllib-auth-git' 'lazagne')
 makedepends=('git')
 groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
 options=('!strip')
@@ -31,7 +31,7 @@ source=("${pkgname}::git+https://github.com/n1nj4sec/${_pkgname}")
 #  'git+https://github.com/gaffe23/linux-inject'
 #  'payload_templates::git+https://github.com/n1nj4sec/${_pkgname}-binaries')
 
-sha512sums=('SKIP' 'SKIP' 'SKIP' 'SKIP')
+sha512sums=('SKIP')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
