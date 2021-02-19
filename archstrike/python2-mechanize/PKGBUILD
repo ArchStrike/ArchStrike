@@ -1,11 +1,11 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=220
+buildarch=1
 
 _pkgname="mechanize"
 pkgname="python2-${_pkgname}"
 pkgver=0.4.5
-pkgrel=1
+pkgrel=2
 pkgdesc="Automate interaction with HTTP web servers"
 arch=('any')
 url="https://github.com/python-mechanize/mechanize"
