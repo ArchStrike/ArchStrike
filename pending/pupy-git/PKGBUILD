@@ -5,8 +5,9 @@ buildarch=1
 noautobuild=1
 _pkgname="pupy"
 pkgname=${_pkgname}-git
-pkgver=20170518.r7112
+pkgver=r3492.c4fa316a
 pkgrel=1
+epoch=1
 pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python'
 url='https://github.com/n1nj4sec/${_pkgname}'
 license=('custom')
@@ -25,36 +26,22 @@ depends=('python-defusedxml' 'flake8' 'impacket' 'python-cerberus' 'python-chard
 makedepends=('git')
 groups=('archstrike' 'archstrike-malware' 'archstrike-tunnel')
 options=('!strip')
-
-source=("${pkgname}::git+https://github.com/n1nj4sec/${_pkgname}")
-#  'git+https://github.com/AlessandroZ/LaZagne'
-#  'git+https://github.com/gaffe23/linux-inject'
-#  'payload_templates::git+https://github.com/n1nj4sec/${_pkgname}-binaries')
-
-sha512sums=('SKIP')
+# once python3 is out of futurize, branch can change
+source=("${pkgname}::git+https://github.com/n1nj4sec/${_pkgname}#branch=futurize"
+        "PupyWeb.patch")
+sha512sums=('SKIP'
+            'fddab74d2b0efb22db93fc08b1a7481cd5218590e134d983e369c7168f98bb9266ab45d0e6873efea24012075ea605b07f133996cbd4b91e1d8981ffe380ea4c')
 
 pkgver() {
   cd "${srcdir}/${pkgname}"
-  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+  # pupy doesn't use tags so use number of revisions since beginning of the history
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
 }
 
 prepare() {
   cd "${srcdir}/${pkgname}"
 
-  # remove each submodule to replace with the pkg version
-  for submodule in '${_pkgname}/external/LaZagne' 'client/sources-linux/linux-inject' '${_pkgname}/payload_templates'; do
-    submodule_name="${submodule/*\/}"
-    git submodule deinit -f "$submodule"
-    git rm "$submodule"
-    rm -rf "${srcdir}/$submodule_name/.git"
-    mv "${srcdir}/$submodule_name" "$submodule"
-  done
-
-  # update and clone the remaining submodules
-  git submodule sync
-  git submodule foreach git fetch --all
   git submodule update --init --recursive
-
   # fix python hash bangs
   while read -r; do
     sed -i -re 's|^\s*#!\s*(/usr\|/user)?(/local)?/bin/.*python.*$|#!/usr/bin/env python|g' "$REPLY"
