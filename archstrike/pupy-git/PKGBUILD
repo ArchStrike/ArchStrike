@@ -2,7 +2,6 @@
 
 buildarch=1
 
-noautobuild=1
 _pkgname="pupy"
 pkgname=${_pkgname}-git
 pkgver=r3492.c4fa316a
