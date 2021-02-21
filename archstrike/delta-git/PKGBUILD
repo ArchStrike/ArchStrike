@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=192
 
 pkgname=delta-git
 _pkgname=delta
 pkgver=20160608.r5
-pkgrel=6
+pkgrel=7
 groups=('archstrike' 'archstrike-recon' 'archstrike-scanners')
-arch=('any')
+arch=('i686' 'x86_64')
 pkgdesc="Track the changes of a website"
 url="https://github.com/pangbo-1988/data_diff"
 license=('GPL3')
