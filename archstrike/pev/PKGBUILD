@@ -3,8 +3,8 @@
 buildarch=220
 
 pkgname=pev
-pkgver=0.80
-pkgrel=3
+pkgver=0.81
+pkgrel=1
 groups=('archstrike' 'archstrike-forensics' 'archstrike-reverse')
 pkgdesc="Command line based tool for PE32/PE32+ file analyze"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,21 +14,21 @@ depends=('openssl' 'pcre')
 makedepends=('unzip')
 install=${pkgname}.install
 source=("http://sourceforge.net/projects/pev/files/pev-${pkgver}/pev-${pkgver}.tar.gz" "destdir.patch")
-sha512sums=('d0c8ff8fcd60470899d5dbccfd7a7e4d960da007f42be9c7eab6b22a3d7cf4dde3c3d5cd9c7d70e369164503fb124640cf508ceda3d4792244cf33d11ab83321'
+sha512sums=('abf0087b7b3943edf41c47d8572c5b239368aa2b9afcefb3117beeb6ffd34ad3fdfb8c5779ab93ecc5f54b8745daf9030ed6636e9eb32d6d315d383cc3b0bd24'
             '5cc0f64476b72a803f434f3253895b3626a6d715ab165ebca4e3e003c967cc5beca5ca05e49013ef91fe9c90ee5fae6667085113cf3c6d88891079353026153c')
 
 prepare() {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
     sed -i 's|prefix = /usr/local|prefix = /usr|' src/Makefile lib/libpe/Makefile
-    patch -Np1 -i ${srcdir}/destdir.patch
+    #patch -Np1 -i ${srcdir}/destdir.patch
 }
 
 build() {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
     make
 }
 
 package() {
-    cd ${pkgname}
+    cd ${pkgname}-${pkgver}
     make DESTDIR="${pkgdir}" install
 }
