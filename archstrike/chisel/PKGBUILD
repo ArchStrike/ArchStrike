@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=chisel
-pkgver=1.7.4
+pkgver=1.7.6
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-tunnel')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ depends+=('glibc')
 makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "LICENSE")
-sha512sums=('9a515c962cf552001d3d6abe4a41e31d323c989167adf1836d119c82c40ad8b81ac17a32202e0ad0784eebef38bbcd0fa08a714242cc0656c4b28e0993a0a560'
+sha512sums=('4f349d4899b16d2daaf1bd46e5ccb1f79af76a140c2da49a26dc98e725d78d9751df1b7877f442371707748328c9e202c661678125089438302e870d45184f6e'
             '4450bb1b51fc9660d861e959139aced1756a6879a53ed6ed8ac836a57475eb65640498c73a7a9cd76e30f97e66484568713a549de07caac40b111b7c72193280')
 
 prepare() {
