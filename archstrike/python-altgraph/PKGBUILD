@@ -3,34 +3,21 @@
 buildarch=1
 
 _pkgname=altgraph
-pkgname=("python-${_pkgname}" "python2-${_pkgname}")
+pkgname=("python-${_pkgname}")
 pkgver=0.17
-pkgrel=1
+pkgrel=2
 pkgdesc='Fork of graphlib: a graph (network) package for constructing graphs'
 arch=('any')
 url="https://pypi.org/project/altgraph/"
 license=('MIT')
-depends=('python' 'python2')
+depends=('python' 'python-pygraphviz' 'python-pydot')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('1f6c17f4539bc0793c24bce22dabb597aef4ad0269f755ada8a7fb472d67fe1ea8f7fc510e2f1540c28bc2717ddbd2465be7a7d5703ac285be347ed670cb1dd7')
 
-prepare(){
-  cp -a ${_pkgname}-${pkgver}{,-py2}
-}
-
-package_python-altgraph() {
-  depends=('python' 'python-pygraphviz' 'python-pydot')
+package() {
  
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python3 setup.py install --root="${pkgdir}" -O1
-  install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-}
-
-package_python2-altgraph() {
-  depends=('python2' 'python2-pygraphviz' 'python2-pydot')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-  python2 setup.py install --root="$pkgdir" -O1
   install -Dm644 "LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
