@@ -5,41 +5,41 @@ buildarch=1
 _pkgname=pyghmi
 pkgbase=python-${_pkgname}
 pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=1.2.16
-pkgrel=3
+pkgver=1.5.23
+pkgrel=1
 arch=('any')
-url="https://github.com/openstack/pyghmi"
+url="https://opendev.org/x/pyghmi"
 license=('Apache')
 depends=('python' 'python2')
-makedepends=('python-setuptools' 'python2-setuptools')
+makedepends=('python-setuptools' 'python2-setuptools' 'python-pip' 'python2-pip')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('a5ea3daea64355fc072238ed6bb0def36ec89a99bfd655d246bb390f87fbc46a32744e0f196c15cb11eca4ad47fee8a94ec9dd06902e021e5fdc203c1bd50d60')
+sha512sums=('55b6212c1116755e5a21259a23e988ce2d844ce9b10d81f71ff2dc99c8e76177ded5cd97fd39172d82d3fcecd42ef5daf1129100ae0a311a4d5b31f574d4ac53')
 
 prepare(){
   cp -a "${_pkgname}-${pkgver}"{,-py2}
 }
 
 build() {
-  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
   python2 setup.py build
 }
 
 package_python-pyghmi() {
   pkgdesc="a pure Python (mostly IPMI) server management library"
-  depends=('python' 'python-cryptography')
+  depends=('python' 'python-cryptography' 'python-dateutil' 'python-six')
 
-  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   python3 setup.py install --root="${pkgdir}/" -O1
 }
 
 package_python2-pyghmi() {
   pkgdesc="a pure Python (mostly IPMI) server management library"
-  depends=('python2' 'python2-cryptography')
+  depends=('python2' 'python2-cryptography' 'python2-dateutil' 'python2-six')
 
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
+  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
   python2 setup.py install --root="${pkgdir}/" -O1
 
   # fix conflict
