@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=claripy
 pkgname=python-${_pkgname}
-pkgver=9.0.5327
+pkgver=9.0.6281
 pkgrel=1
 pkgdesc="An abstraction layer for constraint solvers"
 url="https://pypi.org/project/claripy/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('96823d36046f265a400898548c875bc93cff9f7bb5e5d75c92484298f74f59ba18353b0ba914ae425175fb3e2ea72d476c68281287394e3decab4c225d3e9327')
+sha512sums=('1131c8060827052868edc54dbb6cc1d2a7647bceed2797370a3d35a53fa472b231c915a7c85a79cca75d3ac180a587bb380318c4f2483012ef3ff03be2a20eb8')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
