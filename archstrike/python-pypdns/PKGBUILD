@@ -2,10 +2,10 @@
 
 buildarch=1
 
-_pkgname=pypdns
-pkgname=python-pypdns
+_pkgname="pypdns"
+pkgname="python-${_pkgname}"
 pkgver=1.5.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Python API for PDNS."
 url="https://github.com/CIRCL/PyPDNS"
 depends=('python' 'python-requests')
