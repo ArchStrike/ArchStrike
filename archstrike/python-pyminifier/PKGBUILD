@@ -4,16 +4,15 @@ buildarch=1
 
 _pkgname="pyminifier"
 pkgbase="python-${_pkgname}"
-
-pkgname=("python-${_pkgname}" "python2-${_pkgname}")
+pkgname=("python-${_pkgname}")
 pkgver=2.1
-pkgrel=2
+pkgrel=3
 pkgdesc="A Python code minifier, obfuscator, and compressor"
 arch=('any')
 url="https://github.com/liftoff/${_pkgname}"
 license=('GPL3')
 makedepends=("python" "python-setuptools" "python2" "python2-setuptools")
-source=("https://pypi.python.org/packages/2c/8a/946b0b43e0912c907aba42507073675c2e4a4a836c5b1ce10be6f12575d0/${_pkgname}-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('d9335b27acb11bf5c9fbd3bac173ee5cf6e66be9f2c879b1f0c059a84dfb845765e69775f2efe7fd0453d6d1916a0dcd1fcab3f4850076bbcf558561853f771c')
 
 prepare() {
@@ -26,26 +25,12 @@ prepare() {
 build() {
   cd "${srcdir}/${_pkgname}"
   python setup.py build
-
-  cd "${srcdir}/${_pkgname}-py2"
-  python2 setup.py build
 }
 
-package_python-pyminifier() {
+package() {
   depends=("python" "python-setuptools" "python-colorama")
   cd "${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
   install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
-
-package_python2-pyminifier() {
-  depends=("python2" "python2-setuptools")
-  cd "${_pkgname}-py2"
-  install -dm755 "${pkgdir}/usr/bin"
-  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
-  install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
-  mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}-py2"
-}
-
-# vim:se ts=2 sw=2 et:
