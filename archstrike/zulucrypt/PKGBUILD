@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=zulucrypt
-pkgver=5.4.0
+pkgver=6.0.0
 pkgrel=1
 pkgdesc="a cli and gui frontend to cryptsetup."
 arch=('x86_64' 'i686' 'armv6h' 'armv7h' 'aarch64')
@@ -12,14 +12,14 @@ url="https://github.com/mhogomchungu/zuluCrypt/"
 license=('GPL')
 depends=('cryptsetup' 'qt5-base' 'libpwquality' 'libsecret' 'tcplay'
          'gtk-update-icon-cache' 'libutil-linux' 'libgcrypt' 'device-mapper')
-makedepends=('cmake' 'git' 'automoc4')
+makedepends=('cmake')
 optdepends=('kdeutils-kwallet: retrieve volume keys from kde kwallet')
 options=('!strip' '!buildflags' '!distcc')
-source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/$pkgver/zuluCrypt-$pkgver.tar.xz")
-sha512sums=('1a8f5636e9ea32cfd642d5f18ee75ec3159090f0987cbc6d4b0078123a482f5e10466113cb8321e52250d2ecc298e677b4a57986c179f65c77b2a45e28292463')
+source=("https://github.com/mhogomchungu/zuluCrypt/releases/download/${pkgver}/zuluCrypt-${pkgver}.tar.xz")
+sha512sums=('99a4453150c56413c638fb7a2b6fa9e79542e5e37040f097e2e04329aa3e33a8b6d8fa8634994e2ad8b11267450b730f78c7d89d4a4b356c39ee516d4a6571bf')
 
 build() {
-    cd $srcdir/zuluCrypt-"${pkgver}"
+    cd ${srcdir}/zuluCrypt-"${pkgver}"
     mkdir -p "${srcdir}"/zuluCrypt-"${pkgver}"/build && cd build
     cmake -DCMAKE_INSTALL_PREFIX=/usr/ \
     -DNOKDE=true -DUDEVSUPPORT=true \
