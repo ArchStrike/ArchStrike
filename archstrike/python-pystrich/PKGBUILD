@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=python-pystrich
 pkgver=0.8
-pkgrel=4
+pkgrel=5
 pkgdesc="A Python module to generate 1D and 2D barcodes (Code 128, DataMatrix, QRCode and EAN13).Forked from huBarcode."
 url="http://method-b.uk/pystrich/"
 depends=('python')
