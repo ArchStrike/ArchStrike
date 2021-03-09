@@ -3,41 +3,24 @@
 buildarch=1
 
 _pkgname=pysmb
-pkgname=("python-${_pkgname}" "python2-${_pkgname}")
-pkgver=1.2.2
-_pkgver="rel-${pkgver//./-}"
-pkgrel=2
+pkgname=("python-${_pkgname}")
+pkgver=1.2.6
+pkgrel=1
 pkgdesc="An experimental SMB/CIFS library written in Python"
 arch=('any')
 url="https://miketeo.net/wp/index.php/projects/pysmb"
 license=('GPL')
-depends=('python' 'python2')
-makedepends=('python-setuptools' 'python2-setuptools')
-source=("https://github.com/miketeo/pysmb/archive/${_pkgver}.tar.gz")
-sha512sums=('82daa915762aad8a6ef1ef79ef0c0a39468ebf7248fafce34210de268542c3a3d684ddd642c6e3e4407db3e669001dd3670d0d0977b75b4beaafcf80dcae10f6')
-
-prepare(){
-  cp -a ${_pkgname}-${_pkgver}{,-py2}
-}
+depends=('python')
+makedepends=('python-setuptools')
+source=("https://github.com/miketeo/pysmb/archive/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('1dda7fd88f6d9e8e74d25478ebef8e3f0dfcefbd3b3c46fdb5dd7e9cc0e79dcba5179afc57c7f7f50e8bfdff82acf4de5397ef2c05431fc2907503ff0a4051bc')
 
 build() {
-  cd "${srcdir}/${_pkgname}-${_pkgver}"
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}/${_pkgname}-${_pkgver}-py2"
-  python2 setup.py build
 }
 
-package_python-pysmb() {
-  depends=('python')
-
-  cd "${srcdir}/${_pkgname}-${_pkgver}"
-  python3 setup.py install --root="${pkgdir}/" -O1 --skip-build
-}
-
-package_python2-pysmb() {
-  depends=('python2')
-
-  cd "${srcdir}/${_pkgname}-${_pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}/" -O1 --skip-build
+package() {
+  cd "${srcdir}/${_pkgname}-${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" -O1 --skip-build
 }
