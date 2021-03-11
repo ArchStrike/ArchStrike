@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname="urllib-auth"
 pkgname="python-${_pkgname}-git"
-pkgver=r50.b2711e2
+pkgver=r56.e6569dd
 pkgrel=1
 pkgdesc='library that provides NTLM/SPNEGO/SSPI support'
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
