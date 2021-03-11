@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=angr
 pkgver=9.0.6281
-pkgrel=1
+pkgrel=2
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
 depends=('python-ailment' 'python-ana' 'python-archinfo' 'python-bintrees' 'python-cachetools'
