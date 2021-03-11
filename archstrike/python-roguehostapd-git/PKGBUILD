@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=roguehostapd
 pkgname="python-${_pkgname}-git"
-pkgver=1.2.3
+pkgver=1.0.r45.g381b373
 pkgrel=1
 pkgdesc="Hostapd wrapper for hostapd"
 url="https://github.com/wifiphisher/roguehostapd"
@@ -15,7 +15,12 @@ arch=('any')
 source=("git+${url}.git")
 sha512sums=('SKIP')
 
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  git describe --long | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
 package() {
-  cd "${srcdir}/${_pkgname}" || exit
+  cd "${srcdir}/${_pkgname}"
   python setup.py install --root="${pkgdir}" -O1
 }
