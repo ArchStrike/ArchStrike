@@ -3,35 +3,20 @@
 buildarch=1
 
 _pkgname=safedexml
-pkgbase=python-${_pkgname}
-pkgname=(python-${_pkgname} python2-${_pkgname})
+pkgname=("python-${_pkgname}")
 pkgdesc="A defusedxml version of dead-simple Object-XML mapper for Python"
 pkgver=0.5.1
-pkgrel=3
+pkgrel=4
 arch=('any')
 url="https://pypi.org/project/safedexml/"
 license=('MIT')
-depends=('python' 'python2')
+depends=('python' 'python-defusedxml')
 makedepends=('python-setuptools' 'python2-setuptools')
 source=("https://files.pythonhosted.org/packages/6c/e5/889e319fc2ba5755c624ddc024840dceed8a4ea96a4fe68d9556da7a3208/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('3e9ebef0044d3319aae98a71cdb9790639c8eaadd9bd0775aa95c4bf56daaa1bd79614ee1600a347f757365ef447ce973e0b4e596a3d500b9c148a94efb0ee0a')
 
-prepare(){
-  cp -a ${_pkgname}-${pkgver}{,-py2}
-}
-
-package_python-safedexml() {
-  depends=('python' 'python-defusedxml')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}" || exit
-  python3 setup.py install --root="${pkgdir}/" -O1
-  install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
-}
-
-package_python2-safedexml() {
-  depends=('python2' 'python2-defusedxml')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2" || exit
-  python2 setup.py install --root="${pkgdir}/" -O1
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}/" -O1
   install -Dm644 "LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.txt"
 }
