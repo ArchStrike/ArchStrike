@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="ViperMonkey"
 pkgname="python-vipermonkey-git"
-pkgver=20200610.r1160
+pkgver=20210303.r1494
 pkgrel=1
 pkgdesc="A VBA parser and emulation engine to analyze malicious macros"
 arch=('any')
@@ -13,7 +13,7 @@ license=('GPL3')
 depends=('python' 'python-oletools' 'python-olefile' 'python-prettytable'
          'python-colorlog' 'python-colorama' 'python-pyparsing'
          'python-xlrd' 'python-unidecode' 'python-regex')
-makedepends=('python-setuptools' 'git')
+makedepends=('python-setuptools' 'git' 'python-pip' 'python-wheel')
 source=("git+${url}.git"
         "LICENSE")
 sha512sums=('SKIP'
