@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=("python-rq")
-pkgver=1.1.0
+pkgver=1.7.0
 pkgdesc="Simple job queues for Python"
 pkgrel=1
 arch=('any')
@@ -12,7 +12,7 @@ license=('BSD')
 depends=('python' 'redis' 'python-click' 'python-mock' 'python-pytest')
 makedepends=('python-setuptools')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('da6795f905ef26f564e799fc876eba4a7b23bbe171b11d563f882a48db314665757cd85a4dde5daaca49aee6b319bddc0943b2627bae7968af024b8591e34f05')
+sha512sums=('4027a8e1474cc350cf539ecf5734c2f851ef4e61bf0e106e44f359736f4f1ec4e690af97a119d12b1b7614b38ec4da286acff98b718ef604b5c367b3cc2af741')
 
 package() {
   cd "rq-${pkgver}" || exit
