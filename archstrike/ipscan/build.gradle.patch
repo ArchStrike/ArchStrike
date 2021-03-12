@@ -1,8 +1,6 @@
-diff --git a/build.gradle b/build.gradle
-index 4d6067c..c86f767 100644
---- a/build.gradle
-+++ b/build.gradle
-@@ -168,9 +168,6 @@ def deb(def platform, def arch, def moreDeps = '') {
+--- build.gradle	2021-02-15 15:22:05.000000000 -0500
++++ ../../build.gradle	2021-03-12 11:20:40.107098281 -0500
+@@ -192,9 +192,6 @@
      ant.exec(executable: "chmod", dir: dist, failonerror: true) {
          ant.arg(line: "a+x usr/bin/ipscan usr/lib/ipscan/${project.name}-${platform}-${version}.jar")
      }
@@ -12,7 +10,7 @@ index 4d6067c..c86f767 100644
      ant.delete(dir: dist)
  }
  
-@@ -185,10 +182,6 @@ def rpm(def platform, def arch) {
+@@ -209,10 +206,6 @@
          ant.replacefilter(token: "RPM_VERSION", value: rpmVersion)
          ant.replacefilter(token: "VERSION", value: version)
      }

@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=ipscan
 pkgver=3.7.6
-pkgrel=1
+pkgrel=2
 pkgdesc='Fast and friendly network scanner'
 arch=('i686' 'x86_64')
 groups=('archstrike' 'archstrike-scanners')

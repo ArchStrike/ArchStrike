@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-java -jar "/usr/share/java/ipscan/ipscan.jar" "$@"
+java -jar "/opt/ipscan/ipscan.jar" "$@"
