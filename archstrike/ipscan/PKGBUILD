@@ -12,42 +12,37 @@ license=('GPL2')
 url='https://angryip.org'
 depends=('java-runtime')
 makedepends=('jre11-openjdk' 'jdk11-openjdk' 'git')
-
-source=(
-  "git+https://github.com/angryip/ipscan#tag=$pkgver"
-  'build-fix.patch'
-  'google-analytics-removal.patch'
-  "$pkgname.sh"
-  "$pkgname.desktop"
-)
-
-sha512sums=(
-  'SKIP'
-  'f572a1bd593fef2dabb4282241842317c70c7e0a4993967fd4af1681f152aeabfa57c46e47f08bfb81f46d78dbdf6a611903ed0f9673776f0c7f278281cba210'
-  '96601dd69d14818b54c54810ce69f3e3cbbc87f2a65f153ff0bafc4e5e00ddf42f4c8c3bc67f539c0b25957f071ba83a7bde034a70dc82abe2d046b2c8ee5fec'
-  '6a9545ee20dd64cbb27fe15f3913ad386e12f71b9ea1bac9ed6489ec111ad69d0e84302f2b933089a0ee25fe832f2d320bd406c45d92b2df47448cab13e8572d'
-  '0e3e47dc0bc97695221977a077548e8ada397d264581411d9018e562b782113a1dbde9d0b017ae61418d61e0e6e9182feca04e88c335f942926164b0acbc09f8'
-)
+source=("git+https://github.com/angryip/${pkgname}.git#tag=${pkgver}"
+        'build.gradle.patch'
+        'google-analytics-removal.patch'
+        "${pkgname}.sh"
+        "${pkgname}.desktop")
+sha512sums=('SKIP'
+            'b9d8dfb0d890567244991c73973231fd42ce07b7645a333e75cc2d2b48e59e8195df47daaed71cedb9dccb3397d96683f9780087d742a3e5f970d0ecbad41992'
+            '96601dd69d14818b54c54810ce69f3e3cbbc87f2a65f153ff0bafc4e5e00ddf42f4c8c3bc67f539c0b25957f071ba83a7bde034a70dc82abe2d046b2c8ee5fec'
+            '9f0227b7b607bda5773a157c566bed3373654b89e665a69ac48bec48556277fd64d65d56af2ec421c59d983fa93903f2c4b191835b58731664389d254a004c59'
+            '0e3e47dc0bc97695221977a077548e8ada397d264581411d9018e562b782113a1dbde9d0b017ae61418d61e0e6e9182feca04e88c335f942926164b0acbc09f8')
 
 prepare() {
-  cd $pkgname
-  git apply ../build-fix.patch
+  cd "${srcdir}/${pkgname}"
+  patch < ../build.gradle.patch
   git apply ../google-analytics-removal.patch
-  sed -i "s|^version = .*|version = '$pkgver'|" build.gradle
-  sed -i -E "s|^( *'Version':) version,|\1 '$pkgver',|g" build.gradle
+  sed -i "s|^version = .*|version = '${pkgver}'|" build.gradle
+  sed -i -E "s|^( *'Version':) version,|\1 '${pkgver}',|g" build.gradle
 }
 
 build() {
-  cd $pkgname
+  cd "${srcdir}/${pkgname}"
+#  git checkout "${pkgver}"
   unset _JAVA_OPTIONS
   export PATH=/usr/lib/jvm/java-11-openjdk/bin:$PATH
-  GRADLE_USER_HOME="$srcdir" ./gradlew current
+  GRADLE_USER_HOME="${srcdir}" ./gradlew current
 }
 
 package() {
-  install -Dm755 $pkgname.sh "$pkgdir/usr/bin/$pkgname"
-  install -Dm644 $pkgname.desktop "$pkgdir/usr/share/applications/$pkgname.desktop"
-  cd $pkgname
-  install -Dm644 resources/images/icon256.png "$pkgdir/usr/share/pixmaps/$pkgname.png"
-  install -Dm644 build/libs/ipscan-*-$pkgver.jar "$pkgdir/usr/share/java/$pkgname/$pkgname.jar"
+  cd "${srcdir}/${pkgname}"
+  install -Dm755 "../${pkgname}.sh" "${pkgdir}/usr/bin/${pkgname}"
+  install -Dm644 "../${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm644 resources/images/icon256.png "${pkgdir}/usr/share/pixmaps/${pkgname}.png"
+  install -Dm644 build/libs/ipscan-*-${pkgver}.jar "${pkgdir}/opt/${pkgname}/${pkgname}.jar"
 }
