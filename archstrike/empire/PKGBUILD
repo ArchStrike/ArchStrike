@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="Empire"
 pkgname=empire
-pkgver=3.3.4
+pkgver=3.7.2
 pkgrel=1
 pkgdesc="A pure PowerShell post-exploitation agent."
 arch=('any')
@@ -15,9 +15,10 @@ install="${pkgname}.install"
 makedepends=('git')
 depends=('swig' 'pyinstaller' 'python-crypto' 'python-dropbox' 'python-flask' 'python-iptools' 'python-jinja' 'python-m2crypto'
          'python-macholib' 'python-netifaces' 'python-pydispatcher' 'python-pyopenssl' 'python-setuptools' 'python-urllib3' 
-         'python-zlib_wrapper' 'python-pyminifier' 'python-xlutils' 'python-pefile' 'python-bcrypt' 'python-simplejson')
+         'python-zlib_wrapper' 'python-pyminifier' 'python-xlutils' 'python-pefile' 'python-bcrypt' 'python-simplejson'
+	 'python-flask-socketio' 'python-yaml' 'python-sqlalchemy-utc' 'python-prompt-toolkit' 'python-wcwidth')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('9b0fbdc72dec75700618339a8cbb73efb8cbf75348e2bbf75f7dcfb35d85917368e1d5e64bdf13928fb031503a9d9b1e51e51bfe7925fab15a3c3c015064f0c5')
+sha512sums=('34015b1e18e1733b8c05f1696af6d19e2714a343f4a46e6d8f0b95ef6aaa7abf826b65e8ceca5d567181dda31c4837935e574f7e5c98917daf1b3b8432505763')
 
 prepare(){
   cd "${srcdir}/${_pkgname}-${pkgver}"
