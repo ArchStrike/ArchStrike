@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="elasticsearch-py"
 pkgname="python2-${_pkgname}"
-pkgver=7.9.1
+pkgver=7.11.0
 pkgrel=1
 arch=('any')
 pkgdesc='Official Python low-level client for Elasticsearch'
@@ -13,8 +13,8 @@ license=('Apache')
 depends=('python2-urllib3' 'python2-certifi' 'elasticsearch')
 makedepends=('python2-setuptools')
 replaces=('python2-elasticsearch')
-source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('aad80b384f63814553f99f4f39f686b469e56c46117db5e3925656f3cf90a65a77e82c34f0496255907268a4123a432ace3083d3bc1091b411a7e86cd20e7fd7')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('39763a6cc884b03787e0afe92e70a358ece936f18fb123c2a7ae42b60408f6f2b2e99932c0162721d3ea5c95a021f3c2346dc67b7c39115773155fef9fbd67d4')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
