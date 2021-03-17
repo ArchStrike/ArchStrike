@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=frida-tools
+pkgver=9.2.2
+pkgrel=1
+pkgdesc="Frida CLI tools"
+url="https://frida.re"
+depends=('python' 'frida')
+makedepends=('python-setuptools')
+license=('custom:OSI Approved')
+arch=('any')
+source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
+sha512sums=('0f0cb8be03f883e5b79a062bd9c088f8da784d0e67985216a3223bd406d0fa9937eceb2c4c2acd965cd5e053358abca337348c1b80c94fc5e1a255ce93b73068')
+
+build() {
+    cd ${pkgname}-${pkgver}
+    python setup.py build
+}
+
+package() {
+    cd ${pkgname}-${pkgver}
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
+}
