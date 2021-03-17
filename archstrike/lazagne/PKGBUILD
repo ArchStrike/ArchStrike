@@ -4,16 +4,16 @@ buildarch=1
 
 _pkgname=LaZagne
 pkgname=lazagne
-pkgver=2.4.3
+pkgver=2.4.4
 pkgrel=1
 groups=('archstrike' 'archstrike-social-engineering' 'archstrike-misc' 'archstrike-forensics')
 arch=('any')
 pkgdesc="An open source application used to retrieve lots of passwords stored on a local computer."
 url="https://github.com/AlessandroZ/LaZagne"
 license=('LGPL3')
-depends=('python2' 'python2-psutil' 'python-secretstorage' 'python2-pyasn1')
+depends=('python2' 'python2-psutil' 'python-secretstorage' 'python2-pyasn1' 'python2-crypto')
 source=("${pkgname}::${url}/archive/${pkgver}.tar.gz")
-sha512sums=('5f3949d403b66ed4f535f0de4031e9e57596c5cf32381f61dbd06c9fd304cd52b6f60b673ef1b4e2472a06ba0aa2fec1b86edab502b74906767912e534e3669a')
+sha512sums=('acf02ced074ec875cd121a780ef7ffaab7956a0bf86d9a006d608ca299499db21cac426defeec26c1c8fbd7bd2cd3172e29eac78da98e85bbf9f366cffd3384c')
 
 prepare() {
   grep -iRl python ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
