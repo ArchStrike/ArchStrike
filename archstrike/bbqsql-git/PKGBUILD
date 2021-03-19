@@ -6,12 +6,12 @@ buildarch=1
 
 pkgname=$_pkgname-git
 pkgver=v1.1.r17.gb9859d2
-pkgrel=2
+pkgrel=3
 epoch=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-exploit')
 pkgdesc="SQL injection exploit tool"
 arch=('any')
-url="https://github.com/neohapsis/bbqsql"
+url="https://github.com/CiscoCXSecurity/bbqsql"
 license=('BSD')
 depends=('python2-requests' 'python2-gevent')
 makedepends=('git' 'python2-setuptools')
