@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
-pkgver=v10.40.r0.g8ee008c
-pkgrel=3
+pkgver=v10.41.r0.g7eba4f6
+pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
@@ -15,26 +15,26 @@ license=('GPL3')
 depends=('bash>=4.2' 'iw' 'gawk' 'aircrack-ng' 'xterm' 'reaver-wps-fork-t6x-git'
          'iproute2' 'xorg-xdpyinfo' 'ethtool' 'pciutils' 'usbutils' 'rfkill'
          'wget' 'ccze' 'curl' 'xorg-xset' 'tmux' 'procps-ng')
-optdepends=('asleap:    Actively recover LEAP/PPTP passwords'
-            'beef-git:  Pentesting framework that focuses on web-browser exploitation'
-            'bettercap: Swiss army knife for network attacks and monitoring'
-            'bully:     Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
-            'crunch:    A wordlist generator for all combinations/permutations of a given character set'
-            'dhcpcd:    RFC2131 compliant DHCP client daemon'
-            'dsniff:    Collection of tools for network auditing and penetration testing'
-            'ettercap:  A network sniffer/interceptor/logger for ethernet LANs'
-            'hashcat:   Multithreaded advanced password recovery utility'
+optdepends=('asleap:      Actively recover LEAP/PPTP passwords'
+            'beef-git:    Pentesting framework that focuses on web-browser exploitation'
+            'bettercap:   Swiss army knife for network attacks and monitoring'
+            'bully:       Retrieve WPA/WPA2 passphrase from a WPS enabled access point'
+            'crunch:      A wordlist generator for all combinations/permutations of a given character set'
+            'dhcpcd:      RFC2131 compliant DHCP client daemon'
+            'dnsmasq:     Lightweight, easy to configure DNS forwarder and DHCP server'
+            'ettercap:    A network sniffer/interceptor/logger for ethernet LANs'
+            'hashcat:     Multithreaded advanced password recovery utility'
             'hcxdumptool: Small tool to capture packets from wlan devices'
-            'hcxtools: Small set of tools convert packets from captures for the use with latest hashcat or John the Ripper'
-            'hostapd:   IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
-            'iptables:  Linux kernel packet control tool'
-            'john:      John the Ripper password cracker'
-            'lighttpd:  A secure, fast, compliant and very flexible web-server'
-            'mdk3:      WLAN penetration tool'
-            'mdk4:      WLAN penetration tool'
-            'nftables:  Netfilter tables userspace tools'
-            'openssl:   The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
-            'pixiewps:  Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs')
+            'hcxtools:    Small set of tools convert packets from captures for the use with latest hashcat or John the Ripper'
+            'hostapd:     IEEE 802.11 AP, IEEE 802.1X/WPA/WPA2/EAP/RADIUS Authenticator'
+            'iptables:    Linux kernel packet control tool'
+            'john:        John the Ripper password cracker'
+            'lighttpd:    A secure, fast, compliant and very flexible web-server'
+            'mdk3:        WLAN penetration tool'
+            'mdk4:        WLAN penetration tool'
+            'nftables:    Netfilter tables userspace tools'
+            'openssl:     The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
+            'pixiewps:    Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
