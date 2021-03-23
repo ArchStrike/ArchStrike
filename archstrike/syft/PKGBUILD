@@ -1,12 +1,12 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=192
 
 pkgname=syft
 pkgver=0.14.0
-pkgrel=1
+pkgrel=2
 pkgdesc="Software Bill of Materials tool for container images and filesystems"
-arch=('any')
+arch=('x86_64' 'i686')
 url="https://github.com/anchore/syft"
 license=('Apache')
 groups=('archstrike')
