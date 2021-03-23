@@ -1,0 +1,25 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=syft
+pkgver=0.14.0
+pkgrel=1
+pkgdesc="Software Bill of Materials tool for container images and filesystems"
+arch=('any')
+url="https://github.com/anchore/syft"
+license=('Apache')
+groups=('archstrike')
+makedepends=('go' 'git')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('712bfbd0d76502325de9aa616d9f26ccdc78e65926dd8575a78a35e752c7ec1d47391b6ed024ee585c99d8d063fbb05c4b0ae908cdda5880d056c33efafea545')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./install.sh | sh -s -- -b "./" "${pkgver}"
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 "./bin/${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
+}
