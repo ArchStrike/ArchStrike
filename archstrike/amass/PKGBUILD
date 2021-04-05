@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname="Amass"
 pkgname="amass"
-pkgver=3.11.9
+pkgver=3.11.13
 pkgrel=1
 pkgdesc=" tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery"
 arch=('any')
@@ -13,7 +13,7 @@ license=('Apache')
 groups=('archstrike' 'archstrike-enumeration' 'archstrike-recon')
 makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('0332c98c06bae5cdd82e134403ee9e32ea286f49358457673debe6f7bc2202bb255342f237038c668843a46fcfc5aa88f7a8d670e6874300facbb6534d98dce5')
+sha512sums=('677095c92bbf510fafea72cd62f62e628431439d592e1e66886ff9498b177fe3b4cb27f68bd01919b7d3cbcb7139bece8d0484fae16700f7aa63e9ca100f47ce')
 
 prepare() {
   mkdir -vp "${srcdir}/github.com/OWASP"
@@ -41,6 +41,6 @@ package() {
   cd "${GOPATH}/bin"
   install -dm 755 "${pkgdir}/usr/share/${pkgname}"
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
-  cp -a --no-preserve=ownership "${GOPATH}/github.com/OWASP/${_pkgname}/"{wordlist/,examples/} "${pkgdir}/usr/share/${pkgname}"
-  chmod 644 "${pkgdir}/usr/share/${pkgname}/"{wordlist/*,examples/*}
+  cp -a --no-preserve=ownership "${GOPATH}/github.com/OWASP/${_pkgname}/examples/" "${pkgdir}/usr/share/${pkgname}"
+  chmod 644 "${pkgdir}/usr/share/${pkgname}"/examples/*
 }
