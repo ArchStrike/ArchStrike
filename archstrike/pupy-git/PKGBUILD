@@ -5,7 +5,7 @@ buildarch=1
 _pkgname="pupy"
 pkgname=${_pkgname}-git
 pkgver=r3492.c4fa316a
-pkgrel=2
+pkgrel=3
 epoch=1
 pkgdesc='Opensource, multi-platform (Windows, Linux, OSX, Android), multi function RAT (Remote Administration Tool) mainly written in python'
 url='https://github.com/n1nj4sec/${_pkgname}'
@@ -17,7 +17,7 @@ depends=('python-defusedxml' 'flake8' 'impacket' 'python-cerberus' 'python-chard
          'python-mss' 'python-netaddr' 'python-netifaces' 'python-paramiko' 'python-pefile'
          'python-poster-git' 'python-psutil' 'python-pyaes' 'python-pycryptodome' 'python-pyelftools'
          'python-pygments' 'python-pylzma-git' 'python-pyopenssl' 'python-pypykatz-git'
-         'python-pyuv-git' 'python-pyyaml' 'python-requests' 'python-rsa' 'python-scapy'
+         'python-pyuv-git' 'python-yaml' 'python-requests' 'python-rsa' 'python-scapy'
          'python-secretstorage' 'python-tinyec-git' 'python-tornado' 'python-win_inet_pton-git'
          'python-xattr' 'python-filemagic' 'python-flake8-per-file-ignores' 'python-fusepy'
          'python-http_request' 'python-keyboard' 'python-puttykeys' 'python-pykcp-git'
