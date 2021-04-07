@@ -5,7 +5,7 @@ buildarch=1
 
 _pkgname="image"
 pkgname="python2-${_pkgname}"
-pkgver=1.5.32
+pkgver=1.5.33
 pkgrel=1
 pkgdesc="Django application that provides cropping, resizing, thumbnailing, overlays and masking for images and videos with the ability to set the center of attention,"
 url="https://github.com/francescortiz/image"
@@ -14,7 +14,7 @@ makedepends=('python2-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/i/image/image-${pkgver}.tar.gz")
-sha512sums=('b90f565975c27ad6d8e3885fbd2138ab9362e8022a8ccf51a5a1529d5384107154cfa59663d438bf1211df25e9a9c058f9aa3b0c3dea03c9317a07e01b00af4e')
+sha512sums=('5f8ba9625e010cbd99ef7de1fe049828675c97781bb1a1bc8d6ac71cbba0ddcffd1bdb491272af9a21aaee24baad2ec1dc4a5838b97c25c335ea39d8034f5162')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
