@@ -4,7 +4,7 @@
 buildarch=220
 
 pkgname=pcapfix
-pkgver=1.1.4
+pkgver=1.1.5
 pkgrel=1
 pkgdesc="A repair tool for corrupted pcap files. "
 groups=('archstrike' 'archstrike-forensics' 'archstrike-misc' 'archstrike-analysis')
@@ -12,15 +12,15 @@ arch=("i686" "x86_64" "armv6h" "armv7h" 'aarch64')
 license=("GPL3")
 url='http://f00l.de/pcapfix/'
 depends=('glibc')
-source=("http://f00l.de/pcapfix/$pkgname-$pkgver.tar.gz")
-sha512sums=('6203e9032d2f24fe5d4aaefd9cfd57ece97a318af3ecd8da7171307a59c2a10b2e92206d5cf96e2dd9bfafc239dd9bc95a224bf5fef9e0c0432a6e76ff10d1da')
+source=("http://f00l.de/pcapfix/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('6504af32803a966f16ae7470aeedf04cbcccd7f0503be20204a7bdded2cdc8931d9d57547a65c852d186832f22a2a7bc4003277aa4d31ced9f61dbea1b882bc0')
 
 build() {
-  cd $srcdir/$pkgname-$pkgver
+  cd "${srcdir}/${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd ${pkgname}-${pkgver}
-  install -Dm755 $pkgname "$pkgdir/usr/bin/$pkgname"
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
