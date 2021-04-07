@@ -4,8 +4,8 @@ buildarch=192
 
 _pkgname="elasticsearch-py"
 pkgname="python2-${_pkgname}"
-pkgver=7.11.0
-pkgrel=2
+pkgver=7.12.0
+pkgrel=1
 arch=('x86_64' 'i686')
 pkgdesc='Official Python low-level client for Elasticsearch'
 url="https://github.com/elastic/${_pkgname}"
@@ -14,7 +14,7 @@ depends=('python2-urllib3' 'python2-certifi' 'elasticsearch')
 makedepends=('python2-setuptools')
 replaces=('python2-elasticsearch')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('39763a6cc884b03787e0afe92e70a358ece936f18fb123c2a7ae42b60408f6f2b2e99932c0162721d3ea5c95a021f3c2346dc67b7c39115773155fef9fbd67d4')
+sha512sums=('44f498db2c9fcab58040c6de64e38818467449026693af0b27342746fd4500cc49c2a870fd1c249a33160f82a116f09418dab0523a5d4926cb18b71f9e4cccab')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
