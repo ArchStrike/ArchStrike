@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=netdiscover
-pkgver=0.5.1
+pkgver=0.7
 pkgrel=1
 groups=('archstrike' 'archstrike-recon' 'archstrike-wireless')
 pkgdesc="An active/passive address reconnaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks."
@@ -13,10 +13,10 @@ license=('GPL')
 makedepends=('dos2unix')
 depends=('libpcap' 'libnet')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('b8b60b77c55966eb950aafb7d5d924e88b437a96a3d227cd943156d2a1c3ed81df57e90930132e11e13e341f43f475dbb27936ebf2db2c23d66885c71d7a1960')
+sha512sums=('e526c1560c4054c6a2761d392997629b301c50db2c408719e84a820f9ad206825b9a4620e6721dcdebbb5c7479cd239e85de2d0657f97015b103805e8f9c05b4')
 
 build() {
-    cd ${pkgname}-${pkgver}
+    cd "${srcdir}/${pkgname}-${pkgver}"
     sh update-oui-database.sh
     ./autogen.sh
     ./configure --prefix=/usr/ --sysconfdir=/etc/ --sbindir=/usr/bin
@@ -24,6 +24,6 @@ build() {
 }
 
 package() {
-    cd ${pkgname}-${pkgver}
-    make DESTDIR="$pkgdir" install
+    cd "${srcdir}/${pkgname}-${pkgver}"
+    make DESTDIR="${pkgdir}" install
 }
