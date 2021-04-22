@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=sasquatch-git
 _squashfs_version="4.3"
-pkgver=20180522.r58
+pkgver=20210324.r60
 pkgrel=1
 pkgdesc="Tools for squashfs, a highly compressed read-only filesystem for Linux."
 url="https://github.com/devttys0/sasquatch"
