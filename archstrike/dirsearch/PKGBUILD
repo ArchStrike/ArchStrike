@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=dirsearch
-pkgver=0.4.1.alpha
+pkgver=0.4.1.alpha2
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='A HTTP(S) directory/file brute forcer'
@@ -12,7 +12,7 @@ url='https://github.com/maurosoria/dirsearch'
 license=('custom')
 depends=('python' 'python-urllib3' 'python-chardet' 'python-certifi')
 source=("https://github.com/maurosoria/${pkgname}/archive/v${pkgver/.a/-a}.tar.gz")
-sha512sums=('4f4491274871d072d87ca544441f19a55db4a77e5abf4e28ca64fb4944b798cdee83d1e72d619b775b24ff8515b0a7cb2d1e29f1c08c1ac26ea043f8e0b1c8a9')
+sha512sums=('192aa5c011e2a3e8ece6d1dca4f7a5d560486c628262107adbd944957e09a08498e37f5472ed3e4178c5e95643a45e8ae96f66ff18fa5946b862e68dc88b46e1')
 
 package() {
   cd "${pkgname}-${pkgver/.a/-a}"
