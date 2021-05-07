@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=hpfeeds-git
-pkgver=20200817.r396
+pkgver=20210328.r411
 pkgrel=1
 pkgdesc="Honeynet Project generic authenticated datafeed protocol"
 url="https://github.com/hpfeeds/hpfeeds"
