@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=wifiphisher
 pkgname=${_pkgname}-git
-pkgver=20200611.r787
+pkgver=20210421.r789
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless')
 pkgdesc='A tool for Fast automated phishing attacks against WPA networks'
@@ -36,6 +36,8 @@ package() {
   # Make base directories.
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
+
+  python setup.py install --root=${pkgdir} -O1
 
   cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
 
