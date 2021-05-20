@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=ffuf
-pkgver=1.2.1
+pkgver=1.3.1
 pkgrel=1
 pkgdesc='Fast web fuzzer in Go'
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -13,7 +13,7 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('66c505b3807969b94ab35f03fe8af739ef6860120a3b2008ab188c2ac2d14159dd2b6780fa7fa5097a6fef9f882c6a33894b88092570feb8ae8ea02e8d04e020')
+sha512sums=('8cc4abd9b222a161ac1f7650b599eedeeda1fb54384fe32af6b2cc793ea16c5dc12de97540e2ad59c864eb0cd9f2ed3041da6b26a1c3833e8371407a91d78e8a')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
