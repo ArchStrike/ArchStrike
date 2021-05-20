@@ -3,29 +3,29 @@
 buildarch=1
 
 pkgname=jnetmap
-pkgver=0.5.4
-pkgrel=3
+pkgver=0.5.5_RC1
+pkgrel=1
 pkgdesc="Graphical network monitoring and documentation tool"
 arch=('any')
 url="http://rakudave.ch/jnetmap"
 license=('GPL3')
 groups=('archstrike' 'archstrike-networking')
 depends=('java-environment')
-source=(http://sourceforge.net/projects/$pkgname/files/jNetMap%20$pkgver/jNetMap-$pkgver.jar)
-noextract=("jNetMap-$pkgver.jar")
-sha512sums=('4c2068bf2bbf040187c022cdbdf49a0bfa24487206145704b23ced600b8ecc6b91261af8d5e4d1845b8da830ad0a8583725d678f5b957b69aec37e6caf57f100')
+source=(http://sourceforge.net/projects/$pkgname/files/jNetMap%20${pkgver//_/-}/jNetMap-${pkgver//_RC1/-694}.jar)
+noextract=("jNetMap-${pkgver//_RC1/-694}.jar")
+sha512sums=('136831fe39b04dcebd95dacb54844c1d5427f0ea9023117d9ff660e655340c0e5e53594e554c0cb911463ac5c0378f2b60d43b35249f8344791a3e08864749c8')
 
 package() {
-  cd ${srcdir}
+  cd "${srcdir}"
 
-  install -Dm755 jNetMap-${pkgver}.jar "${pkgdir}/usr/share/java/$pkgname/$pkgname.jar"
+  install -Dm755 "jNetMap-${pkgver//_RC1/-694}.jar" "${pkgdir}/usr/share/java/${pkgname}/${pkgname}.jar"
 
 # executable file
   install -dm755 "${pkgdir}/usr/bin"
 
-cat > "$pkgdir/usr/bin/$pkgname" << EOF
+cat > "${pkgdir}/usr/bin/${pkgname}" << EOF
 #!/bin/sh
 java -jar /usr/share/java/jnetmap/jnetmap.jar
 EOF
-chmod +x "${pkgdir}/usr/bin/$pkgname"
+chmod +x "${pkgdir}/usr/bin/${pkgname}"
 }
