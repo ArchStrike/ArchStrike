@@ -2,7 +2,7 @@
 # Contributor: Oliver Mangold omangold at gmail dot com
 
 pkgname=python-xdis
-pkgver=5.0.7
+pkgver=5.0.9
 pkgrel=1
 pkgdesc="Python cross-version byte-code disassembler and marshal routines."
 arch=('any')
@@ -11,7 +11,7 @@ license=('MIT')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://github.com/rocky/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('233a3fc994dc338ebb44bab41da33e80db3b8e034beca7804a97e6dbabe13f8c7b71109dca3c3ce3dcba375356011b36c59e115a0e9e37bd4bf090d85ae534e3')
+sha512sums=('1c9d0fd1b882cf1a5177942ff13fd79986ecc89ec5743f8ab086cfd2ed1648f1e873210be7425a16727d6b3bcbb74ff222fa3c6f5d842ee8a70f23f933aa9eb9')
 
 
 build() {
