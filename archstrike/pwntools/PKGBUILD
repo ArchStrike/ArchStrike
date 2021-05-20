@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=pwntools
-pkgver=4.4.0
+pkgver=4.5.0
 pkgrel=1
 pkgdesc='CTF framework and exploit development library'
 arch=('i686' 'x86_64')
@@ -13,12 +13,12 @@ groups=('archstrike' 'archstrike-exploit' 'archstrike-misc')
 depends_x86_64+=('lib32-glibc')
 depends=('python-dateutil' 'python-paramiko' 'python-mako' 'python-pyelftools' 'capstone' 'ropgadget' 'python-pyserial' 
          'python-requests' 'python-pygments' 'python-pysocks' 'python-tox' 'python-pip' 'python-psutil' 'python-unicorn'
-         'python-intervaltree' 'python-pypandoc' 'python-sortedcontainers')
+         'python-intervaltree' 'python-pypandoc' 'python-sortedcontainers' 'python-colored-traceback' 'python-rpyc')
 makedepends=('python-setuptools')
 replaces=('binjitsu-git')
 provides=('binjitsu-git')
 source=("https://github.com/Gallopsled/pwntools/archive/${pkgver}.tar.gz")
-sha512sums=('950b366e3daedb615449a5f48a0246fad2ae582c4c98059447b73c389e1c1bac72eb40388a458034e6ebed851b9c41f64723fd895028bd5b6bcc18e6c639e1c6')
+sha512sums=('c564058bb1cd6db89711d5183062d8898e185a4eb3bde81a9fcac23d84ddf4023b255821d4a51999a10e1088b406ca15f57ca3231e4fac5441a39563d13d22f6')
 
 build(){
     cd "${srcdir}/${pkgname}-${pkgver}"
