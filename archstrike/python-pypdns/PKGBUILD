@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname="pypdns"
 pkgname="python-${_pkgname}"
-pkgver=1.5.1
-pkgrel=2
+pkgver=1.5.2
+pkgrel=1
 pkgdesc="Python API for PDNS."
 url="https://github.com/CIRCL/PyPDNS"
 depends=('python' 'python-requests')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools' )
 license=('custom')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('5fc4022cba70f678e34e3ae648084fd4da7a38f856ea2685f2ae0a4532e3e82a3d053f5115d71df2b90c3c2a830b42f129a432b0730e252589ea711a1bbb0ee7')
+sha512sums=('fd7ce7ebb5265f7e2650dc4f6e4219446f017fa5ebc9097621fb561cb1889bb3517b42cea1a3634f2f512e2614685c63008f0b3634da6daff37ac25c565c0a8e')
 
 build() {
     cd "${srcdir}/pypdns-${pkgver}"
