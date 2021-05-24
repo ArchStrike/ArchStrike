@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=pnscan
-pkgver=1.11
-pkgrel=3
+pkgver=1.14.1
+pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A parallel network scanner that can be used to survey TCP network services."
 url='http://www.lysator.liu.se/~pen/pnscan/'
@@ -12,25 +12,16 @@ arch=('any')
 license=('GPL2')
 depends=('libnsl')
 source=("ftp://ftp.lysator.liu.se/pub/unix/pnscan/pnscan-${pkgver}.tar.gz")
-sha512sums=('b3ca7b18846a7756d3626676dc8c9198896dccfa0a94bab859335e721786eebb48745248c7edc5d3c8365dd6894e7bf923816deda3bcbb54a90b91c388b36756')
+sha512sums=('c04340e6a7387245678370c3d11f3e137960daede7b3577ef6bf9e2c20a2d9ff062c71b0493ae122450f16015dc87c088c76ca4af2ccad9babde1ee92b1cc3be')
 
 build(){
-  cd "${srcdir}/pnscan-${pkgver}" || exit
-
-  make lnx
+  cd "${srcdir}/pnscan-${pkgver}"
+  ./configure --prefix=/usr
+  make
 }
 
 package() {
-  cd "${srcdir}/pnscan-${pkgver}" || exit
-
-  # Base directories.
-  install -dm755 "${pkgdir}/usr/bin"
-  install -dm755 "${pkgdir}/usr/share/man/man1"
-
-  # Bin.
-  install -m755 pnscan "${pkgdir}/usr/bin"
-  install -m755 ipsort "${pkgdir}/usr/bin"
-
-  # Man.
-  install -m644 ipsort.1 pnscan.1 "${pkgdir}/usr/share/man/man1"
+  cd "${srcdir}/pnscan-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+  install -m755 old/ipsort "${pkgdir}/usr/bin"
 }
