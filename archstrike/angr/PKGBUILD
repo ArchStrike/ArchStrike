@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=angr
-pkgver=9.0.6281
-pkgrel=2
+pkgver=9.0.7491
+pkgrel=1
 pkgdesc="The next-generation binary analysis platform from UC Santa Barbara's Seclab!"
 url="https://github.com/angr/angr"
 depends=('python-ailment' 'python-ana' 'python-archinfo' 'python-bintrees' 'python-cachetools'
@@ -12,14 +12,14 @@ depends=('python-ailment' 'python-ana' 'python-archinfo' 'python-bintrees' 'pyth
          'python-cppheaderparser' 'python-dpkt-git' 'python-gitpython' 'python-itanium_demangler'
          'python-mulpyplexer' 'python-networkx' 'python-progressbar' 'python-protobuf'
          'python-psutil' 'python-pycparser' 'python-pyelftools' 'python-pygit2' 'python-pyvex'
-         'python-rpyc' 'python-simuvex' 'python-sortedcontainers' 'python-unicorn')
+         'python-rpyc' 'python-sortedcontainers' 'python-unicorn')
 makedepends=('python-setuptools' 'python-pip' 'python-wheel')
 license=('BSD')
 arch=('any')
 install="${pkgname}.install"
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.install")
-sha512sums=('9b2b749cacbe36158d579fb5a91d1b7e9efbecfee711d042f0cba01fa05d2d1fa26bd940181e3c0d8d9b46aaa3f5135b967639f42ad78b689c116734dca577cb'
+sha512sums=('2d4c67f60a1cd4257fa49738871b43f87947eb715ae7dd76746840583106886ac4105bbb52ade8b65ba87db48ae50031abb22997450deb9b631c4787843cc0ca'
             '3e5a33f78a27d5abd22eee426e08f9742e706acc3408cc4812d97d2e7fcf968ad59aace8845687cfb5d4c7d3d9a8b24cba40ac6d879266b13308f5f4d06b3aaa')
 
 build() {
