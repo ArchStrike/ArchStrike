@@ -4,27 +4,27 @@ buildarch=1
 
 pkgname=perl-algorithm-c3
 _cpanname=Algorithm-C3
-pkgver=0.08
-pkgrel=6
+pkgver=0.11
+pkgrel=1
 pkgdesc="Algorithm::C3"
 arch=('any')
-url="http://search.cpan.org/~FLORA/${_cpanname}"
+url="https://metacpan.org/pod/release/HAARG/Algorithm-C3-0.11/lib/Algorithm/C3.pm"
 license=('GPL' 'PerlArtistic')
 depends=('perl')
-makedepends=('perl-module-build')
+makedepends=('perl-module-build' 'make')
 options=('!emptydirs')
-source=(http://www.cpan.org/authors/id/F/FL/FLORA/${_cpanname}-${pkgver}.tar.gz)
-sha512sums=('feaf8b49ff9382eb0415536a1b384b690b33956705ebc3889c0f27dbae77eaec8e0179c1d103ed2ec53158de26c7e33ac7e6dfc920c64415f16baa360ab7b9b2')
+source=("https://cpan.metacpan.org/authors/id/H/HA/HAARG/${_cpanname}-${pkgver}.tar.gz")
+sha512sums=('ec2ae17090a826e013b7526e7f236e3cc9bc59488421aecb03ea876b6ed2e4b2ea4eb8e07aad57b5b645ca4a077f7064b98e790e9906496d26c1bcb36128acbe')
 
 build() {
-  cd ${srcdir}/${_cpanname}-${pkgver} || exit
-  perl Build.PL installdirs=vendor destdir=${pkgdir}
-  perl Build
+  cd ${srcdir}/${_cpanname}-${pkgver}
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+  make
 }
 
 package(){
-  cd ${srcdir}/${_cpanname}-${pkgver} || exit
-  perl Build install
+  cd ${srcdir}/${_cpanname}-${pkgver}
+  make install DESTDIR="${pkgdir}"
   find ${pkgdir} -name '.packlist' -delete
   find ${pkgdir} -name '*.pod' -delete
 }
