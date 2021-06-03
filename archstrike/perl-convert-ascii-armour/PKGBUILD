@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-convert-ascii-armour
 pkgver=1.4
-pkgrel=8
+pkgrel=9
 pkgdesc="Converts binary octets into ASCII armoured messages"
 arch=('any')
 url='https://metacpan.org/release/Convert-ASCII-Armour'
