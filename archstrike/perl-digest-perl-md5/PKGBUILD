@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-digest-perl-md5
 pkgver=1.9
-pkgrel=5
+pkgrel=6
 pkgdesc='Perl implementation of Ron Rivests MD5 Algorithm'
 arch=('any')
 url='https://metacpan.org/pod/Digest::Perl::MD5'
@@ -15,19 +15,19 @@ source=("http://search.cpan.org/CPAN/authors/id/D/DE/DELTA/Digest-Perl-MD5-${pkg
 sha512sums=('015a1f046b85b5b89c1b44073d60116d483332cd667cb7230222df9651b7da837a532991e91848ff0b65f171b8870c2c4bda651da4ca54ea75d062ba6a55b525')
 
 prepare() {
-  cd  "${srcdir}/Digest-Perl-MD5-${pkgver}" || exit
+  cd  "${srcdir}/Digest-Perl-MD5-${pkgver}"
 
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
 build() {
-  cd  "${srcdir}/Digest-Perl-MD5-${pkgver}" || exit
+  cd  "${srcdir}/Digest-Perl-MD5-${pkgver}"
 
   make
 }
 
 package() {
-  cd  "${srcdir}/Digest-Perl-MD5-${pkgver}" || exit
+  cd  "${srcdir}/Digest-Perl-MD5-${pkgver}"
 
   make DESTDIR="${pkgdir}" install
 
