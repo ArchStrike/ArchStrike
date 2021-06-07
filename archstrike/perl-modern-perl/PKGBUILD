@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-modern-perl
 pkgver=1.20200211
-pkgrel=2
+pkgrel=3
 pkgdesc="enable all of the features of Modern Perl with one command"
 arch=(any)
 url="https://metacpan.org/pod/Modern::Perl"
