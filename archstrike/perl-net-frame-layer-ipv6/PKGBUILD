@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-frame-layer-ipv6'
 pkgver='1.08'
-pkgrel=3
+pkgrel=4
 pkgdesc='Internet Protocol v6 layer object.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Frame::Layer::IPv6'
@@ -17,19 +17,19 @@ source=("http://search.cpan.org/CPAN/authors/id/G/GO/${_author}/${_perlmod}-${pk
 sha512sums=('0cb3de1fb34446e1000c30f625eb668fc4c67a098fb5fd1013b2ae115171f789492026929465a17563b4db69fdc7dcafb95a2cf7f7718a3ccabea1d20123f063')
 
 prepare() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
 
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
 build() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
 
   make
 }
 
 package() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
 
   make install DESTDIR="${pkgdir}/"
 }
