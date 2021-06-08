@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-net-nslookup
 pkgver=2.04
-pkgrel=5
+pkgrel=6
 pkgdesc='Provide nslookup(1)-like capabilties.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Nslookup'
@@ -17,7 +17,7 @@ source=("http://search.cpan.org/CPAN/authors/id/D/DA/$_author/${_perlmod}-${pkgv
 sha512sums=('401ad5a9e445175ef535e8ec6dc884a8d0ed8234ac017d79216fcb51dce59eb131aff15b2fe4aa426f772f7d59053e8580f5aa0f69f38700339b61fdb6fad27f')
 
 build() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
 
   # Install module in vendor directories.
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
@@ -25,7 +25,7 @@ build() {
 }
 
 package() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
 
   make install DESTDIR="${pkgdir}/"
 }
