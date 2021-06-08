@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='perl-net-frame'
 pkgver='1.21'
-pkgrel=2
+pkgrel=3
 pkgdesc='The base framework for frame crafting.'
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -16,7 +16,7 @@ sha512sums=('a0c8a8a7825bd82b5ef7bcb1872a53b38199adcc601fbf7a16653f57923659fd464
 _distdir="Net-Frame-${pkgver}"
 
 prepare() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                   \
     PERL_AUTOINSTALL=--skipdeps                              \
     PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR='${pkgdir}'"     \
@@ -26,12 +26,12 @@ prepare() {
 }
 
 build() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   make
 }
 
 package() {
-  cd "${srcdir}/${_distdir}" || exit
+  cd "${srcdir}/${_distdir}"
   make install
   find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
