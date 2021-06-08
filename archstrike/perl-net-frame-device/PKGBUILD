@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-frame-device'
 pkgver='1.12'
-pkgrel=6
+pkgrel=7
 pkgdesc='Get network device information and gateway.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Frame::Device'
@@ -19,16 +19,16 @@ source=("http://search.cpan.org/CPAN/authors/id/G/GO/${_author}/${_perlmod}-${pk
 sha512sums=('aba85b72ebc412fa4e3c7083d541abf3a2c3b08bea5c44074aa5aa02f78f2a54ba1b0fa93987c08033e0105df2a5fc4364fe5fb576439dd99666f5cf34314ae6')
  
 prepare() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
   PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
 }
 
 build() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/${_perlmod}-${pkgver}" || exit
+  cd "${srcdir}/${_perlmod}-${pkgver}"
   make install DESTDIR="${pkgdir}"
 }
