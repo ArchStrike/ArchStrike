@@ -1,20 +1,19 @@
 # Maintainer: ArchStrike <team@archstrike.org>
-# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
+# Contributor: John D Jones III AKA jnbek <jnbek1972 at gmail dot com>
 
 buildarch=1
 
 pkgname='perl-uri-fetch'
 _pkgname="URI-Fetch"
 pkgver=0.15
-pkgrel=4
+pkgrel=5
 pkgdesc="Smart URI fetching/caching"
 url='https://metacpan.org/pod/URI::Fetch'
 arch=('any')
 depends=('perl>=5.8.1' 'perl-class-errorhandler' 'perl-libwww' 'perl-uri')
 makedepends=()
 license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
-source=("http://cpan.metacpan.org/authors/id/N/NE/NEILB/${_pkgname}-${pkgver}.tar.gz")
+source=("https://cpan.metacpan.org/authors/id/N/NE/NEILB/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('eb630a628920cdee005a7a4be5c82da635050905a6cbb12b06721a11921f54b72d0c307306a413b95e43def7859eb5ac4e0d9d9400c4fe86750cc71210db7203')
 
 build() {
