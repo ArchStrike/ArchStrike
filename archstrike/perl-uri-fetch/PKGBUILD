@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-uri-fetch'
 pkgver='0.15'
-pkgrel=1
+pkgrel=2
 pkgdesc="Smart URI fetching/caching"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -26,6 +26,7 @@ build() {
       MODULEBUILDRC=/dev/null
 
     cd "${srcdir}/${_distdir}"
+    sed -i 's|use 5.008001;||' Makefile.PL
     /usr/bin/perl Makefile.PL
     make
   )
