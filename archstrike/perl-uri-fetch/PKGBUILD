@@ -1,39 +1,38 @@
 # Maintainer: ArchStrike <team@archstrike.org>
-# Contributor: John D Jones III <j[nospace]n[nospace]b[nospace]e[nospace]k[nospace]1972 -_AT_- the domain name google offers a mail service at ending in dot com>
-# Generator  : CPANPLUS::Dist::Arch 1.25
+# Contributor: John D Jones III AKA jnbek <jnbek1972 -_AT_- g m a i l -_Dot_- com>
 
 buildarch=1
 
 pkgname='perl-uri-fetch'
-pkgver='0.15'
+_pkgname="URI-Fetch"
+pkgver=0.15
 pkgrel=4
 pkgdesc="Smart URI fetching/caching"
+url='https://metacpan.org/pod/URI::Fetch'
 arch=('any')
-license=('PerlArtistic' 'GPL')
-options=('!emptydirs')
 depends=('perl>=5.8.1' 'perl-class-errorhandler' 'perl-libwww' 'perl-uri')
 makedepends=()
-url='https://metacpan.org/pod/URI::Fetch'
-source=("http://cpan.metacpan.org/authors/id/N/NE/NEILB/URI-Fetch-${pkgver}.tar.gz")
+license=('PerlArtistic' 'GPL')
+options=('!emptydirs')
+source=("http://cpan.metacpan.org/authors/id/N/NE/NEILB/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('eb630a628920cdee005a7a4be5c82da635050905a6cbb12b06721a11921f54b72d0c307306a413b95e43def7859eb5ac4e0d9d9400c4fe86750cc71210db7203')
-_distdir="URI-Fetch-${pkgver}"
 
 build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+
   ( export PERL_MM_USE_DEFAULT=1 PERL5LIB=""                 \
       PERL_AUTOINSTALL=--skipdeps                            \
       PERL_MM_OPT="INSTALLDIRS=vendor DESTDIR=${pkgdir}"     \
       PERL_MB_OPT="--installdirs vendor --destdir ${pkgdir}" \
       MODULEBUILDRC=/dev/null
 
-    cd "${srcdir}/${_distdir}"
-    /usr/bin/perl Makefile.PL
-    make
+  /usr/bin/perl Makefile.PL
+  make
   )
 }
 
 package() {
-  cd "${srcdir}/${_distdir}"
+  cd "${srcdir}/${_pkgname}-${pkgver}"
   make install
-
   find "${pkgdir}" -name .packlist -o -name perllocal.pod -delete
 }
