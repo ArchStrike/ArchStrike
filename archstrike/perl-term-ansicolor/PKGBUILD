@@ -3,7 +3,7 @@ buildarch=1
 
 pkgname='perl-term-ansicolor'
 pkgver='5.01'
-pkgrel=2
+pkgrel=3
 pkgdesc="Term::ANSIColor - Color screen output using ANSI escape sequences for perl"
 arch=('any')
 license=('PerlArtistic' 'GPL')
@@ -14,12 +14,12 @@ source=("http://search.cpan.org/CPAN/authors/id/R/RR/RRA/Term-ANSIColor-${pkgver
 sha512sums=('30602fb1553b7af77032e5cf34daf7b7256e9ca6dab914fcd5dfb3dca082c952f692c24b2cfaf0157190286b725bbef91156ee93bdc9946ee078ee4035a1f7d9')
 
 build() {
-    cd "${srcdir}/Term-ANSIColor-${pkgver}" || exit
+    cd "${srcdir}/Term-ANSIColor-${pkgver}"
     perl Makefile.PL INSTALLDIRS=vendor
     make
 }
 
 package(){
-    cd "${srcdir}/Term-ANSIColor-${pkgver}" || exit
+    cd "${srcdir}/Term-ANSIColor-${pkgver}"
     make DESTDIR=${pkgdir} install
 }
