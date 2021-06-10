@@ -1,13 +1,13 @@
 # Maintainer: ArchStrike <team@archstrike.org>
 
-buildarch=1
+buildarch=192
 
 _pkgname="Amass"
 pkgname="amass"
 pkgver=3.13.0
-pkgrel=1
+pkgrel=2
 pkgdesc=" tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery"
-arch=('any')
+arch=('i686' 'x86_64')
 url="https://github.com/OWASP/Amass"
 license=('Apache')
 groups=('archstrike' 'archstrike-enumeration' 'archstrike-recon')
