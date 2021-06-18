@@ -20,7 +20,7 @@ Please contact us if issues are encountered via github, IRC, twitter, or email -
 
 Email: <team@archstrike.org>
 
-Internet Relay Chat (IRC): irc://chat.freenode.net/#archstrike
+Internet Relay Chat (IRC): irc://irc.libera.chat/#archstrike
 
 Twitter: <https://twitter.com/ArchStrike>
 
