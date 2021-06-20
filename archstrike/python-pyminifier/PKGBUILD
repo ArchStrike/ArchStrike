@@ -3,23 +3,21 @@
 buildarch=1
 
 _pkgname="pyminifier"
-pkgbase="python-${_pkgname}"
-pkgname=("python-${_pkgname}")
+pkgname="python-${_pkgname}"
 pkgver=2.1
-pkgrel=3
+pkgrel=4
 pkgdesc="A Python code minifier, obfuscator, and compressor"
 arch=('any')
 url="https://github.com/liftoff/${_pkgname}"
 license=('GPL3')
-makedepends=("python" "python-setuptools" "python2" "python2-setuptools")
+depends=("python" "python-setuptools" "python-colorama")
+makedepends=("python" "python-setuptools")
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
 sha512sums=('d9335b27acb11bf5c9fbd3bac173ee5cf6e66be9f2c879b1f0c059a84dfb845765e69775f2efe7fd0453d6d1916a0dcd1fcab3f4850076bbcf558561853f771c')
 
 prepare() {
   cd "${srcdir}"
   mv ${_pkgname}-${pkgver} ${_pkgname}
-  cp -a ${_pkgname}{,-py2}
-  grep -ZRil 'python' "${_pkgname}-py2" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
 }
 
 build() {
@@ -28,7 +26,6 @@ build() {
 }
 
 package() {
-  depends=("python" "python-setuptools" "python-colorama")
   cd "${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
