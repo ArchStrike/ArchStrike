@@ -3,9 +3,9 @@
 buildarch=1
 
 _pkgname=pysmb
-pkgname=("python-${_pkgname}")
+pkgname="python-${_pkgname}"
 pkgver=1.2.6
-pkgrel=1
+pkgrel=2
 pkgdesc="An experimental SMB/CIFS library written in Python"
 arch=('any')
 url="https://miketeo.net/wp/index.php/projects/pysmb"
