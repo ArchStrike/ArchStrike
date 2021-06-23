@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-frame-layer-ipv6'
 pkgver='1.08'
-pkgrel=4
+pkgrel=5
 pkgdesc='Internet Protocol v6 layer object.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Frame::Layer::IPv6'

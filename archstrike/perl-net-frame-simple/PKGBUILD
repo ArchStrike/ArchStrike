@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-frame-simple'
 pkgver='1.09'
-pkgrel=4
+pkgrel=5
 pkgdesc='Frame crafting made easy.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Frame::Simple'

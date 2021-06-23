@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-frame-layer-sinfp3'
 pkgver='1.01'
-pkgrel=6
+pkgrel=7
 pkgdesc='Frame crafting made easy.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Frame::Layer::SinFP3'

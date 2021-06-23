@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname='perl-net-libdnet6'
 pkgver='0.28'
-pkgrel=3
+pkgrel=4
 pkgdesc='Adds IPv6 support to Net::Libdnet.'
 arch=('any')
 url='https://metacpan.org/pod/Net::Libdnet6'

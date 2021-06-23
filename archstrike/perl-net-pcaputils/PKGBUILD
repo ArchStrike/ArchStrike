@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=perl-net-pcaputils
 pkgver=0.01
-pkgrel=7
+pkgrel=8
 pkgdesc="Perl/CPAN Module Net::PcapUtils"
 arch=('any')
 url="https://metacpan.org/pod/Net::PcapUtils"

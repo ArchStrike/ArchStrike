@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname='perl-number-range'
 pkgver='0.12'
-pkgrel=8
+pkgrel=9
 pkgdesc="Perl extension defining ranges of numbers and testing if a"
 arch=('any')
 license=('PerlArtistic' 'GPL')
