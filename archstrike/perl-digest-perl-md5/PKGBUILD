@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-digest-perl-md5
 pkgver=1.9
-pkgrel=6
+pkgrel=7
 pkgdesc='Perl implementation of Ron Rivests MD5 Algorithm'
 arch=('any')
 url='https://metacpan.org/pod/Digest::Perl::MD5'

@@ -6,7 +6,7 @@ buildarch=1
 
 pkgname=perl-crypt-primes
 pkgver=0.50
-pkgrel=9
+pkgrel=10
 pkgdesc="Provable Prime Number Generator suitable for Cryptographic Applications"
 arch=('any')
 url='https://metacpan.org/pod/Crypt::Primes'

@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-crypt-rsa
 pkgver=1.99
-pkgrel=11
+pkgrel=12
 pkgdesc="RSA public-key cryptographysystem."
 arch=('any')
 license=('PerlArtistic' 'GPL')
