@@ -3,7 +3,7 @@ buildarch=1
 
 pkgname='perl-term-ansicolor'
 pkgver='5.01'
-pkgrel=3
+pkgrel=4
 pkgdesc="Term::ANSIColor - Color screen output using ANSI escape sequences for perl"
 arch=('any')
 license=('PerlArtistic' 'GPL')

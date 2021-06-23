@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname='perl-text-csv-xs'
 pkgver=1.46
-pkgrel=2
+pkgrel=3
 pkgdesc="comma-separated values manipulation routines"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 license=('PerlArtistic' 'GPL')

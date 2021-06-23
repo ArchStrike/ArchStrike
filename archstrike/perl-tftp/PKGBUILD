@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-tftp
 pkgver=1.0b3
-pkgrel=11
+pkgrel=12
 groups=('archstrike' 'archstrike-networking' 'archstrike-misc')
 pkgdesc="TFTP - TFTP Client class for perl"
 arch=('any')

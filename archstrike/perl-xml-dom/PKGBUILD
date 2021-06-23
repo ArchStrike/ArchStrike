@@ -4,7 +4,7 @@ buildarch=220
 
 pkgname=perl-xml-dom
 pkgver=1.46
-pkgrel=5
+pkgrel=6
 pkgdesc="Implements Level 1 of W3's DOM"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url='https://metacpan.org/pod/XML::DOM'
