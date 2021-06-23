@@ -4,7 +4,7 @@ buildarch=192
 
 pkgname=frida
 pkgver=14.2.18
-pkgrel=1
+pkgrel=2
 pkgdesc="Inject JavaScript to explore native apps on Windows, Mac, Linux, iOS and Android"
 url="http://www.frida.re"
 depends=('python-colorama' 'python-pygments' 'python-prompt_toolkit')
