@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=perl-io-socket-socks
 pkgver=0.74
-pkgrel=4
+pkgrel=5
 pkgdesc='Provides a way to create socks client or server both 4 and 5 version'
 url='https://metacpan.org/pod/IO::Socket::Socks'
 depends=('perl')
