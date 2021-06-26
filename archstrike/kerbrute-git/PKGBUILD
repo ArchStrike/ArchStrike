@@ -1,0 +1,33 @@
+# Maintainer: Ess <imesskayesss@gmail.com>
+
+buildarch=192
+
+name=kerbrute
+pkgname=${name}-git
+pkgver=1.0
+pkgrel=1
+groups=('archstrike' 'archstrike-enumeration' 'archstrike-bruteforce')
+arch=('x86_64' 'i686')
+pkgdesc="A tool to quickly bruteforce and enumerate valid Active Directory accounts through Kerberos Pre-Authentication"
+url="https://github.com/ropnop/kerbrute"
+license=('Apache')
+depends=('go')
+makedepends=('go' 'git')
+source=("${name}::git+https://github.com/ropnop/${name}.git")
+sha512sums=('SKIP')
+
+build() {
+    cd ${name}
+    make linux
+}
+
+package() {
+    install -dm755 "${pkgdir}/usr/bin"
+    cd ${name}
+    bits=$(getconf LONG_BIT)
+    if [ $bits -eq 64 ]; then
+        install -Dm755 dist/kerbrute_linux_amd64 "${pkgdir}/usr/bin/${name}"
+    else
+        install -Dm755 dist/kerbrute_linux_386 "${pkgdir}/usr/bin${name}"
+    fi
+}
