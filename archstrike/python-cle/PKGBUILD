@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=cle
 pkgname=python-${_pkgname}
-pkgver=9.0.7491
+pkgver=9.0.8021
 pkgrel=1
 pkgdesc="CLE Loads Everything (at least, may binary formats!) and provides a Pythonic interface to analyze what they are and what they would look like in memory."
 url="https://pypi.org/project/cle/"
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('BSD')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('aad095ea7466b99a6dfbea36cb256a2664e020bc9c83703c6580f7aba7c36107f228b2b7c7b2ef9f771c337592065d28498f709b2ee288af0f719b9e8e478d0a')
+sha512sums=('960b627635be89ada043b3b39ea874a629382c1432e61f5b885ea68630d7ad4eda8024dc8d3bed8e8b2feae7194b3d89d154a0d006da83c5750bb5ceabe4e620')
 
 build() {
     cd "${srcdir}/${_pkgname}-${pkgver}"
