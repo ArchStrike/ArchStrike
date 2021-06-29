@@ -21,6 +21,11 @@ build() {
     make linux
 }
 
+pkgver() {
+  cd "${name}" || exit
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
 package() {
     install -dm755 "${pkgdir}/usr/bin"
     cd ${name}
