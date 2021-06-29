@@ -5,8 +5,8 @@ buildarch=1
 
 _pkgname=mulpyplexer
 pkgname=python-${_pkgname}
-pkgver=0.08
-pkgrel=2
+pkgver=0.09
+pkgrel=1
 pkgdesc="A module that multiplexes interactions with lists of python objects."
 url="https://pypi.python.org/pypi/mulpyplexer"
 depends=('python')
@@ -14,14 +14,14 @@ makedepends=('python-setuptools')
 license=('GPL')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('6a8e3aaeaa42a1ec90bbd34aefa6c9c259e8b3e8a01e0824fce9cf4e82ae65aedec747eb1849ef7341bab144be739ae86378fdd825d4eefa3bbf89ca96a87ab3')
+sha512sums=('2621d02072c4233b4a48e2fad3ae7ad212e91015cd1fd3e82d016ca20ea8c339e1eaa4fa32f3f76ae9337ee07170029c23d0ffe86ecee18aa41dc58ed1ebdb28')
 
 build() {
-    cd $srcdir/mulpyplexer-$pkgver
+    cd "${srcdir}/mulpyplexer-${pkgver}"
     python setup.py build
 }
 
 package() {
-    cd $srcdir/mulpyplexer-$pkgver
-    python setup.py install --root="$pkgdir" -O1 --skip-build
+    cd "${srcdir}/mulpyplexer-${pkgver}"
+    python setup.py install --root="${pkgdir}" -O1 --skip-build
 }
