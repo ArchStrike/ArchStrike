@@ -1,10 +1,12 @@
-# Maintainer: Ess <imesskayesss@gmail.com>
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Ess <imesskayesss@gmail.com>
+
 
 buildarch=192
 
-name=kerbrute
-pkgname=${name}-git
-pkgver=1.0
+_name="kerbrute"
+pkgname="${_name}-git"
+pkgver=20201115.r90
 pkgrel=1
 groups=('archstrike' 'archstrike-enumeration' 'archstrike-bruteforce')
 arch=('x86_64' 'i686')
@@ -13,26 +15,26 @@ url="https://github.com/ropnop/kerbrute"
 license=('Apache')
 depends=('go')
 makedepends=('go' 'git')
-source=("${name}::git+https://github.com/ropnop/${name}.git")
+source=("${_name}::git+${url}.git")
 sha512sums=('SKIP')
 
-build() {
-    cd ${name}
-    make linux
-}
-
 pkgver() {
-  cd "${name}" || exit
+  cd "${srcdir}/${_name}" || exit
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
+build() {
+    cd "${srcdir}/${_name}"
+    make linux
+}
+
 package() {
+    cd "${srcdir}/${_name}"
     install -dm755 "${pkgdir}/usr/bin"
-    cd ${name}
     bits=$(getconf LONG_BIT)
     if [ $bits -eq 64 ]; then
-        install -Dm755 dist/kerbrute_linux_amd64 "${pkgdir}/usr/bin/${name}"
+        install -Dm755 dist/kerbrute_linux_amd64 "${pkgdir}/usr/bin/${_name}"
     else
-        install -Dm755 dist/kerbrute_linux_386 "${pkgdir}/usr/bin${name}"
+        install -Dm755 dist/kerbrute_linux_386 "${pkgdir}/usr/bin${_name}"
     fi
 }
