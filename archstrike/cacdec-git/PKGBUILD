@@ -11,8 +11,8 @@ groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="The hidden RDP client recorder"
 url="https://github.com/airbus-cert/cacdec"
-depends=('python')
-makedepends=('git' 'cmake'  'zlib' 'glib2' 'openssl')
+depends=('python' 'python-construct')
+makedepends=('git' 'cmake'  'zlib' 'glib2' 'openssl' 'python-setuptools')
 source=("${_name}::git+${url}.git")
 sha512sums=('SKIP')
 
