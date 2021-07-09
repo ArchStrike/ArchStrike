@@ -1,0 +1,29 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Maintainer: Jean Lucas <jean@4ray.co>
+# Contributor: Andy Weidenbaum <archbaum@gmail.com>
+
+buildarch=1
+
+_pkgname=humanfriendly
+pkgname=python-${_pkgname}
+pkgver=9.2
+pkgrel=1
+pkgdesc='Human-friendly output for text interfaces using Python'
+arch=(any)
+url='https://humanfriendly.readthedocs.io'
+license=('MIT')
+depends=('python')
+makedepends=('python-setuptools')
+options=(!emptydirs)
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('2abb8d7d4dfb84d625e82f3475bea5045c32f548a45999dca97d39e5bc0cd704a9ab45e0b6b87c0d419b447680a3e71e2d9c8cb14ba19117c7ac9b2f56297f00')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python setup.py install --root="${pkgdir}" -O1 --skip-build
+}
