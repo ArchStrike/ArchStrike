@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=suricata
-pkgver=6.0.2
+pkgver=6.0.3
 pkgrel=1
 pkgdesc="An Open Source Next Generation Intrusion Detection and Prevention Engine"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
@@ -18,7 +18,7 @@ backup=('etc/suricata/suricata.yaml')
 install="${pkgname}.install"
 source=("http://openinfosecfoundation.org/download/${pkgname}-${pkgver}.tar.gz"
         "${install}")
-sha512sums=('230a74a5442cfa066c56528036b64c173702238c5075161119eaad08d320e528d3510c51095297f120030177fed9c84076d00f567f7a3a4cbdb23d382966cf00'
+sha512sums=('186b871959988ca7cbd0d69e725aed18af915f93363c7ecc0ffa20d8ad8f50a326be08452d085772b1df84ef25258ef0dd6b35d41b0988cb1c653e60aeb103a2'
             '6c5fb66251e88be0c8feae2bb9b0ed561722b6c3b43df0a407afe302669a70624fec551428b7a4bd0d5a26dad60f006d9018176585dc7ad1ebc395ba6a6ddd0f')
 
 build() {
