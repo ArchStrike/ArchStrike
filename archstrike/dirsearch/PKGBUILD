@@ -3,33 +3,26 @@
 buildarch=1
 
 pkgname=dirsearch
-pkgver=0.4.1.alpha2
+pkgver=0.4.2.beta1
 pkgrel=1
 groups=('archstrike' 'archstrike-webapps')
 pkgdesc='A HTTP(S) directory/file brute forcer'
 arch=('any')
 url='https://github.com/maurosoria/dirsearch'
 license=('custom')
-depends=('python' 'python-urllib3' 'python-chardet' 'python-certifi')
-source=("https://github.com/maurosoria/${pkgname}/archive/v${pkgver/.a/-a}.tar.gz")
-sha512sums=('192aa5c011e2a3e8ece6d1dca4f7a5d560486c628262107adbd944957e09a08498e37f5472ed3e4178c5e95643a45e8ae96f66ff18fa5946b862e68dc88b46e1')
+depends=('python' 'python-urllib3' 'python-chardet' 'python-certifi' 'python-cryptography')
+source=("https://github.com/maurosoria/${pkgname}/archive/v${pkgver/.b/-b}.tar.gz")
+sha512sums=('6a6f5ae28b5806670323f979a52ed28a38f81add7dc13c1a873f238c0f7448ef489f33c8f9b220e1ed4a6ecf2e4ac473622b6f0fa259f24a423f7ca8debdc8a2')
 
 package() {
-  cd "${pkgname}-${pkgver/.a/-a}"
+  cd "${pkgname}-${pkgver/.b/-b}"
 
   # Make base directories.
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
-  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/bin/"
 
-  for dir in db logs lib thirdparty reports; do
-    install -dm755 "${pkgdir}/usr/share/${pkgname}/${dir}"
-    cp -a --no-preserve=ownership "${dir}"/* "${pkgdir}/usr/share/${pkgname}/${dir}/"
-  done
-
-  install -Dm755 ${pkgname}.py "${pkgdir}/usr/share/${pkgname}"
-  install -Dm755 default.conf "${pkgdir}/usr/share/${pkgname}"
-  install -Dm644 README.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  cp * -r --no-preserve=ownership "${pkgdir}/usr/share/${pkgname}/"
 
   ln -s "/usr/share/${pkgname}/${pkgname}.py" "${pkgdir}/usr/bin/${pkgname}"
 }
