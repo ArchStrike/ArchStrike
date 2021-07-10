@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=mimikatz
-pkgver=2.2.0.20210525
+pkgver=2.2.0.20210709
 pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
@@ -13,7 +13,7 @@ license=('custom')
 options=(!strip)
 source=("${url}/archive/${pkgver/0\.2/0-2}.tar.gz"
         "LICENSE")
-sha512sums=('30a349c488e29dc4897200984e50ab2099e6651ceff40f5d58bea7a24c77da3de1b72e476acecb24e17cf7a1ccd2becdc7c077e959e5c7f9eaf52c236a15735d'
+sha512sums=('e734390cfddfa0361acab6a2826f43809453774178ef4ee0381c1c294abdff058078cfffdd0645ef12e19c15215f74ffab49b0bb922d73b778c5627b87a5ea15'
             '4ac4bba96e2c65e4499913f14c1161e22d67c930529fbcfa74f9c691f96537370ca4f60446ed273288ce372b97974f6c22df145db68a42c373dbe3c0caba5dec')
 
 package() {
