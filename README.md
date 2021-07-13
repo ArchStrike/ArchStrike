@@ -48,8 +48,6 @@ A: We try and follow the Arch Linux standards when making our packages, so they 
 
 A: You can [download the latest releases from here](https://archstrike.org/downloads).
 
-**NOTE: We're trying to consolidate our main and testing repositories while Arch Linux is in the process of meeting the Python 2 EOL timeline. So, the ISO and OVA files might be outdated.**
-
 **Q3: How can I contact you?**
 
 A: See Contact Info above.
