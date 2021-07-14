@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.com>
+# Contributor: Ess <imesskayesss@gmail.com>
+
+buildarch=1
+
+pkgname=('zelos-git')
+_module='zelos'
+pkgver=20201210.r270
+pkgrel=1
+groups=('archstrike' 'archstrike-analysis' 'archstrike-misc')
+pkgdesc="Zelos is a python-based binary emulation platform."
+url="https://github.com/zeropointdynamics/zelos"
+depends=('python')
+makedepends=('python-setuptools')
+license=('GPL')
+options=('!strip')
+arch=('any')
+source=("${_module}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+    cd ${_module}
+    printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+package() {
+    cd "${srcdir}/${_module}"
+    python setup.py install --root="${pkgdir}"
+}
+

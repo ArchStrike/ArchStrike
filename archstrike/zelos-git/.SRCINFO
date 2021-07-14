@@ -1,0 +1,18 @@
+pkgbase = zelos-git
+	pkgdesc = Zelos is a python-based binary emulation platform.
+	pkgver = 20201210.r270
+	pkgrel = 1
+	url = https://github.com/zeropointdynamics/zelos
+	arch = any
+	groups = archstrike
+	groups = archstrike-analysis
+	groups = archstrike-misc
+	license = GPL
+	makedepends = python-setuptools
+	depends = python
+	options = !strip
+	source = zelos::git+https://github.com/zeropointdynamics/zelos.git
+	sha256sums = SKIP
+
+pkgname = zelos-git
+
