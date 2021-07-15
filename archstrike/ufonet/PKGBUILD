@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=ufonet
-pkgver=1.6
+pkgver=1.7
 pkgrel=1
 pkgdesc="A tool designed to launch DDoS attacks against a target, using 'Open Redirect' vectors on third party web applications, like botnet."
 arch=('any')
@@ -12,18 +12,18 @@ license=('GPL3')
 groups=('archstrike' 'archstrike-ddos')
 depends=('python-pycurl' 'python-geoip' 'python-requests' 'tor' 'python-scapy')
 source=("https://downloads.sourceforge.net/project/ufonet/ufonet-v${pkgver}.zip")
-sha512sums=('7fe11de4cbb08e8ba5b25bf9a42f904779dedb8de1b7fdb1d24d027cd47e236d56cca80cf7a778d3405bc75a8dca6eea4ea66b994bc8b861d895ba771dab3c3d')
+sha512sums=('f6cac434ea394863d3d102913741f029f47b29385acc83e2c1bd79eeb3dd9ec5a36ca800a944d64f048d0b8a59436076cac143422fee14fd26d8472b03ff7c41')
 
 package() {
-  cd ${srcdir}
-  install -dm755 "$pkgdir/usr/bin/"
-  install -dm755 "$pkgdir/usr/share/$pkgname"
-  cp -a --no-preserve=ownership ufonet/* "$pkgdir/usr/share/$pkgname"
+  cd "${srcdir}"
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ufonet/* "${pkgdir}/usr/share/${pkgname}"
 
-cat > "$pkgdir/usr/bin/ufonet" <<EOF
+cat > "${pkgdir}/usr/bin/ufonet" <<EOF
 #!/bin/sh
 cd /usr/share/ufonet
 python ufonet "\$@"
 EOF
-chmod 755 "$pkgdir/usr/bin/ufonet"
+chmod 755 "${pkgdir}/usr/bin/ufonet"
 }
