@@ -4,7 +4,7 @@ buildarch=192
 
 _pkgname="Amass"
 pkgname="amass"
-pkgver=3.13.2
+pkgver=3.13.4
 pkgrel=1
 pkgdesc=" tool to help information security professionals perform network mapping of attack surfaces and perform external asset discovery"
 arch=('i686' 'x86_64')
@@ -13,7 +13,7 @@ license=('Apache')
 groups=('archstrike' 'archstrike-enumeration' 'archstrike-recon')
 makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('2b51802aeed64ae90dc14d62c5bee00a970d485307788d3910922cea2e386cf25644ca9378aa374395035f5e15dcf9bad802b36cc1001b17878a061894eab77f')
+sha512sums=('015d9d1855f6e63d57dfc4c18262f53ed2c5d360d4ed0a134cb2e22473fc9d6e00e7693d11c1d3e5a60e6e7dfc167ff69a9c14eb8422998ac8d55c456363c0b7')
 
 prepare() {
   mkdir -vp "${srcdir}/github.com/OWASP"
@@ -24,11 +24,11 @@ prepare() {
   go get -d ./...
 }
 
-#check() {
-#  cd "${srcdir}/github.com/OWASP/${_pkgname}"
-#  export GOPATH="${srcdir}"
-#  go test ./...
-#}
+check() {
+  cd "${srcdir}/github.com/OWASP/${_pkgname}"
+  export GOPATH="${srcdir}"
+  go test ./...
+}
 
 build() {
   cd "${srcdir}/github.com/OWASP/${_pkgname}"
