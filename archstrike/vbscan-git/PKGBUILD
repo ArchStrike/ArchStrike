@@ -4,11 +4,11 @@ buildarch=1
 
 pkgname=vbscan-git
 pkgver=20190616.r39
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 pkgdesc="Black Box vBulletin Vulnerability Scanner"
-url="https://github.com/rezasp/vbscan"
+url="https://github.com/OWASP/vbscan"
 license=('GPL3')
 depends=('perl' 'bash')
 makedepends=('git')
