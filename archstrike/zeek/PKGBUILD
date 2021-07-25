@@ -4,11 +4,11 @@ buildarch=220
 
 pkgname=zeek
 pkgver=4.0.3
-pkgrel=1
+pkgrel=2
 pkgdesc="An Open Source Network Security Monitoring Tool (IDS)"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 url="http://zeek.org/"
-backup=(etc/zeek/{broctl.cfg,networks.cfg,node.cfg})
+backup=(etc/zeek/{zeekctl.cfg,networks.cfg,node.cfg})
 license=('BSD')
 depends=('bash' 'bind-tools' 'curl' 'file' 'geoip' 'gperftools' 'ipsumdump'
          'libmaxminddb' 'libpcap' 'openssl' 'postfix' 'zlib')
@@ -35,7 +35,7 @@ build() {
         --logdir="/usr/share/zeek/logs" --localstatedir="/var/spool" --with-python=/usr/bin/python \
         --enable-mobile-ipv6
   fi
-  make -j 4
+  make
 }
 
 package() {
