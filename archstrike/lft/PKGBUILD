@@ -4,12 +4,12 @@ buildarch=220
 
 pkgname=lft
 pkgver=3.91
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="A layer four traceroute implementing numerous other features"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 license=('custom')
-url="http://pwhois.org/lft/"
+url="https://pwhois.org/lft/"
 depends=('libpcap')
 source=("http://pwhois.org/dl/index.who?file=lft-${pkgver/0/}.tar.gz" "config.guess-for-aarch64.patch" "define_default_source.patch")
 sha512sums=('1d030e2def14330426eef4c81245c4cce5f09c560b65b319199b20d82e967b77a5d4e323e2e64a8c1bcf80d1f87ae871e3f24a7d9cbc19cd7a5be2d3204845e7'
