@@ -4,28 +4,28 @@ buildarch=220
 
 pkgname=httpry
 pkgver=0.1.8
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-sniffers')
 pkgdesc="A specialized packet sniffer designed for displaying and logging HTTP traffic."
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://dumpsterventures.com/jason/httpry/"
+url="https://github.com/jbittel/httpry"
 depends=('libpcap' 'perl')
 license=('GPL2')
-source=("http://dumpsterventures.com/jason/httpry/httpry-${pkgver}.tar.gz")
-sha512sums=('28d9fc37229e8b47711227762134e5b6e81bde0a44947f2e527771da2d042ba7e7c38b1ec205808a9e444e1235c91932ba16df4a31cc3d739c6474b25e149636')
+source=("https://github.com/jbittel/httpry/archive/refs/tags/${pkgname}-${pkgver}.tar.gz")
+sha512sums=('d242d5bd60296f1a5836c3c9449c732a77eeda69c103718e75debfeb97d528b87bf895312883f194f0a35c37c1d59e95086b1f7dd8f3ae8627428657d49cebed')
 
 prepare(){
-  cd "${srcdir}/httpry-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   sed -i '19s|plugins|/usr/share/httpry/plugins|' scripts/parse_log.pl
 }
 
 build() {
-  cd "${srcdir}/httpry-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   make
 }
 
 package() {
-  cd "${srcdir}/httpry-${pkgver}"
+  cd "${srcdir}/${pkgname}-${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/share/licenses/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}/plugins"
