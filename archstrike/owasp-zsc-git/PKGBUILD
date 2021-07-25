@@ -4,11 +4,11 @@ buildarch=1
 
 pkgname=owasp-zsc-git
 pkgver=20200503.r315
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-exploit')
 arch=('any')
 pkgdesc="Shellcode/Obfuscate Code Generator"
-url="https://github.com/zdresearch/OWASP-ZSC"
+url="https://github.com/OWASP/zsc"
 license=('GPL3')
 depends=('python2' 'java-environment')
 makedepends=('git')
