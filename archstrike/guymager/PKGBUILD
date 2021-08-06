@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=guymager
-pkgver=0.8.12
+pkgver=0.8.13
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics')
 pkgdesc='A forensic imager for media acquisition'
@@ -16,7 +16,7 @@ options=('!strip')
 backup=("etc/${pkgname}/${pkgname}.cfg")
 source=("http://downloads.sourceforge.net/project/${pkgname}/${pkgname}/LatestSource/${pkgname}-${pkgver}.tar.gz"
         "${pkgname}.desktop")
-sha512sums=('79131abc41fae197012fcb4c915ef739b3709e78024f72f68b00d33778bfa4fa36b87d1f64fbde0cb6f9dd992e3852e429031eabe9aa5ec1d9cef541f470ce7f'
+sha512sums=('155a5eeb7b67c6496297efd1e296598fb79c7024013f0b9b9c340cf9f804c52a2e18b0c4ffca0fab8981b7c23aac16f90199deefad9c479bacf5ca8bddb8b032'
             '2f3de7257590ec00d6a5d222813ac9169a38b49832b863bdea7f2177eeda60ff4d98ad6656d15552e59884bfbf73cee960cb69cd1c1412bd633331025ccd9a81')
 
 build() {
