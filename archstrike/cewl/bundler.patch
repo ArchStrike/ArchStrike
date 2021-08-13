@@ -1,10 +1,9 @@
-diff --git a/Gemfile.lock b/Gemfile.lock
-index 750e980..941cf01 100644
---- a/Gemfile.lock
-+++ b/Gemfile.lock
-@@ -24,4 +24,4 @@ DEPENDENCIES
-   zip
- 
- BUNDLED WITH
--   1.17.2
-+   2.1.4
+diff --git a/Gemfile b/Gemfile
+index 8cdd301..a5d85da 100644
+--- a/Gemfile
++++ b/Gemfile
+@@ -5,3 +5,4 @@ gem 'mini_exiftool'
+ gem 'nokogiri'
+ gem 'spider'
+ gem 'zip'
++gem 'rexml'
