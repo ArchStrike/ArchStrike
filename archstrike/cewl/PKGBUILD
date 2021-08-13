@@ -4,19 +4,19 @@ buildarch=1
 
 pkgname=cewl
 _pkgname=CeWL
-pkgver=5.4.9
-pkgrel=2
+pkgver=5.5.2
+pkgrel=1
 groups=('archstrike' 'archstrike-autonomous' 'archstrike-crackers')
 pkgdesc='A custom word list generator'
 arch=('any')
 url="https://github.com/digininja/CeWL"
 license=('CCPL')
 depends=('ruby' 'ruby-spider' 'ruby-mini_exiftool' 'ruby-nokogiri'
-         'ruby-http_configuration' 'ruby-rubyzip' 'ruby-zip' 'ruby-mime' 'ruby-mime-types')
+         'ruby-http_configuration' 'ruby-rubyzip' 'ruby-zip' 'ruby-mime' 'ruby-mime-types' 'ruby-rexml')
 makedepends=('ruby-bundler')
 source=("${url}/archive/${pkgver}.tar.gz" 'bundler.patch')
-sha512sums=('7395b13f439eb97cc4f0e31d370c800e793d94ad2ea2f53655ef91eb12065dc5e586746ed63ae9a5e89499abc9e37b691c9a9a73a97862a2273a01e2e2e65f7e'
-            'cfe984632dd80009baa117cb75ff6dc50bb4994ac8a03ca8cc39cb72f9984c012199180df12501c4a75c3a66548c3bc32ea8afd561c5557fee1c8ca3baee01e7')
+sha512sums=('7ac3d6bcbdc9011b60d6d6082564b0d25441d05cbd7cf552535202d26c4218124b67177d62060c0a6c4ef7af96ceefc0bd795e3eebb73c5903415bb2e3bf7530'
+            'd3411763c4fafecdeda27b656061314f5aab1c39ba57b5aaeed9ee9b462a57b3660ed59fd9e3f032be7bf9b8fca2b0d82c1b11c3db11b5c8970bedeb55c7945b')
 
 prepare() {
   cd ${_pkgname}-${pkgver}
@@ -28,6 +28,7 @@ package() {
 
   install -dm755 "${pkgdir}/usr/bin"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  rm Gemfile.lock
   cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
   cd "${pkgdir}/usr/share/${pkgname}"
   bundle install --path vendor/bundle
