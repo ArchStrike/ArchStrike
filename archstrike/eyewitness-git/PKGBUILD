@@ -4,7 +4,7 @@ buildarch=204
 
 _pkgname="EyeWitness"
 pkgname="eyewitness-git"
-pkgver=20210614.r906
+pkgver=20210726.r908
 pkgrel=1
 pkgdesc="Take screenshots of websites, provide some server header info, and identify default credentials if possible"
 url="https://github.com/FortyNorthSecurity/EyeWitness"
