@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=frida-tools
-pkgver=9.2.4
+pkgver=10.2.1
 pkgrel=1
 pkgdesc="Frida CLI tools"
 url="https://frida.re"
@@ -12,7 +12,7 @@ makedepends=('python-setuptools')
 license=('custom:OSI Approved')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/$pkgname/$pkgname-$pkgver.tar.gz")
-sha512sums=('7218c6927e7d7846e743479e39ee2abb3e4899de3af7cf768ca3097e91e9394bc21bbbf964332f984aaa3ca0e28c16df90a494b6ee165823ec1dfeeb37148783')
+sha512sums=('e5cf29e13714f0c2925995bebc9c52131313e1bdb8ca48d44ac0d29b96265ace9eae5b9dd85db2a08ac2944263da7c9dcb9cca935bf8e0976e18bec6bd2514c1')
 
 build() {
     cd ${pkgname}-${pkgver}
