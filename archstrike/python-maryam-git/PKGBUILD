@@ -5,13 +5,13 @@ buildarch=1
 
 pkgname=('python-maryam-git')
 _module='maryam'
-pkgver=20210630.r732
+pkgver=20210811.r787
 pkgrel=1
 groups=('archstrike' 'archstrike-intel' 'archstrike-analysis' 'archstrike-recon')
 pkgdesc="OWASP Maryam is a modular/optional open source framework based on OSINT and data gathering."
 url="https://github.com/saeeddhqan/Maryam"
-depends=('python')
-makedepends=('python-setuptools' 'python-pip')
+depends=('python' 'python-lxml' 'python-pandas')
+makedepends=('python-setuptools' 'python-pip' 'git')
 license=('GPL')
 arch=('any')
 source=("${_module}::git+${url}.git")
