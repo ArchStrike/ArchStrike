@@ -3,7 +3,7 @@
 buildarch=192
 
 pkgname=rr-git
-pkgver=20210503.r5534
+pkgver=20210814.r5686
 pkgrel=1
 groups=('archstrike' 'archstrike-misc' 'archstrike-crypto' 'archstrike-analysis')
 pkgdesc="A Record and Replay Framework"
