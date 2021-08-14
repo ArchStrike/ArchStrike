@@ -14,7 +14,7 @@ license=('BSD')
 makedepends=('git')
 depends=('python' 'python-pexpect' 'python-pillow' 'python-beautifulsoup4'
          'python-qrcode' 'python-pefile' 'impacket' 'jdk8-openjdk'
-         'python-requests' 'python-pycryptodome' 'python-pyopenssl'
+         'python-requests' 'python-pycryptodome' 'python-pyopenssl')
 optdepends=('ettercap: DNS spoofing and ARP cache poisoning capabilities'
             'sendmail: email address spoofing'
             'apache: increase speed of web attack vectors'
