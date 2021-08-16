@@ -1,0 +1,30 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="beautifulsoup4"
+pkgname="python2-${_pkgname}"
+pkgver=4.9.3
+pkgrel=1
+pkgdesc="A Python2 HTML/XML parser designed for quick turnaround projects like screen-scraping"
+arch=('any')
+url="https://www.crummy.com/software/BeautifulSoup/index.html"
+license=('PSF')
+depends=('python2-soupsieve')
+makedepends=('python2-setuptools')
+optdepends=('python2-chardet:  to autodetect character encodings'
+            'python2-lxml:     alternative HTML parser'
+            'python2-html5lib: alternative HTML parser')
+#source=("https://pypi.io/packages/source/b/beautifulsoup4/beautifulsoup4-${pkgver}.tar.gz")
+source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
+sha512sums=('e3cb6258bd7c51f12128fa8ee5948fb3566163ae233fac2dda21bab7772ab8dbb384d920b0ea138ef9921307b48f89cee3a9bf6111dfc8903d917ee7af365f34')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+}
