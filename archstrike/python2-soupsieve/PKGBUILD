@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname="soupsieve"
+pkgname="python2-${_pkgname}"
+pkgver=1.9.6
+pkgrel=1
+pkgdesc="A modern CSS selector implementation for Beautiful Soup"
+url="https://github.com/facelessuser/soupsieve"
+license=('MIT')
+arch=('any')
+makedepends=('python2-setuptools' 'python2-backports.functools_lru_cache')
+source=("https://github.com/facelessuser/soupsieve/archive/${pkgver}.tar.gz")
+sha512sums=('44954cdedc16a51c794ebe6770caeb8f179167ad2f0a0478cb1efd5878d6cc49fffd6119125964b19184afa6d0d7dedadb81dee020a48c5128ccf56e36a78f61')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE.md "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE.md
+}
