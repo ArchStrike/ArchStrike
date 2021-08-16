@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+_pkgname="markupsafe"
+pkgname="python2-${_pkgname}"
+pkgver=1.1.1
+pkgrel=1
+pkgdesc="Implements a XML/HTML/XHTML Markup safe string for python2"
+arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
+url="https://pypi.org/project/MarkupSafe/"
+license=('BSD')
+depends=('python2')
+makedepends=('python2-setuptools')
+source=("https://github.com/pallets/markupsafe/archive/${pkgver}.tar.gz")
+sha512sums=('c2a1072c5dd0918e47f9cfbd30b79b0690a43635f7cfc3fdd27f3df52f8e20406d7e3cfadd29df8ab1d1110f50e23eb7c7272707e0739d862d4b1edb59bbc241')
+
+build() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${_pkgname}-${pkgver}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -D -m644 LICENSE.rst "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.rst"
+}
