@@ -3,7 +3,7 @@
 buildarch=128
 
 pkgname=dradis
-pkgver=3.22.0
+pkgver=4.0.0
 pkgrel=1
 pkgdesc="An open source framework to enable effective information sharing."
 groups=('archstrike' 'archstrike-misc')
@@ -13,7 +13,7 @@ depends=('ruby' 'redis')
 arch=('x86_64')
 options=(!strip)
 source=("https://github.com/dradis/dradis-ce/archive/v${pkgver}.tar.gz")
-sha512sums=('3eec2c1a99e00c334af11a3bd52e443f3caeaab39f2587ca9c9873b36f6621396281aec4f942691f12842f29c0a11ce95850ac919fa8e2df26156f67a9a512d0')
+sha512sums=('45036f0e9c6756752d578503d1aa4e720dbfda12f2efbc16ea23567c9af641066ff149c327da0175bdd1a70847e60a09d0607ddac3067c8633c9fa499830a008')
 
 package() {
 
