@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname="flask"
 pkgname=("python2-${_pkgname}")
-pkgver=1.1.2
-pkgrel=3
+pkgver=1.1.4
+pkgrel=1
 pkgdesc='A lightweight WSGI web application framework'
 url="http://${_pkgname}.pocoo.org/"
 arch=('any')
@@ -13,7 +13,7 @@ license=('custom:BSD')
 depends=('python2-werkzeug' 'python2-jinja' 'python2-itsdangerous' 'python2-click')
 makedepends=('python2-setuptools')
 source=("https://github.com/pallets/${_pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('390baaea8e3500724a4a7755d930e078cfc072357af15f2180f35983cc86d224827afd9180a466e3ad546405a8b8a94d752c19eda716f2f06c1716e4f19c4fbc')
+sha512sums=('e7ca33d599c0f7b83542620e827c999124ffe30e31006815b49993a81f9cf0d61dd0433b73f57f922da5aeb76101beccfe63d9a7236e1850e326f838dc1f453f')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
