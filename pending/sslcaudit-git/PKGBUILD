@@ -1,0 +1,32 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=sslcaudit
+pkgname=${_pkgname}-git
+pkgver=r524.f218b9b
+pkgrel=5
+groups=('archstrike' 'archstrike-scanners')
+pkgdesc="Utility to perform security audits of SSL/TLS clients"
+url='https://github.com/abbbe/sslcaudit'
+arch=('any')
+license=('GPL3')
+depends=('python2-m2crypto')
+makedepends=('git' 'python2-setuptools')
+source=("${pkgname}::git+https://github.com/abbbe/sslcaudit.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+}

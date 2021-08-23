@@ -1,0 +1,31 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=allthevhosts
+pkgver=1.0
+pkgrel=8
+groups=('archstrike' 'archstrike-scanners' 'archstrike-recon' 'archstrike-webapps')
+pkgdesc="A vhost discovery tool that scrapes various web applications"
+arch=('any')
+url="http://labs.portcullis.co.uk/tools/finding-all-the-vhosts/"
+license=('custom')
+depends=('python2' 'python2-beautifulsoup4' 'python2-lxml')
+source=("http://labs.portcullis.co.uk/download/${pkgname}.tar.gz" "${pkgname}.desktop" "${pkgname}.py.patch" "bs4.patch")
+sha512sums=('18e29cd7ced958ee0d2753088fdbd2073abcf48b35601a0405a5d6ad2dc1a35ce1b933c6952131909b283ea607ec5a718a7d879cf1b732b3908d9551af73e758'
+            '17d5311f4d761b769f2398f053f3431e2da552db769adb84b497b76ccbeb133079c4948eedc854031415a0e7577a11c960f9a6ea428eb3acbd62f99d2269676d'
+            '2dac2f6a59d3c9c98fb7882ef4bb6c72d5897d06f216c3291aa85463a43277fe1c243a43df2e3b78489b68f04c8de9ec819f5a2fc8c9f4353ee6d1b4ce8f6da8'
+            'af46a3e0ff1f12e9948b42affacc1f4bd7f65cac231cf8c9563adf125f55244e110c2e1c58ec028852b3c208a52da00aafa52a444f46d010e4a6e708d3780649')
+
+prepare() {
+  cd "${srcdir}" || exit
+  sed -i '1i\#!/usr/bin/env python2' ${pkgname}.py
+  patch < ${pkgname}.py.patch
+  patch < bs4.patch
+}
+
+package() {
+  cd "${srcdir}" || exit
+  install -Dm644 "${srcdir}/${pkgname}.desktop" "${pkgdir}/usr/share/applications/${pkgname}.desktop"
+  install -Dm755 ${pkgname}.py "${pkgdir}/usr/bin/${pkgname}"
+}

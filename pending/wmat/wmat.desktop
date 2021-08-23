@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Wmat
+Comment=Automatic tool for testing webmail accounts
+Exec=wmat
+Icon=archstrike-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchStrike;ArchStrikeWebapp;ArchStrikeCracker;

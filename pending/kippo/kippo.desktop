@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Name=Kippo
+Comment=A medium interaction SSH honeypot designed to log brute force attacks and most importantly, the entire shell interaction by the attacker.
+Exec=kippo
+Icon=archstrike-menu.png
+Terminal=false
+StartupNotify=false
+Categories=ArchStrike;ArchStrikeHoneypot;

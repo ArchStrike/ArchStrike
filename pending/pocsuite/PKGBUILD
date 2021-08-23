@@ -1,0 +1,34 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=pocsuite
+_pkgname=Pocsuite
+epoch=1
+pkgver=2.0.8
+pkgrel=1
+pkgdesc="An open-sourced remote vulnerability testing framework developed by the Knownsec Security Team."
+url="https://github.com/knownsec/Pocsuite"
+groups=('archstrike' 'archstrike-exploit')
+depends=('python2' 'python2-lxml')
+makedepends=('python2-setuptools')
+license=('GPL')
+arch=('any')
+source=("${url}/archive/${pkgver}.tar.gz")
+sha512sums=('268a22342d34b7eed7fddbf55239e76ec26471835d392b264de28d80a654fdf10d8b50738a9d50b0443d9ba35117d0c34f852ddf656fe2c8e5aa53e45341850a')
+
+prepare() {
+  grep -iRl 'python' $_pkgname-$pkgver | xargs sed -i 's|python$|python2|'
+}
+
+build() {
+  cd $_pkgname-$pkgver
+  python2 setup.py build
+}
+
+package() {
+  cd $_pkgname-$pkgver
+  python2 setup.py install --root="$pkgdir" -O1 --skip-build
+  # fix weird python issue
+  sed -i 's|python|python2|' ${pkgdir}/usr/lib/python2.7/site-packages/pocsuite/thirdparty/pyparsing/setup.py
+}
