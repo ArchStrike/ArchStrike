@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pipal-git
-pkgver=20190811.r130
+pkgver=20210814.r137
 pkgrel=1
 groups=('archstrike' 'archstrike-analysis')
 arch=('any')
