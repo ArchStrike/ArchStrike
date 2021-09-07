@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=evil-winrm
-pkgver=2.4
+pkgver=3.3
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
@@ -13,7 +13,7 @@ license=('LGPL3')
 depends=('ruby' 'ruby-bundler')
 makedepends=('ruby-bundler')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('1b61e30808c12439b7705dea23802d4de584a82a34545ef56fa378bea56664b31572f9d48ff6bc261f2c6dc6c2e283c38a2f7886dfc7e41750aa01a51b78b8c3')
+sha512sums=('fc63c4d00b5e78fbc72d3592dbafca1d1e68c7946f43d7d425f757f51011f21e51dcff395cad7b3dd7efef6af7ff7c3e56ec6e602a024cdd05008b76c59cc277')
 
 package() {
   cd $pkgname-$pkgver
