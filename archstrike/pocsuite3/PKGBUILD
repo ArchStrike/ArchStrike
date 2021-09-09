@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pocsuite3
-pkgver=1.8.0
+pkgver=1.8.3
 pkgrel=1
 pkgdesc="An open-sourced remote vulnerability testing framework developed by the Knownsec Security Team."
 url="https://github.com/knownsec/pocsuite3"
@@ -18,7 +18,7 @@ makedepends=('python-setuptools')
 conflicts=('pocsuite')
 replaces=('pocsuite')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('4318a3ff56c2108a9c095b3cb2f0212ae81e710e2da303530d46af18cfad701eacf7c802d6030c7365a640956434ecf3cacc110702698ed6b315bb186e6869d4')
+sha512sums=('02ff8281d03e19b933489757a5636be2be7088826d9cf2a20eaddc3fc1794045044cb7a9f51f415abc4ece738722a5fa377bdcf3b2c7965bca099558b6ac98a3')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
