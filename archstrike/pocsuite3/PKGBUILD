@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=pocsuite3
-pkgver=1.8.3
+pkgver=1.8.4
 pkgrel=1
 pkgdesc="An open-sourced remote vulnerability testing framework developed by the Knownsec Security Team."
 url="https://github.com/knownsec/pocsuite3"
@@ -11,14 +11,14 @@ license=('GPL')
 arch=('any')
 groups=('archstrike' 'archstrike-exploit')
 depends=('python-requests' 'python-pysocks' 'python-requests-toolbelt'
-         'python-urllib3' 'python-setuptools' 'python-chardet'
-         'python-termcolor' 'python-colorama' 'python-prettytable'
-         'python-colorlog' 'python-scapy' 'python-pyopenssl')
+         'python-urllib3' 'python-chardet'  'python-termcolor' 'python-colorama'
+         'python-prettytable' 'python-colorlog' 'python-scapy' 'python-pyopenssl'
+         'python-beautifulsoup4' 'lighttpd')
 makedepends=('python-setuptools')
 conflicts=('pocsuite')
 replaces=('pocsuite')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('02ff8281d03e19b933489757a5636be2be7088826d9cf2a20eaddc3fc1794045044cb7a9f51f415abc4ece738722a5fa377bdcf3b2c7965bca099558b6ac98a3')
+sha512sums=('45e5b772c492b5c648ac2cd601cbcb0b1a1fbe2d26a9f6d323335f802956846d0c2aef47b54bc0e04c46a797d351ac8d524967afdfc42c759f17ea50fbc2bbae')
 
 build() {
   cd "$srcdir/${pkgname}-${pkgver}"
@@ -28,4 +28,5 @@ build() {
 package() {
   cd "$srcdir/${pkgname}-${pkgver}"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
+  rm -rf "${pkgdir}"/usr/lib/python3.?/site-packages/tests
 }
