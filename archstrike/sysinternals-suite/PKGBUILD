@@ -33,6 +33,5 @@ package() {
     mv -i $f $lc
   done
 
-  install -m755 *.exe *.sys "$pkgdir/usr/share/sysinternals-suite"
-  install -m644 *.chm *.hlp *.txt "$pkgdir/usr/share/sysinternals-suite"
+  cp -r * "${pkgdir}/usr/share/sysinternals-suite/"
 }
