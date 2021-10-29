@@ -1,0 +1,37 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Maintainer: Miten <admin@m1ten.me>
+# Maintainer: Anton Hvornum <anton@hvornum.se>
+
+buildarch=1
+
+_pkgname=archinstall
+pkgname=${_pkgname}-git
+pkgver=20211027.r2441
+pkgrel=1
+pkgdesc='Just another guided/automated Arch Linux installer with a twist'
+arch=('any')
+url="https://github.com/archlinux/${_pkgname}"
+license=('GPL')
+depends=('python')
+makedepends=('python-setuptools' 'python-sphinx' 'git')
+provides=("python-${_pkgname}")
+conflicts=("python-${_pkgname}")
+source=("${_pkgname}::git+${url}.git")
+sha256sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${_pkgname}"
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
+}
+
+build() {
+        cd "${srcdir}/${_pkgname}"
+        python setup.py build
+        make man -C docs
+}
+
+package() {
+        cd "${srcdir}/${_pkgname}"
+        python setup.py install --root="${pkgdir}" --optimize=1 --skip-build
+        install -vDm 644 docs/_build/man/${_pkgname}.1 -t "${pkgdir}/usr/share/man/man1/"
+}
