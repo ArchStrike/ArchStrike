@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=wapiti
-pkgver=3.0.5
+pkgver=3.0.8
 pkgrel=1
 pkgdesc="A vulnerability scanner for web applications. It currently search vulnerabilities like XSS, SQL and XPath injections, file inclusions, command execution, LDAP injections, CRLF injections..."
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-requests' 'python-beautifulsoup4' 'python-lxml' 'pytho
          'python-yaswfp' 'python-mako' 'python-pysocks' 'python-html5lib')
 makedepends=('python-requests' 'python-setuptools' 'python-wheel' 'python-pip')
 source=("http://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}/${pkgname}-${pkgver}/${pkgname}${pkgver::1}-${pkgver}.tar.gz")
-sha512sums=('c1bfdcd4114ec508b4b16e7a4389b23b25326816c7daf0e7fb634ce08b59b983dec92f92287a18cbe7ecde9a06a04da98cfd744f818efc57c606be143fe7db4d')
+sha512sums=('3f31410910af37ec45a3c835ce5d5d6c46aa8bb28d5930be5531acb8fa58c01a23c4aa88d730eb14d89a023a4db4ea82a671208340f71f711b2eb8cc26e1bb98')
 
 package() {
   cd "${srcdir}/wapiti3-${pkgver}"
