@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname="gowitness"
 pkgname="${_pkgname}-git"
-pkgver=20200429.r103
+pkgver=20210807.r190
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
