@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=netdiscover
-pkgver=0.8
+pkgver=0.8.1
 pkgrel=1
 groups=('archstrike' 'archstrike-recon' 'archstrike-wireless')
 pkgdesc="An active/passive address reconnaissance tool, mainly developed for those wireless networks without dhcp server, when you are wardriving. It can be also used on hub/switched networks."
@@ -13,7 +13,7 @@ license=('GPL')
 makedepends=('dos2unix')
 depends=('libpcap' 'libnet')
 source=("${url}/archive/${pkgver}.tar.gz")
-sha512sums=('f40d76977765f05f218ded70b7c099492f5d4310c8f6ee87b2306e774e1d1aa1c302378f5756f1c030e65f843ad9b6343714889d4a25c42dc40d3596c748abb3')
+sha512sums=('611f964bf3e618be81df43ee89b9a35959aa57d534d5a041d95927a9a5844233d32249b9cbd7a9362f0fba0b76b9fc612980a62a53f3e957f9b73ed8a550a975')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}"
