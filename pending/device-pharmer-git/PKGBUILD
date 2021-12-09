@@ -1,0 +1,38 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=device-pharmer-git
+pkgver=r40.b06a460
+pkgrel=2
+pkgdesc="Opens 1K+ IPs or Shodan search results and attempts to login"
+url="https://github.com/DanMcInerney/device-pharmer"
+arch=('any')
+license=('MIT')
+groups=('archstrike')
+depends=('python2-mechanize' 'python2-beautifulsoup4' 'python2-gevent')
+makedepends=('git')
+provides=('device-pharmer')
+source=("device-pharmer-git::git+https://github.com/DanMcInerney/device-pharmer.git"
+        "LICENSE")
+sha512sums=('SKIP'
+            '0cd69dfc3b845d42d3f2cdd5f72d35e77fb3b928c947498d1de6f0d59f0044f6017ffa55297259c424edfe6f68c709e18f89cd4483c2f9e0e4c99f1d039497c6')
+
+pkgver() {
+  cd "${srcdir}/device-pharmer-git"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+package() {
+  cd "${srcdir}/device-pharmer-git"
+  install -dm755 "${pkgdir}/usr/bin/"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -Dm644 "${srcdir}/LICENSE" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -m755 device-pharmer.py "${pkgdir}/usr/share/${pkgname}/device-pharmer.py"
+cat > "${pkgdir}"/usr/bin/device-pharmer <<EOF
+#!/bin/sh
+cd /usr/share/device-pharmer-git
+python2 device-pharmer.py "\$@"
+EOF
+chmod +x "${pkgdir}/usr/bin/device-pharmer"
+}

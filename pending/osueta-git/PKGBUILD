@@ -1,0 +1,49 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=osueta-git
+pkgver=r75.0347c48
+pkgrel=2
+groups=('archstrike' 'archstrike-networking')
+pkgdesc="A simple Python script to exploit the OpenSSH User Enumeration Timing Attack."
+arch=('any')
+url='https://github.com/c0r3dump3d/osueta'
+license=('GPL2')
+depends=('python2-ipy' 'python2-nmap' 'python2-paramiko')
+makedepends=('git' 'python2')
+provides=('osueta')
+source=("git+https://github.com/c0r3dump3d/osueta.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/osueta"
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' "${srcdir}/osueta" | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+}
+
+package() {
+  cd "${srcdir}/osueta"
+
+  # Make base directories.
+  install -dm755 "${pkgdir}/usr/share/osueta"
+  install -dm755 "${pkgdir}/usr/bin"
+
+  #Bins
+  install -Dm644 osufunc.py  "${pkgdir}/usr/share/osueta/"
+  install -Dm755 osueta.py  "${pkgdir}/usr/share/osueta/"
+  install -Dm644 osumain.py "${pkgdir}/usr/share/osueta/"
+  install -Dm644 README     "${pkgdir}/usr/share/osueta/"
+
+cat > "${pkgdir}/usr/bin/osueta" << EOF
+#!/bin/sh
+cd /usr/share/osueta
+python2 osueta.py "\$@"
+EOF
+
+chmod +x "${pkgdir}/usr/bin/osueta"
+
+}

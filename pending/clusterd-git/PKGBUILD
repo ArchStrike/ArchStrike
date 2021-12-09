@@ -1,0 +1,47 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=clusterd
+pkgname=${_pkgname}-git
+pkgver=r143.d190b2c
+pkgrel=6
+pkgdesc='Automates the fingerprinting, reconnaissance, and exploitation phases of an application server attack'
+url='https://github.com/hatRiot/clusterd'
+arch=('any')
+license=('MIT')
+groups=('archstrike')
+depends=('python2-requests' 'java-environment')
+makedepends=('git')
+provides=("${_pkgname}")
+source=("${pkgname}::git+https://github.com/hatRiot/clusterd.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}" || exit
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare() {
+  find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/env python|#!/usr/bin/env python2|'
+  find . -type f -name '*.py' | xargs sed -i 's|#!/usr/bin/python|#!/usr/bin/python2|'
+}
+
+package() {
+  cd "${pkgname}" || exit
+  install -Dm644 LICENSE "${pkgdir}"/usr/share/licenses/${pkgname}/LICENSE
+  install -Dm644 README.md "${pkgdir}"/usr/share/${_pkgname}/README.md
+  install -Dm755 "${_pkgname}.py" "${pkgdir}"/usr/share/${_pkgname}/${_pkgname}.py
+  cp --no-preserve=ownership -ar src "${pkgdir}"/usr/share/${_pkgname}/
+  chmod u+rwX,g+rwX,o+rX -R "${pkgdir}"/usr/share/${_pkgname}/src
+
+  install -dm755 "${pkgdir}/usr/bin"
+
+  cat > "${pkgdir}"/usr/bin/${_pkgname} <<EOF
+#!/usr/bin/env bash
+cd /usr/share/${_pkgname}
+python2 ${_pkgname}.py "\$@"
+EOF
+
+  chmod 755 "${pkgdir}"/usr/bin/${_pkgname}
+}

@@ -1,0 +1,42 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+# Contributor: Franco Colombino <franco.c.colombino@gmail.com>
+
+
+buildarch=1
+
+_pkgname=cangibrina
+pkgname=${_pkgname}-git
+pkgver=20181120.r123
+pkgrel=1
+groups=('archstrike' 'archstrike-scanners' 'archstrike-scanners' 'archstrike-webapps')
+pkgdesc='Fast and powerfull dashboard (admin) finder'
+arch=('any')
+url='https://github.com/fnk0c/cangibrina'
+license=('GPL2')
+depends=('python2-mechanize' 'python2-pysocks' 'python2-beautifulsoup4' 'python2-html5lib' 'tor' 'nmap')
+makedepends=('git')
+source=("${pkgname}::git+${url}.git")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${pkgname}" || exit
+  printf "%s.r%s" "$(git show -s --format=%ci master | sed "s/\ .*//g;s/-//g")" "$(git rev-list --count HEAD)"
+}
+
+prepare() {
+  grep -iRl 'python' ${pkgname} | xargs sed -i 's|python$|python2|g'
+}
+
+package() {
+  cd "${pkgname}" || exit
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
+#!/bin/sh
+cd /usr/share/${pkgname}
+python2 cangibrina.py "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/${_pkgname}"
+}

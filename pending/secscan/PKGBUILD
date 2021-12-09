@@ -1,0 +1,26 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname="secscan"
+pkgver=1.5
+pkgrel=4
+groups=('archstrike' 'archstrike-scanners')
+pkgdesc="Web Apps Scanner and Much more utilities"
+arch=('any')
+url='http://code.google.com/p/${pkgname}-py/'
+license=('GPL3')
+depends=('python2' 'python2-paramiko')
+makedepends=('unzip')
+source=("https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/${pkgname}-py/${pkgname}.py.zip")
+sha512sums=('9249a8428382c4bdf2bd401be0cfc59edd39469a28b699b147de223117be328a5ca1eabe3c757abf7784de950b6e4704139ef2fba5dbe2128bb7bcdc43fef2d4')
+
+prepare(){
+  grep -iRl 'python' $srcdir | xargs sed -i 's|python$|python2|'
+}
+
+package() {
+  cd "$srcdir"
+  install -Dm755 ${pkgname}.py "$pkgdir/usr/bin/${pkgname}"
+
+}

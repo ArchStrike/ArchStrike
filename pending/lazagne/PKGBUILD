@@ -1,0 +1,35 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=LaZagne
+pkgname=lazagne
+pkgver=2.4.4
+pkgrel=1
+groups=('archstrike' 'archstrike-social-engineering' 'archstrike-misc' 'archstrike-forensics')
+arch=('any')
+pkgdesc="An open source application used to retrieve lots of passwords stored on a local computer."
+url="https://github.com/AlessandroZ/LaZagne"
+license=('LGPL3')
+depends=('python2' 'python2-psutil' 'python-secretstorage' 'python2-pyasn1' 'python2-crypto')
+source=("${pkgname}::${url}/archive/${pkgver}.tar.gz")
+sha512sums=('acf02ced074ec875cd121a780ef7ffaab7956a0bf86d9a006d608ca299499db21cac426defeec26c1c8fbd7bd2cd3172e29eac78da98e85bbf9f366cffd3384c')
+
+prepare() {
+  grep -iRl python ${_pkgname}-${pkgver} | xargs sed -i 's|python$|python2|g'
+}
+
+package() {
+  cd ${_pkgname}-${pkgver}
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+  install -dm755 "${pkgdir}/usr/bin"
+  cp -a --no-preserve=ownership Linux/* "${pkgdir}/usr/share/${pkgname}"
+
+cat >> ${pkgdir}/usr/bin/lazagne << EOF
+#!/usr/bin/env bash
+cd /usr/share/${pkgname}
+python2 laZagne.py "\$@"
+EOF
+
+chmod 755 "${pkgdir}/usr/bin/lazagne"
+}

@@ -1,0 +1,12 @@
+diff -aur googlesub-1.3.orig/googlesub.py googlesub-1.3/googlesub.py
+--- googlesub-1.3.orig/googlesub.py	2016-05-18 12:17:11.884031771 -0400
++++ googlesub-1.3/googlesub.py	2016-05-18 12:20:19.658005562 -0400
+@@ -35,7 +35,7 @@
+ 	links = []
+ 	for page in xrange(1, 10):
+ 		r = requests.get('http://www.google.com/search?q=%s&safe=on&start=%i' % ( query, page), timeout = 5)
+-		html_container = BeautifulSoup(r.text)
++		html_container = BeautifulSoup(r.text, 'lxml')
+ 		links += fix_links(html_container.find_all('a'))
+ 		if delay:
+ 			sleep(1)

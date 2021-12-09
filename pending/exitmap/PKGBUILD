@@ -1,0 +1,35 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+pkgname=exitmap
+pkgver=2020.11.23
+pkgrel=1
+groups=('archstrike' 'archstrike-recon')
+arch=('any')
+pkgdesc="A fast and modular scanner for Tor exit relays"
+url="https://github.com/NullHypothesis/exitmap"
+license=('GPL')
+depends=('python2' 'python2-dnspython' 'python2-stem' 'python2-configparser' 'python2-pysocks' 'tor')
+source=("${url}/archive/v${pkgver}.tar.gz")
+sha512sums=('124f55a0ea780853b8501574e2b402bea0b59ff99d78dda757c2872476d230bc6b4fe967a65cc653395eaabe7de8bc1d22b85a151c52593f0e882891bb54e6e2')
+
+prepare() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  sed -i 's|completion_percent=80|completion_percent=75|' ./src/exitmap.py
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/usr/bin"
+  install -dm755 "${pkgdir}/usr/share/${pkgname}"
+
+  cp -a --no-preserve=ownership * "${pkgdir}/usr/share/${pkgname}"
+
+cat > "${pkgdir}/usr/bin/${pkgname}" <<EOF
+#!/usr/bin/env bash
+cd "/usr/share/${pkgname}/bin"
+python2 exitmap "\$@"
+EOF
+chmod 755 "${pkgdir}/usr/bin/${pkgname}"
+}

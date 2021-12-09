@@ -1,0 +1,44 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+_pkgname=bbqsql
+
+buildarch=1
+
+pkgname=$_pkgname-git
+pkgver=v1.1.r17.gb9859d2
+pkgrel=3
+epoch=1
+groups=('archstrike' 'archstrike-webapps' 'archstrike-exploit')
+pkgdesc="SQL injection exploit tool"
+arch=('any')
+url="https://github.com/CiscoCXSecurity/bbqsql"
+license=('BSD')
+depends=('python2-requests' 'python2-gevent')
+makedepends=('git' 'python2-setuptools')
+source=("${pkgname}::git+$url")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd "${srcdir}/${pkgname}"
+  git describe --long --tags 2>/dev/null | sed 's/\([^-]*-g\)/r\1/;s/-/./g'
+}
+
+
+prepare() {
+  cd "${srcdir}/${pkgname}"
+  sed -i 's|import os|import os, pwd\nos.getlogin = lambda: pwd.getpwuid(os.getuid())[0]|' bbqsql/menu/bbq_core.py
+  # fixing import issue with gevent 1.2.1
+  sed -i 's|from gevent.coros import Semaphore|from gevent.lock import Semaphore|' bbqsql/lib/technique.py
+}
+
+build() {
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}"
+  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
+  install -Dm644 LICENSE.md "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE.md"
+  install -Dm644 README.md "${pkgdir}/usr/share/doc/${pkgname}/README.md"
+}

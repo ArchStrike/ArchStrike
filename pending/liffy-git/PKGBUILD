@@ -1,0 +1,51 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=1
+
+_pkgname=liffy
+pkgname=$_pkgname-git
+pkgver=r66.b2d30c5
+pkgrel=2
+groups=('archstrike' 'archstrike-webapps')
+pkgdesc="A Local File Inclusion Exploitation tool."
+arch=('any')
+url='https://github.com/hvqzao/liffy'
+license=('GPL2')
+depends=('python2-blessings' 'python2-requests' 'python2-daemon')
+makedepends=('git')
+provides=("$_pkgname")
+replaces=("$_pkgname")
+conflicts=("$_pkgname")
+source=("git+$url")
+sha512sums=('SKIP')
+
+pkgver() {
+  cd $_pkgname
+  printf "r%s.%s" "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+prepare(){
+  grep -iRl 'python' $_pkgname | xargs sed -i 's|#!.*/usr/bin/python|#!/usr/bin/python2|;s|#!.*/usr/bin/env python$|#!/usr/bin/env python2|'
+  sed -i 's|/usr/local/share/metasploit-framework/msfpayload|/usr/bin/msfpayload|' $_pkgname/core.py
+  sed -i 's|python http_server.py|python2 http_server.py|' $_pkgname/core.py
+}
+
+package() {
+  cd $_pkgname
+
+  # Make base directories.
+  install -dm755 "$pkgdir/usr/share/$_pkgname"
+  install -dm755 "$pkgdir/usr/bin"
+
+  install -Dm755 *.py "$pkgdir/usr/share/$_pkgname/"
+  install -Dm644 README.md "$pkgdir/usr/share/$_pkgname/README.md"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+
+cat > "$pkgdir/usr/bin/$_pkgname" << EOF
+#!/usr/bin/env bash
+cd /usr/share/liffy
+python2 liffy.py "\$@"
+EOF
+
+  chmod 755 "$pkgdir/usr/bin/$_pkgname"
+}
