@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-post_install() {
-  echo "This package needs to be configured to work correctly."
-  echo "Please check out the documentation at /usr/share/doc/bt2-git for setup instructions."
-}
