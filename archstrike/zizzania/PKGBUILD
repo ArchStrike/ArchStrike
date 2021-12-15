@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=zizzania
-pkgver='0.2.1'
+pkgver='0.3.0'
 pkgrel=1
 pkgdesc='An Automated wireless DeAuth attack'
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -13,7 +13,7 @@ groups=('archstrike' 'archstrike-wireless')
 depends=('libpcap')
 makedepends=('wget')
 source=("https://github.com/cyrus-and/zizzania/archive/v${pkgver}.tar.gz")
-sha512sums=('86b8e079ddcf456c4e9f3588989d6ac6e23150db17d35a821f9c8f89cdd1782dc5dd40bb26c4f701b144f77e53b6c9b7558884b4e8441794f26e96dad75e612e')
+sha512sums=('203f565fbab94d6190a6dd402d85bf1bba308ed6961ede06207c00fa8c3684e7c8a25230c095bb1aeb4b0900875bec87565d693aae41034914edcd055b53e6a9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
