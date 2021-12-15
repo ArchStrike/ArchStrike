@@ -5,7 +5,7 @@
 buildarch=220
 
 pkgname=spiped
-pkgver=1.6.1b
+pkgver=1.6.1.99
 pkgrel=1
 pkgdesc="A utility for creating symmetrically encrypted and authenticated pipes between socket addresses"
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,7 +14,7 @@ url="http://www.tarsnap.com/spiped.html"
 groups=('archstrike' 'archstrike-networking')
 license=('BSD')
 depends=('openssl')
-sha512sums=('54312150ef5eb0125bd5d52322374336dab3c655043fd90723ff155feb6dacf3fd504038b893dbeb58531d63f853e9f253285ed8b20a94634614e30914f2c05f')
+sha512sums=('bd9b0b12db5f154ef29d495d6e93fd94ee571fe025d0ce8f50f1e47be48b8367cd885c8d78a926bfc76e6c5aa46b1de915502468dac704a2b664d9d9da777103')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
