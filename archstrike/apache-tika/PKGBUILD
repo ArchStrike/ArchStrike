@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=apache-tika
-pkgver=1.27
+pkgver=1.28
 pkgrel=1
 pkgdesc='Toolkit for detecting and extracting metadata and structured text content'
 arch=('any')
@@ -15,8 +15,8 @@ noextract=("tika-server-${pkgver}.jar")
 source=("https://www.apache.org/dyn/closer.cgi/tika/${pkgver}/tika-server-${pkgver}.jar"
         "https://www.apache.org/dyn/closer.cgi/tika/${pkgver}/tika-app-${pkgver}.jar"
         "${pkgname}.service")
-sha512sums=('ef3fa69fd634efc379ce893aa5f4576e67d3572a5e0bcc0b26c0592b695eea2f381240d33c258f25e3e37dd4749841421d16497f81d8c619545b4c79d728b6f6'
-            '2bd220e1ba876d59d96428a201abbb1938cd697faba970f6ef20d3284cf226e0d3f6c29e0e0368bef0fbb903309e23c5125625702a6e89aaca5366093704d30d'
+sha512sums=('133958deba82092e828050c8e953d2e443dcc70c2782d7025d605ec180d0d278f725563d253c3d590e2f711dd4044075cc537b85033083471a89cdce3bed63b9'
+            '56259614f54b222120e2a724e136ce237d66c24a225f4a4691c2bf774d4d477dd715c526a7635a50e16b27c4ebee4959a68d9f2a8817600b7523109a7c959fc1'
             'e46522bfcc86ada8776c4f12cf645a81c34492b1c86e9bd1258d7fa248fb8fed9c2bd57e5971c5c9a4687f35626f872f63920649279cfaba5498a55c3331bcf5')
 
 package() {
