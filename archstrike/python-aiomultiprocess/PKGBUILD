@@ -4,8 +4,8 @@ buildarch=1
 
 _pkgname='aiomultiprocess'
 pkgname='python-aiomultiprocess'
-pkgver=0.8.0
-pkgrel=3
+pkgver=0.9.0
+pkgrel=1
 pkgdesc="asyncio version of the standard multiprocessing module"
 url="https://github.com/jreese/aiomultiprocess"
 depends=('python')
@@ -13,7 +13,7 @@ makedepends=('python-setuptools')
 license=('MIT')
 arch=('any')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/$_pkgname/$_pkgname-$pkgver.tar.gz")
-sha512sums=('22a20e8850e3904920149c749d9e0a089947dce4192b4feddac20bc77494953a840e25c7cef3169478c718152734702faa677b4cf41b78e3035e7eb391fbe514')
+sha512sums=('d5ce76a79867fd6ca0eee7a8a2623c1bf5fd50a8503d59f755eb9521dd8c152773e30c9e68140e7459249a364958b3536008435788dec57779d8a3e7b3aecc4e')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
