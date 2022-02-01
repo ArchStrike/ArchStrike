@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=theHarvester
 pkgname=theharvester-git
-pkgver=20211011.r2511
+pkgver=20220129.r2681
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc="Python tool for gathering e-mail accounts and subdomain names from different public sources (search engines, pgp key servers)"
@@ -15,7 +15,7 @@ depends=('python-requests' 'python-beautifulsoup4' 'python-plotly' 'python-shoda
          'python-texttable' 'python-pytest' 'python-yaml' 'python-gevent'
          'python-grequests' 'python-chart-studio' 'python-dnspython' 'python-netaddr'
          'python-aiodns' 'python-aiohttp' 'python-aiosqlite' 'python-uvloop' 'python-certifi'
-	 'python-aiomultiprocess' 'python-orjson')
+	 'python-aiomultiprocess' 'python-orjson' 'python-ujson')
 makedepends=('git')
 source=("${_pkgname}::git+${url}")
 sha512sums=('SKIP')
