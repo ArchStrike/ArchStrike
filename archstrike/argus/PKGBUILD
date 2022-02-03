@@ -4,11 +4,11 @@ buildarch=220
 
 pkgname="argus"
 pkgver=3.0.8.2
-pkgrel=5
+pkgrel=6
 groups=('archstrike' 'archstrike-networking' 'archstrike-defense')
 pkgdesc="Network monitoring tool with flow control"
-arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
-url="http://qosient.com/${pkgname}/"
+arch=('i686' 'x86_64' 'armv7h' 'aarch64')
+url="https://openargus.org/"
 depends=('bash' 'libpcap' 'libsasl' 'zlib')
 license=('GPL3')
 options=('!emptydirs')
