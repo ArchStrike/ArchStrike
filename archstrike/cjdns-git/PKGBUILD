@@ -8,7 +8,7 @@ buildarch=220
 
 _pkgname=cjdns
 pkgname="${_pkgname}-git"
-pkgver=21.r12.g6156b08b
+pkgver=21.2.r178.g03c61dc8
 pkgrel=1
 pkgdesc='A routing engine designed for security, scalability, speed and ease of use'
 url='https://github.com/cjdelisle/cjdns'
@@ -17,7 +17,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 options=('!distcc' '!strip' '!buildflags')
 groups=('archstrike' 'archstrike-networking')
 depends=('bash')
-makedepends=('git' 'nodejs' 'python2' 'clang' 'llvm')
+makedepends=('cargo' 'git' 'nodejs' 'python2' 'binutils' 'llvm')
 optdepends=('cjdnsify: allows you to run some programs bound to your cjdns address')
 provides=("${_pkgname}")
 conflicts=("${_pkgname}")
@@ -31,7 +31,7 @@ pkgver() {
 
 build() {
   cd "${_pkgname}" || exit
-  CROSS=true bash 'do'
+  CJDNS_RELEASE_VERSION="${pkgver}" ./do
 }
 
 package() {
