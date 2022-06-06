@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=sysinternals-suite
-pkgver=20220127
+pkgver=20220511
 pkgrel=1
 groups=('archstrike')
 pkgdesc="Sysinternals tools suite"
@@ -12,7 +12,7 @@ license=('sysinternals')
 arch=('any')
 makedepends=('unzip')
 source=(http://download.sysinternals.com/files/SysinternalsSuite.zip)
-sha512sums=('c04fc93ebe691f40de1b6c8eef750195968775ec1bfb63555baee40b40431fed6f1333256ea049e969f5ed5bf63df9702d38e6a9ae3a28e665224fccf9225183')
+sha512sums=('8f85960109a76b3b42c2aa9943ba80fb9f5ae1379a141cc290e948cfb9a6197f805fa198794e443b1cbed4a1a211b2e57ddec02ded88ede297c91b655efeeda7')
 
 package() {
   cd "$srcdir"
