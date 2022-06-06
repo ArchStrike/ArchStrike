@@ -4,7 +4,7 @@ buildarch=192
 
 _pkgname=beef
 pkgname=${_pkgname}-git
-pkgver=20220216.r4029
+pkgver=20220606.r4052
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
@@ -41,8 +41,8 @@ package() {
   install -dm755 "${pkgdir}/usr/share/${_pkgname}"
   cp -a --no-preserve=ownership ./* "${pkgdir}/usr/share/${_pkgname}"
   cd "${pkgdir}/usr/share/${_pkgname}"
-  # --path deprecated. However, libfakeroot errors without it
-  bundle install --path vendor/bundle
+  bundle config set --local path 'vendor/bundle'
+  bundle install
 
 cat > "${pkgdir}/usr/bin/${_pkgname}" << EOF
 #!/usr/bin/env bash
