@@ -1,0 +1,43 @@
+diff --git a/src/lib/archversion/__init__.py.in b/src/lib/archversion/__init__.py.in
+index e6b6e8d..19be001 100644
+--- a/src/lib/archversion/__init__.py.in
++++ b/src/lib/archversion/__init__.py.in
+@@ -19,22 +19,23 @@
+ 
+ '''Archlinux Version Controller Package'''
+ 
++import os
+ import logging
+ 
+ # Init log systems
+ logging.basicConfig(format="%(levelname)s: %(message)s")
+ 
+ # xdg config directory
+-XDG_DIRECTORY = "archversion"
++XDG_DIRECTORY = os.environ.get('XDG_DIRECTORY',"archversion")
+ 
+ # Stored list of packagas we want to track
+-CONFIG_PACKAGES = "packages.conf"
++CONFIG_PACKAGES = os.environ.get('CONFIG_PACKAGES',"packages.conf")
+ 
+ # Configuration for sendmail command
+-CONFIG_SENDMAIL = "sendmail.conf"
++CONFIG_SENDMAIL = os.environ.get('CONFIG_SENDMAIL',"sendmail.conf")
+ 
+ # Cache is stored package versions
+-CACHE_PACKAGES = "packages.cache"
++CACHE_PACKAGES = os.environ.get('CACHE_PACKAGES',"packages.cache")
+ 
+ # Annouced version (from autoconf)
+ VERSION = "@VERSION@"
+@@ -43,7 +44,7 @@ VERSION = "@VERSION@"
+ # Advertise archversion version
+ # Try to disable caching
+ HTTP_HEADERS = {
+-	"User-Agent": "archversion v%s" % VERSION,
++	"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+ 	"Pragma": "no-cache",
+ 	"Cache-Control": "no-cache, no-store, must-revalidate"
+-}
+\ No newline at end of file
++}

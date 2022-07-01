@@ -1,0 +1,15 @@
+diff --git a/src/lib/archversion/version.py b/src/lib/archversion/version.py
+index 6f46f84..67094e9 100644
+--- a/src/lib/archversion/version.py
++++ b/src/lib/archversion/version.py
+@@ -35,6 +35,10 @@ import os
+ import re
+ import subprocess
+ import sys
++import ssl
++if hasattr(ssl, '_create_unverified_context'):
++    ssl._create_default_https_context = ssl._create_unverified_context
++
+ 
+ class VersionController(object):
+     '''
