@@ -3,16 +3,16 @@
 buildarch=1
 
 pkgname=dnsrecon
-pkgver=0.9.1
-pkgrel=2
+pkgver=1.1.2
+pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 pkgdesc='DNS Enumeration Script '
 url='https://github.com/darkoperator/dnsrecon'
 license=('GPL2')
 arch=('any')
-depends=('python-netaddr' 'python-dnspython' 'python-lxml')
+depends=('python-netaddr' 'python-dnspython' 'python-lxml' 'python-setuptools')
 source=("https://github.com/darkoperator/${pkgname}/archive/${pkgver}.tar.gz")
-sha512sums=('1b0ed1b405e58f8df7a8e1fb8a2dd07713bf5e8434ccfbced316cac8b16966b88a98f583be122c35bfbc540753bd44e5e47474aa58544dbea77e73d0cddc4c6b')
+sha512sums=('275554265a745b44ea5e4a8b1d5855461c0bc698bf60a8249b8447f95a54544e4ee8fe947548b35a0ae6cb0e2a491b79eb281f5db73c363ec5b5a113534f85a6')
 
 package() {
   cd "${pkgname}-${pkgver}"
@@ -23,7 +23,6 @@ package() {
 
   # copy package files to the shared folder
   cp -r --no-preserve=ownership ./* "${pkgdir}/usr/share/${pkgname}/"
-  cp -r --no-preserve=ownership .idea "${pkgdir}/usr/share/${pkgname}/"
 
   printf '%s\n\n%s\n%s\n' \
     '#!/usr/bin/env bash' \
