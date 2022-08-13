@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=evil-winrm
-pkgver=3.3
+pkgver=3.4
 pkgrel=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc="The ultimate WinRM shell for hacking/pentesting"
 url="https://github.com/Hackplayers/evil-winrm"
 license=('LGPL3')
-depends=('ruby' 'ruby-bundler')
+depends=('ruby' 'ruby-bundler' 'git')
 makedepends=('ruby-bundler')
 source=("$url/archive/v$pkgver.tar.gz")
-sha512sums=('fc63c4d00b5e78fbc72d3592dbafca1d1e68c7946f43d7d425f757f51011f21e51dcff395cad7b3dd7efef6af7ff7c3e56ec6e602a024cdd05008b76c59cc277')
+sha512sums=('c0a8d6cafdf4848a84de66b7393491b3ea196a4e52bc50af17d795a0f3747e8ea22c6e280a4b3db2d5caf6de632219f8783354dab92426da14c74f337c2926af')
 
 package() {
   cd $pkgname-$pkgver
@@ -21,10 +21,10 @@ package() {
   install -dm755 "$pkgdir/usr/bin"
   install -dm755 "$pkgdir/usr/share/$pkgname"
   install -dm644 "$pkgdir/usr/share/licenses/$pkgname"
-  printf "gem 'rexml'\n" >> Gemfile
   cp -a --no-preserve=ownership ./* $pkgdir/usr/share/$pkgname/
   cd $pkgdir/usr/share/$pkgname
-  bundle install --path vendor/bundle
+  bundle config set --local path 'vendor/bundle'
+  bundle install
   find vendor/bundle/ruby -exec chmod o+r '{}' \;
   find vendor/bundle/ruby \( -name gem_make.out -or -name mkmf.log \) -delete
 
