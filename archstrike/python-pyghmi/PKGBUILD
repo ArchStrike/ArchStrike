@@ -2,48 +2,26 @@
 
 buildarch=1
 
-_pkgname=pyghmi
-pkgbase=python-${_pkgname}
-pkgname=(python-${_pkgname} python2-${_pkgname})
-pkgver=1.5.23
+_pkgname="pyghmi"
+pkgname="python-${_pkgname}"
+pkgver=1.5.53
 pkgrel=1
+pkgdesc="a pure Python (mostly IPMI) server management library"
 arch=('any')
 url="https://opendev.org/x/pyghmi"
 license=('Apache')
-depends=('python' 'python2')
-makedepends=('python-setuptools' 'python2-setuptools' 'python-pip' 'python2-pip')
+depends=('python' 'python-cryptography' 'python-dateutil' 'python-six')
+makedepends=('python-setuptools' 'python-pip')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('55b6212c1116755e5a21259a23e988ce2d844ce9b10d81f71ff2dc99c8e76177ded5cd97fd39172d82d3fcecd42ef5daf1129100ae0a311a4d5b31f574d4ac53')
-
-prepare(){
-  cp -a "${_pkgname}-${pkgver}"{,-py2}
-}
+sha512sums=('0f598bcfbfb233ef6a9e7890b914b745c114c67a1c9a5daa6136f498af78c0f6e29e501d5e94a94d47651c11396d154925769d0d7509cc7058a0949545c7eb76')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
   python setup.py build
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-  python2 setup.py build
 }
 
-package_python-pyghmi() {
-  pkgdesc="a pure Python (mostly IPMI) server management library"
-  depends=('python' 'python-cryptography' 'python-dateutil' 'python-six')
+package() {
 
   cd "${srcdir}/${_pkgname}-${pkgver}"
-  python3 setup.py install --root="${pkgdir}/" -O1
-}
-
-package_python2-pyghmi() {
-  pkgdesc="a pure Python (mostly IPMI) server management library"
-  depends=('python2' 'python2-cryptography' 'python2-dateutil' 'python2-six')
-
-  cd "${srcdir}/${_pkgname}-${pkgver}-py2"
-  python2 setup.py install --root="${pkgdir}/" -O1
-
-  # fix conflict
-  for i in fakebmc pyghmicons pyghmiutil virshbmc; do
-    mv "${pkgdir}/usr/bin/${i}" "${pkgdir}/usr/bin/${i}2"
-  done
+  python setup.py install --root="${pkgdir}" -O1
 }
