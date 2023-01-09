@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname="ldapdomaindump"
-pkgver=0.9.3
-pkgrel=3
+pkgver=0.9.4
+pkgrel=1
 pkgdesc="Active Directory information dumper via LDAP"
 url="https://pypi.org/project/ldapdomaindump/"
 license=('MIT')
@@ -12,7 +12,7 @@ arch=('any')
 depends=('python' 'python-dnspython' 'python-ldap3' 'python-future')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${pkgname::1}/${pkgname}/${pkgname}-${pkgver}.tar.gz")
-sha512sums=('b24083d271033e3c38e280d8cedd822ca503840716cd21361b1956595179dd6d67a9d75f0e3e4b47d8d21e313ee1f4e370d20c5453a3703ed370b75ba7d505e1')
+sha512sums=('c5f66dc73f77cae041329ac17018dfd82c155dc7c4cca3fed2175680baeb3797776488aab6199498eefc4869121f556ede8558c784e71f1ff9573dd9634abee9')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
