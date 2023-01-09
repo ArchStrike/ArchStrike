@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=gobuster
-pkgver=3.1.0
+pkgver=3.4.0
 pkgrel=1
 pkgdesc="Directory/file & DNS busting tool written in Go"
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -13,7 +13,7 @@ license=("APACHE")
 depends=('glibc')
 makedepends=('go' 'git')
 source=("https://github.com/OJ/gobuster/archive/v${pkgver}.tar.gz")
-sha512sums=('956789e83aca3a06e04080ecf8bb723328b717019abf6b749e600c6e632c2c6a39b8ac9293521ed82c309cdcf3402a0a88107b62590d74e8947958f625c3de20')
+sha512sums=('1d10f359bdec45ee8c19c713dde6da306490c46e56e8bbd1020dc3124557f7ec462d481f97ad8cb801f6fc802f9eefd03337c37b176e13a47a56dff29bd552b6')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
