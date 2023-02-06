@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=sysinternals-suite
-pkgver=20220719
+pkgver=20230125
 pkgrel=1
 groups=('archstrike')
 pkgdesc="Sysinternals tools suite"
