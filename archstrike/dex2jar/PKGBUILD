@@ -3,19 +3,20 @@
 buildarch=1
 
 pkgname=dex2jar
-pkgver=2.0
-pkgrel=5
+pkgver=2.1
+pkgrel=1
 groups=('archstrike' 'archstrike-hardware' 'archstrike-reverse')
 pkgdesc="A tool for converting Android's .dex format to Java's .class format"
 arch=('any')
 url='https://github.com/pxb1988/dex2jar'
 license=('Apache')
 depends=('java-environment' 'bash')
-source=("http://downloads.sourceforge.net/dex2jar/${pkgname}-${pkgver}.zip")
-sha512sums=('c4a6c72ea09b58a44fcb8918cfada600467f10f99a02b53d2436ac68295e73c8daf9ba0a8bc7160ba1e28e87f032ee034435ebe40af35b6e2fe9fa4607581358')
+#source=("http://downloads.sourceforge.net/dex2jar/${pkgname}-${pkgver}.zip")
+source=("${url}/releases/download/v${pkgver}/${pkgname}-${pkgver}.zip")
+sha512sums=('44b4a51043ef608158e16f70d9a448ae0a37896da19bd9837e1124e197b7b41a7c37f074386b0cc03edd4f385066bf5ef04c553f6dec0b0cc2a11ecbf299b16f')
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/dex-tools-${pkgver}"
 
   # Make base directories.
   install -dm755 "${pkgdir}/usr/bin"
