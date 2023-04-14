@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=maltego
-pkgver=4.2.15.13632
+pkgver=4.3.1
 pkgrel=1
 groups=('archstrike' 'archstrike-forensics' 'archstrike-recon' 'archstrike-scanners')
 pkgdesc="An open source intelligence and forensics application, enabling to easily gather information about DNS, domains, IP addresses, websites, persons, etc."
@@ -13,7 +13,7 @@ license=('GPL')
 depends=('java-environment' 'giflib')
 provides=('casefile')
 source=("https://maltego-downloads.s3.us-east-2.amazonaws.com/linux/Maltego.v${pkgver}.linux.zip")
-sha512sums=('ffe0cd51a5963f417cf2c9964f2ab754195bae2cf6692289925b1ed0540b2b860fb165ee22cb3af5d488ff6bfea5af21dc1de3ad990c55a45a12a1e309a4d4c0')
+sha512sums=('dfd83f7e2f9cabe24a1fc8bee3902a479b38212eb82ff914b65e69ae9b00fd4cfe86d622054ff51edba714411f0bea2294d3e81e7fa4fe6e36a4c8d79490698b')
 
 #prepare() {
 #  cd "${srcdir}/${pkgname}_4.2.9"
@@ -21,7 +21,7 @@ sha512sums=('ffe0cd51a5963f417cf2c9964f2ab754195bae2cf6692289925b1ed0540b2b860fb
 #}
 
 package() {
-  cd "${srcdir}/${pkgname}_4.2.15"
+  cd "${srcdir}/${pkgname}_${pkgver}"
 
   # Create base directories.
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
