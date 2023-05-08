@@ -5,7 +5,7 @@ buildarch=220
 
 pkgname=perl-alien-gmp
 pkgver=1.16
-pkgrel=3
+pkgrel=4
 pkgdesc="Alien package for the GNU Multiple Precision library"
 arch=('armv6h' 'armv7h' 'i686' 'x86_64' 'aarch64')
 url='https://metacpan.org/pod/Alien::GMP'

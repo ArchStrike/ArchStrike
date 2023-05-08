@@ -6,7 +6,7 @@ buildarch=220
 
 pkgname=perl-crypt-idea
 pkgver=1.10
-pkgrel=11
+pkgrel=12
 pkgdesc="Perl interface to IDEA block cipher"
 arch=('armv6h' 'i686' 'armv7h' 'x86_64' 'aarch64')
 url='https://metacpan.org/release/Crypt-IDEA'
