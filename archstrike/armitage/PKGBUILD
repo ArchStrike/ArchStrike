@@ -3,28 +3,34 @@
 buildarch=1
 
 pkgname=armitage
-pkgver=150813
-pkgrel=8
+pkgver=1.0.0
+pkgrel=1
 groups=('archstrike' 'archstrike-exploit')
 pkgdesc="A graphical cyber attack management tool for Metasploit"
 url='http://www.fastandeasyhacking.com/'
 arch=('any')
 license=('GPL')
-depends=('metasploit-framework' 'java-environment' 'postgresql' 'nmap' 'ruby-msgpack')
+depends=('metasploit-framework' 'jre11-openjdk' 'java-environment' 'postgresql' 'nmap' 'ruby-msgpack')
 install=armitage.install
-source=("http://www.fastandeasyhacking.com/download/armitage${pkgver}.tgz"
+source=("https://github.com/malleum-inc/${pkgname}/archive/refs/tags/v${pkgver}.tar.gz"
         'armitage.install')
-sha512sums=('29743c32ff13e62e5cb4a97cf60b3f5e5a4c5ac01a014ff709abc1be4f1b9d795973de357b967a764b4acd4f26d47f6d4517f40c9831672c74e054de2d361e51'
+sha512sums=('a12d16844e59224a67d48475da5f31e1a2ccb4dfcd5c28c0b7e3ecb3ba31446d6d3eaa88548b0929455427801d548785f8cb7e60e2c62658329d99aeaacea5c5'
             'c986d01c29de2b8a2b4541433063cbce4ec82a55508bcf74877614ccc9809a8751462b2467aba296a679ff146ba1e6fe60c405cfa18cb6705bc2f6fd595dd998')
 
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./package.sh
+  ./clean.sh
+}
+
 package() {
-  cd "$srcdir/${pkgname}"
+  cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/share/${pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
-  install -Dm755 armitage "${pkgdir}/usr/share/armitage/armitage"
-  install -Dm755 teamserver "${pkgdir}/usr/share/armitage/teamserver"
-  install -Dm755 armitage.jar "${pkgdir}/usr/share/armitage/armitage.jar"
-  install -Dm755 cortana.jar "${pkgdir}/usr/share/armitage/cortana.jar"
+  install -Dm755 dist/unix/armitage "${pkgdir}/usr/share/armitage/armitage"
+  install -Dm755 dist/unix/teamserver "${pkgdir}/usr/share/armitage/teamserver"
+  install -Dm755 build/armitage.jar "${pkgdir}/usr/share/armitage/armitage.jar"
+  install -Dm755 build/cortana.jar "${pkgdir}/usr/share/armitage/cortana.jar"
   install -Dm644 readme.txt whatsnew.txt "${pkgdir}/usr/share/armitage/"
 
 cat > "${pkgdir}/usr/bin/armitage" <<EOF
