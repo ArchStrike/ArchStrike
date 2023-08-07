@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=python-amoco
-pkgver=2.9.4
-pkgrel=2
+pkgver=2.9.8
+pkgrel=1
 groups=('archstrike' 'archstrike-malware')
 pkgdesc="yet another tool for analysing binaries"
 arch=('any')
@@ -14,7 +14,7 @@ depends=('python' 'python-traitlets' 'python-pygments' 'python-pyparsing'
          'python-grandalf' 'python-crysp' 'python-click' 'python-blessed')
 makedepends=('python-setuptools' 'python-pytest-runner')
 source=("https://github.com/bdcht/amoco/archive/v${pkgver}.tar.gz")
-sha512sums=('93f38eea2712959ac66c03c275211cca114ad874c0948f78b693c41906d9893aea25cc401f01f33e3b90fb2532140118e6036edc7666747214ed814cf04ae34a')
+sha512sums=('f58269ecdd0f63331db5d481aca1db8f68eea0f50f7f29aeef1527715b39af7afa2302dce9d79bd4bc1e8ef2d31af69f9fcd2cd5c69e9923fec14a6aaf8edabd')
 
 package() {
   cd "${srcdir}/amoco-${pkgver}"
