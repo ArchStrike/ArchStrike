@@ -3,16 +3,15 @@
 buildarch=1
 
 _pkgname="bfac"
-pkgbase="python-${_pkgname}-git"
-
-pkgname=("python-${_pkgname}-git" "python2-${_pkgname}-git")
-pkgver=20200814.r51
-pkgrel=2
+pkgname=("python-${_pkgname}-git")
+pkgver=20210919.r53
+pkgrel=1
 pkgdesc="Advanced Backup-File Artifacts Testing for Web-Applications"
 arch=('any')
 url="https://github.com/mazen160/bfac"
 license=('GPL3')
-makedepends=("python-setuptools" "python2-setuptools" "git")
+  depends=("python" "python-colorama" "python-requests")
+makedepends=("python-setuptools" "git")
 source=("${_pkgname}::git+${url}")
 sha512sums=('SKIP')
 
@@ -21,31 +20,13 @@ pkgver() {
   printf "%s.r%s" "$(git show -s --format=%ci master | sed 's/\ .*//g;s/-//g')" "$(git rev-list --count HEAD)"
 }
 
-prepare() {
-  cd "${srcdir}"
-  cp -a ${_pkgname}{,-py2}
-  grep -ZRil 'python' "${_pkgname}-py2" | xargs -0 sed -i '1 s|#!.*/usr/bin/python3?|#!/usr/bin/python2|;s|#!.*/usr/bin/env python3?$|#!/usr/bin/env python2|'
-}
-
 build() {
   cd "${srcdir}/${_pkgname}"
   python setup.py build
-
-  cd "${srcdir}/${_pkgname}-py2"
-  python2 setup.py build
 }
 
-package_python-bfac-git() {
-  depends=("python" "python-colorama" "python-requests")
+package() {
   cd "${_pkgname}"
   install -dm755 "${pkgdir}/usr/bin"
   python setup.py install --root="${pkgdir}" -O1 --skip-build
-}
-
-package_python2-bfac-git() {
-  depends=("python2" "python2-colorama" "python2-requests")
-  cd "${_pkgname}-py2"
-  install -dm755 "${pkgdir}/usr/bin"
-  python2 setup.py install --root="${pkgdir}" -O1 --skip-build
-  mv "${pkgdir}/usr/bin/${_pkgname}" "${pkgdir}/usr/bin/${_pkgname}-py2"
 }

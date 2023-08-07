@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python-async
 pkgver=0.6.2
-pkgrel=6
+pkgrel=7
 pkgdesc="Async aims to make writing asyncronous processing easier."
 arch=('any')
 url='https://pypi.org/project/async/'
