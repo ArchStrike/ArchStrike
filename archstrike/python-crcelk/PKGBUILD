@@ -4,7 +4,7 @@ buildarch=1
 
 pkgname=python-crcelk
 pkgver=1.3
-pkgrel=3
+pkgrel=4
 pkgdesc="Updated fork of CrcMoose."
 url="https://github.com/zeroSteiner/crcelk"
 depends=('python')

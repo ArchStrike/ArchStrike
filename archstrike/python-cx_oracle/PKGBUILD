@@ -4,7 +4,7 @@ buildarch=220
 
 _pkgname="cx_Oracle"
 pkgname="python-cx_oracle"
-pkgver=8.1.0
+pkgver=8.3.0
 pkgrel=1
 pkgdesc="Python interface to Oracle Database conforming to the Python DB API 2.0 specification"
 url="https://pypi.org/project/cx-Oracle"
@@ -13,7 +13,7 @@ arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
 depends=('python')
 makedepends=('python-setuptools')
 source=("https://files.pythonhosted.org/packages/source/${_pkgname::1}/${_pkgname}/${_pkgname}-${pkgver}.tar.gz")
-sha512sums=('21dbaec1facfa38c82cd8bba788953ada098bfcdfddd29c4c6278d3c757b5b64b547a2e8e39fc998eec826f8447f07d6d48649c8dc8edc7c7244e9113d4345cc')
+sha512sums=('9a2f50b929802311271e5270f118c96968886c6fd3c8677d2e08949d61e9d4d26846bc9e44c674e0bd12a7f8b57bcced9b979f3622a37656e0969ad8ea4e7f70')
 
 build() {
   cd "${srcdir}/${_pkgname}-${pkgver}"
