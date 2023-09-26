@@ -5,14 +5,14 @@ buildarch=1
 _pkgname=airgeddon
 pkgname=${_pkgname}-git
 pkgver=v11.21.r0.g6afc39d
-pkgrel=1
+pkgrel=2
 epoch=1
 groups=('archstrike' 'archstrike-networking')
 arch=('any')
 pkgdesc='Multi-use bash script for Linux systems to audit wireless networks.'
 url='https://github.com/v1s1t0r1sh3r3/airgeddon'
 license=('GPL3')
-depends=('bash>=4.2' 'iw' 'gawk' 'aircrack-ng' 'xterm' 'reaver-wps-fork-t6x-git' 'tcpdump'
+depends=('bash>=4.2' 'iw' 'gawk' 'aircrack-ng' 'xterm' 'reaver-wps-fork-t6x-git'
          'iproute2' 'xorg-xdpyinfo' 'ethtool' 'pciutils' 'usbutils' 'rfkill'
          'wget' 'ccze' 'curl' 'xorg-xset' 'tmux' 'procps-ng')
 optdepends=('asleap:      Actively recover LEAP/PPTP passwords'
@@ -34,7 +34,8 @@ optdepends=('asleap:      Actively recover LEAP/PPTP passwords'
             'mdk4:        WLAN penetration tool'
             'nftables:    Netfilter tables userspace tools'
             'openssl:     The Open Source toolkit for Secure Sockets Layer and Transport Layer Security'
-            'pixiewps:    Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs')
+            'pixiewps:    Offline bruteforce of the WPS pin exploiting the low or non-existing entropy of some APs'
+            'tcpdump:     Powerful command-line packet analyzer')
 makedepends=('git')
 source=("${pkgname}::git+${url}.git")
 sha512sums=('SKIP')
