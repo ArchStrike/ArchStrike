@@ -9,7 +9,7 @@ pkgrel=1
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers' 'archstrike-proxy')
 pkgdesc="An integrated platform for attacking web applications (free edition)."
 url='http://portswigger.net/burp/'
-depends=('jre11-openjdk' 'bash')
+depends=('jre17-openjdk' 'bash')
 arch=('any')
 license=('custom')
 noextract=("burpsuite.jar")
@@ -37,7 +37,7 @@ package() {
 # Make joint script.
 cat > "${pkgdir}/usr/bin/burpsuite" <<EOF
 #!/usr/bin/env bash
-export PATH=/usr/lib/jvm/java-11-openjdk/bin/:\$PATH
+export PATH=/usr/lib/jvm/java-17-openjdk/bin/:\$PATH
 exec java -jar "/usr/share/${pkgname}/burpsuite.jar" "\$@"
 EOF
 chmod 755 "${pkgdir}/usr/bin/burpsuite"
