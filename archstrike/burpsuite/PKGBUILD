@@ -5,7 +5,7 @@ buildarch=1
 
 pkgname=burpsuite
 pkgver=2023.10.1.2
-pkgrel=1
+pkgrel=2
 groups=('archstrike' 'archstrike-webapps' 'archstrike-scanners' 'archstrike-fuzzers' 'archstrike-proxy')
 pkgdesc="An integrated platform for attacking web applications (free edition)."
 url='http://portswigger.net/burp/'
