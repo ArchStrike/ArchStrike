@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=chisel
-pkgver=1.7.7
+pkgver=1.9.1
 pkgrel=1
 groups=('archstrike' 'archstrike-networking' 'archstrike-tunnel')
 arch=('i686' 'x86_64' 'armv6h' 'armv7h' 'aarch64')
@@ -14,10 +14,11 @@ depends+=('glibc')
 makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz"
         "LICENSE")
-sha512sums=('1c0bc374ec485e5d1f713ca01a857777259408915bb260f71b2efe6660b45aab0106ddd292b3f5e87dc14985d66b93aa4a5fe71af13813cbbcfe722d5bc33d65'
+sha512sums=('af9441291ff14aa5f1b30aee4c06f5cbd54263a163890e9ea7c708d46d5a6b083eace7cb751c117b1891f5c5d044090446a06be43cc89ffc41c366bef352d205'
             '4450bb1b51fc9660d861e959139aced1756a6879a53ed6ed8ac836a57475eb65640498c73a7a9cd76e30f97e66484568713a549de07caac40b111b7c72193280')
 
 prepare() {
+  cd "${pkgname}-${pkgver}"
   export GOPATH="${srcdir}"
   go get -d -u github.com/jpillora/chisel
 }
