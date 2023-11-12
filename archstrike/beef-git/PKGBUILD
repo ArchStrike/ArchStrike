@@ -4,7 +4,7 @@ buildarch=192
 
 _pkgname=beef
 pkgname=${_pkgname}-git
-pkgver=20230109.r4134
+pkgver=20231030.r4252
 pkgrel=1
 epoch=1
 groups=('archstrike' 'archstrike-exploit')
