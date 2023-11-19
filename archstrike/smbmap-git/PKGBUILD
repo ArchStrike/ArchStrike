@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=smbmap-git
-pkgver=20210113.r145
+pkgver=20231101.r166
 pkgrel=1
 groups=('archstrike' 'archstrike-enumeration')
 pkgdesc="A handy SMB enumeration tool"
@@ -22,6 +22,6 @@ pkgver() {
 
 package() {
   cd "${srcdir}/${pkgname}"
-  install -Dm755 smbmap.py "${pkgdir}/usr/bin/smbmap"
+  install -Dm755 smbmap/smbmap.py "${pkgdir}/usr/bin/smbmap"
   install -Dm644 README.md "${pkgdir}/usr/share/doc/smbmap/README.md"
 }
