@@ -3,8 +3,8 @@
 buildarch=1
 
 pkgname=wafw00f
-pkgver=2.1.0
-pkgrel=2
+pkgver=2.2.0
+pkgrel=1
 pkgdesc="Identifies and fingerprints Web Application Firewall (WAF) products."
 url="https://github.com/sandrogauci/wafw00f"
 depends=('python' 'python-beautifulsoup4' 'python-pluginbase' 'python-requests')
@@ -13,7 +13,7 @@ license=('custom')
 groups=('archstrike' 'archstrike-scanners')
 arch=('any')
 source=("https://github.com/EnableSecurity/wafw00f/archive/v${pkgver}.tar.gz")
-sha512sums=('7faf271cf3cb8db0d45dfff7081f53f9041b7d646cc94ed4925c98e9b7d4ec24b3aeef9240b7c7ad56b9568a2033f74b58db1142c8f83252633e355b1a44a9b2')
+sha512sums=('53d4cafe784552a367959033a0e5405325b92bd3742ee3d7722aeda432b1939560974d31f26c4606e0ffc0f21666946a8ecc5fbe4fe69ab02f80ef20a2d308ea')
 
 build() {
     cd "${srcdir}/${pkgname}-${pkgver}" || exit
