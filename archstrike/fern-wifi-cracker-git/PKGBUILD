@@ -4,7 +4,7 @@ buildarch=1
 
 _pkgname=fern-wifi-cracker
 pkgname=${_pkgname}-git
-pkgver=20200613.r284
+pkgver=20230920.r299
 pkgrel=1
 groups=('archstrike' 'archstrike-wireless' 'archstrike-crackers')
 pkgdesc='WEP, WPA wifi cracker for wireless penetration testing'
