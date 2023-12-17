@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=enum4linux-ng-git
-pkgver=20220707.r366
+pkgver=20231103.r410
 pkgrel=1
 groups=('archstrike' 'archstrike-recon')
 arch=('any')
