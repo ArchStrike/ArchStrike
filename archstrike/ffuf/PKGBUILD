@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=ffuf
-pkgver=1.4.0
+pkgver=2.1.0
 pkgrel=1
 pkgdesc='Fast web fuzzer in Go'
 arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
@@ -13,17 +13,17 @@ license=('MIT')
 depends=('glibc')
 makedepends=('go' 'git')
 source=("${url}/archive/v${pkgver}.tar.gz")
-sha512sums=('765a737ebc0301344b8cd96317aa4de68d48c2554e0f47f03b7765ad9e7e65429031b99f80803bbd1aee6f7e8fa8bd6d6f713d5d4f1f9191fe1dadbd0f3e8e9e')
+sha512sums=('15389b483b0e93c152377dca28857ff691ab1d93a992575cbb22292e5117f6535f6186aeeae9eefc0ecdb00ba30023fc35a232178f7e6e426e4c8cd80810f239')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  GOPATH="${srcdir}" go get -fix -v -x "${url#https://}"
+  GOPATH="${srcdir}" go get -fix -v #-x "${url#https://}@${pkgver}"
 }
 
 package() {
   cd "${srcdir}/${pkgname}-${pkgver}"
   install -dm755 "${pkgdir}/usr/bin"
-  GOPATH="${srcdir}" go build -v "${url#https://}"
+  GOPATH="${srcdir}" go build -v #"${url#https://}"
 
   install -Dm755 "${pkgname}" "${pkgdir}/usr/bin/${pkgname}"
 }
