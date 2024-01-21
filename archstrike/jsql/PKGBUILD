@@ -3,7 +3,7 @@
 buildarch=1
 
 pkgname=jsql
-pkgver=0.85
+pkgver=0.95
 pkgrel=1
 groups=('archstrike' 'archstrike-scanners')
 pkgdesc="A lightweight application used to find database information from a distant server."
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('java-environment' 'bash')
 source=("${url}/releases/download/v${pkgver}/jsql-injection-v${pkgver}.jar")
 noextract=("jsql-injection-v${pkgver}.jar")
-sha512sums=('625da867510f0293b724a817fedc2ef234cce497ef8c38144fa5950c0dce4e9d545899a69ca6769beb795a2b1a6abf5ade1317429488b976521abdc2151de893')
+sha512sums=('e9ae8abb5ea5a3ece83ebcc0b6f41bff89f57e9ea59160b30640f899b2dba85e8836fc9d7b189b71dc3c9fa7cef6359b432b2e200b6ead65f3379cf8a04a77da')
 
 package() {
   cd "${srcdir}"
