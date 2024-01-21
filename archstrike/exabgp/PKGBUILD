@@ -4,7 +4,7 @@
 buildarch=1
 
 pkgname=exabgp
-pkgver=4.2.17
+pkgver=4.2.18
 pkgrel=1
 pkgdesc='The BGP swiss army knife of networking'
 arch=('any')
@@ -16,7 +16,7 @@ backup=('etc/exabgp.conf')
 makedepends=('python-setuptools')
 source=("${url}/archive/${pkgver}.zip"
         'exabgp.service')
-sha512sums=('69070bef68de0174713e5ff1aecf3e222a23fa586ad25ab892755502aa852dcee6a6d02b560041b10f7ebf832e7873732238f129999b1b53ae60710b2a9ca3a1'
+sha512sums=('1fda79fe6e251a6da8f0b0b43b72e7466c6a2e87210f8b97aeb74c430a330bfef4445c10cfc28361896aef707afa559122a95c855867db617100f674be6caa9f'
             '225726cf424d9c2a23a2c0e9d3c7ed8c5cf03993f9518efd8e45079822b2d8cbc4d6fd18b49794beee522530478b57e5e3b268b3abd92442680cdd695504360d')
 
 package() {
