@@ -3,17 +3,17 @@
 buildarch=1
 
 pkgname=bmap-tools
-pkgver=3.6
+pkgver=3.7
 pkgrel=1
 pkgdesc="Tool for copying largely sparse files using information from a block map file"
 arch=('any')
 url="https://github.com/01org/bmap-tools"
 license=('GPL2')
-depends=('python')
+depends=('python' 'python-six')
 makedepends=('python-setuptools')
 groups=('archstrike')
 source=("https://github.com/01org/bmap-tools/archive/v${pkgver}.tar.gz")
-sha512sums=('a55fe88d8f136b39f2bb92690322ae65d66ae1ae0454050d74bd37a39d69dca6428ba05ff42d2faf8e83f8f8342d882caaf8bb45aa00c74bbd5e4b12289a406a')
+sha512sums=('fe7a479990924b2f747bf4084ea0414edb62ecf021410e101ad22bd5927400dafb2735b788d5e791882414558d357cd204ffd5ffff17e03163da54f9192a9881')
 
 
 build() {
