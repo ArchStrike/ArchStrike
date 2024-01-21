@@ -3,7 +3,7 @@
 buildarch=220
 
 pkgname=log4cxx-svn
-pkgver=1881790
+pkgver=1915345
 pkgrel=1
 pkgdesc="A C++ port of Log4j"
 url="http://logging.apache.org/log4cxx"
