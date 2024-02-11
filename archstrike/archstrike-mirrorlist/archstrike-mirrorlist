@@ -25,6 +25,7 @@ Server = https://mirror.uce.edu.ec/archstrike/$arch/$repo
 Server = https://mirror.epn.edu.ec/archstrike/$arch/$repo
 Server = http://archstrike.outerworld.org/$arch/$repo
 Server = https://archstrike.unixpeople.org/$arch/$repo
+Server = https://mirrors.aliyun.com/archstrike/$arch/$repo
 
 # Obsolete
 #Server = https://as.arlm.tyzoid.com/$arch/$repo
