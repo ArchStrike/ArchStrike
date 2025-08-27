@@ -1,0 +1,27 @@
+# Maintainer: ArchStrike <team@archstrike.org>
+
+buildarch=220
+
+pkgname=hashpeek
+pkgver=0.2.2
+pkgrel=1
+pkgdesc='A fast Go-based CLI tool to identify, extract, and classify hash types from structured data/files with JSON/CSV output and Hashcat/John formatting details (a hash identifier).'
+arch=('armv6h' 'armv7h' 'x86_64' 'i686' 'aarch64')
+url="https://github.com/ph4mished/hashpeek"
+groups=('archstrike')
+license=("MIT")
+makedepends=('go' 'git')
+source=("https://github.com/ph4mished/hashpeek/archive/v${pkgver}.tar.gz")
+sha512sums=('SKIP')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  GOPATH="${srcdir}" go get && go build
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  install -dm755 "${pkgdir}/usr/bin"
+
+  install -Dm755 ${pkgname} "${pkgdir}/usr/bin/${pkgname}"
+}
