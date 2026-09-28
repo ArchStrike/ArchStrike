@@ -1,5 +1,13 @@
 # ArchStrike
 
+## ArchStrike is shutting down
+
+This should come as no surprise to those who've been paying attention, but the project hasn't been getting maintained for a while now. Over time, most of the killer applications provided by ArchStrike have gained official upstream packages, and the list of things we needed to remove or rework because of that grew while the payoff for our efforts dwindled. At the same time, the AS team members each found ourselves with less time to commit to a project like this, and it took us a bit longer than we should have to all come together and agree to shut things down.
+
+The github org will continue to exist and this repo will be archived, in case it's of use to anyone in the future.
+
+Thank you to everyone who supported and used ArchStrike in our heyday, and apologies for not making this announcement sooner.
+
 ![logo](https://archstrike.org/img/archstrike.svg)
 
 ## An Arch Linux repository for security professionals and enthusiasts.
